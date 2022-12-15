@@ -25,10 +25,13 @@
 /* 
 Sigma specific category classes */
 
-$color-getting-started: #5bc6d1;
-$color-demos: #c7477a;
+$color-getting-started: #000000;
+$color-demos: #52c747;
+$color-snowflake: #29B5E8;
+
 
 @include codelab-card(['getting-started'], $color-getting-started, '');
 @include codelab-card(['demos'], $color-demos, '');
+@include codelab-card(['snowflake'], $color-snowflake, '');
 
 

@@ -2763,17 +2763,25 @@ ul, li {
 /* 
 Sigma specific category classes */
 .getting-started-bg {
-  background-color: #5bc6d1;
+  background-color: #000000;
 }
 
 .codelab-card.category-getting-started {
-  border-bottom-color: #5bc6d1;
+  border-bottom-color: #000000;
 }
 
 .demos-bg {
-  background-color: #c7477a;
+  background-color: #52c747;
 }
 
 .codelab-card.category-demos {
-  border-bottom-color: #c7477a;
+  border-bottom-color: #52c747;
+}
+
+.snowflake-bg {
+  background-color: #29B5E8;
+}
+
+.codelab-card.category-snowflake {
+  border-bottom-color: #29B5E8;
 }
