@@ -1,0 +1,37 @@
+{
+  "environment": "web",
+  "format": "../../../claat/render/template.html",
+  "prefix": "https://quickstarts.snowflake.com/elements",
+  "mainga": "UA-41491190-9",
+  "updated": "2022-12-15T15:08:27-05:00",
+  "id": "getting_started_with_sigma_and_snowflake",
+  "duration": 90,
+  "title": "Getting Started with Sigma and Snowflake",
+  "summary": "This is a guide to setting up Sigma on top of Snowflake and visualizing some sample data.",
+  "source": "getting_started_with_sigma_and_snowflake/getting_started_with_sigma_and_snowflake.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "getting-started"
+  ],
+  "tags": [
+    "analysis",
+    "analytics",
+    "bi",
+    "businessintelligence",
+    "dashboarding",
+    "dataengineering",
+    "excel",
+    "gettingstarted",
+    "sigma",
+    "sigmacomputing",
+    "snowflake",
+    "spreadsheet",
+    "visualization",
+    "web"
+  ],
+  "feedback": "https://github.com/Snowflake-Labs/sfguides/issues",
+  "url": "getting_started_with_sigma_and_snowflake"
+}
