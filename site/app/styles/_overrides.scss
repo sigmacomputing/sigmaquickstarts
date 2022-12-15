@@ -34,4 +34,13 @@ $color-snowflake: #29B5E8;
 @include codelab-card(['demos'], $color-demos, '');
 @include codelab-card(['snowflake'], $color-snowflake, '');
 
+/** Might want one color per category:
+TablesFunctions
+Embedding
+Controls
+Sharing
+Use Cases
+Administration
+**/
+
 
