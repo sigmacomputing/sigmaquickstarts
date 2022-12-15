@@ -1,0 +1,34 @@
+
+#filters {
+
+  .paper-item-0 {
+    text-transform: capitalize;
+  }
+
+  #tabsContent {
+    .paper-tab-0 {
+      font-family: $lato-bold !important;
+    }
+
+  }
+}
+
+.paper-input-container-1 .input-content.paper-input-container input, .paper-input-container-1 .input-content.paper-input-container textarea, .paper-input-container-1 .input-content.paper-input-container iron-autogrow-textarea, .paper-input-container-1 .input-content.paper-input-container .paper-input-input {
+  font-family: $lato !important;
+}
+
+.paper-header-panel-0 #dropShadow.has-shadow.paper-header-panel {
+  opacity: 0 !important;
+}
+
+
+/* 
+Sigma specific category classes */
+
+$color-getting-started: #5bc6d1;
+$color-demos: #c7477a;
+
+@include codelab-card(['getting-started'], $color-getting-started, '');
+@include codelab-card(['demos'], $color-demos, '');
+
+
