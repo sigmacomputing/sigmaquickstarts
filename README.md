@@ -34,8 +34,8 @@ You can submit your own Quickstarts to be published on Sigma's website by submit
 ### Run locally
 
   1. Fork this repository to your personal github account (top right of webpage, `fork` button)
-  2. Clone your new fork `git clone git@github.com:<YOUR-USERNAME>/sfquickstarts.git sfquickstarts`
-  3. Navigate to the site directory `cd sfquickstarts/site`
+  2. Clone your new fork `git clone git@github.com:<YOUR-USERNAME>/sigmaquickstarts.git sfquickstarts`
+  3. Navigate to the site directory `cd sigmaquickstarts/site`
   4. Install node dependencies `npm install`
   5. Run the site `npm run serve`
 
