@@ -17,5 +17,8 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@bazel/bazel": "^0.18.1"
+  },
+  "dependencies": {
+    "firebase-tools": "^11.19.0"
   }
 }
