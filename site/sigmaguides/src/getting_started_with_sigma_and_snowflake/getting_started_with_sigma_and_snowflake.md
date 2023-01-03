@@ -4,7 +4,7 @@ summary: This is a guide to setting up Sigma on top of Snowflake and visualizing
 categories: snowflake
 environments: web
 status: Published 
-feedback link: https://github.com/Snowflake-Labs/sfguides/issues
+feedback link: https://github.com/sigmacomputing/sigmaguides/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet 
 
 # Getting Started with Sigma and Snowflake

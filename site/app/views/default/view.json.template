@@ -5,7 +5,7 @@
 
   // Required: Text description of the event. This will appear in the view
   // landing page.
-  "description": "Follow along with our tutorials and step-by-step walkthroughs to get you up and running with the Snowflake Data Cloud",
+  "description": "Follow along with our tutorials and step-by-step walkthroughs to get you up and running with Sigma",
 
   // Required: list of string tags by which to include codelabs. Tags are
   // specified in the codelab by the codelab author.
