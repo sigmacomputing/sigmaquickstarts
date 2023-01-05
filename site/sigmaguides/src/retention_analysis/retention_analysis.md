@@ -84,7 +84,7 @@ This will allow us to parse columns from the Json Object. Go ahead and select �
 18. Now we are going to calculate a bin metric that will group values together based on their distribution into a number of specified ranges. Let’s add one more column off of “Cust Key” with a formula of “BinFixed([Customer Revenue], 300, 1000000, 10)” and name it “Customer Revenue Bin”, finally select the number icon next to the formula bar and select “Whole Number”.
   
 
- <strong>A quick explainer on the “BinFixed” formula</strong>
+ <strong>A quick explainer on the [“BinFixed”](https://help.sigmacomputing.com/hc/en-us/articles/360036945034-BinFixed) formula</strong>
 This formula organizes your data into the number of “Bins” you are trying to analyze. The inputs for this formula are:
 ● value (required): The value for which the bin is computed.
 ● min (required): The lower bound. For any value less than this the bin will be 0.
@@ -95,27 +95,19 @@ In our example, for the min and max we used 300 and 1,000,000 respectively and s
 
 19. Finally lets collapse the “Cust Key” column to review the grouped calculations that we have created.
    
-### Building the Retention Analysis    
+## Building the Retention Analysis    
 
-### Logging into the Snowflake User Interface (UI)
+1. With our base table still collapsed, hover over the top right of the “Base Table” element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Retention Analysis Base Table”.
 
-1. Open a browser window and enter the URL of your Snowflake 30-day trial environment. You should see the login screen below. Enter your unique credentials to log in. 
-   
-![login](assets/settingupsnowflake_1.png)
-### Navigating the Snowflake Snowsight UI
+<strong> Note</strong>: A Child Element will inherit the datasource and all filters of its parent. This includes the aggregation level as well. Since the base table’s “Cust Key” grouping was collapsed when the child table was created you will notice that only the first four columns came through.
 
-1. From the Worksheets tab, click the "+ Worksheet" button in the top right to open a new worksheet. 
-- In the left pane you will see the database objects browser, which enables users to explore all databases, schemas, tables, and views accessible by the role selected for a worksheet.
-- The bottom pane shows results of queries and operations. 
+2. In the bottom left corner of the screen select the lineage icon. This will take you to the lineage view where you are able to see a visual representation of the relationship between the parent and child elements as well as the root datasource. You can exit the lineage view by either clicking the lineage icon in the bottom left again or clicking the “X” icon in the top right.
 
-![image2](assets/settingupsnowflake_2.png)
+3. Now hover over the top right of the newly created table, select the “Kebab” icon and click “Move to page” → “New Page”.
 
-2. At the top left of the page click on the downward facing arrow next to the worksheet name, and select "Import SQL from File". Browse to the "sigma_vhol.sql" file you downloaded in the prior module. Click "Open". 
-- All of the SQL commands you need to run for the remainder of this lab will now appear on the new worksheet. <strong>Do not run any of the SQL commands yet. </strong>
 
- ![imgae3](assets/settingupsnowflake_4.png) 
 
- ![Footer](assets/Sigma_Footer.png)
+ 
   ## Provisioning Sigma
   ### Provisioning Sigma via Snowflake Partner Connect
 
