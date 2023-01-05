@@ -38,17 +38,64 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 ## Setting up the Workbook 
 Duration: 5
 
-### Prepare Your Snowflake Lab Environment
 
-1. If not done yet, register for a Snowflake free 30-day trial at [https://trial.snowflake.com](https://trial.snowflake.com)
+1. From the Sigma home page click the “Create New” button in the top left corner and select “Workbook”
 
-- You will have different Snowflake editions (Standard, Enterprise, e.g.), cloud providers (GCP, AWS, or Azure), and regions (Us Central, Europe West, e.g.) available to you. For this lab, please select AWS as your cloud provider and at minimum enterprise edition.
+2. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - <Your Name> ” by clicking “Save As” in the top right.
 
-- After registering, you will receive an email with an activation link and your Snowflake account URL. Bookmark this URL for easy future access. 
+3. Now that the workbook is saved lets rename the page the by double clicking the page name in the bottom left corner and changing it to “Data”.
 
-2. Click [here](https://partnershiptesting.s3.us-west-2.amazonaws.com/Sigma_VHOL.sql) and download the "sigma_vhol.sql" file to your local machine. This file contains pre-written SQL commands which will be used later in the lab. 
+4. On the left side of the screen click on the “Table” button to add a new table element to the workbook. Then select “Tables and Datasets” from the source options.
+
+5. You will now see the data source selection page. On the left side navigate to “Sigma Sample Database” → “EXAMPLES” → “PLUGS_ELECTRONICS” → “PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA” and select it. A preview of the table will show up and then click “Done” in the top right corner.
+
+6.  You will now be back in on the Workbook with the newly created table element. Double click the table’s title and rename it to “Base Table”.
+
+<strong>Best Practice</strong>: It is a best practice to start your analysis in your workbook with base tables, and create child elements from there. This provides maximum flexibility and control when adding filters, creating columns that are reused, or using parameters that will impact multiple elements. In the next several steps, we’ll make some small changes to the table that we want to see in all future workbook elements.
+
+7. On the Date column right click navigate to “Truncate Date” and then select “Day”. This will remove the timestamp and leave us with just the date. Then rename this column by double clicking on the header and typing “Purchase Date”.
+<strong>Pro Tip</strong>: Sigma Hot Keys can get you far. To rename a column, hit “Shift + r”. You can always see the full suite of Keyboard Shortcuts by typing “Command + /”.
+
+8. Select the “Cost” column and then select the currency button next to the formula bar. Repeat this step for “Price” as well.
+
+9. Click the arrow next to “Price” and select “Add Column”.
+
+10.  In the formula bar type “[Quantity] * [Price]”. Then rename the new column to “Revenue” by double clicking on the title.
+
+11.  Repeat the previous two steps for the following columns:
+● “COGS” : “[Quantity] * [Cost]”
+● “Profit” : “[Revenue] - [COGS]”
+
+12. Now click the arrow next to “Cust Json” and select “Extract Columns”.
+This will allow us to parse columns from the Json Object. Go ahead and select “Age_Group” and click confirm. You now have a column for the customers age grouping for the purchase records.
+
+13. Now click the arrow next to “Cust Key” and select “Group Column”. This will organize the records in the table by their associated “Cust Key” and provide us a starting point to build aggregate calculations.
+
+14. Now that the records have been grouped click the arrow next “Cust Key” and select “Add Column”. Type “Min([Purchase Date])” in the formula bar and name this column “First Purchase Date”.
+
+15. Add another column to the right of “Cust Key” with the formula “sum(Revenue)”. Rename this column to “Customer Revenue”.
+<strong>Pro Tip</strong>: For simple aggregate functions like this, you can drag the column in the left side control panel into the “Calculations” section of the Cust Key grouping, or click the “Add Calculation” + sign.
+
+16. At this point we have performed a grouping and built two aggregate calculations. These steps are being translated into machine generated SQL which queries the CDW. The SQL that is being generated is the equivalent of “Select Cust Key, min(purchase date) as First Purchase Date, sum(revenue) as Customer Revenue from Table group by Cust Key”
+<strong>Pro Tip</strong>: you can always see the SQL that Sigma is Generating by clicking the circular arrow icon in the top right corner.
+
+17. Click the arrow next to “Customer Revenue” and select “Column Details”. This will pop up a modal with profiled information of the dataset. You are able to view metrics such as row count, distinct count, null count as well as statistical metrics. In practice this is a very helpful tool to quickly and efficiently the data in any given column. Take note of the min and max values.
+
+18. Now we are going to calculate a bin metric that will group values together based on their distribution into a number of specified ranges. Let’s add one more column off of “Cust Key” with a formula of “BinFixed([Customer Revenue], 300, 1000000, 10)” and name it “Customer Revenue Bin”, finally select the number icon next to the formula bar and select “Whole Number”.
+  
+
+ <strong>A quick explainer on the “BinFixed” formula</strong>
+This formula organizes your data into the number of “Bins” you are trying to analyze. The inputs for this formula are:
+● value (required): The value for which the bin is computed.
+● min (required): The lower bound. For any value less than this the bin will be 0.
+● max (required): The upper bound. For any value greater than this the bin will be
+Bins+1.
+● bins (required): The number of bins to split the value into
+In our example, for the min and max we used 300 and 1,000,000 respectively and split the values into 10 bins. We have effectively split the customers into deciles which we will leverage later on in our analysis. 
+
+19. Finally lets collapse the “Cust Key” column to review the grouped calculations that we have created.
    
-### The Snowflake User Interface   
+### Building the Retention Analysis    
 
 ### Logging into the Snowflake User Interface (UI)
 
