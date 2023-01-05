@@ -11,31 +11,31 @@ authors: Kelsey Hammock, Sigma Computing
 ## Overview 
 Duration: 5
 
- This lab introduces you to the user interface and embedding capabilities of Sigma Workbooks. This lab does not get into complex data analysis use cases for Sigma, but is designed to showcase the type of capabilities available in an application development use case with Sigma.
+ This lab focuses on the end-user analytics experience in Sigma. You will be playing the role of a marketing analyst undertaking exploratory analysis on customer retention rates. Traditionally, this type of analysis requires a significant effort and advanced SQL knowledge, but Sigma empowers business users to quickly derive these insights on their own.
+
+This lab is intended to showcase advanced features such as cross-level aggregate calculations, extracting values from JSON, Tracing lineage in Sigma, and showing different paths an analyst can take to achieve their goals. 
 
 
 ### Prerequisites
-- This lab is designed for semi-technical users who will be aiding in the planning or implementation of Sigma. No SQL or technical data skills are required for this lab.  
+- This lab is designed to be stand alone, and does not require pre-modeling of data. All you will need is access to a Sigma environment.  
 
 ### What You Will Learn 
-- How to ingest data into Snowflake & connect to Sigma
-- How to leverage Sigma functions for data prep
-- How to build a workbook and visualizations
-- How to embed a workbook into your application
-- How end users of the application can explore data and generate new insights in a self-serve fashion with Sigma 
+- How to build a workbook from the data source up
+- How to parse JSON using Sigma's UI
+- How to filter datasets & workbook pages
+- How to build child tables at different levels of aggregation 
+- How to track lineage
+- How to build pivot tables for advanced analysis  
 
 ### What You’ll Need 
-- Access to a Snowflake trial account on AWS or a Snowflake instance on AWS in which you have Account Admin permissions.
-- Download Portal Template: [App_embed.zip](https://partnershiptesting.s3.us-west-2.amazonaws.com/app_embed_RAW+.zip)
-- Download and Install [Node.js](https://nodejs.org/)
-- Download SQL Script: [Sigma_VHOL.sql](https://partnershiptesting.s3.us-west-2.amazonaws.com/Sigma_VHOL.sql)
+- Access to a Sigma instance with Creator priviledges
 
 ### What You’ll Build 
-- In this lab you will build a sales performance portal that live queries against data in Snowflake and provides unique drill down and exploration capabilities to the end users through embedding Sigma. 
+- In this lab you will build a retention analysis including pivot tables with custom formatting. 
 
 ![Footer](assets/Sigma_Footer.png)
 <!-- ------------------------ -->
-## Setting up Snowflake 
+## Setting up the Workbook 
 Duration: 5
 
 ### Prepare Your Snowflake Lab Environment
