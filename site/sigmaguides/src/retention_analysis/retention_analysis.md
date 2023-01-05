@@ -84,7 +84,7 @@ This will allow us to parse columns from the Json Object. Go ahead and select �
 18. Now we are going to calculate a bin metric that will group values together based on their distribution into a number of specified ranges. Let’s add one more column off of “Cust Key” with a formula of “BinFixed([Customer Revenue], 300, 1000000, 10)” and name it “Customer Revenue Bin”, finally select the number icon next to the formula bar and select “Whole Number”.
   
 
- <strong>A quick explainer on the [“BinFixed”](https://help.sigmacomputing.com/hc/en-us/articles/360036945034-BinFixed) formula</strong>
+ <strong>A quick explainer on the [BinFixed](https://help.sigmacomputing.com/hc/en-us/articles/360036945034-BinFixed) formula</strong>
 This formula organizes your data into the number of “Bins” you are trying to analyze. The inputs for this formula are:
 ● value (required): The value for which the bin is computed.
 ● min (required): The lower bound. For any value less than this the bin will be 0.
