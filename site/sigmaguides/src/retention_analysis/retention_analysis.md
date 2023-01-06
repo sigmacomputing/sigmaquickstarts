@@ -105,6 +105,36 @@ In our example, for the min and max we used 300 and 1,000,000 respectively and s
 
 3. Now hover over the top right of the newly created table, select the “Kebab” icon and click “Move to page” → “New Page”.
 
+4. Let’s rename this page to “Retention”.
+
+5. Click on the table and expand the data source menu in the bottom left. Change the “Aggregation Level” to “All source columns” and then add the following columns: “Order Number”, “ Purchase Date”, “Product Type”, “Product Family”, “Product Name”, and “Age Group”.
+
+<strong>Note</strong>: The “Retention Analysis Base Table” was created when the “Cust Key” grouping of its parent was collapsed, so the our child table was created at the same level of aggregation as the Parent table. By selecting “All source columns” in the aggregation level we modified the query such that the four columns from the “Cust Key” grouping were applied to all corresponding sale records in a 1 to many relationship.
+
+6. Add a column next to “First Purchase Date” with the name “Quarters Out” and the formula “DateDiff("quarter", [First Purchase Date], [Purchase Date])”.
+
+This calculation shows us how many quarters out this purchase record is from the customer’s first purchase, giving us an idea if the customer is still a customer N quarters out from the first purchase date.
+
+7. Click the arrow next to “First Purchase Date” and select “Group Column”. Then click the arrow another time and select “Truncate date” → “Quarter”. Finally rename the column to “First Purchase Quarter".
+
+8. Now click the arrow next to “First Purchase Quarter” and add a column with the formula “CountDistinct([Cust Key])” named “Customers in Cohort”.
+
+9. Click the arrow next to “Quarters Out” and click “Group Column”. Then add a new column off of it named “Number of Customers” with the formula “CountDistinct([Cust Key])”.
+
+By building another grouping on “Quarters Out” we now have two aggregation levels. In Sigma you are able to create any number of groupings and then leverage aggregate calculations across those different levels.
+
+10. Next add another column in the “Quarters Out” grouping with the formula “[Number of Customers] / [Customers in Cohort]” named “Retention” and format it as a percentage.
+
+11. In Sigma you can easily add column formatting to tables as you see fit. Let's add data bars to the “Retention” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen, select the “DATA BARS” tab strip to apply them to the column.
+
+12.  Finally collapse the “Quarters Out” grouping, You will now be able to see customer retention percentages N quarters out for customers who first purchased their first items at the same time.
+
+## Visualizing in a Pivot Table
+
+Let's take our analysis a little further and build out a pivot table to better visualize this data. 
+
+1. First re-expand the “Quarters Out” grouping by clicking the plus in the column header. 
+
 
 
  
