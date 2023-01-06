@@ -135,6 +135,7 @@ In our example, for the min and max we used 300 and 1,000,000 respectively and s
 ## Building the Retention Analysis    
 
 1. With our base table still collapsed, hover over the top right of the “Base Table” element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Retention Analysis Base Table”.
+
 ![image21](assets/buildingtheretentionanalysis_1.png)
 
 <strong> Note</strong>: A Child Element will inherit the datasource and all filters of its parent. This includes the aggregation level as well. Since the base table’s “Cust Key” grouping was collapsed when the child table was created you will notice that only the first four columns came through.
