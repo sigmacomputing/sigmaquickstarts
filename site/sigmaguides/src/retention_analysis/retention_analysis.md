@@ -133,8 +133,59 @@ By building another grouping on “Quarters Out” we now have two aggregation l
 
 Let's take our analysis a little further and build out a pivot table to better visualize this data. 
 
-1. First re-expand the “Quarters Out” grouping by clicking the plus in the column header. 
+1. First re-expand the “Quarters Out” grouping by clicking the plus in the column header.
 
+2. Hover over the top right of the “Retention Analysis” table element, select the “Create Child Element” icon and click “Pivot Table”. Then rename the new pivot table “Retention by Quarter”.
+
+3. You will notice that since the “Quarter Out” grouping was expanded when the child table was created, the aggregation level was set such that all columns show up in the Pivot table.
+
+4.  Drag and drop the following columns to the respective sections:
+● “First Purchase Quarter” → “Pivot Rows”
+● “Quarters Out” → “Pivot Columns”
+● “Retention” → “Values”
+
+5. With “Sum of Retention” selected in the formula bar remove “Sum()“ and leave “[Retention]” and rename the column to “Retention % - Grouped Table”. We do this because “Retention” is already an aggregate calculation so summing it would lead to erroneous results.
+
+
+By default a column that is dragged into a Sigma pivot table value will be aggregated with a Sum(). This can be adjusted via the formula bar like we just did or by right clicking the column header in the values section and changing the aggregate type.
+
+6.  We are also able to perform calculations in the pivot table itself. Let’s recalculate the retention percentage here. To do that click the “+” icon adjacent to the values section and select “New Column”.
+
+7. Set the formula for the new column to equal “[Number of Customers] / [Customers in Cohort]” , rename it “Retention % - Pivot Table” and set the formatting to percentage.
+
+8. You will notice that regardless of where the data is calculated it matches. This is because under the hood Sigma is making a grouped table to build out this pivot table. In the case of the retention value from the grouped table it is being rolled-up to the “Quarters Out” aggregate created by the pivot table. We can see this by either double clicking the pivot table, or clicking the expand icon in the top right corner.
+
+Even with pivot tables Sigma allows you to surface the underlying records with ease. In general to ensure that the underlying records are available as well as to keep the workbook easily maintainable and understandable for other users, it is recommended to perform calculations such as this in the visual or the pivot table. This makes sure that the aggregations wont obfuscate the underlying data.
+
+9. Now let's remove the totals from the pivot table as they dont make sense in this context. Right click on the “First Purchase Quarter” column header and uncheck “show totals”.
+
+10. Finally lets remove the “Retention % - Grouped Table” and add conditional formatting to the remaining retention column. On the left side select the paint brush and click “Conditional formatting”. Change the style to “Color Scale” and Apply to “Retention % - Pivot Table”.
+
+
+## Filtering the Workbook
+
+1. On the “Retention Analysis Base Table” click on the arrow next to “Customer Revenue Bin” and select “Filter”. Then click the “Kebab” in the filter and select “Convert to page control”.
+
+2. The filter should now show up on the workbook above the “Retention Analysis Base Table.” Click the “Kebab” one more time except this time select “Change filter type” and click “Include Values”. Repeat this process for Age Group.
+
+3. Now let’s filter our page by clicking the newly created “Customer Revenue Bin” filter drop down and selecting 1-3. This equates to looking at customers only in the bottom 30% of total spend. You will notice both visuals updating. This is because the pivot table is a child element of the base table. The same will be true if you select a range from the newly created “Age Group” filter as well.
+
+4. Finally we will add a title to our “Retention” page. Click the “+” in the top left corner and then select “Text” from the “UI Elements” section.
+
+5. When the element shows up on the workbook click and drag it to the top above the filter. Next click inside, set the format to large heading and give the page a title. Sigma text boxes have rich text capabilities meaning that we have a lot of flexibility in formatting options.
+
+<strong>Your final retention analysis workbook page should look something like this:</Strong>
+
+## Conclusion
+
+In this lab, we showcased how Sigma empowers end users to create complicated, cross-level metric calculations all without writing any complex code or SQL.
+Sigma enables end users to do last-mile data exploration and analysis in a familiar, spreadsheet-like UI, unlocking the power of the underlying Snowflake platform for all business users.
+
+### Helpful Resources
+
+- [Help Center including Documentation](https://help.sigmacomputing.com/hc/en-us)
+- [Sigma Blog](https://www.sigmacomputing.com/blog/)
+- [Resources and Case Studies](https://www.sigmacomputing.com/resources/)
 
 
  
