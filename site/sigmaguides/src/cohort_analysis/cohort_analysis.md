@@ -1,12 +1,12 @@
-summary: retention_analysis
-id: retention_analysis
+summary: cohort_analysis
+id: cohort_analysis
 categories: snowflake
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Kelsey Hammock, Sigma Computing
 
-# Retention Analysis
+# Cohort Analysis
 <!-- ------------------------ -->
 ## Overview 
 Duration: 5
