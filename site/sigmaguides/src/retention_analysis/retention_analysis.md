@@ -36,7 +36,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 ![Footer](assets/Sigma_Footer.png)
 <!-- ------------------------ -->
 ## Setting up the Workbook 
-Duration: 5
+Duration: 10
 
 
 1. From the Sigma home page click the “Create New” button in the top left corner and select “Workbook”
@@ -133,7 +133,7 @@ In our example, for the min and max we used 300 and 1,000,000 respectively and s
 ![image20](assets/settinguptheworkbook_20.png)
 
 ## Building the Retention Analysis    
-
+Duration: 10
 1. With our base table still collapsed, hover over the top right of the “Base Table” element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Retention Analysis Base Table”.
 
 ![image21](assets/buildingtheretentionanalysis_1.png)
@@ -196,7 +196,7 @@ By building another grouping on “Quarters Out” we now have two aggregation l
 ![image215](assets/buildingtheretentionanalysis_15.png)
 
 ## Visualizing in a Pivot Table
-
+Duration: 5
 Let's take our analysis a little further and build out a pivot table to better visualize this data. 
 
 1. First re-expand the “Quarters Out” grouping by clicking the plus in the column header.
@@ -248,7 +248,7 @@ Even with pivot tables Sigma allows you to surface the underlying records with e
 ![image310](assets/visualizinginapivottable_10.png)
 
 ## Filtering the Workbook
-
+Duration: 5
 1. On the “Retention Analysis Base Table” click on the arrow next to “Customer Revenue Bin” and select “Filter”. Then click the “Kebab” in the filter and select “Convert to page control”.
 
 ![image41](assets/filteringtheworkbook_1.png)
