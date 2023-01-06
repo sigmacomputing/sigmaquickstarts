@@ -43,7 +43,7 @@ Duration: 5
 
 ![image1](assets/settinguptheworkbook_1.png)
 
-2. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - <Your Name> ” by clicking “Save As” in the top right.
+1. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - YOUR NAME ” by clicking “Save As” in the top right.
 
 ![image2](assets/settinguptheworkbook_2.png)
 
@@ -83,8 +83,9 @@ Duration: 5
 ![image11](assets/settinguptheworkbook_11.png)
 
 11.  Repeat the previous two steps for the following columns:
-● “COGS” : “[Quantity] * [Cost]”
-● “Profit” : “[Revenue] - [COGS]”
+
+- “COGS” : “[Quantity] * [Cost]”
+- “Profit” : “[Revenue] - [COGS]”
 
 12. Now click the arrow next to “Cust Json” and select “Extract Columns”.
 This will allow us to parse columns from the Json Object. Go ahead and select “Age_Group” and click confirm. You now have a column for the customers age grouping for the purchase records.
@@ -105,7 +106,7 @@ This will allow us to parse columns from the Json Object. Go ahead and select �
 ![image15](assets/settinguptheworkbook_15.png)![image16](assets/settinguptheworkbook_16.png)
 
 16. At this point we have performed a grouping and built two aggregate calculations. These steps are being translated into machine generated SQL which queries the CDW. The SQL that is being generated is the equivalent of “Select Cust Key, min(purchase date) as First Purchase Date, sum(revenue) as Customer Revenue from Table group by Cust Key”
-<strong>Pro Tip</strong>: you can always see the SQL that Sigma is Generating by clicking the circular arrow icon in the top right corner.
+<strong>Pro Tip</strong>: You can always see the SQL that Sigma is Generating by clicking the circular arrow icon in the top right corner.
 
 ![image17](assets/settinguptheworkbook_17.png)
 
@@ -119,11 +120,12 @@ This will allow us to parse columns from the Json Object. Go ahead and select �
 
  <strong>A quick explainer on the [BinFixed](https://help.sigmacomputing.com/hc/en-us/articles/360036945034-BinFixed) formula</strong>
 This formula organizes your data into the number of “Bins” you are trying to analyze. The inputs for this formula are:
-● value (required): The value for which the bin is computed.
-● min (required): The lower bound. For any value less than this the bin will be 0.
-● max (required): The upper bound. For any value greater than this the bin will be
+
+- Value (required): The value for which the bin is computed.
+- Min (required): The lower bound. For any value less than this the bin will be 0.
+- Max (required): The upper bound. For any value greater than this the bin will be
 Bins+1.
-● bins (required): The number of bins to split the value into
+- Bins (required): The number of bins to split the value into
 In our example, for the min and max we used 300 and 1,000,000 respectively and split the values into 10 bins. We have effectively split the customers into deciles which we will leverage later on in our analysis. 
 
 19. Finally lets collapse the “Cust Key” column to review the grouped calculations that we have created.
@@ -152,9 +154,10 @@ In our example, for the min and max we used 300 and 1,000,000 respectively and s
 
 5. Click on the table and expand the data source menu in the bottom left. Change the “Aggregation Level” to “All source columns” and then add the following columns: “Order Number”, “ Purchase Date”, “Product Type”, “Product Family”, “Product Name”, and “Age Group”.
 
-![image26](assets/buildingtheretentionanalysis_6.png)
+![image26](assets/buildingtheretentionanalysis_6.png)![image27](assets/buildingtheretentionanalysis_7.png)
 
-![image27](assets/buildingtheretentionanalysis_7.png)
+
+
 <strong>Note</strong>: The “Retention Analysis Base Table” was created when the “Cust Key” grouping of its parent was collapsed, so the our child table was created at the same level of aggregation as the Parent table. By selecting “All source columns” in the aggregation level we modified the query such that the four columns from the “Cust Key” grouping were applied to all corresponding sale records in a 1 to many relationship.
 
 ![image28](assets/buildingtheretentionanalysis_8.png)
@@ -206,9 +209,9 @@ Let's take our analysis a little further and build out a pivot table to better v
 3. You will notice that since the “Quarter Out” grouping was expanded when the child table was created, the aggregation level was set such that all columns show up in the Pivot table.
 
 4.  Drag and drop the following columns to the respective sections:
-● “First Purchase Quarter” → “Pivot Rows”
-● “Quarters Out” → “Pivot Columns”
-● “Retention” → “Values”
+- “First Purchase Quarter” → “Pivot Rows”
+- “Quarters Out” → “Pivot Columns”
+- “Retention” → “Values”
 
 ![image33](assets/visualizinginapivottable_3.png)
 
@@ -229,6 +232,8 @@ By default a column that is dragged into a Sigma pivot table value will be aggre
 8. You will notice that regardless of where the data is calculated it matches. This is because under the hood Sigma is making a grouped table to build out this pivot table. In the case of the retention value from the grouped table it is being rolled-up to the “Quarters Out” aggregate created by the pivot table. We can see this by either double clicking the pivot table, or clicking the expand icon in the top right corner.
 
 ![image37](assets/visualizinginapivottable_7.png)
+
+
 ![image38](assets/visualizinginapivottable_8.png)
 
 Even with pivot tables Sigma allows you to surface the underlying records with ease. In general to ensure that the underlying records are available as well as to keep the workbook easily maintainable and understandable for other users, it is recommended to perform calculations such as this in the visual or the pivot table. This makes sure that the aggregations wont obfuscate the underlying data.
