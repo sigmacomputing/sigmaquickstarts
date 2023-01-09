@@ -12,6 +12,7 @@ jobs:
       - run: |
           export GOPATH="$HOME/go/"
           export PATH=$PATH:$GOPATH/bin
+          go install github.com/googlecodelabs/tools/claat@latest
           cd site && npm install && npm run deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
