@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install && cd site && npm install && export PATH=$PATH:$(go env GOPATH)/bin && npm run deploy
+      - name: install go
+        run: |
+        export GOPATH="$HOME/go/"
+        export PATH=$PATH:$GOPATH/bin
+        cd site && npm install && npm run deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
