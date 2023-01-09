@@ -20,4 +20,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SIGMA_QUICKSTARTS_WEBSITE }}'
           channelId: live
           projectId: sigma-quickstarts-website
-          target: site
+          entrypoint: ./site
