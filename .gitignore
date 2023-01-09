@@ -4,3 +4,5 @@ package-lock.json
 *firebase.json
 *.firebaserc
 /.firebase/
+/bazel*
+.firebase/
