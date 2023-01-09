@@ -33,7 +33,7 @@ Some text here
 ### What You’ll Build 
 Some text here
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](_shared_assets/Sigma_Footer.png)
 
 <!-- ------------------------ -->
 ## Metadata Configuration
@@ -57,7 +57,7 @@ It is important to set the correct metadata for your Sigma Quickstart. The metad
 - **authors**: Phil Ballai
   - Indicate the author(s) of this specific QuickStart.
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](_shared_assets/Sigma_Footer.png)
 
 <!-- ------------------------ -->
 ## Creating a Step
@@ -81,7 +81,7 @@ To indicate how long each step will take, set the `Duration` under the step titl
 
 The total QuickStart completion time is calculated automatically for you and will be displayed on the landing page. 
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](_shared_assets/Sigma_Footer.png)
 
 <!-- ------------------------ -->
 ## Code Snippets, Info Boxes, and Tables
@@ -134,7 +134,7 @@ Negative
 ### Hyperlinking
 [Youtube - Halsey Playlists](https://www.youtube.com/user/iamhalsey/playlists)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](_shared_assets/Sigma_Footer.png)
 
 <!-- ------------------------ -->
 ## Images, Videos, and Surveys, and iFrames
@@ -158,7 +158,7 @@ Videos from youtube can be directly embedded:
 ### Embed an iframe
 ![https://codepen.io/MarioD/embed/Prgeja](https://en.wikipedia.org/wiki/File:Example.jpg "Try Me Publisher")
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](_shared_assets/Sigma_Footer.png)
 
 <!-- ------------------------ -->
 ## Conclusion
