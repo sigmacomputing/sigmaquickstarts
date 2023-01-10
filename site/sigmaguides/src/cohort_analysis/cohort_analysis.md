@@ -75,6 +75,18 @@ Duration: 5
 
 2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
 
+3. Drag and drop the following columns to the respective sections:
+- “Store Region” → “X-axis”
+- “Revenue” → “Y-axis”
+- “Customer Revenue Bin” → “Color”
+
+4. Now let's rearrange the layout of the workbook and drag the bar chart to the right of the “Revenue Cohort” table.
+
+5. Finally lets modify the bar chart to be horizontally oriented by clicking it then selecting the “Display horizontal” icon on the top left pane.
+
+## Building a Pivot Table
+
+1. 
 
  
   
