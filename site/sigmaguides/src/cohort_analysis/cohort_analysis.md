@@ -45,28 +45,51 @@ Duration: 5
 
 3. On the data page’s “Base Table” let’s expand the “Cust Key” grouping by clicking the “+” to the left of the “Cust Key” column header. Next hover over the top right corner of the element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Revenue Cohort Base Table”.
 
+![image1](assets/creatingachildtable_1.png)
+
 4. We will create one more table as a child element of the new “Revenue Cohort Base Table” by hovering over the top right corner of the element, selecting the “Create Child Element” icon and clicking “Table”. Finally rename the new table “Revenue Cohort”.
+
+![image2](assets/creatingachildtable_2.png)
 
 5. Now hover over the top right of the “Revenue Cohort” table, select the “Kebab” icon and click “Move to page” → “New Page”.
 
+![image3](assets/creatingachildtable_3.png)
+
 6.  Let’s rename this page to “Revenue Cohort”.
+
+![image4](assets/creatingachildtable_4.png)
 
 7. Now click on the arrow next to “Store Region” and select “Group Column”.
 
+![image5](assets/creatingachildtable_5.png)
 
 8. Next add a column with the formula “sum(revenue)” named “Region Revenue”.
 
+![image6](assets/creatingachildtable_6.png)
+
 9. Click on the arrow next to “Customer Revenue Bin” and select “Group Column”.
+
+![image7](assets/creatingachildtable_7.png)
 
 10. Now add a column named “Bin Revenue” with the formula “sum(revenue)”.
 
+![image8](assets/creatingachildtable_8.png)
+
 11. Next add another column named “Bin Rank” with the formula “Rank([Bin Revenue], "desc")”.
+
+![image9](assets/creatingachildtable_9.png)
 
 12. Finally add one more column named “% of Region” with the formula “[Bin Revenue] / [Region Revenue]” and format it as a percentage by clicking the arrow next to the column name and selecting Format - Percentage.
 
+![image10](assets/creatingachildtable_10.png)
+
 13. Now let’s collapse the “Customer Revenue Bin” grouping.
 
+![image11](assets/creatingachildtable_11.png)
+
 14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen, select the “DATA BARS” tab strip to apply them to the column.
+
+![image12](assets/creatingachildtable_12.png)
 
 ## Visualizing the Data
 
