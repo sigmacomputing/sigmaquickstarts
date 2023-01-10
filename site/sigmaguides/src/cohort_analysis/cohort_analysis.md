@@ -108,7 +108,7 @@ Duration: 5
 
 ## Finalizing the Workbook
 
-1. Finally lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
+1. Lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
 
 2. Let’s go back to the “Revenue Cohort Base Table” on the data page and create a filter by right clicking “Product Type”, selecting “Filter”.
 
