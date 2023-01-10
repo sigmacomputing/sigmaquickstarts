@@ -17,94 +17,63 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 
 
 ### Prerequisites
-- This lab is designed to be stand alone, and does not require pre-modeling of data. All you will need is access to a Sigma environment.  
+- This lab is designed to be a follow up to the Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here:
 
 ### What You Will Learn 
-- How to build a workbook from the data source up
-- How to parse JSON using Sigma's UI
-- How to filter datasets & workbook pages
-- How to build child tables at different levels of aggregation 
-- How to track lineage
+- How to create child elements from existing workbook objects 
+- How to run calculations across multiple aggregation levels 
+- How to apply custom formatting to objects in a Sigma workbook
+- How to create visualizations in Sigma 
 - How to build pivot tables for advanced analysis  
+- How to leverage control elements to filter visualizations and workbook pages 
 
 ### What You’ll Need 
 - Access to a Sigma instance with Creator priviledges
 
 ### What You’ll Build 
-- In this lab you will build a retention analysis including pivot tables with custom formatting. 
+- In this lab you will build a cohort analysis including visualizations and a pivot table
 
 ![Footer](assets/Sigma_Footer.png)
 <!-- ------------------------ -->
-## Setting up the Workbook 
+## Create a Child Table 
 Duration: 5
 
 
-1. From the Sigma home page click the “Create New” button in the top left corner and select “Workbook”
+1. Navigate to your Retention Analysis workbook created using the instructions here: 
 
-2. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - <Your Name> ” by clicking “Save As” in the top right.
+2. Now that you are in the Workbook, navigate back to the "Data" page. 
 
-3. Now that the workbook is saved lets rename the page the by double clicking the page name in the bottom left corner and changing it to “Data”.
+3. On the data page’s “Base Table” let’s expand the “Cust Key” grouping by clicking the “+” to the left of the “Cust Key” column header. Next hover over the top right corner of the element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Revenue Cohort Base Table”.
 
-4. On the left side of the screen click on the “Table” button to add a new table element to the workbook. Then select “Tables and Datasets” from the source options.
+4. We will create one more table as a child element of the new “Revenue Cohort Base Table” by hovering over the top right corner of the element, selecting the “Create Child Element” icon and clicking “Table”. Finally rename the new table “Revenue Cohort”.
 
-5. You will now see the data source selection page. On the left side navigate to “Sigma Sample Database” → “EXAMPLES” → “PLUGS_ELECTRONICS” → “PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA” and select it. A preview of the table will show up and then click “Done” in the top right corner.
+5. Now hover over the top right of the “Revenue Cohort” table, select the “Kebab” icon and click “Move to page” → “New Page”.
 
-6.  You will now be back in on the Workbook with the newly created table element. Double click the table’s title and rename it to “Base Table”.
+6.  Let’s rename this page to “Revenue Cohort”.
 
-<strong>Best Practice</strong>: It is a best practice to start your analysis in your workbook with base tables, and create child elements from there. This provides maximum flexibility and control when adding filters, creating columns that are reused, or using parameters that will impact multiple elements. In the next several steps, we’ll make some small changes to the table that we want to see in all future workbook elements.
+7. Now click on the arrow next to “Store Region” and select “Group Column”.
 
-7. On the Date column right click navigate to “Truncate Date” and then select “Day”. This will remove the timestamp and leave us with just the date. Then rename this column by double clicking on the header and typing “Purchase Date”.
-<strong>Pro Tip</strong>: Sigma Hot Keys can get you far. To rename a column, hit “Shift + r”. You can always see the full suite of Keyboard Shortcuts by typing “Command + /”.
 
-8. Select the “Cost” column and then select the currency button next to the formula bar. Repeat this step for “Price” as well.
+8. Next add a column with the formula “sum(revenue)” named “Region Revenue”.
 
-9. Click the arrow next to “Price” and select “Add Column”.
+9. Click on the arrow next to “Customer Revenue Bin” and select “Group Column”.
 
-10.  In the formula bar type “[Quantity] * [Price]”. Then rename the new column to “Revenue” by double clicking on the title.
+10. Now add a column named “Bin Revenue” with the formula “sum(revenue)”.
 
-11.  Repeat the previous two steps for the following columns:
-● “COGS” : “[Quantity] * [Cost]”
-● “Profit” : “[Revenue] - [COGS]”
+11. Next add another column named “Bin Rank” with the formula “Rank([Bin Revenue], "desc")”.
 
-12. Now click the arrow next to “Cust Json” and select “Extract Columns”.
-This will allow us to parse columns from the Json Object. Go ahead and select “Age_Group” and click confirm. You now have a column for the customers age grouping for the purchase records.
+12. Finally add one more column named “% of Region” with the formula “[Bin Revenue] / [Region Revenue]” and format it as a percentage by clicking the arrow next to the column name and selecting Format - Percentage.
 
-13. Now click the arrow next to “Cust Key” and select “Group Column”. This will organize the records in the table by their associated “Cust Key” and provide us a starting point to build aggregate calculations.
+13. Now let’s collapse the “Customer Revenue Bin” grouping.
 
-14. Now that the records have been grouped click the arrow next “Cust Key” and select “Add Column”. Type “Min([Purchase Date])” in the formula bar and name this column “First Purchase Date”.
+14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen, select the “DATA BARS” tab strip to apply them to the column.
 
-15. Add another column to the right of “Cust Key” with the formula “sum(Revenue)”. Rename this column to “Customer Revenue”.
-<strong>Pro Tip</strong>: For simple aggregate functions like this, you can drag the column in the left side control panel into the “Calculations” section of the Cust Key grouping, or click the “Add Calculation” + sign.
+## Visualizing the Data
 
-16. At this point we have performed a grouping and built two aggregate calculations. These steps are being translated into machine generated SQL which queries the CDW. The SQL that is being generated is the equivalent of “Select Cust Key, min(purchase date) as First Purchase Date, sum(revenue) as Customer Revenue from Table group by Cust Key”
-<strong>Pro Tip</strong>: you can always see the SQL that Sigma is Generating by clicking the circular arrow icon in the top right corner.
 
-17. Click the arrow next to “Customer Revenue” and select “Column Details”. This will pop up a modal with profiled information of the dataset. You are able to view metrics such as row count, distinct count, null count as well as statistical metrics. In practice this is a very helpful tool to quickly and efficiently the data in any given column. Take note of the min and max values.
+1.  Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon and click “Visualization”. Then rename the new visualization “Revenue by Store Region and Customer Bin”.
 
-18. Now we are going to calculate a bin metric that will group values together based on their distribution into a number of specified ranges. Let’s add one more column off of “Cust Key” with a formula of “BinFixed([Customer Revenue], 300, 1000000, 10)” and name it “Customer Revenue Bin”, finally select the number icon next to the formula bar and select “Whole Number”.
-  
-
- <strong>A quick explainer on the [BinFixed](https://help.sigmacomputing.com/hc/en-us/articles/360036945034-BinFixed) formula</strong>
-This formula organizes your data into the number of “Bins” you are trying to analyze. The inputs for this formula are:
-● value (required): The value for which the bin is computed.
-● min (required): The lower bound. For any value less than this the bin will be 0.
-● max (required): The upper bound. For any value greater than this the bin will be
-Bins+1.
-● bins (required): The number of bins to split the value into
-In our example, for the min and max we used 300 and 1,000,000 respectively and split the values into 10 bins. We have effectively split the customers into deciles which we will leverage later on in our analysis. 
-
-19. Finally lets collapse the “Cust Key” column to review the grouped calculations that we have created.
-   
-## Building the Retention Analysis    
-
-1. With our base table still collapsed, hover over the top right of the “Base Table” element, select the “Create Child Element” icon and click “Table”. Then rename the new table “Retention Analysis Base Table”.
-
-<strong> Note</strong>: A Child Element will inherit the datasource and all filters of its parent. This includes the aggregation level as well. Since the base table’s “Cust Key” grouping was collapsed when the child table was created you will notice that only the first four columns came through.
-
-2. In the bottom left corner of the screen select the lineage icon. This will take you to the lineage view where you are able to see a visual representation of the relationship between the parent and child elements as well as the root datasource. You can exit the lineage view by either clicking the lineage icon in the bottom left again or clicking the “X” icon in the top right.
-
-3. Now hover over the top right of the newly created table, select the “Kebab” icon and click “Move to page” → “New Page”.
-
+2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
 
 
  
