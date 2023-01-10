@@ -186,6 +186,7 @@ Duration: 5
 ![image47](assets/finalizingtheworkbook_7.png)
 
 8. Your finished workbook should now look like this.
+
 ![image48](assets/finalizingtheworkbook_8.png)
 
 ## Conclusion 
