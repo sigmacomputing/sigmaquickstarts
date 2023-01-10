@@ -96,22 +96,35 @@ Duration: 5
 
 1.  Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon and click “Visualization”. Then rename the new visualization “Revenue by Store Region and Customer Bin”.
 
+![image21](assets/visualizingthedata_1.png)
+
 2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
+![image22](assets/visualizingthedata_2.png)
 
 3. Drag and drop the following columns to the respective sections:
 - “Store Region” → “X-axis”
 - “Revenue” → “Y-axis”
 - “Customer Revenue Bin” → “Color”
 
+![image23](assets/visualizingthedata_3.png)
+
 4. Now let's rearrange the layout of the workbook and drag the bar chart to the right of the “Revenue Cohort” table.
 
+![image24](assets/visualizingthedata_4.png)
+
 5. Finally lets modify the bar chart to be horizontally oriented by clicking it then selecting the “Display horizontal” icon on the top left pane.
+
+![image25](assets/visualizingthedata_5.png)
 
 ## Building a Pivot Table
 
 1. Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon, click “Pivot Table” and name it “Regional Sales by Revenue Bin”.
 
+![image31](assets/buildingapivottable_1.png)
+
 2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
+
+![image32](assets/buildingapivottable_2.png)
 
 3. Drag and drop the following columns to the respective sections:
 - “Store Region” → “Pivot Rows”
@@ -121,31 +134,58 @@ Duration: 5
 
 4. Create a column by clicking the “+” icon next to values and select “New Column”, with a formula “Sum([Profit]) / Sum([Revenue])”, named “Gross Margin %”, and format it as a percentage.
 
+![image33](assets/buildingapivottable_3.png)
+
+![image34](assets/buildingapivottable_4.png)
+
 5. Now let's add conditional formatting to the “Gross Margin” column. On the left side select the paint brush and click “Conditional formatting”. Change the style to “Color Scale”.
+
+![image35](assets/buildingapivottable_5.png)
 
 6. Repeat the previous step for “Sum of Revenue” except this time first click “+Add rule” then select “Data Bars”.
 
+![image36](assets/buildingapivottable_6.png)
+
 7. Next let's drag the “Store Name” column to the “Pivot Rows” section to build out the hierarchy.
 
+![image37](assets/buildingapivottable_7.png)
+
 8. Now that we have built out a summarizing pivot table we might want to be able to see the underlying data. With Sigma this can be done by right clicking any cell and selecting “Show underlying data”.
+
+![image38](assets/buildingapivottable_8.png)
 
 ## Finalizing the Workbook
 
 1. Lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
 
+![image41](assets/finalizingtheworkbook_1.png)
+
 2. Let’s go back to the “Revenue Cohort Base Table” on the data page and create a filter by right clicking “Product Type”, selecting “Filter”.
+
+![image42](assets/finalizingtheworkbook_2.png)
 
 3. On the newly created filter click the “Kebab” and select “Convert to page control”.
 
+![image43](assets/finalizingtheworkbook_3.png)
+
 4. Move the new “Product Type” filter to the “Revenue Cohort” Page by clicking on the “Kebab” and selecting “Move to Page” and clicking “Revenue Cohort”.
+
+![image44](assets/finalizingtheworkbook_4.png)
 
 5. Now that the filter is on the “Revenue Cohort” page drag it to the top of the workbook.
 
+![image45](assets/finalizingtheworkbook_5.png)
+
 6. Repeat the previous four steps to create filter for “Product Family” and “Product Name”. 
+
+![image46](assets/finalizingtheworkbook_6.png)
 
 7. Finally we will create a text element, then move it to the top and name the dashboard “Product Sales Analysis”.
 
+![image47](assets/finalizingtheworkbook_7.png)
+
 8. Your finished workbook should now look like this.
+![image48](assets/finalizingtheworkbook_8.png)
 
 ## Conclusion 
 
