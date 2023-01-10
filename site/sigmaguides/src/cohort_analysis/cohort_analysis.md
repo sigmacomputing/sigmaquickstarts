@@ -86,7 +86,52 @@ Duration: 5
 
 ## Building a Pivot Table
 
-1. 
+1. Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon, click “Pivot Table” and name it “Regional Sales by Revenue Bin”.
 
- 
+2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
+
+3. Drag and drop the following columns to the respective sections:
+- “Store Region” → “Pivot Rows”
+- “Customer Revenue Bin” → “Pivot Columns”
+- “Revenue” → “Values”
+- “Profit” → “Values”
+
+4. Create a column by clicking the “+” icon next to values and select “New Column”, with a formula “Sum([Profit]) / Sum([Revenue])”, named “Gross Margin %”, and format it as a percentage.
+
+5. Now let's add conditional formatting to the “Gross Margin” column. On the left side select the paint brush and click “Conditional formatting”. Change the style to “Color Scale”.
+
+6. Repeat the previous step for “Sum of Revenue” except this time first click “+Add rule” then select “Data Bars”.
+
+7. Next let's drag the “Store Name” column to the “Pivot Rows” section to build out the hierarchy.
+
+8. Now that we have built out a summarizing pivot table we might want to be able to see the underlying data. With Sigma this can be done by right clicking any cell and selecting “Show underlying data”.
+
+## Finalizing the Workbook
+
+1. Finally lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
+
+2. Let’s go back to the “Revenue Cohort Base Table” on the data page and create a filter by right clicking “Product Type”, selecting “Filter”.
+
+3. On the newly created filter click the “Kebab” and select “Convert to page control”.
+
+4. Move the new “Product Type” filter to the “Revenue Cohort” Page by clicking on the “Kebab” and selecting “Move to Page” and clicking “Revenue Cohort”.
+
+5. Now that the filter is on the “Revenue Cohort” page drag it to the top of the workbook.
+
+6. Repeat the previous four steps to create filter for “Product Family” and “Product Name”. 
+
+7. Finally we will create a text element, then move it to the top and name the dashboard “Product Sales Analysis”.
+
+8. Your finished workbook should now look like this.
+
+## Conclusion 
+
+In this lab, we showcased how Sigma enables end users to do last-mile data analysis in a familiar, spreadsheet-like UI. Sigma empowers end users to create complex, cross-level metric calculations all without coding skills or writing any SQL.
+
+
+### Helpful Resources
+
+- [Help Center including Documentation](https://help.sigmacomputing.com/hc/en-us)
+- [Sigma Blog](https://www.sigmacomputing.com/blog/)
+- [Resources and Case Studies](https://www.sigmacomputing.com/resources/)
   
