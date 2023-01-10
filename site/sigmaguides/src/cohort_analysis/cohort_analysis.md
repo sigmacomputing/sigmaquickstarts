@@ -99,6 +99,7 @@ Duration: 5
 ![image21](assets/visualizingthedata_1.png)
 
 2. Now hover over the top right of the newly created visualization, select the “Kebab” icon and click “Move to page” → “Revenue Cohort”.
+
 ![image22](assets/visualizingthedata_2.png)
 
 3. Drag and drop the following columns to the respective sections:
