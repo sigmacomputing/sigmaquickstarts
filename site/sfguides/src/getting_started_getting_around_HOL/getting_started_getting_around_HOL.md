@@ -10,7 +10,7 @@ authors: Phil Ballai-Sigma Computing
 <!-- ------------------------ -->
 
 ## Overview 
-Duration: 3
+Duration: 6
 
 This lab is the first in a series of labs designed to instruct new users how to use Sigma to explore and analyze data, and turn results into visualizations and more. 
 
@@ -34,11 +34,11 @@ Through this lab we will walk through how to access a Sigma Trial environment, n
 ### What You’ll Build
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other labs will incorporate more sources from associated store, product, and customer data.
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
 ## **Sigma Trial Setup**
-Duration: 3
+Duration: 6
 
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.<br>
 Sign up for a free trial (if you do not already have an account):
@@ -48,26 +48,26 @@ Sign up for a free trial account here:
 </button>
 
 **Fill out the form on Sigma's Trial page:**
-![Alt text](assets/Trial-Landing-Page.png)<br>
+![Alt text](assets/trial-landing-page.png)<br>
 
 **You will receive an Email invitation:**<br>
 Open the email and click `Verify Email Address`. If you have not received this email within 10 minutes, please check your spam folder and if not there, ask for assistance immediately. The link will open a new tab on the profile creation page. Enter in your name and a password and click `CONTINUE`.
-![Alt text](assets/Trial-Terms-Conditions.png)
+![Alt text](assets/trial-terms-conditions.png)
 
 Create your user profile and click `Create`:<br>
-![Alt text](assets/CreateProfile.png)
+<img src="assets/create-profile.png" alt="drawing" width="400"/>
 
 You should now see the Welcome Message on your `Sigma Trial` homepage:<br>
-![Alt text](assets/WelcomeHomePage.png)
+<img src="assets/welcome.png" alt="drawing" width="800"/>
 
 **Review the Tutorial (optional)**<br>
 If this is the first time you have used Sigma you may want to spend a few minutes reviewing the short video tutorial but this lab will cover most of these topics so it is not really necessary. 
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF SIGMA TRIAL SETUP -->
 
 ## **Getting Around the UI**
-Duration: 3
+Duration: 6
 
 The Home page is organized logically to make it easy to get to things quickly. The main functions are highlighted below:<br>
 
@@ -75,13 +75,13 @@ The Home page is organized logically to make it easy to get to things quickly. T
 <strong>NOTE:</strong> As the user who initiated the Trial you are granted Admin rights. Other users may not see every option as dictated by their role assignment. Administration is covered in a different lab.
 </aside>
 
-![Alt text](assets/PageLayout.png)<br>
+![Alt text](assets/pagelayout.png)<br>
 
 If you want to get Home from anywhere in the portal, just click the Sigma logo in the upper left corner.
 
 Once you open a different page you may notice the back arrow next to the Sigma logo. This allows you to go back one level.
 <br>
-![Alt text](assets/PageLayout-Search.png) 
+![Alt text](assets/pagelayout-search.png) 
 
 <ol type="1">
   <li><strong>Search:</strong> You can click in the search bar at any point to search for content within Sigma.</li>
@@ -108,28 +108,28 @@ Once you open a different page you may notice the back arrow next to the Sigma l
       </ol>
   </li>
     <li><strong>Administration:</strong> Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
-   <li><strong>Canvas:</strong> This area is where most of your working sessions will be. The Home page uses it to “Get Your Data” and will change based on what you are doing over time. </li>
+   <li><strong>Canvas:</strong> This area is where most of your working sessions will be. The Home page will change based on what you are doing over time, showing your most recent work and other useful links. </li>
    <li><strong>User Profile:</strong> On the top right corner is a box with your username initial. Clicking on it reveals Profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions.  These options will be covered in a different module./li>
-   <li><strong>Help:</strong> has lots of useful information for you to explore later:</li>
+   <li><strong>Help:</strong> has lots of useful information for you to explore later.</li>
 </ol>
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF GETTING AROUND IN THE UI -->
 
 ## **Workbooks, Pages and Datasets**
-Duration: 3
+Duration: 6
 
-Let’s begin by establishing some basic terminology Sigma uses. Consider that a `Workbook is like a book you have read; `the Workbook is the title of the book`. The books’ index is like a Page, each page of the book is a Canvas and the words are all part of a Dataset. 
+Let’s begin by establishing some basic terminology Sigma uses. Consider that a `Workbook is like a book you have read; `the Workbook is the title of the book. The book's index is like a Page. Each page of the book is a Canvas and the words are all part of a Dataset. 
 
-From that we can understand that: A `Workbook contains Pages` (each with a Canvas) that display information that comes from a Dataset. 
+From that we can understand that a `Workbook contains Pages` (each with one Canvas) that display information that comes from a Dataset. 
 
-The `Canvas on each Page` makes it easy to bring multiple data elements, including tables, charts, free-form text, and images, into a Single page to make it easy to tell a data story, or narrative, with live data and collaborate with colleagues. Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. Run meetings, or your entire business, on Sigma
+The `Canvas on each Page` makes it easy to bring multiple data elements, including tables, charts, free-form text, and images into a Single page to make it easy to tell a data story or narrative with live data and collaborate with colleagues. Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. Run meetings or your entire business on Sigma
 
-This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc..) you need a Workbook, at least one Page and some data. 
+This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a Workbook, at least one Page and some data. 
 
-Now there is one more feature to mention; Controls. A Sigma control is typically a drop list that filters the Page data (or individual item). There are more Controls than drop lists but we will cover that later. 
+Now there is one more feature to mention; `Controls`. A Sigma control is typically a drop list that filters the Page data (or individual item). There are more Controls than drop lists but we will cover that later. 
 
-Of course, this is all baseline terminology but we are just getting started.<br>
+Of course, this is all baseline terminology that Sigma uses to make it easy to understand.<br>
 
 There are different icons for different objects in Sigma. For example here are three you will look for often:
 
@@ -140,18 +140,17 @@ There are different icons for different objects in Sigma. For example here are t
 ![Alt text](assets/examplepageicon.png)
 
 Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
-
+![Alt text](assets/plugshomepage.png)
 This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
 
 When you are done, click the Sigma icon to go Home. 
 
-![Alt text](assets/workbooknamepng.png)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF WOOKBOOKS DATASETS AND PAGES -->
 
 ## **Workbooks** ##
-Duration: 3
+Duration: 6
 
 There are different paths when creating content in Sigma but we will focus on the most common methods in this lab. Let's start working with our sample data.
 
@@ -185,9 +184,9 @@ All workbooks are considered purely exploratory until you, as their creator, act
 
 We are now inside a Sigma Workbook; a collaborative canvas for data driven decision makers. As you can see our table was added to the Canvas.  Each Workbook can have one or more Pages, and each page has its own canvas. Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
 
-The left hand pane shows a vertical view of all our column names and groupings.
+The left hand pane (#2) shows a vertical view of all our column names and groupings.
 
-The toolbar can be found directly under the workbook header. The toolbar's content changes depending on the element you have selected.
+The toolbar (#1) can be found directly under the workbook header. The toolbar's content changes depending on the element you have selected.
 
 Buttons for undo, redo, and page theming can always be found in the toolbar as well.
 
@@ -200,13 +199,13 @@ Let’s save this Workbook for now. Click the name `Exploration` and select `Sav
 
 Notice that you are given options on where to save it using a familiar folder structure:
 
-![Alt text](assets/plugstablefolders.png)
+<img src="assets/plugstablefolders.png" alt="drawing" width="250"/>
 
-If you need to rename it later you can by navigating to the Workbook in My Documents and clicking on the `three dots` as shown:
+If you need to rename it later you can by navigating to the `Workbook` in `My Documents` and clicking on the `three dots` as shown:
 
 ![Alt text](assets/plugstable3dots.png)
 
-At this point you have a saved Workbook with one table that is not yet “Published”. You have options that persist during the time you are working to finalize the Workbook as shown:
+At this point you have a saved Workbook with one table that is not yet “Published”. You have options that persist during the time you are working to finalize the Workbook as shown. If you only see the `Edit` button you will need to click that to place the Workbook back into edit mode.
 
 ![Alt text](assets/plugstablepublish.png)
 
@@ -218,7 +217,12 @@ At this point you have a saved Workbook with one table that is not yet “Publis
       <li>Restore previous Published version if you make a mistake Publishing new (Restore draft to...)</li>
 </ul>
 
-Click the `Publish` button and then click `Editing / Go to the published version` link. Notice that you are taking to a Workbook with one page and the Publish button now takes you back to Edit if you want. 
+Lets change the title of this table to "Plugs Sales" by clicking on the tables title text and just typing over the default name:
+![Alt text](assets/plugstabletitle.png)
+
+Click the `Publish` button and then click `Editing / Go to the published version` link. 
+
+Notice that you are taking to a Workbook with one page and the Publish button now takes you back to Edit if you want. 
 
 Notice that there are some controls in the upper right corner of the Table. These are limited based on the mode you are in (Published, Edit) and what user role you have. These will be very useful as we go forward. Feel free to click into any of them now. 
 
@@ -226,57 +230,54 @@ Notice that the **file download is limited to 1M rows** (the Excel limit). You w
 
 ![Alt text](assets/plugstabledownload.png)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF WOOKBOOKS -->
 
 ## **Pages** ##
-Duration: 3
+Duration: 6
 
 If not in Edit mode, click the `Edit` button to return to that. Notice that we can easily add Workbook Pages by clicking the `+` link at the bottom left corner of the Page. You can also perform other functions by clicking on the individual Page arrow. 
 
-![Alt text](assets/Pages.png)
+![Alt text](assets/pages.png)
 
 Each Page has its own Canvas and can be made to operate independently of others or not. For example, on one Page you may want to have the Dataset you are using to drive the content on other Pages. On another Page you may want to have some end user instructions as shown in the Example Workbook we saw earlier:
-
-![Alt text](assets/PageTabs.png)
+<img src="assets/pagetabs.png" width="400"/>
 
 When in a Workbook in Edit mode you will add Elements to the Canvas using the Editor Panel as shown:
 
-![Alt text](assets/PagesElements.png)
+![Alt text](assets/pageselements.png)
 
-The Editor Panel contains all the Elements you will use to create your Workbook and Pages. We will cover each of these in separate labs as there is a large amount of functionality in each option. Feel free to experiment with adding Elements to pages if you wish and it is easy to delete them.
+The Editor Panel contains all the Elements you will use to create your Workbook and Pages. We will cover each of these in separate labs as there is a large amount of functionality in each option. Feel free to experiment with adding Elements to pages if you wish, it is easy to delete Elements that you no longer want on your Page.
 
-Positive:
 <aside class="positive">
-<strong>IMPORTANT::</strong> Changes to Workbook Pages are saved as a Draft. You can make changes and not publish, close the Workbook and when you reopen it your Draft changes are still there waiting for you when in Edit mode. They only appear to other users when the Workbook is published
-
-When an existing Page element is selected, its configuration is automatically displayed in the workbook's editor panel. For Tables this panel displays all of the element's available columns.
+<strong>IMPORTANT:</strong> Changes to Workbook Pages are saved as a Draft. You can make changes and not publish, close the Workbook and when you reopen it your Draft changes are still there waiting for you when in Edit mode. They only appear to other users when the Workbook is published
 </aside>
+When an existing Page element is selected, its configuration is automatically displayed in the workbook's editor panel. For example, selecting a chart will automatically display all the chart options on the Element Panel. 
 
-![Alt text](assets/PagesEditorPanel.png)
+![Alt text](assets/pageseditorpanel.png)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
 
 ## **Sharing with Others** ##
-Duration: 3
+Duration: 6
 
-In general with Sigma your users are always looking at the most recent data using governed Workbooks in a familiar interface. Sharing Workbooks is an important part of enforcing that amongst the user community. 
+With Sigma your users are always looking at the most recent data using governed Workbooks in a familiar interface. Sharing Workbooks is an important part of enforcing that amongst the user community. 
 
-Sharing is very easy, simple and Permission to access a Sigma document can be shared, modified or revoked by either the individual document’s owner or an organization admin. 
+Sharing is very easy and permission to access a Sigma document can be shared, modified or revoked by either the individual document’s owner or an organization admin. 
 
 Workbooks support three permission types: `View`, `Explore` and `Edit`.
 <ul>
-  <li>Can View is a read only user who can view, create a copy,  send and schedule exports.</li>
-  <li>Can Explore is a user who want to perform additional analysis in an unconstrained fashion</li>
-  <li>Can Edit allows the original Workbook to be altered as if they were the owner.</li>
+  <li><strong>Can View</strong> is a read only user who can view, create a copy,  send and schedule exports.</li>
+  <li><strong>Can Explore</strong> is a user who want to perform additional analysis in an unconstrained fashion</li>
+  <li><strong>Can Edit</strong> allows the original Workbook to be altered as if they were the owner.</li>
 </ul>
 
 Click the `Share` icon as shown:
 
 ![Alt text](assets/shareiconclick.png)
 
-Under the Share modal's Share tab, select the team or organization member with whom you would like to share the workbook. Im this case, we want to share with everyone in View mode:
+Under the Share modal's Share tab, select the team or organization member with whom you would like to share the workbook. In this case, we want to share with everyone in View mode:
 
 ![Alt text](assets/sharewitheveryone.png)
 
@@ -286,25 +287,25 @@ Notice that there is also a tab that shows you **“Who has Access”** already 
 
 [More information and options on Sharing is found here](https://help.sigmacomputing.com/hc/en-us/articles/1500010776381-Share-a-Workbook#h_01F6R0YCKPH200BN7XEHMA6SC8)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF SHARING -->
 
 ## **Scheduling** ##
-Duration: 3
+Duration: 6
 
 You can send Workbook content immediately (Send now) or on a schedule using the two options off the Workbook name drop list as shown:
 
-![Alt text](assets/scheduling.png)
+<img src="assets/scheduling.png" width="200"/>
 
 From your Plugs Sales Workbook click the `Send now` link. You are able to customize several areas of this operation. Feel free to try it as the Trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. For Workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
 
 You can also use the  + Add another attachment` to build a message from more than one part of a Workbook. 
 
-![Alt text](assets/schedulingaddattachment.png)
+<img src="assets/schedulingaddattachment.png" width="400"/>
 
-The message received has a link the Sigma Workbook (whatever was selected to send) as well as the attachment on PDF:
+The message received has a link the Sigma Workbook (whatever was selected to send) as well as the attachment in PDF:
 
-![Alt text](assets/schedulingemail.png)
+<img src="assets/schedulingemail.png" width="400"/>
 
 ![Alt text](assets/schedulingemailPDF.png)
 
@@ -328,10 +329,7 @@ There is a lot of flexibility in this operation, most of which is very straightf
 Allows you to set more specific conditions which must be met if a Schedule is to be executed. 
 
 <aside class="negative">
-<strong>NOTE:</strong> You can also test each one of these to make sure that you get the results you expect:
-
-![Alt text](assets/schedulingsendcondition.png)
-</aside>
+<strong>NOTE:</strong> You can also test each one of these to make sure that you get the results you expect.</aside>
 
 **Always:** you're all set. Continue to the next step.
 
@@ -345,11 +343,11 @@ Allows you to set more specific conditions which must be met if a Schedule is to
 
 [For more information on Scheduling click here.](https://help.sigmacomputing.com/hc/en-us/sections/4404152371347-Send-Schedule-and-Export)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF SCHEDULING -->
 
 ## **Live Edit** ##
-Duration: 3
+Duration: 6
 
 Sigma is all about collaboration and Live Edits takes that to another level. **Live Edits allows multiple users to work on the same Workbook in real time, with all editors sharing one live draft.** This is similar to Google Docs if you have ever used that. Our customers told us that they wanted to be able to work on the same document at the same time with others so that their business could use Sigma to move even faster than ever. 
 
@@ -363,11 +361,14 @@ Click the `Invite People` button.
 
 Fill out the pop-up:
 
-![Alt text](assets/invitepeople.png)
+<img src="assets/invitepeople.png" width="400"/>
 
 Have the new user accept the email invitation from Sigma and set up their account. So we could have both accounts logged into Sigma at the same time we used Chrome for one and Firefox for the other.
 
-Using your original Sigma Trial account, `Share the Plugs Sales Workbook with the new user`. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; **for Live Edit the user needs Edit Permission**. 
+<aside class="positive">
+<strong>IMPORTANT:</strong> Using your original Sigma Trial account, Share the Plugs Sales Workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; for Live Edit the user needs Edit Permission. 
+
+</aside>
 
 Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sales Workbook Shared with me on the Shared with Me page:
 
@@ -385,16 +386,15 @@ Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sa
 
 [For more information on Live Edit click here.](https://help.sigmacomputing.com/hc/en-us/articles/9384868843027-Workbook-Live-Edit)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF LIVE EDIT -->
 
 ## What we've covered
-Duration: 3
+Duration: 6
 
 In this lab we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
 
 **Additional Resource Links**
-Duration: 3
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
@@ -405,6 +405,6 @@ Duration: 3
 [<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
