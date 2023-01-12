@@ -36,7 +36,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 ![Footer](assets/Sigma_Footer.png)
 <!-- ------------------------ -->
 ## Create a Child Table 
-Duration: 5
+Duration: 10
 
 
 1. Navigate to your Retention Analysis workbook created using the instructions here: 
@@ -92,7 +92,7 @@ Duration: 5
 ![image12](assets/creatingachildtable_12.png)
 
 ## Visualizing the Data
-
+Duration: 5
 
 1.  Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon and click “Visualization”. Then rename the new visualization “Revenue by Store Region and Customer Bin”.
 
@@ -118,7 +118,7 @@ Duration: 5
 ![image25](assets/visualizingthedata_5.png)
 
 ## Building a Pivot Table
-
+Duration: 10
 1. Back on the “Data” page hover over the top right of the “Revenue Cohort Base Table” element, select the “Create Child Element” icon, click “Pivot Table” and name it “Regional Sales by Revenue Bin”.
 
 ![image31](assets/buildingapivottable_1.png)
@@ -156,7 +156,7 @@ Duration: 5
 ![image38](assets/buildingapivottable_8.png)
 
 ## Finalizing the Workbook
-
+Duration: 5
 1. Lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
 
 ![image41](assets/finalizingtheworkbook_1.png)
