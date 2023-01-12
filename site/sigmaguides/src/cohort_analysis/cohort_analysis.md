@@ -17,7 +17,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 
 
 ### Prerequisites
-- This lab is designed to be a follow up to the Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here:
+- This lab is designed to be a follow up to the Sigma Retail & CPG Series Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here:
 
 ### What You Will Learn 
 - How to create child elements from existing workbook objects 
@@ -191,7 +191,7 @@ Duration: 5
 
 ## Conclusion 
 
-In this lab, we showcased how Sigma enables end users to do last-mile data analysis in a familiar, spreadsheet-like UI. Sigma empowers end users to create complex, cross-level metric calculations all without coding skills or writing any SQL.
+In this lab, we showcased how Sigma enables end users to do last-mile data analysis in a familiar, spreadsheet-like UI. Sigma empowers end users to create complex, cross-level metric calculations all without coding skills or writing any SQL, unlocking the power of the underlying cloud data platform for all end users. 
 
 
 ### Helpful Resources

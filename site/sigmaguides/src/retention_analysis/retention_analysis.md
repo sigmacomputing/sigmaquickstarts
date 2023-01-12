@@ -279,7 +279,7 @@ Duration: 5
 ## Conclusion
 
 In this lab, we showcased how Sigma empowers end users to create complicated, cross-level metric calculations all without writing any complex code or SQL.
-Sigma enables end users to do last-mile data exploration and analysis in a familiar, spreadsheet-like UI, unlocking the power of the underlying Snowflake platform for all business users.
+Sigma enables end users to do last-mile data exploration and analysis in a familiar, spreadsheet-like UI, unlocking the power of the underlying cloud data platform for all business users.
 
 ### Helpful Resources
 
