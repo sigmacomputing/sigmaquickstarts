@@ -1,5 +1,5 @@
-summary: retention_analysis
-id: retention_analysis
+summary: simga_retail_&_cpg_series_:_retention_analysis
+id: simga_retail_&_cpg_series_:_retention_analysis
 categories: snowflake
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
