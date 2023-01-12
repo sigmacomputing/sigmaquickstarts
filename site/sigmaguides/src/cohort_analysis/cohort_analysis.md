@@ -6,7 +6,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Kelsey Hammock, Sigma Computing
 
-# Cohort Analysis
+# Sigma Retail & CPG Series : Cohort Analysis
 <!-- ------------------------ -->
 ## Overview 
 Duration: 5
