@@ -1,12 +1,12 @@
-summary: Hand-on Lab for new users and Sigma Visualizations
-id: getting_started_working_with_visualizations_hol
-categories: Getting-Started
+summary: Fundamentals for new users and Sigma Visualizations
+id: fundamentals-3-working-with-visualizations
+categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Phil Ballai - Sigma Computing
 
-# 3 - Working with Visualizations Hands-on Lab
+# Fundamentals 3: Working with Visualizations
 <!-- ------------------------ -->
 
 ## Overview 
@@ -256,6 +256,8 @@ Add as many KPI as you like; for example, total profit, total order count and To
 Duration: 5
 
 In this lab we learned how to use Sigma to create beautiful charts and maps and how to make configuration changes to the Elements to obtain the desired results.
+
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-4-working-with-pivot-tables/index.html)
 
 ![Alt text](assets/Final.png)
 

@@ -1,177 +1,85 @@
 author: AUTHOR_NAME
 id: SIGMAGUIDE_NAME
 summary: This is a sample Sigma Guide
-categories: Getting-Started
+categories: PLEASE PROVIDE FROM LIST BELOW
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
- 
 
-# Sigma Guide Template
-<!-- ------------------------ -->
+<!-- SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL -->
+<!-- AVAILABLE CATEGORIES ARE Tables, Visualizations, Functions, Embedding, Controls, Sharing, Use Cases, Partners, Administration --> 
+
+<!-- 
+PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO
+THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED
+YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
+https://quickstarts.sigmacomputing.com/guide/styleguide
+-->
+
+# Sigma QuickStart Style Guide
+
 ## Overview 
-Duration: 1
+Duration: 5 
+<!--EACH ## SECTION WILL REQUIRE A DURATION THAT WILL BE SUMMED TO DISPLAY THE TOTAL QuickStart RUNNING TIME AND TIME REMAINING AS USER GOES THROUGH -->
 
-It is important to include on the first page of your guide the following sections: Prerequisites, What you'll learn, What you'll need, and What you'll build. Remember, part of the purpose of a Sigma Quickstart is that the reader will have **built** something by the end of the tutorial; this means that actual code needs to be included (not just pseudo-code).
+This QuickStart **QS** provides all the common Markup to be used in new QS. 
 
-The rest of this Sigma Quickstart explains the steps of writing your own guide. 
+Sample code and examples are shown for each item.
+
+We encourage you to review the QS called 
+
+This QuickStart assumes you........
+
+ ### Target Audience
+Anyone who is trying to create QS content for Sigma. 
 
 ### Prerequisites
-- Familiarity with Markdown syntax
 
-### What You’ll Learn 
-- how to set the metadata for a guide (category, author, id, etc)
-- how to set the amount of time each slide will take to finish 
-- how to include code snippets 
-- how to hyperlink items 
-- how to include images 
+1: A computer with a current browser. It does not matter which browser you want to use.<br>
+2: [Review of the Sigma QS Readme](https://github.com/Sigmacomputing/sigmaquickstarts#readme)<br>.
+3: Completion of the Sigma QS Readme perquisites.
+4: A working local copy of the Sigma QS portal as described in the Readme.
+  
+### What You’ll Learn
+How to apply Sigma approved Markdown for your QS.
 
-### What You’ll Need 
-Some text here
-
-### What You’ll Build 
-Some text here
-
-![Footer](_shared_assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Metadata Configuration
-Duration: 2
-
-It is important to set the correct metadata for your Sigma Quickstart. The metadata contains all the information required for listing and publishing your guide and includes the following:
-
-- **summary**: This is a sample Sigma QuickStart 
-  - This should be a short, 1 sentence description of your guide. This will be visible on the main landing page. 
-- **id**: sample 
-  - make sure to match the id here with the name of the file, all one word.
-- **categories**: data-science 
-  - You can have multiple categories, but the first one listed is used for the icon.
-- **environments**: web 
-  - `web` is default. If this will be published for a specific event or  conference, include it here.
-- **status**: Published
-  - (`Draft`, `Published`, `Deprecated`, `Hidden`) to indicate the progress and whether the QuickStart is ready to be published. `Hidden` implies the QuickStart is for restricted use, should be available only by direct URL, and should not appear on the main landing page.
-- **feedback link**: https://github.com/sigmacomputing/sigmaquickstarts/issues
-- **tags**: Getting Started, Data Science, Twitter 
-  - Add relevant  tags to make your QuickStart easily found and SEO friendly.
-- **authors**: Phil Ballai
-  - Indicate the author(s) of this specific QuickStart.
-
-![Footer](_shared_assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Creating a Step
-Duration: 2
-
-A single QuickStart consists of multiple steps. These steps are defined in Markdown using Header 2 tag `##`. 
-
-```markdown
-## Step 1 Title
-Duration: 3
-
-All the content for the step goes here.
-
-## Step 2 Title
-Duration: 1
-
-All the content for the step goes here.
-```
-
-To indicate how long each step will take, set the `Duration` under the step title (i.e. `##`) to an integer. The integers refer to minutes. If you set `Duration: 4` then a particular step will take 4 minutes to complete. 
-
-The total QuickStart completion time is calculated automatically for you and will be displayed on the landing page. 
-
-![Footer](_shared_assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Code Snippets, Info Boxes, and Tables
-Duration: 2
-
-### JavaScript
-```javascript
-{ 
-  key1: "string", 
-  key2: integer,
-  key3: "string"
-}
-```
-
-### Java
-```java
-for (statement 1; statement 2; statement 3) {
-  // code block to be executed
-}
-```
-
-### Info Boxes
-Positive
-: This will appear in a positive info box.
+### What You’ll Build
+[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/getting_started_working_with_tables_hol/index.html)<br>.
 
 
-Negative
-: This will appear in a negative info box.
 
-### Buttons
-<button>
-  [This is a download button](link.com)
-</button>
+INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 
-### Tables
-<table>
-    <thead>
-        <tr>
-            <th colspan="2"> **The table header** </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>The table body</td>
-            <td>with two columns</td>
-        </tr>
-    </tbody>
-</table>
+![Footer](assets/sigma_footer.png)
+<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
+<!-- END OF OVERVIEW -->
 
-### Hyperlinking
-[Youtube - Halsey Playlists](https://www.youtube.com/user/iamhalsey/playlists)
+## **NEXT SECTION**
+Duration: 20
 
-![Footer](_shared_assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
-<!-- ------------------------ -->
-## Images, Videos, and Surveys, and iFrames
-Duration: 2
+## What we've covered
+Duration: 5
 
-### Images
-site/sigmaguides/src/_template/assets/dog.png
+In this lab we learned how to.........
 
-### Videos
-Videos from youtube can be directly embedded:
-<video id="KmeiFXrZucE"></video>
+INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
-### Inline Surveys
-<form>
-  <name>How do you rate yourself as a user of Sigma?</name>
-  <input type="radio" value="Beginner">
-  <input type="radio" value="Intermediate">
-  <input type="radio" value="Advanced">
-</form>
+<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
+**Additional Resource Links**
 
-### Embed an iframe
-![https://codepen.io/MarioD/embed/Prgeja](https://en.wikipedia.org/wiki/File:Example.jpg "Try Me Publisher")
+[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+<br>
 
-![Footer](_shared_assets/Sigma_Footer.png)
+[<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
+[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
-<!-- ------------------------ -->
-## Conclusion
-Duration: 1
-
-At the end of your Sigma Quickstart, always have a clear call to action (CTA). This CTA could be a link to the docs pages, links to videos on youtube, a GitHub repo link, etc. 
-
-If you want to learn more about Sigma Quickstart formatting, checkout the official documentation here: [Formatting Guide](https://github.com/googlecodelabs/tools/blob/master/FORMAT-GUIDE.md)
-
-### What we've covered
-- creating steps and setting duration
-- adding code snippets
-- embedding images, videos, and surveys
-- importing other markdown files
-
-![Footer](_shared_assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
+<!-- END OF WHAT WE COVERED -->
+<!-- END OF QUICKSTART -->

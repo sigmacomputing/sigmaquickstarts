@@ -1,12 +1,12 @@
-summary: Hand-on Lab for new users and Sigma Trials
-id: getting_started_getting_around_HOL
-categories: Getting-Started
+summary: Fundamentals for new users and Sigma Trials
+id: fundamentals-1-getting-around
+categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Phil Ballai-Sigma Computing
 
-# 1 - Getting Around Hands-on Lab
+# Fundamentals 1: Getting Around
 <!-- ------------------------ -->
 
 ## Overview 
@@ -400,6 +400,8 @@ Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sa
 Duration: 6
 
 In this lab we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
+
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html)
 
 **Additional Resource Links**
 
