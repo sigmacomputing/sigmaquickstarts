@@ -25,12 +25,12 @@
 /* 
 Sigma specific category classes */
 
-$color-getting-started: #000000;
+$color-fundementals: #000000;
 $color-demos: #52c747;
 $color-snowflake: #29B5E8;
 
 
-@include codelab-card(['getting-started'], $color-getting-started, '');
+@include codelab-card(['fundementals'], $color-fundementals, '');
 @include codelab-card(['demos'], $color-demos, '');
 @include codelab-card(['snowflake'], $color-snowflake, '');
 
