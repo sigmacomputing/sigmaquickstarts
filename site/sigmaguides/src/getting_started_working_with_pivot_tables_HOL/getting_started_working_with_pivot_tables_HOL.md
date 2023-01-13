@@ -138,7 +138,7 @@ Se the Conditional Format rule as shown to high-light the Margin less than or eq
 
 <img src="assets/createpivot12.png" width="700"/>
 
-That's it, we now have a beautiful Pivot Table we can explore:
+That's it; we now have a beautiful Pivot Table we can explore:
 
 ![Alt text](assets/createpivot13.png)
 
