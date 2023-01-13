@@ -1,0 +1,46 @@
+
+#filters {
+
+  .paper-item-0 {
+    text-transform: capitalize;
+  }
+
+  #tabsContent {
+    .paper-tab-0 {
+      font-family: $lato-bold !important;
+    }
+
+  }
+}
+
+.paper-input-container-1 .input-content.paper-input-container input, .paper-input-container-1 .input-content.paper-input-container textarea, .paper-input-container-1 .input-content.paper-input-container iron-autogrow-textarea, .paper-input-container-1 .input-content.paper-input-container .paper-input-input {
+  font-family: $lato !important;
+}
+
+.paper-header-panel-0 #dropShadow.has-shadow.paper-header-panel {
+  opacity: 0 !important;
+}
+
+
+/* 
+Sigma specific category classes */
+
+$color-fundamentals: #000000;
+$color-demos: #52c747;
+$color-snowflake: #29B5E8;
+
+
+@include codelab-card(['fundamentals'], $color-fundamentals, '');
+@include codelab-card(['demos'], $color-demos, '');
+@include codelab-card(['snowflake'], $color-snowflake, '');
+
+/** Might want one color per category:
+TablesFunctions
+Embedding
+Controls
+Sharing
+Use Cases
+Administration
+**/
+
+
