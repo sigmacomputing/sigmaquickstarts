@@ -1,12 +1,12 @@
 summary: Hand-on Lab for new users and Sigma Pivot Tables
-id: getting_started_working_with_pivot_tables_hol
-categories: Getting-Started
+id: fundamentals-4-working-with-pivot-tables
+categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Phil Ballai - Sigma Computing
 
-# 4 - Working with Pivot Tables Hands-on Lab
+# Fundamentals 4: Working with Pivot Tables
 <!-- ------------------------ -->
 
 ## Overview 

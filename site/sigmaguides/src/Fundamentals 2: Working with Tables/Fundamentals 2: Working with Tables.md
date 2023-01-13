@@ -1,12 +1,12 @@
-summary: Hand-on Lab for new users and Sigma Tables
-id: getting_started_working_with_tables_hol
-categories: Getting-Started
+summary: Fundamentals for new users and Sigma Tables
+id: fundamentals-2-working-with-tables
+categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Phil Ballai - Sigma Computing
 
-# 2 - Working with Tables Hands-on Lab
+# Fundamentals 2: Working with Tables
 <!-- ------------------------ -->
 
 ## Overview 
@@ -362,6 +362,8 @@ You may want a totally different Page layout and we will cover that along with m
 Duration: 6
 
 In this lab we covered how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting and filter the result set. 
+
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html)
 
 **Additional Resource Links**
 
