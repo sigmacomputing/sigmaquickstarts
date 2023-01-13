@@ -11,13 +11,13 @@ authors: Kelsey Hammock, Sigma Computing
 ## Overview 
 Duration: 5
 
- This lab focuses on the end-user analytics experience in Sigma. You will be playing the role of a marketing analyst undertaking exploratory analysis on customer retention rates. Traditionally, this type of analysis requires a significant effort and advanced SQL knowledge, but Sigma empowers business users to quickly derive these insights on their own.
+ This lab focuses on the end-user analytics experience in Sigma. You will be playing the role of a marketing analyst undertaking exploratory revenue cohort analysis. Traditionally, this type of analysis requires a significant effort and advanced SQL knowledge, but Sigma empowers business users to quickly derive these insights on their own.
 
 This lab is intended to showcase advanced features such as cross-level aggregate calculations, extracting values from JSON, Tracing lineage in Sigma, and showing different paths an analyst can take to achieve their goals. 
 
 
 ### Prerequisites
-- This lab is designed to be a follow up to the Sigma Retail & CPG Series Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here:
+- This lab is designed to be a follow up to the Sigma Retail & CPG Series Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here: [Sigma Retail & CPG Series : Retention Analysis](https://quickstarts.sigmacomputing.com/guide/simga_retail_&_cpg_series_:_retention_analysis/index.html?index=..%2F..index#0)
 
 ### What You Will Learn 
 - How to create child elements from existing workbook objects 
