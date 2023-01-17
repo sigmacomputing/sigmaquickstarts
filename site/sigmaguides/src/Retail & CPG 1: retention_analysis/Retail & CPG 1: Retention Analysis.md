@@ -1,12 +1,12 @@
-summary: simga_retail_&_cpg_series_:_retention_analysis
-id: simga_retail_&_cpg_series_:_retention_analysis
-categories: snowflake
+summary: Retail & CPG 1: Retention Analysis
+id: retail-cpg-1-retention-analysis
+categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Kelsey Hammock, Sigma Computing
 
-# Sigma Retail & CPG Series: Retention Analysis
+# Retail & CPG 1: Retention Analysis
 <!-- ------------------------ -->
 ## Overview 
 Duration: 5
