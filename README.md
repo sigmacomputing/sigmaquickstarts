@@ -67,7 +67,7 @@ export PATH=$PATH:$HOME/go/bin
   2. Generate a new guide from the guide template `npm run template <GUIDE_NAME>` 
       - Don't use spaces in the name of your guide, instead use underscores.
       - For Standalone QuickStarts just create a simple name that describes it.
-      - For Series QuickStarts is the format {SeriesNamn} #: {Name}
+      - For Series QuickStarts use the format {SeriesNamn} #: {Name}
           - for example, Fundamentals 2: Working with Tables
           - **NOTE: Then file name is not what appears in the portal; that is defined in the QuickStart itself.**
   3. Navigate to the newly generated guide (`cd sigmaguides/src/<GUIDE_NAME>`) and edit your guide in a tool like vscode.
