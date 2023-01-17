@@ -7,6 +7,11 @@ Sigma Quickstarts are interactive tutorials and self-serve demos written in mark
 
 You can submit your own Quickstarts to be published on Sigma's website by submitting a pull request to this repo. This repository contains all the tools and documentation you’ll need for building, writing, and submitting your own Quickstart!
 
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Please register your intent to create a QuickStart here so that others know it exists or is planned.
+</aside>
+
+<button>[Visit QuickStart Content Log](https://docs.google.com/spreadsheets/d/1Jnfx3cXQoRHNvnbZ05qv1xbWAlbRas3Zi7y_-2peEsw/edit?usp=sharing)</button>
 
 ## What's special about the Quickstart format?
 
