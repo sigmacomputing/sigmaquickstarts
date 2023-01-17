@@ -76,7 +76,6 @@ export PATH=$PATH:$HOME/go/bin
 
 ### Tips
 
-- Review the [sample.md](site/sigmaguides/src/sample/sample.md) file to learn more about to to structure your Quickstart for the claat tool. 
 - You can see the supported Quickstart categories [here](site/app/styles/_overrides.scss). If you want to suggest a new category please create a github issue!
 - Checkout [how to use VS Code to write markdown files](https://code.visualstudio.com/docs/languages/markdown)
 - If you want to learn more about Quickstarts, check out this [excellent tutorial](https://medium.com/@zarinlo/publish-technical-tutorials-in-google-codelab-format-b07ef76972cd)
