@@ -59,6 +59,8 @@ export PATH=$PATH:$HOME/go/bin
    - The module may not have been installed for some reason so run `npm install --save-dev postcss gulp-postcss` and then rerun `npm run serve` 
 
 ## Write Your First Quickstart
+**Before you write your girst QuickStart, please review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html). We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.**
+
 
   1. Terminate the running server with `ctrl C` and and navigate to the `sigmaguides` source directory `cd sigmaguides/src`
      - In this directory, you will see all existing guides and their markdown files.
@@ -67,8 +69,6 @@ export PATH=$PATH:$HOME/go/bin
   3. Navigate to the newly generated guide (`cd sigmaguides/src/<GUIDE_NAME>`) and edit your guide in a tool like vscode.
   4. Run the website again `npm run serve`
   5. As you edit and save changes, your changes will automatically load in the browser.
-
-You can always read the [sample Quickstart](site/sigmaguides/src/sample/sample.md) online.
 
 ### Tips
 
