@@ -11,7 +11,7 @@ You can submit your own Quickstarts to be published on Sigma's website by submit
 <strong>IMPORTANT:</strong><br> Please register your intent to create a QuickStart here so that others know it exists or is planned.
 </aside>
 
-<button>[Visit QuickStart Content Log](https://docs.google.com/spreadsheets/d/1Jnfx3cXQoRHNvnbZ05qv1xbWAlbRas3Zi7y_-2peEsw/edit?usp=sharing)</button>
+[Visit QuickStart Content Log]([https://link-url-here.org](https://docs.google.com/spreadsheets/d/1Jnfx3cXQoRHNvnbZ05qv1xbWAlbRas3Zi7y_-2peEsw/edit?usp=sharing))
 
 ## What's special about the Quickstart format?
 
