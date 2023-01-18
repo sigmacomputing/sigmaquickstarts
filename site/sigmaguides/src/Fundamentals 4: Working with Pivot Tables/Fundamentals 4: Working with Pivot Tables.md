@@ -1,6 +1,6 @@
-summary: Hand-on QuickStart for new users and Sigma Pivot Tables
+Summary: QuickStart for new users and Sigma Pivot Tables
 id: fundamentals-4-working-with-pivot-tables
-categories: fundamentals
+categories: fundamentals\
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
@@ -15,12 +15,12 @@ Duration: 5
  ### Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
+Typical audience for this QuickStart are users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Learning Sigma Series - Getting Around”</li>
+  <li>Completion of the QuickStart “Fundamentals 1: Getting Around”</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
