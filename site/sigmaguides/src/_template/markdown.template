@@ -1,5 +1,5 @@
 author: AUTHOR_NAME
-id: SIGMAGUIDE_NAME
+id: SIGMAGUIDE_ID
 summary: This is a sample Sigma Guide
 categories: PLEASE PROVIDE FROM LIST BELOW
 environments: web
@@ -14,10 +14,11 @@ tags: Getting Started
 PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO
 THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED
 YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-https://quickstarts.sigmacomputing.com/guide/styleguide
+https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0
 -->
 
-# Sigma QuickStart Style Guide
+# Sigma QuickStart Name
+<!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 

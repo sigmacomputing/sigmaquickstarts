@@ -12,7 +12,7 @@ authors: Phil Ballai - Sigma Computing
 ## Overview 
 Duration: 5
 
-This lab is part of a series of labs designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (Viz). Sigma supports a wide variety of types, and are adding others so be sure to check our documentation for the latest list:
+This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (Viz). Sigma supports a wide variety of types, and are adding others so be sure to check our documentation for the latest list:
 
 <table>
     <thead>
@@ -45,21 +45,21 @@ This lab is part of a series of labs designed to instruct new users how to use S
     </tbody>
 </table>
 
-This lab assumes you have already taken the “Learning Sigma Series - Getting Around” lab and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
+This QuickStart assumes you have already taken the “Fundamentals 1: Getting Around” QuickStart and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
 
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other labs will incorporate more sources from associated store, product, and customer data.
+We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
-The other “Learning Sigma Series” labs explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these labs up so that they can be taken in any order you want, except the “Getting Around” lab should be taken first.
+The other “Fundamental Series” QuickStarts explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
 
  ### Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this lab is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this lab.
+Typical audience for this QuickStart are users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Learning Sigma Series - Getting Around”</li>
+  <li>Completion of the QuickStart “Fundamentals 1: Getting Around”</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -67,7 +67,7 @@ Typical audience for this lab is users of Excel, common Business Intelligence or
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-Through this lab we will walk through how to use Sigma to create beautiful charts and maps, changing configuration parameters to suit your needs.
+Through this QuickStart we will walk through how to use Sigma to create beautiful charts and maps, changing configuration parameters to suit your needs.
 
 ### What You’ll Build
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. 
@@ -82,15 +82,15 @@ We will build a Workbook that looks like this:
 ## **Viz Basics**
 Duration: 30
 
-Our starting point is the “Plugs Sales” Workbook created in the “Learning Sigma Series - Getting Around” Lab. It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
+Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 1: Getting Around” QuickStart. It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
 
 In Sigma, open the Workbook `Plugs Sales` and place it in `edit mode`.
 
-You should have the Page from the “Getting Around” lab called “Data” already. If not, review that lab to create it.
+You should have the Page from the “Getting Around” QuickStart called “Data” already. If not, review that QuickStart to create it.
 
 Create a `new Page` called `Viz`.
 
-You are probably thinking we will use the Element Panel to add a Viz (as we learned in the Tables lab) and we could do that but let's try a different workflow.
+You are probably thinking we will use the Element Panel to add a Viz (as we learned in the Tables QuickStart) and we could do that but let's try a different workflow.
 
 Open the Workbook’s `Data Page`. Click on the icon as shown below and click `Create Child Element`. Select `Visualization` from the drop list.
 
@@ -255,7 +255,7 @@ Add as many KPI as you like; for example, total profit, total order count and To
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to use Sigma to create beautiful charts and maps and how to make configuration changes to the Elements to obtain the desired results.
+In this QuickStart we learned how to use Sigma to create beautiful charts and maps and how to make configuration changes to the Elements to obtain the desired results.
 
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-4-working-with-pivot-tables/index.html)
 
