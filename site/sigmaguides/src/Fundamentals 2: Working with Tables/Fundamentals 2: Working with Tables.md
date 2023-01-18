@@ -12,29 +12,29 @@ authors: Phil Ballai - Sigma Computing
 ## Overview 
 Duration: 6
 
-This lab is part of a series of labs designed to instruct new users how to use Sigma to explore and analyze data using Tables. 
+This QuickStart is part of a series designed to instruct new users how to use Sigma to explore and analyze data using Tables. 
 
-**This lab assumes you have already taken the QuickStart “Learning Sigma Series - Getting Around” and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail.** 
+**This QuickStart assumes you have already taken the QuickStart “Fundamentals 1: Getting Around” and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail.** 
 
 If you're familiar with traditional spreadsheet tools, such as Excel, you are likely to associate data and formulas with individual cells. While Sigma Tables are very spreadsheet-like, data is managed at the column level rather than on individual cells.  This means actions such as calculations and formatting changes are applied to every cell in a column.
 
 Managing data at the column level ensures consistency and accuracy, and prevents common errors, across large and ever-growing sets of data.
 
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other labs will incorporate more sources from associated store, product, and customer data.
+We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
-The other “Learning Sigma Series” labs explore topics such as working with Visualizations, Pivot Tables, Dashboards and more. We have broken these labs up so that they can be taken in any order you want, except the “Getting Around” lab should be taken first.
+The other “Fundamental” QuickStarts explore topics such as working with Visualizations, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Getting Around” QuickStart should be taken first.
 
 
  ### Target Audience
 Sigma combines the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this lab is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this lab.
+Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Learning Sigma Series - Getting Around”</li>
+  <li>Completion of the QuickStart “Fundamentals 1: Getting Around”</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -42,7 +42,7 @@ Typical audience for this lab is users of Excel, common Business Intelligence or
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-Through this lab we will walk through how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting.
+Through this QuickStart we will walk through how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting.
 
 ### What You’ll Build
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will build a table that looks like this:
@@ -55,7 +55,7 @@ We will be working with some common sales data from our fictitious company ‘Pl
 ## **Table Basics**
 Duration: 6
 
-Our starting point is the “Plugs Sales” Workbook created in the “Learning Sigma Series - Getting Around” Lab. 
+Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 1: Getting Around” QuickStart. 
 
 In Sigma, open the Workbook `Plugs Sales` and place it in edit mode. We should still have the Page tab called `Data` that has the “Plugs Sales” Table on it. 
 
@@ -353,7 +353,7 @@ Would'nt it be great if I could just have this filter as as drop down on the Pag
 
 <img src="assets/filters4.png" width="700"/>
 
-You may want a totally different Page layout and we will cover that along with more information on Page Controls in the Dashboard Lab.
+You may want a totally different Page layout and we will cover that along with more information on Page Controls in the Dashboard QuickStart.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF FILTERING -->
@@ -361,7 +361,7 @@ You may want a totally different Page layout and we will cover that along with m
 ## What we've covered
 Duration: 6
 
-In this lab we covered how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting and filter the result set. 
+In this QuickStart we covered how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting and filter the result set. 
 
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html)
 

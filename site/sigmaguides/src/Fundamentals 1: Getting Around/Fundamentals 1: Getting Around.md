@@ -12,23 +12,20 @@ authors: Phil Ballai-Sigma Computing
 ## Overview 
 Duration: 6
 
-This lab is part of a series of labs designed to instruct new users how to use Sigma to explore and analyze data using Pivot Tables. 
+This QuickStart is part of a series designed to instruct new users how to use Sigma to explore and analyze data using Pivot Tables. 
 
-This lab assumes you have already taken the “Learning Sigma Series - Getting Around” lab and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
+We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other labs will incorporate more sources from associated store, product, and customer data.
-
-The other “Learning Sigma Series” labs explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these labs up so that they can be taken in any order you want, except the “Getting Around” lab should be taken first.
+The other “Fundamentals” QuickStarts explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
 
  ### Sigma Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this lab is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this lab.
+Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Learning Sigma Series - Getting Around”</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -36,10 +33,10 @@ Typical audience for this lab is users of Excel, common Business Intelligence or
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-Through this lab we will walk through how to access a Sigma Trial environment, navigate the user interface and more. 
+Through this QuickStart we will walk through how to access a Sigma Trial environment, navigate the user interface and more. 
 
 ### What You’ll Build
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other labs will incorporate more sources from associated store, product, and customer data.
+We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -68,7 +65,7 @@ You should now see the Welcome Message on your `Sigma Trial` homepage:<br>
 <img src="assets/welcome.png" alt="drawing" width="800"/>
 
 **Review the Tutorial (optional)**<br>
-If this is the first time you have used Sigma you may want to spend a few minutes reviewing the short video tutorial but this lab will cover most of these topics so it is not really necessary. 
+If this is the first time you have used Sigma you may want to spend a few minutes reviewing the short video tutorial but this QuickStart will cover most of these topics so it is not really necessary. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SIGMA TRIAL SETUP -->
@@ -79,7 +76,7 @@ Duration: 6
 The Home page is organized logically to make it easy to get to things quickly. The main functions are highlighted below:<br>
 
 <aside class="negative">
-<strong>NOTE:</strong> As the user who initiated the Trial you are granted Admin rights. Other users may not see every option as dictated by their role assignment. Administration is covered in a different lab.
+<strong>NOTE:</strong> As the user who initiated the Trial you are granted Admin rights. Other users may not see every option as dictated by their role assignment. Administration is covered in a different QuickStart.
 </aside>
 
 ![Alt text](assets/pagelayout.png)<br>
@@ -111,7 +108,7 @@ Once you open a different page you may notice the back arrow next to the Sigma l
       <li><strong>My Documents</strong> is a personal folder for you to save content you have created</Li>
       <li><strong>Workspaces</strong> are a way to organize and share content with specific members or teams within your organization. Items placed in workspaces can be accessed by anyone who has permission to that workspace.</Li>
       <li><strong>Connections</strong> (visible to Administrators and Creators by default): Connections list the data warehouses you have connections to. Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams.<br>
-      <strong>NOTE:</strong> In this Virtual Hands On Lab environment you can only see and access the “Sigma Sample Database” database used for this lab.
+      <strong>NOTE:</strong> In this QuickStart you can only see and access the “Sigma Sample Database” database used for this QuickStart.
       </ol>
   </li>
     <li><strong>Administration:</strong> Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
@@ -148,7 +145,7 @@ There are different icons for different objects in Sigma. For example here are t
 
 Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
 ![Alt text](assets/plugshomepage.png)
-This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
+This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is avaiQuickStartle. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
 
 When you are done, click the Sigma icon to go Home. 
 
@@ -159,9 +156,9 @@ When you are done, click the Sigma icon to go Home.
 ## **Workbooks** ##
 Duration: 6
 
-There are different paths when creating content in Sigma but we will focus on the most common methods in this lab. Let's start working with our sample data.
+There are different paths when creating content in Sigma but we will focus on the most common methods in this QuickStart. Let's start working with our sample data.
 
-At the lower-left of the home page, under `Connections`, click on `Sigma Sample Database` to connect to the Snowflake table used in the lab.
+At the lower-left of the home page, under `Connections`, click on `Sigma Sample Database` to connect to the Snowflake table used in the QuickStart.
 
 ![Alt text](assets/sigmasampledatabase.png)
 
@@ -254,7 +251,7 @@ When in a Workbook in Edit mode you will add Elements to the Canvas using the Ed
 
 ![Alt text](assets/pageselements.png)
 
-The Editor Panel contains all the Elements you will use to create your Workbook and Pages. We will cover each of these in separate labs as there is a large amount of functionality in each option. Feel free to experiment with adding Elements to pages if you wish, it is easy to delete Elements that you no longer want on your Page.
+The Editor Panel contains all the Elements you will use to create your Workbook and Pages. We will cover each of these in separate QuickStarts as there are a large amount of functionality in each option. Feel free to experiment with adding Elements to pages if you wish, it is easy to delete Elements that you no longer want on your Page.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong> Changes to Workbook Pages are saved as a Draft. You can make changes and not publish, close the Workbook and when you reopen it your Draft changes are still there waiting for you when in Edit mode. They only appear to other users when the Workbook is published
@@ -399,7 +396,7 @@ Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sa
 ## What we've covered
 Duration: 6
 
-In this lab we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
+In this QuickStart we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
 
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html)
 
