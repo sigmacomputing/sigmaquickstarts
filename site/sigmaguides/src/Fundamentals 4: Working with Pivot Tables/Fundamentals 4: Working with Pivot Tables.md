@@ -1,4 +1,4 @@
-summary: Hand-on Lab for new users and Sigma Pivot Tables
+summary: Hand-on QuickStart for new users and Sigma Pivot Tables
 id: fundamentals-4-working-with-pivot-tables
 categories: fundamentals
 status: Published
@@ -15,7 +15,7 @@ Duration: 5
  ### Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this lab is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this lab.
+Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
@@ -28,7 +28,7 @@ Typical audience for this lab is users of Excel, common Business Intelligence or
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-Through this lab we will walk through why use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
+Through this QuickStart we will walk through why use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
 
 ### What You’ll Build
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. 
@@ -172,7 +172,7 @@ You can get back to the original Pivot by either clicking the `Back` icon or del
 ## What we've covered
 Duration: 5
 
-In this lab we covered why you might use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
+In this QuickStart we covered why you might use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
 
 **Additional Resource Links**
 
