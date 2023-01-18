@@ -50,7 +50,7 @@ We will build a Dashboard that looks like this:
 <!-- END OF OVERVIEW -->
 
 ## **Basics**
-Duration: 20
+Duration: 5
 
 Dashboards are a great way to show and share a set of Elements that are meant to be looked at together. This could be a high level executive summary down to a very specific set of visualizations to analyze a specific part of the business. In this QuickStart we will use the work from the previous module to assemble a dashboard.
 
@@ -72,7 +72,7 @@ It is also considered a best practice to include a Workbook Page with informatio
 <!-- END -->
 
 ## **Creating a Dashboard**
-Duration: 20
+Duration: 10
 
 Our starting point is the “Plugs Sales” Workbook created and built upon during the other QuickStarts. By reusing this Workbook, you should be able to leverage the Elements you already built into your Dashboard.
 
@@ -115,7 +115,7 @@ Click the `+ Add New icon` in the `Element menu`. You will see there are several
 <!-- END -->
 
 ## **Add Text / Labels**
-Duration: 20
+Duration: 10
 
 Next, let’s give this dashboard some context for our users. Using our `Text elements`, we can give the page a title, as well as let users know what this dashboard is used for, giving them context. 
 
@@ -130,7 +130,7 @@ Let’s add one more text box and drag it below the title. This time we want to 
 ![Alt text](assets/creating10.png)
 
 ## **Add Controls**
-Duration: 20
+Duration: 10
 
 Next let’s add a control element to our canvas. Controls enable interactions with the chart such as filter the charts when in use. Clicking the `‘+’ icon` on the upper left hand pane next to `Page Elements`, select `Date`. This will add a Date control to the canvas.
 
@@ -158,7 +158,7 @@ Now users that are interacting with the canvas can use the date control to filte
 <!-- END -->
 
 ## **Add Hide Data Page**
-Duration: 20
+Duration: 5
 
 Lastly, before we share this with others, we may not want them to see the data tab from which we are pulling these charts from. 
 
@@ -174,7 +174,7 @@ The Workbook Page label now shows the Page as hidden but we can still see it. Th
 <!-- END -->
 
 ## **Drill Down**
-Duration: 20
+Duration: 10
 
 Right Click on one of the bars in the bar chart. Notice that there is a drill-down option? Do you recall configuring this somewhere? We did not; **with Sigma users are free to explore in an unconstrained fashion without having to ask for an additional (ad-hoc) report.** 
 
