@@ -81,13 +81,12 @@ We will review each mode and fully demonstrate Application embedding in a separa
 
 Sigma also supports Application embedding in other 3rd party applications like Salesforce and there is a separate QuickStart: Embedding 5: Application Embedding into SalesForce.
  
-**For more information, please see these links:**
-[Application Embedding](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding)
-[Drive Revenue by Using Sigma with Salesforce](https://www.sigmacomputing.com/blog/drive-revenue-by-using-sigma-with-salesforce/)
+**For more information, please see these links:**<br>
+[Application Embedding: ](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding)<br>
+[Drive Revenue by Using Sigma with Salesforce: ](https://www.sigmacomputing.com/blog/drive-revenue-by-using-sigma-with-salesforce/)
 
 ### **Public Embedding**
-The simplest use case we provide is called Public embedding. **Customers use this when security is not required** but there is a need to embed Sigma content. For example, embedding some KPIs or charts on a company’s public website that anyone can see. We will demonstrate Public embedding in a separate QuickStart: Embedding 2: Public Embedding.
-
+The simplest use case we provide is called Public embedding. **Customers use this when security is not required** but there is a need to embed Sigma content. For example, embedding some KPIs or charts on a company’s public website that anyone can see. We will demonstrate Public embedding in a separate QuickStart:[Embedding 2: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_embedding_2_public_embedding/index.html) 
 ### **A word about iFrames**
 Sigma uses iframe(s) to embed Sigma content. An iframe is the type of HTML element that renders the embed in the browser. To tell the iframe what to render, you will need to pass it an embed URL. Embed URL creation varies depending on the embed type you are implementing and affords a great deal of flexibility for customization by passing runtime parameters both to render the embed but also to pass parameters between the Parent application and the iframe and back. This parameter passing affords an easy to implement method for developers but also better end user experience through deep interactivity of all the page/iframe elements.
 
@@ -246,7 +245,7 @@ Duration: 5
 
 We covered the types of Embedding Sigma provides and how to setup a local environment to simulate an Application that we can embed into.
 
-<button>[Click to move to the next QuickStart in the Embedding Series](embedding_1_prerequisites)</button>
+<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_2_application_embedding/index.html)</button>
 
 
 **Additional Resource Links**
