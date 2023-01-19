@@ -78,7 +78,7 @@ This workflow provides a visual overview of the steps:
 <!-- END -->
 
 ## **Content Preparation**
-Duration: 10
+Duration: 5
 
 Log into Sigma and navigate to a Workbook you want to embed. It doesn't really matter what you choose and once you have completed your first embed, this portion of the process is very straightforward regardless of embedding an entire Workbook, Page or Viz.
 
@@ -117,7 +117,7 @@ You will be presented with the required links to embed in your application. Copy
 <!-- END -->
 
 ## **Parent Application Setup**
-Duration: 20
+Duration: 10
 
 This QuickStart will use a similar set of files as the Embedded Prerequisites QuickStart but with more configuration information in them to support the Public embed. 
 
@@ -186,8 +186,6 @@ Duration: 5
 Duration: 5
 
 In this QuickStart we learned how to how to embed Sigma into a Public facing website. 
-
-
 
 **Additional Resource Links**
 
