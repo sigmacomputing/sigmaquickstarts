@@ -167,6 +167,9 @@ gulp.task('build:scss', () => {
 gulp.task('build:css', () => {
   const srcs = [
     'app/elements/codelab-elements/*.css',
+    'app/css/components.css',
+    'app/css/normalize.css',
+    'app/css/sigma-dev-8020.css'
   ];
 
   return gulp.src(srcs, { base: 'app/' })
@@ -250,7 +253,15 @@ gulp.task('build:js', (callback) => {
     'app/bower_components/google-codelab-elements/shared-style.html',
     'app/bower_components/google-prettify/src/prettify.js',
   ];
+
   streams.push(gulp.src(bowerSrcs, { base: 'app/' })
+    .pipe(gulpif('*.js', babel(opts.babel())))
+    .pipe(gulp.dest('build'))
+  );
+  const sigmaSrcs = [
+    'app/scripts/sigma-dev-8020.js'
+  ];
+  streams.push(gulp.src(sigmaSrcs, { base: 'app/' })
     .pipe(gulpif('*.js', babel(opts.babel())))
     .pipe(gulp.dest('build'))
   );
