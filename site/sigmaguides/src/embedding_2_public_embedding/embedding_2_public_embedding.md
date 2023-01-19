@@ -24,7 +24,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A working web server based on Node.js (as demonstrated in the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0)</li>
+  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
   <li>Some content to embed. You can embed a Workbook, Table or Visualization.</li>
   <li>Downloadable project files discussed later in this document.</li>
 </ul>
@@ -156,7 +156,7 @@ Open your browser and navigate to `http://localhost:3000`.
 
 Notice that we only show the Dashboard since we decided to embed only that.  
 
-You should see the webpage with the Title and the iframe embed below as show:
+You should see the webpage with the title and the iframe embed below as show:
 
 ![Alt text](assets/public11.png)
 
@@ -178,8 +178,6 @@ Duration: 5
       </li><br><br>
       <li>There are other QuickStarts that may be based on the configuration and content we created here. Recommend you hold onto what you have created here until you have completed all the Sigma QuickStarts you are interested in.  </li><br>
 </ul>
-
-[For more information on Permissions click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500010776381)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
