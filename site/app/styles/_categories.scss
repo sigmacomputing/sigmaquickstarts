@@ -88,7 +88,7 @@ $catagory-colors: (
   }
 
   %icon-#{$icon} {
-    background-image: url('/images/icons/#{$icon}');
+    background-image: url('/images/#{$icon}');
   }
 
   @each $category in $categories {
@@ -100,9 +100,9 @@ $catagory-colors: (
       @extend %bg-#{str-replace('' + $color, '#', '')};
     }
 
-    // .#{$category}-icon {
-    //   @extend %icon-#{$icon};
-    // }
+     .#{$category}-icon {
+      background-image: url('/images/#{$icon}');
+     }
   }
 }
 

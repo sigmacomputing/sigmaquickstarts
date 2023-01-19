@@ -17,15 +17,16 @@
 @import "_variables";
 @import "_categories";
 
-$card-width: 330px;
+$card-width: 300px;
 $card-row-height: 250px; // normal mode
 $card-col-height: 200px; // column mode
 
 #cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-bottom: $keyline * 3;
+  justify-content: space-evenly;
+  margin-bottom: $keyline * 1;
+  padding: 0  $keyline * 2 0 $keyline * 2;
 }
 
 .codelab-card {
@@ -33,10 +34,10 @@ $card-col-height: 200px; // column mode
   display: flex;
   flex-direction: column;
   flex: 1 0 $card-width;
-  margin: 0 $keyline * 2 $keyline * 2 0;
+  margin: 0 $keyline * 2 $keyline * 4 $keyline * 2;
   max-width: $card-width;
   border-radius: 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 6px solid transparent;
 
   -webkit-box-shadow: 2px 4px 10px 0 rgba(0,0,0,.1);
   box-shadow: 2px 4px 10px 0 rgba(0,0,0,.1);
