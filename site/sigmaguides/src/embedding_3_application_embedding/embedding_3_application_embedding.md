@@ -116,18 +116,461 @@ To embed, you will need to complete a few steps in Sigma and your Parent applica
 ## Administrator Steps
 Duration: 5
 
-Stopped here phil
+Before we can work on the content we need to provision `Account Types`, `Teams` and `Workspaces` in Sigma for our QuickStart. This will allow us to group users and set various permissions. 
+
+Log into Sigma (as an Administrative user). 
+
+Sigma is very flexible, at a high level the following describes the permission hierarchy:
+
+**User Account Types:** A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time. More information can be found here: [User Account Types](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
+
+**Teams:** allows for organized management of user groups. To view and interact with User-backed embedded workbooks, a user must be assigned to at least one team in your organization. Users can be members of more than one Team. Data source permissions can be granted to entire teams. This option is also available for folders and documents. For team members or individual users to save and edit versions of embedded workbooks, they must have Contribute access to a workspace. More information can be found here: [Teams](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+
+**Workspaces:** allows folders and documents to be compartmentalized, categorized, and easily shared with the correct people. They can be shared amongst users and teams via permission grants. Workspaces are managed by organization admins. Admins also have access to an additional `ALL WORKSPACES` tab. More information about can be found here: [Workspaces](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces)
+
+### Account Types:
+We will use Account Types to allow different users different rights as we go through the use-cases. Sigma provides a few default types and we create two additional. Navigate to Administration / Account Types.
+
+The **Viewer Account Type** already exists so we will just use that as is. Here are the settings:
+<img src="assets/accounttypes1.png" width="300"/>
+
+Create a new Account Type called `Viewer+` and set it as follows:
+<img src="assets/accounttypes2.png" width="500"/>
+
+Create another new Account Type called “Explorer” and set it as follows:
+<img src="assets/accounttypes3.png" width="500"/>
+
+When done your Account Types should look like:
+![Alt text](assets/accounttypes4.png)
+
+### Teams:
+Navigate to the `Administration` `Teams` page and use the `Create Team` button to add two new Teams. **Tick the checkbox to also create a Workspace.** We will use this later to share user created content directly from the Embed.
+
+We will call our teams `FinanceViewers` and `FinanceCreators`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Avoid using spaces / special characters in Team names which could cause code errors depending on your development framework.
+</aside>
+
+![Alt text](assets/accounttypes5.png)
+
+Exiting Administration (upper left corner Sigma Back Button or click the papercrane icon) you can click on the `Workspaces` menu item and see that this also created a Workspace for each Team. This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. This functionality provides a lot of flexibility in how your users access shared work. 
+
+<img src="assets/accounttypes6.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Notice that we have not added any users, Sigma will do that automatically when the Embed tries to load content via the API. 
+</aside>
+
+From the `Workspaces menu`, `share` the FinanceViewer Team to `add FinanceCreator`s setting Access Type to `Can Contribute`. This will allow members of the FinanceCreators Team to share data to this Workspace.
+
+![Alt text](assets/accounttypes7.png)
+<!-- END -->
+
+## Create a Shared Dataset
+In this step we are logged into Sigma as Administrator and will create a curated set of data that we will expose to others via their Account Team later. 
+
+To leverage the features in User-backed embedding you must grant permissions to your data. Creating a Dataset and setting permissions on it is considered best practice.
+
+From Sigma / `Home` click the `+` Create New button and click `Dataset`:
+
+<img src="assets/accounttypes8.png" width="300"/>
+
+We will use Table from the options; click Select under Table:
+
+<img src="assets/accounttypes9.png" width="600"/>
+
+We will use sample data as in other QuickStarts as below. You must first select a `Connection`. Use the Sigma Sample Database provided and then use the `PLUGS_ELECTRONICS_HANDS_ON_LAB` table as shown:
+
+<img src="assets/accounttypes10.png" width="300"/>
+
+Once you have selected the table it will show it and then you can click the `Get Started` button:
+
+<img src="assets/accounttypes11.png" width="900"/>
+
+Change the name of the new Dataset to `Application Embedding` by just double-clicking over the existing name. Then click `Publish`.
+
+<img src="assets/accounttypes12.png" width="900"/>
+
+Click the caret (▼) to the right of the Dataset name. We will want to save this Dataset in a place we can easily find it later. `Create a Workspace` folder called `Datasets` to save this one in. Click Move after you have navigated to where you want to save the Dataset. 
+
+<img src="assets/accounttypes13.png" width="700"/>
+
+We now have a Dataset but users have no ability to view them yet. We can consider this our data library and we can decide who else can work with each Dataset. We will share the “Application Embedding” Dataset.
+
+Click `Permissions` and the `Add Permission` button. Add permission for the Finance Teams as below. Since users will be coming in with different Account Types, adjusted at runtime, we will `use View rights` for now. 
+
+Uncheck the send email checkbox. Click `Save`. Click `Publish` (if it was not already Published).
+
+<img src="assets/accounttypes14.png" width="700"/>
+
+You now have a Dataset that is available to users in our Application embeds, on the Finance Team.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
+## Create a Workbook
+From Sigma / Home click the + Create New button and click `Workbook` and add a Table to it. We called ours `Application Embedding`. 
+
+Select `Tables and Datasets`. You will have to use the navigation in the modal, click back and find the location where you saved the Dataset. Choose your Dataset and click the Select button:
+
+<img src="assets/accounttypes15.png" width="400"/>
+
+`Click Publish`. **A Workbook must be published to create or manage embeds.**
+
+The Workbook is now ready for Application embedding. The Workbook looks like this:
+
+![Alt text](assets/accounttypes16.png)
+
+Share the workbook with the Finance Teams. Click the caret (▼) icon button to the right of the workbook title in the header and click Share. Untick the send email checkbox and click Save. 
+
+![Alt text](assets/accounttypes17.png)
+
+We are now ready to work on the first Application embedding use case.
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Embed Link and Keys
+We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us but not always).
+
+### Generate Embed Links
+Click the caret (▼) icon button to the right of the workbook title in the header.
+
+Click `Embedding` to open the Application tab.
+
+Under `Generate Application Embed Path` for, select your embed target. We selected the Entire Workbook.
+
+<img src="assets/accounttypes18.png" width="500"/>
+
+The embed path will automatically be generated. `Click Copy` to copy this path. Save this off to a text file for later use. Close the modal.
+
+### Generate Embed Secret
+To create an Application embed, you will need an embed secret. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
+
+**You cannot look up your organizations existing embed secret after it has been created.** If you lose your embed secret, you can generate a new one. In this case your existing embeds will be rendered invalid until the API is updated with the new secret.
+
+ <li><strong>Steps to Create Embed Secret</strong>
+    <ol type="n"> 
+        <li>Browse to Administration</li>
+        <li>Open to the APIs & Embed Secrets page</li>
+        <li>Click Create New, located in the page's top right corner. This will open the Create New API Token or Embed Secret modal</li>>
+        <li>Under API Token or Embed Secret? select Embed Secret</li>
+        <li>Enter a Name and Description as you see fit</li>
+        <li>Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself</li>
+        <li>Click Create. You will now see the newly generated secret. Click Copy and store it in a secure location</li>
+        <li>Copy the provided ClientID and store it. The ClientID is shown after the key is created and shown in the table of secret</li>
+        <li>Click Close</li>
+   </ol>
+</li>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Secrets created from the APIs & Embed Secrets page must be used with their associated Client ID. Each secret's Client ID is listed on the APIs & Embed Secret page. 
+</aside>
+
+![Alt text](assets/accounttypes38.png)
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+## Parent Application Setup
+Download and unzip the project file to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called sigma_embedding_viewer.
+
+[Click here to download sigma_application_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
+
+The zip file contains these two files:
+
+**Index.html:** the web page that contains the iFrame we are embedding into. No changes are required for this file.<br><br>
+**Server.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the Parent API.
+
+### Edit server.js
+Open server.js in a text editor and review all the comments (lines starting with “//”). This will give you an understanding of the minimum required parameters to pass to make Embedding work. We will pass more in later sections so it is good to get familiar now. 
+
+We have organized the file into sections that have “Required to Change”, “Optional to Change” and “Don’t Change” values.  We will show the entire file for completeness.
+
+**Section 1:**<br>
+All required values, nothing to change.
+
+<img src="assets/accounttypes19.png" width="500"/>
+
+**Section 2:**<br>
+`Lines 2A-2H` will need to be changed to match values for your embed. 
+
+**Read the comments for each item in server.js and it will be clear what the required values are.**
+
+For example notice item 2A’s EMBED_PATH value is what was generated for my Workbook embed. Also notice that we are using the Finance Team that we created earlier.
+
+The email address and external userID would normally be passed by the Parent Application at runtime after user login but since our Parent application code is hard coded, we will use a unique email for the three Account Types. This matters because when a Creator shares content, the content is owned by the Creator. If you just try to cheat here and use the same email for all three, you will find Viewers have elevated permission in content shared by the Creator. 
+
+We want to avoid that in the QuickStart although it is not likely to happen in the real world. It is helpful to understand how things can go awry.
+
+Here are the email addresses we used. You can use the same or make up your own:
+```plaintext
+embed_viewer@sigmacomputing.com = Viewer
+embed_viewer+@sigmacomputing.com = Viewer+
+embed_creator@sigmacomputing.com = Creator
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Take care when pasting values into your server.js to not remove any required syntax, add any spaces etcetera. A leading space in server.js (for example an email address) will throw an error on page load.
+</aside>
+
+We have provided inline comments to guide you through.
+
+![Alt text](assets/accounttypes20.png)
+
+**Section 3:**<br>
+All required values, nothing to change in this use case. 
+
+![Alt text](assets/accounttypes21.png)
+
+### Start the Web Server
+You are now ready to start the Node.js Express web server. Use Terminal and navigate to the Public folder where you just modified the two files. 
+
+**Run the command from the folder where you stored the unzipped download:**
+```plaintext
+supervisor server.js
+```
+If you get an error about port 3000 being used already (not typically) you can change the port value in the server.js to use a different port. That is configured in server.js on `line 3H`.
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+## Test the Embed
+Open your browser and navigate to:
+```plaintext
+ http://localhost:3000
+```
+ 
+You should see the webpage with the Title and the iframe embed below as shown. Notice that Page Controls are available on the Dashboard tab. 
+
+The red arrows point to functionality that is allowed to the Account Type we passed in the API, in this case, Viewer. This is very limited but very useful for static dashboards and reports.
+
+![Alt text](assets/accounttypes22.png)
+
+We can do only a limited number of things to the Table like sort columns and refresh the data. If we click the folder link shown below, we see that this is the only document you currently have access to and you cannot save a copy. As a Viewer, the page will always look the same to you on each visit. 
+
+Clink in the menu in the lower left corner and expand the `Workspace folder`. Because we shared the Finance Workspace earlier with the team members, the Viewer has access to it. It is empty for now.
+
+<img src="assets/accounttypes23.png" width="300"/>
+
+Notice that there is a new user in Sigma, `Administration`, `People` now as an “Embed User” with the email we set and Viewer Account Type. This was automatically added by the API on first successful access of the Parent application.
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Embed User types will not be able to login to Sigma directly. 
+</aside>
+
+<img src="assets/accounttypes24.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Debugging Issues
+So that you are generally familiar with how you might debug the problem **we will make an intentional error** in our server.js file, see the error and use common web inspection tools to evaluate the request URL that was passed to Sigma. 
+
+This is not the only method; just an example you can use if you have an issue in the Embedding QuickStarts. 
+
+If you are already experienced in web debugging you can skip this section. 
+
+Remove the last value from the ClientID in section 2C. In this case we removed the trailing `2`. 
+
+Save the file.
+
+Browse to the site again at:
+```plaintext
+http://localhost:3000
+```
+You will see an error message:
+
+![Alt text](assets/accounttypes25.png)
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Error messages may be different depending on the source of the issue.
+</aside>
+
+Open your web browser inspector. How to do that varies between browsers so we will demonstrate using Google Chrome. 
+
+`Hit F12` on your keyboard. This will bring up Chrome’s Inspection tool.
+
+Click the Elements tab and look for the node `iframe id`, It will be in under the body section as shown below and you may have to click the arrows to expand the body node. Note that you can now see the “src” url and as you hover over it, you can see the entire url. 
+
+![Alt text](assets/accounttypes26.png)
+
+Right click on the url and click `copy link address`.
+
+Paste the url in a text editor. You can also separate each parameter for readability as I have below. In this case, I did not paste the last digit of the ClientID:
+
+![Alt text](assets/accounttypes27.png)
+
+Go ahead and fix the ClientID in server.js and save. Check to make sure your embed works again. 
+
+**But wait, you now can use inspector to grab any Sigma embed url and just use that access the embed right? Let’s test that assumption.**
+
+With your page working, open Inspector and copy the link url again. This time paste it into a new webpage and hit return. 
+
+Notice the error? 
+
+![Alt text](assets/accounttypes28.png)
+
+URL snooping and reuse is not possible.
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Viewer+ Use Case
+We are ready to start working on the second use case, reusing the same content but accessing it with the high level Account Type (Viewer+) we created earlier. We will start moving faster now that you are familiar with the Sigma workflows. 
+
+Recall that earlier we shared the Workbook and Dataset with everyone on the Finance Team so now we just want to give users slightly more functionality using the Viewer+ Account Type. 
+
+All we need to do is pass the Viewer+ Account Type to Sigma for the user and the additional functionality afforded to that role is unlocked. 
+
+`Open server.js` and change the values for:
+
+**Section 2F:**
+```plaintext
+searchParams += '&:external_user_id=embed_viewer+@sigmacomputing.com';
+```
+**Section 2H:**
+```plaintext
+searchParams += '&:account_type=Viewer+';
+```
+
+Refresh your webpage. 
+
+You will see some additional options available now based on our Account Type settings. For example, the user can send a copy of the Workbook in email and they can also download the data (limited to 1M rows).
+
+This user can also see the Finance Workspace being a member of the Finance Team still:
+
+![Alt text](assets/accounttypes30.png)
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Creator Use Case
+We are ready to start working on the third use case, reusing the same content but accessing it with the high level Account Type `Creator` we created earlier. 
+
+Open server.js and change the values for section account_type to creator (2H)
+
+Change the values for email (2E):
+```plaintext
+searchParams += '&:email=embed_creator@sigmacomputing.com';
+```
+
+Change the value of external_userID (2F):
+```plaintext
+searchParams += '&:external_user_id=embed_creator@sigmacomputing.com';
+```
+
+Change the value of external_user_team (2G):
+```plaintext
+searchParams += '&:external_user_team=FinanceCreators';
+```
+
+Change the value of account_type (2H):
+```plaintext
+searchParams += '&:account_type=Creator';
+```
+
+![Alt text](assets/accounttypes31.png)
+
+Refresh your webpage. 
+
+You are now looking at the fixed Workbook that will always look this way (or until someone with the rights to change it using the Sigma portal does so). 
+
+The big addition here is the Save As button as shown below. This allows the Creator to make a copy, change it and share it with others.
+
+![Alt text](assets/accounttypes32.png)
+
+`Click the Save As` button and use the modal to navigate to the `FinanceViewers folder`. Give the new Workbook a name. We called ours `Working Copy for Finance (by Creator)` to be obvious later and click `Save`.
+
+<img src="assets/accounttypes33.png" width="400"/>
+
+The new Workbook is opened in the Embed window. It looks a little different and there is an `Edit button in the lower left corner`. Click that.
+
+You are now able to Edit (as Creator) just as if you were working in Sigma’s portal. Any changes you publish will be available to anyone who has access to the Finance Workspace.
+
+Let's make some changes.
+
+Add a visualization that suits you. We added a pie chart showing sales by Region. It doesn't really matter, just make some changes that are obvious. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Take care when selecting the source data for the new Viz. You want to use the data that is on this page and so that the experience is consistent as you add functionality. To do that, select the dataset from “Page Elements” as below:
+</aside>
+
+![Alt text](assets/accounttypes34.png)
+
+We also added a Title to our Workbook:
+
+![Alt text](assets/accounttypes35.png)
+
+Click Save/Publish.
+
+### Let's Switch Users in Real Time
+Now change the 4 values in server.js to use the Viewer type, save that change. You may have to review earlier sections of the QuickStart if you have issues doing this:
+
+![Alt text](assets/accounttypes36.png)
+
+Refresh your browser page. 
+
+Notice that even though you were just working on the new Finance page as `Creator`, you are now back to the initial Workbook as `Viewer`.
+
+![Alt text](assets/accounttypes37.png)
+
+Open the Workspace menu and navigate to the Finance Workspace. You should see the new Workbook that the Creator saved there for users to access. Click to open that and see new shared content:
+
+![Alt text](assets/accounttypes35.png)
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## People (user) Accounts
+It is important to understand that there are several ways for users to obtain access to Sigma content based on use case. They are:
+
+<ul>
+  <li></li>
+    <li><strong>Provisioned at Activation by Sigma:</strong>
+        <ul>
+        <li>Only for the initial Administrative account</li>
+        <li>There must be at least one Admin user</li>
+        <li>Sigma does not provision other users on behalf of customers</li>
+        </ul>
+    </li>
+    <li><strong>Manually created by Admin in Sigma portal:</strong>
+        <ul>
+        <li>These are termed “portal users” and appear by name in the Sigma portal </li>
+        </ul>
+    </li>  
+    <li><strong>Manually or Automatically created via Sigma Public API:</strong>
+        <ul>
+        <li>These are termed “portal users” and appear by name in the Sigma portal </li>
+        </ul>
+    </li>  
+    <li><strong>Automatically created through Embed integration:</strong>
+        <ul>
+        <li>These are termed “Embed User” in the Sigma portal</li>
+        <li>When the user is no longer granted access to the Parent application (through whatever authentication mechanism the customer is using), Sigma still has a record of that user and they are not automatically deactivated. It is up to the customer to decide if Sigma deactivation is necessary or not. Embed users who remain active have no ability to log into Sigma portal directly because they are not “regular” Sigma user accounts but rather “Embed User” accounts. </li>
+        </ul>
+    </li>        
+</ul>
+
+**Regardless of how the user was registered, they cannot be fully deleted.** 
+
+Users (from the list above type 1-3) can be deactivated by a Sigma Admin or via the Sigma API at any time. 
+
+When deactivating a user who owns some content (they created it) the Admin will be prompted by the Sigma portal to reassign ownership of said content to another user of their choice. This old content will be automatically stored in the new users My Documents / Archived Users folder. 
+
+This is an important consideration when embedding content that was created by an account who later leaves the company and their account is deactivated. 
+
+### Final Thoughts
+There are other QuickStarts that may be based on the configuration and content we created here. Recommend you hold onto what you have created here until you have completed all the Embedding QuickStarts you are interested in. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
 
 ## What we've covered
 Duration: 5
 
-In this QuickStart we learned how to.........
+In this QuickStart we learned how to embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate Account Type use-cases.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html)</button>
 
 **Additional Resource Links**
 
