@@ -245,9 +245,8 @@ Duration: 5
 
 We covered the types of Embedding Sigma provides and how to setup a local environment to simulate an Application that we can embed into.
 
-<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_2_application_embedding/index.html)</button>
-
-
+<button>[Click to move to the next QuickStart in the Embedding Series]( https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html)</button>
+                                                                   
 **Additional Resource Links**
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
