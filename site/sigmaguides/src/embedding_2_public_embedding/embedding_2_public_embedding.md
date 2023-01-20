@@ -61,11 +61,6 @@ We will embed a Sigma Dashboard inside a Node.js web application. The final resu
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
-
-
-
-
-
 ## **Initial Steps**
 Duration: 5
 To create a Public embed, you will need to complete a few steps in Sigma and your Parent application. This requires implementation of client `(the index.html file)` and server-side `(the server.js file)` code. Of course, customers may just embed the iframe directly as they see fit as there is no security involved. 
@@ -186,6 +181,8 @@ Duration: 5
 Duration: 5
 
 In this QuickStart we learned how to how to embed Sigma into a Public facing website. 
+
+<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html)</button>
 
 **Additional Resource Links**
 
