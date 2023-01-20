@@ -76,7 +76,7 @@ We will embed Sigma content inside a Node.js web application, passing runtime pa
 
 
 ## Sigma Application Embedding
-Duration: 10
+Duration: 5
 
 Embedding is a way to securely embed your data without your users needing to authenticate through Sigma. This “authentication pass-through” is a key feature of Sigma’s embedding model and makes it fast to implement as well. 
 
@@ -168,6 +168,8 @@ From the `Workspaces menu`, `share` the FinanceViewer Team to `add FinanceCreato
 <!-- END -->
 
 ## Create a Shared Dataset
+Duration: 5
+
 In this step we are logged into Sigma as Administrator and will create a curated set of data that we will expose to others via their Account Team later. 
 
 To leverage the features in User-backed embedding you must grant permissions to your data. Creating a Dataset and setting permissions on it is considered best practice.
@@ -210,6 +212,8 @@ You now have a Dataset that is available to users in our Application embeds, on 
 <!-- END -->
 
 ## Create a Workbook
+Duration: 5
+
 From Sigma / Home click the + Create New button and click `Workbook` and add a Table to it. We called ours `Application Embedding`. 
 
 Select `Tables and Datasets`. You will have to use the navigation in the modal, click back and find the location where you saved the Dataset. Choose your Dataset and click the Select button:
@@ -232,6 +236,8 @@ We are now ready to work on the first Application embedding use case.
 <!-- END -->
 
 ## Embed Link and Keys
+Duration: 5
+
 We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us but not always).
 
 ### Generate Embed Links
@@ -273,6 +279,7 @@ To create an Application embed, you will need an embed secret. This secret will 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 ## Parent Application Setup
+Duration: 10
 Download and unzip the project file to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called sigma_embedding_viewer.
 
 [Click here to download sigma_application_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
@@ -335,6 +342,8 @@ If you get an error about port 3000 being used already (not typically) you can c
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 ## Test the Embed
+Duration: 5
+
 Open your browser and navigate to:
 ```plaintext
  http://localhost:3000
@@ -364,6 +373,8 @@ Notice that there is a new user in Sigma, `Administration`, `People` now as an �
 <!-- END -->
 
 ## Debugging Issues
+Duration: 10
+
 So that you are generally familiar with how you might debug the problem **we will make an intentional error** in our server.js file, see the error and use common web inspection tools to evaluate the request URL that was passed to Sigma. 
 
 This is not the only method; just an example you can use if you have an issue in the Embedding QuickStarts. 
@@ -416,6 +427,8 @@ URL snooping and reuse is not possible.
 <!-- END -->
 
 ## Viewer+ Use Case
+Duration: 5
+
 We are ready to start working on the second use case, reusing the same content but accessing it with the high level Account Type (Viewer+) we created earlier. We will start moving faster now that you are familiar with the Sigma workflows. 
 
 Recall that earlier we shared the Workbook and Dataset with everyone on the Finance Team so now we just want to give users slightly more functionality using the Viewer+ Account Type. 
@@ -445,6 +458,8 @@ This user can also see the Finance Workspace being a member of the Finance Team 
 <!-- END -->
 
 ## Creator Use Case
+Duration: 10
+
 We are ready to start working on the third use case, reusing the same content but accessing it with the high level Account Type `Creator` we created earlier. 
 
 Open server.js and change the values for section account_type to creator (2H)
@@ -522,6 +537,8 @@ Open the Workspace menu and navigate to the Finance Workspace. You should see th
 <!-- END -->
 
 ## People (user) Accounts
+Duration: 5
+
 It is important to understand that there are several ways for users to obtain access to Sigma content based on use case. They are:
 
 <ul>
