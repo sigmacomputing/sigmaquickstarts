@@ -12,6 +12,7 @@ tags:
 ## Overview 
 Duration: 5 
 
+
 This QuickStart introduces you to Sigma Application Embedding and demonstrates how to embed Sigma content in a public website. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
  
 There are three “modes” that Application embedding can be operated in; View, Explore and User-backed. 
@@ -564,13 +565,59 @@ There are other QuickStarts that may be based on the configuration and content w
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+=======
+This QuickStart **QS** provides all the common Markup to be used in new QS. 
+
+Sample code and examples are shown for each item.
+
+We encourage you to review the QS called 
+
+This QuickStart assumes you........
+
+ ### Target Audience
+Anyone who is trying to create QS content for Sigma. 
+
+### Prerequisites
+
+1: A computer with a current browser. It does not matter which browser you want to use.<br>
+2: [Review of the Sigma QS Readme](https://github.com/Sigmacomputing/sigmaquickstarts#readme)<br>.
+3: Completion of the Sigma QS Readme perquisites.
+4: A working local copy of the Sigma QS portal as described in the Readme.
+  
+### What You’ll Learn
+How to apply Sigma approved Markdown for your QS.
+
+### What You’ll Build
+[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/getting_started_working_with_tables_hol/index.html)<br>.
+
+
+
+INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+
+![Footer](assets/sigma_footer.png)
+<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
+<!-- END OF OVERVIEW -->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
 ## What we've covered
 Duration: 5
 
+
 In this QuickStart we learned how to embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate Account Type use-cases.
 
 <button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html)</button>
+
+=======
+In this lab we learned how to.........
+
+INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+
+<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 
 **Additional Resource Links**
 
@@ -584,5 +631,6 @@ In this QuickStart we learned how to embed Sigma content inside a Node.js web ap
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END -->
 <!-- END OF QUICKSTART -->
