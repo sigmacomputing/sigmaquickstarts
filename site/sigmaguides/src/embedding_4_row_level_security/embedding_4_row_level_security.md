@@ -12,6 +12,7 @@ tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, S
 ## Overview 
 Duration: 5 
 
+
 This QuickStart introduces you to Sigma embedding using Row-Level Security **(RLS)** to personalize / limit the data exposed to a user based on values passed to Sigma at runtime. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html) so that you have a sample environment to complete the tasks in this QuickStart.
 
 We also recommend you table the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) as we will build on that content. 
@@ -238,11 +239,16 @@ Check your embed in the browser. You should now see Region = West.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-
 ## What we've covered
 Duration: 5
 
 Using our existing Sigma Application Embed we passed a runtime parameter to configure the embed and demonstrate Row-Level-Security at the Workbook and Dataset level. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## What we've covered
+Duration: 5
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
