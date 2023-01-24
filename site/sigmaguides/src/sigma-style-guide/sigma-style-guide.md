@@ -87,7 +87,7 @@ Duration: 5
 `Boxed Text` is created by surrounding the desired text with the ***`*** apostrophe character.<br>
 
 ```plaintext
-&ensp ...will provide a single space between to items (useful for side by side images)
+&ensp; ...will provide a single space between to items (useful for side by side images)
 ```
 
 ![Alt text](assets/horizonalline.png)
