@@ -28,13 +28,16 @@ Sigma specific category classes */
 $color-fundamentals: #000000;
 $color-demos: #52c747;
 $color-snowflake: #29B5E8;
+$color-embedding: #e82929;
 
 $icon-fundamentals: 'Solutions_Retail.svg';
 $icon-snowflake: 'snowflake-logo.svg';
+$icon-embedding: 'embedding.svg';
 
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
 @include codelab-card(['demos'], $color-demos, $icon-snowflake);
 @include codelab-card(['snowflake'], $color-snowflake, $icon-snowflake);
+@include codelab-card(['embedding'], $color-embedding, $icon-embedding);
 
 /** Might want one color per category:
 Tables
