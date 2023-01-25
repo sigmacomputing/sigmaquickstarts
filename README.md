@@ -67,6 +67,8 @@ export PATH=$PATH:$HOME/go/bin
 **Before you write your first QuickStart, please we recommend you:**
 
 1: Watch this video on how to create your first QuickStart:<br> 
+[<img src="./site/app/images/styleguidethumbnail.png" width="75"/>](https://youtu.be/m4DbElos2bI)
+
 [[<video id="m4DbElos2bI"></video>](https://youtu.be/m4DbElos2bI)](https://youtu.be/m4DbElos2bI)
 
 2: Review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0). We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.**
