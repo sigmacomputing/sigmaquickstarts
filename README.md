@@ -67,7 +67,7 @@ export PATH=$PATH:$HOME/go/bin
 **Before you write your first QuickStart, please we recommend you:**
 
 1: Watch this video on how to create your first QuickStart:<br> 
-[<img src="./site/app/images/styleguidethumbnail.png" target="_blank">](https://youtu.be/m4DbElos2bI)
+[<img src="./site/app/images/styleguidethumbnail.png" width="400" target="_blank" rel="noopener noreferrer">](https://youtu.be/m4DbElos2bI)
 
 [[<video id="m4DbElos2bI"></video>](https://youtu.be/m4DbElos2bI)](https://youtu.be/m4DbElos2bI)
 
