@@ -64,7 +64,7 @@ export PATH=$PATH:$HOME/go/bin
    - The module may not have been installed for some reason so run `npm install --save-dev postcss gulp-postcss` and then rerun `npm run serve` 
 
 ## Write Your First Quickstart
-**Before you write your first QuickStart, please we recommend you:**
+**Before you write your first QuickStart, we recommend you:**
 
 1: Watch this video on how to create your first QuickStart:<br> 
 [<img src="./site/app/images/styleguidethumbnail.png" width="600">](https://youtu.be/m4DbElos2bI)
