@@ -86,7 +86,18 @@ export PATH=$PATH:$HOME/go/bin
 
 ### Tips
 
-- You can see the supported Quickstart categories [here](site/app/styles/_overrides.scss). If you want to suggest a new category please create a github issue!
+- The following list of Quickstart categories are:
+    - Administration
+    - Controls
+    - Embedding
+    - Functions
+    - Fundamentals
+    - Partners
+    - Tables
+    - Use Cases
+    - Visualizations
+  
+- If you want to suggest a new category please create a github issue!
 - Checkout [how to use VS Code to write markdown files](https://code.visualstudio.com/docs/languages/markdown)
 - If you want to learn more about Quickstarts, check out this [excellent tutorial](https://medium.com/@zarinlo/publish-technical-tutorials-in-google-codelab-format-b07ef76972cd)
 
