@@ -173,112 +173,156 @@ We will load this data into Snowflake and highlight some Snowflake capabilities.
 **Warning**
 In this lab, never check the “All Queries” box at the top of the worksheet. We want to run SQL queries one at a time in a specific order; not all at once.
 
-4. use role sysadmin;
-This will set the context of the WORKSHEET, to use the role of SYSADMIN, when we "Play" the command. We do not want to be in the role ACCOUNTADMIN any more.
+1. Set the context of the WORKSHEET to use the role of SYSADMIN.
+   ```plaintext 
+   use role sysadmin; 
+   ```
 
-5. use warehouse pc_sigma_wh;
-Sets the PC_SIGMA_WH to be used for commands run in the WORKSHEET.  As you can see by the (XS) to the right of the warehouse name, that an extra small warehouse is being used for this lab.  An XS translates to a single node cluster for our virtual warehouse. [Here is a link to Snowflake’s doc](https://docs.snowflake.com/en/user-guide/warehouses-overview.html#warehouse-size) covering warehouses in detail.
+2. Now, set the PC_SIGMA_WH to be used for commands run in the WORKSHEET.  As you can see by the (XS) to the right of the warehouse name, that an extra small warehouse is being used for this lab.  An XS translates to a single node cluster for our virtual warehouse. [Here is a link to Snowflake’s doc](https://docs.snowflake.com/en/user-guide/warehouses-overview.html#warehouse-size) covering warehouses in detail.
+   ```plaintext 
+   use warehouse pc_sigma_wh;
+   ```
 
-6. create or replace database plugs_db;
-Creates a database named PLUGS_DB in our account.  It also automatically sets the context for the worksheet to use .  
+3. Create a database named PLUGS_DB in our account.  This will also automatically sets the context for the worksheet to use.
+   ```plaintext
+   create or replace database plugs_db;
+   ```
 
-7. use database plugs_db;
-Specifies to use the plugs_db database for the session
+4. For extra measure, command the worksheet to use the plugs_db database for the session.
+ 
+   ```plaintext 
+   use database plugs_db;
+   ```
 
-8. use schema public;
-Sets the context of the WORKSHEET to use the  schema.
+5. Set the context of the WORKSHEET to use the public schema.
+   ```plaintext
+   use schema public;
+   ```
 
-9. CREATE or REPLACE STAGE plugs_db.public.sigma_stage URL = 's3://sigma-snowflake-vhol/data/';
-Creates an external stage in Snowflake that points to an external S3 bucket that has the data files we would like to use for the lab.
+6. Create an external stage in Snowflake that points to an external S3 bucket that has the data files we would like to use for the lab.
+   ```plaintext
+   CREATE or REPLACE STAGE plugs_db.public.sigma_stage URL = 's3://sigma-snowflake-vhol/data/';
+   ```
 
-10. ls @sigma_stage;
-Lists all the contents of the stage that was just created.
+7. List all the contents of the stage that was just created.
+
+   ```plaintext
+   ls @sigma_stage;
+   ```
 
 
 ### Loading Data Into Snowflake
-FYI the data we will be using is demo data for a fictitious physical retailer called “Plugs Electronics. This data has been exported and pre-staged for you in an AWS s3 bucket in the us-west-1 (N California) region. There are two files.
+The data we will be using is demo data for a fictitious physical retailer called “Plugs Electronics." This data has been exported and pre-staged for you in an AWS s3 bucket in the us-west-1 (N California) region. There are two files.
 
 The first data file is “Plugs Transactions.csv” includes order and SKU numbers, product name, price, store name and region, and customer data. It is in comma-delimited format with double quote enclosing and a single header line. The data represents 4.7m rows and 1k MB total size. Below is a partial screenshot of the Plugs structured data CSV file:
 
 ![Result Set View](assets/Loading_Data_Into_Snowflake_2.png)
 
-1. create or replace table transactions  
-(order_number integer,  
-  date timestamp,  
-  sku_number string,  
-  quantity integer,  
-  cost integer,  
-  price integer,  
-  product_type string, 
-  product_family string,  
-  product_name string,  
-  store_name string,  
-  store_key integer,  
-  store_region string,  
-  store_state string,  
-  store_city string,  
-  store_latitude integer,  
-  store_longitude integer,  
-  customer_name string,  
-  cust_key integer);
+1. We have data files in our stage as shown in the previous list (ls).  These files have certain formats that need to be defined in Snowflake in order for the data to be loaded properly.  In this case we are creating a FILE FORMAT named COMMA_DELIMITED that is specifying that the data in the file is delimited by commas, has been compressed, has a record delimiter of newline character ‘\n’, has a first row record that has column names that needs to be skipped, etc.  More information regarding file formats can be found [here](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html). 
 
-2. create file format "PLUGS_DB"."PUBLIC".COMMA_DELIMITED  
-TYPE = 'CSV'  
-COMPRESSION = 'AUTO'  
-FIELD_DELIMITER = ','  
-RECORD_DELIMITER = '\n'  
-SKIP_HEADER = 1  
-FIELD_OPTIONALLY_ENCLOSED_BY = 'NONE'  
-TRIM_SPACE = FALSE  
-ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE  
-ESCAPE = 'NONE'  
-ESCAPE_UNENCLOSED_FIELD = '\134'  
-DATE_FORMAT = 'AUTO'  
-TIMESTAMP_FORMAT = 'AUTO'  
-NULL_IF = ('\\N');  
-)  
-We have data files in our stage as shown in the previous list (ls).  These files have certain formats that need to be defined in Snowflake in order for the data to be loaded properly.  In this case we are creating a FILE FORMAT named COMMA_DELIMITED that is specifying that the data in the file is delimited by commas, has been compressed, has a record delimiter of newline character ‘\n’, has a first row record that has column names that needs to be skipped, etc.  More information regarding file formats can be found [here](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html). 
+   ```plaintext
+   create or replace table transactions  
+   (order_number integer,  
+   date timestamp,  
+   sku_number string,  
+   quantity integer,  
+   cost integer,  
+   price integer,  
+   product_type string, 
+   product_family string,  
+   product_name string,  
+   store_name string,  
+   store_key integer,  
+   store_region string,  
+   store_state string,  
+   store_city string,  
+   store_latitude integer,  
+   store_longitude integer,  
+   customer_name string,  
+   cust_key integer);
+   ```
 
-3. copy into transactions from @sigma_stage/Plugs_Transactions.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );  
-This copies the data from our Plugs_Transactions.csv file and loads into our transactions table.  A SELECT COUNT(*) from the table will show we loaded 4,709,568 rows into the table.
 
-4. create or replace table Customer (cust_key integer, cust_json variant);  
-This creates our customer table for the second data file, or “Plugs_Customers.csv” which is composed of structured data and semi-structured data. It consists of Plugs Electronics customer information including age group and age, civil status, address, gender,if they are in the loyalty program, and more. It is also staged on AWS where the data represents 5k rows and 1.9 MB total size. 
+   ```plaintext
+   create file format "PLUGS_DB"."PUBLIC".COMMA_DELIMITED  
+   TYPE = 'CSV'  
+   COMPRESSION = 'AUTO'  
+   FIELD_DELIMITER = ','  
+   RECORD_DELIMITER = '\n'  
+   SKIP_HEADER = 1  
+   FIELD_OPTIONALLY_ENCLOSED_BY = 'NONE'  
+   TRIM_SPACE = FALSE  
+   ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE  
+   ESCAPE = 'NONE'  
+   ESCAPE_UNENCLOSED_FIELD = '\134'  
+   DATE_FORMAT = 'AUTO'  
+   TIMESTAMP_FORMAT = 'AUTO'  
+   NULL_IF = ('\\N');  
+   ```
 
-The cust_json column is defined as VARIANT.  We use the variant data type to store json, parquet, orc, avro, and xml as they are semi-structured data, you can find more information on this [here](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html#variant).  We are able to store the data without applying structure, then use SQL with path notation to immediately start querying our semi-structured data asi-is.  Sigma’s integration with Snowflake generates SQL with path notation so that you do not have to write the SQL yourself.  This will be shown later on in the lab.
 
-A partial screenshot of the file is:
+2. This copies the data from our Plugs_Transactions.csv file and loads into our transactions table.  A SELECT COUNT(*) from the table will show we loaded 4,709,568 rows into the table.
+   ```plaintext
+   copy into transactions from @sigma_stage/Plugs_Transactions.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );
+   ```
+
+3. This creates our customer table for the second data file, or “Plugs_Customers.csv” which is composed of structured data and semi-structured data. It consists of Plugs Electronics customer information including age group and age, civil status, address, gender,if they are in the loyalty program, and more. It is also staged on AWS where the data represents 5k rows and 1.9 MB total size. 
+   ```plaintext
+      create or replace table Customer (cust_key integer, cust_json variant);
+   ```
+
+   The cust_json column is defined as VARIANT.  We use the variant data type to store json, parquet, orc, avro, and xml as they are semi-structured data, you can find more information on this [here](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html#variant).  We are able to store the data without applying structure, then use SQL with path notation to immediately start querying our semi-structured data asi-is.  Sigma’s integration with Snowflake generates SQL with path notation so that you do not have to write the SQL yourself.  This will be shown later on in the lab.
+
+   A partial screenshot of the file is:
 
 ![JSON Result Set](assets/Loading_Data_Into_Snowflake_3.png)
 
 **SEMI-STRUCTURED DATA**
+
 Snowflake can easily load and query [semi-structured data](https://docs.snowflake.com/en/user-guide/semistructured-intro.html), such as JSON, Parquet, or Avro, without transformation. This is important because an increasing amount of business-relevant data being generated today is semi-structured, and many traditional data warehouses cannot easily load and query this sort of data. With Snowflake it is easy!
 
-5. copy into customer from @sigma_stage/Plugs_Customers.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );  
-Loads data from our stage into our customer table.  The copy will load 4,972 rows into the table.  We recommend doing a select * from customer; to see how the semi-structured data differs from the structured cust_key column.  In the diagram below, we clicked in the general area on the second row of the cust_json column in the answer set, highlighted by the red box.  The UI then popped open the Details dialog box showing the contents (key value pairs) of the JSON.
+1. Load data from our stage into our customer table.  The copy will load 4,972 rows into the table.  We recommend doing a select * from customer; to see how the semi-structured data differs from the structured cust_key column.  In the diagram below, we clicked in the general area on the second row of the cust_json column in the answer set, highlighted by the red box.  The UI then popped open the Details dialog box showing the contents (key value pairs) of the JSON.
+   ```plaintext
+   copy into customer from @sigma_stage/Plugs_Customers.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );
+   ```
 
 ![JSON Record](assets/Loading_Data_Into_Snowflake_4.png)
 
-6. grant usage on database PLUGS_DB to role PC_SIGMA_ROLE;  
-Snowflake access rights are based [upon role based access control (RBAC)](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html).  We now need to allow the PC_SIGMA_ROLE to use the plugs_db database.
+2. Snowflake access rights are based [upon role based access control (RBAC)](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html).  We now need to allow the PC_SIGMA_ROLE to use the plugs_db database.
+   ```plaintext
+   grant usage on database PLUGS_DB to role PC_SIGMA_ROLE;
+   ```
 
-7. grant usage on schema PLUGS_DB.PUBLIC to role PC_SIGMA_ROLE;  
-We now allow the PC_SIGMA_ROLE to use the plugs_db.public schema.
+3. We now allow the PC_SIGMA_ROLE to use the plugs_db.public schema.
+   ```plaintext
+   grant usage on schema PLUGS_DB.PUBLIC to role PC_SIGMA_ROLE;
+   ```
 
-8. grant SELECT on TABLE PLUGS_DB.PUBLIC.TRANSACTIONS to role PC_SIGMA_ROLE;  
-Grant SELECT access on the transactions table to the pc_sigma_role.
+4. Grant SELECT access on the transactions table to the pc_sigma_role.
 
-9. grant select on TABLE PLUGS_DB.PUBLIC.CUSTOMER to role PC_SIGMA_ROLE;  
-Grant SELECT access on the CUSTOMER table to the pc_sigma_role.
+   ```plaintext
+   grant SELECT on TABLE PLUGS_DB.PUBLIC.TRANSACTIONS to role PC_SIGMA_ROLE;
+   ```
 
-10. use role PC_SIGMA_ROLE;  
-We completed granting access to the tables and data to the PC_SIGMA_ROLE, that will allow a user to now start reporting on the data from Sigma using this role.  This command will now set the context of the UI so that we are now using this role so that we can confirm Sigma will be able to access the data.
+5. Grant SELECT access on the CUSTOMER table to the pc_sigma_role.
+   ```plaintext
+   grant select on TABLE PLUGS_DB.PUBLIC.CUSTOMER to role PC_SIGMA_ROLE;
+   ```
 
-11. select * from customer;  
-A select count(*) from the customer table should complete successfully.  If not, please go back and re-run the prior steps of this module.  Note, you will have to switch the context of the UI back to SYSADMIN before re-running the steps.
+6. We completed granting access to the tables and data to the PC_SIGMA_ROLE, that will allow a user to now start reporting on the data from Sigma using this role.  This command will now set the context of the UI so that we are now using this role so that we can confirm Sigma will be able to access the data.
+   ```plaintext
+   use role PC_SIGMA_ROLE;
+   ```
 
-12. select count(*) from transactions;  
-This will confirm that the PC_SIGMA_ROLE has access to the customer table as well.
+7. A select count(*) from the customer table should complete successfully.  If not, please go back and re-run the prior steps of this module.  Note, you will have to switch the context of the UI back to SYSADMIN before re-running the steps.
+   ```plaintext
+   select * from customer;
+   ```
+
+8. This will confirm that the PC_SIGMA_ROLE has access to the customer table as well.
+   ```plaintext
+   select count(*) from transactions;
+   ```
 
 ![Footer](assets/Sigma_Footer.png)
 
