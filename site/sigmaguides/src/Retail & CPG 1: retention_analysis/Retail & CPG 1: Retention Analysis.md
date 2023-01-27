@@ -1,6 +1,6 @@
 summary: Retail & CPG 1: Retention Analysis
 id: retail-cpg-1-retention-analysis
-categories: fundamentals
+categories: use-cases
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
