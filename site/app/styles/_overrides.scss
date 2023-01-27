@@ -24,32 +24,29 @@
 
 /* 
 Sigma specific category classes */
-
 $color-administration: #EDBF46;
-$color-fundamentals: #000000;
-$color-demos: #52c747;
-$color-snowflake: #29B5E8;
 $color-embedding: #e82929;
+$color-fundamentals: #000000;
+$color-snowflake: #29B5E8;
+$color-use-cases: #08f944;
 
-$icon-administration: 'Administration.svg';
+$icon-administration: 'administration.svg';
+$icon-embedding: 'embedding.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
 $icon-snowflake: 'snowflake-logo.svg';
-$icon-embedding: 'embedding.svg';
+$icon-use-cases: 'use-cases.svg';
 
 @include codelab-card(['administration'], $color-administration, $icon-administration);
-@include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
-@include codelab-card(['demos'], $color-demos, $icon-snowflake);
-@include codelab-card(['snowflake'], $color-snowflake, $icon-snowflake);
 @include codelab-card(['embedding'], $color-embedding, $icon-embedding);
+@include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
+@include codelab-card(['snowflake'], $color-snowflake, $icon-snowflake);
+@include codelab-card(['use-cases'], $color-use-cases, $icon-use-cases);
 
-/** Categories:
-Tables
-Functions
-Embedding
-Controls
-Sharing
-Use Cases
-Administration
+/** Categories in Use (so far):
+administration
+fundamentals
+embedding
+use-cases
 **/
 
 
