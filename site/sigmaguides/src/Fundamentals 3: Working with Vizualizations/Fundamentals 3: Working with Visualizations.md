@@ -151,7 +151,7 @@ This time, using the Visualization dropdown, select a line chart.
 
 <img src="assets/vizbasics9.png" width="700"/>
 
-To create the Line Chart the operations are the same as the Bar Chart, dragging and dropoing (or selecting from the axis drop-downs)to select the data columns. 
+To create the Line Chart the operations are the same as the Bar Chart, dragging and dropping (or selecting from the axis drop-downs)to select the data columns. 
 
 Let's drag the `Month of Date` column into the `X-Axis` and truncate it to be `month`:
 
