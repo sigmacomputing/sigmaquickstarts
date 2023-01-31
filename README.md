@@ -71,6 +71,10 @@ export PATH=$PATH:$HOME/go/bin
 
 2: Review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0). We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.**
 
+**3: Please only use the new Sales Performance Template when creating a QuickStart that needs to make use of pre-built content.<br>**
+[<img src="./site/app/images/styleguidethumbnail.png" width="600">](https://youtu.be/m4DbElos2bI)
+<img src="./site/app/images/salesperformance_dashboard.png" width="400"/>
+
 **Steps:**<br>
   1. Terminate the running server with `ctrl C` and and navigate to the `sigmaguides` source directory `cd sigmaguides/src`
      - In this directory, you will see all existing guides and their markdown files.
