@@ -36,11 +36,11 @@ $icon-fundamentals: 'Solutions_MarkAnal.svg';
 $icon-snowflake: 'snowflake-logo.svg';
 $icon-use-cases: 'use-cases.svg';
 
-@include codelab-card(['administration'], $color-administration, $icon-administration);
-@include codelab-card(['embedding'], $color-embedding, $icon-embedding);
+@include codelab-card(['administration'], $color-fundamentals, $icon-administration);
+@include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
-@include codelab-card(['snowflake'], $color-snowflake, $icon-snowflake);
-@include codelab-card(['use-cases'], $color-use-cases, $icon-use-cases);
+@include codelab-card(['snowflake'], $color-fundamentals, $icon-snowflake);
+@include codelab-card(['use-cases'], $color-fundamentals, $icon-use-cases);
 
 /** Categories in Use (so far):
 administration
