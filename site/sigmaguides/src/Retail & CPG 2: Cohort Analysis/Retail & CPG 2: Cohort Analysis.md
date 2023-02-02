@@ -17,7 +17,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 
 
 ### Prerequisites
-- This lab is designed to be a follow up to the Sigma Retail & CPG Series Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here: [Sigma Retail & CPG Series : Retention Analysis](https://quickstarts.sigmacomputing.com/guide/simga_retail_&_cpg_series_:_retention_analysis/index.html?index=..%2F..index#0)
+- This lab is designed to be a follow up to the Sigma Retail & CPG Series Retention Analysis lab. If you have not already, please complete the steps for Retention Analysis here: [Sigma Retail & CPG Series : Retention Analysis](https://quickstarts.sigmacomputing.com/guide/retail-cpg-1-retention-analysis/index.html)
 
 ### What You Will Learn 
 - How to create child elements from existing workbook objects 

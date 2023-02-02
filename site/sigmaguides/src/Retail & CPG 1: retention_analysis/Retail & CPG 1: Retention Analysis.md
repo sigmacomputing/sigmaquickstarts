@@ -281,7 +281,7 @@ Duration: 5
 In this lab, we showcased how Sigma empowers end users to create complicated, cross-level metric calculations all without writing any complex code or SQL.
 Sigma enables end users to do last-mile data exploration and analysis in a familiar, spreadsheet-like UI, unlocking the power of the underlying cloud data platform for all business users.
 
-This lab is part of the Sigma Retail & CPG Series. We hope you will continue to explore Sigma by continuing on to the next module, [Sigma Retail & CPG Series : Cohort Analysis](https://quickstarts.sigmacomputing.com/guide/cohort_analysis/index.html?index=..%2F..index#0). 
+This lab is part of the Sigma Retail & CPG Series. We hope you will continue to explore Sigma by continuing on to the next module, [Sigma Retail & CPG Series : Cohort Analysis](https://quickstarts.sigmacomputing.com/guide/retail-cpg-2-cohort-analysis/index.html). 
 
 ### Helpful Resources
 
