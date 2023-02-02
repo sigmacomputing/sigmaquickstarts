@@ -1,7 +1,5 @@
 # Sigma Quickstarts
 
-[![Demo](https://drive.google.com/uc?export=view&id=1wPgQExjdIONOtYruMKyeknvMvTDlVJEY)](https://drive.google.com/uc?export=view&id=1Dg3s5-KK-TzFZti63XButyDaTzcuZFxE)
-
 ## What are Sigma Quickstarts?
 Sigma Quickstarts are interactive tutorials and self-serve demos written in markdown syntax. Quickstarts provide a unique step-by-step reading experience and automatically saves tutorial progress for readers. These tutorials are published at [quickstarts.Sigma.com](https://guides.Sigma.com/)
 
