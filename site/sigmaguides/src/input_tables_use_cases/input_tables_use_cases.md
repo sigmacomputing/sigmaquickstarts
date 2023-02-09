@@ -462,9 +462,6 @@ The gap is must better now, Mike is happy.
 ## What we've covered
 Duration: 5
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
-
 In this QuickStart we covered three popular used cases for Sigma Input Tables in great detail. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
