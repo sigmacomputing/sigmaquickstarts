@@ -28,24 +28,29 @@ $color-administration: #000000;
 $color-embedding: #000000;
 $color-fundamentals: #000000;
 $color-snowflake: #000000;
+$color-tables: #000000;
 $color-use-cases: #000000;
+
 
 $icon-administration: 'administration.svg';
 $icon-embedding: 'embedding.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
 $icon-snowflake: 'snowflake-logo.svg';
+$icon-tables: 'tables.svg';
 $icon-use-cases: 'use-cases.svg';
 
 @include codelab-card(['administration'], $color-fundamentals, $icon-administration);
 @include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
 @include codelab-card(['snowflake'], $color-fundamentals, $icon-snowflake);
+@include codelab-card(['tables'], $color-fundamentals, $icon-tables);
 @include codelab-card(['use-cases'], $color-fundamentals, $icon-use-cases);
 
 /** Categories in Use (so far):
 administration
 fundamentals
 embedding
+tables
 use-cases
 **/
 
