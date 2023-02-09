@@ -38,7 +38,7 @@ Sigma customers already use Input Tables for:
 </ul>
 
 ### Target Audience
-Anyone who is trying to create QS content using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
+Anyone (with the appropriate permissions) using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
 
 ### Prerequisites
 
