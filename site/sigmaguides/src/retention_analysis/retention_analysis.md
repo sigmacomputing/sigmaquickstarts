@@ -43,7 +43,7 @@ Duration: 10
 
 ![image1](assets/settinguptheworkbook_1.png)
 
-1. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - YOUR NAME ” by clicking “Save As” in the top right.
+2. Now that you are in the Workbook, let’s start by saving it with the name “Retention Analysis - YOUR NAME ” by clicking “Save As” in the top right.
 
 ![image2](assets/settinguptheworkbook_2.png)
 
@@ -163,38 +163,38 @@ Duration: 10
 <strong>Note</strong>: The “Retention Analysis Base Table” was created when the “Cust Key” grouping of its parent was collapsed, so the our child table was created at the same level of aggregation as the Parent table. By selecting “All source columns” in the aggregation level we modified the query such that the four columns from the “Cust Key” grouping were applied to all corresponding sale records in a 1 to many relationship.
 
 ![image28](assets/buildingtheretentionanalysis_8.png)
-
+![image216](assets/buildingtheretentionanalysis_9.png)
 6. Add a column next to “First Purchase Date” with the name “Quarters Out” and the formula “DateDiff("quarter", [First Purchase Date], [Purchase Date])”.
 
-![image29](assets/buildingtheretentionanalysis_9.png)
+![image29](assets/buildingtheretentionanalysis_10.png)
 
 This calculation shows us how many quarters out this purchase record is from the customer’s first purchase, giving us an idea if the customer is still a customer N quarters out from the first purchase date.
 
 7. Click the arrow next to “First Purchase Date” and select “Group Column”. Then click the arrow another time and select “Truncate date” → “Quarter”. Finally rename the column to “First Purchase Quarter".
 
-![image210](assets/buildingtheretentionanalysis_10.png)
+![image210](assets/buildingtheretentionanalysis_11.png)
 
 8. Now click the arrow next to “First Purchase Quarter” and add a column with the formula “CountDistinct([Cust Key])” named “Customers in Cohort”.
 
-![image211](assets/buildingtheretentionanalysis_11.png)
+![image211](assets/buildingtheretentionanalysis_12.png)
 
 9. Click the arrow next to “Quarters Out” and click “Group Column”. Then add a new column off of it named “Number of Customers” with the formula “CountDistinct([Cust Key])”.
 
-![image212](assets/buildingtheretentionanalysis_12.png)
+![image212](assets/buildingtheretentionanalysis_13.png)
 
 By building another grouping on “Quarters Out” we now have two aggregation levels. In Sigma you are able to create any number of groupings and then leverage aggregate calculations across those different levels.
 
 10. Next add another column in the “Quarters Out” grouping with the formula “[Number of Customers] / [Customers in Cohort]” named “Retention” and format it as a percentage.
 
-![image213](assets/buildingtheretentionanalysis_13.png)
+![image213](assets/buildingtheretentionanalysis_14.png)
 
 11. In Sigma you can easily add column formatting to tables as you see fit. Let's add data bars to the “Retention” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen, select the “DATA BARS” tab strip to apply them to the column.
 
-![image214](assets/buildingtheretentionanalysis_14.png)
+![image214](assets/buildingtheretentionanalysis_15.png)
 
 12.  Finally collapse the “Quarters Out” grouping, You will now be able to see customer retention percentages N quarters out for customers who first purchased their first items at the same time.
 
-![image215](assets/buildingtheretentionanalysis_15.png)
+![image215](assets/buildingtheretentionanalysis_16.png)
 
 ## Visualizing in a Pivot Table
 Duration: 5
@@ -255,26 +255,26 @@ Duration: 5
 1. On the “Retention Analysis Base Table” click on the arrow next to “Customer Revenue Bin” and select “Filter”. Then click the “Kebab” in the filter and select “Convert to page control”.
 
 ![image41](assets/filteringtheworkbook_1.png)
+![image47](assets/filteringtheworkbook_2.png)
+1. The filter should now show up on the workbook above the “Retention Analysis Base Table.” Click the “Kebab” one more time except this time select “Change filter type” and click “List”. Repeat this process for Age Group.
 
-2. The filter should now show up on the workbook above the “Retention Analysis Base Table.” Click the “Kebab” one more time except this time select “Change filter type” and click “Include Values”. Repeat this process for Age Group.
-
-![image42](assets/filteringtheworkbook_2.png)
+![image42](assets/filteringtheworkbook_3.png)
 
 3. Now let’s filter our page by clicking the newly created “Customer Revenue Bin” filter drop down and selecting 1-3. This equates to looking at customers only in the bottom 30% of total spend. You will notice both visuals updating. This is because the pivot table is a child element of the base table. The same will be true if you select a range from the newly created “Age Group” filter as well.
 
-![image43](assets/filteringtheworkbook_3.png)
+![image43](assets/filteringtheworkbook_4.png)
 
 4. Finally we will add a title to our “Retention” page. Click the “+” in the top left corner and then select “Text” from the “UI Elements” section.
 
-![image44](assets/filteringtheworkbook_4.png)
+![image44](assets/filteringtheworkbook_5.png)
 
 5. When the element shows up on the workbook click and drag it to the top above the filter. Next click inside, set the format to large heading and give the page a title. Sigma text boxes have rich text capabilities meaning that we have a lot of flexibility in formatting options.
 
-![image45](assets/filteringtheworkbook_5.png)
+![image45](assets/filteringtheworkbook_6.png)
 
 <strong>Your final retention analysis workbook page should look something like this:</Strong>
 
-![image46](assets/filteringtheworkbook_6.png)
+![image46](assets/filteringtheworkbook_7.png)
 
 ## Conclusion
 

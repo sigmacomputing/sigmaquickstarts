@@ -154,6 +154,7 @@ Duration: 10
 8. Now that we have built out a summarizing pivot table we might want to be able to see the underlying data. With Sigma this can be done by right clicking any cell and selecting “Show underlying data”.
 
 ![image38](assets/buildingapivottable_8.png)
+![image39](assets/buildingapivottable_9.png)
 
 ## Finalizing the Workbook
 Duration: 5
