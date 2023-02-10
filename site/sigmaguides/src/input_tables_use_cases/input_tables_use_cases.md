@@ -17,10 +17,10 @@ This QuickStart **QS** provides and overview and the steps required to recreate 
 Input Tables are Sigma-managed warehouse table, through which users can add their own data and integrate into their own analysis.
 
 <aside class="postive">
-<strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+<strong>WHY USE IMPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
-When data isn’t in the warehouse, it usually requires some process to ETL the data in. Now users who need to suppliment data in the warehouse are able to do so directly, without risk of changing existing data or violating corporate governance. 
+When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
 
 Sigma customers already use Input Tables for:
 <ul>
@@ -38,7 +38,7 @@ Sigma customers already use Input Tables for:
 </ul>
 
 ### Target Audience
-Anyone (with the appropriate permissions) using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
+Anyone who is trying to create QS content using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
 
 ### Prerequisites
 
@@ -54,7 +54,7 @@ Anyone (with the appropriate permissions) using Sigma and wants to augment, adju
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
   
 ### What You’ll Learn
-We will review a few different ways customer are using Input Tables and show you how to make them work in your own Sigma environment against sample data Sigma provides.
+We will review a few different ways customer are using Input Tables already and show you how to make them work in your own Sigma environment.
 
 ### What You’ll Build
 
@@ -455,12 +455,160 @@ The gap is must better now, Mike is happy.
 <strong>IMPORTANT:</strong><br> Input Tables allow end users to quickly iterate over "what-if-scenarios` with violating corporate governance rules; making better decisions based on actual data.
 </aside>
 
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+## Data Collection
+Duration: 20
+
+There are times when captuing a small amount of data from a Sigma user can be very valuable to the business. This presents some challenges:
+
+<ul>
+      <li><strong>Will you have to build some new application to capture the data?</strong></li>
+      <li><strong>When is the right time to capture the data?</strong></li>
+      <li><strong>Will the users accept another tool?</strong></li>
+      <li><strong>Once we have the data, how will it relate to existing warehouse data?</strong></li>
+      <li><strong>Lots of other questions to be sure!</strong></li>
+
+</ul>
+
+Since users are already using Sigma (**or spreadsheets and should be using Sigma instead!**) Input Tables can help solve this problem. 
+
+Why not just create a Sigma Workbook and augment it with the ability for the user to enter small amounts of data in real time?
+
+Sigma will do the heavy lifting of UI and data operations to store the data in your warehouse. 
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma does not store data and with Input Tables, data is stored in your warehouse but adjacent to your existing data. Existing data is NEVER changed in any way.
+</aside>
+
+### Let's build a workbook together to demonstrate this use case:
+
+Allowing users to add/suppliment warehouse data opens a world of possibilities. We can demonstrate how this can be done we will use a very simple example.
+
+There is a need for accounting to update the status of Invoices, adding comments/notes but don't want to give the data entry clerk access to the accounting system.
+
+ We solution this in Sigma using Input Tables without involving developers or database administrators valuable time.
+
+ In our Workbook, create a new Page and rename it to `Data Collection`. 
+
+ We need to use different data for this use case, joining two tables. 
+
+ <aside class="negative">
+<strong>NOTE:</strong><br> Did you know you can see the data linage of a Workbook Element? Sometimes it is really useful to visually see the path the data is taking as it sourced to your Element.
+</aside>
+
+In our use case, the final lineage for the source data table looks like this:
+
+<img src="assets/dc1.png" width="800"/>
+
+In Edit mode, navigate to the `Data` Page. 
+
+Add a new Table for `INVOICE_LINE_ITEMS` as shown:
+
+<img src="assets/dc2.png" width="800"/>
+
+Join the `CUSTOMERS` table to this `INVOICE_LINE_ITEMS` as shown:
+
+<img src="assets/dc3.png" width="800"/>
+
+Configure the `Join` as follows:
+
+<img src="assets/dc4.png" width="800"/>
+
+After clicking `Preview` to look at the result set, click `Done`:
+
+<img src="assets/dc5.png" width="800"/>
+
+We don't need every column so let's delete the ones we wont require:
+
+<img src="assets/dc6.png" width="400"/>
+
+Rename the new Table to `Customer Invoice Line Items`.
+
+Add a new column using the formula:
+```plaintext
+[Quantity] * [Unit Price]
+```
+
+Rename this column to `Line Item Total`.
+
+<img src="assets/dc7.png" width="800"/>
+
+Now create a `Linked Input Table`, selecting the columns as shown:
+
+<img src="assets/dc8.png" width="800"/>
+
+Move the new Input Table to the Page `Data Collection`:
+
+<img src="assets/dc9.png" width="800"/>
+
+We want the user to be able to filter the Input Table Table to specific Companies.
+
+Add a new Element / Control Element / List Value element and configure it as follows:
+
+<img src="assets/dc10.png" width="400"/>
+
+Set the `Target` as:
+
+<img src="assets/dc10a.png" width="400"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Notice that we are not targeting the Input Table but rather the Table on the hidden Data Page that is linked to the Input Table. This can also be used to drive Row Level Security.
+</aside>
+
+We now are ready to add our columns that are enabled for data capture.
+
+Add a new Column to the Input Table called `Status`.
+
+Add another new Column to the Input Table called `Notes`.
+
+We did Data Validation in an earlier use case but this time will just limit the `Status` column to values we will manually provide:
+
+<img src="assets/dc11.png" width="400"/>
+
+We want the user to "work" the data down so we need another Input List to filter the table, not showing rows that have a Status = Fulfilled,
+
+Set a Filter on the Table to only show rows that have not been Fulfilled:
+
+<img src="assets/dc13.png" width="800"/>
+
+Now we can filter by Company, adjust the Status and add notes.
+
+Last step before we test is to enable editing in Explorer Mode:
+
+<img src="assets/dc14.png" width="800"/>
+
+Publish the Workbook and go to the Publish version so that we are looking at this Page as the end-user would see and work with it.
+
+Now we have an `Edit Data` button. Click that:
+
+<img src="assets/dc15.png" width="800"/>
+
+Lets test by updating the first four records as shown for each Status:
+
+<img src="assets/dc16.png" width="800"/>
+
+Click the `Save` button.
+
+Each time we save, any records set `Fulfilled` are longer visible. Looking at `Columm Details` for `Status` we see that there are no rows where Status = Fulfilled. 
+
+<img src="assets/dc16.png" width="800"/>
+
+In this way, the user can just do the updates they need and not be concerned about records that are completed.
+
+<aside class="postive">
+<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
+</aside>
+
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+<!-- END -->
 
 ## What we've covered
 Duration: 5
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
 In this QuickStart we covered three popular used cases for Sigma Input Tables in great detail. 
 
