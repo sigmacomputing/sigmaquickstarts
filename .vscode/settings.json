@@ -7,5 +7,8 @@
         "Sergey",
         "themseselves"
     ],
-    "window.commandCenter": true
+    "window.commandCenter": true,
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "master"
+    ]
 }
