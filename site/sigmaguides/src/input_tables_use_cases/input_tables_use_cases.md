@@ -16,8 +16,8 @@ This QuickStart **QS** provides and overview and the steps required to recreate 
 
 Input Tables are Sigma-managed warehouse table, through which users can add their own data and integrate into their own analysis.
 
-<aside class="postive">
-<strong>WHY USE IMPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+<aside class="positive">
+<strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
 When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
@@ -358,7 +358,9 @@ a<img src="assets/tp4.png" width="600">
 
 <img src="assets/tp5.png" width="400">
 
-Do the same steps but this time add the `USERS` column `SubRegion`. 
+Now that the USER table is linked, simply click any blue value and select the other column(s) you want to see…in this case `SubRegion`:
+
+<img src="assets/tc5b.png" width="800">
 
 Your Page should now look like this:
 
