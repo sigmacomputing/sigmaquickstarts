@@ -181,6 +181,11 @@ Duration: 15
 
 For this example we will reuse the same embed but this time we will modify the server.js script in the Actions download zip file to append the variable “StoreRegion” to be “West” regions instead of the Page default of “All”.
 
+If you missed the download mentioned earlier:
+
+[Required QuickStart download.](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_events.zip) 
+**There are three folders; two for Actions and one for Events.** 
+
 `Close the terminal` window (and end session) from the previous exercise. 
 
 Locate the `sigma_embed_actions_url folder` and `launch a terminal window`.
