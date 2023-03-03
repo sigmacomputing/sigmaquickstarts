@@ -30,7 +30,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
   <li>Some content to embed. You can embed a Workbook, Table or Visualization.</li>
 </ul>
 
-[Required QuickStart download.](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_events.zip) The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. **There are three folders; two for Actions and one for Events.** This will minimize the effort as you go through the QuickStart adjusting the files for the different exercises. They are named to be clear which section they are to be used. 
+<button>[Required QuickStart download](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_eventsv2.zip)</button> The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. **There are three folders; two for Actions and one for Events.** This will minimize the effort as you go through the QuickStart adjusting the files for the different exercises. They are named to be clear which section they are to be used. 
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
@@ -82,7 +82,11 @@ Duration: 15
 Let’s first make sure that you have an embed that we can work with. We will be using Node.js and the setup, configuration and use of this was covered in the  [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) and  [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html#0). Go back and review those QuickStarts if you need a refresher. 
 
 **Create Sigma content to embed:**<br>
-We will use the Sigma sample database to create a Workbook Page that has one control and one table as shown below. Set the filter control to target the table:
+We will use the Sigma sample database to create a Workbook Page that has one control and one table as shown below. 
+
+Create a new `Workbook`, add the `D_STORE` table from the Sigma Sample Database / Examples / Plugs Electronics schema.
+
+Set the filter control to target the table:
 
 ![Alt text](assets/ae1.png)
 
@@ -94,7 +98,7 @@ Using Sigma. `create the Embed URL` for this Workbook page and `save it off to a
 
 We will have to also share this Workbook with a Team for the embed to work
 
-Open the server.js file in a text editor and change the values for:
+Open the server.js file subfolder called `sigma_embed_actions` in a text editor and change the values for:
 
 <ul>
       <li>Embed Path</li>
@@ -181,21 +185,21 @@ Duration: 15
 
 For this example we will reuse the same embed but this time we will modify the server.js script in the Actions download zip file to append the variable “StoreRegion” to be “West” regions instead of the Page default of “All”.
 
-If you missed the download mentioned earlier:
-
-[Required QuickStart download.](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_events.zip) 
-**There are three folders; two for Actions and one for Events.** 
-
 `Close the terminal` window (and end session) from the previous exercise. 
 
-Locate the `sigma_embed_actions_url folder` and `launch a terminal window`.
+Locate the `sigma_embed_actions_url folder`.
 
-Execute the terminal command:
-```plaintext 
-supervisor server.js
-```
+Open the server.js file in this folder in a text editor and change the values for:
 
-`Open this project's server.js` in a text editor. Scroll down to `section 3D`.` You will see these lines. 
+<ul>
+      <li>Embed Path</li>
+      <li>Embed Secret</li>
+      <li>ClientID</li>
+      <li>External_user_team (this is the Team that you shared this embed with)</li>
+      <li>Account_type (this type must exist in your Sigma environment)</li>
+</ul>
+
+Scroll down to `section 3D`.` You will see these lines:
 
 ![Alt text](assets/ae10.png)
 
@@ -206,6 +210,13 @@ We are appending “StoreRegion” and two values, Midwest and Southwest.
 Notice the line above the last one that is commented out (red arrow). This commented line is an example of passing a single value. You can pass as many values as you like now that you have the syntax.
 
 The Javascript encodeURIComponent() method encodes certain chars that would normally be recognized as special chars for URIs so that many components may be included. Note that this method does not encode the ‘ character, as it is a valid character within URIs. Most commonly used to handle spaces and also handles special characters.
+
+From the `sigma_embed_actions_url folder`launch a terminal window:
+
+Execute the terminal command:
+```plaintext 
+supervisor server.js
+```
 
 In Chrome, refresh the page 
 ```plaintext
@@ -231,12 +242,19 @@ In this example we will add a listener to the Parent and reuse the same embed fr
 
 `Close the terminal window` (and end session) from the previous exercise. 
 
-Locate the `sigma_embed_events folder` and launch a `new terminal` window.
+Locate the `sigma_embed_actions_events folder`.
 
-Execute the terminal command:
-```plaintext
-supervisor server.js
-```
+Open the server.js file in this folder in a text editor and change the values for:
+
+<ul>
+      <li>Embed Path</li>
+      <li>Embed Secret</li>
+      <li>ClientID</li>
+      <li>External_user_team (this is the Team that you shared this embed with)</li>
+      <li>Account_type (this type must exist in your Sigma environment)</li>
+</ul>
+
+Save the file.
 
 `Open the index.html` file for this project. 
 
@@ -250,6 +268,13 @@ Recall that this is the Parent application. This is the same code that we have b
 
 **Error Handling (see commented description):**
 <img src="assets/ae15.png" width="800"/>
+
+Launch a `new terminal` window.
+
+Execute the terminal command:
+```plaintext
+supervisor server.js
+```
 
 In Chrome, refresh the page 
 ```plaintext
