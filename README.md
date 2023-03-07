@@ -1,7 +1,7 @@
 # Sigma Quickstarts
 
 ## What are Sigma Quickstarts?
-Sigma Quickstarts are interactive tutorials and self-serve demos written in markdown syntax. Quickstarts provide a unique step-by-step reading experience and automatically saves tutorial progress for readers. These tutorials are published at [quickstarts.Sigma.com](https://guides.Sigma.com/)
+Sigma Quickstarts are interactive tutorials and self-serve demos written in markdown syntax. Quickstarts provide a unique step-by-step reading experience and automatically saves tutorial progress for readers. These tutorials are published at [quickstarts.sigmacomputing.com](https://quickstarts.sigmacomputing.com)
 
 You can submit your own Quickstarts to be published on Sigma's website by submitting a pull request to this repo. This repository contains all the tools and documentation you’ll need for building, writing, and submitting your own Quickstart!
 
@@ -37,8 +37,8 @@ You can submit your own Quickstarts to be published on Sigma's website by submit
 ### Run locally
 
   1. Fork this repository to your personal github account (top right of webpage, `fork` button)
-  2. Clone your new fork `git clone git@github.com:<YOUR-USERNAME>/sfquickstarts.git sfquickstarts`
-  3. Navigate to the site directory `cd sfquickstarts/site`
+  2. Clone your new fork `git clone https://github.com/<YOUR-USERNAME>/sigmaquickstarts.git sigmaquickstarts`
+  3. Navigate to the site directory `cd sigmaquickstarts/site`
   4. Install node dependencies `npm install`
   5. Run the site `npm run serve`
 
@@ -67,7 +67,7 @@ export PATH=$PATH:$HOME/go/bin
 1: Watch this video on how to create your first QuickStart:<br> 
 [<img src="./site/app/images/styleguidethumbnail.png" width="600">](https://youtu.be/m4DbElos2bI)
 
-2: Review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0). We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.**
+2: Review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/). We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.**
 
 **3: Please only use the new Sales Performance Template when creating a QuickStart that needs to make use of pre-built content.<br>**
 <img src="./site/app/images/salesperformance_dashboard.png" width="800"/>
@@ -102,7 +102,7 @@ export PATH=$PATH:$HOME/go/bin
 - Checkout [how to use VS Code to write markdown files](https://code.visualstudio.com/docs/languages/markdown)
 - If you want to learn more about Quickstarts, check out this [excellent tutorial](https://medium.com/@zarinlo/publish-technical-tutorials-in-google-codelab-format-b07ef76972cd)
 
-## How do I get my Sigma Quickstart on [quickstarts.Sigma.com](https://quickstarts.Sigma.com)?
+## How do I get my Sigma Quickstart on [quickstarts.sigmacomputing.com](https://quickstarts.sigmacomputing.com)?
 
 1. You will need to sign Sigma's CLA 
 2. Fork this repository
@@ -114,4 +114,4 @@ export PATH=$PATH:$HOME/go/bin
 8. Click the Pull Request button to open a new pull request
 9. Sigma will review and approve the submission
 
-To learn more how to submit a pull request on GitHub in general, checkout github's [official documentation](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
+To learn more how to submit a pull request on GitHub in general, checkout github's [official documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
