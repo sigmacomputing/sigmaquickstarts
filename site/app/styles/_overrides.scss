@@ -38,7 +38,7 @@ $icon-fundamentals: 'Solutions_MarkAnal.svg';
 $icon-snowflake: 'snowflake-logo.svg';
 $icon-tables: 'tables.svg';
 $icon-use-cases: 'use-cases.svg';
-$icon-use-cases: 'functions.svg';
+$icon-functions: 'functions.svg';
 
 @include codelab-card(['administration'], $color-fundamentals, $icon-administration);
 @include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
