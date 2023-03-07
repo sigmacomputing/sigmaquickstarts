@@ -46,7 +46,7 @@ $icon-use-cases: 'functions.svg';
 @include codelab-card(['snowflake'], $color-fundamentals, $icon-snowflake);
 @include codelab-card(['tables'], $color-fundamentals, $icon-tables);
 @include codelab-card(['use-cases'], $color-fundamentals, $icon-use-cases);
-@include codelab-card(['functions'], $color-fundamentals, $icon-functions;
+@include codelab-card(['functions'], $color-functions, $icon-functions);
   
 /** Categories in Use (so far):
 administration
