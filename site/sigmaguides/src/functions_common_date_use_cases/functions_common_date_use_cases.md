@@ -1,7 +1,7 @@
 author: pballai
 id: common_date_functions_and_use_cases
 summary: Common Date Functions and Use Cases
-categories: PLEASE PROVIDE FROM LIST BELOW
+categories: functions
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
