@@ -671,3 +671,4 @@ In this QuickStart we covered many of the commonly used date functions and use c
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
+
