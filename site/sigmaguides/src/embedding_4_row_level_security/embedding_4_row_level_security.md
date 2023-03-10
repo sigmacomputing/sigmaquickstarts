@@ -79,7 +79,6 @@ The workflow (as shown below) is very straightforward and yet flexible to allow 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
-
 ## Dataset RLS
 Duration: 20
 
@@ -102,16 +101,22 @@ Open the `Dataset` called `Application Embedding`.
 
 Click on the `three vertical dots` next to the Dataset name at the top of the page and select `Duplicate Dataset`.  
 
-Rename the new Dataset to `Application Embedding RLS`
+Rename the new Dataset to `Application Embedding RLS`.
 
-Add an `new Column` and rename it to `ua_Region`
+Click on the Worksheet tab of the new dataset and ensure that they are in Edit mode.
+
+Add an `new Column` and rename it to `ua_Region`.
 
 Use this formula for column:
 ```plaintext
-CurrentUserAttributeText("Region") = [Store Region]
+Contains(CurrentUserAttributeText("Region"), [Store Region])
 ```
 
-On the `left sidebar`, add a `filter`. Filter against the column `ua_Region = True`
+On the `left sidebar`, add a `filter`. Filter against the column `ua_Region = True`.
+
+It is ok that you don't see data here.
+
+`Publish` the new Dataset.
 
 **At Runtime (page refresh in this case):**
  <ul>
@@ -121,7 +126,7 @@ On the `left sidebar`, add a `filter`. Filter against the column `ua_Region = Tr
 
 `Open` the Workbook `Application Embedding` and add a `new Page` called `Application RLS`
 
-Add the `new Dataset` to the new Page and `Publish` it. 
+Add a new table to the page, based on the Dataset you just created `"Application Embedding RLS"` and `Publish` the changes. 
 
 `Open server.js` from the downloaded files. 
 
@@ -139,13 +144,22 @@ supervisor server.js
 
 Browse to `http://localhost:3000`. You should only see rows from the East Region. 
 
+<aside class="negative">
+<strong>NOTE:</strong><br> We did not hide the ua_column so that you could see its value but normally you would hide this column since the user does need to see it. Its value can only be True or False so there is no risk of data exposure anyway; users just won’t get any value from seeing it. 
+</aside>
+
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> We did not hide the ua_column so that you could see its value but normally you would hide this column since the user does need to see it. Its value can only be True or False so there is no risk of data exposure anyway; users just won’t get any value from seeing it. 
+<strong>IMPORTANT:</strong><br> The syntax for the user attribute param, as this gives you trouble if your UA is not specifically called "Region", is:
+searchParams += &:ua_${attribute_name}=${attribute_value}
 </aside>
 
 ![Alt text](assets/rls3.png)
 
-Back in your server.js file, `change the ua_Region to East,West`. `Save` the file and `refresh the browser` page. You should see the Region has been updated to reflect the new values. 
+Back in your server.js file, `change the ua_Region to East,West`. `Save` the file. 
+
+Sending comma separated values via embed UA param requires a step for updating the column formula in the underlying Sigma RLS Dataset for the ua_Region column. The equality formula needs to be replaced with a Contains(), for ex: Contains(CurrentUserAttributeText("Darien_Region"), [Store Region])
+
+and `refresh the browser` page. You should see the Region has been updated to reflect the new values. 
 
 You can use the Column Details feature to see that there East and West are present in the data now. 
 
