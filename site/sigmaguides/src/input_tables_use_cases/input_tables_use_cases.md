@@ -16,8 +16,9 @@ This QuickStart **QS** provides and overview and the steps required to recreate 
 
 Input Tables are Sigma-managed warehouse table, through which users can add their own data and integrate into their own analysis.
 
-<aside class="positive">
-<strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+
+<aside class="postive">
+<strong>WHY USE IMPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
 When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
@@ -358,9 +359,7 @@ a<img src="assets/tp4.png" width="600">
 
 <img src="assets/tp5.png" width="400">
 
-Now that the USER table is linked, simply click any blue value and select the other column(s) you want to see…in this case `SubRegion`:
-
-<img src="assets/tc5b.png" width="800">
+Do the same steps but this time add the `USERS` column `SubRegion`. 
 
 Your Page should now look like this:
 
@@ -458,153 +457,75 @@ The gap is must better now, Mike is happy.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
-## Data Collection
+<!-- END OF NEXT SECTION-->
+
+## Embedding Input Tables
 Duration: 20
 
-There are times when captuing a small amount of data from a Sigma user can be very valuable to the business. This presents some challenges:
+Many customers are embedding content in their internal and external business applications. Now you can also embed Input Tables and really take it to the next level for your users. With Input Tables your applications can become more than just a way to communicate **TO** your users. Capturing small amounts of critical data from your customers opens up that "conversation" to be two-way.
 
-<ul>
-      <li><strong>Will you have to build some new application to capture the data?</strong></li>
-      <li><strong>When is the right time to capture the data?</strong></li>
-      <li><strong>Will the users accept another tool?</strong></li>
-      <li><strong>Once we have the data, how will it relate to existing warehouse data?</strong></li>
-      <li><strong>Lots of other questions to be sure!</strong></li>
+This QuickStart assumes familiarity with how to embed in Sigma. 
 
-</ul>
+<aside class="negative"><strong>NOTE:</strong><br> We will not review the steps to setup Embedding here, but rather show the relevant screens. To learn more about Sigma Embedding, visit the Embedding Series QuickStarts which cover the topic extensively.</aside>
 
-Since users are already using Sigma (**or spreadsheets and should be using Sigma instead!**) Input Tables can help solve this problem. 
+<aside class="postive"><strong>IMPORTANT:</strong><br> Embed users with the "Creator" role can make edits to allow cells on an Input Table. Users with "View/Explore" role can't edit data but can view the Input Table and latest edits.</aside></aside>
 
-Why not just create a Sigma Workbook and augment it with the ability for the user to enter small amounts of data in real time?
+Create a new Workbook and add a new empty Input Table table to the page. You will be prompted to provide a location to save the Input Table date. We will use the `Sigma Sample Database`. 
 
-Sigma will do the heavy lifting of UI and data operations to store the data in your warehouse. 
+<aside class="negative"><strong>NOTE:</strong><br> Input Table data is stored automatically and is not editable outside of the Sigma Workbook. It can be joined to other Sigma Elements to drive more sophisticated workflows as shown in the Territory Planning use case of this QuickStart. </aside>
 
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma does not store data and with Input Tables, data is stored in your warehouse but adjacent to your existing data. Existing data is NEVER changed in any way.
-</aside>
+Now add another column and set it's type to `number`.
 
-### Let's build a workbook together to demonstrate this use case:
+Enter a line of data and your page should now look like this:
 
-Allowing users to add/suppliment warehouse data opens a world of possibilities. We can demonstrate how this can be done we will use a very simple example.
+<img src="assets/st1.png" width="700"/>
 
-There is a need for accounting to update the status of Invoices, adding comments/notes but don't want to give the data entry clerk access to the accounting system.
+Click the Input Tables menu and enable `Allow data editing in explore mode`. 
 
- We solution this in Sigma using Input Tables without involving developers or database administrators valuable time.
+Publish the Workbook. 
 
- In our Workbook, create a new Page and rename it to `Data Collection`. 
+Make sure that the Workbook is Shared to the Creator team with `Explore` or `Creator` rights:
 
- We need to use different data for this use case, joining two tables. 
+<img src="assets/st3.png" width="700"/>
 
- <aside class="negative">
-<strong>NOTE:</strong><br> Did you know you can see the data linage of a Workbook Element? Sometimes it is really useful to visually see the path the data is taking as it sourced to your Element.
-</aside>
+Using the methods outlined in the Quickstart `Embedding 3: Application Embedding`, configure this Workbook page into an embed.
 
-In our use case, the final lineage for the source data table looks like this:
+<aside class="postive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the Input Table itself.</aside></aside>
 
-<img src="assets/dc1.png" width="800"/>
+<img src="assets/it13.png" width="700"/>
 
-In Edit mode, navigate to the `Data` Page. 
+We will need to adjust `server.js` for the `Embed Path`, `User Team` and `Account Type`:
 
-Add a new Table for `INVOICE_LINE_ITEMS` as shown:
+<img src="assets/it14.png" width="800"/>
 
-<img src="assets/dc2.png" width="800"/>
+Assuming you started Terminal and ran `supervisor server.js` without error, browser to `http://localhost:3000`. You should see your embedded Input Table. 
 
-Join the `CUSTOMERS` table to this `INVOICE_LINE_ITEMS` as shown:
+Enter some text and click `Save`.
 
-<img src="assets/dc3.png" width="800"/>
+<img src="assets/it15.png" width="600"/>
 
-Configure the `Join` as follows:
+Adjust `server.js` for the `User Team` and `Account Type` to lower the access to `Viewer`:
 
-<img src="assets/dc4.png" width="800"/>
+<img src="assets/it16.png" width="800"/>
 
-After clicking `Preview` to look at the result set, click `Done`:
+Refresh the browser and see that the information is as we entered it but there is no `Edit` functionality for this `Viewer` user.
 
-<img src="assets/dc5.png" width="800"/>
+<img src="assets/it17.png" width="600"/>
 
-We don't need every column so let's delete the ones we wont require:
+If you recall, we enabled `Allow data editing in explore mode`. Lets test that.
 
-<img src="assets/dc6.png" width="400"/>
+In the Workbook / Sharing change the Viewer to use the `Explore` role:
 
-Rename the new Table to `Customer Invoice Line Items`.
+<img src="assets/it18.png" width="600"/>
 
-Add a new column using the formula:
-```plaintext
-[Quantity] * [Unit Price]
-```
+Update `server.js` for `account_type` and `external_user_team` and save the file:
 
-Rename this column to `Line Item Total`.
+<img src="assets/it19.png" width="800"/>
 
-<img src="assets/dc7.png" width="800"/>
-
-Now create a `Linked Input Table`, selecting the columns as shown:
-
-<img src="assets/dc8.png" width="800"/>
-
-Move the new Input Table to the Page `Data Collection`:
-
-<img src="assets/dc9.png" width="800"/>
-
-We want the user to be able to filter the Input Table Table to specific Companies.
-
-Add a new Element / Control Element / List Value element and configure it as follows:
-
-<img src="assets/dc10.png" width="400"/>
-
-Set the `Target` as:
-
-<img src="assets/dc10a.png" width="400"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Notice that we are not targeting the Input Table but rather the Table on the hidden Data Page that is linked to the Input Table. This can also be used to drive Row Level Security.
-</aside>
-
-We now are ready to add our columns that are enabled for data capture.
-
-Add a new Column to the Input Table called `Status`.
-
-Add another new Column to the Input Table called `Notes`.
-
-We did Data Validation in an earlier use case but this time will just limit the `Status` column to values we will manually provide:
-
-<img src="assets/dc11.png" width="400"/>
-
-We want the user to "work" the data down so we need another Input List to filter the table, not showing rows that have a Status = Fulfilled,
-
-Set a Filter on the Table to only show rows that have not been Fulfilled:
-
-<img src="assets/dc13.png" width="800"/>
-
-Now we can filter by Company, adjust the Status and add notes.
-
-Last step before we test is to enable editing in Explorer Mode:
-
-<img src="assets/dc14.png" width="800"/>
-
-Publish the Workbook and go to the Publish version so that we are looking at this Page as the end-user would see and work with it.
-
-Now we have an `Edit Data` button. Click that:
-
-<img src="assets/dc15.png" width="800"/>
-
-Lets test by updating the first four records as shown for each Status:
-
-<img src="assets/dc16.png" width="800"/>
-
-Click the `Save` button.
-
-Each time we save, any records set `Fulfilled` are longer visible. Looking at `Columm Details` for `Status` we see that there are no rows where Status = Fulfilled. 
-
-<img src="assets/dc16.png" width="800"/>
-
-In this way, the user can just do the updates they need and not be concerned about records that are completed.
-
-<aside class="postive">
-<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
-</aside>
-
+Refresh the browser and see that we have the `Edit` button.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
+<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
