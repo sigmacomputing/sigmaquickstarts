@@ -14,10 +14,3 @@ jobs:
           export PATH=$PATH:$GOPATH/bin
           go install github.com/googlecodelabs/tools/claat@latest
           cd site && npm install && npm run deploy
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SIGMA_QUICKSTARTS_WEBSITE }}'
-          channelId: live
-          projectId: sigma-quickstarts-website
-          entrypoint: ./site

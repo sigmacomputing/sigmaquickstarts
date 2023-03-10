@@ -1,7 +1,7 @@
 author: pballai
 id: common_date_functions_and_use_cases
 summary: Common Date Functions and Use Cases
-categories: PLEASE PROVIDE FROM LIST BELOW
+categories: functions
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
@@ -671,3 +671,4 @@ In this QuickStart we covered many of the commonly used date functions and use c
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
+
