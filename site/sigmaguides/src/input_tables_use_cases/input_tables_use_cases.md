@@ -459,6 +459,75 @@ The gap is must better now, Mike is happy.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
+## Embedding Input Tables
+Duration: 20
+
+Many customers are embedding content in their internal and external business applications. Now you can also embed Input Tables and really take it to the next level for your users. With Input Tables your applications can become more than just a way to communicate **TO** your users. Capturing small amounts of critical data from your customers opens up that "conversation" to be two-way.
+
+This QuickStart assumes familiarity with how to embed in Sigma. 
+
+<aside class="negative"><strong>NOTE:</strong><br> We will not review the steps to setup Embedding here, but rather show the relevant screens. To learn more about Sigma Embedding, visit the Embedding Series QuickStarts which cover the topic extensively.</aside>
+
+<aside class="postive"><strong>IMPORTANT:</strong><br> Embed users with the "Creator" role can make edits to allow cells on an Input Table. Users with "View/Explore" role can't edit data but can view the Input Table and latest edits.</aside></aside>
+
+Create a new Workbook and add a new empty Input Table table to the page. You will be prompted to provide a location to save the Input Table date. We will use the `Sigma Sample Database`. 
+
+<aside class="negative"><strong>NOTE:</strong><br> Input Table data is stored automatically and is not editable outside of the Sigma Workbook. It can be joined to other Sigma Elements to drive more sophisticated workflows as shown in the Territory Planning use case of this QuickStart. </aside>
+
+Now add another column and set it's type to `number`.
+
+Enter a line of data and your page should now look like this:
+
+<img src="assets/st1.png" width="700"/>
+
+Click the Input Tables menu and enable `Allow data editing in explore mode`. 
+
+Publish the Workbook. 
+
+Make sure that the Workbook is Shared to the Creator team with `Explore` or `Creator` rights:
+
+<img src="assets/st3.png" width="700"/>
+
+Using the methods outlined in the Quickstart `Embedding 3: Application Embedding`, configure this Workbook page into an embed.
+
+<aside class="postive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the Input Table itself.</aside></aside>
+
+<img src="assets/it13.png" width="700"/>
+
+We will need to adjust `server.js` for the `Embed Path`, `User Team` and `Account Type`:
+
+<img src="assets/it14.png" width="800"/>
+
+Assuming you started Terminal and ran `supervisor server.js` without error, browser to `http://localhost:3000`. You should see your embedded Input Table. 
+
+Enter some text and click `Save`.
+
+<img src="assets/it15.png" width="600"/>
+
+Adjust `server.js` for the `User Team` and `Account Type` to lower the access to `Viewer`:
+
+<img src="assets/it16.png" width="800"/>
+
+Refresh the browser and see that the information is as we entered it but there is no `Edit` functionality for this `Viewer` user.
+
+<img src="assets/it17.png" width="600"/>
+
+If you recall, we enabled `Allow data editing in explore mode`. Lets test that.
+
+In the Workbook / Sharing change the Viewer to use the `Explore` role:
+
+<img src="assets/it18.png" width="600"/>
+
+Update `server.js` for `account_type` and `external_user_team` and save the file:
+
+<img src="assets/it19.png" width="800"/>
+
+Refresh the browser and see that we have the `Edit` button.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
 ## What we've covered
 Duration: 5
 
