@@ -47,7 +47,7 @@ Create a new Workbook and place the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table 
 
 <img src="assets/CDUC1.png" width="800"/>
 
-Click on the `Date` olumns down arrow and select `Truncate date`. This is one way to adjust how the Date column will be modified.
+Click on the `Date` columns down arrow and select `Truncate date`. This is one way to adjust how the Date column will be modified.
 
 <img src="assets/CDUC2.png" width="400"/>
 
@@ -437,7 +437,7 @@ Duplicate the table using the table menu.
 
 Rename this table `Sales This Year`
 
-On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key` and `Quantity`.
+On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, `Quantity` and `Date`.
 
 Add a new column, rename it `Total Sale` and set it's formula to:
 ```plaintext
