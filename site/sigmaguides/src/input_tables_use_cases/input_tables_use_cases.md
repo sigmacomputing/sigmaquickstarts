@@ -16,14 +16,8 @@ This QuickStart **QS** provides an overview and the steps required to recreate t
 
 Input Tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
 
-<<<<<<< HEAD
-
 <aside class="postive">
-<strong>WHY USE IMPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
-=======
-<aside class="positive">
 <strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
->>>>>>> 91752a7 (Fix for Input Tables Use Cases QS)
 </aside>
 
 When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
