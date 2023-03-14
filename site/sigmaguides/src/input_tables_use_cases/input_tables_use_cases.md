@@ -12,13 +12,13 @@ tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, S
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides and overview and the steps required to recreate three unique use cases that leverage Sigma Input Tables. 
+This QuickStart **QS** provides an overview and the steps required to recreate three unique use cases that leverage Sigma Input Tables. 
 
-Input Tables are Sigma-managed warehouse table, through which users can add their own data and integrate into their own analysis.
+Input Tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
 
 
 <aside class="postive">
-<strong>WHY USE IMPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give user the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+<strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
 When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
@@ -26,13 +26,13 @@ When data isn’t in the warehouse, it usually requires a cumbersome technical a
 Sigma customers already use Input Tables for:
 <ul>
   <li>Manual data entry of key values</li>
-  <li>Analytic Modelling
+  <li>Analytic Modeling
         <ul>
         <li>scenarios</li>
         <li>forecasts</li>
         <li>territory planning</li>
         <li>sales planning</li>
-        <li>supply chain modelling</li>
+        <li>supply chain modeling</li>
         <li>categorizations</li>
         </ul>
     </li>
@@ -55,7 +55,7 @@ Anyone who is trying to create QS content using Sigma and wants to augment, adju
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
   
 ### What You’ll Learn
-We will review a few different ways customer are using Input Tables already and show you how to make them work in your own Sigma environment.
+We will review a few different ways customers are using Input Tables already and show you how to make them work in your own Sigma environment.
 
 ### What You’ll Build
 
