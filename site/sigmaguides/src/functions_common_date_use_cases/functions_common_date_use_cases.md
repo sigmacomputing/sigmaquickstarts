@@ -162,10 +162,6 @@ The data we will use is still the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. Y
 
 `Group` the table by `Customer Name`.
 
-Lets filter the data (to keep things simple to see as we work) for `Customer Name` = `Leah Douglas`:
-
-<img src="assets/CDUC10.png" width="350"/>
-
 Truncate the `Date` column to day:
 
 <img src="assets/CDUC10a.png" width="350"/>
@@ -174,45 +170,48 @@ Truncate the `Date` column to day:
 <strong>IMPORTANT:</strong><br> Our flat dataset has customer orders and a single customer order can have multiple items on it. To account for this, we want to group on the order day so that we can then do some date math against that. Otherwise, our table will have multiple rows for the same day (in most cases) and that is not what Marketing wants.
 </aside>
 
-Add a new column and call it `Unique Order Date`.
+`Group` by the `Day of Date`:
 
-`Group` by the new column:
+<img src="assets/CDUC10b.png" width="600"/>
 
-<img src="assets/CDUC10b.png" width="400"/>
+Lets filter the data (to keep things simple to see as we work) for `Customer Name` = `Leah Douglas`:
 
+<img src="assets/CDUC10.png" width="350"/>
 
-Set the formula to:
-```plaintext
-Nth([Day of Date], 2)
-```
+The table should now look like this:
 
-We now have three unique dates:
+<img src="assets/CDUC10c.png" width="600"/>
 
-<img src="assets/CDUC11.png" width="600"/>
+Add a new column by clicking the `Customer Name` menu arrow and rename it to `First Order`:
 
-Add a new calculated column by adding a `Calculation` for each and rename it to `First Order`.
-
-<img src="assets/CDUC12.png" width="600"/>
+<img src="assets/CDUC12.png" width="400"/>
 
 For `First Order` set the formula to:
 ```plaintext
 Min([Day of Date])
 ```
 
-Now we will add four more calculated columns, rename them as shown below and apply the Functions in the formula bar for each:
+Now we will add four more columns, rename them as shown below and apply the Functions in the formula bar for each:
 
 ```plaintext
 Column:                         Formula:
-First Order                     Min([Day of Date])
 Second Order                    Nth([Day of Date], 2)
 Last Order                      Max([Day of Date])
 Days 1st to 2nd Order           DateDiff("day", [First Order], [Second Order])
 Days 1st to Last                DateDiff("day", [First Order], [Last Order])
 ```
 
-Now Marketing has the data they are requesting:
+The table should now look like this (after collapsing it):
 
 <img src="assets/CDUC14.png" width="800"/>
+
+Go ahead and turn off the filter:
+
+<img src="assets/CDUC14a.png" width="400"/>
+
+Now Marketing has the data they are requesting:
+
+<img src="assets/CDUC14b.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -296,50 +295,48 @@ Create a new Workbook Page and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` tab
 
 Hide all columns to start. Use `Shift` and `Click` to select the first and last in the list and then click `Hide column`.
 
-Un-hide the `Date` column.
-
 Add a new group (click the `+` to the right of `GROUPINGS` and select `Date`)
 
-Set the formula for the `Date` column to:
+Set the formula for the `Day of Date` column to:
+
 ```plaintext
-DateFormat(Date([PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date]), "%m")
+DatePart("month", [Date]) 
 ```
 Rename this column `Month Number` and set it's sort order to `Ascending`. 
 
 <img src="assets/CDUC21c.png" width="800"/>
 
-Add a new column and rename it `Year of Date`. 
+Add a new column: 
 
 Set it's formula to 
 ```plaintext
 DateTrunc("year", [Date])
 ```
+Add a new group (click the `+` to the right of `GROUPINGS` and select `Year of Date`)
 
-Add a new column and rename it `Monthly Sales`. Set it's formula to:
+Add a new column (to the right of `Year to Date`) and rename it `Monthly Sales`. Set it's formula to:
 
 ```plaintext
 Sum([Quantity] * [Price])
 ```
 
-Add a new group (click the `+` to the right of `GROUPINGS` and select `Year of Date`)
-
-Drag the column `Monthly Sales` to the `Year of Date` grouping.
+The table should now look like this (after collapsing/expanding and formatting):
 
 <img src="assets/CDUC21a.png" width="800"/>
 
-Add a new `CALCULATION` (click the `+` to the right of `CALCULATION` and select `New column`)
+Add a new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
 
 Configure the new column as shown below:
 
 ```plaintext
-Column:                         Formula:
-Previous Month                  Lead([Monthly Sales], -1)
+Column:             Formula:
+Previous Month      Lead([Monthly Sales], -1)
 ```
 
-Add another new `CALCULATION` (click the `+` to the right of `CALCULATION` and select `New column`)
+Add another new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
 ```plaintext
-Column:                         Formula:
-Year over Year                  ([Monthly Sales] - [Previous Month]) / [Previous Month]
+Column:            Formula:
+Year over Year     ([Monthly Sales] - [Previous Month]) / [Previous Month]
 ```
 
 Set the `Year over Year` columns format to `Percentage`.
@@ -390,12 +387,12 @@ For each of the following new columns you add, configure them using the followin
 COLUMN NAME          FORMULA TO APPLY TO COLUMN
                     
 Week #               DatePart("week", [Date])
-isCurrent Year        InDateRange([Date], "current", "year")
+isCurrent Year       InDateRange([Date], "current", "year")
 isLast Year          InDateRange([Date], "last", "year")
-isLast Quarter       InDateRange([Date], "to_date", "quarter")
+isCurrent Quarter    InDateRange([Date], "to_date", "quarter")
 isCurrent Month      InDateRange([Date], "to_date", "month")
 isCurrent Week       InDateRange([Date], "to_date", "week")
-isIN Last 2 Weeks    InDateRange([Date], "last", "week", 3)
+isIN Last 2 Weeks    InDateRange([Date], "last", "week", 2)
 TY Sales Amount      SumIf([Sales Amount], [isCurrent Year])
 LY Sales Amount      SumIf([Sales Amount], [isLast Year])
 ```
@@ -512,33 +509,19 @@ The results will appear as `Boolean` (true or false) and we can use that to filt
 
 To make this go faster, open the Workbook `Lookups -  Year over Year` and use `Save As` to make a copy as `InPrior Date Range`.
 
-We will use the **InDate Range** function in a new column on the `Sales This Year` table.
+Rename the `Sales This Year` to `Sales In Current Quarter`. Do the same for `Sales Last Year`, to `Sales Last Year - Same Quarter`.
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> In this exercise we are using BOTH InDateRange and InPriorDate Range so watch for that.</aside>
+We could use the **InDate Range** function in a new column on the `Sales This Year` table to reduce the date range to the quarter we are interested in but lets see if we can do it with filters instead.
 
-Create a new column on the `Sales This Year` table and set the formula to:
+In the `Sales In Current Quarter` set a filter on the `Day of Date` column:
 
-```plaintext
-Column:               Formula:
-In Current Quarter    InDateRange([Day of Date], "current", "quarter")
-```
+<img src="assets/CDUC50a.png" width="600"/>
 
-Adjust the filter to only show rows where `In Current Qtr` is `True`:
+In the `Sales Last Year - Same Quarter`set a filter on the `Day of Date` column:
 
-<img src="assets/CDUC50.png" width="500"/>
+<img src="assets/CDUC50b.png" width="600"/>
 
-Create a new column on the `Sales Last Year` table and set the formula to:
-
-```plaintext
-Column:                      Formula:
-In Same Quarter Last Year    InPriorDateRange([Day of Date], "quarter", "year")
-```
-
-Adjust the filter to only show rows where `In Same Qtr Last Year` is `True`.
-
-You should now have different row counts for each table:
-
-<img src="assets/CDUC51.png" width="800"/>
+<aside class="negative"><strong>NOTE:</strong><br> You could also use the InDateRange function. We just wanted to get you thinking about possible options and how each may effect a use case.</aside>
 
 Now lets adjust the `Regional Sales Performance - This vs. Last Year` table to Lookup on the new columns.
 
@@ -548,9 +531,9 @@ Click the column `Sum of Total Sale (Sales This Year)` and select `Edit Lookup` 
 
 <img src="assets/CDUC52.png" width="500"/>
 
-Change the `Column to add` to `In Current Qtr` and the `Aggregate` to `Count` and click Done.
+Change the `Column to add` to `In Current Qtr` and the `Aggregate` to `Sum` and click Done.
 
-<img src="assets/CDUC53.png" width=" 400"/>
+<img src="assets/CDUC53.png" width="300"/>
 
 Rename the column to `Sum of Total Sale (This Qtr)`.
 
@@ -558,7 +541,7 @@ Now do the same thing for the `Sum of Total Sale (Sales Last Year)` column renam
 
 You should now have a table that looks like this (the table also is renamed to reflect quarters):
 
-<img src="assets/CDUC54.png" width="500"/>
+<img src="assets/CDUC54.png" width="800"/>
 
 <aside class="negative"><strong>NOTE:</strong><br> You can click on the `InPriorDateRange` name in the formula bar to see the details on how to use this function</aside>
 
