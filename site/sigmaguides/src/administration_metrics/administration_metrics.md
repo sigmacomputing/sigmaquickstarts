@@ -12,7 +12,7 @@ tags: Getting Started, Metrics, Analytics, Data Engineering, BI, Business Intell
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** discusses and demonstrates how to use Sigma Metrics. 
+This QuickStart **QS** discusses and demonstrates how to use Sigma Metrics against a use case we will detail later on.
 
 Metrics in bi (business intelligence) refer to the quantitative measurements used to evaluate and analyze the performance of a business. These metrics are used to assess various aspects of a business, including financial performance, customer behavior, operational efficiency, and more.
 
@@ -48,7 +48,7 @@ Anyone who is trying to create content in Sigma and those interested in governin
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-How to apply Metrics in Sigma
+How to apply Metrics in Sigma using Sigma's sample database. 
 
 ### What You’ll Build
 
@@ -57,11 +57,149 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Creating Metrics**
-Duration: 20
+## **About Sigma Metrics**
+Duration: 5
+
+Metrics in Sigma are custom aggregate calculations that can be reused across workbook data elements that share a data source (i.e., dataset or connection table). 
+
+They can be as simple or complex as required by the use case. The person creating Sigma content does not need to know the details of the metric to use them in their Workbook and using an approved metric will accelerate their workflow. 
+
+Metrics are defined at the data source level to promote consistent metric logic across elements and help users perform standard calculations with ease and efficiency.
+
+There are some basic rules for creating Metrics:
+
+**For Datasets:**
+ <ul>
+      <li><strong></strong> You must be assigned an account type with the Edit Dataset permission enabled.</li>
+      <li><strong></strong> You must be the dataset owner or be granted Can Edit dataset permission..</li>
+</ul>
+
+**For Connection Tables:**
+ <ul>
+      <li><strong></strong> You must be assigned the Admin account type.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## **Use Case Details**
+Duration: 10
+
+Sales has requested details on how well the various Salesforce campaigns are performing. They want specifics on:
+
+ <li><strong></strong>
+    <ol type="n"> 
+      <li>How many leads are coming in for each campaign.</li>
+      <li>The total cost (spend) per type.</li>
+      <li>How much pipeline was generated.</li>
+      <li>Value of closed pipeline.</li>
+      <li>Which areas of over on their budget</li>
+    </ol>
+  </li>
+
+They also want the the ability to drill down into the data to get to the lowest level available. They also want to create some visuals (TBD) using the same data on their own later. 
+
+Now that we know what the requirements are, let's create a reusable set of data that leverages metrics so that any future use of the data includes the approved (governed) calculations.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
+
+## **Create a Dataset**
+Duration: 10
+
+Login into Sigma and click `+ Create New` and select `Dataset`.
+
+<img src="assets/m1.png" width="300"/>
+
+On the `Select a Data Source` page, select `Table`.
+
+We will be using the Salesforce data in our cloud data warehouse, as shown:
+
+<img src="assets/m2.png" width="800"/>
+
+Click `Get Started`.
+
+We are now presented with the unpublished Dataset and we can add some metrics.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
+
+## **Create Metrics**
+Duration: 10
+
+Click the `Metrics` tab and click `Add Metric`:
+
+<img src="assets/m3.png" width="600"/>
+
+Add new Metrics is very simple. All that is required is to provide a name and formula. The description can be very useful but it is optional. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> For formulas to work, they must be against valid table column names and use valid functions. It can be useful to test them on a separate Workbook prior to creating the final metric. 
+</aside>
+
+For this new metric, use:
+```
+NAME:             FORMULA:
+Leads by Type     Sum([Number of Leads])
+```
+
+Notice that you can also set the default formatting for the Metric. This saves users a step later.
+
+<img src="assets/m4.png" width="600"/>
+
+The metric is saved as soon as you create it. 
+
+Click the `All Metrics` link to see a list of all available metrics in this Dataset:
+
+<img src="assets/m5.png" width="600"/>
+
+From this list you are also able to modify or delete any Metric.
+
+Now create a few more metrics so that we can build our use case out:
+
+```
+NAME:                 FORMAT:        FORMULA:
+Response Rate         Percentage     Sum([Has Responded]) / (Sum([Has Responded]) + Sum([Has Not Responded]))
+Pipeline Generated    Currency       Sum([Amount All Opportunities])
+Total Closed Won      Currency       Sum([Amount Won Opportunities])
+Budget Allocated      Currency       Sum([Budgeted Cost])
+Actual $ Spend        Currency       Sum([Actual Cost])
+Attributed Margin     Currency       Sum([Amount Won Opportunities] - [Actual Cost])
+Under-Over Budget     Automatic      If(Sum([Actual Cost]) / Sum([Budgeted Cost]) >= 1, "Over Budget", "Under Budget")
+```
+
+Most of the metrics used are simple enough but as you can see with the `Under-Over Budget` formula, you can get as complex as needed and use any of the available Functions.
+
+[Click here to see the available functions in Sigma](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index)
+
+If you have not already done so, name the Dataset `Sales Campaign Dataset` and `Publish` it.
+
+Now that we have a Dataset with some Metrics, let's build content.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
+
+## Using Metrics in a Workbook
+Duration: 15
+
+From the `Sales Campaign Dataset`, click the `Explore` button in the upper right corner of the page header. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
 
 ## What we've covered
 Duration: 5
