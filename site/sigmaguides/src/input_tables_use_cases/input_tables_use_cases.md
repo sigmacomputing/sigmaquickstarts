@@ -251,9 +251,13 @@ At this point your Workbook should look like this:
 
 <img src="assets/it4.png" width="800"/>
 
-Add a new Input Table to the Page and rename it `Shopify Data`.
+Add a new `Empty Input Table` to the Page.
 
 <img src="assets/it1.png" width="600"/>
+
+Use the `Sigma Sample Database`.
+
+Rename the new Input Table `Shopify Data`.
 
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table as we did in the first use case.
 
