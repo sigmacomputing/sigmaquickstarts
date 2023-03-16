@@ -146,11 +146,11 @@ Click the `Worksheet` tab.
 
 Select the column `Is Active` and click it's menu. Select `Filter`:
 
-<img src="assets/m17.png" width="300"/>
+<img src="assets/m17.png" width="800"/>
 
 We want to **exclude** anything that is not "Active" or `true`:
 
-<img src="assets/m18.png" width="300"/>
+<img src="assets/m18.png" width="400"/>
 
 Click `Save`.
 
@@ -248,7 +248,7 @@ Now that we have a table using trusted calculations, we can leverage it into a V
 
 We simply create a `Child Element` / `Vizualization` from the table:
 
-<img src="assets/m15.png" width="400"/>
+<img src="assets/m15.png" width="700"/>
 
 and configure a bar chart as:
 
@@ -256,7 +256,7 @@ and configure a bar chart as:
 
 We also enabled data labels to display the value on top of each bar:
 
-<img src="assets/m15.png" width="600"/>
+<img src="assets/m16.png" width="600"/>
 
 Rename the chart to `Active Campaign Spend - Budget vs Actual`.
 
