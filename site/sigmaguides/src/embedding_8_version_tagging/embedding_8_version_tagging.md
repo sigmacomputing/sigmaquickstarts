@@ -12,23 +12,35 @@ tags: Getting Started
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart introduces you to Sigma embedding using Version Tagging to manage promotions of Workbooks via the Sigma User Interface.
 
-Sample code and examples are shown for each item.
+Version tagging allows you to employ a software development cycle to control workbook versions using tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
 
-We encourage you to review the QS called 
+When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
 
-This QuickStart assumes you........
+For example, you can create a Production tag and assign it to a workbook that's used by embed users, guests, or other Sigma end users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users. 
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> One of the benefits of Tagging is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
+</aside>
+
+**Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
  ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+ Semi-technical users who will be aiding in the DevOps implementation of Sigma. 
+
+**Sigma strongly advises against using production resources when replicating the exercises in this QuickStart.** 
 
 ### Prerequisites
 
-1: A computer with a current browser. It does not matter which browser you want to use.<br>
-2: [Review of the Sigma QS Readme](https://github.com/Sigmacomputing/sigmaquickstarts#readme)<br>.
-3: Completion of the Sigma QS Readme perquisites.
-4: A working local copy of the Sigma QS portal as described in the Readme.
+<ul>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
+  <li>A Snowflake account with the proper administrative and security admin access.</li>
+</ul>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> 
+.
   
 ### What You’ll Learn
 How to apply Sigma approved Markdown for your QS.
