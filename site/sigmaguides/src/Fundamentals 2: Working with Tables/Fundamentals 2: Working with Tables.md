@@ -311,10 +311,10 @@ Select the `Revenue` column. Sigma will automatically Sum the column. You can ad
 
 These Summary Values can now be accessed in any formula (by name) anywhere in the Table and can also be leveraged with our KPI visualizations.
 
-Add one more summary for our COGS.  
+Add one more summary for our COGS and rename it `COGS`.
 
 <aside class="negative">
-<strong>NOTE:</strong> Sigma will reference Summaries by name so in the next step if your names for “Total Revenue” and “Total COGS” the formula for the new Summary will fail. 
+<strong>NOTE:</strong> Sigma references Summaries by name and can be used in other formulas inside the Workbook. 
 </aside>
 
 Lastly, let's create one more Summary value by clicking on the carrot `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
@@ -337,7 +337,7 @@ It may also be helpful to have the total number of orders represented in the dat
 ## **Filtering Data**
 Duration: 6
 
-Sigma also has the ability to easily filter Table data. Lets filter for only stores in the South region. 
+Sigma also has the ability to easily filter Table data. Lets filter for only stores in the East region. 
 
 Click on the `Store Region` column and select Filter. Notice that a `FILTERS & CONTROLS` panel opens and if auto-populates with the available distinct list of Store Regions. Also notice that under number 3 there is a small filter icon with a 1 next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
 
@@ -347,7 +347,7 @@ Click the checkbox for `East` and see the table update for just the East region.
 
 <img src="assets/filters2.png" width="700"/>
 
-Would'nt it be great if I could just have this filter as as drop down on the Page? No problem. Just click the vertical 3-dots and click “Convert to Page Control”. Now the Table can be filtered by using the dropdown filter list as shown below:
+Wouldn't it be great if I could just have this filter as as drop down on the Page? No problem. Just click the vertical 3-dots and click “Convert to Page Control”. Now the Table can be filtered by using the dropdown filter list as shown below:
 
 <img src="assets/filters3.png" width="300"/><br>
 

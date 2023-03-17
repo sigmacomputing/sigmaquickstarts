@@ -145,7 +145,7 @@ There are different icons for different objects in Sigma. For example here are t
 
 Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
 ![Alt text](assets/plugshomepage.png)
-This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is avaiQuickStartle. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
+This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available QuickStartle. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
 
 When you are done, click the Sigma icon to go Home. 
 
@@ -226,7 +226,7 @@ Lets change the title of this table to "Plugs Sales" by clicking on the tables t
 
 Click the `Publish` button and then click `Editing / Go to the published version` link. 
 
-Notice that you are taking to a Workbook with one page and the Publish button now takes you back to Edit if you want. 
+Notice that you are taken to a Workbook with one page and the Publish button now takes you back to Edit if you want. 
 
 Notice that there are some controls in the upper right corner of the Table. These are limited based on the mode you are in (Published, Edit) and what user role you have. These will be very useful as we go forward. Feel free to click into any of them now. 
 

@@ -82,7 +82,7 @@ We will build a Workbook that looks like this:
 ## **Viz Basics**
 Duration: 30
 
-Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 1: Getting Around” QuickStart. It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
+Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 2: Working with Tables” QuickStart. It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
 
 In Sigma, open the Workbook `Plugs Sales` and place it in `edit mode`.
 
@@ -102,7 +102,7 @@ Sigma has created a new Page Element below the Table as an un-configured placeho
 <strong>NOTE:</strong><br> This is awesome because it means someone who knows the underlying data could make this Table available with careful curation and others could just use it. There are other ways to create curated datasets that you will learn later.
 </aside>
 
-We prefer that this new Viz is on its own Page so click the `vertical dot menu` and select `Move to` and then click `New Page`. The Viz is now on the New Page and that Page and it is open for us. You can rename the Page `Viz`:
+We prefer that this new Viz is on its own Page so click the `vertical dot menu` and select `Move to` and then click `Viz`. The Viz is now on the `Viz` Page and it is open for us.
 
 ![Alt text](assets/vizbasics2.png)
 
@@ -151,9 +151,9 @@ This time, using the Visualization dropdown, select a line chart.
 
 <img src="assets/vizbasics9.png" width="700"/>
 
-To create the Line Chart the operations are the same as the Bar Chart, dragging and dropping (or selecting from the axis drop-downs)to select the data columns. 
+To create the Line Chart the operations are the same as the Bar Chart, dragging and dropping (or selecting from the axis drop down menu) to select the data columns. 
 
-Let's drag the `Month of Date` column into the `X-Axis` and truncate it to be `month`:
+Let's drag the `Date` column into the `X-Axis` and truncate it to be `month`:
 
 <img src="assets/vizbasics10.png" width="300"/>
 
