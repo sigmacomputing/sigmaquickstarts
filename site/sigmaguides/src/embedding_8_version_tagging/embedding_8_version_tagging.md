@@ -40,6 +40,7 @@ In this QuickStart, we will demonstration using Github for source control and Gi
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
+  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
   <li>A GitHub account with the proper administrative and security admin access.</li>
   <li>A GitLab account with the proper administrative and security admin access.</li>
 </ul>
@@ -56,8 +57,14 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **1**
+## **Verify Local Environment**
 Duration: 20
+
+Before we do anything else, lets make sure the local embed environment is working at a base level. Creating this local environment was covered on the Embedding 1: Prerequisites QuickStart so it is assumed the steps are familiar and we will move quickly in regards to those details. 
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
