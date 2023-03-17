@@ -145,7 +145,7 @@ There are different icons for different objects in Sigma. For example here are t
 
 Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
 ![Alt text](assets/plugshomepage.png)
-This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available QuickStartle. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
+This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available QuickStart. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
 
 When you are done, click the Sigma icon to go Home. 
 
