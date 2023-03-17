@@ -7,22 +7,26 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
 
-# Embedding 8 Version Tagging
+# Embedding 8: Version Tagging
 
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to Sigma embedding using Version Tagging to manage promotions of Workbooks via the Sigma User Interface.
+This QuickStart introduces you to Version Tagging in a Sigma embedded environment in order to manage promotions of Workbooks via the 3rd party tools. 
 
-Version tagging allows you to employ a software development cycle to control workbook versions using tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
+Version tagging allows you to employ a software development cycle to control workbook versions, using tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
 
 When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
 
-For example, you can create a Production tag and assign it to a workbook that's used by embed users, guests, or other Sigma end users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users. 
+For example, you can create a Production tag and assign it to a workbook that's used by embed users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users via external tool of your choice.
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> One of the benefits of Tagging is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
 </aside>
+
+There are many 3rd party tools available to manage the Continuous Integration / Continuous Development (CI/CD) workflow. 
+
+In this QuickStart, we will demonstration using Github for source control and GitLabs for CI/CD pipelines. 
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
@@ -36,31 +40,59 @@ For example, you can create a Production tag and assign it to a workbook that's 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>A GitHub account with the proper administrative and security admin access.</li>
+  <li>A GitLab account with the proper administrative and security admin access.</li>
 </ul>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> 
-.
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[GitHub Sign-up](https://github.com/signup)</button>  <button>[GitLabs Sign-up](https://gitlab.com/users/sign_in)</button> 
   
 ### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
+How to manage CI/CD operations for a Sigma embedded environment.
 
 ### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/getting_started_working_with_tables_hol/index.html)<br>.
-
-
 
 INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## **1**
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+<!-- END OF SECTION-->
+
+## **2**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+## **3**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+## **4**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## What we've covered
 Duration: 5
