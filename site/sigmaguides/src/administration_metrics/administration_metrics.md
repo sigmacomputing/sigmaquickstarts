@@ -277,9 +277,9 @@ Now Marketing has all the information they requested and can use Sigma's `Drill 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this lab we learned how to create and manage Metrics in Sigma.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+<img src="assets/m20.png" width="800"/>
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
