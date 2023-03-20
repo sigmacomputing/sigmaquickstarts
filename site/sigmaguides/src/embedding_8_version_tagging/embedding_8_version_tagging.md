@@ -296,11 +296,18 @@ We need to make a change to also pass the tag to Sigma at runtime. We do that bu
 Here is the code for convenience. 
 ```plaintext
 // SECTION TAGGING:
-	let tag = '/tag/Development';
-
+	   let tag = '/tag/Development';
+	// let tag = '/tag/Staging';
+	// let tag = '/tag/Production';
 // END SECTION TAGGING
+
+<aside class="negative">
+<strong>NOTE:</strong><br> In the code sample above, we have three statements setting the value for "tag".  Two are commented out. This is so when we test, we can just comment/uncomment the tag we want to use and save the server.js. It saves a few bits of typing and that is always appreciated.
+</aside>
 ```
-and
+
+and...
+
 ```plaintext
 // SECTION TAGGING:
 const URL_WITH_SEARCH_PARAMS = EMBED_PATH + tag + searchParams;
@@ -308,17 +315,23 @@ const URL_WITH_SEARCH_PARAMS = EMBED_PATH + tag + searchParams;
 
 Save `server.js` after making the change and refresh the browser to make sure the page loads after this change.
 
-The page should be showing data from the development connection.
+The page should be showing data from the Development connection.
+
+**Bear in mind that we have not applied a Development tag to this Workbook. We will see what happens later.**
 
 We are ready to move to the next step.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Promotions ect....**
+## **Promote to Staging**
 Duration: 20
 
-In this section we will use a combination of REST API calls (using Postman), the Sigma UI (to make small Workbook changes) and edits to `server.js` to simulate a CI/CD workflow. 
+In this section we will use a combination of REST API calls (using Postman) and one edit to `server.js` to simulate a CI/CD workflow promotion to a Staging environment.
+
+<aside class="postive">
+<strong>NOTE:</strong><br> It is assumed that the manual REST calls and json editing steps shown here would be automated with a CI/CD tool and source repository of choice.
+</aside>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Some steps using Postman will not be shown in detail as these were covered in the QuickStart, "Sigma API with Postman". Any REST tool can be used. You may also use the Sigma API Swagger or curl commands if you are more comfortable doing that.
@@ -328,7 +341,7 @@ In this section we will use a combination of REST API calls (using Postman), the
 
 [It may also be useful to reference Sigma's API reference](https://help.sigmacomputing.com/hc/en-us/articles/4408827709459-Sigma-s-Swagger-Playground)
 
-In order to use the Sigma API, we must first get a new bearer token. Do that as instructed in the "Sigma API with Postman" QuickStart.
+In order to use the Sigma API, we must first get a new bearer token. Do that, as instructed in the "Sigma API with Postman" QuickStart.
 
 We are ready to have the QA (Staging) team look at the Workbook in the Embed.
 
@@ -351,7 +364,7 @@ We will use these values to update values send to Sigma (in json format) using a
 
 Using a text editor (to hold the json temporarily) update each valuea that you obtain from the Postman calls. 
 
-**Sample json without the identifiers:**
+**Sample json without the identifiers for workbookId, fromConnectionId and toConnectionId:**
 ```plaintext
 {
     "workbookId": "", 
@@ -383,7 +396,7 @@ Copy it's workbookUrlId value and update the json sample:
 
 We now need to get the GUIDs for the Development and Staging connection using the method `Returns a list of available connections`:
 
-Copy the two GUIDs (one for Development and another for Staging) from the return and update the json code.
+Copy the two GUIDs (one for Development and another for Staging) from the return and update the json code. 
 
 <img src="assets/vt37.png" width="800"/>
 
@@ -391,65 +404,97 @@ Send the API request. The API should return with a 200 Status and three lines of
 
 <img src="assets/vt38.png" width="800"/>
 
-We have now tagged the Workbook to Staging, version 1. We can make this what is displayed in the Parent application by changing the one line of code in server.js:
+We have now tagged the Workbook to Staging, version 1. We can make this what is displayed in the Parent application by changing the one line of code in server.js.
 
-
+First, verify in Sigma that the published version is showing the Development connection. This is expected:
 
 <img src="assets/vt39.png" width="800"/>
 
+The red arrow is showing `Version History` and showing that the Workbook has also been tagged `Staging` (#3). This was done by the API call we made.
 
+Now the Parent application will still be using the Development connection until we alter `server.js` to adjust the URL to point to Staging.
 
+Edit server.js:
+```plaintext
+// SECTION TAGGING:
+	// let tag = '/tag/Development';
+	 let tag = '/tag/Staging';
+	// let tag = '/tag/Production';
 
+// END SECTION TAGGING
+```
 
+Save `server.js` and refresh the Parent application page. We now see the table is using the Staging connection's data and the embed URL is point to Stating (on two lines...)
 
+<img src="assets/vt41.png" width="800"/>
 
+Let's try demoting this Workbook back to the Developers connection.
 
+Edit server.js:
+```plaintext
+// SECTION TAGGING:
+	 let tag = '/tag/Development';
+	// let tag = '/tag/Staging';
+	// let tag = '/tag/Production';
 
+// END SECTION TAGGING
+```
 
+Save `server.js` and refresh the Parent application page.
 
+Now we get an error; what happened?
 
+<img src="assets/vt42.png" width="800"/>
 
+In section 5 and 6 we never tagged the initial Workbook `Development` so any reference to that in the URL was ignored as no tags existed at then. Once we tagged the Workbook `Staging` and later tried to request the Workbook with the Development tag, Sigma could not find that tag associated with a tagged workbook with the requested `workbookUrlId` so it failed with a `404`, page not found.
 
+We can also confirm this in the Sigma UI by looking at what versions exist as:
 
+<img src="assets/vt43.png" width="800"/>
 
+This is an easy fix and we could have prevented it earlier but wanted to demonstrate it during the promotion workflow as it is a "fine point".
 
+We just need to rerun the `Tags a Workbook` API call, changing the tag to `Development` and flipping the values as shown:
 
+<img src="assets/vt44.png" width="800"/>
 
+Back in Sigma, we can see that there are now Staging and Development versions of the Workbook.
 
+<img src="assets/vt45.png" width="800"/>
 
+Experiment changing the version by selecting between Staging and Development copies of the Workbook. 
 
+When "toggling" between the `Production` versions of Staging and Development you can see the data changes as expected due to the connection configuration associated with the tags assigned to the Workbook.
 
+<img src="assets/vt46.png" width="800"/>
 
+There also an option for `Draft` shown. Selecting this along with a tagged version will take you to the Workbook in edit more for that tag.
 
+In the next section, we will want the developer to make one small change and push to production. To do this, we will have to use the Workbook tagged with the `Development` tag and select the draft to edit it. This will also create a new version (by number) for the tagged Workbook, which we will demonstrate.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 
-## **3**
+## Production Version
 Duration: 20
 
+We left the Parent application using the Development version of the Workbook. 
+
+Lets assume QA (in Staging) asked us to change the table title and then push right into production. 
+
+PHIL - DELETE EVERYTHING and start over. want to show that DEv / Draft versions the workbook by number
+
+
+<img src="assets/vt46.png" width="800"/>
+
+
+
+
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
-## **4**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## What we've covered
 Duration: 5
@@ -472,42 +517,6 @@ INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
-
-
-## Add QA User
-
-To simulate sharing a promoted workbook to another user, we will need to add one. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> You must use a unique email for each Sigma user. If you have a Gmail address you can use this trick. Just use your Gmail address but append a "+" and it will automatically route email to your base Gmail account. 
-</aside>
-
-<img src="assets/vt21.png" width="800"/>
-
-In Sigma, navigate to `Administration`, `People` and click the `Invite People` button. 
-
-To make testing easier, you can login to Sigma in a different browser with the new account (you will get an email to setup your new account.). We will use Chrome `Profiles` to create a isolated browser instance so that we can have two Chrome browsers open at the same time, each logged in to Sigma with different logins, one simulate the `Developer` and another for `QA`.
-
-<img src="assets/vt22.png" width="800"/>
-
-Choose `Continue without an account`. 
-
-Give you Profile a name. We used `2nd Sigma User`.
-
-Now use this new Profile to browse to Sigma (you can use the email link Sigma sent to setup the new account) and login.
-
-You can now have two Chrome windows side by side, each using a different `Profile`.
-
-<img src="assets/vt23.png" width="800"/>
-
-QA user does not see the `Version Tagging Workflow` Workbook yet, we need to share it with them. Their `Shared with me` folder is empty.
-
-<img src="assets/vt24.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
 
 
 <!-- END OF QUICKSTART -->
