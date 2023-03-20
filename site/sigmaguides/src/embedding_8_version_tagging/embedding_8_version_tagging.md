@@ -14,7 +14,7 @@ Duration: 5
 
 This QuickStart introduces you to Version Tagging in a Sigma embedded environment in order to manage promotions of Workbooks via the 3rd party tools. 
 
-Version tagging allows you to employ a software development cycle to control workbook versions, using tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
+Version tagging allows you to employ a software development cycle to control Workbook versions, using Tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
 
 When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
 
@@ -26,7 +26,7 @@ For example, you can create a Production tag and assign it to a workbook that's 
 
 There are many 3rd party tools available to manage the Continuous Integration / Continuous Development (CI/CD) workflow. 
 
-In this QuickStart, we will demonstration using Github for source control and GitLabs for CI/CD pipelines. 
+In this QuickStart, we will demonstration using Postman to simulate a CI/CD workflow and make manual edits to our local Node.js environment to evaluate the results of our API calls. In this way, we can demonstrate how a customer application using source control and pipelines could be used to make the same workflow work without asking the QuickStart user to create an excess amount of setup to become familiar with the Tag workflow in Sigma. 
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
@@ -41,17 +41,15 @@ In this QuickStart, we will demonstration using Github for source control and Gi
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
-  <li>A GitHub account with the proper administrative and security admin access.</li>
-  <li>A GitLab account with the proper administrative and security admin access.</li>
   <li>A Snowflake account with the proper administrative and security admin access for our use case data.</li>
-</ul>
+  <li>Completion of the QuickStart, "Sigma API with Postman" or an API tool that you use instead.</li>
 </ul>
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you do not use production resources when doing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[GitHub Sign-up](https://github.com/signup)</button>  <button>[GitLabs Sign-up](https://gitlab.com/users/sign_in)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
   
 ### What You’ll Learn
 How to manage CI/CD operations for a Sigma embedded environment.
@@ -244,68 +242,185 @@ Rename the table to `COMPANY_COUNTRY - DEVELOPMENT CONNECTION`.
 
 and `Publish` the change.
 
+
 Notice that in the table columns we are seeing `dev` appended in the rows. This is what we would expect given we are using the `Development Connection`.
 
 <img src="assets/vt8.png" width="700"/>
 
+Share the Workbook with the `FinanceViewers` team (this team was created in previous embedding QuickStarts) with `Can View` access:
+
+<img src="assets/vt29.png" width="700"/>
+
+Before we get into the promotion workflow, we need to make sure that our parent application with the Sigma embed is working. 
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## **Verify Local Node.js Environment**
+Duration: 20
 
+Before we do anything else, lets make sure the local embed environment is working at a base level. Creating this local environment was covered on the **Embedding 1: Prerequisites QuickStart**. so it is assumed the steps are familiar and we will move quickly in regards to those details. 
 
-## Add QA User
-
-To simulate sharing a promoted workbook to another user, we will need to add one. 
+If you went though the other embedded QuickStarts, you may have multiple folders for each one. Lets make a copy of the `sigma_application_embed` QuickStart folder and rename it to `sigma_application_embed_tagging`.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> You must use a unique email for each Sigma user. If you have a Gmail address you can use this trick. Just use your Gmail address but append a "+" and it will automatically route email to your base Gmail account. 
+<strong>NOTE:</strong><br> You can use and of the other QuickStart embedding base folders if you only did a few of them.
 </aside>
 
-<img src="assets/vt21.png" width="800"/>
+We will need to edit the `server.js` file for our Workbook so go ahead and do that. We only need to embed the Table.
 
-In Sigma, navigate to `Administration`, `People` and click the `Invite People` button. 
+<img src="assets/vt27.png" width="500"/>
 
-To make testing easier, you can login to Sigma in a different browser with the new account (you will get an email to setup your new account.). We will use Chrome `Profiles` to create a isolated browser instance so that we can have two Chrome browsers open at the same time, each logged in to Sigma with different logins, one simulate the `Developer` and another for `QA`.
+Place replace the `Embed Path` value at a minimum. Your `server.js` may require the to change the `clientID` and `secret` if they are no longer valid.
 
-<img src="assets/vt22.png" width="800"/>
+We will also just use the `Viewer` "Account Type":
 
-Choose `Continue without an account`. 
+<img src="assets/vt28.png" width="800"/>
 
-Give you Profile a name. We used `2nd Sigma User`.
+Bring up a Terminal session against the `sigma_application_embed_tagging` folder and run:
 
-Now use this new Profile to browse to Sigma (you can use the email link Sigma sent to setup the new account) and login.
+`supervisor server.js`.
 
-You can now have two Chrome windows side by side, each using a different `Profile`.
+Browse to `localhost:3000` to verify you can see a web page with the embed. 
 
-<img src="assets/vt23.png" width="800"/>
+<img src="assets/vt30.png" width="500"/>
 
-QA user does not see the `Version Tagging Workflow` Workbook yet, we need to share it with them. Their `Shared with me` folder is empty.
+We need to make a change to also pass the tag to Sigma at runtime. We do that but adding a section to `server.js` to set the value and then appending that value to the URL that is constructed prior to send.
 
-<img src="assets/vt24.png" width="800"/>
+<aside class="negative">
+<strong>NOTE:</strong><br> In the string `/tag/Development` the work "Development" should match a Tag that exists in Sigma. We will use this to inform the embed which tagged version to use later. The specific Workbook version number will also be passed in the API call, but is not part of the URL string.
+</aside>
+
+<img src="assets/vt34.png" width="800"/>
+
+Here is the code for convenience. 
+```plaintext
+// SECTION TAGGING:
+	let tag = '/tag/Development';
+
+// END SECTION TAGGING
+```
+and
+```plaintext
+// SECTION TAGGING:
+const URL_WITH_SEARCH_PARAMS = EMBED_PATH + tag + searchParams;
+```
+
+Save `server.js` after making the change and refresh the browser to make sure the page loads after this change.
+
+The page should be showing data from the development connection.
+
+We are ready to move to the next step.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
-
-
-
-
-
-## **Verify Local Environment**
+## **Promotions ect....**
 Duration: 20
 
-Before we do anything else, lets make sure the local embed environment is working at a base level. Creating this local environment was covered on the Embedding 1: Prerequisites QuickStart so it is assumed the steps are familiar and we will move quickly in regards to those details. 
+In this section we will use a combination of REST API calls (using Postman), the Sigma UI (to make small Workbook changes) and edits to `server.js` to simulate a CI/CD workflow. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Some steps using Postman will not be shown in detail as these were covered in the QuickStart, "Sigma API with Postman". Any REST tool can be used. You may also use the Sigma API Swagger or curl commands if you are more comfortable doing that.
+</aside>
+
+<button>[Sigma swagger page](https://docs.sigmacomputing.com/api/v2/#auth)</button>
+
+[It may also be useful to reference Sigma's API reference](https://help.sigmacomputing.com/hc/en-us/articles/4408827709459-Sigma-s-Swagger-Playground)
+
+In order to use the Sigma API, we must first get a new bearer token. Do that as instructed in the "Sigma API with Postman" QuickStart.
+
+We are ready to have the QA (Staging) team look at the Workbook in the Embed.
+
+We will use the API to set the Staging tag, the version, the Staging connection and Staging path and the Workbook that exists in Sigma. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The Workbook in Sigma's UI is currently showing data from the Development connection.
+</aside>
+
+We will accomplish this using the REST API only to obtain the required references. For example, we will need to obtain the unique identifiers for:
+
+ <ul>
+      <li>workbookUrlId</li>
+      <li>Development connection.</li>
+      <li>Development path.</li>
+      <li>Staging connection.<li>
+</ul>
+
+We will use these values to update values send to Sigma (in json format) using a REST POST message.
+
+Using a text editor (to hold the json temporarily) update each valuea that you obtain from the Postman calls. 
+
+**Sample json without the identifiers:**
+```plaintext
+{
+    "workbookId": "", 
+    "workbookVersion": 1, 
+    "tag": "Staging",
+    "grantSourceAccess": true,
+    "sourceMappingConfig": [
+      {
+        "fromConnectionId": "",
+        "toConnectionId": "",
+        "paths": [{ "fromPath": ["SIGMA_VT", "VT_DEV", "COMPANY_COUNTRY"], "toPath": ["SIGMA_VT", "VT_STAGING", "COMPANY_COUNTRY"] }]
+      }
+    ],
+    "sourceVersions": {}
+  } 
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Values for paths may be different depending on if you created different schema in Snowflake than what was provided in this QuickStart.
+</aside>
+
+In Postman, open the request for `Returns a workbook based on workbookId` in the `workbooks` folder. This will get the list of all workbooks. 
+
+Click `Send` and locate the Workbook named `Embedding 8: Version Tagging` in the return. 
+
+Copy it's workbookUrlId value and update the json sample:
+
+<img src="assets/vt36.png" width="800"/>
+
+We now need to get the GUIDs for the Development and Staging connection using the method `Returns a list of available connections`:
+
+Copy the two GUIDs (one for Development and another for Staging) from the return and update the json code.
+
+<img src="assets/vt37.png" width="800"/>
+
+Send the API request. The API should return with a 200 Status and three lines of information (number 10)
+
+<img src="assets/vt38.png" width="800"/>
+
+We have now tagged the Workbook to Staging, version 1. We can make this what is displayed in the Parent application by changing the one line of code in server.js:
+
+
+
+<img src="assets/vt39.png" width="800"/>
 
 
 
 
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
-## **2**
-Duration: 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -357,4 +472,42 @@ INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
+
+
+## Add QA User
+
+To simulate sharing a promoted workbook to another user, we will need to add one. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You must use a unique email for each Sigma user. If you have a Gmail address you can use this trick. Just use your Gmail address but append a "+" and it will automatically route email to your base Gmail account. 
+</aside>
+
+<img src="assets/vt21.png" width="800"/>
+
+In Sigma, navigate to `Administration`, `People` and click the `Invite People` button. 
+
+To make testing easier, you can login to Sigma in a different browser with the new account (you will get an email to setup your new account.). We will use Chrome `Profiles` to create a isolated browser instance so that we can have two Chrome browsers open at the same time, each logged in to Sigma with different logins, one simulate the `Developer` and another for `QA`.
+
+<img src="assets/vt22.png" width="800"/>
+
+Choose `Continue without an account`. 
+
+Give you Profile a name. We used `2nd Sigma User`.
+
+Now use this new Profile to browse to Sigma (you can use the email link Sigma sent to setup the new account) and login.
+
+You can now have two Chrome windows side by side, each using a different `Profile`.
+
+<img src="assets/vt23.png" width="800"/>
+
+QA user does not see the `Version Tagging Workflow` Workbook yet, we need to share it with them. Their `Shared with me` folder is empty.
+
+<img src="assets/vt24.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+
+
 <!-- END OF QUICKSTART -->
