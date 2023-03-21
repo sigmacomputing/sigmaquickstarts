@@ -1,6 +1,6 @@
 author: pballai
-id: Sembedding_8_version_tagging
-summary: Tembedding_8_version_tagging
+id: embedding_8_version_tagging
+summary: embedding_8_version_tagging
 categories: embedding
 environments: web
 status: Published
@@ -19,6 +19,11 @@ Version tagging allows you to employ a software development cycle to control Wor
 When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
 
 For example, you can create a Production tag and assign it to a workbook that's used by embed users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users via external tool of your choice.
+
+The tagging design is flexible but at a high level, this is the workflow involved:
+
+<img src="assets/vt1a.png" width="800"/>
+
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> One of the benefits of Tagging is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
@@ -56,7 +61,7 @@ How to manage CI/CD operations for a Sigma embedded environment.
 
 ### What You’ll Build
 
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+We will a sample dataset in Snowflake and use a Sigma Workbook to display that data, based on different tagged versions we will create. We will then display them using Sigma's embedding framework, inside a Parent application.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -483,15 +488,72 @@ We left the Parent application using the Development version of the Workbook.
 
 Lets assume QA (in Staging) asked us to change the table title and then push right into production. 
 
-PHIL - DELETE EVERYTHING and start over. want to show that DEv / Draft versions the workbook by number
+Currently, we have a Development and Staging copy of the Workbook at version #1. If we want to see the version number, open `Version history` and click on where the red arrow shows:
 
+Notice that the Workbook changes from "Production" to a specific version and the version number is shown in the URL now:
 
-<img src="assets/vt46.png" width="800"/>
+<img src="assets/vt47.png" width="800"/>
 
+In the "Version menu", click to change to the `Development` version and then `Draft`.
 
+The Workbook is now that copy, version #1 and in edit mode.
 
+<img src="assets/vt48.png" width="800"/>
 
+Change the table title to `Production` and hit `Enter`.
 
+Notice that there is activity in the Version history sidebar? We have a `Pending Draft` with our change but since it is not yet saved, it is not yet a new version.
+
+Click on `Publish button`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you clicked around and got lost, just use the Version menu to set it back to "Development" and "Draft".
+</aside>
+
+<img src="assets/vt49.png" width="800"/>
+
+Clicking the latest Production version in the `Version history` yields the version number in the URL. We now have version 2. Version 1 still exists and we can use either copy for the embed.
+
+<img src="assets/vt50.png" width="800"/>
+
+We can see version 1 by clicking the first version in the `Version history` list.
+
+<img src="assets/vt51.png" width="800"/>
+
+We now want to tag version 2 as "Production". 
+
+In Postman, we need to make a few changes to the `Tags a workbook` method so that we are using the correct values as done earlier.
+
+The WorkbookId is the same but we need to change:
+
+ <ul>
+      <li><strong>workbookVersion:</strong> 2</li>
+      <li><strong>tag</strong> Production</li>
+      <li><strong>fromConnectionId</strong> the development connectionId</li>
+      <li><strong>toConnectionId</strong> the production connectionId</li>
+      <li><strong>fromPath</strong> ["SIGMA_VT", "VT_DEV", "COMPANY_COUNTRY"]</li>
+      <li><strong>toPath</strong> ["SIGMA_VT", "VT_PROD", "COMPANY_COUNTRY"]</li>
+
+</ul>
+
+Once you the edits are made, `Send` the request and observe the return of `Status 200` and three lines of information.
+
+<img src="assets/vt52.png" width="800"/>
+
+Update `server.js` to use the Production tag:
+```plaintext
+// SECTION TAGGING:
+	 // let tag = '/tag/Development';
+	// let tag = '/tag/Staging';
+	 let tag = '/tag/Production';
+// END SECTION TAGGING
+```
+
+...and save the change.
+
+Refresh the browser and we now see version 2 of the Workbook with Production data and the table title of "Production":
+
+<img src="assets/vt53.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -499,9 +561,7 @@ PHIL - DELETE EVERYTHING and start over. want to show that DEv / Draft versions 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we reviewed how to use Sigma Version Tagging to manage a CI/CD workflow (manually) to promote/demote copies of Sigma Workbooks. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
