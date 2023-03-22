@@ -12,28 +12,25 @@ tags: Getting Started
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to Version Tagging in a Sigma embedded environment in order to manage promotions of Workbooks via the 3rd party tools. 
+This QuickStart introduces you to Version Tagging in a Sigma embedded environment in order to manage promotions of Workbooks via the third party CI/CD tools. Examples of popular Continuous Integration / Continuous Development (CI/CD) tools include GitLabs, Jenkins, Circle CI, Bamboo and many others.
 
-Version tagging allows you to employ a software development cycle to control Workbook versions, using Tags. For example, Sigma can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
+Version tagging allows you to employ a software development lifecycle to control Workbook versions, using tags. For example, Sigma can have a development, staging, and production versions of a workbook and migrate changes as needed. This allows you to control which workbook versions are available to your users. 
 
-When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
+When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. The process of tagging a Workbook creates a duplicate that can be shared with other stakeholders and users.  
 
-For example, you can create a Production tag and assign it to a workbook that's used by embed users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users via external tool of your choice.
+For example, you can create a "Production" tag and assign it to a Workbook that is used by embed users. Moreover, you can tag additional versions of the same Workbook such as "Development" or "Staging". These versions can be used by different stakeholders in your company for various purposes. Once reviewed, you can migrate this copy to production for your users via external CI/CD tool of your choice.
 
 The tagging design is flexible but at a high level, this is the workflow involved:
 
 <img src="assets/vt1a.png" width="800"/>
 
-
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> One of the benefits of Tagging is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
-</aside>
+<strong>IMPORTANT:</strong><br> One of the benefits of tagging is your company can modify a "Development" Workbook without affecting the experience of your customers who use the "Production" version. Once you complete your developmental changes, you can easily update the "Production" version of the workbook by incrementing the Workbook version number that the tag is using.
+</aside> 
 
-There are many 3rd party tools available to manage the Continuous Integration / Continuous Development (CI/CD) workflow. 
+In this QuickStart, we will demonstration using Postman to simulate a CI/CD workflow and make manual edits to our local Node.js environment to evaluate the results of our API calls. In this way, we can demonstrate how a customer application using source control and pipelines could be used to make the same workflow work without asking the QuickStart user to create an excess amount of setup to become familiar with the tag workflow in Sigma. 
 
-In this QuickStart, we will demonstration using Postman to simulate a CI/CD workflow and make manual edits to our local Node.js environment to evaluate the results of our API calls. In this way, we can demonstrate how a customer application using source control and pipelines could be used to make the same workflow work without asking the QuickStart user to create an excess amount of setup to become familiar with the Tag workflow in Sigma. 
-
-**Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
+**Some steps may not be shown in detail as we assume you have completed any prerequisites and are familiar with Sigma workflows.**
 
  ### Target Audience
  Semi-technical users who will be aiding in the DevOps implementation of Sigma. 
@@ -45,7 +42,7 @@ In this QuickStart, we will demonstration using Postman to simulate a CI/CD work
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
+  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites.</li>
   <li>A Snowflake account with the proper administrative and security admin access for our use case data.</li>
   <li>Completion of the QuickStart, "Sigma API with Postman" or an API tool that you use instead.</li>
 </ul>
