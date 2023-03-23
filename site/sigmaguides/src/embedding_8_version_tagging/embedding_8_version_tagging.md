@@ -51,7 +51,7 @@ In this QuickStart, we will demonstration using Postman to simulate a CI/CD work
 <strong>IMPORTANT:</strong><br> Sigma recommends that you do not use production resources when doing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Login or Sign Up to Postman](https://identity.getpostman.com/login)</button>
   
 ### What You’ll Learn
 How to manage CI/CD operations for a Sigma embedded environment.
@@ -70,7 +70,7 @@ We will need to create three schemas in Snowflake, each having the same tables w
 
 To help you accomplish this, we will provide the Snowflake script required to do this. 
 
-<aside class="negative"><strong>NOTE:</strong><br> The remainder of this QuickStart with reference these tables as our Workbook is promoted from Dev to Staging to Prod.</aside>
+<aside class="negative"><strong>NOTE:</strong><br> The remainder of this QuickStart with reference these tables as our Workbook is promoted from Development to Staging to Prod.</aside>
 
 ```plaintext
 // 1: CREATE OR REPLACE DATABASE AND SET IT TO CURRENT
@@ -175,7 +175,13 @@ Log into Sigma as an Administrator and head to the `Administration` / `Connectio
 
 Click the `Create Connection` button. Select `Snowflake` and fill out the form.
 
-The values for `User`, `Password` and `Role` were defined in our Snowflake Script so use those. 
+The values for `User`, `Password` and `Role` were defined in our Snowflake Script as:
+```
+Connection Name:                  User:           Password:       Role:
+Version Tagging - Development     vtag_dev        Dev99!          VT_DEV       
+Version Tagging - Staging         vtag_staging    Staging99!      VT_STAGING
+Version Tagging - Production      vtag_prod       Prod99!         VT_PROD
+```
 
 <img src="assets/vt4.png" width="800"/>
 
@@ -193,7 +199,7 @@ Verify that you can see table data for the `Company` and `Company Country` table
 
 Now repeat the process, adding new Connections for `Staging` and `Prod`. Be sure to use the correct `User` and `Role` for each accordingly.
 
-You should now have three working connections. The only different is the table data for each.
+You should now have three working connections. The only difference is the table data for each.
 
 <img src="assets/vt7.png" width="400"/>
 
@@ -203,9 +209,6 @@ You should now have three working connections. The only different is the table d
 ## **Sigma Tags**
 Duration: 5
 
-<aside class="postive">
-<strong>VERY IMPORTANT:</strong><br> When you create a tag and assign it to a workbook, you essentially freeze the state of that workbook. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users. When you share the final (Production) version of the Workbook, it will be different than the original "Published" version of the Workbook in the Sigma creator's UI. Other tagged versions of the Workbook will not be accessible (creator and Administrator aside) unless explicitly shared with others. The tag name is appended to the URL and we will cover that later. 
-</aside>
 
 Log into Sigma as an Administrator and head to the `Administration` / `Tags` page.
 
@@ -226,15 +229,17 @@ Repeat the process, adding a `Production` tag. You should now have two tags:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Sigma Dateset and Workbook
+## Sigma Workbook
 
-Create a new Dataset and save it as `Version Tagging`, selecting from the `Version Tagging - DEVELOPMENT` connection.
+Create a new Dataset and select the `Version Tagging - DEVELOPMENT` connection.
 
 Select the `Sigma_VT` / `Company_Country` table.
 
 Click `Get Started`
 
 <img src="assets/vt9.png" width="800"/>
+
+Change the Dataset name to: `Version Tagging`.
 
 Click `Publish` then click `Explore`.
 
@@ -261,8 +266,6 @@ Before we get into the promotion workflow, we need to make sure that our parent 
 ## **Verify Local Node.js Environment**
 Duration: 20
 
-Before we do anything else, lets make sure the local embed environment is working at a base level. Creating this local environment was covered on the **Embedding 1: Prerequisites QuickStart**. so it is assumed the steps are familiar and we will move quickly in regards to those details. 
-
 If you went though the other embedded QuickStarts, you may have multiple folders for each one. Lets make a copy of the `sigma_application_embed` QuickStart folder and rename it to `sigma_application_embed_tagging`.
 
 <aside class="negative">
@@ -287,7 +290,7 @@ Browse to `localhost:3000` to verify you can see a web page with the embed.
 
 <img src="assets/vt30.png" width="500"/>
 
-We need to make a change to also pass the tag to Sigma at runtime. We do that but adding a section to `server.js` to set the value and then appending that value to the URL that is constructed prior to send.
+We need to make a change to also pass the tag to Sigma (and add it to the URL) at runtime. We do that but adding a section to `server.js` to set the value and then appending that value to the URL that is constructed prior to send.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> In the string `/tag/Development` the work "Development" should match a Tag that exists in Sigma. We will use this to inform the embed which tagged version to use later. The specific Workbook version number will also be passed in the API call, but is not part of the URL string.
@@ -295,31 +298,34 @@ We need to make a change to also pass the tag to Sigma at runtime. We do that bu
 
 <img src="assets/vt34.png" width="800"/>
 
-Here is the code for convenience. 
+Here is the code for convenience (leave the lines commented out for now):
 ```plaintext
 // SECTION TAGGING:
-	   let tag = '/tag/Development';
+	// let tag = '/tag/Development';
 	// let tag = '/tag/Staging';
 	// let tag = '/tag/Production';
 // END SECTION TAGGING
+```
 
 <aside class="negative">
 <strong>NOTE:</strong><br> In the code sample above, we have three statements setting the value for "tag".  Two are commented out. This is so when we test, we can just comment/uncomment the tag we want to use and save the server.js. It saves a few bits of typing and that is always appreciated.
 </aside>
-```
 
 and...
 
 ```plaintext
 // SECTION TAGGING:
-const URL_WITH_SEARCH_PARAMS = EMBED_PATH + tag + searchParams;
+  // const URL_WITH_SEARCH_PARAMS = EMBED_PATH + searchParams;
+  // const URL_WITH_SEARCH_PARAMS = EMBED_PATH + tag + searchParams;
 ```
 
 Save `server.js` after making the change and refresh the browser to make sure the page loads after this change.
 
 The page should be showing data from the Development connection.
 
-**Bear in mind that we have not applied a Development tag to this Workbook. We will see what happens later.**
+**Bear in mind that we have not applied a Development tag to this Workbook yet.**
+
+<img src="assets/vt34a.png" width="800"/>
 
 We are ready to move to the next step.
 
@@ -422,7 +428,6 @@ Edit server.js:
 	// let tag = '/tag/Development';
 	 let tag = '/tag/Staging';
 	// let tag = '/tag/Production';
-
 // END SECTION TAGGING
 ```
 
@@ -438,7 +443,6 @@ Edit server.js:
 	 let tag = '/tag/Development';
 	// let tag = '/tag/Staging';
 	// let tag = '/tag/Production';
-
 // END SECTION TAGGING
 ```
 
