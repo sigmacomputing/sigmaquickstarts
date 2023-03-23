@@ -220,7 +220,7 @@ Set the name to `Development` (pick any color you prefer, it won't matter for ou
 
 Repeat the process, adding a `Production` tag. You should now have two tags:
 
-<img src="assets/vt2.png" width="500"/>
+<img src="assets/vt2.png" width="400"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> To access a tagged workbook, users must be granted access to the workbook or be the workbook's editor. 
@@ -249,10 +249,19 @@ Rename the table to `COMPANY_COUNTRY - DEVELOPMENT CONNECTION`.
 
 and `Publish` the change.
 
-
 Notice that in the table columns we are seeing `dev` appended in the rows. This is what we would expect given we are using the `Development Connection`.
 
 <img src="assets/vt8.png" width="700"/>
+
+Click the `Version pill` in the header and select `Version history` to open the sidebar.
+
+<img src="assets/vt8a.png" width="700"/>
+
+Click the top entry in `Version history` and note the version number at the end of the URL string. 
+
+<img src="assets/vt8b.png" width="700"/>
+
+When we changed the table title's text value, Sigma recorded that change and when we published it, the version incremented from v1 to v2. We will reference version number 2 in our API call later when we promote to Staging.
 
 Share the Workbook with the `FinanceViewers` team (this team was created in previous embedding QuickStarts) with `Can View` access:
 
@@ -353,30 +362,30 @@ In order to use the Sigma API, we must first get a new bearer token. Do that, as
 
 We are ready to have the QA (Staging) team look at the Workbook in the Embed.
 
-We will use the API to set the Staging tag, the version, the Staging connection and Staging path and the Workbook that exists in Sigma. 
+We will use the API to tag the Workbook with new values for the Staging tag, version number, Staging connection and Staging path. This will create a new copy of the Workbook (as a tagged version). The original state of the Workbook is also retained if we want to roll back to it later.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The Workbook in Sigma's UI is currently showing data from the Development connection.
+<strong>REMINDER:</strong><br> The Workbook in Sigma's UI is currently showing data from the Development connection.
 </aside>
 
-We will accomplish this using the REST API only to obtain the required references. For example, we will need to obtain the unique identifiers for:
+First, we need to use the REST API to obtain the required references. We will need to obtain the references (unique identifiers) for:
 
  <ul>
       <li>workbookUrlId</li>
-      <li>Development connection.</li>
-      <li>Development path.</li>
-      <li>Staging connection.<li>
+      <li>Development connection</li>
+      <li>Development path</li>
+      <li>Staging connection<li>
 </ul>
 
-We will use these values to update values send to Sigma (in json format) using a REST POST message.
+We will use these values to update the Sigma Workbook (in json format) using a REST POST message.
 
-Using a text editor (to hold the json temporarily) update each valuea that you obtain from the Postman calls. 
+Using a text editor (to hold the json temporarily) update each value that you obtain from the Postman calls. 
 
 **Sample json without the identifiers for workbookId, fromConnectionId and toConnectionId:**
 ```plaintext
 {
     "workbookId": "", 
-    "workbookVersion": 1, 
+    "workbookVersion": 2, 
     "tag": "Staging",
     "grantSourceAccess": true,
     "sourceMappingConfig": [
@@ -412,9 +421,9 @@ Send the API request. The API should return with a 200 Status and three lines of
 
 <img src="assets/vt38.png" width="800"/>
 
-We have now tagged the Workbook to Staging, version 1. We can make this what is displayed in the Parent application by changing the one line of code in server.js.
+We have now tagged the Workbook to Staging, version 2. We can make this what is displayed in the Parent application embed by changing the one line of code in server.js.
 
-First, verify in Sigma that the published version is showing the Development connection. This is expected:
+First, verify in Sigma that the published version is showing the Development connection. Refresh the Sigma Workbook in the browser. This result is expected:
 
 <img src="assets/vt39.png" width="800"/>
 
@@ -422,16 +431,11 @@ The red arrow is showing `Version History` and showing that the Workbook has als
 
 Now the Parent application will still be using the Development connection until we alter `server.js` to adjust the URL to point to Staging.
 
-Edit server.js:
-```plaintext
-// SECTION TAGGING:
-	// let tag = '/tag/Development';
-	 let tag = '/tag/Staging';
-	// let tag = '/tag/Production';
-// END SECTION TAGGING
-```
+<img src="assets/vt39a.png" width="800"/>
 
-Save `server.js` and refresh the Parent application page. We now see the table is using the Staging connection's data and the embed URL is point to Stating (on two lines...)
+Save `server.js` and refresh the Parent application page. 
+
+We now see the table is using the Staging connection's data and the embed URL is point to Stating (on two lines...). **We also see the content creator forgot to change the table's title.** We will have to ask them to update that before pushing to production.
 
 <img src="assets/vt41.png" width="800"/>
 
@@ -450,9 +454,9 @@ Save `server.js` and refresh the Parent application page.
 
 Now we get an error; what happened?
 
-<img src="assets/vt42.png" width="800"/>
+<img src="assets/vt42.png" width="500"/>
 
-In section 5 and 6 we never tagged the initial Workbook `Development` so any reference to that in the URL was ignored as no tags existed at then. Once we tagged the Workbook `Staging` and later tried to request the Workbook with the Development tag, Sigma could not find that tag associated with a tagged workbook with the requested `workbookUrlId` so it failed with a `404`, page not found.
+In section 5 and 6 we never tagged the initial Workbook `Development`, so any reference to that in the URL was ignored as no tags existed at then. Once we tagged the Workbook `Staging` and later tried to request the Workbook with the Development tag, Sigma could not find that tag associated with the Workbook, so it failed with a `404`, page not found.
 
 We can also confirm this in the Sigma UI by looking at what versions exist as:
 
@@ -489,7 +493,7 @@ We left the Parent application using the Development version of the Workbook.
 
 Lets assume QA (in Staging) asked us to change the table title and then push right into production. 
 
-Currently, we have a Development and Staging copy of the Workbook at version #1. If we want to see the version number, open `Version history` and click on where the red arrow shows:
+Currently, we have a Development and Staging copy of the Workbook at version 2. If we want to see the version number, open `Version history` and click on where the red arrow shows:
 
 Notice that the Workbook changes from "Production" to a specific version and the version number is shown in the URL now:
 
@@ -497,7 +501,7 @@ Notice that the Workbook changes from "Production" to a specific version and the
 
 In the "Version menu", click to change to the `Development` version and then `Draft`.
 
-The Workbook is now that copy, version #1 and in edit mode.
+The Workbook is now that copy, version #2 and in edit mode.
 
 <img src="assets/vt48.png" width="800"/>
 
@@ -505,30 +509,26 @@ Change the table title to `Production` and hit `Enter`.
 
 Notice that there is activity in the Version history sidebar? We have a `Pending Draft` with our change but since it is not yet saved, it is not yet a new version.
 
+<img src="assets/vt49.png" width="800"/>
+
 Click on `Publish button`.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> If you clicked around and got lost, just use the Version menu to set it back to "Development" and "Draft".
 </aside>
 
-<img src="assets/vt49.png" width="800"/>
-
-Clicking the latest Production version in the `Version history` yields the version number in the URL. We now have version 2. Version 1 still exists and we can use either copy for the embed.
+Clicking the latest Production version in the `Version history` yields the version number in the URL. We now have version 3. Versions 1 & 2 still exist and we will use v3 (with our final table title) for the embed.
 
 <img src="assets/vt50.png" width="800"/>
 
-We can see version 1 by clicking the first version in the `Version history` list.
-
-<img src="assets/vt51.png" width="800"/>
-
-We now want to tag version 2 as "Production". 
+Tag version 3 as "Production" using the same steps as before.
 
 In Postman, we need to make a few changes to the `Tags a workbook` method so that we are using the correct values as done earlier.
 
 The WorkbookId is the same but we need to change:
 
  <ul>
-      <li><strong>workbookVersion:</strong> 2</li>
+      <li><strong>workbookVersion:</strong> 3</li>
       <li><strong>tag</strong> Production</li>
       <li><strong>fromConnectionId</strong> the development connectionId</li>
       <li><strong>toConnectionId</strong> the production connectionId</li>
@@ -554,7 +554,7 @@ Update `server.js` to use the Production tag:
 
 Refresh the browser and we now see version 2 of the Workbook with Production data and the table title of "Production":
 
-<img src="assets/vt53.png" width="800"/>
+<img src="assets/vt53.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -562,7 +562,7 @@ Refresh the browser and we now see version 2 of the Workbook with Production dat
 ## What we've covered
 Duration: 5
 
-In this QuickStart we reviewed how to use Sigma Version Tagging to manage a CI/CD workflow (manually) to promote/demote copies of Sigma Workbooks. 
+In this QuickStart we reviewed how to use Sigma Version Tagging to manage a CI/CD workflow (manually) to promote/demote a Sigma Workbook while changing the underlying data displayed to the embed user. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
