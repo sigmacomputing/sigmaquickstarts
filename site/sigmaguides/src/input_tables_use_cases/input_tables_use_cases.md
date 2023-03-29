@@ -435,7 +435,7 @@ Rename the chart to `Sum of Amount by New Sub Region - AFTER`.
 
 We are ready to evaluate the Territory and make some adjustments. 
 
-First we need to see why the Midwest so so much larger than the TOLA in terms of sales. We want to close this gap if we can. 
+First we need to see why the Midwest so much larger than the TOLA in terms of sales. We want to close this gap if we can. 
 
 In the `Before` chart, click the Midwest bar and `Drill down` into `Territory`.
 
@@ -453,7 +453,7 @@ Also change the `New Sub Region` for `Iowa` to be in `TOLA`.
 
 <img src="assets/tp22.png" width="800"/>
 
-The gap is must better now, Mike is happy.
+The gap is much better now, Mike is happy.
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Input Tables allow end users to quickly iterate over "what-if-scenarios` with violating corporate governance rules; making better decisions based on actual data.
