@@ -116,7 +116,7 @@ Your text here...
 
 **Markdown for IMPORTANT:**
 ```plaintext
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Your text here.
 </aside>
 ```
