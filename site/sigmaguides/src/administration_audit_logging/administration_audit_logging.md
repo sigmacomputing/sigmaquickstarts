@@ -43,6 +43,10 @@ How to access and explore audit logs in Sigma.
 
 ### What You’ll Build
 
+We will build a simple example of user login failures as demonstration but much more is possible. 
+
+<img src="assets/al13.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -66,7 +70,7 @@ From here, we are able to:
     </ol>
   </li>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> The audit log connection is provided and managed by Sigma. Changing connection parameters may cause the feature to stop working.
 </aside>
 
@@ -94,10 +98,10 @@ These categories are stored in the column, `Event Type`:
 
  <ul>
       <li><strong>ACCESS_SIGMA:</strong> User access and interactions with passwords.</li>
-      <li><strong>USER_ACCOUNTS:</strong> Admin interactions with member accounts and user invitations.<li>
+      <li><strong>USER_ACCOUNTS:</strong> Admin interactions with member accounts and user invitations.</li>
       <li><strong>ACCOUNT_TYPES:</strong> Admin interactions with account type configurations and member assignments.</li>
-      <li><strong>TEAMS:</strong> 	Admin interactions with team settings and member assignments.</li>
-      <li><strong>CONNECTIONS:</strong> 	Admin interactions with database connection configurations.</li>
+      <li><strong>TEAMS:</strong> Admin interactions with team settings and member assignments.</li>
+      <li><strong>CONNECTIONS:</strong>	Admin interactions with database connection configurations.</li>
 </ul>
 
 For all events, there is a set of `Base Data` that is included for each row of data.
@@ -114,24 +118,98 @@ As there is a large number of options and they are subject to change over time, 
 ## **Exploring the Audit Log**
 Duration: 20
 
+It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to tem minutes between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
+
+Since your Log may not have much data if you are in a Sigma Trial, we will demonstrate how to use the Audit Log to see how many failed login attempts have occurred and what resource the user was trying to access. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Exploring the Audit Log is no different than using Sigma against any other data source so this is a breeze.
+</aside>
+
+Back in Sigma, click the `Explore` button to open the `AUDIT_LOG` table in a Sigma Workbook. 
+
+`Group` the table by `Event Status Reason Code` and `Object Name`. Add `User Email` as a count to the first grouping. 
+
+We can now see the two many reasons for login failures (No matching record and invalid credentials) and how many of each occurred in the life of the log period. Additionally we can see the resource (Object Name) that the user was trying to access.
+
+**Ignore the nulls for now**
+
+<img src="assets/al5.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Audit Logs are 90 days in duration by default. In order to retain entries for an extended period of time, we recommend saving the AUDIT_LOGS table as a Workbook and scheduling exports to a cloud-based storage service.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## **Exporting Audit Log Data**
+Duration: 20
+
+There may be reasons to store Audit Log data outside of Sigma. A few examples are:
+
+ <ul>
+      <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 90 days only.</li>
+      <li><strong>Provide access to third party tool:</strong> Many organizations have central log analysis tools they prefer to use.</li>
+      <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.<li>
+</ul>
+
+Let's assume that we need to capture all events where a user login failed. 
+
+Building on the last exercise, we have most of what we need but need to remove all the logins that succeeded. This is easy with a filter.
+
+Click on the column `Event Status` and set a filter to only show `Event Status` of `Failure`:
+
+<img src="assets/al6.png" width="800"/>
+
+Save the Workbook as `User Login Failures`:
+
+<img src="assets/al7.png" width="800"/>
+
+Now let's prepare our scheduled export:
+
+<img src="assets/al8.png" width="800"/>
+
+Click `Add Schedule` from the pop-up.
+
+Provide values for each numbered item as shown:
+
+<img src="assets/al10.png" width="800"/>
+
+For `Storage Integration` we will be using a method that provides a secure connection between Snowflake (where the Audit Log export is staged) to AWS S3.
+
+[For more information on how to configure secure access to S3 from Snowflake, click here](https://docs.snowflake.com/en/user-guide/data-load-s3-config)
+
+For `Destination Cloud Storage URI`, use the link to `Copy S3 URI` in AWS S3 to get this string:
+
+<img src="assets/al11.png" width="800"/>
+
+We will use the Sigma Workbook Page Element and .csv format for the export.
+
+Scrolling down, we want each export to use the current date/time in the filename. The rest of this schedule is up to you. For demonstration, we will invoke this job to `Run now` so we can see the results land in S3. 
+
+Click `Save Schedule`.
+
+<img src="assets/al9.png" width="800"/>
+s3://sigma-quickstarts-main/audit_logs/
 
 
-CLick the `Explore` button.
 
 
 
 
 
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we learned how Sigma Audit Logs are structured and can be used to provide detailed information about events as users interact with Sigma including scheduled jobs.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
