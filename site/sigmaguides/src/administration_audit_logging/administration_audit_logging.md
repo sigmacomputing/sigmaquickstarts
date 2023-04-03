@@ -21,6 +21,11 @@ For example, a user may report they never received the invitation email that the
 
 Since the data is available as a Sigma connection, we can explore it in a Sigma workbook to analyze how users across your organization utilize Sigma.
 
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> No customer data is stored in the Audit Log. Only events/actions and context is logged. 
+</aside>
+
+
 ### Target Audience
 Anyone who is trying to monitor lower level activities and details related to Sigma.
 
@@ -150,7 +155,7 @@ There may be reasons to store Audit Log data outside of Sigma. A few examples ar
 
  <ul>
       <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 90 days only.</li>
-      <li><strong>Provide access to third party tool:</strong> Many organizations have central log analysis tools they prefer to use.</li>
+      <li><strong>Provide access to third party tool:</strong> Many organizations have central anomaly detection tools they prefer to use.</li>
       <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.<li>
 </ul>
 
