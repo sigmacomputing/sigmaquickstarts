@@ -56,7 +56,7 @@ We will build a simple example of user login failures as demonstration but much 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Browse Audit Logs**
+## Browse Audit Logs
 Duration: 20
 
 Log into Sigma as `Administrator` and click `Connections` in the left sidebar.
@@ -89,15 +89,17 @@ Your table will have different row information as Sigma is logging events for yo
 
 Sliding right on the table to see more columns we see some columns have data and some do not (nulls). This is normal and expected as each event will have different characteristics and therefore record different details. 
 
-<img src="assets/al2.png" width="800"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Audit Logs are 90 days in duration by default. In order to retain entries for an extended period of time, we recommend saving the AUDIT_LOGS table as a Workbook and scheduling exports to a cloud-based storage service.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Structure of Data**
+## Structure of Data
 Duration: 20
 
-Audit log records each event into one of several categories. This allows easy analysis and visualization after the event in Sigma.
+Audit log records each event into one of several categories. This allows easy analysis and visualization of events in Sigma.
 
 These categories are stored in the column, `Event Type`:
 
@@ -123,7 +125,7 @@ As there is a large number of options and they are subject to change over time, 
 ## **Exploring the Audit Log**
 Duration: 20
 
-It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to tem minutes between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
+It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to ten minutes between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
 
 Since your Log may not have much data if you are in a Sigma Trial, we will demonstrate how to use the Audit Log to see how many failed login attempts have occurred and what resource the user was trying to access. 
 
@@ -131,19 +133,59 @@ Since your Log may not have much data if you are in a Sigma Trial, we will demon
 <strong>IMPORTANT:</strong><br> Exploring the Audit Log is no different than using Sigma against any other data source so this is a breeze.
 </aside>
 
-Back in Sigma, click the `Explore` button to open the `AUDIT_LOG` table in a Sigma Workbook. 
+Back in Sigma, click the `Explore` button to open the `AUDIT_LOG` table in a Sigma Workbook:
 
-`Group` the table by `Event Status Reason Code` and `Object Name`. Add `User Email` as a count to the first grouping. 
+<img src="assets/al14.png" width="800"/>
 
-We can now see the two many reasons for login failures (No matching record and invalid credentials) and how many of each occurred in the life of the log period. Additionally we can see the resource (Object Name) that the user was trying to access.
+Let's see what is going on with user logins, both success and failures.
 
-**Ignore the nulls for now**
+Create a new `Child Vizualization` from the AUDIT_LOGS table:
 
-<img src="assets/al5.png" width="800"/>
+<img src="assets/al15.png" width="800"/>
+
+Drag the `Request Time` column up the the X-AXIS (on the Element Panel, left sidebar). It will automatically truncate to `Day of Request Time` and this is what we want.
+
+Create two ne columns from the Y-AXIS and rename them as:
+
+<img src="assets/al16.png" width="800"/>
+
+For the Y-AXIS columns we will use these formulas for each:
+
+```plaintext
+COLUMN          FORMULA
+Success         CountIf([Event Type] = "LOGIN", [Event Status] = "SUCCESS")
+Failure         CountIf([Event Type] = "LOGIN", [Event Status] = "FAILURE")
+```
+
+For example we will place the Success formula as shown:
+
+<img src="assets/al17.png" width="800"/>
+
+Lastly, change the chart type to `Combo`. We now can see how many users are active each day and also how many failed login attempts are happening. 
+
+<img src="assets/al18.png" width="800"/>
+
+Save the Workbook as `Daily Login Activity`:
+
+<img src="assets/al19.png" width="800"/>
+
+Let's explore the results. Click the `expand` icon to work with the chart and it's underlying data directly:
+
+<img src="assets/al20.png" width="800"/>
+
+03-16-2023 has the most login failures so right-click on that bar and select to `keep only` it's data:
+
+<img src="assets/al21.png" width="800"/>
+
+Notice that we have a single bar but the table below it shows the underlying data for 03-16-2023 only. This is Sigma `Drill Anywhere` in action.
+
+<img src="assets/al22.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Audit Logs are 90 days in duration by default. In order to retain entries for an extended period of time, we recommend saving the AUDIT_LOGS table as a Workbook and scheduling exports to a cloud-based storage service.
+<strong>IMPORTANT:</strong><br> Drill Anywhere is unique and powerful. We did not explicitly plan for how a user might want to explore deep into the data ahead of time, it just works by default. This increases user adoption, satisfaction and reduces the number of changes the development team needs to do after the fact.
 </aside>
+
+At this point we could further explore the data table for insights but that is not the goal of this QuickStart.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -201,7 +243,6 @@ s3://sigma-quickstarts-main/audit_logs/
 
 
 
-asdasDasdasDA
 
 
 
