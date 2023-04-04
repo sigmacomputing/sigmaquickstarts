@@ -48,10 +48,9 @@ How to access and explore audit logs in Sigma.
 
 ### What You’ll Build
 
-We will build a simple example of user login failures as demonstration but much more is possible. 
+We will build a chart showing daily user logins (success and failure) as demonstration but much more is possible. 
 
-<img src="assets/al13.png" width="800"/>
-
+<img src="assets/al27.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -69,9 +68,9 @@ From here, we are able to:
 
  <li>
     <ol type="n"> 
-      <li>1: Browse into the "Audit Logs" table directly.</li>
-      <li>2: Grant permission for another user to access the log table.</li>
-      <li>3: Manage the connection (not recommended to do.)</li>
+      <li>Browse into the "Audit Logs" table directly.</li>
+      <li>Grant permission for another user to access the log table.</li>
+      <li>Manage the connection (not recommended to do.)</li>
     </ol>
   </li>
 
@@ -127,7 +126,7 @@ Duration: 20
 
 It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to ten minutes between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
 
-Since your Log may not have much data if you are in a Sigma Trial, we will demonstrate how to use the Audit Log to see how many failed login attempts have occurred and what resource the user was trying to access. 
+Since your Log may not have much data if you are in a Sigma Trial, we will use a Sigma internal instance to demonstrate how to use the Audit Log to see how many daily login attempts have occurred, both successful and failed. The methods will apply to any other instance of Sigma but with different log data.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Exploring the Audit Log is no different than using Sigma against any other data source so this is a breeze.
@@ -141,13 +140,13 @@ Let's see what is going on with user logins, both success and failures.
 
 Create a new `Child Vizualization` from the AUDIT_LOGS table:
 
-<img src="assets/al15.png" width="800"/>
+<img src="assets/al15.png" width="500"/>
 
 Drag the `Request Time` column up the the X-AXIS (on the Element Panel, left sidebar). It will automatically truncate to `Day of Request Time` and this is what we want.
 
-Create two ne columns from the Y-AXIS and rename them as:
+Create two new columns from the Y-AXIS and rename them as:
 
-<img src="assets/al16.png" width="800"/>
+<img src="assets/al16.png" width="400"/>
 
 For the Y-AXIS columns we will use these formulas for each:
 
@@ -161,7 +160,7 @@ For example we will place the Success formula as shown:
 
 <img src="assets/al17.png" width="800"/>
 
-Lastly, change the chart type to `Combo`. We now can see how many users are active each day and also how many failed login attempts are happening. 
+Lastly, change the chart type to `Combo`. We now can see how many users are active each day and also how many failed login attempts are happening using a line instead of bar. 
 
 <img src="assets/al18.png" width="800"/>
 
@@ -205,9 +204,13 @@ Let's assume that we are required to retain a rolling history of daily logins (s
 
 Building on the last exercise, we have what we need in the `Daily Login Activity` Workbook we built and just need to configure an export schedule to handle the rest.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Some additional configuration is required depending on the destination for that daily export job. 
+</aside>
+
 Click the report name and select `Schedule exports`:
 
-<img src="assets/al8.png" width="800"/>
+<img src="assets/al8.png" width="600"/>
 
 Click `Add Schedule` from the pop-up.
 
@@ -215,29 +218,23 @@ Provide values for each numbered item as shown:
 
 <img src="assets/al10.png" width="800"/>
 
-For `Storage Integration` we will be using a method that provides a secure connection between Snowflake (where the Audit Log export is staged) to AWS S3.
+For `Storage Integration` we will be using a method that provides a secure connection between Snowflake (where the Audit Log export is stored) to AWS S3.
 
-In general, it requires three things; an AWS S3 bucket (in our example), AWS IAM Policy and Snowflake Storage integration.
+This requires some configuration in Sigma, Snowflake and AWS in order for the scheduled job to securely delivery data to S3, from Snowflake (where the Audit Log is stored).
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When using the Sigma export option "Cloud Storage" it is required to request Sigma support to assist in the Snowflake configuration as Audit Logs are held inside Sigma's Snowflake account. 
+</aside>
 
-bullet list?
+The high-level workflow looks like this:
 
-
-
-
-
+<img src="assets/al26.png" width="800"/>
 
 [For more information on how to configure secure access to S3 from Snowflake, click here](https://docs.snowflake.com/en/user-guide/data-load-s3-config)
 
 For `Destination Cloud Storage URI`, use the link to `Copy S3 URI` in AWS S3 to get this string:
 
 <img src="assets/al11.png" width="800"/>
-
-Once we have the S3 URI and IAM Policy, we can use them to create a Snowflake Storage Integration.
-
-
-
-
 
 We will use the Sigma Workbook Page Element and .csv format for the export.
 
