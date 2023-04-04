@@ -201,19 +201,11 @@ There may be reasons to store Audit Log data outside of Sigma. A few examples ar
       <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.<li>
 </ul>
 
-Let's assume that we need to capture all events where a user login failed. 
+Let's assume that we are required to retain a rolling history of daily logins (success and failure) for 5 years. Sigma retains 90 days worth of information so we will need to export log data to meet this requirement.
 
-Building on the last exercise, we have most of what we need but need to remove all the logins that succeeded. This is easy with a filter.
+Building on the last exercise, we have what we need in the `Daily Login Activity` Workbook we built and just need to configure an export schedule to handle the rest.
 
-Click on the column `Event Status` and set a filter to only show `Event Status` of `Failure`:
-
-<img src="assets/al6.png" width="800"/>
-
-Save the Workbook as `User Login Failures`:
-
-<img src="assets/al7.png" width="800"/>
-
-Now let's prepare our scheduled export:
+Click the report name and select `Schedule exports`:
 
 <img src="assets/al8.png" width="800"/>
 
@@ -225,29 +217,43 @@ Provide values for each numbered item as shown:
 
 For `Storage Integration` we will be using a method that provides a secure connection between Snowflake (where the Audit Log export is staged) to AWS S3.
 
+In general, it requires three things; an AWS S3 bucket (in our example), AWS IAM Policy and Snowflake Storage integration.
+
+
+bullet list?
+
+
+
+
+
+
 [For more information on how to configure secure access to S3 from Snowflake, click here](https://docs.snowflake.com/en/user-guide/data-load-s3-config)
 
 For `Destination Cloud Storage URI`, use the link to `Copy S3 URI` in AWS S3 to get this string:
 
 <img src="assets/al11.png" width="800"/>
 
+Once we have the S3 URI and IAM Policy, we can use them to create a Snowflake Storage Integration.
+
+
+
+
+
 We will use the Sigma Workbook Page Element and .csv format for the export.
 
 Scrolling down, we want each export to use the current date/time in the filename. The rest of this schedule is up to you. For demonstration, we will invoke this job to `Run now` so we can see the results land in S3. 
 
+<img src="assets/al23.png" width="800"/>
+
 Click `Save Schedule`.
 
-<img src="assets/al9.png" width="800"/>
-s3://sigma-quickstarts-main/audit_logs/
+Open the scheduled job and click `Run now`:
 
+<img src="assets/al24.png" width="800"/>
 
+If everything is configured correctly, the file lands in S3 for extended retention as a comma delimited format:
 
-
-
-
-
-
-
+<img src="assets/al25.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
