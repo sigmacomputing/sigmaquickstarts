@@ -1,3 +1,4 @@
+[Follow the instructions here to complete the remaining configuration.]{}
 author: pballai
 id: administration_azure_private_link
 summary: administration_azure_private_link
@@ -101,11 +102,6 @@ Once you receive notification from Sigma (in email) yow can create the new conne
 <strong>IMPORTANT:</strong><br> The notification email from Sigma may include a few extra steps depending on cloud region. Follow the instructions in the email accordingly. If you have any questions about the contents of the email, contact Sigma support. 
 </aside>
 
-### Verify the Private Link in Azure
-
-asdasdasdasdasads
-
-
 ### Configure Snowflake Connection
 
 In Sigma go to `Admin` > `Connections` > `Snowflake`.
@@ -173,7 +169,7 @@ In the example above, the Resource ID is:
 
 and the region name is:
 ```plaintext
-East US
+eastus
 ```
 
 Copy the values generated for **your** Snowflake account and send these to your Sigma account manager.
@@ -230,7 +226,7 @@ Click the Personal access tokens tab and then `Generate new token`:
 
 In the Lifetime field, set the token duration in days. It is a good idea to provide a comment as well. 
 
-<img src="assets/pl18.png" width="800"/>
+<img src="assets/pl18.png" width="400"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> If the token lifespan is unspecified, the token will live indefinitely, which is desired in this case. If a Lifetime is specified (other than blank) the Private Link will stop working when the Lifetime value is reached.
@@ -248,7 +244,6 @@ We now have a token with no expiration:
 
 In Sigma, go to `Administration` > `Connections` > `Databricks`:
 
-
 Click Create to create a Databricks connection. 
 
 In the `Host` field enter your domain name. 
@@ -262,24 +257,6 @@ Paste the `token` you created in Azure and enter into `Access token` field in Si
 [To complete the remaining configuration, follow the steps in the Databricks Connection Guide. ](https://help.sigmacomputing.com/hc/en-us/articles/6963295723411)
 
 You should now be able to use the Databricks connection (over Private Link) as you would any other connection in Sigma.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -299,15 +276,63 @@ Private Link allows you to create private endpoints for Azure Database for Postg
 
 ### Provide PostgreSQL Info to Sigma
 
+In the customer Azure management portal, navigate where the single server instance of PostgresSQL is. In this example, we are using `Azure Database for PostgreSQL servers`.
 
+Select the instance desired for the Private Link.
 
+Click the JSON View on the top right corner:
 
+<img src="assets/pl22.png" width="800"/>
 
+Copy the `Resource ID` and `Location`:
 
+<img src="assets/pl23.png" width="800"/>
 
+Send these two values to your Sigma account manager. 
 
+### Private Link Approval
 
+Follow the steps below to approve the Private Link after Sigma notifies you. 
 
+Click on Private endpoint connections on the left panel of the PostgreSQL server page.
+
+<img src="assets/pl25.png" width="800"/>
+
+Select the recently created private endpoint connection.
+
+The status will be `Pending`. Check `Approve` to approve the endpoint.
+
+The private endpoint connection will change to `Accepted`.
+
+### Configure Sigma Connection
+
+Once the Private Link has been approved, you can login to Sigma (as Administrator) and navigate to `Administration` > `Connections`.
+
+Click to create a new connection and provide the required values.
+
+In the Host field, enter the private endpoint Sigma provided you with in the following format: 
+```plaintext
+<private_endpoint_name>.privatelink.sigma.internal
+```
+<aside class="negative">
+<strong>NOTE:</strong><br> For example, if the private endpoint name is postgresql-endpoint, then the Server field is: postgresql-endpoint.privatelink.sigma.internal
+</aside>
+
+The remaining configuration is provided by the customer as usual:
+
+The `User` field should be the one used to access your data warehouse.
+
+The `Password` field should be the one associated with `User`.
+
+The `Database` field should be the name of the database where your data resides.
+
+`"Enable TLS"` toggle should always be checked.
+
+`"SSH Tunnel"` option is not required to be toggled.
+
+<img src="assets/pl26.png" width="800"/>
+
+You should now be able to use the PostgresSQL connection (over Private Link) as you would any other connection in Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -315,9 +340,7 @@ Private Link allows you to create private endpoints for Azure Database for Postg
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+Establish an Azure Private Link connection to the data warehouse of choice.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
