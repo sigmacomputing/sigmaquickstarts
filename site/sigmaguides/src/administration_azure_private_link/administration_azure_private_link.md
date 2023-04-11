@@ -63,6 +63,9 @@ This keeps access rules private while providing secure and private communication
 <strong>IMPORTANT:</strong><br> Your Snowflake account must be Business Critical tier to use Private Link.
 </aside>
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ### Provide Snowflake Info to Sigma
 
 Begin by logging into Snowflake as `ACCOUNTADMIN` and clicking the `+` to create a new Worksheet and select `SQL Worksheet`:
@@ -136,7 +139,6 @@ test123.west-us-2.privatelink
 [To complete the remaining configuration, follow the steps in the Snowflake Connection Guide](https://help.sigmacomputing.com/hc/en-us/articles/360037429913)
 
 You should now be able to use the Snowflake connection (over Private Link) as you would any other connection in Sigma.
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
