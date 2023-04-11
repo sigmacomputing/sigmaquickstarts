@@ -46,6 +46,7 @@ Administrators who require secure, private connections between Sigma and data in
 ### What You’ll Learn
 How to establish a secure connection between Sigma and an Azure data warehouse.
 
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
