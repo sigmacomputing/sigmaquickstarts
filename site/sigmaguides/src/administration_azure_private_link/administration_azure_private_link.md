@@ -46,6 +46,9 @@ Administrators who require secure, private connections between Sigma and data in
 ### What You’ll Learn
 How to establish a secure connection between Sigma and an Azure data warehouse.
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Snowflake
 Duration: 20
 
@@ -62,9 +65,6 @@ This keeps access rules private while providing secure and private communication
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Your Snowflake account must be Business Critical tier to use Private Link.
 </aside>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ### Provide Snowflake Info to Sigma
 
