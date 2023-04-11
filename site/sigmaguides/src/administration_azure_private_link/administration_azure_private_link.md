@@ -140,7 +140,6 @@ test123.west-us-2.privatelink
 
 You should now be able to use the Snowflake connection (over Private Link) as you would any other connection in Sigma.
 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
