@@ -4,7 +4,7 @@ id: administration_azure_private_link
 summary: administration_azure_private_link
 categories: administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding, API
 
@@ -14,7 +14,9 @@ tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, S
 ## Overview 
 Duration: 5 
 
-For Sigma organizations running on Microsoft Azure (Azure), we can securely connect to your data using Azure Private Link. Azure Private Link is a security feature available for Azure accounts. It will allows connections between your Azure Virtual Network (VNet) and other services, without sending traffic over the public internet. In this case, the Secure Link will be created between Sigma and your data warehouse, all inside Azure.
+For Sigma organizations running on Microsoft Azure (Azure), secure connection to your data using Azure Private Link is supported. Azure Private Link is a security feature available for Azure accounts. It will allows connections between your Azure Virtual Network (VNet) and other services, without sending traffic over the public internet. 
+
+In this case, the Secure Link will be created between Sigma and your data warehouse, all inside Azure.
 
 The Azure private link service enables Sigma, which runs in a isolated private virtual network in Azure, to reach customer data via Azure's internal network such that no traffic is transmitted over the public internet. 
 
@@ -24,7 +26,7 @@ Sigma currently supports creating private links to three kinds of data warehouse
 
 [Please check here for the latest information on supported connections](https://help.sigmacomputing.com/hc/en-us/articles/15174558706195-Azure-Private-Link-Connections)
 
-Standing up a Private Link requires customer's cloud administrator (or similar role) to provide specific configuration detail with Sigma so that the Private Link connection can be established. This is covered in each section later and depends on data warehouse type. 
+Standing up a Private Link requires a customer's cloud administrator (or similar role) to provide specific configuration detail to Sigma so that the Private Link connection can be established. This is covered in each section later and depends on data warehouse type. 
 
 The process of creating the Private Link can take 2-3 business days once the request is acknowledged by Sigma. 
 
@@ -51,7 +53,7 @@ Azure Private Link provides private connectivity to Snowflake by ensuring that a
 
 Azure Private Link is not a service provided by Snowflake. It is a Microsoft service that Snowflake enables for use with your Snowflake account.
 
-Once provisioned, traffic will only occur from Sigma to the Snowflake using the Microsoft backbone to avoid the public Internet. 
+Once provisioned, traffic will only occur between Sigma and Snowflake using the Microsoft backbone to avoid the public Internet. 
 
 This keeps access rules private while providing secure and private communication.
 
@@ -96,7 +98,7 @@ Sigma will create a Private Link and alert you when the link is active.
 <strong>NOTE:</strong><br> The connection in Sigma cannot be created until you are notified by Sigma that the Private Link is ready.
 </aside>
 
-Once you receive notification from Sigma (in email) yow can create the new connection in Sigma.
+Once you receive notification from Sigma (in email) you can create the new connection in Sigma.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The notification email from Sigma may include a few extra steps depending on cloud region. Follow the instructions in the email accordingly. If you have any questions about the contents of the email, contact Sigma support. 
@@ -158,7 +160,7 @@ Open the Workspace you want to connect to and click to open the `JSON View`:
 
 <img src="assets/pl8.png" width="800"/>
 
-Copy the Resource ID. In Location, copy the Region Name for the Databricks warehouse: 
+Copy the Resource ID (1). For Location (2), copy the region name for the Databricks warehouse: 
 
 <img src="assets/pl9.png" width="800"/>
 
@@ -172,7 +174,7 @@ and the region name is:
 eastus
 ```
 
-Copy the values generated for **your** Snowflake account and send these to your Sigma account manager.
+Copy the values generated for **your** Databricks account and send these to your Sigma account manager.
 
 Sigma will create a Private Link and alert you when the link is active.
 
@@ -180,7 +182,7 @@ Sigma will create a Private Link and alert you when the link is active.
 <strong>NOTE:</strong><br> The connection in Sigma cannot be created until you are notified by Sigma that the Private Link is ready.
 </aside>
 
-Once you receive notification from Sigma (in email) yow can create the new connection in Databricks.
+Once you receive notification from Sigma (in email) you can create the new connection in Databricks.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The notification email from Sigma may include a few extra steps depending on cloud region. Follow the instructions in the email accordingly. If you have any questions about the contents of the email, contact Sigma support. 
@@ -280,11 +282,11 @@ In the customer Azure management portal, navigate where the single server instan
 
 Select the instance desired for the Private Link.
 
-Click the JSON View on the top right corner:
+Click the `JSON View` on the top right corner:
 
 <img src="assets/pl22.png" width="800"/>
 
-Copy the `Resource ID` and `Location`:
+Copy the `Resource ID` (1) and `Location` (2):
 
 <img src="assets/pl23.png" width="800"/>
 
@@ -315,7 +317,7 @@ In the Host field, enter the private endpoint Sigma provided you with in the fol
 <private_endpoint_name>.privatelink.sigma.internal
 ```
 <aside class="negative">
-<strong>NOTE:</strong><br> For example, if the private endpoint name is postgresql-endpoint, then the Server field is: postgresql-endpoint.privatelink.sigma.internal
+<strong>NOTE:</strong><br> For example, if the private endpoint name is "postgresql-endpoint", then the Server field is: "postgresql-endpoint.privatelink.sigma.internal"
 </aside>
 
 The remaining configuration is provided by the customer as usual:
@@ -340,7 +342,7 @@ You should now be able to use the PostgresSQL connection (over Private Link) as 
 ## What we've covered
 Duration: 5
 
-Establish an Azure Private Link connection to the data warehouse of choice.
+An overview of Private Link and how to establish an Azure Private Link connection between Sigma and data warehouse of choice.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
