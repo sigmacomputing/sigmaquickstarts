@@ -251,6 +251,18 @@ The installation of pandas also installed many other dependencies. One is called
 <strong>NOTE:</strong><br> NumPy is a numerical computing package for Python that provides support for large, multi-dimensional arrays and matrices, along with a large library of mathematical functions to operate on these arrays.
 </aside>
 
+### Snowpark Python Package
+
+Snowflake provides a package that allows us to connect to Snowpark remotely. 
+
+ Run the command to install it:
+```plaintext
+conda install snowflake-snowpark-python 
+```
+<aside class="negative">
+<strong>NOTE:</strong><br> It is normal to see a few failure messages while it is installing (as it tries to reach resources). It should end with three consecutive "done" messages.
+</aside>
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Packages are powerful and can really accelerate development. There are thousands of packages available with the list growing every day.
 </aside>
@@ -295,19 +307,163 @@ We are now setup to start developing our Snowpark UDF.
 ## **My First UDF**
 Duration: 20
 
+For our first UDF, we will use the NumPy package to create a UDF in Snowpark that can be later called by Sigma by name. We will keep this very simple and calculate the greatest common denominator (GCD) between two input values.
+
+GCD is not a Sigma function (today) so calculating that in Sigma requires more effort that we would want. A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
+
+Part of the VSCode with Python includes `Jupyter Notebooks`. 
+
+A Jupyter notebook in VS Code is a file format that allows you to create and edit interactive documents that combine code, text, and visualizations. Jupyter notebooks are often used for data science, machine learning, and scientific computing tasks.
+
+For the purposes of this QuickStart, they are not all that different than other tools you probably have used with a just a few built-in controls to locate while using the Notebook. 
+
+To create a new Jupyter notebook, just open the command palette in VSCode as before `Ctrl + Shift + p` and type “New Jupyter notebook” without any quotation, and click it to create a new notebook.
+
+<img src="assets/sp14.png" width="800"/>
+
+The first thing we prefer to do is save the blank workbook so that we can make incremental saves anytime we want.
+
+Like any other application, click `File` > `Save` and give it name. We used `getting-started.ipynb`. In this case, the file extension (.ipynb)
+is important to use.
+
+<img src="assets/sp15.png" width="800"/>
+
+We have a blank Jupyter notebook. There are really three main features we will use in this exercise.
+
+ <li>
+    <ol type="n"> 
+      <li><strong>1:</strong> Adds a new codeblock to the workbook. Codeblocks can be run independantly, which is useful for our exercise.</li>
+      <li><strong>2:</strong> Individual codeblock</li>
+      <li><strong>3:</strong> Run the code in the codeblock that the arrow is adjacent to.</li>
+    </ol>
+  </li>
+
+<img src="assets/sp15.png" width="800"/>
+
+With that out of the way, lets do a quick test to make sure all of this is working.
+
+Type `1+1` in only codeblock and click the run (arrow) button on the left side of the codeblock. 
+
+If it produces an answer of 2, then it is working well.
+
+In our case, an error is thrown and this is typically when using Minoconda but simple to resolve. VSCode prompts to install the required packages so we can just select `Install` and let VSCode do the conda package install for us.
+
+<img src="assets/sp16.png" width="800"/>
+
+After the install is done (maybe 20 seconds), the quick test produces a positive result. Note the green checkmark; this is what we always want to see when testing.
+
+<img src="assets/sp17.png" width="800"/>
+
+Now that we are sure that 1+1 = 2, we can move on. 
+
+Click the add a new `codeblock` (+Code).
+
+Copy this code into the new block:
+```plaintext
+# SNOWFLAKE AUTHENTICATION
+from snowflake.snowpark import Session
+import snowflake.snowpark.functions as F
+import snowflake.snowpark.types as T
+
+connection_parameters = {
+    "account": "Your Snowflake Account Number", 
+    "user": "Your Snowflake username",
+    "password": "Your  Snowflake password",
+    "application": "Sigma_PassThroughPython",
+    # optional default parameters
+    "role": "ACCOUNTADMIN",
+    "warehouse": "Your warehouse",
+    "database": "your database",
+    "schema": "your schema",
+    }  
+session = Session.builder.configs(connection_parameters).create()
+```
+
+After you have configured the required values, run this codeblock as usual. We should get the positive result (green checkmark) indicating that we our VSCode project is connected to Snowflake, based on the configured parameters:
+
+<img src="assets/sp18.png" width="800"/>
+
+Now that we are connected, we want to create another codeblock to define our greatest common denominator (GCD) UDF.
+
+In a new codeblock, copy and paste this code:
+```plaintext
+# Define our greatest common denominator UDF
+def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
+    import numpy
+    
+    df = df.astype('int')
+    Arg1 = df.iloc[:, 0]
+    Arg2 = df.iloc[:, 1]
+
+    gcd = numpy.gcd(Arg1, Arg2)
+    return gcd
+```
+
+This code defines a user-defined function (UDF) in Python that calculates the greatest common denominator (GCD) of two numbers in a Pandas DataFrame. 
+
+Here is a breakdown of each line of the code:
+
+```plaintext
+# Define our greatest common denominator UDF:
+```
+This is a comment that describes what the following code does.
+
+```plaintext
+def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
+```
+This line defines the UDF called udf_Greatest_Common_Denominator, which takes a single argument df of type pd.DataFrame, and returns a pd.Series object. The UDF expects a DataFrame with two columns containing the two numbers for which to compute the GCD.
+
+```plaintext
+import numpy
+```
+This line imports the numpy library, which provides a gcd function that we will use to calculate the GCD. While we already have numpy installed in our local environment, it is not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.
+
+```plaintext
+df = df.astype('int')
+```
+This line converts the DataFrame df to an integer data type.
+
+```plaintext
+Arg1 = df.iloc[:, 0]
+Arg2 = df.iloc[:, 1]
+```
+These two lines extract the first and second columns of the DataFrame df and assign them to Arg1 and Arg2, respectively.
+
+```plaintext
+gcd = numpy.gcd(Arg1, Arg2)
+```
+This line uses the numpy.gcd function to calculate the GCD of Arg1 and Arg2, and assigns the result to the variable gcd.
+
+```plaintext
+return gcd
+```
+This line returns the GCD value as a pd.Series object from the UDF.
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+## **UDF in Sigma**
+Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
 
-## **UDF in Sigma**
-Duration: 20
+### Optional Section
+
+For this next demonstration, we will create a Snowpark Dataframe and use 
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
