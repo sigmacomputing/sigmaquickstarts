@@ -389,6 +389,7 @@ In a new codeblock, copy and paste this code:
 ```plaintext
 # Define our greatest common denominator UDF
 def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
+    import pandas as pd
     import numpy
     
     df = df.astype('int')
@@ -414,9 +415,10 @@ def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
 This line defines the UDF called udf_Greatest_Common_Denominator, which takes a single argument df of type pd.DataFrame, and returns a pd.Series object. The UDF expects a DataFrame with two columns containing the two numbers for which to compute the GCD.
 
 ```plaintext
+import pandas as pd
 import numpy
 ```
-This line imports the numpy library, which provides a gcd function that we will use to calculate the GCD. While we already have numpy installed in our local environment, it is not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.
+This line imports the panda and numpy libraries which provides a gcd function that we will use to calculate the GCD. While we already have numpy installed in our local environment, it is not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.
 
 ```plaintext
 df = df.astype('int')
@@ -438,6 +440,8 @@ This line uses the numpy.gcd function to calculate the GCD of Arg1 and Arg2, and
 return gcd
 ```
 This line returns the GCD value as a pd.Series object from the UDF.
+
+Now that it is all explained, run the codeblock.
 
 
 
