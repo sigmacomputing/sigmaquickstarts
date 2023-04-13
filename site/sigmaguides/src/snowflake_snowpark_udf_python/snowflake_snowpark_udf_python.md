@@ -379,6 +379,11 @@ connection_parameters = {
 session = Session.builder.configs(connection_parameters).create()
 ```
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We need the Snowflake Role that Sigma will later use to call the UDF. You may have to provide a connection to your own Snowflake instance as you cannot use the Sigma Sample Database Snowflake connection for this purpose.
+If you signed up for a Snowflake trail, you can simply use the ACCOUNTADMIN role that is standard in Snowflake trail accounts.
+</aside>
+
 After you have configured the required values, run this codeblock as usual. We should get the positive result (green checkmark) indicating that we our VSCode project is connected to Snowflake, based on the configured parameters:
 
 <img src="assets/sp18.png" width="800"/>
@@ -443,21 +448,76 @@ This line returns the GCD value as a pd.Series object from the UDF.
 
 Now that it is all explained, run the codeblock.
 
+As before, we should see a green checkmark:
 
+<img src="assets/sp19.png" width="800"/>
 
+### Register the Function in Snowflake
 
+Our new UDF takes in two float arguments (the two columns in which to find the smallest common denominator against), so we need to specify that in the registrations using the `input_types` as:
+```plaintext
+ [T.FloatType()]*2 
+```
 
+Copy this code to a new codeblock in VSCode:
+```plaintext
+### Register UDF
+udf_Greatest_Common_Denominator = session.udf.register(func=udf_Greatest_Common_Denominator, 
+    name="GCD_UDF", 
+    input_types=[T.FloatType()]*2,
+    return_type = T.FloatType(),
+    stage_location='@My_UDFS',
+    replace=True,
+    max_batch_size =  1000,
+    is_permanent=True, 
+    packages=['numpy','pandas'],
+    comment = "Algorithm to find Greatest Common Denominator",
+    session=session)
+```
+Some things to note:
 
+1: Note that we had to specify the numpy and pandas libraries. <br><br>
+2: We gave it a name `GCD_UDF`. We will call this UDF by that name from Sigma later.<br><br>
+3: We have to make the registered UDF available to the Snowflake connection that is being used in Sigma.<br>
 
+Run the codeblock. It will likely fail: 
 
+<img src="assets/sp21.png" width="800"/>
 
+This is because we specified a Snowflake Stage, but forgot to create it. Lets do that.
 
+In a Snowflake **SQL Worksheet**, run this command using the warehouse and database that we connected to Snowflake in VSCode. We want the Stage to exist where we want it.
+```plaintext
+CREATE STAGE IF NOT EXISTS My_UDFS
+```
 
+<img src="assets/sp20.png" width="800"/>
 
+After creating the required Snowflake Stage, re-run takes a bit longer (17 seconds...a lifetime!) to run:
 
+<img src="assets/sp22.png" width="800"/>
+
+Lastly, we need to register the UDF (item #3 on the list) by running this code in a new VSCode codeblock:
+```plaintext
+query = session.sql('grant all on function GCD_UDF(float, float) to role ACCOUNTADMIN')
+query.collect()
+```
+
+<img src="assets/sp23.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We haver defined a new function and stored it in Snowflake but we have not tested that it works. Let's assume it does (or has been created and tested by someone else in your company) and we just want to use it in Sigma. Later in this QuickStart, there is an optional section that covers how to test this UDF on our local machine, with VSCode. 
+</aside>
 
 ## **UDF in Sigma**
 Duration: 20
+
+
+
+
+<img src="assets/sp19.png" width="800"/>
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
