@@ -265,7 +265,7 @@ You should now be able to use the Databricks connection (over Private Link) as y
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Postgesql**
+## **PostgreSQL**
 Duration: 20
 
 Private Link allows you to create private endpoints for Azure Database for PostgreSQL - Single server. The private endpoint exposes a private IP within a subnet that you can use to connect to your database server just like any other resource in the VNet.
