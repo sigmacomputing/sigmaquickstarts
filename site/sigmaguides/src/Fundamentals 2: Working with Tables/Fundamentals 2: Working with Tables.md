@@ -321,7 +321,7 @@ Lastly, let's create one more Summary value by clicking on the carrot `^`, and s
 
 <img src="assets/summary4.png" width="300"/>
 
-In the function bar, enter the formula bar enter `[Total Revenue] - [COGS]` and hit enter.  Also rename this Summary to `Total Profit`.
+In the function bar, enter the formula bar enter `[Total Revenue] - [Total COGS]` and hit enter.  Also rename this Summary to `Total Profit`.
 
 <img src="assets/summary5.png" width="500"/>
 
