@@ -90,16 +90,7 @@ Once you open a different page you may notice the back arrow next to the Sigma l
 <ol type="1">
   <li><strong>Search:</strong> You can click in the search bar at any point to search for content within Sigma.</li>
   
-  <li><strong>My Content:</strong> Access various content available to your role. These include:
-    <ol type="i"> 
-      <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</Li>
-      <li><strong>Dataset:</strong> enables the curation of data to then be shared with others</Li>
-      <li><strong>Custom SQL:</strong> allows you to write SQL to run against the data warehouse
-      <li><strong>CSV upload:</strong> allows you to upload a csv in order to perform analysis within a Workbook</Li>
-    </ol>
-  </li>
-
-  <li><strong>Create New:</strong> Use this anytime you want to create new content 
+  <li><strong>My Content:</strong> Use this anytime you want to create new content 
     <ol type="i"> 
       <li><strong>Home</strong> will bring back to home screen</Li>
       <li><strong>Recents</strong> will bring up items you have accessed recently</Li>
@@ -108,14 +99,28 @@ Once you open a different page you may notice the back arrow next to the Sigma l
       <li><strong>My Documents</strong> is a personal folder for you to save content you have created</Li>
       <li><strong>Workspaces</strong> are a way to organize and share content with specific members or teams within your organization. Items placed in workspaces can be accessed by anyone who has permission to that workspace.</Li>
       <li><strong>Connections</strong> (visible to Administrators and Creators by default): Connections list the data warehouses you have connections to. Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams.<br>
-      <strong>NOTE:</strong> In this QuickStart you can only see and access the “Sigma Sample Database” database used for this QuickStart.
       </ol>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> In this QuickStart you can only see and access the “Sigma Sample Database” database used for this QuickStart.
+</aside>
+
+  <li><strong>Create New:</strong> Access various content available to your role. These include:
+    <ol type="i"> 
+      <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</Li>
+      <li><strong>Dataset:</strong> enables the curation of data to then be shared with others</Li>
+      <li><strong>Custom SQL:</strong> allows you to write SQL to run against the data warehouse
+      <li><strong>CSV upload:</strong> allows you to upload a csv in order to perform analysis within a Workbook</Li>
+    </ol>
+  </li>
+
   </li>
     <li><strong>Administration:</strong> Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
    <li><strong>Canvas:</strong> This area is where most of your working sessions will be. The Home page will change based on what you are doing over time, showing your most recent work and other useful links. </li>
    <li><strong>User Profile:</strong> On the top right corner is a box with your username initial. Clicking on it reveals Profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions.  These options will be covered in a different module./li>
    <li><strong>Help:</strong> has lots of useful information for you to explore later.</li>
 </ol>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GETTING AROUND IN THE UI -->
