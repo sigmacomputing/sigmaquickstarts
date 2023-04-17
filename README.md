@@ -84,6 +84,9 @@ export PATH=$PATH:$HOME/go/bin
   3. Navigate to the newly generated guide (`cd sigmaguides/src/<GUIDE_NAME>`) and edit your guide in a tool like vscode.
   4. Run the website again `npm run serve`
   5. As you edit and save changes, your changes will automatically load in the browser.
+  
+To see QuickStarts in your local browser, navigate to:
+http://localhost:8000/
 
 ### Tips
 
