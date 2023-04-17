@@ -16,37 +16,51 @@ Duration: 5
 ### QuickStart Approach
 This QuickStart serves as an introduction to using Snowflake Snowpark (Snowpark) to create user defined functions (UDF) and leverage them directly in Sigma to enable advanced functionality with ease. 
 
-There are many areas of discussion possible as Snowpark touches on data quality, data modeling, machine learning (ML), data science, analytics and more. With that in mind, we will narrow the scope for this QuickStart to high level education on Snowpark with a focus on UDF's and using them in Sigma. 
+There are many areas of discussion possible as Snowpark can be leveraged for data quality, data modeling, machine learning (ML), data science, analytics and more. With that in mind, we will narrow the scope for this QuickStart to high level education on Snowpark with a focus on UDF's and using them in Sigma. 
 
 ### What is Snowpark?
-Snowflake Snowpark is a new feature of the Snowflake Data Cloud platform that allows developers to write custom code using popular programming languages like Java, Scala, and Python, and execute it directly within Snowflake. It provides a powerful and flexible way to process data within Snowflake without having to move data in and out of the platform.
+Snowpark is a feature of the Snowflake Data Cloud platform that allows developers to write custom code using popular programming languages like Java, Scala, and Python, and execute it directly within Snowflake. It provides a powerful and flexible way to process data within Snowflake without having to move data in and out of the platform.
 
-With Snowpark, developers can write custom data processing code that can be executed on data stored in Snowflake. Snowpark uses a custom SQL pushdown mechanism to optimize code execution and minimize data movement. This means that developers can write complex data processing logic using familiar programming languages, while leveraging the power and scalability of Snowflake's cloud-based data warehouse.
+With Snowpark, developers can write custom data processing code that can be executed on data stored in Snowflake. 
+
+Snowpark uses a custom SQL pushdown mechanism to optimize code execution and minimize data movement.
+
+**This means that developers can write complex data processing logic using familiar programming languages, while leveraging the power and scalability of Snowflake's cloud-based data warehouse.**
 
 Some of the key benefits of using Snowpark include:
 
-    Simplified data processing: Snowpark provides a powerful and flexible way to process data within Snowflake without having to move data in and out of the platform, which simplifies the data processing pipeline and reduces complexity.
-
-    Language flexibility: Snowpark supports popular programming languages like Java, Scala, and Python, which allows developers to write code using the language they are most comfortable with.
-
-    Efficient data processing: Snowpark uses a custom SQL pushdown mechanism to optimize code execution and minimize data movement, which makes data processing more efficient and reduces the overall processing time.
-
-    Platform integration: Snowpark integrates seamlessly with other Snowflake features like Snowflake's data sharing and data marketplace, which makes it easy to build data applications and solutions using Snowflake.
+ <li></li>
+    <ol type="n"> 
+      <li><strong>Simplified data processing:</strong> Snowpark provides a powerful and flexible way to process data within Snowflake without having to move data in and out of the platform, which simplifies the data processing pipeline and reduces complexity.
+</li>
+      <li><strong>Efficient data processing:</strong> Snowpark uses a custom SQL pushdown mechanism to optimize code execution and minimize data movement, which makes data processing more efficient and reduces the overall processing time.</li>
+      <li><strong>Language flexibility:</strong> Snowpark supports popular programming languages like Java, Scala, and Python, which allows developers to write code using the language they are most comfortable with.</li>
+      <li><strong>Third party development environments:</strong> Snowpark supports developers using their preferred tools to connect to Snowflake and publish code to Snowpark.</li>
+    </ol>
+  </li>
+   
+<aside class="negative">
+<strong>NOTE:</strong><br> We will be using Microsoft VSCode as our development environment during this QuickStart.
+</aside>
 
 ### Snowpark Worksheets
-Snowflake Snowpark worksheets for Python are interactive notebooks that allow developers to write, test, and execute custom Python code directly within Snowflake. These worksheets provide a powerful and flexible way to develop and test Python-based data processing logic using the Snowflake Data Cloud platform.
+Snowpark Worksheets provide interactive notebooks that allow developers to write, test, and execute custom code directly within Snowflake. These worksheets provide a powerful and flexible way to develop and test data processing logic using the Snowflake Data Cloud platform.
+
+For the this QuickStart we will focus on Python, but the other supported languages provide similar methods in general. 
 
 Snowpark worksheets for Python provide a familiar environment for Python developers to work with. Developers can use popular Python libraries like pandas, NumPy, and scikit-learn to read, process, and analyze data stored in Snowflake. The worksheets also support the use of Snowpark APIs and libraries for working with Snowflake-specific features like Snowflake metadata, security, and data sharing.
 
 Some of the key features of Snowpark worksheets for Python include:
 
-    Interactive development environment: Snowpark worksheets provide a rich and interactive environment for developing Python-based data processing logic. Developers can write and execute code within the worksheet, and see the results immediately.
-
-    Familiar Python environment: Snowpark worksheets support the use of popular Python libraries like pandas, NumPy, and scikit-learn, which allows developers to work with familiar tools and frameworks.
-
-    Seamless integration with Snowflake: Snowpark worksheets integrate seamlessly with other Snowflake features like data sharing and data marketplace, which makes it easy to develop and deploy data solutions using Snowflake.
-
-    Secure and scalable: Snowpark worksheets provide a secure and scalable environment for developing and testing Python-based data processing logic. Snowflake's cloud-based data warehouse provides the scalability and reliability required for processing large amounts of data.
+ <li>
+    <ol type="n"> 
+      <li><strong>Interactive development environment:</strong> Snowpark worksheets provide a rich and interactive environment for developing Python-based data processing logic. Developers can write and execute code within the worksheet, and see the results immediately.</li>
+      <li><strong>Familiar Python environment:</strong> Snowpark worksheets support the use of popular Python libraries like pandas, NumPy, and scikit-learn, which allows developers to work with familiar tools and frameworks.
+</li>
+      <li><strong>Seamless integration with Snowflake:</strong> Snowpark worksheets integrate seamlessly with other Snowflake features like data sharing and data marketplace, which makes it easy to develop and deploy data solutions using Snowflake.</li>
+      <li><strong>Secure and scalable:</strong> Snowpark worksheets provide a secure and scalable environment for developing and testing Python-based data processing logic. Snowflake's cloud-based data warehouse provides the scalability and reliability required for processing large amounts of data.</li>
+    </ol>
+  </li>
 
 Overall, Snowflake Snowpark worksheets for Python provide a powerful and flexible environment for developing and testing custom Python-based data processing logic directly within Snowflake. This allows developers to take full advantage of the Snowflake Data Cloud platform and its capabilities for data processing and analysis.
 
@@ -54,17 +68,20 @@ Overall, Snowflake Snowpark worksheets for Python provide a powerful and flexibl
 
 As of January 31, 2023 [Snowflake has more than 7,820 customers, including 573 of the Forbes Global 20002, and continues to grow rapidly.](https://www.snowflake.com/wp-content/uploads/2021/05/SnowflakeFastFactsSheet.pdf)
 
-Given the size of Snowflake's installed base, the implications of Snowpark on the ML and data science markets are significant and could potentially have several impacts, including:
+Given the size of Snowflake's installed base, the implications of Snowpark on the Machine Learning (ML) and Data Science markets are significant and could potentially have several impacts, including:
 
-    Improved Efficiency: With Snowpark, data scientists and developers can write and run code directly on the Snowflake platform, which can lead to improved efficiency and faster development cycles. This could potentially lead to the creation of more accurate and reliable ML models.
+ <li>
+    <ol type="n"> 
+      <li><strong>Improved Efficiency:</strong> With Snowpark, data scientists and developers can write and run code directly on the Snowflake platform, which can lead to improved efficiency and faster development cycles. This could potentially lead to the creation of more accurate and reliable ML models.
+</li>
+      <li><strong>Increased Collaboration:</strong> Snowpark enables data scientists and developers to collaborate more easily on projects by allowing them to work on the same platform and share code and data. This could potentially lead to more efficient and effective teamwork and could also foster innovation.
+</li>
+      <li><strong>Enhanced Data Management:</strong> Snowpark could potentially improve data management by allowing data scientists to work directly with the data on the Snowflake platform. This could lead to better data governance, security, and quality.</li>
+       <li><strong>Competition:</strong> The introduction of Snowpark could potentially increase competition in the ML and data science markets as Snowflake is a major player in the cloud data platform space. Other vendors may need to develop similar features to remain competitive.</li>
+    </ol>
+  </li>
 
-    Increased Collaboration: Snowpark enables data scientists and developers to collaborate more easily on projects by allowing them to work on the same platform and share code and data. This could potentially lead to more efficient and effective teamwork and could also foster innovation.
-
-    Enhanced Data Management: Snowpark could potentially improve data management by allowing data scientists to work directly with the data on the Snowflake platform. This could lead to better data governance, security, and quality.
-
-    Competition: The introduction of Snowpark could potentially increase competition in the ML and data science markets as Snowflake is a major player in the cloud data platform space. Other vendors may need to develop similar features to remain competitive.
-
-[Sunny Bedi, CIO of Snowflake](https://www.snowflake.com/blog/2023-predictions-for-chief-data-officers/) anticipates several trends that data executives should pay attention to including:
+[Sunny Bedi, CIO of Snowflake  anticipates several trends that data executives should pay attention to including:](https://www.snowflake.com/blog/2023-predictions-for-chief-data-officers/)
 
  <ul>
       <li>The infrastructure for data science will be platform-based.</li>
@@ -76,57 +93,60 @@ Considering all of this, Snowpark is something that data professionals need to p
 
 ### Persona for this QuickStart
 
-We will demonstrate (at a high-level) how we can start to use Snowpark as a **developer** (using Python) might do. Given the depth of Snowpark, we will start with what amounts to a "Hello World" sort of use case.
+We will demonstrate, (at a high-level) how we can start to use Snowpark, **as a developer** (using Python) might. Given the depth of Snowpark, we will start with what amounts to a "Hello World" sort of use case.
 
-This will give us the software configurations and a base understanding of the workflow involved. In subsequent QuickStarts in this series, we will increase the complexity by diving into specific uses cases found in real world applications, leveraging Sigma. 
+This will give us the foundational software configurations and a base understanding of the workflow involved. In subsequent QuickStarts, we will increase the complexity by diving into specific uses cases found in real world applications, leveraging Sigma. 
 
  ### Target Audience
 Anyone interested in learning about Snowpark and how to leverage UDFs in Sigma.
 
-Developers who are interesting in creating Snowpark UDFs in Python (and other supported languages) and leveraging them within Sigma to provide advanced functionality to Sigma users.
+Developers who are interesting in creating Snowpark UDFs in Python (and other supported languages) and leverage them within Sigma to provide advanced functionality to Sigma users.
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
 </aside>
 
+### Prerequisites
+
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A Snowflake account with the proper administrative and security admin access.</li>
-  <li>A development environment of choice. We will demonstration with Microsoft VSCode and related extensions</li>
+  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
   <li>Miniconda for required Python packages</li>
 </ul>
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you do not use production resources when doing QuickStarts.
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[MiniConda](https://docs.conda.io/en/latest/miniconda.html)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
 
 ### What You’ll Learn from here
 
-We will learn how to setup a local development environment, configure it for Python, connect to Snowflake, create and test Snowpark UDFs and use them in Sigma.
+We will learn how to setup a local development environment, configure it for Python, connect to Snowflake, create and test a Snowpark UDF and call it from Sigma.
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> We will demonstrate using MAC but the steps are very similar for Windows and Linux. 
+<strong>IMPORTANT:</strong><br> We will demonstrate using a MAC computer, but the steps are very similar for Windows and Linux. 
 </aside>
 
 ### What You’ll Build
 
-asDAsdasd
+We will build a Snowpark UDF that expects two input values and calculates the greatest common denominator and returns a value for a new table column in Sigma.
 
+<img src="assets/sp33.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Setup Minconda**
+## **Setup Python**
 Duration: 20
 
-We will start by installing a "thin" version of Anaconda called "MiniConda". 
-
-Miniconda is the much smaller (about 200 MB vs. 4+ gig) installer version of Conda and will save us time and disk-space compared with installing the full Anaconda application. 
+We will start by setting up our local Python environment based on Miniconda, which is a "thin" version of Conda.
 
 Conda is an open-source, cross-platform, language-agnostic package manager and environment management system. It was originally developed to solve difficult package management challenges faced by Python data scientists, and today is a popular package manager for Python and R.
+
+Miniconda is the much smaller (about 200 MB vs. 4+ gig) installer version of Conda and will save us time and disk-space compared with installing the full Conda (Anaconda) application. 
 
 It includes only Conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others. Packages that are not included, have to be called at runtime or installed individually.
 
@@ -138,22 +158,19 @@ It includes only Conda, Python, the packages they depend on, and a small number 
 
 After downloading the operation system appropriate version from Miniconda, go ahead and run the installation, accepting the license and all the defaults.
 
-Close the installed (we can delete the installation file too):
-
 <img src="assets/sp4.png" width="800"/>
 
-Now that MiniConda is installed (along with our selected version of Python; v3.8), we can move to the next step.
+Now that Miniconda is installed (along with our selected version of Python; v3.8), we can move to the next step.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
-
-
-
 
 ## **Setup VSCode**
 Duration: 20
 
 [Install VSCode from Microsoft's download site.](https://code.visualstudio.com/download)
+
+Run the installation with all defaults.
 
 Once the software is installed, we need to configure it for our use case. 
 
@@ -167,9 +184,9 @@ Search for `Python` and select the extension from the list as shown. Click `Inst
 <strong>NOTE:</strong><br> VSCode may notify you (in the lower left corner of the application) that it requires a restart. Go ahead and select restart. This is required when the extension needs to perform additional registration with VSCode.
 </aside>
 
-<img src="assets/sp2.png" width="800"/>
+<img src="assets/sp2.png" width="500"/>
 
-We now have a development environment ready for programming but we need to do a little more.
+We now have a development environment ready but we need to do a few more steps.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -177,7 +194,7 @@ We now have a development environment ready for programming but we need to do a 
 ## **Create a Python Environment**
 Duration: 20
 
-Since we installed MiniConda, every available Conda package is not present in our system. While this saves install time and saves disk-space, we will have to be aware that each VScode project will need to have required package dependencies installed at runtime. 
+Since we installed Miniconda, every available Conda package is not present in our system. While this saves install time and saves disk-space, we will have to be aware that each VScode project will need to have required package dependencies installed at runtime. 
 
 We could solve this by installing packages globally but we prefer to avoid that and maintain tight control of our development environment. 
 
@@ -189,7 +206,7 @@ In our local computer, navigate to where Miniconda is installed. The default is 
 
 Right-click and open a terminal session:
 
-<img src="assets/sp5.png" width="800"/>
+<img src="assets/sp5.png" width="500"/>
 
 First, let's see what environments already exist. Run the command:
 ```plaintext
@@ -207,7 +224,7 @@ conda create --name snowpark python=3.8
 
 When prompted to proceed, type `y` and hit return:
 
-<img src="assets/sp7.png" width="800"/>
+<img src="assets/sp7.png" width="600"/>
 
 Listing the environments again, we should see `base` and `snowpark` with base being the current select noted by the "*":
 ```plaintext
@@ -216,9 +233,9 @@ conda env list
 
 <img src="assets/sp8.png" width="800"/>
 
-We are ready with our new conda environment called `snowpark`. 
+We are ready with our new Conda environment called `snowpark`. 
 
-Before we use this environment in VS Code, we should to install packages we will plan to use later in this QuichStart, inside our `snowpark` environment.
+Before we use this environment in VSCode, we should install packages we will plan to use later in this QuickStart, inside our `snowpark` environment.
 
 To install packages inside our `snowpark` environment, we need to first activate it. Run the command:
 ```plaintext
@@ -229,7 +246,7 @@ conda activate snowpark
 
 <img src="assets/sp9.png" width="800"/>
 
-The only package our UDF will require is called `pandas`m which includes several dependant packages.
+The only package our UDF will require is called `pandas`, which includes several dependant packages.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Pandas is a popular open-source data analysis library for Python that provides powerful and easy-to-use data structures and data analysis tools. It is widely used in data science and data analytics to manipulate and analyze data in various formats such as CSV, Excel, SQL databases, and more.
@@ -246,7 +263,7 @@ As before, when prompted to proceed, press `y` and hit enter:
 
 <img src="assets/sp10.png" width="800"/>
 
-The installation of pandas also installed many other dependencies. One is called `NumPy` and we will also use this in our project later but do not need to install it again.
+The installation of pandas also installed many other dependencies. One is called `NumPy`. We will use this in our project, but won't need to install it again.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> NumPy is a numerical computing package for Python that provides support for large, multi-dimensional arrays and matrices, along with a large library of mathematical functions to operate on these arrays.
@@ -268,7 +285,7 @@ conda install snowflake-snowpark-python
 <strong>IMPORTANT:</strong><br> Packages are powerful and can really accelerate development. There are thousands of packages available with the list growing every day.
 </aside>
 
-Open VSCode again. We select the Python interpreter we want to use for our project.
+Open VSCode. We need to select the Python interpreter we want to use for our project.
 
 Access the VSCode editor commands. `Ctrl+Shift+P` will bring you directly to the editor commands.
 
@@ -284,7 +301,7 @@ There are a few (likely) versions installed and we want to select the one that i
 
 We can tell which that is as it will say `snowpark`. 
 
-<img src="assets/sp12.png" width="800"/>
+<img src="assets/sp13.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We have seen VSCode request another restart after this step so check (lower left corner of VSCode) to see if it is required again. 
@@ -308,7 +325,6 @@ We are now setup to get connected to Snowflake from VSCode.
 ## **VSCode with Jupyter Notebooks**
 Duration: 20
 
-
 Part of the VSCode with Python includes `Jupyter Notebooks`. 
 
 A Jupyter notebook in VS Code is a file format that allows you to create and edit interactive documents that combine code, text, and visualizations. Jupyter notebooks are often used for data science, machine learning, and scientific computing tasks.
@@ -324,16 +340,12 @@ The first thing we prefer to do is save the blank workbook so that we can make i
 Like any other application, click `File` > `Save` and give it name. We used `getting-started.ipynb`. In this case, the file extension (.ipynb)
 is important to use.
 
-<img src="assets/sp15.png" width="800"/>
-
 We have a blank Jupyter notebook. There are really three main features we will use in this exercise.
 
  <li>
-    <ol type="n"> 
-      <li><strong>1:</strong> Adds a new codeblock to the workbook. Codeblocks can be run independantly, which is useful for our exercise.</li>
-      <li><strong>2:</strong> Individual codeblock</li>
-      <li><strong>3:</strong> Run the code in the codeblock that the arrow is adjacent to.</li>
-    </ol>
+      <li><strong>1:</strong> Adds a new Codeblock to the workbook. Codeblocks can be run independently, which is useful for our exercise.</li>
+      <li><strong>2:</strong> Working space of an individual codeblock.</li>
+      <li><strong>3:</strong> Runs the code in the codeblock that the arrow is adjacent to.</li>
   </li>
 
 <img src="assets/sp15.png" width="800"/>
@@ -344,11 +356,11 @@ Type `1+1` in only codeblock and click the run (arrow) button on the left side o
 
 If it produces an answer of 2, then it is working well.
 
-In our case, an error is thrown and this is typically when using Minoconda but simple to resolve. VSCode prompts to install the required packages so we can just select `Install` and let VSCode do the conda package install for us.
+In our case, an error is thrown and this is typically when using Miniconda, but simple to resolve. VSCode prompts to install the required packages so we can just select `Install` and let VSCode do the conda package install for us.
 
-<img src="assets/sp16.png" width="800"/>
+<img src="assets/sp16.png" width="500"/>
 
-After the install is done (maybe 20 seconds), the quick test produces a positive result. Note the green checkmark; this is what we always want to see when testing.
+After the install is done (maybe 20 seconds), the re-run of our codeblock produces a positive result. Note the green checkmark; this is what we always want to see when testing.
 
 <img src="assets/sp17.png" width="800"/>
 
@@ -391,7 +403,7 @@ If you signed up for a Snowflake trail, you can simply use the ACCOUNTADMIN role
 
 After you have configured the required values, run this codeblock as usual. We should get the positive result (green checkmark) indicating that we our VSCode project is connected to Snowflake, based on the configured parameters:
 
-<img src="assets/sp18.png" width="800"/>
+<img src="assets/sp18.png" width="600"/>
 
 Before we move on, some words about Snowflake Role requirements for working with UDFs. We are using the Role `ACCOUNTADMIN` just to avoid some additional configuration steps but this is not best practice. 
 
@@ -406,7 +418,6 @@ Note that the user who creates the UDF automatically gets the "USAGE" and "CREAT
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-
 ## **My First UDF**
 Duration: 20
 
@@ -414,9 +425,9 @@ For our first UDF, we will create a simple (think "Hello World-like") UDF in Sno
 
 Our UDF will calculate the greatest common denominator (GCD) between two input values, using the NumpPy package.
 
-GCD is not a Sigma function (today) so calculating that in Sigma requires more effort than we would want. A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
+A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
 
-Now that VSCode is connected to Snowflake, we want to create another codeblock. This code defines our UDF which calculates the greatest common denominator (GCD) of two input numbers, in a Pandas DataFrame. 
+Now that VSCode is connected to Snowflake, we want to create another Codeblock. This code defines our UDF which calculates the greatest common denominator (GCD) of two input numbers, in a Pandas DataFrame. 
 
 <aside class="positive">
 <strong>What is a Panda DataFrame?</strong><br> A Pandas DataFrame is a two-dimensional labeled data structure that is used for data manipulation and analysis in Python. It is part of the Pandas library, which is a powerful and popular library for data analysis and manipulation.
@@ -447,7 +458,7 @@ Here is a breakdown of what each line of the code does:
 ```
 <img src="assets/horizonalline.png" width="800"/>
 
-**2: These two lines imports the panda and NumPy packages which provides a gcd function that we will use to calculate the GCD. While we already have them installed in our local environment, they are not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.**
+**2: These two lines imports the panda and NumPy packages. NumPy provides a gcd function that we will use to calculate the GCD. Pandas will do the data manipulation in Snowflake. While we already have them installed in our local environment, they are not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.**
 ```plaintext
 import pandas
 import numpy
@@ -497,7 +508,9 @@ As before, we should see a green checkmark:
 Our new UDF takes in two float arguments (the two columns in which to find the smallest common denominator against), so we need to specify that in the registrations using the `input_types` as:
 ```plaintext
  [T.FloatType()]*2 
+```
 
+This is used in the following codeblock.
 
 Copy this code to a new codeblock in VSCode:
 ```plaintext
@@ -526,14 +539,14 @@ Run the codeblock. It will likely fail:
 
 This is because we specified a Snowflake Stage, but forgot to create it. Lets do that.
 
-In a Snowflake **SQL Worksheet**, run this command using the warehouse and database that we connected to Snowflake in VSCode. We want the Stage to exist where we want it.
+In a Snowflake **SQL Worksheet (not a Python one)**, run this command using the warehouse and database that we connected to Snowflake in VSCode. We need the Stage to exist where we want it to be.
 ```plaintext
 CREATE STAGE IF NOT EXISTS My_UDFS
 ```
 
 <img src="assets/sp22.png" width="800"/>
 
-After creating the required Snowflake Stage, re-run takes a bit longer (17 seconds...a lifetime!) to run:
+After creating the required Snowflake Stage, re-run takes a bit longer (we are loading package dependencies) to run:
 
 <img src="assets/sp20.png" width="800"/>
 
@@ -546,7 +559,7 @@ query.collect()
 <img src="assets/sp23.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We haver defined a new function and stored it in Snowflake but we have not tested that it works. Let's assume it does (or has been created and tested by someone else in your company) and we just want to use it in Sigma. Later in this QuickStart, there is an optional section that covers how to test this UDF on our local machine, with VSCode. 
+<strong>IMPORTANT:</strong><br> We haver defined a new function and stored it in Snowflake but we have not tested that it works. Let's assume it does (or has been created and tested by someone else in your company) and we just want to use it in Sigma. There is another QuickStart that covers how to test a UDF on our local machine, with VSCode. 
 </aside>
 
 ## **UDF in Sigma**
@@ -560,7 +573,7 @@ Select a source of `WRITE SQL`:
 
 <img src="assets/sp24.png" width="800"/>
 
-We need to select a connection for our custom SQL and want to use the Snowflake connection that we used in VSCode since that is where our UDF is published.
+We need to select a connection for our custom SQL and need to use the Snowflake connection that we used in VSCode since that is where our UDF is published.
 
 Once you have selected your connection, copy and paste the following SQL script in the codeblock.
 
@@ -586,8 +599,13 @@ Back in the Workbook, click the `Max` column and select `Add new column` and ren
 <img src="assets/sp26.png" width="800"/>
 
 In the formula bar for the new column copy and paste this formula and click the checkmark to accept it:
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The database and schema will be different based on your Snowflake environment. Adjust accordingly.
+</aside>
+
 ```plaintext
-CallNumber("SE_INTERNAL_DB.SCHEMA_PHIL_BALLAI.GCD_UDF", [Min], [Max])
+CallNumber("SE_INTERNAL_DB.SCHEMA_PHIL_XXXXXX.GCD_UDF", [Min], [Max])
 ```
 
 We now can see the UDF has calculated the greatest common denominator between the `Min` and `Max` columns in the `GCD` column.
@@ -603,9 +621,8 @@ Congratulations; you have now created and used Snowflake Snowpark UDF in Sigma u
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this QuickStart we created a local Python development environment and used it to create and publish a Snowflake Snowpark user defined functions (UDF). We then then learned how easy it is to call UDFs directly from Sigma. 
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
