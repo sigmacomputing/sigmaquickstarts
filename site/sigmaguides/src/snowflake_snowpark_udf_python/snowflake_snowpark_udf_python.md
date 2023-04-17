@@ -3,10 +3,9 @@ id: snowflake_snowpark_udf_python
 summary: snowflake_snowpark_udf_python
 categories: snowflake
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
-
 
 # Snowpark UDF's with Python
 <!-- The above name is what appears on the website and is searchable. -->
@@ -230,11 +229,13 @@ conda activate snowpark
 
 <img src="assets/sp9.png" width="800"/>
 
-The only package our simple UDF will require is called `pandas`.
+The only package our UDF will require is called `pandas`m which includes several dependant packages.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Pandas is a popular open-source data analysis library for Python that provides powerful and easy-to-use data structures and data analysis tools. It is widely used in data science and data analytics to manipulate and analyze data in various formats such as CSV, Excel, SQL databases, and more.
 </aside>
+
+[Readme more about Panda here.](https://pandas.pydata.org/)
 
  Run the command to install `pandas` in our `snowpark` environment:
 ```plaintext
@@ -245,7 +246,7 @@ As before, when prompted to proceed, press `y` and hit enter:
 
 <img src="assets/sp10.png" width="800"/>
 
-The installation of pandas also installed many other dependencies. One is called `numpy` and we will also use this in our project later but do not need to install it again.
+The installation of pandas also installed many other dependencies. One is called `NumPy` and we will also use this in our project later but do not need to install it again.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> NumPy is a numerical computing package for Python that provides support for large, multi-dimensional arrays and matrices, along with a large library of mathematical functions to operate on these arrays.
@@ -299,17 +300,14 @@ Make sure that the Python Interpreter selected in blue is `snowpark`, indicating
 <strong>NOTE:</strong><br> It is possible to change the default but that is a distraction and we want to just start building.
 </aside>
 
-We are now setup to start developing our Snowpark UDF.
+We are now setup to get connected to Snowflake from VSCode.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **My First UDF**
+## **VSCode with Jupyter Notebooks**
 Duration: 20
 
-For our first UDF, we will use the NumPy package to create a UDF in Snowpark that can be later called by Sigma by name. We will keep this very simple and calculate the greatest common denominator (GCD) between two input values.
-
-GCD is not a Sigma function (today) so calculating that in Sigma requires more effort that we would want. A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
 
 Part of the VSCode with Python includes `Jupyter Notebooks`. 
 
@@ -356,9 +354,16 @@ After the install is done (maybe 20 seconds), the quick test produces a positive
 
 Now that we are sure that 1+1 = 2, we can move on. 
 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## **Connect to Snowflake**
+Duration: 20
+
 Click the add a new `codeblock` (+Code).
 
-Copy this code into the new block:
+Copy this code into the new codeblock:
 ```plaintext
 # SNOWFLAKE AUTHENTICATION
 from snowflake.snowpark import Session
@@ -388,63 +393,98 @@ After you have configured the required values, run this codeblock as usual. We s
 
 <img src="assets/sp18.png" width="800"/>
 
-Now that we are connected, we want to create another codeblock to define our greatest common denominator (GCD) UDF.
+Before we move on, some words about Snowflake Role requirements for working with UDFs. We are using the Role `ACCOUNTADMIN` just to avoid some additional configuration steps but this is not best practice. 
 
-In a new codeblock, copy and paste this code:
+To publish a user-defined function (UDF) in Snowflake, you need (minimally) the "USAGE" privilege on the database and schema where the function is located, as well as the "CREATE FUNCTION" privilege.
+
+The "USAGE" privilege allows you to execute the UDF, while the "CREATE FUNCTION" privilege enables you to create, alter, and drop functions.
+
+Note that the user who creates the UDF automatically gets the "USAGE" and "CREATE FUNCTION" privileges on that function, but other users or roles need to be explicitly granted these privileges.
+
+[More information on granting privileges for UDFs is available here.](https://docs.snowflake.com/en/sql-reference/udf-access-control)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+
+## **My First UDF**
+Duration: 20
+
+For our first UDF, we will create a simple (think "Hello World-like") UDF in Snowflake that can be later called with Sigma by name.
+
+Our UDF will calculate the greatest common denominator (GCD) between two input values, using the NumpPy package.
+
+GCD is not a Sigma function (today) so calculating that in Sigma requires more effort than we would want. A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
+
+Now that VSCode is connected to Snowflake, we want to create another codeblock. This code defines our UDF which calculates the greatest common denominator (GCD) of two input numbers, in a Pandas DataFrame. 
+
+<aside class="positive">
+<strong>What is a Panda DataFrame?</strong><br> A Pandas DataFrame is a two-dimensional labeled data structure that is used for data manipulation and analysis in Python. It is part of the Pandas library, which is a powerful and popular library for data analysis and manipulation.
+</aside>
+
+[Panda documentation is here:](https://pandas.pydata.org/docs/user_guide/dsintro.html)
+
+### Define our greatest common denominator (GCD) UDF:
+
+In a new codeblock, copy and paste this code, which defines our GCD UDF:
 ```plaintext
 # Define our greatest common denominator UDF
-def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
-    import pandas as pd
-    import numpy
-    
+import pandas
+import numpy
+def udf_Greatest_Common_Denominator(df: pandas.DataFrame) -> pandas.Series:
     df = df.astype('int')
     Arg1 = df.iloc[:, 0]
     Arg2 = df.iloc[:, 1]
-
     gcd = numpy.gcd(Arg1, Arg2)
     return gcd
 ```
 
-This code defines a user-defined function (UDF) in Python that calculates the greatest common denominator (GCD) of two numbers in a Pandas DataFrame. 
+Here is a breakdown of what each line of the code does:
 
-Here is a breakdown of each line of the code:
-
+**1: This is a comment that describes what the following code does.**
 ```plaintext
-# Define our greatest common denominator UDF:
+# Define our greatest common denominator UDF
 ```
-This is a comment that describes what the following code does.
+<img src="assets/horizonalline.png" width="800"/>
 
+**2: These two lines imports the panda and NumPy packages which provides a gcd function that we will use to calculate the GCD. While we already have them installed in our local environment, they are not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.**
 ```plaintext
-def udf_Greatest_Common_Denominator(df: pd.DataFrame) -> pd.Series:
-```
-This line defines the UDF called udf_Greatest_Common_Denominator, which takes a single argument df of type pd.DataFrame, and returns a pd.Series object. The UDF expects a DataFrame with two columns containing the two numbers for which to compute the GCD.
-
-```plaintext
-import pandas as pd
+import pandas
 import numpy
 ```
-This line imports the panda and numpy libraries which provides a gcd function that we will use to calculate the GCD. While we already have numpy installed in our local environment, it is not going to exist on our Snowpark instance for this UDF unless we specify to import it when the UDF is defined.
+<img src="assets/horizonalline.png" width="800"/>
 
+**3: This line defines the UDF called udf_Greatest_Common_Denominator, which takes a single argument df of type pd.DataFrame, and returns a pd.Series object.**
+```plaintext
+def udf_Greatest_Common_Denominator(df: pandas.DataFrame) -> pandas.Series:
+```
+<img src="assets/horizonalline.png" width="800"/>
+
+**4:This line converts the DataFrame df to an integer data type.**
 ```plaintext
 df = df.astype('int')
 ```
-This line converts the DataFrame df to an integer data type.
+<img src="assets/horizonalline.png" width="800"/>
 
+
+**5: These two lines extract the first and second columns of the DataFrame df and assign them to Arg1 and Arg2, respectively.**
 ```plaintext
 Arg1 = df.iloc[:, 0]
 Arg2 = df.iloc[:, 1]
 ```
-These two lines extract the first and second columns of the DataFrame df and assign them to Arg1 and Arg2, respectively.
+<img src="assets/horizonalline.png" width="800"/>
 
+**6: This line uses the numpy.gcd function to calculate the GCD of Arg1 and Arg2, and assigns the result to the variable gcd.**
 ```plaintext
 gcd = numpy.gcd(Arg1, Arg2)
 ```
-This line uses the numpy.gcd function to calculate the GCD of Arg1 and Arg2, and assigns the result to the variable gcd.
+<img src="assets/horizonalline.png" width="800"/>
 
+**7: This line returns the GCD value as a pd.Series object from the UDF.**
 ```plaintext
 return gcd
 ```
-This line returns the GCD value as a pd.Series object from the UDF.
+<img src="assets/horizonalline.png" width="800"/>
 
 Now that it is all explained, run the codeblock.
 
@@ -452,12 +492,12 @@ As before, we should see a green checkmark:
 
 <img src="assets/sp19.png" width="800"/>
 
-### Register the Function in Snowflake
+### Register the GCD function in Snowflake
 
 Our new UDF takes in two float arguments (the two columns in which to find the smallest common denominator against), so we need to specify that in the registrations using the `input_types` as:
 ```plaintext
  [T.FloatType()]*2 
-```
+
 
 Copy this code to a new codeblock in VSCode:
 ```plaintext
@@ -470,15 +510,15 @@ udf_Greatest_Common_Denominator = session.udf.register(func=udf_Greatest_Common_
     replace=True,
     max_batch_size =  1000,
     is_permanent=True, 
-    packages=['numpy','pandas'],
+    packages=['NumPy','pandas'],
     comment = "Algorithm to find Greatest Common Denominator",
     session=session)
 ```
-Some things to note:
+**Some things to note:**
 
-1: Note that we had to specify the numpy and pandas libraries. <br><br>
-2: We gave it a name `GCD_UDF`. We will call this UDF by that name from Sigma later.<br><br>
-3: We have to make the registered UDF available to the Snowflake connection that is being used in Sigma.<br>
+**1:** We have to specify the NumPy and Pandas packages. <br>
+**2:** We decided to name it `GCD_UDF`. We will call this UDF by that name from Sigma later.<br>
+**3:** We have to make the registered UDF available to the Snowflake connection that is being used in Sigma. We will do that in a bit.
 
 Run the codeblock. It will likely fail: 
 
@@ -491,11 +531,11 @@ In a Snowflake **SQL Worksheet**, run this command using the warehouse and datab
 CREATE STAGE IF NOT EXISTS My_UDFS
 ```
 
-<img src="assets/sp20.png" width="800"/>
+<img src="assets/sp22.png" width="800"/>
 
 After creating the required Snowflake Stage, re-run takes a bit longer (17 seconds...a lifetime!) to run:
 
-<img src="assets/sp22.png" width="800"/>
+<img src="assets/sp20.png" width="800"/>
 
 Lastly, we need to register the UDF (item #3 on the list) by running this code in a new VSCode codeblock:
 ```plaintext
@@ -512,22 +552,49 @@ query.collect()
 ## **UDF in Sigma**
 Duration: 20
 
+Login into Sigma and select `Create New` and then `Workbook`.
 
+In the new Workbook, click `+` to add a new `Table`.
 
+Select a source of `WRITE SQL`:
 
-<img src="assets/sp19.png" width="800"/>
+<img src="assets/sp24.png" width="800"/>
 
+We need to select a connection for our custom SQL and want to use the Snowflake connection that we used in VSCode since that is where our UDF is published.
 
+Once you have selected your connection, copy and paste the following SQL script in the codeblock.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+This script will generate 100 rows with two columns of random numbers between 1 and 100 (and an Id column) that we will use as inputs to our GCD UDF.
 
+```plaintext
+SELECT 
+  ROW_NUMBER() OVER (ORDER BY RANDOM()) AS id,
+  uniform(1, 100, random()) AS Min,
+  uniform(1, 100, random()) AS Max
+FROM
+  TABLE(GENERATOR(ROWCOUNT => 100))
+```
 
-### Optional Section
+Run the command and observe the results:
 
-For this next demonstration, we will create a Snowpark Dataframe and use 
+<img src="assets/sp25.png" width="800"/>
 
+Now click `Done`. 
 
+Back in the Workbook, click the `Max` column and select `Add new column` and rename it `GCD`:
+
+<img src="assets/sp26.png" width="800"/>
+
+In the formula bar for the new column copy and paste this formula and click the checkmark to accept it:
+```plaintext
+CallNumber("SE_INTERNAL_DB.SCHEMA_PHIL_BALLAI.GCD_UDF", [Min], [Max])
+```
+
+We now can see the UDF has calculated the greatest common denominator between the `Min` and `Max` columns in the `GCD` column.
+
+<img src="assets/sp27.png" width="800"/>
+
+Congratulations; you have now created and used Snowflake Snowpark UDF in Sigma using Python. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
