@@ -1,6 +1,6 @@
 author: pballai
-id: parnter_hightouch_contact sync
-summary: parnter_hightouch_contact sync
+id: partner_hightouch_contact sync
+summary: partner_hightouch_contact sync
 categories: PLEASE PROVIDE FROM LIST BELOW
 environments: web
 status: Published
@@ -33,27 +33,58 @@ This playbook walks through using a Sigma workbook and Hightouch to sync a conta
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
-  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
-  <li>Miniconda for required Python packages</li>
+  <li>A Snowflake account with the proper administrative and security admin access. A trial environment is acceptable</li>
+  <li>A Highspot account. A trial environment is acceptable.</li>
+  <li>A HubSopt account. A trial environment is acceptable.</li>
 </ul>
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button><button>[Hightouch Free Trial](https://app.hightouch.com/signup)</button><button>[]() </button>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> We will assume you have access to (or setup trials) as outlined above. We will not cover the steps to access the base sites as the vendors have made the process very straight-forward.
+</aside>
+
 ### What You’ll Learn
 
 ### What You’ll Build
 
+LUCID CHART HERE.....
 
 ![Footer](assets/sigma_footer.png)
 
 <!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## Define Source Data in Sigma
 Duration: 20
+
+
+### Create Data Model
+
+
+### Create Target Destination
+
+
+### Define Data Sync
+
+
+### Schedule Sync
+
+
+### Run Sync Manually
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## HubSpot
+Duration: 20
+
+### Verify data landed
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
