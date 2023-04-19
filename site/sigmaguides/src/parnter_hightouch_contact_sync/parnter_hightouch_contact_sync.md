@@ -22,10 +22,27 @@ If you're leveraging a BI tool like Sigma to define lists of target users, you c
 This playbook walks through using a Sigma workbook and Hightouch to sync a contact list of at-risk customers into Marketo, but you could apply the same general steps for syncing any contact list into any other marketing tool.
 
 ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
+</aside>
 
 ### Prerequisites
-  
+
+<ul>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
+  <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
+  <li>Miniconda for required Python packages</li>
+</ul>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
 ### What You’ll Learn
 
 ### What You’ll Build
