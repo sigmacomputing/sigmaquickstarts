@@ -53,6 +53,7 @@ Businesses who need to move data from one place to another while allowing end-us
 
 ### What You’ll Learn
 
+We will connect to data in our warehouse, use Sigma to orient and enrich it, leverage Highspot to copy it from source to HubSpot where we will see our transformed data land. 
 ### What You’ll Build
 
 LUCID CHART HERE.....
@@ -287,7 +288,12 @@ Navigate to `Administration` > `APIs & Embed Secrets` and click `Create New`:
 
 <img src="assets/ht43.png" width="500"/>
 
-Select `API Token`, give it a friendly name, description and assign an `Owner`. For this demonstration, we can just use our own Sigma account. 
+Select `API Token`, give it a friendly name, description and assign an `Owner`. For this demonstration, we need to use our own Sigma account. If we used a different account (ie: a Service Account), we would need to also share the Workbook with that Service Account. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This Workbook is explicitly shared with the Sigma user who created it by default. It is best practice to have a Service Account for integration and security autmations. 
+</aside>
+
 
 <aside class="negative">
 <strong>NOTE:</strong><br> In production, it is recommended to assign keys to a dedicated service account as opposed to actual people, who may leave the organization at a later time and causing the keys to become invalid.
@@ -490,10 +496,41 @@ In `Define model` click on the `Sigma model`:
 
 <img src="assets/ht51.png" width="500"/>
 
-Select the workbook, page, and element that contain our `Approved Leads`.
+Select the workbook, page, and element that contain our `Approved Leads` and click `Preview Results`:
 
-NOT WORKING
+<img src="assets/ht52.png" width="500"/>
 
+Click `Continue`.
+
+In `Finalize settings for this model`, provide a name. `Primary Key` (from the inbound data) and a folder to store in (optionally):
+
+<img src="assets/ht53.png" width="500"/>
+
+Click `Finish`.
+
+We are now ready to `Add sync` to perform the job as configured.
+
+<img src="assets/ht54.png" width="500"/>
+
+Select our HubSpot destination we set up earlier:
+
+<img src="assets/ht55.png" width="500"/>
+
+In `Configure sync to HubSpot`, select the following:
+
+<img src="assets/ht56.png" width="500"/>
+
+Scroll down and configure the column to match records on and which columns should be included in the sync and to which columns (mapping) in HubSpot:
+
+<img src="assets/ht57.png" width="500"/>
+
+A cool feature is to `Test` before we continue on. Click `Test`. We can select a row (we only have one) to see what Highspot will be sending to HubSpot. This can be useful when troubleshooting sync issues.
+
+<img src="assets/ht58.png" width="500"/>
+
+If all looks good, click the `Close`.
+
+Click `Continue`.
 
 Before continuing, you must Preview your model to ensure it's querying the data you're interested in. By default, we limit the preview to the first 100 records. Once you've validated your data, click Continue.
 
@@ -503,18 +540,21 @@ Select a Primary key. A primary key should be a column with unique identifiers, 
 
 Click Finish.
 
+In `Finalize settings for this sync`, select `Manual` and click `Finish`. 
 
-### Create Target Destination
+<aside class="negative">
+<strong>NOTE:</strong><br> Hightouch sync schedule options are very flexible to allow many different possibilities including a custom Cron expression.
+</aside>
 
+Click `Run sync`:
 
-### Define Data Sync
+<img src="assets/ht60.png" width="500"/>
 
+The sync is queued for start and once completed we should get a status of `Healthy`:
 
-### Schedule Sync
+<img src="assets/ht61.png" width="500"/>
 
-
-### Run Sync Manually
-
+The last thing we need to do is see the data landed in HubSpot.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -522,18 +562,18 @@ Click Finish.
 ## HubSpot
 Duration: 20
 
-### Verify data landed
+Log into the HubSpot trial account we created and navigate to  `Contacts`.
 
+There we see the one record we added (Sara Huggins) along with the two default rows provided by the HubSpot trial. 
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+There is some refinement we could do to make Sarah's record more complete but hopefully we demonstrated the workflow well enough that it would be easy to take that task on and quickly complete it.
+
+With your contact lists dynamically updating in HubSpot, you can skip the manual labor of updating them every time they change and instead focus on perfecting your campaign.
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+We covered connecting to data in our warehouse, using Sigma to orient and enrich it, leveragd Highspot to copy it from source to HubSpot where we saw our transformed data land. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
