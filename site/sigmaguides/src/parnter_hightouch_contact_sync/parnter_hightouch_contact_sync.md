@@ -19,10 +19,13 @@ Traditionally, data teams export contact lists as CSVs and send them to marketin
 
 If you're leveraging a BI tool like Sigma to define lists of target users, you can rely on those definitions to sync contact lists to marketing tools like HubSpot or Marketo dynamically using Hightouch.
 
-This playbook walks through using a Sigma workbook and Hightouch to sync a contact list of at-risk customers into Marketo, but you could apply the same general steps for syncing any contact list into any other marketing tool.
+This QuickStart walks through using a Sigma workbook and Hightouch to sync a contact list of at-risk customers into HubSpot, but you could apply the same general steps for syncing any contact list into any other marketing tool.
+
+The use-case will be a marketing campaign that targets the most loyal customers in the United States only. We need an easy way to get the data from the warehouse over to HubSpot, where we will run the campaign from. We don't have development resources to do this right now so we have to do it ourselves.
 
 ### Target Audience
 
+Businesses who need to move data from one place to another while allowing end-users to directly work with the data and make decisions about which data is selected, how it is organized and even provide additional data to enrich it prior to it landing in the target system. 
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
@@ -34,7 +37,7 @@ This playbook walks through using a Sigma workbook and Hightouch to sync a conta
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A Snowflake account with the proper administrative and security admin access. A trial environment is acceptable</li>
-  <li>A Highspot account. A trial environment is acceptable.</li>
+  <li>A Hightouch account. A trial environment is acceptable.</li>
   <li>A HubSopt account. A trial environment is acceptable.</li>
 </ul>
 
@@ -45,7 +48,7 @@ This playbook walks through using a Sigma workbook and Hightouch to sync a conta
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button><button>[Hightouch Free Trial](https://app.hightouch.com/signup)</button><button>[Hubspot Free Trial](https://app.hubspot.com/signup-hubspot/marketing?utm_id=430314580470&utm_content=&utm_source=google&utm_medium=paid&utm_term=crm_%252Bhubspot%2520%252Bfree_EN&utm_campaign=AllProducts_Portals_EN_NAM_NAM_Brand-Free_p_c_campaignid9817582458_agid103055913794_google&hsa_acc=9694350438&hsa_cam=9817582458&hsa_grp=103055913794&hsa_ad=430314580470&hsa_src=g&hsa_tgt=kwd-2008352218505&hsa_kw=%252Bhubspot%2520%252Bfree&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gad=1&gclid=CjwKCAjwov6hBhBsEiwAvrvN6J1A3OxMCh9oGiuuy5jYNQgb00hXztG9vf_XyPjAx650K5sTZ3leThoCU8UQAvD_BwE&hubs_signup-url=www.hubspot.com%2Fproducts%2Fget-started-f047&hubs_signup-cta=getstarted-marketingfree&_ga=2.165617663.1534244571.1681925664-821138832.1680805072&_gac=1.254944122.1681925664.CjwKCAjwov6hBhBsEiwAvrvN6J1A3OxMCh9oGiuuy5jYNQgb00hXztG9vf_XyPjAx650K5sTZ3leThoCU8UQAvD_BwE&_gl=1*efo704*_ga*ODIxMTM4ODMyLjE2ODA4MDUwNzI.*_ga_LXTM6CQ0XK*MTY4MTkyNTY2My4xLjAuMTY4MTkyNTY2NC4wLjAuMA..&step=email_only_landing_page)</button>
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> We will assume you have access to (or setup trials) as outlined above. We will not cover the steps to access the base sites as the vendors have made the process very straight-forward.
+<strong>IMPORTANT:</strong><br> We will assume you have access to (or setup trials) as outlined above before starting this QuickStart. We will not cover the steps to access the base sites as the vendors have made the process very straight-forward.
 </aside>
 
 ### What You’ll Learn
@@ -58,7 +61,7 @@ LUCID CHART HERE.....
 
 <!-- END OF OVERVIEW -->
 
-## Define Source Data in Sigma
+## Snowflake - Get Connected
 Duration: 20
 
 We will start by connecting Sigma to Snowflake and use the Snowflake sample database. 
@@ -117,9 +120,17 @@ Before clicking `Save` you are required to reenter your Snowflake password. Do t
 
 If all is correct, the connection will be tested and you return to the `Connections` page.
 
-Now that we have a connection (with write access) to data, click `+ Create new` and select `Workbook`:
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-<img src="assets/ht3.png" width="800"/>
+## Sigma: Source Data
+Duration: 20
+
+Now that we have a connection (with write access) to data we want to filter for the records that the marketing campaign wants to target. We then want to provide marketing a way triage the data further by augmenting the source data with additional information. 
+
+Click `+ Create new` and select `Workbook`:
+
+<img src="assets/ht3.png" width="600"/>
 
 Click to add a new `Table`:
 
@@ -139,7 +150,9 @@ Now is a good time to save our Workbook. Click the `Save As` button in the upper
 
 <img src="assets/ht6.png" width="500"/>
 
-The `Customers` table we are using is very large (65,000,000 Rows – 18 Columns) and we don't want to use that much data to demonstrate this workflow so let's limit the size with a few filters.
+The `Customers` table we are using is very large **(65,000,000 Rows – 18 Columns)** and we don't want to use that much data to demonstrate this workflow so let's limit the size with a few filters.
+
+Recall that marketing wants only US customers who are the most loyal.
 
 For the first filter (with Workbook in `Edit`), click on the column `C Preferred Cust Flag` and select `Filter`:
 
@@ -149,15 +162,21 @@ Select `Y`. That brings our row count down quite a bit:
 
 <img src="assets/ht8.png" width="500"/>
 
-Now add filters for the columns, `C Birth Country`, `C Birth Year` and `C Email Address`. Configure them as shown:
-
-<aside class="negative">
-<strong>NOTE:</strong><br> In the case where there is no email address, we want to exlcude those from the data so use the "3-dot" to access the option to exclude them after you have selected to display only nulls. 
-</aside>
+Now add filters for the columns, `C Birth Country` and `C Customer id`. Your filter configuration should look like this when done:
 
 <img src="assets/ht9.png" width="500"/>
 
-We now have a much smaller dataset for our demonstration, 614 rows. We will use this data as our source, but we want the user to be able to add values to each row for `Lifecycle Stage` and `Sync to Hubspot` using Sigma. 
+<aside class="negative">
+<strong>NOTE:</strong><br> We are using "Top 10" to reduce the row count for demonstration purposes only. You can use as large a row count as you prefer; Sigma will scale with it.
+</aside>
+
+We now have a much smaller dataset for our demonstration (10 rows). 
+
+Before we move on, let's rename the Workbook `Page` to `Source Data` as shown (2x-click the page tab):
+
+<img src="assets/ht20.png" width="500"/>
+
+We will use this data as our source, but we want the user to be able to add values to each row for `Lifecycle Stage` and `Sync to Hubspot` using Sigma. 
 
 We will use a Sigma Input Table for this task.
 
@@ -167,6 +186,13 @@ We will use a Sigma Input Table for this task.
 
 [Learn more about Sigma Input Tables here](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507-Intro-to-Input-Tables#h_01GY3EEP9AX8RW2WKVSAAEEZNB)
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma - Input Table
+
+We want the marketing team to triage (and suppliment data) these rows before we send to HubSpot and Input Tables allows us to do that.
+
 On the `Customer` table click to add a `Child Element` and `Linked Input Table`:
 
 <img src="assets/ht10.png" width="500"/>
@@ -175,15 +201,17 @@ We are prompted to select how we want to join the new input table to the source 
 
 Configure as: shown and click `Create Input Table`:
 
-<img src="assets/ht14.png" width="500"/>
+<img src="assets/ht14.png" width="800"/>
 
 Rename the new Input Table (by 2x-clicking on it's default title) to `Lead Management`. 
 
-Now we can also see there are still some nulls in `C First Name` and `C Last Name`. Filter them out the same way as before. This will leave us with 164 clean rows. 
+It seems a null value has made it through for an email address. We should probably filter for nulls at the source data but for now, let just filter it here:
 
-### Input Table Data Validation
+<img src="assets/ht22.png" width="800"/>
 
-We want the Marketing team to triage these rows before we send to HubSpot and Input Tables allows us to do that.
+<aside class="negative">
+<strong>NOTE:</strong><br> If the data selected does not match exactly, that is ok. Sample data can change over time. You can filter data really easily in Sigma.
+</aside>
 
 Click to add a `New Column` > `Text`:
 
@@ -213,24 +241,267 @@ Now users can select from the allowed list for each row as they triage the list:
 <strong>NOTE:</strong><br> Copy and paste is supported so that rows do not necessarily be completed one at a time.
 </aside>
 
+We need another column so the users can indicate if the row is approved to send to HubSopt. 
 
+We do this using the same `Add new column` method, but this time select a `Column Type` as `Logical`. This will let the user select `True` or `False`, with true being approved.
 
+Rename the column to `Sync to HubSpot`.
 
+Lastly, let's move this table to another page and rename the new page, `Lead Approval`:
 
+<img src="assets/ht23.png" width="500"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Seperating source data to a different page makes it easier for the end user to navigate a Workbook and also can prevent them (if configured to do so) from changing that page. 
+</aside>
 
-This will allow us to leverage a subset of the filtered Customer table and add some data to it, using new columns with data validation enabled. 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## Sigma - Approve Table
 
+Now that the `Lead Management` table has been approved/rejected, we need to use it to create a table based on only approved leads. This is done using the same methods as before.
 
+Create a `Child table` off the `Lead Management` table. 
 
+<img src="assets/ht24.png" width="500"/>
 
+Change the new tables name to `Approved Leads`.
 
+Set a `Filter` on the `Sync to HubSpot` column and only show `True` rows:
 
-## Highspot R-ELT
+<img src="assets/ht25.png" width="500"/>
+
+We now have the row(s) we want to sync to HubSopt. We are sending one row to make this simple as possible for demonstration only.
+
+<img src="assets/ht26.png" width="500"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma - API Keys
+
+Before we leave Sigma, we need to create a set of keys that will allow HubSpot to access our Sigma content. This is very simple to do.
+
+Navigate to `Administration` > `APIs & Embed Secrets` and click `Create New`:
+
+<img src="assets/ht43.png" width="500"/>
+
+Select `API Token`, give it a friendly name, description and assign an `Owner`. For this demonstration, we can just use our own Sigma account. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> In production, it is recommended to assign keys to a dedicated service account as opposed to actual people, who may leave the organization at a later time and causing the keys to become invalid.
+</aside>
+
+<img src="assets/ht44.png" width="500"/>
+
+Click `Create`.
+
+Copy the `Client Id` and `Secret` values and save them in a text file (or other secure location). We will need to use these later.
+
+<img src="assets/ht45.png" width="500"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Hightouch
 Duration: 20
 
+Hightouch is a software platform that allows businesses to synchronize their data between different systems and applications. It helps companies to integrate their customer data, sales data, and other types of information in real-time, eliminating the need for manual data entry or complex coding. 
+
+This allows businesses to make better decisions based on the most up-to-date information available. Hightouch can also help automate workflows and data management processes, leading to increased efficiency and productivity. 
+
+The Hightouch integration with Sigma allows customers to leverage the power of both plaforms together to create high-value 
+solutions using moderns, easy to use web-based platforms.
+
+[More information about getting started with Hightouch is here.](https://hightouch.com/docs)
+
+### Define Source Connection
+
+A source is where your organization's business data lives. The Hightouch extension uses Sigma as a modeling method, not a data source. In other words, Sigma provides the SQL query, not the query results. 
+
+Before using Sigma to query the data, you must create a source in Hightouch that connects to the **same data warehouse used by Sigma.**
+
+Login to Hightouch. 
+
+If this is the first timne using Hightouch, click `Create Workspace` for our project:
+
+<img src="assets/ht27.png" width="500"/>
+
+Give it a name. The `Workspace URL` will check to make sure it is not being used already (as shown by the green checkmark). If all is good, click `Create Workspace`:
+
+<img src="assets/ht28.png" width="500"/>
+
+Now we need to select our source of data. Click  `Select source`:
+
+<img src="assets/ht29.png" width="500"/>
+
+Type `snow` in the textbox and click to select `Snowflake`:
+
+<img src="assets/ht30.png" width="500"/>
+
+We are returned to the `Select your destination` page.
+
+Click the `Select destination` button.
+
+Type `HubSpot` in the textbox ans click to select `HubSpot`:
+
+<img src="assets/ht31.png" width="500"/>
+
+We are now on a page where we can click to configure source/destination details. Click `Connect source`:
+
+<img src="assets/ht32.png" width="500"/>
+
+We need to provide Snowflake configuration (in steps).
+
+### Step 1: Snowflake Source
+
+This is the same configuration data as used earier when configuring Snowflake in Sigma:
+
+<img src="assets/ht33.png" width="500"/>
+
+### Step 2: Sync Engine
+
+We will use the default, `Standard sync engine` but for very large jobs, the `Lightning sync engine` will provide improved performance. 
+
+### Credentials
+
+Provide your Snowflake credentials. We will use the `Password` method and the `ACCOUNTADMIN` role. Using this role is not recommended in production but makes demonstration easier.
+
+<img src="assets/ht34.png" width="500"/>
+
+Once all is provided, click the `Continue` button on the lower left corner of the page.
+
+Hightouch will validate the connection and if all is good, we can move on to configure the `Connect Destimation` step.
+
+<img src="assets/ht35.png" width="500"/>
+
+Click `Continue`, give the source a friendly name and click `Finish`. 
+
+Click `Connect Destination`:
+
+<img src="assets/ht36.png" width="500"/>
+
+Click to select `OAuth` as the authentication method, then click the `Log in to HubSpot` button:
+
+<img src="assets/ht37.png" width="500"/>
+
+We are taking to the HubSpot login page where we can login to the trial account we setup in the prerequisites. 
+
+If you were already logged into HubSpot, you will be prompted to select an account:
+
+Since we are in a trial, we only have one account. Click `Choose account`:
+
+<img src="assets/ht38.png" width="500"/>
+
+Hughtouch is requesting permissiong from you to allow it to connect to this Hubspot account. Scroll to the bottom of the page and click `Connect app`. 
+
+We are returned to the `Connect to HubSpot` page where we need to click `Test connection` before we can move on:
+
+<img src="assets/ht39.png" width="500"/>
+
+If all is well, we should get a success message:
+
+<img src="assets/ht40.png" width="500"/>
+
+Click `Continue`, give the destination a friendly name and click `Finish`.
+
+We are setup with connections now and can click `Configure sync`:
+
+<img src="assets/ht41.png" width="500"/>
+
+`Query your source` we are at the starting point of the integration with Sigma. We need to configure this. Select `Configure Sigma`:
+
+<img src="assets/ht42.png" width="500"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> YWhen you create a Hightouch model backed by a Sigma workbook, Hightouch converts that workbook into SQL and runs it against your data source.
+</aside>
+
+Click `Configure extension`. 
+
+Remember these Sigma API keys we created earlier? Locate them (wherever you saved them off to) and copy and paste the values for `Client Id` and `Client Secret` accordingly. 
+
+<img src="assets/ht46.png" width="500"/>
+
+To determine which cloud provider is hosting Sigma, you can navigate to Sigma `Administration` > `Account`:
+
+<img src="assets/ht47.png" width="500"/>
+
+When ready, click `Connect`. The connection will be tested and return success if valid:
+
+<img src="assets/ht47.png" width="500"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+htouch validates that you have the necessary access and permissions. If the test fails, you need to confirm and re-enter your credentials.
+Give your source a Source name.
+Click Finish.
+
+
+
+Once finished, your source appears on the Sources overview page and can be used to set up models.
+
+
+
+
+
+
+
+
+
+
 ### Create Data Model
+
+Hightouch models define what data to pull from your source. We'll use the Sigma workbook you defined for your contact list to set up a model in Hightouch.
+
+In Hightouch, go to the Models overview page and click `Add model`:
+
+<img src="assets/ht49.png" width="500"/>
+
+Select by 2x-clicking on the source you've just connected:
+
+<img src="assets/ht50.png" width="500"/>
+
+In `Define model` click on the `Sigma model`:
+
+<img src="assets/ht51.png" width="500"/>
+
+Select the workbook, page, and element that contain our `Approved Leads`.
+
+NOT WORKING
+
+
+Before continuing, you must Preview your model to ensure it's querying the data you're interested in. By default, we limit the preview to the first 100 records. Once you've validated your data, click Continue.
+
+Name your model, for example, "[Sigma] At risk customers."
+
+Select a Primary key. A primary key should be a column with unique identifiers, for example, a customer ID or email address.
+
+Click Finish.
 
 
 ### Create Target Destination
