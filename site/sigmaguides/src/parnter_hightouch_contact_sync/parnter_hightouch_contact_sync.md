@@ -3,7 +3,7 @@ id: partner_hightouch_contact_sync
 summary: partner_hightouch_contact_sync
 categories: Partners
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:  B2B, General, Retail, eCommerce
 lastUpdated: 2023-04-28
