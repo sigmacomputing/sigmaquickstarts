@@ -3,7 +3,7 @@ id: snowflake_snowpark_udf_python
 summary: snowflake_snowpark_udf_python
 categories: snowflake
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
 
