@@ -31,6 +31,7 @@ $color-snowflake: #000000;
 $color-tables: #000000;
 $color-use-cases: #000000;
 $color-functions: #000000;
+$color-partners: #000000;
 
 $icon-administration: 'administration.svg';
 $icon-embedding: 'embedding.svg';
@@ -39,6 +40,7 @@ $icon-snowflake: 'snowflake-logo.svg';
 $icon-tables: 'tables.svg';
 $icon-use-cases: 'use-cases.svg';
 $icon-functions: 'functions.svg';
+$icon-partners: 'partners.svg';
 
 @include codelab-card(['administration'], $color-fundamentals, $icon-administration);
 @include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
@@ -47,6 +49,7 @@ $icon-functions: 'functions.svg';
 @include codelab-card(['tables'], $color-fundamentals, $icon-tables);
 @include codelab-card(['use-cases'], $color-fundamentals, $icon-use-cases);
 @include codelab-card(['functions'], $color-fundamentals, $icon-functions);
+@include codelab-card(['partners'], $color-partners, $icon-partners);
   
 /** Categories in Use (so far):
 administration
@@ -55,6 +58,7 @@ embedding
 tables
 use-cases
 functions
+partners
 **/
 
 
