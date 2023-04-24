@@ -19,6 +19,57 @@ This QuickStart serves as an introduction to using Snowflake Snowpark (Snowpark)
 
 There are many areas of discussion possible as Snowpark can be leveraged for data quality, data modeling, machine learning (ML), data science, analytics and more. With that in mind, we will narrow the scope for this QuickStart to high level education on Snowpark with a focus on UDF's and using them in Sigma. 
 
+### Persona for this QuickStart
+
+We will demonstrate, (at a high-level) how we can start to use Snowpark, **as a developer** (using Python) might. Given the depth of Snowpark, we will start with what amounts to a "Hello World" sort of use case.
+
+This will give us the foundational software configurations and a base understanding of the workflow involved. In subsequent QuickStarts, we will increase the complexity by diving into specific uses cases found in real world applications, leveraging Sigma. 
+
+ ### Target Audience
+Anyone interested in learning about Snowpark and how to leverage UDFs in Sigma.
+
+Developers who are interesting in creating Snowpark UDFs in Python (and other supported languages) and leverage them within Sigma to provide advanced functionality to Sigma users.
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
+</aside>
+
+### Prerequisites
+
+<ul>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
+  <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
+  <li>Miniconda for required Python packages</li>
+</ul>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
+
+### What You’ll Learn from here
+
+We will learn how to setup a local development environment, configure it for Python, connect to Snowflake, create and test a Snowpark UDF and call it from Sigma.
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> We will demonstrate using a MAC computer, but the steps are very similar for Windows and Linux. 
+</aside>
+
+### What You’ll Build
+
+We will build a Snowpark UDF that expects two input values and calculates the greatest common denominator and returns a value for a new table column in Sigma.
+
+<img src="assets/sp33.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF OVERVIEW -->
+
+## What is Snowpark?
+
+
 ### What is Snowpark?
 Snowpark is a feature of the Snowflake Data Cloud platform that allows developers to write custom code using popular programming languages like Java, Scala, and Python, and execute it directly within Snowflake. It provides a powerful and flexible way to process data within Snowflake without having to move data in and out of the platform.
 
@@ -92,53 +143,8 @@ Given the size of Snowflake's installed base, the implications of Snowpark on th
 
 Considering all of this, Snowpark is something that data professionals need to pay attention to. 
 
-### Persona for this QuickStart
-
-We will demonstrate, (at a high-level) how we can start to use Snowpark, **as a developer** (using Python) might. Given the depth of Snowpark, we will start with what amounts to a "Hello World" sort of use case.
-
-This will give us the foundational software configurations and a base understanding of the workflow involved. In subsequent QuickStarts, we will increase the complexity by diving into specific uses cases found in real world applications, leveraging Sigma. 
-
- ### Target Audience
-Anyone interested in learning about Snowpark and how to leverage UDFs in Sigma.
-
-Developers who are interesting in creating Snowpark UDFs in Python (and other supported languages) and leverage them within Sigma to provide advanced functionality to Sigma users.
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
-</aside>
-
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
-  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
-  <li>Miniconda for required Python packages</li>
-</ul>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
-</aside>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
-
-### What You’ll Learn from here
-
-We will learn how to setup a local development environment, configure it for Python, connect to Snowflake, create and test a Snowpark UDF and call it from Sigma.
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> We will demonstrate using a MAC computer, but the steps are very similar for Windows and Linux. 
-</aside>
-
-### What You’ll Build
-
-We will build a Snowpark UDF that expects two input values and calculates the greatest common denominator and returns a value for a new table column in Sigma.
-
-<img src="assets/sp33.png" width="800"/>
-
 ![Footer](assets/sigma_footer.png)
-<!-- END OF OVERVIEW -->
+<!-- END OF NEXT SECTION-->
 
 ## **Setup Python**
 Duration: 20
