@@ -5,6 +5,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
 authors: Phil Ballai - Sigma Computing
+lastUpdated: 2023-04-19
 
 # Fundamentals 2: Working with Tables
 <!-- ------------------------ -->

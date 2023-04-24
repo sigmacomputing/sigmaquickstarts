@@ -6,6 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
+lastUpdated: 2023-03-24
 
 # Common Date Functions and Use Cases
 <!-- The above name is what appears on the website and is searchable. -->
