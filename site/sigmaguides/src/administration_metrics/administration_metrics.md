@@ -6,6 +6,8 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Metrics, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
+lastUpdated: 2023-03-24
+
 # Working with Metrics
 <!-- The above name is what appears on the website and is searchable. -->
 

@@ -6,6 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
+lastUpdated: 2023-03-15
 
 # Sigma QuickStart Style Guide
 
@@ -101,8 +102,8 @@ This is an example of a Codebox, good for showing code samples inline.
 ```
 
 **Markdown for a CODEBOX:**
-```plaintext
-'''plaintext
+```console
+'''console
 Your text here...
 '''
 ```
