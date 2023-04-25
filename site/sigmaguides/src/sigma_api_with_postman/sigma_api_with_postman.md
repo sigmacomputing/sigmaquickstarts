@@ -67,31 +67,35 @@ Give it the `name`, `description` and set the `visibility to Personal` for now. 
 
 We want to create a new API and there are several ways to do that. In our case, we will use the `Import` option as we will grab the latest Sigma API release from our public Swagger page.
 
-Make sure `API` is set and click the `Import` icon:
+Click the `Collections` icon and click then the `Import` icon:
 
-<img src="assets/pm4.png" width="500"/>
+<img src="assets/pm29.png" width="500"/>
 
 Next we will need to get the link (URL) to the latest Sigma API. Open another browser tab.
 
 [Browse to this Sigma Help page](https://help.sigmacomputing.com/hc/en-us/articles/4408827709459-Sigma-s-Swagger-Playground) and click the link as shown below:
 
-<img src="assets/pm5.png" width="500"/>
+<img src="assets/pm5.png" width="800"/>
 
-Right click on the link shown below and select `Copy Link Address`:
+Click the button `View OpenAPI Spec (New Tab1)`:
 
-<img src="assets/pm6.png" width="500"/>
+<img src="assets/pm6.png" width="800"/>
 
-Paste the address into the Postman UI (in the link section) as shown and click `Continue`:
+Copy the URL from the address bar:
 
-<img src="assets/pm7.png" width="500"/>
+<img src="assets/pm30.png" width="800"/>
 
-Click the `Import` button:
+Paste the address into the Postman UI (in the link section) as shown and click `Import`:
 
-<img src="assets/pm8.png" width="500"/>
+<img src="assets/pm31.png" width="500"/>
+
+When done, it API will appear as a new `Collection`. It may be helpful to rename the collection if you have more than one copy.
+
+<img src="assets/pm32.png" width="500"/>
 
 Expand the `Sigma Public API` to see the available methods as below:
 
-<img src="assets/pm9.png" width="500"/>
+<img src="assets/pm33.png" width="500"/>
 
 In order to be able to use any API in the web version of Postman, you need to install the Postman Agent on your local machine. 
 
@@ -99,7 +103,7 @@ The Postman Desktop Agent is a micro-application that runs locally on your deskt
 
 Download and install the Postman Desktop Agent. You will need to unzip to perform the installation. 
 
-<img src="assets/pm10.png" width="500"/>
+<img src="assets/pm10.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -113,22 +117,57 @@ Log onto Sigma (as Administrator). Navigate to `Administration`, `APIs & Embed S
 
 Click the `Create New` button:
 
-<img src="assets/pm11.png" width="500"/>
+<img src="assets/pm11.png" width="800"/>
 
-Select `API Token`, give it a name and description. Notice that we have also created a Service Account user for automation purposes; this is a best practice. Since we are just testing, you can choose any user you prefer. Click `Create`.
+Select `API Token`, give it a name and description. Notice that we have also created a Service Account user for automation purposes; this is a best practice. Since we are just testing, you can choose any Admin user you prefer. Click `Create`.
 
-<img src="assets/pm12.png" width="500"/>
+<img src="assets/pm12.png" width="800"/>
 
-Copy the `Secret` from the popup and save it to a secure location. We will use this later. Close the popup:
+Copy the `ClientID` and `Secret` from the popup and save them to a secure location. We will use them later. Close the popup:
 
-<img src="assets/pm13.png" width="500"/>
-
-Also copy the ClientID and save it to a secure location. We will use this later:
-
-<img src="assets/pm14.png" width="500"/>
+<img src="assets/pm13.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+
+## Postman Variables
+Duration: 10
+
+Postman variables enable us to store and reuse values in Postman. By storing a value as a variable, we can reference it throughout our API Collection (API).
+
+At the top level node of the API, click the `Variables` tab and add the following variables and corresponding values. 
+
+Leave the "initial value" blank where we have not provided any default value.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The value for "baseUrl" may appear pre-filled with a value. Be sure to replace the initial and current values with the correct URLs based on where the Sigma portal is hosted (ie: AWS, GCP or Azure)
+</aside>
+
+If unsure where Sigma is hosted, this is found in `Sigma` > `Administration` > `Account`:
+
+<img src="assets/pm13c.png" width="800"/>
+
+[The baseURL for each cloud is available here](https://docs.sigmacomputing.com/api/v2/#servers)
+
+Modify the `tokenBaseURL` as needed for the cloud provider.
+
+```console
+VARIABLES:    / INITIAL VALUES:
+baseUrl       / https://aws-api.sigmacomputing.com
+tokenBaseURL  / https://aws-api.sigmacomputing.com/v2/auth/token
+clientID      / {use the clientID we created earlier that you saved off to a text file}
+secret        / {use the secret we created earlier that you saved off to a text file}
+token         
+expires_in
+```
+
+<img src="assets/pm13a.png" width="800"/>
+
+Click on the `Authorization` tab and configure the value for `Token` to use our new variable using the format shown:
+
+<img src="assets/pm13b.png" width="800"/>
+
+Save the changes. 
 
 ## Postman Environments
 Duration: 10
@@ -149,7 +188,7 @@ To create a new environment, select `Environments` on the left and `select +`.
 
 Name the Environment `Sigma API - AWS` and set the `Variables` and `Initial Values` as follows:
 
-```plaintext
+```console
 VARIABLES:    / INITIAL VALUES:
 baseUrl       / https://aws-api.sigmacomputing.com
 tokenBaseURL  / https://aws-api.sigmacomputing.com/v2/auth/token
@@ -166,11 +205,11 @@ The Environment should look like this:
 <strong>NOTE:</strong><br> We are using urls for AWS because that is where our specific Sigma instance is hosted. If you are using GCP or Azure you will need to adjust those values accordingly or the API calls will fail. Please refer to Sigma's online documentation for those URLs.
 </aside>
 
-Postman uses tabs (similar to a browser). 
+Postman uses tabs, similar to a browser. 
 
 Select the new Environment but using the drop list as shown:
 
-<img src="assets/pm16.png" width="700">
+<img src="assets/pm36.png" width="700">
 
 Now all our API methods will use these variable values (once we configure that in the Sigma API),
 
@@ -182,59 +221,53 @@ You can close this Environment tab as it does not need to be open for us to use 
 ## Authentication
 Duration: 10
 
-Sigma's API requires that we authenticate prior to use. We will be using the Environment `Sigma API - AWS` that we setup in the last step to request a token. This token is also know as a Bearer or JSON web token (JWT).
+Sigma's API requires that we authenticate prior to use. We will be using variables that we setup in the last step to request a `token`. This token is also know as a Bearer or JSON web token (JWT).
 
-In Postman `APIs`, expand the Sigma Public API and select as shown below.
+We are going to add a `POST` method to automate authenticating, retrieving a token and persisting it in a variable. 
 
-Set the Token section to add `{{token}}`. This format is using a yet to be defined variable called "token":
+### New POST Method
 
-<img src="assets/pm17.png" width="800">
+Click `v2` > `Add request`:
 
-On the `Variables` tab add the new variable for `token`. We will set a value once we actually authenticate:
+<img src="assets/pm35.png" width="500">
 
-<img src="assets/pm18.png" width="800">
+This opens a new request which we will rename to `Authenticate`.   
 
-Since we copied this API library from Swagger, it did not include an authenticate method. The Swagger page has button for authentication on it so we will need to create a method.
+Change the `method` to `POST` and `Authorization` to `No Auth`:
 
-It is easy to create a new method. Click `APIs`, `Sigma Public API` and select `Add request`:
+<img src="assets/pm35b.png" width="500">
 
-<img src="assets/pm19.png" width="400">
+Under the `Body` tab, all the following values (two are environment variables and one is static):
 
-Name the new method `Authenticate` and configure it as shown using these values:
-```plaintext
-KEY:           / VALUE:
-grant_type     / client_credentials
-clientID       / {{clientID}}
-client_secret  / {{secret}}
+Be sure to select the **x-www-form-urlencoded** message type.
+
+```console
+grant_type      / client_credentials
+client_id       / {{clientID}}
+client_secret   / {{secret}}
 ```
 
-Change the method from Get to Post (as shown item #3).
+<img src="assets/pm35c.png" width="500">
 
-<img src="assets/pm20.png" width="800">
+Provide the request url using the curly-brace format to leverage our environment variable for `tokenBaseURL`:
 
-Click `Save`
+<img src="assets/pm35d.png" width="500">
 
-We are now ready to test to see if we get a token back from our new Authentication method. 
+Now that we are configured, click `Save` and `Send` to try our request. If all is correct, we will get a `Status 200 OK` and an access token:
 
-Click `Send`:
+<img src="assets/pm35e.png" width="500">
 
-If all is right with our configuration, we should get a response with a valid `access token`. 
+<aside class="negative">
+<strong>NOTE:</strong><br> The token that we must now pass for all requests (withing this expiration period) is the value between the quotation marks.
+</aside>
 
-<img src="assets/pm21.png" width="800">
+Click `Save` and `Send`:
 
-Select the `access token` as shown and copy it (you may have to use CTL+V to copy):
+<img src="assets/pm36f.png" width="500">
 
-<img src="assets/pm22.png" width="800">
+We will get a valid response
 
-Open `APIs`, `Sigma Public API` and click the `Variables` tab.
-
-Paste the token into the `Current Value` section for the variable `token`.
-
-Click `Save`:
-
-<img src="assets/pm24.png" width="800">
-
-You now are ready to test any API method you would like and it will use this token. 
+<img src="assets/pm36g.png" width="500">
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Tokens do expire. If the API later returns one of these (or similar):<br>
@@ -246,7 +279,7 @@ message="jwt expired"<br>
 </aside>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
+<!-- END OF SECTION-->
 
 ## Our First API Request
 Duration: 10
