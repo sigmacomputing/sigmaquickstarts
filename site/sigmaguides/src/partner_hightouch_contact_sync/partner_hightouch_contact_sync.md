@@ -5,8 +5,8 @@ categories: partners
 environmendts: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:  B2B, General, Retail, eCommerce
-lastUpdated: 2023-04-28
+tags:  B2B, General, Retail, eCommerce, Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
+lastUpdated: 2023-04-25
 
 # Sync Leads to Hubspot with Hightouch’s Sigma Integration
 <!-- The above name is what appears on the website and is searchable. -->
@@ -84,11 +84,11 @@ Select type as `Snowflake`, provide a user-friendly name and then the `Connectio
 
 <img src="assets/ht2.png" width="800"/>
 
-`Save` the connection and if everything is correct, the connection will be added. 
+`Save` the connection, and if everything is correct, the connection will be added. 
 
-Before we move on, we also need to enable `write access` so that Sigma can write data back to Snowflake. We will use this to allow Sigma users to add small amounts of data to a table. This table is held seperate from other Snowflake data but can be used to augment existing data. We will discuss this more as we go but for now, let's enable that.
+Before we move on, we also need to enable `write access` so that Sigma can write data back to Snowflake. We will use this to allow Sigma users to add small amounts of data to a table. This table is held separate from other Snowflake data but can be used to augment existing data. We will discuss this more as we go but for now, let's enable that.
 
-Before we can enable write access, we need to give the user-provided data a place to live in Snowflake and "allow" a Snowflake role to use it. This is straight forward and here are the steps.
+Before we can enable write access, we need to give the user-provided data a place to live in Snowflake and "allow" a Snowflake role to use it. This is straightforward and here are the steps.
 
 Log onto your Snowflake trial account and open a new `Worksheet`:
 
@@ -108,7 +108,7 @@ grant usage on database SIGMA_WRITEDB to role ACCOUNTADMIN;
 grant usage, create table, create view, create stage on schema SIGMA_QS to role ACCOUNTADMIN;
 ```
 
-This uses the Snowflake default `Compute_WH` and then creates a schema, database and grants require persmission to the `ACCOUNTADMIN` role. Recall that in the Sigma connection, we are using this role already. 
+This uses the Snowflake default `Compute_WH` and then creates a schema, database and grants require permission to the `ACCOUNTADMIN` role. Recall that in the Sigma connection, we are using this role already. 
 
 After pasting the code, use the mouse and select it all and click the arrow to run it. You should see a success message:
 
@@ -132,7 +132,7 @@ If all is correct, the connection will be tested and you return to the `Connecti
 ## Sigma: Source Data
 Duration: 20
 
-Now that we have a connection (with write access) to data, we want to filter for the records that the marketing campaign wants to target. We then want to provide marketing a way triage the data further by augmenting the source data with additional information. 
+Now that we have a connection (with write access) to data, we want to filter for the records that the marketing campaign wants to target. We then want to provide marketing a way to triage the data further by augmenting the source data with additional information.
 
 Click `+ Create new` and select `Workbook`:
 
@@ -197,7 +197,7 @@ We will use a Sigma Input Table for this task.
 
 ## Sigma - Input Table
 
-We want the marketing team to triage (and suppliment data) in these rows before we send to HubSpot. Input Tables allows us to do that.
+We want the marketing team to triage (and supplement data) in these rows before we send it to HubSpot. Input Tables allow us to do that.
 
 On the `Customer` table click to add a `Child Element` and `Linked Input Table`:
 
@@ -209,7 +209,7 @@ Configure as: shown and click `Create Input Table`:
 
 <img src="assets/ht14.png" width="400"/>
 
-Rename the new Input Table (by 2x-clicking on it's default title) to `Lead Management`. 
+Rename the new Input Table (by 2x-clicking on its default title) to `Lead Management`. 
 
 It seems a null value has made it through for an email address. We should probably filter for nulls at the source data but for now, let's just filter it here:
 
@@ -235,6 +235,8 @@ The `Value source` will be `Create manual list` and we want that.
 
 For list values, enter `lead` and hit enter and then add another called `opportunity`. 
 
+HubSpot natively supports these values. Note that for the sync to work properly, you need to enter the internal values, for example “marketingqualifiedlead” and not “Marketing Qualified Lead”.
+
 Click `Save` when done:
 
 <img src="assets/ht18.png" width="500"/>
@@ -247,7 +249,7 @@ Now users can select from the allowed list for each row as they triage the list:
 <strong>NOTE:</strong><br> Copy and paste is supported so that rows do not necessarily be completed one at a time.
 </aside>
 
-We need another column so the users can indicate if the row is approved to send to HubSopt. 
+We need another column so the users can indicate if the row is approved to send to HubSpot. 
 
 We do this using the same `Add new column` method, but this time select a `Column Type` as `Logical`. This will let the user select `True` or `False`, with true being approved.
 
@@ -258,7 +260,7 @@ Lastly, let's move this table to another page and rename the new page, `Lead App
 <img src="assets/ht23.png" width="500"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Seperating source data to a different page makes it easier for the end user to navigate a Workbook and also can prevent them (if configured to do so) from changing that page. 
+<strong>NOTE:</strong><br> Separating source data to a different page makes it easier for the end user to navigate a Workbook and also can prevent them (if configured to do so) from changing that page. 
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -266,19 +268,19 @@ Lastly, let's move this table to another page and rename the new page, `Lead App
 
 ## Sigma - Approve Table
 
-Now that the `Lead Management` table has been approved/rejected, we need to use it to create a table based on only approved leads. This is done using the same methods as before.
+Now that the `Lead Management` table has been validated, we need to use it to create a table based on only approved leads. This is done using the same methods as before.
 
 Create a `Child table` off the `Lead Management` table. 
 
 <img src="assets/ht24.png" width="500"/>
 
-Change the new tables name to `Approved Leads`.
+Change the new table name to `Approved Leads`.
 
 Set a `Filter` on the `Sync to HubSpot` column and only show `True` rows:
 
 <img src="assets/ht25.png" width="600"/>
 
-We now have the row(s) we want to sync to HubSopt. We are sending one row to make this simple as possible for demonstration only.
+We now have the row(s) we want to sync to HubSpot. We are sending one row to make this as simple as possible for demonstration only.
 
 <img src="assets/ht26.png" width="800"/>
 
@@ -287,7 +289,7 @@ We now have the row(s) we want to sync to HubSopt. We are sending one row to mak
 
 ## Sigma - API Keys
 
-Before we leave Sigma, we need to create a set of keys that will allow HubSpot to access our Sigma content. This is very simple to do.
+Before we leave Sigma, we need to create a set of keys that will allow HubSpot to access our Sigma content.
 
 Navigate to `Administration` > `APIs & Embed Secrets` and click `Create New`:
 
@@ -301,7 +303,7 @@ Select `API Token`, give it a friendly name, description and assign an `Owner`. 
 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In production, it is recommended to assign keys to a dedicated service account as opposed to actual people, who may leave the organization at a later time and causing the keys to become invalid.
+<strong>NOTE:</strong><br> In production, it is recommended to assign keys to a dedicated service account as opposed to actual people, who may leave the organization at a later time and cause the keys to become invalid.
 </aside>
 
 <img src="assets/ht44.png" width="600"/>
@@ -318,12 +320,11 @@ Copy the `Client Id` and `Secret` values and save them in a text file (or other 
 ## Hightouch
 Duration: 20
 
-Hightouch is a software platform that allows businesses to synchronize their data between different systems and applications. It helps companies to integrate their customer data, sales data, and other types of information in real-time, eliminating the need for manual data entry or complex coding. 
+Hightouch is a software platform that empowers businesses to synchronize their data from any data warehouse into the SaaS tools and platforms their business runs on. It helps companies to integrate their customer data, sales data, and other types of information, eliminating the need for manual data entry or complex coding.
 
-This allows businesses to make better decisions based on the most up-to-date information available. Hightouch can also help automate workflows and data management processes, leading to increased efficiency and productivity. 
+This allows businesses to make better decisions based on the most up-to-date information available. Hightouch can also help automate workflows and data management processes, leading to increased efficiency and productivity.
 
-The Hightouch integration with Sigma allows customers to leverage the power of both plaforms together to create high-value 
-solutions using moderns, easy to use web-based platforms.
+The Hightouch integration with Sigma allows customers to leverage the power of both platforms together to create high-value solutions using modern, easy to use web-based platforms.
 
 [More information about getting started with Hightouch is here.](https://hightouch.com/docs)
 
@@ -355,7 +356,7 @@ We are returned to the `Select your destination` page.
 
 Click the `Select destination` button.
 
-Type `HubSpot` in the textbox ans click to select `HubSpot`:
+Type `HubSpot` in the textbox and click to select `HubSpot`:
 
 <img src="assets/ht31.png" width="400"/>
 
@@ -365,13 +366,13 @@ We are now on a page where we can click to configure source/destination details.
 
 ### Snowflake Source
 
-This is the same configuration data as used earier when configuring Snowflake in Sigma:
+This is the same configuration data as used earlier when configuring Snowflake in Sigma:
 
 <img src="assets/ht33.png" width="500"/>
 
 ### Sync Engine
 
-We will use the default, `Standard sync engine` but for very large jobs, the `Lightning sync engine` will provide improved performance. 
+We will use the default, `Standard sync engine`. For very large jobs, using the `Lightning sync engine` provides improved performance.
 
 ### Credentials
 
@@ -395,7 +396,7 @@ Click to select `OAuth` as the authentication method, then click the `Log in to 
 
 <img src="assets/ht37.png" width="500"/>
 
-We are taking to the HubSpot login page where we can login to the trial account we setup in the prerequisites. 
+We are taken to the HubSpot login page where we can login to the trial account we set up in the prerequisites. 
 
 If you were already logged into HubSpot, you will be prompted to select an account:
 
@@ -441,8 +442,7 @@ When ready, click `Connect`. The connection will be tested and return success if
 
 <img src="assets/ht48.png" width="500"/>
 
- If the test fails, you need to confirm and re-enter your credentials.
-
+If the test fails, you need to confirm and re-enter your credentials.
 
 Once finished, your source appears on the Sources overview page and can be used to set up models.
 
@@ -462,17 +462,21 @@ In `Define model` click on the `Sigma model`:
 
 <img src="assets/ht51.png" width="500"/>
 
-Select the workbook, page, and element that contain our `Approved Leads` and click `Preview Results`:
+Select the workbook, page, and element that contain our `Approved Leads`.
+
+Before continuing, you must preview your model to ensure it's querying the data you're interested in. By default, the preview is limited to the first 100 records. Once validation is complete, click `Continue.`
 
 <img src="assets/ht52.png" width="700"/>
 
-Click `Continue`.
+Name your model; for example, "Approved leads"
 
-In `Finalize settings for this model`, provide a name. `Primary Key` (from the inbound data) and a folder to store in (optionally):
+Select a `Primary key`. A primary key should be a column with unique identifiers. For example, a customer ID or email address can be a primary key.
+
+`Move to folder` is optional and used to organize your work.
 
 <img src="assets/ht53.png" width="500"/>
 
-Click `Finish`.
+Click `Finish.`
 
 We are now ready to `Add sync` to perform the job as configured.
 
@@ -486,11 +490,17 @@ In `Configure sync to HubSpot`, select the following:
 
 <img src="assets/ht56.png" width="500"/>
 
-Scroll down and configure the column to match records on and which columns should be included in the sync and to which columns (mapping) in HubSpot:
+Here, we choose to upsert contacts into HubSpot. Hightouch supports syncing other HubSpot objects and also supports just updating or just inserting them. In our case, we want to both update existing contacts and insert new ones, so we chose “upsert”.
+
+Scroll down and select the column to match records on. In this case, we’re selecting to match on the email column in HubSpot. Hightouch recommends this column for record matching contacts since its a property that [HubSpot automatically deduplicates on](https://knowledge.hubspot.com/crm-setup/deduplication-of-contacts-companies-deals-tickets#deduplicate-companies-by-company-domain).
+
+Next, select which columns should be included in the sync and which columns they should be mapped to in HubSpot:
 
 <img src="assets/ht57.png" width="500"/>
 
-A cool feature is to `Test` before we continue on. Click `Test`. We can select a row (we only have one) to see what Highspot will be sending to HubSpot. This can be useful when troubleshooting sync issues.
+
+
+A cool feature is to test before we continue on. Click `Test`. We can select a row (we only have one) to see what Hightouch will be sending to HubSpot. This can be useful when troubleshooting sync issues.
 
 <img src="assets/ht58.png" width="500"/>
 
