@@ -167,10 +167,12 @@ Click on the `Authorization` tab and configure the value for `Token` to use our 
 
 <img src="assets/pm13b.png" width="800"/>
 
-Save the changes. 
+Save the changes and **CLOSE THIS TAB.**
 
+
+<!-- DEPRECIATED SECTION
 ## Postman Environments
-Duration: 10
+ Duration: 10 
 
 Postman provides the ability to create distinct environments which contain one or more values you can use in your Postman requests and easily switch between them using variables. 
 
@@ -214,9 +216,7 @@ Select the new Environment but using the drop list as shown:
 Now all our API methods will use these variable values (once we configure that in the Sigma API),
 
 You can close this Environment tab as it does not need to be open for us to use it.
-
-![Footer](assets/sigma_footer.png)
-<!-- END -->
+-->
 
 ## Authentication
 Duration: 10
@@ -261,22 +261,49 @@ Now that we are configured, click `Save` and `Send` to try our request. If all i
 <strong>NOTE:</strong><br> The token that we must now pass for all requests (withing this expiration period) is the value between the quotation marks.
 </aside>
 
-Click `Save` and `Send`:
-
-<img src="assets/pm36f.png" width="500">
-
-We will get a valid response
-
-<img src="assets/pm36g.png" width="500">
-
 <aside class="negative">
-<strong>NOTE:</strong><br> Tokens do expire. If the API later returns one of these (or similar):<br>
+<strong>NOTE:</strong><br> Tokens do expire. If the API later returns one of these (or similar):<br><br>
 message="invalid signature"<br>
 code="unauthorized"<br>
 message="jwt expired"<br>
 
 ...we just need to resend the Authentication request, copy and paste the new token as we demonstrated earlier in this section.
 </aside>
+
+### Persist Token Response
+
+One more step is required so that the values in the response are stored into our variables we setup earlier. 
+
+On the `Authenticate` > `Test` tab, paste the following code:
+
+```console
+let response=pm.response.json();
+console.log(response);
+pm.collectionVariables.set("token", response['access_token']);
+pm.collectionVariables.set("token_type", response['token_type']);
+pm.collectionVariables.set("expires_in", response['refresh_token']);
+```
+`Save` this change.
+
+Now that we are all setup, let's run a test to prove that our variables are being saved after we get a valid response.
+
+Earlier, we ran `Authenticate` and got a valid response so we want to clear that out first.
+
+Go back to the `top level node` > `variables` tab and click to `Reset all`:
+
+<img src="assets/pm13d.png" width="500">
+
+This reset clears the three values related to the token. `Current value` will now be blank (Initial was already blank).
+
+**SAVE AND CLOSE THIS TAB**
+
+Now return to the `Authenticate` tab, run the method and get another token. 
+
+Then return to the `top level node` > `Variables` tab and we see that new values have appeared in the `Current value` fields for the three token related items:
+
+<img src="assets/pm13e.png" width="500">
+
+We are now ready to proceed to using other API methods.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -292,7 +319,7 @@ We need to uncheck the two checkboxes (item #4 in the screenshot) for `Params` a
 
 <img src="assets/pm25.png" width="800">
 
-In the `Body` section is the return from the API in JSON. For example, our first connection is described this way:
+In the `Body` section, is the return from the API in JSON. For example, our first connection is described this way:
 
 ```plaintext
         {
@@ -311,8 +338,7 @@ In the `Body` section is the return from the API in JSON. For example, our first
         },
 ```
 
-Even if you are only using a Sigma Trial and have not created a connection yourself there will be one shown. This is Sigma's sample database and is included on all Sigma instances by default. Your ID values will be different of course.
-
+Even if you are only using a Sigma Trial and have not created a connection yourself, there will be one shown. This is Sigma's sample database and is included on all Sigma instances by default. Your ID values will be different of course.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
