@@ -3,7 +3,7 @@ id: partner_hightouch_contact_sync
 summary: partner_hightouch_contact_sync
 categories: partners
 environmendts: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:  B2B, General, Retail, eCommerce
 lastUpdated: 2023-04-28
@@ -16,13 +16,13 @@ Duration: 5
 
 Keeping HubSpot contact lists up to date is essential for effective marketing and sales processes and accurate reporting and analytics. High quality data leads to a better experience for both your organization and your contacts.
 
-Traditionally, data teams export contact lists as CSVs and send them to marketing teams, who upload them into tools like HubSpot.The downside is that the data in those CSVs quickly become outdated whenever a new user enters the contact list or if a customer gets removed from the list. With each update, the CSV has to be re-exported by the data team and re-uploaded by the marketing team. This is time-consuming and error-prone, manual process.
+Traditionally, data teams export contacts as CSVs and send them to marketing teams, who upload them into tools like HubSpot. The downside is that the data in those CSVs quickly become outdated whenever the business has new leads or users. With each update, the CSV has to be re-exported by the data team and re-uploaded by the marketing team. This is a time-consuming and error-prone manual process.
 
-If you're leveraging a BI tool like Sigma to define lists of target users, you can rely on those definitions to sync contact lists to marketing tools like HubSpot or Marketo dynamically using [Hightouch](https://hightouch.com/).
+If you're leveraging a BI tool like Sigma to define lists of target users, you can rely on those definitions to sync contacts to marketing tools like HubSpot or Marketo dynamically using [Hightouch](https://hightouch.com/).
 
-This QuickStart walks through using a Sigma workbook and Hightouch to sync a contact list into HubSpot, but you could apply the same general steps for syncing any contact list into any other marketing tool.
+This QuickStart walks through using a Sigma workbook and Hightouch to sync contacts into HubSpot, but you could apply the same general steps for syncing any contacts into any other marketing tool.
 
-The use-case will be a marketing campaign that targets the most loyal customers in the United States only. We need an easy way to get the data from the Snowflake warehouse over to HubSpot, where we will run the campaign from. We don't have development resources to do this right now so we have to do it ourselves.
+The use-case is creating and maintaining a  marketing campaign that targets the most loyal customers in the United States only. We need an easy way to get the data from the Snowflake warehouse over to HubSpot, where we will run the campaign from. We don't have development resources to do this right now so we have to do it ourselves.
 
 ### Target Audience
 
@@ -39,7 +39,7 @@ Businesses who need to move data from one place to another while allowing end-us
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A Snowflake account with the proper administrative and security admin access. A trial environment is acceptable.</li>
   <li>A Hightouch account. A trial environment is acceptable.</li>
-  <li>A HubSopt account. A trial environment is acceptable.</li>
+  <li>A HubSpot account. A trial environment is acceptable.</li>
 </ul>
 
 <aside class="postive">
@@ -54,7 +54,8 @@ Businesses who need to move data from one place to another while allowing end-us
 
 ### What You’ll Learn
 
-We will connect to data in our warehouse, use Sigma to orient and enrich it, leverage Highspot to copy it from source to HubSpot where we will see our transformed data land. 
+We will connect to data in our Snowflake warehouse, use Sigma to orient and enrich it, and leverage Hightouch to copy it to HubSpot where we will see our transformed data land.
+
 ### What You’ll Build
 
 At a high-level, the QuickStart will cover each of these areas:
@@ -69,7 +70,7 @@ At a high-level, the QuickStart will cover each of these areas:
 ## Snowflake - Get Connected
 Duration: 20
 
-We will start by connecting Sigma to Snowflake and use the Snowflake sample database. 
+We will start by connecting Sigma to Snowflake and using the Snowflake sample database. 
 
 Login into Sigma (as Administrator).
 
