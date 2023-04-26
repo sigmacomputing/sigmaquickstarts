@@ -566,7 +566,7 @@ query.collect()
 <img src="assets/sp23.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We haver defined a new function and stored it in Snowflake but we have not tested that it works. Let's assume it does (or has been created and tested by someone else in your company) and we just want to use it in Sigma. There is another QuickStart that covers how to test a UDF on our local machine, with VSCode. 
+<strong>IMPORTANT:</strong><br> We have defined a new function and stored it in Snowflake but we have not tested that it works. Let's assume it does (or has been created and tested by someone else in your company) and we just want to use it in Sigma. There is another QuickStart that covers how to test a UDF on our local machine, with VSCode. 
 </aside>
 
 ![Footer](assets/sigma_footer.png)
