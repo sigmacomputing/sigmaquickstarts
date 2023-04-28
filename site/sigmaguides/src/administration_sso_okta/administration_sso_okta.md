@@ -16,11 +16,18 @@ Duration: 5
 
 This QuickStart **QS** provides all the common Markup to be used in new QS. 
 
-Sample code and examples are shown for each item.
+When using Okta SSO, there are several user management options available. These include:
 
-We encourage you to review the QS called 
+ <ul>
+      <li><strong> User Provisioning:</strong> Okta can automatically provision user accounts in the target applications when the user is added or modified in Okta. This can reduce manual effort and ensure consistency across applications.</li>
+      <li><strong>User Deprovisioning:</strong> Okta can automatically deprovision user accounts in the target applications when the user is deleted or deactivated in Okta. This can help ensure that former employees or contractors no longer have access to company data.</li>
+      <li><strong> Group Management:</strong> Okta allows administrators to create groups and assign users to those groups. This can simplify application provisioning and deprovisioning by allowing administrators to manage access based on groups instead of individual users.</li>
+      <li><strong> Access Policies:</strong> Okta allows administrators to define access policies that govern user access to specific applications or data. These policies can be based on factors such as user location, device, or role.</li>
+      <li><strong> Password Policies:</strong> Okta provides password policies that can enforce password complexity rules and expiration policies. This can help ensure that users have strong passwords and reduce the risk of password-related security breaches.</li>
+      <li><strong> User Self-Service:</strong> Okta provides a self-service portal that allows users to reset their passwords or update their profile information. This can reduce the burden on IT help desks and improve user satisfaction.</li>
+</ul>
 
-This QuickStart assumes you........
+While Okta has many options available, we want to call attention to just a few in this section.
 
  ### Target Audience
 Anyone who is trying to create QS content for Sigma. 
@@ -240,38 +247,232 @@ The Sigma admin user is still able to login but only with SSO.
 ## **User Management Options**
 Duration: 20
 
-When using Okta SSO, there are several user management options available. These include:
+So far, we have only used the admin use account in Sigma to setup and test Okta SSO with. Now we want to learn how to manage other users who may have different roles with SSO. There are many ways to do this but we will focus on using “System for Cross-domain Identity Management”, better known by its acronym SCIM, which is a standard for the automation of user and group provisioning between two services. In this case, the two services are Okta and Sigma.
 
- <ul>
-      <li><strong>Bar charts:</strong> Some text...</li>
-      <li><strong>Line charts:</strong> Some text...</li>
-      <li><strong>Area charts"</strong> Some text...<li>
+Configuring SCIM for your Sigma organization will allow you to centralize management of users and teams through Okta.
+
+This is preferred as we want to manage users in one place (Okta) which likely is handing security operations for other applications besides Sigma. 
+
+Once SCIM provisioning is enabled for both services, all management of users and teams must be done through Okta. While not directly editable in Sigma, both will be displayed in your Sigma Admin Portal.
+
+When you add SCIM to your Okta configuration, we will gain the ability to manage Sigma teams from Okta, and both user and group/team data in Okta will automatically be pushed to your Sigma organization (via REST API), regardless of user login. 
+
+The following functions are available with Okta / Sigma:
+
+<ul>
+  <li></li>
+    <li>Push New Users:
+        <ul>
+        <li>New users created through Okta will also be created in Sigma.</li>
+        <li>An Admin, Creator or Viewer user type (aka account type in Sigma) can be defined for each Sigma user in Okta. If no user type is defined, Sigma will limit the user to Viewer only permissions.</li>
+        </ul>
+    </li>
+        <li>Push User Profile Updates:
+        <ul>
+        <li>Updates made to the user's name (‘given name’ and ‘family name’) in their Okta profile will automatically be pushed to Sigma.</li>
+        <li>Updates made to a user’s ‘user type’ (via that application Assignment page) will automatically be pushed to Sigma.</li>
+        </ul>
+    </li>
+        </li>
+        <li>Deactivate Users:
+        <ul>
+        <li>Deactivating a user through Okta will deactivate the user in Sigma.</li>
+        <li>The user's profile information will be maintained as an inactive user.</li>
+        <li>Ownership of any documents created by the user will be transferred to the Admin performing the deactivation. Any documents located in the user’s My Documents folder will automatically be transferred to a folder in the Admin’s My Documents.</li>
+        </ul>
+    </li>
+        </li>
+        <li>Reactivate Users:
+        <ul>
+        <li>Sigma user accounts can be reactivated by reactivating the corresponding account in Okta.</li>
+        <li>The user's profile information will be maintained as an inactive user.</li>
+        <li>Ownership of any documents created by the user will be transferred to the Admin performing the deactivation. Any documents located in the user’s My Documents folder will automatically be transferred to a folder in the Admin’s My Documents.</li>
+        </ul>
+        </li>
+        <li>Push Groups / Teams:
+        <ul>
+        <li>Groups created in Okta will be created as Teams in Sigma.</li>
+        </ul>
+        <li>Deactivate Groups / Teams:
+        <ul>
+        <li>Deactivating a group in Okta will deactivate the corresponding team in Sigma.</li>
+        <li>Any documents located in the team’s workspace folder will automatically be transferred to the My Documents folder of the Admin performing the deletion.</li>
+        </ul>
 </ul>
 
-    User Provisioning: Okta can automatically provision user accounts in the target applications when the user is added or modified in Okta. This can reduce manual effort and ensure consistency across applications.
+[Learn more about SCIM with Sigma](https://help.sigmacomputing.com/hc/en-us/articles/1500001556701-Manage-Users-and-Teams-with-SCIM-and-Okta)
 
-    User Deprovisioning: Okta can automatically deprovision user accounts in the target applications when the user is deleted or deactivated in Okta. This can help ensure that former employees or contractors no longer have access to company data.
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
-    Group Management: Okta allows administrators to create groups and assign users to those groups. This can simplify application provisioning and deprovisioning by allowing administrators to manage access based on groups instead of individual users.
+## Configure API Integration
 
-    Access Policies: Okta allows administrators to define access policies that govern user access to specific applications or data. These policies can be based on factors such as user location, device, or role.
+Before we add anymore users in Okta, we want to configure the automated exchange of data between Okta and Sigma.
 
-    Password Policies: Okta provides password policies that can enforce password complexity rules and expiration policies. This can help ensure that users have strong passwords and reduce the risk of password-related security breaches.
+In Sigma, navigate to `Administration` > `Authentication` and click the `Setup` button for "Account Type and Team Provisioning":
 
-    User Self-Service: Okta provides a self-service portal that allows users to reset their passwords or update their profile information. This can reduce the burden on IT help desks and improve user satisfaction.
+<img src="assets/ok31.png" width="800"/>
+
+In the popup, check the box on for `I have read and understand the above guidance.` and click `Next`:
+
+<img src="assets/ok32.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br>If left undefined in Okta, Sigma will default to assigning the user an Account Type of Viewer.
+</aside>
+
+Give the token a friendly name and click `Next`:
+
+<img src="assets/ok33.png" width="800"/>
+
+Click `Copy` for the `Directory Base URL` and `Bearer Token` and save these values to a text file for now. We will use them later.
+
+<img src="assets/ok33.png" width="800"/>
+
+Click `Done`.
+
+Back in Okta, navigate to `Applications` > `Applications` and click into `Sigma on AWS`. 
+
+Click on the `Provisioning` tab. Click the `Configure API Integration` button:
+
+<img src="assets/ok34.png" width="800"/>
+
+Click on the checkbox for `Enable API Integration`, paste the `API Token` (Bearer Token) we saved earlier and click the `Test API Credentials` button:
+
+<img src="assets/ok35.png" width="800"/>
+
+We should receive a message `Sigma on AWS was verified successfully!` if all is good.
+
+Click `Save`.
+
+Now Okta is able to communicate with Sigma's REST endpoint for this account only.
+
+We now have many more configuration options available to us in Okta to control SSO. 
+
+There are two items we want to pay attention to on this page.
+
+The first is what happens when a user who exists in Okta (and is allowed to access Sigma) but does not exist in Sigma, is handled. 
+
+We want Okta to creates a user in Sigma on AWS when assigning the app to a user in Okta. 
+
+Click `Edit at the top right cornder  across from `Provisioning to App`.
+
+Then click the `Enable` checkbox on adjacent to `Create`.
+
+Also enable the checkboxes for `Update User Attributes` and `Deactivate Users`. Okta has provide information that describes what these do.
+
+Click `Save`.
+
+The second item we want to cover is how a user's role ("Account Type" in Sigma) is assigned in Okta.
+
+Before we can add any users in Okta for Sigma, we need to create User Groups so that users can be assigned membership when they are created in Okta. Group membership will map to Sigma `Account Types` and is how Role-Base Access Control (RBAC) provisions rights to users.
+
+In Okta, navigate to  `Directory` > `Groups`. In our case, three groups already existed in Sigma, under `Administration`  / `Teams` but in a Sigma Trial, no Teams will exist so we need to create one. We can do this in Okta now that the API Integration is in place and working.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> When we enabled API integration to Sigma in Okta, Okta reached out and reads teams into Okta automatically. In our example, we had three teams already.
+</aside>
+
+<img src="assets/ok38.png" width="800"/>
+
+Lets use Okta to create a new Group and send it to Sigma over from the Okta UI. 
+
+Click `Add Group`:
+
+<img src="assets/ok39.png" width="800"/>
+
+Give the new Group a name and description and click `Save`:
+
+<img src="assets/ok40.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You may need to refresh the browser page if the new group does not appear on the list right away.
+</aside>
+
+Now click into the new Group and navigate to the `Applications` tab. Then click the `Assign Applications` button:
+
+<img src="assets/ok41.png" width="800"/>
+
+Click `Assign` for `Sigma on AWS`:
+<img src="assets/ok41.png" width="800"/>
+
+In the popup, select `Viewer` and click `Save and Go Back`:
+
+<img src="assets/ok42.png" width="800"/>
+
+Then click `Done`.
+
+We now need to ask Okta to push this new Group/Team to Sigma.
+
+Navigate back to `Applications` > `Sigma on AWS` and click the `Push Group` tab, then the `Push Groups` button and then `Find groups by name`:
+
+<img src="assets/ok44.png" width="800"/>
+
+Start typing the group name and it will appear as shown for click selection:
+
+<img src="assets/ok45.png" width="800"/>
+
+We want Okta to create the group so set it to `Create Group`:
+
+<img src="assets/ok46.png" width="800"/>
+
+Click `Save`.
+
+The group gets pushed to Sigma and it happens very quickly. The status will change from `Pushing` to `Active`:
+
+<img src="assets/ok47.png" width="800"/>
+
+Back in Sigma, `Administration` > `Teams`, we see the new Team/Group that Okta sent to Sigma:
+
+<img src="assets/ok48.png" width="800"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **NEXT SECTION**
+
+## ** Add User(s)
 Duration: 20
+
+Now that we have a Group with Viewer rights, we can assign new users to it in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the RBAC that we assigned them.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. 
+</aside>
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **NEXT SECTION**
+
+
+
+
+## **Sigma Roles**
 Duration: 20
+
+disallow Sigma downloads.....other things to reduce exposer.
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
