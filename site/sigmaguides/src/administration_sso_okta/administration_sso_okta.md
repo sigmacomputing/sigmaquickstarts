@@ -131,42 +131,135 @@ Copy the Sigma Account URL we saved off to a text file earlier and paste it into
 
 There are some additional options but we will discuss them later. 
 
-### Activate SSO
+Scroll all the way to the bottom and click `Save`.
 
-In Okta, navigate to the `Provisioning` tab and click `C
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
 
+## Testing SSO
 
+Open a new Chrome browser in `Incognito mode` so that we avoid issues with session cookies. You could also just use another browser like Firefox or Safari to create isolation. 
 
+<img src="assets/ok16.png" width="800"/>
 
+Navigate to your Sigma portal using whatever URL you typically use. 
 
+For example: https://app.sigmacomputing.com/{YOUR ACCOUNT NAME}
 
+Now that SSO is enabled, we are presented an additional login option. Recall that we left username/password authentication on. We will turn this off later.
 
+<img src="assets/ok17.png" width="800"/>
 
+Click the `Sign in with SSO` button. We are talking to an Okta page for signing into Sigma now.
 
+<img src="assets/ok18.png" width="800"/>
 
-Now click the `Provisioning` tab and then `Configure API Integration`:
+Try to login with your Sigma credentials. It will fail. This is because we have not created this user in Okta.
 
-<img src="assets/ok5.png" width="800"/>
+When errors occur in Okta (before reaching out to Sigma) it can be useful to review the Okta Application error log:
 
+<img src="assets/ok19.png" width="800"/>
 
+Here we see `Verification error` which indicates that Okta does not have a record for this user login attempt:
 
+<img src="assets/ok20.png" width="800"/>
 
+### Add User in Okta
 
+We need to add our Sigma Admin user in Okta so we can disable non-SSO logins to Sigma. 
 
+Navigate to `Directory` > `People` and click `Add person`:
 
+<img src="assets/ok21.png" width="800"/>
 
+Configure the new user as follows and use the same password used for your Administrator user in Sigma:
+
+<img src="assets/ok22.png" width="800"/>
+
+Go back to the incognito Chrome window and try to login again. It will fail but this time, the errors is more instructive:
+
+<img src="assets/ok23.png" width="800"/>
+
+The user needs to be "assigned" to the Sigma application. Currently, this Okta user is not allowed to use anything.
+
+In Okta, navigate to the `People` list again and click on the user we created previously.
+
+<img src="assets/ok24.png" width="800"/>
+
+Click the `Assign Application` button.
+
+<img src="assets/ok25.png" width="800"/>
+
+Click to assign the `Sigma on AWS` application:
+
+<img src="assets/ok26.png" width="800"/>
+
+Next click `Save and go back`:
+
+<img src="assets/ok27.png" width="800"/>
+
+Click `Done`.
+
+Now that the user is added in Okta, go back to incognito Chrome again and try to login again.
+
+We are now able to login to Sigma with SSO.
+
+Another inspection of the Okta log for the Sigma application reveals the two steps that occured:
+
+<img src="assets/ok28.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
+
+## **Disable Standard Authentication**
+Duration: 20
+
+We want to disable username/password logins to Sigma and enforce only SSO with Okta.
+
+In Sigma, navigate to `Administration` > `Authentication` and click the `Edit` button.
+
+Change the `Authentication Method` to only `SAML`. 
+
+<img src="assets/ok29.png" width="800"/>
+
+Sigma will now only support SSO login, in this case with Okta.
+
+After logging out of Sigma, close the incognito browser and reopen a new one. Browse to Sigma like:
+
+https://app.sigmacomputing.com/{ACCOUNT NAME}/login
+
+We now only see the `Sign in with SSO` button:
+
+<img src="assets/ok30.png" width="800"/>
+
+The Sigma admin user is still able to login but only with SSO. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **Sigma Configuration**
+## **User Management Options**
 Duration: 20
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+When using Okta SSO, there are several user management options available. These include:
 
-## **NEXT SECTION**
-Duration: 20
+ <ul>
+      <li><strong>Bar charts:</strong> Some text...</li>
+      <li><strong>Line charts:</strong> Some text...</li>
+      <li><strong>Area charts"</strong> Some text...<li>
+</ul>
+
+    User Provisioning: Okta can automatically provision user accounts in the target applications when the user is added or modified in Okta. This can reduce manual effort and ensure consistency across applications.
+
+    User Deprovisioning: Okta can automatically deprovision user accounts in the target applications when the user is deleted or deactivated in Okta. This can help ensure that former employees or contractors no longer have access to company data.
+
+    Group Management: Okta allows administrators to create groups and assign users to those groups. This can simplify application provisioning and deprovisioning by allowing administrators to manage access based on groups instead of individual users.
+
+    Access Policies: Okta allows administrators to define access policies that govern user access to specific applications or data. These policies can be based on factors such as user location, device, or role.
+
+    Password Policies: Okta provides password policies that can enforce password complexity rules and expiration policies. This can help ensure that users have strong passwords and reduce the risk of password-related security breaches.
+
+    User Self-Service: Okta provides a self-service portal that allows users to reset their passwords or update their profile information. This can reduce the burden on IT help desks and improve user satisfaction.
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
