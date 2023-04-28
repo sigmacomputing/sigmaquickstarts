@@ -136,7 +136,13 @@ Copy the Sigma Account URL we saved off to a text file earlier and paste it into
 
 <img src="assets/ok15.png" width="800"/>
 
-There are some additional options but we will discuss them later. 
+Last thing we should do is make sure any new Sigma user get the least privilige unless configure otherwise. This is done by navigating to the `Provisioning` tab for the Application ` Sigma on AWS`. 
+
+Scroll down the the page bottom and `Show Unmapped Attributes`. Click the pencil icon on the row with `UserType` and configure it as follows:
+
+<img src="assets/ok53.png" width="800"/>
+
+Now all Sigma users we add to Okta are `Viewers` unless we assign otherwise.
 
 Scroll all the way to the bottom and click `Save`.
 
@@ -426,44 +432,67 @@ Back in Sigma, `Administration` > `Teams`, we see the new Team/Group that Okta s
 
 <img src="assets/ok48.png" width="800"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
 
-## ** Add User(s)
+## Add User(s)
 Duration: 20
 
 Now that we have a Group with Viewer rights, we can assign new users to it in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the RBAC that we assigned them.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. 
+<strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. Earlier, we set an Application attribute that made all users Viewers. We wanted to demonstrate both options to you. The Okta / Sigma integration is very flexible. 
 </aside>
 
+In Okta, navigate to `Directory` > `People` and click the `Add Person` button:
 
+<img src="assets/ok49.png" width="800"/>
 
+Configure the new user as shown, tailoring the details to suit the user:
+
+<img src="assets/ok49.png" width="800"/>
+
+Make sure to set the user to use the group in Okta for "Viewers" and it is good practice to set a default password and enforce a required password change on first login:
+
+<img src="assets/ok50.png" width="800"/>
+
+Click `Save` when done.
+
+### Test New User
+
+Open a new incognito Chrome browser and navigate to your Sigma account.
+
+Click `Sign in with SSO`.
+
+For `Username` use the email address assigned to the new user created in Okta. Enter the password as well.
+
+Okta will respond with a page asking for a new password. Provide one. 
+
+<img src="assets/ok51.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Okta sign-on policies and rules provide a secure and flexible way to control how users authenticate and sign in to their accounts. Password policies, Okta sign-on policies, and app-specific application sign-on policies can be configured.
+</aside>
+
+[Read more about Okta Sign-on policies](https://help.okta.com/en-us/Content/Topics/Security/policies/policies-home.htm)
+
+We don't need to give the new user permission to use the `Sigma on AWS` application in Okta. That is implied when we granted the Group access.
+
+After changing password, we are taken to the Sigma portal and have only `Viewer` access:
+
+<img src="assets/ok52.png" width="800"/>
+
+It is also possible to see the Sigma App in the Okta portal for this user. 
+
+Login to Okta (in another incognito browser window). Use the new user's email and password to login. 
+
+The Okta portal should show the Sigma App tile:
+
+<img src="assets/ok54.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
-
 
 
 
@@ -471,7 +500,13 @@ Now that we have a Group with Viewer rights, we can assign new users to it in Ok
 ## **Sigma Roles**
 Duration: 20
 
-disallow Sigma downloads.....other things to reduce exposer.
+It is common for companies to give users access to Sigma but disallow them the ability to export (download) data for various reasons. This is done by creating an `Account Type` in Sigma and assigning a team to it. 
+
+Any users who are assigned to this "download restricted" team, will not be able to export content. 
+
+Lets see how to adjust the user we just created in Okta to grant more rights but also not allow exports.
+
+STOPPED HERE PB
 
 
 ![Footer](assets/sigma_footer.png)
