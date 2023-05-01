@@ -497,7 +497,7 @@ The Okta portal should show the Sigma App tile:
 
 
 
-## **Sigma Roles**
+## **Custom Account Types with Okta**
 Duration: 20
 
 It is common for companies to give users access to Sigma but disallow them the ability to export (download) data for various reasons. This is done by creating an `Account Type` in Sigma and assigning a team to it. 
@@ -505,6 +505,91 @@ It is common for companies to give users access to Sigma but disallow them the a
 Any users who are assigned to this "download restricted" team, will not be able to export content. 
 
 Lets see how to adjust the user we just created in Okta to grant more rights but also not allow exports.
+
+We will need to create a new `Group` in Okta (which we will push to Sigma as a `Team`) so that we can manage the level of access we want users to have. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma comes with three "out-of-box" teams and they can be customized to suit or you can create as many other teams as needed.
+</aside>
+
+INSERT A WORKFLOW HERE PHIL
+
+In Okta, `Directory` > `Groups`, click `Add group`:
+
+<img src="assets/ok56.png" width="800"/>
+
+Give the `Group` a name and description as shown and click `Ok`.
+
+<img src="assets/ok57.png" width="800"/>
+
+We need to assign this new group to the `Sigma on AWS` application:
+
+<img src="assets/ok57.png" width="800"/>
+
+In the assignment workflow (which we have shown previously) set the `User Type` to `Viewer`. 
+
+Click `Save and Go Back` and then `Done`.
+
+Navigate to the `Sigma on AWS` application, `Push Groups` tab. 
+
+Click `+ Push Groups` and `Find groups by name`:
+
+<img src="assets/ok59.png" width="800"/>
+
+Start typing "Crea" in the input-box and select `Creator - No Export`. The checkbox for `Push group memberships immediately` should be checked by default.
+
+Scroll down and select `Save`. The new Group will be immediately pushed to Sigma. 
+
+Return to Sigma
+
+In Sigma (as Administrator), navigate to `Administration` > `Teams`. Our Okta Group is listed here. 
+
+Lets add a new `Account Type`. Click on `Account Types` > and `Create New Account Type` button:
+
+<img src="assets/ok61.png" width="800"/>
+
+Configure the Account Type as shown. Notice that we are not allowing any Export functionality (shown in light red):
+
+<img src="assets/ok62.png" width="800"/>
+
+Click `Create`.
+
+We can check our test user "Bob" and see that he is a member of the "Okta Viewers" team and we are not given an option to change that because Okta is managing his team membership:
+
+<img src="assets/ok63.png" width="800"/>
+
+Lets assign Bob to our new group in Okta.
+
+Navigate to to `Directory` > `Groups` > `People` and click `Assign people`:
+
+<img src="assets/ok64.png" width="800"/>
+
+Click the `+` in Bob's row to add him to the Group:
+
+<img src="assets/ok65.png" width="800"/>
+
+Click `Done`.
+
+We also need to assign the `Creator - No Export` group to the `Sigma on AWS` application. Assign it with `Author` User Type.
+
+<img src="assets/ok66.png" width="800"/>
+
+### Test New Role in Sigma
+
+Login to Sigma as Bob, using a new incognito browser.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 STOPPED HERE PB
 
