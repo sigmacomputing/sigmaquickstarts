@@ -136,18 +136,16 @@ Copy the Sigma Account URL we saved off to a text file earlier and paste it into
 
 <img src="assets/ok15.png" width="800"/>
 
-Last thing we should do is make sure any new Sigma user get the least privilige unless configure otherwise. This is done by navigating to the `Provisioning` tab for the Application ` Sigma on AWS`. 
-
-Scroll down the the page bottom and `Show Unmapped Attributes`. Click the pencil icon on the row with `UserType` and configure it as follows:
-
-<img src="assets/ok53.png" width="800"/>
-
-Now all Sigma users we add to Okta are `Viewers` unless we assign otherwise.
+NOTE: The value for `Default Relay State` will vary depending on cloud provider. For AWS, append "/finish-login" to the URL. For example: <br>
+```plaintext
+https://app.sigmacomputing.com/[yourCompanyId]/finish-login
+```
 
 Scroll all the way to the bottom and click `Save`.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION -->
+Sigma will now allow users to login with SSO or username/password.
+
+We have not yet completed the Okta/Sigma integration but SSO is setup. Later we will complete the integration such that users/groups added in Okta, will be automatically pushed to Sigma. 
 
 ## Testing SSO
 
@@ -168,6 +166,10 @@ Click the `Sign in with SSO` button. We are talking to an Okta page for signing 
 <img src="assets/ok18.png" width="800"/>
 
 Try to login with your Sigma credentials. It will fail. This is because we have not created this user in Okta.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We are doing it this way because if we just disable username/password authentication in Sigma, we will not have a user we can login with with SSO as Okta will not have a record that matches the Sigma record we normally login with. This method prevents us from becoming locked out of Sigma until we have the full integration completed later.
+</aside>
 
 When errors occur in Okta (before reaching out to Sigma) it can be useful to review the Okta Application error log:
 
@@ -353,15 +355,13 @@ Click `Save`.
 
 Now Okta is able to communicate with Sigma's REST endpoint for this account only.
 
-We now have many more configuration options available to us in Okta to control SSO. 
+We now have more configuration options available to us in Okta to control SSO. 
 
-There are two items we want to pay attention to on this page.
-
-The first is what happens when a user who exists in Okta (and is allowed to access Sigma) but does not exist in Sigma, is handled. 
+We want to control what happens when a user who exists in Okta (and is allowed to access Sigma) but does not exist in Sigma, is handled. 
 
 We want Okta to creates a user in Sigma on AWS when assigning the app to a user in Okta. 
 
-Click `Edit at the top right cornder  across from `Provisioning to App`.
+Click `Edit at the top right corner  across from `Provisioning to App`.
 
 Then click the `Enable` checkbox on adjacent to `Create`.
 
@@ -369,91 +369,129 @@ Also enable the checkboxes for `Update User Attributes` and `Deactivate Users`. 
 
 Click `Save`.
 
-The second item we want to cover is how a user's role ("Account Type" in Sigma) is assigned in Okta.
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
-Before we can add any users in Okta for Sigma, we need to create User Groups so that users can be assigned membership when they are created in Okta. Group membership will map to Sigma `Account Types` and is how Role-Base Access Control (RBAC) provisions rights to users.
+## Standard Account Types
 
-In Okta, navigate to  `Directory` > `Groups`. In our case, three groups already existed in Sigma, under `Administration`  / `Teams` but in a Sigma Trial, no Teams will exist so we need to create one. We can do this in Okta now that the API Integration is in place and working.
+Okta supports Sigma "out-of-the-box" account types. It manages this in it's `Profile Editor`. 
+
+Navigate to `Directory` > `Profile Editor` and click on `Sigma on AWS User`:
+
+<img src="assets/ok15g.png" width="800"/>
+
+Click on the "pencil" icon for `User Type`:
+
+<img src="assets/ok15h.png" width="800"/>
+
+We are presented with the pre-configured settings for `User Type`. We see that the "base" Sigma `Account Types` that are included in all Sigma accounts are pre-configured for us:
+```console
+Viewer
+Author (also called "Creator")
+Admin
+```
+
+<img src="assets/ok15i.png" width="800"/>
+
+This is where we can also `+ Add Another` to support Sigma custom `Account Types` later. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> When we enabled API integration to Sigma in Okta, Okta reached out and reads teams into Okta automatically. In our example, we had three teams already.
+<strong>NOTE:</strong><br> Custom Account Types in Sigma provide a way to restrict users to specific Sigma functionality. For example, not allow users to export data.
 </aside>
-
-<img src="assets/ok38.png" width="800"/>
-
-Lets use Okta to create a new Group and send it to Sigma over from the Okta UI. 
-
-Click `Add Group`:
-
-<img src="assets/ok39.png" width="800"/>
-
-Give the new Group a name and description and click `Save`:
-
-<img src="assets/ok40.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> You may need to refresh the browser page if the new group does not appear on the list right away.
-</aside>
-
-Now click into the new Group and navigate to the `Applications` tab. Then click the `Assign Applications` button:
-
-<img src="assets/ok41.png" width="800"/>
-
-Click `Assign` for `Sigma on AWS`:
-<img src="assets/ok41.png" width="800"/>
-
-In the popup, select `Viewer` and click `Save and Go Back`:
-
-<img src="assets/ok42.png" width="800"/>
-
-Then click `Done`.
-
-We now need to ask Okta to push this new Group/Team to Sigma.
-
-Navigate back to `Applications` > `Sigma on AWS` and click the `Push Group` tab, then the `Push Groups` button and then `Find groups by name`:
-
-<img src="assets/ok44.png" width="800"/>
-
-Start typing the group name and it will appear as shown for click selection:
-
-<img src="assets/ok45.png" width="800"/>
-
-We want Okta to create the group so set it to `Create Group`:
-
-<img src="assets/ok46.png" width="800"/>
-
-Click `Save`.
-
-The group gets pushed to Sigma and it happens very quickly. The status will change from `Pushing` to `Active`:
-
-<img src="assets/ok47.png" width="800"/>
-
-Back in Sigma, `Administration` > `Teams`, we see the new Team/Group that Okta sent to Sigma:
-
-<img src="assets/ok48.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
+## Add Group(s)
+A user's `Account Type` can be managed in Okta directly and this is fine when there are only a few users. It is a best practice to use Okta `Groups` to manage what Sigma operations are permitted to all group members. 
+
+Groups created in Okta will be pushed to Sigma now that we have the integration all set up. There is no need to create them first in Sigma. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Okta Groups are called "Teams" in Sigma. If there were Teams already created in Sigma (if Okta was implemented some time after Sigma), they will be synchronized back to Okta automatically.
+</aside>
+
+Lets add a `Group` for `Viewers`.
+
+In Okta, navigate to `Directory` > `Groups` and click the `Add Group` button.
+
+You may notice some groups already exist, having been imported from Sigma (in this example, some existed but can be ignored as we will not use them). 
+
+The `Everyone` group is created automatically by Okta. These are three Okta users, but since no application is assigned, these users have no right to login to Sigma. They can however, log into Okta, which is expected since in practice, there would be other business applications being secured by Okta.
+
+There is one application assigned to an existing Sigma Team called `FinanceViewers` but no users so that is also protected from logging in via SSO.
+
+<img src="assets/ok67.png" width="800"/>
+
+Click `Add Group` and give it a name `OktaViewes` and click `Save`:
+
+<img src="assets/ok68.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You may need to refresh your browser to have Okta show the new Group on the list.
+</aside>
+
+We need to assign the `Sigma on AWS` application to this group. Click onto the new `OktaViewers` group and click `Assign applications`.
+
+Click the `Assign` button in the `Sigma on AWS` row.
+
+We now need to set the Sigma `Account Type` this new group will use. We have the three standard Sigma `Account Types` to choose from. 
+
+Select `Viewer` and click `Save` and `Done`.
+
+Anyone who is a member of this group will get `Viewer` access as defined in Sigma > `Administration` > `Account Types` > `Viewer`.
+
+While we are here, lets create another `Group` for Sigma Creators Account Type. The workflow is the same, but in the last step, assign the new group the `Account Type` of `Author` (which maps to Sigma Creators).
+
+We can call this group `OktaCreators`.
+
+When done, our `Groups` list should look this this, with the two new groups each having one application and no users assigned yet:
+
+<img src="assets/ok70.png" width="800"/>
+
+The last step (and whenever new groups are created) is to push the new group(s) to Sigma.
+
+Navigate to `Applications` > `Applications`. We can see that our `Sigma Viewer` user has an error. This is because we did not push the new groups to Sigma yet (and they are a member of one).
+
+Click the `Push Groups` tab:
+
+<img src="assets/ok71.png" width="800"/>
+
+Select `Push Groups` and `Find groups by name`:
+
+<img src="assets/ok72.png" width="800"/>
+
+Start typing `Ok` and click to add the `OktaViewers` group:
+
+<img src="assets/ok76.png" width="800"/>
+
+Click `Save & Add Another` and add the `OktaCreators` group as well. 
+
+Then click `Save`. The new groups should show a status as `Pushing` to `Active` fairly quickly:
+
+<img src="assets/ok77.png" width="800"/>
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
 ## Add User(s)
 Duration: 20
 
-Now that we have a Group with Viewer rights, we can assign new users to it in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the RBAC that we assigned them.
+Now we can assign new users to groups in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the group rights that is afforded to them by Sigma Account Type.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. Earlier, we set an Application attribute that made all users Viewers. We wanted to demonstrate both options to you. The Okta / Sigma integration is very flexible. 
+<strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. The Okta / Sigma integration is very flexible. 
 </aside>
+
+We will make our first new user a `Viewer` in Sigma.
 
 In Okta, navigate to `Directory` > `People` and click the `Add Person` button:
 
 <img src="assets/ok49.png" width="800"/>
 
-Configure the new user as shown, tailoring the details to suit the user:
-
-<img src="assets/ok49.png" width="800"/>
-
-Make sure to set the user to use the group in Okta for "Viewers" and it is good practice to set a default password and enforce a required password change on first login:
+Configure the new user as shown, tailoring the details to suit the user. Check the box (#2) to set `User must change password...` on:
 
 <img src="assets/ok50.png" width="800"/>
 
@@ -476,6 +514,24 @@ Okta will respond with a page asking for a new password. Provide one.
 </aside>
 
 [Read more about Okta Sign-on policies](https://help.okta.com/en-us/Content/Topics/Security/policies/policies-home.htm)
+
+After resetting the password and trying to login again we face another problem:
+
+<img src="assets/ok71.png" width="800"/>
+
+What happened? 
+
+In Okta, we created a `Group` and assigned the `Sigma on AWS` application to the group but we did not assign this user to the group. Lets do that now.
+
+Navigate to `Directory` > `Groups` and click into the `OktaViewers` group we created. Click `Assign people`:
+
+<img src="assets/ok72.png" width="800"/>
+
+Select the `Sigma Viewer` user we created earlier by clicking on the `+`:
+
+<img src="assets/ok73.png" width="800"/>
+
+That user is now `Assigned` with a green checkmark in the list.
 
 We don't need to give the new user permission to use the `Sigma on AWS` application in Okta. That is implied when we granted the Group access.
 
