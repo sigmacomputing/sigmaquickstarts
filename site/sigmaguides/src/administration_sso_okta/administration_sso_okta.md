@@ -14,7 +14,9 @@ lastUpdated: 2023-05-01
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+We can configure Sigma to use Single Sign-On (SSO) Authentication with any platform that supports SAML (ie Okta, OneLogin and Google SSO). We can also configure Sigma to custom implementations that uses SAML.‍ 
+
+For this QuickStart, we will focus on Okta.
 
 When using Okta SSO, there are several user management options available. These include:
 
@@ -27,10 +29,10 @@ When using Okta SSO, there are several user management options available. These 
       <li><strong> User Self-Service:</strong> Okta provides a self-service portal that allows users to reset their passwords or update their profile information. This can reduce the burden on IT help desks and improve user satisfaction.</li>
 </ul>
 
-While Okta has many options available, we want to call attention to just a few in this section.
+While Okta has many options available, we will focus on the foundational features.
 
  ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Sigma administrators or security professionals who are interested in learning how to implements Sigma SSO with Okta.
 
 ### Prerequisites
 
@@ -51,16 +53,14 @@ Anyone who is trying to create QS content for Sigma.
 </aside>
   
 ### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
+How to implement and customize Sigma Single-Sign-On using Okta as the identity provider. 
 
 ### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/getting_started_working_with_tables_hol/index.html)<br>.
+The results of this QuickStart will be a Sigma instance that only allows SSO, with user management provided by Okta. In the end, we will have a test user who can login to Sigma with SSO, have Sigma Creator rights but is not allowed to export any data.
 
-
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+<img src="assets/ok63.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
 ## **SSO Initial Configuration**
@@ -471,8 +471,6 @@ Then click `Save`. The new groups should show a status as `Pushing` to `Active` 
 
 <img src="assets/ok77.png" width="800"/>
 
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
@@ -535,11 +533,22 @@ That user is now `Assigned` with a green checkmark in the list.
 
 We don't need to give the new user permission to use the `Sigma on AWS` application in Okta. That is implied when we granted the Group access.
 
-After changing password, we are taken to the Sigma portal and have only `Viewer` access:
+After changing password, we are taken to the Sigma portal and have only `Viewer` access and a team membership of `OktaViewers`:
 
-<img src="assets/ok52.png" width="800"/>
+<img src="assets/ok78.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> It may take a few minutes for the Okta developer account to synchronize the team down to Sigma. Refresh the Sigma page if only the `Account Type` is populated with a value.
+</aside>
 
 It is also possible to see the Sigma App in the Okta portal for this user. 
+
+The address to login to an Okta developers account is:
+```console
+https://dev-22485XXX-admin.okta.com/
+```
+
+Replace the "dev-[number]" with your dev account value.
 
 Login to Okta (in another incognito browser window). Use the new user's email and password to login. 
 
@@ -547,11 +556,10 @@ The Okta portal should show the Sigma App tile:
 
 <img src="assets/ok54.png" width="800"/>
 
+Clicking on the tile will take you directly into Sigma as your user is Okta authenticated already.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
-
-
-
 
 ## **Custom Account Types with Okta**
 Duration: 20
@@ -562,17 +570,27 @@ Any users who are assigned to this "download restricted" team, will not be able 
 
 Lets see how to adjust the user we just created in Okta to grant more rights but also not allow exports.
 
+Since Okta has no record for a new `Account Type` we need to add it so we can then assign it to group(s).
+
+Navigate to `Directory` > `Profile Editor`. Locate the `Attributes` section and then `User Type`. Click the pencil icon:
+
+<img src="assets/ok79.png" width="ç800"/>
+
+Click `Add another` and enter the values as shown:
+
+<img src="assets/ok80.png" width="800"/>
+
+Scroll to the bottom and click `Save Attribute`.
+
 We will need to create a new `Group` in Okta (which we will push to Sigma as a `Team`) so that we can manage the level of access we want users to have. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma comes with three "out-of-box" teams and they can be customized to suit or you can create as many other teams as needed.
+<strong>NOTE:</strong><br> Sigma comes with three "out-of-box" teams and they can be customized to suit or you can create as many other teams as needed. We just added a new one and will restrict it's allowed Sigma functions in a bit.
 </aside>
-
-INSERT A WORKFLOW HERE PHIL
 
 In Okta, `Directory` > `Groups`, click `Add group`:
 
-<img src="assets/ok56.png" width="800"/>
+<img src="assets/ok56.png" width="ç800"/>
 
 Give the `Group` a name and description as shown and click `Ok`.
 
@@ -580,25 +598,37 @@ Give the `Group` a name and description as shown and click `Ok`.
 
 We need to assign this new group to the `Sigma on AWS` application:
 
-<img src="assets/ok57.png" width="800"/>
-
-In the assignment workflow (which we have shown previously) set the `User Type` to `Viewer`. 
+<img src="assets/ok57b.png" width="800"/>
 
 Click `Save and Go Back` and then `Done`.
 
+The `Sigma Viewer` user already has `Viewer` rights in Sigma via Okta group membership in the `Okta Viewer` group. 
+
+Add the `Sigma Viewer` user to the new `OktaCreatorNoExport` group.
+
+Since this user is a member of more than one groups, we need to make sure that the correct group is used when they log in. 
+
+Navigate to the `Assignments` tab on the `Sigma on AWS` `Applications` page.
+
+Click `Groups`. Our three custom groups are listed. The first column is the `Priority` in which they are assigned to a user (if the user is a member) when a user logs in. We want our user to have `OktaCreatorNoExport` so click and hold on the drag bar and drag it to the top (#1) position as shown:
+
+<img src="assets/ok83.png" width="800"/>
+
 Navigate to the `Sigma on AWS` application, `Push Groups` tab. 
 
-Click `+ Push Groups` and `Find groups by name`:
+Click `+ Push Groups` and `Find groups by name` and select the `OktaCreatorNoExport` group.
 
-<img src="assets/ok59.png" width="800"/>
+Wait for the group to become `Active`.
 
-Start typing "Crea" in the input-box and select `Creator - No Export`. The checkbox for `Push group memberships immediately` should be checked by default.
+<img src="assets/ok82.png" width="800"/>
 
-Scroll down and select `Save`. The new Group will be immediately pushed to Sigma. 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Organizations that use SCIM will need to manually add all newly-created custom Account Types to their IDP.
+</aside>
 
-Return to Sigma
+Return to Sigma (as Administrator)
 
-In Sigma (as Administrator), navigate to `Administration` > `Teams`. Our Okta Group is listed here. 
+Navigate to `Administration` > `Teams`. Our Okta Group is listed here. 
 
 Lets add a new `Account Type`. Click on `Account Types` > and `Create New Account Type` button:
 
@@ -610,55 +640,44 @@ Configure the Account Type as shown. Notice that we are not allowing any Export 
 
 Click `Create`.
 
-We can check our test user "Bob" and see that he is a member of the "Okta Viewers" team and we are not given an option to change that because Okta is managing his team membership:
-
-<img src="assets/ok63.png" width="800"/>
-
-Lets assign Bob to our new group in Okta.
-
-Navigate to to `Directory` > `Groups` > `People` and click `Assign people`:
-
-<img src="assets/ok64.png" width="800"/>
-
-Click the `+` in Bob's row to add him to the Group:
-
-<img src="assets/ok65.png" width="800"/>
-
-Click `Done`.
-
-We also need to assign the `Creator - No Export` group to the `Sigma on AWS` application. Assign it with `Author` User Type.
-
-<img src="assets/ok66.png" width="800"/>
-
 ### Test New Role in Sigma
 
-Login to Sigma as Bob, using a new incognito browser.
+Login to Sigma as our test user, using a new incognito browser.
 
+Navigate to `User Profile` > `Details` (the icon in the upper-most right corner) and see that this user is a member of both teams now and has `CreateorNoExport`. We cannot change this in Sigma as Okta is handling user management operations now. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-STOPPED HERE PB
-
+<img src="assets/ok63.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
+## Items of Note
+
+The Sigma / Okta enables many additional capabilities than covered here and we encourage you to explore based on use case needs and curiosity. 
+
+A few of them are:
+
+ <li>
+    <ol type="n"> 
+      <li><strong>User Roles:</strong> The concept of User Attribute in Sigma is implemented by using Okta userRoles to pass user-specific role information upon login. </li>
+      <li><strong></strong>Audit Logging:</strong> Captures user login events (in addition to Okta logs) for customers who want the extra layer of information</li>
+      <li><strong>Zonal Restrictions:</strong> Prevent users from logging on based on physical location</li>
+      <li><strong>Device Restriction:</strong> Prevent users from logging on based on device operating system.</li>
+      <li><strong>Behavior Detection:</strong> Behavior Detection analyzes patterns of user behavior and create profiles of typical patterns based on previous activity.</li>
+    </ol>
+  </li>
+
+[The list is too long and more reading on the extensive features Okta provides is available here.](https://help.okta.com/en-us/Content/index.htm)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this lab we learned how to implement and customize Sigma Single-Sign-On using Okta as the identity provider. 
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
