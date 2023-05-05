@@ -3,7 +3,7 @@ id: administration_sso_okta
 summary: administration_sso_okta
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
 lastUpdated: 2023-05-01
