@@ -154,7 +154,7 @@ Duration: 5
   </li>
 
 **Markdown for a ORDERED LIST:**
-```plaintext
+```console
  <li><strong>My Content:</strong> Some text...
     <ol type="n"> 
       <li><strong>Workbook:</strong> text...</li>
@@ -174,7 +174,7 @@ Duration: 5
 </ul>
 
 **Markdown for a UNORDERED LIST:**
-```plaintext
+```console
  <ul>
       <li><strong>Bar charts:</strong> Some text...</li>
       <li><strong>Line charts:</strong> Some text...</li>
@@ -182,6 +182,35 @@ Duration: 5
 </ul>
 ```
 
+![Alt text](assets/horizonalline.png)
+
+**NESTED LIST:**
+<ul>
+  <li></li>
+    <li>Sample </li>
+    <li>Sample 2:
+        <ul>
+        <li>Viewer</li>
+        <li>Viewer+</li>
+        <li>Explorer</li>
+        </ul>
+    </li>
+</ul>
+
+**Markdown for a NESTED LIST:**
+```console
+ <ul>
+  <li></li>
+    <li>Sample </li>
+    <li>Sample 2:
+        <ul>
+        <li>Viewer</li>
+        <li>Viewer+</li>
+        <li>Explorer</li>
+        </ul>
+    </li>
+</ul>
+``` 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -287,6 +316,14 @@ Tables are created as shown:.<br>
     </tbody>
 </table>
 ```
+
+
+## **Gifs**
+Duration: 5
+
+Gifs are supported as:
+
+<img src="assets/sample.gif">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

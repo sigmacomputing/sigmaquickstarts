@@ -17,5 +17,8 @@ This is a testing page only
 
 <img src="assets/testlogo.png" alt="https://demo.arcade.software/mHIo0xSPgphUffPG96Ux?embed" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" />
 
+<img src="assets/sample.gif">
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF QUICKSTART -->
