@@ -107,7 +107,7 @@ We prefer that this new Viz is on its own Page so click the `vertical dot menu` 
 
 ![Alt text](assets/vizbasics2.png)
 
-In the `Element Panel` click the `X-Axis` and select `Store Region` as below. Use the search feature when you have a large number of columns to save scrolling time:
+In the `Element Panel` click on the + of the `X-Axis` and select `Store Region` as below. Use the search feature when you have a large number of columns to save scrolling time:
 
 <img src="assets/vizbasics3.png" width="400"/>
 
@@ -186,7 +186,8 @@ Geographic data can tell a powerful story. Whether analyzing regional trends or 
 
 Add a `new Viz`to the Page and set its source of data to the `Workbook Element / Plugs Sales / Data table`.
 Change the `Visualization type` to `Map-Region`.
-Set the `Region` to `Store State` and US `States`.
+
+Set the Region to `Store State` and in the region type dropdown below, choose `US States`.
 
 We now have a map that shows the data grouped by US-State:
 
