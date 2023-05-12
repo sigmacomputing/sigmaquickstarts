@@ -99,7 +99,7 @@ Click the `caret (▼)` icon button to the right of the Workbook title in the he
 
 <img src="assets/public6.png" width="400"/>
 
-This modal displays all avaiQuickStartle Public and Application embeds. Select the `Public (0)` tab and then select `Dashboard`. This will allow us to only display the Dashboard Page in our embed.
+This modal displays all available Public and Application embeds. Select the `Public (0)` tab and then select `Dashboard`. This will allow us to only display the Dashboard Page in our embed.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You can choose the entire Workbook, Page or one or more Elements (Tables, Viz ect...).
