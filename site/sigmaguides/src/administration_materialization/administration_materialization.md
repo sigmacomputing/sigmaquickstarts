@@ -13,6 +13,34 @@ tags: Getting Started
 ## Overview 
 Duration: 5 
 
+Materialization is a general term, used in Business Intelligence, where a complex and slow query is broken up into two parts, and one of these parts is pre-executed and stored at regular intervals, on schedule.
+
+The purpose of materialization is to:
+-Improve response time of the query
+-Reduce the compute in the CDW
+
+Materialization is a common strategy for improving performance of interactive queries, when the following conditions are satisfied:
+
+Multiple joins. The query has multiple joins, which make the query response time slow. Materialization will execute those joins and write out the result into a single flat table, which will perform much faster. This is called "flattening of the joins".
+
+Source data has significantly higher grain than the workbook charts. If the source data contains millions of transactions, but the workbook charts are only showing daily, weekly or monthly aggregates. Materialization will create a daily (weekly, monthly) summary table, that will be significantly smaller than the source table, improving performance. This is called "reducing the grain" or "reducing cardinality"
+
+There is no requirement for up-to-the minute, live data. When the charts are daily (weekly, monthly), usually data as of the end of the previous day is needed.
+
+When materialization is done in Sigma, then regular (non-oauth) authentication should be used, where every Sigma user is logging into CDW using a single, shared CDQ logon. If a client uses oauth, they can not materialize using Sigma.
+
+The benefit of materializing from Sigma - it is a very simple and quick process, which, unlike its alternatives, does not require data engineering expertise, which translates into saving development time and budget
+
+When the CDW is updated daily, materialization should typically take place during off hours, like in the middle of the night or early morning, after any batch updates into the CDW completed.
+
+Today (May 2023), we allow users to materialize individual workbook elements (tables, charts or pivots), which maked materialization more accessible to non-technical users. 
+
+ 
+
+Materialization in Sigma is often governed in some way - you typically don’t want a large number of creators to materialize hundreds or thousands of potentially duplicate objects, so it is common to grant the ability to materialize to a certain, smaller number of creators.
+
+************snowflake........
+
 Snowflake materialization refers to a feature in the Snowflake cloud data platform that allows you to create and store the results of complex queries or views as physical tables. It is a mechanism for precomputing and persisting the intermediate or final results of queries to improve performance and reduce query execution times.
 
 In Snowflake, queries are typically executed on demand, and the data is fetched from the underlying storage layer and processed dynamically. However, materialization enables you to transform certain queries or views into physical tables that are stored within Snowflake's scalable storage system. These materialized tables contain the precomputed results of the associated queries or views.
@@ -44,6 +72,7 @@ Sigma administrators who are interested in improving performance when working wi
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>Write access must be enabled on your Sigma dataset’s connection.</li>
 </ul>
 
 <aside class="postive">
@@ -62,7 +91,14 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## Getting Started
+Materializations allows you to write datasets and workbook elements back to your warehouse as tables which can reduce compute costs. Materialization enhances query performance by allowing your data warehouse to avoid recomputing the dataset when it's used by an element or a in descendant Sigma analysis. 
+
+Materializations are stored in your warehouse and saved in scratch workspace schema automatically managed by Sigma. Sigma's query compiler automatically and transparently uses the latest materialization.
+
+
+
+
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
