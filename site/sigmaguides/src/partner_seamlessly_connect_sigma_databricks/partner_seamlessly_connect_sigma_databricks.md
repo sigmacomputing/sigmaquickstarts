@@ -159,7 +159,7 @@ Next click `Select` in the bottom right corner of the page:
 
 <img src="assets/Databricks_PartnerConnect_Image11_upd.jpg" width="800"/>
 
-The trips data is now displayed in a familiar spreadsheet UI. This allows business users to begin to explore the data and do ad hoc analysis:
+The trips data is now displayed in a familiar spreadsheet UI. This allows business users to begin to explore the data and do ad-hoc analysis:
 
 <img src="assets/Databricks_PartnerConnect_Image12_upd.jpg" width="800"/>
 
@@ -180,7 +180,7 @@ This will add a Visualization below our table.
 On the X-Axis click the `plus button` to add the `Tpep Dropoff Datetime` column:
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Notice you can search here for the column you wish to add. We can also drag values onto the Axes instead of using the add button. 
+<strong>NOTE:</strong><br> Notice you can search here for the column you wish to add. We can also drag values onto the axes instead of using the add button. 
 </aside>
 
 <img src="assets/Databricks_PartnerConnect_Image14_upd.jpg" width="800"/>
