@@ -252,6 +252,7 @@ To learn more about Sigma on Databricks, please download the [Sigma on Databrick
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
+
 [<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
 [<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
