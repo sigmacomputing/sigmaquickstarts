@@ -6,3 +6,5 @@ package-lock.json
 /.firebase/
 /bazel*
 .firebase/
+site/package-lock.json
+site/package.json
