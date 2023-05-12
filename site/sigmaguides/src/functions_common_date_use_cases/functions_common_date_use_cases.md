@@ -330,8 +330,8 @@ Add a new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Ye
 Configure the new column as shown below:
 
 ```plaintext
-Column:             Formula:
-Previous Month      Lead([Monthly Sales], -1)
+Column:                    Formula:
+Previous Year Monthly      Lead([Monthly Sales], -1)
 ```
 
 Add another new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
@@ -432,6 +432,8 @@ Columns created from a lookup can be added using the Lookup function. However, y
 
 Create a new Workbook Page and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
 
+Rename the Page tab to `Lookups - Year over year`.
+
 Rename this table `Regional Sales Performance - This vs. Last Year`.
 
 Duplicate the table using the table menu.
@@ -460,7 +462,7 @@ Let's filter this table to display orders from this year only:
 
 Back on the `Regional Sales Performance - This vs. Last Year`, we want to group on the `Store Region` column.
 
-Now all a new column / Column via lookup:
+Now add a new column / Column via lookup:
 
 <img src="assets/CDUC37.png" width="500"/>
 

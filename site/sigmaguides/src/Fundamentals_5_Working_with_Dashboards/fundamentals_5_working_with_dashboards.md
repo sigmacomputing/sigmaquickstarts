@@ -103,7 +103,13 @@ Click anywhere on the Table and you can see a small `“grab-bar”` in the cent
 
 ![Alt text](assets/creating5.png)
 
-You can also move Elements around by `clicking to select` them and then `dragging` them around the Canvas to drop them where a black line appears. You will notice a small `hand icon` that appears (hover over the `3-dot` menu on the right top corner of any Element) letting you know you can move an Element. Drag the two Chart Viz to the top of the page and next to each other as below:
+You can also move Elements around by `clicking to select` them and then `dragging` them around the Canvas to drop them where a black line appears. You will notice a small `hand icon` that appears (hover over the `3-dot` menu on the right top corner of any Element) letting you know you can move an Element. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> For some elements, such as visualizations and text, only the margins will allow dragging.  In the case of map visualizations, clicking and dragging instead pans the map within the element. Note that when any element is moused over, a set of icons appears in the top right corner; the double vertical dotted line icon within this set is always available to be clicked and dragged.  
+</aside>
+
+Drag the two Chart Viz to the top of the page and next to each other as below:
 
 ![Alt text](assets/creating6.png)
 

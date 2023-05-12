@@ -45,14 +45,6 @@ Typical audience for this QuickStart is users of Excel, common Business Intellig
 ### What You’ll Learn
 Through this QuickStart we will walk through how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting.
 
-### What You’ll Build
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will build a table that looks like this:
-
-![Alt text](assets/whatwewillbuildsample.png)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF OVERVIEW -->
-
 ## **Table Basics**
 Duration: 6
 
@@ -302,7 +294,7 @@ Duration: 6
 
 Sigma also has the ability to create Summary Values or KPIs across the entire Table.  At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
 
-At the bottom left corner of the Table click on the carrot and select the `+ button`. 
+At the bottom left corner of the Table click on the caret and select the `+ button`. 
 
 <img src="assets/summary1.png" width="400"/>
 
@@ -318,7 +310,7 @@ Add one more summary for our COGS and rename it `COGS`.
 <strong>NOTE:</strong> Sigma references Summaries by name and can be used in other formulas inside the Workbook. 
 </aside>
 
-Lastly, let's create one more Summary value by clicking on the carrot `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
+Lastly, let's create one more Summary value by clicking on the caret `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
 
 <img src="assets/summary4.png" width="300"/>
 
@@ -340,7 +332,7 @@ Duration: 6
 
 Sigma also has the ability to easily filter Table data. Lets filter for only stores in the East region. 
 
-Click on the `Store Region` column and select Filter. Notice that a `FILTERS & CONTROLS` panel opens and if auto-populates with the available distinct list of Store Regions. Also notice that under number 3 there is a small filter icon with a 1 next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
+Click on the `Store Region` column and select Filter. Notice that a `FILTERS & CONTROLS` panel opens and itf auto-populates with the available distinct list of Store Regions. Also notice that under number 3 there is a small filter icon with a 1 next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
 
 <img src="assets/filters1.png" width="700"/>
 

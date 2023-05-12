@@ -118,7 +118,7 @@ Once you open a different page you may notice the back arrow next to the Sigma l
   </li>
     <li><strong>Administration:</strong> Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
    <li><strong>Canvas:</strong> This area is where most of your working sessions will be. The Home page will change based on what you are doing over time, showing your most recent work and other useful links. </li>
-   <li><strong>User Profile:</strong> On the top right corner is a box with your username initial. Clicking on it reveals Profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions.  These options will be covered in a different module./li>
+   <li><strong>User Profile:</strong> On the top right corner is a box with your username initial. Clicking on it reveals Profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions.  These options will be covered in a different module.</li>
    <li><strong>Help:</strong> has lots of useful information for you to explore later.</li>
 </ol>
 
@@ -129,7 +129,7 @@ Once you open a different page you may notice the back arrow next to the Sigma l
 ## **Workbooks, Pages and Datasets**
 Duration: 6
 
-Let’s begin by establishing some basic terminology Sigma uses. Consider that a `Workbook is like a book you have read; `the Workbook is the title of the book. The book's index is like a Page. Each page of the book is a Canvas and the words are all part of a Dataset. 
+Let’s begin by establishing some basic terminology Sigma uses. Consider that a `Workbook is like a book you have read; `the Workbook is the title of the book. Each page of the book is a Canvas and the words are all part of a Dataset. 
 
 From that we can understand that a `Workbook contains Pages` (each with one Canvas) that display information that comes from a Dataset. 
 
@@ -202,8 +202,8 @@ Buttons for undo, redo, and page theming can always be found in the toolbar as w
 
 ![Alt text](assets/plugstabledetails.png)
 
-In the lower left corner of the Page there is a tab. Click the `^ arrow` and rename the tab to “Data”. We will use this table as a Workbook source of data for work in later labs.
-Let’s save this Workbook for now. Click the name `Exploration` and select `Save`. Give it a name that makes sense to you and others you might later share it with. We used “Plugs Sales”. 
+In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to “Data”. We will use this table as a Workbook source of data for work in later labs.
+Let’s save this Workbook for now. Click the `Save As` button in the upper right corner. Give it a name that makes sense to you and others you might later share it with. We used “Plugs Sales”. 
 
 ![Alt text](assets/plugstablesave.png)
 
@@ -222,7 +222,7 @@ At this point you have a saved Workbook with one table that is not yet “Publis
 **These options allow you to:**
 <ul>
       <li>Continue to work on the Workbook (Edit)</li>
-      <li>Preview the Workbook as users with Explorer or Viewer rights will (Preview as...)</li>
+      <li>Preview the Workbook as users with Explorer or Viewer rights will see it (Preview as...)</li>
       <li>Review the last published version before you make your saves in Edit mode (Go to Publish...)</li>
       <li>Restore previous Published version if you make a mistake Publishing new (Restore draft to...)</li>
 </ul>
