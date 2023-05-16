@@ -96,7 +96,10 @@ Materializations allows you to write datasets and workbook elements back to your
 
 Materializations are stored in your warehouse and saved in scratch workspace schema automatically managed by Sigma. Sigma's query compiler automatically and transparently uses the latest materialization.
 
-
+No one but IT does it vs. letting some people do it (governance)
+The gold dataset vs. letting users materialize for dev/testing
+When to use Sigma vs. other tools....
+Best practices
 
 
 Duration: 20
