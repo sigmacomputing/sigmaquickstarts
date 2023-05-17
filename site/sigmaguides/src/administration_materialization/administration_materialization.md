@@ -6,6 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
+lastUpdated: 2023-05-20
 
 # Materializations
 <!-- The above name is what appears on the website and is searchable. -->
@@ -37,7 +38,7 @@ Sigma administrators who are interested in improving performance when working wi
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
-button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
 
 ### What You’ll Learn
 This QuickStart discussed the features and benefits of using materialization in Sigma and also how to configure and schedule materializations to improve the speed and performance of your reports. 
@@ -148,7 +149,7 @@ The ability to materialize in Sigma should be governed in some way - you typical
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Materialize in Sigma
+## Initial Setup
 Duration: 20
 
 Materializations allows you to write datasets and workbook elements back to your warehouse as tables which can reduce compute costs. Materialization enhances query performance by allowing your data warehouse to avoid recomputing the dataset when it's used by an element or a in descendant Sigma analysis. 
@@ -159,34 +160,158 @@ Materializations are stored in your warehouse and saved in scratch workspace sch
 <strong>IMPORTANT:</strong><br> Sigma materialization requires write access must be enabled on your dataset’s connection and must be an organization Admin or be assigned a custom account type with materialize permissions.
 </aside>
 
+### Prepare Snowflake
+First, we need to create a database and schema in Snowflake that we can use when materializing data with Sigma. 
+
+Login to your Snowflake trial account as `AccountAdmin`. 
+
+Create a new `SQL Worksheet` and copy/paste the following code into the worksheet:
+```console
+-- SELECT WAREHOUSE
+use WAREHOUSE COMPUTE_WH;
+
+-- CREATE DATABASE AND GRANT USAGE
+CREATE DATABASE if not exists SIGMA_WRITEDB;
+use DATABASE SIGMA_WRITEDB;
+grant usage on database SIGMA_WRITEDB to role ACCOUNTADMIN;
+
+-- SCHEMA AND GRANT USAGE
+CREATE SCHEMA QUICKSTART;
+grant usage, create table, create view, create stage on schema QUICKSTART to role ACCOUNTADMIN
+```
+
+Click the drop arrow in the upper-right corner and select `Run all`:
+
+<img src="assets/am2.png" width="800"/>
+
+It should return as `Statement executed successfully`.
+
 ### Setting up Write Access
+Login to Sigma and navigate to `Administration` > `Connections`. Click `Create Connection`:
 
+<img src="assets/am1.png" width="800"/>
 
+scroll down and add information related to `Write Access`:
 
+<img src="assets/am3.png" width="800"/>
 
+When done, click `Create`. The connection will be tested and if it passes, a success message will appear. 
 
+[For more information on enabling write access in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430473-Set-Up-Write-Access)
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## Materialization in Sigma
+Duration: 20
+
+Previously we discussed materialization in general and now we will discuss how it is implemented in Sigma.
+
+In Sigma, materializations allow you to write `Datasets` and `Workbook elements` back to your warehouse as tables.
+
+Materializations are stored in your warehouse and saved in scratch workspace schema, automatically managed by Sigma. Sigma's query compiler automatically and transparently uses the latest materialization.
+
+A materialization is created through the act of scheduling a materialization. The materialization schedule will impact the data freshness. Long running queries that do not display in Sigma can still be materialized.
 
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Dataset Materialization
 Duration: 20
+
+For this exercise, we will leverage the sample database provided by Snowflake called `TPCH_SF10` which has and `ORDERS` table consisting of 9 columns and 15M rows. 
+
+It is typical to use Sigma to join tables, add groupings and calculated columns. Doing so will create a dataset that may benefit from materialization. 
+
+We will assume that this is the case but skip that work in this QuickStart as it is assumed to be understood. We want to focus on how to materialize the final dataset that we have created in Sigma. 
+
+In Sigma, click the `Connections` and select `Snowflake Trial` from the connection list:
+
+<img src="assets/am4.png" width="800"/>
+
+Expand the database called `SNOWFLAKE_SAMPLE_DATA` and select the `ORDERS` table. Then click `Explore`:
+
+<img src="assets/am5.png" width="800"/>
+
+The `Orders` table is now open in a unsaved Workbook. All columns are selected and there are 15M rows available:
+
+<img src="assets/am6.png" width="800"/>
+
+Save this workbook as `Materialization`.
+
+Click the `hamburger icon` and select `Schedule materialization`:
+
+<img src="assets/am7.png" width="800"/>
+
+On the Schedules screen, we can create one or more times when this materialization will run.
+
+Since we only have one element in our Workbook (Page 1 - Orders), and no groupings, that is what is selected. 
+
+Configure the schedule to be once a day, at 3am and your timezone:
+
+<img src="assets/am8.png" width="800"/>
+
+Click `Save Schedules`.
+
+The materialization will run now and once done, will show a `Status` of "Success". The UI will also show the next scheduled runtime.
+
+<img src="assets/am9.png" width="800"/>
+
+Close the open schedule window.
+
+Navigate back to `Administration` > `Materializations` where we can see the list of our current jobs:
+
+<img src="assets/am10.png" width="800"/>
+
+Here we are able to see the status of the last run and how long it took; in this case, 15M rows in 11 secs using a Snowflake X-Small warehouse. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The configuration of the target cloud data warehouse size will impact the runtime of materializations. Since Sigma makes materializations easy, you can fine tune the performance by experimenting with different configurations and evaluating results.
+</aside>
+
+Click on the `Orders` (under number 3) to go to the `Materialization` Workbook.
+
+Clicking on the `View materialization icon` will show the latest run information and links to `Materialize now` and `View Schedule`.
+
+<img src="assets/am11.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Materialized Table in Snowflake
 Duration: 20
+
+We are able to see that Sigma has created a new table in Snowflake, based on our 9 column, 15M row configuration but the column data is not in a readable format. This "scratch schema" is managed by Sigma and is transparent to the Sigma user.
+
+<img src="assets/am12.png" width="800"/>
+
+Materialization enhances query performance by allowing your data warehouse to avoid recomputing the data when it's used by an element or in descendant Sigma analysis. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
-Duration: 20
+## Workbook Materialization
+
+Workbook materialization is similar to datasets, but have some major advantages, depending on the use case needs.
+
+ <ul>
+      <li>It allows you to materialize any workbook element (table, visualization, pivot) that can be used as a data source for another element.</li>
+      <li>Workbook materialization offers a smarter refresh when published. Publishing a document only refreshes the materialization if necessary. For example, if the materialized element hasn't changed, materialization doesn't run. Datasets always refresh the materialization on publish. This matters when the dataset is very large, in terms of compute cost.</li>
+      <li>It offers support for different levels of reference. Grouping levels can be independently materialized. Datasets only materialize at one grouping level.</li>
+      <li>Materializations are used when viewing and editing a workbook. Datasets don't use the materialization in edit mode.</li>
+      <li>It pushes status changes. The workbook viewer is notified of Materialization activity in a new "alerts" center (to be integrated with in-app notifications) and toasts.</li>    
+</ul>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbook Materialization Grouping Levels
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
