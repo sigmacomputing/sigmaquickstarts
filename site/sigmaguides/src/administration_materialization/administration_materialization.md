@@ -103,48 +103,72 @@ For example:
 ## What Options Are There?
 Duration: 20
 
-In the software market, there are several options available for materialization, depending on your specific needs and the technology stack you are working with. Here are some common options for materialization:
+In the software market, there are several options available for materialization, depending on your specific needs and the technology stack you are working with. 
 
-1. Relational Database Management Systems (RDBMS): Most popular RDBMS systems, such as Oracle, Microsoft SQL Server, MySQL, and PostgreSQL, provide features for materialization. These databases offer various mechanisms like materialized views, indexed views, and temporary tables that allow you to create and manage materialized data.
-
-2. Data Warehousing Solutions: Data warehousing platforms like Amazon Redshift, Google BigQuery, and Snowflake are designed for handling large-scale data analytics workloads. They often provide optimized features for materialization, including materialized views, caching mechanisms, and query optimization techniques to enhance query performance.
-
-3. In-Memory Databases: In-memory databases like SAP HANA, Redis, and Apache Ignite store data in-memory rather than on disk, which can significantly improve query performance. These databases often provide built-in mechanisms for materializing data, such as columnar storage, data replication, and preloading of frequently accessed data.
-
-4. Caching Systems: Caching systems like Memcached and Redis can be used to materialize frequently accessed data. By storing query results or computed data in-memory, these systems allow for quick retrieval and reduce the need for repetitive computations.
-
-5. Business Intelligence (BI) Tools: Many BI tools, such as Tableau, Power BI, and Looker, offer features for materialization to optimize data analysis and reporting. These tools allow you to create materialized views, derived tables, or data extracts that can be used for faster query execution and interactive visualizations.
-
-6. Custom Data Pipelines and ETL Processes: In some cases, you may need to implement custom materialization solutions using data pipelines or Extract-Transform-Load (ETL) processes. Tools like Apache Airflow, Apache Spark, or custom scripting can be utilized to schedule and automate the materialization process, ensuring that the materialized data remains up-to-date.
+ <li><strong>Here are some common options for materialization:</strong> 
+    <ol type="n"> 
+      <li><strong>Relational Database Management Systems (RDBMS):</strong> Most popular RDBMS systems, such as Oracle, Microsoft SQL Server, MySQL, and PostgreSQL, provide features for materialization. These databases offer various mechanisms like materialized views, indexed views, and temporary tables that allow you to create and manage materialized data.</li>
+      <li><strong>Data Warehousing Solutions:</strong> Data warehousing platforms like Amazon Redshift, Google BigQuery, and Snowflake are designed for handling large-scale data analytics workloads. They often provide optimized features for materialization, including materialized views, caching mechanisms, and query optimization techniques to enhance query performance.</li>
+      <li><strong>In-Memory Databases:</strong> In-memory databases like SAP HANA, Redis, and Apache Ignite store data in-memory rather than on disk, which can significantly improve query performance. These databases often provide built-in mechanisms for materializing data, such as columnar storage, data replication, and preloading of frequently accessed data.
+</li>
+      <li><strong>Caching Systems:</strong>  Caching systems like Memcached and Redis can be used to materialize frequently accessed data. By storing query results or computed data in-memory, these systems allow for quick retrieval and reduce the need for repetitive computations.</li>
+      <li><strong>Business Intelligence (BI) Tools:</strong> Many BI tools, such as Sigma, Tableau, Power BI, and Looker, offer features for materialization to optimize data analysis and reporting. These tools allow you to create materialized views, derived tables, or data extracts that can be used for faster query execution and interactive visualizations.</li>
+      <li><strong>Custom Data Pipelines and ETL Processes:</strong> In some cases, you may need to implement custom materialization solutions using data pipelines or Extract-Transform-Load (ETL) processes. Tools like DBT Labs, Apache Airflow, Apache Spark, or custom scripting can be utilized to schedule and automate the materialization process, ensuring that the materialized data remains up-to-date.</li>
+    </ol>
+  </li>
 
 The availability and specific features of materialization options may vary depending on the software you choose. It's important to evaluate the capabilities, scalability, ease of use, and integration possibilities of these solutions based on your requirements, existing infrastructure, and the technology stack you are using in your organization.
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## How to Decide?
+Duration: 20
 
+Given all the available choices, this can feel like a complex decision but there are some points that will help make it easier to decide.
 
+ <li><strong>The benefit of materializing from Sigma:</strong> 
+    <ol type="u"> 
+      <li><strong>Setup in a browser using Sigma</strong> A very simple and quick process</li>
+      <li><strong>Does not require data engineering expertise</strong> Faster development cycle</li>
+      <li><strong>RBAC support</strong> Limit who can materialize</li>
+    </ol>
+  </li>
 
+Some clients prefer a well governed, centralized materialization strategy, using a single, dedicated tool of their choice and that is fine too.
 
+For some situations, both solutions can work together to save time and get projects completed faster. some clients choose to use Sigma-based materialization to support prototyping and rapid development cycles, because they almost no development time and can be done by a larger team.
 
+For example, you can allow materialization using Sigma, during early development phases, then, later on, move some of the most used materialization logic into the warehouse. That will allow you to have a rapid development cycle, but still having a well governed environment for production usage. 
 
+If you have chosen to use Sigma to materialize (in either scenario), it is important to control who in Sigma is able to materialize. By default, only Sigma Administrators are able to materialize. You can also create a custom account type “Creators who can Materialize” and grant them the materialization permission. 
 
-
-
-
-
-
-
+The ability to materialize in Sigma should be governed in some way - you typically don’t want a large number of creators to materialize hundreds or thousands of potentially duplicate objects. It is common to grant the ability to materialize to a certain, smaller number of creators, using Sigma's RBAC system. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Materialize in Sigma
 Duration: 20
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+Materializations allows you to write datasets and workbook elements back to your warehouse as tables which can reduce compute costs. Materialization enhances query performance by allowing your data warehouse to avoid recomputing the dataset when it's used by an element or a in descendant Sigma analysis. 
 
-## **NEXT SECTION**
-Duration: 20
+Materializations are stored in your warehouse and saved in scratch workspace schema automatically managed by Sigma. Sigma's query compiler automatically and transparently uses the latest materialization.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma materialization requires write access must be enabled on your dataset’s connection and must be an organization Admin or be assigned a custom account type with materialize permissions.
+</aside>
+
+### Setting up Write Access
+
+
+
+
+
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
