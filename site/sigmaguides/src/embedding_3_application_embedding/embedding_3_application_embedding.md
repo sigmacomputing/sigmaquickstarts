@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
-lastUpdated: 2023-03-15
+lastUpdated: 2023-05-18
 
 # Embedding 3: Application Embedding
 
@@ -164,9 +164,17 @@ Exiting Administration (upper left corner Sigma Back Button or click the papercr
 <strong>NOTE:</strong><br> Notice that we have not added any users, Sigma will do that automatically when the Embed tries to load content via the API. 
 </aside>
 
-From the `Workspaces menu`, `share` the FinanceViewer Team to `add FinanceCreator`s setting Access Type to `Can Contribute`. This will allow members of the FinanceCreators Team to share data to this Workspace.
+From the `Workspaces menu`, click the "hamburger menu" (the 3-dots) to the right of the `FinanceViewers` Team. 
+
+Select `Share`:
+
+![Alt text](assets/accounttypes7a.png)
+
+ Use the search feature to locate and add add `FinanceCreators (Team)`, setting the permission to `Can Contribute`. This will allow members of the FinanceCreators Team to share data to this Workspace.
 
 ![Alt text](assets/accounttypes7.png)
+
+![Footer](assets/sigma_footer.png)
 <!-- END -->
 
 ## Create a Shared Dataset
@@ -576,7 +584,7 @@ Users (from the list above type 1-3) can be deactivated by a Sigma Admin or via 
 
 When deactivating a user who owns some content (they created it) the Admin will be prompted by the Sigma portal to reassign ownership of said content to another user of their choice. This old content will be automatically stored in the new users My Documents / Archived Users folder. 
 
-This is an important consideration when embedding content that was created by an account who later leaves the company and their account is deactivated. 
+This is an important consideration when embedding content that was created by an account who later leaves the company, and their account is deactivated. 
 
 ### Final Thoughts
 There are other QuickStarts that may be based on the configuration and content we created here. Recommend you hold onto what you have created here until you have completed all the Embedding QuickStarts you are interested in. 
