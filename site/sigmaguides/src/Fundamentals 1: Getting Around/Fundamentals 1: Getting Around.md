@@ -172,7 +172,7 @@ We can see all the different database samples available to my user account but t
 
 ![Alt text](assets/sigmasampledatabase2.png)
 
-Select the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 18 columns**.
+Select the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 19 columns**.
 
 ![Alt text](assets/plugstable.png)
 
