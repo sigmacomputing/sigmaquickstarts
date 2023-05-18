@@ -31,6 +31,7 @@ Sigma administrators who are interested in improving performance when working wi
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>Snowflake's sample dataset</li>
   <li>Write access must be enabled on your Sigma dataset’s connection.</li>
 </ul>
 
@@ -39,6 +40,8 @@ Sigma administrators who are interested in improving performance when working wi
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+
+If your Snowflake account does not have the Sample Dataset (provided by Snowflake), please obtain a copy. [The instructions are here.](https://docs.snowflake.com/en/user-guide/sample-data-using)
 
 ### What You’ll Learn
 This QuickStart discussed the features and benefits of using materialization in Sigma and also how to configure and schedule materializations to improve the speed and performance of your reports. 
