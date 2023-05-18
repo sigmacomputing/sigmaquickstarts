@@ -261,6 +261,10 @@ The materialization will run now and once done, will show a `Status` of "Success
 
 Close the open schedule window.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> When the CDW is updated daily, materialization should typically take place during off hours, like in the middle of the night or early morning, after any batch updates into the CDW completed.
+</aside>
+
 Navigate back to `Administration` > `Materializations` where we can see the list of our current jobs:
 
 <img src="assets/am10.png" width="800"/>
@@ -289,6 +293,13 @@ We are able to see that Sigma has created a new table in Snowflake, based on our
 
 Materialization enhances query performance by allowing your data warehouse to avoid recomputing the data when it's used by an element or in descendant Sigma analysis. 
 
+To access this data from other applications, see Sigma’s Dataset Warehouse Views feature.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Don't make changes to the materialized tables directly in your database. This can result in unexpected results or query failures.
+</aside>
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -309,7 +320,18 @@ Workbook materialization is similar to datasets, but have some major advantages,
 
 ## Workbook Materialization Grouping Levels
 
+If an element contains multiple grouping levels, it is possible to select one or more grouping level to materialize. It's often unnecessary and potentially costly to materialize the most granular level of an element (indicated in the UI as All source columns).
 
+We will demonstrate by building on the Workbook we already have. 
+
+First, let's delete the existing materialization schedule since we won't need that anymore.
+
+
+
+
+
+
+To materialize multiple grouping levels, select Add Element and add the element for each additional grouping level.
 
 
 
