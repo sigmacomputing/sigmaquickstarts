@@ -31,7 +31,6 @@ Sigma administrators who are interested in improving performance when working wi
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>A Snowflake account with the proper administrative and security admin access.</li>
-  <li>Snowflake's sample dataset</li>
   <li>Write access must be enabled on your Sigma dataset’s connection.</li>
 </ul>
 
@@ -40,8 +39,6 @@ Sigma administrators who are interested in improving performance when working wi
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
-
-If your Snowflake account does not have the Sample Dataset (provided by Snowflake), please obtain a copy. [The instructions are here.](https://docs.snowflake.com/en/user-guide/sample-data-using)
 
 ### What You’ll Learn
 This QuickStart discussed the features and benefits of using materialization in Sigma and also how to configure and schedule materializations to improve the speed and performance of your reports. 
@@ -216,8 +213,6 @@ Materializations are stored in your warehouse and saved in scratch workspace sch
 
 A materialization is created through the act of scheduling a materialization. The materialization schedule will impact the data freshness. Long running queries that do not display in Sigma can still be materialized.
 
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -327,8 +322,104 @@ If an element contains multiple grouping levels, it is possible to select one or
 
 We will demonstrate by building on the Workbook we already have. 
 
-First, let's delete the existing materialization schedule since we won't need that anymore.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is fine if you prefer to just review the QuickStart steps in this section as the workflow are similar to what we have already done. What is important is the concept of materialization at different group levels. 
+</aside>
 
+First, let's pause the existing materialization schedule so it no longer will run.
+
+Click and open the `View schedule` option:
+
+<img src="assets/am11.png" width="400"/>
+
+Open the "hamburger menu" and select `Pause` and then click `Save Schedules`:
+
+<img src="assets/am11a.png" width="800"/>
+
+The ORDERS schedule Status will switch to "Paused". Close this dialogue.
+
+Now lets make a duplicate of the `Orders` table and move it to a new page:
+
+<img src="assets/am13.png" width="800"/>
+
+Rename the new table `ORDERS by Customer` and move it to a new page:
+
+<img src="assets/am14.png" width="800"/>
+
+We now need to join the `CUSTOMER` table to `ORDERS`.
+
+Click as shown to select `Join`:
+
+<img src="assets/am15.png" width="800"/>
+
+Navigate the UI to locate the `Snowflake Trial` connection and expand the tree to select the `TPCH_SF10 / CUSTOMER` table. Click it and then click `Select`:
+
+<img src="assets/am16.png" width="800"/>
+
+We want to set the `Join Keys` on `O Custkey = C Custkey`:
+
+<img src="assets/am17.png" width="800"/>
+
+The result will be some customers with no orders and some with multiple. 
+
+Click `Preview Output`.
+
+Sigma presents the "lineage", which is a visual representation of how the data is mapped. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma's Workbook lineage makes it easy to see the ancestry and relationships between data elements in a workbook. All workbooks contain a lineage display, allowing you to oversee and navigate these relationships. 
+</aside>
+
+This is an opportunity to remove any unnecessary columns. We will take them all for this exercise but best practice is to remove what is not needed to gain on performance and compute/storage costs.
+
+Repeat the join exercise to add the `CUSTOMER` and `LINE ITEM` tables:
+
+<img src="assets/am19.png" width="800"/>
+
+<img src="assets/am20.png" width="800"/>
+
+Click `Preview Output` and `Done`.
+
+We now have around 60M rows of order detail by customer. 
+
+Drag the column `C Name` to the `GROUPINGS` section, to group by the customer name:
+
+Click the `-` in the left corner of the `C Name` column of the table to collapse the group.
+
+We see that we have just under 1M customers:
+
+<img src="assets/am21.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Your text here.
+</aside>
+
+There is a column that shows the value of each unique order but we want to know the final sale price per item too. We do this by adding a new calculated column. This new column does not exist in the data but once we create it, it will be calculated each time the Workbook requests data. 
+
+Once we materialize the data, the calculated result is persisted in the materialized dataset, saving query time and therefore, better performance and less compute time cost. Granted, our example is simplistic but in large dataset with many calculations, this can have real impact.
+
+Click the `O Orderkey` column and select `Add a new column` and rename it to `Sale Price`:
+
+<img src="assets/am22.png" width="400"/>
+
+Set the formula to:
+```console
+Sum([L Extendedprice] - ([L Extendedprice] * [L Discount]))
+```
+
+Now that we have the table we want, we can materialize again but this time we have the additional ability to apply a different schedule to the grouping levels of the table.
+
+For example, (and lets just assume) that we don't add new customers all that often so materializing the `CUSTOMER` level can be done once per night. However, we receive a large number of orders every day so we might want to materialize the `ORDERS` level several times per day. Sigma materialization makes this simple to setup.
+
+Open the `Schedule materialization` UI again:
+
+<img src="assets/am7.png" width="400"/>
+
+Create one schedule (once per day) based on the `C Name` grouping level:
+
+Create another schedule (every hour) based on the Grouping of `All source columns`:
+
+<img src="assets/am23.png" width="400"/>
 
 
 
