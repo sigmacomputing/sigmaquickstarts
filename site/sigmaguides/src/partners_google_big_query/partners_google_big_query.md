@@ -219,9 +219,7 @@ Click `Select` under `Dataset`:
 
 <img src="assets/bq14.png" width="600"/>
 
-For `Source`, navigate to `Connections` > `GCP Trial Account to BigQuery` > bigquery-puplic-data > order_items table.
-
-A fast way to do this is just use the search feature as shown below:
+For `Source`, navigate to `Connections` > `GCP Trial Account to BigQuery` > `bigquery-puplic-data` > `thelook_ecommerce` database > `order_items` table:
 
 <img src="assets/bq15.png" width="600"/>
 
@@ -236,27 +234,174 @@ We now have a defined Dataset we can use in the next section.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Sigma Workbook
 Duration: 20
 
+Sigma workbooks offer data exploration tools, including a visualization canvas, designed to enable spreadsheet-savvy users to apply formulas and charting options that are typically accessible only to Business Intelligence (BI) developers.
+
+In Sigma, from the homepage, click on the `Create Workbook`: 
+
+<img src="assets/bq16.png" width="600"/>
+
+There are a two ways to add our Dataset to our new Wookbook. One is to just select it from the "popular data sources" list. The other is to use the `Element Panel` and select a new `Data Element`. We will use that route:
+
+<img src="assets/bq17.png" width="600"/>
+
+Select the `TABLE` option, then select `TABLES AND DATASETS`:
+
+<img src="assets/bq18.png" width="600"/>
+
+We can select the `order items` Dataset that is listed under `Recent`:
+
+<img src="assets/bq19.png" width="600"/>
+
+Click `Select` to bring the dataset into your Sigma Workbook.
+
+Sigma’s spreadsheet-like interface makes it easy for business users to use workbooks to explore data and self-serve in a governed and secure way.
+
+<img src="assets/bq20.png" width="600"/>
+
+We need to join another table to our dataset.
+
+Click the "hambuger menu" (3-dots) and select `Element Source` < `Join`:
+
+<img src="assets/bq33.png" width="600"/>
+
+Select the `New` tab, then `TABLES AND DATASETS`, then ``Connections` > `GCP Trial Account to BigQuery` > `bigquery-puplic-data` > `thelook_ecommerce` database > `products` table:
+
+<img src="assets/bq35.png" width="600"/>
+
+Click to select it. Set the `Join Keys` as shown below and click `Preview Output`:
+
+<img src="assets/bq36.png" width="600"/>
+
+We are shown a visual representation of the dataflow (lineage). 
+
+Click `Done`:
+
+STOIPPER FGSEDFSDFASDFASFD
 
 
-
-
-
-
+Before we go forward, click the `Save As` button and give the Workbook a the name `BigQuery Orders`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Benefits of Connecting Sigma to BigQuery
 Duration: 20
+
+There are a wide range of benefits by opting for a modern data analysis and visualization stack. 
+
+These include:
+ <ul>
+      <li>Faster time to value for analytics with BigQuery near unlimited scaling and processing capabilities, so decisions can be made faster.</li>
+      <li>High user retention and engagement by giving users an interface they intuitively understand, the spreadsheet..</li>
+      <li>Engage users in the modeling and exploratory process of data analysis. In Sigma, users can ask questions of the data just like they would in Google Sheets, but at the scale of your data. Work with millions or even billions of rows of data.</li>
+      <li>Get started with Sigma in a flash! Once you’ve established a connection from BigQuery to Sigma any user can work with permission tables immediately. Ask questions, build visualizations, and create reports in a fraction of the time of other tools..</li>
+      <li>Harness the power of BigQuery in Sigma by effectively working with your data at scale. Sigma issues live queries rather than working off extracts. This ensures your data is always live and up-to-date..</li>
+      <li>Access BigQuery user-defined functions directly in Sigma to ensure even the most complex functions are available to your entire organization.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Working with Data in Sigma
 Duration: 20
+
+### Build Sigma dashboards and analyze data
+In this section, we will demonstrate some basic features of Sigma that show how easy it is to leverage our data in BigQuery while working in a familiar interface.
+
+Using the `BigQuery Orders` Workbook we will first narrow down our data scope to complete orders.
+
+Select the dropdown next to `Status` and select the `Filter` button:
+
+<img src="assets/bq21.png" width="600"/>
+
+Select `Complete` to find only the finalized orders:
+
+<img src="assets/bq22.png" width="600"/>
+
+Format `Sale Price` as a currency by selecting `Format`> `Currency` from dropdown:
+
+<img src="assets/bq23.png" width="600"/>
+
+To perform analysis on the basis of order creation year, add a duplicate column `Created At` and then `truncate` it down to `Year`:
+
+<img src="assets/bq24.png" width="600"/>
+
+Double click on the new column's header (name) and rename it to `Year Created`.
+
+### Create a Visualization from Table
+We can create a visualization that leverages this table's data now. 
+
+Select the `Create Child Element` and the `Visualization` option:
+
+<img src="assets/bq25.png" width="600"/>
+
+With the new visualization selected, we’ll start by adding the `Created At` field to the x-axis. You can either use drag and drop interface or search for it like in the visual example below:
+
+<img src="assets/bq26.png" width="600"/>
+
+For the y-axis, add the transformed `Sale Price` field from previous steps. Try dragging a dropping the `Sale Price` column this time:
+
+<img src="assets/bq27.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma automatically applied aggregation to the Sale Price, saving you time.
+</aside>
+
+Once `Created At` field is added to the x-axis and `Sale Price` is added to the y-axis, the visualization will appear showing the `sum of Sale Price by Created At` for the availble data in the table:
+
+<img src="assets/bq28.png" width="600"/>
+
+We’ll modify this visualization by changing it to a line chart:
+
+<img src="assets/bq29.png" width="600"/>
+
+To perform data aggregation at a higher order of time (for example, at the month), we have a few methods availble to the user.
+
+We can use the drop menus (as before) to truncate the `Day of Created At` column in the `X-AXIS` to month:
+
+<img src="assets/bq30.png" width="600"/>
+
+**OR**
+
+Column data can be manipulated using Sigma's `formula bar`, similar to spreadsheet formula features. Notice here, we just selected the `Day of Created At` column in the `X-AXIS` and altered the existing formula to `Month` instead of `Day`:
+
+<img src="assets/bq31.png" width="600"/>
+
+The chart is automatically updated to reflect the month instead of day:
+
+<img src="assets/bq32.png" width="600"/>
+
+### Create a Pivot Chart
+
+It is easy to create a pivot table in Sigma. We will create another child element from our `order_items` table but this time, select `Pivot table`.
+
+Add `Year of Created At` to the `Pivot Rows` section.
+
+Add `Department (products)` to the `Pivot Columns` section:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
