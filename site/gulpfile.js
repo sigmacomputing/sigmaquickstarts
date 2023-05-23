@@ -719,7 +719,7 @@ const viewFuncs = {
 
   // codelabPrettyDate returns a pretty-formatted date for the codelab view
   // page.
-  codelabPrettyDate: () => {
+  codelabPrettyDate: (ts) => {
     return (ts) => {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const d = new Date(ts);
