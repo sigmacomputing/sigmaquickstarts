@@ -434,8 +434,10 @@ Duration: 5
 
 In this article, you learned how to set up and connect Sigma to BigQuery. Connecting Sigma to BigQuery can provide significant benefits for data analysts and data teams looking to improve their data visualization and analytics capabilities. Using BigQuery as the underlying data warehouse provides a highly scalable and cost-effective solution for storing and querying large volumes of data. 
 
+**Special thanks to Nancy Goyal at Google Cloud for her contributions to this QuickStart!**
+
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
-**Additional Resource Links**
+**Additional Resource Links:**
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
@@ -444,7 +446,6 @@ In this article, you learned how to set up and connect Sigma to BigQuery. Connec
 
 [<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
 [<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
-[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
