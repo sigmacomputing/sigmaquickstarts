@@ -245,21 +245,10 @@ We are now ready to work on the first Application embedding use case.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Embed Link and Keys
+## Embed Secrets and Links
 Duration: 5
 
 We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us but not always).
-
-### Generate Embed Links
-Click the caret (▼) icon button to the right of the workbook title in the header.
-
-Click `Embedding` to open the Application tab.
-
-Under `Generate Application Embed Path` for, select your embed target. We selected the Entire Workbook.
-
-<img src="assets/accounttypes18.png" width="500"/>
-
-The embed path will automatically be generated. `Click Copy` to copy this path. Save this off to a text file for later use. Close the modal.
 
 ### Generate Embed Secret
 To create an Application embed, you will need an embed secret. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
@@ -283,6 +272,19 @@ To create an Application embed, you will need an embed secret. This secret will 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Secrets created from the APIs & Embed Secrets page must be used with their associated Client ID. Each secret's Client ID is listed on the APIs & Embed Secret page. 
 </aside>
+
+### Generate Embed Links
+Return to our Workbook.
+
+Click the caret (▼) icon button to the right of the workbook title in the header.
+
+Click `Embedding` to open the Application tab.
+
+Under `Generate Application Embed Path` for, select your embed target. We selected the Entire Workbook.
+
+<img src="assets/accounttypes18.png" width="500"/>
+
+The embed path will automatically be generated. `Click Copy` to copy this path. Save this off to a text file for later use. Close the modal.
 
 ![Alt text](assets/accounttypes38.png)
 
