@@ -5,7 +5,7 @@ categories: Partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: Getting Started, BigQuery, Sigma
 lastUpdated: 2023-05-24
 
 # Google Big Query with Sigma
@@ -44,7 +44,9 @@ How to leverage BigQuery in Sigma, connecting to data, creating tables / pivots 
 
 ### What You’ll Build
 
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+We will use Sigma, BigQuery and Google provided sample data to build a simple dashboard similar to this one:
+
+<img src="assets/bq41.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
@@ -54,7 +56,7 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 Duration: 20
 
 ### Spreadsheet UI:
-Sigma’s self-service tooling is a league beyond other BI tools because it caters to the tool-set that almost every data worker knows, the spreadsheet. Google Sheets users can seamlessly transition from asking questions in Sheets to Sigma ensuring that time to implementation stays low. 
+Sigma’s self-service tooling is a league beyond other BI tools because it caters to the tool-set that almost every data worker knows, **the spreadsheet.** Google Sheets users can seamlessly transition from asking questions in Sheets to Sigma ensuring that time to implementation stays low. 
 
 Additionally, since users can quickly iterate through their analysis on data at any scale, this reduces the overall number of requests sent back to the analytics team.
 
@@ -63,10 +65,9 @@ Sigma’s no-code interface creates machine-generated SQL (optimized for every d
 ### Data Governance & Optional Modeling: 
 In Sigma, our goal is to allow your analysts and users to leverage the work of your data engineers without any additional work. Whether you’re using tools like Matillion, DBT, or modeling in your warehouse, your end users can start analyzing data they’ve been permitted to access. 
 
-Sigma features a robust suite of data governance levers from [metrics](https://help.sigmacomputing.com/hc/en-us/articles/14427670985363-Create-and-Manage-Metrics-Beta-)(to govern KPIs), to [team and workspace-based sharing.](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces) 
+Sigma features a robust suite of data governance levers from [metrics](https://help.sigmacomputing.com/hc/en-us/articles/14427670985363-Create-and-Manage-Metrics-Beta-) (to govern KPIs), to [team and workspace-based sharing.](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces) 
 
-Sigma also offers an incredibly flexible structure for [row level security](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces) called user attributes which allows you to define unique characteristics for users and the corresponding data they should see within a table. This ensures that data shared internally and externally is always governed by a strict rule set that scales endlessly. 
-
+Sigma also offers an incredibly flexible structure for row level security called [user attributes](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes) which allows you to define unique characteristics for users and the corresponding data they should see within a table. This ensures that data shared internally and externally is always governed by a strict rule set that scales endlessly. 
 
 ### Input tables:
 With [Input Tables](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507-Intro-to-Input-Tables), your teams can effortlessly incorporate human context into their analysis by bringing their own data directly into the warehouse, all without writing any code. With Input Tables, both your analytics and business teams can remove data roadblocks, reduce repetitive analytics tasks, and make more impactful decisions faster
@@ -77,8 +78,6 @@ For most BI tools, it’s impossible to bring in the human context of data, and,
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
 
 ## GCP Setup
 Duration: 20
@@ -105,57 +104,64 @@ If you signed up for a free trial on GCP, a `Project` will already exist for you
 
 We can see the list of available projects on the `My Projects` tab of the `Billing` page:
 
-<img src="assets/bq0.png" width="600"/>
+<img src="assets/bq0.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We will make use of the GCP searchbar to quickly move between GCP configuation pages. We will demonstrate once and assume its use as we go forward.
 </aside>
 
 ### Create Google Cloud Service Account
-*** Bigquery IAM setup: ***
+
+**Bigquery IAM setup:**<br>
 You must create a Service account with a keyfile if you want Sigma to connect to BigQuery warehouse. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> A service account is a dedicated account used by applications or services to securely communicate and is not based on any single "named user". 
+</aside>
 
 Using the `Search` feature of GCP, type `IAM` and select `IAM` from the list shown:
 
-<img src="assets/bq1.png" width="600"/>
+<img src="assets/bq1.png" width="800"/>
 
 Select [Service account](https://cloud.google.com/iam/docs/service-account-overview) from IAM & Admin section, then click [create service account](https://cloud.google.com/iam/docs/service-accounts-create):
 
-<img src="assets/bq2.png" width="600"/>
+<img src="assets/bq2.png" width="800"/>
 
 In the Service account name area, enter service account name, then select Create and Continue:
 
-<img src="assets/bq3.png" width="600"/>
+<img src="assets/bq3.png" width="800"/>
 
 In the Role droplist we need to add the following BigQuery roles: 
 
  <ul>
       <li><strong>BigQuery Data Editor:</strong> Required to enable write access to the database and use of several Sigma features such as CSV upload, Materialization.</li>
-      <li><strong>BigQuery Data Viewer:</strong> To read data.<li>
+      <li><strong>BigQuery Data Viewer:</strong> To read data.</li>
       <li><strong>BigQuery Job User:</strong> To run jobs and queries in BigQuery.</li>
 </ul>
 
-<img src="assets/bq4.png" width="600"/>
+<img src="assets/bq4.png" width="800"/>
 
 Click `Continue` and `Done` (we will not need to grant any users access to this service account.)
 
 For each of these principals, there are a number of roles listed. To learn more, see [Understanding roles](https://cloud.google.com/iam/docs/understanding-roles) and [Understanding IAM custom roles](https://cloud.google.com/iam/docs/understanding-custom-roles). Google Cloud scans the actions of these principles and makes suggestions as to those who could have fewer permissions, which generally increases the security of your project. To learn more, see [Enforce least privilege with role recommendations](https://cloud.google.com/iam/docs/recommender-overview).
 
-Cliock the new service account, then Choose `Manage Keys`:
+Click the new service account, then Choose `Manage Keys`:
 
-<img src="assets/bq5.png" width="600"/>
+<img src="assets/bq5.png" width="800"/>
 
 Click `Add Key` and `create a new key`:
 
-<img src="assets/bq6.png" width="600"/>
+<img src="assets/bq6.png" width="800"/>
 
 Select `JSON` for key type and click `Create`:
 
-<img src="assets/bq7.png" width="600"/>
+<img src="assets/bq7.png" width="800"/>
 
-The JSON file download will download automatically (download it, shoold it not) and is required. 
+The JSON file download will download automatically (download it, should it not start automatically) and is required. 
 
-Save it locally with a distinct filename and in an easy-to-remember location like bq-sigma-credentials.json.
+Save it locally with a distinct filename and in an easy-to-remember location. 
+
+For example, we renamed ours to `bq-sigma-credentials.json`.
 
 Click `Close`.
 
@@ -171,30 +177,32 @@ Login to Sigma as an Administrator.
 
 Navigate to `Administration`:
 
-<img src="assets/bq8.png" width="600"/>
+<img src="assets/bq8.png" width="800"/>
 
 Select `Connections` > `Create Connection`:
 
-<img src="assets/bq9.png" width="600"/>
-
-Select `BigQuery`.
+<img src="assets/bq9.png" width="800"/>
 
 We need to provide the `Billing project ID` from GCP. That can be copied from this page in GCP, and clicking the `Manage` link:
 
-<img src="assets/bq10.png" width="600"/>
+<img src="assets/bq10.png" width="800"/>
 
 Copy the `Projedct ID` and paste it into the `Billing project ID` section in the Sigma connection configuration. 
 
-<img src="assets/bq11.png" width="600"/>
+<img src="assets/bq11.png" width="800"/>
 
 Next, open the Service Account key file in a text editor (the one we downloaded and renamed earlier from GCP) and paste the entire contents of the file into the `Service account` section in the Sigma connection configuration. Take care not to leave trailing spaces from the copy/paste operation.
 
 When done, click `Create`. Sigma will attempt to validate the connection is working or not. A message will appear upon success or failure.
 
-<img src="assets/bq12.png" width="600"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The name you give this connection will be used later when we navigate to our data in BigQuery. Take note of it.
+</aside>
+
+<img src="assets/bq12.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The JSON file is no visible in Sigma once it’s been uploaded to the connection, so the team creating the connection to BigQuery will need to maintain and secure the original JSON file.
+<strong>IMPORTANT:</strong><br> The JSON file is not visible in Sigma once it’s been uploaded to the connection, so the team creating the connection to BigQuery will need to maintain and secure the original JSON file.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -205,15 +213,15 @@ Duration: 20
 
 Sigma's Datasets are a flexible way to build centralized data definitions and guide data exploration. Sigma balances administrative control with the freedom to find, add, and trust new data. Datasets function as sources of data for Workbooks.
 
-Sigma has the ability to join tables, other datasets, csv uploads, or your own SQL inside of datasets. In this section we will go over how to join tables to build a dataset as well as how to work with semi structured json data within the Sigma UI.
+Sigma has the ability to join tables, other datasets, csv uploads, or your own SQL inside of datasets. 
 
-In Sigma, we will first create a new Dataset and connect it to the "Sigma Sample Dataset". 
+In Sigma, we will first create a new Dataset and connect it to the `bigquery-public-data` that is provided in the GCP trial account. 
 
 Return to the Sigma homepage. You can click the `Crane logo` in the upper left corner anytime to return to the homepage.
 
 Click on the `Create New` at the top left of the page and then select `Dataset`:
 
-<img src="assets/bq13.png" width="600"/>
+<img src="assets/bq13.png" width="400"/>
 
 Click `Select` under `Dataset`:
 
@@ -225,7 +233,7 @@ For `Source`, navigate to `Connections` > `GCP Trial Account to BigQuery` > `big
 
 When the correct table is located, click it and then select `Get Started` and then `Publish`.
 
-We now have a defined Dataset we can use in the next section.
+We now have a defined Dataset we can use in the next section. We could join other data here but we will do that later instead.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This is a simple dataset and there are a few different workflows and options customers can use to make data available in a controlled manner for others to use in Sigma. 
@@ -241,9 +249,9 @@ Sigma workbooks offer data exploration tools, including a visualization canvas, 
 
 In Sigma, from the homepage, click on the `Create Workbook`: 
 
-<img src="assets/bq16.png" width="600"/>
+<img src="assets/bq16.png" width="400"/>
 
-There are a two ways to add our Dataset to our new Wookbook. One is to just select it from the "popular data sources" list. The other is to use the `Element Panel` and select a new `Data Element`. We will use that route:
+There are a two ways to add our Dataset to our new Wookbook. One is to just select it from the `popular data sources` list. The other is to use the `Element Panel` and select a new `Data Element`. We will use that route:
 
 <img src="assets/bq17.png" width="600"/>
 
@@ -257,9 +265,11 @@ We can select the `order items` Dataset that is listed under `Recent`:
 
 Click `Select` to bring the dataset into your Sigma Workbook.
 
-Sigma’s spreadsheet-like interface makes it easy for business users to use workbooks to explore data and self-serve in a governed and secure way.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma’s spreadsheet-like interface makes it easy for business users to use workbooks to explore data and self-serve in a governed and secure way.
+</aside>
 
-<img src="assets/bq20.png" width="600"/>
+<img src="assets/bq20.png" width="800"/>
 
 We need to join another table to our dataset.
 
@@ -269,18 +279,15 @@ Click the "hambuger menu" (3-dots) and select `Element Source` < `Join`:
 
 Select the `New` tab, then `TABLES AND DATASETS`, then ``Connections` > `GCP Trial Account to BigQuery` > `bigquery-puplic-data` > `thelook_ecommerce` database > `products` table:
 
-<img src="assets/bq35.png" width="600"/>
+<img src="assets/bq35.png" width="800"/>
 
 Click to select it. Set the `Join Keys` as shown below and click `Preview Output`:
 
-<img src="assets/bq36.png" width="600"/>
+<img src="assets/bq36.png" width="800"/>
 
 We are shown a visual representation of the dataflow (lineage). 
 
 Click `Done`:
-
-STOIPPER FGSEDFSDFASDFASFD
-
 
 Before we go forward, click the `Save As` button and give the Workbook a the name `BigQuery Orders`.
 
@@ -315,11 +322,11 @@ Using the `BigQuery Orders` Workbook we will first narrow down our data scope to
 
 Select the dropdown next to `Status` and select the `Filter` button:
 
-<img src="assets/bq21.png" width="600"/>
+<img src="assets/bq21.png" width="800"/>
 
 Select `Complete` to find only the finalized orders:
 
-<img src="assets/bq22.png" width="600"/>
+<img src="assets/bq22.png" width="800"/>
 
 Format `Sale Price` as a currency by selecting `Format`> `Currency` from dropdown:
 
@@ -327,18 +334,18 @@ Format `Sale Price` as a currency by selecting `Format`> `Currency` from dropdow
 
 To perform analysis on the basis of order creation year, add a duplicate column `Created At` and then `truncate` it down to `Year`:
 
-<img src="assets/bq24.png" width="600"/>
+<img src="assets/bq24.png" width="800"/>
 
 Double click on the new column's header (name) and rename it to `Year Created`.
 
 ### Create a Visualization from Table
-We can create a visualization that leverages this table's data now. 
+We can create a visualization that leverages this table's data (child element). 
 
 Select the `Create Child Element` and the `Visualization` option:
 
 <img src="assets/bq25.png" width="600"/>
 
-With the new visualization selected, we’ll start by adding the `Created At` field to the x-axis. You can either use drag and drop interface or search for it like in the visual example below:
+With the new visualization selected, we’ll start by adding the `Created At` field to the x-axis. You can either use drag and drop interface or search for it, like in the  example below:
 
 <img src="assets/bq26.png" width="600"/>
 
@@ -350,13 +357,13 @@ For the y-axis, add the transformed `Sale Price` field from previous steps. Try 
 <strong>NOTE:</strong><br> Sigma automatically applied aggregation to the Sale Price, saving you time.
 </aside>
 
-Once `Created At` field is added to the x-axis and `Sale Price` is added to the y-axis, the visualization will appear showing the `sum of Sale Price by Created At` for the availble data in the table:
+The visualization will appear showing the `sum of Sale Price by Created At` for the availble data in the table:
 
-<img src="assets/bq28.png" width="600"/>
+<img src="assets/bq28.png" width="800"/>
 
 We’ll modify this visualization by changing it to a line chart:
 
-<img src="assets/bq29.png" width="600"/>
+<img src="assets/bq29.png" width="800"/>
 
 To perform data aggregation at a higher order of time (for example, at the month), we have a few methods availble to the user.
 
@@ -366,56 +373,66 @@ We can use the drop menus (as before) to truncate the `Day of Created At` column
 
 **OR**
 
-Column data can be manipulated using Sigma's `formula bar`, similar to spreadsheet formula features. Notice here, we just selected the `Day of Created At` column in the `X-AXIS` and altered the existing formula to `Month` instead of `Day`:
+Column data can be manipulated using Sigma's `formula bar`, similar to spreadsheet formula features. 
 
-<img src="assets/bq31.png" width="600"/>
+Notice here, we just selected the `Day of Created At` column in the `X-AXIS` and altered the existing formula to `Month` instead of `Day`:
+
+<img src="assets/bq31.png" width="800"/>
 
 The chart is automatically updated to reflect the month instead of day:
 
-<img src="assets/bq32.png" width="600"/>
+<img src="assets/bq32.png" width="800"/>
 
 ### Create a Pivot Chart
 
-It is easy to create a pivot table in Sigma. We will create another child element from our `order_items` table but this time, select `Pivot table`.
+It is easy to create a pivot table in Sigma. 
 
-Add `Year of Created At` to the `Pivot Rows` section.
+We will create another child element from our `order_items` table but this time, select `Pivot table`.
+
+Add `Year of Created` to the `Pivot Rows` section.
 
 Add `Department (products)` to the `Pivot Columns` section:
 
+For data analysis, you can add aggregations in the `Values` section. Sigma enables data analysis at different cohorts. 
 
+In this example we’ll simply add our Cost` and `Sale Price` columns to the values section. 
 
+Create a new column within the pivot table called `Profit` by selecting the plus sign next to `Values` and clicking `New Column`:
 
+<img src="assets/bq37.png" width="600"/>
 
+Use the formula bar to set the formula for the new column to:
+```console
+Sum([Sale Price]) - Sum([Cost])
+```
 
+<img src="assets/bq38.png" width="800"/>
 
+Double-click (or use the drop menu) to rename the new column from `Calc` to `Profit`:
 
+<img src="assets/bq39.png" width="600"/>
 
+This will create a Pivot Table to analyze or drill into as necessary.
 
+You may want to experiment with moving and resizing the table, chart and pivot to create a simple dashboard. 
 
+Don't forget to `Publish` your work when you are done. 
 
+Lastly, you can see the final product by using the `Go to published version` link as shown. 
 
+<img src="assets/bq40.png" width="600"/>
 
+This is how an end-user of Sigma might see your Workbook after some rearranging and renaming:
 
-
-
-
-
-
-
+<img src="assets/bq41.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
-
-
-
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this article, you learned how to set up and connect Sigma to BigQuery. Connecting Sigma to BigQuery can provide significant benefits for data analysts and data teams looking to improve their data visualization and analytics capabilities. Using BigQuery as the underlying data warehouse provides a highly scalable and cost-effective solution for storing and querying large volumes of data. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
