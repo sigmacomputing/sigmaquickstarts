@@ -231,7 +231,7 @@ Right-click on the `index.html` file and open it in a text editor:
 
 ![Alt text](assets/applicationsetup9.png)
 
-Add and lew line and some text just below the `Sigma Embed Prerequisite Complete!` line. Save the change and refresh your browser. You should see the change:
+Add and new line and some text just below the `Sigma Embed Prerequisite Complete!` line. Save the change and refresh your browser. You should see the change:
 
 ![Alt text](assets/applicationsetup10.png)
 
