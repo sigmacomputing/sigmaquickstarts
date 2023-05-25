@@ -134,9 +134,9 @@ Clicking into the first `Query` gives every last detail:
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to the Cloud Data Warehouse (CDW), and pushes all queries to the CDW for execution. Benefits of this include:
 
-Data accessed by Sigma is always live and accurate
-Unlimited query speed and scale as Sigma leverages the compute resources of the CDW. Queries across millions of rows are performant.
-Stronger security and governance as data never leaves the CDW and it is easy to control permissions via a single point of access. 
+- Data accessed by Sigma is always live and accurate.
+- Unlimited query speed and scale as Sigma leverages the compute resources of the CDW. Queries across millions of rows are performant.
+- Stronger security and governance as data never leaves the CDW and it is easy to control permissions via a single point of access. 
 
 With many other BI products, data is extracted out of the CDW to local desktops/servers for analysis which leads to stale data, limited scale and speed, and security issues with extracts scattered across many desktops and file shares.
 </aside>
