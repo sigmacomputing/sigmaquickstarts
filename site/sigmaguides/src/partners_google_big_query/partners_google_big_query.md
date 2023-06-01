@@ -8,12 +8,12 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, BigQuery, Sigma
 lastUpdated: 2023-05-24
 
-# Google Big Query with Sigma
+# Google BigQuery with Sigma
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 
-[Goggle BigQuery (BigQuery)](https://cloud.google.com/bigquery/) is a fully managed enterprise data warehouse that helps you manage and analyze your data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture lets you use SQL queries to answer your organization's biggest questions with zero infrastructure management. BigQuery's scalable, distributed analysis engine lets you query terabytes in seconds and petabytes in minutes
+[Google BigQuery (BigQuery)](https://cloud.google.com/bigquery/) is a fully managed enterprise data warehouse that helps you manage and analyze your data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture lets you use SQL queries to answer your organization's biggest questions with zero infrastructure management. BigQuery's scalable, distributed analysis engine lets you query terabytes in seconds and petabytes in minutes
 
 Sigma’s cloud analytics and BI platform empowers business users to tap into BigQuery’s virtually unlimited scale and speed so any user (with permissions) can freely join, calculate, and filter through billions of rows of real-time data for the ultimate insights. 
 
@@ -112,7 +112,7 @@ We can see the list of available projects on the `My Projects` tab of the `Billi
 
 ### Create Google Cloud Service Account
 
-**Bigquery IAM setup:**<br>
+**BigQuery IAM setup:**<br>
 You must create a Service account with a keyfile if you want Sigma to connect to BigQuery warehouse. 
 
 <aside class="positive">
