@@ -46,7 +46,7 @@ This QuickStart is part of a series of QuickStarts designed to instruct new user
     </tbody>
 </table>
 
-This QuickStart assumes you have already taken the “Fundamentals 1: Getting Around” QuickStart and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
+This QuickStart assumes you have already taken the Fundamentals 1 & 2 QuickStarts and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
 
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
