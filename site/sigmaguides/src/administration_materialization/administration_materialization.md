@@ -3,7 +3,7 @@ id: administration_materialization
 summary: administration_materialization
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started
 lastUpdated: 2023-05-20
