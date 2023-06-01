@@ -109,7 +109,7 @@ Add a new Input Table to the Page and rename it `Forecasts from Country Managers
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+c` or `command+v` (for Macs) to paste the data.
+<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+v` or `command+v` (for Macs) to paste the data.
 </aside>
 
 Notice that Sigma automatically identified the data types for you, saving time.
@@ -236,21 +236,27 @@ We will copy this data into a Sigma Input Table later.
 
 Add a new Page to our Sigma Workbook and rename it to `Rapid Data Prototyping`.
 
-First we will add two tables from the warehouse to the page. One for `Product Information` and another for `Brick and Mortar Sales`. 
+We will add two tables from the warehouse to the page. One for `Product Information` and another for `Brick and Mortar Sales`. 
 
-For Product Information we will use the `Sigma Sample Database` and the D_Product table as shown. Rename the table to "Product Information".
+For Product Information we will use the `Sigma Sample Database` and the `D_Product` table as shown. 
 
-<img src="assets/it2.png" width="600"/>
+Rename the table to "Product Information".
+
+<img src="assets/it2.png" width="800"/>
 
 Create a second Workbook Page and rename it `Data`. We will use this Page to hold master reference data that will be reused for this use case and the later ones too. 
 
-One the new Data page, add a new Table as shown:
+On the new Data page, add a new table as shown:
 
-<img src="assets/it3.png" width="600"/>
+<img src="assets/it3.png" width="800"/>
+
+Rename the table to `Brick and Mortar Sales`.
 
 At this point your Workbook should look like this:
 
 <img src="assets/it4.png" width="800"/>
+
+Return to the `Rapid Data Prototyping` page.
 
 Add a new `Empty Input Table` to the Page.
 
