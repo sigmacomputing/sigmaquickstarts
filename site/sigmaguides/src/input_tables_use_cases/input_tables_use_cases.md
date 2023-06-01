@@ -109,7 +109,7 @@ Add a new Input Table to the Page and rename it `Forecasts from Country Managers
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+c` or `command+v` (for Macs) to paste the data.
+<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctrl+v` or `command+v` (for Macs) to paste the data.
 </aside>
 
 Notice that Sigma automatically identified the data types for you, saving time.
