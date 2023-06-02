@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding, Input Tables
-lastUpdated: 2023-03-29
+lastUpdated: 2023-06-02
 
 # Sigma Input Tables: Use Cases
 
@@ -109,7 +109,7 @@ Add a new Input Table to the Page and rename it `Forecasts from Country Managers
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+c` or `command+v` (for Macs) to paste the data.
+<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+v` or `command+v` (for Macs) to paste the data.
 </aside>
 
 Notice that Sigma automatically identified the data types for you, saving time.
@@ -236,21 +236,27 @@ We will copy this data into a Sigma Input Table later.
 
 Add a new Page to our Sigma Workbook and rename it to `Rapid Data Prototyping`.
 
-First we will add two tables from the warehouse to the page. One for `Product Information` and another for `Brick and Mortar Sales`. 
+We will add two tables from the warehouse to the page. One for `Product Information` and another for `Brick and Mortar Sales`. 
 
-For Product Information we will use the `Sigma Sample Database` and the D_Product table as shown. Rename the table to "Product Information".
+For Product Information we will use the `Sigma Sample Database` and the `D_Product` table as shown. 
 
-<img src="assets/it2.png" width="600"/>
+Rename the table to "Product Information".
+
+<img src="assets/it2.png" width="800"/>
 
 Create a second Workbook Page and rename it `Data`. We will use this Page to hold master reference data that will be reused for this use case and the later ones too. 
 
-One the new Data page, add a new Table as shown:
+On the new Data page, add a new table as shown:
 
-<img src="assets/it3.png" width="600"/>
+<img src="assets/it3.png" width="800"/>
+
+Rename the table to `Brick and Mortar Sales`.
 
 At this point your Workbook should look like this:
 
 <img src="assets/it4.png" width="800"/>
+
+Return to the `Rapid Data Prototyping` page.
 
 Add a new `Empty Input Table` to the Page.
 
@@ -262,6 +268,10 @@ Rename the new Input Table `Shopify Data`.
 
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table as we did in the first use case.
 
+<img src="assets/it1.gif">
+
+The column headers are automatically set by Sigma.
+
 <img src="assets/it5.png" width="800"/>
 
 Now that we have the B&M and the online product details, we want to be able to compare them.
@@ -270,38 +280,38 @@ In the `Product Information` table, click the `Sku Number` column drop and add a
 
 <img src="assets/it6.png" width="500"/>
 
-Select the Input Source as the Shopify Data Table:
-
-<img src="assets/it7.png" width="800"/>
-
 Configure the Lookup as shown:
 
-<img src="assets/it7a.png" width="500"/>
+<img src="assets/it7a.png" width="400"/>
 
 Many products have not been sold online yet so right click on the first cell with a null and select `Exclude null`:
 
 <img src="assets/it8.png" width="400"/>
 
-Rename this new column `Shopify Reveune`.
+Rename this new column `Shopify Reveune` and format it as `Currency`.
 
-Add another new column and use the same workflow. This time we want to pull in the revenue from the B&M table. However, the column Revenue does not exist in the warehouse table `Brick and Mortar Sales` so we need to add that first.
+Add another new column and use the same workflow. 
 
-We use the same worklow but select `Add a new column` and set the formula of that column to:
+This time we want to pull in the revenue from the B&M table. However, the column Revenue does not exist in the warehouse table `Brick and Mortar Sales` so we need to add that first.
+
+Click on the `Data` page tab and add the new column to the `Brick and Mortar Sales` table.
+
+select `Add a new column` and set the formula of that column to (it does not matter the order of the columns in this case):
 ```plaintext
 Sum([Quantity] * [Price])
 ```
 
-Rename the new column `Revenue`. 
+Rename the new column `Revenue` and set the format to `Currency`. 
 
 <img src="assets/it9.png" width="800"/>
 
-Now we can add a new column to the Product Information Table called `B&M Revenue` using the same workflow for `Add a new column via lookup...`:
+Now we can add a new column to the `Product Information` table called `B&M Revenue` using the same workflow for `Add a new column via lookup...`:
 
-<img src="assets/it10.png" width="500"/>
+<img src="assets/it10.png" width="800"/>
 
-Rename the new column `B&M Revenue` and change the two new columns to use currency.
+Rename the new column `B&M Revenue`.
 
-Now that we have the data ready we want to add a new Vizualization (Bar Chart in this case) to compare the revenue streams by category for B&M vs. Online.
+Now that we have the data ready we want to add a new Visualization (Bar Chart in this case) to compare the revenue streams by category for B&M vs. Online.
 
 Add a Child Element / Visualization (from the Product Information Table) and set the X and Y axis as shown:
 
