@@ -434,7 +434,14 @@ Duration: 5
 
 In this article, you learned how to set up and connect Sigma to BigQuery. Connecting Sigma to BigQuery can provide significant benefits for data analysts and data teams looking to improve their data visualization and analytics capabilities. Using BigQuery as the underlying data warehouse provides a highly scalable and cost-effective solution for storing and querying large volumes of data. 
 
-**Special thanks to Nancy Goyal at Google Cloud for her contributions to this QuickStart!**
+**Authored by**
+ <ul>
+      <li>Nancy Goyal, Strategic Cloud Engineer, Google Cloud</li>
+      <li>Reed Rawlings, Solution Engineer, Sigma Computing</li>
+</ul>
+
+
+
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links:**
