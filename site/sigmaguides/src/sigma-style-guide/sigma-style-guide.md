@@ -325,6 +325,13 @@ Gifs are supported as:
 
 <img src="assets/sample.gif">
 
+**Markdown for GIF:**
+
+```plaintext
+<img src="assets/sample.gif">
+```
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
