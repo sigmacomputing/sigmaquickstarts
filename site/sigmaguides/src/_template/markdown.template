@@ -1,28 +1,37 @@
 author: AUTHOR_NAME
-id: SIGMAGUIDE_ID
+id: PROVIDE A UNIQUEID (use the QS name with no spaces)
 summary: This is a sample Sigma Guide
-categories: PLEASE PROVIDE FROM LIST BELOW
+categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 
-<!-- SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL -->
-<!-- AVAILABLE CATEGORIES ARE Tables, Visualizations, Functions, Embedding, Controls, Sharing, Use Cases, Partners, Administration --> 
-
 <!-- 
-PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO
-THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED
-YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0
+SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL.
+
+AVAILABLE CATEGORIES ARE:
+Administration
+Embedding
+Functions
+Fundamentals
+Partners
+Snowflake
+Tables (include pivot and input tables for now)
+Use-cases
+
+PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. 
+
+YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
+http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
 -->
 
-# Sigma QuickStart Name
+# AAA_NEW_GUIDE_NAME_HERE
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 
-<!--EACH ## SECTION WILL REQUIRE A DURATION THAT WILL BE SUMMED TO DISPLAY THE TOTAL QuickStart RUNNING TIME AND TIME REMAINING AS USER GOES THROUGH -->
+<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
 This QuickStart **QS** provides all the common Markup to be used in new QS. 
 
@@ -37,18 +46,23 @@ Anyone who is trying to create QS content for Sigma.
 
 ### Prerequisites
 
-1: A computer with a current browser. It does not matter which browser you want to use.<br>
-2: [Review of the Sigma QS Readme](https://github.com/Sigmacomputing/sigmaquickstarts#readme)<br>.
-3: Completion of the Sigma QS Readme perquisites.
-4: A working local copy of the Sigma QS portal as described in the Readme.
+<ul>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment.</li>
+  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
+</ul>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
 ### What You’ll Learn
 How to apply Sigma approved Markdown for your QS.
 
 ### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/getting_started_working_with_tables_hol/index.html)<br>.
-
-
+[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
 
 INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 
@@ -60,7 +74,7 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
