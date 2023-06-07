@@ -5,7 +5,7 @@ categories: Getting-Started
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: internal
 lastUpdated: 2023-03-15
 
 # Sigma QuickStart Style Guide

@@ -52,13 +52,14 @@ $icon-partners: 'partners.svg';
 @include codelab-card(['partners'], $color-partners, $icon-partners);
   
 /** Categories in Use (so far):
-administration
-fundamentals
-embedding
-tables
-use-cases
-functions
-partners
+Administration
+Embedding
+Functions
+Fundamentals
+Partners
+Snowflake
+Tables (include pivot and input tables for now)
+Use-cases
 **/
 
 

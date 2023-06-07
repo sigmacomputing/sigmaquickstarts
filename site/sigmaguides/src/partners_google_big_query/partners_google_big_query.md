@@ -5,7 +5,7 @@ categories: Partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, BigQuery, Sigma
+tags: default
 lastUpdated: 2023-05-24
 
 # Google BigQuery with Sigma

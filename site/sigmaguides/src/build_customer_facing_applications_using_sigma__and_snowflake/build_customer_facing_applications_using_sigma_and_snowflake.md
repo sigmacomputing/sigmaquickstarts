@@ -3,7 +3,7 @@ id: build_customer_facing_applications_using_sigma__and_snowflake
 categories: snowflake
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
+tags: default
 authors: Kelsey Hammock, Sigma Computing
 lastUpdated: 2023-03-15
 

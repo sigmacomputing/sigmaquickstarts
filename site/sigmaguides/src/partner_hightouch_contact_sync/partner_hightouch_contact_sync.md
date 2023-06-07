@@ -5,7 +5,7 @@ categories: partners
 environmendts: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:  B2B, General, Retail, eCommerce, Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
+tags:  default
 lastUpdated: 2023-04-25
 
 # Sync Leads to Hubspot with Hightouch’s Sigma Integration

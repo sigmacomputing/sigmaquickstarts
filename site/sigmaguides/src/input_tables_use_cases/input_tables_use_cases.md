@@ -5,7 +5,7 @@ categories: Tables
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding, Input Tables
+tags: default
 lastUpdated: 2023-06-02
 
 # Sigma Input Tables: Use Cases
