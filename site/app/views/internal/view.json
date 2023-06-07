@@ -1,9 +1,9 @@
 {
-  "title": "Quickstarts FFF",
-  "description": "FFF",
-  "tags": ["fff"],
+  "title": "Sigma Quickstarts for Content Creators",
+  "description": "QuickStart content creators help",
+  "tags": ["internal"],
   "categories": [],
-  "customStyle": "style.css",
+  "customStyle": "",
   "exclude": [],
   "logoUrl": "/images/og-image.png",
   "toolbarBgColor": "#37474F",
