@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: internal
 
 # Testing Page
 

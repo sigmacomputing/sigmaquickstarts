@@ -5,7 +5,7 @@ categories: snowflake
 environments: web
 status: Published 
 feedback link: https://github.com/sigmacomputing/sigmaguides/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet
+tags: default
 lastUpdated: 2023-03-15
 
 # Getting Started with Sigma and Snowflake

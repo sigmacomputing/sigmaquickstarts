@@ -5,7 +5,7 @@ categories: fundamentals
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboards, Visualization, Analysis, Excel, Spreadsheet
+tags: default
 lastUpdated: 2023-03-15
 
 # Fundamentals 5: Working with Dashboards

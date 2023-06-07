@@ -5,7 +5,7 @@ categories: functions
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: default
 lastUpdated: 2023-03-24
 
 # Common Date Functions and Use Cases

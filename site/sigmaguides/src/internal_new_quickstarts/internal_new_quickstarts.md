@@ -3,9 +3,9 @@ id: SIGMAGUIDE_ID
 summary: This is a sample Sigma Guide
 categories: PLEASE PROVIDE FROM LIST BELOW
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: internal
 
 <!-- SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL -->
 <!-- AVAILABLE CATEGORIES ARE Tables, Visualizations, Functions, Embedding, Controls, Sharing, Use Cases, Partners, Administration --> 

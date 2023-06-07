@@ -5,7 +5,7 @@ categories: snowflake
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
+tags: default
 lastUpdated: 2023-04-25
 
 # Snowpark UDF's with Python and Sigma

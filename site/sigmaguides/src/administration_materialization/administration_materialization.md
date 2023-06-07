@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started
+tags: default
 lastUpdated: 2023-06-06
 
 # Materialization with Sigma

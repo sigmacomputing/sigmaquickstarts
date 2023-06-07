@@ -6,7 +6,7 @@ categories: administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding, API
+tags: default
 lastUpdated: 2023-04-19
 
 # Azure Private Link

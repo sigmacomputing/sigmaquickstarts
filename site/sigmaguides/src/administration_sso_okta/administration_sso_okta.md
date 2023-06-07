@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Getting Started, Analytics, Data Engineering, BI, Business Intelligence, Sigma, Sigma Computing, Snowflake, Dashboarding, Visualization, Analysis, Excel, Spreadsheet, Embedding
+tags: default
 lastUpdated: 2023-05-01
 
 # Single Sign-On with Sigma and Okta
