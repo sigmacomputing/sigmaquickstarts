@@ -1,0 +1,15 @@
+{
+  "title": "Quickstarts FFF",
+  "description": "FFF",
+  "tags": ["fff"],
+  "categories": [],
+  "customStyle": "style.css",
+  "exclude": [],
+  "logoUrl": "/images/og-image.png",
+  "toolbarBgColor": "#37474F",
+  "catLevel": 0,
+  "sort": "mainCategory",
+  "pins": [],
+  "ga": "",
+  "hidden": false
+}
