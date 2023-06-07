@@ -47,9 +47,7 @@ This QuickStart discussed the features and benefits of using materialization in 
 Duration: 20
 The fundamental concept of storing pre-calculated data for performance optimization purposes (ie: caching) has been around for several decades, with advancements and optimizations occurring over time.
 
-The concept of caching (or materialization) is closely associated with database systems, particularly in the field of data warehousing and business intelligence. 
-
-It involves creating temporary or permanent tables or views that store the results of complex queries or data transformations. 
+Materialization is a type of caching, where query results are written into a table in a data warehouse, and then refreshed at regular intervals (often  daily).
 
 **This pre-calculated or pre-aggregated data can be accessed more efficiently and quickly than recomputing the results every time the query is executed.**
 
@@ -112,8 +110,7 @@ In the software market, there are several options available for caching/material
 
  <li><strong>Here are some common options for materialization:</strong> 
     <ol type="n"> 
-      <li><strong>Relational Database Management Systems (RDBMS):</strong><br> Most popular RDBMS systems, such as Oracle, Microsoft SQL Server, MySQL, and PostgreSQL, provide features for materialization. These databases offer various mechanisms like materialized views, indexed views, and temporary tables that allow you to create and manage materialized data.</li>
-      <li><strong>Data Warehousing Solutions:</strong><br> Data warehousing platforms like Amazon Redshift, Google BigQuery, and Snowflake are designed for handling large-scale data analytics workloads. They often provide optimized features for materialization, including materialized views, caching mechanisms, and query optimization techniques to enhance query performance.</li>
+      <li><strong>Data Warehousing Solutions (and most RDBMS):</strong><br> Data warehousing platforms like Amazon Redshift, Google BigQuery, and Snowflake are designed for handling large-scale data analytics workloads. They often provide optimized features for materialization, including materialized views, caching mechanisms, and query optimization techniques to enhance query performance.</li>
       <li><strong>In-Memory Databases:</strong><br> In-memory databases like SAP HANA, Redis, and Apache Ignite store data in-memory rather than on disk, which can significantly improve query performance. These databases often provide built-in mechanisms for materializing data, such as columnar storage, data replication, and preloading of frequently accessed data.
 </li>
       <li><strong>Caching Systems:</strong><br> Caching systems like Memcached and Redis can be used to materialize frequently accessed data. By storing query results or computed data in-memory, these systems allow for quick retrieval and reduce the need for repetitive computations.</li>
