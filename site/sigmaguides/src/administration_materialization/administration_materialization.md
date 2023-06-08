@@ -391,9 +391,9 @@ It is possible to design the dashboard first, getting it "just right" and then d
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Aggregate Aggregation
+## Aggregate Navigation
 
-Aggregate aggregation is a fundamental concept in data analysis and allows for the extraction of valuable insights by summarizing and condensing large amounts of data into meaningful and actionable results.
+Aggregate navigation is a fundamental concept in data analysis and allows for the extraction of valuable insights by summarizing and condensing large amounts of data into meaningful and actionable results.
 
 Aggregation functions or operators are applied to groups of data to calculate a consolidated value. Some common aggregation functions include sum, count, average, minimum, maximum, and median. These functions can be applied to numerical data, such as sales figures or temperature readings, as well as categorical data, such as counting the number of occurrences of different categories.
 
@@ -401,12 +401,12 @@ Aggregations are often used to generate reports, analyze trends, or derive meani
 
 Aggregation can be performed on different levels, such as the entire dataset, specific groups or categories, or even across multiple dimensions. The choice of aggregation depends on the specific analysis goals and the structure of the data.
 
-**Tables that leverage aggregate aggregation are solid candidates for materialization.**
+**Tables that leverage aggregate navigation are solid candidates for materialization.**
 
 In this section, we will demonstrate building a table that consists of four joined tables and has 60M rows. You can build or just follow along; working with larger trial data may be a little slower due to the x-small Snowflake warehouse size. 
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> It is fine if you prefer to just review the QuickStart steps in this section as the workflow are similar to what we have already done. What is important is the concept of aggregate aggregation or materialization at different group levels. 
+<strong>IMPORTANT:</strong><br> It is fine if you prefer to just review the QuickStart steps in this section as the workflow are similar to what we have already done. What is important is the concept of aggregate navigation or materialization at different group levels. 
 </aside>
 
 **Some general rules:**
