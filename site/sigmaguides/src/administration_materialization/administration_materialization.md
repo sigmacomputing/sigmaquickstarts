@@ -45,6 +45,7 @@ This QuickStart discussed the features and benefits of using materialization in 
 
 ## Background
 Duration: 20
+
 The fundamental concept of storing pre-calculated data for performance optimization purposes (ie: caching) has been around for several decades, with advancements and optimizations occurring over time.
 
 Materialization is a type of caching, where query results are written into a table in a data warehouse, and then refreshed at regular intervals (often  daily).
@@ -72,9 +73,18 @@ You should consider materializing data in situations where it can provide **tang
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Materialization is not a "go-fast" solution for tables that are already flat, regardless of their size. You should not expect performance gains when using against a flattened table alone.
-</aside> 
+</aside><br>
 
-Use cases that benefit from materializing:
+At Sigma, we see customers immediately benefiting from materialization in these use cases:
+
+<ul>
+      <li>Flattening complex joins</li>
+      <li>Lowering the grain of data (materializing an aggregated table level)</li>
+      <li>Flattening out slow calculations (like json extracts)</li>
+      <li>When applying a permanent, restrictive filter. For example, when there are 100M rows, but only 50k rows are relevant to the analysis)</li>
+ </ul>
+
+There is a broard range of potential use cases that benefit from materializing. Here are the most common, should you want to know more:
 
 <ul>
       <li><strong>Complex and Resource-Intensive Queries:</strong><br> Queries that involve multiple tables, complex joins, aggregations, or calculations, materializing intermediate or final results can significantly improve query performance. By pre-computing and storing the results, subsequent queries can avoid the expensive computations and directly access the materialized data, leading to faster response times.</li>
