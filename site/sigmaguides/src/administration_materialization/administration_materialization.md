@@ -3,7 +3,7 @@ id: administration_materialization
 summary: administration_materialization
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-06-06
@@ -84,7 +84,7 @@ At Sigma, we see customers immediately benefiting from materialization in these 
       <li>When applying a permanent, restrictive filter. For example, when there are 100M rows, but only 50k rows are relevant to the analysis)</li>
  </ul>
 
-There is a broard range of potential use cases that benefit from materializing. Here are the most common, should you want to know more:
+There is a broad range of potential use cases that benefit from materializing. Here are the most common, should you want to know more:
 
 <ul>
       <li><strong>Complex and Resource-Intensive Queries:</strong><br> Queries that involve multiple tables, complex joins, aggregations, or calculations, materializing intermediate or final results can significantly improve query performance. By pre-computing and storing the results, subsequent queries can avoid the expensive computations and directly access the materialized data, leading to faster response times.</li>
