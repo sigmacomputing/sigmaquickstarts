@@ -393,7 +393,11 @@ It is possible to design the dashboard first, getting it "just right" and then d
 
 ## Aggregate Navigation
 
-Aggregate navigation is a fundamental concept in data analysis and allows for the extraction of valuable insights by summarizing and condensing large amounts of data into meaningful and actionable results.
+Aggregate navigation is an advanced BI design, whereby we create several materialized tables of different grain behind the scenes, then seamlessly swap the data sources between these tables, as the user changes their grain of analysis. The benefit of aggregate navigation is fast performance at the high grain of analysis, combined with the depth of the analysis at the low grain, all transparent and invisible to the end-user.
+
+Aggregate navigation is fairly costly to create, using conventional BI tools, because you often need to manually create and populate several aggregated tables, then add an advanced, hard to write calculation to auto-navigate between them.
+
+By contrast, aggregate navigation in Sigma is easy.
 
 Aggregation functions or operators are applied to groups of data to calculate a consolidated value. Some common aggregation functions include sum, count, average, minimum, maximum, and median. These functions can be applied to numerical data, such as sales figures or temperature readings, as well as categorical data, such as counting the number of occurrences of different categories.
 
