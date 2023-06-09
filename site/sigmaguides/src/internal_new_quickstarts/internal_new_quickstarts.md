@@ -22,32 +22,258 @@ Content creators interested in publishing to Sigma QuickStarts.
 
 ### Prerequisites
 
-1. [Install HomeBrew](https://brew.sh)
-
-2. [Install Node 14](https://nodejs.org/en/download/); 
-      - `brew install node@14`
-
-3. Install gulp-cli 
-      - `npm i -g gulp-cli`
-
-4. [Install Go](https://golang.org/doc/install); 
-      - `brew install golang`
-
-5. Install claat 
-      -  `go install github.com/googlecodelabs/tools/claat@latest`
-      - Ensure go and claat is in your `PATH` [claat path setup](http://localhost:8000/guide/internal_new_quickstarts/index.html?index=..%2F..internal#4)
-
-6. [Install VSCode from Microsoft](https://code.visualstudio.com/download)
-
-7. [Install GitHub Desktop](https://desktop.github.com/)
-
-8. Create a GitHub account for yourself. Use a non-work email to make things easier.
-
 9. **Recommended**: install the live-reload plugin for Chrome: 
       -  [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
+
+## HomeBrew
+Duration: 20
+
+First we will install HomeBrew, which will provide easier installation of additional packages later. 
+
+Go to the HomeBrew website and click the "clipboard" icon to copy the script: 
+
+[Install HomeBrew](https://brew.sh)
+
+<img src="assets/brew1.png" width="600"/>
+
+In your Mac, open `Spotlight search` and type `terminal`. Then click to select the `Terminal.app` as shown:
+
+<img src="assets/brew2.png" width="600"/>
+
+From the Terminal command prompt, paste the clipboard we copied from HomeBrew:
+
+<img src="assets/brew3.png" width="600"/>
+
+Hit enter:
+
+<img src="assets/brew4.png" width="600"/>
+
+You will be prompted to enter your Mac password:
+
+<img src="assets/brew5.png" width="600"/>
+
+The script will run and you will be prompted to hit "Enter" to proceed:
+
+<img src="assets/brew6.png" width="600"/>
+
+When the script is done, the command prompt will appear as shown:
+
+<img src="assets/brew7.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This script may take a few minutes depending on the speed of your computer.
+</aside>
+
+HomeBrew is now installed.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## Node.js (Node)
+Duration: 20
+
+We will now install Node.js.
+
+Node.js is an open-source, server-side runtime environment that allows developers to build scalable and high-performance web applications, in this case, QuickStarts.
+
+[Download the Node package for Mac](https://nodejs.org/en/download/)
+
+<img src="assets/node1.png" width="600"/>
+
+One the download is complete, open it:
+
+<img src="assets/node2.png" width="600"/>
+
+Step through the installation, taking all the defaults:
+
+<img src="assets/node3.png" width="600"/>
+
+It is ok to delete the downloaded file when done.
+
+Return to our open Terminal and execute the commands, one at a time:
+```plaintext
+node -v
+```
+
+and 
+```plaintext
+npm -v
+```
+
+You should see a version number returned for each command. This means Node and the Node Package Manager are installed and working:
+
+<img src="assets/node5.png" width="600"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## Gulp-CLI
+Duration: 20
+
+Gulp is a popular task runner for JavaScript. The Gulp CLI (Command Line Interface), also known as gulp-cli, is a separate package that provides the command-line interface for running Gulp tasks.
+
+Using Terminal, run the following command to install Gulp-cli:
+``` plaintext
+sudo npm i -g gulp-cli
+```
+
+You will be prompted for your Mac password:
+
+When done, the Terminal cursor will appear on a blank line.
+
+<img src="assets/gulp1.png" width="600"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## Go
+Duration: 20
+
+In Terminal, execute the following command:
+```plaintext
+brew install golang
+```
+
+When done, the Terminal cursor will appear on a blank line.
+
+<img src="assets/go1.png" width="600"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## claat
+Duration: 20
+
+
+In Terminal, execute the following command:
+```plaintext
+go install github.com/googlecodelabs/tools/claat@latest
+```
+
+When done, the Terminal cursor will appear on a blank line.
+
+<img src="assets/claat1.png" width="600"/>
+
+In Terminal, execute the following command:
+```plaintext
+touch~/.bash_profile; open ~/.bash_profile
+```
+
+This will open your Mac profile configuration file where we can verify that the first two lines (#2) exist.
+
+<img src="assets/claat2.png" width="600"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## VSCode
+Duration: 20
+
+[Download and install VSCode for Mac from the Microsoft website.](https://code.visualstudio.com/download)
+
+<img src="assets/vsc1.png" width="600"/>
+
+When the download completes, open the zip file:
+
+<img src="assets/vsc1.png" width="600"/>
+
+For convenience, we will move the extracted `app` file to `Applications`.
+
+<img src="assets/VSCodetoApps.gif`">
+
+Now you can access VSCode from the Mac application view. 
+
+We don't need to open it just yet.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## GitHub Desktop
+Duration: 20
+
+[Download and install GitHub Desktop from the website.](https://desktop.github.com/)
+
+<img src="assets/gd1.png" width="600"/>
+
+In Mac Finder, open the zip file:
+
+<img src="assets/gd2.png" width="600"/>
+
+For convenience, we will move the extracted `app` file to `Applications`.
+
+<img src="assets/GitDesktopToApplications.gif`">
+
+Now you can access GitDesktop from the Mac application view. Go ahead and do that.
+
+On the "Let's get started!" screen, click as shown to clone a repository:
+
+<img src="assets/gd3.png" width="600"/>
+
+We need to provide GitHub Desktop with the URL of our repository. 
+
+[Using a browser, navigate to the Sigma QuickStarts GitHub page:](https://github.com/Sigmacomputing/sigmaquickstarts)
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You will need to create a GitHub account (free). If you have not done that, please set one up as it is required as we interact with GitHub later.
+</aside>
+
+Click to copy the **HTTPS** URL as shown:
+
+<img src="assets/gd4.png" width="600"/>
+
+Paste the URL in GitHub Desktop under the `URL` tab:
+
+<img src="assets/gd5.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The value for "Local path" is where the QuickStart files will be stored on your Mac
+</aside>
+
+Click `Clone`.
+
+<img src="assets/gd5.png" width="600"/>
+
+The cloning operation will start. This is copying the current QuickStarts content to your Mac. It will take a few minutes.
+
+GitHub Desktop will (when clone is completed) the current repository (#1), the current branch (#2) and give you the option to open this local repository in VSCode:
+
+<img src="assets/gd6.png" width="600"/>
+
+Click to open in VSCode.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+
+
+## Site Overview
+Duration: 20
+
+
+
+
+<img src="assets/brew4.png" width="600"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+## 1
+Duration: 20
+
+<img src="assets/brew4.png" width="600"/>
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
+
 
 ## **Deploy Locally**
 Duration: 20
