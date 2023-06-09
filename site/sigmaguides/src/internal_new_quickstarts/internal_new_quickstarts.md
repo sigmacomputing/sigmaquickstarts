@@ -7,11 +7,10 @@ status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: internal
 
-# Setup Local Development
+# Setup a Local Environment for QuickStart Content Creation
 
 ## Overview 
 Duration: 5 
-
 
 Snowflake Quickstarts are interactive tutorials and self-serve demos written in markdown syntax. Quickstarts provide a unique step-by-step reading experience and automatically saves tutorial progress for readers. These tutorials are published at quickstarts.snowflake.com
 
@@ -19,11 +18,6 @@ You can submit your own Quickstarts to be published on Snowflake's website by su
 
  ### Target Audience
 Content creators interested in publishing to Sigma QuickStarts.
-
-### Prerequisites
-
-9. **Recommended**: install the live-reload plugin for Chrome: 
-      -  [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -142,12 +136,20 @@ When done, the Terminal cursor will appear on a blank line.
 
 <img src="assets/go1.png" width="600"/>
 
+In Terminal, execute the following command:
+```plaintext
+touch~/.bash_profile; open ~/.bash_profile
+```
+
+This will open your Mac profile configuration file where we can verify that the first two lines (#2) exist.
+
+<img src="assets/claat2.png" width="600"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
 ## claat
 Duration: 20
-
 
 In Terminal, execute the following command:
 ```plaintext
@@ -157,15 +159,6 @@ go install github.com/googlecodelabs/tools/claat@latest
 When done, the Terminal cursor will appear on a blank line.
 
 <img src="assets/claat1.png" width="600"/>
-
-In Terminal, execute the following command:
-```plaintext
-touch~/.bash_profile; open ~/.bash_profile
-```
-
-This will open your Mac profile configuration file where we can verify that the first two lines (#2) exist.
-
-<img src="assets/claat2.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -179,11 +172,11 @@ Duration: 20
 
 When the download completes, open the zip file:
 
-<img src="assets/vsc1.png" width="600"/>
+<img src="assets/vsc2.png" width="600"/>
 
 For convenience, we will move the extracted `app` file to `Applications`.
 
-<img src="assets/VSCodetoApps.gif`">
+<img src="assets/VSCodetoApps.gif">
 
 Now you can access VSCode from the Mac application view. 
 
@@ -205,7 +198,7 @@ In Mac Finder, open the zip file:
 
 For convenience, we will move the extracted `app` file to `Applications`.
 
-<img src="assets/GitDesktopToApplications.gif`">
+<img src="assets/gdt.gif">
 
 Now you can access GitDesktop from the Mac application view. Go ahead and do that.
 
@@ -235,8 +228,6 @@ Paste the URL in GitHub Desktop under the `URL` tab:
 
 Click `Clone`.
 
-<img src="assets/gd5.png" width="600"/>
-
 The cloning operation will start. This is copying the current QuickStarts content to your Mac. It will take a few minutes.
 
 GitHub Desktop will (when clone is completed) the current repository (#1), the current branch (#2) and give you the option to open this local repository in VSCode:
@@ -244,6 +235,9 @@ GitHub Desktop will (when clone is completed) the current repository (#1), the c
 <img src="assets/gd6.png" width="600"/>
 
 Click to open in VSCode.
+
+<img src="assets/gd7.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -253,74 +247,154 @@ Click to open in VSCode.
 ## Site Overview
 Duration: 20
 
+With the QuickStarts project open in VSCode, we can see all the files and folders. We will not be using the vast majority of these when creating content but they are required to make the site work locally. 
 
+<img src="assets/vsc4.png" width="600"/>
 
+Expand the `site` and `sigmaguides/src` folder:
 
-<img src="assets/brew4.png" width="600"/>
+<img src="assets/vsc5.png" width="600"/>
 
+This is the primary folder where content creators will work with QuickStart content.
+
+Before we start working with QuickStarts (first time only), we need to complete the site configuration using Terminal. 
+
+VSCode provides an integrated Terminal to make this easy. 
+
+Using the VSCode menu, click the `Terminal` menu and select `New Terminal`:
+
+<img src="assets/vsc6.png" width="600"/>
+
+A Terminal window appears inside VSCode.
+
+From the Terminal command line, change the directory to site:
+```plaintext
+cd site
+```
+
+Next, execute the command (to install the npm packages inside QuickStarts):
+```plaintext
+npm install
+```
+
+<img src="assets/vsc7.png" width="600"/>
+
+When completed, a command prompt will appear, and information about how many packages were added"
+
+<img src="assets/vsc8.png" width="600"/>
+
+Next execute (in Terminal):
+```
+npm run serve
+```
+
+<img src="assets/vsc9.png" width="600"/>
+
+This compiles the QuickStart web application and makes it available on `http:\\localhost:8000`
+
+There is no "ready" message but if there are no errors, the last line looks like this:
+
+<img src="assets/vsc10.png" width="600"/>
+
+Using a browser, navigate to `http:\\localhost:8000`. The website should load:
+
+<img src="assets/vsc11.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## 1
+## Content Creation
 Duration: 20
 
-<img src="assets/brew4.png" width="600"/>
+When creating a new QuickStart, or modifying an existing one, **ALWAYS** create a new branch. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> NEVER work in the "master" branch. Your changes will be rejected on publication to GitHub
+</aside>
 
+Using GitHub Desktop, click to create a `New Branch`:
 
+<img src="assets/qs1.png" width="600"/>
+
+Give your branch a name and click `Create Branch`:
+
+<img src="assets/qs2.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br>  The branch name is only related to Git and not in any way something a QuickStart user will ever know about. It is used to isolate "sections" of work from one another and makes the code more resilient when problems occur.
+</aside>
+
+GitHub Desktop automatically switches to your new branch which means you are now using that branch which is isolated from all other branches.
+
+There is also a "Publish" button, which will push the new branch to GitHub but we have not made any code changes so no need to do that now.
+
+<img src="assets/qs3.png" width="600"/>
+
+Go back to VSCode and see that the branch has already been switched here too:
+
+<img src="assets/qs4.png" width="600"/>
+
+We can create a new QuickStart automatically (based on a template) using VSCode Terminal
+
+In VSCode Terminal, we left off with the site running so we need to terminate that. 
+
+Press `CTL + C` to terminate and return to the command prompt.
+
+Execute the following two commands to create a new QuickStart in our new branch:
+
+First change to the src folder
+```plaintext
+cd sigmaguides\src
+```
+
+Then execute this command to create a new QuickStart:
+```
+npm run template {YOUR QUICKSTART NAME}
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The name you specify will be the name of the folder in the project but not the name that is shown on the QuickStart card later. That is configured in the markdown inside this new folder.
+</aside>
+
+<img src="assets/qs5.png" width="800"/>
+
+VSCode notices that changes have been made in the new branch and shows you them on the `Source control` icon of VSCode. 
+
+Clicking on that icon we can see the list of changed items.
+
+As we make ongoing changes to our new branch we can make "local commits". This allows us to revert changes locally at any time. Consider this "local source control". 
+
+When ready to commit (ie: at end of day), enter a commit message and click `Commit`:
+
+<img src="assets/qs6.png" width="600"/>
+
+VSCode provides a "Publish Branch" button but we will use GitHub Desktop for publishing branches to Git as well as creating "Pull Requests". 
+
+A Pull Request notifies the Git Administrator that there is something to review and approve.
+
+Lastly, open the new QuickStart.md file (this is the markdown file that defines a QuickStart).
+
+The template has comments (you can delete them if you want) to assist you in the important items that require consideration.
+
+<img src="assets/qs8.png" width="800"/>
+
+These are the critical items:
+
+ <ul>
+      <li><strong>id:</strong> a unique value; use the folder name with no spaces in it is fine</li>
+      <li><strong>categories:</strong> The category must exist and the list is provided in the template</li>
+      <li><strong>status:</strong> Published or Hidden.</li>
+      <li><strong>tags:</strong> must be default unless otherwise specified by QuickStart team</li>
+</ul>
+
+Please review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/#0). 
+
+This guide provides all the available and supported markdown methods.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
+<!-- END OF SECTION-->
 
-
-
-## **Deploy Locally**
-Duration: 20
-
-Once the pre-requisites have been installed, we can make a local copy of the QuickStarts GitHub repo.
-
-  1. Fork this repository to your personal github account (top right of webpage, `fork` button)
-  2. Clone your new fork `git clone https://github.com/<YOUR-USERNAME>/sigmaquickstarts.git sigmaquickstarts`
-  3. Navigate to the site directory `cd sigmaquickstarts/site`
-  4. Install node dependencies `npm install`
-  5. Run the site `npm run serve`
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
-
-## Write Your First Quickstart
-Duration: 5
-**Before you write your first QuickStart, we recommend you:**
-
-1: Review the [QuickStart Style Guide](https://quickstarts.sigmacomputing.com/guide/sigma-style-guide/#0). 
-
-We want to try and give the consumer a uniform look and feel for QuickStarts and the Style Guide will give you everything you need to deliver on that.
-
-2: Please only use the "new Template" method described later when creating a QuickStart.<br>
-
-**Steps:**<br>
-  1. Terminate the running server with `ctrl C` and and navigate to the `sigmaguides` source directory `cd sigmaguides/src`
-     - In this directory, you will see all existing guides and their markdown files.
-  2. Generate a new guide from the guide template `npm run template <GUIDE_NAME>` 
-      - Don't use spaces in the name of your guide, instead use underscores.
-      - For Standalone QuickStarts just create a simple name that describes it.
-      - For Series QuickStarts use the format {SeriesName} #: {Name}
-          - for example, Fundamentals 2: Working with Tables<br>
-NOTE: The file name is not what appears in the portal; that is defined in the QuickStart itself.
-
-  3. Navigate to the newly generated guide (`cd sigmaguides/src/<GUIDE_NAME>`) and edit your guide in VSCode.
-  4. Run the website again `npm run serve`
-  5. As you edit and save changes, your changes will automatically load in the browser.
-  
-To see QuickStarts in your local browser, navigate to:
-http://localhost:8000/
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION -->
-
-## GitHub
+## Publication
 Duration: 5
 
 1. Make a new branch in GitHub Desktop
