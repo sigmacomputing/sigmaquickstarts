@@ -250,28 +250,46 @@ Duration: 5
 
 We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us but not always).
 
-### Generate Embed Secret
-To create an Application embed, you will need an embed secret. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
+### Enable Application Embedding
+
+Application Embedding is a premium feature of Sigma, but while in a trial account, we can use it for free.
+
+In Sigma, navigate to `Administration` > `Account`. 
+
+Under the group `Embedding` we can see that Application Embedding has not been added.
+
+<img src="assets/aefix1.png" width="800"/>
+
+Click the `Add` button to add the feature. Once enabled, a checkmark will appear and buttons for `Revoke` and `Manage` will appear:
+
+<img src="assets/aefix2.png" width="800"/>
+
+Click `Manage` and then `Enable` in the pop-up.
+
+Click `Copy` to copy the Secret to the clipboard. Close the popup.
+
+<img src="assets/aefix3.png" width="800"/>
+
+Paste the Secret into a known safe location. We will use this secret later.
 
 **You cannot look up your organizations existing embed secret after it has been created.** If you lose your embed secret, you can generate a new one. In this case your existing embeds will be rendered invalid until the API is updated with the new secret.
 
+### Generate Embed Secret
+To create an Application embed, you will need an embed secret. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
+
+Navigate to `Administration` > `APIs & Embed Secrets`.
+
  <li><strong>Steps to Create Embed Secret</strong>
     <ol type="n"> 
-        <li>Browse to Administration</li>
-        <li>Open to the APIs & Embed Secrets page</li>
         <li>Click Create New, located in the page's top right corner. This will open the Create New API Token or Embed Secret modal</li>>
         <li>Under API Token or Embed Secret? select Embed Secret</li>
         <li>Enter a Name and Description as you see fit</li>
         <li>Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself</li>
-        <li>Click Create. You will now see the newly generated secret. Click Copy and store it in a secure location</li>
-        <li>Copy the provided ClientID and store it. The ClientID is shown after the key is created and shown in the table of secret</li>
+        <li>Click Create.li>
+        <li>Copy the provided ClientID and store it.</li>
         <li>Click Close</li>
    </ol>
 </li>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Secrets created from the APIs & Embed Secrets page must be used with their associated Client ID. Each secret's Client ID is listed on the APIs & Embed Secret page. 
-</aside>
 
 ### Generate Embed Links
 Return to our Workbook.
