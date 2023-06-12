@@ -101,7 +101,7 @@ Repeat([Product Type],-1)
 
 ...will return the following values for the Product Type column:
 
-<img src="assets/fffJune2023_1.png" width="500"/>
+<img src="assets/fffJune2023_1.png" width="800"/>
 
 Repeat is one of the [Text functions](https://help.sigmacomputing.com/hc/en-us/articles/17422239058835) supported by Sigma.
 
