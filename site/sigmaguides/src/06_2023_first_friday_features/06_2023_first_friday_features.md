@@ -86,6 +86,28 @@ Sigma has added support (based on customer feedback) for a few specific function
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## New Function: Repeat
+
+The Repeat function returns the results of repeating a string a specified number of times.
+
+For example, adding these five new columns:
+```plaintext
+Repeat([Product Type],0)
+Repeat([Product Type],1)
+Repeat([Product Type],2)
+Repeat([Product Type],3)
+Repeat([Product Type],-1)
+```
+
+...will return the following values for the Product Type column:
+
+<img src="assets/fffJune2023_1.png" width="500"/>
+
+Repeat is one of the [Text functions](https://help.sigmacomputing.com/hc/en-us/articles/17422239058835) supported by Sigma.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## User Impersonation
 Duration: 20
 
