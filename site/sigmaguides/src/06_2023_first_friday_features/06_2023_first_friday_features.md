@@ -7,6 +7,13 @@ status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 
+<!-- 
+Weeks Added so far:
+Release notes for the month of June 2023 features, published on first Friday of July
+6.2.2023
+6.9.2023
+-->
+
 # 07-2023 (for June)
 
 ## Overview 
@@ -79,18 +86,6 @@ Sigma has added support (based on customer feedback) for a few specific function
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Materialization (BETA)
-Duration: 20
-
-You can now suspend the scheduled refresh of materializations if they are not accessed for an extended period of time.
-
-For more information, see [Pause scheduled materializations.](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization#h_01H1PW0J5X5MBBE26MYB2QVHPF)
-
-PB TO ADD LINK TO MAT...QUICKSTART WHICH IS IN DRAFT NOW
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## User Impersonation
 Duration: 20
 
@@ -108,6 +103,43 @@ The Impersonate Users feature provides admins with ability to impersonate a user
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Workbooks (general)
+
+You can now detach a control directly from its element without having to go to the control first.
+
+Custom options for number formatting now includes “pp”, for percentage point, a formatting option for values and value comparisons. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Admin Features
+
+### Remove Team Members in Bulk
+Admins can now remove multiple members of a team using a bulk action. To remove team members in bulk, go to your `Administration` > `Teams` > select a team > select members to remove > and click the `Remove` from team button.
+
+For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+
+### Reset Password for Users in Bulk
+Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
+
+For more information, see [Manage Authentication.](https://help.sigmacomputing.com/hc/en-us/articles/360036944534-Manage-authentication
+)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## API
+A new parameter, `userKind`, is now available for the `Update a Member in Your Organization` endpoint. This parameter defines the type of user. 
+
+The three possible values are `guest`, `internal`, or `embed`. 
+
+For more information, [see Organization Member API.])(https://help.sigmacomputing.com/hc/en-us/articles/4408555573267-Organization-Member-API)
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## Scheduled Exports
 Duration: 20
@@ -151,11 +183,31 @@ To configure individual legend visibility, go to Element format > Legend and ena
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Materialization (BETA)
+Duration: 20
+
+You can now suspend the scheduled refresh of materializations if they are not accessed for an extended period of time.
+
+For more information, see [Pause scheduled materializations.](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization#h_01H1PW0J5X5MBBE26MYB2QVHPF)
+
+PB TO ADD LINK TO MAT...QUICKSTART WHICH IS IN DRAFT NOW
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## **Bug Fixes**
 Duration: 20
 
 Bug releases are broken down by week for specificity.
 
+### Week ending 6.9.23
+ <ul>
+      <li>Resolved an issue that caused some embeds to display in mobile mode rather than desktop. </li>
+      <li>Materialization status updates correctly when clicking Materialize now in the Materialization schedules page.</li>
+      <li>Resolved an issue that caused unintentional duplicate records in linked input tables when one or more users edited the same input table row in multiple browser tabs.</li>
+      <li>Resolved an issue that intermittently prevented input table cell edits from persisting.</li>
+      <li>Resolved an issue that caused the active input table cell to appear beneath the element’s horizontal scrollbar when a user edited a row towards the bottom of the </li>
+</ul>
 ### Week ending 6.2.23
  <ul>
       <li>Resolved an issue with pivot table rows not displaying.</li>
