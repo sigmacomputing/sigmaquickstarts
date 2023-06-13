@@ -141,9 +141,62 @@ In Terminal, execute the following command:
 touch~/.bash_profile; open ~/.bash_profile
 ```
 
-This will open your Mac profile configuration file where we can verify that the first two lines (#2) exist.
+<aside class="negative">
+<strong>NOTE:</strong><br> On some computers, the file ~/.bash_profile may not exist so we will have to create it manually. If you receive an error message when running the touch command, please scroll down to the section on manually creating the file.
+</aside>
+
+If the file is found, this will open your Mac profile configuration file where we can verify that the first 4 lines exist.
 
 <img src="assets/claat2.png" width="600"/>
+
+If they do not, please add them and save the file. 
+
+
+Here is the codeblock to copy and paste:
+
+**You will need to replace {yourname} with the name of your /Users/{yourname} directory.**
+```plaintext
+#adding Golang to path
+export PATH=$PATH:/usr/local/go/bin
+
+#adding node to path
+export PATH="/Users/{yourname}/.nvm/versions/node/v14.21.3/bin:$PATH"
+```
+
+In the example below, we have run the command `pwd` to display the present working directory of a new terminal session. The value for {yourname} is shown in red as `philballai`.
+
+<img src="assets/claat3.png" width="600"/>
+
+You can now go to the section 6 of the QuickStart.
+
+### Manually creating .bash_profile
+In the case of the file not existing, we need to create it. 
+
+In terminal, execute the following command:
+```plaintext
+vi ~/.bash_profile
+```
+
+Here is the codeblock to copy and paste:
+
+Here is the codeblock to copy and paste:
+
+**You will need to replace {yourname} with the name of your /Users/{yourname} directory.**
+```plaintext
+#adding Golang to path
+export PATH=$PATH:/usr/local/go/bin
+
+#adding node to path
+export PATH="/Users/{yourname}/.nvm/versions/node/v14.21.3/bin:$PATH"
+```
+
+In the example below, we have run the command `pwd` to display the present working directory of a new terminal session. The value for {yourname} is shown in red as `philballai`.
+
+<img src="assets/claat3.png" width="600"/>
+
+You can now go to the section 6 of the QuickStart.
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -271,6 +324,16 @@ From the Terminal command line, change the directory to site:
 ```plaintext
 cd site
 ```
+
+Execute the command to set the correct filepath:
+```plaintext
+source ~/.bash_profile
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The previous command needs to be executed anytime VSCode is exited completely. This is a temporary patch as we sort a way to eliminate that minor step.
+</aside>
+
 
 Next, execute the command (to install the npm packages inside QuickStarts):
 ```plaintext
