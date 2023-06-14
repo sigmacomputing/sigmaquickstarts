@@ -101,7 +101,6 @@ You should see a version number returned for each command. This means Node and t
 
 <img src="assets/node5.png" width="600"/>
 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
