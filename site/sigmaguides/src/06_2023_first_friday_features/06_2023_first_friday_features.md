@@ -7,6 +7,13 @@ status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 
+<!-- 
+Weeks Added so far:
+Release notes for the month of June 2023 features, published on first Friday of July
+6.2.2023
+6.9.2023
+-->
+
 # 07-2023 (for June)
 
 ## Overview 
@@ -20,35 +27,46 @@ It is summary in nature and you should refer to the specific Sigma documentation
 
 All other features are considered released (GA or generally available).
  
-Sigma actually has feature and bug fix releases weekly and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous monthly for your convenance.
+Sigma actually has feature and bug fix releases weekly and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous month for your convenance.
 
 New QuickStarts will be published on the first Friday of each month, for the previous month information. 
 
-## Version Tagging
-Duration: 20
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-Version Tagging is now generally available. For more information, see [Version Tagging](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+## Admin Features
 
-**Summary:**<br>
-Version tagging allows you to employ a software development cycle to control workbook versions using tags. For example, orgs can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
+### Remove Team Members in Bulk
+Admins can now remove multiple members of a team using a bulk action. To remove team members in bulk, go to your `Administration` > `Teams` > select a team > select members to remove > and click the `Remove` from team button.
 
-When you create a tag and assign it to a workbook, you essentially freeze the state of that workbook. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
+For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
 
-For example, you can create a Production tag and assign it to a workbook that's used by embed users, guests, or other Sigma end users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users. 
+### Reset Password for Users in Bulk
+Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
 
-One of the benefits of this solution is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
-
-If you are interested in Version Tagging in an embedded scenario, [please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
+For more information, see [Manage Authentication.](https://help.sigmacomputing.com/hc/en-us/articles/360036944534-Manage-authentication
+)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## API
+A new parameter, `userKind`, is now available for the `Update a Member in Your Organization` endpoint. This parameter defines the type of user. 
+
+The three possible values are `guest`, `internal`, or `embed`. 
+
+For more information, see [Organization Member API.](https://help.sigmacomputing.com/hc/en-us/articles/4408555573267-Organization-Member-API)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## Dynamic Connection & Role Switching (Snowflake)
 Duration: 20
 
 Dynamic Connection & Role Switching (DRS) allows run-time swapping of the Snowflake Warehouse and Role for a Sigma connection. There are ways to leverage this using one or both Warehouse and/or Role along with different methods to restrict data access in Snowflake itself.
 
-[Please refer to this QuickStart on how to implement RDS](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
+[Please refer to this QuickStart on how to implement RLS](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
 
 [Documentation is here.](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-)
 
@@ -79,14 +97,46 @@ Sigma has added support (based on customer feedback) for a few specific function
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## New Function: Repeat
+
+The Repeat function returns the results of repeating a string a specified number of times.
+
+For example, adding these five new columns:
+```plaintext
+Repeat([Product Type],0)
+Repeat([Product Type],1)
+Repeat([Product Type],2)
+Repeat([Product Type],3)
+Repeat([Product Type],-1)
+```
+
+...will return the following values for the Product Type column:
+
+<img src="assets/fffJune2023_1.png" width="800"/>
+
+Repeat is one of the [Text functions](https://help.sigmacomputing.com/hc/en-us/articles/17422239058835) supported by Sigma.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Materialization (BETA)
 Duration: 20
 
 You can now suspend the scheduled refresh of materializations if they are not accessed for an extended period of time.
 
-For more information, see [Pause scheduled materializations.](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization#h_01H1PW0J5X5MBBE26MYB2QVHPF)
+For more information, see [pause scheduled materializations.](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization#h_01H1PW0J5X5MBBE26MYB2QVHPF)
 
-PB TO ADD LINK TO MAT...QUICKSTART WHICH IS IN DRAFT NOW
+To review the [Materialization with Sigma QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_materialization/index.html?index=..%2F..index#0) click here.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Scheduled Exports
+Duration: 20
+
+Scheduled exports now provide the option to select which tagged version of the workbook you want to include in the export.
+
+For more information, see [Apply Control Values to Scheduled Reports](https://help.sigmacomputing.com/hc/en-us/articles/4409004286739).
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -109,12 +159,21 @@ The Impersonate Users feature provides admins with ability to impersonate a user
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Scheduled Exports
+## Version Tagging
 Duration: 20
 
-Scheduled exports now provide the option to select which tagged version of the workbook you want to include in the export.
+Version Tagging is now generally available. For more information, see [Version Tagging](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
 
-For more information, see [Apply Control Values to Scheduled Reports](https://help.sigmacomputing.com/hc/en-us/articles/4409004286739).
+**Summary:**<br>
+Version tagging allows you to employ a software development cycle to control workbook versions using tags. For example, orgs can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
+
+When you create a tag and assign it to a workbook, you essentially freeze the state of that workbook. The process of tagging a workbook creates a duplicate that can be shared with other stakeholders and users.  
+
+For example, you can create a Production tag and assign it to a workbook that's used by embed users, guests, or other Sigma end users. Moreover, you can tag additional versions of the same workbook such as Development or Staging. These versions can be used by different stakeholders in your org for review purposes. Once reviewed, you can migrate this copy to Production for your users. 
+
+One of the benefits of this solution is your org can modify a Development workbook without affecting the experience of your customers who use the Production version. Once you complete your developmental changes, you can easily update the Production version of the workbook.
+
+If you are interested in Version Tagging in an embedded scenario, [please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -151,10 +210,29 @@ To configure individual legend visibility, go to Element format > Legend and ena
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Workbooks (general)
+
+You can now detach a control directly from its element without having to go to the control first.
+
+Custom options for number formatting now includes “pp”, for percentage point, a formatting option for values and value comparisons. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
 ## **Bug Fixes**
 Duration: 20
 
 Bug releases are broken down by week for specificity.
+
+### Week ending 6.9.23
+ <ul>
+      <li>Resolved an issue that caused some embeds to display in mobile mode rather than desktop. </li>
+      <li>Materialization status updates correctly when clicking Materialize now in the Materialization schedules page.</li>
+      <li>Resolved an issue that caused unintentional duplicate records in linked input tables when one or more users edited the same input table row in multiple browser tabs.</li>
+      <li>Resolved an issue that intermittently prevented input table cell edits from persisting.</li>
+      <li>Resolved an issue that caused the active input table cell to appear beneath the element’s horizontal scrollbar when a user edited a row towards the bottom of the </li>
+</ul>
 
 ### Week ending 6.2.23
  <ul>
@@ -166,11 +244,8 @@ Bug releases are broken down by week for specificity.
       <li>Resolved issue that disabled pivot table title editing after the value placement was moved from the Pivot columns property to the Pivot rows property.</li>
 </ul>
 
-### Week ending 6.9.23
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 
 ## **Additional Information**
 Duration: 20
