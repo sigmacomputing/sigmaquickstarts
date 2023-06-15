@@ -12,6 +12,7 @@ Weeks Added so far:
 Release notes for the month of June 2023 features, published on first Friday of July
 6.2.2023
 6.9.2023
+6.16.2023
 -->
 
 # 07-2023 (for June)
@@ -60,6 +61,14 @@ For more information, see [Organization Member API.](https://help.sigmacomputing
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Connect to MySQL (BETA)
+Duration: 20
+
+You can now connect Sigma directly to your data in a MySQL data warehouse. Learn how to create and manage the connection in Connect to MySQL.
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Dynamic Connection & Role Switching (Snowflake)
 Duration: 20
@@ -212,6 +221,16 @@ To configure individual legend visibility, go to Element format > Legend and ena
 
 ## Workbooks (general)
 
+### Grid layout PDF export
+Workbooks with Grid Layout (beta) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
+
+### Multi-element delete confirmation
+When you select multiple elements to delete, the confirmation modal now lists all dependencies. View names of elements to be deleted alongside the impacted elements that currently use them as sources.
+
+### Keyboard shortcuts
+We added new keyboard shortcuts to help you work with input tables. See `Keyboard shortcuts` > `Input tables`.
+
+### Others
 You can now detach a control directly from its element without having to go to the control first.
 
 Custom options for number formatting now includes “pp”, for percentage point, a formatting option for values and value comparisons. 
@@ -225,13 +244,19 @@ Duration: 20
 
 Bug releases are broken down by week for specificity.
 
+### Week ending 6.15.23
+ <ul>
+      <li>Resolved an issue that changed the height of table elements when the browser width was adjusted.</li>
+      <li>Resolved an issue that added excess empty canvas space in page-level PNG images attached to scheduled exports.</li>
+</ul>
+
 ### Week ending 6.9.23
  <ul>
-      <li>Resolved an issue that caused some embeds to display in mobile mode rather than desktop. </li>
+      <li>Resolved an issue that caused some embeds to display in mobile mode rather than desktop.</li>
       <li>Materialization status updates correctly when clicking Materialize now in the Materialization schedules page.</li>
       <li>Resolved an issue that caused unintentional duplicate records in linked input tables when one or more users edited the same input table row in multiple browser tabs.</li>
       <li>Resolved an issue that intermittently prevented input table cell edits from persisting.</li>
-      <li>Resolved an issue that caused the active input table cell to appear beneath the element’s horizontal scrollbar when a user edited a row towards the bottom of the </li>
+      <li>Resolved an issue that caused the active input table cell to appear beneath the element’s horizontal scrollbar when a user edited a row towards the bottom of the table.</li>
 </ul>
 
 ### Week ending 6.2.23
