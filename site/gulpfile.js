@@ -259,7 +259,7 @@ gulp.task('build:js', (callback) => {
     .pipe(gulp.dest('build'))
   );
   const sigmaSrcs = [
-    'app/scripts/sigma-dev-8020.js'
+    'app/scripts/sigma-dev-8020.js',  'app/scripts/defaultviewscript.js',
   ];
   streams.push(gulp.src(sigmaSrcs, { base: 'app/' })
     .pipe(gulpif('*.js', babel(opts.babel())))

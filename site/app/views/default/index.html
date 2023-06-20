@@ -690,7 +690,8 @@
                               <a href="http://localhost:8000/?cat=snowflake" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="snowflake">Snowflake</a>
                               <a href="http://localhost:8000/?cat=tables" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="tables">Tables</a>
                               <a href="http://localhost:8000/?cat=use-cases" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="use-cases">Use Cases</a>
-                              <a href="http://localhost:8000" target="_self" class="button-primary w-button" onclick="updateButtonClass(event, this)">Show All</a>
+                              <a href="http://localhost:8000" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="show-all">Show All</a>
+
 
                             </div>
                                                                               
@@ -700,6 +701,8 @@
          </header>
          {% endraw %}
          <main>
+            <p id="displayText"></p>
+
       <br>
       </div>
 

@@ -20,12 +20,16 @@ function updateButtonClass(event, clickedButton) {
   clickedButton.classList.add('button-primary');
 
   // Update the display text with the last clicked button category
-  //const displayText = document.getElementById('displayText');
-  // displayText.textContent = `Last clicked category: ${category || 'Show All'}`;
+  const displayText = document.getElementById('displayText');
+  displayText.textContent = `Last clicked category: ${category}`;
 
   // Update the URL with the category value using pushState()
-  const newUrl = category ? `http://localhost:8000/?cat=${category}` : 'http://localhost:8000';
-  history.pushState({ category }, '', newUrl);
+  if (category === 'show-all') {
+    history.pushState(null, '', 'http://localhost:8000');
+  } else {
+    const newUrl = `http://localhost:8000/?cat=${category}`;
+    history.pushState({ category }, '', newUrl);
+  }
 
   // Perform filtering based on the selected category
   filterItemsByCategory(category);
@@ -33,13 +37,21 @@ function updateButtonClass(event, clickedButton) {
 
 // Function to filter items by category
 function filterItemsByCategory(category) {
-  // Get all items and show/hide them based on category
+  // Get all items and hide them
   const items = document.querySelectorAll('.retailers-card');
   items.forEach(item => {
-    if (!category || item.dataset.category === category) {
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
+    item.style.display = 'none';
   });
+
+  // Show items with matching category
+  if (category === 'show-all') {
+    items.forEach(item => {
+      item.style.display = 'block';
+    });
+  } else {
+    const matchingItems = document.querySelectorAll(`.retailers-card[data-category="${category}"]`);
+    matchingItems.forEach(item => {
+      item.style.display = 'block';
+    });
+  }
 }
