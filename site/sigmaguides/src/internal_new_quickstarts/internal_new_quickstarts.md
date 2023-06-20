@@ -73,21 +73,17 @@ We will now install Node.js.
 
 Node.js is an open-source, server-side runtime environment that allows developers to build scalable and high-performance web applications, in this case, QuickStarts.
 
-[Download the Node package for Mac](https://nodejs.org/en/download/)
+Return to our open Terminal and execute the command:
+```plaintext
+brew install node
+```
 
-<img src="assets/node1.png" width="600"/>
+Now install Node Package Manager::
+```plaintext
+npm install -g grunt-cli
+```
 
-One the download is complete, open it:
-
-<img src="assets/node2.png" width="600"/>
-
-Step through the installation, taking all the defaults:
-
-<img src="assets/node3.png" width="600"/>
-
-It is ok to delete the downloaded file when done.
-
-Return to our open Terminal and execute the commands, one at a time:
+Verify node is installed correctly:
 ```plaintext
 node -v
 ```
@@ -97,10 +93,9 @@ and
 npm -v
 ```
 
-You should see a version number returned for each command. This means Node and the Node Package Manager are installed and working:
+You should see a version number (version should not matter) returned for each command. This means Node and the Node Package Manager are installed and working:
 
 <img src="assets/node5.png" width="600"/>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -147,25 +142,16 @@ touch~/.bash_profile; open ~/.bash_profile
 
 If the file is found, this will open your Mac profile configuration file where we can verify that the first 4 lines exist.
 
-<img src="assets/claat2.png" width="600"/>
-
 If they do not, please add them and save the file. 
 
-
 Here is the codeblock to copy and paste:
-
-**You will need to replace {yourname} with the name of your /Users/{yourname} directory.**
 ```plaintext
 #adding Golang to path
 export PATH=$PATH:/usr/local/go/bin
 
-#adding node to path
-export PATH="/Users/{yourname}/.nvm/versions/node/v14.21.3/bin:$PATH"
+#adding node and brew to path
+export PATH="/usr/local/bin:$PATH"
 ```
-
-In the example below, we have run the command `pwd` to display the present working directory of a new terminal session. The value for {yourname} is shown in red as `philballai`.
-
-<img src="assets/claat3.png" width="600"/>
 
 You can now go to the section 6 of the QuickStart.
 
@@ -178,25 +164,19 @@ vi ~/.bash_profile
 ```
 
 Here is the codeblock to copy and paste:
-
-Here is the codeblock to copy and paste:
-
-**You will need to replace {yourname} with the name of your /Users/{yourname} directory.**
 ```plaintext
 #adding Golang to path
 export PATH=$PATH:/usr/local/go/bin
 
-#adding node to path
-export PATH="/Users/{yourname}/.nvm/versions/node/v14.21.3/bin:$PATH"
+#adding node and brew to path
+export PATH="/usr/local/bin:$PATH"
 ```
 
-In the example below, we have run the command `pwd` to display the present working directory of a new terminal session. The value for {yourname} is shown in red as `philballai`.
+In the "vi" editor, you need to press the `:` key to exit edit mode. 
 
-<img src="assets/claat3.png" width="600"/>
+After pressing `:`, press `w` to save the file and then `q` to quit back to the terminal prompt.
 
 You can now go to the section 6 of the QuickStart.
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -231,9 +211,9 @@ For convenience, we will move the extracted `app` file to `Applications`.
 
 <img src="assets/VSCodetoApps.gif">
 
-Now you can access VSCode from the Mac application view. 
+Now you can access VSCode from the Mac "Applications" list. 
 
-We don't need to open it just yet.
+**We don't need to open it just yet.**
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -331,9 +311,8 @@ source ~/.bash_profile
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The previous command needs to be executed anytime VSCode is exited completely. This is a temporary patch as we sort a way to eliminate that minor step.
+<strong>IMPORTANT:</strong><br> The previous command needs to be executed anytime VSCode is exited completely. In Step 12, we show how to configure VSCode to eliminate this requirement.
 </aside>
-
 
 Next, execute the command (to install the npm packages inside QuickStarts):
 ```plaintext
@@ -431,13 +410,26 @@ When ready to commit (ie: at end of day), enter a commit message and click `Comm
 
 <img src="assets/qs6.png" width="600"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> VSCode may throw an error on your first local commit (asking for username and email address to be configured). If so, please execute the instructions below the image.
+</aside>
+
+Execute to following commands in VSCode Terminal (replace the username and email with the values used in your GitHub web account):
+```plaintext
+git config --global user.name "John Doe"
+```
+...and then:
+```plaintext
+git config --global user.email johndoe@example.com
+```
+<br>
 VSCode provides a "Publish Branch" button but we will use GitHub Desktop for publishing branches to Git as well as creating "Pull Requests". 
 
 A Pull Request notifies the Git Administrator that there is something to review and approve.
 
 Lastly, open the new QuickStart.md file (this is the markdown file that defines a QuickStart).
 
-The template has comments (you can delete them if you want) to assist you in the important items that require consideration.
+The template has comments in green (you can delete them if you want) to assist you in the important items that require consideration.
 
 <img src="assets/qs8.png" width="800"/>
 
@@ -460,6 +452,8 @@ This guide provides all the available and supported markdown methods.
 ## Publication
 Duration: 5
 
+
+
 1. Make a new branch in GitHub Desktop
 2. Make your changes in VSCode and save/commit them
 3. Publish your branch to GitHub using GitHub Desktop
@@ -474,17 +468,77 @@ Once approved, the QuickStart will be live in under 5 min.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION -->
 
+## VSCode - Extra Configuration
+Duration: 5
+
+### Eliminate the requirement to run source ~/.bash_profile each time∏
+
+We can live with this or do some extra configuration to eliminate the extra step in VSCode. 
+
+In VSCode, press `cmd` + `shift` + `p` to access the settings search bar.
+
+Type in `preferences: open` and then click to select `Preferences: Open User Settings`:
+
+<img src="assets/vsc13.png" width="800"/>
+
+
+Type in `@feature:terminal` and then scroll down to find `Edit in settings.json`. Click that link for the one that corresponds to `Osx`:
+
+<img src="assets/vsc12.png" width="800"/>
+
+This will open a `settings.json` file. We will add the following code that will instruct VSCode to always use the .bash_profile file we created in Step 5.
+
+Copy and paste the following code as shown in the image (make sure you also add the leading comma shown in the image)
+```plaintext
+    "terminal.integrated.env.osx": {
+        "BASH_ENV": "${HOME}/.bashrc"
+    },
+```
+
+<img src="assets/vsc14.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The other lines shown in the above image (not related to our new codeblock) will likely vary depending on what is installed on your VSCode instance. We can ignore those.
+</aside>
+
+Save `settings.json`. 
+
+Quit and restart VSCode.
+
+Now new terminal sessions will not require running the command `source ~/.bash_profile`.
+
+### Make Terminal open in "site" directory
+While this is minor, less typing is better. 
+
+In VSCode, press `cmd` + `shift` + `p` to access the settings search bar.
+
+Type `terminal.integrated.cwd`. 
+
+Enter the desired folded that new Terminal sessions should open in:
+```
+./site
+```
+
+<img src="assets/vsc15.png" width="800"/>
+
+Now new Terminals will always open in the quickstarts\site directory so that we can then directly execute `npm run serve` to start the web-server.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
+
 ## Common Errors
 Duration: 5
 
 ### 1. Claat related errors
-   - Make sure Go is properly in your `PATH`. Add the following lines to your profile (`~/.profile`, or `~/.zshrc`):
-````bash
+   - Make sure Go is properly in your `PATH`. Add the following lines to your profile (`~/.bash_profile`):
+````plaintext
 #adding Golang to path
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
+
+#adding node and brew to path
+export PATH="/usr/local/bin:$PATH"
 ````
-  ***Note:** After adding Go to your `PATH`, be sure to apply your new profile: `source ~/.profile` or `source ~/.zshrc`*
+  ***Note:** After adding Go to your `PATH`, be sure to apply your new profile: `source ~/.profile` in VSCode Terminal or review Step 12*
 
 ### 2. You get a `EACCES` error when installing `gulp-cli`
    - This means that your npm location needs to be updated. Follow the steps here: [Resolve EACCESS permissions](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory)
