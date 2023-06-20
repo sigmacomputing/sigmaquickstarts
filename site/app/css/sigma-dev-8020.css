@@ -517,7 +517,8 @@ figure {
 }
 
 .button-primary.cc-secondary {
-  background-color: red;
+/* Remove or modify this selector to avoid conflicts - by PB */
+  /* background-color: red; */
 }
 
 .styles__label-wrap {
@@ -930,6 +931,8 @@ figure {
 }
 
 .button-secondary.cc-secondary {
+  /* Remove or modify this selector to avoid conflicts - by PB */
+  /* background-color: red; */
   background-color: red;
 }
 
@@ -71888,4 +71891,10 @@ figure {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+/* Added by PB */
+a.buttons-wrapper .w-button {
+  background-color: #0000FF !important;
+  color: #FFFFFF !important;
 }
