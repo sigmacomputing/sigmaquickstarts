@@ -1,3 +1,6 @@
+// Added by PB 20 Jun 2023
+// Provides colored button on click of categories
+
 // Get references to all button elements
 const buttons = document.querySelectorAll('.w-button');
 
