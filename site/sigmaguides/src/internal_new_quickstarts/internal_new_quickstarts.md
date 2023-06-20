@@ -386,7 +386,7 @@ Execute the following two commands to create a new QuickStart in our new branch:
 
 First change to the src folder
 ```plaintext
-cd sigmaguides\src
+cd sigmaguides/src
 ```
 
 Then execute this command to create a new QuickStart:
