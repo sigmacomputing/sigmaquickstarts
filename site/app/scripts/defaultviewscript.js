@@ -28,9 +28,9 @@ function updateButtonClass(event, clickedButton) {
 
   // Update the URL with the category value using pushState()
   if (category === 'show-all') {
-    history.pushState(null, '', 'http://localhost:8000');
+    history.pushState(null, '', 'https://quickstarts.sigmacomputing.com/');
   } else {
-    const newUrl = `http://localhost:8000/?cat=${category}`;
+    const newUrl = `https://quickstarts.sigmacomputing.com//?cat=${category}`;
     history.pushState({ category }, '', newUrl);
   }
 
