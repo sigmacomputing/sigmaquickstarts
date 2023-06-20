@@ -82,6 +82,16 @@
       <meta name="twitter:description" property="twitter:description" content="{{view.description}}" />
       <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
       <meta name="twitter:url" property="twitter:url" content="{{canonicalViewUrl(view)}}" />
+
+        <!-- Added by PB -->
+      <style>
+         #displayText {
+           display: none;
+         }
+         </style>
+        <!-- End of PB add -->
+
+
    </head>
    <body id="app" is="body-bind" class="loading fullbleed {% if view.id != 'default' -%}view{%- endif -%}">
       <div class="w-embed">
@@ -679,18 +689,18 @@
                            <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="search g-shadow-100 w-input" maxlength="256" placeholder="Search" id="search">
                         
                            <div class="buttons-wrapper">
-                              <a href="http://localhost:8000/?cat=administration" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="administration">Administration</a>
-                              <a href="http://localhost:8000/?cat=embedding" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="embedding">Embedding</a>
-                              <a href="http://localhost:8000/?cat=functions" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="functions">Functions</a>
-                              <a href="http://localhost:8000/?cat=fundamentals" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="fundamentals">Fundamentals for New Users</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=administration" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="administration">Administration</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=embedding" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="embedding">Embedding</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=functions" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="functions">Functions</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=fundamentals" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="fundamentals">Fundamentals for New Users</a>
                             </div>
                             
                             <div class="buttons-wrapper">
-                              <a href="http://localhost:8000/?cat=partners" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="partners">Partners</a>
-                              <a href="http://localhost:8000/?cat=snowflake" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="snowflake">Snowflake</a>
-                              <a href="http://localhost:8000/?cat=tables" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="tables">Tables</a>
-                              <a href="http://localhost:8000/?cat=use-cases" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="use-cases">Use Cases</a>
-                              <a href="http://localhost:8000" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="show-all">Show All</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=partners" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="partners">Partners</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=snowflake" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="snowflake">Snowflake</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=tables" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="tables">Tables</a>
+                              <a href="https://quickstarts.sigmacomputing.com/?cat=use-cases" target="_self" class="button-secondary w-button" onclick="updateButtonClass(event, this)" data-cat="use-cases">Use Cases</a>
+                              <a href="https://quickstarts.sigmacomputing.com/" target="_self" class="button-primary w-button" onclick="updateButtonClass(event, this)" data-cat="show-all">Show All</a>
 
 
                             </div>
@@ -701,7 +711,10 @@
          </header>
          {% endraw %}
          <main>
+
+            <!-- Added by PB -->
             <p id="displayText"></p>
+            <!-- End of PB add -->
 
       <br>
       </div>
@@ -752,20 +765,6 @@
          {% endfor %}
        </card-sorter>
        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
             <div id="loading-placeholder" class="site-width">
                Loading guides, please wait...
