@@ -3,7 +3,7 @@ id: PROVIDE A UNIQUEID (use the QS name with no spaces)
 summary: This is a sample Sigma Guide
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 
