@@ -103,7 +103,7 @@ We could solve this by installing packages globally but we prefer to avoid that 
 
 To properly support this control, we will make use of `Python environments` to create project/package isolation. 
 
-For our first project, we will create a Python environment called `snowpark`.
+For our first project, we will create a Python environment called `streamlit`.
 
 In our local computer, navigate to where Miniconda is installed. The default is based on your computer username.
 
@@ -120,67 +120,63 @@ We should see the "base" environment that is included with Miniconda.
 
 <img src="assets/sp6.png" width="800"/>
 
-Now let's create our "snowpark" environment for our VSCode project. Run the command:
+Now let's create our "streamlit" environment for our VSCode project. Run the command:
 ```plaintext
-conda create --name snowpark python=3.8
+conda create --name streamlit python=3.8
 ```
 
 When prompted to proceed, type `y` and hit return:
 
 <img src="assets/sp7.png" width="600"/>
 
-Listing the environments again, we should see `base` and `snowpark` with base being the current select noted by the "*":
+Listing the environments again, we should see `base` and `streamlit` with base being the current select noted by the "*":
 ```plaintext
 conda env list
 ```
 
-<img src="assets/sp8.png" width="800"/>
+<img src="assets/sl1.png" width="800"/>
 
-We are ready with our new Conda environment called `snowpark`. 
+We are ready with our new Conda environment called `streamlit`. 
 
-Before we use this environment in VSCode, we should install packages we will plan to use later in this QuickStart, inside our `snowpark` environment.
+## Install Streamlit
 
-To install packages inside our `snowpark` environment, we need to first activate it. Run the command:
+To install Streamlit on our local computer, run the command:
 ```plaintext
-conda activate snowpark
+pip install streamlit
 ```
 
-`snowpark` is activated and we can confirm that by looking at the conda env list again:
+A lot of information will be displayed and the command prompt will appear when done. There should be no error messages:
 
-<img src="assets/sp9.png" width="800"/>
+<img src="assets/sl4.png" width="800"/>
 
-The only package our UDF will require is called `pandas`, which includes several dependant packages.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Pandas is a popular open-source data analysis library for Python that provides powerful and easy-to-use data structures and data analysis tools. It is widely used in data science and data analytics to manipulate and analyze data in various formats such as CSV, Excel, SQL databases, and more.
-</aside>
-
-[Readme more about Panda here.](https://pandas.pydata.org/)
-
- Run the command to install `pandas` in our `snowpark` environment:
+Now we can test our local Streamlit environment:
 ```plaintext
-conda install pandas
+streamlit hello
 ```
 
-As before, when prompted to proceed, press `y` and hit enter:
+Accept the warning about incoming network connections:
 
-<img src="assets/sp10.png" width="800"/>
+<img src="assets/sl6.png" width="800"/>
 
-The installation of pandas also installed many other dependencies. One is called `NumPy`. We will use this in our project, but won't need to install it again.
+The following prompt should appear in terminal asking for email address (we will skip over that, so hit `Enter`):
+
+<img src="assets/sl5.png" width="800"/>
+
+The following page should appear using your default browser:
+
+<img src="assets/sl7.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> NumPy is a numerical computing package for Python that provides support for large, multi-dimensional arrays and matrices, along with a large library of mathematical functions to operate on these arrays.
+<strong>NOTE:</strong><br> Streamlit uses port 8501 on your local computer. This port is not commonly used but if it happens to be in use, you will need to stop the other service temporarily.
 </aside>
 
 
-
-
-
-
-
-
-## **NEXT SECTION**
+## Streamlit - Hello World
 Duration: 20
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
