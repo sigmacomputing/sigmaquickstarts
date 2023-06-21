@@ -21,5 +21,8 @@
         "themseselves",
         "UDF's"
     ],
-    "window.commandCenter": true
+    "window.commandCenter": true,
+    "cSpell.ignoreWords": [
+        "Streamlit"
+    ]
 }
