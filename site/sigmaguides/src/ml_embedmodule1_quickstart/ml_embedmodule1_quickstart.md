@@ -3,7 +3,7 @@ id: ml_embedmodule1_quickstart
 summary: A lab for Advanced Embedding Module 1, Lesson 1.
 categories: Embedding
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 
