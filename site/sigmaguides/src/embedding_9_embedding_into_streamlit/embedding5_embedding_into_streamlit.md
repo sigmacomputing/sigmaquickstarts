@@ -140,7 +140,7 @@ We are ready with our new Conda environment called `streamlit`.
 
 ## Install Streamlit
 
-To install Streamlit on our local computer, run the command:
+To install Streamlit on our local computer, execute the following command in Terminal:
 ```plaintext
 pip install streamlit
 ```
@@ -149,20 +149,20 @@ A lot of information will be displayed and the command prompt will appear when d
 
 <img src="assets/sl4.png" width="800"/>
 
-Now we can test our local Streamlit environment:
+Now we can test our local Streamlit environment. Execute the following command in Terminal:
 ```plaintext
 streamlit hello
 ```
 
-Accept the warning about incoming network connections:
+Click the `Allow` button to allow Python to accept incoming network connections:
 
 <img src="assets/sl6.png" width="800"/>
 
-The following prompt should appear in terminal asking for email address (we will skip over that, so hit `Enter`):
+The following prompt should appear in terminal asking for email address (we will skip over that, so leave it blank and press `Enter`):
 
 <img src="assets/sl5.png" width="800"/>
 
-The following page should appear using your default browser:
+Streamlit will automatically open your default browser to the standard webpage that comes with Streamlit:
 
 <img src="assets/sl7.png" width="800"/>
 
@@ -173,6 +173,156 @@ The following page should appear using your default browser:
 
 ## Streamlit - Hello World
 Duration: 20
+
+Open VSCode. 
+
+We need to select the Python interpreter we want to use for our project.
+
+Access the VSCode editor commands. `Ctrl+Shift+P` will bring you directly to the editor commands.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This is not the same thing as the VSCode search bar that is always on by default.
+</aside>
+
+In the editor bar, type `select inter` and you should see `Python: Select Interpreter` listed. Select that.
+
+<img src="assets/sp3.png" width="800"/>
+
+There may by a few versions installed (depending on your system) and we want to select the one that is based on our `streamlit` environment.
+
+We can tell which that is as it will say `streamlit`. 
+
+<img src="assets/sp13.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We have seen VSCode request another restart after this step so check (lower left corner of VSCode) to see if it is required again. 
+</aside>
+
+After restart (if required), VSCode will revert to the default Python environment so change that back to `streamlit` again. 
+
+Make sure that the Python Interpreter selected in blue is `streamlit`, indicating that it is active.
+
+<img src="assets/sp13.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> It is possible to change the default interpreter, but that is a distraction and we want to just start building.
+</aside>
+
+We are now setup to get build a Python webpage for Streamlit using VSCode.
+
+Using the VSCode button (or the file menu if you dont see the button), click to `Open Folder`:
+
+<img src="assets/sl8.png" width="800"/>
+
+Navigate to where you installed Streamlit and select that top-level folder:
+
+<img src="assets/sl9.png" width="800"/>
+
+Right-click on new file icon (as shown) to create a blank new file:
+
+<img src="assets/sl10.png" width="800"/>
+
+Name the new file `hello-world.py` and paste the following code in editor for this new file:
+```plaintext
+import streamlit as st
+
+def main():
+    st.write("Hello, World!")
+
+if __name__ == "__main__":
+    main()
+```
+
+<img src="assets/sl11.png" width="800"/>
+
+Save the file.
+
+Open a new Terminal session inside VSCode:
+
+<img src="assets/sl12.png" width="800"/>
+
+In the VSCode Terminal session, execute the following command:
+```plaintext
+streamlit run hello_world.py
+```
+
+Streamlit will open in your default browser with our new webpage:
+
+<img src="assets/sl13.png" width="600"/>
+
+We are now ready to embed Sigma into our new Streamlit page.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Embed Content
+Duration: 20
+
+We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](https://help.sigmacomputing.com/hc/en-us/articles/1500011565421-Public-Embedding) of the Sales Performance Example Template.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is also possible to secure the Streamlit application and use Sigma's secure embedding methods but that is out-side the scope of this QuickStart.
+</aside
+
+Log into Sigma (as Administrator) and navigate to `Templates` and click the **Sales Performance Example** Template:
+
+<img src="assets/sl14.png" width="800"/>
+
+Dismiss the pop-up help regarding swapping of data sources. We will just use the sample data provided.
+
+Click the `Save As` button in the upper right corner and use the name `Sigma Dashboard`; click `Save`.
+
+Now click the drop menu (as shown below) and select `Embedding`:
+
+<img src="assets/sl15.png" width="800"/>
+
+In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow followed by the `Dashboard`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma embedding supports a Workbook, Page or any Elements to be embedded into external applications.
+</aside
+
+<img src="assets/sl16.png" width="800"/>
+
+Once we selected to embed the Dashboard, we are presented with both a Public Link to the content as well as the Embed Code. 
+
+Click `Copy` to select the `Public Link` and paste it into a text file; we will use it in the next step:
+
+<img src="assets/sl17.png" width="800"/>
+
+In VSCode, we are going to delete the code in our "hello_world.py" file with this code:
+```plaintext
+import streamlit as st
+
+def main():
+    st.write("Hello, World!")
+    st.markdown('''
+        <iframe src="{REPLACE THIS WITH YOUR PUBLIC URL FROM THE PREVIOUS COPY IN SIGMA}" 
+            frameborder="0" 
+            width="100%" 
+            height="100%">
+        </iframe>
+    ''', unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
+```
+
+You will notice that the code is the same as before but extended in the st.markdown section to add the required iframe.
+
+
+https://app.sigmacomputing.com/embed/1-2t6NvaaMfGT5cVxec3xklt
+
+
+
+
+
+
+
+
+
+
+
 
 
 
