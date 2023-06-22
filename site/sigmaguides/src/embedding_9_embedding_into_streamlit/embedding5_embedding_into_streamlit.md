@@ -310,26 +310,17 @@ if __name__ == "__main__":
 
 You will notice that the code is the same as before but extended in the st.markdown section to add the required iframe.
 
+<img src="assets/sl18.png" width="800"/>
 
-https://app.sigmacomputing.com/embed/1-2t6NvaaMfGT5cVxec3xklt
+Save the new code and refresh the browser page to see the embedded Sigma content:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="assets/sl19.png" width="800"/>
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+
 
 ## What we've covered
 Duration: 5
