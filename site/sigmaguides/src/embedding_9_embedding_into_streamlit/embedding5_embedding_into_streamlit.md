@@ -21,7 +21,6 @@ Snowflake customers who are using (or interested in using) Streamlit and want to
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
   <li>Miniconda for required Python packages</li>
 </ul>
@@ -30,14 +29,16 @@ Snowflake customers who are using (or interested in using) Streamlit and want to
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Microsoft VSCode](https://code.visualstudio.com/download)</button> <button>[Miniconda](https://docs.conda.io/en/latest/miniconda.html)</button>
   
 ### What You’ll Learn
 What is Snowflake Streamlit and how can we embed Sigma content into it.
 
 ### What You’ll Build
 
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+We will use Streamlit and Sigma to build a webpage that embed a Sigma dashboard:
+
+<img src="assets/sl19.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -129,7 +130,12 @@ When prompted to proceed, type `y` and hit return:
 
 <img src="assets/sp7.png" width="600"/>
 
-Listing the environments again, we should see `base` and `streamlit` with base being the current select noted by the "*":
+We need to activate our new environment. Run the command:
+```plaintext
+conda activate streamlit
+```
+
+Listing the environments again, we should see `streamlit` being the current select noted by the "*":
 ```plaintext
 conda env list
 ```
@@ -315,6 +321,8 @@ You will notice that the code is the same as before but extended in the st.markd
 Save the new code and refresh the browser page to see the embedded Sigma content:
 
 <img src="assets/sl19.png" width="800"/>
+
+Congratulations, you have setup your Streamlit app with Sigma embedded into it. 
 
 
 ![Footer](assets/sigma_footer.png)
