@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-03-16
 
 

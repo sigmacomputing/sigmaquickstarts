@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 
 # Embedding Sigma in Streamlit Applications
 <!-- The above name is what appears on the website and is searchable. -->
