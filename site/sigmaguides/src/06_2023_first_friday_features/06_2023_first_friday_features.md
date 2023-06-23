@@ -59,6 +59,8 @@ The three possible values are `guest`, `internal`, or `embed`.
 
 For more information, see [Organization Member API.](https://help.sigmacomputing.com/hc/en-us/articles/4408555573267-Organization-Member-API)
 
+### Changes to existing methods
+
 The **/v2/workbooks/{workbookId}/queries** endpoint now returns elementName. 
 
 The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** endpoint now returns name and columns.   
