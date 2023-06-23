@@ -13,6 +13,7 @@ Release notes for the month of June 2023 features, published on first Friday of 
 6.2.2023
 6.9.2023
 6.16.2023
+6.23.2023
 -->
 
 # 07-2023 (for June)
@@ -58,6 +59,12 @@ The three possible values are `guest`, `internal`, or `embed`.
 
 For more information, see [Organization Member API.](https://help.sigmacomputing.com/hc/en-us/articles/4408555573267-Organization-Member-API)
 
+The **/v2/workbooks/{workbookId}/queries** endpoint now returns elementName. 
+
+The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** endpoint now returns name and columns.   
+
+The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** now returns vizualizationType.  
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -82,8 +89,18 @@ Dynamic Connection & Role Switching (DRS) allows run-time swapping of the Snowfl
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Financial Functions
+## Embedding 
 Duration: 20
+
+**Embed Sandbox** is now generally available. For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619)
+
+A new optional parameter is available, **disable_mobile_view**, for user-backed embeds. If you set this parameter to yes, workbooks won't automatically resize to the mobile layout.[^1] 
+
+[^1]TEST
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 Sigma has added support (based on customer feedback) for a few specific functions that are critical for financial calculations. They include:
 
@@ -221,6 +238,9 @@ To configure individual legend visibility, go to Element format > Legend and ena
 
 ## Workbooks (general)
 
+### Controls
+You can use the new Create list from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
+
 ### Grid layout PDF export
 Workbooks with Grid Layout (beta) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
 
@@ -243,6 +263,13 @@ Custom options for number formatting now includes “pp”, for percentage point
 Duration: 20
 
 Bug releases are broken down by week for specificity.
+
+### Week ending 6.23.23
+ <ul>
+      <li>When allow_export_boolean isn't set or is set to false in an application embed, users no longer see an option to export in the workbook. </li>
+      <li>The POST /v2/members endpoint for orgs using OAuth now functions correctly.</li>
+      <li>Resolved an issue that prevented column auto-select when additional targets were added to controls. When one or more targets exist, new targets now default to the same column applied to the first target element.</li>
+</ul>
 
 ### Week ending 6.15.23
  <ul>
