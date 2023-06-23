@@ -3,9 +3,10 @@ id: embedding_9_embedding_into_streamlit
 summary: embedding5_embedding_into_streamlit
 categories: Embedding
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
+lastUpdated: 2023-06-27
 
 # Embedding Sigma in Streamlit Applications
 <!-- The above name is what appears on the website and is searchable. -->
