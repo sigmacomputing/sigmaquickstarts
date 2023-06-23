@@ -13,6 +13,30 @@ tags: default
 ## Overview 
 Duration: 5 
 
+### What is Streamlit
+Streamlit is an open source app framework in Python language. It helps us create web apps for data science and machine learning in a short time. It is compatible with major Python libraries such as scikit-learn, Keras, PyTorch, SymPy(latex), NumPy, pandas, Matplotlib etc.
+
+Streamlit is intended to provide Snowflake users the ability to rapidly deploy applications, and share data. 
+
+**Teams will use Streamlit to Build a Python Application:**
+
+<ul>
+    <li>Rapid Development Cycle</li>
+    <li>Simplified Coding Experience</li>
+    <li>Internal or External Facing</li>
+    <li>Extensible Embedding</li>
+</ul>
+
+Streamlit will work great with Sigma because you can accelerate the path to deployment of any data applications built, that rely on visualization, while also giving the user our industry differentiated ability to deep dive into the data powering those visuals. 
+
+**Building the Analytics front-end In Sigma provides:**
+<ul>
+    <li>End users a familiar, spreadsheet-like interface.</li>
+    <li>No Code or Semantic knowledge required.</li>
+    <li>Full Role-based Access Control Support.</li>
+    <li>Full Feature Set While Embedded.</li>
+</ul>
+
  ### Target Audience
 Snowflake customers who are using (or interested in using) Streamlit and want to also embed Sigma content in a Streamlit application.
 
@@ -324,18 +348,15 @@ Save the new code and refresh the browser page to see the embedded Sigma content
 
 Congratulations, you have setup your Streamlit app with Sigma embedded into it. 
 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this lab we learned what is Streamlit and how to Embed Sigma into Streamlit application that we built together.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+If you would like to learn more about Streamlit, there is a [video series available.](https://www.youtube.com/watch?v=bfw28e6v4_s)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
