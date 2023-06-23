@@ -1,5 +1,5 @@
 author: 123marianna123
-id: ml_embedmodule1_quickstart
+id: mlembedmodule1quickstart
 summary: A lab for Advanced Embedding Module 1, Lesson 1.
 categories: Embedding
 environments: web
