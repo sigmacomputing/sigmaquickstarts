@@ -94,37 +94,72 @@ Duration: 20
 
 **Embed Sandbox** is now generally available. For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619)
 
-A new optional parameter is available, **disable_mobile_view**, for user-backed embeds. If you set this parameter to yes, workbooks won't automatically resize to the mobile layout.[^1] 
+A new optional parameter is available, **disable_mobile_view**, for user-backed embeds. If you set this parameter to yes, workbooks won't automatically resize to the mobile layout.
 
-[^1]TEST
+<aside class="negative">
+<strong>NOTE:</strong><br> The optional parameter "disable_mobile_view" is only available after upgrading a workbook to the new grid layouts and is not supported in the Classic layouts.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## New Functions
 
+### ArrayDistinct function added: 
+ <strong>[ArrayDistinct](https://help.sigmacomputing.com/hc/en-us/articles/17643668338067)</strong> - Returns the array without duplicate values.<br>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> All Array functions are now in the grouping in Sigma documentation.
+</aside>
+
+[Array functions overview](https://help.sigmacomputing.com/hc/en-us/articles/17644151918099)
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Financial functions added:
 Sigma has added support (based on customer feedback) for a few specific functions that are critical for financial calculations. They include:
 
- <strong>1: [CAGR](https://help.sigmacomputing.com/hc/en-us/articles/360056173174-CAGR)</strong>: Returns the compound annual growth rate of an investment.<br>
+ <strong>[CAGR](https://help.sigmacomputing.com/hc/en-us/articles/360056173174-CAGR)</strong> - Returns the compound annual growth rate of an investment.<br>
+ <strong>[Effect](https://help.sigmacomputing.com/hc/en-us/articles/16999064431635-Effect)</strong> - Returns the effective annual interest rate.<br>
+ <strong>[FV](https://help.sigmacomputing.com/hc/en-us/articles/16960835395987-FV)</strong> - Returns the future value of an investment.<br>
+ <strong>[Nominal](https://help.sigmacomputing.com/hc/en-us/articles/16997965150483-Nominal)</strong> - Returns the nominal annual interest rate.<br>
+ <strong>[NPer](https://help.sigmacomputing.com/hc/en-us/articles/16960962742675-NPer)</strong> - Returns the number of periods for a loan or investment based on known amount, interest rate, and periodic payment amount.<br>
+ <strong>[Pmt](https://help.sigmacomputing.com/hc/en-us/articles/16960642952723-Pmt)</strong> - Returns the periodic payment for a loan based on the amount, number of periods, and constant interest rate.<br>
+ <strong>[PV](https://help.sigmacomputing.com/hc/en-us/articles/17009080477203-PV)</strong> - Returns the present value of a loan or an investment, when using constant and regular periodic payments.<br>
+ <strong>[XNPV](https://help.sigmacomputing.com/hc/en-us/articles/16992978432915-XNPV)</strong> - Returns the net present value of an investment for payments or incomes at irregular intervals.<br>
 
- <strong>2: [Effect](https://help.sigmacomputing.com/hc/en-us/articles/16999064431635-Effect)</strong>: Returns the effective annual interest rate.<br>
+<img src="assets/horizonalline.png" width="800"/>
 
- <strong>3: [FV](https://help.sigmacomputing.com/hc/en-us/articles/16960835395987-FV)</strong>: Returns the future value of an investment.<br>
+### Geographic functions added:
+Sigma added support for the Geography data type, and the corresponding set of 
 
- <strong>4: [Nominal](https://help.sigmacomputing.com/hc/en-us/articles/16997965150483-Nominal)</strong>: Returns the nominal annual interest rate.<br>
+ <strong>[Area](https://help.sigmacomputing.com/hc/en-us/articles/17499176558099)</strong> - Calculates the area of a geography, in specified units.<br>
+ <strong>[Centroid](https://help.sigmacomputing.com/hc/en-us/articles/17499466213907)</strong> - Calculates the geographic center of a geography.<br>
+ <strong>[Distance](https://help.sigmacomputing.com/hc/en-us/articles/17499151606163)</strong> - Calculates the minimum distance between two geographies, in specified units.<br>
+ <strong>[Intersects](https://help.sigmacomputing.com/hc/en-us/articles/17499549806867)</strong> - Determines if one geography intersects another geography.<br>
+ <strong>[Latitude](https://help.sigmacomputing.com/hc/en-us/articles/17498935162643)</strong> - Returns the latitude component of a point.<br>
+ <strong>[Longitude](https://help.sigmacomputing.com/hc/en-us/articles/17498954237459)</strong> - Returns the longitude component of a point.<br>
+ <strong>[Geography](https://help.sigmacomputing.com/hc/en-us/articles/17493791808531)</strong> - Converts data in GeoJSON or WKT formats into the Geography data type.<br>
+ <strong>[Json](https://help.sigmacomputing.com/hc/en-us/articles/17493940071315)</strong> - Converts the Geography data type into GeoJSON format.<br>
+ <strong>[MakePoint](https://help.sigmacomputing.com/hc/en-us/articles/17498980072851)</strong> - Constructs a point from latitude and longitude data.<br>
+ <strong>[MakeLine](https://help.sigmacomputing.com/hc/en-us/articles/17499020056979)</strong> - Constructs a line from a series of points and line segments.<br>
+ <strong>[Perimeter](https://help.sigmacomputing.com/hc/en-us/articles/17499209389715)</strong> - Calculates the perimeter of a geography, in specified units.<br>
+ <strong>[Text](https://help.sigmacomputing.com/hc/en-us/articles/17494056554131)</strong> - Converts the Geography data type into WKT format.<br>
+ <strong>[Within](https://help.sigmacomputing.com/hc/en-us/articles/17499507686035)</strong> - Determines if one geography is fully within another geography.<br>
 
- <strong>5: [NPer](https://help.sigmacomputing.com/hc/en-us/articles/16960962742675-NPer)</strong>: Returns the number of periods for a loan or investment based on known amount, interest rate, and periodic payment amount.<br>
+ [Geography functions overview](https://help.sigmacomputing.com/hc/en-us/articles/17492984861971)
 
- <strong>6: [Pmt](https://help.sigmacomputing.com/hc/en-us/articles/16960642952723-Pmt)</strong>: Returns the periodic payment for a loan based on the amount, number of periods, and constant interest rate.<br>
+<img src="assets/horizonalline.png" width="800"/>
 
- <strong>7: [PV](https://help.sigmacomputing.com/hc/en-us/articles/17009080477203-PV)</strong>: Returns the present value of a loan or an investment, when using constant and regular periodic payments.<br>
+### Passthrough functions added
+You can also use two new Passthrough functions to support the Geography data type:
 
- <strong>8: [XNPV](https://help.sigmacomputing.com/hc/en-us/articles/16992978432915-XNPV)</strong>: Returns the net present value of an investment for payments or incomes at irregular intervals.<br>
+ <strong>[AggGeography]()</strong> - Calls a warehouse aggregate function that returns a Logical data type; aggregation version of CallGeography.<br>
+ <strong>[CallGeography]()</strong> - Calls a warehouse function that returns a Geography data type.<br>
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+<img src="assets/horizonalline.png" width="800"/>
 
-## New Function: Repeat
-
+### Repeat Function Added:
 The Repeat function returns the results of repeating a string a specified number of times.
 
 For example, adding these five new columns:
@@ -241,14 +276,23 @@ To configure individual legend visibility, go to Element format > Legend and ena
 ### Controls
 You can use the new Create list from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
 
+### Grid Layout
+Grid Layout mobile view has been enhanced with the following updates:
+
+   <ul>
+      <li>New option to enable/disable responsive layout.</li>
+      <li>Updated viewport control design.</li>
+      <li>Ability to auto-arrange elements in synced mode.</li>
+   </ul>
+
 ### Grid layout PDF export
 Workbooks with Grid Layout (beta) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
 
-### Multi-element delete confirmation
-When you select multiple elements to delete, the confirmation modal now lists all dependencies. View names of elements to be deleted alongside the impacted elements that currently use them as sources.
-
 ### Keyboard shortcuts
 We added new keyboard shortcuts to help you work with input tables. See `Keyboard shortcuts` > `Input tables`.
+
+### Multi-element delete confirmation
+When you select multiple elements to delete, the confirmation modal now lists all dependencies. View names of elements to be deleted alongside the impacted elements that currently use them as sources.
 
 ### Others
 You can now detach a control directly from its element without having to go to the control first.
