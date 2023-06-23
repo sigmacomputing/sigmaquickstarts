@@ -1,5 +1,5 @@
 author: pballai
-id: embedding5_embedding_into_streamlit
+id: embedding_9_embedding_into_streamlit
 summary: embedding5_embedding_into_streamlit
 categories: Embedding
 environments: web
