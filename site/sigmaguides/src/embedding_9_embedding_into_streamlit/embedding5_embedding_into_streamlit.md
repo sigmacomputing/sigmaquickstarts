@@ -3,7 +3,7 @@ id: embedding5_embedding_into_streamlit
 summary: embedding5_embedding_into_streamlit
 categories: Embedding
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 
