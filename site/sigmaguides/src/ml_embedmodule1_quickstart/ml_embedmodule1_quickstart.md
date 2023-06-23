@@ -116,7 +116,7 @@ Duration: 5
 
 In this lab we learned how to set up our workspaces, folders, and teams to make embedding seamless.
 
-<img src="assets/philzoom.png" width="400"/>
+<img src="./assets/twitter.jpeg" width="400"/>
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
