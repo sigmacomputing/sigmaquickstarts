@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-06-27
 
 # Embedding Sigma in Streamlit Applications
