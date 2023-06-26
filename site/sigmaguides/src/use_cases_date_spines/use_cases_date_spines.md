@@ -5,7 +5,7 @@ categories: use-cases
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2023-05-26
 
 
