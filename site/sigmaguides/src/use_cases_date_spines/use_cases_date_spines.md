@@ -232,15 +232,19 @@ Click the `+` icon to create an new table from the `Date Spine`:
 
 <img src="assets/ds10.png" width="600"/>
 
-Rename the new one to `Weekly Sales + Date Spine`:
-
-<img src="assets/ds8.png" width="600"/>
-
-Join the `Date Spine` table to it:
+Join the `Weekly Sales` table to it:
 
 <img src="assets/ds9.png" width="600"/>
 
-There is only one column in `Date Spine`. Leave it checked and click the `Select` button.
+
+
+
+
+Rename the new one to `Weekly Sales + Date Spine`:
+
+
+
+
 
 
 
