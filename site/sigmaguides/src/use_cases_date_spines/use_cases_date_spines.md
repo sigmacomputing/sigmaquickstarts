@@ -205,7 +205,7 @@ For example, if we look at the first `Product Name` in the list, `1091-Ink Pads`
 
 This will be useful later. 
 
-<img src="assets/ds7.png" width="600"/>
+<img src="assets/ds7.png" width="800"/>
 
 For the second new column we will rename it to `Profit` and use this formula:
 ```code
@@ -214,10 +214,10 @@ Sum([Price] * [Quantity]) - [Cost]
 
 `Weekly Sales` should now look similar to this (the dates may be slightly different; that is ok):
 
-<img src="assets/ds8.png" width="600"/>
+<img src="assets/ds8.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Negative numbers in the "Profit" column mean that we are selling items below our cost and loosing money.
+<strong>NOTE:</strong><br> Negative numbers in the "Profit" column mean that we are selling items below our cost and losing money.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -230,17 +230,93 @@ We are now ready to add the `Date Spine` table to `Weekly Sales` so that we can 
 
 Click the `+` icon to create an new table from the `Date Spine`:
 
-<img src="assets/ds10.png" width="600"/>
+<img src="assets/ds10.png" width="300"/>
+
+Rename the new table to `Weekly Sales + Date Spine`
 
 Join the `Weekly Sales` table to it:
 
-<img src="assets/ds9.png" width="600"/>
+<img src="assets/ds12.png" width="800"/>
+
+and select the `Weekly Sales` table:
+
+<img src="assets/ds11.png" width="300"/>
+
+Change the `Grouping` dropdown (#1 in the screenshot) to `All source columns`.
+
+Click the `Select` button:
+
+<img src="assets/ds13.png" width="800"/>
+
+In the `Edit Join` page, click to select `Weekly Sales` table and set the initial join to `>=`. 
+
+<img src="assets/ds14.png" width="800"/>
+
+Then click the `+` to add an additional join.
+
+Set the second join key as shown:
+
+<img src="assets/ds15.png" width="800"/>
+
+Click the `Preview Output` button.
+
+We are shown the results and a graphical depiction of the data linage.
+
+<img src="assets/ds16.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Lineage refers to the ancestry and relationships between data elements in a workbook. All workbooks contain a lineage display, allowing you to oversee and navigate these relationships. This can be very useful as your data relationships grow in complexity.
+</aside>
+
+To learn more about Data Lineage in Sigma, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/4414895782291-Workbook-Data-Lineage)
+
+We now have joined the two tables together.
+
+In this case, we will just apply the same grouping and new columns we did already, but will not add back the calculated columns; those are already included in the new table.
+
+Also notice that the new table's data is pre-filtered based on the filters of the `Weekly Sales` table. If we remove the filters from that table, both tables will reflect the change.
+
+<img src="assets/ds4.png" width="800"/>
+
+Next we will add two new columns:
+
+`Profit (Last Week)`:
+```plainext
+Lag(Profit)
+```
+
+and
+
+`Profit (Last Year)`:
+```plainext
+Lag([Profit], 52)
+```
+
+To learn more about the Lag function, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037431453-Lag)
+
+When added, the new columns appear like this:
+
+<img src="assets/ds15.png" width="800"/>
+
+STOPPED HERE PHIL. TABLE when wonky with today's date again.
+
+
+The data is showing an extra row of null values and we want to eliminate that. There are a few methods but let's do it with a new column and a formula that checks three other columns for null values:
+```plainext
+IsNull([Profit]) and IsNull([Profit (Last Week)]) and IsNull([Profit (Last Year)])
+```
+
+<img src="assets/ds18.png" width="800"/>
+
+Rename the column `nullcheck` and set it to `hidden`.
 
 
 
 
 
-Rename the new one to `Weekly Sales + Date Spine`:
+
+
+
 
 
 
