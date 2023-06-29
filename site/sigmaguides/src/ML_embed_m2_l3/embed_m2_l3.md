@@ -80,14 +80,14 @@ Duration: 20
 ### Step 1: Connect to cloud data warehouse accounts.
 1. From the homepage, click `connections`.
 
-<img src="assets/m2_l3_step1apt.png" width="300"/>
+<img src="assets/m2_l3_step1APT.png" width="300"/>
 
 2. Click `create connection`.
 3. Give the connection a name and select your customer's warehouse.
 4. Fill out the connection credentials.
 5. Click `connect`.
 
-![Connections from menu](assets/m2_l3_step5apt.png)
+![Connections from menu](assets/m2_l3_step5APT.png)
 
 6. Repeat steps 2-5 for each cloud data warehouse account.
 
