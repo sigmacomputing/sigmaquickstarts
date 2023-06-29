@@ -205,7 +205,7 @@ For example, if we look at the first `Product Name` in the list, `1091-Ink Pads`
 
 This will be useful later. 
 
-<img src="assets/d7.png" width="600"/>
+<img src="assets/ds7.png" width="600"/>
 
 For the second new column we will rename it to `Profit` and use this formula:
 ```code
