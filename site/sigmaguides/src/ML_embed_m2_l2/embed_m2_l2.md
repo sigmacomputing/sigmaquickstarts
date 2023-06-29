@@ -57,7 +57,7 @@ Duration: 20
 ![user attribute from menu](assets/m2_l2_step2.png)
 3. Click `create attribute` and give it a name and description. For this example, name it `region` and in the description write `attribute used for RLS`.
 4. Click `create`.
-![Footer](assets/M2_L2_step4.png)
+![Footer](assets/m2_l2_step4.png)
 
 ![create new user attribute](assets/sigma_footer.png)
 <!-- END OF SECTION-->
