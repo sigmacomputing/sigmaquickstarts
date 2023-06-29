@@ -54,7 +54,7 @@ How to implement RLS for MTT design patterns.
 Duration: 20
 1. Navigate to the administration panel.
 2. Click `user attributes` on the left hand side. 
-![user attribute from menu](assets/M2_L2_STEP2.png)
+![user attribute from menu](assets/m2_l2_step2.png)
 3. Click `create attribute` and give it a name and description. For this example, name it `region` and in the description write `attribute used for RLS`.
 4. Click `create`.
 ![Footer](assets/M2_L2_STEP4.png)

@@ -5,26 +5,7 @@ categories: Embedding
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-
-<!-- 
-SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL.
-
-AVAILABLE CATEGORIES ARE:
-Administration
-Embedding
-Functions
-Fundamentals
-Partners
-Snowflake
-Tables (include pivot and input tables for now)
-Use-cases
-
-PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. 
-
-YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
--->
+tags: 
 
 # Implement Row-Level Security for the OPT and APT Design Patterns
 <!-- The above name is what appears on the website and is searchable. -->
