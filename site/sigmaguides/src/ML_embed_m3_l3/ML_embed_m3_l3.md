@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags:
 lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 
 
