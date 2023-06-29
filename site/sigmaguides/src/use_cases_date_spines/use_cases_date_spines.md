@@ -157,18 +157,24 @@ Select that and click the `Select` button:
 
 Rename the new table to `Weekly Sales`.
 
-Before we start to manipulate the data, we will filter it down so that we are initially working with a small subset of the data. This will allow us to move as fast as possible through our iterations. When we are all done, we can remove the filters.
+Before we start to manipulate the data, we will filter it down so that we are initially working with a small subset of the data. 
+
+We want to look at a few specific records when we discuss each step.
+
+This will also allow us to move as fast as possible through our iterations. 
+
+When we are all done, we can remove the filters.
 
 Set the filters on these columns, for these values:
-```code
+```plaintext
 Column:          Filter:
-Product Type     
+Product Type     Arts & Entertainment
+Store Name       Chesterfield Store #555
 ```
 
+For example:
+
 <img src="assets/ds6.png" width="600"/>
-
-
-
 
 Apply the following groupings to the new `Sales Weekly` table.
 
@@ -186,21 +192,53 @@ We will enrich the data with two calculated columns, adding them to the `Week of
 
 <img src="assets/ds5.png" width="600"/>
 
-For the first new column we will rename it to `to date` and use this formula:
+For the first new column we will rename it to `Previous Week of Date` and use this formula:
 ```code
 Coalesce(DateAdd("millisecond", -1, Lead([Week of Date])), Today())
 ```
 
+when the output of this expression is set to "today's date," it implies that there is a missing or null value in the subsequent data. This occurrence suggests a gap or "hole" in the dataset, indicating that there is no available next value for the current date.
+
+By using the COALESCE() function with TODAY() as the fallback option, the expression handles such gaps or missing values in the data. When the next value is null or not provided, the expression returns the current date (TODAY()) as the output, signifying the presence of a gap in the dataset.
+
+For example, if we look at the first `Product Name` in the list, `1091-Ink Pads`, we see that the last value in the list is for today (when creating this screenshot, today was 2023-06-29). This is because there is no next value provided.
+
+This will be useful later. 
+
+<img src="assets/d7.png" width="600"/>
+
 For the second new column we will rename it to `Profit` and use this formula:
 ```code
-
+Sum([Price] * [Quantity]) - [Cost]
 ```
 
+`Weekly Sales` should now look similar to this (the dates may be slightly different; that is ok):
 
+<img src="assets/ds8.png" width="600"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Negative numbers in the "Profit" column mean that we are selling items below our cost and loosing money.
+</aside>
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## Join Date Spine to Weekly Sales
+Duration: 20
 
+We are now ready to add the `Date Spine` table to `Weekly Sales` so that we can have a more complete set of data that includes missing weeks with null values injected for profit.
+
+Click the `+` icon to create an new table from 
+
+Duplicate the `Weekly Sales` table and rename the new one to `Weekly Sales + Date Spine`:
+
+<img src="assets/ds8.png" width="600"/>
+
+Join the `Date Spine` table to it:
+
+<img src="assets/ds9.png" width="600"/>
+
+There is only one column in `Date Spine`. Leave it checked and click the `Select` button.
 
 
 
@@ -208,7 +246,6 @@ For the second new column we will rename it to `Profit` and use this formula:
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 
 
 ## **NEXT SECTION**
