@@ -228,9 +228,11 @@ Duration: 20
 
 We are now ready to add the `Date Spine` table to `Weekly Sales` so that we can have a more complete set of data that includes missing weeks with null values injected for profit.
 
-Click the `+` icon to create an new table from 
+Click the `+` icon to create an new table from the `Date Spine`:
 
-Duplicate the `Weekly Sales` table and rename the new one to `Weekly Sales + Date Spine`:
+<img src="assets/ds10.png" width="600"/>
+
+Rename the new one to `Weekly Sales + Date Spine`:
 
 <img src="assets/ds8.png" width="600"/>
 
