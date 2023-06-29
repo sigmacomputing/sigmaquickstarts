@@ -3,7 +3,7 @@ id: ml_embedmodule1_quickstart
 summary: A lab for Advanced Embedding Module 1, Lesson 1.
 categories: Embedding
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 
@@ -58,27 +58,39 @@ How to set up workspaces, folders, and teams to prepare data for embedding.
 Duration: 20
 
 ### Create a team of all clients.
-1. Go to the administration screen.
+1. Go to Sigma and open the administration screen.
+![Administration screen in Sigma](assets/m1_l1_step1.png)
 2. Click `teams`.
-3. Click `Create Team`
+3. Click `Create Team`.
 4. Update the team name to `All_Clients_Team`
-5. Select all the clients.
-6. Click `Create`.
+5. Click `Create`.
+![Team creation workflow](assets/m1_l1_step5.png)
+6. Click `Add Members`.
+![Adding members to team](assets/m1_l1_step6.png)
+7. Select all the clients.
+8. Click `Add`.
 
 ### Create a new workspace.
 1. Go to the homepage.
+![going to homepage](assets/m1_l1_step1WORKSPACE.png)
 2. Click `Workspaces`.
 3. Click `Create Workspace`.
 4. Change the name to `Curated_Embeds_Workspace`
+5. Click `Save`.
+![creating workspace workflow](assets/m1_l1_step5WORKSPACE.png)
 
 ### Create folders in your workspace.
 1. Open the `Curated_Embeds_Workspace`.
-2. Click `New Folder`.
+![open workspace](assets/m1_l1_step1FOLDERS.png)
+2. Click `Create Folder`.
 3. Update the title to `Workbooks`.
+![update folder title](assets/m1_l1_step3FOLDERS.png)
 4. Click the menu.
 5. Click `share`.
+![sharing folder](assets/m1_l1_step5FOLDERS.png)
 6. Select `All_Clients_Team`.
 7. Under permission, select `Can Explore`.
+![Giving can explore access](assets/m1_l1_step7FOLDERS.png)
 8. Repeat steps 1-3, but make the title of this folder `Datasets`.
 
 <aside class="positive">
@@ -130,8 +142,6 @@ To properly set up for this use case:
 Duration: 5
 
 In this lab we learned how to set up our workspaces, folders, and teams to make embedding seamless.
-
-<img src="assets/philzoom.png" width="400"/>
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
