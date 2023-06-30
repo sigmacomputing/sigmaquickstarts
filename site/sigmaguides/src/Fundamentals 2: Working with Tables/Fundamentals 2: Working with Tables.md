@@ -105,7 +105,7 @@ You can just select from the list or complete typing. We want the formula `[Cost
 
 <img src="assets/tablebasics6.png" width="500"/>
 
-You can change the Quantity, Price and COGS columns to currency and loose the trailing digits using the function bar:
+You can change the Quantity, Price and COGS columns to currency and lose the trailing digits using the function bar:
 
 <img src="assets/tablebasics7.png" width="500"/>
 
@@ -340,7 +340,7 @@ Click the checkbox for `East` and see the table update for just the East region.
 
 <img src="assets/filters2.png" width="700"/>
 
-Wouldn't it be great if I could just have this filter as as drop down on the Page? No problem. Just click the vertical 3-dots and click “Convert to Page Control”. Now the Table can be filtered by using the dropdown filter list as shown below:
+Wouldn't it be great if I could just have this filter as as dropdown on the Page? No problem. Just click the vertical 3-dots and click “Convert to Page Control”. Now the Table can be filtered by using the dropdown filter list as shown below:
 
 <img src="assets/filters3.png" width="300"/><br>
 
