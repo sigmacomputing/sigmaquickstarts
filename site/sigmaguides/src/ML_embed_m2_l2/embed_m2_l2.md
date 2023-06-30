@@ -57,6 +57,14 @@ Duration: 20
 ![user attribute from menu](assets/m2_l2_step2.png)
 3. Click `create attribute` and give it a name and description. For this example, name it `region` and in the description write `attribute used for RLS`.
 4. Click `create`.
+5. Click `Assign value`.
+6. Assign the `West Team` the attribute `West`, the `Midwest Team` the attribute `Midwest`, the `South Team` the attribute `South`, the `East Team` the attribute `East`, and `Southwest Team` the attribute `Southwest`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure you always enforce RLS at the Dataset level, not the Workbook level, since a user can remove the filter at the Workbook level.
+</aside>
+
+
 ![Footer](assets/m2_l2_step4.png)
 
 ![create new user attribute](assets/sigma_footer.png)
@@ -93,11 +101,14 @@ Duration: 20
 
 <img src="assets/ML_L2_step10DATASET.png" width="700"/>
 
-11. Right click on the column and click `rename`. Name this column `User attribute`.
-12. Enter the following calculation in the formula bar.
-```Contains(Concat(“,”, CurrentUserAtributeText(“region”),”,”), Concat(“,”,[Store Region], “,”)) or CurrentUserInTeam(“internal_team)```
-13. Add another column and call it `RLS_filter`.
-14. On the left-hand side, add a filter and select only `True` from the `User attribute` column.
+11. Right click on the column and click `rename`. Name this column `RLS_filter`.
+12. Enter the following formula:
+```
+CurrentUserAttributeText("Region Attribute") = [Store Region]
+```
+This will return `True` if the user attribute matches the `Store Region` of that row and false if it doesn't.
+
+13. On the left-hand side, add a filter and select only `True` from the `RLS_filter` column.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

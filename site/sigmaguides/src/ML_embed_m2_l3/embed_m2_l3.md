@@ -58,10 +58,15 @@ Duration: 20
 6. At the top of the page enter a SQL query following this structure:
 
 ```
-SELECT
-Column_name_1, column_name_2, etc.
+SELECT *
 FROM
-database.{{#raw system : :CurrentUserAttributeText : :attributename}}.TABLENAME
+database.{{#raw system::CurrentUserAttributeText::attributename}}.TABLENAME
+```
+
+```
+SELECT *
+FROM
+database.{{#raw system::CurrentUserAttributeText::region}}.plugs_... LOOK THIS UP, CHANGE ATTRIBUTE NAME, TABLE NAME, AND DATABSE NAME
 ```
 <aside class="negative">
 <strong>NOTE:</strong><br> The content inside the double curly brackets parameterizes the database. You can also similarly append this to the table name and parameterize the table instead.

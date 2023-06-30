@@ -101,11 +101,12 @@ We’ve included a script for you below, so you don’t have to write it yoursel
 
 
 ## Create and Assign Teams
-1. Click on POS /v2/teams and updating the JSON as to create the following teams:`All_Clients_Team`, `Sales_Team`, and `HR_Team`.
+1. Click on POS /v2/teams and updating the JSON as to create the following teams:`All_Clients_Team`, `East_team` `Southwest_team`, `Midwest_team`, `South_team`, and `West_team`,
+
 
 <img src="assets/M1_L2_finalsection.png" width="300"/>
 
-2. Assign these teams by [insert steps here]. We’ll give the `All_Clients_Team` `can explore` access to the `workbooks` folder, the `Sales_Team` `can explore` access to the `Sales_workbooks` folder, and the `HR_team`, `can explore` access to the `HR_Workbooks` folder.
+2. Assign these teams by [insert steps here]. We’ll give the `All_Clients_Team` `can explore` access to the `workbooks` folder, the `East_Team` `can explore` access to the `East_workbooks` folder, etc.
 
 
 ![Footer](assets/sigma_footer.png)
