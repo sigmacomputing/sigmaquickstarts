@@ -299,8 +299,7 @@ Theme palette: provides a predefined set of colors based on the selected workboo
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks (general)
-
+## Workbooks
 Users can now send workbook error reports with trace IDs that facilitate improved, targeted error investigations.
 ### Controls
 You can use the new Create list from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
