@@ -107,21 +107,20 @@ Duration: 20
 1. Go to the administration screen.
 2. Click `teams`.
 3. Click `Create Team`
-4. Update the team name to `Sales_team`
-5. Select the sales team members.
+4. Update the team name to `East_team`
+5. Select the team members in the `East` region.
 6. Click `Create`.
-7. Repeat steps 1-6, but call the team `HR_team` and select HR team membets.
-
+7. Repeat steps 1-6, for  `West_team`, `Southwest_team`, `Midwest_team`, and`South_team`.
 
 ### Create folders
 1. Go back to the `Curated_Embeds_Workspace`.
 2. Click `New Folder`.
-3. Update the title to `Sales_Workbooks`.
+3. Update the title to `West_Workbooks`.
 4. Click the menu.
 5. Click `share`.
-6. Select `Sales_team`.
+6. Select `West_team`.
 7. Under permission, select `Can Explore`.
-8. Repeat steps 1-7, but make the title of this folder `HR_Workbooks` and give `Can Explore` access to the `HR_team`.
+8. Repeat steps 1-7, for the remaining teams.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
