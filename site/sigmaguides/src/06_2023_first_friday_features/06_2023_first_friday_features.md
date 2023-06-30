@@ -14,6 +14,7 @@ Release notes for the month of June 2023 features, published on first Friday of 
 6.9.2023
 6.16.2023
 6.23.2023
+6.30.2023
 -->
 
 # 07-2023 (for June)
@@ -29,9 +30,9 @@ It is summary in nature and you should refer to the specific Sigma documentation
 
 All other features are considered released (GA or generally available).
  
-Sigma actually has feature and bug fix releases weekly and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous month for your convenance.
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous month for your convenance.
 
-New QuickStarts will be published on the first Friday of each month, for the previous month information. 
+New QuickStarts will be published on the first Friday of each month; for the previous month information. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -75,6 +76,7 @@ Duration: 20
 
 You can now connect Sigma directly to your data in a MySQL data warehouse. Learn how to create and manage the connection in Connect to MySQL.
 
+<img src="assets/fffJune2023_3.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -84,9 +86,9 @@ Duration: 20
 
 Dynamic Connection & Role Switching (DRS) allows run-time swapping of the Snowflake Warehouse and Role for a Sigma connection. There are ways to leverage this using one or both Warehouse and/or Role along with different methods to restrict data access in Snowflake itself.
 
-[Please refer to this QuickStart on how to implement RLS](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
+[Please refer to this QuickStart on how to implement dynamic role switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
 
-[Documentation is here.](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-)
+To learn more about dynamic role switching with Snowflake, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -96,7 +98,10 @@ Duration: 20
 
 **Embed Sandbox** is now generally available. For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619)
 
-A new optional parameter is available, **disable_mobile_view**, for user-backed embeds. If you set this parameter to yes, workbooks won't automatically resize to the mobile layout.
+<img src="assets/fffJune2023_4.png" width="800"/>
+
+### New optional parameter
+The parameter, **disable_mobile_view** for user-backed embeds is available. If this parameter is set to yes, workbooks won't automatically resize to the mobile layout.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The optional parameter "disable_mobile_view" is only available after upgrading a workbook to the new grid layouts and is not supported in the Classic layouts.
@@ -110,11 +115,7 @@ A new optional parameter is available, **disable_mobile_view**, for user-backed 
 ### ArrayDistinct function added: 
  <strong>[ArrayDistinct](https://help.sigmacomputing.com/hc/en-us/articles/17643668338067)</strong> - Returns the array without duplicate values.<br>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> All Array functions are now in the grouping in Sigma documentation.
-</aside>
-
-[Array functions overview](https://help.sigmacomputing.com/hc/en-us/articles/17644151918099)
+To learn more about array functions, [click here](https://help.sigmacomputing.com/hc/en-us/articles/17644151918099)
 
 <img src="assets/horizonalline.png" width="800"/>
 
@@ -156,8 +157,8 @@ Sigma added support for the Geography data type, and the corresponding set of
 ### Passthrough functions added
 You can also use two new Passthrough functions to support the Geography data type:
 
- <strong>[AggGeography]()</strong> - Calls a warehouse aggregate function that returns a Logical data type; aggregation version of CallGeography.<br>
- <strong>[CallGeography]()</strong> - Calls a warehouse function that returns a Geography data type.<br>
+ <strong>[AggGeography](https://help.sigmacomputing.com/hc/en-us/articles/17800961488403-AggGeography)</strong> - Calls a warehouse aggregate function that returns a Logical data type; aggregation version of CallGeography.<br>
+ <strong>[CallGeography](https://help.sigmacomputing.com/hc/en-us/articles/17798618502931-CallGeography)</strong> - Calls a warehouse function that returns a Geography data type.<br>
 
 <img src="assets/horizonalline.png" width="800"/>
 
@@ -217,7 +218,15 @@ The Impersonate Users feature provides admins with ability to impersonate a user
 <strong>NOTE:</strong><br> Impersonate users is unavailable for organizations that use OAuth for authentication.  
 </aside>
 
-[For more information, please refer here.](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
+<img src="assets/fffJune2023_5.png" width="800"/>
+
+To stop impersonation:
+
+<img src="assets/fffJune2023_6.png" width="800"/>
+
+
+
+To learn more about user impersonation [click here.](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -241,10 +250,41 @@ If you are interested in Version Tagging in an embedded scenario, [please refer 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Visualizations (multiple changes)
+## Visualizations
 Duration: 20
 
-There are multiple items in this category this month.
+### Chart Legend Header Visibility
+You are now able to configure the visibility of chart legend headers.
+
+In the `Element format` > `Legend` section, the new `Show legend header` setting is enabled by default. Disable the setting to hide the header. When the element features two chart legends (i.e., color and size), the setting applies to both legend headers.
+
+### Geography map (BETA)
+Illustrate geospatial objects on a map with the new Map - Geography visualization. Create a connection map to display spatial networks, correlations, and relationships, or build a choropleth map to identify variability and patterns across distinct geographic areas.
+
+For example:
+<img src="assets/fffJune2023_7.png" width="800"/>
+
+### Map - Geography replaces the Map - GeoJSON visualization 
+Now supports for [geography data is in WKT format](https://help.sigmacomputing.com/hc/en-us/articles/17429284455059#h_01H3NKDF8GQTDDGCQ2N6PYBTSB) **(using Snowflake and BigQuery connections only)** and [variant data in GeoJSON format.](https://help.sigmacomputing.com/hc/en-us/articles/17429284455059#h_01H3NKD1PAGK396DQH25EB077W)
+
+For more information, [see Build a geography map.](https://sigma.bi/build-a-geography-map)
+
+### Reference Marks
+Visualizations that support reference marks now include the ability to customize the reference mark label font size and color. 
+
+See `Label font` options in `Element formatting` > `Reference marks`.
+
+<img src="assets/fffJune2023_2.png" width="800"/>
+
+### Scatter Plot Legend Header Visibility
+When a scatter plot features two chart legends (i.e., color and size), you can now configure the visibility of each legend individually. Previously, only the Show legend setting was available, which allows you to show or hide both legends. 
+
+To configure individual legend visibility, go to Element format > Legend and enable or disable the Show color legend and Show size legend settings.
+
+### Stacked 100% Data Label Customization
+Customize data labels in Stacked 100% bar charts with new number formatting options.
+
+In the `Element format` > `Data labels` section, the new `Display value as a percent` setting is enabled by default. Disable the setting to display the labels as absolute values. When displaying percentages, you can use the percent decimal precision tool to increase or decrease decimal places.
 
 ### Table Summary KPI
 Quickly highlight summarized totals by creating KPI visualizations directly from table summaries. To add a KPI, right-click a table summary to open the menu, then select Create KPI element.
@@ -252,29 +292,16 @@ Quickly highlight summarized totals by creating KPI visualizations directly from
 ### Theme Palette & Hex Color Picker
 Customize chart mark colors with more flexibility and control using the enhanced color selector. Select the  and  icons to toggle between the color palette—now featuring a Theme palette—and the new hex color picker.
 
-Theme palette: provides a predefined set of colors based on the selected workbook theme (Workbook settings > Workbook formatting > Theme).
-Hex color picker: allows you to enter a hex value or select the tint, tone, or shade of a specific hue.
+Theme palette: provides a predefined set of colors based on the selected workbook theme (`Workbook settings` > `Workbook formatting` > `Theme`).
 
-### Stacked 100% Data Label Customization
-Customize data labels in Stacked 100% bar charts with new number formatting options.
-
-In the Element format > Data labels section, the new Display value as a percent setting is enabled by default. Disable the setting to display the labels as absolute values. When displaying percentages, you can use the Percent decimal precision tool to increase or decrease decimal places.
-
-### Chart Legend Header Visibility
-Configure the visibility of chart legend headers.
-
-In the Element format > Legend section, the new Show legend header setting is enabled by default. Disable the setting to hide the header. When the element features two chart legends (i.e., color and size), the setting applies to both legend headers.
-
-### Scatter Plot Legend Header Visibility
-When a scatter plot features two chart legends (i.e., color and size), you can now configure the visibility of each legend individually. Previously, only the Show legend setting was available, which allows you to show or hide both legends. 
-
-To configure individual legend visibility, go to Element format > Legend and enable or disable the Show color legend and Show size legend settings.
+**Hex color picker** allows you to enter a hex value or select the tint, tone, or shade of a specific hue.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Workbooks (general)
 
+Users can now send workbook error reports with trace IDs that facilitate improved, targeted error investigations.
 ### Controls
 You can use the new Create list from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
 
@@ -288,7 +315,7 @@ Grid Layout mobile view has been enhanced with the following updates:
    </ul>
 
 ### Grid layout PDF export
-Workbooks with Grid Layout (beta) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
+Workbooks with Grid Layout (BETA) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
 
 ### Keyboard shortcuts
 We added new keyboard shortcuts to help you work with input tables. See `Keyboard shortcuts` > `Input tables`.
@@ -309,6 +336,12 @@ Custom options for number formatting now includes “pp”, for percentage point
 Duration: 20
 
 Bug releases are broken down by week for specificity.
+
+### Week ending 6.30.2023
+ <ul>
+      <li>Resolved an input table issue that caused the Data validation modal to close when a date was selected from the date picker.</li>
+      <li>Resolved an input table issue that appended numbers to unique key column names (e.g., Account ID (1)).</li>
+</ul>
 
 ### Week ending 6.23.23
  <ul>
