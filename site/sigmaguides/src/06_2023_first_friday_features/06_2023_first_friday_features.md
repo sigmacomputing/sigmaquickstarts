@@ -7,7 +7,12 @@ status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 
-<!-- fff_06_2023_Additions
+<!-- 
+Weeks Added so far:
+Release notes for the month of June 2023 features, published on first Friday of July
+6.2.2023
+6.9.2023
+6.16.2023
 6.23.2023
 6.30.2023
 -->
