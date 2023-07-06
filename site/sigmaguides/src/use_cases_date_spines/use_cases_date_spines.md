@@ -8,7 +8,6 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-05-26
 
-
 # Working with Date Spines
 
 ## Overview 
@@ -157,6 +156,23 @@ Select that and click the `Select` button:
 
 Rename the new table to `Weekly Sales`.
 
+We will need to add a new column for profit, which is not included in the base table. 
+
+Click on the `Price` column dropdown and select `Add new column`:
+
+<img src="assets/ds19.png" width="400"/>
+
+Rename the new column to `Profit` and set it's formula to:
+```plantext
+Sum([Price] * [Quantity] - [Cost])
+```
+
+Format the `Profit` column as `Currency`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Some values may be negative, reflecting items sold at a loss.
+</aside>
+
 Before we start to manipulate the data, we will filter it down so that we are initially working with a small subset of the data. 
 
 We want to look at a few specific records when we discuss each step.
@@ -170,6 +186,7 @@ Set the filters on these columns, for these values:
 Column:          Filter:
 Product Type     Arts & Entertainment
 Store Name       Chesterfield Store #555
+Product Name     1091-Ink Pads
 ```
 
 For example:
@@ -184,7 +201,7 @@ Apply the following groupings to the new `Sales Weekly` table.
 
 Truncate the `Date` column in the last grouping to `Week`.
 
-You should end up with 10 independent groups as shown (we spilt the list into two so you don't have to scroll the QuickStart to see it all at once).
+You should end up with 9 independent groups as shown (we spilt the list into two so you don't have to scroll the QuickStart to see it all at once).
 
 <img src="assets/ds4.png" width="600"/>
 
@@ -197,28 +214,19 @@ For the first new column we will rename it to `Previous Week of Date` and use th
 Coalesce(DateAdd("millisecond", -1, Lead([Week of Date])), Today())
 ```
 
-when the output of this expression is set to "today's date," it implies that there is a missing or null value in the subsequent data. This occurrence suggests a gap or "hole" in the dataset, indicating that there is no available next value for the current date.
+Rename this new column to `to date`.
 
-By using the COALESCE() function with TODAY() as the fallback option, the expression handles such gaps or missing values in the data. When the next value is null or not provided, the expression returns the current date (TODAY()) as the output, signifying the presence of a gap in the dataset.
-
-For example, if we look at the first `Product Name` in the list, `1091-Ink Pads`, we see that the last value in the list is for today (when creating this screenshot, today was 2023-06-29). This is because there is no next value provided.
-
-This will be useful later. 
+ADD EXPLANATION HERE PHIL
 
 <img src="assets/ds7.png" width="800"/>
 
-For the second new column we will rename it to `Profit` and use this formula:
-```code
-Sum([Price] * [Quantity]) - [Cost]
+For the second new column we will rename it to `Sum of Profit` and use this formula:
+```plaintext
+Sum(Profit)
 ```
-
 `Weekly Sales` should now look similar to this (the dates may be slightly different; that is ok):
 
 <img src="assets/ds8.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Negative numbers in the "Profit" column mean that we are selling items below our cost and losing money.
-</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -228,11 +236,11 @@ Duration: 20
 
 We are now ready to add the `Date Spine` table to `Weekly Sales` so that we can have a more complete set of data that includes missing weeks with null values injected for profit.
 
-Click the `+` icon to create an new table from the `Date Spine`:
+Click to create an new child table from the `Date Spine`:
 
-<img src="assets/ds10.png" width="300"/>
+<img src="assets/ds10.png" width="800"/>
 
-Rename the new table to `Weekly Sales + Date Spine`
+Rename the new table to `Weekly Sales + Date Spine` and move the table to the top of the workbook page.
 
 Join the `Weekly Sales` table to it:
 
@@ -241,8 +249,6 @@ Join the `Weekly Sales` table to it:
 and select the `Weekly Sales` table:
 
 <img src="assets/ds11.png" width="300"/>
-
-Change the `Grouping` dropdown (#1 in the screenshot) to `All source columns`.
 
 Click the `Select` button:
 
@@ -257,6 +263,8 @@ Then click the `+` to add an additional join.
 Set the second join key as shown:
 
 <img src="assets/ds15.png" width="800"/>
+
+These two join conditions create a result set that includes all weeks from the Date Spine table .....ADD DETAILS PHIL
 
 Click the `Preview Output` button.
 
@@ -276,18 +284,18 @@ In this case, we will just apply the same grouping and new columns we did alread
 
 Also notice that the new table's data is pre-filtered based on the filters of the `Weekly Sales` table. If we remove the filters from that table, both tables will reflect the change.
 
-<img src="assets/ds4.png" width="800"/>
+<img src="assets/ds20.png" width="800"/>
 
 Next we will add two new columns:
 
-`Profit (Last Week)`:
+<img src="assets/ds21.png" width="800"/>
+
+The first column to add is `Profit (Last Week)`:
 ```plainext
 Lag(Profit)
 ```
 
-and
-
-`Profit (Last Year)`:
+The second column to add is `Profit (Last Year)`:
 ```plainext
 Lag([Profit], 52)
 ```
@@ -296,22 +304,25 @@ To learn more about the Lag function, [click here.](https://help.sigmacomputing.
 
 When added, the new columns appear like this:
 
-<img src="assets/ds15.png" width="800"/>
+<img src="assets/ds22.png" width="800"/>
 
-STOPPED HERE PHIL. TABLE when wonky with today's date again.
+If we scroll down in the `Weekly Sales + Data Spine` table, we see that there are some extra rows of dates with null values for the rest of the columns. This is because we joined the `Data Spine` table, and it has values for the extra rows showing, but there are no corresponding sales in the `Weekly Sales` data. 
+
+<img src="assets/ds23.png" width="600"/>
 
 
-The data is showing an extra row of null values and we want to eliminate that. There are a few methods but let's do it with a new column and a formula that checks three other columns for null values:
+There are a few methods but let's do it with a new column and a formula that checks three other columns for null values:
 ```plainext
 IsNull([Profit]) and IsNull([Profit (Last Week)]) and IsNull([Profit (Last Year)])
 ```
 
-<img src="assets/ds18.png" width="800"/>
+<img src="assets/ds18.png" width="400"/>
 
 Rename the column `nullcheck` and set it to `hidden`.
 
+In the `nullcheck` column, right click on a `false` value (any one will do), and select `keep only false`. This will automatically create a filter that results in false records only appear, based on the formula for `nullcheck`:
 
-
+<img src="assets/ds24.png" width="400"/>
 
 
 
