@@ -17,14 +17,14 @@ Release notes for the month of June 2023 features, published on first Friday of 
 6.30.2023
 -->
 
-# 07-2023 (for June)
+# June Highlights
 
 ## Overview 
 Duration: 5 
 
 This QuickStart lists all the new and public beta features released, as well as bugs fixed in June 2023. 
 
-It is summary in nature and you should refer to the specific Sigma documentation links provided for more information.
+It is summary in nature and you should refer to the specific [Sigma documentation](https://help.sigmacomputing.com/hc/en-us) links provided for more information.
 
 **Public beta features will carry the section text "BETA".** 
 
@@ -32,7 +32,7 @@ All other features are considered released (GA or generally available).
  
 Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous month for your convenance.
 
-New QuickStarts will be published on the first Friday of each month; for the previous month information. 
+New QuickStarts will be published on the first Friday of each month, and will include information for the previous month. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
