@@ -246,7 +246,6 @@ It is necessary to sum the `Profit` as there are days with more than one order f
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
 ## Join Date Spine to Weekly Sales
 Duration: 20
 
@@ -280,7 +279,7 @@ Set the second join key as shown:
 
 <img src="assets/ds15.png" width="800"/>
 
-These two join conditions create a result set that includes all weeks from the Date Spine table .....ADD DETAILS PHIL
+These two join conditions create a result set that includes all weeks from the Date Spine table.
 
 Click the `Preview Output` button.
 
@@ -296,16 +295,17 @@ To learn more about Data Lineage in Sigma, [click here.](https://help.sigmacompu
 
 We now have joined the two tables together.
 
-In this case, we will just apply the same grouping and new columns we did already, but will not add back the calculated columns; those are already included in the new table.
+We now apply the grouping, but will not add back the calculated columns; those are already included in the new table.
 
 Also notice that the new table's data is pre-filtered based on the filters of the `Weekly Sales` table. If we remove the filters from that table, both tables will reflect the change.
 
 <img src="assets/ds20.png" width="800"/>
 
-Let's make the table easier to read by removing the columns we won't be using:
+Let's make the table easier to read by removing the columns we won't be using. 
 
-NEED SCREENSHOT OF THE COLUMN LIST:
-<img src="assets/ds20.png" width="800"/>
+We only need to use these four columns:
+
+<img src="assets/ds27.png" width="800"/>
 
 Next we will add two new columns:
 
@@ -313,12 +313,12 @@ Next we will add two new columns:
 
 The first column to add is `Profit (Last Week)`:
 ```plainext
-Lag(Profit)
+Lag([Sum of Profit])
 ```
 
 The second column to add is `Profit (Last Year)`:
 ```plainext
-Lag([Profit], 52)
+Lag([Sum of Profit], 52)
 ```
 
 To learn more about the Lag function, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037431453-Lag)
@@ -327,31 +327,40 @@ When added, the new columns appear like this:
 
 <img src="assets/ds22.png" width="800"/>
 
-If we scroll down in the `Weekly Sales + Data Spine` table, we see that there are some extra rows of dates with null values for the rest of the columns. This is because we joined the `Data Spine` table, and it has values for the extra rows showing, but there are no corresponding sales in the `Weekly Sales` data. 
+If we scroll down in the `Weekly Sales + Data Spine` table, we see that there is an extra row with null values for the rest of the columns. This is because we joined the `Data Spine` table, and it has values for the extra row(s) showing, but there are no corresponding sales in the `Weekly Sales` data. 
 
-<img src="assets/ds23.png" width="600"/>
-
+<img src="assets/ds28.png" width="600"/>
 
 There are a few methods but let's do it with a new column and a formula that checks three other columns for null values:
 ```plainext
-IsNull([Profit]) and IsNull([Profit (Last Week)]) and IsNull([Profit (Last Year)])
+IsNull([Sum of Profit]) and IsNull([Profit (Last Week)]) and IsNull([Profit (Last Year)])
 ```
 
 <img src="assets/ds18.png" width="400"/>
 
 Rename the column `nullcheck` and set it to `hidden`.
 
-In the `nullcheck` column, right click on a `false` value (any one will do), and select `keep only false`. This will automatically create a filter that results in false records only appear, based on the formula for `nullcheck`:
+In the `nullcheck` column, sert a filter that only displays values that are `false`:
 
-<img src="assets/ds24.png" width="400"/>
+<img src="assets/ds28.png" width="400"/>
 
+Add another new column, and set it's name to `Injected?` and the formula to:
+```plaintext
+[Date Spine/Day of Invoicedate] != [Week of Date]
+```
 
+This will test to see if the value for `Week of Date` is a "real invoice date" or came from the `Date Spine` to fill a gap. 
 
+If the value is `True`, the date has invoices.
 
+Hide this column.
 
+Also hide the column `to date`.
 
-
-
+Add another new column, and set it's name to `Profit` and the formula to:
+```plaintext
+If(Not [Injected?], [Sum of Profit])
+```
 
 
 
