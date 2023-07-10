@@ -109,12 +109,13 @@ Paste the following code into the script window and click the `Run` button:
 WITH RECURSIVE date_spine AS (
   SELECT CURRENT_DATE AS date_week
   UNION ALL
-  SELECT DATEADD('DAY', -7, date_week)
+  SELECT DATEADD('DAY', -1, date_week)
   FROM date_spine
-  WHERE DATEADD('DAY', -7, date_week) >= DATEADD('MONTH', -51, CURRENT_DATE)
+  WHERE DATEADD('DAY', -1, date_week) >= DATEADD('MONTH', -51, CURRENT_DATE)
 )
 SELECT date_week AS "Day of Invoicedate"
 FROM date_spine
+WHERE DAYOFWEEK(date_week) = 0
 ORDER BY date_week
 ```
 
@@ -144,7 +145,7 @@ We now have a Date Spine as reference, that we can join with other tables to fil
 ## Weekly Sales Data
 Duration: 20
 
-Before we can use the Date Spine, we need to create a table that contains the data we are after and organized in groups.
+Before we can use the Date Spine, we need to create a table that contains the data we are after, and organized it in groups.
 
 Create a new `Table` on the `Data` Page. 
 
@@ -163,7 +164,8 @@ Click on the `Price` column dropdown and select `Add new column`:
 <img src="assets/ds19.png" width="400"/>
 
 Rename the new column to `Profit` and set it's formula to:
-```plantext
+
+```code
 Sum([Price] * [Quantity] - [Cost])
 ```
 
@@ -193,43 +195,57 @@ For example:
 
 <img src="assets/ds6.png" width="600"/>
 
-Apply the following groupings to the new `Sales Weekly` table.
+This filtering gives us 36 rows:
+
+<img src="assets/ds25.png" width="800"/>
+
+Now apply the following groupings to the new `Sales Weekly` table:
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You should end up with nine independent groups as shown (we spilt the list into two so you don't have to scroll the QuickStart to see it all at once).
+</aside>
+
+<img src="assets/ds4.png" width="600"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Take care to place columns in separate groups (as shown in the image below) using the "+" icon. 
 </aside>
 
-Truncate the `Date` column in the last grouping to `Week`.
-
-You should end up with 9 independent groups as shown (we spilt the list into two so you don't have to scroll the QuickStart to see it all at once).
-
-<img src="assets/ds4.png" width="600"/>
+Truncate the `Date` column in the last grouping to `Week`. This column should be renamed `Week of Date`
 
 We will enrich the data with two calculated columns, adding them to the `Week of Date` grouping:
 
 <img src="assets/ds5.png" width="600"/>
 
-For the first new column we will rename it to `Previous Week of Date` and use this formula:
+For the first new column we will rename it to `to date` and use this formula:
 ```code
 Coalesce(DateAdd("millisecond", -1, Lead([Week of Date])), Today())
 ```
 
 Rename this new column to `to date`.
 
-ADD EXPLANATION HERE PHIL
+In looking at the data, we can see that the value for `to date` is the value of the previous `Week of Date` - 1 day:
 
-<img src="assets/ds7.png" width="800"/>
+<img src="assets/ds26.png" width="400"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The previous function is getting the date of the next week (minus one millisecond), or if there is no next week in the data (i.e., we're looking at the last row), it gets today's date. It's essentially a way of looking ahead to the next week in the data, or using the current date if we're already at the end of the data.
+</aside>
 
 For the second new column we will rename it to `Sum of Profit` and use this formula:
 ```plaintext
 Sum(Profit)
 ```
+
+It is necessary to sum the `Profit` as there are days with more than one order for the same item on the same day.
+
 `Weekly Sales` should now look similar to this (the dates may be slightly different; that is ok):
 
 <img src="assets/ds8.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 
 ## Join Date Spine to Weekly Sales
 Duration: 20
