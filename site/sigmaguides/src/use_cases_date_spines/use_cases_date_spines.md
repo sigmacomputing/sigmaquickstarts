@@ -286,6 +286,11 @@ Also notice that the new table's data is pre-filtered based on the filters of th
 
 <img src="assets/ds20.png" width="800"/>
 
+Let's make the table easier to read by removing the columns we won't be using:
+
+NEED SCREENSHOT OF THE COLUMN LIST:
+<img src="assets/ds20.png" width="800"/>
+
 Next we will add two new columns:
 
 <img src="assets/ds21.png" width="800"/>
