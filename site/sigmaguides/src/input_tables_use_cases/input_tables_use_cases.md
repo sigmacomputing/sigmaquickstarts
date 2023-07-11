@@ -163,7 +163,7 @@ Add a new Control / `Text Box` to the Page. Rename it to `Global Inflation Adjus
 
 Adjust it's properties as shown. The `Control ID` is case sensitive and it's current value will drive in calculations later:
 
-<img src="assets/fa6.png" width="400"/>
+<img src="assets/fa6a.png" width="800"/>
 
 Set a value in the new Control `Global Inflation Adjustment` = .10 and hit return.
 

@@ -301,7 +301,7 @@ Add a new group (click the `+` to the right of `GROUPINGS` and select `Date`)
 Set the formula for the `Day of Date` column to:
 
 ```plaintext
-DatePart("month", [Date]) 
+DateFormat(Date([Date]), "%m")
 ```
 Rename this column `Month Number` and set it's sort order to `Ascending`. 
 
@@ -313,7 +313,14 @@ Set it's formula to
 ```plaintext
 DateTrunc("year", [Date])
 ```
-Add a new group (click the `+` to the right of `GROUPINGS` and select `Year of Date`)
+
+Add this new column to a new group (click the `+` to the right of `GROUPINGS` and select `Year of Date`)
+
+<img src="assets/CDUC21d.png" width="500"/>
+
+Click the `-` in the `Month Number` column to collapse the table. We now have 12 months of data:
+
+<img src="assets/CDUC21e.png" width="500"/>
 
 Add a new column (to the right of `Year to Date`) and rename it `Monthly Sales`. Set it's formula to:
 
@@ -321,17 +328,19 @@ Add a new column (to the right of `Year to Date`) and rename it `Monthly Sales`.
 Sum([Quantity] * [Price])
 ```
 
-The table should now look like this (after collapsing/expanding and formatting):
+The table should now look similar to this (after collapsing/expanding and formatting):
 
 <img src="assets/CDUC21a.png" width="800"/>
 
 Add a new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
 
+<img src="assets/CDUC21f.png" width="500"/>
+
 Configure the new column as shown below:
 
 ```plaintext
-Column:                    Formula:
-Previous Year Monthly      Lead([Monthly Sales], -1)
+Column:             Formula:
+Previous Month      Lead([Monthly Sales], -1)
 ```
 
 Add another new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
