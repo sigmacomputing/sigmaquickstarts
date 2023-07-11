@@ -120,7 +120,7 @@ The Function is:
 DateFormat(DateAdd("day", (If(Weekday([Today]) = 7, -1, Weekday([Today]) = 1, -2, 0)), [Today]), "%A")
 ```
 
-If the input date is a Sunday, the function returns the date of the Friday immediately previous.
+If the input date is a Saturday, the function returns the date of the Friday immediately previous.
 
 <img src="assets/CDUC9.png" width="500"/>
 

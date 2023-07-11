@@ -30,7 +30,7 @@ function updateButtonClass(event, clickedButton) {
   if (category === 'show-all') {
     history.pushState(null, '', 'https://quickstarts.sigmacomputing.com/');
   } else {
-    const newUrl = `https://quickstarts.sigmacomputing.com//?cat=${category}`;
+    const newUrl = `https://quickstarts.sigmacomputing.com/?cat=${category}`;
     history.pushState({ category }, '', newUrl);
   }
 

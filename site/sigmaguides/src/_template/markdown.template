@@ -6,6 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
+lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 
 <!-- NOTES:
 1: THE "tags" VALUE ABOVE SHOULD BE SET TO "default" UNLESS YOU INTEND TO PUBLISH WITH A "status: Hidden". IN THAT CASE, LEAVE THE VALUE FOR "tags" empty.

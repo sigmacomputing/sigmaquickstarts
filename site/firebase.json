@@ -5,6 +5,17 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+     "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Content-Security-Policy-Report-Only",
+            "value": "default-src 'self'; report-uri https://5nwop461qe.execute-api.us-west-2.amazonaws.com/latest"
+          }
+        ]
+      }
     ]
   }
 }

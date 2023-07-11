@@ -159,6 +159,10 @@ public class SigmaEmbedClass {
                         
     // Append the Sigma embedding method to the url. For secure embedding, always use "userbacked":
         url += '&:mode=userbacked';
+
+    // Append the Sigma account type that you wish for each user to inherit during creation. In this example, we have an account
+    // type called 'Viewer' with viewer permissions:
+        url += '&:account_type=Viewer';
         
     // Append Sigma Team of user:
     // IMPORTANT: The embedded content (WB, Page or Viz) must be shared with the Team in Sigma or permission will be denied:
