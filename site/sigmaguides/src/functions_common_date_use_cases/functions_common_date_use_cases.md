@@ -449,7 +449,7 @@ Duplicate the table using the table menu.
 
 Rename this table `Sales This Year`
 
-On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, `Quantity` and `Date`.
+On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, and `Date`.
 
 Add a new column, rename it `Total Sale` and set it's formula to:
 ```plaintext
@@ -458,14 +458,16 @@ Add a new column, rename it `Total Sale` and set it's formula to:
 The formula on the `Date` column to:
 
 ```plaintext
-DateTrunc("day", [Date])
+DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
 ```
+
+Rename the column back to `Date`
 
 Your page should now look link this:
 
 <img src="assets/CDUC34.png" width="800"/>
 
-Let's filter this table to display orders from this year only:
+Let's filter this table to display orders from this year only (click on the `Date` column's drop arrow and select `Filter`):
 
 <img src="assets/CDUC35.png" width="600"/>
 
@@ -479,7 +481,7 @@ You will be prompted to set how the two tables will be joined. Use this configur
 
 <img src="assets/CDUC38.png" width="400"/>
 
-Now drag the new Lookup column to the `Calculations` grouping:
+Now drag the new Lookup column to the `Calculations` sectrion of the `Store Region` grouping:
 
 <img src="assets/CDUC39.png" width="800"/>
 
@@ -498,6 +500,8 @@ The page should look like this now (after moving thing around to suit):
 <img src="assets/CDUC42.png" width="800"/>
 
 Now add another new column via Lookup (into the `Regional Sales Performance - This vs. Last Year` table) as before using the new `Sales Last Year` table.
+
+<img src="assets/CDUC43a.png" width="400"/>
 
 The only configuration difference is the source table as shown:
 
