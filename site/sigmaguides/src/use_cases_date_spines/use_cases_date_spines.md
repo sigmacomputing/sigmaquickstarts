@@ -3,7 +3,7 @@ id: use_cases_date_spines
 summary: use_cases_date_spines
 categories: use-cases
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-05-26
