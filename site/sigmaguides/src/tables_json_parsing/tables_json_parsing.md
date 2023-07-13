@@ -1,7 +1,7 @@
 author: pballai
 id: tables_json_parsing
 summary: tables_json_parsing
-categories: Tales
+categories: Tables
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
