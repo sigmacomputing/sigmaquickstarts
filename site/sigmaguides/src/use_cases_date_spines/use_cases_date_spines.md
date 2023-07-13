@@ -5,7 +5,7 @@ categories: use-cases
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-05-26
 
 # Working with Date Spines
