@@ -48,7 +48,7 @@ Anyone who is trying to parse JSON data in the fastest way possible, to enable a
 ### What You’ll Learn
 How to use Sigma to parse simple and nested JSON data.
 
-## Map of US State Capitols from JSON
+## Map of US State Capitals from JSON
 Duration: 20
 
 Let's assume that we got a sample database that provides a list of all the US States, but the data came to us in a single JSON column. 
