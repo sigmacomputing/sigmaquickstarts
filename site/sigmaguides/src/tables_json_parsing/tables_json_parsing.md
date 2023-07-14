@@ -55,7 +55,7 @@ Let's assume that we got a sample database that provides a list of all the US St
 
 Login to Sigma and create a new `Workbook` and `Page`. 
 
-Rename the Workbook to `Working with JSON Data` and rename the page to `US Capitols`.
+Rename the Workbook to `Working with JSON Data` and rename the page to `US Capitals`.
 
 We will use a table from the Sigma Sample Database.
 
