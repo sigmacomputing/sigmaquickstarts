@@ -35,7 +35,7 @@ New QuickStarts will be published on the first Friday of each month, and will in
 <!-- END OF SECTION-->
 
 ## Admin Features
-
+Duration: 20
 ### Warehouse Views
 Workbook warehouse views are now generally available (beta version launched April 2023). 
 
@@ -81,7 +81,7 @@ For more information, see [Create and manage workbook warehouse views](https://s
 <!-- END OF SECTION-->
 
 ## API
-
+Duration: 20
 ### Members
 You can now use the ***PATCH /v2/members/{memberId}*** endpoint to reassign documents when you archive a member. In the request body, set ***isArchived*** to ***true*** and set ***newOwnerId*** to the member who will receive the docs from the archived member.
 
@@ -92,7 +92,7 @@ A new query parameter is also available for  this endpoint, ***versionTagId***.
 
 ### Connections
 The /v2/connections endpoint now returns the following Connection metadata fields:
-
+```plaintext
 {
   "account": "string",
   "warehouse": "string",
@@ -116,7 +116,7 @@ The /v2/connections endpoint now returns the following Connection metadata field
   "writeSchema": "string",
   "materializationWarehouse": "string"
 }
-
+```
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -144,7 +144,10 @@ Duration: 20
 
 ### Share Templates with different orgs
 You can share Sigma templates with other organizations.  This functionality is useful for customers who control multiple Sigma orgs and to create new Sigma orgs for their customers, allowing you to share templates with your customers.
-When you share a template, no actual data is shared with the recipient organization.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When you share a template, no actual data is shared with the recipient organization.
+</aside>
 
 ### Templates tab
 The Templates tab is now split between External and Internal. 
@@ -163,17 +166,17 @@ Duration: 20
 ### Centered reference mark labels
 Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
 
-<img src="assets/07_2023_fff9.png" width="400"/>
+<img src="assets/07_2023_fff9.png" width="800"/>
 
 
 ### Chart color scales
 When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
 
-<img src="assets/07_2023_fff7.png" width="400"/>
+<img src="assets/07_2023_fff7.png" width="600"/>
 
 The full palette:
 
-<img src="assets/07_2023_fff8.png" width="400"/>
+<img src="assets/07_2023_fff8.png" width="800"/>
 
 ### Double-click chart legend values
 Chart legends now support double-click actions. Prior to this update, Sigma interpreted a rapid double-click as two separate inputs that would select the value on the first click and deselect it on the second. Sigma now interprets a rapid double-click as a single input.
@@ -184,8 +187,8 @@ Chart legends now support double-click actions. Prior to this update, Sigma inte
 <!-- END OF SECTION-->
 
 ## Workbooks
-
-### Table cell images
+Duration: 20
+### Table cell images (BETA)
 Tables can now display images in cells. When a column contains image URLs, you can render the images by selecting `Transform` > `Set image` in the column menu.
 
 <img src="assets/07_2023_fff5.png" width="800"/>
@@ -193,8 +196,6 @@ Tables can now display images in cells. When a column contains image URLs, you c
 Image columns have some display options:
 
 <img src="assets/07_2023_fff6.png" width="400"/>
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
