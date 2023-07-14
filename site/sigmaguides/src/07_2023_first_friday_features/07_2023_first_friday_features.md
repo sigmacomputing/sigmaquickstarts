@@ -82,61 +82,77 @@ For more information, see [Create and manage workbook warehouse views](https://s
 
 ## API
 
+### Members
+You can now use the ***PATCH /v2/members/{memberId}*** endpoint to reassign documents when you archive a member. In the request body, set ***isArchived*** to ***true*** and set ***newOwnerId*** to the member who will receive the docs from the archived member.
+
+### Workbooks
+When you create a new workbook using ***POST /v2/workbooks*** endpoint, you can assign an owner by passing ***ownerId*** in the request body. If you don't include this, the owner is the user whose token was used to call the API.
+
+A new query parameter is also available for  this endpoint, ***versionTagId***.
+
+### Connections
+The /v2/connections endpoint now returns the following Connection metadata fields:
+
+{
+  "account": "string",
+  "warehouse": "string",
+  "user": "string",
+  "role": "string",
+  "timeout": {
+    "default": 0,
+    "worksheet": 0,
+    "dashboard": 0,
+    "download": 0
+  },
+  "poolSizes": {
+    "adhocPoolSize": 0,
+    "catalogPoolSize": 0,
+    "resultPoolSize": 0,
+    "schedulePoolSize": 0
+  },
+  "writeAccess": boolean,
+  "friendlyName": boolean,
+  "writeDatabase": "string",
+  "writeSchema": "string",
+  "materializationWarehouse": "string"
+}
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Connect to MySQL (BETA)
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Dynamic Connection & Role Switching (Snowflake)
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## Embedding 
 Duration: 20
 
+### Convert Embed Users to Standard
+Admins can now convert Embed users to Standard, or vice versa. If you convert an Embed user to Standard, you must define their Account Type. 
+
+### Embed Parameters
+The following optional user-backed embed parameters are now available:
+
+ <ul>
+      <li><strong>show_workbook_name:</strong> A boolean value that displays the workbook name near the folder icon.</li>
+      <li><strong>menu_position:</strong> Allows you to change the position of the toolbar to top, bottom, or none.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## New Functions
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Materialization (BETA)
+## Templates
 Duration: 20
 
+### Share Templates with different orgs
+You can share Sigma templates with other organizations.  This functionality is useful for customers who control multiple Sigma orgs and to create new Sigma orgs for their customers, allowing you to share templates with your customers.
+When you share a template, no actual data is shared with the recipient organization.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+### Templates tab
+The Templates tab is now split between External and Internal. 
 
-## Scheduled Exports
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## User Impersonation
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Version Tagging
-Duration: 20
-
+ <ul>
+      <li><strong>Internal:</strong> Templates created by members of your organization.</li>
+      <li><strong>External:</strong> Templates shared with your organization.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
