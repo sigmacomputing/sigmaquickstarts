@@ -87,7 +87,7 @@ Click the `State Json Field` column's drop arrow and select `Extract Columns`:
 
 We are presented with a list of the column data that Sigma was able to automatically parse from the JSON data. 
 
-Click to select the fields `STATE NAME, CAPITOL, LAT, LONG` and click the `Confirm` button:
+Click to select the fields `STATE NAME, CAPITAL, LAT, LONG` and click the `Confirm` button:
 
 <img src="assets/json5.png" width="800"/>
 
