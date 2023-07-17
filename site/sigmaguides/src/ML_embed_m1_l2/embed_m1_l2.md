@@ -97,7 +97,259 @@ Duration: 20
 We’ve included a script for you below, so you don’t have to write it yourself.
 </aside>
 
-```Python script goes here.```
+```#!/user/bin/env python3
+
+import argparse
+import csv
+
+import requests
+
+def get_base_url(cloud: str):
+	""" Creates the base url 
+		:cloud:       the cloud provider for the organization
+		:returns:     base url that will be used for authentication
+	"""
+
+	print(cloud)
+	base_url = ''
+	if cloud == 'gcp':
+		base_url = 'https://api.sigmacomputing.com'
+	elif cloud == 'aws':
+		base_url = 'https://aws-api.sigmacomputing.com'
+	elif cloud == 'azure':
+		base_url = 'https://api.us.azure.sigmacomputing.com'
+	return base_url
+	
+
+def get_access_token(base_url, client_id, client_secret):
+	""" Gets the access token from Sigma
+		:client id:      Client id generated from Sigma
+		:client_secret:  Client secret generated from Sigma
+		:returns:        Access token
+	"""
+	payload = {
+        "grant_type": "client_credentials",
+        "client_id": client_id,
+        "client_secret": client_secret
+    }
+	response = requests.post(f"{base_url}/v2/auth/token", data=payload)
+	data = response.json()
+	return data["access_token"]
+
+
+def get_headers(access_token):
+    """ Gets headers for API requests
+        :access_token:  Generated access token
+        :returns:       Headers for API requests
+    """
+    return {"Authorization": "Bearer " + access_token}
+
+
+def create_workspace(base_url, headers, name):
+	''' Creates a new workspace 
+		:base_url:     Base URL based on the cloud provider
+		:headers:      Header containing access token
+		:name:         Name of the workspace
+		:returns:      workspaceId of the created workspace
+	'''
+
+	payload = {
+		"name": name
+	}
+
+	try:
+		response = requests.post(f"{base_url}/v2/workspaces", headers = headers, json=payload)
+		response.raise_for_status()
+	except requests.exceptions.RequestException as e:
+		print(f"Error: {e}")
+	else:
+		workspace_data = response.json()
+		workspace_id = workspace_data['workspaceId']
+		print(f"Workspace {name} created with id {workspace_id}")
+		return workspace_id
+	
+
+def create_team(base_url, headers, name):
+	''' Creates a new team
+		:base_url:     Base URL based on the cloud provider
+		:headers:      Header containing access token
+		:name:         Name of the team
+		:returns:      teamId of the created team
+	'''
+
+	payload = {
+		"name": name
+	}
+
+	try:
+		response = requests.post(f"{base_url}/v2/teams", headers = headers, json = payload)
+		response.raise_for_status()
+	except requests.exceptions.RequestException as e:
+		print(f"Error: {e}")
+	else:
+		team_data = response.json()
+		team_id = team_data['teamId']
+		print(f"Team {name} created with id {team_id}")
+		return team_id
+	
+def create_folder(base_url, headers, name, parent_id):
+	''' Creates a new folder
+		:base_url:     Base URL based on the cloud provider
+		:headers:      Header containing access token
+		:name:         Name of the folder
+		:parent_id:    ID of the parent workspace this will be added to
+		:returns:      folderId of the created folder
+	'''
+
+	payload = {
+		"type": "folder",
+		"name": name,
+		"parentId": parent_id
+	}
+
+	try:
+		response = requests.post(f"{base_url}/v2/files", headers = headers, json = payload)
+		response.raise_for_status()
+	except requests.exceptions.RequestException as e:
+		print(f"Error: {e}")
+	else:
+		folder_data = response.json()
+		folder_id = folder_data['id']
+		print(f"Folder {name} created with id {folder_id}")
+		return folder_id
+
+
+def create_grant(base_url, headers, team_id, node_id, permission):
+	''' Grants a team access to a file
+		:base_url:     Base URL based on the cloud provider
+		:headers:      Header containing access token
+		:team_id:      Id of the team that we are adding the permissions
+		:node_id:      Id of the file that we are granting permission to 
+	'''
+
+	payload = {
+		"grantee" : {
+			"teamId" : team_id
+		},
+		"permission": permission,
+		"inodeId": node_id 
+	}
+
+	try: 
+		response = requests.post(f"{base_url}/v2/grants", headers = headers, json = payload)
+		response.raise_for_status()
+	except requests.exceptions.RequestException as e:
+		print(f"Error: {e}")
+	else:
+		print(f"Team with ID {team_id} granted {permission} access to folder with ID {node_id}")
+
+
+def main():
+	parser = argparse.ArgumentParser(
+		'Create Workspace')
+	parser.add_argument(
+		'--env', type = str, required = True, help = 'env to use: [production | staging].')
+	parser.add_argument(
+        	'--cloud', type=str, required=True, help='Cloud to use: [aws | gcp]')
+	parser.add_argument(
+       		'--client_id', type=str, required=True, help='Client ID generated from within Sigma')
+	parser.add_argument(
+        	'--client_secret', type=str, required=True, help='Client secret API token generated from within Sigma')
+	parser.add_argument(
+        '--csv', type=str, required=True, help='CSV file containing Workspaces, Folders, Teams and Permissions.  Column names are case sensitive')
+
+	args = parser.parse_args()
+
+	#Getting URL and Headers
+	base_url = get_base_url(cloud = args.cloud)
+	access_token = get_access_token(base_url, args.client_id, args.client_secret)
+	headers = get_headers(access_token)
+
+	#Getting list of workpaces to see if workspace is created
+	workspaces = requests.get(f"{base_url}/v2/workspaces", headers = headers)
+	workspaces_data = workspaces.json()
+	#Store in the following dictionary
+	workspaces_dict = {}
+	for w in workspaces_data:
+		workspaces_dict[w['name']] = w["workspaceId"]
+
+	#Getting list of teams in order to check if teams exist
+	teams = requests.get(f"{base_url}/v2/teams", headers = headers)
+	teams_data = teams.json()
+	#Store existing teams in the following dictionary
+	teams_dict = {}
+	for t in teams_data:
+		teams_dict[t['name'].lower()] = t['teamId']
+	
+	
+	updated_grants = []
+	with open(args.csv) as csvfile:
+		reader = csv.DictReader(csvfile)
+		for row in reader:
+			updated_grants.append(row)
+
+	
+	for m in updated_grants:
+		try: 
+			if len(m['Workspace']) > 1:
+				workspace_name = m['Workspace']
+			else: 
+				workspace_name = None
+		except KeyError:
+			print(f"\u2717 CSV FILE ERROR!")
+			print("A column named \"Workspace\" is required in the csv.")
+			raise SystemExit("Script Aborted")
+
+		try: 
+			if len(m['Folder']) > 1:
+				folder_name = m['Folder']
+			else: 
+				folder_name = None
+		except KeyError:
+			print(f"\u2717 CSV FILE ERROR!")
+			print("A column named \"Folder\" is required in the csv.")
+			raise SystemExit("Script Aborted")
+
+		try: 
+			if len(m['Team']) > 1:
+				team_name = m['Team']
+			else: 
+				team_name = None
+		except KeyError:
+			print(f"\u2717 CSV FILE ERROR!")
+			print("A column named \"Team\" is required in the csv.")
+			raise SystemExit("Script Aborted")
+
+		try: 
+			if len(m['Permission']) > 1:
+				permission = m['Permission']
+			else: 
+				permission = None
+		except KeyError:
+			print(f"\u2717 CSV FILE ERROR!")
+			print("A column named \"Permission\" is required in the csv.")
+			raise SystemExit("Script Aborted")
+		
+		if workspace_name in workspaces_dict:
+			workspace_id = workspaces_dict[workspace_name]
+		else:
+			workspace_id = create_workspace(base_url, headers, workspace_name)
+			workspaces_dict[workspace_name] = workspace_id
+		
+		folder_id = create_folder(base_url, headers, folder_name, workspace_id)
+
+		if team_name.lower() in teams_dict:
+			new_team = teams_dict[team_name.lower()]
+		else:
+			new_team = create_team(base_url, headers, team_name)
+	
+		create_grant(base_url, headers, new_team, folder_id, permission)
+
+
+if __name__ == '__main__':
+	main()
+
+```
 
 
 ## Create and Assign Teams
