@@ -340,7 +340,7 @@ st.write("Hello, World!")
 st.components.v1.iframe("REPLACE WITH PATH TO YOUR SIGMA PUBIC EMBED")
 ```
 
-You may have noticed that the code is the same as before but extended in the st.markdown section to add the required iframe.
+You may have noticed that the code is the identical but extended with a call to the st.components.v1.iframe function to add the required iframe.
 
 Save the new code and refresh the browser page to see the embedded Sigma content:
 
