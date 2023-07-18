@@ -142,8 +142,6 @@ We now need to install two Node.js Packages. These will provide a web server and
 
 Reuse the same Terminal session (or open a new one using the same method we just did).
 
-We will install two Node.js Packages. These will provide a web server and a random number generator for our web application. To do this, we will use the Node Package Manager (npm) which was installed as part of the Node.js installation.
-
 We will use the nmp flag -g `global` so that in later Embedding QuickStarts Express and Node-supervisor will be available to different folders.
 
 <aside class="negative">
@@ -162,6 +160,11 @@ Provide your password and hit Return.
 ```plaintext
 npm install express -g
 ```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> For packages that your project depends on (like Express.js in a web application), it's more common to install them locally within each project to avoid version conflicts between different projects. By using the -g flag, the express package will be available to all your Node.js projects, not just the one in your current directory. We have seen some instances where expresss could not be found when trying to run our node application. In that case, use terminal (from the Sigma embed folder) and run "npm install express" instead. This will install express for this folder's application only.
+</aside>
+<br>
 
 <img src="assets/applicationsetup5.png" width="500"/>
 
