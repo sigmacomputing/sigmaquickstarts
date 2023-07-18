@@ -5,8 +5,8 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-06-27
+tags: default
+lastUpdated: 2023-07-18
 
 # Embedding Sigma in Streamlit Applications
 <!-- The above name is what appears on the website and is searchable. -->
@@ -14,40 +14,44 @@ lastUpdated: 2023-06-27
 ## Overview 
 Duration: 5 
 
+This QuickStart will guide you through the implementation of a quick, easy, and rapid to develop method to embed Sigma content in a Streamlit application. Embedding Sigma content within Streamlit applications is a powerful tool-set that enables and empowers developers, data analysts, and even business users to create interactive data applications backed by the power of Sigma.
+
 ### What is Streamlit
-Streamlit is an open source app framework in Python language. It helps us create web apps for data science and machine learning in a short time. It is compatible with major Python libraries such as scikit-learn, Keras, PyTorch, SymPy(latex), NumPy, pandas, Matplotlib etc.
+Streamlit is an open source app framework in Python language. It will help us to create interactive web apps for data science and machine learning in a short time. It is compatible with all major Python libraries, such as scikit-learn, Keras, PyTorch, SymPy(latex), NumPy, pandas, Matplotlib, and more.
 
-Streamlit is intended to provide Snowflake users the ability to rapidly deploy applications, and share data. 
+Streamlit is intended to provide Snowflake users the ability to rapidly deploy applications and share data.
 
-**Teams will use Streamlit to Build a Python Application:**
-
+**Teams use Streamlit to build Python applications to benefit from:**
 <ul>
     <li>Rapid Development Cycle</li>
     <li>Simplified Coding Experience</li>
+    <li>Flexible Components</li>
     <li>Internal or External Facing</li>
     <li>Extensible Embedding</li>
 </ul>
 
-Streamlit will work great with Sigma because you can accelerate the path to deployment of any data applications built, that rely on visualization, while also giving the user our industry differentiated ability to deep dive into the data powering those visuals. 
+Streamlit works great with Sigma to accelerate your path of deployment for any data applications built, especially those that rely on visualizations, while providing the user with our industry-differentiated ability to deep dive into the data powering those visuals and unlocking the power of your data warehouse.
 
-**Building the Analytics front-end In Sigma provides:**
+**Building the analytics front-end In Sigma provides:**
 <ul>
     <li>End users a familiar, spreadsheet-like interface.</li>
-    <li>No Code or Semantic knowledge required.</li>
+    <li>No Code or Semantic knowledge required.</li> 
     <li>Full Role-based Access Control Support.</li>
+    <li>Data Governance and Lineage.</li> 
     <li>Full Feature Set While Embedded.</li>
+    <li>Ability to leverage massive datasets</li>
 </ul>
 
  ### Target Audience
-Snowflake customers who are using (or interested in using) Streamlit and want to also embed Sigma content in a Streamlit application.
+Snowflake customers who are using (or interested in using) Streamlit and want to also embed Sigma content in a Streamlit application. Sigma customer who are looking to rapidly develop and deploy data applications in Streamlit.
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
-  <li>Miniconda for required Python packages</li>
+  <li>A development environment (or RTE) of your choice. In this QuickStart we use Microsoft VSCode with related extensions.</li>
+  <li>A Python 3.8, or later, environment. In this QuickStart we use Miniconda for the required Python environment and packages as a Python Virtual Environment is recommended.</li>
 </ul>
 
 <aside class="postive">
@@ -71,13 +75,15 @@ We will use Streamlit and Sigma to build a webpage that embed a Sigma dashboard:
 ## **Setup Python**
 Duration: 20
 
-We will start by setting up our local Python environment based on Miniconda, which is a "thin" version of Conda.
+We will start by setting up our local Python environment based on Miniconda, which is a "thin" version of Conda (Anaconda). If you already have an existing Python environment, you may make use of that or proceed with Miniconda as well.
 
 Conda is an open-source, cross-platform, language-agnostic package manager and environment management system. It was originally developed to solve difficult package management challenges faced by Python data scientists, and today is a popular package manager for Python and R.
 
-Miniconda is the much smaller (about 200 MB vs. 4+ gig) installer version of Conda and will save us time and disk-space compared with installing the full Conda (Anaconda) application. 
+Miniconda is the much smaller (~200 MB vs. ~4+ GB) installer version of Conda and will save us time and disk-space compared with installing the full Conda application.
 
 It includes only Conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others. Packages that are not included, have to be called at runtime or installed individually.
+
+Use the following link to download the Miniconda. Download the version that includes Python 3.8 or above based on your operating system and its processor (x86 32 bit or 64 bit, Apple Silicon, or etc.)
 
 [Use the following link to download the Miniconda.](https://docs.conda.io/en/latest/miniconda.html) Download the version that includes **Python 3.8 or above** based on your operating system and its configuration (32 bit or 64 bit).
 
@@ -115,7 +121,13 @@ Search for `Python` and select the extension from the list as shown. Click `Inst
 
 <img src="assets/sp2.png" width="500"/>
 
-We now have a development environment ready but we need to do a few more steps.
+<aside class="negative">
+<strong>NOTE:</strong><br> Microsoft has made a Python extention for VSCode and you may want to install that as well although not required to complete this QuickStart. Pylance enhances productivity, minimizes the likelihood of errors, and improves the overall efficiency of writing Python code in VS Code.
+</aside>
+
+[Link to Pylance Extension page.](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+
+We now have a development environment ready, but we need to do a few more steps.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -171,6 +183,10 @@ We are ready with our new Conda environment called `streamlit`.
 
 ## Install Streamlit
 
+<aside class="negative">
+<strong>NOTE:</strong><br> The following instructions demonstrate installation on MacOS, your installation will differ somewhat on a different Operating System.
+</aside>
+
 To install Streamlit on our local computer, execute the following command in Terminal:
 ```plaintext
 pip install streamlit
@@ -198,9 +214,8 @@ Streamlit will automatically open your default browser to the standard webpage t
 <img src="assets/sl7.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Streamlit uses port 8501 on your local computer. This port is not commonly used but if it happens to be in use, you will need to stop the other service temporarily.
+<strong>NOTE:</strong><br> Streamlit uses port 8501 on your local computer. This port is not commonly used but if it happens to be in use, you will need to stop the other service temporarily. If port 8501 is unavailable, or if you are running multiple Streamlit apps, it will try to launch on sequentially additive ports such as 8502, 8503, etc, however you may still want to stop other services temporarily.
 </aside>
-
 
 ## Streamlit - Hello World
 Duration: 20
@@ -257,11 +272,7 @@ Name the new file `hello-world.py` and paste the following code in editor for th
 ```plaintext
 import streamlit as st
 
-def main():
-    st.write("Hello, World!")
-
-if __name__ == "__main__":
-    main()
+st.write("Hello, World!")
 ```
 
 <img src="assets/sl11.png" width="800"/>
@@ -325,23 +336,11 @@ In VSCode, we are going to delete the code in our "hello_world.py" file with thi
 ```plaintext
 import streamlit as st
 
-def main():
-    st.write("Hello, World!")
-    st.markdown('''
-        <iframe src="{REPLACE THIS WITH YOUR PUBLIC URL FROM THE PREVIOUS COPY IN SIGMA}" 
-            frameborder="0" 
-            width="100%" 
-            height="100%">
-        </iframe>
-    ''', unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    main()
+st.write("Hello, World!")
+st.components.v1.iframe("REPLACE WITH PATH TO YOUR SIGMA PUBIC EMBED")
 ```
 
-You will notice that the code is the same as before but extended in the st.markdown section to add the required iframe.
-
-<img src="assets/sl18.png" width="800"/>
+You may have noticed that the code is the same as before but extended in the st.markdown section to add the required iframe.
 
 Save the new code and refresh the browser page to see the embedded Sigma content:
 
@@ -361,6 +360,10 @@ If you would like to learn more about Streamlit, there is a [video series availa
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
+
+[Streamlit Documentation](https://docs.streamlit.io/)<br>
+[Get started with Streamlit](https://docs.streamlit.io/library/get-started)<br>
+<br>
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
