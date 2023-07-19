@@ -5,7 +5,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: Phil Ballai - Sigma Computing
-lastUpdated: 2023-04-19
+lastUpdated: 2023-07-19
 
 # Fundamentals 2: Working with Tables
 <!-- ------------------------ -->

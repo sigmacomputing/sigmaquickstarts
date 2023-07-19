@@ -5,10 +5,9 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: Phil Ballai - Sigma Computing
-lastUpdated: 2023-03-29
+lastUpdated: 2023-07-19
 
 # Fundamentals 3: Working with Visualizations
-<!-- ------------------------ -->
 
 ## Overview 
 Duration: 5
@@ -25,32 +24,38 @@ This QuickStart is part of a series of QuickStarts designed to instruct new user
         <tr>
             <td> 
               <ul>
-                <li><strong>Bar charts</strong></li>
-                <li><strong>Line charts</strong></li>
                 <li><strong>Area charts</strong></li>
-                <li><strong>Scatter charts</strong></li>
-                <li><strong>Pie charts</strong></li>
-                <li><strong>Single value visualizations</strong></li>                
+                <li><strong>Bar charts</strong></li>
+                <li><strong>Box and Whisker charts</strong></li>
+                <li><strong>Combo chart</strong></li>                
+                <li><strong>Donut / Pie charts</strong></li>
+                <li><strong>Funnel charts</strong></li>
+                <li><strong>Gauge charts</strong></li>
+                <li><strong>Geography Map</strong></li>                
               </ul>
             </td>
             <td>
             <ul>
-                <li><strong>Funnel charts</strong></li>
-                <li><strong>Gauge charts</strong></li>
+                <li><strong>KPI chart</strong></li>                
+                <li><strong>Line charts</strong></li>
                 <li><strong>Maps – by region, point (lat/long), or GeoJSON</strong></li>
-                <li><strong>Box and Whisker charts</strong></li>
+                <li><strong>Point chart</strong></li>                
                 <li><strong>Sankey</strong></li>                
+                <li><strong>Scatter charts</strong></li>
+                <li><strong>Single value visualizations</strong></li>
               </ul>
               </td>
         </tr>
     </tbody>
 </table>
 
-This QuickStart assumes you have already taken the Fundamentals 1 & 2 QuickStarts and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
+For the latest list of supported viz types, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/13135678729875-Intro-to-visualizations)
+
+This QuickStart assumes you have already taken the Fundamentals 1 & 2 QuickStarts, and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
 
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
 
-The other “Fundamental Series” QuickStarts explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
+The other “Fundamental Series” QuickStarts explore topics such as working with tables, pivot tables, dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
 
  ### Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
@@ -77,9 +82,9 @@ Through this QuickStart we will walk through how to use Sigma to create beautifu
 ### What You’ll Build
 We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. 
 
-We will build a Workbook that looks like this:
+We will build a Sigma workbook that looks like this:
 
-![Alt text](assets/Overview1.png)
+<img src="assets/Overview1.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
