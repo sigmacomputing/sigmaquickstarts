@@ -12,7 +12,37 @@ Weeks Added so far:
 Release notes for the month of June 2023 features, published on first Friday of July
 7.7.2023 (no release notes for this short week)
 7.14.23
+
+Slack Call Outs:
+
+FFF is now "In Product"....screenshot
+
+Copy + Paste Full Workbook Pages is now in Public Beta :sigma-new: :sigma-new:
+https://help.sigmacomputing.com/hc/en-us/articles/17802897614739-Copy-a-page-within-and-between-workbooks-Beta-
+
+the Column Level Security on dataset is ready for beta.
+Here is the link to CLS dataset demo video:
+https://www.loom.com/share/de9d25b374db4a03aaab22cba34de16b
+
+For org to onboard to beta, we will need to add the org id to this feature flag:
+tps://console.statsig.com/7q6eRauyxm9jEhv935p0uP/gates/user_attributes_cls_dataset
+
+Multi-tab Excel Export is now GA:
+You can now Merge your excel exports to be in a single file with one element in each excel tab through Scheduled Exports and Send Now!
+There are 3 ways to get multi-tab excel exports
+1. Individual elements can be selected and merged into a single excel file with one element per tab. Users can select multiple individual elements and choose Excel for “Format as”. Once they select more than 1 element for Excel format a “Merge Excel Files” check box appears.
+2. Entire Page can be selected and each element from that page will automatically be merged into a single excel file with one element per tab
+3. Entire Workbook can be selected and each element will automatically be merged into a single excel file with one element per tab regardless of what page it was on.
+Users can do a combination of these. Example: if I have an attachment for the entire workbook, entire page, and 4 other elements and I checked the merge excel option, then I would get 3 Excel files in the email, one for the workbook, one for the entire page, and one for the 4 combined elements
+https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-to-Email
+https://help.sigmacomputing.com/hc/en-us/articles/4409010016019-Send-Slack-notifications
+https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Exports-to-Google-Sheets-or-Drive
+
 -->
+
+
+
+
 
 # (07-2023) July Highlights
 
@@ -37,7 +67,7 @@ New QuickStarts will be published on the first Friday of each month, and will in
 ## Admin Features
 Duration: 20
 ### Warehouse Views
-Workbook warehouse views are now generally available (beta version launched April 2023). 
+Workbook warehouse views are now generally available. 
 
 Warehouse views are **virtual tables in Snowflake** that you can query using Sigma or any other application in your data ecosystem. 
 
@@ -128,6 +158,8 @@ Duration: 20
 ### Convert Embed Users to Standard
 Admins can now convert Embed users to Standard, or vice versa. If you convert an Embed user to Standard, you must define their Account Type. 
 
+<img src="assets/07_2023_fff10.png" width="800"/>
+
 ### Embed Parameters
 The following optional user-backed embed parameters are now available:
 
@@ -157,6 +189,8 @@ The Templates tab is now split between External and Internal.
       <li><strong>External:</strong> Templates shared with your organization.</li>
 </ul>
 
+<img src="assets/07_2023_fff11.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -167,7 +201,6 @@ Duration: 20
 Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
 
 <img src="assets/07_2023_fff9.png" width="800"/>
-
 
 ### Chart color scales
 When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
