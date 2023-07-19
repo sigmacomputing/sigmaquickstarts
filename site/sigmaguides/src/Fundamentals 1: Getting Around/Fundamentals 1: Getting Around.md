@@ -166,23 +166,23 @@ There are different paths when creating content in Sigma but we will focus on th
 
 At the lower-left of the home page, under `Connections`, click on `Sigma Sample Database` to connect to the Snowflake table used in the QuickStart.
 
-![Alt text](assets/sigmasampledatabase.png)
+<img src="assets/sigmasampledatabase.png" width="800"/>
 
 We can see all the different database samples available to my user account but the canvas is blank because we have not selected anything yet:
 
-![Alt text](assets/sigmasampledatabase2.png)
+<img src="assets/sigmasampledatabase2.png" width="800"/>
 
-Select the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 19 columns**.
+Select the `RETAIL` schema and the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 22 columns**.
 
-![Alt text](assets/plugstable.png)
+<img src="assets/plugstable.png" width="800"/>
 
 We are looking at the data (in the Overview tab) and we can also look at the column detail, permissions and other information about this table. However we cannot do anything with this data just yet. 
 
-![Alt text](assets/plugstablecolumns.png)
+<img src="assets/plugstablecolumns.png" width="800"/>
 
 To begin our analysis we want to begin exploring this data. Click the `Explore` button in the upper right corner (**click the button, not the drop arrow**).
 
-![Alt text](assets/plugstableexplore.png)
+<img src="assets/plugstableexplore.png" width="800"/>
 
 We often find ourselves conducting ad hoc analysis that is only needed in the current moment. So why clutter folders with one off documents never to be used again?
 
@@ -192,7 +192,9 @@ All workbooks are considered purely exploratory until you, as their creator, act
 <strong>NOTE:</strong> Workbooks support data from multiple sources. This data can come either from tables in your Cloud Data Warehouse (CDW), from your organization's datasets in Sigma or from CSV upload into Sigma.
 </aside>
 
-We are now inside a Sigma Workbook; a collaborative canvas for data driven decision makers. As you can see our table was added to the Canvas.  Each Workbook can have one or more Pages, and each page has its own canvas. Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
+We are now inside a Sigma Workbook; a collaborative canvas for data driven decision makers. As you can see our table was added to the Canvas.  Each Workbook can have one or more `Pages`, and each page has its own canvas. Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
+
+Click on the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
 
 The left hand pane (#2) shows a vertical view of all our column names and groupings.
 
@@ -200,12 +202,17 @@ The toolbar (#1) can be found directly under the workbook header. The toolbar's 
 
 Buttons for undo, redo, and page theming can always be found in the toolbar as well.
 
-![Alt text](assets/plugstabledetails.png)
+<img src="assets/plugstabledetails.png" width="800"/>
 
-In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to “Data”. We will use this table as a Workbook source of data for work in later labs.
+In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to `Data`. We will use this table as a Workbook source of data for work in later labs.
+
+
+
+<img src="assets/plugstabledetails2.png" width="800"/>
+
 Let’s save this Workbook for now. Click the `Save As` button in the upper right corner. Give it a name that makes sense to you and others you might later share it with. We used “Plugs Sales”. 
 
-![Alt text](assets/plugstablesave.png)
+<img src="assets/plugstablesave.png" width="800"/>
 
 Notice that you are given options on where to save it using a familiar folder structure:
 
