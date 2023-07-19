@@ -28,6 +28,10 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
 ### What You’ll Learn
 Through this QuickStart we will walk through why use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
 

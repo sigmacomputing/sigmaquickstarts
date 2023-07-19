@@ -36,6 +36,10 @@ Typical audience for this QuickStart is users of Excel, common Business Intellig
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
   
 ### What You’ll Learn
 Through this QuickStart we will build a Dashboard, building on previous Fundamental QuickStarts content. We will learn how to place Elements on the Dashboard Page, move them around, resize them and add Controls to enhance and filter the Dashboard. 
