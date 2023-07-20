@@ -104,7 +104,7 @@ You are probably thinking we will use the Element Panel to add a Viz, (as we lea
 
 Open the Workbook’s `Data Page`. Click on the icon as shown below and click `Create Child Element`. Select `Visualization` from the drop list.
 
-![Alt text](assets/vizbasics1.png)
+<img src="assets/vizbasics1.png" width="800"/>
 
 Sigma has created a new Page Element below the Table as an un-configured placeholder for the new Viz. This placeholder is a child of the table as it references everything in the parent table so it is now easy to build whatever Viz we want from that data. 
 
@@ -124,22 +124,7 @@ In the `Element Panel` click on the + of the `X-Axis` and select `Store Region` 
 
 We can also **drag values onto the axis** instead of using the add button.  
 
-If we look at our columns in the element element panel list, we realize that we do not have a column for profit. 
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> If you completed the `Fundamentals 2: Working with Tables`, you might realize that we did add a column for profit, but we did not add it to the table on the source `Data` page. This is something to consider when using Sigma to design content. 
-</aside>
-
-Regardless, we can still add new column (this is an alternate workflow we are demonstrating) and have it calculate the profit for the bar chart at the same time. 
-
-Find the `+` for the `Y-AXIS` and click to `Add a new column`:
-
-<img src="assets/vizbasics3a.png" width="400"/>
-
-Rename the column to `Profit`. Set it's formula to:
-```plaintext
-Sum([Quantity] * [Quantity])
-```
+Drag and drop the `Profit` column to the `Y-AXIS`.
 
 We have our first Chart:
 
@@ -167,7 +152,7 @@ You can see tabs for selecting:
       <li><strong>Page Elements: </strong>Any data elements already in the workbook such as the bar chart we created.<li>
 </ul>
 
-From the `Select Sources...` tab select `PAGE ELEMENTS` and `Tables` Page and `PLUGS_ELECTRONICS_Hand...` as the desired source. You could have also used the `IN USE` tab if the source was already in use elsewhere in the workbook:
+From the `Select Sources...` tab select `PAGE ELEMENTS` and `Data` Page and `PLUGS_ELECTRONICS_Hand...` as the desired source. You could have also used the `IN USE` tab if the source was already in use elsewhere in the workbook:
 
 <img src="assets/vizbasics7.png" width="500"/>
 
@@ -185,15 +170,19 @@ This time, using the Visualization dropdown, select a line chart.
 
 To create the line chart, the operations are the same as the bar chart, dragging and dropping (or selecting from the axis drop down menu) to select the data columns. 
 
-Let's drag the `Month of Date` column into the `X-Axis`.
+Let's drag the `Date` column into the `X-Axis` and truncate it to `Month`:
 
-Next we can place our `Monthly Profit` column on the `Y-Axis` to see our revenue of time. Again, Sigma has automatically applied aggregation (in this case, sum) to the monthly level.
+<img src="assets/vizbasics9a.png" width="600"/>
+
+Next we can place our `Profit` column on the `Y-Axis` to see our profit over time. Again, Sigma has automatically applied aggregation (in this case, sum) to the monthly level.
 
 The Line chart should look like this now:
 
 <img src="assets/vizbasics11.png" width="700"/>
 
-Taking this one step further, we can compare our different regions by placing `Store Region` on color.  You can do this by finding the `Store Region` column in the ‘columns’ tray and dragging it into the `Color tab` in the `Elements Panel`.
+Taking this one step further, we can compare our different regions by placing `Store Region` on color.  You can do this by finding the `Store Region` column in the `Columns` tray and dragging it into the `Color tab` in the `Elements Panel`.
+
+Rename the chart to `Profit by Month per Store Region`.
 
 We now have a multi-line chart showing our Revenue over time by Store Region:
 
@@ -213,7 +202,8 @@ Geographic data can tell a powerful story. Whether analyzing regional trends or 
       <li><strong>GeoJSON blobs: </strong>Allow for storage of more complex geographical data than simple numeric lat/long columns.<li>
 </ul>
 
-Add a `new Viz`to the Page and set its source of data to the `Workbook Element / Plugs Sales / Data table`.
+Add a `new Viz`to the ` Viz` page and set its source of data to the `Workbook Element / Plugs Sales / Data table`.
+
 Change the `Visualization type` to `Map-Region`.
 
 Set the Region to `Store State` and in the region type dropdown below, choose `US States`.
@@ -226,24 +216,22 @@ We can make this more useful by adding an additional grouping to make the high a
 
 Click the button in the upper right corner of the map to show the underlying data:
 
-<img src="assets/maps2.png" width="400"/>
+<img src="assets/maps2.png" width="600"/>
 
 Notice that the underlying data is already grouped by US State. Add a `new column` called `Revenue per Customer`. 
 
 <img src="assets/maps3.png" width="400"/>
 
-We want this column to calculate the total revenue for each unique customer so set the formula for this new column to: 
-`Sum([Price]) / CountDistinct([Cust Key])`
+We want this column to calculate the total revenue for each unique customer so set the formula for this new column to:
+```plaintext
+Sum([Price]) / CountDistinct([Cust Key])
+```
 
 <img src="assets/maps4.png" width="500"/>
 
 Add the new column `Revenue per Customer` to the `Map color scale` as shown:
 
 <img src="assets/maps5.png" width="500"/>
-
-You may want to set the `format` of the `Revenue per Customer` to `currency` and `truncate` the trailing decimals to make it cleaner as:
-
-<img src="assets/maps6.png" width="400"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> When you hover over each US-State, the States data value is shown for us. Right clicking on any State allows you to include/exclude it from the dataset or drill down to the underlying data. 
@@ -254,7 +242,7 @@ You may want to set the `format` of the `Revenue per Customer` to `currency` and
 Unconstrained, ad-hoc analysis gives you the power to explore the data beyond what was originally intended and as you see fit.
 </aside>
 
-Click on `California` and `Keep only` California. Now we can work with only the California data. We can browse the data or duplicate it to create different views for our own analysis. 
+Right-click on `California` and `Keep only` California. Now we can work with only the California data. We can browse the data or duplicate it to create different views for our own analysis. 
 
 <img src="assets/maps7.png" width="600"/>
 
@@ -268,17 +256,25 @@ To revert the Map you can either click the `Back icon` on the control bar or del
 ## **Single Value KPI**
 Duration: 5
 
-As you have seen, there are many different types of Viz available and they all follow the same basic workflow so once you know how to do one, the others will seem obvious. 
+As you have seen, there are many different types of Viz available and they all follow the same basic workflow, so once you know how to do one, the others will seem obvious. 
 
 For example, let's say we want a `Single Value KPI` that shows `Total Sales` at the top of the Page. Just use the same workflow to add a new Viz, set it's data source and change the Viz type to Single Value. 
 
-From there you can `rename the Value column` from Revenue to `Total Sales` and `format` the value to currency and `truncate` the trailing decimals. 
+From there you want to add `Revenue` to the value. It will automatically be named `Sum of Revenue`, but we can rename it `Total Sales` instead. 
 
-We have done all this before on the Bar Chart so you already know how. Sigma is designed from the ground up to be as easy as 1-2-3!
+If the data is not formatted as currency, you can easily change it and truncate the trailing decimals for a cleaner look.
+
+We have done all this before on the bar and line charts, so you already know how. Sigma is designed from the ground up to be as easy as 1-2-3!
 
 <img src="assets/otherviz1.png" width="600"/>
 
+There are many configuration options for charts that can be accessed by clicking on the `paintbrush` icon:
+
+<img src="assets/otherviz1a.png" width="600"/>
+
 Add as many KPI as you like; for example, total profit, total order count and Total COGs would be good to add.
+
+If you are interested in having a KPI that also shows trend data, [checkout the KPI Chart viz](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707-Build-a-KPI-chart-Beta-)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF KPI -->
