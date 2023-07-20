@@ -20,7 +20,6 @@ We will define it, provide some guidance on the why/when to use it and who sets 
 
 Lastly, we will step through using Sigma and Snowflake to materialize some data so that the workflow in Sigma is understood.
 
-
  ### Target Audience
 Sigma administrators who are interested in improving performance when working with complex datasets or just generally interest in learning more about materialization. 
 

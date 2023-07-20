@@ -5,7 +5,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: Phil Ballai - Sigma Computing
-lastUpdated: 2023-04-19
+lastUpdated: 2023-07-19
 
 # Fundamentals 2: Working with Tables
 <!-- ------------------------ -->
@@ -25,12 +25,10 @@ We will be working with some common sales data from our fictitious company ‘Pl
 
 The other “Fundamental” QuickStarts explore topics such as working with Visualizations, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Getting Around” QuickStart should be taken first.
 
-
  ### Target Audience
 Sigma combines the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
-
+Typical audience for this QuickStart are users of Excel, common business intelligence or reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
@@ -42,6 +40,10 @@ Typical audience for this QuickStart is users of Excel, common Business Intellig
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
 ### What You’ll Learn
 Through this QuickStart we will walk through how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting.
 
@@ -52,12 +54,67 @@ Our starting point is the “Plugs Sales” Workbook created in the “Fundament
 
 In Sigma, open the Workbook `Plugs Sales` and place it in edit mode. We should still have the Page tab called `Data` that has the “Plugs Sales” Table on it. 
 
+Our source data in Snowflake is missing a few columns that we want users to have access to, but **we want to control how the column values are calculated.**
+
+The two missing column are `Revenue` and `Profit`.
+
+Click the column dropdown from the `Price` column and select `Add new column`. 
+
+<img src="assets/fix1.png" width="800"/>
+
+Rename the new column `Revenue`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Did you notice that you can just double-click a column header to rename it?
+</aside>
+
+Enter the formula:
+```plaintext
+[Price] * [Quant] 
+```
+		
+This is an intentional mistake in our formula; `Quant is not a valid column` and it does not exist anywhere else in the Workbook. What happened?
+
+Sigma makes you immediately aware the function has a problem:
+
+<img src="assets/calculatedcols1.png" width="800"/>
+
+Easy to fix, just adjust the column name to `Quantity` and `click the checkmark at the end of the Function bar`. **Simple!**
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Did you notice the columns being highlighted as you add them to the formula? Lots of little things to make you more efficient:
+</aside>
+
+<img src="assets/calculatedcols2.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br>You may want to reorder the columns. Just drag and drop the columns to reorder them anyway you want. You can also hide columns you are not interested in anytime. Unhide them using the Element Panel.
+</aside>
+
+Now that we have our `Revenue`, we should be able to calculate our `Profit`. 
+
+You can do this one yourself now:
+```plaintext
+[Revenue] - [Cost]
+```
+
+Lastly, click the `Cost` column, hold down `shift` on your keyboard and click the `Profit` column. All four columns are selected now.
+
+Apply `currency` formatting to them all at once:
+
+<img src="assets/fix2.png" width="800"/>
+
+We now have source data that we can reuse as we go forward.
+
 Add a `new Page` and name it `Tables`. Your Workbook should look like this:
 
-<img src="assets/tablebasics1.png" width="200"/>
+<img src="assets/tablebasics1.png" width="300"/>
 
 Click the `+ icon` to open the Editor Panel. This panel gives you access to all the objects possible to add to a Page. 
-Select `Table` and for the source of data; we will use the Table on the Data page
+
+Select `Table` and for the source of data; we will use the table on the workbooks's `Data` page (under `PAGE ELEMENTS`):
+
+<img src="assets/tablebasics2.png" width="300"/>
 
 Notice that there are a few options for the source data. Reusing data that has already been queried from the Connection can help improve performance by limiting the number of queries sent to the Cloud Data Warehouse (CDW).
 
@@ -74,7 +131,6 @@ Browser Query can perform operations like queries, filters, and sorts. And it is
   <li><strong>Page Elements:</strong> Table and visualization elements can be selected as a source from the open Workbook</li>
 </ul>
 
-<img src="assets/tablebasics2.png" width="200"/>
 
 We now have our table and can begin working just like a normal spreadsheet. Get ready, you may be pleasantly surprised by how easy this is in Sigma.
 
@@ -85,29 +141,13 @@ Sigma is unique in empowering users to do analysis in an interface they already 
 
 First, let’s truncate the Date column to Month. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Month`.
 
-<img src="assets/tablebasics3.png" width="500"/>
+<img src="assets/tablebasics3.png" width="800"/>
  
 <aside class="negative">
 <strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() Function in the Function bar.
 </aside>
 
-<img src="assets/tablebasics4.png" width="500"/>
-
-We want Cost of Goods Sold (COGS) but that column is not in the data. Let’s add it. Click the `Price columns drop list` and select `Add a new column`. 
-
-<img src="assets/tablebasics5.png" width="400"/>
-
-Using the same click path (you see the pattern now…) Rename the column `COGS`. 
-
-In the Function bar start typing `Cost`...notice that Sigma is automatically giving you a list of options from the existing columns. 
-
-You can just select from the list or complete typing. We want the formula `[Cost] * [Quantity]`. It should look like this now:
-
-<img src="assets/tablebasics6.png" width="500"/>
-
-You can change the Quantity, Price and COGS columns to currency and lose the trailing digits using the function bar:
-
-<img src="assets/tablebasics7.png" width="500"/>
+<img src="assets/tablebasics4.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE BASICS -->
@@ -129,7 +169,7 @@ Clicking into the first `Query` gives every last detail:
 <strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into SQL and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
 </aside>
 
-<img src="assets/behindthescenes3.png" width="500"/>
+<img src="assets/behindthescenes3.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to the Cloud Data Warehouse (CDW), and pushes all queries to the CDW for execution. Benefits of this include:
@@ -143,7 +183,7 @@ With many other BI products, data is extracted out of the CDW to local desktops/
 
 Related to the last item there is another feature that lets you “peek” behind a column to see some useful information. `Click on the column Store Region’s` drop list and click `Column Details`. This will display a pop-up to help you see things like Top Values and if nulls exist and more:
 
-<img src="assets/behindthescenes4.png" width="600"/>
+<img src="assets/behindthescenes4.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF BEHIND THE SCENES -->
@@ -151,36 +191,16 @@ Related to the last item there is another feature that lets you “peek” behin
 ## **Calculated Columns**
 Duration: 6
 
-Now, let’s add a few more columns using calculations. Click the column dropdown from the `Price` column and select `Add New Column`. 
+There are times when a column has not been made available in the source data. It is still possible for users to add them (assuming they have been granted permission). 
 
-Rename the new column `Revenue`
-
-Enter the formula:
-[Price] * [Quant] 
-		
-This is an intentional mistake in our formula; `Quant is not a valid column` and it does not exist anywhere else in the Workbook. What happened?
-
-Sigma makes you immediately aware the Function has a problem:
-
-<img src="assets/calculatedcols1.png" width="600"/>
-
-Easy to fix, just adjust the column name to `Quantity` and `click the checkmark at the end of the Function bar`. Simple! 
-
-Did you notice the columns being highlighted as you add them to the formula? Lots of little things to make you more efficient:
-
-<img src="assets/calculatedcols2.png" width="600"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br>You may want to reorder the columns. Just drag and drop the columns to reorder them anyway you want. You can also hide columns you are not interested in anytime. Unhide them using the Element Panel.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Calculated columns are not written back to your data warehouse unless using Sigma materialization. This is covered in more advanced QuickStart.
 </aside>
 
-Now that we have our COGS and Revenue we should be able to calculate our `profit`. You can do this one yourself now:
-
-`[Revenue] - [COGS]  `
-
-Now that we know our profit made for each transaction, we may also be interested to know the `profit margin` percentage on each item:
-
-`[Profit] / [Revenue]` 
+We know our profit made for each transaction, but we also are interested to know the `Profit Margin` percentage on each item. Add a new column (next to `Profit`), and use the formula:
+```plaintext
+[Profit] / [Revenue]
+```
 
 Rename the column `Profit Margin`  In this case, `change the formatting to a %`.
 
@@ -188,7 +208,13 @@ Your Page should now look similar to this:
 
 <img src="assets/calculatedcols3.png" width="800"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.
+</aside>
+
 Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. We will get into some more advanced functions later, but you can always check out the complete list by clicking the ‘Help’ button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index)
+
+<img src="assets/fix3.png" width="400"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF CALCULATED COLUMNS -->
@@ -198,57 +224,74 @@ Duration: 6
 
 So far we have done some pretty simple operations. Let's go a bit deeper and group the data, building on the work we just did. There are two ways to group data. One is selecting the column and using the drop list and clicking “Group column”. 
 
-<img src="assets/grouping1.png" width="300"/>
+<img src="assets/grouping1.png" width="400"/>
 
-This works fine but there is another method that introduces you to using the Element Configuration Panel.
+This works fine but there is another method that introduces you to using the element configuration panel.
 
-Using the `Element Panel` (and with the Table selected) just drag and drop the `Month of Date` column up to the `GROUPINGS`	section as shown below:
+Using the `Element Panel` (and with the table selected) just drag and drop the `Month of Date` column up to the `GROUPINGS`	section as shown below:
 
-<img src="assets/grouping2.png" width="500"/>
+<img src="assets/grouping2.png" width="800"/>
 
 The table will automatically group on this column which allows us to perform calculations at his level of grouping.
 
-Add a new column and rename it `Monthly Profit` using the following formula:
+Using the `Month of Date` column's drop arrow, add a `New column` and rename it `Monthly Profit`:
 
-`Sum([Profit])`
+Use the following formula:
+```plaintext
+Sum([Profit])
+```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Did you notice that you can just double-click a column header to rename it?
+<strong>NOTE:</strong><br> This is one workflow. You could also just drag the Profit column up to the Calculations area, in the desired grouping.
 </aside>
 
-<img src="assets/grouping3.png" width="500"/>
+Notice how the new column is part of the `Element panel` / `Grouping` / `Calculation` under `Month of Date`?
 
-We now have the profit aggregate to the monthly level. You can at any point collapse a single month, or all the months to hide the underlying data. You can do this by clicking the minimize hash next to the column header of `Month of Date` or any Monthly values.  
+<img src="assets/grouping2a.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma automatically aggregated the profit at the monthly level, because we created the new column off the "Month of date" column. This is very powerful and quite different than if we had just added another table column with calculations in it. In that case, the new column would not be automatically aggregated.
+</aside>
+
+You can at any point collapse a single month, or all the months to hide the underlying data. You can do this by clicking the minimize hash next to the column header of `Month of Date` or any Monthly values.  
 
 Click on the minimize hash next to `Month of Date` to collapse all the Months.
 
-<img src="assets/grouping4.png" width="300"/>
+<img src="assets/grouping4.png" width="400"/>
 
 Scrolling to the right of the table, find the column `Store Region`.  Using the dropdown, select `Group column`.
 
-Scrolling back to the left, you see that we have created another grouping below the Month grouping.  We can now perform calculations at this grouping level.  
+Scrolling back to the left, you see that we have created another grouping below the Month grouping.  We can now perform calculations at this grouping level. You may want to expand just the first `Month of Date` to see the `Store Region` groups:
+
+<img src="assets/grouping4a.png" width="800"/>
 
 Let's add a new column next to `Store Region` for `Region Profit` using the formula:
+```plaintext
+Sum([Profit])
+```
 
-`Sum([Profit])`
+We can now see all our months and regional profits.
 
-Next, we can maximize the `Month of Date` column to see the data for our months and regions. You can do this by clicking on the maximize hash next to `Month of Date`.
+<img src="assets/grouping4b.png" width="600"/>
 
-We can now see all our months and regional profits for those months.
-
-<img src="assets/grouping5.png" width="500"/>
-
-Taking this one step further we can also do formulas across the different grouping levels.
+Taking this one step further, we can also perform calculations across the different grouping levels.
 
 Clicking the dropdown next to `Region Profit`, select `Add new column`. Use the formula: 
+```plaintext
+[Region Profit] / [Monthly Profit]
+```
 
-`[Region Profit] / [Monthly Profit]` and format this as a percentage.
+Format this as a percentage.
 
-Rename the column `Contribution`
+Rename the column `Contribution`:
 
-<img src="assets/grouping6.png" width="500"/>
+<img src="assets/grouping6.png" width="800"/>
 
-We can now see exactly how much each region is contributing to the monthly profit. There are no limitations in Sigma Workbooks Tables for how many groupings you can have. You can also at any time swap the order of the groupings in the left hand pane using a simple drag and drop method. We will leave the groupings alone for now.
+We can now see exactly how much each region is contributing to the monthly profit. 
+
+There are no limitations in Sigma tables for how many groupings you can have. 
+
+You can also swap the order of the groupings in the left hand pane using a simple drag and drop method. We will leave the groupings alone for now.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GROUPING DATA -->
@@ -262,13 +305,13 @@ First, from the `Store Region` column header dropdown, select `Show Totals`.
 
 You can now see we have totals aggregated at the Regional levels:
 
-<img src="assets/totals1.png" width="500"/>
+<img src="assets/totals1.png" width="800"/>
 
 Taking this a step further we can do the same thing for our months.  From the `Month of Date` column header dropdown, select `Show Totals`.
 
 We now have totals at the Monthly level as well.
 
-<img src="assets/totals2.png" width="500"/>
+<img src="assets/totals2.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE TOTALS -->
@@ -292,37 +335,57 @@ There are many things you can do to enhance your Table; feel free to experiment 
 ## **Summarizing Data**
 Duration: 6
 
-Sigma also has the ability to create Summary Values or KPIs across the entire Table.  At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
+Sigma also has the ability to create Summary Values or KPIs across the entire table.  At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
 
-At the bottom left corner of the Table click on the caret and select the `+ button`. 
+At the bottom left corner of the table click on the caret and select the `+ button`. 
 
-<img src="assets/summary1.png" width="400"/>
+<img src="assets/summary1.png" width="600"/>
 
-Select the `Revenue` column. Sigma will automatically Sum the column. You can adjust this formula at any time from the formula bar to be anything you want. We also renamed the Summary as shown:
+Select the `Revenue` column. Sigma will automatically sum the column. 
 
-<img src="assets/summary2.png" width="200"/>&emsp;&emsp;&emsp;<img src="assets/summary3.png" width="400"/>
+<img src="assets/summary2.png" width="400"/>
 
-These Summary Values can now be accessed in any formula (by name) anywhere in the Table and can also be leveraged with our KPI visualizations.
+You can adjust this formula at any time from the formula bar to be anything you want. 
 
-Add one more summary for our COGS and rename it `COGS`.
+<img src="assets/summary3.png" width="600"/>
+
+Rename the summary to `Total Sales`, format it as `currency` and trim the trailing `cents` values.
+
+These summary values can now be accessed in any formula (by name) anywhere in the table and can also be leveraged with our KPI visualizations.
 
 <aside class="negative">
-<strong>NOTE:</strong> Sigma references Summaries by name and can be used in other formulas inside the Workbook. 
+<strong>NOTE:</strong> Sigma references summaries by name and can be used in other formulas inside the Workbook. 
 </aside>
 
-Lastly, let's create one more Summary value by clicking on the caret `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
+Let's create one more summary value by clicking on the caret `^`, and selecting the `+ button`.  This time select the `Cost` column.
 
-<img src="assets/summary4.png" width="300"/>
+Rename this summary to `Total Costs` and trim the trailing `cents`.
 
-In the function bar, enter the formula bar enter `[Total Revenue] - [Total COGS]` and hit enter.  Also rename this Summary to `Total Profit`.
+Let's create one more summary value by clicking on the caret `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
+
+<img src="assets/summary4.png" width="500"/>
+
+In the function bar, enter the formula bar enter:
+```plaintext
+[Total Sales] - [Total Costs]
+```
+
+Also rename this Summary to `Total Profit`.
 
 <img src="assets/summary5.png" width="500"/>
 
-It may also be helpful to have the total number of orders represented in the data. Sigma has a Function for that. Add another summary and set the formula to:
+It may also be helpful to have the total number of orders represented in the data. Sigma has a function for that. 
 
-`GrandTotal(CountDistinct([Order Number]))`
+Add another `New summary` and set the formula to:
+```plaintext
+GrandTotal(CountDistinct([Order Number]))
+```
 
-<img src="assets/summary6.png" width="500"/>
+Rename it to `Total Order Count`.
+
+Set the format to `Number` and remove trailing decimals:
+
+<img src="assets/summary6.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SUMMARIES -->
@@ -330,23 +393,31 @@ It may also be helpful to have the total number of orders represented in the dat
 ## **Filtering Data**
 Duration: 6
 
-Sigma also has the ability to easily filter Table data. Lets filter for only stores in the East region. 
+Sigma also has the ability to easily filter table data. Lets filter for only stores in the East region. 
 
-Click on the `Store Region` column and select Filter. Notice that a `FILTERS & CONTROLS` panel opens and itf auto-populates with the available distinct list of Store Regions. Also notice that under number 3 there is a small filter icon with a 1 next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
+Click on the `Store Region` column and select `Filter`. 
 
-<img src="assets/filters1.png" width="700"/>
+Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the available distinct list of Store Regions. 
 
-Click the checkbox for `East` and see the table update for just the East region. **The Summaries are also updated.** 
+Also notice that under `number 3` there is a small filter icon with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
 
-<img src="assets/filters2.png" width="700"/>
+<img src="assets/filters1.png" width="800"/>
 
-Wouldn't it be great if I could just have this filter as as dropdown on the Page? No problem. Just click the vertical 3-dots and click “Convert to Page Control”. Now the Table can be filtered by using the dropdown filter list as shown below:
+Click the checkbox for `East` and see the table update for just the East region. **The summaries are also updated.** 
 
-<img src="assets/filters3.png" width="300"/><br>
+<img src="assets/filters2.png" width="800"/>
 
-<img src="assets/filters4.png" width="700"/>
+Wouldn't it be great if I could just have this filter as as dropdown on the Page? **No problem.** 
 
-You may want a totally different Page layout and we will cover that along with more information on Page Controls in the Dashboard QuickStart.
+Just click the vertical `3-dots` and click `Convert to Page Control`. 
+
+<img src="assets/filters2a.png" width="400"/>
+
+Now the Table can be filtered by using the dropdown filter list as shown below:
+
+<img src="assets/filters3.png" width="700"/>
+
+You may want a totally different page layout and we will cover that along with more information on page controls in the [Dashboard QuickStart.](https://quickstarts.sigmacomputing.com/guide/Fundamentals%205:%20Working%20with%20Dashboards/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF FILTERING -->
@@ -356,7 +427,7 @@ Duration: 6
 
 In this QuickStart we covered how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting and filter the result set. 
 
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html)
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 

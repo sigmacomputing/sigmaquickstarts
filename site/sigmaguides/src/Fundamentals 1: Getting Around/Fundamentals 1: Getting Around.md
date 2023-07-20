@@ -5,7 +5,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: Phil Ballai-Sigma Computing
-lastUpdated: 2023-04-19
+lastUpdated: 2023-07-19
 
 # Fundamentals 1: Getting Around
 <!-- ------------------------ -->
@@ -32,6 +32,10 @@ Typical audience for this QuickStart is users of Excel, common Business Intellig
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
 
 ### What You’ll Learn
 Through this QuickStart we will walk through how to access a Sigma Trial environment, navigate the user interface and more. 
@@ -166,23 +170,23 @@ There are different paths when creating content in Sigma but we will focus on th
 
 At the lower-left of the home page, under `Connections`, click on `Sigma Sample Database` to connect to the Snowflake table used in the QuickStart.
 
-![Alt text](assets/sigmasampledatabase.png)
+<img src="assets/sigmasampledatabase.png" width="800"/>
 
 We can see all the different database samples available to my user account but the canvas is blank because we have not selected anything yet:
 
-![Alt text](assets/sigmasampledatabase2.png)
+<img src="assets/sigmasampledatabase2.png" width="800"/>
 
-Select the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 19 columns**.
+Select the `RETAIL` schema and the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 22 columns**.
 
-![Alt text](assets/plugstable.png)
+<img src="assets/plugstable.png" width="800"/>
 
 We are looking at the data (in the Overview tab) and we can also look at the column detail, permissions and other information about this table. However we cannot do anything with this data just yet. 
 
-![Alt text](assets/plugstablecolumns.png)
+<img src="assets/plugstablecolumns.png" width="800"/>
 
 To begin our analysis we want to begin exploring this data. Click the `Explore` button in the upper right corner (**click the button, not the drop arrow**).
 
-![Alt text](assets/plugstableexplore.png)
+<img src="assets/plugstableexplore.png" width="800"/>
 
 We often find ourselves conducting ad hoc analysis that is only needed in the current moment. So why clutter folders with one off documents never to be used again?
 
@@ -192,7 +196,9 @@ All workbooks are considered purely exploratory until you, as their creator, act
 <strong>NOTE:</strong> Workbooks support data from multiple sources. This data can come either from tables in your Cloud Data Warehouse (CDW), from your organization's datasets in Sigma or from CSV upload into Sigma.
 </aside>
 
-We are now inside a Sigma Workbook; a collaborative canvas for data driven decision makers. As you can see our table was added to the Canvas.  Each Workbook can have one or more Pages, and each page has its own canvas. Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
+We are now inside a Sigma Workbook; a collaborative canvas for data driven decision makers. As you can see our table was added to the Canvas.  Each Workbook can have one or more `Pages`, and each page has its own canvas. Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
+
+Click on the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
 
 The left hand pane (#2) shows a vertical view of all our column names and groupings.
 
@@ -200,45 +206,69 @@ The toolbar (#1) can be found directly under the workbook header. The toolbar's 
 
 Buttons for undo, redo, and page theming can always be found in the toolbar as well.
 
-![Alt text](assets/plugstabledetails.png)
+<img src="assets/plugstabledetails.png" width="800"/>
 
-In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to “Data”. We will use this table as a Workbook source of data for work in later labs.
-Let’s save this Workbook for now. Click the `Save As` button in the upper right corner. Give it a name that makes sense to you and others you might later share it with. We used “Plugs Sales”. 
+Let’s save this Workbook for now. Click the `Save As` button in the upper right corner. Give it a name that makes sense to you and others you might later share it with. We used `Plugs Sales`. 
 
-![Alt text](assets/plugstablesave.png)
+<img src="assets/plugstablesave.png" width="800"/>
 
-Notice that you are given options on where to save it using a familiar folder structure:
+Notice that you are given options on where to save it using a familiar folder structure. We created a folder called `Fundamentals` and named the workbook `Plugs Sales`:
 
 <img src="assets/plugstablefolders.png" alt="drawing" width="250"/>
 
-If you need to rename it later you can by navigating to the `Workbook` in `My Documents` and clicking on the `three dots` as shown:
+If you need to rename it later you can by clicking on the workbook name's drop menu and selecting `Rename`. You could also just double-click the workbook name and type a new one:
 
-![Alt text](assets/plugstable3dots.png)
+<img src="assets/plugstable3dots.png" alt="drawing" width="800"/>
 
-At this point you have a saved Workbook with one table that is not yet “Published”. You have options that persist during the time you are working to finalize the Workbook as shown. If you only see the `Edit` button you will need to click that to place the Workbook back into edit mode.
+Now that you have saved the workbook, it's state is changed to `Published` and we are still in `Editing` mode. The `Publish` button is not active.
 
-![Alt text](assets/plugstablepublish.png)
+<img src="assets/plugstablepublish.png" alt="drawing" width="800"/>
 
 **These options allow you to:**
 <ul>
       <li>Continue to work on the Workbook (Edit)</li>
       <li>Preview the Workbook as users with Explorer or Viewer rights will see it (Preview as...)</li>
-      <li>Review the last published version before you make your saves in Edit mode (Go to Publish...)</li>
-      <li>Restore previous Published version if you make a mistake Publishing new (Restore draft to...)</li>
+      <li>Review the last published version before you make your saves in Edit mode (Go to published version)</li>
+      <li>Restore previous Published version if you make a mistake Publishing new (Restore draft to published version)</li>
 </ul>
 
-Lets change the title of this table to "Plugs Sales" by clicking on the tables title text and just typing over the default name:
-![Alt text](assets/plugstabletitle.png)
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma has many more features to help address the need for version control.
+</aside>
+
+[For more information on version control in Sigma, please click here.]()
+
+In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to `Data`. We will use this table as a Workbook source of data for work in later labs.
+
+<img src="assets/plugstabledetails2.png" width="500"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You can also just double-click on the page name and enter a new name too.
+</aside>
+
+Now that we have made a change to the workbook, the `Publish` button becomes active again.
 
 Click the `Publish` button and then click `Editing / Go to the published version` link. 
 
-Notice that you are taken to a Workbook with one page and the Publish button now takes you back to Edit if you want. 
+<img src="assets/plugstabledetails3.png" width="500"/>
 
-Notice that there are some controls in the upper right corner of the Table. These are limited based on the mode you are in (Published, Edit) and what user role you have. These will be very useful as we go forward. Feel free to click into any of them now. 
+Notice that you are taken to the workbook with one page called `Data` and we are able to return to edit mode via the `Edit` button. 
+
+Click anywhere on the one table.
+
+Notice that there are some controls in the upper right corner of the table. The available options are limited based on the mode you are in (Published, Edit) and what user role you have. These will be very useful as we go forward. Feel free to click into any of them now. 
 
 Notice that the **file download is limited to 1M rows** (the Excel limit). You want your users working in Sigma and not downloading data and building ungoverned spreadsheets with potentially old data and incorrect formulas. 
 
-![Alt text](assets/plugstabledownload.png)
+<img src="assets/plugstabledownload.png" width="500"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma releases new features all the time and some are offered as public beta. Those are indicated by the "Beta" tag you see on the previous screenshot. The tag will disappear when the feature is released.
+</aside>
+
+To see what is new in Sigma, [you can visit this page that has information on new features, public betas and bug fixes for the previous month.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Weekly release notes are made available here as well](https://help.sigmacomputing.com/hc/en-us/articles/360041688433)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WOOKBOOKS -->
@@ -248,20 +278,22 @@ Duration: 6
 
 If not in Edit mode, click the `Edit` button to return to that. Notice that we can easily add Workbook Pages by clicking the `+` link at the bottom left corner of the Page. You can also perform other functions by clicking on the individual Page arrow. 
 
-![Alt text](assets/pages.png)
+<img src="assets/pages.png" width="400"/>
 
 Each Page has its own Canvas and can be made to operate independently of others or not. For example, on one Page you may want to have the Dataset you are using to drive the content on other Pages. On another Page you may want to have some end user instructions as shown in the Example Workbook we saw earlier:
+
 <img src="assets/pagetabs.png" width="400"/>
 
 When in a Workbook in Edit mode you will add Elements to the Canvas using the Editor Panel as shown:
 
-![Alt text](assets/pageselements.png)
+<img src="assets/pageselements.png" width="800"/>
 
 The Editor Panel contains all the Elements you will use to create your Workbook and Pages. We will cover each of these in separate QuickStarts as there are a large amount of functionality in each option. Feel free to experiment with adding Elements to pages if you wish, it is easy to delete Elements that you no longer want on your Page.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong> Changes to Workbook Pages are saved as a Draft. You can make changes and not publish, close the Workbook and when you reopen it your Draft changes are still there waiting for you when in Edit mode. They only appear to other users when the Workbook is published
 </aside>
+
 When an existing Page element is selected, its configuration is automatically displayed in the workbook's editor panel. For example, selecting a chart will automatically display all the chart options on the Element Panel. 
 
 ![Alt text](assets/pageseditorpanel.png)
@@ -285,15 +317,15 @@ Workbooks support three permission types: `View`, `Explore` and `Edit`.
 
 Click the `Share` icon as shown:
 
-![Alt text](assets/shareiconclick.png)
+<img src="assets/shareiconclick.png" width="800"/>
 
-Under the Share modal's Share tab, select the team or organization member with whom you would like to share the workbook. In this case, we want to share with everyone in View mode:
+Under the Share modal's Share tab, select the team or organization member with whom you would like to share the workbook. In this case, we want to share with the `FinanceViewers` team, with `Viewer` permissions.
 
-![Alt text](assets/sharewitheveryone.png)
+<img src="assets/sharewitheveryone.png" width="800"/>
 
-Notice that there is also a tab that shows you **“Who has Access”** already in case you are not sure:
+The `Share Workbook` modal shows who has access and their permission level. There are also a few other options to grant access via link.
 
-![Alt text](assets/sharewhohasaccess.png)
+<img src="assets/sharewhohasaccess.png" width="800"/>
 
 [More information and options on Sharing is found here](https://help.sigmacomputing.com/hc/en-us/articles/1500010776381-Share-a-Workbook#h_01F6R0YCKPH200BN7XEHMA6SC8)
 
@@ -303,33 +335,26 @@ Notice that there is also a tab that shows you **“Who has Access”** already 
 ## **Scheduling** ##
 Duration: 6
 
-You can send Workbook content immediately (Send now) or on a schedule using the two options off the Workbook name drop list as shown:
+You can send Workbook content on a schedule using the option off the Workbook name drop list as shown:
 
-<img src="assets/scheduling.png" width="200"/>
+<img src="assets/scheduling.png" width="400"/>
 
-From your Plugs Sales Workbook click the `Send now` link. You are able to customize several areas of this operation. Feel free to try it as the Trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. For Workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
+In the modal window, click `Add Schedule`
 
-You can also use the  + Add another attachment` to build a message from more than one part of a Workbook. 
+<img src="assets/scheduling1.png" width="400"/>
 
-<img src="assets/schedulingaddattachment.png" width="400"/>
+You are able to customize several areas of this operation. Feel free to try it as the Sigma trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. For Workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
 
-The message received has a link the Sigma Workbook (whatever was selected to send) as well as the attachment in PDF:
+<img src="assets/scheduling2.png" width="800"/>
 
-<img src="assets/schedulingemail.png" width="400"/>
 
-![Alt text](assets/schedulingemailPDF.png)
+You can also use the  `+ Add another attachment` to build a message from more than one part of a Workbook. 
 
-Scheduling to send later is very similar to what we have just done. 
+<img src="assets/scheduling3.png" width="800"/>
 
-Back in the Sigma Workbook select the `Workbook name` drop list and click `Schedule Exports`.
+A very powerful feature of scheduling allows you to deliver reports deterministically based on parameters you define. You can even test if the condition is met or not, against the existing data:
 
-Since we have not scheduled this before we are prompted to `Add Schedule`. Click that button:
-
-The Schedule configuration is the same as in the Send Now workflow but now we can scroll to add the desired timing:
-
-![Alt text](assets/schedulingsendlater.png)
-
-![Alt text](assets/schedulingsendlaterconfig.png)
+<img src="assets/scheduling4.png" width="800"/>
 
 There is a lot of flexibility in this operation, most of which is very straightforward. 
 
@@ -349,7 +374,19 @@ Allows you to set more specific conditions which must be met if a Schedule is to
 
 **If a condition is met:** Allows you to check the data for specific conditions to determine if a condition is met and send the message. For example, we are checking the Quality column in the Table data to see if there are 10 or less items in stock. If true, the condition is met and the message would be sent on the schedule configured.
 
-![Alt text](assets/schedulingsendconditioncheck.png)
+The message received has a link the Sigma Workbook (whatever was selected to send) as well as the attachment in PDF:
+
+<img src="assets/schedulingemail.png" width="400"/><br><br>
+
+<img src="assets/schedulingemailPDF.png" width="800"/>
+
+Once you have created a schedule, you can see it on the list of available `Schedule Exports`.
+
+Back in the Sigma Workbook select the `Workbook name` drop list and click `Schedule Exports`.
+
+Here, you can edit, delete, pause or "send now" any listed export job:
+
+<img src="assets/schedulingsendnow.png" width="800"/>
 
 [For more information on Scheduling click here.](https://help.sigmacomputing.com/hc/en-us/sections/4404152371347-Send-Schedule-and-Export)
 
@@ -371,28 +408,27 @@ Click the `Invite People` button.
 
 Fill out the pop-up:
 
-<img src="assets/invitepeople.png" width="400"/>
+<img src="assets/invitepeople.png" width="600"/>
 
 Have the new user accept the email invitation from Sigma and set up their account. So we could have both accounts logged into Sigma at the same time we used Chrome for one and Firefox for the other.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong> Using your original Sigma Trial account, Share the Plugs Sales Workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; for Live Edit the user needs Edit Permission. 
-
+<strong>IMPORTANT:</strong> Using your original Sigma trial account, Share the Plugs Sales Workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; for Live Edit the user needs Edit Permission. 
 </aside>
 
-Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sales Workbook Shared with me on the Shared with Me page:
+Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sales Workbook Shared with me on the `Shared with Me` page:
 
-![Alt text](assets/liveedit.png)
+<img src="assets/liveedit.png" width="800"/>
 
 **Put the Workbook into Edit mode in both browsers** and you will notice that you can see that there is another user working on the same workbook. Notice that in Firefox the user is “EP” but there is another user also making edits (PB).
 
-![Alt text](assets/liveeditusers.png)
+<img src="assets/liveeditusers.png" width="800"/>
 
 **But which part of the Workbook is each user active in?**
 
 `Click the Table` and you will see who is active on that Element:
 
-![Alt text](assets/liveedittable.png)
+<img src="assets/liveedittable.png" width="800"/>
 
 [For more information on Live Edit click here.](https://help.sigmacomputing.com/hc/en-us/articles/9384868843027-Workbook-Live-Edit)
 
