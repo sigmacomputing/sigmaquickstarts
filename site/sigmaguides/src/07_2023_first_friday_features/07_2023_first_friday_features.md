@@ -12,6 +12,7 @@ Weeks Added so far:
 Release notes for the month of June 2023 features, published on first Friday of July
 7.7.2023 (no release notes for this short week)
 7.14.23
+7.21.23
 
 Slack Call Outs:
 
@@ -42,8 +43,6 @@ https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Export
 
 
 
-
-
 # (07-2023) July Highlights
 
 ## Overview 
@@ -66,6 +65,11 @@ New QuickStarts will be published on the first Friday of each month, and will in
 
 ## Admin Features
 Duration: 20
+
+### Connections
+
+**Native JSON support for BigQuery:**
+Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
 ### Warehouse Views
 Workbook warehouse views are now generally available. 
 
@@ -151,7 +155,6 @@ The /v2/connections endpoint now returns the following Connection metadata field
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
 ## Embedding 
 Duration: 20
 
@@ -162,11 +165,35 @@ Admins can now convert Embed users to Standard, or vice versa. If you convert an
 
 ### Embed Parameters
 The following optional user-backed embed parameters are now available:
-
- <ul>
+<ul>
       <li><strong>show_workbook_name:</strong> A boolean value that displays the workbook name near the folder icon.</li>
       <li><strong>menu_position:</strong> Allows you to change the position of the toolbar to top, bottom, or none.</li>
 </ul>
+
+### Enhancements
+ <ul>
+      <li><strong>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
+      <li><strong>Users can now copy and paste elements in an embed.  </li>
+</ul
+
+For more information on copy and paste elements, [click here](https://help.sigmacomputing.com/hc/en-us/articles/13531340202003-Copy-and-paste-elements)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Input Tables
+Duration: 20
+
+**"Fill range" keyboard shortcut:**
+Use the `fill range` keyboard shortcut to overwrite selected cells with the value in the first (top-left) cell of the range. Select a range and apply the applicable keyboard shortcut based on your operating system:
+
+**For macOS:**
+⌘ + return
+
+**For Windows:**
+ctrl + enter
+
+<img src="assets/input_table_copy_paste.gif">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -214,13 +241,15 @@ The full palette:
 ### Double-click chart legend values
 Chart legends now support double-click actions. Prior to this update, Sigma interpreted a rapid double-click as two separate inputs that would select the value on the first click and deselect it on the second. Sigma now interprets a rapid double-click as a single input.
 
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Workbooks
 Duration: 20
+
+### Bookmarks (BETA)
+Bookmarks now provide a notification when changes made (such as changing a filter’s value) for the bookmark are no longer relevant in the workbook. In other words, someone changed the base workbook such that the bookmark is no longer accurate. A modal gives the option of updating or deleting the bookmark.
+
 ### Table cell images (BETA)
 Tables can now display images in cells. When a column contains image URLs, you can render the images by selecting `Transform` > `Set image` in the column menu.
 
@@ -232,7 +261,6 @@ Image columns have some display options:
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 
 ## **Bug Fixes**
 Duration: 20
@@ -251,15 +279,11 @@ No release notes during this period.
       <li>Custom domain settings in region maps now modify color scales as intended.</li>
 </ul>
 
-### Week ending 7.xx.2023
+### Week ending 7.21.2023
  
  <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-</ul>
+      <li>We resolved an embed issue where visualizations failed to render in certain scenarios.</li>
+ </ul>
 
 ### Week ending 7.xx.2023
  
