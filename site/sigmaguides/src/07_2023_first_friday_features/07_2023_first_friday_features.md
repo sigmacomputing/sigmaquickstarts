@@ -39,8 +39,8 @@ https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-
 https://help.sigmacomputing.com/hc/en-us/articles/4409010016019-Send-Slack-notifications
 https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Exports-to-Google-Sheets-or-Drive
 
--->
 
+-->
 
 
 # (07-2023) July Highlights
@@ -107,9 +107,7 @@ You are able to access all of the available warehouse views under `Administratio
 <img src="assets/07_2023_fff4.png" width="800"/>
 
 
-
 For more information, see [Create and manage workbook warehouse views](https://sigma.bi/create-and-manage-workbook-warehouse-views) and [Review warehouse view details](https://sigma.bi/review-warehouse-view-details).
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -172,14 +170,15 @@ The following optional user-backed embed parameters are now available:
 
 ### Enhancements
  <ul>
-      <li><strong>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
-      <li><strong>Users can now copy and paste elements in an embed.  </li>
-</ul
+      <li>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
+      <li>Users can now copy and paste elements in an embed.</li>
+</ul>
 
 For more information on copy and paste elements, [click here](https://help.sigmacomputing.com/hc/en-us/articles/13531340202003-Copy-and-paste-elements)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 
 ## Input Tables
 Duration: 20
@@ -262,7 +261,7 @@ Image columns have some display options:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Bug Fixes**
+## Bug Fixes
 Duration: 20
 
 Bug releases are broken down by week for specificity.
@@ -299,7 +298,7 @@ No release notes during this period.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Additional Information**
+## Additional Information
 Duration: 20
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
