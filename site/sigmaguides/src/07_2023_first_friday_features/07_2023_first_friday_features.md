@@ -39,6 +39,7 @@ https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-
 https://help.sigmacomputing.com/hc/en-us/articles/4409010016019-Send-Slack-notifications
 https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Exports-to-Google-Sheets-or-Drive
 
+Bookmarks have been launched to public beta for all customers (what's new in sigma / Dillon Morrison)
 
 -->
 
