@@ -147,7 +147,7 @@ If they do not, please add them and save the file.
 Here is the codeblock to copy and paste:
 ```plaintext
 #adding Golang to path
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/$HOME/go/bin
 
 #adding node and brew to path
 export PATH="/usr/local/bin:$PATH"
@@ -166,7 +166,7 @@ vi ~/.bash_profile
 Here is the codeblock to copy and paste:
 ```plaintext
 #adding Golang to path
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/$HOME/go/bin
 
 #adding node and brew to path
 export PATH="/usr/local/bin:$PATH"
@@ -533,7 +533,7 @@ Duration: 5
    - Make sure Go is properly in your `PATH`. Add the following lines to your profile (`~/.bash_profile`):
 ````plaintext
 #adding Golang to path
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/$HOME/go/bin
 
 #adding node and brew to path
 export PATH="/usr/local/bin:$PATH"
