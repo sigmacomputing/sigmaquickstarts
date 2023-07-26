@@ -285,7 +285,7 @@ Navigate to `Administration` > `APIs & Embed Secrets`.
         <li>Under API Token or Embed Secret? select Embed Secret</li>
         <li>Enter a Name and Description as you see fit</li>
         <li>Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself</li>
-        <li>Click Create.li>
+        <li>Click Create.
         <li>Copy the provided ClientID and store it.</li>
         <li>Click Close</li>
    </ol>
