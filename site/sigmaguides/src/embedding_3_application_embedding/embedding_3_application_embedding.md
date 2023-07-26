@@ -369,6 +369,115 @@ supervisor server.js
 ```
 If you get an error about port 3000 being used already (not typically) you can change the port value in the server.js to use a different port. That is configured in server.js on `line 3H`.
 
+
+### Additional Information - Optional Reading
+This provides a little more information about each numbered step of server.js. The sample file has some in-line comments but we did not want to overly clutter the file with long text descriptions. If you are satisfied with your understanding of server.js already, you may skip this section. 
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**SECTION 1:**<br>
+This section sets up an Express web server and a route handler for GET requests.
+
+For more information on the Express webserver, [click here](https://expressjs.com/)
+
+**1A:**<br>
+The Express package for Node.js is imported.
+
+**1B:**<br> 
+A route is defined to handle GET requests to the base URL ('/'). When a request is made to this URL, the server responds by sending the file 'index.html' located in the current directory.
+
+**1C:**<br> 
+Another route is defined to handle GET requests to the URL '/api/foo'. This route will trigger the function 'foo' when accessed.
+
+**1D:**<br> 
+The function 'foo' is defined. This function will be called when a GET request is made to '/api/foo'.
+
+**1E:**<br> 
+The Node.js "crypto" module is imported. The crypto module is a core module in Node.js, meaning it is included with Node.js and does not need to be installed separately. It provides cryptographic functionalities that include a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+
+**1F:**<br> 
+A unique identifier (nonce) is created using the 'randomUUID' function from the 'crypto' module. The crypto.randomUUID() function is used to generate a version 4 random UUID (Universally Unique Identifier). A UUID is a 128-bit number used to uniquely identify some object or entity on the Internet. In this case, it's being used to generate a nonce, or "number used once", which is a unique, random value meant to be used for a single operation, often to prevent replay attacks.
+
+**1G:**<br> 
+A search parameter string is initialized with the nonce.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**SECTION 2:**<br>
+This section contains user-specific variables that need to be updated by the user.
+
+**2A:**<br>
+The path for the Sigma embed is set.
+
+**2B:**<br>
+The secret key for the Sigma embed is set.
+
+**2C:**<br> 
+The client_id parameter is added to the search parameters string.
+
+**2D:**<br>
+The email parameter is added to the search parameters string. This should be the email of the authenticated user in the parent application.
+
+**2E:**<br>
+The external_user_id parameter is added to the search parameters string. This should be the user ID of the authenticated user in the parent application.
+
+**2F:**<br>
+The external_user_team parameter is added to the search parameters string. The content must be shared with this team for the request to work.
+
+**2G:**<br> 
+The account_type parameter is added to the search parameters string. This specifies the account type of the user, which must exist in Sigma first.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**SECTION 3:**<br>
+This section constructs the final URL that will be sent.
+
+**3A:**<br>
+The mode parameter is added to the search parameters string. This will always be 'userbacked' for application embedding.
+
+**3B:**<br> 
+The session_length parameter is added to the search parameters string. This is the number of seconds the user should be allowed to view the embed before logging out.
+
+**3C:**<br> 
+The time parameter is added to the search parameters string. This is the current time in Unix timestamp format.
+
+**3D:**<br>
+The final URL with all the search parameters is constructed.
+
+**3E:**<br>
+Here, the crypto module is used to create an HMAC, or Hash-Based Message Authentication Code. This is a type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. It's used to verify both the data integrity and the authenticity of a message.
+
+Broken down into individual parts:
+
+`crypto.createHmac('sha256', Buffer.from(EMBED_SECRET, 'utf8'))`<br>
+This line of code is creating the HMAC object. 
+
+The "sha256" is the specific type of hash function used, and `EMBED_SECRET` is the secret key. `Buffer.from(EMBED_SECRET, 'utf8')` is converting the secret key from a string to a buffer, which is the type of data the `createHmac` function expects.
+
+`.update(Buffer.from(URL_WITH_SEARCH_PARAMS, 'utf8'))`<br>
+This is updating the HMAC object with the data that you want to create a hash of, which is `URL_WITH_SEARCH_PARAMS` in this case. The data is converted from a string to a buffer because that's what the `update` function expects.
+
+`.digest('hex')`<br>
+This is generating the actual hash and returns it as a hexadecimal string. The "hex" argument specifies the output format of the hash.
+
+In summary, what this line of code is doing is it's creating a cryptographic hash of the URL parameters using a secret key. The hash is unique to the specific URL parameters and secret key. **Any slight change in either the URL parameters or the secret key would result in a completely different hash.** 
+
+This hash (or "signature") is then added to the URL parameters as a way to verify that the parameters haven't been tampered with. When the server receives the URL, it can generate its own hash of the parameters using the secret key and compare it to the signature in the URL. 
+
+If they match, then it knows the URL parameters are authentic and haven't been tampered with. If they don't match, then it knows something is wrong and can reject the request.
+
+For more information on crypto with HMAC, [click here](https://nodejs.org/api/crypto.html#cryptocreatehmacalgorithm-key-options)
+
+**3F:**<br>
+The final URL is constructed by combining the URL from 3D and the signature from 3E.
+
+**3G:**<br>
+The final URL is sent as a response to the GET request.
+
+**3H:**<br>
+The Express application is set to listen for requests on port 3000.
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 ## Test the Embed
