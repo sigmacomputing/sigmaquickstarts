@@ -341,6 +341,8 @@ Using a browser, navigate to `http:\\localhost:8000`. The website should load:
 
 <img src="assets/vsc11.png" width="800"/>
 
+There is a tool that reloads the QuickStart page in the browser automatically on saves made in VSCode. [It is called Live Reload])(https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) and is a nice timesaver.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
