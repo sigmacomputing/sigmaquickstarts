@@ -276,7 +276,6 @@ Click to open in VSCode.
 <!-- END OF NEXT SECTION-->
 
 
-
 ## Site Overview
 Duration: 20
 
@@ -453,8 +452,6 @@ This guide provides all the available and supported markdown methods.
 
 ## Publication
 Duration: 5
-
-
 
 1. Make a new branch in GitHub Desktop
 2. Make your changes in VSCode and save/commit them
