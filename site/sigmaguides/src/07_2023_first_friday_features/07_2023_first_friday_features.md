@@ -116,12 +116,12 @@ For more information, see [Create and manage workbook warehouse views](https://s
 ## API
 Duration: 20
 ### Members
-You can now use the ***PATCH /v2/members/{memberId}*** endpoint to reassign documents when you archive a member. In the request body, set ***isArchived*** to ***true*** and set ***newOwnerId*** to the member who will receive the docs from the archived member.
+You can now use the `PATCH /v2/members/{memberId}` endpoint to reassign documents when you archive a member. In the request body, set `isArchived to true` and set `newOwnerId` to the member who will receive the docs from the archived member.
 
 ### Workbooks
-When you create a new workbook using ***POST /v2/workbooks*** endpoint, you can assign an owner by passing ***ownerId*** in the request body. If you don't include this, the owner is the user whose token was used to call the API.
+When you create a new workbook using `POST /v2/workbooks` endpoint, you can assign an owner by passing `ownerId` in the request body. If you don't include this, the owner is the user whose token was used to call the API.
 
-A new query parameter is also available for  this endpoint, ***versionTagId***.
+A new query parameter is also available for  this endpoint, `versionTagId`.
 
 ### Connections
 The /v2/connections endpoint now returns the following Connection metadata fields:
@@ -227,7 +227,7 @@ The Templates tab is now split between External and Internal.
 Duration: 20
 
 ### KPI Charts
-KPI chart elements are available for general use **(GA).** They can add a new level of visual interactivity to you Sigma workbooks and keep users coming back for more.
+KPI chart elements are available for general use **(GA).** They can add a new level of visual interactivity to your Sigma workbooks and keep users coming back for more.
 
 INSERT GIF?
 
