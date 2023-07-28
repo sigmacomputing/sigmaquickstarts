@@ -14,19 +14,12 @@ Release notes for the month of June 2023 features, published on first Friday of 
 7.14.23
 7.21.23
 7.28.23
-Slack Call Outs:
 
-FFF is now "In Product"....screenshot
+Slack Call Outs:
 
 Copy + Paste Full Workbook Pages is now in Public Beta :sigma-new: :sigma-new:
 https://help.sigmacomputing.com/hc/en-us/articles/17802897614739-Copy-a-page-within-and-between-workbooks-Beta-
 
-the Column Level Security on dataset is ready for beta.
-Here is the link to CLS dataset demo video:
-https://www.loom.com/share/de9d25b374db4a03aaab22cba34de16b
-
-For org to onboard to beta, we will need to add the org id to this feature flag:
-tps://console.statsig.com/7q6eRauyxm9jEhv935p0uP/gates/user_attributes_cls_dataset
 
 Multi-tab Excel Export is now GA:
 You can now Merge your excel exports to be in a single file with one element in each excel tab through Scheduled Exports and Send Now!
@@ -39,8 +32,8 @@ https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-
 https://help.sigmacomputing.com/hc/en-us/articles/4409010016019-Send-Slack-notifications
 https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Exports-to-Google-Sheets-or-Drive
 
-Bookmarks have been launched to public beta for all customers (what's new in sigma / Dillon Morrison)
 
+You can now stretch your button elements to take up the entire width of the element making it possible to align your buttons regardless of the text length
 -->
 
 
@@ -229,7 +222,7 @@ Duration: 20
 ### KPI Charts
 KPI chart elements are available for general use **(GA).** They can add a new level of visual interactivity to your Sigma workbooks and keep users coming back for more.
 
-INSERT GIF?
+<img src="assets/kpi_chart.gif">
 
 The following are additional updates to time series KPIs:
 
@@ -278,8 +271,27 @@ Chart legends now support double-click actions. Prior to this update, Sigma inte
 ## Workbooks
 Duration: 20
 
-### Bookmarks (BETA)
+### Personal Bookmarks (BETA)
 Bookmarks now provide a notification when changes made (such as changing a filter’s value) for the bookmark are no longer relevant in the workbook. In other words, someone changed the base workbook such that the bookmark is no longer accurate. A modal gives the option of updating or deleting the bookmark.
+
+**Background:**
+Up until now, copying a workbook URL with some changes captured a snapshot in time. It was a static asset, decoupled from the published version.
+
+This proved to be problematic because when the "original" workbook is updated, those changes are not propagated such that the bookmarked URLs users had made still referred to the old workbook.
+
+For example, creators would publish a workbook, apply some filters, then share that link out to their users. Later, the creator would make updates to their workbook, and get complaints that their viewers that the still had an old draft since they were using a "stale" url. 
+
+Many customers thought something was broken in Sigma and this wasn’t an intuitive experience.
+
+Personal bookmarks address this issue by making the URL dynamic, and update with the original workbook. Explore URLs capture the individual edits on top of a published version. 
+
+In the case where you do just want a static snapshot of a workbook, you can still simply choose the `Save As` option.
+
+**Recent Explores**
+Often users make multiple explorations but do not save them, only to discover later that they wished the had. 
+Recent explores address this but keeping track of all your unsaved explorations:
+
+<img src="assets/07_2023_fff16.png" width="800"/>
 
 ### Table cell images (BETA)
 Tables can now display images in cells. When a column contains image URLs, you can render the images by selecting `Transform` > `Set image` in the column menu.
