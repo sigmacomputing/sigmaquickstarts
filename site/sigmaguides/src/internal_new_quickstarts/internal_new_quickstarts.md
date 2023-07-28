@@ -350,6 +350,8 @@ Duration: 20
 
 When creating a new QuickStart, or modifying an existing one, **ALWAYS** create a new branch. 
 
+Before you create a new branch, also **ALWAYS** use GitHub Desktop to "pull" the latest changes for the master branch. This ensures that you are always building off the most recent production code from our Git repository. 
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> NEVER work in the "master" branch. Your changes will be rejected on publication to GitHub
 </aside>
