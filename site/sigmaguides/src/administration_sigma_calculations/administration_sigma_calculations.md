@@ -9,22 +9,21 @@ tags: default
 lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 
 # Query Performance with Sigma
-<!-- The above name is what appears on the website and is searchable. -->
+
 
 ## Overview 
 Duration: 5 
-<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent determining a solution that provides the best user experience, performance and least cost impact when used against a data warehouse. 
 
-Sample code and examples are shown for each item.
+To accomplish this, Sigma provides multiple tiers of caching and evaluation to reduce data warehouse load and enhance user experience. 
 
-We encourage you to review the QS called 
+Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the increased cost. This is a bit of a balancing act and certainly not something that is easy to do.
 
-This QuickStart assumes you........
+We also typically see that for a given organization, economies of scale are realized, meaning as more Sigma users onboard, the associated cost per user decreases.
 
  ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Tech executives, architects, developers and Sigma administrators who are looking for a deeper understanding of Sigma's unique approach. This approach allows Sigma to perform well against very large datasets, without negatively impacting the end user experience. 
 
 ### Prerequisites
 
@@ -40,23 +39,63 @@ Anyone who is trying to create QS content for Sigma.
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
-### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
+## Tier Definitions
+Duration: 20
 
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+Each time a user performs an operation, Sigma evaluates where data is retrieved from in order to populate a Workbook’s tables, charts, pivots, and other elements. 
+
+In order to perform these calculations as fast as possible, data operations (calculations) are attempted at a few different tiers. 
+
+Below we list the different tiers (in no particular order) and describe them.
+
+ <ul>
+      <li><strong>Sigma results cache:</strong> Sigma maintains a mapping of Snowflake result ID’s, if a Sigma generated SQL query has been previously run, Sigma can actually request the result from Snowflake using the request id.</li>
+      <li><strong>Snowflake results cache:</strong> Sigma will always generate the same exact SQL for a given configuration of a workbook, so that if a workbook has been configured a way previously within the last 24 hours, the results will be fetched from the Snowflake results cache instead of having a new query computed. </li>
+      <li><strong>Sigma Browser Cache:</strong> Sigma maintains a cache of recent results in the web browser. This cannot help on the initial load since the cache is empty, however, as changes are made in the workbook, it is automatically leveraged. Any new query is checked against the recent results and if a matching result is found, no network request or query is issued.</li>
+      <li><strong>Sigma Alpha Query:</strong> The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the compute of the browser to compute additional calculations that don’t require data to be refetched instead of sending new queries for the database to compute. An example would be a user creating a new calculation such as a percentage change ([column 2] - [column 1])/[column 1]. </li>
+      <li><strong>Sigma Materialization:</strong> Complex datasets (which could be ones that involve many joins) can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
-<!-- END OF OVERVIEW -->
+<!-- END OF SECTION-->
+
+## Typical Query Process
+Duration: 20
+
+The following flow describes the "typical" decision making that happens when a Sigma user performs a data operation in the UI (browser):
+
+
+INSERT LUCID CHART HERE:
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## **NEXT SECTION**
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+HOLD THIS TEXT:
+  <strong>Sigma Query Timeout:</strong> Sigma enforces query timeouts to ensure that resource intensive queries are canceled when a certain time threshold is met. This ensures that runaway queries do not unnecessarily consume resources and credits. The default timeout limit is 2 mins but is also configurable.
 
 ## What we've covered
 Duration: 5
