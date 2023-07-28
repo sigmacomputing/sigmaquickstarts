@@ -13,7 +13,7 @@ Release notes for the month of June 2023 features, published on first Friday of 
 7.7.2023 (no release notes for this short week)
 7.14.23
 7.21.23
-
+7.28.23
 Slack Call Outs:
 
 FFF is now "In Product"....screenshot
@@ -71,8 +71,9 @@ Duration: 20
 
 **Native JSON support for BigQuery:**
 Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
+
 ### Warehouse Views
-Workbook warehouse views are now generally available. 
+Workbook warehouse views are now generally available **(GA)**. 
 
 Warehouse views are **virtual tables in Snowflake** that you can query using Sigma or any other application in your data ecosystem. 
 
@@ -106,7 +107,6 @@ The warehouse view is created and you are able to check the status [See Warehous
 You are able to access all of the available warehouse views under `Administration`:
 
 <img src="assets/07_2023_fff4.png" width="800"/>
-
 
 For more information, see [Create and manage workbook warehouse views](https://sigma.bi/create-and-manage-workbook-warehouse-views) and [Review warehouse view details](https://sigma.bi/review-warehouse-view-details).
 
@@ -169,6 +169,8 @@ The following optional user-backed embed parameters are now available:
       <li><strong>menu_position:</strong> Allows you to change the position of the toolbar to top, bottom, or none.</li>
 </ul>
 
+The `:show_footer` embed parameter is now case-insensitive, for example: `allow :show_footer=False`.
+
 ### Enhancements
  <ul>
       <li>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
@@ -224,6 +226,25 @@ The Templates tab is now split between External and Internal.
 ## Visualizations
 Duration: 20
 
+### KPI Charts
+KPI chart elements are available for general use **(GA).** They can add a new level of visual interactivity to you Sigma workbooks and keep users coming back for more.
+
+INSERT GIF?
+
+The following are additional updates to time series KPIs:
+
+Change the default display type (the value displayed when not interacting with the trend line) in the **Value** property:
+<ul>
+      <li><strong>Latest period:</strong> Display the aggregate value for the most recent period in the time series.</li>
+      <li><strong>Global summary:</strong> Display the aggregate value for all periods in the time series.<li>
+</ul>
+
+<img src="assets/07_2023_fff12.png" width="800"/>
+ 
+You can now add reference lines and bands to the trend line in `Element format` > `Reference marks`.
+ 
+For more information about KPI charts, see [Build a KPI chart](https://sigma.bi/build-a-kpi-chart).
+
 ### Centered reference mark labels
 Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
 
@@ -232,11 +253,21 @@ Chart reference marks now support center-positioned labels. In the `Element form
 ### Chart color scales
 When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
 
-<img src="assets/07_2023_fff7.png" width="600"/>
+<img src="assets/07_2023_fff13.png" width="600"/>
 
 The full palette:
 
 <img src="assets/07_2023_fff8.png" width="800"/>
+
+### Data point filters
+Charts now include more date filtering options in the data point menu (accessed by right-clicking any data point). The `Keep only` and `Exclude filters` previously allowed you to filter based on the single date value associated with the data point. You can now filter a date range that starts or ends with the data point's date value by selecting the `On and after` or `On and before` options:
+
+<img src="assets/07_2023_fff14.png" width="800"/>
+
+### Duplicate reference marks
+Charts that support references marks now allow you to duplicate existing reference lines or bands in the `Element format` > `Reference marks` section:
+
+<img src="assets/07_2023_fff15.png" width="800"/>
 
 ### Double-click chart legend values
 Chart legends now support double-click actions. Prior to this update, Sigma interpreted a rapid double-click as two separate inputs that would select the value on the first click and deselect it on the second. Sigma now interprets a rapid double-click as a single input.
@@ -285,16 +316,16 @@ No release notes during this period.
       <li>We resolved an embed issue where visualizations failed to render in certain scenarios.</li>
  </ul>
 
-### Week ending 7.xx.2023
- 
- <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-</ul>
+### Week ending 7.28.2023
 
+ <ul>
+      <li>In some cases, setting up dynamic roles in a Snowflake connection resulted in an error. </li>
+      <li>If you copy an element in an embed document, it no longer returns an error. </li>
+      <li>Resolved an issue with expanding rows and single element exports.</li>
+      <li>Resolved an issue where choosing Edit Join in the source of the join deselected all selected columns.</li>
+      <li>Resolved an issue where Display Values for Boolean list controls did not show by enabling users to create a manual list of display values for Boolean controls and adding their own interpretation of True and False.</li>
+      <li>Resolved an issue causing input table elements to continuously display the "Saving" spinner after input table edits were successfully saved in the workbook's Published version. Users no longer need to reload the browser page to clear the spinner</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
