@@ -49,27 +49,49 @@ Each time a user performs an operation, Sigma evaluates where data is retrieved 
 
 In order to perform these calculations as fast as possible, data operations (calculations) are attempted at a few different tiers. 
 
-Below we list the different tiers (in no particular order) and describe them.
+The image below shows where the query logic happens, as "swimlanes". Each item is then numbered so that we can use the subsequent numbered list to describe each item. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The numbers DO NOT imply an order of operations. We will discuss that in the next section when we explore a typical query workflow.
+</aside>
+
+<img src="assets/aq1.png" width="800"/>
 
  <ul>
+      <li><strong>End User in a Browser</strong>
+      <li><strong>1: End User:</strong> </li>
+      <li><strong>2: Sigma Browser Cache:</strong> Sigma maintains a cache of recent results in the web browser. This cannot help on the initial load since the cache is empty, however, as changes are made in the workbook, it is automatically leveraged. Any new query is checked against the recent results and if a matching result is found, no network request or query is issued.</li>
+      <li><strong>3: Sigma Alpha Query:</strong> The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the compute of the browser to compute additional calculations that don’t require data to be refetched instead of sending new queries for the database to compute. An example would be a user creating a new calculation such as a percentage change ([column 2] - [column 1])/[column 1]. </li>
+</ul>
+
+<ul>
+      <li><strong>Sigma Managed Cloud</strong>
       <li><strong>Sigma results cache:</strong> Sigma maintains a mapping of Snowflake result ID’s, if a Sigma generated SQL query has been previously run, Sigma can actually request the result from Snowflake using the request id.</li>
-      <li><strong>Snowflake results cache:</strong> Sigma will always generate the same exact SQL for a given configuration of a workbook, so that if a workbook has been configured a way previously within the last 24 hours, the results will be fetched from the Snowflake results cache instead of having a new query computed. </li>
-      <li><strong>Sigma Browser Cache:</strong> Sigma maintains a cache of recent results in the web browser. This cannot help on the initial load since the cache is empty, however, as changes are made in the workbook, it is automatically leveraged. Any new query is checked against the recent results and if a matching result is found, no network request or query is issued.</li>
-      <li><strong>Sigma Alpha Query:</strong> The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the compute of the browser to compute additional calculations that don’t require data to be refetched instead of sending new queries for the database to compute. An example would be a user creating a new calculation such as a percentage change ([column 2] - [column 1])/[column 1]. </li>
       <li><strong>Sigma Materialization:</strong> Complex datasets (which could be ones that involve many joins) can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.</li>
 </ul>
+
+<ul>
+      <li><strong>Data Warehouse (Snowflake)</strong>
+      <li><strong>Cloud Services tier:</strong> </li>
+      <li><strong>Compute tier:</strong> </li>
+      <li><strong>Warehouse tier:</strong> </li>
+      <li><strong>Storage tier:</strong> </li>
+</ul>
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Typical Query Process
+## Query Architecture
 Duration: 20
 
+
+
+
+
+
 The following flow describes the "typical" decision making that happens when a Sigma user performs a data operation in the UI (browser):
-
-
-INSERT LUCID CHART HERE:
-
 
 
 
