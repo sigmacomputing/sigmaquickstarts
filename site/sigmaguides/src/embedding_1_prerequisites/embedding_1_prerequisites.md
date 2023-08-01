@@ -130,7 +130,7 @@ You can verify your installation using Terminal:
 node -v
 ```
 
-`Right click` on the prereguisite folder and select `New terminal at folder`:
+`Right click` on the prerequisite folder and select `New terminal at folder`:
 
 <img src="assets/applicationsetup2.png" width="250"/>
 
