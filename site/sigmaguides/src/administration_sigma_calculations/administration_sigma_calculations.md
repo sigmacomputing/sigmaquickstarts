@@ -3,27 +3,26 @@ id: administration_sigma_calculations
 summary: administration_sigma_calculations
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: {lasted updated using the date format yyyy-mm-dd}
+tags: 
+lastUpdated: 2023-08-02
 
 # Query Performance with Sigma
-
 
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent determining a solution that provides the best user experience, performance and least cost impact when used against a data warehouse. 
+This QuickStart guide introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
 
-To accomplish this, Sigma provides multiple tiers of caching and evaluation to reduce data warehouse load and enhance user experience. 
+To accomplish this, Sigma offers multiple tiers of caching and evaluation, designed to reduce data warehouse load and enhance the user experience.
 
-Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the increased cost. This is a bit of a balancing act and certainly not something that is easy to do.
+Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the corresponding increase in cost. Achieving this balance is complex and certainly not something that is easily done.
 
-We also typically see that for a given organization, economies of scale are realized, meaning as more Sigma users onboard, the associated cost per user decreases.
+We also often observe that, for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
  ### Target Audience
-Tech executives, architects, developers and Sigma administrators who are looking for a deeper understanding of Sigma's unique approach. This approach allows Sigma to perform well against very large datasets, without negatively impacting the end user experience. 
+Tech executives, architects, developers, and Sigma administrators looking for a deeper understanding of Sigma's unique approach will find it beneficial. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
 
 ### Prerequisites
 
@@ -45,11 +44,11 @@ Tech executives, architects, developers and Sigma administrators who are looking
 ## Tier Definitions
 Duration: 20
 
-Each time a user performs an operation, Sigma evaluates where data is retrieved from in order to populate a Workbook’s tables, charts, pivots, and other elements. 
+Each time a user performs an operation, Sigma evaluates where the data is retrieved from in order to populate a Workbook's tables, charts, pivots, and other elements.
 
-In order to perform these calculations as fast as possible, data operations (calculations) are attempted at a few different tiers, making decisions based on where the requested data can be provided to the user, as fast as possible, and with least cost.
+To perform these calculations as quickly as possible, data operations (calculations) are attempted at various tiers. Decisions are made based on where the requested data can be provided to the user most rapidly and at the lowest cost.
 
-The image below shows where the query logic happens, as "lanes". Each item is then numbered so that we can use the subsequent numbered list to describe each item. 
+The image below illustrates where the query logic occurs, displayed in three "lanes". Each item is numbered so that we can use the subsequent numbered list to describe each one.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The numbers DO NOT imply an order of operations. We will discuss that in the next section when we explore a typical query workflow.
@@ -60,13 +59,13 @@ The image below shows where the query logic happens, as "lanes". Each item is th
 ### End User Lane
 
 <strong>1: End User:</strong><br>
-An user with a current browser. It does not matter which browser you want to use.
+A user with a current browser. The choice of browser does not matter.
 
 <strong>2: Sigma Browser Cache:</strong><br>
-Sigma maintains a cache of recent results in the web browser. This cannot help on the initial load since the cache is empty, however, as changes are made in the workbook, it is automatically leveraged. Any new query is checked against the recent results and if a matching result is found, no network request or query is issued.
+Sigma maintains a cache of recent results in the web browser. This can't assist with the initial load since the cache is empty, but it is automatically leveraged as changes are made in the workbook. Any new query is checked against recent results, and if a matching result is found, no network request or query is issued.
 
 <strong>3: Sigma Alpha Query:</strong><br>
-The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the compute of the browser to compute additional calculations that don’t require data to be refetched instead of sending new queries for the database to compute. An example would be a user creating a new calculation such as a percentage change ([column 2] - [column 1])/[column 1].
+The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the computing power of the browser to perform additional calculations that don't require data to be re-fetched, instead of sending new queries for the database to compute. An example would be a user creating a new calculation, such as a percentage change: ([column 2] - [column 1]) / [column 1].
 
 ### Sigma Cloud Lane
 
@@ -78,13 +77,13 @@ Complex datasets (which could be ones that involve many joins) can be materializ
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services tier:</strong><br>
- Query results in Snowflake, are saved for 24 hours, and are only used only if underlying data has not changed, non-deterministic functions are not used, etc.<br>
+Query results in Snowflake are saved for 24 hours and are used only if the underlying data has not changed, non-deterministic functions are not used, etc.<br>
 
 <strong>7: Compute tier:</strong><br>
-Also called "virtual warehouses", a set of resources allocated to perform data processing tasks such as loading, querying, and running computations on  data. Scale on demand.<br>
+Also referred to as 'virtual warehouses,' this term describes a set of resources allocated to perform data processing tasks such as loading, querying, and running computations on data. These resources can be scaled on demand.<br>
 
 <strong>8: Warehouse tier:</strong><br>
-Full managed caching feature. Retains the result set of every query executed for 24 hours. Subsequent queries are retrieved from the cache rather than reprocessing the query, significantly improving query response times.<br>
+The fully managed caching feature retains the result set of every query executed for 24 hours. Subsequent queries that match previously executed ones are retrieved from the cache rather than reprocessing the entire query. This significantly improves query response times by utilizing previously computed results.<br>
 
 <strong>9: Storage tier:</strong><br>
 The cloud-agnostic, independent, elastic, and scalable component that holds all the data loaded into Snowflake.<br>
@@ -96,20 +95,20 @@ The cloud-agnostic, independent, elastic, and scalable component that holds all 
 ## Query Decision Tree
 Duration: 20
 
-Now that we have the definitions, let's look at what happens when an end-user makes a request for data in Sigma.
+Now that we have the definitions, let's examine what happens when an end-user makes a request for data in Sigma.
 
-The following decision tree is very high-level and does not include lower-level details like security, system architecture, and so on. In this QuickStart, we are only focused on the query processing logic, although it is understood that this is not the only thing related to platform performance.
+The following decision tree is very high-level and does not include lower-level details such as security, system architecture, and so on. In this QuickStart, we are solely focused on the query processing logic, although it's understood that this is not the only factor related to platform performance.
 
-First, let's review the overall decision tree, showing all the possible routes based on what is discovered about the data requested by any query in Sigma.
+First, let's review the overall decision tree, which shows all the possible routes based on what is discovered about the data requested by any query in Sigma.
 
-Let's assume there is a Sigma workbook that has one table on it. The user may (or may not) have added a few calculated columns and they have published the workbook.
+Suppose there is a Sigma workbook that contains one table. The user may (or may not) have added a few calculated columns, and they have published the workbook.
 
-Take a few minutes to review the decision tree so that you are familiar with process.
+Please take a few minutes to review the decision tree so that you become familiar with the process.
 
 <img src="assets/calc_engine.svg" width="800"/>
 
 ### Conditions for using Snowflake Results Cache
-Sigma leverages Snowflake's feature called `Results Cache`, which is designed to improve the performance of data retrieval by caching the results of previously executed queries. This is beneficial because repeated execution of identical queries will be faster, saving compute resources.
+Sigma leverages Snowflake's feature called Results Cache, designed to improve the performance of data retrieval by caching the results of previously executed queries. This is beneficial because the repeated execution of identical queries will be faster, thereby saving compute resources.
 
 At the time of this QuickStart, the following are Snowflake's result cache rules. [More information can be found here.](https://community.snowflake.com/s/article/Understanding-Result-Caching#:~:text=Typically%2C%20query%20results%20are%20reused,query%20result%20has%20not%20changed.)
 
@@ -120,12 +119,11 @@ At the time of this QuickStart, the following are Snowflake's result cache rules
 <ul>
       <li><strong>Same Query:</strong> The exact same query must be run. Even a minor change in whitespace or case in the SQL statement will result in a cache miss.</li>
       <li><strong>Same Virtual Warehouse:</strong> The same virtual warehouse must be used. If you run a query on one warehouse, then the results will be cached for that warehouse. Running the same query on a different warehouse will not hit the cache.</li>
-      <li><strong>Same Role (see note below):</strong> The user must be using the same role. If you change roles and run the query, it will result in a cache miss. In most cases, Sigma is using the same connection to query the warehouse. </li>
-      <li><strong>Unchanged Data:</strong> The underlying data cannot have changed. If any data in the tables that the query references has been changed, added, or deleted, then the cache will be invalidated for that query.</li>
+      <li><strong>Same Role (see note below):</strong> The user must be using the same role. If you change roles and run the query, it will result in a cache miss. In most cases, Sigma is using the same connection to query the warehouse.</li>
+      <li><strong>Unchanged Data:</strong> The underlying data cannot have changed. If any data in the tables that the query references has changed, been added, or deleted, then the cache will be invalidated for that query.</li>
       <li><strong>Cache Expiration:</strong> The Results Cache in Snowflake expires after 24 hours. Therefore, even if you meet all the above conditions but more than 24 hours have passed since the query was run, the cache will not be used.</li>
-      <li><strong>Session Variables:</strong> If a query involves session variables, those variables must have the same values for the Results Cache to be used. For example, The query does not include functions that must be evaluated at execution (e.g. CURRENT_TIMESTAMP()).</li>
-      <li><strong>Table Configuration:</strong> he table’s micro-partitions have not changed (e.g. been re-clustered or consolidated) due to changes to other data in the table.
-</li>    
+      <li><strong>Session Variables:</strong> If a query involves session variables, those variables must have the same values for the Results Cache to be used. For example, the query does not include functions that must be evaluated at execution (e.g., CURRENT_TIMESTAMP()).</li>
+      <li><strong>Table Configuration:</strong> The table's micro-partitions must not have changed (e.g., been re-clustered or consolidated) due to changes to other data in the table.</li>    
 </ul>
 
 ***NOTE:***
@@ -137,89 +135,79 @@ There are some cases (ie: [Sigma dynamic role switching](https://quickstarts.sig
 ## In-Browser Calculation
 Duration: 20
 
-In this section, we will discuss operations that are in this potion of our decision tree:
+In this section, we will discuss operations that are part of this portion of our decision tree:
 
 <img src="assets/aq2.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma is able to perform some calculations in the user's browser, resulting in the same interactive performance found in locally installed spreadsheet applications. This is the best case for calculations – it makes Sigma feel fast and powerful, but is just one method Sigma employs to optimize the user's experience. 
+
+<strong>IMPORTANT:</strong><br> Sigma is able to perform some calculations in the user's browser, resulting in the same interactive performance found in locally installed spreadsheet applications. This is the best case for calculations – it makes Sigma feel fast and powerful but is just one method Sigma employs to optimize the user's experience. 
 </aside>
 
-These calculations are often performed **incrementally**. In many cases, this means that Sigma only needs to perform calculations for a specific change – sorting a table, adding a column, filtering a chart – rather than fully recalculating one or more elements in the Workbook.
+These calculations are often performed **incrementally**. In many cases, this means that Sigma only needs to perform calculations for a specific change – such as sorting a table, adding a column, or filtering a chart – rather than fully recalculating one or more elements in the Workbook.
 
+There are a few preconditions necessary for in-browser calculations to kick in:
 
-**There are a few preconditions necessary for in-browser calculations to kick in:**
- 
  <ul>
-      <li>The in-browser calculation system supports the requested calculation.</li>
-      <li>There are enough rows of data in the browser to calculate complete, correct results. When a table is too large, Sigma cannot pull all of the rows into the browser.</li>
-      <li>The data in the browser is up-to-date and will not produce overly stale results. This threshold is configured in a Workbook’s Data Refresh Settings.</li>
+      <li>The in-browser calculation system must support the requested calculation.</li>
+      <li>There must be enough rows of data in the browser to calculate complete, correct results. When a table is too large, Sigma cannot pull all of the rows into the browser.</li>
+      <li>The data in the browser must be up-to-date and not produce overly stale results. This threshold is configured in a Workbook's Data Refresh Settings.</li>
 </ul>
 
 When Sigma cannot perform a calculation in the browser, it falls back to the next portion of the decision tree.
 
 ### Incremental Computation with Large Data Sources
+Sigma has the ability to perform certain calculations without pulling all the rows into the browser.
 
-Sigma can perform some calculations without pulling all of the rows into the browser.
+Sigma's general approach to in-browser calculations is known as incremental computation. Every time you interact with a Workbook – whether it's adding a column, updating a formula, changing a control, etc. – Sigma determines the minimal set of calculations necessary to produce or update the missing or changed data.
 
-Sigma’s general approach to in-browser calculations is called `incremental computation`. Every time you interact with a Workbook – add a column, update a formula, change a control, etc – Sigma determines the minimal set of calculations necessary to produce or update missing or changed data, respectively. 
+When Sigma can perform all of these calculations in the browser and return correct results, it can skip using the warehouse entirely.
 
-When Sigma can perform all of these calculations in the browser and return correct results, we can skip using the warehouse entirely.
+Imagine an analysis involving billions of customer transactions, summarizing a few metrics across 250 retail store locations. The initial summary calculations must be performed in the data warehouse since it would be impossible to fit billions of fine-grained customer transactions into a browser. However, Sigma can utilize the browser to perform some calculations on the summary metrics, specifically at the granularity of the 250 retail store locations.
 
-Imagine an analysis over billions of customer transactions, which summarizes a few metrics across 250 retail store locations. The initial summary calculations are performed in the data warehouse, since it’s impossible to fit billions of fine grained customer transactions into a browser. However, Sigma can use the browser to perform some calculations on the summary metrics, at the granularity of the 250 retail store locations. 
-
-For example, Sigma can calculate the stores that generated over $10MM in revenue without looking at billions of transactions. We only need to look at the summary metrics for the 250 retail store locations – therefore this calculation can occur in the browser.
+For example, Sigma can determine the stores that generated over $10 million in revenue without examining billions of transactions. The only necessary data are the summary metrics for the 250 retail store locations – hence, this calculation can occur within the browser.
 
 ### Incremental Computation - Simple Example
+Let's explore how this works using the Sigma UI. This will allow you to see how you might evaluate the operations being performed.
 
-Let's take a look how this work using the Sigma UI, to show how you may evaluate the operations being performed.
+1: Log in to Sigma as an administrator.
 
-Log in to Sigma as administrator.
-
-Create a new Workbook in Sigma.
-
+2: Create a new Workbook in Sigma.
+  
 <img src="assets/aq3.png" width="500"/>
 
-Add a new `Table`:
+3: Add a new Table:
 
 <img src="assets/aq4.png" width="500"/>
 
-From `NEW` > `TABLES AND DATASETS`:
-
+4: From NEW > TABLES AND DATASETS:
 <img src="assets/aq5.png" width="500"/>
 
-Select the `Sigma Sample Database` > `RETAIL` > `PLUGS ELECTRONICS` > `F_POINT_OF_SALE` table:
-
+5: Select the Sigma Sample Database > RETAIL > PLUGS ELECTRONICS > F_POINT_OF_SALE table:
 <img src="assets/aq6.png" width="800"/>
 
-We now have a new, unsaved `Exploration`. Before we do anything else, let's see how Sigma generated queries to the warehouse.
+6: You will now see a new, unsaved Exploration. Before proceeding, observe how Sigma generated queries to the warehouse.
 
-Open Query History and evaluate what query operations Sigma is creating. 
+7: Open the Query History to evaluate what query operations Sigma is creating.
 
 <img src="assets/aq7.png" width="500"/>
 
-There are three rows. 
-
-Click on the slider to also show in-browser calculations. There are none so far, since this is the first time we have requested the data from the warehouse for this workbook. 
+8: Note the three rows. Click on the slider to also show in-browser calculations. There are none so far since this is the first time the data from the warehouse has been requested for this workbook.
 
 <img src="assets/aq8.png" width="800"/>
 
-Let's make a few changes to the table and check the `Query History` to see what happens.
+9: Make a few changes to the table and check the Query History to see the effects. For example, you can:
 
-Format the two columns `Sales Amount` and `Cost Amount`. 
-
-Open Query History; there are no new rows. 
-
-Work is being done by Sigma, against existing browser data with no new query or calculation required. 
+- Format the two columns Sales Amount and Cost Amount. Open Query History; there are no new rows. Work is performed by Sigma against existing browser data with no new query or calculation required.
 
 <img src="assets/aq9.png" width="800"/>
 
-Next, add a new column with formula:
+- Next, add a new column with the formula:
 ```plaintext
 [Sales Quantity] * [Sales Amount]
 ```
 
-Click the checkmark to accept the new formula and reopen the `Query History`. Notice there is a one new row with `browser` execution. This is the indication that Sigma was able to use data in the local browser cache to calculate the new column's value, without going back to the warehouse.
+Click the checkmark to accept the new formula and reopen the `Query History`. Notice the new row with `browser execution`. This indicates that Sigma used data in the local browser cache to calculate the new column's value without returning to the warehouse.
 
 ### Incremental Computation - Child Elements
 
@@ -289,7 +277,7 @@ Proving this condition requires comparing the structure of a pair of calculation
 
 This comparison is done by producing a unique fingerprint for each calculation, searching for other calculations with a matching fingerprint, and ensuring we don’t have false positives.
 
-**The fingerprint does not use Sigma’s generated SQL.** Instead, it uses a representation that’s more appropriate for the Workbook, given it's functionality. 
+**The fingerprint does not use Sigma’s generated SQL.** Instead, it uses a representation that’s more appropriate for the Workbook, given its unique functionality. 
 
 For example, Sigma Workbooks commonly use user attributes and row-level security parameters. Fingerprinting is a better method, as it is sensitive to this type of contextual information.
 
@@ -310,13 +298,64 @@ Rather than asking the warehouse to calculate fresh results for every team membe
 
 This drastically reduces the number of calculations the data warehouse needs to perform, and improves the page load time since there are no additional calculations to perform.
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Summary
+Duration: 20
+
+In the rapidly evolving world of data analytics, Sigma has emerged as a powerful tool that brings dynamic, responsive, and user-friendly capabilities to its users. Understanding how Sigma operates and the best ways to utilize its functions can greatly enhance performance and overall user satisfaction. 
+
+This QuickStart explored key aspects of Sigma's operations, including incremental computations, handling large data sets, result caching, fingerprinting, and more. Administrators and data engineers will find actionable best practices to optimize these features and achieve seamless interaction with the platform.
+
+### Key Topics Covered:
+
+**1: Incremental Computation:**<br>
+Sigma performs calculations in the user's browser incrementally, updating only what's needed. This provides a fast and powerful user experience.
+
+**2: Large Data Handling:**<br>
+Even with billions of transactions, Sigma can summarize and perform calculations at a higher level without pulling all data into the browser.
+
+**3: Utilization of Result Cache:**<br>
+Sigma implements a unique result cache to fetch previously calculated data from some data warehouses. This accelerates page loading and saves computations.
+
+**4: Fingerprinting:**<br>
+Sigma uses a fingerprinting method to compare the structure of calculations, ensuring accurate matching and utilizing cache efficiently.
+
+**5: Accelerating Initial Page Load:**<br>
+The result cache is used to accelerate page loading, especially in scenarios where multiple users access the same Workbook simultaneously.
+
+### Sigma's Operations and Best Practices:
+
+**1. Incremental Computation and In-Browser Calculations**:
+   - **Operation**: Sigma performs incremental calculations in the browser, updating only necessary parts.
+   - **Best Practice**: Admins should monitor query performance, utilizing Sigma's in-browser calculations whenever feasible.
+
+**2. Large Data Handling**:
+   - **Operation**: Sigma can summarize and handle large datasets without pulling all data into the browser.
+   - **Best Practice**: Optimizing Workbook structures and educating users on how Sigma handles large data can aid efficiency.
+
+**3. Utilization of Result Cache and Fingerprinting**:
+   - **Operation**: Sigma uses result caching and fingerprinting to accelerate page loading and save computations.
+   - **Best Practice**: Understanding caching mechanisms and configuring refresh settings ensures up-to-date data retrieval.
+
+**4. Accelerating Initial Page Load**:
+   - **Operation**: The result cache is used for faster initial page loads when multiple users access the same Workbook.
+   - **Best Practice**: Considering data volume and working with Sigma to optimize Workbook designs.
+
+### Overall Recommendations:
+Administrators can take advantage of Sigma's capabilities by understanding the underlying operations and implementing best practices. This includes monitoring and optimizing query performance, understanding caching, configuring data refresh settings, and educating users on Sigma's functionality.
+
+By embracing these strategies, organizations can harness Sigma's robust and efficient analytical tool, enhancing both performance and user experience.
+
+The next section of this document contains valuable links and resources specifically curated for Sigma administrators and data engineers. These include detailed best practice guides, troubleshooting tips, advanced configurations, and other related information to optimize Sigma operations.
+
+We encourage readers to explore these resources for an in-depth understanding and to take full advantage of Sigma's capabilities within their organizations.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Best Practice Resources
-Duration: 20
-
+## Additional Resource Links
 Since you are taking time to learn about how Sigma performs calculations, we thought you might find these other resource ov value. They are all related to best practices and performance when using Sigma.
 
 ### Snowflake:
@@ -349,10 +388,7 @@ One of particular interest is the `Snowflake Performance Monitoring` which provi
 ### Modeling:
 [Modeling Best Practices](https://help.sigmacomputing.com/hc/en-us/articles/4408743358355-Modeling-Best-Practices)
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
-## Additional Resource Links
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
