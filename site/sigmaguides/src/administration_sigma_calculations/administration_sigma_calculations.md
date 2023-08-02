@@ -352,7 +352,7 @@ One of particular interest is the `Snowflake Performance Monitoring` which provi
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-**Additional Resource Links**
+## Additional Resource Links
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
