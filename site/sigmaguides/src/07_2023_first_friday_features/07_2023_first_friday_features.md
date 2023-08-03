@@ -14,45 +14,24 @@ Release notes for the month of June 2023 features, published on first Friday of 
 7.14.23
 7.21.23
 7.28.23
-
-Slack Call Outs:
-
-Copy + Paste Full Workbook Pages is now in Public Beta :sigma-new: :sigma-new:
-https://help.sigmacomputing.com/hc/en-us/articles/17802897614739-Copy-a-page-within-and-between-workbooks-Beta-
-
-
-Multi-tab Excel Export is now GA:
-You can now Merge your excel exports to be in a single file with one element in each excel tab through Scheduled Exports and Send Now!
-There are 3 ways to get multi-tab excel exports
-1. Individual elements can be selected and merged into a single excel file with one element per tab. Users can select multiple individual elements and choose Excel for “Format as”. Once they select more than 1 element for Excel format a “Merge Excel Files” check box appears.
-2. Entire Page can be selected and each element from that page will automatically be merged into a single excel file with one element per tab
-3. Entire Workbook can be selected and each element will automatically be merged into a single excel file with one element per tab regardless of what page it was on.
-Users can do a combination of these. Example: if I have an attachment for the entire workbook, entire page, and 4 other elements and I checked the merge excel option, then I would get 3 Excel files in the email, one for the workbook, one for the entire page, and one for the 4 combined elements
-https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-to-Email
-https://help.sigmacomputing.com/hc/en-us/articles/4409010016019-Send-Slack-notifications
-https://help.sigmacomputing.com/hc/en-us/articles/13139937361427-Schedule-Exports-to-Google-Sheets-or-Drive
-
-
-You can now stretch your button elements to take up the entire width of the element making it possible to align your buttons regardless of the text length
 -->
-
 
 # (07-2023) July Highlights
 
 ## Overview 
 Duration: 5 
 
-This QuickStart lists all the new and public beta features released, as well as bugs fixed in July 2023. 
+This QuickStart lists all the new and public beta features released, as well as bugs fixed in July 2023.
 
-It is summary in nature and you should refer to the specific [Sigma documentation](https://help.sigmacomputing.com/hc/en-us) links provided for more information.
+It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
-**Public beta features will carry the section text "BETA".** 
+**Public beta features will carry the section text "BETA".**
 
 All other features are considered released (GA or generally available).
- 
-Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt is was best to keep these QuickStarts to a summary of the previous month for your convenance.
 
-New QuickStarts will be published on the first Friday of each month, and will include information for the previous month. 
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
+
+New QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -62,7 +41,7 @@ Duration: 20
 
 ### Connections
 
-**Native JSON support for BigQuery:**
+**Native JSON support for BigQuery:**<br>
 Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
 
 ### Warehouse Views
@@ -93,7 +72,7 @@ Warehouse views can be very useful, depending on the use case:
 
 <img src="assets/07_2023_fff2.png" width="600"/>
 
-The warehouse view is created and you are able to check the status [See Warehouse view status](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171#h_01GZPSFH3VD38P9ZF6EMZHMXTP):
+The warehouse view is created and you are able to check the status [See Warehouse view status](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171#h_01GZPSFH3VD38P9ZF6EMZHMXTP)
 
 <img src="assets/07_2023_fff3.png" width="600"/>
 
@@ -101,7 +80,7 @@ You are able to access all of the available warehouse views under `Administratio
 
 <img src="assets/07_2023_fff4.png" width="800"/>
 
-For more information, see [Create and manage workbook warehouse views](https://sigma.bi/create-and-manage-workbook-warehouse-views) and [Review warehouse view details](https://sigma.bi/review-warehouse-view-details).
+For more information, see [Create and manage workbook warehouse views](https://sigma.bi/create-and-manage-workbook-warehouse-views) and [Review warehouse view details](https://sigma.bi/review-warehouse-view-details)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -109,15 +88,16 @@ For more information, see [Create and manage workbook warehouse views](https://s
 ## API
 Duration: 20
 ### Members
-You can now use the `PATCH /v2/members/{memberId}` endpoint to reassign documents when you archive a member. In the request body, set `isArchived to true` and set `newOwnerId` to the member who will receive the docs from the archived member.
+You can now use the `PATCH /v2/members/{memberId}` endpoint to reassign specific documents when you archive a member. In the request body, set `isArchived`` to `true`, and set `newOwnerId` to the member who will receive the documents from the archived member.
 
 ### Workbooks
-When you create a new workbook using `POST /v2/workbooks` endpoint, you can assign an owner by passing `ownerId` in the request body. If you don't include this, the owner is the user whose token was used to call the API.
+Workbooks enable you to manage specific tasks within your system. When you create a new workbook using the `POST /v2/workbooks` endpoint, you can assign an owner by passing the `ownerId` in the request body. 
 
-A new query parameter is also available for  this endpoint, `versionTagId`.
+If you don't include this, the owner is the user whose token was used to call the API.
 
+A new query parameter is also available for this endpoint: `versionTagId`. For more information on using Sigma version tagging, [click here](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 ### Connections
-The /v2/connections endpoint now returns the following Connection metadata fields:
+The `/v2/connections` endpoint now returns the following connection metadata fields:
 ```plaintext
 {
   "account": "string",
@@ -170,8 +150,6 @@ The `:show_footer` embed parameter is now case-insensitive, for example: `allow 
       <li>Users can now copy and paste elements in an embed.</li>
 </ul>
 
-For more information on copy and paste elements, [click here](https://help.sigmacomputing.com/hc/en-us/articles/13531340202003-Copy-and-paste-elements)
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -197,14 +175,18 @@ ctrl + enter
 Duration: 20
 
 ### Share Templates with different orgs
-You can share Sigma templates with other organizations.  This functionality is useful for customers who control multiple Sigma orgs and to create new Sigma orgs for their customers, allowing you to share templates with your customers.
+You can share Sigma templates with other organizations. 
+
+This functionality is particularly useful for customers who manage multiple Sigma organizations or need to create new Sigma organizations for their customers. 
+
+By allowing you to share templates across different organizations, it streamlines the process of providing consistent tools and resources, enhancing collaboration with your customers.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> When you share a template, no actual data is shared with the recipient organization.
 </aside>
 
 ### Templates tab
-The Templates tab is now split between External and Internal. 
+The templates tab is now split between `External` and `Internal`. 
 
  <ul>
       <li><strong>Internal:</strong> Templates created by members of your organization.</li>
@@ -220,11 +202,15 @@ The Templates tab is now split between External and Internal.
 Duration: 20
 
 ### KPI Charts
-KPI chart elements are available for general use **(GA).** They can add a new level of visual interactivity to your Sigma workbooks and keep users coming back for more.
+KPI chart elements are now generally available (GA). 
+
+These new elements add a new level of visual interactivity to your Sigma workbooks, enhancing user engagement and encouraging repeated visits.
 
 <img src="assets/kpi_chart.gif">
 
-The following are additional updates to time series KPIs:
+For more information about KPI charts, see [Build a KPI chart](https://sigma.bi/build-a-kpi-chart).
+
+### Time series KPI updates:
 
 Change the default display type (the value displayed when not interacting with the trend line) in the **Value** property:
 <ul>
@@ -235,9 +221,9 @@ Change the default display type (the value displayed when not interacting with t
 <img src="assets/07_2023_fff12.png" width="800"/>
  
 You can now add reference lines and bands to the trend line in `Element format` > `Reference marks`.
- 
-For more information about KPI charts, see [Build a KPI chart](https://sigma.bi/build-a-kpi-chart).
 
+<img src="assets/07_2023_fff17.png" width="800"/>
+ 
 ### Centered reference mark labels
 Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
 
@@ -246,24 +232,33 @@ Chart reference marks now support center-positioned labels. In the `Element form
 ### Chart color scales
 When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
 
-<img src="assets/07_2023_fff13.png" width="600"/>
-
 The full palette:
 
 <img src="assets/07_2023_fff8.png" width="800"/>
 
 ### Data point filters
-Charts now include more date filtering options in the data point menu (accessed by right-clicking any data point). The `Keep only` and `Exclude filters` previously allowed you to filter based on the single date value associated with the data point. You can now filter a date range that starts or ends with the data point's date value by selecting the `On and after` or `On and before` options:
+Charts now include additional date filtering options in the data point menu, which can be accessed by right-clicking any data point. 
+
+Previously, the `Keep only` and `Exclude` filters allowed you to filter based on the single date value associated with a data point. Now, you can filter a date range that starts or ends with the data point's date value by selecting the `On and after` or `On and before` options:
 
 <img src="assets/07_2023_fff14.png" width="800"/>
 
 ### Duplicate reference marks
 Charts that support references marks now allow you to duplicate existing reference lines or bands in the `Element format` > `Reference marks` section:
 
-<img src="assets/07_2023_fff15.png" width="800"/>
+<img src="assets/07_2023_fff15.png" width="500"/>
 
 ### Double-click chart legend values
-Chart legends now support double-click actions. Prior to this update, Sigma interpreted a rapid double-click as two separate inputs that would select the value on the first click and deselect it on the second. Sigma now interprets a rapid double-click as a single input.
+Chart legends in Sigma now support double-click actions. 
+
+Before this update, a rapid double-click was interpreted as two separate inputs, selecting the value with the first click and deselecting it with the second. Now, Sigma treats a rapid double-click as a single input.
+
+### Stretchable buttons
+You can now stretch your button elements to take up the entire width of the element. 
+
+This adjustment allows you to align your buttons regardless of the text length. It's a small but useful user interface improvement that some users will certainly appreciate.
+
+<img src="assets/fffbuttons.gif" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -271,7 +266,42 @@ Chart legends now support double-click actions. Prior to this update, Sigma inte
 ## Workbooks
 Duration: 20
 
-### Personal Bookmarks (BETA)
+### Copy + Paste Full Workbook Pages (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+You can copy a page from one workbook to another, and from one page to another. 
+
+This feature will save users time by allowing easy reuse of existing, full pages. This eliminates the need to copy individual page elements, one at a time.
+
+[Link to documentation](https://help.sigmacomputing.com/hc/en-us/articles/17802897614739-Copy-a-page-within-and-between-workbooks-Beta-)
+
+### Multi-tab Excel Exports (GA)
+The Multi-tab Excel export feature has been promoted to general availability (GA), for all Sigma customers.
+
+You can now merge your Excel exports to be in a single file, with one element in each excel tab through `Scheduled Exports` and `Send Now`.
+
+There are three ways to get multi-tab excel exports:
+
+1. Individual elements can be selected and merged into a single Excel file, with one element per tab. Users can select multiple individual elements and choose Excel for “Format as”. Once they select more than one element for Excel format, a “Merge Excel Files” check box appears.
+
+2. Entire page can be selected, and each element from that page will automatically be merged into a single Excel file with one element per tab.
+
+3. Entire workbook can be selected, and each element will automatically be merged into a single excel file with one element per tab regardless of what page it was on.
+
+Users can also do a combination of these. 
+
+For example: if you have an attachment for an entire workbook, entire page, and four other elements, and I checked the `merge Excel`` option, three Excel files will be sent in the email, one for the workbook, one for the entire page, and one for the four combined elements.
+
+[Link to documentation](https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-to-Email)
+
+### Personal Bookmarks (Beta)
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
 Bookmarks now provide a notification when changes made (such as changing a filter’s value) for the bookmark are no longer relevant in the workbook. In other words, someone changed the base workbook such that the bookmark is no longer accurate. A modal gives the option of updating or deleting the bookmark.
 
 **Background:**
@@ -291,9 +321,13 @@ In the case where you do just want a static snapshot of a workbook, you can stil
 Often users make multiple explorations but do not save them, only to discover later that they wished the had. 
 Recent explores address this but keeping track of all your unsaved explorations:
 
-<img src="assets/07_2023_fff16.png" width="800"/>
+<img src="assets/07_2023_fff16.png" width="600"/>
 
-### Table cell images (BETA)
+### Table cell images (Beta)
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
 Tables can now display images in cells. When a column contains image URLs, you can render the images by selecting `Transform` > `Set image` in the column menu.
 
 <img src="assets/07_2023_fff5.png" width="800"/>
