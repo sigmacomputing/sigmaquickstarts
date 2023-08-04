@@ -10,8 +10,12 @@ lastUpdated: 2023_08-31
 
 <!-- 
 Weeks Added so far:
-Release notes for the month of June 2023 features, published on first Friday of July
+Release notes for the month of August 2023 features, published on first Friday of Sept
 8.4.2023 
+
+Make sure to include:
+1: Custom Functions
+
 --->
 
 # (08-2023) August Highlights
