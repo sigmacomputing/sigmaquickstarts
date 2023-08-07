@@ -13,7 +13,7 @@ lastUpdated: 2023-08-02
 ## Overview 
 Duration: 5 
 
-Many Sigma customers initially expect to use more warehouse compute due to the direct, easy access to data they can now provide to users.
+Many new Sigma customers initially expect to use more warehouse compute due to the direct, easy access to data they can now provide to users.
 
 To offset Snowflake compute costs, Sigma applies multiple tiers of caching and evaluation that effectively reduce warehouse load, while delivering a faster user experience. 
 
