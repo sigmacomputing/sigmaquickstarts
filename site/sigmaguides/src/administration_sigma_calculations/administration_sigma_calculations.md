@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2023-08-02
 
-# How Sigma Performa Calculations
+# How Sigma Performs Calculations
 
 ## Overview 
 Duration: 5 
@@ -96,10 +96,10 @@ For example, if a user were to calculate a percentage change ([column 2] - [colu
 ### Sigma Cloud Lane
 
 <strong>4: Sigma Results Cache:</strong><br>
-Sigma maintains a mapping of Snowflake result ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their result ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
+Sigma maintains a mapping of Snowflake query ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
 
 <strong>5: Sigma Materialization:</strong><br>
-Any data asset in Sigma can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.<br>
+Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on Manual Triggers or Automations in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services Tier:</strong><br>
@@ -255,7 +255,7 @@ In order to achieve this, we first maintain a mapping between calculations (Sigm
 
 We next calculate a "fingerprint" (a structure of prior calculations) for this mapping.
 
-The production of a fingerprint, and mapping of fingerprint to prior results, is performed entirely within Sigma – the warehouse is not involved until we ask it to return any prior calculations it has, for calculations that have already run.
+The production of a fingerprint, and mapping of fingerprint to prior results, is performed entirely within Sigma – the warehouse is not involved until we ask it to return any calculations it has already run.
 
 When a new calculation matches a prior one (using Sigma's matching algorithm), we ask the data warehouse if it still has results for the prior calculation (against the time-to-live expiration). 
 
