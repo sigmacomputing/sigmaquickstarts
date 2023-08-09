@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2023-08-02
 
-# Query Performance with Sigma
+# How Sigma Performa Calculations
 
 ## Overview 
 Duration: 5 
@@ -18,6 +18,14 @@ Many Sigma customers initially expect to use more warehouse compute due to the d
 To offset Snowflake compute costs, Sigma applies multiple tiers of caching and evaluation that effectively reduce warehouse load, while delivering a faster user experience. 
 
 As a result, customers typically see their cost-per-user decrease, as they increase their number of users in Sigma.
+
+For example, here is a demonstration of the savings, based on real customer usage:
+
+<img src="assets/aq14.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!.
+</aside>
 
 This QuickStart guide introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a balanced solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
 
@@ -73,16 +81,25 @@ A user with a current browser. The choice of browser does not matter.
 Sigma maintains a cache of recent results in the web browser. As result sets are returned from Snowflake, they enter the browser cache. Every new query is checked against recent results in the browser cache before anything is sent to Snowflake. When a matching query result is found, no network request or query is issued to Snowflake.
 
 <strong>3: Sigma Alpha Query:</strong><br>
-Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate simple arithmetic operations instead of issuing a query to Snowflake.
+Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate arithmetic operations instead of issuing a query to Snowflake.
+
+Alpha Query leverages the Browser Cache to compute new data. It can computing anything using data in cache, but if more data from the warehouse is needed, the request will need to made as shown in the workflow.
+
+Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time. so customers benefit now and whenever Sigma adds more advancements.
+</aside>
+
 For example, if a user were to calculate a percentage change ([column 2] - [column 1])/[column 1]), Sigma would use Alpha Query. This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.
 
 ### Sigma Cloud Lane
 
 <strong>4: Sigma Results Cache:</strong><br>
-Sigma maintains a mapping of Snowflake result ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their result ID. If a Sigma generated SQL query has been previously run, Sigma can actually request the result from Snowflake using the request ID instead of reissuing a new query.<br>
+Sigma maintains a mapping of Snowflake result ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their result ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
 
 <strong>5: Sigma Materialization:</strong><br>
-Complex datasets (which could be ones that involve many joins) can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.<br>
+Any data asset in Sigma can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.<br>
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services Tier:</strong><br>
@@ -112,12 +129,12 @@ Suppose there is a Sigma workbook that contains one table. The user may (or may 
 
 With that example in mind, please take a few minutes to review the decision tree, and consider what is likely to happen at each junction.
 
-<img src="assets/calc_engine.svg" width="800"/>
+<img src="assets/calcengine.svg" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## In-Browser Calculation
+## Sigma Alpha Query (In-Browser Calculation)
 Duration: 20
 
 In this section, we will discuss operations that are part of this portion of our decision tree:
@@ -222,6 +239,10 @@ Sigma has the capability to automatically fetch previously calculated data, leve
 
 Sigma’s result cache is a feature implemented within Sigma itself.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma's unique architecture provides the benefits of caching data without storing customer data in our servers.
+</aside>
+
 This implementation is distinctly different from the result caching functionality that some data warehouses natively provide, which is typically implemented using a SQL text match algorithm. This checks if a syntactically equivalent SQL statement was submitted recently, and returns prior calculations if the underlying table data has not changed since the last query. 
 
 Each warehouse provider implements a version of results caching, in their own way: 
@@ -234,7 +255,7 @@ In order to achieve this, we first maintain a mapping between calculations (Sigm
 
 We next calculate a "fingerprint" (a structure of prior calculations) for this mapping.
 
-The production of a fingerprint, and mapping of fingerprint to prior results, is performed entirely within Sigma – the warehouse is not involved until we ask it to return any prior calculations it has. 
+The production of a fingerprint, and mapping of fingerprint to prior results, is performed entirely within Sigma – the warehouse is not involved until we ask it to return any prior calculations it has, for calculations that have already run.
 
 When a new calculation matches a prior one (using Sigma's matching algorithm), we ask the data warehouse if it still has results for the prior calculation (against the time-to-live expiration). 
 
