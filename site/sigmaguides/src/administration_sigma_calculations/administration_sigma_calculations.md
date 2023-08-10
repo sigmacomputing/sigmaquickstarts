@@ -8,21 +8,35 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2023-08-02
 
-# Query Performance with Sigma
+# How Sigma Performa Calculations
 
 ## Overview 
 Duration: 5 
 
-This QuickStart guide introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
+Many new Sigma customers initially expect to use more warehouse compute due to the direct, easy access to data they can now provide to users.
+
+To offset Snowflake compute costs, Sigma applies multiple tiers of caching and evaluation that effectively reduce warehouse load, while delivering a faster user experience. 
+
+As a result, customers typically see their cost-per-user decrease, as they increase their number of users in Sigma.
+
+For example, here is a demonstration of the savings, based on real customer usage:
+
+<img src="assets/aq14.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!.
+</aside>
+
+This QuickStart guide introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a balanced solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
 
 To accomplish this, Sigma offers multiple tiers of caching and evaluation, designed to reduce data warehouse load and enhance the user experience.
 
 Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the corresponding increase in cost. Achieving this balance is complex and certainly not something that is easily done.
 
-We also often observe that, for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
+Over time, we have observed that for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
  ### Target Audience
-Tech executives, architects, developers, and Sigma administrators looking for a deeper understanding of Sigma's unique approach will find it beneficial. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
+Tech executives, architects, developers, and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
 
 ### Prerequisites
 
