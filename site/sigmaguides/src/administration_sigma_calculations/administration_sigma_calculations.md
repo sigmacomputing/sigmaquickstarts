@@ -135,6 +135,12 @@ There are some cases (ie: [Sigma dynamic role switching](https://quickstarts.sig
 ## In-Browser Calculation
 Duration: 20
 
+It is not immediately obvious that Sigma's result cache is different than the caching that some warehouses do automatically. 
+
+Sigma will re-use existing results (by default), regardless of whether the underlying data has changed. 
+
+There is a control in the Sigma UI to [bypass the result cache](https://help.sigmacomputing.com/hc/en-us/articles/4403612567955#h_01FD0EWVGM8RNZJ85B997ZFXTA) when the latest results are needed instead. There is also a control to determine the [acceptable staleness for query results.](https://help.sigmacomputing.com/hc/en-us/articles/4416981061651-Set-a-query-ID-cache-duration) of whether the underlying data has changed.
+
 In this section, we will discuss operations that are part of this portion of our decision tree:
 
 <img src="assets/aq2.png" width="800"/>
