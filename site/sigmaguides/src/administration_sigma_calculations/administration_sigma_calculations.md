@@ -55,14 +55,17 @@ Tech executives, architects, developers, and Sigma administrators looking for a 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+
 ## Tier Definitions
 Duration: 20
 
-Each time a user performs an operation, Sigma evaluates where the data is retrieved from in order to populate a Workbook's tables, charts, pivots, and other elements.
+Each time a Sigma user performs an operation, Sigma evaluates where the data is retrieved from in order to populate a Workbook's tables, charts, pivots, and other elements.
 
-To perform these calculations as quickly as possible, data operations (calculations) are attempted at various tiers. Decisions are made based on where the requested data can be provided to the user most rapidly and at the lowest cost.
+To perform these calculations as quickly as possible, data operations (calculations) are attempted at various tiers. 
 
-The image below illustrates where the query logic occurs, displayed in three "lanes". Each item is numbered so that we can use the subsequent numbered list to describe each one.
+Decisions are made based on where the requested data can be provided to the user most rapidly and at the lowest cost.
+
+The image below illustrates where the query logic occurs, displayed in three "lanes". The items are numbered to correspond with detailed explanations in the subsequent list.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The numbers DO NOT imply an order of operations. We will discuss that in the next section when we explore a typical query workflow.
@@ -76,30 +79,40 @@ The image below illustrates where the query logic occurs, displayed in three "la
 A user with a current browser. The choice of browser does not matter.
 
 <strong>2: Sigma Browser Cache:</strong><br>
-Sigma maintains a cache of recent results in the web browser. This can't assist with the initial load since the cache is empty, but it is automatically leveraged as changes are made in the workbook. Any new query is checked against recent results, and if a matching result is found, no network request or query is issued.
+Sigma maintains a cache of recent results in the web browser. As result sets are returned from Snowflake, they enter the browser cache. Every new query is checked against recent results in the browser cache before anything is sent to Snowflake. When a matching query result is found, no network request or query is issued to Snowflake.
 
 <strong>3: Sigma Alpha Query:</strong><br>
-The data presented in a Sigma workbook ends up cached in the browser. Sigma will leverage the computing power of the browser to perform additional calculations that don't require data to be re-fetched, instead of sending new queries for the database to compute. An example would be a user creating a new calculation, such as a percentage change: ([column 2] - [column 1]) / [column 1].
+Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate arithmetic operations instead of issuing a query to Snowflake.
+
+Alpha Query leverages the Browser Cache to compute new data. It can computing anything using data in cache, but if more data from the warehouse is needed, the request will need to made as shown in the workflow.
+
+Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time. so customers benefit now and whenever Sigma adds more advancements.
+</aside>
+
+For example, if a user were to calculate a percentage change ([column 2] - [column 1])/[column 1]), Sigma would use Alpha Query. This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.
 
 ### Sigma Cloud Lane
 
-<strong>4: Sigma results cache:</strong><br>
-Sigma maintains a mapping of Snowflake result ID’s, if a Sigma generated SQL query has been previously run, Sigma can actually request the result from Snowflake using the request id.<br>
+<strong>4: Sigma Results Cache:</strong><br>
+Sigma maintains a mapping of Snowflake query ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
 
 <strong>5: Sigma Materialization:</strong><br>
-Complex datasets (which could be ones that involve many joins) can be materialized as single tables back to Snowflake and updated on a schedule set in Sigma, this means that the same query will be less costly and more performant.<br>
+Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on Manual Triggers or Automations in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
 
 ### Data Warehouse (Snowflake) Lane
-<strong>6: Cloud Services tier:</strong><br>
+<strong>6: Cloud Services Tier:</strong><br>
 Query results in Snowflake are saved for 24 hours and are used only if the underlying data has not changed, non-deterministic functions are not used, etc.<br>
 
-<strong>7: Compute tier:</strong><br>
+<strong>7: Compute Tier:</strong><br>
 Also referred to as 'virtual warehouses,' this term describes a set of resources allocated to perform data processing tasks such as loading, querying, and running computations on data. These resources can be scaled on demand.<br>
 
-<strong>8: Warehouse tier:</strong><br>
-The fully managed caching feature retains the result set of every query executed for 24 hours. Subsequent queries that match previously executed ones are retrieved from the cache rather than reprocessing the entire query. This significantly improves query response times by utilizing previously computed results.<br>
+<strong>8: Warehouse Tier:</strong><br>
+In this tier, the fully managed caching feature retains the result set of every query executed for 24 hours. Subsequent queries that match previously executed ones are retrieved from the cache rather than reprocessing the entire query. This significantly improves query response times by utilizing previously computed results.<br>
 
-<strong>9: Storage tier:</strong><br>
+<strong>9: Storage Tier:</strong><br>
 The cloud-agnostic, independent, elastic, and scalable component that holds all the data loaded into Snowflake.<br>
 
 
