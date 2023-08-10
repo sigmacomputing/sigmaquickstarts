@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2023-08-02
+lastUpdated: 2023-08-10
 
 # How Sigma Performs Calculations
 
@@ -27,11 +27,11 @@ For example, here is a demonstration of the savings, based on real customer usag
 <strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!.
 </aside>
 
-This QuickStart guide introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a balanced solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
+This QuickStart introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a balanced solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
 
 To accomplish this, Sigma offers multiple tiers of caching and evaluation, designed to reduce data warehouse load and enhance the user experience.
 
-Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the corresponding increase in cost. Achieving this balance is complex and certainly not something that is easily done.
+Using these mechanisms, Sigma helps ensure that customers typically gain far more value from fast, easy access to data than the corresponding increase in cost. Achieving this balance is complex, and certainly not something that is easily done.
 
 Over time, we have observed that for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
@@ -41,7 +41,7 @@ Over time, we have observed that for a given organization, economies of scale ar
 
 
  ### Target Audience
-Tech executives, architects, developers, and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
+Tech executives, architects, developers and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
 
 ### Prerequisites
 
@@ -88,7 +88,7 @@ Sigma maintains a cache of recent results in the web browser. As result sets are
 <strong>3: Sigma Alpha Query:</strong><br>
 Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate arithmetic operations instead of issuing a query to Snowflake.
 
-Alpha Query leverages the browser's cache to compute new data. It can computing anything using data in cache, but if more data from the warehouse is needed, the request will need to made as shown in the workflow.
+Alpha Query leverages the browser's cache to compute new data. It can compute anything using data in cache, but if more data from the warehouse is needed, the request will need to made to the warehouse.
 
 Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
 
@@ -96,22 +96,22 @@ Alpha Query supports the majority of the functions provided by Sigma today (even
 <strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time. so customers benefit now and whenever Sigma adds more advancements.
 </aside>
 
-For example, if a user were to calculate a percentage change ([column 2] - [column 1])/[column 1]), Sigma would use Alpha Query. This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.
+For example, if a user were to calculate a percentage change ([column 2] - [column 1])/[column 1]) in an existing workbook, Sigma would use Alpha Query. **This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.**
 
 ### Sigma Cloud Lane
 
 <strong>4: Sigma Results Cache:</strong><br>
-Sigma maintains a mapping of Snowflake query ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
+Sigma maintains a mapping of Snowflake query ID’s and their Sigma query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the query ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
 
 <strong>5: Sigma Materialization:</strong><br>
-Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on Manual Triggers or Automations in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
+Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on "Manual Triggers" or "Automations" in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services Tier:</strong><br>
 Query results in Snowflake are saved for 24 hours and are used only if the underlying data has not changed, non-deterministic functions are not used, etc.<br>
 
 <strong>7: Compute Tier:</strong><br>
-Also referred to as 'virtual warehouses,' this term describes a set of resources allocated to perform data processing tasks such as loading, querying, and running computations on data. These resources can be scaled on demand.<br>
+Also referred to as "virtual warehouses", this term describes a set of resources allocated to perform data processing tasks such as loading, querying and running computations on data. These resources can be scaled on demand.<br>
 
 <strong>8: Warehouse Tier:</strong><br>
 In this tier, the fully managed caching feature retains the result set of every query executed for 24 hours. Subsequent queries that match previously executed ones are retrieved from the cache rather than reprocessing the entire query. This significantly improves query response times by utilizing previously computed results.<br>
@@ -174,11 +174,11 @@ Sigma's general approach to in-browser calculations is known as incremental comp
 
 When Sigma can perform all of these calculations in the browser and return correct results, it can skip using the warehouse entirely.
 
-Imagine an analysis involving billions of customer transactions, summarizing a few metrics across 250 retail store locations. The initial summary calculations must be performed in the data warehouse since it would be impossible to fit billions of fine-grained customer transactions into a browser. However, Sigma can utilize the browser to perform some calculations on the summary metrics, specifically at the granularity of the 250 retail store locations.
+Imagine an analysis involving billions of customer transactions, summarizing a few metrics across 250 retail store locations. The initial summary calculations must be performed in the data warehouse, since it would be impossible to fit billions of fine-grained customer transactions into a browser. However, Sigma can utilize the browser to perform some calculations on the summary metrics, specifically at the granularity of the 250 retail store locations.
 
 For example, Sigma can determine the stores that generated over $10 million in revenue without examining billions of transactions. The only necessary data are the summary metrics for the 250 retail store locations – hence, this calculation can occur within the browser.
 
-### Incremental Computation - Simple Example
+### Incremental Computation - Example
 Let's explore how this works using the Sigma UI. This will allow you to see how you might evaluate the operations being performed.
 
 1: Log in to Sigma as an administrator.
@@ -195,7 +195,7 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 
 <img src="assets/aq5.png" width="350"/>
 
-5: Select the Sigma Sample Database > RETAIL > PLUGS ELECTRONICS > F_POINT_OF_SALE table:
+5: Select the `Sigma Sample Database` > `RETAIL` > `PLUGS ELECTRONICS` > `F_POINT_OF_SALE` table:
 
 <img src="assets/aq6.png" width="800"/>
 
@@ -211,7 +211,7 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 
 9: Make a few changes to the table and check the Query History to see the effects. For example, you can:
 
-- Format the two columns Sales Amount and Cost Amount. Open Query History; there are no new rows. Work is performed by Sigma against existing browser data with no new query or calculation required.
+- Format the two columns "Sales Amount" and "Cost Amount". Open Query History; there are no new rows. Work is performed by Sigma against existing browser data with no new query or calculation required.
 
 <img src="assets/aq9.png" width="800"/>
 
@@ -237,7 +237,7 @@ If Sigma believes that it can pull all of the records for the common data table 
 If the query indeed returns all of the records, the KPIs are calculated directly in the browser. This avoids potentially sending a query-per-KPI to the data warehouse.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Incremental computation reduces the number of warehouse `hits` and improves page loading performance, since it only needs to query the data once from the warehouse, and then calculate all the other child elements in-browser. A cost savings is also inherent in this methodology. 
+<strong>IMPORTANT:</strong><br> Incremental computation reduces the number of warehouse "hits" and improves page loading performance. It only needs to query the data once from the warehouse, and then calculate all the other child elements in-browser. A cost savings is also inherent in this methodology. 
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -246,7 +246,7 @@ If the query indeed returns all of the records, the KPIs are calculated directly
 ## Result Cache(s) Usage
 Duration: 20
 
-Sigma has the capability to automatically fetch previously calculated data, leveraging the ability of some data warehouses to fetch the results of prior SQL calculations.
+Sigma has the capability to automatically fetch previously calculated data from the warehouse, leveraging the ability of some data warehouses to fetch the results of prior SQL calculations.
 
 Sigma’s result cache is a feature implemented within Sigma itself.
 
@@ -258,9 +258,11 @@ This implementation is distinctly different from the result caching functionalit
 
 Each warehouse provider implements a version of results caching, in their own way: 
 
-[The Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
-[The BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
-[The Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
+[Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
+[BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
+[Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
+[Databricks method](https://www.databricks.com/blog/understanding-caching-databricks-sql-ui-result-and-disk-caches#:~:text=Result%20caching%20includes%20both%20Local,memory%20or%20remote%20storage%20mediums.&text=The%20local%20cache%20is%20an,is%20full%2C%20whichever%20comes%20first)
+
 
 In order to achieve this, we first maintain a mapping between calculations (Sigma request ID) and the results they produce in the data warehouse (queryID). 
 
@@ -305,7 +307,7 @@ At the same time, fingerprinting is resilient to unnecessary information such as
 
 The exact details of how Sigma produces a fingerprint are beyond the scope of this article.
 
-[To learn more about Fingerprinting in general, click here:](https://en.wikipedia.org/wiki/Fingerprint_(computing))
+[To learn more about Fingerprinting in general, click here.](https://en.wikipedia.org/wiki/Fingerprint_(computing))
 
 ### A Practical Example
 One key use-case for Sigma’s result cache is to accelerate the initial page load for a Workbook.
@@ -321,9 +323,9 @@ This drastically reduces the number of calculations the data warehouse needs to 
 ### Conditions for Using a Warehouse Results Cache
 Will discuss this using Snowflake's implementation as example, but other warehouses provide similar mechanisms. 
 
-Sigma leverages Snowflake's feature called Results Cache, designed to improve the performance of data retrieval by caching the results of previously executed queries. This is beneficial because the repeated execution of identical queries will be faster, thereby saving compute resources.
+Sigma leverages Snowflake's feature called "Results Cache", designed to improve the performance of data retrieval by caching the results of previously executed queries. This is beneficial because the repeated execution of identical queries will be faster, thereby saving compute resources.
 
-At the time of this QuickStart, the following are Snowflake's result cache rules. [More information can be found here.](https://community.snowflake.com/s/article/Understanding-Result-Caching#:~:text=Typically%2C%20query%20results%20are%20reused,query%20result%20has%20not%20changed.)
+At the time of this QuickStart, the following are Snowflake's result cache rules. [More information can be found here.](https://community.snowflake.com/s/article/Understanding-Result-Caching#:~:text=Typically%2C%20query%20results%20are%20reused,query%20result%20has%20not%20changed)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Snowflake's result cache is just one way Sigma optimizes data rendering performance.
