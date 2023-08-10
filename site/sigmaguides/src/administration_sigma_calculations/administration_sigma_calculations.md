@@ -35,6 +35,11 @@ Using these mechanisms, Sigma helps ensure that customers typically gain far mor
 
 Over time, we have observed that for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> In ths QuickStart, we will refer to Snowflake, but many warehouse providers provide a version of results caching. This is mentioned later in section 5 as well.
+</aside>
+
+
  ### Target Audience
 Tech executives, architects, developers, and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
 
@@ -83,7 +88,7 @@ Sigma maintains a cache of recent results in the web browser. As result sets are
 <strong>3: Sigma Alpha Query:</strong><br>
 Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate arithmetic operations instead of issuing a query to Snowflake.
 
-Alpha Query leverages the Browser Cache to compute new data. It can computing anything using data in cache, but if more data from the warehouse is needed, the request will need to made as shown in the workflow.
+Alpha Query leverages the browser's cache to compute new data. It can computing anything using data in cache, but if more data from the warehouse is needed, the request will need to made as shown in the workflow.
 
 Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
 
@@ -123,7 +128,7 @@ Duration: 20
 
 Now that we have the definitions, let's examine what happens when an end-user makes a request for data in Sigma.
 
-The following decision tree is very high-level and does not include lower-level details such as security, system architecture, and so on. In this QuickStart, we are solely focused on what happens when a Sigma user requests data or performs operations on already retrieved data. It is understood that this is not the only factor related to overall platform performance.
+The following decision tree is very high-level, and does not include lower-level details such as security, system architecture, and so on. In this QuickStart, we are solely focused on what happens when a Sigma user requests data or performs operations on already retrieved data. It is understood that this is not the only factor related to overall platform performance.
 
 Suppose there is a Sigma workbook that contains one table. The user may (or may not) have added a few calculated columns, and they have published the workbook.
 
