@@ -193,7 +193,7 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 
 <img src="assets/aq4.png" width="350"/>
 
-4: From NEW > TABLES AND DATASETS:
+4: From `NEW` > `TABLES AND DATASETS`:
 
 <img src="assets/aq5.png" width="350"/>
 
@@ -263,6 +263,7 @@ Sigma’s result cache is a feature implemented within Sigma itself.
 This implementation is distinctly different from the result caching functionality that some data warehouses natively provide, which is typically implemented using a SQL text match algorithm. This checks if a syntactically equivalent SQL statement was submitted recently, and returns prior calculations if the underlying table data has not changed since the last query. 
 
 Each warehouse provider implements a version of results caching, in their own way: 
+
 [Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
 [BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
 [Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
