@@ -18,7 +18,7 @@ This QuickStart introduces you to Sigma Application Embedding and demonstrates h
  
 There are three “modes” that Application embedding can be operated in; View, Explore and User-backed. 
 
-**User-backed** is by far the most popular mode as that works the the Parent application’s authentication to pass user-level permissions. WIth this method each user is treated as an individual, with an account type and team permissions. We will refer to these individuals as embed users. 
+**User-backed** is by far the most popular mode as that works the Parent application’s authentication to pass user-level permissions. WIth this method each user is treated as an individual, with an account type and team permissions. We will refer to these individuals as embed users. 
 
 User-backed is used to implement row-level security (RLS) at the team and user level and also allow embed users to save and edit their own versions of embedded workbook
 

@@ -276,7 +276,6 @@ Click to open in VSCode.
 <!-- END OF NEXT SECTION-->
 
 
-
 ## Site Overview
 Duration: 20
 
@@ -342,6 +341,8 @@ Using a browser, navigate to `http:\\localhost:8000`. The website should load:
 
 <img src="assets/vsc11.png" width="800"/>
 
+There is a tool that reloads the QuickStart page in the browser automatically on saves made in VSCode. [It is called Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) and is a nice timesaver.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
@@ -349,6 +350,8 @@ Using a browser, navigate to `http:\\localhost:8000`. The website should load:
 Duration: 20
 
 When creating a new QuickStart, or modifying an existing one, **ALWAYS** create a new branch. 
+
+Before you create a new branch, also **ALWAYS** use GitHub Desktop to "pull" the latest changes for the master branch. This ensures that you are always building off the most recent production code from our Git repository. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> NEVER work in the "master" branch. Your changes will be rejected on publication to GitHub
@@ -451,8 +454,6 @@ This guide provides all the available and supported markdown methods.
 
 ## Publication
 Duration: 5
-
-
 
 1. Make a new branch in GitHub Desktop
 2. Make your changes in VSCode and save/commit them

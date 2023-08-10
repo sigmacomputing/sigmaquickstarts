@@ -80,7 +80,7 @@ export default defineComponent({
 
     searchParams += '&:email=' + steps.trigger.event.body.userEmail;
     searchParams += '&:external_user_id=' + steps.trigger.event.body.userEmail;
-    searchParams += '&:external_user_team=' + steps.trigger.event.body.supplier + '_team,all_clients_team';
+    searchParams += '&:external_user_team=' + steps.trigger.event.body.supplier + '_Team,All_Clients_Team';
     searchParams += '&:ua_region=' + steps.trigger.event.body.region;
     searchParams += '&:account_type=Viewer';
 
@@ -91,8 +91,7 @@ export default defineComponent({
     searchParams += `&:time=${Math.floor(new Date().getTime() / 1000)}`;
 
     searchParams += `&:client_id=your_client_id`;
-    searchParams += '&cAttomID=' + steps.trigger.event.body.attomId;
-
+    
     const URL_WITH_SEARCH_PARAMS = 'https://app.sigmacomputing.com/embed/' + steps.trigger.event.body.embedPath + searchParams;
 
     const SIGNATURE = crypto

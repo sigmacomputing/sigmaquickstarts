@@ -40,7 +40,7 @@ Over time, we have observed that for a given organization, economies of scale ar
 </aside>
 
 
- ### Target Audience
+### Target Audience
 Tech executives, architects, developers and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
 
 ### Prerequisites
@@ -105,6 +105,10 @@ Sigma maintains a mapping of Snowflake query ID’s and their Sigma query ID. If
 
 <strong>5: Sigma Materialization:</strong><br>
 Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on "Manual Triggers" or "Automations" in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
+Sigma maintains a mapping of Snowflake query ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
+
+<strong>5: Sigma Materialization:</strong><br>
+Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on Manual Triggers or Automations in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services Tier:</strong><br>
@@ -118,7 +122,6 @@ In this tier, the fully managed caching feature retains the result set of every 
 
 <strong>9: Storage Tier:</strong><br>
 The cloud-agnostic, independent, elastic, and scalable component that holds all the data loaded into Snowflake.<br>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -153,7 +156,6 @@ In this section, we will discuss operations that are part of this portion of our
 <img src="assets/aq2.png" width="800"/>
 
 <aside class="positive">
-
 <strong>IMPORTANT:</strong><br> Sigma is able to perform some calculations in the user's browser, resulting in the same interactive performance found in locally installed spreadsheet applications. This is the best case for calculations – it makes Sigma feel fast and powerful, but is just one method Sigma employs to optimize the user's experience. 
 </aside>
 
@@ -196,6 +198,10 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 <img src="assets/aq5.png" width="350"/>
 
 5: Select the `Sigma Sample Database` > `RETAIL` > `PLUGS ELECTRONICS` > `F_POINT_OF_SALE` table:
+
+<img src="assets/aq5.png" width="350"/>
+
+5: Select the Sigma Sample Database > RETAIL > PLUGS ELECTRONICS > F_POINT_OF_SALE table:
 
 <img src="assets/aq6.png" width="800"/>
 
@@ -257,12 +263,10 @@ Sigma’s result cache is a feature implemented within Sigma itself.
 This implementation is distinctly different from the result caching functionality that some data warehouses natively provide, which is typically implemented using a SQL text match algorithm. This checks if a syntactically equivalent SQL statement was submitted recently, and returns prior calculations if the underlying table data has not changed since the last query. 
 
 Each warehouse provider implements a version of results caching, in their own way: 
-
 [Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
 [BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
 [Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
 [Databricks method](https://www.databricks.com/blog/understanding-caching-databricks-sql-ui-result-and-disk-caches#:~:text=Result%20caching%20includes%20both%20Local,memory%20or%20remote%20storage%20mediums.&text=The%20local%20cache%20is%20an,is%20full%2C%20whichever%20comes%20first)
-
 
 In order to achieve this, we first maintain a mapping between calculations (Sigma request ID) and the results they produce in the data warehouse (queryID). 
 
