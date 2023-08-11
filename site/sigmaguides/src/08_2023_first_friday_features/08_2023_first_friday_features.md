@@ -12,7 +12,7 @@ lastUpdated: 2023_08-31
 Weeks Added so far:
 Release notes for the month of August 2023 features, published on first Friday of Sept
 8.4.2023 
-
+8.11.2023
 Make sure to include:
 1: Custom Functions
 
@@ -34,6 +34,94 @@ All other features are considered released (GA or generally available).
 Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
 
 New QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Administration
+Duration: 20
+
+### Audit Logging
+
+**New connection schema and dimension tables**
+The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
+
+<img src="assets/fff_08_01.png" width="300"/>
+
+The dimension tables can be joined with the AUDIT_LOGS table to add context to audit log events. 
+
+For example, join AUDIT_LOGS with the DOCUMENTS table to add document attributes (e.g., creation date, document path, and archive status) to event entries related to user interactions with workbooks, datasets, etc.
+
+<img src="assets/fff_08_02.png" width="700"/>
+
+
+**List of New Dimension tables:**
+  <ul>
+     <li><Strong>CONNECTIONS:</Strong> Connection attributes</li>
+     <li><Strong>DOCUMENTS:</Strong> Document attributes (for folders, workbooks, datasets, etc.)</li>
+     <li><Strong>SCHEDULED_NOTIFICATIONS:</Strong> Notification attributes for scheduled exportss</li>
+     <li><Strong>SENDGRID_LOGS:</Strong> Email attributes for exports</li>
+     <li><Strong>TEAMS:</Strong> Organization team attributes</li>
+     <li><Strong>USERS:</Strong> Organization user attributes</li>
+</ul>
+
+
+
+### Bulk actions for admins
+
+In order to improve the admin experience and provide admin functionality at scale, numerous actions can now be performed in bulk. 
+
+  <li></li>
+    <li><Strong>User Management:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk password reset</li>
+           <li>Bulk invite resend</li>
+           <li>Bulk invite delete</li>
+           <li>Bulk reactivate disabled users</li>
+        </ul>
+    </li>
+</ul>
+
+  <li></li>
+    <li><Strong>Team Management:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk add team members</li>
+           <li>Bulk team member transfer</li>
+           <li>Bulk remove members from team</li>
+           <li>Bulk team delete</li>
+        </ul>
+    </li>
+</ul>
+
+  <li></li>
+    <li><Strong>User Attributes and Exports:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk delete of User Attributes</li>
+           <li>Bulk delete of Scheduled Exports</li>
+        </ul>
+    </li>
+</ul>
+
+### Column-Level Security (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+Column-Level Security provides granular control over data access allowing you the flexibility to restrict or grant access to column-level data. This ensures that the security of sensitive or confidential information is only accessible to authorized users.  Column-Level Security (CLS) is managed through team membership and user attributes.  
+
+**Column-Level Security provides the following benefits:**
+
+ <ul>
+      <li><strong>Data Protection:</strong> Secures columns that contain sensitive information.</li>
+      <li><strong>Data sharing and collaboration:</strong> Organizations can share specific columns with external parties or partners without exposing the entire dataset.</li>
+      <li><strong>Data Confidentiality in Multi-Tenant Environments:</strong> </li>
+      <li><strong></strong> In multi-tenant systems or cloud-based environments, where multiple clients or orgs share the same infrastructure, CLS ensures that each tenant's data remains isolated and protected from other tenants.</li>
+      <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -113,7 +201,7 @@ Bug releases are broken down by week for specificity.
 
 ### Week ending 8.11.2023
  <ul>
-      <li></li>
+      <li>The footer is now hidden for embedded workbooks, including tagged versions, if you set the "show_footer" parameter to "false".</li>
  </ul>
 
 ### Week ending 8.18.2023
