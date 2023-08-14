@@ -3,9 +3,9 @@ id: embedding_dynamic_iframes
 summary: embedding_dynamic_iframes
 categories: Embedding
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: 
 lastUpdated: 2023-08-14
 
 # How to: Responsive iFrames with Sigma
