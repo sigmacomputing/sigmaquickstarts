@@ -3,12 +3,12 @@ id: embedding_dynamic_iframes
 summary: embedding_dynamic_iframes
 categories: Embedding
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-08-09
+tags: Default
+lastUpdated: 2023-08-14
 
-# How To: How to: Responsive iFrames with Sigma
+# How to: Responsive iFrames with Sigma
 
 ## Overview 
 Duration: 5 
@@ -37,7 +37,7 @@ To avoid these issues, it's generally best to avoid having scroll bars on both t
 
 In essence, making an iframe dynamic or responsive is about ensuring that the content within the iframe is accessible, user-friendly, and looks good on all devices and window sizes. It's about creating a better, more consistent user experience.
 
-Since Sigma uses iframes for embedding, it is fairly easy to avoid this situation.∂
+Since Sigma uses iframes for embedding, it is fairly easy to avoid this situation.
 
 This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
@@ -112,7 +112,7 @@ This is what we want to try and avoid by making our iframe dynamic.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Responsive iframes
+## Responsive Iframes
 Duration: 20
 
 Since we are embedding content that is created in Sigma, it is not always possible to ensure that the Sigma content will "fit" inside a static iframes dimensions.
@@ -203,6 +203,81 @@ Now we only have one scroll bar (in the embed) and the parent application does n
 This is generally the behavior end-users expect.
 
 <img src="assets/scrollbars2.gif">
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Alternative Method
+Duration: 20
+
+The calc() function in CSS can be used to dynamically compute values for various properties. While calc() can be powerful in many scenarios, it's important to understand its limitations and its applicability to your specific case.
+
+In our example, the calc() function can be used to compute dimensions based on various units, combinations of units, or viewport sizes.
+
+For example, if we want the iframe to take up the full viewport height minus some space for a header, you could use calc():
+
+```code
+#sigmaDashboard {
+    height: calc(100vh - 60px); /* Assuming 60px is the height of your header */
+    width: 100%;
+    overflow: auto;
+}
+```
+
+This would make the iframe's height equal to the full viewport height minus 60 pixels for the header.
+
+To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is that code for your convienence.
+
+```code
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sigma Embedding - Application</title>
+    <style>
+        /* Ensure html and body tags occupy full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* To prevent scrolling on the parent */
+        }
+        /* Set a default height for the iframe and allow it to scroll if content exceeds */
+            #sigmaDashboard {
+                height: calc(100vh - 60px); /* Assuming 60px is the height of your header */
+                width: 100%;
+                overflow: auto;
+            }
+    </style>
+</head>
+
+<body>
+    <h2>Sigma Embedding - Application</h2>
+    <h3>iframe URL below comes from API call to server.js</h3>
+    <iframe id="sigmaDashboard"></iframe>
+    <script>
+        const URL = "http://localhost:3000/api/foo";
+        fetch(URL)
+        .then(data => { return data.json() })
+        .then(res => { document.getElementById("sigmaDashboard").src = res.url })
+        .catch(e => console.log(e));
+    </script>
+</body>
+
+</html>
+```
+
+### A Few Things to Note:
+
+ <ul>
+      <li><strong>Content Size Unknown:</strong> The challenge with our iframe is that, since we may not control its content, we don't know its exact height. calc() can help with relative dimensions based on the viewport or other elements, but it can't determine the height of content inside an iframe from an external source.</li>
+      <li><strong>Doesn't Eliminate Scroll:</strong> Using calc() in this manner doesn't eliminate the need for a scrollbar if the content inside the iframe exceeds its height. It just helps in setting the iframe's height relative to other known dimensions.</li>
+      <li><strong>Complementary to Other CSS:</strong> calc() is not an alternative to the other CSS properties or values we have used; it's complementary. We can use it in conjunction with other properties to achieve the desired layout.</li>
+</ul>
+ 
+In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't replace the adaptive/responsive approach we discussed. It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
+
+Choosing the best approach is up to the developer, but we hope this QuickStart provided useful information when embedding Sigma. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
