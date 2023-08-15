@@ -88,7 +88,7 @@ Sigma maintains a cache of recent results in the web browser. As result sets are
 <strong>3: Sigma Alpha Query:</strong><br>
 Aside from caching, Sigma has created a tool called Alpha Query that operates as a processing layer to calculate arithmetic operations instead of issuing a query to Snowflake.
 
-Alpha Query leverages the browser's cache to compute new data. It can compute anything using data in cache, but if more data from the warehouse is needed, the request will need to made to the warehouse.
+Alpha Query leverages the browser's cache to compute new data. It can compute anything using data in cache, but if more data from the warehouse is needed, the request will need to be made to the warehouse.
 
 Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
 
@@ -96,7 +96,7 @@ Alpha Query supports the majority of the functions provided by Sigma today (even
 <strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time. so customers benefit now and whenever Sigma adds more advancements.
 </aside>
 
-For example, if a user were to calculate a percentage change ([column 2] - [column 1])/[column 1]) in an existing workbook, Sigma would use Alpha Query. **This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.**
+**This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.**
 
 ### Sigma Cloud Lane
 
@@ -105,10 +105,6 @@ Sigma maintains a mapping of Snowflake query ID’s and their Sigma query ID. If
 
 <strong>5: Sigma Materialization:</strong><br>
 Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on "Manual Triggers" or "Automations" in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
-Sigma maintains a mapping of Snowflake query ID’s. This cache actively manages a data structure containing a hash of the queries sent to Snowflake and their query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the request ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
-
-<strong>5: Sigma Materialization:</strong><br>
-Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on Manual Triggers or Automations in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
 
 ### Data Warehouse (Snowflake) Lane
 <strong>6: Cloud Services Tier:</strong><br>
@@ -144,7 +140,7 @@ With that example in mind, please take a few minutes to review the decision tree
 ## Sigma Alpha Query (In-Browser Calculation)
 Duration: 20
 
-It is not immediately obvious that Sigma's result cache is different than the caching that some warehouses do automatically. 
+It is not immediately obvious that Sigma's Alpha Query is different than the caching that some warehouses do automatically. 
 
 Sigma will re-use existing results (by default), regardless of whether the underlying data has changed. 
 
@@ -261,13 +257,6 @@ Sigma’s result cache is a feature implemented within Sigma itself.
 
 This implementation is distinctly different from the result caching functionality that some data warehouses natively provide, which is typically implemented using a SQL text match algorithm. This checks if a syntactically equivalent SQL statement was submitted recently, and returns prior calculations if the underlying table data has not changed since the last query. 
 
-Each warehouse provider implements a version of results caching, in their own way: 
-
-[Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
-[BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
-[Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
-[Databricks method](https://www.databricks.com/blog/understanding-caching-databricks-sql-ui-result-and-disk-caches#:~:text=Result%20caching%20includes%20both%20Local,memory%20or%20remote%20storage%20mediums.&text=The%20local%20cache%20is%20an,is%20full%2C%20whichever%20comes%20first)
-
 In order to achieve this, we first maintain a mapping between calculations (Sigma request ID) and the results they produce in the data warehouse (queryID). 
 
 We next calculate a "fingerprint" (a structure of prior calculations) for this mapping.
@@ -324,8 +313,15 @@ Rather than asking the warehouse to calculate fresh results for every team membe
 
 This drastically reduces the number of calculations the data warehouse needs to perform, and improves the page load time since there are no additional calculations to perform.
 
-### Conditions for Using a Warehouse Results Cache
-Will discuss this using Snowflake's implementation as example, but other warehouses provide similar mechanisms. 
+## Conditions for Using a Warehouse Results Cache
+Each warehouse provider implements a version of results caching, but we will discuss this using Snowflake's implementation as example.
+
+Here are links that discuss how results caching works, for common warehouse providers:
+
+[Snowflake method](https://docs.snowflake.com/en/user-guide/querying-persisted-results#retrieval-optimization)<br>
+[BigQuery method](https://cloud.google.com/bigquery/docs/cached-results)<br>
+[Redshift method](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)<br>
+[Databricks method](https://www.databricks.com/blog/understanding-caching-databricks-sql-ui-result-and-disk-caches#:~:text=Result%20caching%20includes%20both%20Local,memory%20or%20remote%20storage%20mediums.&text=The%20local%20cache%20is%20an,is%20full%2C%20whichever%20comes%20first)
 
 Sigma leverages Snowflake's feature called "Results Cache", designed to improve the performance of data retrieval by caching the results of previously executed queries. This is beneficial because the repeated execution of identical queries will be faster, thereby saving compute resources.
 
