@@ -89,8 +89,10 @@ Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
+
 In this lab we learned how to set up our workspaces, folders, and teams to make embedding seamless.
 
 **Additional Resource Links**
