@@ -82,7 +82,7 @@ Duration: 20
 2. Click `Create Folder`.
 3. Update the title to `Workbooks`.
 4. Click the green checkmark.
-![Workbooks_folder](assets/Workbooks_folder.png)
+![Workbooks_folder](assets/workbooks_folder.png)
 5. Repeat steps 1-4, but make the title of this folder `Datasets`.
 
 ![Footer](assets/sigma_footer.png)
