@@ -55,7 +55,7 @@ Anyone who is trying to create QS content for Sigma.
 ### What You’ll Learn
 How to apply Sigma approved Markdown for your QS.
 
-## Use Case 1: Common Dashboard
+## Use Case 1: Common Content
 Duration: 20
 
 In this use case, we want to embed a Sigma dashboard inside our parent application, and make it accessible to all customers after they are authenticated.
@@ -69,6 +69,10 @@ Name the team `all_clients_team`, set it to `Private`, Check the box to `Create 
 <img src="assets/fa2.png" width="800"/>
 
 A new `Workspace` is created for you automatically with the name `all_clients_team`.  
+
+By doing this you create a Team and create a Workspace. It also gives the team access to that workspace.
+
+Workspaces sever multiple purposes, but in this use-case, we will use one to store content that is common to all our customers.
 
 Workspaces are shown by returning to the `Home` page (click the white crane icon in the upper left corner) and clicking `Workspaces`:
 
@@ -177,17 +181,86 @@ The embed user we just used (via the server.js api) was added to the team automa
 
 Now, any new embed user who is assigned to the  `all_clients_team`, has access to the `Common Dashboard` that is made available by embedding it in the parent application.
 
+You can check which people or teams have access to a workbook by opening the workbook and clicking on the `Share` link.
+
+In this case, we can see that our `all_clients_team` has view access that was inherited from a folder. We know this folder is our `Curated Master Dashboards` folder. 
+
+<img src="assets/fa16.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Unique Content
 Duration: 20
+
+As Sigma embed customers mature in their implementations, they often want to provide more functionality to their customers. Often, this is in the form of some sort of "premium" offering. This can be done to capture revenue, respond to competitive pressure or other reasons. 
+
+We have shown how all your clients can access common content. 
+
+Let's consider the case where you want to provide some specialized reports or dashboards to some of your customers. In addition to that, you also want to provide "tiers" of functionality like view, edit and share for this content. 
+
+Sigma supports this use case through `Teams` and `Account Types`. 
+
+Using the same framework we have already explored, we can create easily control what a user can access, and what they are allow to do with that content. 
+
+Back in Sigma, create a new private `Team` called `CustomerA` and check the `Create a Workspace` check-box on.
+
+<img src="assets/fa17.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma enables you to automate this process by calling the teams API. The API contains a boolean that allows you to also create a Workspace associated with a Team at the same time. We recommend this as part of your embed onboarding process.
+</aside>
+
+For more information on the Teams API, [click here](https://help.sigmacomputing.com/hc/en-us/articles/4408555643923-Team-API).
+
+Next, you need to assign permissions to `CustomerA` users that will be able to explore our Common Dashboard. 
+
+You do this in Sigma with `Account Types` which control permissions in the application. 
+
+In Sigma, `Administration` > `Account Types`, create a new `Account Type` called `dashboard-editor` with `Edit Workbook` and `Contribute to Shared Folders` permissions. 
+
+Please note, `View Workbook` and `View Dataset` are selected by default. **Keep those checked and don’t add spaces to the Account Type name!**
+
+Click the `Create` button:
+
+<img src="assets/fa18.png" width="800"/>
+
+We also need to allow `CustomerA` to explore our `Common Dashboard`. 
+
+We could just grant then explore rights to the `Curated Master Dashboards` Workspace but maybe we don't want them to have explore on all the workbooks we store there later. 
+
+Let's grant `CustomerA` explore rights to directly on the `Common Dashboard`
+
+Open the Workbook and click `Share`.  You can do this from the Workbook itself, or from where the Workbook is stored:
+
+<img src="assets/fa21.png" width="800"/>
+
+Share the Workbook withe `CustomerA` and `Explore` rights:
+
+<img src="assets/fa20.png" width="800"/>
+
+Make the following four changes to server.js:
+
+<img src="assets/fa19.png" width="800"/>
+
+Refresh the browser page. Now we can see the dashboard which is stored in the `Common` Workpsace but we also have `Explore` rights.
+
+Now if we "`Expand` on one of the embedded Workbook's visualizations, we can see that we have the ability to explore the underlying data. 
+
+<img src="assets/fa22.png" width="800"/>
+<br>
+<img src="assets/fa23.png" width="800"/>
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## URL Encoding
 Duration: 20
+Don’t URL encode everything. If you do this, it makes the URL less readable and more challenging to troubleshoot. The only parameters you need to URL encode are where you have HTML special characters or spaces. This is why we don’t recommend spaces in Team and Account Type names. 
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
