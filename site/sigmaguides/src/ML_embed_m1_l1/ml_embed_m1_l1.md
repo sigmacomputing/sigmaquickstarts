@@ -5,34 +5,13 @@ categories: Embedding
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-
-<!-- 
-SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL.
-
-AVAILABLE CATEGORIES ARE:
-Administration
-Embedding
-Functions
-Fundamentals
-Partners
-Snowflake
-Tables (include pivot and input tables for now)
-Use-cases
-
-PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. 
-
-YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
--->
+tags:
 
 # Setting Up Teams and Workspaces for Embedding
 <!-- The above name is what appears on the website and is searchable. -->
 
-## Overview 
-Duration: 5 
-<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
-
+## Overview
+Duration: 5
 This lab will guide you through the process of content segregation to prepare data for embedding.
 
 ### Target Audience
@@ -47,13 +26,11 @@ This lab will guide you through the process of content segregation to prepare da
   <li>Knowledge of how to create a Sigma workbook.</li>
   <li>Basic knowledge of Sigma teams, workspaces, creating datasets and workbooks.</li>
 </ul>
-  
+
 ### What You’ll Learn
 How to set up workspaces, folders, and teams to prepare data for embedding.
 
-
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
 ## Data for All Clients
@@ -68,7 +45,6 @@ Duration: 20
 5. Check off `Create a Workspace associated with this Team`.
 6. Click `Create`.
 ![Team creation workflow](assets/m1_l1_step5.png)
-
 ### Grant appropriate access.
 1. From the Sigma homepage, click `Workspaces`.
 2. Open the Workspace you just created by clicking on it.
@@ -90,7 +66,6 @@ Duration: 20
 
 ## Data for Select Teams
 Duration: 20
-
 ### Create client-specific teams and workspaces.
 1. From the administration screen, click `Teams`.
 2. Click `Create Team`
@@ -112,16 +87,12 @@ Duration: 20
 9. Then sign out and sign back into your main account.
 10. Repeat this process to add a different user to the Mr.Supply team.
 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 ## What we've covered
 Duration: 5
-
 In this lab we learned how to set up our workspaces, folders, and teams to make embedding seamless.
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
