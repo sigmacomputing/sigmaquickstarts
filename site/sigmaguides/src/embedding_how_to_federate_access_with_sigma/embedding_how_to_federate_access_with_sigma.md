@@ -165,11 +165,15 @@ Once server.js is setup, make sure that node's express server is running:
 
 <img src="assets/di6.png" width="800"/>
 
-Browse to localhost:3000 to verify that we have a working application with our Sigma table on it.
+`Browse to localhost:3000` to verify that we have a working application with our Sigma dashboard on it:
 
 <img src="assets/fa11.png" width="800"/>
 
-Notice that if you click on any of the visualization controls (the 3-dot menus, upper right corner of each viz), you notice that there is limited functionality. This is because we set the `all_clients_team` to `view` access only.
+Notice that if you click on the `Sales by Store Region & Product Type` chart controls (the 3-dot menus, upper right corner of the chart), you notice that there is limited functionality. This is because we set the `all_clients_team` to `view` access only:
+
+<img src="assets/fa24.png" width="800"/>
+
+We can see some data but are not allowed to explore it. We do not see the Sigma Element Panel either.
 
 In Sigma, navigate back to `Administration` > `Teams` and click into the `all_clients_team`. 
 
@@ -274,7 +278,7 @@ In this QuickStart, we learned how to use Sigma Teams and Workspaces to provide 
 
 There is information on related content you can also review:
 
-[Embedding QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding)
+[Embedding QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding)<br>
 [Row Level Security QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
