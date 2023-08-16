@@ -245,10 +245,10 @@ Make the following four changes to server.js:
 
 Refresh the browser page. Now we can see the dashboard which is stored in the `Common` Workpsace but we also have `Explore` rights.
 
-Now if we "`Expand` on one of the embedded Workbook's visualizations, we can see that we have the ability to explore the underlying data. 
+Now if we "`Expand` on the `Sales by Store Region & Product Type` chart, we can see that we have the ability to explore the underlying data. 
 
 <img src="assets/fa22.png" width="800"/>
-<br>
+<br><br>
 <img src="assets/fa23.png" width="800"/>
 
 
