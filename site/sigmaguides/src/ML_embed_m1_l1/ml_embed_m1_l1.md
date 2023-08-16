@@ -1,6 +1,6 @@
 author: 123marianna123
 id: ml_embedmodule1_quickstart
-summary: A lab for Advanced Embedding Module 1, Lesson 1.
+summary: Embedding ONDEMAND Module 2, Lesson 1 Lab
 categories: Embedding
 environments: web
 status: Hidden
@@ -36,14 +36,16 @@ Duration: 5
 This lab will guide you through the process of content segregation to prepare data for embedding.
 
 ### Target Audience
-Sigma partners who will be helping customers with embedding.
+- Fullstack developers
+- Admins
+- Workbook developers
 
 ### Prerequisites
 
 <ul>
-  <li>A sigma account with admin access.</li>
-  <li>Previous experience with Sigma, including creating workbooks and workspaces.</li>
-  <li>A broad understanding of what embedding is and the different types of embedding available with Sigma.</li>
+  <li>Intermediate full-stack software development and Sigma admin experience.</li>
+  <li>Knowledge of how to create a Sigma workbook.</li>
+  <li>Basic knowledge of Sigma teams, workspaces, creating datasets and workbooks.</li>
 </ul>
   
 ### What You’ll Learn
@@ -57,45 +59,31 @@ How to set up workspaces, folders, and teams to prepare data for embedding.
 ## Data for All Clients
 Duration: 20
 
-### Create a team of all clients.
+### Create a team and workspace for all clients.
 1. Go to Sigma and open the administration screen.
 ![Administration screen in Sigma](assets/m1_l1_step1.png)
-2. Click `teams`.
+2. Click `Teams`.
 3. Click `Create Team`.
 4. Update the team name to `All_Clients_Team`
-5. Click `Create`.
+5. Check off `Create a Workspace associated with this Team`.
+6. Click `Create`.
 ![Team creation workflow](assets/m1_l1_step5.png)
-6. Click `Add Members`.
-![Adding members to team](assets/m1_l1_step6.png)
-7. Select all the clients.
-8. Click `Add`.
 
-### Create a new workspace.
-1. Go to the homepage.
-![going to homepage](assets/m1_l1_step1WORKSPACE.png)
-2. Click `Workspaces`.
-3. Click `Create Workspace`.
-4. Change the name to `Curated_Embeds_Workspace`
-5. Click `Save`.
-![creating workspace workflow](assets/m1_l1_step5WORKSPACE.png)
+### Grant appropriate access.
+1. From the Sigma homepage, click `Workspaces`.
+2. Open the Workspace you just created by clicking on it.
+![Workspaces](assets/Workspaces.png)
+3. Click the share icon next to the workspace name.
+4. Change the access for the `All_Clients_Team` to `Can Explore`.
+![Workspaces access](assets/Workspace_access.png)
 
 ### Create folders in your workspace.
-1. Open the `Curated_Embeds_Workspace`.
-![open workspace](assets/m1_l1_step1FOLDERS.png)
+1. Open the `All_Clients_Workspace`.
 2. Click `Create Folder`.
 3. Update the title to `Workbooks`.
-![update folder title](assets/m1_l1_step3FOLDERS.png)
-4. Click the menu.
-5. Click `share`.
-![sharing folder](assets/m1_l1_step5FOLDERS.png)
-6. Select `All_Clients_Team`.
-7. Under permission, select `Can Explore`.
-![Giving can explore access](assets/m1_l1_step7FOLDERS.png)
-8. Repeat steps 1-3, but make the title of this folder `Datasets`.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Make sure you always giving access to the folder, and not to the workspace, because you’ll later put other content in the workspace, that you only want some clients to access.
-</aside>
+4. Click the green checkmark.
+![Workbooks_folder](assets/Workbooks_folder.png)
+5. Repeat steps 1-4, but make the title of this folder `Datasets`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -103,39 +91,30 @@ Duration: 20
 ## Data for Select Teams
 Duration: 20
 
-### Create teams.
-1. Go to the administration screen.
-2. Click `teams`.
-3. Click `Create Team`
-4. Update the team name to `East_team`
-5. Select the team members in the `East` region.
-6. Click `Create`.
-7. Repeat steps 1-6, for  `West_team`, `Southwest_team`, `Midwest_team`, and`South_team`.
+### Create client-specific teams and workspaces.
+1. From the administration screen, click `Teams`.
+2. Click `Create Team`
+3. Update the team name to `Acme_team`
+4. Check off `Create a Workspace associated with this Team`.
+5. Click `Create`.
+6. Repeat steps 1-5 for `Mrsupply_team`.
 
-### Create folders
-1. Go back to the `Curated_Embeds_Workspace`.
-2. Click `New Folder`.
-3. Update the title to `West_Workbooks`.
-4. Click the menu.
-5. Click `share`.
-6. Select `West_team`.
-7. Under permission, select `Can Explore`.
-8. Repeat steps 1-7, for the remaining teams.
+### Add members.
+1. Go to the administration screen and click `People`.
+2. Click  `Invite People`.
+3. Enter a dummy email address by adding `+keyword` to your email. For example, `marianna+acme@sigmacomputing.com`.
+4. Keep the default account type: `Viewer`.
+5. Scroll down and select `Acme_team` and  `All_Clients_Team` under `Assign Team(s)`.
+6. Click `Invite`.
+![Add members to team](assets/add_members.png)
+7. Log in to your email and accept the invitation by clicking `Set up your account`.
+8. Enter your name and create a password.
+9. Then sign out and sign back into your main account.
+10. Repeat this process to add a different user to the Mr.Supply team.
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-## Allow clients to create dashboards
-**Special use case**: Your customers want their clients to be able to create their own dashboards. This is less common, but still possible. 
-
-To properly set up for this use case:
-1. Create a separate workspace and team for each client, using the `ClientName_Team` format. 
-2. Give the team `can contribute` access to the appropriate workspace.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> This use case is rare!
-</aside>
-
 
 ## What we've covered
 Duration: 5
