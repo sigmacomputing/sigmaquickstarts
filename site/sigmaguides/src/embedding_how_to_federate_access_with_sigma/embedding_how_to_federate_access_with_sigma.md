@@ -55,7 +55,7 @@ Anyone who is trying to create QS content for Sigma.
 ### What You’ll Learn
 How to apply Sigma approved Markdown for your QS.
 
-## Use Case 1: Common Content
+## Common Content
 Duration: 20
 
 In this use case, we want to embed a Sigma dashboard inside our parent application, and make it accessible to all customers after they are authenticated.
@@ -88,9 +88,10 @@ Let's change the name of the new Workspace to something more descriptive. We wil
 
 Next, `Move` the Workbook to the `Curated Master Dashboards` Workspace:
 
-<img src="assets/fa14.png" width="800"/>
+<img src="assets/fa14.png" width="500"/>
 <br>
-<img src="assets/fa15.png" width="800"/>
+<br>
+<img src="assets/fa15.png" width="500"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You could have also just saved the new Workbook directly to the "Curated Master Dashboard" Workspace when you first saved it but we wanted to demonstrate the other workflow.
@@ -131,17 +132,18 @@ Click the `Save As` button and name the Workbook `Common Dashboard`.
 
 Share with the `all_clients_team` > `view` and check off the box for sending email:
 
-<img src="assets/fa8.png" width="800"/>
+<img src="assets/fa8.png" width="600"/>
 <br>
-<img src="assets/fa9.png" width="800"/>
+<br>
+<img src="assets/fa9.png" width="600"/>
 
 Open the `Embedding` controls:
 
-<img src="assets/fa10.png" width="800"/>
+<img src="assets/fa10.png" width="600"/>
 
 Select `Dashboard` for just the entire workbook and select `Copy`:
 
-<img src="assets/di5.png" width="800"/>
+<img src="assets/di5.png" width="600"/>
 
 In the node project folder, open `server.js` and replace the value for `EMBED PATH` with this new value.
 
@@ -225,6 +227,8 @@ Click the `Create` button:
 
 <img src="assets/fa18.png" width="800"/>
 
+For more information on [using Account Types, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
+
 We also need to allow `CustomerA` to explore our `Common Dashboard`. 
 
 We could just grant then explore rights to the `Curated Master Dashboards` Workspace but maybe we don't want them to have explore on all the workbooks we store there later. 
@@ -249,28 +253,29 @@ Now if we "`Expand` on the `Sales by Store Region & Product Type` chart, we can 
 
 <img src="assets/fa22.png" width="800"/>
 <br><br>
+
+Item #1 is the `Element Panel` and item #2 is the underlying data.
 <img src="assets/fa23.png" width="800"/>
 
+This example showed how we can provide one customer a different level of access ("Can View") than all the rest of the customers. 
 
+It also touched on creating a customer specific workspace so that only one customer (CustomerA in this example) could source content from.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## URL Encoding
-Duration: 20
-Don’t URL encode everything. If you do this, it makes the URL less readable and more challenging to troubleshoot. The only parameters you need to URL encode are where you have HTML special characters or spaces. This is why we don’t recommend spaces in Team and Account Type names. 
-
-
+Through this flexible architecture, it is possible to create a variety of scenarios to match your customer segmentation needs. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this QuickStart, we learned how to use Sigma Teams and Workspaces to provide common and isolated content for embedded consumers, with different levels of functionality.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+There is information on related content you can also review:
+
+[Embedding QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding)
+[Row Level Security QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
