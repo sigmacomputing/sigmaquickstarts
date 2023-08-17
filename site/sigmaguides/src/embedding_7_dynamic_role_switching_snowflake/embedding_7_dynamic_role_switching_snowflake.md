@@ -248,7 +248,7 @@ When we run the Select statement the return is 30 rows. This is expected because
 ## Snowflake RLS Policy Configuration
 Duration: 10
 
-We are not ready to define our Snowflake Row Access Policy. Same process as before with these new commands:
+We are now ready to define our Snowflake Row Access Policy. Same process as before with these new commands:
 
 ```plaintext
 // ----------------------------------------------------------------------------------------------------------
