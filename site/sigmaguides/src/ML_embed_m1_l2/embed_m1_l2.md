@@ -37,26 +37,28 @@ Now that you’ve learned about best practices for setting up your workspaces, f
 
 In this lab, we’ll use a tool called Swagger to create workspaces, folders, and teams using Sigma’s API directly from the browser.
 
- ### Target Audience
-Sigma partners who will be helping customers with embedding.
+### Target Audience
+- Fullstack developers
+- Admins
+- Workbook developers
 
 ### Prerequisites
 <ul>
-  <li>A sigma account with admin access.</li>
-  <li>Previous experience with Sigma, including creating workbooks and workspaces.</li>
-  <li>A broad understanding of what embedding is and the different types of embedding available with Sigma.</li>
+  <li>Intermediate full-stack software development and Sigma admin experience.</li>
+  <li>Knowledge of how to create a Sigma workbook.</li>
+  <li>Basic knowledge of Sigma teams, workspaces, datasets and workbooks.</li>
 </ul>
 
 ### What You’ll Learn
 
 How to set up workspaces, folders, and teams to prepare data for embedding using Swagger.
 
-## **Authenticate in Swagger**
+## Authenticate in Swagger.
 Duration: 20
 
 1. Click https://docs.sigmacomputing.com/api/v2/ to open Swagger.
 2. Open the `authentication` page from the left panel.
-![Authetnication page in Swagger](assets/m1_l2_step2.png)
+![Authentication page in Swagger](assets/m1_l2_step2.png)
 3. Go to Sigma.
 4. Navigate to the `Administration` page.
 ![Administration page in Sigma](assets/m1_l2_step4.png)
@@ -67,303 +69,81 @@ Duration: 20
 8. Give the secret a name and choose yourself as the owner. Click `create`.
 ![Alt text](assets/m1_l2_step8.png)
 7. Copy and paste the client ID and client secret from Sigma into Swagger.
-8. Click `GET TOKEN `.
+8. Select `Authorization Header` in the dropdown menu.
+9. Click `GET TOKEN `.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br>  Save the client ID and client secret in a safe location, since you won’t be able to find them again. In a production environment, it's safest to store this in an encrypted key vault approved by your security and governance team.
 </aside>
 
-## **Create A Workspace with Folders**
-1. In the left-hand panel, click on `POS /v2/files`. 
-2. Update the JSON to create the workspace you need. Update the type to say `workspace` and update the name to say `Curated_Embeds_Workspace`.
-3. Click `Try`. 
-![Alt text](assets/m1_l2_step3SWAGGER.png)
-4. Scroll down to the response. If you see a workspace ID, name and created and updated by details, you’ve successfully created a workspace! 
-![Alt text](assets/m1_l2_step4SWAGGER.png)
+10. In Swagger, click `API Servers` in the left-hand menu.
+11. Select your cloud provider. (To find out what cloud provider you’re using, go to the Administration page in Sigma and look at what it says after “Cloud” in the Site section.)
+
+## Create a Team and Workspace.
+1. Click on `GET/v2/members`.
+2. Click `Try`.
+3. Record the member IDs in a text document.
+4. Click `POS /v2/teams`.
+5. Update the JSON to create the `All_Clients_Team`:
+	- Change `string` after `name` to say `All_Clients_Team`.
+	- Delete `description": "string`
+	- In members, copy and paste the IDs from your text doc in the `members` array.
+	- To create a workspace for this team, update `Create Team Folder` from `False` to `True`.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> You might also see a message that says `Token missing or malformed` or a code that says `unauthorized`. That means you haven’t properly authenticated through Sigma. To correct this, go back to authentication and enter your client ID and client secret.
+<strong>NOTE:</strong><br> This may be confusing because the key is called “Create Team Folder,” but what it really does is create a workspace. 
 </aside>
 
+6. Click `Try`.
+7. Save your workspace IDs from the response in your text doc.
 
-5. Update the JSON again to say `folder` instead of `workspace` and `Datasets` instead of `Curated_Embeds_Workspace.`
-6. Click `Try.`
-7. Repeat steps 5 and 6 three more times to create the following folders: `Workbooks`, `Sales_Workbooks`, `HR_Workbooks`.
-
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Alternatively, you can create the workspace by running the curl command here in your terminal. It’ll work the same way. You can also add a python script to loop through the command and create all the workspaces and folders you need at once.
-
-We’ve included a script for you below, so you don’t have to write it yourself.
-</aside>
-
-```#!/user/bin/env python3
-
-import argparse
-import csv
-
-import requests
-
-def get_base_url(cloud: str):
-	""" Creates the base url 
-		:cloud:       the cloud provider for the organization
-		:returns:     base url that will be used for authentication
-	"""
-
-	print(cloud)
-	base_url = ''
-	if cloud == 'gcp':
-		base_url = 'https://api.sigmacomputing.com'
-	elif cloud == 'aws':
-		base_url = 'https://aws-api.sigmacomputing.com'
-	elif cloud == 'azure':
-		base_url = 'https://api.us.azure.sigmacomputing.com'
-	return base_url
-	
-
-def get_access_token(base_url, client_id, client_secret):
-	""" Gets the access token from Sigma
-		:client id:      Client id generated from Sigma
-		:client_secret:  Client secret generated from Sigma
-		:returns:        Access token
-	"""
-	payload = {
-        "grant_type": "client_credentials",
-        "client_id": client_id,
-        "client_secret": client_secret
-    }
-	response = requests.post(f"{base_url}/v2/auth/token", data=payload)
-	data = response.json()
-	return data["access_token"]
-
-
-def get_headers(access_token):
-    """ Gets headers for API requests
-        :access_token:  Generated access token
-        :returns:       Headers for API requests
-    """
-    return {"Authorization": "Bearer " + access_token}
-
-
-def create_workspace(base_url, headers, name):
-	''' Creates a new workspace 
-		:base_url:     Base URL based on the cloud provider
-		:headers:      Header containing access token
-		:name:         Name of the workspace
-		:returns:      workspaceId of the created workspace
-	'''
-
-	payload = {
-		"name": name
-	}
-
-	try:
-		response = requests.post(f"{base_url}/v2/workspaces", headers = headers, json=payload)
-		response.raise_for_status()
-	except requests.exceptions.RequestException as e:
-		print(f"Error: {e}")
-	else:
-		workspace_data = response.json()
-		workspace_id = workspace_data['workspaceId']
-		print(f"Workspace {name} created with id {workspace_id}")
-		return workspace_id
-	
-
-def create_team(base_url, headers, name):
-	''' Creates a new team
-		:base_url:     Base URL based on the cloud provider
-		:headers:      Header containing access token
-		:name:         Name of the team
-		:returns:      teamId of the created team
-	'''
-
-	payload = {
-		"name": name
-	}
-
-	try:
-		response = requests.post(f"{base_url}/v2/teams", headers = headers, json = payload)
-		response.raise_for_status()
-	except requests.exceptions.RequestException as e:
-		print(f"Error: {e}")
-	else:
-		team_data = response.json()
-		team_id = team_data['teamId']
-		print(f"Team {name} created with id {team_id}")
-		return team_id
-	
-def create_folder(base_url, headers, name, parent_id):
-	''' Creates a new folder
-		:base_url:     Base URL based on the cloud provider
-		:headers:      Header containing access token
-		:name:         Name of the folder
-		:parent_id:    ID of the parent workspace this will be added to
-		:returns:      folderId of the created folder
-	'''
-
-	payload = {
-		"type": "folder",
-		"name": name,
-		"parentId": parent_id
-	}
-
-	try:
-		response = requests.post(f"{base_url}/v2/files", headers = headers, json = payload)
-		response.raise_for_status()
-	except requests.exceptions.RequestException as e:
-		print(f"Error: {e}")
-	else:
-		folder_data = response.json()
-		folder_id = folder_data['id']
-		print(f"Folder {name} created with id {folder_id}")
-		return folder_id
-
-
-def create_grant(base_url, headers, team_id, node_id, permission):
-	''' Grants a team access to a file
-		:base_url:     Base URL based on the cloud provider
-		:headers:      Header containing access token
-		:team_id:      Id of the team that we are adding the permissions
-		:node_id:      Id of the file that we are granting permission to 
-	'''
-
-	payload = {
-		"grantee" : {
-			"teamId" : team_id
-		},
-		"permission": permission,
-		"inodeId": node_id 
-	}
-
-	try: 
-		response = requests.post(f"{base_url}/v2/grants", headers = headers, json = payload)
-		response.raise_for_status()
-	except requests.exceptions.RequestException as e:
-		print(f"Error: {e}")
-	else:
-		print(f"Team with ID {team_id} granted {permission} access to folder with ID {node_id}")
-
-
-def main():
-	parser = argparse.ArgumentParser(
-		'Create Workspace')
-	parser.add_argument(
-		'--env', type = str, required = True, help = 'env to use: [production | staging].')
-	parser.add_argument(
-        	'--cloud', type=str, required=True, help='Cloud to use: [aws | gcp]')
-	parser.add_argument(
-       		'--client_id', type=str, required=True, help='Client ID generated from within Sigma')
-	parser.add_argument(
-        	'--client_secret', type=str, required=True, help='Client secret API token generated from within Sigma')
-	parser.add_argument(
-        '--csv', type=str, required=True, help='CSV file containing Workspaces, Folders, Teams and Permissions.  Column names are case sensitive')
-
-	args = parser.parse_args()
-
-	#Getting URL and Headers
-	base_url = get_base_url(cloud = args.cloud)
-	access_token = get_access_token(base_url, args.client_id, args.client_secret)
-	headers = get_headers(access_token)
-
-	#Getting list of workpaces to see if workspace is created
-	workspaces = requests.get(f"{base_url}/v2/workspaces", headers = headers)
-	workspaces_data = workspaces.json()
-	#Store in the following dictionary
-	workspaces_dict = {}
-	for w in workspaces_data:
-		workspaces_dict[w['name']] = w["workspaceId"]
-
-	#Getting list of teams in order to check if teams exist
-	teams = requests.get(f"{base_url}/v2/teams", headers = headers)
-	teams_data = teams.json()
-	#Store existing teams in the following dictionary
-	teams_dict = {}
-	for t in teams_data:
-		teams_dict[t['name'].lower()] = t['teamId']
-	
-	
-	updated_grants = []
-	with open(args.csv) as csvfile:
-		reader = csv.DictReader(csvfile)
-		for row in reader:
-			updated_grants.append(row)
-
-	
-	for m in updated_grants:
-		try: 
-			if len(m['Workspace']) > 1:
-				workspace_name = m['Workspace']
-			else: 
-				workspace_name = None
-		except KeyError:
-			print(f"\u2717 CSV FILE ERROR!")
-			print("A column named \"Workspace\" is required in the csv.")
-			raise SystemExit("Script Aborted")
-
-		try: 
-			if len(m['Folder']) > 1:
-				folder_name = m['Folder']
-			else: 
-				folder_name = None
-		except KeyError:
-			print(f"\u2717 CSV FILE ERROR!")
-			print("A column named \"Folder\" is required in the csv.")
-			raise SystemExit("Script Aborted")
-
-		try: 
-			if len(m['Team']) > 1:
-				team_name = m['Team']
-			else: 
-				team_name = None
-		except KeyError:
-			print(f"\u2717 CSV FILE ERROR!")
-			print("A column named \"Team\" is required in the csv.")
-			raise SystemExit("Script Aborted")
-
-		try: 
-			if len(m['Permission']) > 1:
-				permission = m['Permission']
-			else: 
-				permission = None
-		except KeyError:
-			print(f"\u2717 CSV FILE ERROR!")
-			print("A column named \"Permission\" is required in the csv.")
-			raise SystemExit("Script Aborted")
-		
-		if workspace_name in workspaces_dict:
-			workspace_id = workspaces_dict[workspace_name]
-		else:
-			workspace_id = create_workspace(base_url, headers, workspace_name)
-			workspaces_dict[workspace_name] = workspace_id
-		
-		folder_id = create_folder(base_url, headers, folder_name, workspace_id)
-
-		if team_name.lower() in teams_dict:
-			new_team = teams_dict[team_name.lower()]
-		else:
-			new_team = create_team(base_url, headers, team_name)
-	
-		create_grant(base_url, headers, new_team, folder_id, permission)
-
-
-if __name__ == '__main__':
-	main()
+## Add Folders to your Workspace.
+1. Go  to `POS /v2/files`. 
+2. Update the JSON by changing the `type` to `folder` and the name to `Datasets`. 
+3. Add a key called `parentId` and for the value enter the ID of the `All_Clients_Workspace` created in the previous section. Your final JSON will look something 
+like this:
 
 ```
+{
+  "type": "folder",
+  "name": "datasets",
+  "parentId": "f74b8893-4286-4bcf-a842-bd2b254352f4"
+}
+```
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure you’re following proper JSON formatting, such that every key and value have quotes around them and each key-value pair is separated by a comma.
+</aside>
 
-## Create and Assign Teams
-1. Click on POS /v2/teams and updating the JSON as to create the following teams:`All_Clients_Team`, `East_team` `Southwest_team`, `Midwest_team`, `South_team`, and `West_team`,
+4. Click Try. 
+5. Save the folder IDs from the response in your text doc.
+6. Repeat this for the workbooks folder. 
+7. Go back to your All_Clients_Workspace in Sigma to confirm that these folders have been added.
 
+## Change team permisions.
+1. Go to `POS/v2/grants`.
+2. Update `memberId` to say `teamId`, since we’ll be granting access at the team level. 
+3. Update the value of `teamId` to the team ID of the `All_Clients_Team` that you saved in your text doc. 
+4. Change `permission` to `explore`. 
+5. Update the `inodeId` to the ID of the `All_Clients_Team` Workspace. 
+6. Delete the `tagId` line and the comma before it. 
+7. Click Try.
 
-<img src="assets/M1_L2_finalsection.png" width="300"/>
+## Add another member to the Team.
 
-2. Assign these teams by [insert steps here]. We’ll give the `All_Clients_Team` `can explore` access to the `workbooks` folder, the `East_Team` `can explore` access to the `East_workbooks` folder, etc.
+1. Go to POS/v2/Members. 
+2. Update the user email, first name, and last name.
+3. Change the member type to creator. (Your options are creator or viewer).
+4. Change the user kind to `embed`. (Your options are guest, internal, or embed).
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Embed users of Sigma will interact with Sigma only through a user-backed embed in another application. These users will not log in directly to Sigma.
+</aside>
 
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
+<!-- END OF SECTION-->
 ## What we've covered
 Duration: 5
 
