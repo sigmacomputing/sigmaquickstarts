@@ -213,7 +213,7 @@ The return should be:
 ![Alt text](assets/applicationsetup8.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Node-supervisor will watch for changes but in the event you want to force the Express server to stop either manually exit Terminal or hit CTRL+C to stay in Terminal but terminate the Express process so you can restart it as before.
+<strong>NOTE:</strong><br> Node-supervisor will watch for changes but in the event you want to force the Express server to stop, either manually exit Terminal, or hit CTRL+C to stay in Terminal but terminate the Express process so you can restart it as before.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
