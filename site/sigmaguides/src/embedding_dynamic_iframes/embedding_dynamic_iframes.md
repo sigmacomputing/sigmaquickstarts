@@ -291,18 +291,20 @@ This is especially useful when the content inside the iframe can change dynamica
 
 This method is `workbook:pageheight:onchange`, and is an "event" in Sigma.
 
+You can read about [Javascript actions in user-backed embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-)
+
 We can use this event to adjust the iframe's height in real-time, ensuring that the iframe always matches the height of its content.
 
 Here's are the step required to integrate the `workbook:pageheight:onchange` event, along with sample code:
 
-    <strong>1: Listen for the Event:</strong>
-    You'll need to add an event listener to the window object that listens for the message event. This is because cross-document communication (like between a parent page and an iframe) uses the postMessage method and message event.
+**1: Listen for the Event:**<br>
+You'll need to add an event listener to the window object that listens for the message event. This is because cross-document communication (like between a parent page and an iframe) uses the postMessage method and message event.
 
-    <strong>2: Adjust the iframe Height:</strong>
+**2: Adjust the iframe Height:**<br>
     When the event is received, you'll check if its type matches 'workbook:pageheight:onchange' and then adjust the iframe height based on the pageHeight value provided.
 
-    <strong>3: Modified code:</strong>
-    Here's the modified script to include the handling of the workbook:pageheight:onchange event:
+**3: Modified code:**<br>
+Here's the modified script to include the handling of the workbook:pageheight:onchange event:
 
 ```code
 <!DOCTYPE html>
@@ -311,19 +313,19 @@ Here's are the step required to integrate the `workbook:pageheight:onchange` eve
 <head>
     <title>Sigma Embedding - Application</title>
     <style>
-        /* Ensure html and body tags occupy full height */
+        /* Ensure the entire height of the viewport is covered by the page. */
         html, body {
             height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* To prevent scrolling on the parent */
+            margin: 0;    /* Reset default margins to prevent any unexpected spacing. */
+            padding: 0;   /* Reset default padding. */
+            overflow: hidden; /* Prevent scrolling on the parent page. */
         }
 
-        /* Set a default height for the iframe and allow it to scroll if content exceeds */
+        /* Set default dimensions for the iframe. */
         #sigmaDashboard {
-            height: 85vh; /* Default height that should fit most content */
-            width: 100%;
-            overflow: auto; /* Allow scrolling within the iframe if content exceeds its height */
+            height: 85vh; /* Set the iframe height to be 85% of the viewport's height. */
+            width: 100%;  /* Ensure the iframe takes the full width of its container. */
+            overflow: auto; /* Allow content inside the iframe to scroll if it exceeds the iframe's height. */
         }
     </style>
 </head>
@@ -331,26 +333,34 @@ Here's are the step required to integrate the `workbook:pageheight:onchange` eve
 <body>
     <h2>Sigma Embedding - Application</h2>
     <h3>iframe URL below comes from API call to server.js</h3>
-    <iframe id="sigmaDashboard"></iframe>
+    <iframe id="sigmaDashboard"></iframe> <!-- The iframe that will embed content. -->
 
     <script>
+        /* Define the API URL from which the iframe's source will be fetched. */
         const URL = "http://localhost:3000/api/foo";
+
+        /* Fetch the URL using the Fetch API. */
         fetch(URL)
-        .then(data => { return data.json() })
+        .then(data => {
+            return data.json(); /* Parse the fetched data as JSON. */
+        })
         .then(res => {
             const iframe = document.getElementById("sigmaDashboard");
-            iframe.src = res.url;
+            iframe.src = res.url; /* Set the iframe's source URL to the value fetched from the API. */
 
-            // Add the event listener once the iframe source is set
+            /* Listen for messages (events) from the iframe content. */
             window.addEventListener('message', function(event) {
-                // Check if the event type matches 'workbook:pageheight:onchange'
+                /* Check if the received event is of type 'workbook:pageheight:onchange'. */
                 if (event.data && event.data.type === 'workbook:pageheight:onchange') {
-                    // Adjust the iframe's height based on the provided pageHeight
+                    /* Adjust the iframe's height based on the height of its content. */
                     iframe.style.height = event.data.pageHeight + 'px';
                 }
             });
         })
-        .catch(e => console.log(e));
+        .catch(e => {
+            /* Log any errors that occur during the fetch operation. */
+            console.log(e);
+        });
     </script>
 </body>
 
