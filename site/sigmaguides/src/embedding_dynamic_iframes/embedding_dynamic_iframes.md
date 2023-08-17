@@ -3,12 +3,12 @@ id: embedding_dynamic_iframes
 summary: embedding_dynamic_iframes
 categories: Embedding
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-08-14
+tags: Default
+lastUpdated: 2023-08-18
 
-# How to: Responsive iFrames with Sigma
+# How to: Responsive iframes with Sigma
 
 ## Overview 
 Duration: 5 
@@ -112,7 +112,7 @@ This is what we want to try and avoid by making our iframe dynamic.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Responsive Iframes
+## A Quick Solution
 Duration: 20
 
 Since we are embedding content that is created in Sigma, it is not always possible to ensure that the Sigma content will "fit" inside a static iframes dimensions.
@@ -278,6 +278,99 @@ To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is
 In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't replace the adaptive/responsive approach we discussed. It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
 
 Choosing the best approach is up to the developer, but we hope this QuickStart provided useful information when embedding Sigma. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Responsive iframes
+Duration: 5
+
+Sigma provides a Javascript method that enables developers to dynamically adjust the iframe height based on the content's actual height. 
+
+This is especially useful when the content inside the iframe can change dynamically, leading to different height requirements.
+
+This method is `workbook:pageheight:onchange`, and is an "event" in Sigma.
+
+We can use this event to adjust the iframe's height in real-time, ensuring that the iframe always matches the height of its content.
+
+Here's are the step required to integrate the `workbook:pageheight:onchange` event, along with sample code:
+
+    <strong>1: Listen for the Event:</strong>
+    You'll need to add an event listener to the window object that listens for the message event. This is because cross-document communication (like between a parent page and an iframe) uses the postMessage method and message event.
+
+    <strong>2: Adjust the iframe Height:</strong>
+    When the event is received, you'll check if its type matches 'workbook:pageheight:onchange' and then adjust the iframe height based on the pageHeight value provided.
+
+    <strong>3: Modified code:</strong>
+    Here's the modified script to include the handling of the workbook:pageheight:onchange event:
+
+```code
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sigma Embedding - Application</title>
+    <style>
+        /* Ensure html and body tags occupy full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* To prevent scrolling on the parent */
+        }
+
+        /* Set a default height for the iframe and allow it to scroll if content exceeds */
+        #sigmaDashboard {
+            height: 85vh; /* Default height that should fit most content */
+            width: 100%;
+            overflow: auto; /* Allow scrolling within the iframe if content exceeds its height */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sigma Embedding - Application</h2>
+    <h3>iframe URL below comes from API call to server.js</h3>
+    <iframe id="sigmaDashboard"></iframe>
+
+    <script>
+        const URL = "http://localhost:3000/api/foo";
+        fetch(URL)
+        .then(data => { return data.json() })
+        .then(res => {
+            const iframe = document.getElementById("sigmaDashboard");
+            iframe.src = res.url;
+
+            // Add the event listener once the iframe source is set
+            window.addEventListener('message', function(event) {
+                // Check if the event type matches 'workbook:pageheight:onchange'
+                if (event.data && event.data.type === 'workbook:pageheight:onchange') {
+                    // Adjust the iframe's height based on the provided pageHeight
+                    iframe.style.height = event.data.pageHeight + 'px';
+                }
+            });
+        })
+        .catch(e => console.log(e));
+    </script>
+</body>
+
+</html>
+
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> For the postMessage and event listener to work, the iframe's source domain must allow cross-document messaging with the parent page's domain. If Sigma's iframe content sends this event using postMessage, it should work. However, if there are any security restrictions, you might encounter issues. Always ensure that you're only accepting messages from trusted sources to prevent potential vulnerabilities.
+</aside>
+
+In the sample code:
+    <ul>
+        <li>The iframe is dynamic because it adjusts its height in real-time based on the content height, thanks to the Sigma event.</li>
+        <li>The iframe is also responsive in terms of width because it adjusts to the full width of its container, ensuring it looks good on all screen sizes.</li> 
+    </ul>
+
+After updating our HTML page to use this code, we see the following results (using Safari's developer tools to simulate different device screen sizes):
+
+<img src="assets/responsive.gif">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
