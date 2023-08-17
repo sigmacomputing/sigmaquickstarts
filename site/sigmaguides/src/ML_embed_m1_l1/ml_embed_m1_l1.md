@@ -12,6 +12,7 @@ tags:
 
 ## Overview
 Duration: 5
+
 This lab will guide you through the process of content segregation to prepare data for embedding.
 
 ### Target Audience
