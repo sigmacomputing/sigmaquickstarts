@@ -13,9 +13,11 @@ Weeks Added so far:
 Release notes for the month of August 2023 features, published on first Friday of Sept
 8.4.2023 
 8.11.2023
+8.18.2023
+
 Make sure to include:
 1: Custom Functions
-
+2: QuickStarts new last month
 --->
 
 # (08-2023) August Highlights
@@ -41,7 +43,7 @@ New QuickStarts will be published on the first Friday of each month, and will in
 ## Administration
 Duration: 20
 
-### Audit Logging
+### Audit Logging (BETA)
 
 **New connection schema and dimension tables**
 The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
@@ -53,7 +55,6 @@ The dimension tables can be joined with the AUDIT_LOGS table to add context to a
 For example, join AUDIT_LOGS with the DOCUMENTS table to add document attributes (e.g., creation date, document path, and archive status) to event entries related to user interactions with workbooks, datasets, etc.
 
 <img src="assets/fff_08_02.png" width="700"/>
-
 
 **List of New Dimension tables:**
   <ul>
@@ -126,11 +127,26 @@ Column-Level Security provides granular control over data access allowing you th
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Custom Functions
+## Functions
 Duration: 20
+
+### Custom Functions
 Use custom functions in your Sigma practice to encode business logic instead of repeating it, encapsulate complex calculations that are common business use cases for easier use, and to expose your proprietary warehouse functions and make them more consumable. See Custom functions.
 
 NEEDS WORK
+
+### Functions
+To complement the Pmt (payment) function that calculates the size of a loan repayment with a constant interest rate and equal installments, Sigma added two more financial functions:
+
+  <ul>
+    <li><strong>IPmt (interest payment):</strong> calculates the part of a loan payment that is allocated to the compounding interest on the loan.</li>
+    <li><strong>PPmt (principal payment):</strong> calculates the part of a loan payment that is allocated to reducing the principal owed.</li>
+  </ul>
+
+Documentation Links:
+[IPmt (interest payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557454545427-IPmt)
+[PPmt (principal payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557505447187-PPmt)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -148,18 +164,6 @@ NEEDS WORK and HELP LINK
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## MySQL (GA)
-Duration: 20
-MySQL connector is now generally available (GA) to all Sigma customers. 
-
-Sigma supports connections to the MySQL database, for release 8.0 or higher.
-
-[For more information, see Connect to MySQL.](https://help.sigmacomputing.com/hc/en-us/articles/16500957079059-Connect-to-MySQL)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
 ## Input tables (Now with AI!)
 Duration: 20
 
@@ -173,6 +177,42 @@ NEEDS WORK and is this GA? or BETA?
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## MySQL (GA)
+Duration: 20
+MySQL connector is now generally available (GA) to all Sigma customers. 
+
+Sigma supports connections to the MySQL database, for release 8.0 or higher.
+
+[For more information, see Connect to MySQL.](https://help.sigmacomputing.com/hc/en-us/articles/16500957079059-Connect-to-MySQL)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## New QuickStarts Last Month
+Duration: 20
+
+In case you missed them, here are the QuickStarts that we published last in August.
+
+[How to: Federate Access with Sigma Embedding ](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+
+[How to: Responsive iframes with Sigma ](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+## Visualizations
+Duration: 20
+
+### Sankey diagrams (GA release) 
+Sankey visualization elements are now available for general use (GA).
+
+Sankey diagrams are typically used to assess the flow and change of data between stages in a process or system. Create simple Sankey diagrams to demonstrate data distribution, workflows, networks, etc., or build advanced multi-level diagrams to analyze complex data relationships and identify changes in variables across stages, categories, or periods.
+
+<img src="assets/fff_08_03.png" width="800"/>
+
+[For more information about Sankey visualization elements, see Build a Sankey diagram.](https://sigma.bi/buiid-a-sankey-diagram)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 ## Workbooks
 Duration: 20
 
@@ -206,14 +246,13 @@ Bug releases are broken down by week for specificity.
 
 ### Week ending 8.18.2023
 <ul>
-      <li></li>
+      <li>Circular markers in scatter plot size legends are no longer distorted.</li>
  </ul>
 
 ### Week ending 8.25.2023
 <ul>
       <li></li>
  </ul>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
