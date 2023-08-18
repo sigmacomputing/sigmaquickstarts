@@ -3,17 +3,17 @@ id: embedding_dynamic_iframes
 summary: embedding_dynamic_iframes
 categories: Embedding
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-08-14
+tags: Default
+lastUpdated: 2023-08-18
 
-# How to: Responsive iFrames with Sigma
+# How to: Responsive iframes with Sigma
 
 ## Overview 
 Duration: 5 
 
-One of the many challenges developers face when building applications if usability, and a common problem is making it obvious that a user needs to scroll to see more data.
+One of the many challenges developers face when building applications is usability, and a common problem is making it obvious that a user needs to scroll to see more data.
 
 This problem can be compounded when embedding content from any external application; even Sigma. 
 
@@ -65,7 +65,7 @@ Developers who are interested in how to leverage dynamic iframes to embed Sigma 
 ## Sigma Content
 Duration: 20
 
-Log in to Sigma and navigate to the `Templates` page.
+Login to Sigma and navigate to the `Templates` page.
 
 Click to select the `Plugs Electronics Sales Performance` template:
 
@@ -97,6 +97,8 @@ In the node project folder, open `server.js` and replace the value for `EMBED PA
 
 <img src="assets/di7.png" width="800"/>
 
+Ensure that server.js has the correct API and Embed Secrets.
+
 Once server.js is setup, make sure that node's express server is running:
 
 <img src="assets/di6.png" width="800"/>
@@ -112,14 +114,14 @@ This is what we want to try and avoid by making our iframe dynamic.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Responsive Iframes
+## A Quick (partial) Solution
 Duration: 20
 
-Since we are embedding content that is created in Sigma, it is not always possible to ensure that the Sigma content will "fit" inside a static iframes dimensions.
+Since we are embedding content that is created in Sigma, it is not always possible to ensure that the Sigma content will "fit" inside a static iframes dimensions, since the content may vary depending on use-case.
 
 Without control over the iframe's content, it's challenging to have a fully dynamic solution that adjusts to the exact height of the content every time.
 
-**Given the constraints, the most practical approach is to:**
+Given the initial constraint, one approach might be to:
 
 1: Set a default height for the iframe that should ideally fit most of the content you expect to embed.
 
@@ -131,13 +133,13 @@ Without control over the iframe's content, it's challenging to have a fully dyna
 
 2: The iframe will only show a scrollbar when absolutely necessary (i.e., when its content exceeds its set height).
 
-This approach provides a good balance between user experience and practicality, given the constraints.
+This approach provides somewhat of a balance between user experience and practicality, given the constraints, but does not fully address the issue of scroll bars.
 
 In this scenario, even when the browser is full screen, the embedded content we have elected to provide from Sigma will be too long, and thus the iframe requires a scroll bar. 
 
 The parent page, however, should still avoid having a scroll bar.
 
-For this use case, we will simply allow the iframe to scroll but ensure the parent page does not. 
+For this example, we will simply allow the iframe to scroll, but ensure the parent page does not. 
 
 Replace the code in your embed project folder for `index.html` with this code:
 ```sql
@@ -199,8 +201,6 @@ Replace the code in your embed project folder for `index.html` with this code:
 Once you have made the changes and saved `index.html`, refresh the browser page. 
 
 Now we only have one scroll bar (in the embed) and the parent application does not present a scroll bar regardless of how we resize the browser. 
-
-This is generally the behavior end-users expect.
 
 <img src="assets/scrollbars2.gif">
 
@@ -275,9 +275,113 @@ To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is
       <li><strong>Complementary to Other CSS:</strong> calc() is not an alternative to the other CSS properties or values we have used; it's complementary. We can use it in conjunction with other properties to achieve the desired layout.</li>
 </ul>
  
-In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't replace the adaptive/responsive approach we discussed. It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
+In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't immediately solve the scrollbar issues. It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
 
-Choosing the best approach is up to the developer, but we hope this QuickStart provided useful information when embedding Sigma. 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Responsive iframes
+Duration: 5
+
+Sigma provides a Javascript method that enables developers to dynamically adjust the iframe height, based on the content's actual height.
+
+This is especially useful when the content inside the iframe can change dynamically, leading to different height requirements.
+
+**This can be used to fully address the scroll bar issues.**
+
+The method is `workbook:pageheight:onchange`, and is an "event" in Sigma.
+
+You can read about [Javascript actions in user-backed embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-)
+
+We can use this event to adjust the iframe's height in real-time, ensuring that the iframe always matches the height of its content.
+
+Here's are the steps required to integrate the `workbook:pageheight:onchange` event, along with sample code:
+
+**1: Listen for the Event:**<br>
+You'll need to add an event listener to the window object that listens for the message event. This is because cross-document communication (like between a parent page and an iframe) uses the postMessage method and message event.
+
+**2: Adjust the iframe Height:**<br>
+    When the event is received, we check if its type matches 'workbook:pageheight:onchange' and then adjust the iframe height based on the pageHeight value provided.
+
+**3: Modified code:**<br>
+Here's the modified script to include the handling of the workbook:pageheight:onchange event:
+
+```code
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sigma Embedding - Application</title>
+    <style>
+        /* Ensure the entire height of the viewport is covered by the page. */
+        html, body {
+            height: 100%;
+            margin: 0;    /* Reset default margins to prevent any unexpected spacing. */
+            padding: 0;   /* Reset default padding. */
+            overflow: hidden; /* Prevent scrolling on the parent page. */
+        }
+
+        /* Set default dimensions for the iframe. */
+        #sigmaDashboard {
+            height: 85vh; /* Set the iframe height to be 85% of the viewport's height. */
+            width: 100%;  /* Ensure the iframe takes the full width of its container. */
+            overflow: auto; /* Allow content inside the iframe to scroll if it exceeds the iframe's height. */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sigma Embedding - Application</h2>
+    <h3>iframe URL below comes from API call to server.js</h3>
+    <iframe id="sigmaDashboard"></iframe> <!-- The iframe that will embed content. -->
+
+    <script>
+        /* Define the API URL from which the iframe's source will be fetched. */
+        const URL = "http://localhost:3000/api/foo";
+
+        /* Fetch the URL using the Fetch API. */
+        fetch(URL)
+        .then(data => {
+            return data.json(); /* Parse the fetched data as JSON. */
+        })
+        .then(res => {
+            const iframe = document.getElementById("sigmaDashboard");
+            iframe.src = res.url; /* Set the iframe's source URL to the value fetched from the API. */
+
+            /* Listen for messages (events) from the iframe content. */
+            window.addEventListener('message', function(event) {
+                /* Check if the received event is of type 'workbook:pageheight:onchange'. */
+                if (event.data && event.data.type === 'workbook:pageheight:onchange') {
+                    /* Adjust the iframe's height based on the height of its content. */
+                    iframe.style.height = event.data.pageHeight + 'px';
+                }
+            });
+        })
+        .catch(e => {
+            /* Log any errors that occur during the fetch operation. */
+            console.log(e);
+        });
+    </script>
+</body>
+
+</html>
+
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> For the postMessage and event listener to work, the iframe's source domain must allow cross-document messaging with the parent page's domain. If Sigma's iframe content sends this event using postMessage, it should work. However, if there are any security restrictions, you might encounter issues. Always ensure that you're only accepting messages from trusted sources to prevent potential vulnerabilities.
+</aside>
+
+In the sample code:
+    <ul>
+        <li>The iframe is dynamic because it adjusts its height in real-time based on the content height, thanks to the Sigma event.</li>
+        <li>The iframe is also responsive in terms of width because it adjusts to the full width of its container, ensuring it looks good on all screen sizes.</li> 
+    </ul>
+
+After updating our HTML page to use this code, we see the following results (using Safari's developer tools to simulate different device screen sizes):
+
+<img src="assets/responsive.gif">
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -285,7 +389,9 @@ Choosing the best approach is up to the developer, but we hope this QuickStart p
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to implement a responsive iframe Sigma embed into an html page, using CSS. 
+In this lab we learned how to implement a responsive iframe Sigma embed into an html page, using CSS and Javascript methods.
+
+Choosing the best approach is up to the developer, but we hope this QuickStart provided useful information when embedding Sigma. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
