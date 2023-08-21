@@ -33,82 +33,99 @@ http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
 Duration: 5 
 <!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
-Now that you have a plan for row-level security for your customer based on their design pattern, it’s time to implement it. It’s best to do this before building dashboards, to avoid additional work later.
+Now that you have a plan for row-level security based on your design pattern, it’s time to implement it.
 
-In this lab, you’ll set up your data for RLS for the multi-tenant table design pattern. We’ll go over RLS for OPT and APT in the next lab.
+In this lab, you’ll set up your data for RLS for the multi-tenant table design pattern. We’ll go over RLS for OPT in the next lab.
 
  ### Target Audience
-Sigma partners who will be helping customers with embedding.
+- Fullstack developers
+- Admins
+- Workbook developers
 
 ### Prerequisites
 <ul>
-  <li>A sigma account with admin access.</li>
-  <li>Completion of Module 2, Lesson 1 of partner training.</li>
-  <li>A broad understanding of what embedding is and the different types of embedding available with Sigma.</li>
+  <li>Intermediate full-stack software development and Sigma admin experience.</li>
+  <li>Knowledge of how to create a Sigma workbook.</li>
+  <li>Basic knowledge of Sigma teams, workspaces, datasets and workbooks.</li>
 </ul>
 
 ### What You’ll Learn
 How to implement RLS for MTT design patterns.
 
-## **Step 1: Create a user attribute.**
+## **Create a workbook.**
+Duration: 20
+1. From the homepage, click `Templates`.
+2. Under `External` click `Plugs Electronics Sales Performance`.
+![create workbook from template](assets/w1.png)
+3. Click `Save as`.
+4. Give the workbook a name. 
+5. Navigate to the `Workbooks` folder in the `All_Clients_Team` Workspace.
+6. Click `Save`.
+![save workbook in folder](assets/w2.png)
+7. Click the lineage icon.
+![lineage icon](assets/w3.png)
+<aside class="negative">
+<strong>NOTE:</strong><br> If this icon is not visible, make sure you enter "Editing" mode in the top right hand corner.
+</aside>
+8. Select the table `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA`. This will be the first box in the lineage.
+9. Click `Open`.
+
+![select table from lineage](assets/w4.png)
+10. Click the arrow next to `Explore`.
+11. Click `Create Dataset`.
+![create dataset](assets/w5.png)
+
+12. Name it `Base Data`.
+13. Save it to the `Datasets` folder in the `All_Clients_Team` Workspace.
+14. Click `Publish`.'
+![publish dataset](assets/w6.png)
+14. Return to your workbook in the `Workbooks` folder in the `All_Clients_Team` Workspace.
+15. CLick the arrow next to the workbook title.
+17. Click `Swap data sources...`
+18. Click `No match` next to `Base Data` and select `Match manually...`
+19. Click `Select Source`.
+20. Locate your dataset and click `Select`.
+
+## **RLS Step 1: Create a user attribute.**
 Duration: 20
 1. Navigate to the administration panel.
 2. Click `user attributes` on the left hand side. 
 ![user attribute from menu](assets/m2_l2_step2.png)
 3. Click `create attribute` and give it a name and description. For this example, name it `region` and in the description write `attribute used for RLS`.
 4. Click `create`.
+![create user attribute](assets/m2_l2_step4.png)
+
 5. Click `Assign value`.
-6. Assign the `West Team` the attribute `West`, the `Midwest Team` the attribute `Midwest`, the `South Team` the attribute `South`, the `East Team` the attribute `East`, and `Southwest Team` the attribute `Southwest`.
+6. Assign the `MrSupply_Team` the attribute `West` and the `Acme_Team` the attribute `East`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Make sure you always enforce RLS at the Dataset level, not the Workbook level, since a user can remove the filter at the Workbook level.
 </aside>
 
 
-![Footer](assets/m2_l2_step4.png)
-
 ![create new user attribute](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Step 2: Create a dataset with an RLS filter column.**
+## **RLS Step 2: Create an RLS filter column.**
 Duration: 20
-1. Navigate to the `Datasets` folder in the `Curated_Embeds_Workspace`.
+1. Navigate to the `Datasets` folder in the `All_Clients_Team` Workspace.
 ![navigate to datasets folder](assets/ML_L2_step1DATASET.png)
-2. Click `Create New`.
-3. Click `Dataset`.
-
-<img src="assets/ML_L2_step3DATASET.png" width="300"/>
-
-4. Click `Select` under `Table`.
-
-<img src="assets/ML_L2_step4DATASET.png" width="500"/>
-
-5. Under connection, choose `Sigma Sample Database`.
-
-<img src="assets/ML_L2_step5DATASET.png" width="600"/>
-
-6. Search for and select the `Plugs Electronics retail` data.
-7. Click `Get Started`.
-
-<img src="assets/ML_L2_step7DATASET.png" width="700"/>
-
-8. Go to the `Worksheet` tab.
-9. Click `Edit` in the top right corner.
-
-<img src="assets/ML_L2_step9DATASET.png" width="700"/>
-
-10. Right-click on any column and click `Add new column`.
+2. Open your dataset.
+3. Right-click on any column and click `Add new column`.
 
 <img src="assets/ML_L2_step10DATASET.png" width="700"/>
 
-11. Right click on the column and click `rename`. Name this column `RLS_filter`.
-12. Enter the following formula:
+4. Right click on the column and click `rename`. Name this column `RLS_filter`.
+5. Enter the following formula:
 ```
 CurrentUserAttributeText("Region Attribute") = [Store Region]
 ```
 This will return `True` if the user attribute matches the `Store Region` of that row and false if it doesn't.
 
-13. On the left-hand side, add a filter and select only `True` from the `RLS_filter` column.
+6. On the left-hand side, add a filter and select only `True` from the `RLS_filter` column.
+7. Click `Publish` and select `Columns`.
+8. Under `Visibility` select `Restricted`.
+9. Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
