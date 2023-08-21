@@ -53,6 +53,39 @@ How to leverage required and optional parameters and user attributes when embedd
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
+## Required Parameters
+Duration: 20
+
+This section is provided for completeness and it is assumed you are already familiar with these parameters, since you completed [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+
+Failure to include one of these parameters will throw an error when the embed is loading. 
+
+### Potential Error Messages:
+EEXIST is for duplicates. Duplicate team, duplicate user, etc. Unlikely to happen for embeds
+EPERM operation not permitted, e.g.  if a user forgets to share an embed with a team, account type does not give you edit access to a workbook.
+ESTALE you should not see this in embeds.
+ENOENT Object Does Not Exist'. If you try to bring up a workbook which does not exist.
+EACCES Permission Denied e.g. when you do not have access to edit a workbook and try to.
+EINVAL Invalid Argument. e.g. when the URL contains team that does not exist.
+ETIMEDOUT Request Timed Out
+NETWORK Unable to Connect to Sigma
+UNKNOWN DEFAULT_API_ERROR_MESSAGE,
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## **NEXT SECTION**
 Duration: 20
 
