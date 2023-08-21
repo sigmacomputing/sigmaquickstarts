@@ -3,10 +3,10 @@ id: administration_sigma_calculations
 summary: administration_sigma_calculations
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-08-10
+tags: default
+lastUpdated: 2023-08-21
 
 # How Sigma Performs Calculations
 
