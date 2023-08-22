@@ -50,12 +50,12 @@ the License.
   <!-- End Google Tag Manager (noscript) -->
   <!-- OLD TAG MANAGER 
   <google-codelab-analytics gaid="{{.GlobalGA}}"></google-codelab-analytics>
+      OLD TAG MANAGER -->
   <google-codelab codelab-gaid="{{.Meta.GA}}"
                   id="{{.Meta.ID}}"
                   title="{{.Meta.Title}}"
                   environment="{{index .Env}}"
                   feedback-link="{{.Meta.Feedback}}">
-    OLD TAG MANAGER -->
     {{range $i, $e := .Steps}}{{if matchEnv .Tags $.Env}}
       <google-codelab-step label="{{.Title}}" duration="{{.Duration.Minutes}}">
         {{.Content | renderHTML $.Context}}
