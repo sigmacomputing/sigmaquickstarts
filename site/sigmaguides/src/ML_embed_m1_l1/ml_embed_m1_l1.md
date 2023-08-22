@@ -25,7 +25,7 @@ This lab will guide you through the process of content segregation to prepare da
 <ul>
   <li>Intermediate full-stack software development and Sigma admin experience.</li>
   <li>Knowledge of how to create a Sigma workbook.</li>
-  <li>Basic knowledge of Sigma teams, workspaces, creating datasets and workbooks.</li>
+  <li>Basic knowledge of Sigma teams, workspaces, datasets and workbooks.</li>
 </ul>
 
 ### What You’ll Learn
