@@ -1,5 +1,5 @@
 author: 123marianna123
-id: ml_embedmodule1_quickstart
+id: ml_embed_m1_l1
 summary: Embedding ONDEMAND Module 2, Lesson 1 Lab
 categories: Embedding
 environments: web
