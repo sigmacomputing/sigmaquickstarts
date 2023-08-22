@@ -93,6 +93,11 @@ Sample Code:
 //SET A VALUE FOR EMBED_PATH:
 const EMBED_PATH = 'https://app.sigmacomputing.com/embed/1-1YyXQ2H3j9oMygkpubIy0j';
 ```
+
+When a bad embed_path is sent, the embed page will show this message:
+
+<img src="assets/pua8.png" width="400"/>
+
 <img src="assets/horizonalline.png"/>
 
 **3: embed secret:**<br>
@@ -109,6 +114,11 @@ Sample Code:
 //SET A VALUE FOR SECRET:
 const EMBED_SECRET = '3eb4680a3a34fdd593bec42546.....your full secret';
 ```
+
+When an invalid secret is sent, the embed page will show this message:
+
+<img src="assets/pua9.png" width="500"/>
+
 <img src="assets/horizonalline.png"/>
 
 **4: mode**<br>
@@ -123,6 +133,10 @@ searchParams += '&:mode=userbacked';
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma supports a few other "modes" but they are used less-often. After the embed user has accessed a Sigma embed, their "mode" can't be changed later.  When you create a user, they're assigned one of the three user types: internal, guest, and embedded (user-backed). In the event this happens, you can pass Sigma an email for the user as "user+{mode}. This will create an additional user in Sigma, but could also have license implications. Sigma support can assist you should user management issues occur. 
 </aside>
+
+When an invalid mode is sent (for example sending "userback"), the embed page will show this message:
+
+<img src="assets/pua10.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
@@ -140,6 +154,11 @@ Sample code (when required):
 //SET searchParams = (previous value in searchParams) + CLIENTID:
 searchParams += '&:client_id=b7f210045d4bb4....your full clientID;
 ```
+
+When an invalid clientID is sent, the embed page will show this message:
+
+<img src="assets/pua9.png" width="500"/>
+
 <img src="assets/horizonalline.png"/>
 
 **6: user_email**<br>
@@ -155,6 +174,10 @@ Email addresses already associated with a standard (not embed) Sigma user accoun
 Example of how embed user appears in Sigma `Administration` > `People` page:
 
 <img src="assets/pua6.png" width="800"/>
+
+When an invalid email is sent (for example sending "user@company" without the ".com"), the embed page will show this message:
+
+<img src="assets/pua11.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
@@ -191,6 +214,14 @@ Sample Code:
 // searchParams += '&:external_user_team=' + encodeURIComponent('Sales Team');	
 ```
 
+When an invalid external_user_team is sent (for example, sending the value of "noteam"), the embed page will show this message:
+
+<img src="assets/pua12.png" width="700"/>
+
+However, if the team is left completely blank, a this message will be shown instead:
+
+<img src="assets/pua13.png" width="500"/>
+
 To learn more about [user access in Sigma, click here.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 <img src="assets/horizonalline.png"/>
 
@@ -205,23 +236,199 @@ searchParams += '&:session_length=600';
 
 When a session length has been exceeded, the embed page will show this message:
 
-<img src="assets/pua7.png" width="800"/>
+<img src="assets/pua7.png" width="300"/>
 
-INSERT IMAGE
+When an invalid session_length is sent (for example, sending the value of "25920001", which is just over the max of "2592000"), the embed page will show this message:
 
-
-
+<img src="assets/pua14.png" width="600"/>
 
 <img src="assets/horizonalline.png"/>
 
-10
-<unix_timestamp> [required] - The current time as a UNIX timestamp. Sigma uses this in combination with the <session_length> to determine if your link has expired. The URL is valid after the <unix_timestamp> and before the <session_length> expiration.
+**10 unix_timestamp:**<br> 
+The current time, as a UNIX timestamp. Sigma uses this in combination with the `session_length` to determine if your link has expired. The URL is valid after the `unix_timestamp` and before the `session_length` expiration.
+
+Sample Code:
+```code
+// SET searchParams = (previous value in searchParams) + THE CURRENT TIME AS UNIX TIMESTAMP:
+searchParams += `&:time=${Math.floor(new Date().getTime() / 1000)}`;
+```
+
+This calculation, is JavaScript code that retrieves the current timestamp and converts it to seconds since the Unix epoch (January 1, 1970 00:00:00 UTC). 
+
+Let's break it down step-by-step:
+
+**1: new Date():**<br>
+This creates a new Date object representing the current date and time.
+
+**2: .getTime():**<br>
+This method of the Date object returns the number of milliseconds since the Unix epoch.
+
+**3: / 1000:**<br>
+Since getTime() returns milliseconds, this division by 1,000 converts the value to seconds.
+
+**4: Math.floor():**<br> 
+This function rounds its input value down to the nearest whole number. This ensures that the resulting value is a whole number of seconds, without any fractional seconds.
+
+**5: time=${...}:**<br> 
+This is a template literal syntax in JavaScript. The value inside ${...} gets evaluated and inserted into the resulting string. If you're using this in a string context, the result would be something like time=1679991677 (the actual number would depend on the exact moment the code is executed).
+
+The final result of the calculation is the assignment of the current timestamp in seconds to the variable time.
+
+When an invalid time is sent (for example, if we remove the "/1000" from the formula), the embed page will show this message:
+
+<img src="assets/pua15.png" width="600"/>
 
 
-
-
-## **NEXT SECTION**
+## Optional Parameters
 Duration: 20
+
+Sigma allows embed customers to further customize different appearance, behavior and security settings when embedding in a custom, external application. We have broken these out into general groups for you below. We are adding more optional parameters all the time.
+
+Be sure to check out all the latest development at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+### Interface
+
+The following parameters allow you to tailor aspects of the embedded contents functionality to provide either functionality or useability, based on the use-case.
+
+
+**1: disable_mobile_view:**<br>
+If you set this boolean parameter to yes, workbooks won't automatically resize to the mobile layout. This can be useful in certain situations, when you do not want the content to be reduced to a mobile layout. 
+
+Sample Code:
+```code
+//SET A VALUE FOR disable_mobile_view. Default=no.
+searchParams += '&:disable_mobile_view=yes';
+```
+<img src="assets/horizonalline.png"/>
+
+**2: hide_folder_navigation:**<br> 
+Available for "mode=userbacked"; if set to true, it hides the folder navigation options in the bottom left. Default=no.
+
+Sample Code:
+```code
+//SET A VALUE FOR hide_folder_navigation. Default=no.
+searchParams += '&:hide_folder_navigation=yes';
+```
+
+The default, `false`, looks like this:
+
+<img src="assets/pua16.png" width="500"/>
+
+When set to `true`, looks like this:
+
+<img src="assets/pua17.png" width="500"/>
+
+Some items in the folder list (for example "Send now") are controlled in the `Account Type` configuration inside Sigma.
+
+<img src="assets/horizonalline.png"/>
+
+**3: hide_tooltip:**<br>
+If set to true and a user hovers over a tooltip, the tooltip is no longer displayed. 
+
+This applies to charts (line, bar, area, etc) and map chart marks. 
+
+Sample Code:
+```code
+//SET A VALUE FOR hide_tooltip. Default=false.
+searchParams += '&:hide_tooltip=true';
+```
+
+The default, `false`, looks like this:
+
+<img src="assets/pua18.png" width="500"/>
+
+When set to `true`, looks like this:
+
+<img src="assets/pua19.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**4: loading_bg:**<br> 
+Allows you to change the background on the loading and error screens when used with hex color codes.
+
+Sample Code:
+```code
+//SET A COLOR FOR THE BACKGROUND ON LOADING AND ERROR SCREENS
+searchParams += '&:loading_bg=FF0000';
+```
+
+If we create an error (remove the API secret from server.js, save the change, and reload the browser), we see a red background:
+
+<img src="assets/pua20.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**5: loading_text:**<br> 
+Allows you to change the font color on the loading and error screens when used with hex color codes.
+
+Sample Code:
+```code
+//SET A COLOR FOR THE FONT ON LOADING AND ERROR SCREENS
+searchParams += '&:loading_text=FFFFFF';
+```
+
+If we create an error (remove the API secret from server.js, save the change, and reload the browser), we see a white font:
+
+<img src="assets/pua21.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**6: menu_position:**<br>
+Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.` 
+
+`none` removes the toolbar. 
+
+If this value isn't set, it defaults to `bottom`.
+
+Sample Code:
+```code
+//SET THE POSITION OF THE TOOLBAR. DEFAULT = "bottom".
+searchParams += '&:menu_position=';
+```
+
+Examples:
+
+<img src="assets/pua22.png" width="500"/>
+
+<img src="assets/pua23.png" width="500"/>
+
+<img src="assets/pua24.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+STOPPED HERE
+<responsive_height> [optional] If set to true this allows developers access to workbook:pageheight:onchange JavaScript event.
+
+
+<show_footer> [optional] Defaults to true. If set to false, it hides the file explorer, workbook page tabs, and "Save As" / "Edit" options.
+
+<theme> [optional] Use any of the default themes (Light, Dark, and Surface) or any themes defined in your org. Use the name of the theme as the value. The value is case-sensitive. For example: Light%20Palette%201.
+
+
+### Security
+<account_type> [optional] - This value can be set to any account type your org has created, which are listed in the Account Types tab, except Admin. If a value isn't provided, then the permissions listed below are the default. This value can be changed later 
+company apps
+
+<control_id> and <control_value> [optional] The ID and value of any existing workbook control you want to pass through to the workbook. You may pass multiple control IDs and values. This allows you to customize what your viewers see. Learn more
+
+<showUnderlyingData> [optional] -Set to false to hide underlying data from embed users.
+
+<oauth_token> [optional] Passes a secure token to Sigma that authenticates users into Sigma's embedded analytics to drive granular user permissions.  See OAuth for Embeds for configuration instructions. 
+
+<hide_workbook_name> [optional] [beta] A boolean value that hides the workbook name near the folder icon.
+
+
+
+
+
+
+
+### User Attributes
+<user_attribute> [optional] - A user attribute {key: value} pair to be applied for RLS. In the URL, include an independent :ua_<attribute> parameter for each attribute you want to use.
+
+Learn more about user attributes and CurrentUserAttributeText()
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -268,6 +475,8 @@ INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
