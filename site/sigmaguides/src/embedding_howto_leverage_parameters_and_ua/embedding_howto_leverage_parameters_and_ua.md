@@ -522,7 +522,7 @@ This is one method for applying row-level security. Another is to use user-attri
 <img src="assets/horizonalline.png"/>
 
 **3: showUnderlyingData:**
-This parameter works on embeds of a single visualization only. When embedding a bar chart (for example), only the chart will appear in the embed by default. If this paramater is set to `true`, then the chart and it's underlying data will be shown, below the chart. An example of this is:
+This parameter works on embeds of a single visualization only. When embedding a bar chart (for example), only the chart will appear in the embed by default. If this parameter is set to `true`, then the chart and it's underlying data will be shown, below the chart. An example of this is:
 
 <img src="assets/pua34.png" width="500"/>
 
@@ -533,12 +533,23 @@ searchParams += '&:showUnderlyingData=true';
 ```
 <img src="assets/horizonalline.png"/>
 
-HERE:
+**4: oauth_token:**<br>
+You can pass secure tokens to Sigma that authenticates users into Sigma's embedded analytics to drive granular user permissions. 
 
-<oauth_token> [optional] Passes a secure token to Sigma that authenticates users into Sigma's embedded analytics to drive granular user permissions.  See OAuth for Embeds for configuration instructions. 
+Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01GZCFYBCZ1T7A5QP50DZXPAV9)
+
+This feature allows embedding customers to enhance authentication security using OAuth. See our [complete documentation for OAuth with Snowflake.](https://help.sigmacomputing.com/hc/en-us/articles/360053705993)
+
+Sample Code:
+```code
+//PASSES A SECURE TOKEN TO SIGMA THAT AUTHENTICATES CONNECTIONS USING OAUTH
+searchParams += '&:oauth_token={token}';
+```
+
+<img src="assets/horizonalline.png"/>
 
 
-<hide_sheet_interactions> (optional) hides the option to modify a chart or sheet from a dropdown or right-click actions. This hides the sort dropdown on a column header or filter bar access for users of the embedded workbook.
+
 
 
 
@@ -553,12 +564,39 @@ HERE:
 ## Optional Parameters - User Attributes
 Duration: 20
 
+Sigma User Attributes (UA) act like variables that are send from the parent application, at runtime, using the API. 
 
-<user_attribute> [optional] - A user attribute {key: value} pair to be applied for RLS. In the URL, include an independent :ua_<attribute> parameter for each attribute you want to use.
+Administrators create a UA in Sigma and then the API uses that (by name), to update it's value for a particular user session.
 
-Learn more about user attributes and CurrentUserAttributeText()
+UA use is well documented; links to documentation and QuickStarts are below:
 
+The primary uses for UAs are to set values for:
 
+1: Enforcing row-level security:
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979)
+[QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
+
+2: In custom SQL, as a where clause:
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6830842464147)
+[QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#3)
+
+3: Dynamic warehouse role switching:
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-#h_01GPHF4EJ127Z9453ZSQMBCP7Q)
+[QuickStart Embedding 7: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0)
+
+Sample Code:
+```code
+//PASS THE NAME OF THE USER ATTRIBUTE THAT IS CONFIGURED IN SIGMA AND THE VALUE TO SET IT TO:
+searchParams += '&:ua_{ua name}={ua value}';
+
+// FOR EXAMPLE:
+// searchParams += '&:ua_Region=East';
+
+// or for multiple values:
+// searchParams += '&:ua_Region=East,West';
+```
+
+<img src="assets/horizonalline.png"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -566,9 +604,9 @@ Learn more about user attributes and CurrentUserAttributeText()
 ## Common Error Messages
 Duration: 20
 
-Failure to include one of these parameters will throw an error when the embed is loading. 
+We have covered some error messages, related to parameter in the previous sections. Those are repeated here for convenience. 
 
-
+In addition, the following are other potential error messages and description to aide in troubleshooting embeds.
 
 EEXIST is for duplicates. Duplicate team, duplicate user, etc. Unlikely to happen for embeds
 EPERM operation not permitted, e.g.  if a user forgets to share an embed with a team, account type does not give you edit access to a workbook.
@@ -579,6 +617,10 @@ EINVAL Invalid Argument. e.g. when the URL contains team that does not exist.
 ETIMEDOUT Request Timed Out
 NETWORK Unable to Connect to Sigma
 UNKNOWN DEFAULT_API_ERROR_MESSAGE,
+
+### Parameter-based error messages
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
