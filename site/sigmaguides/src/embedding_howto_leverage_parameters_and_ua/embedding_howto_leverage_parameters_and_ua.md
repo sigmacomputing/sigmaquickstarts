@@ -279,17 +279,14 @@ When an invalid time is sent (for example, if we remove the "/1000" from the for
 <img src="assets/pua15.png" width="600"/>
 
 
-## Optional Parameters
+## Optional Parameters - Interface
 Duration: 20
 
 Sigma allows embed customers to further customize different appearance, behavior and security settings when embedding in a custom, external application. We have broken these out into general groups for you below. We are adding more optional parameters all the time.
 
 Be sure to check out all the latest development at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-### Interface
-
 The following parameters allow you to tailor aspects of the embedded contents functionality to provide either functionality or useability, based on the use-case.
-
 
 **1: disable_mobile_view:**<br>
 If you set this boolean parameter to yes, workbooks won't automatically resize to the mobile layout. This can be useful in certain situations, when you do not want the content to be reduced to a mobile layout. 
@@ -343,7 +340,18 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**4: loading_bg:**<br> 
+**4: hide_workbook_name:**<br> 
+A boolean value that hides the workbook name near the folder icon, in the embed footer. Default = `false`
+
+Sample Code:
+```code
+//SET A VALUE FOR hide_workbook_name. Default=false.
+searchParams += '&:hide_workbook_name=true';
+```
+
+<img src="assets/horizonalline.png"/>
+
+**5: loading_bg:**<br> 
 Allows you to change the background on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -358,7 +366,7 @@ If we create an error (remove the API secret from server.js, save the change, an
 
 <img src="assets/horizonalline.png"/>
 
-**5: loading_text:**<br> 
+**6: loading_text:**<br> 
 Allows you to change the font color on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -373,7 +381,7 @@ If we create an error (remove the API secret from server.js, save the change, an
 
 <img src="assets/horizonalline.png"/>
 
-**6: menu_position:**<br>
+**7: menu_position:**<br>
 Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.` 
 
 `none` removes the toolbar. 
@@ -388,42 +396,164 @@ searchParams += '&:menu_position=';
 
 Examples:
 
-<img src="assets/pua22.png" width="500"/>
+<img src="assets/pua22.png" width="500"/><br><br>
 
-<img src="assets/pua23.png" width="500"/>
+<img src="assets/pua23.png" width="500"/><br><br>
 
 <img src="assets/pua24.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
-STOPPED HERE
-<responsive_height> [optional] If set to true this allows developers access to workbook:pageheight:onchange JavaScript event.
+**8: responsive_height:**<br>
+Setting this to true this allows developers access to workbook:pageheight:onchange JavaScript event.
+
+This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
+
+Sample Code:
+```code
+//ENABLE JAVASCRIPT EVENT FOR responsive_height. DEFAULT = "false".
+searchParams += '&:responsive_height=true';
+```
+
+<img src="assets/horizonalline.png"/>
+
+**9: show_footer:**<br>
+If set to false, it hides the file explorer, workbook page tabs, `Save As` / `Edit` options, and Sigma logo in footer. Default = `true`. 
+
+Sample Code:
+```code
+//SHOW FOOTER ON PAGE OR NOT. DEFAULT = "true".
+searchParams += '&:show_footer=false';
+```
+
+<img src="assets/pua25.png" width="500"/><br><br>
+
+<img src="assets/pua26.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**10: theme:**<br>
+Use any of the default themes (Light, Dark, and Surface) or any themes defined in your org. Use the name of the theme as the value. The value is case-sensitive. 
+
+Sample Code:
+```code
+//CHANGE THEME SIGMA WILL USE FOR THE EMBED. DEFAULT = "Light".
+searchParams += '&:theme=Dark';
+```
+
+**Specifying a theme to the embed API, will override any theme that is set at the Workbook level.**
+
+For example, we set the theme in this Workbook to be `Dark`:
+
+<img src="assets/pua28.png" width="500"/><br><br>
+
+When we reload the embed page, the embed has adopted the `Dark` theme because we did not specify one in server.js.
+
+<img src="assets/pua29.png" width="500"/>
+
+Specify the theme to be `Light` in server.js, save the change and reload the browser page.
+
+Now the embed has adopted the `Light` theme, even though the `Dark` theme was set in the Workbook.
+
+<img src="assets/pua30.png" width="500"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Embed customers can create their own custom themes so that the Sigma content closely follows the parent applications styling.
+</aside>
+
+To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747-Create-and-manage-workbook-themes#h_01FG7WHKNRCCRK9P6B3Z1KHC3C)
+
+<img src="assets/horizonalline.png"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Optional Parameters - Security
+Duration: 20
+
+Items in this section are generally related to security operations.
 
 
-<show_footer> [optional] Defaults to true. If set to false, it hides the file explorer, workbook page tabs, and "Save As" / "Edit" options.
+**1: account_type:**
+Account types is Sigma ways from providing a specific set of permissions to a user and is a Role-base access control system (RBAC). Sigma provides default permissions to get you started. These are `Viewer` and `Creator` account types. Customers are able to create their own account types and customize the level of allowed functionality to suit their use-cases.
 
-<theme> [optional] Use any of the default themes (Light, Dark, and Surface) or any themes defined in your org. Use the name of the theme as the value. The value is case-sensitive. For example: Light%20Palette%201.
+It is recommended to send a value, at the lowest level of permissions for users (ie: `Viewer`), unless the user is granted something higher level. 
+
+[To read more about account types in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
+
+There is also a [QuickStart: How To: Federated Access with Sigma.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+
+Sample Code:
+```code
+//THE ACCOUNT TYPE FOR THE CALLING USER NEEDS TO BE SPECIFIED AND THE ACCOUNT TYPE MUST EXIST IN SIGMA FIRST.
+searchParams += '&:account_type=true';
+```
+
+<img src="assets/horizonalline.png"/>
 
 
-### Security
-<account_type> [optional] - This value can be set to any account type your org has created, which are listed in the Account Types tab, except Admin. If a value isn't provided, then the permissions listed below are the default. This value can be changed later 
-company apps
+**2: control_id / control_value:**
+These two parameters work together to set a value for a specific Sigma control element that may exist on the embedded content. This allows you to customize what your viewers see. 
 
-<control_id> and <control_value> [optional] The ID and value of any existing workbook control you want to pass through to the workbook. You may pass multiple control IDs and values. This allows you to customize what your viewers see. Learn more
+You may pass multiple control IDs and values and controls may also be hidden from users such they enforce record selection (for example), without allowing the users to change the control values in the embed.
 
-<showUnderlyingData> [optional] -Set to false to hide underlying data from embed users.
+[To read more about controls in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding-Workbooks-#h_01EGNYXDJ10KMN3WPMW2ZJ51NV)
+
+For example, in this workbook we have a table and one control element. The control element has a `Control ID` = `Store-Region` and is set to target the table when a user makes a selection.
+
+<img src="assets/pua31.png" width="800"/>
+
+If we want the embed to only show data for the `East` region, we can use the API to make that happen.
+
+Sample Code:
+```code
+//SET ID FOR TARGETED control_id and control_value
+searchParams += '&Store-Region=East';
+```
+
+After updating server.js and saving the changes, reloading the embed page results in the table showing only stores in the east store region:
+
+<img src="assets/pua32.png" width="800"/>
+
+In this example, the users are allowed to adjust the control values. If we moved the control to a new, hidden workbook page, the table would be "locked" to display only the east store region. 
+
+This is one method for applying row-level security. Another is to use user-attributes, which is discussed in the next section.
+
+<img src="assets/horizonalline.png"/>
+
+**3: showUnderlyingData:**
+This parameter works on embeds of a single visualization only. When embedding a bar chart (for example), only the chart will appear in the embed by default. If this paramater is set to `true`, then the chart and it's underlying data will be shown, below the chart. An example of this is:
+
+<img src="assets/pua34.png" width="500"/>
+
+Sample Code:
+```code
+//HIDE UNDERLYING DATA OPTION FROM EMBED USERS. DEFAULT=false
+searchParams += '&:showUnderlyingData=true';
+```
+<img src="assets/horizonalline.png"/>
+
+HERE:
 
 <oauth_token> [optional] Passes a secure token to Sigma that authenticates users into Sigma's embedded analytics to drive granular user permissions.  See OAuth for Embeds for configuration instructions. 
 
-<hide_workbook_name> [optional] [beta] A boolean value that hides the workbook name near the folder icon.
+
+<hide_sheet_interactions> (optional) hides the option to modify a chart or sheet from a dropdown or right-click actions. This hides the sort dropdown on a column header or filter bar access for users of the embedded workbook.
 
 
 
 
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 
-### User Attributes
+
+
+## Optional Parameters - User Attributes
+Duration: 20
+
+
 <user_attribute> [optional] - A user attribute {key: value} pair to be applied for RLS. In the URL, include an independent :ua_<attribute> parameter for each attribute you want to use.
 
 Learn more about user attributes and CurrentUserAttributeText()
@@ -454,17 +584,6 @@ UNKNOWN DEFAULT_API_ERROR_MESSAGE,
 <!-- END OF SECTION-->
 
 
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
