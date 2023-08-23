@@ -56,7 +56,7 @@ Duration: 10
 
 ![image4](assets/settinguptheworkbook_4.png)![image5](assets/settinguptheworkbook_5.png)
 
-5. You will now see the data source selection page. On the left side navigate to “Sigma Sample Database” → “EXAMPLES” → “PLUGS_ELECTRONICS” → “PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA” and select it. A preview of the table will show up and then click “Done” in the top right corner.
+5. You will now see the data source selection page. On the left side navigate to “Sigma Sample Database” → “RETAIL” → “PLUGS_ELECTRONICS” → “PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA” and select it. A preview of the table will show up and then click “Done” in the top right corner.
 
 ![image6](assets/settinguptheworkbook_6.png)
 
