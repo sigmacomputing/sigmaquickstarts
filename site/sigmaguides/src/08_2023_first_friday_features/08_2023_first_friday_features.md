@@ -14,6 +14,9 @@ Release notes for the month of August 2023 features, published on first Friday o
 8.4.2023 
 8.11.2023
 8.18.2023
+Create custom home pages for your users (in What's new in Sigma)
+- Build interactive workbooks with text, links, videos, and more, and use them as the home page for different users and teams.
+
 
 Make sure to include:
 1: Custom Functions
