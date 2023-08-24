@@ -14,21 +14,21 @@ lastUpdated: 2023-08-23
 ## Overview 
 Duration: 5 
 
-This QuickStart guide explains how Sigma utilizes its server-side API (API) to facilitate embedding into external applications.
+This QuickStart guide explains how Sigma uses its server-side API to facilitate embedding into external applications.
 
-The server-side API is essential for embedding Sigma into an external application. Its primary function is to generate a secure, one-time-use URL. This allows Sigma content to seamlessly integrate with the parent application's security during runtime.
+The server-side API is crucial for embedding Sigma into external applications. Its primary purpose is to generate a secure, one-time-use URL, allowing Sigma content to integrate seamlessly with the parent application's security during runtime.
 
-A secondary use of the API is to further control the functionality of the embed, using optional parameters.
+Another function of the API is to control the embedded functionality using optional parameters.
 
-Detailed documentation of this functionality can be [found here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01G50PPN275X08R4HJJKAQ6XFV) 
+You can find detailed documentation of this functionality [here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01G50PPN275X08R4HJJKAQ6XFV) 
 
-This QuickStart guide will offer illustrative examples and screenshots of the required and optional parameters, to help developers grasp the significance of each one.
+This QuickStart guide provides illustrative examples and screenshots of both required and optional parameters, helping developers understand the importance of each.
 
-This QuickStart assumes you have completed the [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
 
  ### Target Audience
 
-Developers who are interested in how to leverage required and optional parameters, or user attributes when embedding Sigma into their applications.
+Developers interested in leveraging both required and optional parameters, as well as user attributes, when embedding Sigma into their applications should refer to this guide.
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ Developers who are interested in how to leverage required and optional parameter
   
 ### What You’ll Learn
 
-How to leverage required and optional parameters and user attributes, when embedding Sigma into their applications.
+Developers can learn how to utilize required and optional parameters, as well as user attributes, when embedding Sigma into their applications.
 
 ![Footer](assets/sigma_footer.png)
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
@@ -56,35 +56,35 @@ How to leverage required and optional parameters and user attributes, when embed
 ## Required Parameters
 Duration: 20
 
-This section is provided for completeness, it is assumed you are already familiar with these parameters, since you completed [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+This section is provided for completeness. While it's assumed that you are already familiar with these parameters—having completed the [Embedding 3: Application Embedding QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0), we have included them here for reference. 
 
-For each required parameter, we have provided an example of it being used. Examples are based on Node.js code.
+For each required parameter, an example based on Node.js code is provided
 
 The following are **always required** parameters:
 
 **1: nonce:**<br>
-A random unique string (less than 255 characters). Sigma uses this to prevent application embed URLs from being shared and reused. In this way, URLs can only be used one-time.
+A unique random string (up to 255 characters). Sigma employs this to prevent application embed URLs from being shared and reused, ensuring that URLs can be used only once.
 
 Sample Code:
 ```code
 //CREATE A NONCE (NUMBER USED ONCE) BASED ON CRYPTO'S UUID FUNCTION:
 const nonce = crypto.randomUUID();
 
-//Start to construct the list of parameters to be sent with the URL by the API:
+//TART TO CONSTRUCT THE LIST OF PARAMETERS TO BE SENT WITH THE URL BY THE API:
 let searchParams = `?:nonce=${nonce}`;
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The code provided closely reflects the code used in the other Sigma embedding QuickStarts. Above we defined a value for "searchParams", and as we go, we will append more parameters to it. In the end, searchParams will contain a comma-separated list of all the required and optional parameters, and user-attributes desired.
+<strong>NOTE:</strong><br> The code provided closely mirrors that used in other Sigma embedding QuickStarts. Earlier, we defined a value for "searchParams". As we proceed, we'll add more parameters to it. Ultimately, 'searchParams' will contain a comma-separated list of all the required, optional parameters, and desired user attributes.
 </aside>
 <img src="assets/horizonalline.png"/>
 
 **2: workbook_embed_path:**<br>
-This is the URL that is generated by a Sigma user, inside the Workbook, and for whatever portion of a Workbook is desired to be embedded. For example, you can access the `Embedding` interface as:
+his is the URL generated by a Sigma user within the Workbook, corresponding to whichever portion of the Workbook they wish to embed. For instance, you can access the Embedding interface as follows:
 
 <img src="assets/pua1.png" width="500"/>
 
-Then select which element, page or the entire dashboard you want to embed. In this example, we are creating two `Embed Paths`, one for the whole dashboard and one for just one of the charts:
+Next, select which element, page, or the entire dashboard you wish to embed. In this example, we're creating two Embed Paths: one for the entire dashboard and another for a single chart.
 
 <img src="assets/pua2.png" width="500"/>
 
@@ -106,7 +106,7 @@ The <embed secret> is used by the API to generate the signature. This must be en
 <img src="assets/pua3.png" width="600"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> When generating a secret using the Administration interface, a client_id is also generated. Using the embed_secret generated from this interface will require you to also use the client_id in the API.
+<strong>NOTE:</strong><br> When you generate a secret through the Administration interface, a client_id is also produced. If you use the embed_secret from this interface, you must also include the client_id in the API.
 </aside>
 
 Sample Code:
@@ -122,16 +122,16 @@ When an invalid secret is sent, the embed page will show this message:
 <img src="assets/horizonalline.png"/>
 
 **4: mode**<br>
-Always set this to `userbacked` when embedding Sigma in an external application, where Sigma will be adopting the security of the parent application, for the logged in user.
+Always set this to userbacked when embedding Sigma into an external application where Sigma will adopt the security of the parent application for the logged-in user.
 
 Sample Code:
 ```code
-//SET searchParams = (previous value in searchParams) + Sigma Embed mode:
+//SET SEARCHPARAMS = (PREVIOUS VALUE IN SEARCHPARAMS) + SIGMA EMBED MODE:
 searchParams += '&:mode=userbacked';
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma supports a few other "modes" but they are used less-often. After the embed user has accessed a Sigma embed, their "mode" can't be changed later.  When you create a user (or an embed user logs in), they're assigned one of the three user types: internal, guest, and embedded (user-backed). In the event a user already exists in Sigma, you can alternately pass Sigma an email for the user as "user+{mode}". This will create an additional user in Sigma, but could also have license implications. Sigma support can assist you should user management issues occur. 
+<strong>IMPORTANT:</strong><br> Sigma offers several other 'modes,' though they are less frequently used. Once an embed user accesses a Sigma embed, their 'mode' becomes fixed and cannot be changed later. When you create a user, or when an embed user logs in, they are designated one of three user types: internal, guest, or embedded (user-backed). If a user already exists in Sigma, you have the option to pass Sigma an email formatted as 'user+{mode}'. This will generate an additional user in Sigma, but be mindful of potential licensing implications. For any user management challenges, Sigma support stands ready to assist.
 </aside>
 
 When an invalid mode is sent (for example sending "userback"), the embed page will show this message:
@@ -141,7 +141,7 @@ When an invalid mode is sent (for example sending "userback"), the embed page wi
 <img src="assets/horizonalline.png"/>
 
 **5: client_id:**<br>
-Only required if the secret is generated by from Sigma > `Administration` > `APIs & Embed Secrets` (as shown above in item 3). When a embed_secret is created from the Account page, a client_id is not created or required:
+This is only required if the secret is generated from Sigma via `Administration` > `APIs & Embed Secrets` (as demonstrated in item 3 above). When an embed_secret is created from the Account page, a client_id is neither generated nor required.
 
 <img src="assets/pua4.png" width="800"/>
 
@@ -162,31 +162,30 @@ When an invalid clientID is sent, the embed page will show this message:
 <img src="assets/horizonalline.png"/>
 
 **6: user_email**<br>
-The email address associated with the user’s account and must be unique, in Sigma.
+The email address must be unique within Sigma and associated with the user's account.
 
-Email addresses already associated with a standard (not embed) Sigma user account, cannot be reused for embed users. It is possible to append a `+embed` to a user's email address, who already has a Sigma account. 
-<img src="assets/horizonalline.png"/>
+Email addresses already linked to a standard Sigma user account (not an embed account) cannot be reused for embed users. However, it's possible to append `+embed` to the email address of a user who already has a Sigma account
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Embed users will automatically be added to Sigma's "People" page. This is facilitate logging and assignment of content the embed user may save, assuming that level of access has been provided to them.
+<strong>IMPORTANT:</strong><br> Embed users will automatically be added to Sigma's "People" page. This facilitates logging and the assignment of content that the embed user might save, provided they have been granted that level of access.
 </aside>
 
 Example of how embed user appears in Sigma `Administration` > `People` page:
 
 <img src="assets/pua6.png" width="800"/>
 
-When an invalid email is sent (for example sending "user@company" without the ".com"), the embed page will show this message:
+If an invalid email is provided (for instance, sending "user@company" without the ".com" suffix), the embedded page will display the following message:
 
 <img src="assets/pua11.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
 **7: external_user_id:**<br>
-A unique identifier for each individual using the embed. Sigma uses this identifier for licensing purposes. It is a good idea to use a value that maps to the userID in the parent applications user table. The sample code shows passing a GUID.
+A unique identifier is required for each individual using the embed. Sigma employs this identifier for licensing purposes. It's advisable to use a value that corresponds to the userID in the parent application's user table. The sample code illustrates passing a GUID.
 
 Sample Code:
 ```code
-//SET searchParams = (previous value in searchParams) + UserID of if the user authenticated by the parent application::
+//SET SEARCHPARAMS = (PREVIOUS VALUE IN SEARCHPARAMS) + USERID OF IF THE USER AUTHENTICATED BY THE PARENT APPLICATION:
 searchParams += '&:external_user_id=c880bc83-bd98-4085-8688-c27f8375dff9';
 ```
 <img src="assets/horizonalline.png"/>
@@ -303,8 +302,8 @@ Available for "mode=userbacked"; if set to true, it hides the folder navigation 
 
 Sample Code:
 ```code
-//SET A VALUE FOR hide_folder_navigation. Default=no.
-searchParams += '&:hide_folder_navigation=yes';
+//SET A VALUE FOR hide_folder_navigation. Default=false.
+searchParams += '&:hide_folder_navigation=true';
 ```
 
 The default, `false`, looks like this:
@@ -463,8 +462,6 @@ Now the embed has adopted the `Light` theme, even though the `Dark` theme was se
 
 To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747-Create-and-manage-workbook-themes#h_01FG7WHKNRCCRK9P6B3Z1KHC3C)
 
-<img src="assets/horizonalline.png"/>
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -474,8 +471,8 @@ Duration: 20
 Items in this section are generally related to security operations.
 
 
-**1: account_type:**
-Account types is Sigma ways from providing a specific set of permissions to a user and is a Role-base access control system (RBAC). Sigma provides default permissions to get you started. These are `Viewer` and `Creator` account types. Customers are able to create their own account types and customize the level of allowed functionality to suit their use-cases.
+**1: account_type:**<br>
+Account types is how Sigma provides a specific set of permissions to a user, and is a role-base access control system (RBAC). Sigma provides default permissions to get you started. These are `Viewer` and `Creator` account types. Customers are able to create their own account types and customize the level of allowed functionality to suit their use-cases.
 
 It is recommended to send a value, at the lowest level of permissions for users (ie: `Viewer`), unless the user is granted something higher level. 
 
@@ -486,20 +483,20 @@ There is also a [QuickStart: How To: Federated Access with Sigma.](https://quick
 Sample Code:
 ```code
 //THE ACCOUNT TYPE FOR THE CALLING USER NEEDS TO BE SPECIFIED AND THE ACCOUNT TYPE MUST EXIST IN SIGMA FIRST.
-searchParams += '&:account_type=true';
+searchParams += '&:account_type=viewer';
 ```
 
 <img src="assets/horizonalline.png"/>
 
 
-**2: control_id / control_value:**
-These two parameters work together to set a value for a specific Sigma control element that may exist on the embedded content. This allows you to customize what your viewers see. 
+**2: control_id / control_value:**<br>
+These two parameters work together to set a value for a specific Sigma control element (ie: date range picker) that may exist on the embedded content. This allows you to customize what your viewers see. 
 
-You may pass multiple control IDs and values and controls may also be hidden from users such they enforce record selection (for example), without allowing the users to change the control values in the embed.
+You may pass multiple control IDs and values, and controls may also be hidden from users such they enforce record selection (for example), without allowing the users to change the control values in the embed.
 
 [To read more about controls in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding-Workbooks-#h_01EGNYXDJ10KMN3WPMW2ZJ51NV)
 
-For example, in this workbook we have a table and one control element. The control element has a `Control ID` = `Store-Region` and is set to target the table when a user makes a selection.
+For example, in this workbook, we have a table and one control element. The control element has a `Control ID` = `Store-Region` and is set to target the table when a user makes a selection.
 
 <img src="assets/pua31.png" width="800"/>
 
@@ -517,11 +514,11 @@ After updating server.js and saving the changes, reloading the embed page result
 
 In this example, the users are allowed to adjust the control values. If we moved the control to a new, hidden workbook page, the table would be "locked" to display only the east store region. 
 
-This is one method for applying row-level security. Another is to use user-attributes, which is discussed in the next section.
+This is one method for applying row-level security. Another is to use user-attributes, which is discussed in the section 5.
 
 <img src="assets/horizonalline.png"/>
 
-**3: showUnderlyingData:**
+**3: showUnderlyingData:**<br>
 This parameter works on embeds of a single visualization only. When embedding a bar chart (for example), only the chart will appear in the embed by default. If this parameter is set to `true`, then the chart and it's underlying data will be shown, below the chart. An example of this is:
 
 <img src="assets/pua34.png" width="500"/>
@@ -534,7 +531,7 @@ searchParams += '&:showUnderlyingData=true';
 <img src="assets/horizonalline.png"/>
 
 **4: oauth_token:**<br>
-You can pass secure tokens to Sigma that authenticates users into Sigma's embedded analytics to drive granular user permissions. 
+You can pass secure tokens to Sigma to authenticate users into Sigma's embedded analytics and drive granular user permissions. 
 
 Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01GZCFYBCZ1T7A5QP50DZXPAV9)
 
@@ -548,23 +545,13 @@ searchParams += '&:oauth_token={token}';
 
 <img src="assets/horizonalline.png"/>
 
-
-
-
-
-
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
-
 
 ## Optional Parameters - User Attributes
 Duration: 20
 
-Sigma User Attributes (UA) act like variables that are send from the parent application, at runtime, using the API. 
+Sigma User Attributes (UA) act like variables that are sent from the parent application, at runtime, using the API. 
 
 Administrators create a UA in Sigma and then the API uses that (by name), to update it's value for a particular user session.
 
