@@ -22,20 +22,20 @@ A secondary use of the API is to further control the functionality of the embed,
 
 Detailed documentation of this functionality can be [found here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01G50PPN275X08R4HJJKAQ6XFV) 
 
-This QuickStart guide will offer illustrative examples and screenshots of the available optional parameters, to help developers grasp the significance of each one.
+This QuickStart guide will offer illustrative examples and screenshots of the required and optional parameters, to help developers grasp the significance of each one.
 
 This QuickStart assumes you have completed the [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
 
  ### Target Audience
 
-Developers who are interested in how to leverage required and optional parameters and user attributes when embedding Sigma into their applications.
+Developers who are interested in how to leverage required and optional parameters, or user attributes when embedding Sigma into their applications.
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
-  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
+  <li>A working web server based on Node.js, as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
@@ -47,7 +47,7 @@ Developers who are interested in how to leverage required and optional parameter
   
 ### What You’ll Learn
 
-How to leverage required and optional parameters and user attributes when embedding Sigma into their applications.
+How to leverage required and optional parameters and user attributes, when embedding Sigma into their applications.
 
 ![Footer](assets/sigma_footer.png)
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
@@ -56,7 +56,7 @@ How to leverage required and optional parameters and user attributes when embedd
 ## Required Parameters
 Duration: 20
 
-This section is provided for completeness and it is assumed you are already familiar with these parameters, since you completed [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+This section is provided for completeness, it is assumed you are already familiar with these parameters, since you completed [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
 
 For each required parameter, we have provided an example of it being used. Examples are based on Node.js code.
 
@@ -70,12 +70,12 @@ Sample Code:
 //CREATE A NONCE (NUMBER USED ONCE) BASED ON CRYPTO'S UUID FUNCTION:
 const nonce = crypto.randomUUID();
 
-Start to construct the list of parameters to be sent with the URL by the API:
+//Start to construct the list of parameters to be sent with the URL by the API:
 let searchParams = `?:nonce=${nonce}`;
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The code provided closely reflects the code used in the other Sigma embedding QuickStarts. Above we defined a value of "searchParams", and as we go, we will append more parameters to it. In the end, searchParams will contain a comma-separated list of all the required and optional parameters and user-attributes desired.
+<strong>NOTE:</strong><br> The code provided closely reflects the code used in the other Sigma embedding QuickStarts. Above we defined a value for "searchParams", and as we go, we will append more parameters to it. In the end, searchParams will contain a comma-separated list of all the required and optional parameters, and user-attributes desired.
 </aside>
 <img src="assets/horizonalline.png"/>
 
@@ -131,7 +131,7 @@ searchParams += '&:mode=userbacked';
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma supports a few other "modes" but they are used less-often. After the embed user has accessed a Sigma embed, their "mode" can't be changed later.  When you create a user, they're assigned one of the three user types: internal, guest, and embedded (user-backed). In the event this happens, you can pass Sigma an email for the user as "user+{mode}. This will create an additional user in Sigma, but could also have license implications. Sigma support can assist you should user management issues occur. 
+<strong>IMPORTANT:</strong><br> Sigma supports a few other "modes" but they are used less-often. After the embed user has accessed a Sigma embed, their "mode" can't be changed later.  When you create a user (or an embed user logs in), they're assigned one of the three user types: internal, guest, and embedded (user-backed). In the event a user already exists in Sigma, you can alternately pass Sigma an email for the user as "user+{mode}". This will create an additional user in Sigma, but could also have license implications. Sigma support can assist you should user management issues occur. 
 </aside>
 
 When an invalid mode is sent (for example sending "userback"), the embed page will show this message:
@@ -141,7 +141,7 @@ When an invalid mode is sent (for example sending "userback"), the embed page wi
 <img src="assets/horizonalline.png"/>
 
 **5: client_id:**<br>
-Only required if the secret is generated by from Sigma > `Administration` > `APIs & Embed Secrets` (as shown above in item 2). When a embed_secret is created from the Account page, a client_id is not created or required:
+Only required if the secret is generated by from Sigma > `Administration` > `APIs & Embed Secrets` (as shown above in item 3). When a embed_secret is created from the Account page, a client_id is not created or required:
 
 <img src="assets/pua4.png" width="800"/>
 
@@ -164,11 +164,11 @@ When an invalid clientID is sent, the embed page will show this message:
 **6: user_email**<br>
 The email address associated with the user’s account and must be unique, in Sigma.
 
-Email addresses already associated with a standard (not embed) Sigma user account, will not be considered valid. It is possible to append a `+embed` to a user's email address who already has a Sigma account. 
+Email addresses already associated with a standard (not embed) Sigma user account, cannot be reused for embed users. It is possible to append a `+embed` to a user's email address, who already has a Sigma account. 
 <img src="assets/horizonalline.png"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Embed users will automatically be added to Sigma's "People" page. This is facilitate logging and assignment of an content the embed user may save, assuming that level of access has been provided. 
+<strong>IMPORTANT:</strong><br> Embed users will automatically be added to Sigma's "People" page. This is facilitate logging and assignment of content the embed user may save, assuming that level of access has been provided to them.
 </aside>
 
 Example of how embed user appears in Sigma `Administration` > `People` page:
@@ -192,7 +192,7 @@ searchParams += '&:external_user_id=c880bc83-bd98-4085-8688-c27f8375dff9';
 <img src="assets/horizonalline.png"/>
 
 **8: external_user_team**<br>
-The name of your embedded users' team(s) (e.g. "TeamName1"). Team membership in Sigma is used provision access and functionality in Sigma, to groups of users who are in the same role (Role Based Access Control). The API can pass one or multiple team membership for the logged-in user, at runtime.
+The name of your embedded users' team(s) (e.g. "TeamName1"). Team membership in Sigma is used provision access and functionality, to groups of users who are in the same role (Role Based Access Control). The API can pass one or multiple team memberships for the logged-in user, at runtime.
 
 Sample Code:
 ```code
@@ -226,7 +226,7 @@ To learn more about [user access in Sigma, click here.](https://quickstarts.sigm
 <img src="assets/horizonalline.png"/>
 
 **9: session_length:**<br> 
-The number of seconds the embed URL should remain valid after the application embed URL was generated. After the specified number of seconds, the Application Embed will no longer display new values. The maximum session length is 2592000 seconds (30 days).
+The number of seconds the embed URL should remain valid after the application embed URL was generated. The maximum session length is 2592000 seconds (30 days).
 
 Sample Code:
 ```code
@@ -608,24 +608,59 @@ We have covered some error messages, related to parameter in the previous sectio
 
 In addition, the following are other potential error messages and description to aide in troubleshooting embeds.
 
-EEXIST is for duplicates. Duplicate team, duplicate user, etc. Unlikely to happen for embeds
-EPERM operation not permitted, e.g.  if a user forgets to share an embed with a team, account type does not give you edit access to a workbook.
-ESTALE you should not see this in embeds.
-ENOENT Object Does Not Exist'. If you try to bring up a workbook which does not exist.
-EACCES Permission Denied e.g. when you do not have access to edit a workbook and try to.
-EINVAL Invalid Argument. e.g. when the URL contains team that does not exist.
-ETIMEDOUT Request Timed Out
-NETWORK Unable to Connect to Sigma
-UNKNOWN DEFAULT_API_ERROR_MESSAGE,
+ <ul>
+      <li><strong>EEXIST:</strong> Indicates duplicates exist. Duplicate team, duplicate user, etc. Unlikely to happen for embeds, but not impossible if a bug is introduced.</li>
+      <li><strong>EPERM:</strong> The requested operation not permitted. For example, if a user forgets to share an embed with a team, account type does not give you edit access to a workbook.</li>
+      <li><strong>ESTALE:</strong> Unlikely to happen for embeds, but not impossible if a bug is introduced.</li>
+      <li><strong>ENOENT:</strong> Object does not exist (or no longer exists). If you try to bring up a workbook which does not exist.</li>
+      <li><strong>EACCES:</strong> Permission denied. For example, when you do not have access to edit a workbook, and try to.</li>
+      <li><strong>EINVAL:</strong> Invalid argument. For example, when the URL contains team that does not exist.</li>
+      <li><strong>ETIMEDOUT:</strong> Request timed out. For example, query did not respond from warehouse in specified timeframe.</li>
+      <li><strong>NETWORK:</strong> Unable to connect to Sigma. Typically, a local network error.</li>
+      <li><strong>UNKNOWN:</strong> This is the default API error message and acts as a "catch-all".1 </li>
+</ul>
 
 ### Parameter-based error messages
 
+**1: Invalid embed_path:**<br>
+<img src="assets/pua8.png" width="400"/>
 
+<img src="assets/horizonalline.png"/>
+
+**2: Invalid API secret:**<br><img src="assets/pua9.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**3: Invalid embed mode:**<br><img src="assets/pua10.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**4: Invalid clientID:**<br><img src="assets/pua9.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**5: Invalid email:**<br><img src="assets/pua11.png" width="500"/>
+
+<img src="assets/horizonalline.png"/>
+
+**6: Invalid external_user_team:**<br><img src="assets/pua12.png" width="700"/>
+
+However, if the team is left completely blank, a this message will be shown instead:<br><img src="assets/pua13.png" width="500"/><br>
+
+<img src="assets/horizonalline.png"/>
+
+**7: Session length has been exceeded:**<br><img src="assets/pua7.png" width="300"/><br>
+
+When an invalid session_length is sent (for example, sending the value of "25920001", which is just over the max of "2592000"), the embed page will show this message:<br><img src="assets/pua14.png" width="600"/>
+
+<img src="assets/horizonalline.png"/>
+
+**8: Invalid time:**<br> 
+(for example, if we remove the "/1000" from the formula), the embed page will show this message:
+<img src="assets/pua15.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
 
 ## What we've covered
 Duration: 5
