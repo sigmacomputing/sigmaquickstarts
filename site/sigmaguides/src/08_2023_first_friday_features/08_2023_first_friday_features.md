@@ -14,11 +14,11 @@ Release notes for the month of August 2023 features, published on first Friday o
 8.4.2023 
 8.11.2023
 8.18.2023
-Create custom home pages for your users (in What's new in Sigma)
-- Build interactive workbooks with text, links, videos, and more, and use them as the home page for different users and teams.
-
+8.25.23
 
 Make sure to include:
+A:Create custom home pages for your users (in What's new in Sigma)
+  - Build interactive workbooks with text, links, videos, and more, and use them as the home page for different users and teams.
 1: Custom Functions
 2: QuickStarts new last month
 --->
@@ -127,6 +127,32 @@ Column-Level Security provides granular control over data access allowing you th
       <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
 </ul>
 
+### New permission in Account Types
+You are now able to set the ability for a user to create new folders in `Administration` > `Account Types.` 
+
+This permission provides the option to restrict or grant folder creation permissions. To configure this in the Admin Portal, go to Account Types > Create New Account Type.
+
+For more information, [see User Account Types.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
+
+To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Embedding
+Duration: 20
+
+### New parameters available
+We added the following optional parameters for user-backed embeds. 
+
+<ul>
+      <li><strong>hide_menu:</strong> If set to True, hides the menu in the bottom-left for saved workbooks.</li>
+      <li><strong>hide_send:</strong> If set to True, hides the Send now option in the menu for saved workbooks.</li>
+      <li><strong>hide_schedule:</strong> If set to True, hides the Schedule exports option in the menu for saved workbooks.</li>
+</ul>
+
+[For more information about using embed parameters with Sigma, please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -204,6 +230,19 @@ In case you missed them, here are the QuickStarts that we published last in Augu
 <!-- END OF SECTION-->
 ## Visualizations
 Duration: 20
+
+### KPI chart replaces "Single Value" visualization element
+Sigma's KPI visualization element has replaced the Single Value visualization (SVV) option. 
+
+While you can no longer create new SVV elements, you can instead build KPI charts for improved single metric analyses. 
+
+<aside class="positive">
+<strong>VERY IMPORTANT:</strong><br> To preserve your saved workbooks and explorations, Sigma will not automatically upgrade existing SVV elements to KPI charts.
+</aside>
+
+For more information about the SVV deprecation and benefits of KPI charts, [see the Sigma Community post.](https://community.sigmacomputing.com/t/kpi-chart-to-replace-single-value-visualization-chart/2533)
+
+[For more information about KPI charts, please refer to the documentation.](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707-Build-a-KPI-chart)
 
 ### Sankey diagrams (GA release) 
 Sankey visualization elements are now available for general use (GA).
