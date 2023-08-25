@@ -1,7 +1,7 @@
 author: pballai
 id: embedding_howto_leverage_parameters_and_ua
 summary: embedding_howto_leverage_parameters_and_ua
-categories: Administration
+categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
