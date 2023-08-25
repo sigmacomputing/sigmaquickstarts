@@ -693,6 +693,9 @@ The seamless transition from Snowflake to Sigma enables data professionals to it
 - Building a polished Sigma Workbook that analyzes the sample data  
 
 ### Helpful Resources
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
 - Help Center including Documentation: [https://help.sigmacomputing.com/hc/en-us](https://help.sigmacomputing.com/hc/en-us)
 - Sigma Blog: [https://www.sigmacomputing.com/blog/](https://www.sigmacomputing.com/blog/)
 - Resources and Case Studies: [https://www.sigmacomputing.com/resources/](https://www.sigmacomputing.com/resources/)

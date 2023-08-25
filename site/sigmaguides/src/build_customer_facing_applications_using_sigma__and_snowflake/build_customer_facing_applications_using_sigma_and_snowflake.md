@@ -572,6 +572,8 @@ Thank you for your participation in this hands-on lab. To learn more about how r
 
 ### Helpful Resources
 
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
 - General Sigma Embedding Docs: [https://help.sigmacomputing.com/hc/en-us/categories/1500001787282-Embedded-Analytics](https://help.sigmacomputing.com/hc/en-us/categories/1500001787282-Embedded-Analytics)  
 - User Backed Embedding Docs: [https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-)
 - Sigma Blog: [https://www.sigmacomputing.com/blog](https://www.sigmacomputing.com/blog)
