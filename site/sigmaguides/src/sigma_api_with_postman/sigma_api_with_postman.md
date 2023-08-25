@@ -399,6 +399,8 @@ We created a Postman account, created API token secrets in Sigma, imported the S
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
 [Sigma API Documentation](https://help.sigmacomputing.com/hc/en-us/sections/4408551771411-API-Get-Started)
 
 [Postman Learning Center](https://learning.postman.com/docs/getting-started/introduction/)<br>

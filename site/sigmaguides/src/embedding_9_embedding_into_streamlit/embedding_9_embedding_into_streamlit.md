@@ -361,6 +361,8 @@ If you would like to learn more about Streamlit, there is a [video series availa
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
 [Streamlit Documentation](https://docs.streamlit.io/)<br>
 [Get started with Streamlit](https://docs.streamlit.io/library/get-started)<br>
 <br>
