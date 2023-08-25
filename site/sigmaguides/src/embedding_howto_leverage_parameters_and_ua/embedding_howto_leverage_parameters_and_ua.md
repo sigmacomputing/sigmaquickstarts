@@ -47,7 +47,7 @@ Developers interested in leveraging both required and optional parameters, as we
   
 ### What You’ll Learn
 
-Developers can learn how to utilize required and optional parameters, as well as user attributes, when embedding Sigma into their applications.
+Developers can learn how to utilize required and optional parameters, as well as user attributes, when embedding Sigma into their applications. We will also review common error messages and their meaning.
 
 ![Footer](assets/sigma_footer.png)
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
@@ -381,7 +381,7 @@ If we create an error (remove the API secret from server.js, save the change, an
 <img src="assets/horizonalline.png"/>
 
 **7: menu_position:**<br>
-Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.` 
+Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.
 
 `none` removes the toolbar. 
 
@@ -390,7 +390,7 @@ If this value isn't set, it defaults to `bottom`.
 Sample Code:
 ```code
 //SET THE POSITION OF THE TOOLBAR. DEFAULT = "bottom".
-searchParams += '&:menu_position=';
+searchParams += '&:menu_position=top';
 ```
 
 Examples:
@@ -559,16 +559,16 @@ UA use is well documented; links to documentation and QuickStarts are below:
 
 The primary uses for UAs are to set values for:
 
-1: Enforcing row-level security:
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979)
+1: Enforcing row-level security:<br>
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979)<br>
 [QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
-2: In custom SQL, as a where clause:
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6830842464147)
+2: In custom SQL, as a where clause:<br>
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6830842464147)<br>
 [QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#3)
 
-3: Dynamic warehouse role switching:
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-#h_01GPHF4EJ127Z9453ZSQMBCP7Q)
+3: Dynamic warehouse role switching:<br>
+[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-#h_01GPHF4EJ127Z9453ZSQMBCP7Q)<br>
 [QuickStart Embedding 7: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0)
 
 Sample Code:
@@ -604,7 +604,7 @@ In addition, the following are other potential error messages and description to
       <li><strong>EINVAL:</strong> Invalid argument. For example, when the URL contains team that does not exist.</li>
       <li><strong>ETIMEDOUT:</strong> Request timed out. For example, query did not respond from warehouse in specified timeframe.</li>
       <li><strong>NETWORK:</strong> Unable to connect to Sigma. Typically, a local network error.</li>
-      <li><strong>UNKNOWN:</strong> This is the default API error message and acts as a "catch-all".1 </li>
+      <li><strong>UNKNOWN:</strong> This is the default API error message and acts as a "catch-all".</li>
 </ul>
 
 ### Parameter-based error messages
@@ -652,9 +652,7 @@ When an invalid session_length is sent (for example, sending the value of "25920
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart, we learned how to utilize required and optional parameters, as well as user attributes, when embedding Sigma into external applications. We also reviewed common error messages and their meaning.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
