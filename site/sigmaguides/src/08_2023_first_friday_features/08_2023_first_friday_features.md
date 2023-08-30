@@ -17,9 +17,7 @@ Release notes for the month of August 2023 features, published on first Friday o
 8.25.23
 
 Make sure to include:
-2: QuickStarts embedded into custom homepages
 3: Create custom home pages for your users (in What's new in Sigma)
-4: Hierarchies
 5: Input tables with AI (beta????)
 --->
 
@@ -112,6 +110,8 @@ In order to improve the admin experience and provide admin functionality at scal
     </li>
 </ul>
 
+
+
 ### Column-Level Security (Beta)
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -130,8 +130,46 @@ Column-Level Security provides granular control over data access allowing you th
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18744762013843--Column-Level-Security-Beta-)
 
-### Custom Home Pages
+### Custom Home Pages (Beta)
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
 
+Sigma Admins can designate a workbook to use as a custom homepage for an organization or team. The **first page** of the workbook becomes the custom homepage. 
+
+A custom homepage functions as a landing page for its viewers. 
+
+Think of this like an embedded Sigma workbook on your landing page, inside Sigma!
+
+For example, when you are first rolling out Sigma to your users, you may want everyone to see some training content or other important information. A custom homepage is a great way to do this and can be changed later, as your needs warrant. 
+
+For example, let's say you want all users to see Sigma's foundational QuickStarts on the homepage. 
+
+First, we need to create a new Workbook in Sigma, with buttons that link to each QuickStart we want. 
+
+That workbook might look something like this:
+
+<img src="assets/fff_21.png" width="800"/>
+
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Anything you can create in a Sigma workbook can be used in a custom home page. Let your imagination run wild!
+</aside>
+
+Navigate to `Administration` > `Account` and click the `Enable` button for `Custom Home Pages`:
+
+<img src="assets/fff_21.png" width="800"/>
+
+
+
+
+
+
+An organization can have multiple custom homepages, assigned to different teams.
+
+Use a custom homepage to educate users about your workbooks, link to content, and guide them to internal experts and other resources. You can think of a Sigma homepage as an internal wiki for your Sigma analytics.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18244042539923-Enable-a-custom-homepage-Beta-)
 
 ### New permission in Account Types
 You are now able to set the ability for a user to create new folders in `Administration` > `Account Types.` 
@@ -220,9 +258,45 @@ Duration: 20
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
 
-Use the hierarchy feature for grouping the data and calculations at various category levels, and to keep track of the order between the coarsest and finest granularity of data. See Hierarchies (beta)
+We are introducing the concept of grouping data and calculations at various category levels, to keep track of the order between the coarsest and finest granularity of data.
 
-NEEDS WORK and HELP LINK
+This can be very useful and time-saving when there is a preferred way that data should be organized. 
+
+Some examples of hierarchies are:
+
+ <ul>
+      <li><strong>Product:</strong> type, family, name</li>
+      <li><strong>Location:</strong> continent, country, region, state, city </li>
+      <li><strong>Time:</strong> year, month, week, day</li>
+      <li><strong>Taxonomy:</strong> kingdom, phylum, class, order, family, genus, species</li>
+</ul>
+
+For example, let's say we always prefer that pivot tables show data using "Store Region" and "Product Type".
+
+We could start by creating a new Workbook, adding some data to a Page called `Data`:
+
+<img src="assets/fff_16.png" width="800"/>
+
+We can add a hierarchy to this table by clicking on the `+` and selecting `Manage hierarchies`:
+
+<img src="assets/fff_17.png" width="800"/>
+
+Now we click `+ New =hierarchy` and select the `Store Region` and `Product Type` columns. We gave it the name `Product Hierarchy` and that is what we will refer to later.
+
+<img src="assets/fff_18.png" width="800"/>
+
+When we create a new pivot table, we can directly add `Product Hierarchy` as a `Pivot Row`:
+
+<img src="assets/fff_19.png" width="800"/>
+
+The rest of the pivot is configured as normally and the results are:
+
+<img src="assets/fff_20.png" width="800"/>
+
+While this was a simple example, hierarchies can save you time and effort when there are many columns to choose from.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18268762264979-Hierarchies-beta-)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
