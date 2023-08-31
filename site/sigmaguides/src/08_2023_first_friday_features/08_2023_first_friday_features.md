@@ -16,11 +16,6 @@ Release notes for the month of August 2023 features, published on first Friday o
 8.18.2023
 8.25.23
 
-Make sure to include:
-3: Create custom home pages for your users (in What's new in Sigma)
-5: Input tables with AI (beta????)
---->
-
 # (08-2023) August Highlights
 
 ## Overview 
@@ -130,7 +125,31 @@ Column-Level Security provides granular control over data access allowing you th
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18744762013843--Column-Level-Security-Beta-)
 
-### Custom Home Pages (Beta)
+### New permission in Account Types
+You are now able to set the ability for a user to create new folders in `Administration` > `Account Types.` 
+
+This permission provides the option to restrict or grant folder creation permissions. To configure this in the Admin Portal, go to Account Types > Create New Account Type.
+
+For more information, [see User Account Types.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
+
+To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## API
+Duration: 10
+
+The `GET /v2/workbooks/{workbookId}/embeds` method now includes `public` in the response to indicate if the embed is an application or public workbook.
+
+[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/embeds)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Custom Home Pages (Beta)
+Duration: 10
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
@@ -141,6 +160,10 @@ A custom homepage functions as a landing page for its viewers.
 
 Think of this like an embedded Sigma workbook on your landing page, inside Sigma!
 
+An organization can have multiple custom homepages, assigned to different teams.
+
+Use a custom homepage to provided targeted content, educate, link to other content and more.
+
 For example, when you are first rolling out Sigma to your users, you may want everyone to see some training content or other important information. A custom homepage is a great way to do this and can be changed later, as your needs warrant. 
 
 For example, let's say you want all users to see Sigma's foundational QuickStarts on the homepage. 
@@ -149,36 +172,39 @@ First, we need to create a new Workbook in Sigma, with buttons that link to each
 
 That workbook might look something like this:
 
-<img src="assets/fff_21.png" width="800"/>
+<img src="assets/fff_22.png" width="800"/>
 
+In this workbook, each blue button links to a different workbook and each of those has the `Embed` element on the page. 
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Anything you can create in a Sigma workbook can be used in a custom home page. Let your imagination run wild!
-</aside>
+The embed element is configured to load the desired QuickStart. For example, for the `Getting Started` button, the configuration looks like this:
+
+<img src="assets/fff_23.png" width="800"/>
+
+The other workbook that is being loaded for the `Page` looks like this (in edit mode). 
+
+<img src="assets/fff_24.png" width="800"/>
+
+There is one additional workbook for each button.
+
+Last, we need to tell Sigma which users we want to assign this new custom home page to. 
 
 Navigate to `Administration` > `Account` and click the `Enable` button for `Custom Home Pages`:
 
 <img src="assets/fff_21.png" width="800"/>
 
+In this example, we will just assign it to `All members of your Sigma organization`:
 
+<img src="assets/fff_25.png" width="800"/>
 
+When a user clicks on one of the buttons, they stay inside Sigma, but can review external content. In this case, the external content is a Sigma QuickStart:
 
+<img src="assets/customhomepage.gif">
 
-
-An organization can have multiple custom homepages, assigned to different teams.
-
-Use a custom homepage to educate users about your workbooks, link to content, and guide them to internal experts and other resources. You can think of a Sigma homepage as an internal wiki for your Sigma analytics.
+<aside class="negative">
+<strong>NOTE:</strong><br> Anything you can create in a Sigma workbook can be used in a custom home page. Let your imagination run wild!
+</aside>
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18244042539923-Enable-a-custom-homepage-Beta-)
-
-### New permission in Account Types
-You are now able to set the ability for a user to create new folders in `Administration` > `Account Types.` 
-
-This permission provides the option to restrict or grant folder creation permissions. To configure this in the Admin Portal, go to Account Types > Create New Account Type.
-
-For more information, [see User Account Types.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
-
-To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -301,15 +327,38 @@ While this was a simple example, hierarchies can save you time and effort when t
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Input tables (Now with AI!)
+## Input tables - Now with AI! (Beta)
 Duration: 20
 
-Input tables now support AI-generated columns. Use structured AI prompts to perform data classification, sentiment analysis (opinion mining), and column fill (data synthesis).
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This feature is not enabled by default. Contact your Sigma account team or open a support ticket requesting that it be enabled for your organization.
+</aside>
+
+Input tables support AI-generated columns that allow you to augment your data and derive valuable insights for improved data-driven analysis and decision-making. 
+
+Sigma helps you accurately convey your data requirements through structured AI prompts that create the following types of AI-generated columns:
+
+ <ul>
+      <li><strong>Classification:</strong> Assigns existing column data to distinct categories or groups.</li>
+      <li><strong>Sentiment analysis (opinion mining):</strong> Determines emotion and tone expressed by textual data.</li>
+      <li><strong>Column fill (data synthesis):</strong> Generates data based on existing and provided context.</li>
+</ul>
+
+Once enabled, OpenAI functionality (as described above) is made available in Input Tables:
+
+<img src="assets/fff_27.png" width="800"/>
 
 AI-enhanced input tables utilize the OpenAI integration, which allows Sigma to leverage OpenAI language models (e.g., GPT-3.5 and GPT-4 models that power ChatGPT).
-For more information, see Create AI-enhanced input tables.
 
-NEEDS WORK and is this GA? or BETA?
+[Customers must provide their own OpenAI API Key.](https://help.sigmacomputing.com/hc/en-us/articles/18991654974995)
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18995723341843-Create-AI-enhanced-input-tables-Beta-)
+
+[FAQ](https://help.sigmacomputing.com/hc/en-us/articles/18991654974995#h_01H6ESZE593QBXDR81JXYGPJVH)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
