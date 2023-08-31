@@ -17,6 +17,7 @@ Release notes for the month of August 2023 features, published on first Friday o
 8.25.23
 
 # (08-2023) August Highlights
+-->
 
 ## Overview 
 Duration: 5 
@@ -25,9 +26,9 @@ This QuickStart lists all the new and public beta features released, as well as 
 
 It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
-**Public beta features will carry the section text "BETA".**
+**Public beta features will carry the section text "Beta".**
 
-All other features are considered released (GA or generally available).
+All other features are considered released (**GA** or generally available).
 
 Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
 
@@ -44,8 +45,8 @@ Duration: 20
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
 
-**New connection schema and dimension tables**
-The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
+**New connection schema and dimension tables:**<br>
+The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema, with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
 
 <img src="assets/fff_08_01.png" width="300"/>
 
@@ -126,9 +127,7 @@ Column-Level Security provides granular control over data access allowing you th
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18744762013843--Column-Level-Security-Beta-)
 
 ### New permission in Account Types
-You are now able to set the ability for a user to create new folders in `Administration` > `Account Types.` 
-
-This permission provides the option to restrict or grant folder creation permissions. To configure this in the Admin Portal, go to Account Types > Create New Account Type.
+This new permission provides the option to restrict or grant folder creation permissions. To configure this go to `Administration` > `Account Types` > `Create New Account Type`.
 
 For more information, [see User Account Types.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
 
@@ -144,6 +143,15 @@ The `GET /v2/workbooks/{workbookId}/embeds` method now includes `public` in the 
 
 [Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/embeds)
 
+<img src="assets/horizonalline.png" width="800"/>
+
+The `GET /v2/workbooks/{workbookId}/controls` method returns the name and value-type for all Sigma `Controls` present in the specified workbook:
+
+<img src="assets/fff_28.png" width="800"/>
+
+[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/controls)
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -154,7 +162,7 @@ Duration: 10
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
 
-Sigma Admins can designate a workbook to use as a custom homepage for an organization or team. The **first page** of the workbook becomes the custom homepage. 
+Sigma Admins can designate a workbook to use as a custom homepage for an organization or team. The first page of the workbook becomes the custom homepage. 
 
 A custom homepage functions as a landing page for its viewers. 
 
@@ -164,7 +172,7 @@ An organization can have multiple custom homepages, assigned to different teams.
 
 Use a custom homepage to provided targeted content, educate, link to other content and more.
 
-For example, when you are first rolling out Sigma to your users, you may want everyone to see some training content or other important information. A custom homepage is a great way to do this and can be changed later, as your needs warrant. 
+For example, when you are first rolling out Sigma to your users, you may want everyone to see some training content or other important information. A custom homepage is a great way to do this and can be changed later, as your needs evolve. 
 
 For example, let's say you want all users to see Sigma's foundational QuickStarts on the homepage. 
 
@@ -174,11 +182,11 @@ That workbook might look something like this:
 
 <img src="assets/fff_22.png" width="800"/>
 
-In this workbook, each blue button links to a different workbook and each of those has the `Embed` element on the page. 
+In this workbook, each blue button links to a different workbook, and each of those has the `Embed` element on the page. 
 
 The embed element is configured to load the desired QuickStart. For example, for the `Getting Started` button, the configuration looks like this:
 
-<img src="assets/fff_23.png" width="800"/>
+<img src="assets/fff_23.png" width="600"/>
 
 The other workbook that is being loaded for the `Page` looks like this (in edit mode). 
 
@@ -212,7 +220,7 @@ When a user clicks on one of the buttons, they stay inside Sigma, but can review
 ## Embedding
 Duration: 20
 
-### New parameters available
+### New parameters available:
 We added the following optional parameters for user-backed embeds. 
 
 <ul>
@@ -222,6 +230,19 @@ We added the following optional parameters for user-backed embeds.
 </ul>
 
 [For more information about using embed parameters with Sigma, please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
+### Version Tagging for Embed Sandbox
+
+Admins can now use version tags with embeds, in the embed sandbox. 
+
+This allows you to test before using them in your production environment.
+
+For example:
+
+<img src="assets/fff_29.png" width="800"/>
+
+[Documentation Link for Version Tagging](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)<br>
+[Documentation Link for Embed Sandbox](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619-Embed-Sandbox)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -246,7 +267,7 @@ We simply `Add` a new `Custom Function` and define it as:
 
 <img src="assets/fff_14.png" width="800"/>
 
-Setting the slide control to `On` (shown in blue) for `Include function in formula bar suggestions` will give users the same functionality when creating new calculations as if this new custom function was Sigma standard.
+Setting the slide control to `On` (shown in blue) for `Include function in formula bar suggestions` will give users the same functionality when creating new calculations, as if this new custom function was Sigma standard.
 
 The user can simply start typing the function name in the formula bar as usual (in this case, the name is `PlugsMargin`). 
 
@@ -257,7 +278,7 @@ Sigma prompts the user to identify which column should be used for each required
 The user is made aware that this is a custom function by the bubble with the title "Custom" in the function help, as shown above.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Custom functions unlock the world of capabilities for Sigma users. For example, let's say your data science team has create User Defined Functions in Snowflake using Python. Custom functions can be created to leverage those into functions that are accessible to Sigma users in the same way we just demonstrated above, but without any knowledge of the underlying complexity. This can be extremely powerful.
+<strong>IMPORTANT:</strong><br> Custom functions unlock the world of capabilities for Sigma users. For example, let's say your data science team has created User Defined Functions in Snowflake, using Python. Custom functions can be created to leverage those into functions that are accessible to Sigma users in the same way we just demonstrated above, but without any knowledge of the underlying complexity. This can be extremely powerful.
 </aside>
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18886053392531-Custom-functions-Beta-)
@@ -299,21 +320,21 @@ Some examples of hierarchies are:
 
 For example, let's say we always prefer that pivot tables show data using "Store Region" and "Product Type".
 
-We could start by creating a new Workbook, adding some data to a Page called `Data`:
+We could start by creating a new Workbook, adding some data to a page called `Data`:
 
-<img src="assets/fff_16.png" width="800"/>
+<img src="assets/fff_16.png" width="600"/>
 
 We can add a hierarchy to this table by clicking on the `+` and selecting `Manage hierarchies`:
 
-<img src="assets/fff_17.png" width="800"/>
+<img src="assets/fff_17.png" width="600"/>
 
 Now we click `+ New =hierarchy` and select the `Store Region` and `Product Type` columns. We gave it the name `Product Hierarchy` and that is what we will refer to later.
 
-<img src="assets/fff_18.png" width="800"/>
+<img src="assets/fff_18.png" width="600"/>
 
 When we create a new pivot table, we can directly add `Product Hierarchy` as a `Pivot Row`:
 
-<img src="assets/fff_19.png" width="800"/>
+<img src="assets/fff_19.png" width="600"/>
 
 The rest of the pivot is configured as normally and the results are:
 
@@ -388,6 +409,23 @@ In case you missed them, here are the QuickStarts that we published last in Augu
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Version Tagging
+Duration: 20
+
+### Version Tag Approval
+When you create a version tag, you can now select a permission level for users or teams: `Public` or `Protected`. 
+
+This allows org's greater control over who can publish updates to important workbooks that are exposed to stakeholders and embed customers.
+
+Protected tags allow you to restrict access and select the users or teams that can apply a tag on a workbook. 
+
+The users must have Can edit permissions for the workbook. Public tags are unprotected, but the user must have Can edit permissions for the workbook as well.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Visualizations
 Duration: 20
 
@@ -434,17 +472,17 @@ You may want to share a comment, directed at a co-worker to investigate, so you 
 
 Now you can select the Workbook Element you want to include, click the camera icon:
 
-<img src="assets/fff_10.png" width="800"/>
+<img src="assets/fff_10.png" width="600"/>
 
 Select a color, annotate it, and add your comment:
 
-<img src="assets/fff_11.png" width="800"/>
+<img src="assets/fff_11.png" width="600"/>
 
-This is a **great** way to communicate and collaborate inside Sigma. 
+**This is a great way to communicate and collaborate inside Sigma.**
 
 Use the `@` character to direct your comment to any valid Sigma user:
 
-<img src="assets/fff_12.png" width="800"/>
+<img src="assets/fff_12.png" width="600"/>
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18441838570259-Annotate-element-images-as-comments)
 
@@ -454,7 +492,7 @@ Sigma now features a new default blue (#0059EB) across the product.
 
 <img src="assets/fff_08.png" width="400"/>
 
-To preserve the appearance of existing workbooks, **the color change has not been applied to custom workbook themes** that utilized the previous default blue as the primary color. 
+**To preserve the appearance of existing workbooks, the color change has not been applied to custom workbook themes that utilized the previous default blue as the primary color.** 
 
 You must manually update custom workbook themes to change the primary color to the new default blue. 
 
@@ -468,24 +506,29 @@ Duration: 20
 Bug releases are broken down by week for specificity.
 
 ### Week ending 8.04.2023
- <ul>
+<ul>
       <li>Embeds no longer display bookmarks or document versions in the scheduled exports modal.</li>
- </ul>
+</ul>
 
 ### Week ending 8.11.2023
- <ul>
+<ul>
       <li>The footer is now hidden for embedded workbooks, including tagged versions, if you set the "show_footer" parameter to "false".</li>
- </ul>
+</ul>
 
 ### Week ending 8.18.2023
 <ul>
       <li>Circular markers in scatter plot size legends are no longer distorted.</li>
- </ul>
+</ul>
 
 ### Week ending 8.25.2023
 <ul>
       <li>none</li>
- </ul>
+</ul>
+
+### Week ending 8.31.2023
+<ul>
+      <li>Resolved an issue with page tab names exported to Excel.</li>
+</ul>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -495,9 +538,10 @@ Duration: 20
 
 **Additional Resource Links**
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
-[Sigma Community](https://community.sigmacomputing.com/)<br>
-[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+[Blog](https://www.sigmacomputing.com/blog/)<br>
+[Community](https://community.sigmacomputing.com/)<br>
+[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 
 [<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
