@@ -84,7 +84,7 @@ Let’s first make sure that you have an embed that we can work with. We will be
 **Create Sigma content to embed:**<br>
 We will use the Sigma sample database to create a Workbook Page that has one control and one table as shown below. 
 
-Create a new `Workbook`, add the `D_STORE` table from the Sigma Sample Database / Examples / Plugs Electronics schema.
+Create a new `Workbook`, add the `D_STORE` table from the Sigma Sample Database / Retail / Plugs Electronics schema.
 
 Set the filter control to target the table:
 
