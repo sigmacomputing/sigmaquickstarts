@@ -8,16 +8,6 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2023_08-31
 
-<!-- 
-Weeks Added so far:
-Release notes for the month of August 2023 features, published on first Friday of Sept
-8.4.2023 
-8.11.2023
-8.18.2023
-8.25.23
-
-# (08-2023) August Highlights
--->
 
 ## Overview 
 Duration: 5 
@@ -66,8 +56,6 @@ For example, join AUDIT_LOGS with the DOCUMENTS table to add document attributes
      <li><Strong>USERS:</Strong> Organization user attributes</li>
 </ul>
 
-
-
 ### Bulk actions for admins
 
 In order to improve the admin experience and provide admin functionality at scale, numerous actions can now be performed in bulk. 
@@ -84,6 +72,8 @@ In order to improve the admin experience and provide admin functionality at scal
     </li>
 </ul>
 
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/360036944454-Invite-people-to-your-organization#01H7K9BVR32JSAAVP5S79HMEVM)
+
   <li></li>
     <li><Strong>Team Management:</Strong> </li>
     <li>
@@ -96,6 +86,8 @@ In order to improve the admin experience and provide admin functionality at scal
     </li>
 </ul>
 
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams#01H7K7N0C7VAK8CP1PEV2G7KX2)
+
   <li></li>
     <li><Strong>User Attributes and Exports:</Strong> </li>
     <li>
@@ -105,8 +97,6 @@ In order to improve the admin experience and provide admin functionality at scal
         </ul>
     </li>
 </ul>
-
-
 
 ### Column-Level Security (Beta)
 <aside class="positive">
@@ -295,6 +285,14 @@ Documentation Links:<br>
 [IPmt (interest payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557454545427-IPmt)<br>
 [PPmt (principal payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557505447187-PPmt)
 
+### ArraySlice Function
+ArraySlice takes any array  and extracts a subarray given starting location/index and desired length. The length is optional field here. So if this is absent, then the entire array starting at start location will be returned.
+
+It can take dynamic values, meaning you can choose different starting indices and different lengths for each row.
+
+If you specify starting location negative then it will consider it from the back of the array. So if you want to extract last element, just type ArraySlice([array], -1)
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/19417737945619-ArraySlice)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -412,7 +410,12 @@ In case you missed them, here are the QuickStarts that we published last in Augu
 ## Version Tagging
 Duration: 20
 
-### Version Tag Approval
+### Tag Permissions (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
 When you create a version tag, you can now select a permission level for users or teams: `Public` or `Protected`. 
 
 This allows org's greater control over who can publish updates to important workbooks that are exposed to stakeholders and embed customers.
@@ -496,6 +499,8 @@ Sigma now features a new default blue (#0059EB) across the product.
 
 You must manually update custom workbook themes to change the primary color to the new default blue. 
 
+### Search results improvements
+Sigma has been making lots of improvements to the search result rankings over the last few months to make your search experience even better! Sometimes it’s difficult to notice search improvements since they’re typically released incrementally over time, but we want to let you know that we are constantly improving your Sigma experience.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
