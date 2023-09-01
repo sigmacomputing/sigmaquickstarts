@@ -17,6 +17,15 @@ the License.
 <!-- This is the default template for 'html' output format of the tool -->
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5DNFBHR');
+  </script>
+  <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
@@ -35,7 +44,13 @@ the License.
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DNFBHR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- OLD TAG MANAGER 
   <google-codelab-analytics gaid="{{.GlobalGA}}"></google-codelab-analytics>
+      OLD TAG MANAGER -->
   <google-codelab codelab-gaid="{{.Meta.GA}}"
                   id="{{.Meta.ID}}"
                   title="{{.Meta.Title}}"

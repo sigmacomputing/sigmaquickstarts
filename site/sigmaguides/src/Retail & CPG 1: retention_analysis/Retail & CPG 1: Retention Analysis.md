@@ -286,6 +286,8 @@ This lab is part of the Sigma Retail & CPG Series. We hope you will continue to 
 
 ### Helpful Resources
 
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
 - [Help Center including Documentation](https://help.sigmacomputing.com/hc/en-us)
 - [Sigma Blog](https://www.sigmacomputing.com/blog/)
 - [Resources and Case Studies](https://www.sigmacomputing.com/resources/)

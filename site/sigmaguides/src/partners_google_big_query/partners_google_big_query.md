@@ -440,11 +440,10 @@ In this article, you learned how to set up and connect Sigma to BigQuery. Connec
       <li>Reed Rawlings, Solution Engineer, Sigma Computing</li>
 </ul>
 
-
-
-
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links:**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>

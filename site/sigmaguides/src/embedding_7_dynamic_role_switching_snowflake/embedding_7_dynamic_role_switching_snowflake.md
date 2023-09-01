@@ -248,7 +248,7 @@ When we run the Select statement the return is 30 rows. This is expected because
 ## Snowflake RLS Policy Configuration
 Duration: 10
 
-We are not ready to define our Snowflake Row Access Policy. Same process as before with these new commands:
+We are now ready to define our Snowflake Row Access Policy. Same process as before with these new commands:
 
 ```plaintext
 // ----------------------------------------------------------------------------------------------------------
@@ -537,6 +537,8 @@ In this QuickStart we created Snowflake assets and a Row Access Policy and used 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>

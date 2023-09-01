@@ -213,7 +213,7 @@ The return should be:
 ![Alt text](assets/applicationsetup8.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Node-supervisor will watch for changes but in the event you want to force the Express server to stop either manually exit Terminal or hit CTRL+C to stay in Terminal but terminate the Express process so you can restart it as before.
+<strong>NOTE:</strong><br> Node-supervisor will watch for changes but in the event you want to force the Express server to stop, either manually exit Terminal, or hit CTRL+C to stay in Terminal but terminate the Express process so you can restart it as before.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -251,6 +251,8 @@ We covered the types of Embedding Sigma provides and how to setup a local enviro
 <button>[Click to move to the next QuickStart in the Embedding Series]( https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html)</button>
                                                                    
 **Additional Resource Links**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 [Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
