@@ -18,9 +18,9 @@ This QuickStart presents common challenges when working with dates. Sigma can be
 
 There are many ways to solution with dates in Sigma. Not every solution is covered and you may even found a better method. Suggestions and feedback is always appreciated.
 
-This QuickStart assumes you have a working instance of Sigma and the Sigma Sample Dataset.
+This QuickStart assumes you have a working instance of Sigma and the connection called Sigma Sample Database.
 
-We will use the Sigma provided `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table so that you can recreate each QuickStart Step in your own Sigma environment.
+We will use the Sigma provided `RETAIL`.`PLUGS_ELECTRONICS`.`PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table so that you can recreate each QuickStart Step in your own Sigma environment.
 
  ### Target Audience
 Anyone who is looking for solutions to date challenges or just want to learn new date methods.
@@ -581,7 +581,7 @@ In this exercise we will use some Sigma functionality not yet covered to enhance
 
 Add a new Table to the Workbook.
 
-Navigate to the `Sigma Sample Database` / `Plugs_Electronics` / `Plugs_Electronics_Hands_On_Lab_Data` table:
+Navigate to the `Sigma Sample Database` / `Retail` / `Plugs_Electronics` / `Plugs_Electronics_Hands_On_Lab_Data` table:
 
 <img src="assets/CDUC26.png" width="800"/>
 

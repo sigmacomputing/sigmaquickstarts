@@ -385,7 +385,7 @@ Sigma has the ability to join tables, other datasets, csv uploads, or your own S
 
 ![Navigate Home](assets/Modeling_and_Accessing_The_Data_1.png)
 
-2. Let’s create a new Dataset and connect it to the “Sigma Sample Dataset”. Click on the “Create New” at the top left of the page and then select “Dataset”.
+2. Let’s create a new Dataset and connect it to the “Sigma Sample Database”. Click on the “Create New” at the top left of the page and then select “Dataset”.
 
 ![Create Dataset](assets/Modeling_and_Accessing_The_Data_2.png)
 

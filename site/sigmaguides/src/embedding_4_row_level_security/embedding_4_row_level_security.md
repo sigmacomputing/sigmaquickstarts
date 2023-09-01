@@ -214,7 +214,7 @@ In the Connections drop down, select `Sigma Sample Database`.
 In the large open whitespace `paste the following code`:
 
 ```sql
-SELECT * FROM EXAMPLES.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+SELECT * FROM RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
 WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
 LIMIT 10
 ```
