@@ -409,10 +409,9 @@ We are now ready to use this Workbook embedded in an Application.
 ## Embed the Workbook
 Duration: 10
 
-We will move through this quickly as it is assumed you have done this operation before in earlier QuickStarts in the Embedding Series. If not, bo back and review them as mentioned in the Overview section of this QuickStart.
+We will move through this quickly as it is assumed you have done this operation before in earlier QuickStarts in the Embedding Series. If not, go back and review them as mentioned in the Overview section of this QuickStart.
 
-Download the zip file that contains the html page (Parent Application) and Javascript (Parent API) files.
-[Download the zip file that contains the html page (Parent Application) and Javascript (Parent API) files](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed_DRS.zip)
+[Download the zip file that contains the html page (Parent Application) and Javascript (Parent API) files here.](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed_DRS.zip)
 
 We need to adjust the details in `server.js` for our new embed. We will not show all the steps as they have been covered in great detail in the other Embedding QuickStarts. 
 
