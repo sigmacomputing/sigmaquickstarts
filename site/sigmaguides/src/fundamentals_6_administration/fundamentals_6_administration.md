@@ -11,18 +11,12 @@ lastUpdated:
 # Fundamentals 6: Administration
 
 ## Overview 
-Duration: 5 
+Duration: 5
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
-
-Sample code and examples are shown for each item.
-
-We encourage you to review the QS called 
-
-This QuickStart assumes you........
+This QuickStart introduces the essential Administrative features and navigation considerations within Sigma. Whether you're managing your instance, setting up connections, configuring data governance rules, or customizing user interactions, this will provide you with a foundational overview.
 
  ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Administrators who are new to Sigma and want a quick overview of the available features functions common in their roles. 
 
 ### Prerequisites
 
@@ -39,19 +33,30 @@ Anyone who is trying to create QS content for Sigma.
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
 ### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
-
-### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
-
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+How to leverage the available administrative functions in Sigma to get things done efficiently and effectively.
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## Navigation
 Duration: 20
+
+We will first cover how to access the administrative ("admin") areas of Sigma and then list and describe each of the available options.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The admin area of Sigma requires a user to have an Account Type Permission of "Admin". Users who do not have this permission will not be able to any Administrative function and the option is not displayed on the interface to them.
+</aside>
+
+Admin users can access the admin page one of two ways as shown:
+
+<img src="assets/fa1.png" width="800"/>
+
+We have centralized all the admin options on this one page as shown:
+
+
+<img src="assets/fa2.png" width="800"/>
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -74,8 +79,10 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Sigma Support
 Duration: 20
+
+We want to make sure that Sigma administrators are fully aware of the options so that they may inform and educate their own user communities.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
