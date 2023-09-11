@@ -17,6 +17,8 @@ Sept 22:
 Sept 29: 
 
 Zalak Trivedi: Feature Enhancement - Connection Swapping when Tagging Workbooks with Input Tables
+
+Input tables <> Databricks is now ready for beta. We would ideally want  SE's to try it out before we start rolling it out to customers. Since we had planned beta on the 14th of Sep and we are a week early.
 -->
 
 # (08-2023) August Highlights
