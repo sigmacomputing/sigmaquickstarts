@@ -1,0 +1,202 @@
+author: pballai
+id: 09_2023_first_friday_features
+summary: 09_2023_first_friday_features
+categories: Administration
+environments: web
+status: Published
+feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
+tags: first_friday_features
+lastUpdated: 2023_09-31
+
+
+<--!
+Sept 1: Done
+Sept 8: Done
+Sept 15: 
+Sept 22: 
+Sept 29: 
+
+Zalak Trivedi: Feature Enhancement - Connection Swapping when Tagging Workbooks with Input Tables
+-->
+
+# (08-2023) August Highlights
+
+## Overview 
+Duration: 5 
+
+This QuickStart lists all the new and public beta features released, as well as bugs fixed in August 2023.
+
+It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
+
+**Public beta features will carry the section text "Beta".**
+
+All other features are considered released (**GA** or generally available).
+
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
+
+New QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Administration
+Duration: 20
+
+### User Attribute Assignment for Org Members
+Prior to this feature, administrators had to create a Sigma Team in order to assign specific attributes to users, who needed to be a member of this team.
+
+Sigma now supports assigning specific user attribute values directly to users. 
+
+For example, the user `Finance TestUser` has the Attribute `Region` set to the value `East`. This attribute will be used to filter data automatically, to the "East" region.
+
+<img src="assets/fff_09_2023_01.png" width="800"/>
+
+[For information on how to implement user attributes, click here.](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979#rsua)
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## API
+Duration: 10
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+## Embedding
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## New QuickStarts in August
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Tables / Pivots
+Duration: 20
+
+### Pivot Table Wrap Text
+Users now have the ability to wrap the text in their pivot tables. By default, we truncate text that is too long to fit in a cell. Users now have the option to expand the line height and see the entire content of the header or cell.
+
+<img src="assets/fff_09_2023_02.png" width="500"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Version Tagging
+Duration: 20
+
+### Tag Permissions (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+When you create a version tag, you can now select a permission level for users or teams: `Public` or `Protected`. 
+
+This allows org's greater control over who can publish updates to important workbooks that are exposed to stakeholders and embed customers.
+
+Protected tags allow you to restrict access and select the users or teams that can apply a tag on a workbook. 
+
+The users must have Can edit permissions for the workbook. Public tags are unprotected, but the user must have Can edit permissions for the workbook as well.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Visualizations
+Duration: 20
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbooks
+Duration: 20
+
+###  Allow users to request permission to explore workbooks
+Users with `Viewer` licenses can now request permission to explore workbooks by clicking `Request explore access` in any workbook header. 
+
+Sigma administrators will receive the request. They can upgrade a user’s license by reassigning them to an account type with the 'Explore workbooks' permission enabled.
+
+For example, this is what a user with `Viewer` rights would see when a workbook is shared to them:
+
+<img src="assets/fff_09_2023_04.png" width="800"/>
+
+### Text element background options
+We have added the ability to change the background color in text elements. 
+
+In the  Element properties panel, choose to show or hide the text element background area. 
+
+Enabling the background creates a card display and adds padding around the text content for consistency with data elements and input tables. 
+
+You can then select a custom background color from the color palette or picker, or you can keep the default selection based on the workbook theme. 
+
+For example:
+
+<img src="assets/fff_09_2023_03.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Bug Fixes
+Duration: 20
+
+Bug releases are broken down by week for specificity.
+
+### Week ending 9.01.2023
+<ul>
+      <li></li>
+</ul>
+
+### Week ending 9.08.2023
+<ul>
+      <li></li>
+</ul>
+
+### Week ending 9.15.2023
+<ul>
+      <li></li>
+</ul>
+
+### Week ending 9.22.2023
+<ul>
+      <li></li>
+</ul>
+
+### Week ending 9.29.2023
+<ul>
+      <li></li>
+</ul>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Additional Information
+Duration: 20
+
+**Additional Resource Links**
+
+[Blog](https://www.sigmacomputing.com/blog/)<br>
+[Community](https://community.sigmacomputing.com/)<br>
+[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
+<br>
+
+[<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
+[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF WHAT WE COVERED -->
+<!-- END OF QUICKSTART -->
