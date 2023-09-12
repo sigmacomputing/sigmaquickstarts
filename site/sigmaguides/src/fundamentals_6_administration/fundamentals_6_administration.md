@@ -355,19 +355,48 @@ Sigma provides a set of sample data, at no cost, to all customers. The sample da
 ## Usage
 Duration: 20
 
-<img src="assets/fa9.png" width="600"/>
+Sigma provides all customers with extensive reporting on various aspects of user activity. All the reports are built using Sigma and are provided at no-cost to customers. Admins can use this area to get a quick visibility to important KPIs but also leverage Sigmas "drill anywhere" capability to get to the lowest level of detail required.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The usage section does not required customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
+</aside>
 
+At the time of this QuickStart, the following usage catagories are provided. Each category has many KPI, charts, tables and filters, formatted based on the available data.
 
-<img src="assets/horizonalline.png">
+**Users:**<br>
+Explore user status, activity and licensing. Filter by date range and/or query text.
 
+<img src="assets/fa10.png" width="800"/>
 
+**Document Activity:**<br>
+Discover your organization’s most commonly used documents and your top documents users. Filter by date range, Top N, and the number of days since the dashboards were last opened. These insights can assist organizations to audit unused documents and identify documents that drive the most user engagement.
 
+<img src="assets/fa11.png" width="800"/>
 
+**Document Permissions:**<br>
+Discover who has permissions for a document, the origin of the permissions, access ype, and who granted permission. These insights can help organizations to improvevsecurity.
 
+<img src="assets/fa12.png" width="800"/>
 
+**Schedule Exports:**<br>
+View data on your organization's export tasks and Sendgrid email events.
 
+<img src="assets/fa13.png" width="800"/>
 
+**Materializations:**<br>
+Metrics and status of materialization runs with run-times.
+
+<img src="assets/fa16.png" width="800"/>
+
+**Query Summary:**<br>
+View a summary of your queries. Available data includes total queries run, queries over 10s, median query time, average query duration, queries by user type, query status, and timeouts. Filter by date range and/or query text.
+
+<img src="assets/fa14.png" width="800"/>
+
+**Embedding:**<br>
+View application embedding usage for your organization. Private and Public embeds are not tracked. Each embed URL must include an external_user_id for tracking purposes.
+
+<img src="assets/fa15.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -375,6 +404,25 @@ Duration: 20
 ## People
 Duration: 20
 
+In Sigma, users are called `People`. 
+
+People can be added manually to Sigma (and in bulk) or they can be added automatically the first time they login to Sigma with SSO or an embedded application. 
+
+When added manually, people receive and email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `People` page. 
+
+Email invitations and welcome emails can be customized if desired.
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/18661610734739-Manage-People)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma uses email address for each person and the email must be unique. 
+</aside>
+
+<img src="assets/fa17.png" width="600"/>
+
+People in Sigma can be deactivated. After you click Deactivate, the user's documents are automatically migrated to the selected persons's `My Documents` folder. The deactivated user's documents will be located in `My Documents` > `Archived Users` > `Folder` (folder title is the deactivated user's name). There is no need to manually transfer all the worksheets/dashboards created by the user, **Sigma does this for you.**
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360045728873-Deactivate-users)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -382,12 +430,41 @@ Duration: 20
 ## Teams
 Duration: 20
 
+Sigma uses teams to organize and manage users in groups.
+
+You can use Sigma to manage user group membership or through your organizations Identity Provider (IdP).
+
+Teams can be `Public` or `Private`.
+
+Public teams are seen and searchable by all members of your Sigma org. Anyone will be able to share documents with public teams.
+
+Private teams will only be visible to members of the team.
+
+For example, in this "Finance Team" there are three users, two accessed Sigma via an embedded application and another logged into Sigma directly. The last user is an admin.
+
+<img src="assets/fa18.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You can name a team anything you want but when embedding, it is advisable to avoid special characters in names. 
+</aside>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+
+When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces help organize content, to categorize and share folders and documents. Share them with other users and teams using permission grants.
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Account Types
 Duration: 20
+
+A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time.
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
