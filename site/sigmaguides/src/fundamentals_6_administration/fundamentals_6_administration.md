@@ -197,17 +197,56 @@ Admins can define custom functions to represent frequently used complex calculat
 Duration: 20
 
 #### Custom Fonts
+Sigma supports custom fonts for workbooks, worksheet visualizations, and dashboards. 
+
+Custom fonts can be uploaded at the organization level and used on any workbooks, worksheet visualizations, and dashboards in that organization.
+
+Organizations are not limited to one custom font.
+
+Accepted formats: .ttf, .otf, .woff, .woff2
+
+For example, we can easily add a new font, "Coffee House" in this case:
+
+<img src="assets/fa3.png" width="600"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360063119573)
 
 <img src="assets/horizonalline.png">
 
 #### Workbook Themes
+Sigma supports creation of workbook themes in the Administration portal. Admin can Customize sets of colors, fonts, spacing, and more, then assign your organization.
+
+For example, we can easily add a new theme, use the "Coffee House" font we added and also set it as the `Organizations Default` so that it is the first choice for all content:
+
+<img src="assets/fa4.png" width="400"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747)
 
 <img src="assets/horizonalline.png">
 
 #### Customize Email
+Custom email branding allows you to apply your company's brand to all data export emails sent from your Sigma organization.
 
+By default, all emails include Sigma branding. However, applying any subset of custom branding options will automatically remove all Sigma branding.
 
+For example, a custom email configuration might look like this:
 
+<img src="assets/fa5.png" width="800"/>
+
+There is also an option to send a test email to yourself (#1).
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4409605098387)
+
+<img src="assets/horizonalline.png">
+
+#### Custom SMTP Server
+Custom SMTP Server allows you to send Sigma emails from your own SMTP server. Sigma generated emails will be sent from an email address from within your domain.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma can't monitor email deliverability if you set your own SMTP server.
+</aside>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360059130893-Customize-Welcome-and-Invite-Emails#h_01GSY6K6KTZZFZ4PSVY3KSS278)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -215,17 +254,119 @@ Duration: 20
 ## Authentication
 Duration: 20
 
+Sigma supports multiple authentication methods including:
+
+ <ul>
+      <li><strong>Password:</strong> Sigma prompts new organization members to create a unique password for their Sigma account and login.</li>
+      <li><strong>SAML:</strong> Sigma authenticates organization member accounts through the Single Sign-On (SSO) protocol you provide.</li>
+      <li><strong>SAML or Password:</strong> Organization members authenticate with either SSO or a unique password.</li>
+      <li><strong>SAML and Password:</strong> Organization members authenticate with SSO and a unique password. The primary use case for this is to ensure the admin isn't logged out while configuring SAML. Once the configuration is complete, the org should use SAML.</li>
+      <li><strong>OAuth:</strong> Sigma authenticates organization member accounts through OAuth Single Sign On (SSO). This option supports OAuth with Snowflake.</li>
+      <li><strong>OAuth or Password:</strong> Sigma authenticates organization member accounts through OAuth Single Sign-On (SSO) or a unique password. This option supports OAuth with Snowflake.</li>
+</ul>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360036944534-Manage-authentication#h_5f17acb1-0687-43c5-96ac-2e423c9a3e94)
+
+### Authentication Methods & Options:
+All configuration is accessed by clicking the `Edit` button. 
+
+The current values for Guest Account and 2-Factor Authentication are shown on the main page for your convenience. 
+
+In the example below, we are allowing SAML or a Sigma password to be used to log in. 
+
+<img src="assets/fa6.png" width="800"/>
+
+Guest Access is enabled, but is off by default. Guest user accounts are recommended when working with external vendors.
+
+Guest users cannot view or request access to content outside of their Admin-assigned team(s). 
+
+This feature is opt-in and must be enabled by an organization Admin before guest users can be invited to your organization. 
+
+[Learn more about Guest Accounts.](https://help.sigmacomputing.com/hc/en-us/articles/4412853245971-Guest-User-Accounts)
+
+We are not using 2-Factor authentication, but is supported.
+
+[Learn more about 2-Factor authentication with Sigma.](https://help.sigmacomputing.com/hc/en-us/articles/4409688043411)
+
+We have provided an `Identity provider login URL`. In this case, the url was provided by Okta, but any IdP provider can be used.
+
+[Learn more about how to configure your IdP.](https://help.sigmacomputing.com/hc/en-us/articles/360037429833-Single-Sign-On-with-SAML#h_01EEXSNMRS5SP5AEGZ236R9Y2A)
+
+Okta also provided the `X509 certificate` as well.
+
+<img src="assets/horizonalline.png">
+
+### Export Authentication:
+#### Authorized Domains
+Sigma Admins may choose to control which domains can receive emails, Google Sheets or Google Drive exports from Sigma. 
+
+**If no domains are declared authorized, users can export reports to any email address.**
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360062127973-Restrict-Export-Recipients)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Connections
 Duration: 20
 
+The `Connections` page provides configuration information so that Sigma is able to connect to your cloud data warehouse. 
+
+At the time of this QuickStart, seven vendors are supported. Clicking on the desired icon will bring up the configuration dialogue specific to that vendor:
+
+<img src="assets/fa7.png" width="600"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037429953-Create-a-New-Database-Connection)
+
+Depending on the security parameters of your oganization, it may be necessary to add Sigma's IP addresses to your allowed list of IPs (whitelist).
+
+Sigma's egress IP addresses are listed on all individual connection pages in your Sigma Admin Portal:
+
+For example, selecting Snowflake displays the egress IP addresses:
+
+<img src="assets/fa8.png" width="600"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360062127973-Restrict-Export-Recipients)
+
+Another important configuration is warehouse write access. This is only required for specific Sigma features. If you are not using these features, it is not required.
+
+Granting write access to a database enables the use of several Sigma features:
+
+[CSV upload](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)
+[Materialization](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611)
+[Dataset warehouse views](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027)
+[Input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Not all features are available for each connection type. Refer to Sigma's documentation for the current list of supported vendors.
+</aside>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> By design, the database destination that you configure for write access is not visible in the Sigma connection explorer pane. We recommend that you configure a separate database or a database and schema combination for write-access purposes.
+</aside>
+
+Sigma provides a set of sample data, at no cost, to all customers. The sample database is a great way to let new users become familiar with Sigma without having to connect to corporate data. The connection is not editable, it can be hidden if desired.
+
+<img src="assets/fa9.png" width="600"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Usage
 Duration: 20
+
+<img src="assets/fa9.png" width="600"/>
+
+
+
+<img src="assets/horizonalline.png">
+
+
+
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
