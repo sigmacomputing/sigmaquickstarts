@@ -6,21 +6,21 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 
+lastUpdated: 2023-09-18
 
 # Fundamentals 6: Administration
 
 ## Overview 
 Duration: 5
 
-This QuickStart introduces the essential Administrative features and navigation considerations within Sigma. Whether you're managing your instance, setting up connections, configuring data governance rules, or customizing user interactions, this will provide you with a foundational overview.
+This QuickStart introduces the essential administrative features and considerations within Sigma. Whether you're managing your instance, setting up connections, configuring data governance rules, or customizing user interactions, this will provide you with a foundational overview.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
 
  ### Target Audience
-Administrators (Admin) who are new to Sigma and want a quick overview of the available features functions common in their roles. 
+Administrators (admin) who are new to Sigma and want a quick overview of the available features common to their role. 
 
 ### Prerequisites
 
@@ -48,7 +48,7 @@ Duration: 20
 We will first cover how to access the administrative ("admin") areas of Sigma and then list and describe each of the available options.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The admin area of Sigma requires a user to have an account type permission of "Admin". Users who do not have this permission will not be able to any administrative function and the option is not displayed on the interface to them.
+<strong>NOTE:</strong><br> The admin area of Sigma requires a user to have an account type permission of "Admin". Users who do not have this permission will not be able to access any administrative function and the option is not displayed on the interface either.
 </aside>
 
 Admin users can access the admin page one of two ways as shown:
@@ -60,12 +60,12 @@ We have centralized all the admin options on this one page as shown:
 <img src="assets/fa2.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma provides each client with access to our live technical support team via the ? widget. You can come hear to ask questions in regard to How To/Break Fix. For instance, how do I do a moving average for the last 3 days or why am I getting this error message. They are equipped to handle even the most complex questions from 6am PST - 6PM PST M-F.
+<strong>IMPORTANT:</strong><br> Sigma provides each client with access to our live technical support team via the ? widget. You can come here to ask any questions. For instance, how do I do a moving average for the last 3 days or why am I getting this error message? Live chat is equipped to handle even the most complex questions from 6am PST - 6PM PST M-F.
 
 Furthermore, you can even schedule a 30min meeting with this team to easily show what you are trying to solve and troubleshoot live on a call.
 </aside>
 
-In addition to Live-Chat, there are many other options exposed by clicking on the <img src="assets/helpicon.png" width="30"/> icon:
+In addition to Live chat, there are many other options exposed by clicking on the <img src="assets/helpicon.png" width="30"/> icon:
 
 <ul>
     <li><strong>Help Center:</strong> Explore Sigma's self-service resource library for documentation.</li>
@@ -97,13 +97,15 @@ In addition to Live-Chat, there are many other options exposed by clicking on th
 
 In addition, [Sigma publishes new feature announcements in QuickStart format, once per month.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-Next, we will cover each area inside administration at a high-level.
+Next, we will cover each area inside administration, at a high-level.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Account - General Settings
 Duration: 20
+
+<img src="assets/fa28.png" width="800"/>
 
 #### Site
 Identifies your user account name, cloud provider, data of creation, URL and when the product license will expire. 
@@ -140,7 +142,7 @@ This is a grouping of small features that do not necessitate their own group.
 Enable CSV upload for connections with write access configured. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)
 
 ***Sample connection:***<br>
-Include Sigma sample connection in list of connections to select from. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360048924514-Sigma-s-Sample-Connection)
+Include Sigma's sample connection in list of connections to select from. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360048924514-Sigma-s-Sample-Connection)
 
 ***Public embeds:***<br>
 Allow public embedding of Sigma documents. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/1500011565421-Public-Embedding)
@@ -166,7 +168,7 @@ Sigma supports integrations with Slack and dbt.
 <img src="assets/horizonalline.png">
 
 #### Embedding
-For customers who want to include (embed) Sigma content into their own applications, Sigma provides Application Embedding. 
+For customers who want to include (embed) Sigma content into their own applications, Sigma provides an embedding method. 
 
 [There is a QuickStart series for those wanting detailed information and instruction.](https://quickstarts.sigmacomputing.com/?cat=embedding)
 
@@ -196,6 +198,8 @@ Admins can define custom functions to represent frequently used complex calculat
 ## Account - Branding Settings
 Duration: 20
 
+<img src="assets/fa29.png" width="800"/>
+
 #### Custom Fonts
 Sigma supports custom fonts for workbooks, worksheet visualizations, and dashboards. 
 
@@ -214,9 +218,9 @@ For example, we can easily add a new font, "Coffee House" in this case:
 <img src="assets/horizonalline.png">
 
 #### Workbook Themes
-Sigma supports creation of workbook themes in the Administration portal. Admin can Customize sets of colors, fonts, spacing, and more, then assign your organization.
+Sigma supports creation of workbook themes. Admin can customize sets of colors, fonts, spacing, and more.
 
-For example, we can easily add a new theme, use the "Coffee House" font we added and also set it as the `Organizations Default` so that it is the first choice for all content:
+For example, we can easily add a new theme, use the "Coffee House" font we added, and also set it as the `Organizations Default` so that it is the first choice for all content:
 
 <img src="assets/fa4.png" width="400"/>
 
@@ -225,7 +229,7 @@ For example, we can easily add a new theme, use the "Coffee House" font we added
 <img src="assets/horizonalline.png">
 
 #### Customize Email
-Custom email branding allows you to apply your company's brand to all data export emails sent from your Sigma organization.
+Custom email branding allows you to apply your company's brand to all export emails sent from your Sigma organization.
 
 By default, all emails include Sigma branding. However, applying any subset of custom branding options will automatically remove all Sigma branding.
 
@@ -260,7 +264,7 @@ Sigma supports multiple authentication methods including:
       <li><strong>Password:</strong> Sigma prompts new organization members to create a unique password for their Sigma account and login.</li>
       <li><strong>SAML:</strong> Sigma authenticates organization member accounts through the Single Sign-On (SSO) protocol you provide.</li>
       <li><strong>SAML or Password:</strong> Organization members authenticate with either SSO or a unique password.</li>
-      <li><strong>SAML and Password:</strong> Organization members authenticate with SSO and a unique password. The primary use case for this is to ensure the admin isn't logged out while configuring SAML. Once the configuration is complete, the org should use SAML.</li>
+      <li><strong>SAML and Password:</strong> Organization members authenticate with SSO and a unique password. The primary use case for this is to ensure the admin isn't logged out while configuring SAML. Once the configuration is complete, the org should use just SAML.</li>
       <li><strong>OAuth:</strong> Sigma authenticates organization member accounts through OAuth Single Sign On (SSO). This option supports OAuth with Snowflake.</li>
       <li><strong>OAuth or Password:</strong> Sigma authenticates organization member accounts through OAuth Single Sign-On (SSO) or a unique password. This option supports OAuth with Snowflake.</li>
 </ul>
@@ -276,11 +280,11 @@ In the example below, we are allowing SAML or a Sigma password to be used to log
 
 <img src="assets/fa6.png" width="800"/>
 
-Guest Access is enabled, but is off by default. Guest user accounts are recommended when working with external vendors.
+Guest Access is enabled (off by default). Guest user accounts are recommended when working with external vendors.
 
 Guest users cannot view or request access to content outside of their Admin-assigned team(s). 
 
-This feature is opt-in and must be enabled by an organization Admin before guest users can be invited to your organization. 
+This feature is opt-in and must be enabled by an organization admin before guest users can be invited to your organization. 
 
 [Learn more about Guest Accounts.](https://help.sigmacomputing.com/hc/en-us/articles/4412853245971-Guest-User-Accounts)
 
@@ -314,7 +318,7 @@ The `Connections` page provides configuration information so that Sigma is able 
 
 At the time of this QuickStart, seven vendors are supported. Clicking on the desired icon will bring up the configuration dialogue specific to that vendor:
 
-<img src="assets/fa7.png" width="600"/>
+<img src="assets/fa7.png" width="800"/>
 
 [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037429953-Create-a-New-Database-Connection)
 
@@ -326,15 +330,13 @@ For example, selecting Snowflake displays the egress IP addresses:
 
 <img src="assets/fa8.png" width="600"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360062127973-Restrict-Export-Recipients)
-
 Another important configuration is warehouse write access. This is only required for specific Sigma features. If you are not using these features, it is not required.
 
 Granting write access to a database enables the use of several Sigma features:
 
-[CSV upload](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)
-[Materialization](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611)
-[Dataset warehouse views](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027)
+[CSV upload](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)<br>
+[Materialization](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611)<br>
+[Dataset warehouse views](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027)<br>
 [Input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)
 
 <aside class="negative">
@@ -345,7 +347,7 @@ Granting write access to a database enables the use of several Sigma features:
 <strong>IMPORTANT:</strong><br> By design, the database destination that you configure for write access is not visible in the Sigma connection explorer pane. We recommend that you configure a separate database or a database and schema combination for write-access purposes.
 </aside>
 
-Sigma provides a set of sample data, at no cost, to all customers. The sample database is a great way to let new users become familiar with Sigma without having to connect to corporate data. The connection is not editable, it can be hidden if desired.
+Sigma provides a set of sample data, at no cost, to all customers. The sample database is a great way to let new users become familiar with Sigma, without having to connect to corporate data. The connection is not editable and it can be hidden if desired.
 
 <img src="assets/fa9.png" width="600"/>
 
@@ -360,6 +362,8 @@ Sigma provides all customers with extensive reporting on various aspects of user
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The usage section does not required customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
 </aside>
+
+[To learn more about external logging, please review this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
 
 At the time of this QuickStart, the following usage catagories are provided. Each category has many KPI, charts, tables and filters, formatted based on the available data.
 
@@ -378,7 +382,7 @@ Discover who has permissions for a document, the origin of the permissions, acce
 
 <img src="assets/fa12.png" width="800"/>
 
-**Schedule Exports:**<br>
+**Scheduled Exports:**<br>
 View data on your organization's export tasks and Sendgrid email events.
 
 <img src="assets/fa13.png" width="800"/>
@@ -408,7 +412,7 @@ In Sigma, users are called `People`.
 
 People can be added manually to Sigma (and in bulk) or they can be added automatically the first time they login to Sigma with SSO or an embedded application. 
 
-When added manually, people receive and email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `People` page. 
+When added manually, people receive an email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `People` page. 
 
 Email invitations and welcome emails can be customized if desired.
 
@@ -432,7 +436,7 @@ Duration: 20
 
 Sigma uses teams to organize and manage users in groups.
 
-You can use Sigma to manage user group membership or through your organizations Identity Provider (IdP).
+You can use Sigma to manage user group membership or leverage your organizations Identity Provider (IdP).
 
 Teams can be `Public` or `Private`.
 
@@ -440,17 +444,17 @@ Public teams are seen and searchable by all members of your Sigma org. Anyone wi
 
 Private teams will only be visible to members of the team.
 
-For example, in this "Finance Team" there are three users, two accessed Sigma via an embedded application and another logged into Sigma directly. The last user is an admin.
+For example, in this "Finance Team" there are four users, two accessed Sigma via an embedded application and another logged into Sigma directly. The last user is an admin.
 
 <img src="assets/fa18.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> You can name a team anything you want but when embedding, it is advisable to avoid special characters in names. 
+<strong>NOTE:</strong><br> You can name a team anything you want but when embedding it is advisable to avoid special characters in names. 
 </aside>
 
 [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
 
-When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces help organize content, to categorize and share folders and documents. Share them with other users and teams using permission grants.
+When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces help organize content, to categorize and share folders and documents. Workspaces can be shared with other users and teams using permission grants.
 
 [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces)
 
@@ -460,12 +464,19 @@ When creating a new team, you are prompted to also create a new workspace (optio
 ## Account Types
 Duration: 20
 
-A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time.
+Account Types allow different users different rights, and is Sigma's RBAC (role-base access control) system.
 
+A user's account type determines their highest level of interaction with data and content in Sigma. 
 
+Each user is assigned a single account type; they can only be assigned one account type at any time.
 
+Sigma provides default account types and you can create your own as needed (custom account type). 
 
+Custom account types in Sigma provides a way to restrict users to specific Sigma functionality. For example, a `Creator` role that does not allow exporting data would look like this:
 
+<img src="assets/fa19.png" width="800"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -473,6 +484,25 @@ A user's account type determines their highest level of interaction with data an
 ## User Attributes
 Duration: 20
 
+User Attributes can be used to provide a customized experience for your Sigma teams, org members, and embedded users. They can be assigned as a function in a dataset to provide row-level security.
+
+Once you create and assign a user attribute to teams, you can use this functionality in a dataset to enforce row-level security using the function CurrentUserAttributeText in a formula.  
+
+For example, if we want to restrict a user `Finance TestUser` to only the rows that are in the `East` region, we create a user attribute like this:
+
+<img src="assets/fa20.png" width="800"/>
+
+Then we use a formula on a dataset (that has a column called "Store Region") like this:
+
+```plaintext
+Contains(CurrentUserAttributeText("Region"), [Store Region])
+```
+
+The user would not be aware of the restriction and the data would be limited to the `East` region rows automatically.
+
+For a step-by-step look at using user attributes, there is a [QuickStart here.](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes?_gl=1*1p43qjd*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NTA0NDUxMi4yMjUuMS4xNjk1MDQ3Mjc3LjQuMC4w)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -480,6 +510,15 @@ Duration: 20
 ## Embeds
 Duration: 20
 
+The Embeds page lists all of the workbooks or dashboards that are active. 
+
+It is common when using Sigma to embed content into another application(s), that many "embeds" are created. This page provides a simple way to manage them all in one place. 
+
+It also alerts if there are basic configuration issues with an embed. For example, number three shows the `alert` symbol, indicating that the workbook no longer exists, although the embed configuration still does. We are able to either `Reassign embed` or simply delete it:
+
+<img src="assets/fa21.png" width="800"/>
+
+For those interested in embedding, there is an entire [series of QuickStarts dedicated to getting you going.](https://quickstarts.sigmacomputing.com/?cat=embedding)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -487,6 +526,19 @@ Duration: 20
 ## Tags
 Duration: 20
 
+Version tagging allows you to employ a software development lifecycle to control Workbook versions, using tags. For example, Sigma can have a development, staging, and production versions of a workbook and migrate changes as needed. This allows you to control which workbook versions are available to your users.
+
+For example, the `QA-Check` tag below is we would tag a new workbook to, that we want only the `QA_Team` to have access to for testing. Once testing is complete, a member of that team might tag the workbook as "production" so that other users could access it.
+
+<img src="assets/fa23.png" width="800"/>
+
+All documents that are tagged will appear in the corresponding tag page:
+
+<img src="assets/fa22.png" width="800"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging-Beta-?_gl=1*1vrin3o*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NTA1NTk5NC4yMjYuMS4xNjk1MDU2MDMwLjI0LjAuMA..)
+
+For a step-by-step look at using tags in embedded applications, there is a [QuickStart here.](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -494,6 +546,17 @@ Duration: 20
 ## Scheduled Exports
 Duration: 20
 
+The scheduled exports page shows a summary of all exports that have been set to run a schedule; across all users. 
+
+Admin are able to filter this list and delete scheduled jobs.
+
+<img src="assets/fa24.png" width="800"/>
+
+Sigma also provides extensive reporting on scheduled report usage:
+
+<img src="assets/fa25.png" width="800"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/1500010741602)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -501,6 +564,21 @@ Duration: 20
 ## Materializations
 Duration: 20
 
+The materializations page summarizes all schedule materialization jobs, last run date, next run date, status, running time and when the data was last used. 
+
+This can be very useful to admin wanting to ensure that jobs are not only running properly, but also that the result sets are being used. **There is no value (but is some cost!) in materializing data that is not being used by the business.** 
+
+Sigma also provides an option to pause jobs that are not being used as shown (number three):
+
+<img src="assets/fa26.png" width="800"/>
+
+Admin are able to jump directly to the object being materialized, or perform other functions as shown:
+
+<img src="assets/fa27.png" width="800"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization)
+
+[Materialization QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_materialization/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -508,6 +586,15 @@ Duration: 20
 ## Warehouse Views
 Duration: 20
 
+The Warehouse views page summarizes all views, their status, when they were created, last updated and the owner.
+
+Warehouse views are virtual tables in Snowflake that can be queried using Sigma or any other application in your data ecosystem. Instead of storing data in a Snowflake database table, a view saves a SQL statement that expresses specific query logic defined by the data element or input table in Sigma.
+
+When a warehouse view is created, a live link is established between Snowflake and Sigma. The view references the data element (or input table) as the source of truth and automatically updates to reflect the most recent version of the element’s underlying data. Warehouse views can be especially useful to present the data in a way that's optimized for analysis, without altering the base tables.
+
+<img src="assets/fa27.png" width="800"/>
+
+[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171-Create-and-manage-workbook-warehouse-views)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -515,29 +602,27 @@ Duration: 20
 ## APIs & Embed Secrets
 Duration: 20
 
+To access Sigma via API or leverage it for secure embedding, we require a token/secret be generated and used. This ensures that all communication between the browser and Sigma is secure.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is recommended that when generating a new token or secret that a "service account" user be used to assign the new key to.
+</aside>
+
+[To learn how to access Sigma via API, there is a QuickStart.](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
+
+[There is also an API Swagger page.](https://docs.sigmacomputing.com/api/v2/)
+
+[To learn how to access Sigma via embedding, there is a QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this QuickStart we provided a very high-level overview of all the administrative features of the Sigma platform. Please be sure to check out the additional resources list below.
 
 **Additional Resource Links**
-
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
