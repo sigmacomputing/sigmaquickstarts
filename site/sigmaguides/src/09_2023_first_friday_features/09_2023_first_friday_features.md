@@ -12,11 +12,9 @@ lastUpdated: 2023_09-31
 <--!
 Sept 1: Done
 Sept 8: Done
-Sept 15: 
+Sept 15: Done
 Sept 22: 
 Sept 29: 
-
-Zalak Trivedi: Feature Enhancement - Connection Swapping when Tagging Workbooks with Input Tables
 
 Input tables <> Databricks is now ready for beta. We would ideally want  SE's to try it out before we start rolling it out to customers. Since we had planned beta on the 14th of Sep and we are a week early.
 -->
@@ -77,6 +75,8 @@ Duration: 20
 ## New QuickStarts in August
 Duration: 20
 
+[Fundamentals 6: Administration](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_administration/index.html?index=..%2F..index#0)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -89,11 +89,21 @@ Users now have the ability to wrap the text in their pivot tables. By default, w
 
 <img src="assets/fff_09_2023_02.png" width="500"/>
 
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/20626146425619-Wrap-text)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Version Tagging
 Duration: 20
+
+
+### Version Tag Connection Swapping with Input Tables
+Organizations can now swap the connection source when applying version tags to workbooks containing input tables.
+
+Connection swapping allows you to move the workbook through the development process.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging#h_01HAB848CR0M1Q2N901DH3EYJ0)
 
 ### Tag Permissions (Beta)
 
@@ -110,6 +120,14 @@ Protected tags allow you to restrict access and select the users or teams that c
 The users must have Can edit permissions for the workbook. Public tags are unprotected, but the user must have Can edit permissions for the workbook as well.
 
 [Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+
+#### Version Tag Requests
+Users (the "requestor") without permission to use a protected tag can now submit a request to set that tag on a specific workbook version.
+
+After the request is made, an email is sent to all the members (the "approver(s)") with explicit access to the protected tag. After reviewing the workbook, the approver then can apply the requested tag to the workbook in question.
+
+[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging#h_01HAD6953P0BDK4NSFP6PTH4RH)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
