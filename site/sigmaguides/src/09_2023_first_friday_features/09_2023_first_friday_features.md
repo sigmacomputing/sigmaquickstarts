@@ -17,9 +17,17 @@ Sept 22:
 Sept 29: 
 
 Input tables <> Databricks is now ready for beta. We would ideally want  SE's to try it out before we start rolling it out to customers. Since we had planned beta on the 14th of Sep and we are a week early.
+
+Katherine Maples:
+New default number format for Axes Labels, Data Labels, and more in STAGING
+
+Stipo Josipovic:
+Team, conditional formatting is now available for input tables in production
+
+
 -->
 
-# (08-2023) August Highlights
+# (09-2023) Sept Highlights
 
 ## Overview 
 Duration: 5 
@@ -65,7 +73,14 @@ Duration: 10
 <!-- END OF SECTION-->
 
 
-## Embedding
+`## Embedding
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->`
+
+## Input Tables
 Duration: 20
 
 

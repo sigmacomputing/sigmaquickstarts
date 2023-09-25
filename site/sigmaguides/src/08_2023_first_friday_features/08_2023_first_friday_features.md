@@ -397,7 +397,7 @@ Sigma supports connections to the MySQL database, for release 8.0 or higher.
 ## New QuickStarts in August
 Duration: 20
 
-In case you missed them, here are the QuickStarts that we published last in August.
+In case you missed them, here are the QuickStarts that we published in August.
 
 [How to: Federate Access with Sigma Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 
