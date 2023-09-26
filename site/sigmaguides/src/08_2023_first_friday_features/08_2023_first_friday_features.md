@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2023_08-31
 
-# (08-2023) August Highlights
+# (08-2023) August
 
 ## Overview 
 Duration: 5 

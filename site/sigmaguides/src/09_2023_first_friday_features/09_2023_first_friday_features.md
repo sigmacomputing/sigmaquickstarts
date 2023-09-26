@@ -13,7 +13,7 @@ lastUpdated: 2023_09-31
 Sept 1: Done
 Sept 8: Done
 Sept 15: Done
-Sept 22: 
+Sept 22: Done
 Sept 29: 
 
 Input tables <> Databricks is now ready for beta. We would ideally want  SE's to try it out before we start rolling it out to customers. Since we had planned beta on the 14th of Sep and we are a week early.
@@ -27,7 +27,7 @@ Team, conditional formatting is now available for input tables in production
 
 -->
 
-# (09-2023) Sept Highlights
+# (09-2023) September
 
 ## Overview 
 Duration: 5 
