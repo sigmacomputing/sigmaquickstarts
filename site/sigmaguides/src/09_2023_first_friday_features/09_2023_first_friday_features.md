@@ -83,6 +83,25 @@ Duration: 20
 ## Input Tables
 Duration: 20
 
+### Checkbox column type in input tables
+Input tables now support a checkbox column type in place of the Logical type. To update these to the Checkbox type, open the column menu and select Change column type > Checkbox. True values convert to selected checkboxes, while False values convert to cleared checkboxes. 
+
+Checkboxes enable additional workflow capabilities by simply capturing a "yes/no" response from a Sigma user. For example, record approvals, validations and enabling data triggers based on the user's response.
+
+<img src="assets/fff_09_2023_05.png" width="800"/>
+
+For more information about changing column types and checkbox data entry, see [Create and manage input table](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)
+
+### Databricks Support
+Input tables are now compatible with Databricks connections. These dynamic workbook elements support structured data entry that allows you to integrate new data points into your analysis and augment existing data from Snowflake or Databricks. 
+
+For more information about input tables and how to use them, see the following documentation:<br>
+[Intro to input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507)<br>
+[Create and manage input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)<br>
+[Edit existing input table columns](https://help.sigmacomputing.com/hc/en-us/articles/15802547665171)<br>
+
+To review how Input Tables solves several common use cases, [check out this QuickStart](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -166,6 +185,21 @@ Sigma administrators will receive the request. They can upgrade a user’s licen
 For example, this is what a user with `Viewer` rights would see when a workbook is shared to them:
 
 <img src="assets/fff_09_2023_04.png" width="800"/>
+
+### Segmented controls
+
+A segmented control provides a "linear strip" of two or more named segments. 
+
+Each segment acts exactly like a radio button, selecting the matches and excluding other data records. 
+
+When you have to make selections from a long list of values, segmented controls can be a better option because they provide a smaller subset of relevant values, a more economical dashboard layout, and a nicer overall experience for viewers.
+
+**There are two types of segmented controls:**
+Based on a manually-entered list. You must have values that select data on the target of the control.
+
+<img src="assets/fff_09_2023_06.png" width="800"/>
+
+Based on a column in the data source or workbook element. These controls can have a maximum of 5 distinct values, sorted on record count or alphabetically.
 
 ### Text element background options
 We have added the ability to change the background color in text elements. 
