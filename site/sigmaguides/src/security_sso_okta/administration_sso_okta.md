@@ -1,7 +1,7 @@
 author: pballai
 id: administration_sso_okta
 summary: administration_sso_okta
-categories: Administration
+categories: security
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

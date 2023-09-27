@@ -16,7 +16,7 @@ Release notes for the month of June 2023 features, published on first Friday of 
 7.28.23
 -->
 
-# (07-2023) July Highlights
+# (07-2023) July
 
 ## Overview 
 Duration: 5 

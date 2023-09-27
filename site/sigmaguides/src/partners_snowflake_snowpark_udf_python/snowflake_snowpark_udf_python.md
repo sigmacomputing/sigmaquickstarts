@@ -1,7 +1,7 @@
 author: pballai
 id: snowflake_snowpark_udf_python
 summary: snowflake_snowpark_udf_python
-categories: snowflake
+categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

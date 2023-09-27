@@ -1,6 +1,6 @@
 summary: build_customer_facing_applications_using_sigma__and_snowflake
 id: build_customer_facing_applications_using_sigma__and_snowflake
-categories: snowflake
+categories: partners
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
