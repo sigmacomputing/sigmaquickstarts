@@ -178,6 +178,10 @@ public class SigmaEmbedClass {
 ```
 </aside>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> To avoid initial permission errors it is advisable to use a "test" salesforce account user. The Salesforce test user will be automatically added to Sigma (by the API). Attempting to use the same email as an existing (non-embed) Sigma user email will result in error. 
+</aside>
+
 Click `Save`.
 
 In the `left sidebar menu` use Quick Find to search for `Visualforce` and select `Visualforce Components`.
