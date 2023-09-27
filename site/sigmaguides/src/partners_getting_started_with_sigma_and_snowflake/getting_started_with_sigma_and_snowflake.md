@@ -1,7 +1,7 @@
 author: Sigma Computing -- Shawn Namdar, Partner Engineer
 id: getting_started_with_sigma_and_snowflake
 summary: This is a guide to setting up Sigma on top of Snowflake and visualizing some sample data.
-categories: snowflake
+categories: partners
 environments: web
 status: Published 
 feedback link: https://github.com/sigmacomputing/sigmaguides/issues

@@ -2,7 +2,7 @@
 author: pballai
 id: administration_azure_private_link
 summary: administration_azure_private_link
-categories: administration
+categories: security
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
