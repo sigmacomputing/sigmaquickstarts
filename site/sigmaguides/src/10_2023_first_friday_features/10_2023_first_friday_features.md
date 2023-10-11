@@ -11,6 +11,20 @@ lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 <!-- 
 10/6/23: 
 
+Sharvil Naik: RegExp match in text filter/control
+
+Page level visibility (Private Beta)
+VT Approval Flow: Beta (Demo Video)
+New Datasets: Private Beta
+Shortcuts: Private Beta
+Period over Period: Public Beta (early Nov)
+Period over Period Wizard: Public Beta 
+Embed Bookmarks: Public Beta
+Trellis Chart Upgrade: GA
+New Control Formatting Options: Private Beta
+Input Table Draft and Autofill: GA
+Input Tables Row Edit History: in Staging
+
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
