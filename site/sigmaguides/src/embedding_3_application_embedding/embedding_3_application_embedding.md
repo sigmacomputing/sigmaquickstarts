@@ -156,6 +156,10 @@ We will call our teams `FinanceViewers` and `FinanceCreators`.
 
 ![Alt text](assets/accounttypes5.png)
 
+<aside class="negative">
+<strong>NOTE:</strong><br> When creating a new Team, there is a checkbox to "Create a Workspace associated with this Team". It is off by default but check it on and Sigma will create a matching Workspace automatically for you. You can also just create the Workspace manually if you prefer.
+</aside>
+
 Exiting Administration (upper left corner Sigma Back Button or click the papercrane icon) you can click on the `Workspaces` menu item and see that this also created a Workspace for each Team. This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. This functionality provides a lot of flexibility in how your users access shared work. 
 
 <img src="assets/accounttypes6.png" width="600"/>
@@ -268,28 +272,36 @@ Click `Manage` and then `Enable` in the pop-up.
 
 Click `Copy` to copy the Secret to the clipboard. Close the popup.
 
-<img src="assets/aefix3.png" width="800"/>
+<img src="assets/aefix3.png" width="500"/>
 
-Paste the Secret into a known safe location. We will use this secret later.
+Paste the Secret into a known safe location. We can use this single secret for all embeds, but instead we will create a secret for each embed we want to allow. This option is there for you to decide how you want to manage your embed security.
 
 **You cannot look up your organizations existing embed secret after it has been created.** If you lose your embed secret, you can generate a new one. In this case your existing embeds will be rendered invalid until the API is updated with the new secret.
 
-### Generate Embed Secret
-To create an Application embed, you will need an embed secret. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
+### Generate Dashboard Embed Secret
+We will now create a secret that is specific to our Dashboard embed. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
 
-Navigate to `Administration` > `APIs & Embed Secrets`.
+**1:** Navigate to `Administration` > `APIs & Embed Secrets`:
 
- <li><strong>Steps to Create Embed Secret</strong>
-    <ol type="n"> 
-        <li>Click Create New, located in the page's top right corner. This will open the Create New API Token or Embed Secret modal</li>>
-        <li>Under API Token or Embed Secret? select Embed Secret</li>
-        <li>Enter a Name and Description as you see fit</li>
-        <li>Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself</li>
-        <li>Click Create.
-        <li>Copy the provided ClientID and store it.</li>
-        <li>Click Close</li>
-   </ol>
-</li>
+**2:** Click `Create New`, located in the page's top right corner. This will open the Create New API Token or Embed Secret modal:
+
+<img src="assets/ae1.png" width="800">
+
+**3:** Under `API Token or Embed Secret` select `Embed Secret`.
+
+**4:** Enter a Name and Description as you see fit.
+
+**5:** Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself.
+
+**6:** Click Create:
+
+<img src="assets/ae2.png" width="500">
+
+**7:** Copy the provided `ClientID` and `Secret` and store them.
+
+<img src="assets/ae3.png" width="500">
+
+**8:** Click Close
 
 ### Generate Embed Links
 Return to our Workbook.
@@ -303,8 +315,6 @@ Under `Generate Application Embed Path` for, select your embed target. We select
 <img src="assets/accounttypes18.png" width="500"/>
 
 The embed path will automatically be generated. `Click Copy` to copy this path. Save this off to a text file for later use. Close the modal.
-
-![Alt text](assets/accounttypes38.png)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

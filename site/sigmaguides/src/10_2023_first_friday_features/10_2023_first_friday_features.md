@@ -3,13 +3,27 @@ id: PROVIDE A UNIQUEID (use the QS name with no spaces)
 summary: This is a sample Sigma Guide
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: first_friday_features
+tags: 
 lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 
 <!-- 
 10/6/23: 
+
+Sharvil Naik: RegExp match in text filter/control
+
+Page level visibility (Private Beta)
+VT Approval Flow: Beta (Demo Video)
+New Datasets: Private Beta
+Shortcuts: Private Beta
+Period over Period: Public Beta (early Nov)
+Period over Period Wizard: Public Beta 
+Embed Bookmarks: Public Beta
+Trellis Chart Upgrade: GA
+New Control Formatting Options: Private Beta
+Input Table Draft and Autofill: GA
+Input Tables Row Edit History: in Staging
 
 
 <aside class="positive">
