@@ -186,7 +186,7 @@ Click `Save`.
 
 In the `left sidebar menu` use Quick Find to search for `Visualforce` and select `Visualforce Components`.
 
-Create a `new` one called `SigmaEmbedController` and paste the following code into the window and save it:
+Create a `new` one called `SigmaEmbedComponent` and paste the following code into the window and save it:
 
 <aside class="negative">
 <strong>NOTE:</strong><br> In line 1 of the code, the component controller must match the Apex Class name created in the previous step.
