@@ -297,6 +297,8 @@ Now what happens if we add ourself's back into `TeamEveryone`?
 
 <img src="assets/nrls24.png" width="800"/>
 
+In preparation for the next use case, return to the Dataset, hide the `Team` and `test for team` columns and disable the `test for team` filter. Publish those changes.
+
 Now what if we don't have email address in the source data and don't want to use Sigma Teams? We will explore that in the next section.
 
 ![Footer](assets/sigma_footer.png)
@@ -305,17 +307,73 @@ Now what if we don't have email address in the source data and don't want to use
 ## User Attribute RLS
 Duration: 20
 
+User Attributes (UA) can be used to provide a customized experience for your Sigma Teams or Members. They do not depend on email or currentTeam membership to work and allow you to apply RLS to any column in a Dataset.
 
+They are assigned using a function in a Dataset column to provide row-level security.
 
+Once you create a UA, you assign it to a Team(s). You then use this functionality in a Dataset to enforce row-level security in a similar manner as we have done with `CurrentUserEmail` and `CurrentUserTeam`, but this time we use the function `CurrentUserAttributeText` in the formula.  
 
+In this use-case, we don't want to use Teams or Email columns as we assume they don't exist in our source data. 
 
+Navigate to `Administration` > `User Attributes` and click `Create`.
 
+Name the new UA `Region`. 
+
+We need to assign this UA to either an existing `Team` or individual users (`Members`). 
+
+We will use ourself (as Member) and assign the `Assigned Value` to only the `East` region.
+
+Click `Assign Attribute`:
+
+<img src="assets/nrls25.png" width="800"/>
+
+<img src="assets/nrls26.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When using Team assigmment, UAs also have a priority column. The priority determines which value is used for a user who may be a member of more than one team.
+</aside>
+
+Return to the Dataset, place it in `Edit` mode, and click on the `Worksheet` tab.
+
+Add a new column next to `Store Region`, rename it `test for ua_Region` and set it's formula to:
+```code
+CurrentUserAttributeText("Region") = [Store Region]
+```
+
+Don't forget to set the filter as we have done before:
+
+<img src="assets/nrls29.png" width="800"/>
+
+If we open the `Store Region` drop menu and select `Column details` we can see that there is only one `Store Region` shown for `East` and we have the expected 812K rows of data:
+
+<img src="assets/nrls30.png" width="800"/>
+
+Hide the `Team` and `test for team` and `test for ua_Region` columns.
+
+You can Publish this Dataset and check your Workbook if you like now. The results should show 812K rows and no indication to the user that data is being restricted:
+
+<img src="assets/nrls31.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Custom SQL
 Duration: 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
