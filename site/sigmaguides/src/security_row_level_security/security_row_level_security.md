@@ -360,30 +360,67 @@ You can Publish this Dataset and check your Workbook if you like now. The result
 ## Custom SQL
 Duration: 20
 
+Since we already successfully configured a UA (Region), we can use it in a Custom SQL dataset to provide RLS.
 
+ This method can be used anywhere in the SQL statement for any UA. 
+ 
+UAs can be used to switch the database name, table name, in the select or where clauses.
 
+In our use case the `Store Region` for each transaction is present in a column. We can leverage Custom SQL to filter the data directly (using a where clause) and not have to worry about applying a function and filter in the Sigma dataset.
 
+Using the example we just did in the last exercise, we will create a Dataset based on SQL query instead of adding the dataset through the `Create New` workflow.
 
+### Steps:
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Prior to this, when developing in Sigma we would get “no data” until we looked at the actual embed page with UA passed for Region. That can be desirable in the case that the Parent Application fails to pass a value for Region and we show data we should not. 
+</aside>
 
+Navigate to the previously create `Row Level Security` Workbook and `edit` it.
 
+Create a `new Page` and rename it to `RLS SQL Query`.
 
+Click `+ Add New` and `Table`. 
 
+<img src="assets/rls9.png" width="800"/>
 
+For `Source`, select `New` and then `Write SQL`.
 
+<img src="assets/rls11.png" width="800"/>
 
+In the Connections drop down, select `Sigma Sample Database`.
 
+In the large open whitespace `paste the following code`:
 
+```sql
+SELECT * FROM RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
+LIMIT 10
+```
+
+This SQL code will get all columns from the table we have used previously, but limit the return based on the UA `Ragion` and it's `Membership` of just my user and the `Attribute Value` of `East`. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, in the select clause or where clause.
+</aside>
+
+`Click Run.` You should only see rows from Store Region=East.
+
+<img src="assets/rls12.png" width="800"/>
+
+You can now choose to save this quesry and using it as a data source for our Workbook.
+
+While this method feels like less steps, not all users are comfortable writing SQL. For those who are, it is a **great option** to have.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+<!-- END -->
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this QuickStart we learned how to implement four different methods to asset row level security against a set of data and some of the fine details when working with RLS. 
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+For those wanting to apply RLS in an embedding environment, [see this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
