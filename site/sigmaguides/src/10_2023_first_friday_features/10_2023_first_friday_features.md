@@ -17,6 +17,16 @@ lastUpdated: {lasted updated using the date format yyyy-mm-dd}
 </aside>
 
 <img src="assets/fff_09_2023_01.png" width="800"/>
+
+Stipo Josipovic: GA announcement: Drag-to-select and Autofill for Input Tables are now available for :celebrate:everyone!!:celebrate:
+We’ve integrated this classic and beloved spreadsheet feature into Input Tables to make augmenting data for ad hoc analysis that much easier and fun!
+With drag-to-select, you can now click and drag to select cells in input tables and level tables!
+With autofill in Input Tables, cell selections will now have a fill handle: click and drag the fill handle to extend the selection and fill the new cell values based on the initial selection!
+:sparkles: NEW: :sparkles: Horizontal autofill! You can now extend a selection horizontally to fill values in columns to the right of the original selection
+
+Hao Xu: Pasting table values into filter/control is now available
+Users can now copy paste cell values from excel/gsheet/sigma table into filters/controls. This solves for a big pain point users currently have where they need to first convert values into CSV and then pasting into filter which can take minutes.
+
  -->
 
 # (10-2023) October
