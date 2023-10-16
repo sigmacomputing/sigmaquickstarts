@@ -219,8 +219,6 @@ WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
 LIMIT 10
 ```
 
-//Contains(Concat(",", CurrentUserAttributeText("region"), ","), Concat(",", West, ","))
-
 This SQL code will get all columns from the table we have used previously but limit the return based on the “Region” UA and return only 10 rows.
 
 <aside class="negative">
