@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-10-13
+lastUpdated: 2023-10-16
 
 # Implementing Row Level Security
 <!-- The above name is what appears on the website and is searchable. -->
@@ -314,9 +314,9 @@ User Attributes (UA) can be used to provide a customized experience for your Sig
 
 They are assigned using a function in a Dataset column to provide row-level security.
 
-Once you create a UA, you assign it to a Team(s). You then use this functionality in a Dataset to enforce row-level security in a similar manner as we have done with `CurrentUserEmail` and `CurrentUserTeam`, but this time we use the function `CurrentUserAttributeText` in the formula.  
+Once you create a UA, you assign it to a Team(s) or individual users(s). You then use this functionality in a Dataset to enforce row-level security in a similar manner as we have done with `CurrentUserEmail` and `CurrentUserTeam`, but this time we use the function `CurrentUserAttributeText` in the formula.  
 
-In this use-case, we don't want to use Teams or Email columns as we assume they don't exist in our source data. 
+In the following use-case, we don't want to use Teams or Email columns as we assume they don't exist in our source data. 
 
 Navigate to `Administration` > `User Attributes` and click `Create`.
 
@@ -324,16 +324,18 @@ Name the new UA `Region`.
 
 We need to assign this UA to either an existing `Team` or individual users (`Members`). 
 
-We will use ourself (as Member) and assign the `Assigned Value` to only the `East` region.
+We will use ourself (as `Member`) and assign the `Assigned Value` to only the `East` region.
 
 Click `Assign Attribute`:
 
 <img src="assets/nrls25.png" width="800"/>
 
+Click `Assign`.
+
 <img src="assets/nrls26.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> When using Team assigmment, UAs also have a priority column. The priority determines which value is used for a user who may be a member of more than one team.
+<strong>IMPORTANT:</strong><br> When using Team assignment, UAs also have a priority column. The priority determines which value is used for a user who may be a member of more than one team.
 </aside>
 
 Return to the Dataset, place it in `Edit` mode, and click on the `Worksheet` tab.
@@ -345,7 +347,7 @@ CurrentUserAttributeText("Region") = [Store Region]
 
 Don't forget to set the filter as we have done before:
 
-<img src="assets/nrls29.png" width="800"/>
+<img src="assets/nrls29.png" width="500"/>
 
 If we open the `Store Region` drop menu and select `Column details` we can see that there is only one `Store Region` shown for `East` and we have the expected 812K rows of data:
 
@@ -365,18 +367,18 @@ Duration: 20
 
 Since we already successfully configured a UA (Region), we can use it in a Custom SQL dataset to provide RLS.
 
- This method can be used anywhere in the SQL statement for any UA. 
+This method can be used anywhere in the SQL statement for any UA. 
  
-UAs can be used to switch the database name, table name, in the select or where clauses.
+UAs can also be used to switch the database name, table name, or in the select or where clauses.
 
 In our use case the `Store Region` for each transaction is present in a column. We can leverage Custom SQL to filter the data directly (using a where clause) and not have to worry about applying a function and filter in the Sigma dataset.
 
-Using the example we just did in the last exercise, we will create a Dataset based on SQL query instead of adding the dataset through the `Create New` workflow.
+Using the example we just did in the last exercise, we will create another Dataset based on SQL query instead of adding the dataset through the `Create New` workflow.
 
 ### Steps:
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Prior to this, when developing in Sigma we would get “no data” until we looked at the actual embed page with UA passed for Region. That can be desirable in the case that the Parent Application fails to pass a value for Region and we show data we should not. 
+<strong>NOTE:</strong><br> Prior to this, when developing in Sigma we would get “no data” until we looked at the actual embed page with UA passed for Region. That can be desirable in the case that the Parent Application fails to pass a value for Region. We don't want to show any data in that case. 
 </aside>
 
 Navigate to the previously create `Row Level Security` Workbook and `edit` it.
@@ -389,7 +391,7 @@ Click `+ Add New` and `Table`.
 
 For `Source`, select `New` and then `Write SQL`.
 
-<img src="assets/rls11.png" width="800"/>
+<img src="assets/rls11.png" width="600"/>
 
 In the Connections drop down, select `Sigma Sample Database`.
 
@@ -398,20 +400,19 @@ In the large open whitespace `paste the following code`:
 ```sql
 SELECT * FROM RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
 WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
-LIMIT 10
 ```
 
-This SQL code will get all columns from the table we have used previously, but limit the return based on the UA `Ragion` and it's `Membership` of just my user and the `Attribute Value` of `East`. 
+This SQL code will get all columns from the table we have used previously, but limit the return based on the UA `Region` and it's `Membership` of just my user, and the `Attribute Value` of `East`. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, in the select clause or where clause.
+<strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, or in the select clause or where clause.
 </aside>
 
 `Click Run.` You should only see rows from Store Region=East.
 
 <img src="assets/rls12.png" width="800"/>
 
-You can now choose to save this quesry and using it as a data source for our Workbook.
+You can now choose to save this query and using it as a data source for our Workbook.
 
 While this method feels like less steps, not all users are comfortable writing SQL. For those who are, it is a **great option** to have.
 
@@ -421,7 +422,7 @@ While this method feels like less steps, not all users are comfortable writing S
 ## What we've covered
 Duration: 5
 
-In this QuickStart we learned how to implement four different methods to asset row level security against a set of data and some of the fine details when working with RLS. 
+In this QuickStart we learned how to implement four different methods to enforce row level security against a set of data and some of the fine details when working with RLS in Sigma
 
 For those wanting to apply RLS in an embedding environment, [see this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
