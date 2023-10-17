@@ -244,6 +244,31 @@ If the query indeed returns all of the records, the KPIs are calculated directly
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Alpha Query List and Filter Performance
+Duration: 20
+
+Sigma also leverages Alpha Query to improve performance when Workbooks have List controls or Filters.
+
+In previous implementations, when a user opened a list filter or control, it loads the value to filter, but sometimes an extended time was required to fetch from data warehouse and cause a long wait time on the user side. Users found this slow and annoying in their daily workflow.
+
+
+Sigma now utilizes Alpha Query to give a heuristic list, **before the fetch is finished.** 
+
+This can massively improve List and Filter loading performance.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This improvement relies on Alpha Query and cannot support all cases. For example, if a table has been filtered by "Product Type" = "Computer" already, then Alpha Query is not able to determine the list, so the control still needs to wait for a data warehouse fetch.
+</aside>
+
+An example:
+
+<img src="assets/listcontrol.gif">
+
+This use of Alpha Query provides an improved user experience which leads to more usage and satisfaction. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Result Cache(s) Usage
 Duration: 20
 
