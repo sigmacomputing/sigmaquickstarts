@@ -11,42 +11,34 @@ lastUpdated: 2023-10-18
 
 # Snowflake Key-pair Rotation
 
-## Overview 
+## Overview
 Duration: 5 
 
-Currently, Sigma supports Basic Auth (username + password) and Oauth for new Snowflake connections. 
+Sigma supports Basic Auth (username + password) and Oauth for new Snowflake connections. 
 
 With this feature release, we add support for the authentication method by key pair (public key + private key), for Snowflake connections.
 
-Snowflake supports authentication using a combination of a public and private RSA key pair. The private key remains with the client (Sigma), and the corresponding public key is stored in Snowflake. 
+Snowflake supports authentication using a combination of a public and private RSA key pair. The private key remains with the client (Sigma), and the corresponding public key is stored by the holder of the correct public key (in this case, Snowflake). 
 
 The main idea is that Snowflake can verify the identity of the client without the client ever revealing its private key.
 
-Every public key matches to only one private key. Together, they are used to encrypt and decrypt messages. Data encrypted with the private key can be decrypted only with the public key and vice versa.
+Every public key matches to only one private key. 
 
-When keys are used for authentication, Sigma uses the private key to generate a digital signature. The client decrypts the signature using the public key and compares the hash with its own computed hash. If the values match, Sigma's authentication is successful.
+Private keys can have one or many public key holders (for example, multiple Sigma connections, if you prefer to use one private key).
 
-    Key Pair Authentication: This is a method of authenticating a user or service based on a pair of keys: a private key, which is kept secret, and a public key, which is shared. In the context of Snowflake, users or services can authenticate using RSA private keys rather than passwords.
+Data encrypted with the private key can be decrypted only with the public key, and vice versa.
 
-    Key Rotation: Refers to the process of replacing an existing key with a new one, enhancing security.
+Together, they are used to encrypt and decrypt messages. In this case, the messages are Sigma's connection to Snowflake as configured in Sigma.
 
-Here's a simple representation:
+When keys are used for authentication, Sigma uses the private key to generate a digital signature. 
 
-    Key Pair Generation: The user or service generates a pair of keys (private and public).
+The client decrypts the signature using the public key and compares the hash with its own computed hash. If the values match, Sigma's authentication is successful.
 
-    Public Key Registration: The public key is registered with Snowflake.
-
-    Authentication: For authentication, Snowflake challenges the user/service, which they prove by using their private key without revealing it.
-
-    Key Rotation: After a set period or under certain conditions, the old key pair is deprecated and a new key pair is generated. The new public key is then registered with Snowflake, and the process continues.
-
-
-RSA relies on the difficulty of factoring large numbers. If n can be factored into p and q, then the private key d can be derived. This is why it's crucial to choose very large primes and to keep the private key secret.
-Over the years, to ensure security against improving factorization techniques and increasing computational power, the recommended size of n has grown.
-
+We will discuss RSA encryption a little more in the next section, which is optional, but provided for it's educational value.
 
  ### Target Audience
 
+Sigma administrators who are interested in implementing RSA connection encryption via key pair authorization and key rotation.
 
 ### Prerequisites
 
@@ -65,14 +57,74 @@ Over the years, to ensure security against improving factorization techniques an
   
 ### What You’ll Learn
 
-## **NEXT SECTION**
+## RSA Encryption
 Duration: 20
+
+Snowflake uses RSA 2048-bit encryption for it's support of key pair authorization. 
+
+Sigma is able to leverage this support via it's custom Go driver that is used to create connections to Snowflake. 
+
+It is important to have a general understanding of RSA encryption (RSA) to appreciate just how good it is. We would be remiss if not to mention the three inventors behind RSA, who did the work way back in 1977. In fact, the name `RSA` is derived from their initials. They are:
+
+<img src="assets/rsa1.png" width="800"/>
+
+Now, RSA has evolved over the many years but at it's core, the security lives in the difficulty in factoring of semi-prime numbers. 
+
+A semi-prime number is a natural number that is the product of two prime numbers. 
+
+Factoring a semi-prime results in two prime numbers. For example, 
+
+1515 is a semi-prime because it is the product of two prime numbers, 33 and 55.
+
+There's no known algorithm that can factor large semi-primes in polynomial time (relative to the number of digits in the semi-prime). All known algorithms take time that grows at least exponentially with the size of the semi-prime, making them impractical for very large semi-primes.
+
+There are quantum algorithms, like Shor's algorithm, that can factor semi-primes in polynomial time. However, as of now, large-scale quantum computers that can run Shor's algorithm efficiently don't exist. If and when they do, they will pose a threat to cryptographic systems based on semi-prime factoring difficulty, like RSA in the long run.
+
+#### The contest
+
+The RSA Factoring Challenge was a challenge put forward by RSA Laboratories on March 18, 1991 with cash awards to successful participants.
+
+They organizers published a list of semi-primes (numbers with exactly two prime factors) known as the RSA numbers, with a cash prize for the successful factorization of some of them. The smallest of them, a 100-decimal digit number called `RSA-100` was successfully factored by April 1, 1991. 
+
+This is why you will never see anyone using RSA-100 in commercial applications today. In fact, the largest RSA number un-factored to date (in 2020) is `RSA-250`
+
+Many of the bigger numbers have still not been factored and are expected to remain un-factored for quite some time.
+
+[You can read more about the content here:](https://en.wikipedia.org/wiki/RSA_Factoring_Challenge)
+
+As mentioned earlier, Snowflake is using `RSA-2048` which has never been un-factored despite the cash prize for doing so being $200,000 at the time. 
+
+RSA-2048 is considered by many to be currently impossible to factor, and may not be factorizable for many years to come, unless considerable advances are made in integer factorization or computational power. 
+
+Of course, Sigma and Snowflake will adapt should progress be made in this area.
+
+An example of what a RSA-2048 number looks like is:
+
+<img src="assets/rsa2.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Key Pair Auth
 Duration: 20
+
+Key pair authentication is a method of authenticating a user or service (Sigma connection) based on a pair of keys: a private key, which is kept secret, and a public key, which is shared. 
+
+In the context of Snowflake, users or services can authenticate using RSA-2048 private keys rather than passwords.
+
+Key rotation is the process of replacing an existing key with a new one, enhancing security.
+
+Here are the basic steps:
+
+**1: Key Pair Generation:**  The user or service generates a pair of keys (private and public). This is typically done with [OpenSSL](https://www.openssl.org/)
+
+**2: Public Key Registration:** The Sigma connection is created and configured, using the private key created in step 1.
+
+**3: Public Key Registration:** The public key is registered with Snowflake.
+
+**4: Authentication:** For authentication of the Sigma connection request, Snowflake challenges Sigma, which Sigma proves by using their private key without revealing it.
+
+**5: Key Rotation:** After a set period or under certain conditions, the old key pair is deprecated and a new key pair is generated. The new public key is then registered with Snowflake, and the process continues.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
