@@ -9,7 +9,7 @@ tags: default
 lastUpdated: 2023-10-18
 
 
-# Snowflake Key-pair Rotation
+# Snowflake Key-pair Authorization
 
 ## Overview
 Duration: 5 
@@ -68,25 +68,25 @@ It is important to have a general understanding of RSA encryption (RSA) to appre
 
 <img src="assets/rsa1.png" width="800"/>
 
-Now, RSA has evolved over the many years but at it's core, the security lives in the difficulty in factoring of semi-prime numbers. 
+RSA has evolved over the many years but at it's core, the security lives in the difficulty in factoring of semi-prime numbers. 
 
 A semi-prime number is a natural number that is the product of two prime numbers. 
 
-Factoring a semi-prime results in two prime numbers. For example, 
+Factoring a semi-prime results in two prime numbers. For example:
 
 1515 is a semi-prime because it is the product of two prime numbers, 33 and 55.
 
 There's no known algorithm that can factor large semi-primes in polynomial time (relative to the number of digits in the semi-prime). All known algorithms take time that grows at least exponentially with the size of the semi-prime, making them impractical for very large semi-primes.
 
-There are quantum algorithms, like Shor's algorithm, that can factor semi-primes in polynomial time. However, as of now, large-scale quantum computers that can run Shor's algorithm efficiently don't exist. If and when they do, they will pose a threat to cryptographic systems based on semi-prime factoring difficulty, like RSA in the long run.
+There are quantum algorithms, like [Shor's algorithm](https://en.wikipedia.org/wiki/Shor%27s_algorithm), that can factor semi-primes in polynomial time. However, as of now, large-scale quantum computers that can run Shor's algorithm efficiently don't exist. If and when they do, they will pose a threat to cryptographic systems based on semi-prime factoring difficulty, like RSA in the long run.
 
 #### The contest
 
 The RSA Factoring Challenge was a challenge put forward by RSA Laboratories on March 18, 1991 with cash awards to successful participants.
 
-They organizers published a list of semi-primes (numbers with exactly two prime factors) known as the RSA numbers, with a cash prize for the successful factorization of some of them. The smallest of them, a 100-decimal digit number called `RSA-100` was successfully factored by April 1, 1991. 
+The organizers published a list of semi-primes (numbers with exactly two prime factors) known as the RSA numbers, with a cash prize for the successful factorization of some of them. The smallest of them, a 100-decimal digit number called `RSA-100` was successfully factored by April 1, 1991. 
 
-This is why you will never see anyone using RSA-100 in commercial applications today. In fact, the largest RSA number un-factored to date (in 2020) is `RSA-250`
+This is why you will never see anyone using RSA-100 in commercial applications today. In fact, the largest RSA number un-factored to date (in 2020) is `RSA-250`.
 
 Many of the bigger numbers have still not been factored and are expected to remain un-factored for quite some time.
 
@@ -116,21 +116,65 @@ Key rotation is the process of replacing an existing key with a new one, enhanci
 
 Here are the basic steps:
 
-**1: Key Pair Generation:**  The user or service generates a pair of keys (private and public). This is typically done with [OpenSSL](https://www.openssl.org/)
+**1: Key Pair Generation:**  
+The user or service generates a pair of keys (private and public). This is typically done with [OpenSSL](https://www.openssl.org/)<br>
 
-**2: Public Key Registration:** The Sigma connection is created and configured, using the private key created in step 1.
+**2: Public Key Registration:** <br>
+The Sigma connection is created and configured, using the private key created in step 1.
 
-**3: Public Key Registration:** The public key is registered with Snowflake.
+**3: Public Key Registration:** <br>
+The public key is registered with Snowflake.
 
-**4: Authentication:** For authentication of the Sigma connection request, Snowflake challenges Sigma, which Sigma proves by using their private key without revealing it.
+**4: Authentication:** <br>
+For authentication of the Sigma connection request, Snowflake challenges Sigma, which Sigma proves by using their private key without revealing it.
 
-**5: Key Rotation:** After a set period or under certain conditions, the old key pair is deprecated and a new key pair is generated. The new public key is then registered with Snowflake, and the process continues.
+**5: Key Rotation:** <br>
+After a set period or under certain conditions, the old key pair is deprecated and a new key pair is generated. The new public key is then registered with Snowflake, and the process continues.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Private Key Generation
 Duration: 20
+
+We will use OpenSSL to generate our encrypted private key. 
+
+Generally, it is safer to generate encrypted keys although Sigma does support unencrypted private keys too. 
+
+Sigma recommends communicating with your internal security and governance officers to determine which key type to generate prior to completing this step.
+
+How OpenSSL is installed depends on your operating system; we are using Mac and macOS has shipped with OpenSSL preinstalled since 2000. If you are running a different O/S, consult [OpenSSL's documentation](https://www.openssl.org/docs/). 
+
+You can also review the setup that [Snowflake recommends here](https://docs.snowflake.com/en/user-guide/key-pair-auth).
+
+**Step 1:** Open a new `Terminal` session:
+
+<img src="assets/rsa3.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> If you are not familiar with Terminal, make sure you know what folder (or directory) you are working in. The next command we run will create a file in that folder and you need to know where it lives. 
+</aside>
+
+Run the following command:
+```code 
+openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_2048_private_key.p8
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you do want to use an unencrypted private key, just append -nocrypt to the command provided above.
+</aside>
+
+We will place this new file on our Desktop.
+
+You will be promoted to enter an encryption key. We will use `Fm*V@dWK5!apzu`. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
+
+<img src="assets/rsa4.png" width="800"/>
+
+A new file called `rsa_2048_private_key.p8` is created on our Desktop:
+
+<img src="assets/rsa5.png" width="300"/>
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
