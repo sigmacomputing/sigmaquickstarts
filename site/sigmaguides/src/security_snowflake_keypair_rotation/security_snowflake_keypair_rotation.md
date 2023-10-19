@@ -134,7 +134,7 @@ After a set period or under certain conditions, the old key pair is deprecated a
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Private Key Generation
+## Key Generation
 Duration: 20
 
 We will use OpenSSL to generate our encrypted private key. 
@@ -146,6 +146,8 @@ Sigma recommends communicating with your internal security and governance office
 How OpenSSL is installed depends on your operating system; we are using Mac and macOS has shipped with OpenSSL preinstalled since 2000. If you are running a different O/S, consult [OpenSSL's documentation](https://www.openssl.org/docs/). 
 
 You can also review the setup that [Snowflake recommends here](https://docs.snowflake.com/en/user-guide/key-pair-auth).
+
+#### Step 1: Private Key
 
 **Step 1:** Open a new `Terminal` session:
 
@@ -166,7 +168,7 @@ openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_2048_private_key
 
 We will place this new file on our Desktop.
 
-You will be promoted to enter an encryption key. We will use `Fm*V@dWK5!apzu`. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
+You will be promoted to enter an encryption key. We will use `Fm*V@dWK5!apzu` for our passphrase. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
 
 <img src="assets/rsa4.png" width="800"/>
 
@@ -174,13 +176,52 @@ A new file called `rsa_2048_private_key.p8` is created on our Desktop:
 
 <img src="assets/rsa5.png" width="300"/>
 
+#### Step 2: Public Key Generation
 
+From the command line, generate the public key by referencing the private key. 
+
+The command generates the public key in PEM format.
+
+The following command assumes the private key is encrypted and contained in the file named: `rsa_keyrsa_2048_private_key.p8`.
+
+```code
+openssl rsa -in rsa_2048_private_key.p8 -pubout -out rsa_2048_public_key.pub
+```
+
+You will be prompted for the passphrase (encryption key) we created earlier. Enter that `Fm*V@dWK5!apzu`; unless you created your own, then provide that instead:
+
+<img src="assets/rsa6.png" width="800"/>
+
+We now have 2 keys on our desktop, one private and one public:
+
+<img src="assets/rsa7.png" width="300"/>
+
+#### Step 3: Store Keys Securely
+Copy the public and private key files to a local directory for storage. Record the path to the files. Note that the private key is stored using the PKCS#8 (Public Key Cryptography Standards) format and is encrypted using the passphrase you specified in the previous step.
+
+However, the file should still be protected from unauthorized access using the file permission mechanism provided by your operating system. It is your responsibility to secure the file when it is not being used.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Snowflake Configuration
 Duration: 20
+
+We will now assign our public key to a Snowflake user. It is best practice to create a user that is dedicated for this purpose to avoid connection interruption when users are removed from Snowflake when they leave the company. 
+
+This is referred to as a `Service Account` user and is designed to serve only the purpose of enabling authentication for a particular external application, service or API. 
+
+Log into your Snowflake environment, using a user who has the admin role.
+
+#### Step 1: Create the Service Account User:
+
+
+#### Step 3: Assign the Public Key to Snowflake Service Account User:
+
+
+
+#### Step 2:
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
