@@ -213,8 +213,67 @@ This is referred to as a `Service Account` user and is designed to serve only th
 
 Log into your Snowflake environment, using a user who has the admin role.
 
-#### Step 1: Create the Service Account User:
+#### Step 1: Snowflake Script:
 
+Since we are using a Snowflake trial account and the provided Snowflake_Sample_Data, there are some limitations that we want to mention but will not disrupt our work in general.
+
+STOPPED HERE. I NEED TO ADD INTO THE SCRIPT THE CREATION OF A WRITEBACK DATABASE
+
+```code
+-- Change Role to ACCOUNTADMIN
+USE ROLE ACCOUNTADMIN;
+
+-- Resume default warehouse to use:
+ALTER WAREHOUSE COMPUTE_WH RESUME;
+
+-- Set the compute_wh as active:
+USE WAREHOUSE COMPUTE_WH;
+
+-- Set database to sample data:
+USE DATABASE SNOWFLAKE_SAMPLE_DATA;
+
+-- Create Service Account Role:
+CREATE OR REPLACE ROLE sigma_service_account_role comment = 'For Sigma Key Auth QuickStart';
+
+-- Create a Service Account user for new Sigma Connection:
+CREATE USER IF NOT EXISTS sigma_service_account
+    password = 'a*Gu2sc9DBk*8c'
+    login_name = 'sigma_service_account'
+    display_name = 'sigma_service_account'
+    first_name = 'sigma'
+    last_name = 'service_account'
+    must_change_password = false
+    disabled = false
+    default_warehouse = sigma_quickstart_wh
+    default_namespace = SNOWFLAKE_SAMPLE_DATA
+    default_role = sigma_service_account_role
+    rsa_public_key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtQf87lGW3XBmSmPqI80a
+4A87nH7+ODaFPCy2+PUmOwggTYZ8KV2UK8w0jObVLuaL4UDel+WKeTx7gmhhnV9W
+TxW/xg5eFD3veN8HNIY20AEtq2pnjbWJ35G89cOiyraQRC8GXUxKbZUhsNfeIV4e
+QXQtzR4LcbLf16GBIwu5bGoKwrVAT3hp3BRcpISJ5LEGl25MdvdiVnK359G+OKVJ
+0gT6VexChuxKfbpNIRLU2gQmsojNCNMaeoPCIHOdtIHXwLIqsDS0UTIwRBl4pWjn
+IOGH6H4OLxZN0Jwed3uhH8UIZ+rBJAElyu/qOD35mxB6r3I/Akm2O9OxNYajme8X
+YwIDAQAB'
+    comment = 'For Sigma Key Auth QuickStart';
+   
+-- Grant privileges to the newly created role on one Snowflake sample database:
+-- The Snowflake Sample Database is shared asset and that limits what privileges are allowed. This is ok, we will work around that:
+GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_SAMPLE_DATA TO ROLE sigma_service_account_role;
+
+-- We are granted Select and Usage to all database schema objects now:
+Show grants to role sigma_service_account_role;
+
+-- NOTES ON ADVANCED SIGMA FEATURES AND SNOWFLAKE TRIAL ACCOUNT WITH THE SNOWFLAKE SAMPLE DATA:
+-- We will not be able to preform some Sigma functions unless we create a place that allows write-back:
+-- For CSV uploads. Materialization, Input tables to work, usage is required, and as explained above, a new database. 
+-- We will not explore these feature in the QuickStart so we won't preform steps to provision another database.
+
+-- Grant the role to the user
+GRANT ROLE sigma_service_account_role to user sigma_service_account;
+
+-- Check role was created:
+SHOW ROLEs;
+```
 
 #### Step 3: Assign the Public Key to Snowflake Service Account User:
 
