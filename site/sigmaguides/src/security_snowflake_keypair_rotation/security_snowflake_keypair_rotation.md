@@ -66,7 +66,7 @@ Sigma is able to leverage this support via it's custom Go driver that is used to
 
 It is important to have a general understanding of RSA encryption (RSA) to appreciate just how good it is. We would be remiss if not to mention the three inventors behind RSA, who did the work way back in 1977. In fact, the name `RSA` is derived from their initials. They are:
 
-<img src="assets/rsa1.png" width="800"/>
+<img src="assets/rsa1.png" width="500"/>
 
 RSA has evolved over the many years but at it's core, the security lives in the difficulty in factoring of semi-prime numbers. 
 
@@ -159,7 +159,7 @@ You can also review the setup that [Snowflake recommends here](https://docs.snow
 
 Run the following command:
 ```code 
-openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_2048_private_key.p8
+openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_2048_private_key.p8
 ```
 
 <aside class="negative">
@@ -168,9 +168,13 @@ openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_2048_private_key
 
 We will place this new file on our Desktop.
 
-You will be promoted to enter an encryption key. We will use `Fm*V@dWK5!apzu` for our passphrase. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
+You will be promoted to enter an encryption key. We will use `1234` for our passphrase. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
 
 <img src="assets/rsa4.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When entering a passphrase into the terminal window, you will need to manually type the passphrase. Copy paste may lead to unexpected results as the text is not shown. We also recommend using strong passphrases and not "1234" in production.
+</aside>
 
 A new file called `rsa_2048_private_key.p8` is created on our Desktop:
 
@@ -185,10 +189,10 @@ The command generates the public key in PEM format.
 The following command assumes the private key is encrypted and contained in the file named: `rsa_keyrsa_2048_private_key.p8`.
 
 ```code
-openssl rsa -in rsa_2048_private_key.p8 -pubout -out rsa_2048_public_key.pub
+openssl rsa -in rsa_2048_public_key.p8 -pubout -out rsa_2048_public_key.pub
 ```
 
-You will be prompted for the passphrase (encryption key) we created earlier. Enter that `Fm*V@dWK5!apzu`; unless you created your own, then provide that instead:
+You will be prompted for the passphrase (encryption key) we created earlier. Enter that `1234`; unless you created your own, then provide that instead:
 
 <img src="assets/rsa6.png" width="800"/>
 
@@ -223,7 +227,7 @@ STOPPED HERE. I NEED TO ADD INTO THE SCRIPT THE CREATION OF A WRITEBACK DATABASE
 -- Change Role to ACCOUNTADMIN
 USE ROLE ACCOUNTADMIN;
 
--- Resume default warehouse to use:
+-- Resume default warehouse to use (if it is not running):
 ALTER WAREHOUSE COMPUTE_WH RESUME;
 
 -- Set the compute_wh as active:
@@ -275,15 +279,34 @@ GRANT ROLE sigma_service_account_role to user sigma_service_account;
 SHOW ROLEs;
 ```
 
-#### Step 3: Assign the Public Key to Snowflake Service Account User:
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Connection Configuration
+Duration: 5
+
+Now that we have setup Snowflake with our service account user, role and assigned the public key, we are ready to add a new connection in Sigma
+
+Log into Sigma (as administrator) and navigate to `Administration` > `Connections` and click `Create Connection`:
+
+<img src="assets/rsa1.png" width="500"/>
+
+Give your connection a name and fill out the required fields (as shown numbered 1-7) below:
+
+<img src="assets/rsa11.png" width="800"/>
 
 
-
-#### Step 2:
+Snowflake Encrypted RSA-2048
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## What we've covered
+Duration: 5
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION--
 
 ## What we've covered
 Duration: 5
