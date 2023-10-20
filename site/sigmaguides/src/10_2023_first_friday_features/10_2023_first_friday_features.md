@@ -66,6 +66,38 @@ Duration: 10
 ## Embedding
 Duration: 20
 
+#### Bug Fixes
+When swapping the source of a tagged workbook version, the `Sources` of tagged workbook dropdown now excludes connections with a different Cloud Data Warehouse or Database Management System provider as the initial source.
+
+#### Embed sandbox URL syntax
+Sigma no longer automatically adds colons (:) to separate parameters in the embed sandbox URL. 
+
+For example, if you enter `param1=value1 param2=value2` in the `Other Parameters` field, the URL is appended with `?param1=value1&`   
+`param2=value2` 
+
+Previously, the URL would be appended with `?:param1=value1&:param2=value2`.
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Filters and Controls
+Duration: 10
+
+#### Tabular data in list filters and controls
+
+List filters and controls now support input copied from tabular formats! 
+
+You are now able to copy multiple cell values from Excel, Google Sheets, Sigma tables, etc., and paste them in the Search field. 
+
+The input is automatically comma-delimited, enabling you to filter it as multiple distinct values.
+
+This feature will save users lots of time when the need to search for a long list of items is required.
+
+Suppose we want to search a 4M row table for just a list of target `Order Numbers`. Instead of using the order number filter, and picking them one at a time (really impractical), you can just paste the list into the search field and you are done!. VERY COOL time saver for sure:
+
+<img src="assets/control_autofill.gif">
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -138,6 +170,21 @@ Now the `Image Name` column is a hyperlink and we can just hide the `Image URL c
 
 [For more information on using Lookups, click here:](https://help.sigmacomputing.com/hc/en-us/articles/4409911623571-Add-columns-through-Lookup)
 
+#### Data autofill in input tables
+Input tables (and individual columns) now support autofill, which will save users time in certain use cases.
+
+Select a cell or range of cells, then drag the fill handle (blue box in the lower right corner of the selection) to highlight adjacent cells you want to populate. 
+
+Sigma automatically fills the highlighted cell or range with data based on the selected values and patterns. 
+
+For text and checkbox columns, Sigma repeats the selected cell values. 
+
+For number and date columns, Sigma projects values to continue a patterned sequence (like consecutive numbers or incremental dates). 
+
+If no pattern is detected, it repeats the selected cell values.
+
+<img src="assets/input-table_autofill.gif">
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -178,7 +225,8 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
-
+#### Classic layout feature sunset
+While not techically a new feature, we want to make you are aware that as part of Sigma’s plan to sunset the classic workbook layout and transition to exclusive use of the newer grid layout, the `Revert to Classic Layout` option has been removed from `Workbook` settings > `Layout` settings. For more information about this update, [see the Sigma Community post.](https://community.sigmacomputing.com/t/goodbye-to-classic-layout-and-embrace-grid-layout/2631)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
