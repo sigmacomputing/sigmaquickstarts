@@ -186,10 +186,10 @@ From the command line, generate the public key by referencing the private key.
 
 The command generates the public key in PEM format.
 
-The following command assumes the private key is encrypted and contained in the file named: `rsa_keyrsa_2048_private_key.p8`.
+The following command assumes the private key is encrypted and contained in the file named: `rsa_2048_private_key.p8`.
 
 ```code
-openssl rsa -in rsa_2048_public_key.p8 -pubout -out rsa_2048_public_key.pub
+openssl rsa -in rsa_2048_private_key.p8 -pubout -out rsa_2048_public_key.pub
 ```
 
 You will be prompted for the passphrase (encryption key) we created earlier. Enter that `1234`; unless you created your own, then provide that instead:
@@ -295,7 +295,7 @@ Give your connection a name and fill out the required fields (as shown numbered 
 
 <img src="assets/rsa11.png" width="800"/>
 
-STUCK ON JWT ERROR
+STUCK ON JWT ERROR:
 
 Snowflake Encrypted RSA-2048
 pxb09693.us-east-1
@@ -305,6 +305,26 @@ openssl rsa -check -in rsa_2048_private_key.p8 -noout
 
 openssl pkey -inform PEM -pubin -in rsa_2048_public_key.pub -noout
 Note: The above command will echo nothing if the key is valid. If not, it will list some errors.
+
+
+Non-Encrypted Keys:
+
+Private:
+openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key_no_encrypt.p8 -nocrypt
+
+
+Public:
+openssl rsa -in rsa_key_no_encrypt.p8 -pubout -out rsa_key_no_encrypt.pub
+
+
+
+
+
+
+
+
+
+
 
 Another note:
 delete the service account users password (not passphrase) to prevent ability to log into the Snow UI.
