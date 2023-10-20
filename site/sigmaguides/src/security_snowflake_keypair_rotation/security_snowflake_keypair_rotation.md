@@ -295,8 +295,31 @@ Give your connection a name and fill out the required fields (as shown numbered 
 
 <img src="assets/rsa11.png" width="800"/>
 
+STUCK ON JWT ERROR
 
 Snowflake Encrypted RSA-2048
+pxb09693.us-east-1
+
+Check keys for error:
+openssl rsa -check -in rsa_2048_private_key.p8 -noout
+
+openssl pkey -inform PEM -pubin -in rsa_2048_public_key.pub -noout
+Note: The above command will echo nothing if the key is valid. If not, it will list some errors.
+
+Another note:
+delete the service account users password (not passphrase) to prevent ability to log into the Snow UI.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Key Rotation
+Duration: 5
+
+
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
