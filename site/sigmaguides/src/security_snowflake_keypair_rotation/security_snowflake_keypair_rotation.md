@@ -3,7 +3,7 @@ id: security_snowflake_keypair_rotation
 summary: security_snowflake_keypair_rotation
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-10-23
@@ -49,7 +49,7 @@ Data encrypted with the private key can only be decrypted with the public key, a
 
 Together, they encrypt and decrypt messages. In this context, the messages are Sigma's connections to Snowflake as configured in Sigma.
 
-For authentication purposes, Sigma uses the private key to generate a digital signature.
+For authentication purposes, Sigma uses the private key to generate a digital signature. A digital signature assures that the person/service sending the message is who they claim to be.
 
 The client decrypts the signature using the public key and compares the hash to its own computed hash. If the values match, Sigma's authentication is confirmed.
 
@@ -391,14 +391,28 @@ The key rotation is now in place and working and the old public and private keys
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+
+## Sigma Write Access
+Duration: 5
+
+Although we will not cover write access in this QuickStart, Sigma key pair authentication supports the functionality that is enabled by providing access (in the Sigma connection configuration) to a Snowflake resource.
+
+Specifically, these include CSV upload, materialization, input tables, and dataset warehouse views, all require write access to a destination in your warehouse.
+
+Once you have your Sigma connection to Snowflake configured for key pair authentication, enabling write access is the same as if the connection was using basic authorization. 
+
+[Information about enabling write access for Snowflake can be found here:](https://help.sigmacomputing.com/hc/en-us/articles/360037430473-Set-up-write-access#h_01FDX02ZAC489RD0W04CWVPET4)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 
 
 In this QuickStart we learned the features and benefits of key pair authentication and some background on the RSA encryption algorithm. Next, we covered how to make key pair authorization work in Sigma and Snowflake and how to rotate the keys manually. 
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
-**Additional Resource Links**
+#### Additional Resource Links
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
@@ -411,6 +425,7 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
 [<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
