@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-10-18
+lastUpdated: 2023-10-23
 
 
 # Snowflake Key-pair Authorization
@@ -14,38 +14,57 @@ lastUpdated: 2023-10-18
 ## Overview
 Duration: 5 
 
-Sigma supports Basic Auth (username + password) and Oauth for new Snowflake connections. 
+Sigma supports Basic Auth (username + password) and OAuth for new Snowflake connections.
 
-With this feature release, we add support for the authentication method by key pair (public key + private key), for Snowflake connections.
+With this feature release, we've added support for the key pair authentication method (public key + private key) for Snowflake connections.
 
-Snowflake supports authentication using a combination of a public and private RSA key pair. The private key remains with the client (Sigma), and the corresponding public key is stored by the holder of the correct public key (in this case, Snowflake). 
+Snowflake supports key pair authentication using a combination of public and private RSA key pairs. The private key remains with the client (Sigma), while the corresponding public key is stored by the holder of the correct public key (in this case, Snowflake).
 
-The main idea is that Snowflake can verify the identity of the client without the client ever revealing its private key.
+Using public and private keys for encryption and decryption, commonly known as public-key cryptography or asymmetric cryptography, offers **multiple benefits to businesses:**
 
-Every public key matches to only one private key. 
+ <ul>
+      <li><strong>Enhanced Security:</strong> The most apparent benefit is the heightened security provided by the separation of encryption and decryption keys. A message encrypted with the public key can only be decrypted by the corresponding private key, and vice versa. This ensures that even if a malicious actor intercepts an encrypted message, they cannot decipher it without access to the appropriate private key.</li>
+      <li><strong>Authentication:</strong> Asymmetric cryptography isn't just for encryption; it's also used for authentication. Digital signatures can be created using a private key, and anyone with the corresponding public key can verify the authenticity of the signature. This helps ensure that a message's sender is genuine.</li>
+      <li><strong>Integrity:</strong> Coupled with authentication, asymmetric cryptography ensures the integrity of a message. If a digitally signed message is altered in transit, the signature will no longer match, alerting the recipient to the discrepancy.</li>
+      <li><strong>Non-repudiation:</strong> Since only the holder of the private key can generate a digital signature, the sender cannot later deny (i.e., repudiate) having sent the message.</li>
+      <li><strong>Non-repudiation:</strong> Since only the holder of the private key can generate a digital signature, the sender cannot later deny (i.e., repudiate) having sent the message.</li>
+      <li><strong>Scalability and Efficiency:</strong> In a business setting where many individuals need to communicate securely, public-key cryptography eliminates the need for each pair of users to share a unique secret key. This scalability can simplify key management dramatically in large organizations.</li>
+      <li><strong>Flexible Key Distribution</strong> Distributing public keys is easy and doesn't require secure channels. Anyone can have access to a public key without compromising security. On the other hand, distributing shared secret keys (as in symmetric encryption) securely can be a challenge</li>
+      <li><strong>Flexible Key Distribution:</strong> Distributing public keys is easy and doesn't require secure channels. Anyone can have access to a public key without compromising security. On the other hand, distributing shared secret keys (as in symmetric encryption) securely can be a challenge.</li>
+      <li><strong>Perfect Forward Secrecy (PFS):</strong> By frequently generating new key pairs (key rotation) for sessions, even if a private key is compromised, only data from that specific session is vulnerable. Past and future sessions remain secure, provided their keys remain un-compromised.</li>
+      <li><strong>Support for Digital Certificates:</strong> Public key infrastructure (PKI) systems use asymmetric cryptography to issue digital certificates, which vouch for the identity of the public key holder. This adds an extra layer of trust and verification in business transactions.</li>
+      <li><strong>Regulatory Compliance:</strong> Many industries have regulations and standards that mandate strong encryption and secure communication. Using public-key cryptography can help businesses meet these regulatory requirements.</li>
+      <li><strong>Enhanced Customer Trust:</strong> Knowing that a business uses strong cryptographic measures can increase trust among clients and customers, reinforcing the brand's reputation for valuing security and privacy.</li>
+</ul>
+ 
+#### Some specifics:
 
-Private keys can have one or many public key holders (for example, multiple Sigma connections, if you prefer to use one private key).
+**The main idea is that Snowflake can verify the client's identity without the client ever revealing its private key.**
 
-Data encrypted with the private key can be decrypted only with the public key, and vice versa.
+Each public key corresponds to only one private key.
 
-Together, they are used to encrypt and decrypt messages. In this case, the messages are Sigma's connection to Snowflake as configured in Sigma.
+Private keys can be associated with one or multiple public key holders (for example, multiple Sigma connections, if you prefer to use one private key).
 
-When keys are used for authentication, Sigma uses the private key to generate a digital signature. 
+Data encrypted with the private key can only be decrypted with the public key, and vice versa.
 
-The client decrypts the signature using the public key and compares the hash with its own computed hash. If the values match, Sigma's authentication is successful.
+Together, they encrypt and decrypt messages. In this context, the messages are Sigma's connections to Snowflake as configured in Sigma.
 
-We will discuss RSA encryption a little more in the next section, which is optional, but provided for it's educational value.
+For authentication purposes, Sigma uses the private key to generate a digital signature.
+
+The client decrypts the signature using the public key and compares the hash to its own computed hash. If the values match, Sigma's authentication is confirmed.
+
+We'll discuss RSA encryption further in the next (optional) section, which is provided for its educational value.
 
  ### Target Audience
 
-Sigma administrators who are interested in implementing RSA connection encryption via key pair authorization and key rotation.
+Sigma administrators interested in implementing RSA connection encryption via key pair authorization and key rotation.
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to a Sigma environment.</li>
-  <li>Access to a Snowflake environment.</li>
+  <li>Access to a Snowflake environment. Enterprise is required for trial account testing</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
@@ -54,49 +73,47 @@ Sigma administrators who are interested in implementing RSA connection encryptio
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
-  
-### What You’ll Learn
+ 
 
 ## RSA Encryption
 Duration: 20
 
-Snowflake uses RSA 2048-bit encryption for it's support of key pair authorization. 
+Snowflake uses RSA 2048-bit encryption for its support of key pair authorization.
 
-Sigma is able to leverage this support via it's custom Go driver that is used to create connections to Snowflake. 
+Sigma can leverage this support through its custom Go driver, which is used to create connections to Snowflake.
 
-It is important to have a general understanding of RSA encryption (RSA) to appreciate just how good it is. We would be remiss if not to mention the three inventors behind RSA, who did the work way back in 1977. In fact, the name `RSA` is derived from their initials. They are:
-
+It's important to have a general understanding of RSA encryption (RSA) to fully appreciate its effectiveness. We'd be remiss not to mention the three inventors behind RSA, who developed it back in 1977. In fact, the name RSA is derived from their initials:<br>
 <img src="assets/rsa1.png" width="500"/>
 
-RSA has evolved over the many years but at it's core, the security lives in the difficulty in factoring of semi-prime numbers. 
+While RSA has evolved over the years, its core security principle remains rooted in the challenge of factoring semi-prime numbers.
 
-A semi-prime number is a natural number that is the product of two prime numbers. 
+A semi-prime number is a natural number that is the product of two prime numbers.
 
-Factoring a semi-prime results in two prime numbers. For example:
+Factoring a semi-prime results in two prime numbers.
 
-1515 is a semi-prime because it is the product of two prime numbers, 33 and 55.
+A genuine example of a semi-prime is the number 15. 15 is the product of two prime numbers: 3 and 5. So, 15 is a semi-prime because it is the product of the prime numbers 3 and 5.
 
-There's no known algorithm that can factor large semi-primes in polynomial time (relative to the number of digits in the semi-prime). All known algorithms take time that grows at least exponentially with the size of the semi-prime, making them impractical for very large semi-primes.
+There is no known algorithm that can factor large semi-primes in polynomial time (relative to the number of digits in the semi-prime). All known algorithms require time that grows at least exponentially with the size of the semi-prime, making them infeasible for very large semi-primes.
 
-There are quantum algorithms, like [Shor's algorithm](https://en.wikipedia.org/wiki/Shor%27s_algorithm), that can factor semi-primes in polynomial time. However, as of now, large-scale quantum computers that can run Shor's algorithm efficiently don't exist. If and when they do, they will pose a threat to cryptographic systems based on semi-prime factoring difficulty, like RSA in the long run.
+Quantum algorithms, like [Shor's algorithm](https://en.wikipedia.org/wiki/Shor%27s_algorithm), have the potential to factor semi-primes in polynomial time. However, as of this writing, large-scale quantum computers capable of running Shor's algorithm efficiently are still in the realm of future possibilities. If they become a reality, they could challenge cryptographic systems that rely on the difficulty of semi-prime factoring, including RSA.
 
 #### The contest
 
-The RSA Factoring Challenge was a challenge put forward by RSA Laboratories on March 18, 1991 with cash awards to successful participants.
+The RSA Factoring Challenge was introduced by RSA Laboratories on March 18, 1991, offering cash rewards to those who could successfully factor specific numbers.
 
-The organizers published a list of semi-primes (numbers with exactly two prime factors) known as the RSA numbers, with a cash prize for the successful factorization of some of them. The smallest of them, a 100-decimal digit number called `RSA-100` was successfully factored by April 1, 1991. 
+The organizers released a list of semi-primes (numbers with precisely two prime factors) known as the RSA numbers and attached a cash prize for the successful factorization of select numbers from the list. The smallest of them, a 100-decimal digit number dubbed RSA-100, was successfully factored by April 1, 1991.
 
-This is why you will never see anyone using RSA-100 in commercial applications today. In fact, the largest RSA number un-factored to date (in 2020) is `RSA-250`.
+Consequently, RSA-100 is no longer seen in commercial applications today. As of 2020, the largest yet-to-be-factored RSA number is RSA-250.
 
-Many of the bigger numbers have still not been factored and are expected to remain un-factored for quite some time.
+Several larger RSA numbers remain un-factored and are projected to stay that way for a considerable duration.
 
 [You can read more about the content here:](https://en.wikipedia.org/wiki/RSA_Factoring_Challenge)
 
-As mentioned earlier, Snowflake is using `RSA-2048` which has never been un-factored despite the cash prize for doing so being $200,000 at the time. 
+As previously highlighted, Snowflake employs RSA-2048, a number that has resisted factorization attempts even with a cash incentive of $200,000.
 
-RSA-2048 is considered by many to be currently impossible to factor, and may not be factorizable for many years to come, unless considerable advances are made in integer factorization or computational power. 
+RSA-2048 is widely regarded as nearly impossible to factor given our current technological capabilities. It may remain so for many years, barring significant breakthroughs in integer factorization or a surge in computational power.
 
-Of course, Sigma and Snowflake will adapt should progress be made in this area.
+Naturally, both Sigma and Snowflake will make necessary adjustments should advancements occur in this domain.
 
 An example of what a RSA-2048 number looks like is:
 
@@ -108,28 +125,28 @@ An example of what a RSA-2048 number looks like is:
 ## Key Pair Auth
 Duration: 20
 
-Key pair authentication is a method of authenticating a user or service (Sigma connection) based on a pair of keys: a private key, which is kept secret, and a public key, which is shared. 
+Key pair authentication is a method used to authenticate a user or service (like a Sigma connection) based on a pair of keys: a private key, which remains confidential, and a public key, which is shared.
 
-In the context of Snowflake, users or services can authenticate using RSA-2048 private keys rather than passwords.
+In the context of Snowflake, users or services can authenticate using RSA-2048 private keys instead of traditional passwords.
 
-Key rotation is the process of replacing an existing key with a new one, enhancing security.
+Key rotation refers to the act of substituting an existing key with a new one, thereby bolstering security.
 
-Here are the basic steps:
+Here are the basic steps involved:
 
-**1: Key Pair Generation:**  
-The user or service generates a pair of keys (private and public). This is typically done with [OpenSSL](https://www.openssl.org/)<br>
+**1. Key Pair Generation:**<br>
+The user or service generates a pair of keys (private and public). This is typically accomplished using [OpenSSL](https://www.openssl.org/).<br>
 
-**2: Public Key Registration:** <br>
-The Sigma connection is created and configured, using the private key created in step 1.
+**2. Sigma Connection Creation and Configuration:**<br>
+After generating the keys, a Sigma connection is created and set up using the private key from step 1.
 
-**3: Public Key Registration:** <br>
-The public key is registered with Snowflake.
+**3. Public Key Registration with Snowflake:**<br>
+The public key is then registered with Snowflake.
 
-**4: Authentication:** <br>
-For authentication of the Sigma connection request, Snowflake challenges Sigma, which Sigma proves by using their private key without revealing it.
+**4. Authentication:**<br>
+To authenticate a Sigma connection request, Snowflake issues a challenge to Sigma. Sigma then verifies its identity using its private key, without ever exposing it.
 
-**5: Key Rotation:** <br>
-After a set period or under certain conditions, the old key pair is deprecated and a new key pair is generated. The new public key is then registered with Snowflake, and the process continues.
+**5. Key Rotation:**<br>
+After a predetermined period or under specific conditions, the old key pair is retired and replaced with a new one. The fresh public key is then registered with Snowflake, and the cycle repeats.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -137,11 +154,9 @@ After a set period or under certain conditions, the old key pair is deprecated a
 ## Key Generation
 Duration: 20
 
-We will use OpenSSL to generate our encrypted private key. 
+We will use [OpenSSL](https://www.openssl.org/) to generate our encrypted private key. 
 
-Generally, it is safer to generate encrypted keys although Sigma does support unencrypted private keys too. 
-
-Sigma recommends communicating with your internal security and governance officers to determine which key type to generate prior to completing this step.
+Generally, it is safer to generate encrypted keys, although Sigma does support unencrypted private keys too. Sigma recommends communicating with your internal security and governance officers to determine which key type to generate prior to completing this step.
 
 How OpenSSL is installed depends on your operating system; we are using Mac and macOS has shipped with OpenSSL preinstalled since 2000. If you are running a different O/S, consult [OpenSSL's documentation](https://www.openssl.org/docs/). 
 
@@ -166,7 +181,7 @@ openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_2048_pr
 <strong>NOTE:</strong><br> If you do want to use an unencrypted private key, just append -nocrypt to the command provided above.
 </aside>
 
-We will place this new file on our Desktop.
+We will place this new file in a folder, on our Desktop.
 
 You will be promoted to enter an encryption key. We will use `1234` for our passphrase. You can choose your own value or use this one. Just make sure to save your encryption key value somewhere safe if you use your own value.
 
@@ -178,7 +193,7 @@ You will be promoted to enter an encryption key. We will use `1234` for our pass
 
 A new file called `rsa_2048_private_key.p8` is created on our Desktop:
 
-<img src="assets/rsa5.png" width="300"/>
+<img src="assets/rsa5.png" width="250"/>
 
 #### Step 2: Public Key Generation
 
@@ -205,13 +220,17 @@ Copy the public and private key files to a local directory for storage. Record t
 
 However, the file should still be protected from unauthorized access using the file permission mechanism provided by your operating system. It is your responsibility to secure the file when it is not being used.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Although we can open the private key file using a text editor and view what looks like a key, what we are actually seeing is the PEM-encoded representation of the key (or the encrypted and PEM-encoded representation if passphrase-protected), and not the raw key values. The PEM format uses Base64 encoding to represent binary data as ASCII characters.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Snowflake Configuration
 Duration: 20
 
-We will now assign our public key to a Snowflake user. It is best practice to create a user that is dedicated for this purpose to avoid connection interruption when users are removed from Snowflake when they leave the company. 
+We will now assign our public key to a Snowflake user. It is best practice to create a user that is dedicated for this purpose to avoid connection interruption when users are removed from Snowflake (for example, when they leave the company). 
 
 This is referred to as a `Service Account` user and is designed to serve only the purpose of enabling authentication for a particular external application, service or API. 
 
@@ -219,28 +238,40 @@ Log into your Snowflake environment, using a user who has the admin role.
 
 #### Step 1: Snowflake Script:
 
-Since we are using a Snowflake trial account and the provided Snowflake_Sample_Data, there are some limitations that we want to mention but will not disrupt our work in general.
+Since we are using a Snowflake trial account and the provided Snowflake_Sample_Data, there are some limitations that we will handle in the script.
 
-STOPPED HERE. I NEED TO ADD INTO THE SCRIPT THE CREATION OF A WRITEBACK DATABASE
+Run each command in the script, one at a time to make sure they run without error. There are nine commands.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Remember to replace the value for "PROVIDE YOUR PUBLIC KEY, WITHOUT THE HEADER AND FOOTER TEXT" with the value of your public key (without the public key's header and footer text.):
+</aside>
+
+For example, copying the value of the public key, without headers/footers:
+
+<img src="assets/rsa22.png" width="500"/>
 
 ```code
--- Change Role to ACCOUNTADMIN
+-- 1: Change Role to ACCOUNTADMIN
 USE ROLE ACCOUNTADMIN;
 
--- Resume default warehouse to use (if it is not running):
+-- 2: Resume default warehouse to use:
 ALTER WAREHOUSE COMPUTE_WH RESUME;
 
--- Set the compute_wh as active:
+-- 3: Set the compute_wh as active:
 USE WAREHOUSE COMPUTE_WH;
 
--- Set database to sample data:
+-- 4: Set database to sample data:
 USE DATABASE SNOWFLAKE_SAMPLE_DATA;
 
--- Create Service Account Role:
+-- 5: Create Service Account Role:
 CREATE OR REPLACE ROLE sigma_service_account_role comment = 'For Sigma Key Auth QuickStart';
 
--- Create a Service Account user for new Sigma Connection:
-CREATE USER IF NOT EXISTS sigma_service_account
+-- 6: Grant privileges to the newly created role on one Snowflake sample database:
+-- The Snowflake Sample Database is shared asset and that limits what privileges are allowed. This is ok, we will work around that:
+GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_SAMPLE_DATA TO ROLE sigma_service_account_role;
+
+-- 7: Create a Service Account user for new Sigma Connection:
+CREATE OR REPLACE USER sigma_service_account
     password = 'a*Gu2sc9DBk*8c'
     login_name = 'sigma_service_account'
     display_name = 'sigma_service_account'
@@ -251,33 +282,18 @@ CREATE USER IF NOT EXISTS sigma_service_account
     default_warehouse = sigma_quickstart_wh
     default_namespace = SNOWFLAKE_SAMPLE_DATA
     default_role = sigma_service_account_role
-    rsa_public_key = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtQf87lGW3XBmSmPqI80a
-4A87nH7+ODaFPCy2+PUmOwggTYZ8KV2UK8w0jObVLuaL4UDel+WKeTx7gmhhnV9W
-TxW/xg5eFD3veN8HNIY20AEtq2pnjbWJ35G89cOiyraQRC8GXUxKbZUhsNfeIV4e
-QXQtzR4LcbLf16GBIwu5bGoKwrVAT3hp3BRcpISJ5LEGl25MdvdiVnK359G+OKVJ
-0gT6VexChuxKfbpNIRLU2gQmsojNCNMaeoPCIHOdtIHXwLIqsDS0UTIwRBl4pWjn
-IOGH6H4OLxZN0Jwed3uhH8UIZ+rBJAElyu/qOD35mxB6r3I/Akm2O9OxNYajme8X
-YwIDAQAB'
+    rsa_public_key = 'PROVIDE YOUR PUBLIC KEY, WITHOUT THE HEADER AND FOOTER TEXT'
     comment = 'For Sigma Key Auth QuickStart';
    
--- Grant privileges to the newly created role on one Snowflake sample database:
--- The Snowflake Sample Database is shared asset and that limits what privileges are allowed. This is ok, we will work around that:
-GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_SAMPLE_DATA TO ROLE sigma_service_account_role;
-
--- We are granted Select and Usage to all database schema objects now:
-Show grants to role sigma_service_account_role;
-
--- NOTES ON ADVANCED SIGMA FEATURES AND SNOWFLAKE TRIAL ACCOUNT WITH THE SNOWFLAKE SAMPLE DATA:
--- We will not be able to preform some Sigma functions unless we create a place that allows write-back:
--- For CSV uploads. Materialization, Input tables to work, usage is required, and as explained above, a new database. 
--- We will not explore these feature in the QuickStart so we won't preform steps to provision another database.
-
--- Grant the role to the user
+-- 8: Grant the role to the user
 GRANT ROLE sigma_service_account_role to user sigma_service_account;
 
--- Check role was created:
-SHOW ROLEs;
+-- 9: Grant warehouse usage to role:
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE sigma_service_account_role;
+
 ```
+
+Once all the script steps are run and verified, we can move on to the next step.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -289,45 +305,23 @@ Now that we have setup Snowflake with our service account user, role and assigne
 
 Log into Sigma (as administrator) and navigate to `Administration` > `Connections` and click `Create Connection`:
 
-<img src="assets/rsa1.png" width="500"/>
+<img src="assets/rsa10.png" width="800"/>
 
 Give your connection a name and fill out the required fields (as shown numbered 1-7) below:
 
 <img src="assets/rsa11.png" width="800"/>
 
-STUCK ON JWT ERROR:
+Sigma will establish the connection if after a few seconds you should receive a <img src="assets/rsa12.png" width="200"/> message at the bottom of the page.
 
-Snowflake Encrypted RSA-2048
-pxb09693.us-east-1
+You may now click the `Browse Connection` button:
 
-Check keys for error:
-openssl rsa -check -in rsa_2048_private_key.p8 -noout
+<img src="assets/rsa13.png" width="800"/>
 
-openssl pkey -inform PEM -pubin -in rsa_2048_public_key.pub -noout
-Note: The above command will echo nothing if the key is valid. If not, it will list some errors.
+We can now navigate the data assets that our Snowflake role allows, for our service account user.
 
+If we want to go further into the data, we are able to `Explore` and enter the standard Sigma exploration workflow:
 
-Non-Encrypted Keys:
-
-Private:
-openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key_no_encrypt.p8 -nocrypt
-
-
-Public:
-openssl rsa -in rsa_key_no_encrypt.p8 -pubout -out rsa_key_no_encrypt.pub
-
-
-
-
-
-
-
-
-
-
-
-Another note:
-delete the service account users password (not passphrase) to prevent ability to log into the Snow UI.
+<img src="assets/rsa14.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -335,12 +329,64 @@ delete the service account users password (not passphrase) to prevent ability to
 ## Key Rotation
 Duration: 5
 
+Snowflake supports multiple active keys to allow for uninterrupted rotation. You can manually rotate your public and private keys based on whatever expiration schedule you follow internally. 
 
+This process can be automated via the Snowflake and Sigma APIs as well.
 
+In Snowflake, you can use the `RSA_PUBLIC_KEY` and `RSA_PUBLIC_KEY_2` parameters to associate up to two public keys with a single user; in our case, the `sigma_service_account` user.
 
+The manual steps are as follows:
 
+1: Generate a new public and private key pair:
 
+**Private Key**
+```code
+openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_2048_private_key2.p8
+```
 
+Set the password to `1234` for testing purposes.
+
+**Public Key**
+```code
+openssl rsa -in rsa_2048_private_key2.p8 -pubout -out rsa_2048_public_key2.pub
+```
+
+We now have the original keys and the new keys, the new keys have a `2` appended to the name:
+
+<img src="assets/rsa16.png" width="800"/>
+
+2: Set second public key for their snowflake user by running the snowflake command on Snowflake (use your key, replacing "YOUR PUBLIC KEY 2 HERE"):
+```code
+alter user sigma_service_account set rsa_public_key_2='YOUR PUBLIC KEY 2 HERE';
+```
+
+3: Update the private key and private key passphrase for their snowflake connection configuration on Sigma:
+
+In Sigma, navigate to `Administration` > `Connections` > `Snowflake Keypair Authentication` and click the `Edit` button:
+
+<img src="assets/rsa17.png" width="800"/>
+
+We will need to provide the new `Private Key` and `Private Key Passphrase` (1234 or whatever passphrase you created when creating private key 2):
+
+<img src="assets/rsa18.png" width="600"/>
+
+Click `Save`. 
+
+Sigma will update the connection and if successful, will display <img src="assets/rsa19.png" width="200"/>.
+
+4: Remove the old public key from the user profile by running the snowflake command on Snowflake:
+```code
+ALTER USER sigma_service_account UNSET rsa_public_key;
+```
+
+Running the following command in Snowflake allows us to see if the old public key has been removed:
+```code
+DESC USER sigma_service_account;
+```
+
+<img src="assets/rsa20.png" width="600"/>
+
+The key rotation is now in place and working and the old public and private keys are removed. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -348,15 +394,8 @@ Duration: 5
 ## What we've covered
 Duration: 5
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION--
 
-## What we've covered
-Duration: 5
-
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we learned the features and benefits of key pair authentication and some background on the RSA encryption algorithm. Next, we covered how to make key pair authorization work in Sigma and Snowflake and how to rotate the keys manually. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
