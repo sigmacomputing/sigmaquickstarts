@@ -75,7 +75,7 @@ Sigma administrators interested in implementing RSA connection encryption via ke
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
  
 
-## RSA Encryption
+## RSA Encryption (optional reading)
 Duration: 20
 
 Snowflake uses RSA 2048-bit encryption for its support of key pair authorization.
@@ -391,6 +391,99 @@ The key rotation is now in place and working and the old public and private keys
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Sigma API
+Duration: 5
+
+As mentioned earlier, it is possible to create and update a Sigma connection via a RESTful API.
+
+We will demonstrate how to do that using the popular program [Postman](https://www.postman.com/).
+
+If you would like to learn how to use Postman with the Sigma API, [reference this QuickStart](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0).
+
+If you are familiar with APIs and prefer to review [Sigma's swagger reference, that is here](https://docs.sigmacomputing.com/api/v2/).
+
+[The general API documentation is here](https://help.sigmacomputing.com/hc/en-us/sections/4408551771411-API-Get-Started).
+
+#### Create a new Sigma Connection with Key Pair Auth:
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The following steps assume you have a Postman account (the free account is fine) and have imported Sigma's OpenAPI spec.
+</aside>
+
+**1:** In Postman, open the Sigma Public API and select the `Authenticate` method. 
+
+**2:** Be sure to have a Postman Environment setup [(reference the Sigma with Postman QuickStart)](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0) for your configuration details.
+
+**3:** Click `Send`. We should receive a response that includes our "access token" (also known as "bearer token").
+
+<img src="assets/rsa23.png" width="800"/>
+
+**4:** Open the method `v2` > `connections` > `POST Creates a new connection`.
+
+**5:** Paste the following code in the `Body` of the POST method. Replace values as required:
+```code
+{
+  "details": {
+    "type": "snowflake",
+    "user": "sigma_service_account",
+    "host": "YOUR SNOWFLAKE ACCOUNT.snowflakecomputing.com",
+    "role":  "sigma_service_account_role",
+    "warehouse": "COMPUTE_WH",
+    "useOauth": false,
+    "account": "YOUR SNOWFLAKE ACCOUNT",
+    "authType": "key-pair",
+    "privateKey": "YOUR PRIVATE KEY WITH HEADER AND FOOTER",
+    "privateKeyPassphrase": "1234"
+  },
+  "name": "Encrypted-Key-Pair-via-API",
+  "description": {},
+  "timeoutSecs": 600,
+  "useFriendlyNames": false
+}
+```
+
+<strong>IMPORTANT:</strong><br> 
+The API will not automatically handle line breaks if you just paste your private key into the body of the POST message. 
+
+The private key needs to be formatted so that it is interpreted as a single string, 
+
+Options include:
+
+**Replacing Newlines with \n:**<br> 
+Replace actual newlines with the characters "\n". This ensures that the multi-line RSA key becomes a single string that's easier to transmit in many API payloads. 
+
+For our simple test, we will use this method. You can manually add the "/n" to each line or use your browser's inspection feature to grab the string as a JSON literal. 
+
+In order to copy the key as JSON, open your browser's inspector and then open the key pair auth connection we created earlier in Sigma and edit it. Change the name (add a "1" to the end of it's name for example), reenter your private key and passphrase and click `Save`. 
+
+In inspector, copy the private key as a JSON literal. This can be found under `Network` > `check` as shown:
+
+<img src="assets/rsa24.png" width="800"/>
+
+This can now be used in our Postman POST method for private key and will include the line breaks for us.
+
+**Reading the RSA Key from a File:** <br> 
+Storing your private key in a file (and ensuring it's kept secure) allows you to read it into your script without having to hard-code it.
+
+**Using a Script to Call the API:** <br>
+Using a script to call the API can be a more flexible and automated approach than using tools like Postman, especially when there are additional preprocessing steps involved. Third-party key management software is useful in this regard and has additional advantages such as centralizing enterprise key management. 
+
+**5:** Run the POST to create the connection
+
+If successful, you should receive a response body and a `Status=201 Created`:
+
+<img src="assets/rsa25.png" width="800"/>
+
+**6:** In Sigma, `Administration` > `Connections`, we see our new connection: 
+
+<img src="assets/rsa26.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If the private key that corresponds with the public key applied earlier in Snowflake was used, we will be able to browse the Sigma connection's data. If not, Snowflake will need to obtain the correct public key as described earlier in this QuickStart.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Sigma Write Access
 Duration: 5
