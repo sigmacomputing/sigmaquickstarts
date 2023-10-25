@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-10-23
 
 
