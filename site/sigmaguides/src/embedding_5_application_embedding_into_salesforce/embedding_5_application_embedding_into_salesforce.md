@@ -15,7 +15,7 @@ Duration: 5
 
 This QuickStart introduces you to Sigma embedding into Salesforce. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html) so that you have a sample environment to complete the tasks in this QuickStart.
 
-We also recommend you table the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html).
+We also recommend you take the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html).
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
@@ -186,7 +186,7 @@ Click `Save`.
 
 In the `left sidebar menu` use Quick Find to search for `Visualforce` and select `Visualforce Components`.
 
-Create a `new` one called `SigmaEmbedController` and paste the following code into the window and save it:
+Create a `new` one called `SigmaEmbedComponent` and paste the following code into the window and save it:
 
 <aside class="negative">
 <strong>NOTE:</strong><br> In line 1 of the code, the component controller must match the Apex Class name created in the previous step.
