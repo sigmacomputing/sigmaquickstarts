@@ -158,11 +158,11 @@ Provide your password and hit Return.
 
 **Run the command:**
 ```plaintext
-npm install express -g
+npm install express
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> For packages that your project depends on (like Express.js in a web application), it's more common to install them locally within each project to avoid version conflicts between different projects. By using the -g flag, the express package will be available to all your Node.js projects, not just the one in your current directory. We have seen some instances where expresss could not be found when trying to run our node application. In that case, use terminal (from the Sigma embed folder) and run "npm install express" instead. This will install express for this folder's application only.
+<strong>IMPORTANT:</strong><br> For packages that your project depends on (like Express.js in a web application), it's common to install them locally, within each project to avoid version conflicts between different projects. You may also use the -g flag (global) to make the express package available to all your Node.js projects, not just the one in your current directory. We have seen some instances where express could not be found when trying to run our node application after using the -g flag. In that case, use terminal (from the Sigma embed folder) and run "npm install express" instead. This will install express for this folder's application only, but you will need to do this for each new project folder you create later.
 </aside>
 <br>
 
