@@ -188,12 +188,12 @@ CREATE OR REPLACE ROLE DRS_Executive;
 CREATE OR REPLACE ROLE DRS_West;
 CREATE OR REPLACE ROLE DRS_East;
 
-// 2: CREATE A SECOND WAREHOSE AND GRANT USAGE PERMISSION ON THE WAREHOUSES TO NEW ROLES:
+// 2: CREATE A SECOND WAREHOUSE AND GRANT USAGE PERMISSION ON THE WAREHOUSES TO NEW ROLES:
 CREATE WAREHOUSE COMPUTE_WH2 WAREHOUSE_SIZE=SMALL AUTO_SUSPEND = 5;
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO DRS_Executive;
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO DRS_West;
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO DRS_East;
-USE WAREHOUSE COMPUTE_WH;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH2 TO DRS_Executive;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH2 TO DRS_West;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH2 TO DRS_East;
+USE WAREHOUSE COMPUTE_WH2;
 
 GRANT USAGE ON WAREHOUSE COMPUTE_WH2 TO DRS_Executive;
 GRANT USAGE ON WAREHOUSE COMPUTE_WH2 TO DRS_West;
@@ -434,7 +434,7 @@ In summary, the following things need to exist in Sigma or be configured in serv
       <li>Line 2E: adjust the email. We are starting with a user that will leverage the DRS_Executive Snowflake role. The address does need to be "real" but needs to be different from what is listed. EMails are unique values in Sigma</li>
       <li>Line 2G: adjust the Sigma Team if needed</li>
       <li>Line 2J: should be commented out for now</li>
-      <li>Like JK: should be commented out for now</li>
+      <li>Like 2K: should be commented out for now</li>
       <li>Save the changes</li>
     </ol>
   </li>
