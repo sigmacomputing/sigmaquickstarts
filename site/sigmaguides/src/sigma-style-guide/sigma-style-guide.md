@@ -70,8 +70,8 @@ Your **"What we've covered"** Section should use the same content for "Additiona
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
-[<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
-[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
+[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 ```
 
@@ -383,8 +383,8 @@ The desired look and feel for a Sigma QuickStart and the Markdown options at you
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
-[<img src="./assets/twitter.jpeg" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
-[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)
+[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
