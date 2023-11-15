@@ -1,11 +1,12 @@
 author: Kelsey Hammock
 id: secure_your_organization_with_security_analytics_using_snowflake_and_sigma
 summary: Learn how to monitor your Snowflake security posture using Sigma
-categories: cybersecurity, data-warehousing
+categories: Partners
 environments: web
-status: Draft
-feedback link: https://github.com/Snowflake-Labs/sfguides/issues
-tags: Getting Started, Cybersecurity 
+status: Published
+feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
+tags: Default
+lastUpdated: 2023-11-15
 
 # Secure Your Organization with Security Analytics Using Snowflake and Sigma
 <!-- ------------------------ -->
@@ -15,29 +16,30 @@ By centralizing your security data across point products in the Snowflake securi
 
 While there are a variety of security metrics that Snowflake and Sigma supports, in this hands-on lab, we will cover how you can leverage Snowflake and Sigma to monitor the security posture of your Snowflake data environment. 
 
-
 ### Prerequisites
-- For this lab you will need a Sigma free trial, which you can access here: [sigmacomputing.com/free-trial-hol](sigmacomputing.com/free-trial-hol). **The password is sigma**. For detailed instructions on getting set up, see section 1, Connecting to Sigma. 
+For this lab you will need a Sigma free trial, which you can access here: [sigmacomputing.com/free-trial-hol](sigmacomputing.com/free-trial-hol). 
+
+**The password is sigma**. For detailed instructions on getting set up, see section 1, Connecting to Sigma. 
   
-- It is recommended you have access to a Snowflake environment, but is not required to complete this lab
+It is recommended you have access to a Snowflake environment, but is not required to complete this lab.
 
+### What you will learn
 
-
-### What you’ll learn 
-- How to connect Sigma to Snowflake 
-- How to visualize Snowflake security logs with Sigma’s pre-built dashboards 
-- How to leverage your Snowflake logs to explore for common security threats 
-- How to customize the workbook for your specific needs 
-- How to set up alerting for continuous monitoring of your Snowflake instance
-
+<ul>
+      <li>How to connect Sigma to Snowflake.</li>
+      <li>How to visualize Snowflake security logs with Sigma’s pre-built dashboards.</li>
+      <li>How to leverage your Snowflake logs to explore for common security threats.</li>
+      <li>How to customize the workbook for your specific needs.</li>
+      <li>How to set up alerting for continuous monitoring of your Snowflake instance.</li>
+</ul>
 
 
 ### What you’ll build 
 This lab will walk you through the process of connecting to a Sigma template, exploring security data, customizing the template for more interactivity, and connecting the template to your Snowflake environment's data (optional).
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-
-<!-- ------------------------ -->
 ## Getting started
 Duration: 10
 
@@ -71,11 +73,12 @@ Duration: 10
 
 ![image6](assets/connectingtosigma8.png)
 
-
-
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 
 ## Exploring the Template
+Duration: 10
 
 3.1 From the Sigma home page click "Templates" on the lefthand side.
 
@@ -123,9 +126,14 @@ The final page, titled Least Privileged Access, shows you the number of roles us
 
 ![image211](assets/exploringthetemplate11.png)
 
-## Customizing the Template
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-4.1 Using the buttons at the top of the workbook, navigate to the page title "Least Priviledged Access".
+
+## Customizing the Template
+Duration: 10
+
+4.1 Using the buttons at the top of the workbook, navigate to the page title "Least Privileged Access".
 
 ![image301](assets/customizingthetemplate1.png)
 
@@ -242,7 +250,7 @@ order by
 
 ![image305](assets/customizingthetemplate5.png)
 
-4.6 The SQL we ran took a look at our users, their associated roles, and the priviledges granted to these roles. It then aggregated this data at the User level so that we can see who has the most access to objects across our Snowflake instance. Click on the header for your new workbook element titled "Custom SQL". Rename this object "Most Dangerous Person". 
+4.6 The SQL we ran took a look at our users, their associated roles, and the privileges granted to these roles. It then aggregated this data at the User level so that we can see who has the most access to objects across our Snowflake instance. Click on the header for your new workbook element titled "Custom SQL". Rename this object "Most Dangerous Person". 
 
 ![image306](assets/customizingthetemplate6.png)
 
@@ -378,7 +386,7 @@ For the purpose of this lab, assume we want our users to change their Snowflake 
 
 ![image316](assets/customizingthetemplate16.png)
 
-4.18 Using the dropdown next to Timezone, select YOUR time zone. For Occurance, set a time in the next 10mins so that you will see the alert in your inbox before the lab is complete. 
+4.18 Using the dropdown next to Timezone, select YOUR time zone. For Occurrence, set a time in the next 10mins so that you will see the alert in your inbox before the lab is complete. 
 
 ![image317](assets/customizingthetemplate17.png)
 
@@ -439,11 +447,11 @@ Use the dropdown to update a couple of rows to see this change.
 
 ![image330](assets/customizingthetemplate30.png) 
 
-4.34 Now that we have set an alert and created a triage system, navigate back to the "Least Privileged Access" page by clicking the "Least Priviledged Access" button at the top of the page. 
+4.34 Now that we have set an alert and created a triage system, navigate back to the "Least Privileged Access" page by clicking the "Least Privileged Access" button at the top of the page. 
 
 ![image331](assets/customizingthetemplate31.png)
 
-4.35 The top element shows us roles granted to each user in our snowflake instance, as well as who granted each role. Please note, this element only captures roles explicitly granted, and not those inhereted through the granting of another role. 
+4.35 The top element shows us roles granted to each user in our snowflake instance, as well as who granted each role. Please note, this element only captures roles explicitly granted, and not those inherited through the granting of another role. 
 
 Next to the "Role" column, click the drop down arrow and then select "Filter".
 
@@ -457,9 +465,9 @@ Next to the "Role" column, click the drop down arrow and then select "Filter".
 
 ![image334](assets/customizingthetemplate34.png)
 
-4.38 For the purposes of this lab, let's assume our organization has decided that only individuals within the IT group should have ACCOUNTADMIN access to the Snowflake environment. We now have a list of users with ACCOUNTADMIN access, but will need to know the department they belong to in the company in order to explore if the users with this priviledge now should maintain it. 
+4.38 For the purposes of this lab, let's assume our organization has decided that only individuals within the IT group should have ACCOUNTADMIN access to the Snowflake environment. We now have a list of users with ACCOUNTADMIN access, but will need to know the department they belong to in the company in order to explore if the users with this privilege now should maintain it. 
 
-The data for our users departments doesn't live in our Snowflake environmennt, but we can use a blank input table to bring it in. In the top left corner click the "+" icon, then select "Empty" under Input Tables.
+The data for our users departments doesn't live in our Snowflake environment, but we can use a blank input table to bring it in. In the top left corner click the "+" icon, then select "Empty" under Input Tables.
 
 ![image335](assets/customizingthetemplate35.png) 
 
@@ -508,7 +516,12 @@ The data for our users departments doesn't live in our Snowflake environmennt, b
 
 ![image347](assets/customizingthetemplate47.png) 
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
 ## Connecting the Template to Your Data 
+Duration: 10
 
 5.1 Click the papercrane in the top left of your workbook to return to the Sigma home page.
 
@@ -590,11 +603,32 @@ Ensure the "Matching Connection" field displays the connection you created to yo
 
 ![image416](assets/connectingtodata16.png)
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
 ## Conclusion 
+Duration: 10
 
 We hope this lab has helped you understand how data within your Snowflake environment can be leveraged in Sigma for security insights. By working with Sigma templates, you are able to instantly gain insights into your Snowflake security posture. You can additionally customize these insights, add new metrics, and more to make the workbook shine for your use case. 
 
 ### Resources
 
-- [Sigma Documentation](https://help.sigmacomputing.com/hc/en-us/categories/360002521713-Get-Started)
-- [Snowflake Documentation](docs.snowflake.com)
+<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
+**Additional Resource Links**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+[Snowflake Documentation](docs.snowflake.com)<br>
+<br>
+
+[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
+[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF WHAT WE COVERED -->
+<!-- END OF QUICKSTART -->
