@@ -363,7 +363,7 @@ Duration: 10
 
 The InDateRange function provides a succinct way to write calculations such as Year to Date and Last 3 Month. It also simplifies more complex calculations, making them shorter and easier to read.
 
-The InDateRange function will return True or False based on it's configuration. The table can then be filtered based on a InDateRange column being true or false.
+The InDateRange function will return True or False based on its configuration. The table can then be filtered based on a InDateRange column being true or false.
 
 For example, we may want to see how sales this year compare with last year, side by side.
 
@@ -451,7 +451,7 @@ Rename this table `Sales This Year`
 
 On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, and `Date`.
 
-Add a new column, rename it `Total Sale` and set it's formula to:
+Add a new column, rename it `Total Sale` and set its formula to:
 ```plaintext
 [Price] * [Quantity]
 ```
