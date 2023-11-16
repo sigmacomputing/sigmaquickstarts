@@ -35,8 +35,17 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Embedding
 Duration: 20
 
+### Bug Fixes:
+The PDF export feature now executes successfully in user-backed embeds.
+
+Administrators can now view all scheduled exports for published and tagged versions at the workbook level. Schedule views are no longer impacted by version permissions granted to users who create the schedules.
+
+When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the Document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
+
 ### New Optional Interface Parameters:
 We have added three new parameters to the embedding API. 
+
+[You can review all the available parameters here.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
  <ul>
       <li><strong>use_user_name:</strong> Displays the workbook creator’s name (instead of email) in embed menus and system-generated emails.</li>
@@ -96,12 +105,19 @@ Duration: 20
 Duration: 20
 
 ### Conditional alerts for data elements and input tables:
-The element menu now features an `Alert` more action that opens the `Schedule exports` modal and auto-populates select fields based on the corresponding data element or input table. 
+The element menu now features an `Alert` action that opens the `Schedule exports` modal and auto-populates select fields based on the corresponding data element or input table. 
 
 This allows users to quickly create a recurring export as a conditional alert to monitor a specific element.
 
-For more information, [see Schedule a conditional export or alert.](https://help.sigmacomputing.com/hc/en-us/articles/22641293217555)
+For example, we may want to set an alert when a specific KPI falls below a threshold:
 
+<img src="assets/fff_11_2023_7.png" width="800"/><br>
+
+Selecting `Alert when` from an elements menu will then allow the user to configure a schedule for delivery, using the existing schedule exports modal:
+
+<img src="assets/fff_11_2023_8.png" width="800"/><br>
+
+For more information, [see Schedule a conditional export or alert.](https://help.sigmacomputing.com/hc/en-us/articles/22641293217555)
 
 ### Control element label formatting:
 Label configurations for control elements are now consolidated in the `Element format` > `Label` section with the following new options:
