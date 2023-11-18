@@ -57,7 +57,7 @@ Duration: 5
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> If your company does not use dbt, skip this page and advance to step 3 
 </aside>
-One way to create the `query_history_enriched` table is by deploying the dbt-snowflake-monitoring(https://github.com/get-select/dbt-snowflake-monitoring/tree/main) dbt package from Select("https://select.dev/").
+One way to create the `query_history_enriched` table is by deploying the <a href="(https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from Select(https://select.dev/).
 
 This package has a model called **query_history_enriched** that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
 
@@ -68,7 +68,7 @@ Once the package has been deployed, Sigma needs to be able to access the table(s
 </ol>   
 
 Verify that you can see the new table(s) in the Sigma connection browser.
-(assets/qhe_in_connection.png)
+![img_qhe_in_connection](assets/qhe_in_connection.png)
 
 Then, advance to step 4.
 
@@ -97,7 +97,7 @@ grant select on table {database name}.{schema name}.query_history_enriched to ro
 You may also need to grant usage on the database/schema to the role used in the Sigma connection.
 
 Verify that you can see the new table(s) in the Sigma connection browser.
-(assets/qhe_in_connection.png)
+![img_qhe_in_connection](assets/qhe_in_connection.png)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -109,13 +109,13 @@ Once you have created the `query_history_enriched` table, go to Sigma.
 From the home page, navigate to the **Templates** section, then to **External Templates**.
 
 Click on the `Snowflake Cost per Query` template.
-(assets/template_in_menu.png)
+![img_template_in_menu](assets/template_in_menu.png)
 
 You will be prompted to swap data sources. Click **Swap Now**.
-(assets/swap_source_prompt.png)
+![img_swap_source_prompt](assets/swap_source_prompt.png)
 
 Then verify that Sigma has found the `query_history_enriched` table and click **Swap Now**.
-(assets/sources_matched.png)
+![img_sources_matched](assets/sources_matched.png)
 
 Click **Save As** and give your workbook a title.
 
