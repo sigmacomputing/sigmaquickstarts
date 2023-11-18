@@ -14,14 +14,14 @@ lastUpdated: 2023-11-16
 This **QuickStart** provides instructions on how to set up Sigma's **Snowflake Cost per Query** template. 
 
 This template give you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
-(assets/template_preview.png)
 
-There are two steps in this process:
+There are two steps to setting up the template:
 <ol>
   <li>Create the `query_history_enriched` table in your Snowflake account
   <li>Launch the template in Sigma and **Swap Sources** to the table created in step 1
 </ol>
 
+<img src="assets/template_preview.png" width="800"/>
 <!-- <aside class="postive">
 <strong>IMPORTANT:</strong><br> No customer data is stored in the Audit Log. Only events/actions and context is logged. 
 </aside> -->
@@ -49,8 +49,6 @@ How to deploy Sigma's **Snowflake Cost per Query** template.
   <li>A Sigma workbook that calculates query cost across Sigma workbooks / users and across Snowflake users, roles and warehouses.
 </ul>
 
-<img src="" width="800"/>
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
@@ -62,7 +60,6 @@ Duration: 5
 One way to create the `query_history_enriched` table is by deploying the dbt-snowflake-monitoring(https://github.com/get-select/dbt-snowflake-monitoring/tree/main) dbt package from Select("https://select.dev/").
 
 This package has a model called **query_history_enriched** that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
-<!-- screenshot -->
 
 Once the package has been deployed, Sigma needs to be able to access the table(s) created.  
 <ol>
@@ -112,7 +109,7 @@ Once you have created the `query_history_enriched` table, go to Sigma.
 From the home page, navigate to the **Templates** section, then to **External Templates**.
 
 Click on the `Snowflake Cost per Query` template.
-(<!-- screenshot -->)
+(assets/template_in_menu.png)
 
 You will be prompted to swap data sources. Click **Swap Now**.
 (assets/swap_source_prompt.png)
@@ -132,8 +129,7 @@ And that's all there is to it!  You should now see the Snowflake Cost per Query 
 ## What we've covered
 Duration: 0
 
-In this QuickStart we learned how Sigma Audit Logs are structured and can be used to provide detailed information about events as users interact with Sigma including scheduled jobs.
-
+In this QuickStart we created the `query_history_enriched` table and launched Sigma's **Snowflake Cost per Query** template.
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
