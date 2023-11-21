@@ -10,6 +10,7 @@ lastUpdated: 2023-11-03
 
 <!-- 
 11/10/23: 
+11/17/23: 
 -->
 
 # (11-2023) November
@@ -36,11 +37,13 @@ New first Friday features QuickStarts will be published on the first Friday of e
 Duration: 20
 
 ### Bug Fixes:
-The PDF export feature now executes successfully in user-backed embeds.
+1: The PDF export feature now executes successfully in user-backed embeds.
 
-Administrators can now view all scheduled exports for published and tagged versions at the workbook level. Schedule views are no longer impacted by version permissions granted to users who create the schedules.
+2: Administrators can now view all scheduled exports for published and tagged versions at the workbook level. Schedule views are no longer impacted by version permissions granted to users who create the schedules.
 
-When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the Document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
+3: When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
+
+4: Use of the API to generate a public embed for workbook elements no longer results in a broken link.
 
 ### New Optional Interface Parameters:
 We have added three new parameters to the embedding API. 
@@ -79,9 +82,39 @@ Duration: 20
 ## Input Tables
 Duration: 20
 
+### Input table edit versioning:
+Sigma supports multiple users working on content at the same time. This functionality is great for collaboration and efficiency but in the case of input tables, can create a problem too when saves are happening at nearly the same time. 
+
+For example, if one user is editing an input table in a workbook’s published version (in `View` or `Explore` mode) and another user concurrently publishes an updated version of that workbook, what happens to the input table data that is "in-flight"?
+
+We have addressed this edge use case to prevent input table data loss without impacting collaboration.
+
+When you click `Save` in the input table element, Sigma informs the user that there has been an update by another user.Sigma provides the option to load and apply your changes to the latest workbook version, so that nothing is lost. 
+
+Granted, this is an edge use-case, but we have taken action to address it so that no data is potentially lost.
+
+### Input table lineage summary card:
+In the workbook lineage, input table summary cards now include a `Connection` field that identifies the connection Sigma uses to write the input table data to the CDW/DBMS. This makes it easier to determine the input table's destination for the added data.
+
+<img src="assets/it_lineage.gif">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Metrics
+Duration: 20
+
+Metrics are custom aggregate calculations that you can reuse across workbook data elements that share the same data source: a dataset or a connection table
+
+We have added search functionality to find reusable metrics saved to datasets and connection tables, to save your valuable time.
+
+<img src="assets/search_metrics.gif">
+
+For more information, [see Using Metrics](https://help.sigmacomputing.com/hc/en-us/articles/14430050820499).
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## New QuickStarts in November
 Duration: 20
@@ -96,7 +129,15 @@ This QuickStart walks you through the process of connecting to a Sigma template,
 ## Visualizations
 Duration: 20
 
+### Bug Fixes:
+1: Dynamic text now reflects date or number formatting changes applied to the source column.
 
+### Color by category in region and geography maps:
+You can now add chart mark colors by category in the `Map` - `Region` and `Map` - `Geography` visualizations. Previously, these were not available in these map types.
+
+This update brings parity in color configurations across all map types.
+
+<img src="assets/fff_11_2023_10.png" width="800"/><br>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -128,6 +169,17 @@ Label configurations for control elements are now consolidated in the `Element f
 </ul>
 
 <img src="assets/control_label.gif">
+
+### Shared bookmarks:
+In addition to [personal bookmarks](https://help.sigmacomputing.com/hc/en-us/articles/16694837590803-Bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
+
+Any time a workbook has controls where multiple different configurations are common, shared bookmarks can be used to make the user experience of navigating to those configurations easier.
+
+For example, a sales workbook can have pre-filtered bookmarks for each sales region; a Quarterly Business Review workbook can have bookmarks set up for each quarter; a Product workbook can have bookmarks set up for each product area -- the possibilities are endless.
+
+Shared bookmarks are always available to everyone who has access to a Workbook.
+
+<img src="assets/fff_11_2023_9.png" width="800"/><br>
 
 ### Warehouse views with row-level security:
 Users can now create warehouse views from workbooks that use row level security. 
