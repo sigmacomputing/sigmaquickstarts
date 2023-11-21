@@ -9,8 +9,9 @@ tags: first_friday_features
 lastUpdated: 2023-11-03
 
 <!-- 
-11/10/23: 
-11/17/23: 
+11/10/23: done
+11/17/23: done
+
 -->
 
 # (11-2023) November
