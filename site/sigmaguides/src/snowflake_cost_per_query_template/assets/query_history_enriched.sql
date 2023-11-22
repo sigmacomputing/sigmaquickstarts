@@ -1,18 +1,52 @@
--- set some variables
+/*************************************************************************************
+*  
+*   Name: query_history_enriched.sql
+*   Dev:  Oscar Bashaw
+*   Date: Nov 22 2023
+*   Summary: create query_history_enriched table and set up incremental materialization (inserts)
+*   Desc: This series of commands will do the following:
+*           1. Set session variables
+*           2. Create 2 helper UDFs 
+*           3. Create the query_history_enriched table that includes all queries started on or before yesterday
+*           4. Create a stored procedure that enriches queries not yet in the query_history_enriched table (and 
+*              that were run on or before the most recently completed day) and insert them into query_history_enriched
+*           5. Create and start a task to call that stored procedure using the specified CRON string (Once per day Mon-Fri at 3am PT)
+*           6. Grant the role used in your Sigma connection access to the query_history_enriched table.
+*
+*           
+*   Prereqs: To run this script the following is required:
+*           - a role with access to the database called SNOWFLAKE (usage data)
+*           - the ability to create a table, function, stored procedure and task on the specified database and schema
+*************************************************************************************/
+
+
+---------------------------------------------------------------------------------------------------------
+-- 1. Set session variables
+---------------------------------------------------------------------------------------------------------
+set materialization_role_name = 'name of role used while running this script';
 set database_name =  'name of database where query_history_enriched will live';
 set schema_name =  'name of schema where query_history_enriched will live';
-set sigma_role_name = 'name of role used in Sigma connection where you want to access this table';
+set sigma_role_name = 'name of role used in Sigma connection that you will use to access this table';
 
 set materialization_warehouse_name = 'name of the warehouse you want to use';
--- dont move earlier than 3 am on a given day
+-- dont move earlier than 3 am on a given day; there is some latency for Snowflake usage data
 set task_call_usp_materialize_query_history_enriched_CRON = 'USING CRON 0 3 * * Mon-Fri America/Los_Angeles';
 
+/*************************************************************************************
+*
+*   DO NOT MODIFY BELOW THIS SECTION
+*
+*************************************************************************************/
 -- set context
+use role identifier($materialization_role_name);
 use warehouse identifier($materialization_warehouse_name);
 use database identifier($database_name);
 use schema identifier($schema_name);
 
--- helper function
+
+---------------------------------------------------------------------------------------------------------
+-- 2. Create 2 helper UDFs
+---------------------------------------------------------------------------------------------------------
 create or replace function dbt_snowflake_monitoring_regexp_replace(subject text, pattern text, replacement text)
 returns string
 language javascript
@@ -25,7 +59,6 @@ $$
 $$
 ;
 
--- helper function
 create or replace function merge_objects(obj1 variant, obj2 variant)
 returns variant
 language javascript
@@ -36,7 +69,9 @@ $$
 $$
 ;
 
--- initial build of qhe table
+---------------------------------------------------------------------------------------------------------
+-- 3. Create the query_history_enriched table that includes all queries started on or before yesterday
+---------------------------------------------------------------------------------------------------------
 create or replace table query_history_enriched as (
 with
 query_history as (
@@ -55,7 +90,8 @@ query_history as (
                 merge_objects(coalesce(_dbt_json_comment_meta, { }), coalesce(_dbt_json_query_tag_meta, { }))
         end as dbt_metadata
 
-    from snowflake.account_usage.query_history    
+    from snowflake.account_usage.query_history 
+    where end_time < date_trunc(day, getdate())   
 ),
 
 dates_base as (
@@ -556,8 +592,16 @@ order by query_history.start_time
 )
 ;
 
+---------------------------------------------------------------------------------------------------------
+-- 4. Grant the Sigma service role select access on this table
+---------------------------------------------------------------------------------------------------------
+grant select on table query_history_enriched to role $sigma_role_name;
 
 
+
+---------------------------------------------------------------------------------------------------------
+-- 5. Create a stored procedure that enriches queries not yet in the query_history_enriched table
+---------------------------------------------------------------------------------------------------------
 
 create or replace procedure usp_materialize_query_history_enriched()
 returns string
@@ -590,7 +634,9 @@ begin
                     merge_objects(coalesce(_dbt_json_comment_meta, { }), coalesce(_dbt_json_query_tag_meta, { }))
             end as dbt_metadata
 
-        from snowflake.account_usage.query_history    
+        from snowflake.account_usage.query_history
+        where start_time > (select last_enriched_query_start_time from last_enriched_query)
+        and end_time < date_trunc(day, getdate())
     ),
 
 
@@ -815,15 +861,15 @@ begin
     ),
 
     daily_rates as (
-    select
-        date,
-        associated_usage_type as usage_type,
-        service_type,
-        effective_rate,
-        currency,
-        is_overage_rate,
-        row_number() over (partition by service_type, associated_usage_type order by date desc) = 1 as is_latest_rate
-    from rates
+        select
+            date,
+            associated_usage_type as usage_type,
+            service_type,
+            effective_rate,
+            currency,
+            is_overage_rate,
+            row_number() over (partition by service_type, associated_usage_type order by date desc) = 1 as is_latest_rate
+        from rates
     ),
 
     stop_threshold as (
@@ -965,34 +1011,34 @@ begin
     ),
 
     stg__cost_per_query as (
-    select
-        all_queries.query_id,
-        all_queries.start_time,
-        all_queries.end_time,
-        all_queries.execution_start_time,
-        all_queries.compute_cost,
-        -- For the most recent day, which is not yet complete, this calculation won't be perfect.
-        -- For example, at 12PM on the latest day, it's possible that cloud credits make up <10% of compute cost, so the queries
-        -- from that day are not allocated any cloud_services_cost. The next time the model runs, after we have the full day of data,
-        -- this may change if cloud credits make up >10% of compute cost.
-        (div0(all_queries.credits_used_cloud_services, credits_billed_daily.daily_credits_used_cloud_services) * credits_billed_daily.daily_billable_cloud_services) * coalesce(daily_rates.effective_rate, current_rates.effective_rate) as cloud_services_cost,
-        all_queries.compute_cost + cloud_services_cost as query_cost,
-        all_queries.ran_on_warehouse,
-        coalesce(daily_rates.currency, current_rates.currency) as currency
-    from all_queries
-    inner join credits_billed_daily
-        on date(all_queries.start_time) = credits_billed_daily.date
-    left join daily_rates
-        on date(all_queries.start_time) = daily_rates.date
-            and daily_rates.service_type = 'COMPUTE'
-            and daily_rates.usage_type = 'cloud services'
-    inner join daily_rates as current_rates
-        on current_rates.is_latest_rate
-            and current_rates.service_type = 'COMPUTE'
-            and current_rates.usage_type = 'cloud services'
-    where all_queries.start_time > (select last_enriched_query_start_time from last_enriched_query) 
-    and date_trunc(day, all_queries.start_time) < date_trunc(day, getdate())
-    order by all_queries.start_time asc
+        select
+            all_queries.query_id,
+            all_queries.start_time,
+            all_queries.end_time,
+            all_queries.execution_start_time,
+            all_queries.compute_cost,
+            -- For the most recent day, which is not yet complete, this calculation won't be perfect.
+            -- For example, at 12PM on the latest day, it's possible that cloud credits make up <10% of compute cost, so the queries
+            -- from that day are not allocated any cloud_services_cost. The next time the model runs, after we have the full day of data,
+            -- this may change if cloud credits make up >10% of compute cost.
+            (div0(all_queries.credits_used_cloud_services, credits_billed_daily.daily_credits_used_cloud_services) * credits_billed_daily.daily_billable_cloud_services) * coalesce(daily_rates.effective_rate, current_rates.effective_rate) as cloud_services_cost,
+            all_queries.compute_cost + cloud_services_cost as query_cost,
+            all_queries.ran_on_warehouse,
+            coalesce(daily_rates.currency, current_rates.currency) as currency
+        from all_queries
+        inner join credits_billed_daily
+            on date(all_queries.start_time) = credits_billed_daily.date
+        left join daily_rates
+            on date(all_queries.start_time) = daily_rates.date
+                and daily_rates.service_type = 'COMPUTE'
+                and daily_rates.usage_type = 'cloud services'
+        inner join daily_rates as current_rates
+            on current_rates.is_latest_rate
+                and current_rates.service_type = 'COMPUTE'
+                and current_rates.usage_type = 'cloud services'
+        where all_queries.start_time > (select last_enriched_query_start_time from last_enriched_query) 
+        and date_trunc(day, all_queries.start_time) < date_trunc(day, getdate())
+        order by all_queries.start_time asc
     )
 
     enriched_queries_for_insert as (
@@ -1095,7 +1141,8 @@ begin
             on query_history.query_id = cost_per_query.query_id
         order by query_history.start_time
     )
-    select * from enriched_queries_for_insert
+    select * 
+    from enriched_queries_for_insert
     ;
     commit;
 exception
@@ -1106,6 +1153,9 @@ $$
 ;
 
 
+---------------------------------------------------------------------------------------------------------
+-- 6. Create and start a task to call that stored procedure using the specified CRON string
+---------------------------------------------------------------------------------------------------------
 create or replace task task_call_usp_materialize_query_history_enriched
 warehouse = $materialization_warehouse_name
 schedule = $task_call_usp_materialize_query_history_enriched_CRON
@@ -1113,3 +1163,8 @@ as
 call usp_materialize_query_history_enriched();
 
 alter task task_call_usp_materialize_query_history_enriched resume;
+
+
+---------------------------------------------------------------------------------------------------------
+-- END OF FILE
+---------------------------------------------------------------------------------------------------------
