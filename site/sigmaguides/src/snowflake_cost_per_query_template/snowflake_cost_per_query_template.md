@@ -57,18 +57,26 @@ Duration: 5
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> If your company does not use dbt, skip this page and advance to step 3 
 </aside>
-One way to create the `query_history_enriched` table is by deploying the <a href="(https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from Select(https://select.dev/).
+
+One way to create the `query_history_enriched` table is by deploying the <a href="(https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from <a href="https://select.dev/">Select</a>.
 
 This package has a model called **query_history_enriched** that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
 
 Once the package has been deployed, Sigma needs to be able to access the table(s) created.  
 <ol>
   <li>Identify the role used in your Sigma connection.
-  <li>run the `grant select on table query_history_enriched to role {your_sigma_role}` command. Note that you may need to grant usage on the database and schema that host this table.
+  <li>Run the following command: 
 </ol>   
 
+```plaintext
+grant select on table {database name}.{schema name}.query_history_enriched to role {role used in Sigma connection};
+```
+Note that you may need to grant usage on the database and schema that host this table.
+
 Verify that you can see the new table(s) in the Sigma connection browser.
-![img_qhe_in_connection](assets/qhe_in_connection.png)
+<br/>
+<img src="assets/qhe_in_connection.png" width=300>
+<br/>
 
 Then, advance to step 4.
 
@@ -97,26 +105,32 @@ grant select on table {database name}.{schema name}.query_history_enriched to ro
 You may also need to grant usage on the database/schema to the role used in the Sigma connection.
 
 Verify that you can see the new table(s) in the Sigma connection browser.
-![img_qhe_in_connection](assets/qhe_in_connection.png)
+<img src="assets/qhe_in_connection.png" width=300>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Deploying the Template
 Duration: 5
-Once you have created the `query_history_enriched` table, go to Sigma.
 
-From the home page, navigate to the **Templates** section, then to **External Templates**.
+Once you have created the `query_history_enriched` table, go to Sigma.
+From the home page, navigate to the **Templates** section, then to **External**.
 
 Click on the `Snowflake Cost per Query` template.
-![img_template_in_menu](assets/template_in_menu.png)
-
+<br/>
+<img src="assets/template_in_menu.png" width=700>
+<br/>
+<br/>
 You will be prompted to swap data sources. Click **Swap Now**.
-![img_swap_source_prompt](assets/swap_source_prompt.png)
-
+<br/>
+<img src="assets/swap_source_prompt.png" width=500>
+<br/>
+<br/>
 Then verify that Sigma has found the `query_history_enriched` table and click **Swap Now**.
-![img_sources_matched](assets/sources_matched.png)
-
+<br/>
+<img src="assets/sources_matched.png" width=500>
+<br/>
+<br/>
 Click **Save As** and give your workbook a title.
 
 And that's all there is to it!  You should now see the Snowflake Cost per Query Template on top of your own data. 
@@ -130,6 +144,7 @@ And that's all there is to it!  You should now see the Snowflake Cost per Query 
 Duration: 0
 
 In this QuickStart we created the `query_history_enriched` table and launched Sigma's **Snowflake Cost per Query** template.
+<br>
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 

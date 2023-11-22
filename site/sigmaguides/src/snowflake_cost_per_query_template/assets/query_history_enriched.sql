@@ -1,6 +1,12 @@
-use database /* DATABASE WHERE QUERY_HISTORY_ENRICHED WILL LIVE */;
-use schema /* SCHEMA WHERE QUERY_HISTORY_ENRICHED WILL LIVE */;
+set database_name =  'name of database where query_history_enriched will live';
+set schema_name =  'name of schema where query_history_enriched will live';
+set sigma_role_name = 'name of role used in Sigma connection where you want to access this table';
+
+
 use warehouse /* WAREHOUSE NAME*/;
+use database identifier($database_name);
+use schema identifier($schema_name);
+
 
 create or replace function dbt_snowflake_monitoring_regexp_replace(subject text, pattern text, replacement text)
 returns string
