@@ -596,7 +596,7 @@ order by query_history.start_time
 ---------------------------------------------------------------------------------------------------------
 -- 4. Grant the Sigma service role select access on this table
 ---------------------------------------------------------------------------------------------------------
-grant select on table query_history_enriched to role $sigma_role_name;
+grant select on table query_history_enriched to role identifier($sigma_role_name);
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -608,11 +608,11 @@ returns string
 language javascript
 as
 $$
-begin
-    begin transaction;
+try {
+    snowflake.execute({sqlText: 'begin transaction;'});
+    let materialization_query = `
     insert into query_history_enriched
-    with 
-    last_enriched_query as (
+    with last_enriched_query as (
         select 
             max(start_time) as last_enriched_query_start_time
         from query_history_enriched
@@ -623,7 +623,7 @@ begin
             *,
 
             -- this removes comments enclosed by /* <comment text> */ and single line comments starting with -- and either ending with a new line or end of string
-            dbt_snowflake_monitoring_regexp_replace(query_text, $$(/\*(.|\n|\r)*?\*/)|(--.*$)|(--.*(\n|\r))$$, '') as query_text_no_comments,
+            dbt_snowflake_monitoring_regexp_replace(query_text, \$\$(/\*(.|\n|\r)*?\*/)|(--.*$)|(--.*(\n|\r))\$\$, '') as query_text_no_comments,
 
             try_parse_json(regexp_substr(query_text, '/\\*\\s({"app":\\s"dbt".*})\\s\\*/', 1, 1, 'ie')) as _dbt_json_comment_meta,
             case
@@ -1038,7 +1038,7 @@ begin
         where all_queries.start_time > (select last_enriched_query_start_time from last_enriched_query) 
         and all_queries.start_time < date_trunc(day, getdate())
         order by all_queries.start_time asc
-    )
+    ),
 
     enriched_queries_for_insert as (
         select
@@ -1142,13 +1142,14 @@ begin
     )
     select * 
     from enriched_queries_for_insert
-    ;
-    commit;
-    return 'success!';
-exception
-    rollback;
-    return 'usp_error:'||sqlstate||':'||sqlcode||':'sqlperm;
-end;
+    ;`;
+    snowflake.execute({sqlText: materialization_query});
+    snowflake.execute({sqlText: 'commit;'});
+    return "success!";
+} catch (err) {
+    snowflake.execute({sqlText: 'rollback;'});
+    return `Error: ${err}`;
+}
 $$
 ;
 
