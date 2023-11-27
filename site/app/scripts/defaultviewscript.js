@@ -4,8 +4,19 @@
 // Get references to all button elements
 const buttons = document.querySelectorAll('.w-button');
 
+// check if they actually exist to avoid null reference errors.
+const displayText = document.getElementById('displayText');
+if (displayText) {
+  displayText.textContent = `Last clicked category: ${category}`;
+} else {
+  console.error('displayText element not found');
+}
+
 // Function to update button class and URL
 function updateButtonClass(event, clickedButton) {
+  // Log the category being clicked
+    console.log('Category clicked:', clickedButton.getAttribute('data-cat'));
+ try {
   // Prevent the default behavior of the anchor tag
   event.preventDefault();
 
@@ -36,10 +47,16 @@ function updateButtonClass(event, clickedButton) {
 
   // Perform filtering based on the selected category
   filterItemsByCategory(category);
+} catch (error) {
+  console.error('Error in updateButtonClass:', error);
+}
 }
 
 // Function to filter items by category
 function filterItemsByCategory(category) {
+  // Log the category being filtered
+    console.log('Filtering category:', category);
+  try {
   // Get all items and hide them
   const items = document.querySelectorAll('.retailers-card');
   items.forEach(item => {
@@ -47,6 +64,10 @@ function filterItemsByCategory(category) {
   });
 
   // Show items with matching category
+  if (typeof category !== 'string') {
+    console.error('Invalid category type:', category);
+    return;
+  }
   if (category === 'show-all') {
     items.forEach(item => {
       item.style.display = 'block';
@@ -56,5 +77,8 @@ function filterItemsByCategory(category) {
     matchingItems.forEach(item => {
       item.style.display = 'block';
     });
-  }
+   }
+} catch (error) {
+  console.error('Error in filterItemsByCategory:', error);
+}
 }
