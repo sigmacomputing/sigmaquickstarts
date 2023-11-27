@@ -236,7 +236,7 @@ Now that you have saved the workbook, it's state is changed to `Published` and w
 <strong>IMPORTANT:</strong><br> Sigma has many more features to help address the need for version control.
 </aside>
 
-[For more information on version control in Sigma, please click here.]()
+[For more information on version control in Sigma, please click here.](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
 
 In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to `Data`. We will use this table as a Workbook source of data for work in later labs.
 
