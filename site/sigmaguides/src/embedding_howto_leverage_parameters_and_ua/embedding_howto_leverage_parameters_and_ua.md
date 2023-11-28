@@ -297,6 +297,23 @@ searchParams += '&:disable_mobile_view=yes';
 ```
 <img src="assets/horizonalline.png"/>
 
+**2: first_name:**<br>
+Sets the first name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
+
+Sample Code:
+```code
+//SET A VALUE FOR first_name. Default=Embed.
+searchParams += '&:first_name=Bob';
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Use of the "first_name" parameter requires a corresponding "last_name" parameter.
+</aside>
+
+If both first_name and last_name parameters are absent, the current user keeps their current name (or, if a new user is created, their first name will be set to Embed, last name to User)
+
+<img src="assets/horizonalline.png"/>
+
 **2: hide_folder_navigation:**<br> 
 Available for "mode=userbacked"; if set to true, it hides the folder navigation options in the bottom left. Default=no.
 
@@ -431,6 +448,23 @@ searchParams += '&:hide_workbook_name=true';
 
 <img src="assets/horizonalline.png"/>
 
+**2: last_name:**<br>
+Sets the last name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
+
+Sample Code:
+```code
+//SET A VALUE FOR last_name. Default=User.
+searchParams += '&:last_name=Smith';
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Use of the "last_name" parameter requires a corresponding "first_name" parameter.
+</aside>
+
+If both first_name and last_name parameters are absent, the current user keeps their current name (or, if a new user is created, their first name will be set to Embed, last name to User)
+
+<img src="assets/horizonalline.png"/>
+
 **9: loading_bg:**<br> 
 Allows you to change the background on the loading and error screens when used with hex color codes.
 
@@ -542,6 +576,19 @@ Now the embed has adopted the `Light` theme, even though the `Dark` theme was se
 </aside>
 
 To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747-Create-and-manage-workbook-themes#h_01FG7WHKNRCCRK9P6B3Z1KHC3C)
+
+**15: use_user_name:**<br>
+Displays the workbook creator’s name (instead of email) in embed menus and system-generated emails.
+
+Sample Code:
+```code
+//Sets the workbook creator’s name (instead of email) in embed menus and system-generated emails. DEFAULT=
+searchParams += '&:use_user_name='Bob Smith`;
+```
+
+
+<img src="assets/horizonalline.png"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

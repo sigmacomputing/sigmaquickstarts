@@ -1,60 +1,59 @@
-// Added by PB 20 Jun 2023
-// Provides colored button on click of categories
+// JavaScript File
 
-// Get references to all button elements
-const buttons = document.querySelectorAll('.w-button');
+// Section: Document Ready
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.w-button');
+  const currentCategory = getCategoryFromURL() || 'show-all';
 
-// Function to update button class and URL
-function updateButtonClass(event, clickedButton) {
-  // Prevent the default behavior of the anchor tag
-  event.preventDefault();
+  updateButtonStates(currentCategory);
+  filterItemsByCategory(currentCategory); // Filter items based on URL category or show all
 
-  // Retrieve the category value from the data-cat attribute
-  const category = clickedButton.getAttribute('data-cat');
-
-  // Remove the "button-primary" class from other buttons
   buttons.forEach(button => {
-    button.classList.remove('button-primary');
-    button.classList.add('button-secondary');
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      const category = this.getAttribute('data-cat');
+
+      updateButtonStates(category);
+      filterItemsByCategory(category);
+      updateURL(category);
+    });
   });
+});
 
-  // Add the "button-primary" class to the clicked button
-  clickedButton.classList.remove('button-secondary');
-  clickedButton.classList.add('button-primary');
-
-  // Update the display text with the last clicked button category
-  const displayText = document.getElementById('displayText');
-  displayText.textContent = `Last clicked category: ${category}`;
-
-  // Update the URL with the category value using pushState()
-  if (category === 'show-all') {
-    history.pushState(null, '', 'https://quickstarts.sigmacomputing.com/');
-  } else {
-    const newUrl = `https://quickstarts.sigmacomputing.com/?cat=${category}`;
-    history.pushState({ category }, '', newUrl);
-  }
-
-  // Perform filtering based on the selected category
-  filterItemsByCategory(category);
+// Section: Utility Function - Get Category from URL
+function getCategoryFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get('cat');
+  return category;
 }
 
-// Function to filter items by category
+// Section: Update Button States
+function updateButtonStates(selectedCategory) {
+  const buttons = document.querySelectorAll('.w-button');
+
+  buttons.forEach(button => {
+    const category = button.getAttribute('data-cat');
+    button.classList.toggle('button-primary', category === selectedCategory);
+    button.classList.toggle('button-secondary', category !== selectedCategory);
+  });
+}
+
+// Section: Update URL
+function updateURL(category) {
+  const newUrl = category !== 'show-all' ? `/?cat=${category}` : '/';
+  history.pushState({ category }, '', newUrl);
+}
+
+// Section: Filter Items by Category
 function filterItemsByCategory(category) {
-  // Get all items and hide them
-  const items = document.querySelectorAll('.retailers-card');
-  items.forEach(item => {
-    item.style.display = 'none';
-  });
+  const items = document.querySelectorAll('.retailers-card'); // Select all cards
+  console.log(`Filtering for category: ${category}, Total items found: ${items.length}`);
 
-  // Show items with matching category
-  if (category === 'show-all') {
-    items.forEach(item => {
-      item.style.display = 'block';
-    });
-  } else {
-    const matchingItems = document.querySelectorAll(`.retailers-card[data-category="${category}"]`);
-    matchingItems.forEach(item => {
-      item.style.display = 'block';
-    });
-  }
+  items.forEach(item => {
+    const itemCategory = item.getAttribute('data-category');
+    const shouldDisplay = itemCategory === category || category === 'show-all';
+    item.style.display = shouldDisplay ? 'block' : 'none';
+    console.log(`Item: ${itemCategory}, Should Display: ${shouldDisplay}`);
+  });
 }
+
