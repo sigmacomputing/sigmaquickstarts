@@ -2,7 +2,7 @@
 *  
 *   Name: query_history_enriched.sql
 *   Dev:  Oscar Bashaw (setup and incremental materialization), Select.dev (wrote the query_history_enriched calculation)
-*   Date: Nov 22 2023
+*   Date: Nov 29 2023
 *   Summary: create query_history_enriched table and set up incremental materialization (inserts)
 *   Desc: This series of commands will do the following:
 *           1. Set session variables
@@ -14,8 +14,8 @@
 *          
 *           
 *   Prereqs: To run this script the following is required:
-*           - a role with access to the database called SNOWFLAKE (usage data)
-*           - the ability to create a table, function, stored procedure and task on the specified database and schema
+*           - Ability to use the SYSADMIN role (just briefly, to give the proper privileges to another role)
+*           - The name of the role used in your Sigma connection
 *************************************************************************************/
 
 
@@ -30,7 +30,7 @@ set sigma_role_name = 'name of role used in Sigma connection that you will use t
 -- recommend a Medium warehouse, unless your query_history table is small and daily query volumes are low.
 set materialization_warehouse_name = 'name of the warehouse you want to use';
 
--- dont move earlier than 3 am on a given day; there is some latency for Snowflake usage data
+-- dont move earlier than 3 am on a given day; there is some latency for Snowflake usage data.
 set task_call_usp_materialize_query_history_enriched_CRON = 'USING CRON 0 3 * * Mon-Fri America/Los_Angeles';
 
 /*************************************************************************************
@@ -43,6 +43,7 @@ use schema identifier($schema_name);
 
 -- need to give the materialization role the proper permissions to create table, stored procedure and task
 use role sysadmin;
+grant imported privileges on database snowflake to role identifier{$materialization_role_name};
 grant create table on schema identifier($schema_name) to role identifier($materialization_role_name);
 grant create procedure on schema identifier($schema_name) to role identifier($materialization_role_name);
 grant create task on schema identifier($schema_name) to role identifier($materialization_role_name);
@@ -570,7 +571,7 @@ grant select on table query_history_enriched to role identifier($sigma_role_name
 
 
 ---------------------------------------------------------------------------------------------------------
--- 5. Create a stored procedure that enriches queries not yet in the query_history_enriched table
+-- 4. Create a stored procedure that enriches queries not yet in the query_history_enriched table
 ---------------------------------------------------------------------------------------------------------
 
 create or replace procedure usp_materialize_query_history_enriched()
@@ -1081,7 +1082,6 @@ try {
             query_history.bytes_spilled_to_remote_storage / power(1024, 3) as data_spilled_to_remote_storage_gb,
             query_history.bytes_sent_over_the_network / power(1024, 3) as data_sent_over_the_network_gb,
 
-
             query_history.total_elapsed_time / 1000 as total_elapsed_time_s,
             query_history.compilation_time / 1000 as compilation_time_s,
             query_history.queued_provisioning_time / 1000 as queued_provisioning_time_s,
@@ -1112,7 +1112,7 @@ $$
 
 
 ---------------------------------------------------------------------------------------------------------
--- 6. Create and start a task to call that stored procedure using the specified CRON string
+-- 5. Create and start a task to call that stored procedure using the specified CRON string
 ---------------------------------------------------------------------------------------------------------
 create or replace task task_call_usp_materialize_query_history_enriched
 warehouse = $materialization_warehouse_name
