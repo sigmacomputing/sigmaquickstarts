@@ -66,20 +66,6 @@ If both `first_name` and `last_name` parameters are absent, the current user kee
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Filters and Controls
-Duration: 10
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Functions
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Input Tables
 Duration: 20
 
