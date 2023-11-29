@@ -90,19 +90,16 @@ Duration: 5
 Another way to create the `query_history_enriched` table is by running the attached SQL script in your Snowflake account.
 <a href="https://github.com/sigmacomputing/sigmaquickstarts/blob/master/site/sigmaguides/src/snowflake_cost_per_query_template/assets/query_history_enriched.sql">Download the SQL script here!</a>
 
-Make sure that your role has the following privileges:
+The script requires you to specify a few parameters
 <ul>
-  <li>create table (in your database/schema of choice)
-  <li>create function
+  <li>materialization_role_name : the role that will create and update the query_history_enriched table
+  <li>database_name / schema_name : the target destination for the query_history_enriched table
+  <li>materialization_warehouse_name : the warehouse used to create and update the query_history_enriched table
+  <li>sigma_role_name : the role used in your Sigma connection
 </ul>
 
-Run the SQL script in your Snowflake account, and then run the following statements to give Sigma access to the table:
-```plaintext
-grant select on table {database name}.{schema name}.query_history_enriched to role {role used in Sigma connection};
-```
-You may also need to grant usage on the database/schema to the role used in the Sigma connection.
-
-Verify that you can see the new table(s) in the Sigma connection browser.
+Run the SQL script in your Snowflake account, and then verify that you can see the new table(s) in the Sigma connection browser.
+<br>
 <img src="assets/qhe_in_connection.png" width=300>
 
 ![Footer](assets/sigma_footer.png)
@@ -143,6 +140,7 @@ Duration: 0
 
 In this QuickStart we created the `query_history_enriched` table and launched Sigma's **Snowflake Cost per Query** template.
 <br>
+If you're interested in a Snowflake Optimization tool, check out [Select!](https://select.dev)
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
