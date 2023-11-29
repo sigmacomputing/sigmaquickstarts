@@ -6,12 +6,11 @@
 *   Summary: create query_history_enriched table and set up incremental materialization (inserts)
 *   Desc: This series of commands will do the following:
 *           1. Set session variables
-*           2. Create 2 helper UDFs 
-*           3. Create the query_history_enriched table that includes all queries started on or before yesterday
-*           4. Grant the role used in your Sigma connection access to the query_history_enriched table
-*           5. Create a stored procedure that enriches queries not yet in the query_history_enriched table (and 
+*           2. Create the query_history_enriched table that includes all queries started on or before yesterday
+*           3. Grant the role used in your Sigma connection access to the query_history_enriched table
+*           4. Create a stored procedure that enriches queries not yet in the query_history_enriched table (and 
 *              that were run on or before the most recently completed day) and insert them into query_history_enriched
-*           6. Create and start a task to call that stored procedure using the specified CRON string (Once per day Mon-Fri at 3am PT)
+*           5. Create and start a task to call that stored procedure using the specified CRON string (Once per day Mon-Fri at 3am PT)
 *          
 *           
 *   Prereqs: To run this script the following is required:
@@ -39,58 +38,29 @@ set task_call_usp_materialize_query_history_enriched_CRON = 'USING CRON 0 3 * * 
 *   DO NOT MODIFY BELOW THIS SECTION
 *
 *************************************************************************************/
-use role identifier($materialization_role_name);
-use warehouse identifier($materialization_warehouse_name);
 use database identifier($database_name);
 use schema identifier($schema_name);
 
+-- need to give the materialization role the proper permissions to create table, stored procedure and task
+use role sysadmin;
+grant create table on schema identifier($schema_name) to role identifier($materialization_role_name);
+grant create procedure on schema identifier($schema_name) to role identifier($materialization_role_name);
+grant create task on schema identifier($schema_name) to role identifier($materialization_role_name);
+grant execute task on account to role identifier($materialization_role_name);
+
+-- now use the materialization role
+use role identifier($materialization_role_name);
+use warehouse identifier($materialization_warehouse_name);
+
 
 ---------------------------------------------------------------------------------------------------------
--- 2. Create 2 helper UDFs
----------------------------------------------------------------------------------------------------------
-create or replace function dbt_snowflake_monitoring_regexp_replace(subject text, pattern text, replacement text)
-returns string
-language javascript
-comment = 'Created by dbt-snowflake-monitoring dbt package.'
-as
-$$
-    const p = SUBJECT;
-    let regex = new RegExp(PATTERN, 'g')
-    return p.replace(regex, REPLACEMENT);
-$$
-;
-
-create or replace function merge_objects(obj1 variant, obj2 variant)
-returns variant
-language javascript
-comment = 'Created by dbt-snowflake-monitoring dbt package.'
-as
-$$
-    return x = Object.assign(OBJ1, OBJ2)
-$$
-;
-
----------------------------------------------------------------------------------------------------------
--- 3. Create the query_history_enriched table that includes all queries started on or before yesterday
+-- 2. Create the query_history_enriched table that includes all queries started on or before yesterday
 ---------------------------------------------------------------------------------------------------------
 create or replace table query_history_enriched as (
 with
 query_history as (
     select
-        *,
-
-        -- this removes comments enclosed by /* <comment text> */ and single line comments starting with -- and either ending with a new line or end of string
-        dbt_snowflake_monitoring_regexp_replace(query_text, $$(/\*(.|\n|\r)*?\*/)|(--.*$)|(--.*(\n|\r))$$, '') as query_text_no_comments,
-
-        try_parse_json(regexp_substr(query_text, '/\\*\\s({"app":\\s"dbt".*})\\s\\*/', 1, 1, 'ie')) as _dbt_json_comment_meta,
-        case
-            when try_parse_json(query_tag)['dbt_snowflake_query_tags_version'] is not null then try_parse_json(query_tag)
-        end as _dbt_json_query_tag_meta,
-        case
-            when _dbt_json_comment_meta is not null or _dbt_json_query_tag_meta is not null then
-                merge_objects(coalesce(_dbt_json_comment_meta, { }), coalesce(_dbt_json_query_tag_meta, { }))
-        end as dbt_metadata
-
+        *
     from snowflake.account_usage.query_history 
     where end_time < date_trunc(day, getdate())   
 ),
@@ -573,8 +543,6 @@ select
     query_history.bytes_spilled_to_local_storage / power(1024, 3) as data_spilled_to_local_storage_gb,
     query_history.bytes_spilled_to_remote_storage / power(1024, 3) as data_spilled_to_remote_storage_gb,
     query_history.bytes_sent_over_the_network / power(1024, 3) as data_sent_over_the_network_gb,
-    query_history.query_text_no_comments,
-    query_history.dbt_metadata,
 
     query_history.total_elapsed_time / 1000 as total_elapsed_time_s,
     query_history.compilation_time / 1000 as compilation_time_s,
@@ -594,8 +562,10 @@ order by query_history.start_time
 ;
 
 ---------------------------------------------------------------------------------------------------------
--- 4. Grant the Sigma service role select access on this table
+-- 3. Grant the Sigma service role select access on this table
 ---------------------------------------------------------------------------------------------------------
+grant usage on database identifier($database_name) to role identifier($sigma_role_name);
+grant usage on schema identifier($schema_name) to role identifier($sigma_role_name);
 grant select on table query_history_enriched to role identifier($sigma_role_name);
 
 
@@ -620,19 +590,7 @@ try {
 
     query_history as (
         select
-            *,
-
-            -- this removes comments enclosed by /* <comment text> */ and single line comments starting with -- and either ending with a new line or end of string
-            dbt_snowflake_monitoring_regexp_replace(query_text, \$\$(/\*(.|\n|\r)*?\*/)|(--.*$)|(--.*(\n|\r))\$\$, '') as query_text_no_comments,
-
-            try_parse_json(regexp_substr(query_text, '/\\*\\s({"app":\\s"dbt".*})\\s\\*/', 1, 1, 'ie')) as _dbt_json_comment_meta,
-            case
-                when try_parse_json(query_tag)['dbt_snowflake_query_tags_version'] is not null then try_parse_json(query_tag)
-            end as _dbt_json_query_tag_meta,
-            case
-                when _dbt_json_comment_meta is not null or _dbt_json_query_tag_meta is not null then
-                    merge_objects(coalesce(_dbt_json_comment_meta, { }), coalesce(_dbt_json_query_tag_meta, { }))
-            end as dbt_metadata
+            *
 
         from snowflake.account_usage.query_history
         where start_time > (select last_enriched_query_start_time from last_enriched_query)
@@ -1122,8 +1080,7 @@ try {
             query_history.bytes_spilled_to_local_storage / power(1024, 3) as data_spilled_to_local_storage_gb,
             query_history.bytes_spilled_to_remote_storage / power(1024, 3) as data_spilled_to_remote_storage_gb,
             query_history.bytes_sent_over_the_network / power(1024, 3) as data_sent_over_the_network_gb,
-            query_history.query_text_no_comments,
-            query_history.dbt_metadata,
+
 
             query_history.total_elapsed_time / 1000 as total_elapsed_time_s,
             query_history.compilation_time / 1000 as compilation_time_s,
