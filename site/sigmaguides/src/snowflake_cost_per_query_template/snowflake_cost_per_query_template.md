@@ -16,10 +16,8 @@ This **QuickStart** provides instructions on how to set up Sigma's **Snowflake C
 This template give you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
 
 There are two steps to setting up the template:
-<ol>
-  <li>Create the `query_history_enriched` table in your Snowflake account
-  <li>Launch the template in Sigma and **Swap Sources** to the table created in step 1
-</ol>
+  1.  Create the `query_history_enriched` table in your Snowflake account
+  2.  Launch the template in Sigma and **Swap Sources** to the table created in step 1
 
 <img src="assets/template_preview.png" width="800"/>
 <!-- <aside class="postive">
