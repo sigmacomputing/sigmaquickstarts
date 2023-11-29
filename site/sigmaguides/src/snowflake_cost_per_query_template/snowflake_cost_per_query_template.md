@@ -1,7 +1,7 @@
 author: obashaw
 id: snowflake_cost_per_query_template_setup
 summary: snowflake_cost_per_query_template_setup
-categories: templates
+categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
