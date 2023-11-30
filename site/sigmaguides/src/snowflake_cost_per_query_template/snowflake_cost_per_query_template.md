@@ -3,10 +3,10 @@ id: snowflake_cost_per_query_template_setup
 summary: snowflake_cost_per_query_template_setup
 categories: templates
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: 2023-11-16
+tags: 
+lastUpdated: 2023-11-30
 
 # Snowflake Cost per Query Template Setup
 
