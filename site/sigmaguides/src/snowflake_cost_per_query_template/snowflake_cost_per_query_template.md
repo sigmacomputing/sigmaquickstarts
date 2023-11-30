@@ -1,7 +1,7 @@
 author: obashaw
 id: snowflake_cost_per_query_template_setup
 summary: snowflake_cost_per_query_template_setup
-categories: partners
+categories: templates
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
@@ -20,10 +20,6 @@ There are two steps to setting up the template:
   2.  Launch the template in Sigma and **Swap Sources** to the table created in step 1
 
 <img src="assets/template_preview.png" width="800"/>
-<!-- <aside class="postive">
-<strong>IMPORTANT:</strong><br> No customer data is stored in the Audit Log. Only events/actions and context is logged. 
-</aside> -->
-
 
 ### Target Audience
 Anyone who is trying to calculate the Snowflake cost-per-query or aggregate costs across different dimensions.
@@ -43,7 +39,7 @@ How to deploy Sigma's **Snowflake Cost per Query** template.
 
 ### What You’ll Build
 <ul>
-  <li>The `query_history_enriched` table in Snowflake that calculates the cost (in currency) for every query
+  <li>The "query_history_enriched" table in Snowflake that calculates the cost (in currency) for every query.
   <li>A Sigma workbook that calculates query cost across Sigma workbooks / users and across Snowflake users, roles and warehouses.
 </ul>
 
@@ -56,9 +52,9 @@ Duration: 5
 <strong>IMPORTANT:</strong><br> If your company does not use dbt, skip this page and advance to step 3 
 </aside>
 
-One way to create the `query_history_enriched` table is by deploying the <a href="(https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from <a href="https://select.dev/">Select</a>.
+One way to create the `query_history_enriched` table is by deploying the <a href="https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from <a href="https://select.dev/">Select</a>.
 
-This package has a model called **query_history_enriched** that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
+This package has a model called `query_history_enriched` that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
 
 Once the package has been deployed, Sigma needs to be able to access the table(s) created.  
 <ol>
@@ -71,12 +67,11 @@ grant select on table {database name}.{schema name}.query_history_enriched to ro
 ```
 Note that you may need to grant usage on the database and schema that host this table.
 
-Verify that you can see the new table(s) in the Sigma connection browser.
-<br/>
-<img src="assets/qhe_in_connection.png" width=300>
-<br/>
+Verify that you can see the new table(s) in the Sigma connection browser:
 
-Then, advance to step 4.
+<img src="assets/qhe_in_connection.png" width=300>
+
+**Next, advance to step 4.**
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -84,13 +79,14 @@ Then, advance to step 4.
 ## Building the query_history_enriched table without dbt
 Duration: 5
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> If your company uses dbt, ignore this page and go back to step 2 
+<strong>IMPORTANT:</strong><br> The steps on this page are only for companies that do not use DBT. If you use DBT, skip ahead to step 4. 
 </aside>
 
 Another way to create the `query_history_enriched` table is by running the attached SQL script in your Snowflake account.
-<a href="https://github.com/sigmacomputing/sigmaquickstarts/blob/master/site/sigmaguides/src/snowflake_cost_per_query_template/assets/query_history_enriched.sql">Download the SQL script here!</a>
 
-The script requires you to specify a few parameters
+[Download the SQL script here!](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/templates/query_history_enriched.sql)
+
+**The script requires you to specify a few parameters:**
 <ul>
   <li>materialization_role_name : the role that will create and update the query_history_enriched table
   <li>database_name / schema_name : the target destination for the query_history_enriched table
@@ -109,38 +105,41 @@ Run the SQL script in your Snowflake account, and then verify that you can see t
 Duration: 5
 
 Once you have created the `query_history_enriched` table, go to Sigma.
-From the home page, navigate to the **Templates** section, then to **External**.
 
-Click on the `Snowflake Cost per Query` template.
-<br/>
+From the home page, navigate to the `Templates` section, then to `External`.
+
+Click on the `Snowflake Cost per Query` template:
+
 <img src="assets/template_in_menu.png" width=700>
-<br/>
-<br/>
-You will be prompted to swap data sources. Click **Swap Now**.
-<br/>
+
+You will be prompted to swap data sources. Click `Swap Now`:
+
 <img src="assets/swap_source_prompt.png" width=500>
-<br/>
-<br/>
-Then verify that Sigma has found the `query_history_enriched` table and click **Swap Now**.
-<br/>
-<img src="assets/sources_matched.png" width=500>
-<br/>
-<br/>
-Click **Save As** and give your workbook a title.
 
-And that's all there is to it!  You should now see the Snowflake Cost per Query Template on top of your own data. 
+Verify that Sigma has found the `query_history_enriched` table and click `Swap Now`:
 
+<img src="assets/sources_matched.png" width=800>
+
+Click `Save As` and give your workbook a title.
+
+**That's all there is to it!**  
+
+You should now see the Snowflake Cost per Query Template on top of your own data. 
+
+For example:
+
+<img src="assets/template_preview.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
 ## What we've covered
 Duration: 0
 
-In this QuickStart we created the `query_history_enriched` table and launched Sigma's **Snowflake Cost per Query** template.
-<br>
+In this QuickStart we created the `query_history_enriched` table and launched Sigma's `Snowflake Cost per Query` template.
+
 If you're interested in a Snowflake Optimization tool, check out [Select!](https://select.dev)
+
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
