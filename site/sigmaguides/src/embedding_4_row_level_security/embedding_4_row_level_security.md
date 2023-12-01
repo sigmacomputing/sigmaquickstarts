@@ -369,7 +369,7 @@ If you are still running user impersonation, click to stop it.
 
 In the workbook, click the `+` and select `Table`. Then select a data source for the table as `Write SQL`:
 
-<img src="assets/RLS18.png" width="800"/>
+<img src="assets/rls18.png" width="800"/>
 
 Paste the following code in the query window:
 ```code
