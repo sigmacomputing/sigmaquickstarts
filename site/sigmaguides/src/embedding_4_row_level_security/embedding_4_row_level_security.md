@@ -273,7 +273,7 @@ We will do this work directly in the UI and evaluate the security using an admin
 ### In the Sigma UI:
 Log into Sigma as an Administrator and navigate to `Administration` > `User Attributes`. We want to add (or modify) the user attribute called `Region` so that we have two `Members Assigned` with different `Attribute Values` as:
 
-<img src="assets/RLS21.png" width="800"/>
+<img src="assets/rls21.png" width="800"/>
 
 Now reopen the Dataset called `Application Embedding - RLS`.
 
@@ -283,7 +283,7 @@ Now reopen the Dataset called `Application Embedding - RLS`.
 
 Make a duplicate of the dataset and rename it to `Embedding RLS - SuperUser Step`:
 
-<img src="assets/RLS9.png" width="400"/>
+<img src="assets/rls9.png" width="400"/>
 
 Place the dataset in `Edit` mode, click the `ua_Region` column and replace it's existing formula with this one:
 
@@ -323,7 +323,7 @@ If the condition is false, the expression evaluates to False.
 
 Hit enter. All the cell values under `ua_Region` should be `True` as the "current user" is an Administrator:
 
-<img src="assets/RLS12.png" width="600"/>
+<img src="assets/rls12.png" width="600"/>
 
 There are about 4.5M rows shown.
 
@@ -331,26 +331,26 @@ Before we move on, we need to make sure to share the dataset (in a Workbook) wit
 
 `Publish` the dataset, then `explore` and `Save As` in the new Workbook. Give it a name `Embedding RLS - SuperUser Step`:
 
-<img src="assets/RLS13.png" width="800"/>
+<img src="assets/rls13.png" width="800"/>
 
 Share the Workbook with our test user:
 
-<img src="assets/RLS14.png" width="600"/>
+<img src="assets/rls14.png" width="600"/>
 
 Now we want to switch users, just using user impersonation.
 
 Navigate to `Administration` > `People` and find our test user that only has access to the `East` region. Click the `3-dot` menu and select 
 `Impersonate user`:
 
-<img src="assets/RLS15.png" width="800"/>
+<img src="assets/rls15.png" width="800"/>
 
 Navigate to `Shared with me` and click the new workbook:
 
-<img src="assets/RLS16.png" width="800"/>
+<img src="assets/rls16.png" width="800"/>
 
 We now see only regions in the `East` and the row count is much lower.
 
-<img src="assets/RLS17.png" width="800"/>
+<img src="assets/rls17.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We can also pass values in the embed API as we have done many times already but user impersonation is a quick method evaluate results as well.
@@ -388,7 +388,7 @@ WHERE
 
 Click `Run`. The results should look like this (about 4.5M rows):
 
-<img src="assets/RLS19.png" width="800"/>
+<img src="assets/rls19.png" width="800"/>
 
 ### Explanation of the SQL script:
 Overall, this query selects all columns from the specified table, along with the current user's role and a user attribute (Region). It filters the rows based on the user's region, showing all rows if the user's region is 'All', or filtering to rows matching the user's region otherwise.
@@ -468,7 +468,7 @@ Once you `Run` the query, the `Save` button becomes active and we can save the n
 
 Once the dataset is saved, we can impersonate our test user (who has rights only to the East region):
 
-<img src="assets/RLS20.png" width="800"/>
+<img src="assets/rls20.png" width="800"/>
 
 [Click here for more information on custom SQL in Sigma](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#csql)
 
