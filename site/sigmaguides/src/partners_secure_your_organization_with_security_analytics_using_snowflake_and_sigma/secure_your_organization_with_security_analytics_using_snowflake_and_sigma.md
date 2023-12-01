@@ -17,7 +17,7 @@ By centralizing your security data across point products in the Snowflake securi
 While there are a variety of security metrics that Snowflake and Sigma supports, in this hands-on lab, we will cover how you can leverage Snowflake and Sigma to monitor the security posture of your Snowflake data environment. 
 
 ### Prerequisites
-For this lab you will need a Sigma free trial, which you can access here: [sigmacomputing.com/free-trial-hol](sigmacomputing.com/free-trial-hol). 
+For this lab you will need a Sigma free trial, which you can access here: [sigmacomputing.com/free-trial-hol](https://www.sigmacomputing.com/free-trial-hol). 
 
 **The password is sigma**. For detailed instructions on getting set up, see section 1, Connecting to Sigma. 
   
@@ -45,7 +45,7 @@ Duration: 10
 
 ### Connecting to Sigma 
 
-2.1 Navigate to [sigmacomputing.com/free-trial-hol](sigmacomputing.com/free-trial-hol)
+2.1 Navigate to [sigmacomputing.com/free-trial-hol](https://www.sigmacomputing.com/free-trial-hol)
 
 2.2 Enter "sigma" for the password in all lowercase. 
 

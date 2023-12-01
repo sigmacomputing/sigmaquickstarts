@@ -7,6 +7,53 @@
     // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
     let app = document.querySelector('#app');
 
+      // New function for handling button clicks
+      window.handleButtonClick = function(event, button) {
+        event.preventDefault(); // Prevent default anchor behavior
+        const category = button.getAttribute('data-cat');
+        const simulatedDetail = { selected: category };
+        const simulatedEvent = { target: { selectedItem: button } };
+        app.onCategoryActivate(simulatedEvent, simulatedDetail);
+        updateButtonHighlight(category);
+      };
+
+      // New function for handling show-all button reloading base page
+      window.reloadBasePage = function() {
+        // Check if the current hostname is localhost or a production URL
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const baseUrl = isLocalhost ? 'http://localhost:8000' : 'https://quickstarts.sigmacomputing.com';
+        window.location.href = baseUrl;
+        updateButtonHighlight('show-all'); // Update the button highlight for 'show-all'
+      };
+      
+    // New function for button classing
+    function updateButtonClasses(selectedCategory) {
+      const buttons = document.querySelectorAll('.w-button');
+      buttons.forEach(button => {
+        if (button.getAttribute('data-cat') === selectedCategory) {
+          button.classList.add('button-primary');
+          button.classList.remove('button-secondary');
+        } else {
+          button.classList.remove('button-primary');
+          button.classList.add('button-secondary');
+        }
+      });
+    }
+
+    function updateButtonHighlight(selectedCategory) {
+      const buttons = document.querySelectorAll('.w-button');
+      buttons.forEach(button => {
+        const category = button.getAttribute('data-cat');
+        if (category === selectedCategory) {
+          button.classList.add('button-primary');
+          button.classList.remove('button-secondary');
+        } else {
+          button.classList.add('button-secondary');
+          button.classList.remove('button-primary');
+        }
+      });
+    }
+    
     app.categoryStartCards = {};
     // Tags which should always be kept for filtering,
     // no matter what.
@@ -46,13 +93,20 @@
 
     app.filterBy = function(e, detail) {
       if (detail.hasOwnProperty('selected')) {
-        this.$.cards.filterByCategory(detail.selected);
+        if (detail.selected === 'show-all') {
+          // Logic to show all cards
+          const allCards = document.querySelectorAll('.codelab-card');
+          allCards.forEach(card => card.style.display = 'block');
+        } else {
+          // Existing logic for specific category filtering
+          this.$.cards.filterByCategory(detail.selected);
+        }
         return;
       }
       detail.kioskTags = app.kioskTags;
       this.$.cards.filter(detail);
     };
-
+    
     app.onCategoryActivate = function(e, detail) {
       var item = e.target.selectedItem;
       if (item && item.getAttribute('filter') === detail.selected) {
@@ -159,7 +213,7 @@
           tags.splice(i, 1);
         }
       }
-
+    
       if (this.$.categorylist) {
         this.$.categorylist.selected = cat;
       }
@@ -175,7 +229,18 @@
         app.onSearchKeyDown();
       }
       updateLuckyLink();
+    
+      // Additional logic to update button highlights based on the category
+      if (cat) {
+        this.filterBy(null, {selected: cat});
+        updateButtonHighlight(cat); // Call the new function to update button highlights
+      } else {
+        // If no category is specified, show all and highlight the 'show-all' button
+        this.filterBy(null, {selected: 'show-all'});
+        updateButtonHighlight('show-all');
+      }
     };
+    
 
     // Prevent immediate link navigation.
     app.navigate = function(event) {
