@@ -3,15 +3,15 @@ id: 11_2023_first_friday_features
 summary: 11_2023_first_friday_features
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2023-11-03
+tags: first_friday_features
+lastUpdated: 2023-12-01
 
 <!-- 
 11/10/23: done
 11/17/23: done
-
+11/30/23: done
 -->
 
 # (11-2023) November
@@ -34,6 +34,27 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ![Footer](assets/sigma_footer.png)
 
+## Audit Logging (Beta)
+The `SIGMA_SHARED` schema in the Sigma Audit Logs connection now features the following dimension tables containing information about your organization:
+
+**TEAM_MEMBERS:**<br>
+Organization team member attributes
+
+<img src="assets/fff_11_2023_13.png" width="800"/>
+
+**DOCUMENT_ELEMENTS:**<br>
+Workbook element and page attributes
+
+<img src="assets/fff_11_2023_12.png" width="800"/>
+
+These new tables can be joined with the AUDIT_LOGS table to add context to audit log events.
+
+[Documentation on Audit Logging is here:](https://help.sigmacomputing.com/hc/en-us/articles/13873667532819-Access-and-explore-audit-logs-Beta-)
+
+[There is a QuickStart on using Audit Logs here:](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+
 ## Embedding
 Duration: 20
 
@@ -45,6 +66,10 @@ Duration: 20
 3: When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
 
 4: Use of the API to generate a public embed for workbook elements no longer results in a broken link.
+
+5: The embed menu now updates the workbook owner when ownership is reassigned.
+
+6: Resolved an issue that prevented users from deleting hidden pages in workbooks.
 
 ### New Optional Interface Parameters:
 We have added three new parameters to the embedding API. 
@@ -106,9 +131,31 @@ For more information, [see Using Metrics](https://help.sigmacomputing.com/hc/en-
 ## New QuickStarts in November
 Duration: 20
 
-[Secure Your Organization with Security Analytics Using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html?index=..%2F..index#0):
+### QuickStarts - Templates:
+We have added an additional QuickStart category called "Templates" that will cover how to take advantage of all the amazing Sigma templates that are included for free, for all Sigma customers.
+
+The first QuickStart in this category is [Snowflake Cost per Query Template Setup](https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html?index=..%2F..index#0) 
+
+This QuickStart provides instructions on how to set up Sigma's Snowflake Cost per Query template.
+
+[For more information on Sigma Templates, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4409618871315-Workbook-example-templates)
+
+<img src="assets/fff_11_2023_11.png" width="800"/>
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Secure Your Organization with Security Analytics Using Snowflake and Sigma:
 
 This QuickStart walks you through the process of connecting to a Sigma template, exploring security data, customizing the template for more interactivity, and connecting the template to your Snowflake environment's data (optional).
+
+[Secure Your Organization with Security Analytics Using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html?index=..%2F..index#0) 
+
+### Embedding for "Superuser" Row Level Security:
+We have updated the existing "Embedding 4: Application Row Level Security" QuickStart for a "superuser" use case.
+
+In many cases, customers have one (or more) users who will need to see all the data ("superuser"), while others only see the data permitted. We demonstrate how to do this in the Sigma UI as well as with custom SQL.
+
+[Allowing For "Superuser" Access](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#4)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -124,7 +171,12 @@ You can now add chart mark colors by category in the `Map` - `Region` and `Map` 
 
 This update brings parity in color configurations across all map types.
 
-<img src="assets/fff_11_2023_10.png" width="800"/><br>
+### Data Label Upgrades to Radial Charts:
+Data label placements, responsiveness, and overlapping for Radial charts (like donut and pie charts) have been improved to be much more readable.
+
+Here are some examples:
+
+<img src="assets/fff_11_2023_14.png" width="800"/><br>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -156,6 +208,11 @@ Label configurations for control elements are now consolidated in the `Element f
 </ul>
 
 <img src="assets/control_label.gif">
+
+### CSV upload on Azure and AWS-EU:
+CSV upload is now available to Sigma organizations hosted on Microsoft Azure and Amazon Web Services Europe (AWS-EU). 
+
+[For more information, see Upload CSVs.](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811)
 
 ### Shared bookmarks:
 In addition to [personal bookmarks](https://help.sigmacomputing.com/hc/en-us/articles/16694837590803-Bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
