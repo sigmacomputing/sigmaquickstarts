@@ -16,7 +16,7 @@ Duration: 5
 
 This QuickStart introduces you to Sigma embedding using Row-Level Security **(RLS)** to personalize / limit the data exposed to a user based on values passed to Sigma at runtime. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html) so that you have a sample environment to complete the tasks in this QuickStart.
 
-We also recommend you table the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) as we will build on that content. 
+We also recommend you take the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0) as we will build on that content. 
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
@@ -78,8 +78,11 @@ The workflow (as shown below) is very straightforward and yet flexible to allow 
 
 ![Alt text](assets/rls1.png)
 
+[A full listing of all the supported Sigma user attributes can be found here.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+
 ## Dataset RLS
 Duration: 20
 
@@ -95,7 +98,7 @@ Open Sigma.
 Navigate to `Administration` / `User Attributes` and add a new attribute called `Region`. You can give it a description but no need for any default value. `Click Create`.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> There is no need to assign the UA to a Team so you can ignore the next screen. We are not filtering based on Team membership in this QuickStart.
+<strong>NOTE:</strong><br> There is no need to assign the UA to a Team, so you can ignore the next screen. We are not filtering based on Team membership in this QuickStart.
 </aside>
 
 Open the `Dataset` called `Application Embedding`.
@@ -252,16 +255,231 @@ Check your embed in the browser. You should now see Region = West.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## What we've covered
+## Allowing For "Superuser" Access
 Duration: 5
 
-Using our existing Sigma Application Embed we passed a runtime parameter to configure the embed and demonstrate Row-Level-Security at the Workbook and Dataset level. 
+In many cases, customers have one (or more) users who will need to see all the data ("superuser") while others only see the data permitted (as we have shown in the previous section).
+
+Since we have demonstrated using user attibutes in the Sigma UI as well as with custom SQL, we will show both methods, adjusted for a superuser.
+
+We will do this work directly in the UI and evaluate the security using an administrative feature that allows us to "impersonate" any other user, directly in the portal, and see the results. 
+
+[To learn more about user impersonation, click here.](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
+
+<aside class="negative">
+<strong>NOTE:</strong><br> It is assumed that you are familiar with common navigation in Sigma now, so we may not show every step in the following instructions. 
+</aside>
+
+### In the Sigma UI:
+Log into Sigma as an Administrator and navigate to `Administration` > `User Attributes`. We want to add (or modify) the user attribute called `Region` so that we have two `Members Assigned` with different `Attribute Values` as:
+
+<img src="assets/RLS21.png" width="800"/>
+
+Now reopen the Dataset called `Application Embedding - RLS`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you don't have that anymore, create a new dataset and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA' table from Sigma's sample database to a new dataset.
+</aside>
+
+Make a duplicate of the dataset and rename it to `Embedding RLS - SuperUser Step`:
+
+<img src="assets/RLS9.png" width="400"/>
+
+Place the dataset in `Edit` mode, click the `ua_Region` column and replace it's existing formula with this one:
+
+```code
+If(CurrentUserAttributeText("Region") = "All", True, If(CurrentUserAttributeText("Region") = [Store Region], True, False))
+```
+
+Here is a line-by-line breakdown for those interested:
+<img src="assets/horizonalline.png" width="800"/>
+
+**If(CurrentUserAttributeText("Region") = "All", True,**<br>
+This is the outer If statement.
+
+**CurrentUserAttributeText("Region"):**<br>
+This function or method retrieves the "Region" attribute of the current user. 
+
+**= "All":**<br> 
+This checks if the retrieved region attribute is equal to the string "All".
+
+If the condition is true (i.e., the user's region is "All"), the entire expression evaluates to True.
+
+If the condition is false (i.e., the user's region is not "All"), the evaluation moves to the next part of the expression.
+<img src="assets/horizonalline.png" width="800"/>
+
+**If(CurrentUserAttributeText("Region") = [Store Region], True, False)**<br>
+This is the inner If statement, which acts as the 'else' part of the outer If.
+
+Again, CurrentUserAttributeText("Region") retrieves the current user's region.
+
+**= [Store Region]:**<br> 
+This checks if the user's region matches the value in the "Store Region" field.
+
+If this condition is true, the expression evaluates to True.
+
+If the condition is false, the expression evaluates to False.
+<img src="assets/horizonalline.png" width="800"/>
+
+Hit enter. All the cell values under `ua_Region` should be `True` as the "current user" is an Administrator:
+
+<img src="assets/RLS12.png" width="600"/>
+
+There are about 4.5M rows shown.
+
+Before we move on, we need to make sure to share the dataset (in a Workbook) with our test users.
+
+`Publish` the dataset, then `explore` and `Save As` in the new Workbook. Give it a name `Embedding RLS - SuperUser Step`:
+
+<img src="assets/RLS13.png" width="800"/>
+
+Share the Workbook with our test user:
+
+<img src="assets/RLS14.png" width="600"/>
+
+Now we want to switch users, just using user impersonation.
+
+Navigate to `Administration` > `People` and find our test user that only has access to the `East` region. Click the `3-dot` menu and select 
+`Impersonate user`:
+
+<img src="assets/RLS15.png" width="800"/>
+
+Navigate to `Shared with me` and click the new workbook:
+
+<img src="assets/RLS16.png" width="800"/>
+
+We now see only regions in the `East` and the row count is much lower.
+
+<img src="assets/RLS17.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We can also pass values in the embed API as we have done many times already but user impersonation is a quick method evaluate results as well.
+</aside>
+
+In the next section, we will demonstrate a method using custom SQL. 
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Superuser Via Custom SQL
+
+There are few ways to go about setting this up, but we will just add a new table to the `Embedding RLS - SuperUser Step` workbook, and base the new table on custom SQL. 
+
+If you are still running user impersonation, click to stop it.
+
+In the workbook, click the `+` and select `Table`. Then select a data source for the table as `Write SQL`:
+
+<img src="assets/RLS18.png" width="800"/>
+
+Paste the following code in the query window:
+```code
+SELECT 
+    current_role() as current_role,
+    '{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region,
+    *
+
+FROM
+    RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+
+WHERE
+    IFF('{{#raw system::CurrentUserAttributeText::Region}}' = 'All', True,
+    (STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}')) = True
+```
+
+Click `Run`. The results should look like this (about 4.5M rows):
+
+<img src="assets/RLS19.png" width="800"/>
+
+### Explanation of the SQL script:
+Overall, this query selects all columns from the specified table, along with the current user's role and a user attribute (Region). It filters the rows based on the user's region, showing all rows if the user's region is 'All', or filtering to rows matching the user's region otherwise.
+
+Here is a line-by-line breakdown for those interested:
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**1: SELECT CLAUSE:**
+```code
+SELECT 
+    current_role() as current_role,
+    '{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region,
+    *
+```
+
+**Select:**<br> 
+This is the command used to specify which columns to retrieve from the database.
+
+**current_role() as current_role:**<br>
+This retrieves the current role of the user executing the query in Snowflake and aliases it as current_role.
+
+**'{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region:**<br> 
+This is the Sigma user attribute (Region) gets replaced with a value at runtime, based on the logged on user. It is aliased as ua_Region. 
+    
+**The star (*):**<br> 
+This is used to select all remaining columns from the specified tables in the query.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**2: FROM CLAUSE:**
+```code
+FROM 
+  RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+```
+
+**From:**<br> 
+Specifies the table from which to retrieve the data.
+
+**RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA:**<br> 
+This is the full name of the table, including its schema and database name, from which the data is being retrieved.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**3: WHERE CLAUSE:**
+```code
+
+WHERE
+    IFF('{{#raw system::CurrentUserAttributeText::Region}}' = 'All', True,
+    (STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}')) = True
+```
+
+**Where:**<br> 
+This clause is used to filter records based on a specified condition.
+
+**IFF(condition, true_value, false_value):**<br> 
+In Snowflake, IFF is a function that works like an 'IF-ELSE' statement. It checks a condition and returns true_value if the condition is true, otherwise false_value.
+
+**'{{#raw system::CurrentUserAttributeText::Region}}' = 'All':**<br> 
+This is the condition being checked. 
+
+It compares the runtime value of '{{#raw system::CurrentUserAttributeText::Region}}' with the string 'All'.
+
+If the above condition is true, then True is returned.
+    
+If the condition is false, it checks whether STORE_REGION equals the runtime value of '{{#raw system::CurrentUserAttributeText::Region}}'.
+    
+The entire IFF function is compared against True, meaning the row is selected only if the IFF function evaluates to true.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The "Current Role" column returns as a Sigma GUID and this is expected. We can hide this column but wanted to make you are how we retrieve the user's role.
+</aside>
+
+Once you `Run` the query, the `Save` button becomes active and we can save the new dataset. 
+
+Once the dataset is saved, we can impersonate our test user (who has rights only to the East region):
+
+<img src="assets/RLS20.png" width="800"/>
+
+[Click here for more information on custom SQL in Sigma](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#csql)
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
 ## What we've covered
 Duration: 5
+
+Using our existing Sigma Application Embed we passed a runtime parameter to configure the embed and demonstrate Row-Level-Security at the Workbook and Dataset level. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
