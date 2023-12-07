@@ -120,13 +120,23 @@ For information on how to add users to Sigma, [click here.](https://help.sigmaco
 
 For information on how to add Teams to Sigma, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams#h_01F8E2E40Z95MY8HNZHJHRYEPD)
 
-We have created two teams called `Sales Users` with `Viewer` rights and `Sales Managers` with `Creator` rights. 
+We have created three teams:
 
-Each team will have a test user as the only member. 
+ <ul>
+      <li><strong>Administrators:</strong> Account Type: Admin (will be able to edit the workbook we create) </li>
+      <li><strong>Sales Managers:</strong> Account Type: Creator (will be able to work with the available data in the workbook)</li>
+      <li><strong>Sales Reps:</strong> Account Type: Viewer (will be able to see the data in the workbook)</li>
+ </ul> 
+
+Each team will have a user as the only member. 
 
 If you don't have suitable teams to test with, go ahead and create them and add any non-administer user to them:
 
 <img src="assets/cls7.png" width="800"/>
+
+<img src="assets/cls7a.png" width="800"/>
+
+<img src="assets/cls7b.png" width="800"/>
 
 Now that we have our test users assigned to our teams, we can assign the new user attribute:
 
@@ -136,7 +146,7 @@ In the window, search for `Sales` and select the `Sales Users` team:
 
 <img src="assets/cls5.png" width="800"/>
 
-Assign the two teams as follows:
+Assign the three teams as follows:
 
 <img src="assets/cls8.png" width="800"/>
 
@@ -144,11 +154,15 @@ The value you assign to the `Attribute Value` field maps to a preexisting value.
 
 **The values have to following effect on the column visibility:**
 
-If you assign `0` to the team, the column data is visible to the team. 
+If you assign `0` to the team, the column data is visible to the team.
 
 If you assign `1` to the team, the column data isn't added by default to the workbook. 
 
 If you assign `2` to the team, the column isn't included.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The "Priority" column order is used when a user is on multiple teams. For example, user A is on both team1 (priority 1) and team2 (priority 2) then team1's value will be enforced for for userA.
+</aside>
 
 As we have it configured, Sales Reps should not see the `Cust Json` column. Sales Managers are able to add the column from a table that contains it. 
 
@@ -184,19 +198,21 @@ Click `Publish`, then click `Explore`
 
 <img src="assets/cls11.png" width="800"/>
 
-Now that we have our dataset in a Workbook we can see that there is no column in either the list of columns or the source columns list. **Why not?**
+Before we move on to test against our teams, we first need to share this new workbook with them.
 
-<img src="assets/cls12.png" width="800"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> An important point to understand is the behavior of the (0,1) attribute values when first creating and sharing a workbook. If we share this workbook with the "Cust_Json" column in the table, the Sales Managers team (attribute value=1) will also have the column immediately in the table because they are allowed. If we prefer that they have to manually add it, then simply remove the column from the table. They will be able to add it back manually, because they are permitted by the attribute's value for visibility, to access it in the list of available data source columns.
+</aside>
 
-When we created our user attribute we set the default to `2`, which means the column is not included for everyone in the organization.
+Let's remove the column from table display so it is not displayed by default:
 
-When we created our teams, we did not include the administrator. This results in the administrator who just created the workbook, based on the column-restricted dataset, to not be able to see the column, `Cust Json`.
+<img src="assets/cls19.png" width="800"/>
 
-We could adjust for that by adding the administrator to the groups, or a better practice might be to create an `Administrative Team`. 
+We can see that the column is still available, just not shown:
 
-We did not do that, so that we could keep our use case as simple as possible for now.
+<img src="assets/cls20.png" width="800"/>
 
-Before we move on to test against our teams, we first need to share this workbook with them:
+Click the `Save As` button and name the workbook `Column Level Security`.
 
 In the workbook, share with the `Sales Managers` and `Sales Reps` teams (uncheck the `Send email` checkbox):
 
@@ -234,8 +250,37 @@ Navigate back to `Administration` > `People` and this time, impersonate the `Sal
 
 <img src="assets/cls18.png" width="800"/>
 
+The portal header changes to indicate impersonation is enabled. Navigate back to `Home` > `Shared with me` and click to select the `Column Level Security` workbook.
 
+The workbook table is not showing the `Cust_Json` column and this is expected, given our configuration:
 
+<img src="assets/cls21.png" width="800"/>
+
+Click the `Edit` button. 
+
+Click the table (to select it) and open the Plugs... source column list. Here we can see that the `Cust_Json` column is available, but the checkbox is not "ticked"
+
+<img src="assets/cls22.png" width="800"/>
+
+Let's go ahead and add it to the table ("tick" the checkbox on) and `Publish` the workbook.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We could also choose not to publish this workbook, but rather use "Save As" and create our own version that displays the restrict column by default, and is not shared with the Sales Reps team. If not having another copy of the workbook is desireable, the table could also be copied to another "hidden" page of the same workbook, with the "Cust_Json" column shown on this new hidden page. However, this method may not be practical from a compliance perspective. It is good to have options and how it is implemented is up to each customer to decide.
+</aside>
+
+Let's now check as `Sale Rep`, how this edit by the `Sales Manager` has effected the workbook.
+
+Navigate to `Administration` > `People` and click to impersonate the user who is a "Sales Rep":
+
+<img src="assets/cls15.png" width="800"/>
+
+The portal header changes to indicate impersonation is enabled. Navigate back to `Home` > `Shared with me` and click to select the `Column Level Security` workbook:
+
+<img src="assets/cls23.png" width="800"/>
+
+This time, a column is displayed in the second column position, but the content is **"Restricted"** and each cell shows **"No Access"**. 
+
+There are some instances where this is the desired result as opposed to not showing the column at all. Sigma allows you to support both use cases.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -243,7 +288,7 @@ Navigate back to `Administration` > `People` and this time, impersonate the `Sal
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to apply column level security in Sigma, through the administrative user interface.
+In this lab we learned how to apply column level security in Sigma, through the administrative user interface and the various implications of different configurations. 
 
 **Additional Resource Links**
 
