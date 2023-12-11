@@ -3,7 +3,7 @@ id: security_snowflake_keypair_rotation
 summary: security_snowflake_keypair_rotation
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2023-10-23
