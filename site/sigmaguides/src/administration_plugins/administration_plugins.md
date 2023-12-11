@@ -13,15 +13,22 @@ lastUpdated: 2023-12-9
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart is designed to help both the experienced developer as well as those who never worked with open source charting libraries. Feel free to skip sections that do not apply to you.
 
-Sample code and examples are shown for each item.
+In either case we assume you have some experience with software development, even if only a little. 
 
-We encourage you to review the QS called 
+<aside class="negative">
+<strong>NOTE:</strong><br> Not every step will be shown in detail although we will make it as simple as possible so that you can build an working example.
+</aside>
 
-This QuickStart assumes you have some experience as a developer. Not every step will be shown in detail although we will make it as simple as possible so that you can build an working example.
+We will make use of the two popular, open source charting libraries; [D3.js](https://d3js.org/) and [Highcharts.js](https://www.highcharts.com/)
 
- ### Target Audience
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The information provided here is meant to demonstrate the basic techniques to creating and deploying a Sigma plugin. The actual development of any plugin is solely the customer's responsibility.
+</aside>
+
+
+### Target Audience
 Programmers who want to enhance Sigma's functionality using third-party plugins.
 
 ### Prerequisites
@@ -30,7 +37,6 @@ Programmers who want to enhance Sigma's functionality using third-party plugins.
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-  <li>A local installation of React.</li>
   <li>A development environment (or RTE) of your choice. In this QuickStart we use Microsoft VSCode with related extensions.</li>
 </ul>
 
@@ -53,9 +59,9 @@ How to .......
 ## Create Local Development Project
 Duration: 20
 
-At Sigma, we use the React libraries for front-end development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
+At Sigma, we use the VSCode for development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
 
-If you choose to use a different method, ensure that it supports the use of **JavaScript;** Sigma supports both standard JavaScript API and React Hooks API.
+If you choose to use a different method, ensure that it supports the use of **JavaScript;**.
 
 Let's get started.
 
@@ -89,78 +95,27 @@ D3 (or D3.js) is a free, [open-source JavaScript library for visualizing data.](
 <strong>IMPORTANT:</strong><br> We are using Node's package manager on our local system but this can also be done with Yarn. In a typical workflow, it's best to choose one package manager and stick with it for a given project to ensure consistency and reduce potential issues.
 </aside>
 
+### Local Copy of Plugin Repository
 
-
-
-![Footer](assets/sigma_footer.png)
-
-### Start a New React Project
-
-At Sigma, we use the [React libraries](https://react.dev/learn/start-a-new-react-project#create-react-app) for front-end development, based on the [Next.js full-stack React framework](https://nextjs.org/).
+......
 
 Create a folder for your project called `Sigma_Plugin_QuickStart`
 
 
+![Footer](assets/sigma_footer.png)
+
+## Simple Example
 
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## Detailed Example
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Right-click on the new folder and open a new terminal session.
-
-<img src="assets/plugin1.png" width="400"/>
-
-In the terminal session, run the following command:
-```code
-npx create-react-app d3-starburst
-```
-
-<aside class="negative">
-<strong>NOTE:</strong><br> If you are prompted to install some other required packages, type "y" and proceed.
-</aside>
-
-When complete, we should get this message:
-
-<img src="assets/plugin2.png" width="400"/>
-
-Next we will use the `Yarn` package manager to install [Sigma's plugin library](https://www.npmjs.com/package/@sigmacomputing/plugin). 
-
-If you do not have `Yarn` installed, you can install it. We will install it with `Homebrew` as we are using a MAC O/S:
-```code
-brew install yarn
-```
-
-Once the `Yarn` package manager is installed, we can use it to install Sigma plugin libraries:
-```code
-yarn add @sigmacomputing/plugin
-```
-
-Terminal will respond with this one complete:
-
-<img src="assets/plugin4.png" width="400"/>
-
-We can now start our local React instance in Terminal:
-```code
-yarn && yarn start
-```
-
-
-
-
+## Triggering Events
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -172,9 +127,7 @@ In this lab we learned how to.........
 
 INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
-**Additional Resource Links**
-
+### Additional Resource Links
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
