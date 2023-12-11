@@ -1,7 +1,7 @@
 author: pballai
 id: security_snowflake_keypair_rotation
 summary: security_snowflake_keypair_rotation
-categories: Administration
+categories: security
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
