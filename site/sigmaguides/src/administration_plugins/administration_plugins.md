@@ -39,7 +39,7 @@ In contrast, Sigma provides quick, user-friendly solutions with far less technic
 
 In cases like this, developing a plugin is a viable option for many customers.
 
-We will make use of the two popular charting libraries; open source:[D3.js](https://d3js.org/) and commerical: [Highcharts.js](https://www.highcharts.com/)
+We will make use of the two popular charting libraries; open source:[D3.js](https://d3js.org/) and commercial: [Highcharts.js](https://www.highcharts.com/)
 
 There are many others including Chart.js, Apache ECharts
 
@@ -64,6 +64,10 @@ Programmers who want to enhance Sigma's functionality using third-party plugins.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We will use the React framework for serving of our plugin code, on our local computer. You do not need to know how to use React to complete this QuickStart and we will indicate what sections of code are Sigma and which are React. The choice of front-front end framework to use is up to the developer to decide. 
+</aside>
   
 ### What You’ll Learn
 How to .......
@@ -78,7 +82,7 @@ How to .......
 ## Create Local Development Project
 Duration: 20
 
-At Sigma, we use the VSCode for development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
+We will use VSCode for development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
 
 If you choose to use a different method, ensure that it supports the use of **JavaScript;**.
 
@@ -114,20 +118,19 @@ D3 (or D3.js) is a free, [open-source JavaScript library for visualizing data.](
 <strong>IMPORTANT:</strong><br> We are using Node's package manager on our local system but this can also be done with Yarn. In a typical workflow, it's best to choose one package manager and stick with it for a given project to ensure consistency and reduce potential issues.
 </aside>
 
-### Local Copy of Plugin Repository
+### Create a Development Project
 
-......
+Open VSCode (unless it is already open).
 
-Create a folder for your project called `Sigma_Plugin_QuickStart`
+First, create a folder for your project called `Sigma_Plugin_QuickStart`.
 
 
 ![Footer](assets/sigma_footer.png)
 
 ## Simple Example
+Duration: 20
+
 Now that we have a local development environment setup, we can use it to clone our first project from Sigma's git repository. 
-
-
-
 
 ### Breaking down the Code
 
@@ -288,11 +291,20 @@ html
 <!-- END OF SECTION-->
 
 ## Detailed Example
+Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Triggering Events
+Duration: 20
+<!-- Author: Fran B.-->
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Checkbox Tree
+<!-- Author: Prashant S.-->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
