@@ -86,6 +86,9 @@ Duration: 20
 ### Implementing Column Level Security
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html?index=..%2F..index#0), we discuss column level security and demonstrate how to apply it in Sigma, using the administrative user interface.
 
+### Snowflake Key-pair Authorization
+[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0), we will cover the recently added support for the key pair authentication method (public key + private key) for Snowflake connections.
+
 ![Footer](assets/sigma_footer.png)
 
 ## Visualizations
