@@ -396,13 +396,13 @@ For each of the following new columns you add, configure them using the followin
 ```plaintext
 COLUMN NAME          FORMULA TO APPLY TO COLUMN
                     
-Week #               DatePart("week", [Date])
-isCurrent Year       InDateRange([Date], "current", "year")
-isLast Year          InDateRange([Date], "last", "year")
-isCurrent Quarter    InDateRange([Date], "to_date", "quarter")
-isCurrent Month      InDateRange([Date], "to_date", "month")
-isCurrent Week       InDateRange([Date], "to_date", "week")
-isIN Last 2 Weeks    InDateRange([Date], "last", "week", 2)
+Week #               DatePart("week", [Day of Date])
+isCurrent Year       InDateRange([Day of Date], "current", "year")
+isLast Year          InDateRange([Day of Date], "last", "year")
+isCurrent Quarter    InDateRange([Day of Date], "to_date", "quarter")
+isCurrent Month      InDateRange([Day of Date], "to_date", "month")
+isCurrent Week       InDateRange([Day of Date], "to_date", "week")
+isIN Last 2 Weeks    InDateRange([Day of Date], "last", "week", 2)
 TY Sales Amount      SumIf([Sales Amount], [isCurrent Year])
 LY Sales Amount      SumIf([Sales Amount], [isLast Year])
 ```
