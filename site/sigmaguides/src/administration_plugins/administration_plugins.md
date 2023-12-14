@@ -79,7 +79,14 @@ How to .......
 <!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
 <!-- END OF OVERVIEW -->
 
-## Create Local Development Project
+## How Does This Work?
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Create Local Development Environment
 Duration: 20
 
 We will use VSCode for development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
@@ -95,18 +102,94 @@ Duration: 20
 
 Run the installation with all defaults.
 
+### React - The First Time
+React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook and has a large community of developers and a rich ecosystem of tools and libraries.
+
+Since Sigma is a web-based application, React's compatibility with web technologies makes it an ideal choice for developing plugins or extensions.
+
+We will leverage React throughout this QuickStart but the methods demonstrated can be adapted to any other framework that you may want to use.
+
+Open `VSCode` (unless it is already open).
+
+Open your terminal; we should already be in the directory where we will create our project.
+
+<img src="assets/plugins1.png" width="400"/>
+
+If not sure, run this command to see the "present working directory":
+```code
+pwd
+```
+
+<img src="assets/plugins2.png" width="400"/>
+
+Now we will create our first React application. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> For those who are lucky enough to be experience developers, you probably want to skip this section.
+</aside>
+
+In Terminal, run the following command to initialize:
+```code
+px create-react-app hello-world
+```
+
+When done (`Happy Hacking`), a new folder with many files will be added for use automatically; this is our `hello-world` React application.
+
+<img src="assets/plugins3.png" width="400"/>
+
+### What This Command Does:
+The terminal command `npx create-react-app hello-world` is used to create a new React application. 
+
+Here's a breakdown of what each part of the command does:
+
+**npx:** This is a package manager that will manage the installation.
+
+**create-react-app:** This sets up the development environment and builds a project structure for you, which includes the setup of various tools (like Webpack, Babel, ESLint) that are common in React development. It's a boilerplate setup meant to help you get started with React without having to deal with the complexities of configuring these tools yourself.
+
+**hello-world:** This is the name you're giving to your new React application. The create-react-app command will create a directory with this name (hello-world), and inside this directory, it will initialize a new React project.
+
+After running this command, you will have a new folder named `hello-world` in your current directory. 
+
+Inside it, there will be a fully functional React project. You can then navigate into this directory (cd hello-world) and start the development server (we will use `npm start`) to begin working on your React application.
+
+This command is widely used because it simplifies the process of setting up a new React project, allowing developers to focus on writing React code rather than worrying about configuring the build and development tools.
+
+### Install Node:
+You may skip this section if you already have Node installed. 
+
+[Download and install Node.js from here:](https://Nodejs.org/en/download/)
+
+Use the LTS (long term supported) version appropriate for your operating system.
+
+Run the installer selecting all the defaults. This will install both Node and the Node package manager (which manages optional Node components). The package manager is abbreviated to “npm” when running commands.
+
+You can verify your installation using Terminal:
+
+**Run the command:**
+```plaintext
+node -v
+```
+<img src="assets/plugins4.png" width="400"/>
+
+
+
+
+
+
+
+### HOLD
 Once the software is installed, we need to clone Sigma's Git repository:
 
-<img src="assets/plugin1.png" width="400"/>
+
 
 When prompted for the URL, enter:
 ```code
-https://github.com/sigmacomputing/sigma-sample-plugins.git
+https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 VSCode will prompt you to provide a location on your local computer to store the project. We used a folder called `GitHub\sigma_plugins` that we created for this:
 
-<img src="assets/plugin6.png" width="400"/>
+
 
 Open the repository when prompted by VSCode.
 
@@ -118,11 +201,6 @@ D3 (or D3.js) is a free, [open-source JavaScript library for visualizing data.](
 <strong>IMPORTANT:</strong><br> We are using Node's package manager on our local system but this can also be done with Yarn. In a typical workflow, it's best to choose one package manager and stick with it for a given project to ensure consistency and reduce potential issues.
 </aside>
 
-### Create a Development Project
-
-Open VSCode (unless it is already open).
-
-First, create a folder for your project called `Sigma_Plugin_QuickStart`.
 
 
 ![Footer](assets/sigma_footer.png)
