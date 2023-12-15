@@ -102,6 +102,23 @@ Duration: 20
 
 Run the installation with all defaults.
 
+### Install Node:
+You may skip this section if you already have Node installed. 
+
+[Download and install Node.js from here:](https://Nodejs.org/en/download/)
+
+Use the LTS (long term supported) version appropriate for your operating system.
+
+Run the installer selecting all the defaults. This will install both Node and the Node package manager (which manages optional Node components). The package manager is abbreviated to “npm” when running commands.
+
+You can verify your installation using Terminal:
+
+**Run the command:**
+```plaintext
+node -v
+```
+<img src="assets/plugins4.png" width="400"/>
+
 ### React - The First Time
 React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook and has a large community of developers and a rich ecosystem of tools and libraries.
 
@@ -130,14 +147,9 @@ Now we will create our first React application.
 
 In Terminal, run the following command to initialize:
 ```code
-px create-react-app hello-world
+npx create-react-app hello-world
 ```
 
-When done (`Happy Hacking`), a new folder with many files will be added for use automatically; this is our `hello-world` React application.
-
-<img src="assets/plugins3.png" width="400"/>
-
-### What This Command Does:
 The terminal command `npx create-react-app hello-world` is used to create a new React application. 
 
 Here's a breakdown of what each part of the command does:
@@ -154,38 +166,36 @@ Inside it, there will be a fully functional React project. You can then navigate
 
 This command is widely used because it simplifies the process of setting up a new React project, allowing developers to focus on writing React code rather than worrying about configuring the build and development tools.
 
-### Install Node:
-You may skip this section if you already have Node installed. 
+When npx is done (`Happy Hacking`), a new folder with many files will be added for use automatically; this is our `hello-world` React application.
 
-[Download and install Node.js from here:](https://Nodejs.org/en/download/)
+<img src="assets/plugins3.png" width="400"/>
 
-Use the LTS (long term supported) version appropriate for your operating system.
-
-Run the installer selecting all the defaults. This will install both Node and the Node package manager (which manages optional Node components). The package manager is abbreviated to “npm” when running commands.
-
-You can verify your installation using Terminal:
+**Start React**
+In Terminal, run the following command to start the React server:
 
 **Run the command:**
 ```plaintext
-node -v
+npm start
 ```
-<img src="assets/plugins4.png" width="400"/>
 
+React will start in the terminal session:
 
+<img src="assets/plugins5.png" width="400"/>
 
+and the default browser will open with the base page display:
 
+<img src="assets/plugins6.png" width="400"/>
 
+For additional information about React, [visit the website.](https://react.dev/)
 
+This completes the local configuration and we are ready to develop our first plugin.
 
-### HOLD
-Once the software is installed, we need to clone Sigma's Git repository:
+## Our First Plugin (this needs more work)
+Once the software is installed, we need to clone Sigma's Git repository.
 
+It is not required to clone the entire repository; we can just clone the projects we are interested in. If preferred, you can also just clone the entire repository as projects are stored inside folders for convenience. 
 
-
-When prompted for the URL, enter:
-```code
-https://github.com/sigmacomputing/quickstarts-public.git
-```
+Click to browse to the [Sigma QuickStart public repository.](https://github.com/sigmacomputing/quickstarts-public)
 
 VSCode will prompt you to provide a location on your local computer to store the project. We used a folder called `GitHub\sigma_plugins` that we created for this:
 
