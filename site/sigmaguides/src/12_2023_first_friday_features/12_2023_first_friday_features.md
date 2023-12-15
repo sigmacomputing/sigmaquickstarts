@@ -10,7 +10,7 @@ lastUpdated: 2024-01-01
 
 <!-- 
 12.08.2023: Done
-
+12.15.2023: Done
 --->
 
 # (12-2023) December
@@ -66,7 +66,30 @@ Where nodeId refers to the id of the element that failed to load in the embedded
 The errorCode will be one of the API error codes:<br>
 "EEXIST" | "EPERM" | "ENOENT" | "EACCES" | "EINVAL" | "ESTALE" | "ETIMEDOUT" | "EAGAIN" | "EFBIG" | "NETWORK" | "UNKNOWN"
 
+### Write-only data permission:
+Sigma provides access and capabilities based on a cumulative set of permissions inherited or granted at different levels of the data architecture (connection, schema, database table) and organizational structure (organization, team, user).
 
+We have added an additional permission level to the list of permissions that already exist.
+
+The `Can write only` permission restricts access to data while enabling users to create input tables and CSV upload that write data to the connection’s write-back destination. This permission type is ideal for enabling input tables and CSV uploads in embedded workbooks with restricted data access.
+
+For more information about the new permission type, see [Data permissions overview.](https://help.sigmacomputing.com/hc/en-us/articles/24087589760659)
+
+![Footer](assets/sigma_footer.png)
+
+## Functions
+
+### VariancePop:
+The VariancePop function calculates **population variance**, which determines the spread of distribution or degree to which the column or grouped values deviate from the mean. 
+
+The addition of this function complements the existing Variance function, which estimates sample variance. For more information about these functions and when to use each, see [VariancePop](https://help.sigmacomputing.com/hc/en-us/articles/23724296595859) and [Variance.](https://help.sigmacomputing.com/hc/en-us/articles/23724255727123)
+
+For example, assuming a table contains the average temperature recorded for each month in 2021 and 2022, the following formula will calculate the temperature variance for each year (years being grouped):
+```code
+VariancePop([Avg monthly temp])
+```
+
+<img src="assets/fff_12_2023_3.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 
