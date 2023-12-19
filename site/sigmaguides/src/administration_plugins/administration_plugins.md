@@ -139,6 +139,7 @@ pwd
 
 <img src="assets/plugins2.png" width="400"/>
 
+### Install React
 Now we will create our first React application. 
 
 <aside class="negative">
