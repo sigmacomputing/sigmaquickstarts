@@ -74,14 +74,10 @@ How to .......
 
 ### What You’ll Build
 
-
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
-<!-- END OF OVERVIEW -->
+<!-- END OF SECTION -->
 
 ## How Does This Work?
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -119,32 +115,48 @@ node -v
 ```
 <img src="assets/plugins4.png" width="400"/>
 
-### React - The First Time
-React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook and has a large community of developers and a rich ecosystem of tools and libraries.
+This completes the local configuration and we are ready to develop our first plugin.
 
-Since Sigma is a web-based application, React's compatibility with web technologies makes it an ideal choice for developing plugins or extensions.
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-We will leverage React throughout this QuickStart but the methods demonstrated can be adapted to any other framework that you may want to use.
 
-Open `VSCode` (unless it is already open).
+## React - The First Time
+Duration: 20
 
-Open your terminal; we should already be in the directory where we will create our project.
-
-<img src="assets/plugins1.png" width="400"/>
-
-If not sure, run this command to see the "present working directory":
-```code
-pwd
-```
-
-<img src="assets/plugins2.png" width="400"/>
-
-### Install React
-Now we will create our first React application. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> For those who are lucky enough to be experience developers, you probably want to skip this section.
 </aside>
+
+React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook and has a large community of developers and a rich ecosystem of tools and libraries.
+
+Since Sigma is a web-based application, React's compatibility with web technologies makes it an ideal choice for developing plugins or extensions.
+
+We will leverage React throughout this QuickStart, but the methods demonstrated can be adapted to any other framework that you may want to use.
+
+### Local Project Folder
+Create a folder called `sigma_plugin_hello_world` on your computer where you can locate it easily.
+
+Open `VSCode` (unless it is already open).
+
+Open the new folder:
+
+<img src="assets/plugins7.png" width="800"/>
+
+Open a new terminal session in VSCode:
+
+<img src="assets/plugins8.png" width="800"/>
+
+If not sure what folder terminal has opened in, run this command to see the "present working directory":
+```code
+pwd
+```
+
+<img src="assets/plugins9.png" width="800"/>
+
+### Install React
+Now we will create our first React application. 
 
 In Terminal, run the following command to initialize:
 ```code
@@ -169,218 +181,369 @@ This command is widely used because it simplifies the process of setting up a ne
 
 When npx is done (`Happy Hacking`), a new folder with many files will be added for use automatically; this is our `hello-world` React application.
 
-<img src="assets/plugins3.png" width="400"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> npx installed our "hello-world" react app in a new folder called "hello-world". We need to account for that in the next step.
+</aside>
 
-**Start React**
-In Terminal, run the following command to start the React server:
+<img src="assets/plugins3.png" width="800"/>
 
-**Run the command:**
-```plaintext
+### Start React
+In Terminal, change to the new `hello-world` folder:
+```code
+cd hello-world
+```
+
+Run the following command to start the React server:
+```code
 npm start
 ```
 
 React will start in the terminal session:
 
-<img src="assets/plugins5.png" width="400"/>
+<img src="assets/plugins5.png" width="800"/>
 
-and the default browser will open with the base page display:
+Items shown in yellow text are warnings, and generally are not of concern.
 
-<img src="assets/plugins6.png" width="400"/>
+npm will also open the default browser with the default React content:
+
+<img src="assets/plugins6.png" width="800"/>
 
 For additional information about React, [visit the website.](https://react.dev/)
 
-This completes the local configuration and we are ready to develop our first plugin.
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION -->
 
-## Our First Plugin (this needs more work)
-Once the software is installed, we need to clone Sigma's Git repository.
+## Hello World
+Now that we have a working React application, lets adjust it, to remove the default content, and have it display the text `Hello World`.
 
-It is not required to clone the entire repository; we can just clone the projects we are interested in. If preferred, you can also just clone the entire repository as projects are stored inside folders for convenience. 
+In `VSCode`, expand the folder `hello-world` and then expand the sub-folder `scr`. Open `App.js`. 
 
-Click to browse to the [Sigma QuickStart public repository.](https://github.com/sigmacomputing/quickstarts-public)
+This file defines the javascript that will drive our page content.
 
-VSCode will prompt you to provide a location on your local computer to store the project. We used a folder called `GitHub\sigma_plugins` that we created for this:
-
-
-
-Open the repository when prompted by VSCode.
-
-The new VSCode project contains several sample plugins. We will focus on the d3-graph sample to get started.
-
-D3 (or D3.js) is a free, [open-source JavaScript library for visualizing data.](https://d3js.org/)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> We are using Node's package manager on our local system but this can also be done with Yarn. In a typical workflow, it's best to choose one package manager and stick with it for a given project to ensure consistency and reduce potential issues.
+<aside class="negative">
+<strong>NOTE:</strong><br> In VSCode, you can drag the Terminal tab (screenshot #4) up next to the other open tabs. This is a personal preference only, but provides more space for the code window.
 </aside>
 
+<img src="assets/plugins10.png" width="800"/>
 
 
-![Footer](assets/sigma_footer.png)
+Delete the existing code and replace it with this:
+```code
+import './App.css';
 
-## Simple Example
-Duration: 20
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello World</h1>
+    </div>
+  );
+}
 
-Now that we have a local development environment setup, we can use it to clone our first project from Sigma's git repository. 
+export default App;
+```
 
-### Breaking down the Code
+<aside class="negative">
+<strong>NOTE:</strong><br> We never stopped the npm server, so the browser will update automatically once we save this new App.js. If you did close terminal, you will have to start new terminal session, cd to the hello world folder and restart the npm server.</aside>
 
+The browser now shows:
 
-**linechart.js:**
-This script file creates a basic line chart using D3.js, demonstrating core D3.js concepts like scale setup, SVG manipulation, and basic line chart generation.
+<img src="assets/plugins11.png" width="800"/>
 
-1. Setting Dimensions and Margins
+### Sigma Hello World Plugin
+Our new React app does not contain much, but that does not mean it can't be used as is, with Sigma. Let's do that, so we can walk through the workflow, which is the same, regardless of the Plugin
 
-javascript
+<aside class="negative">
+<strong>NOTE:</strong><br> This plugin does not render any data; we will get to that in subsequent steps.
+</aside>
 
-const margin = { top: 50, right: 30, bottom: 40, left: 80 };
-const width = 1200 - margin.left - margin.right;
-const height = 500 - margin.top - margin.bottom;
+Login into Sigma as `Administrator`.
 
-    Purpose: Defines the size of the chart and the margins around it.
-    Details: margin is an object specifying the top, right, bottom, and left margins. The width and height are calculated based on these margins to determine the drawable area of the chart.
+Navigate to `Administration` > `Account`, scroll down to  `Custom Plugins` and click `Add`:
 
-2. Setting Up the Scales
+<img src="assets/plugins12.png" width="800"/>
 
-javascript
+Give it a `Name`, `Description` and a `Production URL`:
 
-const x = d3.scaleTime().range([0, width]);
-const y = d3.scaleLinear().range([height, 0]);
+<img src="assets/plugins13.png" width="600"/>
 
-    Purpose: Defines the scales for the x-axis (time scale) and y-axis (linear scale).
-    Details: x scale maps time data to horizontal positions, and y scale maps numerical values to vertical positions. The range for y is reversed ([height, 0]) to accommodate the SVG coordinate system where the y-value increases downwards.
+Click `Create Plugin`.
 
-3. Creating the SVG Element
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We could use a localhost as the development URL, but to keep things simple (for now), we will just use localhost as the production URL. When the user is logged into the Sigma portal, where a plugin is being used in a Workbook, Sigma will handle the communication with localhost:3000, so there is nothing else that needs to be done on the network.
+</aside>
 
-javascript
+The Plugin is now created, based on our `Hello World` React app. We can now try to use it in a Sigma Workbook.
 
-const svg = d3.select("#chart-container").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", `translate(${margin.left},${margin.top})`);
+Create a new Workbook and click `ADD NEW ELEMENT` > `PLUGINS`:
 
-    Purpose: Appends an SVG element to the HTML container with the ID #chart-container and sets its size.
-    Details: The g element (group) is appended to the SVG. This group is then translated based on the margins, effectively moving the drawing area to respect the margins.
+<img src="assets/plugins14.png" width="800"/>
 
-4. Creating a Fake Dataset
+The list of available Plugins will be displayed in the `Element Panel` (we only have one right now):
 
-javascript
+<img src="assets/plugins15.png" width="800"/>
 
-const dataset = [...];
+Click to add it to the Workbook page.
 
-    Purpose: Defines a sample dataset for the chart.
-    Details: An array of objects, each representing a data point with a date and a value.
+The Workbook now shows our working plugin and displays the text as expected:
 
-5. Define the Domains of the Scales
+<img src="assets/plugins16.png" width="800"/>
 
-javascript
+Stop the `npm server` using `CTL + C`. 
 
-x.domain(d3.extent(dataset, d => d.date));
-y.domain([0, d3.max(dataset, d => d.value)]);
+Close the local folder in VSCode from the `File` menu.
 
-    Purpose: Sets the input domain for the scales.
-    Details: x.domain is set to the extent (minimum and maximum) of the dates in the dataset. y.domain is set from 0 to the maximum value in the dataset.
-
-6. Adding the Axes
-
-javascript
-
-// X-Axis
-svg.append("g")
-  .attr("transform", `translate(0,${height})`)
-  .call(d3.axisBottom(x)
-    .ticks(d3.timeMonth.every(1))
-    .tickFormat(d3.timeFormat("%b %Y")));
-
-// Y-Axis
-svg.append("g")
-  .call(d3.axisLeft(y));
-
-    Purpose: Draws the x-axis and y-axis on the chart.
-    Details: The x-axis is placed at the bottom (axisBottom) and formatted to show month and year. The y-axis is drawn using axisLeft.
-
-7. Creating the Line Generator
-
-javascript
-
-const line = d3.line()
-  .x(d => x(d.date))
-  .y(d => y(d.value));
-
-    Purpose: Defines how the line path should be generated based on the data.
-    Details: Maps the date to the x-coordinate and value to the y-coordinate for each data point.
-
-8. Adding the Line Path
-
-javascript
-
-svg.append("path")
-  .datum(dataset)
-  .attr("fill", "none")
-  .attr("stroke", "steelblue")
-  .attr("stroke-width", 1)
-  .attr("d", line);
-
-    Purpose: Draws the line chart in the SVG element.
-    Details: The path is created using the line generator with the dataset, styled with no fill, a stroke color of steel blue, and a stroke width.
-
-
-**index.html**
-This HTML document is structured to support a D3.js line chart visualization. It includes the necessary metadata for proper rendering across different devices, sets up a container for the chart, and links to the D3.js library along with a custom script for the chart logic. This setup is typical for web pages intended to display data visualizations using D3.js.
-
-Document Structure
-
-html
-
-<!DOCTYPE html>
-<html lang="en">
-
-    Purpose: This line declares the document type and HTML version (HTML5 here) and sets the language of the document to English.
-    Details: The <!DOCTYPE html> declaration defines this document as HTML5, and the <html lang="en"> tag specifies that the content is in English.
-
-Head Section
-
-html
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D3 Line Chart Simple</title>
-</head>
-
-    Purpose: Contains metadata about the document and sets the title.
-    Details:
-        <meta charset="UTF-8">: Specifies the character encoding for the HTML document (UTF-8, which includes most characters from the majority of written languages).
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">: Ensures that the page is responsive and renders well on all devices. It sets the width of the viewport to the device's width and the initial zoom level to 1.0.
-        <title>D3 Line Chart Simple</title>: Sets the title of the web page, which appears in the browser's title bar or tab.
-
-Body Section
-
-html
-
-<body>
-  <div id="chart-container"></div>
-
-  <!-- Include the D3.js library -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Include your custom script file -->
-  <script src="linechart.js"></script>
-</body>
-</html>
-
-    Purpose: Contains the content of the web page and links to the necessary JavaScript files.
-    Details:
-        <div id="chart-container"></div>: A container where the D3.js chart will be rendered. The id="chart-container" is used in the D3.js script to select this element and append the SVG for the chart.
-        <script src="https://d3js.org/d3.v7.min.js"></script>: Includes the D3.js library (version 7) from a Content Delivery Network (CDN). This is essential for using D3.js functionalities.
-        <script src="linechart.js"></script>: Includes the custom JavaScript file (linechart.js) that contains the D3.js code for creating the line chart. This script assumes that you have a file named linechart.js in the same directory as your HTML file or accessible via the provided path.
-
-
-
+While this is a simple example, we now have a good foundation in order to build more complex plugins.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Detailed Example
+## QuickStarts Git Repo
 Duration: 20
+
+In the next sections, we will leverage a public git repository in VSCode so that we don't spend time creating the content ourselves. Having working copies of code is a great starting point and we will explain the relevant parts as we go.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This repository's contents are not intended for use in a production environment. We make no guarantees regarding the reliability, safety, or suitability of this code for production purposes. Users are cautioned to use the code at their own discretion and risk.
+</aside>
+
+### Clone Git Repo
+Browse to `https://github.com/sigmacomputing/quickstarts-public`.
+
+In the `quickstarts-public` repository (repo), click the `Code` button and click to copy it's url (screenshot item #2):
+
+<img src="assets/plugins17.png" width="800"/>
+
+In `VSCode` (on the Welcome tab), click `Clone a Git Repository`:
+
+<img src="assets/plugins18.png" width="800"/>
+
+Paste the URL copies from Git as shown and hit `Enter`:
+
+<img src="assets/plugins19.png" width="800"/>
+
+VSCode will prompt for a local folder to store the contents. 
+
+Create a new folder called `quickstarts-plugin` and click `Select as Repository Destination`.
+
+When done (it should be very quick), `Open` the cloned repo.
+
+All the projects in the repo will be available to you now in VSCode. 
+
+<img src="assets/plugins20.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> When creating this QuickStart, there were only two sample projects. Yours will likely have more, and that is expected.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END SECTION -->
+
+## Candlestick - Hard Coded Data
+
+First, lets look at what the `plugin_highchart_candlestick_simple` application does in the browser.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We did not include these dependencies in our Git repo on purpose to save space not storing multiple copies of files or storing files that may get updated by a vendor. Additionally, understanding some of these details are very useful when debugging issues later on.
+</aside>
+
+Open a Terminal session, cd to `plugin_highchart_candlestick_simple` and run:
+```code
+npm install
+```
+
+This will install all the node dependencies, but we also will need to install the dependencies for `Highcharts.js`, since our project is using that too. 
+
+**How can you tell this project is based on Highcharts.js?**
+
+Open the file `package.json` in the root folder and we can see the list of project dependencies. 
+
+In the screenshot, we can see that there are two required libraries for Highcharts.js that the application code is expecting to be available:
+
+<img src="assets/plugins22.png" width="800"/>
+
+We can easily install the Highcharts.js dependencies:
+```code
+npm install highcharts
+```
+and then...
+```code
+npm install highcharts-react-official
+```
+
+<img src="assets/plugins23.png" width="800"/>
+
+Start React:
+```code
+npm start
+```
+
+The browser will open the new React page and this time, we have a candlestick chart of stock prices. 
+
+<img src="assets/plugins24.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We just used the same Workbook that already had our "Hello World" Plugin setup, since it uses the same URL. If you prefer, you can create separate Workbook pages for the different examples. To do that, you will need each new plugin on the "Administration > Account > Plugins page of Sigma.
+</aside>
+
+The chart is being driven by data that is hardcoded in `App.js`.
+
+We can look at that code to see what it is doing by opening `App.js` and reviewing each section of code:
+
+### Breaking down App.js
+Here is the code, with in-line comments to explain their purpose for your review. 
+
+```code
+// Importing necessary modules and components
+import React from 'react'; // Importing React to use its features in this component
+import Highcharts from 'highcharts/highstock'; // Importing Highcharts for stock charts
+import HighchartsReact from 'highcharts-react-official'; // Importing HighchartsReact to integrate Highcharts with React
+
+// Defining the main component of the app
+const App = () => {
+  // Hardcoded sample data for the chart
+  // Each array represents a point on the chart with the format [date, open, high, low, close]
+  const sampleData = [
+    [Date.UTC(2023, 0, 1), 7.0, 7.5, 6.5, 7.2],
+    [Date.UTC(2023, 0, 2), 7.2, 7.8, 7.1, 7.7],
+    [Date.UTC(2023, 0, 3), 7.7, 8.3, 7.7, 8.0],
+    [Date.UTC(2023, 0, 4), 8.0, 8.6, 7.9, 8.4],
+    [Date.UTC(2023, 0, 5), 8.4, 9.0, 8.3, 8.9],
+  ];
+
+  // Configuration object for Highcharts
+  const options = {
+    chart: {
+      type: 'candlestick' // Setting the chart type to 'candlestick'
+    },
+    rangeSelector: {
+      selected: 1 // Setting default range selection
+    },
+    title: {
+      text: 'Hardcoded Stock Prices - Highchart.js Candlestick' // Chart title
+    },
+    series: [{
+      name: 'Stock Price', // Name of the data series
+      data: sampleData, // Data for the chart
+      tooltip: {
+        valueDecimals: 2 // Format the tooltip values to two decimal places
+      }
+    }]
+  };
+
+  // Rendering the HighchartsReact component
+  return (
+    <HighchartsReact
+      highcharts={Highcharts} // Passing the Highcharts module
+      constructorType={'stockChart'} // Specifying the chart type as a stock chart
+      options={options} // Passing the configuration options
+    />
+  );
+}
+
+// Exporting the App component for use in other parts of the project
+export default App;
+```
+
+The exported `default app`, is rendered in a standard HTML page and then in an iframe in Sigma, as a plugin. 
+
+It does this using `/src/index.js`, which in turn uses `/public/index.html` to render the webpage. Notice that we did not have to adjust any code on those pages!
+
+Close `App.js` and any other files you have open in `VSCode`. You may leave the Terminal session open, but terminate the web-server (`CTL+C`).
+
+Next we will connect this chart to Sigma's Sample data by modifying App.js.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Candlestick - Sigma Data
+Duration: 20
+ 
+ In `VSCode`, expand the `plugin_highchart_candlestick_sigma_data` folder and then `src` and click top open `App.js`.
+
+ `App.js` has some additional code to allow it to use data provided by Sigma's interface. 
+
+ We will discuss this, but first we need to install the project dependencies as in the last step.
+
+ <aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure Terminal is in the correct folder before running these commands!. The folder is "plugin_highchart_candlestick_sigma_data". 
+</aside>
+
+Here they are for convenience:
+
+```code
+npm install
+```
+
+```code
+npm install highcharts
+```
+
+```code
+npm install highcharts-react-official
+```
+
+There is an additional dependency that was not required by the hard-coded data example; the **Sigma Plugin Development API.**
+
+This module enables the plugin to use the Sigma Element panel and more. 
+
+You can read more about the options in [our documentation.](https://help.sigmacomputing.com/hc/en-us/articles/4410333753875-Plugin-Development-API)
+
+```code
+npm install @sigmacomputing/plugin
+```
+
+Now we can use Terminal to start the server for this project:
+```code
+npm start
+```
+
+when browser opens, nothing is displayed. Using Chrome Inspector, we see that there are `No issues detected so far`. This is expected and good.
+
+Nothing is displayed because we need to use Sigma to enable the Plugin to access the specified `Source` and `Column` configuration.
+
+Leave the server running and return to Sigma.
+
+We can use the same Plugin (Hello World), or you can create a new one if you prefer.
+
+The next point is very important so make sure you read it!
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma Plugins expect data to be available in a Workbook so that they can reference it. The data can exist on another Page that is hidden (if preferred), but the Plugin otherwise will not work. You cannot use a Plugin to access the workflow provided when using "Connections" in Sigma.
+</aside>
+
+In Sigma, return to the Workbook we created earlier.
+
+Notice that our new Plugin is available but when we click it, the `Element Panel` does not have any source data to choose from. 
+
+This is because we have not added a data source to this Workbook. 
+
+Lets add a table from Sigma's Sample Data. We normally would not include every column to make the chart as efficient as possible but let's just keep moving:
+
+<img src="assets/plugins27.png" width="800"/>
+
+Now that we have some data in the Workbook, the Plugin can reference it:
+
+<img src="assets/plugins28.png" width="800"/>
+
+For each column, we need to select the matching column of data:
+
+<img src="assets/plugins29.png" width="800"/>
+
+Until they all have a match:
+
+<img src="assets/plugins31.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> When matching, the Plugin window may show an error. That is expected; just assign them all. If the error does not clear once all are configured, use "Reload Plugin" as shown in the screenshot above.
+</aside>
+
+We can extend the Workbook to allow the user to select a particular company (ticker), and have the filter control "target" the DAILY_STOCK_PRICES" table, the Plugin also is filtered. For example, filtering for `IBM`:
+
+<img src="assets/plugins31.png" width="800"/>
+
+That is the end of instructional content for this QuickStart.
+
+The next few sections show the output of many other Plugins that are included in the `quickstarts-public` repository. We hope you find them useful, now that you have all the fundamentals down.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
