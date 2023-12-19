@@ -548,9 +548,39 @@ The next few sections show the output of many other Plugins that are included in
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Triggering Events
+## Waterfall
 Duration: 20
-<!-- Author: Fran B.-->
+
+This example uses the [Highchart.js Waterfall visualization.](https://www.highcharts.com/demo/highcharts/waterfall) 
+
+The git project is named `plugin_highchart_waterfall`
+
+Once pulled into VSCode from Git, don't forget to install the dependencies.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> You should check the file "package.json" to determine what other modules may be required. 
+</aside>
+
+```code
+npm install
+```
+
+```code
+npm install highcharts
+```
+
+```code
+npm install highcharts-react-official
+```
+
+```code
+npm install @sigmacomputing/plugin
+```
+
+### Sigma Workbook Configuration
+This Plugin requires we add the table from `Sigma Sample Data` > `RETAIL` > `PLUGS ELECTRONICS` > `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
