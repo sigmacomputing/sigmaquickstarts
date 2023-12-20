@@ -615,8 +615,6 @@ Here is what it looks like in action:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Checkbox Tree
-<!-- Author: Prashant S.-->
 
 ## Gantt Chart
 This example uses the [Highchart.js Gantt chart.](https://www.highcharts.com/docs/gantt/getting-started-gantt) 
@@ -668,6 +666,67 @@ Once you have the file, create a new table in Sigma by importing the CSV.
 Add the Gantt plugin and configure it as follows:
 
 <img src="assets/plugins36.png" width="350"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sunburst (D3.js)
+Duration: 20
+
+This example uses the [D3.js Sunburst visualization.](https://observablehq.com/@d3/sunburst/2?intent=fork) 
+
+This Plugin requires we add the table from `Sigma Sample Data` > `RETAIL` > `PLUGS ELECTRONICS` > `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
+
+The final design looks like this:
+
+<img src="assets/plugins37.png" width="800"/>
+
+The git project is named `plugin_d3_sunburst`
+
+Once pulled into VSCode from Git, don't forget to install the dependencies.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
+</aside>
+
+```code
+npm install
+```
+
+```code
+npm install D3
+```
+
+```code
+npm install lodash
+```
+
+```code
+npm install date-fns
+```
+
+```code
+npm install react-dom
+```
+
+```code
+npm install react-scripts
+```
+
+```code
+npm install @sigmacomputing/plugin
+```
+
+### Sigma Workbook Configuration
+
+Configure the table like this, adding calculated columns for `Family Profit` and new columns for `Revenue` and `COGS`.
+
+<img src="assets/plugins38.png" width="800"/>
+
+The Sunburst plugin is configured like this:
+
+<img src="assets/plugins39.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
