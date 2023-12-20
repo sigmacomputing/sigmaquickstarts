@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-12-9
+lastUpdated: 2023-12-21
 
 # Extend Sigma with Plugins
 
@@ -70,17 +70,7 @@ Programmers who want to enhance Sigma's functionality using third-party plugins.
 </aside>
   
 ### What You’ll Learn
-How to .......
-
-### What You’ll Build
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION -->
-
-## How Does This Work?
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+How to use VSCode with React, create a variety of plugins, and deploy them in Sigma. In addition, we also cover how to use a hosting provider to test deploying that way.
 
 ## Create Local Development Environment
 Duration: 20
@@ -551,6 +541,87 @@ The next few sections show the output of many other Plugins that are included in
 ## Deploy to Hosting Service (optional read)
 Duration: 20
 
+Sigma makes it easy to develop and test a plugin using a locally hosted server (ie: http://localhost:3000) but for production use, you are going to want to host using an well-established and reliable (and affordable) hosting provider.
+
+There a too many hosting providers to list, nor would be recommend any particular service as best. 
+
+In building this QuickStart, we used the free-tier hosting offered by [Netlify](https://www.netlify.com/pricing/).
+
+According to their website, "Netlify is the platform developers love for building highly-performant and dynamic websites, e-commerce stores and web applications."
+
+After becoming familiar with where the specific menu items were in the Netlify UI, it was easy to use it, instead of localhost to test plugins. 
+
+There are only a few steps involved (for base testing anyway) and in this section, we will show you them.
+
+First, sign-up for a free account and login. We did not use the github integration, but that is a "must have" feature for continuous development workflows.
+
+You will have to create a project; we called ours `QuickStarts`. The name does not matter much right now.
+
+Before we can do anything else, we have to create a `build` package to deploy to Netlify. This is very straightforward.
+
+In VSCode, open the plugin project we have been working on. 
+
+We will demonstrate with `Hello World`
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is assumed that these are all working if you got this far in the QuickStart (against localhost). Select one that you are sure works. There is no need to get complexity in this step; use the "Hello World" is fine for a first try.
+</aside>
+
+Open a Terminal session and change to the folder `Hello-world`.
+
+Run this command, which will create our `build` package for us automatically:
+```code
+npm run build
+```
+
+When done, a `build` folder will appear in the project:
+
+<img src="assets/plugins40.png" width="800"/>
+
+It is this folder that needs to be copied to our hosting provider. Nothing else is required.
+
+In Netlify (for your project), navigate to `Team overview` and click `Add new site` and `Deploy manually`:
+
+<img src="assets/plugins41.png" width="800"/>
+
+Netlify will provide a place for you to drag and drop the `build` folder into (or you can browse to it).
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Don't drag and drop from VSCode, do it from the file explorer.
+</aside>
+
+Drag the `build` folder over.
+
+Netlify will upload and provision the new site automatically. It also creates a random url for us but we prefer to change that to something more useful.
+
+Navigate to `Site configuration` and scroll down to find `Change site name`. Click that button:
+
+<img src="assets/plugins42.png" width="800"/>
+
+We used `plugin_hello_world`. You are prompted if the name is not available. If it is not, pick something else that makes sense.
+
+<img src="assets/plugins43.png" width="800"/>
+
+Scroll back up on the page and right-click on the URL (as shown below) and `copy link address`:
+
+<img src="assets/plugins44.png" width="800"/>
+
+This is the URL that will reference our hosted hello-world plugin in Sigma.
+
+The next steps are familiar by now, but we will summarize.
+
+In Sigma, navigate to `Administration` > `Account` and `Custom Plugins`.
+
+Click the `Add` button. 
+
+Name the new plugin `Hello-World` and paste the URL copied from Netlify into the `Production URL` and click `Create.`
+
+Try to use the `Hello-World` plugin on a Workbook page. The results should be:
+
+<img src="assets/plugins45.png" width="800"/>
+
+We used this same workflow to test every plugin demonstrated in this QuickStart. Of course, production grade hosting has more configuration that we showed but the plugin process remains quite simple and very powerful.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -734,9 +805,9 @@ The Sunburst plugin is configured like this:
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+In this lab we learned how to use VSCode with React, create a variety of plugins, and deploy them in Sigma. In addition, we also covered how to use a hosting provider to test deploying that way.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+We trust you found this content useful.
 
 ### Additional Resource Links
 [Blog](https://www.sigmacomputing.com/blog/)<br>
