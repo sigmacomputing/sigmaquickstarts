@@ -297,7 +297,20 @@ searchParams += '&:disable_mobile_view=yes';
 ```
 <img src="assets/horizonalline.png"/>
 
-**2: first_name:**<br>
+**2: enable_UI_language:**<br>
+Apply an Existing Translation to an Embed. Localization allows workbook editors to translate workbook text to other locales. 
+
+Translations are managed per-workbook and are available when viewing embedded workbooks and workbook previews
+
+Sample Code:
+```code
+//SET A VALUE FOR language. Default=en 
+searchParams += '&:lng=fa-ca';
+```
+
+[List of supported languages is here.](https://help.sigmacomputing.com/hc/en-us/articles/4415639036179-Embedded-Workbook-Localization)
+
+**3: first_name:**<br>
 Sets the first name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
 
 Sample Code:
@@ -314,7 +327,7 @@ If both first_name and last_name parameters are absent, the current user keeps t
 
 <img src="assets/horizonalline.png"/>
 
-**2: hide_folder_navigation:**<br> 
+**4: hide_folder_navigation:**<br> 
 Available for "mode=userbacked"; if set to true, it hides the folder navigation options in the bottom left. Default=no.
 
 Sample Code:
@@ -335,7 +348,7 @@ Some items in the folder list (for example "Send now") are controlled in the `Ac
 
 <img src="assets/horizonalline.png"/>
 
-**3: hide_menu:**<br>
+**5: hide_menu:**<br>
 If set to True, hides the menu in the bottom-left for saved workbooks.
 
 Sample Code:
@@ -355,7 +368,7 @@ When set to `true`, looks like this:
 <img src="assets/horizonalline.png"/>
 
 
-**4: hide_schedule:**<br>
+**6: hide_schedule:**<br>
 Hides the Schedule exports option in the menu for saved workbooks. Default = `false`.
 
 Sample Code:
@@ -378,7 +391,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**5: hide_send:**<br>
+**7: hide_send:**<br>
 Hides the `Send now` option in the menu for saved workbooks. Default = `false`.
 
 Sample Code:
@@ -397,7 +410,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**6: hide_sheet_interactions:**<br>
+**8: hide_sheet_interactions:**<br>
 This hides the `sort` dropdown on a column header or filter bar access for users of the embedded workbook. Default = `false`.
 
 Sample Code:
@@ -416,7 +429,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**7: hide_tooltip:**<br>
+**9: hide_tooltip:**<br>
 If set to true and a user hovers over a tooltip, the tooltip is no longer displayed. 
 
 This applies to charts (line, bar, area, etc) and map chart marks. 
@@ -437,7 +450,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**8: hide_workbook_name:**<br> 
+**10: hide_workbook_name:**<br> 
 A boolean value that hides the workbook name near the folder icon, in the embed footer. Default = `false`
 
 Sample Code:
@@ -448,7 +461,7 @@ searchParams += '&:hide_workbook_name=true';
 
 <img src="assets/horizonalline.png"/>
 
-**2: last_name:**<br>
+**11: last_name:**<br>
 Sets the last name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
 
 Sample Code:
@@ -465,7 +478,7 @@ If both first_name and last_name parameters are absent, the current user keeps t
 
 <img src="assets/horizonalline.png"/>
 
-**9: loading_bg:**<br> 
+**12: loading_bg:**<br> 
 Allows you to change the background on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -480,7 +493,7 @@ If we create an error (remove the API secret from server.js, save the change, an
 
 <img src="assets/horizonalline.png"/>
 
-**10: loading_text:**<br> 
+**13: loading_text:**<br> 
 Allows you to change the font color on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -495,7 +508,7 @@ If we create an error (remove the API secret from server.js, save the change, an
 
 <img src="assets/horizonalline.png"/>
 
-**11: menu_position:**<br>
+**14: menu_position:**<br>
 Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.
 
 `none` removes the toolbar. 
@@ -518,7 +531,7 @@ Examples:
 
 <img src="assets/horizonalline.png"/>
 
-**12: responsive_height:**<br>
+**15: responsive_height:**<br>
 Setting this to true this allows developers access to workbook:pageheight:onchange JavaScript event.
 
 This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
@@ -531,7 +544,7 @@ searchParams += '&:responsive_height=true';
 
 <img src="assets/horizonalline.png"/>
 
-**13: show_footer:**<br>
+**16: show_footer:**<br>
 If set to false, it hides the file explorer, workbook page tabs, `Save As` / `Edit` options, and Sigma logo in footer. Default = `true`. 
 
 Sample Code:
@@ -546,7 +559,7 @@ searchParams += '&:show_footer=false';
 
 <img src="assets/horizonalline.png"/>
 
-**14: theme:**<br>
+**17: theme:**<br>
 Use any of the default themes (Light, Dark, and Surface) or any themes defined in your org. Use the name of the theme as the value. The value is case-sensitive. 
 
 Sample Code:
@@ -577,7 +590,7 @@ Now the embed has adopted the `Light` theme, even though the `Dark` theme was se
 
 To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747-Create-and-manage-workbook-themes#h_01FG7WHKNRCCRK9P6B3Z1KHC3C)
 
-**15: use_user_name:**<br>
+**18: use_user_name:**<br>
 Displays the workbook creator’s name (instead of email) in embed menus and system-generated emails.
 
 Sample Code:
@@ -586,9 +599,7 @@ Sample Code:
 searchParams += '&:use_user_name='Bob Smith`;
 ```
 
-
 <img src="assets/horizonalline.png"/>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
