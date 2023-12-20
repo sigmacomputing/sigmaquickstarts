@@ -548,6 +548,12 @@ The next few sections show the output of many other Plugins that are included in
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Deploy to Hosting Service (optional read)
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Waterfall
 Duration: 20
 
@@ -558,7 +564,7 @@ The git project is named `plugin_highchart_waterfall`
 Once pulled into VSCode from Git, don't forget to install the dependencies.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> You should check the file "package.json" to determine what other modules may be required. 
+<strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
 </aside>
 
 ```code
@@ -580,13 +586,41 @@ npm install @sigmacomputing/plugin
 ### Sigma Workbook Configuration
 This Plugin requires we add the table from `Sigma Sample Data` > `RETAIL` > `PLUGS ELECTRONICS` > `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table
 
+The final design looks like this:
 
+<img src="assets/plugins32.png" width="800"/>
+
+The workbook needs to have a `Control Element` that is hard-coded with values for day, week, month and year. The control should target the table.
+
+The Control Element's `Control ID` is set to `date_grouping` and this is referenced in the table, in calculated column called `Date Grouping`. This is how the hard-coded list of values is inserted into the table when the user changes the control. Sigma's Control element can be very powerful when used like this.
+
+[For more information on Controls, click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500011982902-Intro-to-Control-Elements)
+
+The table is configured like this:
+
+<img src="assets/plugins33.png" width="800"/>
+
+The Waterfall Plugin is configured like this:
+
+<img src="assets/plugins34.png" width="350"/>
+
+The only "trick" that is included in this example is the inclusion of a table column called `New COGS MoM`. We did this so that we could apply an adjustment to our data, so that we had some months with negative profits. We wanted to show some red on our example. 
+
+For example, the formula for this column was: [COGS MoM] * 1.21, which works to increase our COGS and lower our profits. 
+
+Here is what it looks like in action:
+
+<img src="assets/waterfall_action.gif">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Checkbox Tree
 <!-- Author: Prashant S.-->
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
