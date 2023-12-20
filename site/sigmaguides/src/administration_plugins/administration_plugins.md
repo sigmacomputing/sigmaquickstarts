@@ -618,9 +618,56 @@ Here is what it looks like in action:
 ## Checkbox Tree
 <!-- Author: Prashant S.-->
 
+## Gantt Chart
+This example uses the [Highchart.js Gantt chart.](https://www.highcharts.com/docs/gantt/getting-started-gantt) 
 
+The final design looks like this:
 
+<img src="assets/plugins35.png" width="800"/>
 
+The git project is named `plugin_highchart_gantt`
+
+Once pulled into VSCode from Git, don't forget to install the dependencies.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
+</aside>
+
+```code
+npm install
+```
+
+```code
+npm install highcharts
+```
+
+```code
+npm install highcharts-react-official
+```
+
+```code
+npm install @sigmacomputing/plugin
+```
+This project has two new dependencies that need to be installed in addition to the ones we have done in the past.
+
+```code
+npm install react-dom
+```
+
+```code
+npm install react-scripts
+```
+
+### Sigma Workbook Configuration
+For this example, we will create a new table in Sigma from a CSV file. The sample file has 1 work order and 10 corresponding rows of data in it. We will use this to generate a sample Gantt chart. 
+
+[You can download this CSV here:](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/gantt_sample_data.csv)
+
+Once you have the file, create a new table in Sigma by importing the CSV. 
+
+Add the Gantt plugin and configure it as follows:
+
+<img src="assets/plugins36.png" width="350"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
