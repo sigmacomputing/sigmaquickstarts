@@ -554,7 +554,7 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Waterfall
+## Waterfall (Highcharts.js)
 Duration: 20
 
 This example uses the [Highchart.js Waterfall visualization.](https://www.highcharts.com/demo/highcharts/waterfall) 
