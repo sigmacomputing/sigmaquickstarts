@@ -13,42 +13,40 @@ lastUpdated: 2023-12-21
 ## Overview 
 Duration: 5 
 
-This QuickStart is designed to help both the experienced developer as well as those who never worked with open source charting libraries. Feel free to skip sections that do not apply to you.
+This QuickStart is designed to help both experienced developers and those who have never worked with open-source charting libraries. Feel free to skip sections that do not apply to you.
 
 In either case we assume you have some experience with software development, even if only a little. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Not every step will be shown in detail although we will make it as simple as possible so that you can build an working example.
+<strong>NOTE:</strong><br> Not every step will be shown in detail, but we will make it as simple as possible so that you can build a working example
 </aside>
 
 ### Why use a plugin?
 There are times when Sigma (or any analytics platform) will not have the visualization a use case requires, or the one that is available is not able to be customized to the extent that is required.
 
-The choice to build a custom plugin for use in Sigma has some considerations that customers should be aware of:
+The choice to build a custom plugin for use in Sigma has some considerations that customers should be aware of.
 
-<li>
+**Here are some of the more common considerations:**
+
+<ul>
   <li>Does the development team have the skills and resources available to manage the on-going iterations and support that analytics applications often require?</li>
   <li>Will a 3rd party component meet all the specific project requirements?</li>
-  <li>How easy will the visualization integrates into the workflow?</li>
+  <li>How easy will the visualization integrate into the workflow?</li>
   <li>Can the 3rd party component connect to the data?</li>
-</li>
+</ul>
 
-Custom chart building offers unparalleled flexibility and customization but requires more technical expertise and development effort.
+Custom chart building offers unparalleled flexibility and customization, but it requires technical expertise and far more development effort than building in Sigma.
 
-In contrast, Sigma provides quick, user-friendly solutions with far less technical overhead.
+Sigma provides quick, user-friendly solutions with far less technical overhead.
 
-In cases like this, developing a plugin is a viable option for many customers.
-
-We will make use of the two popular charting libraries; open source:[D3.js](https://d3js.org/) and commercial: [Highcharts.js](https://www.highcharts.com/)
-
-There are many others including Chart.js, Apache ECharts
+In such cases where something is needed that is not available in Sigma, developing a plugin is a viable option for many customers.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The information provided here is meant to demonstrate the basic techniques to creating and deploying a Sigma plugin. The actual development of any plugin is solely the customer's responsibility.
 </aside>
 
 ### Target Audience
-Programmers who want to enhance Sigma's functionality using third-party plugins.
+Programmers who want to enhance Sigma's functionality by crating their own plugins.
 
 ### Prerequisites
 
@@ -57,16 +55,17 @@ Programmers who want to enhance Sigma's functionality using third-party plugins.
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>A development environment (or RTE) of your choice. In this QuickStart we use Microsoft VSCode with related extensions.</li>
+  <li>We will make use of the two popular charting libraries; D3.js and Highcharts.js</li>
 </ul>
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+<strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when engaging in QuickStarts.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We will use the React framework for serving of our plugin code, on our local computer. You do not need to know how to use React to complete this QuickStart and we will indicate what sections of code are Sigma and which are React. The choice of front-front end framework to use is up to the developer to decide. 
+<strong>NOTE:</strong><br> We will use the React framework for serving of our plugin code, on our local computer. You do not need to know how to use React to complete this QuickStart and we will indicate what sections of code are Sigma and which are React. The choice of front-end framework is up to the developer. 
 </aside>
   
 ### What You’ll Learn
@@ -75,7 +74,7 @@ How to use VSCode with React, create a variety of plugins, and deploy them in Si
 ## Create Local Development Environment
 Duration: 20
 
-We will use VSCode for development and will demonstrate based on that. You may use whatever development environment to develop custom Sigma plugins you are comfortable with; the methods will still be similar. 
+While we will use VSCode for development and base our demonstrations on it, you are free to use any development environment you're comfortable with for creating custom Sigma plugins; the underlying methods remain similar.
 
 If you choose to use a different method, ensure that it supports the use of **JavaScript;**.
 
@@ -89,7 +88,7 @@ Duration: 20
 Run the installation with all defaults.
 
 ### Install Node:
-You may skip this section if you already have Node installed. 
+You may skip this section if you already have Node.js installed. 
 
 [Download and install Node.js from here:](https://Nodejs.org/en/download/)
 
@@ -103,7 +102,7 @@ You can verify your installation using Terminal:
 ```plaintext
 node -v
 ```
-<img src="assets/plugins4.png" width="400"/>
+<img src="assets/plugins4.png" width="800"/>
 
 This completes the local configuration and we are ready to develop our first plugin.
 
@@ -116,10 +115,10 @@ Duration: 20
 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> For those who are lucky enough to be experience developers, you probably want to skip this section.
+<strong>NOTE:</strong><br> For those who are lucky enough to be experienced developers, you probably want to skip this section.
 </aside>
 
-React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook and has a large community of developers and a rich ecosystem of tools and libraries.
+React is a popular JavaScript library for building user interfaces, particularly single-page applications. It's developed and maintained by Facebook, and has a large community of developers, and a rich ecosystem of tools and libraries.
 
 Since Sigma is a web-based application, React's compatibility with web technologies makes it an ideal choice for developing plugins or extensions.
 
@@ -165,7 +164,7 @@ Here's a breakdown of what each part of the command does:
 
 After running this command, you will have a new folder named `hello-world` in your current directory. 
 
-Inside it, there will be a fully functional React project. You can then navigate into this directory (cd hello-world) and start the development server (we will use `npm start`) to begin working on your React application.
+Inside it, there will be a fully functional React project. You can then navigate into this directory (`cd hello-world`) and start the development server (we will use `npm start`) to begin working on your React application.
 
 This command is widely used because it simplifies the process of setting up a new React project, allowing developers to focus on writing React code rather than worrying about configuring the build and development tools.
 
@@ -192,9 +191,9 @@ React will start in the terminal session:
 
 <img src="assets/plugins5.png" width="800"/>
 
-Items shown in yellow text are warnings, and generally are not of concern.
+Items shown in yellow text are warnings, and are not of concern for our purposes.
 
-npm will also open the default browser with the default React content:
+npm will also open the default browser automatically, with the default React content:
 
 <img src="assets/plugins6.png" width="800"/>
 
@@ -204,7 +203,7 @@ For additional information about React, [visit the website.](https://react.dev/)
 <!-- END OF SECTION -->
 
 ## Hello World
-Now that we have a working React application, lets adjust it, to remove the default content, and have it display the text `Hello World`.
+Now that we have a working React application, lets adjust it to remove the default content, and have it display the text `Hello World`.
 
 In `VSCode`, expand the folder `hello-world` and then expand the sub-folder `scr`. Open `App.js`. 
 
@@ -240,7 +239,7 @@ The browser now shows:
 <img src="assets/plugins11.png" width="800"/>
 
 ### Sigma Hello World Plugin
-Our new React app does not contain much, but that does not mean it can't be used as is, with Sigma. Let's do that, so we can walk through the workflow, which is the same, regardless of the Plugin
+Our new React app does not contain much, but that does not mean it can't be used as is with Sigma. Let's do that, so we can walk through the workflow, which is the same, regardless of the Plugin.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This plugin does not render any data; we will get to that in subsequent steps.
@@ -259,7 +258,7 @@ Give it a `Name`, `Description` and a `Production URL`:
 Click `Create Plugin`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We could use a localhost as the development URL, but to keep things simple (for now), we will just use localhost as the production URL. When the user is logged into the Sigma portal, where a plugin is being used in a Workbook, Sigma will handle the communication with localhost:3000, so there is nothing else that needs to be done on the network.
+<strong>IMPORTANT:</strong><br> We could use a localhost as the development URL, but to keep things simple (for now), we will just use localhost as the production URL. When the user is logged into the Sigma portal, Sigma will handle the communication with localhost:3000, so there is nothing else that needs to be done on the network.
 </aside>
 
 The Plugin is now created, based on our `Hello World` React app. We can now try to use it in a Sigma Workbook.
@@ -290,7 +289,7 @@ While this is a simple example, we now have a good foundation in order to build 
 ## QuickStarts Git Repo
 Duration: 20
 
-In the next sections, we will leverage a public git repository in VSCode so that we don't spend time creating the content ourselves. Having working copies of code is a great starting point and we will explain the relevant parts as we go.
+In the following sections, we'll utilize a public Git repository within VSCode to bypass the need for creating content from scratch. We'll start with working code copies, and guide you through the relevant parts, explaining as we proceed.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This repository's contents are not intended for use in a production environment. We make no guarantees regarding the reliability, safety, or suitability of this code for production purposes. Users are cautioned to use the code at their own discretion and risk.
@@ -333,7 +332,7 @@ All the projects in the repo will be available to you now in VSCode.
 First, lets look at what the `plugin_highchart_candlestick_simple` application does in the browser.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We did not include these dependencies in our Git repo on purpose to save space not storing multiple copies of files or storing files that may get updated by a vendor. Additionally, understanding some of these details are very useful when debugging issues later on.
+<strong>IMPORTANT:</strong><br> We did not include all dependencies in our Git repo on purpose to save space not storing multiple copies of files or storing files that may get updated by a vendor. Additionally, understanding some of these details are very useful when debugging issues later on.
 </aside>
 
 Open a Terminal session, cd to `plugin_highchart_candlestick_simple` and run:
@@ -343,7 +342,7 @@ npm install
 
 This will install all the node dependencies, but we also will need to install the dependencies for `Highcharts.js`, since our project is using that too. 
 
-**How can you tell this project is based on Highcharts.js?**
+***How can you tell this project is based on Highcharts.js?***
 
 Open the file `package.json` in the root folder and we can see the list of project dependencies. 
 
@@ -455,7 +454,9 @@ Duration: 20
  We will discuss this, but first we need to install the project dependencies as in the last step.
 
  <aside class="positive">
-<strong>IMPORTANT:</strong><br> Make sure Terminal is in the correct folder before running these commands!. The folder is "plugin_highchart_candlestick_sigma_data". 
+<strong>IMPORTANT:</strong><br> Make sure Terminal is in the correct folder before running these commands!. <br>
+<br>
+The folder is "plugin_highchart_candlestick_sigma_data". 
 </aside>
 
 Here they are for convenience:
@@ -475,8 +476,6 @@ npm install highcharts-react-official
 There is an additional dependency that was not required by the hard-coded data example; the **Sigma Plugin Development API.**
 
 This module enables the plugin to use the Sigma Element panel and more. 
-
-You can read more about the options in [our documentation.](https://help.sigmacomputing.com/hc/en-us/articles/4410333753875-Plugin-Development-API)
 
 ```code
 npm install @sigmacomputing/plugin
@@ -517,11 +516,11 @@ Now that we have some data in the Workbook, the Plugin can reference it:
 
 For each column, we need to select the matching column of data:
 
-<img src="assets/plugins29.png" width="800"/>
+<img src="assets/plugins29.png" width="400"/>
 
 Until they all have a match:
 
-<img src="assets/plugins31.png" width="800"/>
+<img src="assets/plugins30.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> When matching, the Plugin window may show an error. That is expected; just assign them all. If the error does not clear once all are configured, use "Reload Plugin" as shown in the screenshot above.
@@ -564,7 +563,7 @@ In VSCode, open the plugin project we have been working on.
 We will demonstrate with `Hello World`
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It is assumed that these are all working if you got this far in the QuickStart (against localhost). Select one that you are sure works. There is no need to get complexity in this step; use the "Hello World" is fine for a first try.
+<strong>IMPORTANT:</strong><br> It is assumed that these are all working if you got this far in the QuickStart (against localhost). Select one that you are sure works. There is no need to get complexity in this step; using the "Hello World" is fine for a first try.
 </aside>
 
 Open a Terminal session and change to the folder `Hello-world`.
@@ -592,7 +591,7 @@ Netlify will provide a place for you to drag and drop the `build` folder into (o
 
 Drag the `build` folder over.
 
-Netlify will upload and provision the new site automatically. It also creates a random url for us but we prefer to change that to something more useful.
+Netlify will upload and provision the new site automatically. It also creates a random url for us, but we prefer to change that to something more useful.
 
 Navigate to `Site configuration` and scroll down to find `Change site name`. Click that button:
 
@@ -600,7 +599,7 @@ Navigate to `Site configuration` and scroll down to find `Change site name`. Cli
 
 We used `plugin_hello_world`. You are prompted if the name is not available. If it is not, pick something else that makes sense.
 
-<img src="assets/plugins43.png" width="800"/>
+<img src="assets/plugins43.png" width="600"/>
 
 Scroll back up on the page and right-click on the URL (as shown below) and `copy link address`:
 
@@ -620,7 +619,7 @@ Try to use the `Hello-World` plugin on a Workbook page. The results should be:
 
 <img src="assets/plugins45.png" width="800"/>
 
-We used this same workflow to test every plugin demonstrated in this QuickStart. Of course, production grade hosting has more configuration that we showed but the plugin process remains quite simple and very powerful.
+We used this same workflow to test every plugin demonstrated in this QuickStart. Of course, production grade hosting has more configuration that we showed, but the plugin process remains quite simple and very powerful.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
