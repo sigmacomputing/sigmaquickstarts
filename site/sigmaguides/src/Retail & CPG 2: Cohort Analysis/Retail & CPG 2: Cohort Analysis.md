@@ -194,7 +194,6 @@ Duration: 5
 
 In this lab, we showcased how Sigma enables end users to do last-mile data analysis in a familiar, spreadsheet-like UI. Sigma empowers end users to create complex, cross-level metric calculations all without coding skills or writing any SQL, unlocking the power of the underlying cloud data platform for all end users. 
 
-
 ### Helpful Resources
 [Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
