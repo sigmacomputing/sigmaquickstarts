@@ -34,7 +34,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 ### What You’ll Build 
 - In this lab you will build a retention analysis including pivot tables with custom formatting. 
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- ------------------------ -->
 ## Setting up the Workbook 
 Duration: 10
