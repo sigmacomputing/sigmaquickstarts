@@ -72,15 +72,15 @@ In the next few sections of this QuickStart, we will setup and test CLS.
 
 The basic steps are (links to help docs provided for convenience only):
 
-1: [Create a Dataset](https://help.sigmacomputing.com/hc/en-us/articles/4408736613395#h_01FJD5840274SNM49XSFCDAJWP)
+1: [Create a Dataset](https://help.sigmacomputing.com/docs/configure-dataset-columns)
 
-2: [Create user attributes](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#caua)
+2: [Create user attributes](https://help.sigmacomputing.com/docs/user-attributes#create-user-attributes)
 
-3: [Assign a user attribute to teams](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#assign)
+3: [Assign a user attribute to teams](https://help.sigmacomputing.com/docs/user-attributes#assign-user-attributes)
 
-4: [Set the column in a dataset to the user attribute to enforce security](https://help.sigmacomputing.com/hc/en-us/articles/18744762013843--Column-Level-Security-Beta-#h_01H6A395XSV20SH2B7TXA1C7C8)
+4: [Set the column in a dataset to the user attribute to enforce security](https://help.sigmacomputing.com/docs/user-attributes)
 
-6: [Impersonate a test user to verify CLS is being enforced](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users#h_01GY9AWQFC4MS0NB18CZN5HM0B)
+6: [Impersonate a test user to verify CLS is being enforced](https://help.sigmacomputing.com/docs/column-level-security-beta)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -124,9 +124,9 @@ We will have three users, and control visibility to this column to each differen
 
 To setup this use case, we will need to add the required teams and test users. It is assumed that you understand how to add teams and users to Sigma, so we will skip demonstrating that in details. 
 
-For information on [how to add users to Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360036944454-Invite-people-to-your-organization)
+For information on [how to add users to Sigma, click here.](https://help.sigmacomputing.com/docs/manage-people)
 
-For information on [how to add Teams to Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams#h_01F8E2E40Z95MY8HNZHJHRYEPD)
+For information on [how to add Teams to Sigma, click here.](https://help.sigmacomputing.com/docs/manage-teams)
 
 We have created three teams:
 
@@ -238,7 +238,7 @@ Duration: 20
 
 Instead of logging out and back in with each user to test, Sigma has a neat feature that allows an administrator to "impersonate" any other user. This saves you time in the development lifecycle. 
 
-[To read more about user impersonation, click here](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
+[To read more about user impersonation, click here](https://help.sigmacomputing.com/docs/impersonate-users)
 
 Navigate to `Administration` > `People` and click to impersonate the user who is a "Sales Rep":
 
@@ -308,7 +308,7 @@ The workbook owner will get an email, and can grant permission, if they have the
 
 This feature can also be disabled, so that users are not presented the option at all.
 
-For more information on this topic, [please refer to this document](https://help.sigmacomputing.com/hc/en-us/articles/19321425980819-License-upgrade-requests)
+For more information on this topic, [please refer to this document](https://help.sigmacomputing.com/docs/license-upgrade-requests#enable-or-disable-upgrade-requests)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -320,12 +320,11 @@ In this QuickStart, we learned how to apply column-level security in Sigma using
 
 **Additional Resource Links**
 
-[Blog](https://www.sigmacomputing.com/blog/)<br>
-[Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
-[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;

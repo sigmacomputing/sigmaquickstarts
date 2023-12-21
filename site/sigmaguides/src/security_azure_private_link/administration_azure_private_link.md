@@ -25,7 +25,7 @@ Azure Private Link provides enhanced security, reduced network latency, simplifi
 
 Sigma currently supports creating private links to three kinds of data warehouse that runs in Azure; Snowflake, Databricks and Postgesql. 
 
-[Please check here for the latest information on supported connections](https://help.sigmacomputing.com/hc/en-us/articles/15174558706195-Azure-Private-Link-Connections)
+[Please check here for the latest information on supported connections](hhttps://help.sigmacomputing.com/docs/aws-privatelink-connections)
 
 Standing up a Private Link requires a customer's cloud administrator (or similar role) to provide specific configuration detail to Sigma so that the Private Link connection can be established. This is covered in each section later and depends on data warehouse type. 
 
@@ -137,7 +137,7 @@ test123.west-us-2.privatelink
 <strong>NOTE:</strong><br> The Sigma IP addresses are shown during connection creation should your organization require them.
 </aside>
 
-[To complete the remaining configuration, follow the steps in the Snowflake Connection Guide](https://help.sigmacomputing.com/hc/en-us/articles/360037429913)
+[To complete the remaining configuration, follow the steps in the Snowflake Connection Guide](https://help.sigmacomputing.com/docs/connect-to-snowflake)
 
 You should now be able to use the Snowflake connection (over Private Link) as you would any other connection in Sigma.
 
@@ -259,7 +259,7 @@ Paste the `token` you created in Azure and enter into `Access token` field in Si
 
 <img src="assets/pl21.png" width="800"/>
 
-[To complete the remaining configuration, follow the steps in the Databricks Connection Guide. ](https://help.sigmacomputing.com/hc/en-us/articles/6963295723411)
+[To complete the remaining configuration, follow the steps in the Databricks Connection Guide. ](https://help.sigmacomputing.com/docs/connect-to-databricks)
 
 You should now be able to use the Databricks connection (over Private Link) as you would any other connection in Sigma.
 
@@ -352,7 +352,7 @@ An overview of Private Link and how to establish an Azure Private Link connectio
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

@@ -171,7 +171,7 @@ Now we are able to filter out the null rows, using a filter on this column:
 
 We could keep going on the use case, focusing on how we can add more value to it and not being blocked by nested JSON. 
 
-If you are interested in reading more about how Sigma handles JSON, [please click here.](https://help.sigmacomputing.com/hc/en-us/articles/18349956073875-Extract-semi-structured-JSON-or-variant-data)
+If you are interested in reading more about how Sigma handles JSON, [please click here.](https://help.sigmacomputing.com/docs/extract-semi-structured-json-or-variant-data)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -186,7 +186,7 @@ In this lab we learned how to leverage flat and nested JSON using Sigma's unique
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
