@@ -402,7 +402,7 @@ If you would like to learn how to use Postman with the Sigma API, [reference thi
 
 If you are familiar with APIs and prefer to review [Sigma's swagger reference, that is here](https://docs.sigmacomputing.com/api/v2/).
 
-[The general API documentation is here](https://help.sigmacomputing.com/hc/en-us/sections/4408551771411-API-Get-Started).
+[The general API documentation is here](https://docs.sigmacomputing.com/#overview).
 
 #### Create a new Sigma Connection with Key Pair Auth:
 
@@ -494,7 +494,7 @@ Specifically, these include CSV upload, materialization, input tables, and datas
 
 Once you have your Sigma connection to Snowflake configured for key pair authentication, enabling write access is the same as if the connection was using basic authorization. 
 
-[Information about enabling write access for Snowflake can be found here:](https://help.sigmacomputing.com/hc/en-us/articles/360037430473-Set-up-write-access#h_01FDX02ZAC489RD0W04CWVPET4)
+[Information about enabling write access for Snowflake can be found here:](https://help.sigmacomputing.com/docs/set-up-write-access)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -507,18 +507,16 @@ In this QuickStart we learned the features and benefits of key pair authenticati
 
 #### Additional Resource Links
 
-[Blog](https://www.sigmacomputing.com/blog/)<br>
-[Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
-[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
 [<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->

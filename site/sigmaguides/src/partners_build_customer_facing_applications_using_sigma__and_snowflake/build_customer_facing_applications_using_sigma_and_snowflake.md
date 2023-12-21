@@ -490,7 +490,7 @@ Duration: 5
 
 ![rls2](assets/rowlevelsecurity_2.png)
 
-4. Navigate to your server.js file and un-comment the field that contains the control_id by deleting the "//" before searchParams at the beginning of the line. Here is where we can place the control_id from our workbook and pass a value to set that control. Today, we will hardcode a value, but these can always be set in a more dynamic fashion based on user properties. For more information on more dynamic security for embedding, please see the Sigma docs [here](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-).
+4. Navigate to your server.js file and un-comment the field that contains the control_id by deleting the "//" before searchParams at the beginning of the line. Here is where we can place the control_id from our workbook and pass a value to set that control. Today, we will hardcode a value, but these can always be set in a more dynamic fashion based on user properties. For more information on more dynamic security for embedding, please see the Sigma docs [here](https://help.sigmacomputing.com/docs/user-backed-embedding).
 Update control-id to 'Product-Brand' (or whatever the control ID was labeled in your workbook) and the controlValue to 'Samsung' as shown in the photos below.  
 
 
@@ -511,7 +511,7 @@ Update control-id to 'Product-Brand' (or whatever the control ID was labeled in 
 
 ![rls5](assets/rowlevelsecurity_5.png)
 
-For more details on how to set up dynamic row-level security in Sigma, refer [here](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes).
+For more details on how to set up dynamic row-level security in Sigma, refer [here](https://help.sigmacomputing.com/docs/dataset-row-level-security).
 ![Footer](assets/Sigma_Footer.png)
 ## Exploring the Embed
 Duration: 10
@@ -574,10 +574,10 @@ Thank you for your participation in this hands-on lab. To learn more about how r
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-- General Sigma Embedding Docs: [https://help.sigmacomputing.com/hc/en-us/categories/1500001787282-Embedded-Analytics](https://help.sigmacomputing.com/hc/en-us/categories/1500001787282-Embedded-Analytics)  
-- User Backed Embedding Docs: [https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-)
+- General Sigma Embedding Docs: [hhttps://help.sigmacomputing.com/docs/workbook-embedding-an-overview)  
+- User Backed Embedding Docs: [https://help.sigmacomputing.com/docs/user-backed-embedding)
 - Sigma Blog: [https://www.sigmacomputing.com/blog](https://www.sigmacomputing.com/blog)
 - Resources and Case Studies: [https://www.sigmacomputing.com/resources](https://www.sigmacomputing.com/resources)
-- Help Center including Documentation: [https://help.sigmacomputing.com/hc/en-us](https://help.sigmacomputing.com/hc/en-us)
+- Help Center including Documentation: [https://help.sigmacomputing.com/hc/en-us](https://help.sigmacomputing.com)
 
 ![Footer](assets/Sigma_Footer.png)

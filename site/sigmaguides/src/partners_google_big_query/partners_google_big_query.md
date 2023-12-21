@@ -65,12 +65,12 @@ Sigma’s no-code interface creates machine-generated SQL (optimized for every d
 ### Data Governance & Optional Modeling: 
 In Sigma, our goal is to allow your analysts and users to leverage the work of your data engineers without any additional work. Whether you’re using tools like Matillion, DBT, or modeling in your warehouse, your end users can start analyzing data they’ve been permitted to access. 
 
-Sigma features a robust suite of data governance levers from [metrics](https://help.sigmacomputing.com/hc/en-us/articles/14427670985363-Create-and-Manage-Metrics-Beta-) (to govern KPIs), to [team and workspace-based sharing.](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces) 
+Sigma features a robust suite of data governance levers from [metrics](https://help.sigmacomputing.com/docs/create-and-manage-metrics) (to govern KPIs), to [team and workspace-based sharing.](https://help.sigmacomputing.com/docs/manage-workspaces) 
 
-Sigma also offers an incredibly flexible structure for row level security called [user attributes](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes) which allows you to define unique characteristics for users and the corresponding data they should see within a table. This ensures that data shared internally and externally is always governed by a strict rule set that scales endlessly. 
+Sigma also offers an incredibly flexible structure for row level security called [user attributes](https://help.sigmacomputing.com/docs/user-attributes) which allows you to define unique characteristics for users and the corresponding data they should see within a table. This ensures that data shared internally and externally is always governed by a strict rule set that scales endlessly. 
 
 ### Input tables:
-With [Input Tables](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507-Intro-to-Input-Tables), your teams can effortlessly incorporate human context into their analysis by bringing their own data directly into the warehouse, all without writing any code. With Input Tables, both your analytics and business teams can remove data roadblocks, reduce repetitive analytics tasks, and make more impactful decisions faster
+With [Input Tables](https://help.sigmacomputing.com/docs/intro-to-input-tables), your teams can effortlessly incorporate human context into their analysis by bringing their own data directly into the warehouse, all without writing any code. With Input Tables, both your analytics and business teams can remove data roadblocks, reduce repetitive analytics tasks, and make more impactful decisions faster
 
 This unique capability ensures teams can create detailed forecasts from historical data and future projections, build internal data auditing tools, perform rapid data prototyping with external sources, or build detailed models that can be managed with just a few inputs.
 
@@ -445,7 +445,7 @@ In this article, you learned how to set up and connect Sigma to BigQuery. Connec
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

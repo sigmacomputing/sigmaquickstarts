@@ -34,7 +34,7 @@ This lab is intended to showcase advanced features such as cross-level aggregate
 ### What You’ll Build 
 - In this lab you will build a cohort analysis including visualizations and a pivot table
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer.png)
 <!-- ------------------------ -->
 ## Create a Child Table 
 Duration: 10
@@ -194,12 +194,18 @@ Duration: 5
 
 In this lab, we showcased how Sigma enables end users to do last-mile data analysis in a familiar, spreadsheet-like UI. Sigma empowers end users to create complex, cross-level metric calculations all without coding skills or writing any SQL, unlocking the power of the underlying cloud data platform for all end users. 
 
-
 ### Helpful Resources
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+<br>
 
-Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)<br>
 
-- [Help Center including Documentation](https://help.sigmacomputing.com/hc/en-us)
-- [Sigma Blog](https://www.sigmacomputing.com/blog/)
-- [Resources and Case Studies](https://www.sigmacomputing.com/resources/)
-  
+[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
+[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF WHAT WE COVERED -->
+<!-- END OF QUICKSTART -->

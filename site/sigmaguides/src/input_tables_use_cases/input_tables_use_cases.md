@@ -104,7 +104,7 @@ Add a new Input Table to the Page and rename it `Forecasts from Country Managers
 <strong>NOTE:</strong><br> Input Tables store data back to the selected Warehouse. Write Access is required to support this functionality. Sigma is storing Input Table data separately and only using the Warehouse Connection you specify. Other warehouse data is unaffected. 
 </aside>
 
-[Click here for information on setting up Write Access.](https://help.sigmacomputing.com/hc/en-us/articles/360037430473-Set-Up-Write-Access)
+[Click here for information on setting up Write Access.](https://help.sigmacomputing.com/docs/set-up-write-access)
 
 Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
 
@@ -698,7 +698,7 @@ In this QuickStart we covered three popular used cases for Sigma Input Tables in
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

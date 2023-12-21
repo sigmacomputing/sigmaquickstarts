@@ -291,7 +291,7 @@ We are shown the results and a graphical depiction of the data linage.
 <strong>NOTE:</strong><br> Lineage refers to the ancestry and relationships between data elements in a workbook. All workbooks contain a lineage display, allowing you to oversee and navigate these relationships. This can be very useful as your data relationships grow in complexity.
 </aside>
 
-To learn more about Data Lineage in Sigma, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/4414895782291-Workbook-Data-Lineage)
+To learn more about Data Lineage in Sigma, [click here.](https://help.sigmacomputing.com/docs/workbook-data-lineage)
 
 We now have joined the two tables together.
 
@@ -321,7 +321,7 @@ The second column to add is `Profit (Last Year)`:
 Lag([Sum of Profit], 52)
 ```
 
-To learn more about the Lag function, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037431453-Lag)
+To learn more about the Lag function, [click here.](https://help.sigmacomputing.com/docs/lag)
 
 When added, the new columns appear like this:
 
@@ -388,7 +388,7 @@ INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
