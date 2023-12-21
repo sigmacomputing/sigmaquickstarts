@@ -126,7 +126,7 @@ For example, embedding specific visualizations along with buttons linking to new
 
 <img src="assets/customhomepage.gif">
 
-[Documentation Link](https://help.sigmacomputing.com/hc/en-us/articles/18244042539923-Enable-a-custom-homepage-Beta-?_gl=1*mldzor*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NDQ1NTIyOS4yMjIuMS4xNjk0NDYyOTE2LjUzLjAuMA..)
+[Documentation Link](https://help.sigmacomputing.com/docs/enable-a-custom-homepage)
 
 <img src="assets/horizonalline.png">
 
@@ -139,31 +139,31 @@ Allows portal-wide timezone preference setting. The default is `UTC`.
 This is a grouping of small features that do not necessitate their own group.
 
 ***CSV upload:***<br>
-Enable CSV upload for connections with write access configured. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)
+Enable CSV upload for connections with write access configured. [Learn more...](https://help.sigmacomputing.com/docs/upload-csvs)
 
 ***Sample connection:***<br>
-Include Sigma's sample connection in list of connections to select from. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360048924514-Sigma-s-Sample-Connection)
+Include Sigma's sample connection in list of connections to select from. [Learn more...](https://help.sigmacomputing.com/docs/sigmas-sample-connection)
 
 ***Public embeds:***<br>
-Allow public embedding of Sigma documents. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/1500011565421-Public-Embedding)
+Allow public embedding of Sigma documents. [Learn more...](https://help.sigmacomputing.com/docs/public-embedding)
 
 ***License upgrade request:***<br>
-Allow users to request a license with more permission from admin (e.g. from Viewer to Creator license for explore workbook permission). [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/19321425980819-License-upgrade-requests)
+Allow users to request a license with more permission from admin (e.g. from Viewer to Creator license for explore workbook permission). [Learn more...](https://help.sigmacomputing.com/docs/license-upgrade-requests#upgrade-requests)
 
 ***Comments:***<br>
-Allow commenting on Sigma documents. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4404880490643-Workbook-comments)
+Allow commenting on Sigma documents. [Learn more...](https://help.sigmacomputing.com/docs/workbook-comments)
 
 ***Annotations:***<br>
-Capture elements as images to annotate as comments in Sigma documents. Captured images will be stored in a Sigma managed cloud for a period of your choosing. The default is for 3 months. [Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/18441838570259)
+Capture elements as images to annotate as comments in Sigma documents. Captured images will be stored in a Sigma managed cloud for a period of your choosing. The default is for 3 months. [Learn more...](https://help.sigmacomputing.com/docs/annotate-element-images-as-comments)
 
 <img src="assets/horizonalline.png">
 
 #### Integrations
 Sigma supports integrations with Slack and dbt.
 
-[Learn more about Sigma with Slack](https://help.sigmacomputing.com/hc/en-us/articles/360036944834-Slack-Integration)
+[Learn more about Sigma with Slack](https://help.sigmacomputing.com/docs/integration-for-slack)
 
-[Learn more about Sigma with dbt](https://help.sigmacomputing.com/hc/en-us/articles/10312392488595-Configure-dbt-Integration)
+[Learn more about Sigma with dbt](https://help.sigmacomputing.com/docs/configure-dbt-integration)
 
 <img src="assets/horizonalline.png">
 
@@ -177,7 +177,7 @@ For customers who want to include (embed) Sigma content into their own applicati
 #### Custom Plugins
 Sigma supports plugin elements in workbooks. Plugins are third-party applications built to add additional functionality into Sigma.
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4410336481299)
+[Learn more...](https://help.sigmacomputing.com/docs/register-a-plugin-with-your-sigma-organization)
 
 <img src="assets/horizonalline.png">
 
@@ -190,7 +190,7 @@ Admins can define custom functions to represent frequently used complex calculat
       <li>Expose your proprietary warehouse functions, making them consumable</li>
 </ul>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/18886053392531-Custom-functions#requirements)
+[Learn more...](https://help.sigmacomputing.com/docs/custom-functions)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -213,7 +213,7 @@ For example, we can easily add a new font, "Coffee House" in this case:
 
 <img src="assets/fa3.png" width="600"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360063119573)
+[Learn more...](https://help.sigmacomputing.com/docs/custom-fonts)
 
 <img src="assets/horizonalline.png">
 
@@ -224,7 +224,7 @@ For example, we can easily add a new theme, use the "Coffee House" font we added
 
 <img src="assets/fa4.png" width="400"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747)
+[Learn more...](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
 <img src="assets/horizonalline.png">
 
@@ -239,7 +239,7 @@ For example, a custom email configuration might look like this:
 
 There is also an option to send a test email to yourself (#1).
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4409605098387)
+[Learn more...](https://help.sigmacomputing.com/docs/custom-email-branding#test-your-email-branding)
 
 <img src="assets/horizonalline.png">
 
@@ -250,7 +250,7 @@ Custom SMTP Server allows you to send Sigma emails from your own SMTP server. Si
 <strong>IMPORTANT:</strong><br> Sigma can't monitor email deliverability if you set your own SMTP server.
 </aside>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360059130893-Customize-Welcome-and-Invite-Emails#h_01GSY6K6KTZZFZ4PSVY3KSS278)
+[Learn more...](https://help.sigmacomputing.com/docs/customize-welcome-and-invite-emails#custom-smtp-server)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -269,7 +269,7 @@ Sigma supports multiple authentication methods including:
       <li><strong>OAuth or Password:</strong> Sigma authenticates organization member accounts through OAuth Single Sign-On (SSO) or a unique password. This option supports OAuth with Snowflake.</li>
 </ul>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360036944534-Manage-authentication#h_5f17acb1-0687-43c5-96ac-2e423c9a3e94)
+[Learn more...](https://help.sigmacomputing.com/docs/manage-authentication)
 
 ### Authentication Methods & Options:
 All configuration is accessed by clicking the `Edit` button. 
@@ -286,15 +286,15 @@ Guest users cannot view or request access to content outside of their Admin-assi
 
 This feature is opt-in and must be enabled by an organization admin before guest users can be invited to your organization. 
 
-[Learn more about Guest Accounts.](https://help.sigmacomputing.com/hc/en-us/articles/4412853245971-Guest-User-Accounts)
+[Learn more about Guest Accounts.](https://help.sigmacomputing.com/docs/guest-user-accounts)
 
 We are not using 2-Factor authentication, but is supported.
 
-[Learn more about 2-Factor authentication with Sigma.](https://help.sigmacomputing.com/hc/en-us/articles/4409688043411)
+[Learn more about 2-Factor authentication with Sigma.](https://help.sigmacomputing.com/docs/two-factor-email-authentication#enable-two-factor-authentication)
 
 We have provided an `Identity provider login URL`. In this case, the url was provided by Okta, but any IdP provider can be used.
 
-[Learn more about how to configure your IdP.](https://help.sigmacomputing.com/hc/en-us/articles/360037429833-Single-Sign-On-with-SAML#h_01EEXSNMRS5SP5AEGZ236R9Y2A)
+[Learn more about how to configure your IdP.](https://help.sigmacomputing.com/docs/use-custom-account-types-with-your-idp)
 
 Okta also provided the `X509 certificate` as well.
 
@@ -306,7 +306,7 @@ Sigma Admins may choose to control which domains can receive emails, Google Shee
 
 **If no domains are declared authorized, users can export reports to any email address.**
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360062127973-Restrict-Export-Recipients)
+[Learn more...](https://help.sigmacomputing.com/docs/restrict-export-recipients#restrict-domains)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -320,7 +320,7 @@ At the time of this QuickStart, seven vendors are supported. Clicking on the des
 
 <img src="assets/fa7.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037429953-Create-a-New-Database-Connection)
+[Learn more...](https://help.sigmacomputing.com/docs/connect-to-data-sources)
 
 Depending on the security parameters of your oganization, it may be necessary to add Sigma's IP addresses to your allowed list of IPs (whitelist).
 
@@ -334,10 +334,10 @@ Another important configuration is warehouse write access. This is only required
 
 Granting write access to a database enables the use of several Sigma features:
 
-[CSV upload](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811-Upload-CSVs)<br>
-[Materialization](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611)<br>
-[Dataset warehouse views](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027)<br>
-[Input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)
+[CSV upload](https://help.sigmacomputing.com/docs/upload-csvs)<br>
+[Materialization](https://help.sigmacomputing.com/docs/materialization)<br>
+[Dataset warehouse views](https://help.sigmacomputing.com/docs/materialization)<br>
+[Input tables](https://help.sigmacomputing.com/docs/intro-to-input-tables)
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Not all features are available for each connection type. Refer to Sigma's documentation for the current list of supported vendors.
@@ -416,7 +416,7 @@ When added manually, people receive an email invitation. Once invited, their Sig
 
 Email invitations and welcome emails can be customized if desired.
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/18661610734739-Manage-People)
+[Learn more...](https://help.sigmacomputing.com/docs/manage-people)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma uses email address for each person and the email must be unique. 
@@ -426,7 +426,7 @@ Email invitations and welcome emails can be customized if desired.
 
 People in Sigma can be deactivated. After you click Deactivate, the user's documents are automatically migrated to the selected persons's `My Documents` folder. The deactivated user's documents will be located in `My Documents` > `Archived Users` > `Folder` (folder title is the deactivated user's name). There is no need to manually transfer all the worksheets/dashboards created by the user, **Sigma does this for you.**
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360045728873-Deactivate-users)
+[Learn more...](https://help.sigmacomputing.com/docs/deactivate-users)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -452,11 +452,11 @@ For example, in this "Finance Team" there are four users, two accessed Sigma via
 <strong>NOTE:</strong><br> You can name a team anything you want but when embedding it is advisable to avoid special characters in names. 
 </aside>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+[Learn more...](https://help.sigmacomputing.com/docs/manage-teams)
 
 When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces help organize content, to categorize and share folders and documents. Workspaces can be shared with other users and teams using permission grants.
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces)
+[Learn more...](https://help.sigmacomputing.com/docs/manage-workspaces)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -476,7 +476,7 @@ Custom account types in Sigma provides a way to restrict users to specific Sigma
 
 <img src="assets/fa19.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
+[Learn more...](https://help.sigmacomputing.com/docs/user-account-types)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -502,7 +502,7 @@ The user would not be aware of the restriction and the data would be limited to 
 
 For a step-by-step look at using user attributes, there is a [QuickStart here.](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes?_gl=1*1p43qjd*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NTA0NDUxMi4yMjUuMS4xNjk1MDQ3Mjc3LjQuMC4w)
+[Learn more...](https://help.sigmacomputing.com/docs/user-attributes)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -536,7 +536,7 @@ All documents that are tagged will appear in the corresponding tag page:
 
 <img src="assets/fa22.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging-Beta-?_gl=1*1vrin3o*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NTA1NTk5NC4yMjYuMS4xNjk1MDU2MDMwLjI0LjAuMA..)
+[Learn more...](https://help.sigmacomputing.com/docs/version-tagging)
 
 For a step-by-step look at using tags in embedded applications, there is a [QuickStart here.](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
@@ -556,7 +556,7 @@ Sigma also provides extensive reporting on scheduled report usage:
 
 <img src="assets/fa25.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/1500010741602)
+[Learn more...](https://help.sigmacomputing.com/docs/manage-organization-schedules)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -576,7 +576,7 @@ Admin are able to jump directly to the object being materialized, or perform oth
 
 <img src="assets/fa27.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/4408785054611-Materialization)
+[Learn more...](https://help.sigmacomputing.com/docs/materialization)
 
 [Materialization QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_materialization/index.html?index=..%2F..index#0)
 
@@ -594,7 +594,7 @@ When a warehouse view is created, a live link is established between Snowflake a
 
 <img src="assets/fa27.png" width="800"/>
 
-[Learn more...](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171-Create-and-manage-workbook-warehouse-views)
+[Learn more...](https://help.sigmacomputing.com/docs/review-warehouse-view-details)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -624,10 +624,10 @@ In this QuickStart we provided a very high-level overview of all the administrat
 
 **Additional Resource Links**
 
-[Blog](https://www.sigmacomputing.com/blog/)<br>
-[Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
-[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+<br>
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)<br>
 

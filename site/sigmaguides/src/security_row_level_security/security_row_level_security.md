@@ -23,22 +23,22 @@ There are four methods to apply RLS at the dataset level:
 **1:** CurrentUserEmail()<br>
 Returns `True` if the email of the logged in user viewing the data matches some column data.
 
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/4426238159635-Dataset-Row-Level-Security?_gl=1*a0pta5*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NzEzNzgyMy4yNjcuMS4xNjk3MTM5ODgxLjYwLjAuMA..#h_01FW1TRE3DW366VXF9P4XAMW5F)
+[Documentation](https://help.sigmacomputing.com/docs/currentuseremail)
 
 **2:** CurrentUserTeam()<br>
 Returns `True` if the current user is a member of any of the Team(s) who have been granted access to the data.
 
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/4426238159635-Dataset-Row-Level-Security?_gl=1*a0pta5*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NzEzNzgyMy4yNjcuMS4xNjk3MTM5ODgxLjYwLjAuMA..#h_01FW1TRE3DW366VXF9P4XAMW5F)
+[Documentation](https://help.sigmacomputing.com/docs/manage-teams)
 
 **3:** User Attributes<br>
 You can create and assign a user attribute(s) to users (members) or Teams. You can use this functionality in a dataset to enforce row-level security using the function CurrentUserAttributeText in a formula. User Attributes are custom names that you create.
 
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#rsua)
+[Documentation](https://help.sigmacomputing.com/docs/user-attributes#assign-user-attributes)
 
 **4:** Custom SQL<br>
 If your dataset is derived from a custom SQL query, you may uses any of the first three methods as criteria in a where clause.
 
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/360037430513-Write-custom-SQL#01H8Q1S92HJXYFWBGB5A5GE5WV)
+[Documentation](https://help.sigmacomputing.com/docs/write-custom-sql)
 
 It is also possible to apply data security at the warehouse level, but that is not in the scope of this QuickStart.
 
@@ -102,7 +102,7 @@ Double-click the new column's header and rename the column `Email`.
 
 We want to have Sigma populate this column for us (because the data is not in our base table) and we want to make it obvious for our use-cases. 
 
-Sigma has a function that allows for this called [Switch](https://help.sigmacomputing.com/hc/en-us/articles/360037432013-Switch). 
+Sigma has a function that allows for this called [Switch](https://help.sigmacomputing.com/docs/switch). 
 
 Switch will evaluate the `Store Region` column and based on the data in each row, will add an email that we specify, in the `Email` column. 
 
@@ -261,7 +261,7 @@ Name our new Team `TeamEast` and set the access to `Public`:
 
 <img src="assets/nrls19.png" width="800"/>
 
-There are a few options on this screen but we will not cover them all here. If you are interested, [the documentation is here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+There are a few options on this screen but we will not cover them all here. If you are interested, [the documentation is here.](https://help.sigmacomputing.com/docs/manage-teams)
 
 Click `Create`.
 
@@ -429,12 +429,11 @@ For those wanting to apply RLS in an embedding environment, [see this QuickStart
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
-[Blog](https://www.sigmacomputing.com/blog/)<br>
-[Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
-[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;

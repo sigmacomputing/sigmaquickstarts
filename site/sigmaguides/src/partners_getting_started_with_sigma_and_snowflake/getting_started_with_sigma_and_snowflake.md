@@ -479,7 +479,7 @@ Today we will be looking at our fictitious company Plugs Electronics data. It co
 
 ![Define Column](assets/Analyzing_The_Data_2.png)
 
-3. This was a simple function, but if you click on the “ƒx” icon to the left of the formula bar, you can see a full list of all [the functions Sigma supports](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index).  Sigma also provides helpful tooltips and autocomplete within the formula bar to help guide users how to use the functions.
+3. This was a simple function, but if you click on the “ƒx” icon to the left of the formula bar, you can see a full list of all [the functions Sigma supports](https://help.sigmacomputing.com/docs/popular-functions).  Sigma also provides helpful tooltips and autocomplete within the formula bar to help guide users how to use the functions.
 
 ![Formula Bar](assets/Analyzing_The_Data_3.png)
 
@@ -696,7 +696,7 @@ The seamless transition from Snowflake to Sigma enables data professionals to it
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-- Help Center including Documentation: [https://help.sigmacomputing.com/hc/en-us](https://help.sigmacomputing.com/hc/en-us)
+- Help Center including Documentation: [https://help.sigmacomputing.com](https://help.sigmacomputing.com)
 - Sigma Blog: [https://www.sigmacomputing.com/blog/](https://www.sigmacomputing.com/blog/)
 - Resources and Case Studies: [https://www.sigmacomputing.com/resources/](https://www.sigmacomputing.com/resources/)
 

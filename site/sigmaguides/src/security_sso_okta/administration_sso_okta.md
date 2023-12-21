@@ -100,9 +100,9 @@ Select `SAML or password` so that we can login with Okta SSO or directly into Si
 
 There are other options on this page but we will leave them at the defaults. The links below provide more information on those options:
 
-[Guest Access](https://help.sigmacomputing.com/hc/en-us/articles/4412853245971-Guest-User-Accounts)
+[Guest Access](https://help.sigmacomputing.com/docs/guest-user-accounts)
 
-[Multi-Factor Authentication](https://help.sigmacomputing.com/hc/en-us/articles/4409688043411-Two-Factor-Email-Authentication)
+[Multi-Factor Authentication](https://help.sigmacomputing.com/docs/two-factor-email-authentication#enable-two-factor-authentication)
 
 <img src="assets/ok6.png" width="800"/>
 
@@ -308,7 +308,7 @@ The following functions are available with Okta / Sigma:
         </ul>
 </ul>
 
-[Learn more about SCIM with Sigma](https://help.sigmacomputing.com/hc/en-us/articles/1500001556701-Manage-Users-and-Teams-with-SCIM-and-Okta)
+[Learn more about SCIM with Sigma](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -682,7 +682,7 @@ In this lab we learned how to implement and customize Sigma Single-Sign-On using
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

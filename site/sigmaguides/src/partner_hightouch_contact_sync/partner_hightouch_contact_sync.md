@@ -190,7 +190,7 @@ We will use a Sigma Input Table for this task.
 <strong>IMPORTANT:</strong><br> Input tables are dynamic workbook elements that support structured data entry. They allow you to integrate new data points into your analysis and augment existing data from Snowflake to facilitate rapid prototyping, advanced modeling, forecasting, what-if analysis, and more—without overwriting source data.
 </aside>
 
-[Learn more about Sigma Input Tables here](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507-Intro-to-Input-Tables#h_01GY3EEP9AX8RW2WKVSAAEEZNB)
+[Learn more about Sigma Input Tables here](https://help.sigmacomputing.com/docs/intro-to-input-tables)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -558,7 +558,7 @@ We covered connecting to data in our warehouse, using Sigma to orient and enrich
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
