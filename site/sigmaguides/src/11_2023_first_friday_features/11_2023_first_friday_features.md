@@ -49,7 +49,7 @@ Workbook element and page attributes
 
 These new tables can be joined with the AUDIT_LOGS table to add context to audit log events.
 
-[Documentation on Audit Logging is here:](https://help.sigmacomputing.com/hc/en-us/articles/13873667532819-Access-and-explore-audit-logs-Beta-)
+[Documentation on Audit Logging is here:](https://help.sigmacomputing.com/docs/access-and-explore-audit-logs)
 
 [There is a QuickStart on using Audit Logs here:](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
 
@@ -122,7 +122,7 @@ We have added search functionality to find reusable metrics saved to datasets an
 
 <img src="assets/search_metrics.gif">
 
-For more information, [see Using Metrics](https://help.sigmacomputing.com/hc/en-us/articles/14430050820499).
+For more information, [see Using Metrics](https://help.sigmacomputing.com/docs/create-and-manage-metrics).
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -138,7 +138,7 @@ The first QuickStart in this category is [Snowflake Cost per Query Template Setu
 
 This QuickStart provides instructions on how to set up Sigma's Snowflake Cost per Query template.
 
-[For more information on Sigma Templates, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4409618871315-Workbook-example-templates)
+[For more information on Sigma Templates, click here.](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates)
 
 <img src="assets/fff_11_2023_11.png" width="800"/>
 
@@ -197,7 +197,7 @@ Selecting `Alert when` from an elements menu will then allow the user to configu
 
 <img src="assets/fff_11_2023_8.png" width="800"/><br>
 
-For more information, [see Schedule a conditional export or alert.](https://help.sigmacomputing.com/hc/en-us/articles/22641293217555)
+For more information, [see Schedule a conditional export or alert.](hhttps://help.sigmacomputing.com/docs/schedule-a-conditional-export-or-alert)
 
 ### Control element label formatting:
 Label configurations for control elements are now consolidated in the `Element format` > `Label` section with the following new options:
@@ -212,10 +212,10 @@ Label configurations for control elements are now consolidated in the `Element f
 ### CSV upload on Azure and AWS-EU:
 CSV upload is now available to Sigma organizations hosted on Microsoft Azure and Amazon Web Services Europe (AWS-EU). 
 
-[For more information, see Upload CSVs.](https://help.sigmacomputing.com/hc/en-us/articles/4405058977811)
+[For more information, see Upload CSVs.](https://help.sigmacomputing.com/docs/upload-csvs)
 
 ### Shared bookmarks:
-In addition to [personal bookmarks](https://help.sigmacomputing.com/hc/en-us/articles/16694837590803-Bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
+In addition to [personal bookmarks](hhttps://help.sigmacomputing.com/docs/bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
 
 Any time a workbook has controls where multiple different configurations are common, shared bookmarks can be used to make the user experience of navigating to those configurations easier.
 
@@ -255,7 +255,7 @@ Duration: 20
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 

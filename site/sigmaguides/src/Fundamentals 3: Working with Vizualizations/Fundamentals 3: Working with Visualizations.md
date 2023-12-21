@@ -49,7 +49,7 @@ This QuickStart is part of a series of QuickStarts designed to instruct new user
     </tbody>
 </table>
 
-For the latest list of supported viz types, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/13135678729875-Intro-to-visualizations)
+For the latest list of supported viz types, [click here.](https://help.sigmacomputing.com/docs/intro-to-visualizations)
 
 This QuickStart assumes you have already taken the Fundamentals 1 & 2 QuickStarts, and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
 
@@ -274,7 +274,7 @@ There are many configuration options for charts that can be accessed by clicking
 
 Add as many KPI as you like; for example, total profit, total order count and Total COGs would be good to add.
 
-If you are interested in having a KPI that also shows trend data, [checkout the KPI Chart viz](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707-Build-a-KPI-chart-Beta-)
+If you are interested in having a KPI that also shows trend data, [checkout the KPI Chart viz](https://help.sigmacomputing.com/docs/build-a-kpi-chart)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF KPI -->
@@ -292,7 +292,7 @@ In this QuickStart we learned how to use Sigma to create beautiful charts and ma
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

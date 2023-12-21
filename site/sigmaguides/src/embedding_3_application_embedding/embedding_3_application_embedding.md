@@ -124,11 +124,11 @@ Log into Sigma (as an Administrative user).
 
 Sigma is very flexible, at a high level the following describes the permission hierarchy:
 
-**User Account Types:** A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time. More information can be found here: [User Account Types](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
+**User Account Types:** A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time. More information can be found here: [User Account Types](https://help.sigmacomputing.com/docs/user-account-types)
 
-**Teams:** allows for organized management of user groups. To view and interact with User-backed embedded workbooks, a user must be assigned to at least one team in your organization. Users can be members of more than one Team. Data source permissions can be granted to entire teams. This option is also available for folders and documents. For team members or individual users to save and edit versions of embedded workbooks, they must have Contribute access to a workspace. More information can be found here: [Teams](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+**Teams:** allows for organized management of user groups. To view and interact with User-backed embedded workbooks, a user must be assigned to at least one team in your organization. Users can be members of more than one Team. Data source permissions can be granted to entire teams. This option is also available for folders and documents. For team members or individual users to save and edit versions of embedded workbooks, they must have Contribute access to a workspace. More information can be found here: [Teams](https://help.sigmacomputing.com/docs/manage-teams)
 
-**Workspaces:** allows folders and documents to be compartmentalized, categorized, and easily shared with the correct people. They can be shared amongst users and teams via permission grants. Workspaces are managed by organization admins. Admins also have access to an additional `ALL WORKSPACES` tab. More information about can be found here: [Workspaces](https://help.sigmacomputing.com/hc/en-us/articles/4402446409619-Manage-Workspaces)
+**Workspaces:** allows folders and documents to be compartmentalized, categorized, and easily shared with the correct people. They can be shared amongst users and teams via permission grants. Workspaces are managed by organization admins. Admins also have access to an additional `ALL WORKSPACES` tab. More information about can be found here: [Workspaces](https://help.sigmacomputing.com/docs/manage-workspaces)
 
 ### Account Types:
 We will use Account Types to allow different users different rights as we go through the use-cases. Sigma provides a few default types and we create two additional. Navigate to Administration / Account Types.
@@ -740,7 +740,7 @@ We embedded Sigma content inside a Node.js web application, passing runtime para
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

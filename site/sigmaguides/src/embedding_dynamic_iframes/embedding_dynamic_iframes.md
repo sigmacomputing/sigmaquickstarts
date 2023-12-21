@@ -291,7 +291,7 @@ This is especially useful when the content inside the iframe can change dynamica
 
 The method is `workbook:pageheight:onchange`, and is an "event" in Sigma.
 
-You can read about [Javascript actions in user-backed embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-)
+You can read about [Javascript actions in user-backed embeds here.](https://help.sigmacomputing.com/docs/javascript-events-for-embedded-elements#actions)
 
 We can use this event to adjust the iframe's height in real-time, ensuring that the iframe always matches the height of its content.
 
@@ -398,7 +398,7 @@ Choosing the best approach is up to the developer, but we hope this QuickStart p
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

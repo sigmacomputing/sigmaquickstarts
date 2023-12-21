@@ -27,9 +27,9 @@ With Sigma embedding, users log onto your main application, get authenticated (w
 
 It's crucial to note that Sigma has its proprietary role-based-access-control (RBAC) system. While some customers exclusively use this system, many others with an existing identity management provider (IDP) prefer to integrate that with Sigma. 
 
-For further details on [using SSO with Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037429833-Single-Sign-On-with-SAML)
+For further details on [using SSO with Sigma, click here.](https://help.sigmacomputing.com/docs/single-sign-on-with-saml)
 
-For details on [managing user and teams with SCIM, click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500002044821-Manage-Users-and-Teams-with-SCIM)
+For details on [managing user and teams with SCIM, click here.](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
 
 
 In this QuickStart, we will use the local node.js application framework we created in [QuickStart: Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
@@ -75,7 +75,7 @@ Federated user access refers to a mechanism that allows users to use a single se
 
 5. **Interoperability**: Federated user access often relies on standards such as SAML (Security Assertion Markup Language), which ensures different systems, even from different vendors, can work together seamlessly.
 
-To read more about how [Sigma supports SSO with SAML, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037429833-Single-Sign-On-with-SAML)
+To read more about how [Sigma supports SSO with SAML, click here.](https://help.sigmacomputing.com/docs/single-sign-on-with-saml)
 
 **There Can Be Some Challenges**:
 
@@ -257,7 +257,7 @@ Back in Sigma, create a new private `Team` called `CustomerA` and check the `Cre
 <strong>NOTE:</strong><br> Sigma enables you to automate this process by calling the teams API. The API contains a boolean that allows you to also create a Workspace associated with a Team at the same time. We recommend this as part of your embed onboarding process.
 </aside>
 
-For more information on the Teams API, [click here](https://help.sigmacomputing.com/hc/en-us/articles/4408555643923-Team-API).
+For more information on the Teams API, [click here](https://docs.sigmacomputing.com/#get-/v2/teams).
 
 Next, you need to assign permissions to `CustomerA` users that will be able to explore our Common Dashboard. 
 
@@ -271,7 +271,7 @@ Click the `Create` button:
 
 <img src="assets/fa18.png" width="800"/>
 
-For more information on [using Account Types, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
+For more information on [using Account Types, click here.](https://help.sigmacomputing.com/docs/user-account-types)
 
 We also need to allow `CustomerA` to explore our `Common Dashboard`. 
 
@@ -327,7 +327,7 @@ There is information on related content you can also review:
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

@@ -20,7 +20,7 @@ The server-side API is crucial for embedding Sigma into external applications. I
 
 Another function of the API is to control the embedded functionality using optional parameters.
 
-You can find detailed documentation of this functionality [here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01G50PPN275X08R4HJJKAQ6XFV) 
+You can find detailed documentation of this functionality [here.](https://docs.sigmacomputing.com/#overview) 
 
 This QuickStart guide provides illustrative examples and screenshots of both required and optional parameters, helping developers understand the importance of each.
 
@@ -308,7 +308,7 @@ Sample Code:
 searchParams += '&:lng=fa-ca';
 ```
 
-[List of supported languages is here.](https://help.sigmacomputing.com/hc/en-us/articles/4415639036179-Embedded-Workbook-Localization)
+[List of supported languages is here.](https://help.sigmacomputing.com/docs/embedded-workbook-localization#supported-languages-and-locales)
 
 **3: first_name:**<br>
 Sets the first name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
@@ -588,7 +588,7 @@ Now the embed has adopted the `Light` theme, even though the `Dark` theme was se
 <strong>IMPORTANT:</strong><br> Embed customers can create their own custom themes so that the Sigma content closely follows the parent applications styling.
 </aside>
 
-To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4407352217747-Create-and-manage-workbook-themes#h_01FG7WHKNRCCRK9P6B3Z1KHC3C)
+To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
 **18: use_user_name:**<br>
 Displays the workbook creator’s name (instead of email) in embed menus and system-generated emails.
@@ -615,7 +615,7 @@ Account types is how Sigma provides a specific set of permissions to a user, and
 
 It is recommended to send a value, at the lowest level of permissions for users (ie: `Viewer`), unless the user is granted something higher level. 
 
-[To read more about account types in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-account-types)
+[To read more about account types in Sigma, click here.](https://help.sigmacomputing.com/docs/user-account-types)
 
 There is also a [QuickStart: How To: Federated Access with Sigma.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 
@@ -633,7 +633,7 @@ These two parameters work together to set a value for a specific Sigma control e
 
 You may pass multiple control IDs and values, and controls may also be hidden from users such they enforce record selection (for example), without allowing the users to change the control values in the embed.
 
-[To read more about controls in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding-Workbooks-#h_01EGNYXDJ10KMN3WPMW2ZJ51NV)
+[To read more about controls in Sigma, click here.](https://help.sigmacomputing.com/docs/intro-to-control-elements)
 
 For example, in this workbook, we have a table and one control element. The control element has a `Control ID` = `Store-Region` and is set to target the table when a user makes a selection.
 
@@ -672,9 +672,9 @@ searchParams += '&:showUnderlyingData=true';
 **4: oauth_token:**<br>
 You can pass secure tokens to Sigma to authenticate users into Sigma's embedded analytics and drive granular user permissions. 
 
-Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/hc/en-us/articles/6797945342483-User-Backed-Embedding-#h_01GZCFYBCZ1T7A5QP50DZXPAV9)
+Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/docs/user-backed-embedding#oauth-for-embeds)
 
-This feature allows embedding customers to enhance authentication security using OAuth. See our [complete documentation for OAuth with Snowflake.](https://help.sigmacomputing.com/hc/en-us/articles/360053705993)
+This feature allows embedding customers to enhance authentication security using OAuth. See our [complete documentation for OAuth with Snowflake.](https://help.sigmacomputing.com/docs/oauth-with-snowflake)
 
 Sample Code:
 ```code
@@ -699,11 +699,11 @@ UA use is well documented; links to documentation and QuickStarts are below:
 The primary uses for UAs are to set values for:
 
 1: Enforcing row-level security:<br>
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979)<br>
+[Documentation](https://help.sigmacomputing.com/docs/dataset-row-level-security)<br>
 [QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
 
 2: In custom SQL, as a where clause:<br>
-[Documentation](https://help.sigmacomputing.com/hc/en-us/articles/6830842464147)<br>
+[Documentation](https://help.sigmacomputing.com/docs/write-custom-sql)<br>
 [QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#3)
 
 3: Dynamic warehouse role switching:<br>
@@ -798,7 +798,7 @@ In this QuickStart, we learned how to utilize required and optional parameters, 
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

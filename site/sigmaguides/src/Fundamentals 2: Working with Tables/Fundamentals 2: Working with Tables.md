@@ -212,7 +212,7 @@ Your Page should now look similar to this:
 <strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.
 </aside>
 
-Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. We will get into some more advanced functions later, but you can always check out the complete list by clicking the ‘Help’ button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index)
+Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. We will get into some more advanced functions later, but you can always check out the complete list by clicking the ‘Help’ button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/docs/popular-functions)
 
 <img src="assets/fix3.png" width="400"/>
 
@@ -433,7 +433,7 @@ In this QuickStart we covered how to access sample data to build a table, add ne
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

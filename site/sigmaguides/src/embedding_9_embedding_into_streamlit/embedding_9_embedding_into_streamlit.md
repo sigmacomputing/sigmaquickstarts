@@ -300,7 +300,7 @@ We are now ready to embed Sigma into our new Streamlit page.
 ## Sigma Embed Content
 Duration: 20
 
-We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](https://help.sigmacomputing.com/hc/en-us/articles/1500011565421-Public-Embedding) of the Sales Performance Example Template.
+We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](hhttps://help.sigmacomputing.com/docs/public-embedding) of the Sales Performance Example Template.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> It is also possible to secure the Streamlit application and use Sigma's secure embedding methods but that is out-side the scope of this QuickStart.
@@ -367,7 +367,7 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [Get started with Streamlit](https://docs.streamlit.io/library/get-started)<br>
 <br>
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

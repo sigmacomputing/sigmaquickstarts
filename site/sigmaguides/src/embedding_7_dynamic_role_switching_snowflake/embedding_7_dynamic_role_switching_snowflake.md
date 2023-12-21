@@ -342,7 +342,7 @@ Save the connection (you will need to supply your Snowflake account password aga
 ### Create a Connection to Snowflake
 From Sigma / Administration / Connections, create a new connection in Sigma to our Snowflake trial account.  
 
-[Creating Snowflake Connection online help is here](https://help.sigmacomputing.com/hc/en-us/articles/360037429913-Connect-to-Snowflake)
+[Creating Snowflake Connection online help is here](https://help.sigmacomputing.com/docs/connect-to-snowflake)
 
 You will need your Snowflake details to connect. To get the account url click as shown below:
 
@@ -539,7 +539,7 @@ In this QuickStart we created Snowflake assets and a Row Access Policy and used 
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

@@ -106,8 +106,7 @@ There is a broad range of potential use cases that benefit from materializing. H
 Sometimes it is useful to include a column that is populated with the date when the materialization was last run. Use the Today() function to accomplish that.
 </aside>
 
-[Help on Today() function](https://help.sigmacomputing.com/hc/en-us/articles/360036946294-Today)
-
+[Help on Today() function](https://help.sigmacomputing.com/docs/today)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -234,7 +233,7 @@ scroll down and add information related to `Write Access`:
 
 When done, click `Create`. The connection will be tested and if it passes, a success message will appear. 
 
-[For more information on enabling write access in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/articles/360037430473-Set-Up-Write-Access)
+[For more information on enabling write access in Sigma, click here.](https://help.sigmacomputing.com/docs/set-up-write-access)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -343,7 +342,7 @@ We are able to see that Sigma has created a new table in Snowflake, based on our
 
 Materialization enhances query performance by allowing your data warehouse to avoid recomputing the data when it's used by an element or in descendant Sigma analysis. 
 
-To access this data from other applications, see [Sigma’s Dataset Warehouse Views feature.](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027-Dataset-Warehouse-Views)
+To access this data from other applications, see [Sigma’s Dataset Warehouse Views feature.](https://help.sigmacomputing.com/docs/review-warehouse-view-details)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Don't make changes to the materialized tables directly in your database. This can result in unexpected results or query failures.
@@ -457,7 +456,7 @@ Now lets make a duplicate of the `Orders` table and move it to a new page:
 
 <img src="assets/am13.png" width="800"/>
 
-[It is also possible to copy/paste the table instead](https://help.sigmacomputing.com/hc/en-us/articles/13531340202003-Copy-and-Paste-Elements)
+[It is also possible to copy/paste the table instead](https://help.sigmacomputing.com/docs/copy-and-paste-elements)
 
 Rename the new table `ORDERS by Customer` and move it to a new page:
 
@@ -567,7 +566,7 @@ The column names are also not "friendly names". This is by design:
 
 <img src="assets/am32.png" width="800"/>
 
-It is possible to access this data from other applications using [Sigma’s Dataset Warehouse Views feature](https://help.sigmacomputing.com/hc/en-us/articles/4408785035027).
+It is possible to access this data from other applications using [Sigma’s Dataset Warehouse Views feature](https://help.sigmacomputing.com/docs/dataset-warehouse-views).
 
 Once the materialized tables have been accessed, the exist in the warehouse cache (based on Snowflake caching rules) which also helps performance. We can see that Sigma has automatically read from warehouse cache (as shown below), by looking at the "behind the scenes" Sigma Query History.
 
@@ -602,7 +601,7 @@ Lastly, we stepped through using Sigma and Snowflake to materialize data using a
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

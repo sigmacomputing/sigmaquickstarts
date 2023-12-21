@@ -73,8 +73,6 @@ In order to improve the admin experience and provide admin functionality at scal
     </li>
 </ul>
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/360036944454-Invite-people-to-your-organization#01H7K9BVR32JSAAVP5S79HMEVM)
-
   <li></li>
     <li><Strong>Team Management:</Strong> </li>
     <li>
@@ -86,8 +84,6 @@ In order to improve the admin experience and provide admin functionality at scal
         </ul>
     </li>
 </ul>
-
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams#01H7K7N0C7VAK8CP1PEV2G7KX2)
 
   <li></li>
     <li><Strong>User Attributes and Exports:</Strong> </li>
@@ -115,12 +111,8 @@ Column-Level Security provides granular control over data access allowing you th
       <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
 </ul>
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18744762013843--Column-Level-Security-Beta-)
-
 ### New permission in Account Types
 This new permission provides the option to restrict or grant folder creation permissions. To configure this go to `Administration` > `Account Types` > `Create New Account Type`.
-
-For more information, [see User Account Types.](https://help.sigmacomputing.com/hc/en-us/articles/360037430633-User-Account-Types)
 
 To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 
@@ -203,8 +195,6 @@ When a user clicks on one of the buttons, they stay inside Sigma, but can review
 <strong>NOTE:</strong><br> Anything you can create in a Sigma workbook can be used in a custom home page. Let your imagination run wild!
 </aside>
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18244042539923-Enable-a-custom-homepage-Beta-)
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -231,9 +221,6 @@ This allows you to test before using them in your production environment.
 For example:
 
 <img src="assets/fff_29.png" width="800"/>
-
-[Documentation Link for Version Tagging](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)<br>
-[Documentation Link for Embed Sandbox](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619-Embed-Sandbox)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -272,8 +259,6 @@ The user is made aware that this is a custom function by the bubble with the tit
 <strong>IMPORTANT:</strong><br> Custom functions unlock the world of capabilities for Sigma users. For example, let's say your data science team has created User Defined Functions in Snowflake, using Python. Custom functions can be created to leverage those into functions that are accessible to Sigma users in the same way we just demonstrated above, but without any knowledge of the underlying complexity. This can be extremely powerful.
 </aside>
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18886053392531-Custom-functions-Beta-)
-
 ### New Financial Functions
 To complement the Pmt (payment) function that calculates the size of a loan repayment with a constant interest rate and equal installments, Sigma added two more financial functions:
 
@@ -282,18 +267,12 @@ To complement the Pmt (payment) function that calculates the size of a loan repa
     <li><strong>PPmt (principal payment):</strong> calculates the part of a loan payment that is allocated to reducing the principal owed.</li>
   </ul>
 
-Documentation Links:<br>
-[IPmt (interest payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557454545427-IPmt)<br>
-[PPmt (principal payment)](https://help.sigmacomputing.com/hc/en-us/articles/19557505447187-PPmt)
-
 ### ArraySlice Function
 ArraySlice takes any array  and extracts a subarray given starting location/index and desired length. The length is optional field here. So if this is absent, then the entire array starting at start location will be returned.
 
 It can take dynamic values, meaning you can choose different starting indices and different lengths for each row.
 
 If you specify starting location negative then it will consider it from the back of the array. So if you want to extract last element, just type ArraySlice([array], -1)
-
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/19417737945619-ArraySlice)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -341,9 +320,6 @@ The rest of the pivot is configured as normally and the results are:
 
 While this was a simple example, hierarchies can save you time and effort when there are many columns to choose from.
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18268762264979-Hierarchies-beta-)
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -374,12 +350,6 @@ Once enabled, OpenAI functionality (as described above) is made available in Inp
 
 AI-enhanced input tables utilize the OpenAI integration, which allows Sigma to leverage OpenAI language models (e.g., GPT-3.5 and GPT-4 models that power ChatGPT).
 
-[Customers must provide their own OpenAI API Key.](https://help.sigmacomputing.com/hc/en-us/articles/18991654974995)
-
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18995723341843-Create-AI-enhanced-input-tables-Beta-)
-
-[FAQ](https://help.sigmacomputing.com/hc/en-us/articles/18991654974995#h_01H6ESZE593QBXDR81JXYGPJVH)
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -388,8 +358,6 @@ Duration: 20
 MySQL connector is now generally available (GA) to all Sigma customers. 
 
 Sigma supports connections to the MySQL database, for release 8.0 or higher.
-
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/16500957079059-Connect-to-MySQL)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -425,8 +393,6 @@ Protected tags allow you to restrict access and select the users or teams that c
 
 The users must have Can edit permissions for the workbook. Public tags are unprotected, but the user must have Can edit permissions for the workbook as well.
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -444,16 +410,12 @@ While you can no longer create new SVV elements, you can instead build KPI chart
 
 For more information about the SVV deprecation and benefits of KPI charts, [see the Sigma Community post.](https://community.sigmacomputing.com/t/kpi-chart-to-replace-single-value-visualization-chart/2533)
 
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707-Build-a-KPI-chart)
-
 ### Sankey diagrams (GA release) 
 Sankey visualization elements are now available for general use (GA).
 
 Sankey diagrams are typically used to assess the flow and change of data between stages in a process or system. Create simple Sankey diagrams to demonstrate data distribution, workflows, networks, etc., or build advanced multi-level diagrams to analyze complex data relationships and identify changes in variables across stages, categories, or periods.
 
 <img src="assets/fff_08_03.png" width="800"/>
-
-[Documentation Link:](https://sigma.bi/buiid-a-sankey-diagram)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -487,9 +449,6 @@ Select a color, annotate it, and add your comment:
 Use the `@` character to direct your comment to any valid Sigma user:
 
 <img src="assets/fff_12.png" width="600"/>
-
-[Documentation Link:](https://help.sigmacomputing.com/hc/en-us/articles/18441838570259-Annotate-element-images-as-comments)
-
 
 ### Default blue in custom themes
 Sigma now features a new default blue (#0059EB) across the product. 
@@ -546,7 +505,7 @@ Duration: 20
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center](https://help.sigmacomputing.com)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 

@@ -354,9 +354,7 @@ In this section we will use a combination of REST API calls (using Postman) and 
 <strong>NOTE:</strong><br> Some steps using Postman will not be shown in detail as these were covered in the QuickStart, "Sigma API with Postman". Any REST tool can be used. You may also use the Sigma API Swagger or curl commands if you are more comfortable doing that.
 </aside>
 
-<button>[Sigma swagger page](https://docs.sigmacomputing.com/api/v2/#auth)</button>
-
-[It may also be useful to reference Sigma's API reference](https://help.sigmacomputing.com/hc/en-us/articles/4408827709459-Sigma-s-Swagger-Playground)
+<button>[Sigma swagger page](https://docs.sigmacomputing.com/#overview)</button>
 
 In order to use the Sigma API, we must first get a new bearer token. Do that, as instructed in the "Sigma API with Postman" QuickStart.
 
@@ -569,7 +567,7 @@ In this QuickStart we reviewed how to use Sigma Version Tagging to manage a CI/C
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

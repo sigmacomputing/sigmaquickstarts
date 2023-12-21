@@ -82,7 +82,7 @@ We will review each mode and fully demonstrate Application embedding in a separa
 Sigma also supports Application embedding in other 3rd party applications like Salesforce and there is a separate QuickStart: Embedding 5: Application Embedding into SalesForce.
  
 **For more information, please see these links:**<br>
-[Application Embedding: ](https://help.sigmacomputing.com/hc/en-us/articles/1500011574541-Application-Embedding)<br>
+[Application Embedding: ](https://help.sigmacomputing.com/docs/application-embedding-legacyg)<br>
 [Drive Revenue by Using Sigma with Salesforce: ](https://www.sigmacomputing.com/blog/drive-revenue-by-using-sigma-with-salesforce/)
 
 ### **Public Embedding**
@@ -254,7 +254,7 @@ We covered the types of Embedding Sigma provides and how to setup a local enviro
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
