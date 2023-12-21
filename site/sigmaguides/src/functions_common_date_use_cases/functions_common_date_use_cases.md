@@ -78,7 +78,7 @@ Setting the `Format string` to the code below will cause the popup to show you a
 %a %B %d %Y
 ```
 
-[A full list of custom format strings is available here.](https://help.sigmacomputing.com/hc/en-us/articles/8181440400915)
+[A full list of custom format strings is available here.](https://help.sigmacomputing.com/docs/define-custom-date-formats)
 
 <img src="assets/CDUC5.png" width="400"/>
 
@@ -125,10 +125,6 @@ If the input date is a Saturday, the function returns the date of the Friday imm
 <img src="assets/CDUC9.png" width="500"/>
 
 [A breakdown of this Function's parts is available here.](https://help.sigmacomputing.com/hc/en-us/articles/360042442014-Find-Latest-Weekday-and-Previous-Weekday)
-
-[Several other useful examples of using Functions is available here.](https://help.sigmacomputing.com/hc/en-us/sections/360007760634-Workbook-Analysis)
-
-We will not explore them all but a few more may be helpful.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -278,9 +274,7 @@ Set the `Lead/Lag` columns to `percentage`:
 
 <aside class="negative"><strong>NOTE:</strong><br> The most current week should be null for Lag as there is no data for the future week yet.</aside>
 
-[Read more about Lead and Lag funtions.](https://help.sigmacomputing.com/hc/en-us/articles/360042442134-Calculate-Week-Over-Week-Numbers)
-
-
+[Read more about Lead and Lag funtions.](https://help.sigmacomputing.com/docs/lead)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -437,7 +431,7 @@ The tables will be are joined by a pair of columns — one from each — that sh
 
 Columns created from a lookup can be added using the Lookup function. However, you can also add a new lookup column without explicitly writing a formula. 
 
-[Click here for more information on using Lookups](https://help.sigmacomputing.com/hc/en-us/articles/4409911623571-Add-Columns-via-Lookups)
+[Click here for more information on using Lookups](https://help.sigmacomputing.com/docs/add-columns-through-lookup)
 
 Create a new Workbook Page and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
 
@@ -653,14 +647,14 @@ Duration: 5
 
 In this QuickStart we covered many of the commonly used date functions and use cases where they are applied. This was not comprehensive and there are many more ways to leverage dates in Sigma.
 
-[To get more information on date functions in Sigma, click here.](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index)
+[To get more information on date functions in Sigma, click here.](https://help.sigmacomputing.com/docs/popular-functions)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

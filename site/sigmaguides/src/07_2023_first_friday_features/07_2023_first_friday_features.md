@@ -62,7 +62,7 @@ Warehouse views can be very useful, depending on the use case:
     </ol>
   </li>
 
-[Review the FAQ for common questions.](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171#h_01GY47C2DDVG4CCHKYR7MG5WKG)
+[Review the FAQ for common questions.](https://www.sigmacomputing.com/product-faqs)
 
 <img src="assets/07_2023_fff1.png" width="800"/>
 
@@ -72,7 +72,7 @@ Warehouse views can be very useful, depending on the use case:
 
 <img src="assets/07_2023_fff2.png" width="600"/>
 
-The warehouse view is created and you are able to check the status [See Warehouse view status](https://help.sigmacomputing.com/hc/en-us/articles/15802549297171#h_01GZPSFH3VD38P9ZF6EMZHMXTP)
+The warehouse view is created and you are able to check the status [See Warehouse view status](https://help.sigmacomputing.com/docs/review-warehouse-view-details#warehouse-view-statuses)
 
 <img src="assets/07_2023_fff3.png" width="600"/>
 
@@ -276,7 +276,7 @@ You can copy a page from one workbook to another, and from one page to another.
 
 This feature will save users time by allowing easy reuse of existing, full pages. This eliminates the need to copy individual page elements, one at a time.
 
-[Link to documentation](https://help.sigmacomputing.com/hc/en-us/articles/17802897614739-Copy-a-page-within-and-between-workbooks-Beta-)
+[Link to documentation](https://help.sigmacomputing.com/docs/copy-a-page-within-and-between-workbooks)
 
 ### Multi-tab Excel Exports (GA)
 The Multi-tab Excel export feature has been promoted to general availability (GA), for all Sigma customers.
@@ -294,8 +294,6 @@ There are three ways to get multi-tab excel exports:
 Users can also do a combination of these. 
 
 For example: if you have an attachment for an entire workbook, entire page, and four other elements, and I checked the `merge Excel`` option, three Excel files will be sent in the email, one for the workbook, one for the entire page, and one for the four combined elements.
-
-[Link to documentation](https://help.sigmacomputing.com/hc/en-us/articles/4409017989907-Send-a-Workbook-to-Email)
 
 ### Personal Bookmarks (Beta)
 <aside class="positive">
@@ -381,7 +379,7 @@ Duration: 20
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

@@ -40,9 +40,6 @@ For example, the user `Finance TestUser` has the Attribute `Region` set to the v
 
 <img src="assets/fff_09_2023_01.png" width="800"/>
 
-[For information on how to implement user attributes, click here.](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979#rsua)
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -90,8 +87,6 @@ Checkboxes enable additional workflow capabilities by simply capturing a "yes/no
 
 <img src="assets/fff_09_2023_05.png" width="800"/>
 
-For more information about changing column types and checkbox data entry, see [Create and manage input table](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)
-
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Conditional formatting is now available for input tables:
@@ -105,11 +100,6 @@ You may now apply conditional formatting to Input Tables in a similar fashion as
 
 ### Databricks Support:
 Input tables are now compatible with Databricks connections. These dynamic workbook elements support structured data entry that allows you to integrate new data points into your analysis and augment existing data from Snowflake or Databricks. 
-
-For more information about input tables and how to use them, see the following documentation:<br>
-[Intro to input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802499663507)<br>
-[Create and manage input tables](https://help.sigmacomputing.com/hc/en-us/articles/15802569936275)<br>
-[Edit existing input table columns](https://help.sigmacomputing.com/hc/en-us/articles/15802547665171)<br>
 
 To review how Input Tables solves several common use cases, [check out this QuickStart](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
@@ -133,8 +123,6 @@ Users now have the ability to wrap the text in their pivot tables. By default, w
 Users now have the option to expand the line height and see the entire content of the header or cell.
 
 <img src="assets/fff_09_2023_02.png" width="500"/>
-
-[Documentation:](https://help.sigmacomputing.com/hc/en-us/articles/20626146425619-Wrap-text)
 
 <img src="assets/horizonalline.png" width="800"/>
 
@@ -163,8 +151,6 @@ Organizations can now swap the connection source when applying version tags to w
 
 Connection swapping allows you to move the workbook through the development process.
 
-[Documentation:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging#h_01HAB848CR0M1Q2N901DH3EYJ0)
-
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Tag Permissions (Beta):
@@ -183,8 +169,6 @@ The users must have `Can edit` permissions for the workbook.
 
 Public tags are unprotected, and the user must have `Can edit` permissions for the workbook as well.
 
-[Documentation:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
-
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Version Tag Requests:
@@ -193,9 +177,6 @@ Users (the "requestor") without permission to use a protected tag can now submit
 After the request is made, an email is sent to all the members (the "approvers") with explicit access to the protected tag. 
 
 After reviewing the workbook, the approver then can apply the requested tag to the workbook in question.
-
-[Documentation:](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging#h_01HAD6953P0BDK4NSFP6PTH4RH)
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -277,7 +258,7 @@ Duration: 20
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 

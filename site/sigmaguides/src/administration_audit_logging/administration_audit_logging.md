@@ -116,7 +116,7 @@ Each category has distinct `Events` and `Event Entry Data` that is related to th
 
 As there is a large number of options and they are subject to change over time, we will not list them here. 
 
-[The current list is available here.](https://help.sigmacomputing.com/hc/en-us/articles/14113810205715)
+[The current list is available here.](hhttps://help.sigmacomputing.com/docs/audit-log-events-and-metadata-beta)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -265,7 +265,7 @@ In this QuickStart we learned how Sigma Audit Logs are structured and can be use
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

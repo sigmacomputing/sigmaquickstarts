@@ -264,7 +264,7 @@ Since we have demonstrated using user attibutes in the Sigma UI as well as with 
 
 We will do this work directly in the UI and evaluate the security using an administrative feature that allows us to "impersonate" any other user, directly in the portal, and see the results. 
 
-[To learn more about user impersonation, click here.](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
+[To learn more about user impersonation, click here.](https://help.sigmacomputing.com/docs/impersonate-users)
 
 <aside class="negative">
 <strong>NOTE:</strong><br> It is assumed that you are familiar with common navigation in Sigma now, so we may not show every step in the following instructions. 
@@ -470,7 +470,7 @@ Once the dataset is saved, we can impersonate our test user (who has rights only
 
 <img src="assets/rls20.png" width="800"/>
 
-[Click here for more information on custom SQL in Sigma](https://help.sigmacomputing.com/hc/en-us/articles/6709896696979-User-Attributes#csql)
+[Click here for more information on custom SQL in Sigma](https://help.sigmacomputing.com/docs/write-custom-sql)
 
 
 ![Footer](assets/sigma_footer.png)
@@ -486,7 +486,7 @@ Using our existing Sigma Application Embed we passed a runtime parameter to conf
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

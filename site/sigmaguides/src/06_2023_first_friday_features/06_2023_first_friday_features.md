@@ -24,7 +24,7 @@ Duration: 5
 
 This QuickStart lists all the new and public beta features released, as well as bugs fixed in June 2023. 
 
-It is summary in nature and you should refer to the specific [Sigma documentation](https://help.sigmacomputing.com/hc/en-us) links provided for more information.
+It is summary in nature and you should refer to the specific [Sigma documentation](https://help.sigmacomputing.com) links provided for more information.
 
 **Public beta features will carry the section text "BETA".** 
 
@@ -42,13 +42,10 @@ New QuickStarts will be published on the first Friday of each month, and will in
 ### Remove Team Members in Bulk
 Admins can now remove multiple members of a team using a bulk action. To remove team members in bulk, go to your `Administration` > `Teams` > select a team > select members to remove > and click the `Remove` from team button.
 
-For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/hc/en-us/articles/360037430333-Manage-Teams)
+For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/docs/manage-teams)
 
 ### Reset Password for Users in Bulk
 Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
-
-For more information, see [Manage Authentication.](https://help.sigmacomputing.com/hc/en-us/articles/360036944534-Manage-authentication
-)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -58,15 +55,13 @@ A new parameter, `userKind`, is now available for the `Update a Member in Your O
 
 The three possible values are `guest`, `internal`, or `embed`. 
 
-For more information, see [Organization Member API.](https://help.sigmacomputing.com/hc/en-us/articles/4408555573267-Organization-Member-API)
-
 ### Changes to existing methods
 
 The **/v2/workbooks/{workbookId}/queries** endpoint now returns elementName. 
 
 The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** endpoint now returns name and columns.   
 
-The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** now returns vizualizationType.  
+The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** now returns visualization Type.  
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -88,7 +83,7 @@ Dynamic Connection & Role Switching (DRS) allows run-time swapping of the Snowfl
 
 [Please refer to this QuickStart on how to implement dynamic role switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
 
-To learn more about dynamic role switching with Snowflake, [click here.](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-)
+To learn more about dynamic role switching with Snowflake, [click here.](https://help.sigmacomputing.com/docs/configure-user-attributes-on-a-snowflake-connection#role-attribute)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -96,7 +91,7 @@ To learn more about dynamic role switching with Snowflake, [click here.](https:/
 ## Embedding 
 Duration: 20
 
-**Embed Sandbox** is now generally available. For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/hc/en-us/articles/16229246025619)
+**Embed Sandbox** is now generally available. For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/docs/embed-sandbox)
 
 <img src="assets/fffJune2023_4.png" width="800"/>
 
@@ -113,51 +108,51 @@ The parameter, **disable_mobile_view** for user-backed embeds is available. If t
 ## New Functions
 
 ### ArrayDistinct function added: 
- <strong>[ArrayDistinct](https://help.sigmacomputing.com/hc/en-us/articles/17643668338067)</strong> - Returns the array without duplicate values.<br>
+ <strong>[ArrayDistinct](https://help.sigmacomputing.com/docs/arraydistinct)</strong> - Returns the array without duplicate values.<br>
 
-To learn more about array functions, [click here](https://help.sigmacomputing.com/hc/en-us/articles/17644151918099)
+To learn more about array functions, [click here](hhttps://help.sigmacomputing.com/docs/array-functions-overview)
 
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Financial functions added:
 Sigma has added support (based on customer feedback) for a few specific functions that are critical for financial calculations. They include:
 
- <strong>[CAGR](https://help.sigmacomputing.com/hc/en-us/articles/360056173174-CAGR)</strong> - Returns the compound annual growth rate of an investment.<br>
- <strong>[Effect](https://help.sigmacomputing.com/hc/en-us/articles/16999064431635-Effect)</strong> - Returns the effective annual interest rate.<br>
- <strong>[FV](https://help.sigmacomputing.com/hc/en-us/articles/16960835395987-FV)</strong> - Returns the future value of an investment.<br>
- <strong>[Nominal](https://help.sigmacomputing.com/hc/en-us/articles/16997965150483-Nominal)</strong> - Returns the nominal annual interest rate.<br>
- <strong>[NPer](https://help.sigmacomputing.com/hc/en-us/articles/16960962742675-NPer)</strong> - Returns the number of periods for a loan or investment based on known amount, interest rate, and periodic payment amount.<br>
- <strong>[Pmt](https://help.sigmacomputing.com/hc/en-us/articles/16960642952723-Pmt)</strong> - Returns the periodic payment for a loan based on the amount, number of periods, and constant interest rate.<br>
- <strong>[PV](https://help.sigmacomputing.com/hc/en-us/articles/17009080477203-PV)</strong> - Returns the present value of a loan or an investment, when using constant and regular periodic payments.<br>
- <strong>[XNPV](https://help.sigmacomputing.com/hc/en-us/articles/16992978432915-XNPV)</strong> - Returns the net present value of an investment for payments or incomes at irregular intervals.<br>
+ <strong>[CAGR](https://help.sigmacomputing.com/docs/cagr)</strong> - Returns the compound annual growth rate of an investment.<br>
+ <strong>[Effect](https://help.sigmacomputing.com/docs/effect)</strong> - Returns the effective annual interest rate.<br>
+ <strong>[FV](https://help.sigmacomputing.com/docs/fv)</strong> - Returns the future value of an investment.<br>
+ <strong>[Nominal](https://help.sigmacomputing.com/docs/nominal)</strong> - Returns the nominal annual interest rate.<br>
+ <strong>[NPer](https://help.sigmacomputing.com/docs/nper)</strong> - Returns the number of periods for a loan or investment based on known amount, interest rate, and periodic payment amount.<br>
+ <strong>[Pmt](https://help.sigmacomputing.com/docs/pmt)</strong> - Returns the periodic payment for a loan based on the amount, number of periods, and constant interest rate.<br>
+ <strong>[PV](https://help.sigmacomputing.com/docs/pv)</strong> - Returns the present value of a loan or an investment, when using constant and regular periodic payments.<br>
+ <strong>[XNPV](https://help.sigmacomputing.com/docs/xnpv)</strong> - Returns the net present value of an investment for payments or incomes at irregular intervals.<br>
 
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Geographic functions added:
 Sigma added support for the Geography data type, and the corresponding set of 
 
- <strong>[Area](https://help.sigmacomputing.com/hc/en-us/articles/17499176558099)</strong> - Calculates the area of a geography, in specified units.<br>
- <strong>[Centroid](https://help.sigmacomputing.com/hc/en-us/articles/17499466213907)</strong> - Calculates the geographic center of a geography.<br>
- <strong>[Distance](https://help.sigmacomputing.com/hc/en-us/articles/17499151606163)</strong> - Calculates the minimum distance between two geographies, in specified units.<br>
- <strong>[Intersects](https://help.sigmacomputing.com/hc/en-us/articles/17499549806867)</strong> - Determines if one geography intersects another geography.<br>
- <strong>[Latitude](https://help.sigmacomputing.com/hc/en-us/articles/17498935162643)</strong> - Returns the latitude component of a point.<br>
- <strong>[Longitude](https://help.sigmacomputing.com/hc/en-us/articles/17498954237459)</strong> - Returns the longitude component of a point.<br>
- <strong>[Geography](https://help.sigmacomputing.com/hc/en-us/articles/17493791808531)</strong> - Converts data in GeoJSON or WKT formats into the Geography data type.<br>
- <strong>[Json](https://help.sigmacomputing.com/hc/en-us/articles/17493940071315)</strong> - Converts the Geography data type into GeoJSON format.<br>
- <strong>[MakePoint](https://help.sigmacomputing.com/hc/en-us/articles/17498980072851)</strong> - Constructs a point from latitude and longitude data.<br>
- <strong>[MakeLine](https://help.sigmacomputing.com/hc/en-us/articles/17499020056979)</strong> - Constructs a line from a series of points and line segments.<br>
- <strong>[Perimeter](https://help.sigmacomputing.com/hc/en-us/articles/17499209389715)</strong> - Calculates the perimeter of a geography, in specified units.<br>
- <strong>[Text](https://help.sigmacomputing.com/hc/en-us/articles/17494056554131)</strong> - Converts the Geography data type into WKT format.<br>
- <strong>[Within](https://help.sigmacomputing.com/hc/en-us/articles/17499507686035)</strong> - Determines if one geography is fully within another geography.<br>
+ <strong>[Area](https://help.sigmacomputing.com/docs/area)</strong> - Calculates the area of a geography, in specified units.<br>
+ <strong>[Centroid](https://help.sigmacomputing.com/docs/centroid)</strong> - Calculates the geographic center of a geography.<br>
+ <strong>[Distance](https://help.sigmacomputing.com/docs/distance)</strong> - Calculates the minimum distance between two geographies, in specified units.<br>
+ <strong>[Intersects](https://help.sigmacomputing.com/docs/intersects)</strong> - Determines if one geography intersects another geography.<br>
+ <strong>[Latitude](https://help.sigmacomputing.com/docs/latitude)</strong> - Returns the latitude component of a point.<br>
+ <strong>[Longitude](https://help.sigmacomputing.com/docs/longitude)</strong> - Returns the longitude component of a point.<br>
+ <strong>[Geography](https://help.sigmacomputing.com/docs/geography-functions-overview)</strong> - Converts data in GeoJSON or WKT formats into the Geography data type.<br>
+ <strong>[Json](https://help.sigmacomputing.com/docs/json)</strong> - Converts the Geography data type into GeoJSON format.<br>
+ <strong>[MakePoint](https://help.sigmacomputing.com/docs/makepoint)</strong> - Constructs a point from latitude and longitude data.<br>
+ <strong>[MakeLine](https://help.sigmacomputing.com/docs/makeline)</strong> - Constructs a line from a series of points and line segments.<br>
+ <strong>[Perimeter](https://help.sigmacomputing.com/docs/perimeter)</strong> - Calculates the perimeter of a geography, in specified units.<br>
+ <strong>[Text](https://help.sigmacomputing.com/docs/text)</strong> - Converts the Geography data type into WKT format.<br>
+ <strong>[Within](https://help.sigmacomputing.com/docs/within)</strong> - Determines if one geography is fully within another geography.<br>
 
- [Geography functions overview](https://help.sigmacomputing.com/hc/en-us/articles/17492984861971)
+ [Geography functions overview](https://help.sigmacomputing.com/docs/geography-functions-overview)
 
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Passthrough functions added
 You can also use two new Passthrough functions to support the Geography data type:
 
- <strong>[AggGeography](https://help.sigmacomputing.com/hc/en-us/articles/17800961488403-AggGeography)</strong> - Calls a warehouse aggregate function that returns a Logical data type; aggregation version of CallGeography.<br>
+ <strong>[AggGeography](https://help.sigmacomputing.com/docs/agggeography)</strong> - Calls a warehouse aggregate function that returns a Logical data type; aggregation version of CallGeography.<br>
  <strong>[CallGeography](https://help.sigmacomputing.com/hc/en-us/articles/17798618502931-CallGeography)</strong> - Calls a warehouse function that returns a Geography data type.<br>
 
 <img src="assets/horizonalline.png" width="800"/>
@@ -178,7 +173,7 @@ Repeat([Product Type],-1)
 
 <img src="assets/fffJune2023_1.png" width="800"/>
 
-Repeat is one of the [Text functions](https://help.sigmacomputing.com/hc/en-us/articles/17422239058835) supported by Sigma.
+Repeat is one of the [Text functions](https://help.sigmacomputing.com/docs/callgeography) supported by Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -199,8 +194,6 @@ To review the [Materialization with Sigma QuickStart](https://quickstarts.sigmac
 Duration: 20
 
 Scheduled exports now provide the option to select which tagged version of the workbook you want to include in the export.
-
-For more information, see [Apply Control Values to Scheduled Reports](https://help.sigmacomputing.com/hc/en-us/articles/4409004286739).
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -224,9 +217,7 @@ To stop impersonation:
 
 <img src="assets/fffJune2023_6.png" width="800"/>
 
-
-
-To learn more about user impersonation [click here.](https://help.sigmacomputing.com/hc/en-us/articles/15747532813715-Impersonate-users)
+To learn more about user impersonation [click here.](https://help.sigmacomputing.com/docs/impersonate-users)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -234,7 +225,7 @@ To learn more about user impersonation [click here.](https://help.sigmacomputing
 ## Version Tagging
 Duration: 20
 
-Version Tagging is now generally available. For more information, see [Version Tagging](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+Version Tagging is now generally available. For more information, see [Version Tagging](https://help.sigmacomputing.com/docs/version-tagging)
 
 **Summary:**<br>
 Version tagging allows you to employ a software development cycle to control workbook versions using tags. For example, orgs can have a development, staging, and production version of a workbook and migrate changes as needed. This allows you to control which workbook versions are viewable by your users. 
@@ -265,7 +256,7 @@ For example:
 <img src="assets/fffJune2023_7.png" width="800"/>
 
 ### Map - Geography replaces the Map - GeoJSON visualization 
-Now supports for [geography data is in WKT format](https://help.sigmacomputing.com/hc/en-us/articles/17429284455059#h_01H3NKDF8GQTDDGCQ2N6PYBTSB) **(using Snowflake and BigQuery connections only)** and [variant data in GeoJSON format.](https://help.sigmacomputing.com/hc/en-us/articles/17429284455059#h_01H3NKD1PAGK396DQH25EB077W)
+Now supports for [geography data is in WKT format](https://help.sigmacomputing.com/docs/geography) **(using Snowflake and BigQuery connections only)** and variant data in GeoJSON format.
 
 For more information, [see Build a geography map.](https://sigma.bi/build-a-geography-map)
 

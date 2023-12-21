@@ -236,7 +236,7 @@ Now that you have saved the workbook, it's state is changed to `Published` and w
 <strong>IMPORTANT:</strong><br> Sigma has many more features to help address the need for version control.
 </aside>
 
-[For more information on version control in Sigma, please click here.](https://help.sigmacomputing.com/hc/en-us/articles/13310865519507-Version-Tagging)
+[For more information on version control in Sigma, please click here.](https://help.sigmacomputing.com/docs/version-tagging)
 
 In the lower left corner of the Page there is a tab. Click the `down-arrow` and rename the tab to `Data`. We will use this table as a Workbook source of data for work in later labs.
 
@@ -268,7 +268,7 @@ Notice that the **file download is limited to 1M rows** (the Excel limit). You w
 
 To see what is new in Sigma, [you can visit this page that has information on new features, public betas and bug fixes for the previous month.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Weekly release notes are made available here as well](https://help.sigmacomputing.com/hc/en-us/articles/360041688433)
+[Weekly release notes are made available here as well](https://help.sigmacomputing.com/changelog)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WOOKBOOKS -->
@@ -327,7 +327,7 @@ The `Share Workbook` modal shows who has access and their permission level. Ther
 
 <img src="assets/sharewhohasaccess.png" width="800"/>
 
-[More information and options on Sharing is found here](https://help.sigmacomputing.com/hc/en-us/articles/1500010776381-Share-a-Workbook#h_01F6R0YCKPH200BN7XEHMA6SC8)
+[More information and options on Sharing is found here](https://help.sigmacomputing.com/docs/share-a-workbook#workbook-sharing-permissions-summary)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SHARING -->
@@ -388,7 +388,7 @@ Here, you can edit, delete, pause or "send now" any listed export job:
 
 <img src="assets/schedulingsendnow.png" width="800"/>
 
-[For more information on Scheduling click here.](https://help.sigmacomputing.com/hc/en-us/sections/4404152371347-Send-Schedule-and-Export)
+[For more information on Scheduling click here.](https://help.sigmacomputing.com/docs/manage-organization-schedules)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SCHEDULING -->
@@ -446,7 +446,7 @@ In this QuickStart we covered navigating the Sigma user interface, common termin
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

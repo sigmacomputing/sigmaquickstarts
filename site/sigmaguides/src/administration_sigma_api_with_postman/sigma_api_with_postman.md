@@ -356,7 +356,7 @@ The API provides methods to *add/update/delete* a Sigma instance using `POST` me
 
 We will use the following code to configure a POST message to create a new connection in Sigma. 
 
-[You can get this code and more information here.](https://help.sigmacomputing.com/hc/en-us/articles/4487189442963-Connection-API#create)
+[You can get this code and more information here.](https://docs.sigmacomputing.com/#post-/v2/connections)
 
 **The values shown below are for example only:**
 
@@ -401,11 +401,11 @@ We created a Postman account, created API token secrets in Sigma, imported the S
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Sigma API Documentation](https://help.sigmacomputing.com/hc/en-us/sections/4408551771411-API-Get-Started)
+[Sigma API Documentation](https://docs.sigmacomputing.com/)
 
 [Postman Learning Center](https://learning.postman.com/docs/getting-started/introduction/)<br>
 
-[Sigma Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

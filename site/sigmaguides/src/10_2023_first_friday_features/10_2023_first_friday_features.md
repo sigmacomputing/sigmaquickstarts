@@ -100,9 +100,6 @@ The `DateLookBack` > `Period` can be and of these values:
 
 "year", "quarter", "month", "week", "day", "hour", "minute", or "second"
 
-For more information, [see DateLookback.](https://help.sigmacomputing.com/hc/en-us/articles/22245468086547).
-
-
 ### Regular expression (RegExp) text match filtering:
 We have added a new RegExp text match filter to enable you to filter text columns, based on specified patterns. 
 
@@ -164,8 +161,6 @@ Now the `Image Name` column is a hyperlink and we can just hide the `Image URL c
 <strong>IMPORTANT:</strong><br> You can also get URLs from another column using Sigma's Lookup feature.
 </aside>
 
-[For more information on using Lookups, click here:](https://help.sigmacomputing.com/hc/en-us/articles/4409911623571-Add-columns-through-Lookup)
-
 ### Data autofill in input tables:
 Input tables (and individual columns) now support autofill, which will save users time in certain use cases.
 
@@ -226,8 +221,6 @@ By incorporating trellis columns to our example, we deepen the analysis. We can 
 
 This is just a quick example, and there is much more we can do by using a trellis.
 
-For more information about trellis charts and how to use them, [see Create and format trellis charts](https://help.sigmacomputing.com/hc/en-us/articles/22387724912787).
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -264,8 +257,6 @@ This allows users to generate dynamic period comparisons without entering comple
 
 <img src="assets/pop.gif">
 
-For more information, [see Create and edit a period-over-period analysis](https://help.sigmacomputing.com/hc/en-us/articles/22247860121747).
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -276,7 +267,7 @@ Duration: 20
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 

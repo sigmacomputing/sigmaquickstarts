@@ -208,7 +208,7 @@ Under-Over Budget     Automatic      If(Sum([Actual Cost]) / Sum([Budgeted Cost]
 
 Most of the metrics used are simple enough but as you can see with the `Under-Over Budget` formula, you can get as complex as needed and use any of the available Functions.
 
-[Click here to see the available functions in Sigma](https://help.sigmacomputing.com/hc/en-us/categories/360002442993-Function-Index)
+[Click here to see the available functions in Sigma](https://help.sigmacomputing.com/docs/popular-functions)
 
 If you have not already done so, name the Dataset `Sales Campaign Dataset` and `Publish` it.
 
@@ -270,7 +270,7 @@ Now Marketing has all the information they requested and can use Sigma's `Drill 
 
 <img src="assets/m20.png" width="800"/>
 
-[For more information on Metrics click here.](https://help.sigmacomputing.com/hc/en-us/articles/14427670985363-Create-and-Manage-Metrics-Beta-)
+[For more information on Metrics click here.](https://help.sigmacomputing.com/docs/create-and-manage-metrics)
 
 
 ![Footer](assets/sigma_footer.png)
@@ -288,7 +288,7 @@ In this lab we learned how to create and manage Metrics in Sigma.
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>

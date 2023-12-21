@@ -144,7 +144,7 @@ It is not immediately obvious that Sigma's Alpha Query is different than the cac
 
 Sigma will re-use existing results (by default), regardless of whether the underlying data has changed. 
 
-There is a control in the Sigma UI to [bypass the result cache](https://help.sigmacomputing.com/hc/en-us/articles/4403612567955#h_01FD0EWVGM8RNZJ85B997ZFXTA) when the latest results are needed instead. There is also a control to determine the [acceptable staleness for query results.](https://help.sigmacomputing.com/hc/en-us/articles/4416981061651-Set-a-query-ID-cache-duration) of whether the underlying data has changed.
+There is a control in the Sigma UI to [bypass the result cache](https://help.sigmacomputing.com/docs/workbook-refresh-options) when the latest results are needed instead. There is also a control to determine the [acceptable staleness for query results.](https://help.sigmacomputing.com/docs/set-a-query-id-cache-duration) of whether the underlying data has changed.
 
 In this section, we will discuss operations that are part of this portion of our decision tree:
 
@@ -298,7 +298,7 @@ In many cases this is desirable, as results may only change on an hourly or dail
 
 For live data, you can configure a "staleness" threshold. This gives you full control over when Sigma calculates results using up-to-date data in the data warehouse.
 
-For information on how to configure [Workbook Data refresh, click here.](https://help.sigmacomputing.com/hc/en-us/articles/4403612567955)
+For information on how to configure [Workbook Data refresh, click here.](https://help.sigmacomputing.com/docs/workbook-refresh-options)
 
 <strong>There are a few preconditions necessary for the Sigma result cache to kick in:</strong>
  <ul>
@@ -443,7 +443,7 @@ One of particular interest is the `Snowflake Performance Monitoring` which provi
 
 [Try the Sigma Snowflake Performance Monitoring Template live here:](https://www.sigmacomputing.com/interactive-demos/snowflake-performance-monitoring-template)
 
-[For more information on the Snowflake usage templates, click here.](https://help.sigmacomputing.com/hc/en-us/articles/6951091947027-Snowflake-usage-templates)
+[For more information on the Snowflake usage templates, click here.](https://help.sigmacomputing.com/docs/snowflake-usage-templates)
 
 ### Databricks:
 [Sigma on Databricks: End-to-End Best Practices Guide](https://www.sigmacomputing.com/ebook/sigma-on-databricks-end-to-end-best-practices-guide)
@@ -452,17 +452,17 @@ One of particular interest is the `Snowflake Performance Monitoring` which provi
 [Best practices when working with large data sets](https://www.sigmacomputing.com/product-faq/best-practices-when-working-with-large-data-sets)
 
 ### Performance:
-[Best practices for improved performance](https://help.sigmacomputing.com/hc/en-us/articles/17540858525715-Best-practices-for-improved-performance)
+[Best practices for improved performance](https://help.sigmacomputing.com/docs/best-practices-for-improved-performance)
 
 ### Modeling:
-[Modeling Best Practices](https://help.sigmacomputing.com/hc/en-us/articles/4408743358355-Modeling-Best-Practices)
+[Modeling Best Practices](https://help.sigmacomputing.com/docs/modeling-best-practices)
 
 
 ### General Links:
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Help Center Home](https://help.sigmacomputing.com)<br>
 [Sigma Community](https://community.sigmacomputing.com/)<br>
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
