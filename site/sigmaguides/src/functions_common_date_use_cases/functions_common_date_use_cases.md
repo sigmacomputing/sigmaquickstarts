@@ -525,7 +525,7 @@ Rename the `Sales This Year` table to `Sales In Current Quarter`. Do the same fo
 
 In the `Sales In Current Quarter` table, we want to filter the data to show only the rows from last quarter. We can do that by simply using the filters control:
 
-<img src="assets/CDUC56.png" width="600"/>
+<img src="assets/CDUC56.png" width="800"/>
 
 In the `Sales Last Year - Same Quarter`, add a new column called `InPriorQuarter` and set is formula to:
 ```code
@@ -536,13 +536,13 @@ This will evaluate the `Date` column and return `true` or `false` if the date is
 
 Now alter the table's filter, adding a new filter on our new column, `InPriorQuarter` and only select to see the rows where the value is `True`. Delete the filter for `Date`. 
 
-<img src="assets/CDUC57.png" width="600"/>
+<img src="assets/CDUC57.png" width="800"/>
 
 Since the `Regional Sales Performance - This vs. Last Year` table uses `Lookups` to get the `Total Sale` column from each of the other two columns already, we don't have to do anything; the sales are summed and grouped already. 
 
 We are done:
 
-<img src="assets/CDUC58.png" width="600"/>
+<img src="assets/CDUC58.png" width="800"/>
 
 <aside class="negative"><strong>NOTE:</strong><br> This not the only way to accomplish this outcome. You could get similar results using the "InDateRange" function, "filters" or other date functions too. Sigma is flexible and want to get you thinking about possible options and how each may effect a use case.</aside>
 
