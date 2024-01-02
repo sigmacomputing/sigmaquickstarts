@@ -47,7 +47,7 @@ Typical audience for this QuickStart are users of Excel, common business intelli
 ### What You’ll Learn
 Through this QuickStart we will walk through how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting.
 
-## **Table Basics**
+## Table Basics
 Duration: 6
 
 Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 1: Getting Around” QuickStart. 
@@ -152,7 +152,7 @@ First, let’s truncate the Date column to Month. You can do this by selecting t
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE BASICS -->
 
-## **Behind the Scenes**
+## Behind the Scenes
 Duration: 6
 
 Sigma makes things easy for you but there is a ton of power being applied in the background to make it that way. 
@@ -188,7 +188,7 @@ Related to the last item there is another feature that lets you “peek” behin
 ![Footer](assets/sigma_footer.png)
 <!-- END OF BEHIND THE SCENES -->
 
-## **Calculated Columns**
+## Calculated Columns
 Duration: 6
 
 There are times when a column has not been made available in the source data. It is still possible for users to add them (assuming they have been granted permission). 
@@ -219,7 +219,7 @@ Some of these functions have been pretty easy, but Sigma is capable of performin
 ![Footer](assets/sigma_footer.png)
 <!-- END OF CALCULATED COLUMNS -->
 
-## **Grouping Data**
+## Grouping Data
 Duration: 6
 
 So far we have done some pretty simple operations. Let's go a bit deeper and group the data, building on the work we just did. There are two ways to group data. One is selecting the column and using the drop list and clicking “Group column”. 
@@ -296,7 +296,7 @@ You can also swap the order of the groupings in the left hand pane using a simpl
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GROUPING DATA -->
 
-## **Table Totals**
+## Table Totals
 Duration: 6
 
 Sigma Workbook Tables have many ways to get totals, sub-totals, and summary values.  We will explore them now.
@@ -316,7 +316,39 @@ We now have totals at the Monthly level as well.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE TOTALS -->
 
-## **Conditional Formatting**
+## Styling
+Duration: 6
+
+When working with tables, Sigma provides style presets for out-of-the-box aesthetics and readability. You can customize all style components independently for more personalized table designs. 
+
+There are two table presets that can be quickly set and then further customized to suit your needs.
+
+### Spreadsheet
+This preset, which is the default for new tables, is designed for ongoing analysis and collaboration and will feel familiar to uses of Excel or Google Sheets.
+
+For example, in this new table, we can see that the default `Table Style` is automatically set to `Spreadsheet` and there are additional customization options:
+
+<img src="assets/tablebasics8.png" width="800"/>
+
+### Presentation
+Changing the setting `Table Style` to `Presentation` results in this:
+
+<img src="assets/tablebasics9.png" width="800"/>
+
+This preset is designed is ideal for aligning with company branding and adding visual appeal to your workbook:
+
+Sigma will warn you if the styling set is problematic for some people. For example:
+
+<img src="assets/tablebasics10.png" width="600"/>
+
+There are many additional customizations you can do to enhance your tables. It is really easy to experiment and see what you can come up with:
+
+<img src="assets/tablebasics11.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF CONDITIONAL FORMATTING -->
+
+## Conditional Formatting
 Duration: 6
 
 Sigma Workbook Tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of Conditional Formatting. 
@@ -332,7 +364,7 @@ There are many things you can do to enhance your Table; feel free to experiment 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF CONDITIONAL FORMATTING -->
 
-## **Summarizing Data**
+## Summarizing Data
 Duration: 6
 
 Sigma also has the ability to create Summary Values or KPIs across the entire table.  At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
@@ -390,7 +422,7 @@ Set the format to `Number` and remove trailing decimals:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SUMMARIES -->
 
-## **Filtering Data**
+## Filtering Data
 Duration: 6
 
 Sigma also has the ability to easily filter table data. Lets filter for only stores in the East region. 
