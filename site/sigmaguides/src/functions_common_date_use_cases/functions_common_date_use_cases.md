@@ -515,47 +515,42 @@ Duration: 10
 
 The InPriorDateRange function is used for calculations that look at a date range in a prior period, such as This Week Last Year.
 
-The results will appear as `Boolean` (true or false) and we can use that to filter rows to suit.
+The results will appear as `Boolean` (true or false), and we can use that to filter rows to suit.
 
 To make this go faster, open the Workbook `Lookups -  Year over Year` and use `Save As` to make a copy as `InPrior Date Range`.
 
-Rename the `Sales This Year` to `Sales In Current Quarter`. Do the same for `Sales Last Year`, to `Sales Last Year - Same Quarter`.
+Please the new Workbook in `Edit` mode.
 
-We could use the **InDate Range** function in a new column on the `Sales This Year` table to reduce the date range to the quarter we are interested in but lets see if we can do it with filters instead.
+Rename the `Sales This Year` table to `Sales In Current Quarter`. Do the same for the `Sales Last Year` table, to `Sales Last Year - Same Quarter`.
 
-In the `Sales In Current Quarter` set a filter on the `Day of Date` column:
+In the `Sales In Current Quarter` table, we want to filter the data to show only the rows from last quarter. We can do that by simply using the filters control:
 
-<img src="assets/CDUC50a.png" width="600"/>
+<img src="assets/CDUC56.png" width="600"/>
 
-In the `Sales Last Year - Same Quarter`set a filter on the `Day of Date` column:
+In the `Sales Last Year - Same Quarter`, add a new column called `InPriorQuarter` and set is formula to:
+```code
+InPriorDateRange([Date], "quarter", "year")
+```
 
-<img src="assets/CDUC50b.png" width="600"/>
+This will evaluate the `Date` column and return `true` or `false` if the date is in the quarter, one year prior.
 
-<aside class="negative"><strong>NOTE:</strong><br> You could also use the InDateRange function. We just wanted to get you thinking about possible options and how each may effect a use case.</aside>
+Now alter the table's filter, adding a new filter on our new column, `InPriorQuarter` and only select to see the rows where the value is `True`. Delete the filter for `Date`. 
 
-Now lets adjust the `Regional Sales Performance - This vs. Last Year` table to Lookup on the new columns.
+<img src="assets/CDUC57.png" width="600"/>
 
-We can manually adust the column formulas but you may find it easier to use the UI.
+Since the `Regional Sales Performance - This vs. Last Year` table uses `Lookups` to get the `Total Sale` column from each of the other two columns already, we don't have to do anything; the sales are summed and grouped already. 
 
-Click the column `Sum of Total Sale (Sales This Year)` and select `Edit Lookup` from the options:
+We are done:
 
-<img src="assets/CDUC52.png" width="500"/>
+<img src="assets/CDUC58.png" width="600"/>
 
-Change the `Column to add` to `In Current Qtr` and the `Aggregate` to `Sum` and click Done.
+<aside class="negative"><strong>NOTE:</strong><br> This not the only way to accomplish this outcome. You could get similar results using the "InDateRange" function, "filters" or other date functions too. Sigma is flexible and want to get you thinking about possible options and how each may effect a use case.</aside>
 
-<img src="assets/CDUC53.png" width="300"/>
+<aside class="positive"><strong>Important:</strong><br> When developing content on any platform, it's essential to consider the perspective of future developers. Strive for simplicity and efficiency in your methods to ensure that your work is easily understandable by others. Additionally, it's crucial to be mindful of the cost implications of your designs, especially in terms of warehouse storage and compute utilization. </aside>
 
-Rename the column to `Sum of Total Sale (This Qtr)`.
+Sigma provides tools to help you understand warehouse costs, built right into the Sigma platform. 
 
-Now do the same thing for the `Sum of Total Sale (Sales Last Year)` column renaming it to reflect quarters too.
-
-You should now have a table that looks like this (the table also is renamed to reflect quarters):
-
-<img src="assets/CDUC54.png" width="800"/>
-
-<aside class="negative"><strong>NOTE:</strong><br> You can click on the `InPriorDateRange` name in the formula bar to see the details on how to use this function</aside>
-
-<img src="assets/CDUC55.png" width="500"/>
+For more information about that, [click here.](https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html?index=..%2F..index#0) and [here.](https://help.sigmacomputing.com/docs/snowflake-usage-templates)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
