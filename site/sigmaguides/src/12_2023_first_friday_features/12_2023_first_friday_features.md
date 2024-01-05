@@ -32,6 +32,14 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ![Footer](assets/sigma_footer.png)
 
+## API
+Duration: 5 
+
+### Bug Fixes
+`POST /v2/teams` API no longer limits the number of team members returned.
+
+![Footer](assets/sigma_footer.png)
+
 ## Embedding
 Duration: 20
 
@@ -73,6 +81,7 @@ For more information about the new permission type, see [Data permissions overvi
 ![Footer](assets/sigma_footer.png)
 
 ## Functions
+Duration: 20
 
 ### VariancePop:
 The VariancePop function calculates **population variance**, which determines the spread of distribution or degree to which the column or grouped values deviate from the mean. 
@@ -88,6 +97,27 @@ VariancePop([Avg monthly temp])
 
 ![Footer](assets/sigma_footer.png)
 
+## Input Tables
+Duration: 20
+
+### Calculation Columns
+Input tables now support `Calculation Columns`.
+
+Calculation columns allow you to use formulas to populate input table column data. 
+
+To utilize a calculation column, open the element menu, select `Add new column` > `Calculation`, then enter a formula in the formula bar.
+
+<img src="assets/fff_12_2023_5.png" width="800"/>
+
+### Duplicate Columns
+You are now able to duplicate columns in input table elements the same way you can in table and pivot table elements.
+
+Click the caret (<img src="assets/caret.png" width="25"/>) in the column header to open the column menu, then select `Duplicate column.`
+
+<img src="assets/fff_12_2023_6.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
 
 ## New QuickStarts in December
 Duration: 20
@@ -95,8 +125,12 @@ Duration: 20
 ### Implementing Column Level Security
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html?index=..%2F..index#0), we discuss column level security and demonstrate how to apply it in Sigma, using the administrative user interface.
 
+<img src="assets/horizonalline.png" width="800"/>
+
 ### Snowflake Key-pair Authorization
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0), we will cover the recently added support for the key pair authentication method (public key + private key) for Snowflake connections.
+
+<img src="assets/horizonalline.png" width="800"/>
 
 ### Extend Sigma with Plugins
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_plugins/index.html?index=..%2F..index#0) we discuss and demonstrate how to extend Sigma's functionality by crating their own plugins.
@@ -127,12 +161,62 @@ Go to `Element` properties and choose `top`, `center`, or `bottom` alignment.
 ## Workbooks
 Duration: 20
 
+### Bug Fixes
+Badges are now applied to the source workbook and visible on all tagged versions of the workbook.
+
 ### Additional entry point to license upgrade request:
 When a Viewer-licensed user clicks `Create New` in the side panel, Sigma notifies them that the ability to create workbooks requires an account upgrade. 
 
 <img src="assets/fff_12_2023_1.png" width="400"/>
 
 The user can send a request to organization admins, who can then upgrade the user’s license by reassigning them to an account type with `Create`, `edit`, and `publish` workbooks permission.
+
+### Customizable table styles (BETA)
+Enhance visual appeal and table readability with pre-configured table styles with customizable configurations. Easily personalize the appearance of tables to seamlessly align with branding preferences and personal aesthetics.
+
+Sigma provides style presets for out-of-the-box aesthetics and readability, and you can customize all style components independently for more personalized table designs. 
+
+For more information about table style options and how to customize them, see [Customize table styles.](https://help.sigmacomputing.com/docs/customize-table-styles)
+
+This is also covered in the QuickStart, [Fundamentals 2: Working with Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html?index=..%2F..index#6)
+
+<img src="assets/fff_12_2023_4.png" width="800"/>
+
+The highlight functionality allows you to quickly identify rows with a common value. Right-click any cell containing the value you want to highlight, then click Highlight rows with {value}. Sigma automatically creates a conditional formatting rule that can be modified or deleted in the  Element format panel.
+
+### Enhanced version tag review workflow
+Tags are a way to support continuous workbook development without affecting what outside audiences see. 
+
+We have added approval workflows into the existing version tagging functionality.
+
+When a user doesn’t have permission to use a protected tag, they can submit a request for an authorized user to review and apply the tag 
+
+Authorized users include all Admin users and any user who’s granted permission to use the tag and also assigned to an account type with the `Create`, `edit`, and `publish` workbooks permission enabled. 
+
+This action triggers the following improved review and approval workflow:
+
+ <ul>
+      <li> Sigma notifies authorized users of the request by email and directly in the application.</li>
+      <li> Authorized users can review the request in the workbook’s version history.</li>
+      <li> Sigma provides a reviewer with the option to approve or deny the request. If the reviewer approves the request, they can set the requested tag or choose a different one.</li>
+      <li> Sigma removes the request from the version history and notifies the requesting user of the reviewer’s action by email and directly in Sigma.</li>
+      <li> While the request is pending, the user who submitted it can return to the version tag feature and update their request.</li>
+</ul>
+
+
+### Highlight rows with {value}
+The highlight functionality allows you to quickly identify rows with a common value. 
+
+Right-click any cell containing the value you want to highlight, then click `Highlight rows with {value}.` 
+
+Sigma automatically creates a conditional formatting rule that can be modified or deleted in the `Element format` panel.
+
+This is a real time-saver.
+
+<img src="assets/fff_12_2023_7.png" width="800"/>
+
+### Version tag filter in version history
+You are now able to filter a workbook’s version history by `applied` or `requested` version tag. This results in a a more focused list of records.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -141,10 +225,9 @@ Duration: 20
 
 **Additional Resource Links**
 
-[Blog](https://www.sigmacomputing.com/blog/)<br>
-[Community](https://community.sigmacomputing.com/)<br>
-[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
-[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
+[Help Center Home](https://help.sigmacomputing.com/hc/en-us)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
@@ -152,3 +235,5 @@ Duration: 20
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
+<!-- END OF WHAT WE COVERED -->
+<!-- END OF QUICKSTART -->
