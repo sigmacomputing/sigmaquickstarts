@@ -46,7 +46,7 @@ In such cases where something is needed that is not available in Sigma, developi
 </aside>
 
 ### Target Audience
-Programmers who want to enhance Sigma's functionality by crating their own plugins.
+Programmers who want to enhance Sigma's functionality by creating their own plugins.
 
 ### Prerequisites
 
