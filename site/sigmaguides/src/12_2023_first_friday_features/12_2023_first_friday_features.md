@@ -32,11 +32,6 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ![Footer](assets/sigma_footer.png)
 
-## Audit Logging (Beta)
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-
 ## Embedding
 Duration: 20
 
@@ -93,15 +88,6 @@ VariancePop([Avg monthly temp])
 
 ![Footer](assets/sigma_footer.png)
 
-## Input Tables
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-
-## Metrics
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
 
 ## New QuickStarts in December
 Duration: 20
@@ -111,6 +97,9 @@ Duration: 20
 
 ### Snowflake Key-pair Authorization
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0), we will cover the recently added support for the key pair authentication method (public key + private key) for Snowflake connections.
+
+### Extend Sigma with Plugins
+[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_plugins/index.html?index=..%2F..index#0) we discuss and demonstrate how to extend Sigma's functionality by crating their own plugins.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -144,8 +133,6 @@ When a Viewer-licensed user clicks `Create New` in the side panel, Sigma notifie
 <img src="assets/fff_12_2023_1.png" width="400"/>
 
 The user can send a request to organization admins, who can then upgrade the user’s license by reassigning them to an account type with `Create`, `edit`, and `publish` workbooks permission.
-
-
 
 ![Footer](assets/sigma_footer.png)
 
