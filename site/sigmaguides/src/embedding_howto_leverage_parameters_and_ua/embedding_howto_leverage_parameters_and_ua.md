@@ -753,7 +753,7 @@ In addition, the following are other potential error messages and description to
 
 <img src="assets/horizonalline.png"/>
 
-**2: Invalid API secret:**<br><img src="assets/pua9.png" width="500"/>
+**2: Invalid Embed secret:**<br><img src="assets/pua9.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
