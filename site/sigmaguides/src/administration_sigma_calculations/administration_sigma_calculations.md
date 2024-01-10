@@ -21,7 +21,7 @@ As a result, customers typically see their cost-per-user decrease, as they incre
 
 For example, here is a demonstration of the savings, based on real customer usage:
 
-<img src="assets/aq14.png" width="800"/>
+<img src="assets/aq14_revised.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!.
