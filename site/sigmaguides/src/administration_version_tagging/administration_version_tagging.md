@@ -13,16 +13,28 @@ lastUpdated: 2024-01-20
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+Version tagging allows you to employ a software development lifecycle (SDLC) to control Workbook versions, using tags. Tags provide control over which workbook versions are available to your users. 
 
-Sample code and examples are shown for each item.
+In this QuickStart, we will confine the use and management of version tagging inside Sigma itself. For those interested in integrating with external tools, [please check out the QuickStart: Embedding 8: Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0) 
 
-We encourage you to review the QS called 
+In Sigma, administrators can create as many tags as required by the organizations SDLC workflows. 
 
-This QuickStart assumes you........
+When you create a tag and assign it to a workbook, you essentially **freeze the state of that workbook**. 
+
+The process of tagging a Workbook creates a duplicate that can be shared with other stakeholders and users.  
+
+Sigma’s version tagging facilitates collaboration and control, especially in team environments where multiple users are working on the same workbook.
+
+For example, administrators can create `Production` and `QA` tags, and assign them to a workbook that's used by groups of Sigma end users.
+
+The `QA` version is used for testing and approval purposes. Once reviewed, the workbook can be tagged `Production` for users to consume.
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma’s version tagging facilitates collaboration and control, especially in team environments where multiple users are working on the same workbook.
+</aside> 
 
  ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Semi-technical users who are interested in a more controlled (ie: SDLC) methodology for developing, testing and deploying Sigma content.
 
 ### Prerequisites
 
@@ -39,7 +51,7 @@ Anyone who is trying to create QS content for Sigma.
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
 ### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
+How to Sigma version tagging can be used to provide a controlled release experience which should result in less reported issues and happier end-users.
 
 ![Footer](assets/sigma_footer.png)
 
