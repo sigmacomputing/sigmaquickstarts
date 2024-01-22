@@ -1,0 +1,8 @@
+.kpi-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 500px; /* Adjust the height as needed */
+    border: 0;
+    overflow: hidden;
+}

@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: first_friday_features
+tags: first_friday_features_2023
 lastUpdated: 2023_10-05
 
 # (09-2023) September
