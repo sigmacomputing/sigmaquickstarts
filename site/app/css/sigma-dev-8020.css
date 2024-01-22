@@ -1036,8 +1036,8 @@ figure {
 }
 
 .g-section-padding-medium {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: .1rem;
+  padding-bottom: 1rem;
 }
 
 .g-section-padding-small {
@@ -1544,7 +1544,7 @@ figure {
 }
 
 .g-mg-bottom-large {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
 }
 
 .g-text-color-neutral-0 {
@@ -1812,10 +1812,10 @@ figure {
 }
 
 .paragraph-hero {
-  margin-top: 1.5rem;
+  margin-top: 0rem;
   color: #575757;
   font-size: 1.125rem;
-  line-height: 150%;
+  line-height: 100%;
   font-weight: 400;
 }
 
