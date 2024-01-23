@@ -183,7 +183,7 @@ Since `2019` is the last year, there are `nulls` in the data because there is no
 
 We now have our analysis and can easily further manipulate it or build child visualizations from this base table.
 
-We added a simple conditional formatting to negative value cells:
+We added simple [conditional formatting](https://help.sigmacomputing.com/docs/create-and-manage-tables#apply-conditional-formatting) to negative value cells:
 
 <img src="assets/pop10.png" width="800"/>
 
