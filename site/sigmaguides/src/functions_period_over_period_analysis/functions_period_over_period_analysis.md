@@ -140,7 +140,7 @@ It allows users to generate dynamic period comparisons **without entering comple
 <strong>NOTE:</strong><br> PoP features can be used in tables, pivot tables, and visualizations.
 </aside>
 
-For this example we are interested in holiday sales in December, from 2022 and 2023. To do this, we will use Sigma's PoP wizard to create a grouped table that shows the percentage change, year over year.
+For this example we are interested in holiday sales in December, over time. To do this, we will use Sigma's PoP wizard to create a grouped table that shows the revenue, amount of difference, and percentage change year over year.
 
 Open the `Revenue` column's menu and select `Add column via` > `Period over period comparison...`:
 
@@ -148,7 +148,7 @@ Open the `Revenue` column's menu and select `Add column via` > `Period over peri
 
 We are presented the PoP Wizard where we can configure for the output we are interested in. In this case, we want to sum revenue, using the date column and compare the `Same month last year`:
 
-<img src="assets/pop5.png" width="800"/>
+<img src="assets/pop5.png" width="500"/>
 
 To read more about all the options that are available, and there are many, refer to [Sigma's documentation on PoP analysis.](https://help.sigmacomputing.com/docs/create-and-edit-period-over-period-analysis)
 
@@ -158,27 +158,34 @@ Three calculations are created for us by the wizard (number 1 in the screenshot)
 
 This gets us close to what we wanted but we are showing all the months for each year and we only really wanted `December` sales.
 
-Once you have built the workbook, set a date filter so that we cull the data down to two years of interest, `2022` and `2023`. There is no point in asking for data from the warehouse that we will not be needing.
-
-<img src="assets/pop1.png" width="800"/>
-
-A simple way to achieve this is to add a new column (anywhere in the table really), and set it's formula to:
+A simple way to achieve this is to add a column for `MonthName` (anywhere in the table really), and set the formula to:
 ```code
 MonthName([Date])
 ```
 
 This will provide the name of the month for each row, based on the `Date` column:
 
-<img src="assets/pop6.png" width="800"/>
+<img src="assets/pop7.png" width="800"/>
 
+Now we simply set a new filter on the `MonthName` column to only show December:
 
+<img src="assets/pop8.png" width="800"/>
 
+Since `2019` is the last year, there are `nulls` in the data because there is no data from `2018` (in this example). We filter on one of the columns having a null value and uncheck the check from `Include nulls`:
 
-Now we simple set a new filter on the `MonthName` column to only show December:
+<img src="assets/pop9.png" width="800"/><aside class="positive">
+<strong>IMPORTANT:</strong><br> Your text here.
+</aside>
 
-<img src="assets/pop6.png" width="800"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma's sample data shifts dates automatically as each year passes in order to keep the data "current". Please make note of that if you see some discrepancies between what your sample data shows and what the screenshots in QuickStart show. 
+</aside>
 
+We now have our analysis and can easily further manipulate it or build child visualizations from this base table.
 
+We added a simple conditional formatting to negative value cells:
+
+<img src="assets/pop10.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -193,43 +200,19 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-
-
 
 ## What we've covered
 Duration: 5
 
 In this lab we learned how to.........
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
-
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
