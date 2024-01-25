@@ -193,9 +193,161 @@ We added simple [conditional formatting](https://help.sigmacomputing.com/docs/cr
 ## PoP without the Wizard
 Duration: 20
 
+Sigma's PoP wizard is a great time-saving feature for users looking for quick answers, Others may prefer to configure everything themselves, and that is fine too. We just need to do a little more work, but when done, we will know exactly how everything works. Wizards tend to hide some of the complexity in exchange for ease of use and speed. 
+
+Let's do the same PoP analysis we did in the last section and expand it just a little more, and present the data in a different way.
+
+### New page with sample data
+
+Our starting point will be a new `Page` in the workbook we last used. 
+
+On this new `Page` we will add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table which is made available to all customers via the `Sigma Sample Data` connection.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Be sure to add a new column called  "Revenue" as we did in the previous section. 
+</aside>
+<img src="assets/pop11.png" width="800"/>
+
+### Add summary columns
+
+Click on the work `Summary` (as shown below) and click the `+` to add a new summary item and select `New summary` from the top of the list:
+
+<img src="assets/pop12.png" width="500"/>
+
+Click on the up arrow on the new `Summary`, which has the default name of `calc`. Select `Rename column` and set it's name as `Period Start`:
+
+<img src="assets/pop13.png" width="500"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You could also just double-click on the Summaries name and it will allow you type (or paste) a different name.
+</aside>
+
+Repeat this process, adding new summaries for:
+
+ <ul>
+      <li>Period End</li>
+      <li>Previous Period Start</li>
+      <li>Previous Period End</li>
+      <li>Current Sales</li>
+      <li>Previous Sales</li>
+      <li>Sales Growth</li>
+</ul>
+
+You table should now look like this:
+
+<img src="assets/pop14.png" width="800"/>
+
+### Add calculations
+
+Now that we have our "framework", let’s figure out the start and end dates for each time frame using two simple date functions; [DateAdd()](https://help.sigmacomputing.com/docs/dateadd) and [Today()](https://help.sigmacomputing.com/docs/today). 
+
+For the `Period Start` date of the current period, which is 30 days before the end date.
+
+Select the `Period Start` summary and set it's formula to:
+```code
+DateAdd("day", -30, [Period End])
+``` 
+
+<img src="assets/pop15.png" width="500"/>
+
+Next, select the `End Period` summary and set it's formula to:
+```code
+DateAdd("day", -1, Today())
+``` 
+
+Now we have values for `Period Start` and `Period End`:
+
+<img src="assets/pop16.png" width="500"/>
+
+We just need to repeat this process to add calculations for the `Previous Period Start` and `Previous Period End` summaries. For those two, use these calculations:
+
+For `Previous Period Start`, the previous period is one year before the current period's start date. You can find it by subtracting one year:
+```code
+DateAdd("year", -1, [Period Start])
+```
+
+For `Previous Period End`, the previous period is the same as the current period's end date, but one year earlier. You can find it by subtracting one year:
+```code
+DateAdd("year", -1, [Period End])
+```
+
+To find `Current Sales` for the current time frame, we need to add up the sales that happened between the start and end dates, for the current period:
+```code
+SumIf([Revenue], Between([Date], [Period Start], [Period End]))
+```
+
+To get more [information on `SumIF`, click here.](https://help.sigmacomputing.com/docs/sumif)
+
+To find the sales for the previous time frame, add up the sales that happened between the start and end dates for the previous period, using this formula:
+```code
+SumIf([Revenue], Between([Date], [Previous Period Start], [Previous Period End]))
+```
+
+For the last summary, we need to calculate the percent of sales growth. To do this, we subtract `Previous Sales` from `Current Sales`, then divide that by sales from `Previous Sales`./
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Make sure to format the "Sales Growth" summary as a percentage.
+</aside>
+
+Here is that formula:
+```code
+(([Current Sales] - [Previous Sales] ) / [Previous Sales])
+```
+
+Our table now looks like this:
+
+<img src="assets/pop17.png" width="800"/>
+
+Now that we have summary values, we can use them to drive some visualizations. 
+
+### Add KPI Charts
+
+[Key performance indicator (KPI) charts](https://help.sigmacomputing.com/docs/build-a-kpi-chart) highlight single metric values and are a great way to simply present performance or progress toward goals.
 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma makes data reuse very simple by using child elements. This is not only important for ease of use but also means that content created be reusing existing elements can leverage Sigma's Alpha Query, which works to reduce how many times the data needs to be requested from the source. This results in improved performance and reduced storage-compute costs.
+</aside>
 
+To learn more about how Sigma performs calculations, [check out this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
+
+To add a new child element to our table, click the icon to `Create Child Element` and select `Visualization`:
+
+<img src="assets/pop18.png" width="800"/>
+
+Hover and open the dropdown menu for column sources, and check the box next to `Sales Growth` to make it visible in your KPI Chart:
+
+<img src="assets/pop19.png" width="800"/>
+
+From the column list in the element panel, drag the column `Sales Growth` into the `Value` shelf and make sure to uncheck `aggregate values`. 
+
+When aggregate values is unchecked, it tells Sigma to take the source field and display it as it is, rather than summarizing data.
+
+<img src="assets/pop20.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> You may have noticed in the screenshots that we moved the KPI to the top of the page and adjusted it's size. Sigma's layout tools are easy to use and allow you to create designs that are optimized for your users.
+</aside>
+
+Adding more KPIs is simply a matter of repeating this process for any other summary values we would like to use.
+
+For example, if we add `Current Sales` and `Previous Sales` and do a little adjustment to the layout.
+
+A few ways to do this but one quick way is to select the existing KPI, opening it's menu and selecting `Duplicate`:
+
+<img src="assets/pop21.png" width="500"/>
+
+After doing that twice, we can drag the new column over the existing one for each new KPI. This action will replace the columns accordingly:
+
+<img src="assets/pop1.gif">
+
+A nice finishing touch is to add a `Comparison` column to the `Current Sales` KPI:
+
+<img src="assets/pop23.png" width="500"/>
+
+Our PoP analysis now looks like this and we are done:
+
+<img src="assets/pop24.png" width="500"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
