@@ -13,7 +13,7 @@ lastUpdated: 2024-01-23
 ## Overview 
 Duration: 5 
 
-Period over period (PoP) analysis, while conceptually straightforward, can be challenging for some people to understand and execute effectively. 
+Period over period (PoP) analysis, while conceptually straightforward, can be challenging to understand and execute effectively. 
 
 PoP analysis involves selecting two or more specific time periods and comparing key metrics or data points between these periods. These periods can be days, weeks, months, quarters, or years, depending on the context and objectives of the analysis.
 
@@ -21,7 +21,7 @@ It offers a structured approach to understanding data trends over time, which is
 
 However, it's not just about comparing numbers. **It's about identifying trends, patterns, and changes over time and gaining insight into what drives changes in those numbers,** This can be invaluable in a variety of technical and business contexts.
 
-This QuickStart **QS** will discuss typical use cases and demonstrate the methods in Sigma to create useful PoP analysis with ease.
+This QuickStart will discuss typical use cases and demonstrate some methods in Sigma to create useful PoP analysis with ease.
 
 ### Target Audience
 This QuickStart is designed for data analysts, business strategists, and marketing professionals who want to effectively utilize period over period analysis using Sigma.
@@ -70,7 +70,7 @@ In general, these factors require consideration when creating a PoP analysis:
       <li><strong>Anomaly Detection:</strong> It aids in identifying anomalies or outliers. A sudden spike or drop in a normally consistent trend can indicate an issue or an opportunity that might require further investigation.</li>
 </ul>
 
-As you can plainly see, gaining insights into what drives changes in the data over time is invaluable in a variety of technical and business contexts. This is why it so widely used across almost any industry.
+As you can see, gaining insights into what drives changes in data over time is invaluable in a variety of technical and business contexts. This is why it's so widely used across almost any industry.
 
 #### Technical considerations
 While it is tempting to just "jump right in" and start comparing values based on different time periods, there are some things to keep in ming at all times.
@@ -83,17 +83,17 @@ While it is tempting to just "jump right in" and start comparing values based on
 </ul>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma addresses these areas by proving direct access to the data warehouse at massive scale, allowing users to drill anywhere in the data using a familiar spreadsheet interface. 
+<strong>IMPORTANT:</strong><br> Sigma addresses these areas by proving direct access to the data warehouse at massive scale, creating and materializing datasets, and allowing users to drill anywhere in the data using a familiar spreadsheet interface. 
 </aside>
 
 ### Common use cases
-PoP is widely used across industries but these are the most common reasons why that is true.
+PoP is widely used across industries and these are the most common reasons why:
 
  <ul>
       <li><strong>Trend Identification:</strong> For example, healthcare wants to know which patients receiving the same treatment are improving, declining, or remaining stable.</li>
       <li><strong>Seasonal Adjustments:</strong> For example, retail businesses often compare month-over-month (MoM) or year-over-year (YoY) sales to plan inventory and marketing strategies.</li>
       <li><strong>Performance Measurement:</strong>  If a new marketing campaign was launched, comparing sales figures before and after the campaign can gauge its impact.</li>
-      <li><strong>Forecasting and Planning:</strong> Sale management always wants to know where products are selling well (or not), and make adjustments accordingly to staffing levels.</li>
+      <li><strong>Forecasting and Planning:</strong> Sales management always wants to know where products are selling well (or not), and make adjustments accordingly to inventory or staffing levels.</li>
       <li><strong> Anomaly Detection:</strong> Product managers might react to a sudden spike or drop in a normally consistent item. This can indicate an issue or an opportunity that might require further investigation.</li>
 </ul>
 
@@ -109,16 +109,16 @@ Duration: 20
 
 Sigma provides users of different skill levels the benefit of two ways to create PoP analysis. For less technical users, we provide a "wizard-based" interface that makes creating PoP analysis a breeze. For the more technical users, we provide all the functions and tools to create any PoP analysis they may want. 
 
-Which route you choose is up to you and we will show example of both to help you see the difference.
+Which route you choose is up to you, and we will show examples of both to help you see the difference.
 
 ### Sample Data
 For both methods, we will use the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table which is made available to all customers via the `Sigma Sample Data` connection. 
 
 If you are unsure how to build a workbook based on this data, please review the [QuickStart: Fundamentals 1: Getting Around.](https://quickstarts.sigmacomputing.com/guide/fundamentals-1-getting-around/index.html?index=..%2F..index#4)
 
-We also need to calculate the line item `Revenue`, as this table does not supply. This is really simple to do in Sigma:
+We also need to calculate the line item `Revenue`, as this table does not supply it. This is really simple to do in Sigma:
 
-Columns can be added by clicking the `+` in the `Element Panel` / `Columns` sidebar but we prefer to click the column we want to create the new column next to. For example, to create the new column to the right of the `Date` column:
+Columns can be added by clicking the `+` in the `Element Panel` / `Columns` sidebar, and we prefer to click the column we want to create the new column next to. For example, to create the new column to the right of the `Date` column:
 
 <img src="assets/pop2.png" width="800"/>
 
@@ -131,10 +131,15 @@ Rename this columne to `Revenue` and set it's formula to:
 
 Save your workbook.
 
-### Sigma's PoP Wizard
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma's PoP Wizard
+Duration: 20
+
 Sigma’s guided workflow for building period-over-period analyses provides a quick and convenient way to evaluate performance over time. 
 
-It allows users to generate dynamic period comparisons **without entering complex custom formulas,** then easily visualize the results to identify trends, patterns, and anomalies.
+It allows users to generate dynamic period comparisons, **without entering complex custom formulas,** then easily visualize the results to identify trends, patterns, and anomalies.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> PoP features can be used in tables, pivot tables, and visualizations.
@@ -146,7 +151,7 @@ Open the `Revenue` column's menu and select `Add column via` > `Period over peri
 
 <img src="assets/pop4.png" width="800"/>
 
-We are presented the PoP Wizard where we can configure for the output we are interested in. In this case, we want to sum revenue, using the date column and compare the `Same month last year`:
+We are presented the PoP Wizard where we can configure for the output we are interested in. In this case, we want to `sum revenue`, using the date column and compare the `Same month last year`:
 
 <img src="assets/pop5.png" width="500"/>
 
@@ -171,14 +176,10 @@ Now we simply set a new filter on the `MonthName` column to only show December:
 
 <img src="assets/pop8.png" width="800"/>
 
-Since `2019` is the last year, there are `nulls` in the data because there is no data from `2018` (in this example). We filter on one of the columns having a null value and uncheck the check from `Include nulls`:
-
-<img src="assets/pop9.png" width="800"/><aside class="positive">
-<strong>IMPORTANT:</strong><br> Your text here.
-</aside>
+Since `2019` is the last year, there are `nulls` in the data for `2018` (in this example). We filter on one of the columns having a null value and uncheck the check from `Include nulls`:
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma's sample data shifts dates automatically as each year passes in order to keep the data "current". Please make note of that if you see some discrepancies between what your sample data shows and what the screenshots in QuickStart show. 
+<strong>IMPORTANT:</strong><br> Sigma's sample data shifts dates automatically as each year passes in order to keep the data "current". Please make note of that if you see some discrepancies between what your sample data shows and what the screenshots in this QuickStart show. 
 </aside>
 
 We now have our analysis and can easily further manipulate it or build child visualizations from this base table.
@@ -204,22 +205,22 @@ Our starting point will be a new `Page` in the workbook we last used.
 On this new `Page` we will add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table which is made available to all customers via the `Sigma Sample Data` connection.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Be sure to add a new column called  "Revenue" as we did in the previous section. 
+<strong>NOTE:</strong><br> Be sure that the "Revenue" column exists, as we did in the previous section. 
 </aside>
 <img src="assets/pop11.png" width="800"/>
 
 ### Add summary columns
 
-Click on the work `Summary` (as shown below) and click the `+` to add a new summary item and select `New summary` from the top of the list:
+Click on the word `Summary` (as shown below) and click the `+` to add a new summary item and select `New summary` from the top of the list:
 
-<img src="assets/pop12.png" width="500"/>
+<img src="assets/pop12.png" width="800"/>
 
 Click on the up arrow on the new `Summary`, which has the default name of `calc`. Select `Rename column` and set it's name as `Period Start`:
 
-<img src="assets/pop13.png" width="500"/>
+<img src="assets/pop13.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> You could also just double-click on the Summaries name and it will allow you type (or paste) a different name.
+<strong>NOTE:</strong><br> You could also just double-click on the new Summaries name, and it will allow you type (or paste) a different name.
 </aside>
 
 Repeat this process, adding new summaries for:
@@ -248,7 +249,9 @@ Select the `Period Start` summary and set it's formula to:
 DateAdd("day", -30, [Period End])
 ``` 
 
-<img src="assets/pop15.png" width="500"/>
+This will evaluate to `null` at first because we have not set a formula for `Period End`. That is fine, proceed.
+
+<img src="assets/pop15.png" width="800"/>
 
 Next, select the `End Period` summary and set it's formula to:
 ```code
@@ -257,7 +260,7 @@ DateAdd("day", -1, Today())
 
 Now we have values for `Period Start` and `Period End`:
 
-<img src="assets/pop16.png" width="500"/>
+<img src="assets/pop16.png" width="800"/>
 
 We just need to repeat this process to add calculations for the `Previous Period Start` and `Previous Period End` summaries. For those two, use these calculations:
 
@@ -283,16 +286,16 @@ To find the sales for the previous time frame, add up the sales that happened be
 SumIf([Revenue], Between([Date], [Previous Period Start], [Previous Period End]))
 ```
 
-For the last summary, we need to calculate the percent of sales growth. To do this, we subtract `Previous Sales` from `Current Sales`, then divide that by sales from `Previous Sales`./
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Make sure to format the "Sales Growth" summary as a percentage.
-</aside>
+For the last summary, we need to calculate the percent of sales growth. To do this, we subtract `Previous Sales` from `Current Sales`, then divide that by sales from `Previous Sales`.
 
 Here is that formula:
 ```code
 (([Current Sales] - [Previous Sales] ) / [Previous Sales])
 ```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Make sure to format the "Sales Growth" summary as a percentage.
+</aside>
 
 Our table now looks like this:
 
@@ -335,7 +338,7 @@ For example, if we add `Current Sales` and `Previous Sales` and do a little adju
 
 A few ways to do this but one quick way is to select the existing KPI, opening it's menu and selecting `Duplicate`:
 
-<img src="assets/pop21.png" width="500"/>
+<img src="assets/pop21.png" width="800"/>
 
 After doing that twice, we can drag the new column over the existing one for each new KPI. This action will replace the columns accordingly:
 
@@ -343,11 +346,11 @@ After doing that twice, we can drag the new column over the existing one for eac
 
 A nice finishing touch is to add a `Comparison` column to the `Current Sales` KPI:
 
-<img src="assets/pop23.png" width="500"/>
+<img src="assets/pop23.png" width="800"/>
 
 Our PoP analysis now looks like this and we are done:
 
-<img src="assets/pop24.png" width="500"/>
+<img src="assets/pop24.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -356,7 +359,19 @@ Our PoP analysis now looks like this and we are done:
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
+This QuickStart on period-over-period calculations in Sigma provides valuable insights for effective data comparison across different time-frames. 
+
+While Sigma makes PoP analysis easy, there are a few key things to to keep in mind:
+
+ <ul>
+      <li><strong>Appropriate Comparisons:</strong> Ensure the time-frames compared are logically equivalent. Avoid comparing partial periods to complete ones, as it can lead to skewed insights.</li>
+      <li><strong>Business Context:</strong>  Choose time-frames that are relevant to your business context. Be wary of seasonal fluctuations or industry-specific trends that might impact the analysis.</li>
+      <li><strong>Flexibility in Time-frames:</strong> You can compare any two time-frames using Sigma functions, which are very powerful.</li>
+      <li><strong>Visual Indicators:</strong> Utilize color coding, like green for positive and red for negative metrics, to visually differentiate performance. This aids in quickly identifying trends and variances.</li>
+      <li><strong>Show Comparative Metrics:</strong>  Alongside the actual figures, include the comparative metrics to provide a clearer understanding of the analysis.</li>
+</ul>
+  
+These guidelines help in making more accurate and business-relevant interpretations of data, enhancing the utility of Sigma’s period-over-period calculations for your business.
 
 **Additional Resource Links**
 
