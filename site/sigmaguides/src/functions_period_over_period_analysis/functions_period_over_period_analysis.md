@@ -3,10 +3,10 @@ id: functions_period_over_period_analysis
 summary: functions_period_over_period_analysis
 categories: Functions
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: 2024-01-23
+tags: 
+lastUpdated: 2024-01-25
 
 # Getting Started with Period Over Period Analysis in Sigma
 
