@@ -300,13 +300,13 @@ We are now ready to embed Sigma into our new Streamlit page.
 ## Sigma Embed Content
 Duration: 20
 
-We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](hhttps://help.sigmacomputing.com/docs/public-embedding) of the Sales Performance Example Template.
+We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](hhttps://help.sigmacomputing.com/docs/public-embedding) of the Plugs Electronics Profit Planning Tool Template.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> It is also possible to secure the Streamlit application and use Sigma's secure embedding methods but that is out-side the scope of this QuickStart.
 </aside
 
-Log into Sigma (as Administrator) and navigate to `Templates` and click the **Sales Performance Example** Template:
+Log into Sigma (as Administrator) and navigate to `Templates` and click the **Plugs Electronics Profit Planning Tool** Template:
 
 <img src="assets/sl14.png" width="800"/>
 
@@ -318,7 +318,7 @@ Now click the drop menu (as shown below) and select `Embedding`:
 
 <img src="assets/sl15.png" width="800"/>
 
-In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow followed by the `Dashboard`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
+In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow followed by the `Profit Planning Tool`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma embedding supports a Workbook, Page or any Elements to be embedded into external applications.
@@ -326,7 +326,7 @@ In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow f
 
 <img src="assets/sl16.png" width="800"/>
 
-Once we selected to embed the Dashboard, we are presented with both a Public Link to the content as well as the Embed Code. 
+Once we selected to embed the Profit Planning Tool, we are presented with both a Public Link to the content as well as the Embed Code. 
 
 Click `Copy` to select the `Public Link` and paste it into a text file; we will use it in the next step:
 
