@@ -137,9 +137,9 @@ Save your workbook.
 ## Sigma's PoP Wizard
 Duration: 20
 
-Sigma’s guided workflow for building period-over-period analyses provides a quick and convenient way to evaluate performance over time. 
+Sigma’s guided workflow for building period-over-period analyses provides a quick and convenient way to create **basic** historical comparisons.
 
-It allows users to generate dynamic period comparisons, **without entering complex custom formulas,** then easily visualize the results to identify trends, patterns, and anomalies.
+It allows users to generate dynamic period comparisons, without entering complex custom formulas, then easily visualize the results to identify trends, patterns, and anomalies.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> PoP features can be used in tables, pivot tables, and visualizations.
@@ -194,9 +194,21 @@ We added simple [conditional formatting](https://help.sigmacomputing.com/docs/cr
 ## PoP without the Wizard
 Duration: 20
 
-Sigma's PoP wizard is a great time-saving feature for users looking for quick answers, Others may prefer to configure everything themselves, and that is fine too. We just need to do a little more work, but when done, we will know exactly how everything works. Wizards tend to hide some of the complexity in exchange for ease of use and speed. 
+Sigma’s PoP wizard is a great time-saving feature for users looking for quick answers, but it only supports simple logic. That’s because wizards tend to limit the power in exchange for ease of use and speed.
 
-Let's do the same PoP analysis we did in the last section and expand it just a little more, and present the data in a different way.
+Rolling period comparisons require a little more work, but easy to do in Sigma.
+
+Let’s do a similar PoP analysis to we did in the last section, but expand it just a little more, use rolling 30 days, and also present the data in a different way.
+
+
+
+
+
+
+
+
+
+<!-- OLD PoP without the Wizard content to save for a bit
 
 ### New page with sample data
 
@@ -355,6 +367,7 @@ Our PoP analysis now looks like this and we are done:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+-->
 
 ## What we've covered
 Duration: 5
