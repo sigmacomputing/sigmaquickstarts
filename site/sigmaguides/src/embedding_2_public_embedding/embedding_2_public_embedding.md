@@ -80,7 +80,7 @@ Log into Sigma and navigate to a Workbook you want to embed. It doesn't really m
 
 We will use one of the pre-built Templates that are included in the Sigma Trial but the steps are the same regardless of what you choose to work with.
 
-After `logging into Sigma`, navigate to `Templates` and click the `Plugs Sales Sales Performance` example to open that Workbook. 
+After `logging into Sigma`, navigate to `Templates` and click the `Plugs Electronics Profit Planning Tool` example to open that Workbook. 
 
 ![Alt text](assets/public2.png)
 
@@ -99,7 +99,7 @@ Click the `caret (▼)` icon button to the right of the Workbook title in the he
 
 <img src="assets/public6.png" width="400"/>
 
-This modal displays all available Public and Application embeds. Select the `Public (0)` tab and then select `Dashboard`. This will allow us to only display the Dashboard Page in our embed.
+This modal displays all available Public and Application embeds. Select the `Public (0)` tab and then select `Profit Planning Tool`. This will allow us to only display the Profit Planning Page in our embed.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You can choose the entire Workbook, Page or one or more Elements (Tables, Viz ect...).
@@ -150,7 +150,7 @@ If you get an error about port 3000 being used already (not typically) you can c
 ### **Test your Web Application**
 Open your browser and navigate to `http://localhost:3000`. 
 
-Notice that we only show the Dashboard since we decided to embed only that.  
+Notice that we only show the Profit Planning Tool since we decided to embed only that.  
 
 You should see the webpage with the title and the iframe embed below as show:
 
