@@ -39,7 +39,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 The exercises in this QuickStart will discuss and walk you through the steps to embed Sigma inside a Salesforce page. 
 
 ### What You’ll Build
-We will build a SalesForce page using Sigma content, embedded securely on a VisualForce page as shown below:
+We will build a Salesforce page using Sigma content, embedded securely on a VisualForce page as shown below:
 
 ![Alt text](assets/sf1.png)
 
@@ -65,7 +65,7 @@ Generate a `new Embed Secret`, copy it off for later use.
 
 Navigate to the `Templates` page.
 
-Select `Sales Performance Example`. 
+Select `Plugs Electronics Profit Planning Tool`. 
 
 Dismiss the help popup and click the Dashboard tab (bottom of the page). This is the Page we want to embed.
 
