@@ -50,7 +50,7 @@ The exercises in this QuickStart will discuss and walk you through the steps to 
 ### What You’ll Build
 We will embed a Sigma Dashboard inside a Node.js web application. The final result will look like this:
 
-![Alt text](assets/whatwewillbuild.png)
+![Alt text](assets/public11.png)
 
 <aside class="negative">
 <strong>NOTE:</strong><br> There are many programming languages and libraries you can use to plaintext a client and server-side application. Node.js is the one we will be using today. The plaintext today will also be highly simplified and commented to assist in your learning.
