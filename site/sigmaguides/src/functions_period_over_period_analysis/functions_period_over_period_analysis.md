@@ -15,13 +15,13 @@ Duration: 5
 
 Period over period (PoP) analysis, while conceptually straightforward, can be challenging to understand and execute effectively. 
 
-In this QuickStart, we will focus on the PoP analysis scenarios, where two specific time periods are selected and compared, against key metrics or data points between these periods. It does not cover building two timelines, current vs past, next to each other. Comparing two historical timelines (rather than just two dates) will be a subject of another, future document, not covered here.
-
 These periods can be days, weeks, months, quarters, or years, depending on the context and objectives of the analysis. 
 
 They can also include rolling periods (rolling 30 days, rolling 12 months), or Month-To-Date, Quarter-to-Date and Year to Date. 
 
 These types of PoP comparisons of two KPIs - current vs historical - are often used at the top of executive dashboards.
+
+In this QuickStart, we will focus on the PoP analysis scenarios, where two specific time periods are selected and compared, against key metrics or data points between these periods. It does not cover building two timelines, current vs past, next to each other. Comparing two historical timelines (rather than just two dates) will be a subject of another, future document, not covered here.
 
 ### Target Audience
 This QuickStart is designed for data analysts, business strategists, and marketing professionals who want to effectively utilize period over period analysis using Sigma.
