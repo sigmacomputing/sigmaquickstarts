@@ -1,4 +1,4 @@
-author: pballai
+git author: pballai
 id: embedding_how_to_federate_access_with_sigma
 summary: embedding_how_to_federate_access_with_sigma
 categories: Embedding
@@ -155,7 +155,7 @@ In order to test this, we need some content to embed. We will use Sigma's defaul
 
 Navigate to the `Templates` page.
 
-Click to select the `Plugs Electronics Sales Performance` template:
+Click to select the `Plugs Electronics Profit Planning Tool` template:
 
 <img src="assets/di1.png" width="800"/>
 
@@ -181,7 +181,7 @@ Open the `Embedding` controls:
 
 <img src="assets/fa10.png" width="600"/>
 
-Select `Dashboard` for only the Dashboard page and then select `Copy`:
+Select `Profit Planning Tool` for only the Profit Planning Tool page and then select `Copy`:
 
 <img src="assets/di5.png" width="600"/>
 
@@ -209,7 +209,7 @@ Once server.js is setup, make sure that node's express server is running:
 
 <img src="assets/fa11.png" width="800"/>
 
-Notice that if you click on the <img src="assets/arrows.png" width="25"/> icon, for the `Sales by Store Region & Product Type` chart controls (the 3-dot menus, upper right corner of the chart), you notice that there is limited functionality. This is because we set the `all_clients_team` to `view` access only:
+Notice that if you click on the <img src="assets/arrows.png" width="25"/> icon, for the `Historical Profit and Margin` chart controls (the 3-dot menus, upper right corner of the chart), you notice that there is limited functionality. This is because we set the `all_clients_team` to `view` access only:
 
 <img src="assets/fa24.png" width="800"/>
 
@@ -293,7 +293,7 @@ Make the following four changes to server.js:
 
 Refresh the browser page. Now we can see the dashboard which is stored in the `Common` Workpsace but we also have `Explore` rights.
 
-Now if we click the <img src="assets/arrows.png" width="25"/> icon for the `Sales by Store Region & Product Type` chart, we can see that we have the ability to explore the underlying data. 
+Now if we click the <img src="assets/arrows.png" width="25"/> icon for the `Historical Profit and Margin` chart, we can see that we have the ability to explore the underlying data. 
 
 <img src="assets/fa22.png" width="800"/>
 <br><br>
