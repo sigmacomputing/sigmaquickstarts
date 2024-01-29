@@ -3,9 +3,9 @@ id: functions_period_over_period_analysis
 summary: functions_period_over_period_analysis
 categories: Functions
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-01-25
 
 # Getting Started with Period Over Period Analysis in Sigma
@@ -15,13 +15,13 @@ Duration: 5
 
 Period over period (PoP) analysis, while conceptually straightforward, can be challenging to understand and execute effectively. 
 
-PoP analysis involves selecting two or more specific time periods and comparing key metrics or data points between these periods. These periods can be days, weeks, months, quarters, or years, depending on the context and objectives of the analysis.
+In this QuickStart, we will focus on the PoP analysis scenarios, where two specific time periods are selected and compared, against key metrics or data points between these periods. It does not cover building two timelines, current vs past, next to each other. Comparing two historical timelines (rather than just two dates) will be a subject of another, future document, not covered here.
 
-It offers a structured approach to understanding data trends over time, which is crucial for any data-driven decision-making process. 
+These periods can be days, weeks, months, quarters, or years, depending on the context and objectives of the analysis. 
 
-However, it's not just about comparing numbers. **It's about identifying trends, patterns, and changes over time and gaining insight into what drives changes in those numbers,** This can be invaluable in a variety of technical and business contexts.
+They can also include rolling periods (rolling 30 days, rolling 12 months), or Month-To-Date, Quarter-to-Date and Year to Date. 
 
-This QuickStart will discuss typical use cases and demonstrate some methods in Sigma to create useful PoP analysis with ease.
+These types of PoP comparisons of two KPIs - current vs historical - are often used at the top of executive dashboards.
 
 ### Target Audience
 This QuickStart is designed for data analysts, business strategists, and marketing professionals who want to effectively utilize period over period analysis using Sigma.
@@ -41,7 +41,96 @@ This QuickStart is designed for data analysts, business strategists, and marketi
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
 ### What You’ll Learn
-A basic understanding of PoP analysis and how to use Sigma effectively when creating content.
+A basic understanding of PoP analysis and how to use Sigma effectively when creating related content.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF OVERVIEW -->
+
+## Best practices of PoP logic
+
+Business leaders often want to know how well their business is performing today, compared to past results. Dashboard developers need to understand how to best interpret the intent of the business and translate it into specific Period over Period (PoP) requirements. This chapter covers some general rules and common mistakes of interpreting the business need into robust, professional business logic, related to historical comparisons. 
+
+Let’s look at some common scenarios, starting with the basic Year-over-Year logic.
+
+### Basic logic (sometimes ok)
+Measuring revenue on an annual basis is very common, and it’s easy. You want until the end of the year, then generate my report. Then we can do the same for the previous year, and compare the two numbers. **Simple, right?** 
+
+That is a good start, but what if I don’t want to wait until the end of the year to see if the business is on track? 
+
+If I want to check regularly, perhaps weekly or even every day, does the comparison support that? That is where things get more interesting. 
+
+### Period-To-Date logic (ok) 
+Enter Year-To-Date (YTD), which is usually measured as the revenue from Jan 1st of the current year, and until yesterday. 
+
+Once we calculate our YTD revenue, we can also calculate the Previous YTD, defined as Jan 1st of the previous year, through 1 year ago yesterday. YTD and Prev YTD can be recalculated as often as you like, even daily, and gives an “in-progress” comparison. **Good, right?**
+
+Well, the problem with the Period-To-Date logic - **it is not particularly accurate early in the year.** 
+
+For example, if we look at our YTD on Jan 15th, our sample size includes just 15 days of data, and one small snow storm can skew our numbers and make them look worse than they really are. 
+
+The quality of the YTD comparison gets better later in the year, but it is pretty unreliable early in the cycle. So what is the solution? **Enter Rolling Periods.**
+
+### Rolling Periods (best)
+Rolling periods are year-over-year calculations that calculate the rolling 12 months, as of yesterday, and compare them against the same period of the year before.
+
+Rolling 12 months revenue is generally comparable in scale to the full year’s revenue except it can be calculated at any time throughout the year, and then compared to 12 rolling months of the year before.   
+
+For example, if today is March 10th 2024, then the rolling 12 months revenue will focus on the 12 month period from March 10th, 2023 through March 9th, 2024. 
+
+Previous 12 month Revenue will focus on March 10th, 2022 through March 9th, 2023.
+
+***So which one of these 3 methods should I use?***
+
+For the reasons explained, when the business is looking for annual comparisons but doesn’t want to wait till the end of the year to learn the numbers, it should consider the rolling 12 months (current vs previous years), plus possibly YTD vs prev YTD.
+
+Here are some more common PoP-related business examples, and how to best translate them into technical logic.
+
+**Business ask:** measure current month’s sales, compared to past sales. 
+
+**Key question to ask:** will you be checking this number once a month, or throughout the month?
+
+**If the response is:** we want to track this KPI several times throughout the month, then:
+
+**Consider building:** Sales for rolling 30 days, compared to the same period last year.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Note that we made two key choices here: we substituted “monthly” with 30 days, and we compared it against the same period last year (rather than last month or quarter). We will explain the  reasons behind that.
+</aside>
+
+**They mentioned months, but you replaced it with 30 days - why?**
+
+**Answer:**
+First, some months have 31 days while others may only have 28 days, so a fixed 30-day window gives us a more fair comparison.
+
+Even more importantly, comparing the current, incomplete month against the previous complete month doesn’t make sense - your business may be doing better this month, but the current incomplete month will often show lower Sales, when compared to the entire previous month.
+
+**Why not current month-to-date vs previous month to date?**
+
+**Answer:** 
+Because current month-to-date has wild sample size fluctuations throughout the month, and, early in the month, when MTD has just a couple of days, MTD vs Prev MTD is unreliable.
+
+**Why pick the baseline as last year, vs last month or quarter?**
+
+**Answer:**
+Many businesses have seasonal fluctuations around the summer and the holiday season. Because of that, by default, unless you have a strong reason to do otherwise, your safest baseline comparison is the same period last year. 
+
+We never want to be explaining to an executive (***go ahead if you really want to!***) that a 15% sales drop in January vs December in fact represents a business uptick (compared to the 20% Dec to Jan drop in previous years).
+
+Now, comparing the last 30 days with the previous 30 days sometimes makes sense, depending on the business context, but, all other things being equal, we generally want the same period last year to be the default starting point, since it applies most often and avoids the common pitfalls. 
+
+By the same token, if the business asks for current quarter vs past results, and they want to check this number daily or weekly, then:
+
+Consider building Sales for Rolling 90 days vs same 90 days last year.
+
+Remember, business users are rarely deep experts in data analytics, but they do generally **want period over period to reflect the actual relative state of the business.** 
+
+So interpreting the intent and advising them on the most robust business logic is a critical part of an analysts job. Ideally, we want the Sigma expert to steer people towards the most robust and meaningful logic.
+
+OK, so now that we know what to build, how to do it in Sigma?
+
+Rolling periods are the most robust Period-over-Period comparisons and Sigma supports them, but they require some additional work, This is detailed in  section [PoP Without The Wizard.](https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html?index=..%2F..index#4)
+
+Feel free to jump directly to that section or continue reading for even more information, along with an example using Sigma's PoP Wizard which will fit simplified use cases too. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -137,9 +226,9 @@ Save your workbook.
 ## Sigma's PoP Wizard
 Duration: 20
 
-Sigma’s guided workflow for building period-over-period analyses provides a quick and convenient way to evaluate performance over time. 
+Sigma’s guided workflow for building period-over-period analyses provides a quick and convenient way to create **basic** historical comparisons.
 
-It allows users to generate dynamic period comparisons, **without entering complex custom formulas,** then easily visualize the results to identify trends, patterns, and anomalies.
+It allows users to generate dynamic period comparisons, without entering complex custom formulas, then easily visualize the results to identify trends, patterns, and anomalies.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> PoP features can be used in tables, pivot tables, and visualizations.
@@ -194,9 +283,11 @@ We added simple [conditional formatting](https://help.sigmacomputing.com/docs/cr
 ## PoP without the Wizard
 Duration: 20
 
-Sigma's PoP wizard is a great time-saving feature for users looking for quick answers, Others may prefer to configure everything themselves, and that is fine too. We just need to do a little more work, but when done, we will know exactly how everything works. Wizards tend to hide some of the complexity in exchange for ease of use and speed. 
+Sigma’s PoP wizard is a great time-saving feature for users looking for quick answers, but it only supports simple logic. That’s because wizards tend to limit the power in exchange for ease of use and speed.
 
-Let's do the same PoP analysis we did in the last section and expand it just a little more, and present the data in a different way.
+Rolling period comparisons require a little more work, but easy to do in Sigma.
+
+Let’s do a similar PoP analysis to we did in the last section, but expand it just a little more, use rolling 30 days, and also present the data in a different way.
 
 ### New page with sample data
 
@@ -354,7 +445,6 @@ Our PoP analysis now looks like this and we are done:
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 
 ## What we've covered
 Duration: 5
