@@ -289,12 +289,15 @@ If you do, you are ready to progress to the next QuickStart in this Series which
 ## What we've covered
 Duration: 5
 
-We covered the types of Embedding Sigma provides and how to setup a local environment to simulate an application that we can embed into.
+We covered the types of embedding Sigma provides, common use cases, and how to setup a local environment to simulate an application that we can embed into.
 
-For those interested in embedding with security, [QuickStart: ]
+For those interested in embedding without security (ie: Public embedding), proceed to [QuickStart: Embedding 2: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html?index=..%2F..index#0)
 
-<button>[Click to move to the next QuickStart in the Embedding Series]( https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html)</button>
-                                                                   
+If you are only interested in the Secure method, you can skip `Embedding 2: Public Embedding`.
+
+For those interested in embedding with security, proceed to [QuickStart: Embedding 3: Secure Embedding ](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+
+                                                                  
 **Additional Resource Links**
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
