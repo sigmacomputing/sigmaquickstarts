@@ -6,7 +6,8 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-03-15
+lastUpdated: 2024-01-31
+
 # Embedding 1: Prerequisites
 
 ## Overview 
@@ -178,7 +179,7 @@ To do this, we will use the Node Package Manager (npm) which was installed as pa
 Reuse the same Terminal session (or open a new one using the same method we just did).
 
 **Run the command tro install the Express web-server:**
-```plaintext
+```code
 npm install express
 ```
 
