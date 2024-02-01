@@ -13,7 +13,6 @@ lastUpdated: 2023-05-18
 ## Overview 
 Duration: 5 
 
-
 This QuickStart introduces you to Sigma Secure Embedding and demonstrates how to embed Sigma content in a external website.
  
 This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.

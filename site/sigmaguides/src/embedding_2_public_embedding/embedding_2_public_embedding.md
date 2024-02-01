@@ -237,7 +237,7 @@ Duration: 5
 
 In this QuickStart we learned how to how to embed Sigma into a Public facing website. 
 
-<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html)</button>
+<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_3_secure_embedding/index.html)</button>
 
 **Additional Resource Links**
 
