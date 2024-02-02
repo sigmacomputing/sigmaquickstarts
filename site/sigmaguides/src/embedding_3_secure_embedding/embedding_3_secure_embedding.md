@@ -63,19 +63,19 @@ We will embed Sigma content inside a Node.js web application, passing runtime pa
 ## Secure Embedding
 Duration: 5
 
-Embedding is a way to securely embed your data without your users needing to authenticate through Sigma. 
+Secure embedding provides a way to embed your content, without your users needing to authenticate through Sigma. 
 
-This **“authentication pass-through”** is a key feature of Sigma’s embedding model and makes it fast to implement as well. 
+This “authentication pass-through” is a key feature of Sigma’s embedding model and makes it fast to implement as well. 
 
-**Secure embedding is the most popular method for including Sigma content because it fully supports high security and the ability to pass parameters and more**. 
+Secure embedding is the most popular method for including Sigma content because it fully supports high security and the ability to pass parameters and more. 
 
 Passing parameters creates a personalized user experience in addition to other Sigma functionality we will explore later. 
 
-Secure embedding is made possible by the creation of a unique and encrypted embed URL pointing to the workbook, workbook page, or element you wish to display. 
+Security is assured by the creation of a unique and encrypted embed URL pointing to the workbook, workbook page, or element you wish to display. 
 
-This URL is generated on the server side of your Parent application, accessed through an API you set up, and rendered client side in an iframe. 
+This embed URL is generated on the server side of your Parent application, accessed through an API you set up, and rendered client side in an iframe. 
 
-**We refer to this as the server-side embed API (embed API).** 
+**We refer to this API as the "server-side embed API" (embed API).** 
 
 When you create the embed API to generate your embed URL, you can specify parameters that define who the user is, what role they have (account type / team membership), what they will see, and how they can interact with your embedded content.
 
@@ -89,23 +89,23 @@ With that in mind, users are assumed not to exist in Sigma’s `People` list; th
 
 Of course, you can still have manually created Sigma users for administration purposes. This saves you time and management overhead. 
 
-It is also very important to understand that each embed API generated URL can only be used once, and if modified externally and resent, will generate an error message in the browser. A list of [comment errors when embedding is in this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
+It is also very important to understand that each embed API generated URL can only be used once, and if modified externally and resent, will generate an error message in the browser. A list of [common errors when embedding is in this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
 
 The flowchart below provides a high-level overview of how **secure embedding** works for Sigma, step-by-step:
 
 <img src="assets/sigmasecurityworkflow.png" width="800"/>
 
-To embed, you will need to complete a few steps in Sigma and your Parent application. This requires implementation of client and server-side code. The workflow below demonstrates the minimum steps involved so that you may see the process all at once, before we do each step.
+To embed, you will need to complete a few steps in Sigma and your Parent application. 
+
+This requires implementation of a server-side embed API and some Sigma content. 
+
+The workflow below demonstrates the minimum steps involved so that you may see the process all at once, before we do each step.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This is very high-level and does not include the fine points involved. These fine points will be covered in each use-case.
 </aside>
 
-![Alt text](assets/sigmasecurityworkflow2.png)
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br>To create the embed you will use a Sigma embed secret and clientID, custom session times, and a server side generated embed URL. Only organization administrators can generate application embed links.
-</aside>
+<img src="assets/sigmasecurityworkflow2.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -113,133 +113,184 @@ To embed, you will need to complete a few steps in Sigma and your Parent applica
 ## Administrator Steps
 Duration: 5
 
-Before we can work on the content we need to provision `Account Types`, `Teams` and `Workspaces` in Sigma for our QuickStart. This will allow us to group users and set various permissions. 
+Before we can work on the content we need to provision `Account Types`, `Teams` and `Workspaces` in Sigma for our demonstration. This will allow us to group users and set various permissions. 
 
-Log into Sigma (as an Administrative user). 
+`Log into Sigma`, as an Administrative (Admin) user. 
 
 Sigma is very flexible, at a high level the following describes the permission hierarchy:
 
 **User Account Types:** A user's account type determines their highest level of interaction with data and content in Sigma. Each user is assigned a single account type; they can only be assigned one account type at a time. More information can be found here: [User Account Types](https://help.sigmacomputing.com/docs/user-account-types)
 
-**Teams:** allows for organized management of user groups. To view and interact with User-backed embedded workbooks, a user must be assigned to at least one team in your organization. Users can be members of more than one Team. Data source permissions can be granted to entire teams. This option is also available for folders and documents. For team members or individual users to save and edit versions of embedded workbooks, they must have Contribute access to a workspace. More information can be found here: [Teams](https://help.sigmacomputing.com/docs/manage-teams)
+**Teams:** allows for organized management of user groups. To view and interact with secure embed workbooks, a user must be assigned to at least one team in your organization. Users can be members of more than one team. Data source permissions can be granted to entire teams. This option is also available for folders and documents. For team members or individual users to save and edit versions of embedded workbooks, they must have contribute access to a workspace. More information can be found here: [Teams](https://help.sigmacomputing.com/docs/manage-teams)
 
 **Workspaces:** allows folders and documents to be compartmentalized, categorized, and easily shared with the correct people. They can be shared amongst users and teams via permission grants. Workspaces are managed by organization admins. Admins also have access to an additional `ALL WORKSPACES` tab. More information about can be found here: [Workspaces](https://help.sigmacomputing.com/docs/manage-workspaces)
 
 ### Account Types:
-We will use Account Types to allow different users different rights as we go through the use-cases. Sigma provides a few default types and we create two additional. Navigate to Administration / Account Types.
 
-The **Viewer Account Type** already exists so we will just use that as is. Here are the settings:
-<img src="assets/accounttypes1.png" width="300"/>
+We will use account types to allow different users, different rights, as we go through the use-cases. Sigma provides a few default types, and we create two additional. 
 
-Create a new Account Type called `Viewer+` and set it as follows:
-<img src="assets/accounttypes2.png" width="500"/>
+Navigate to `Administration` / `Account Types`.
 
-Create another new Account Type called “Explorer” and set it as follows:
-<img src="assets/accounttypes3.png" width="500"/>
+Sigma provides two account types out-of-the-box; `Viewer` and `Creator`. 
+
+The **Viewer Account Type** has these permissions:
+
+<img src="assets/accounttypes1.png" width="500"/>
+
+The **Creator Account Type** has many more permissions, which allows them to create and managed content in Sigma, that will be embedded for others to see:
+
+<img src="assets/accounttypes1a.png" width="700"/>
+
+Now let's create a new account type called `Embed_Premium`:
+
+Click the button to `Create New Account Type`:
+
+<img src="assets/accounttypes2.png" width="800"/>
+
+On this page we see all the possible features that can be controlled for an account type. This is how Role-based Access Control (RBAC) is configured in Sigma:
+
+Set the `Name` as "Embed_Premium", add an optional `Description` and then give this account type the permission grants shown in the screenshot:
+
+<aside class="negative">
+<strong>NOTE:</strong><br> For "Explore Workbooks" you may need to check "Create, edit and publish workbooks" on first, then disable that, leaving only "Explore workbooks" enabled.
+</aside>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> New account types are automatically granted "Viewer" permissions, as that is the lowest level of access permitted.
+</aside>
+
+<img src="assets/accounttypes2c.png" width="800"/>
 
 When done your Account Types should look like:
-![Alt text](assets/accounttypes4.png)
+
+<img src="assets/accounttypes4.png" width="800"/>
 
 ### Teams:
-Navigate to the `Administration` `Teams` page and use the `Create Team` button to add two new Teams. **Tick the checkbox to also create a Workspace.** We will use this later to share user created content directly from the Embed.
+Navigate to the `Administration` > `Teams` page and use the `Create Team` button to add a new team called `Sales Managers` team. 
 
-We will call our teams `FinanceViewers` and `FinanceCreators`.
+Set the team to `Private` and ticking the checkbox to create a Workspace (we can use this later to share user created content directly from the embed):
+
+<img src="assets/accounttypes5a.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Avoid using spaces / special characters in Team names which could cause code errors depending on your development framework.
 </aside>
 
-![Alt text](assets/accounttypes5.png)
+Click the `Create` button.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> When creating a new Team, there is a checkbox to "Create a Workspace associated with this Team". It is off by default but check it on and Sigma will create a matching Workspace automatically for you. You can also just create the Workspace manually if you prefer.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> On the next page we are able to add users to the new team but since we are using this team only in the embedded context, we don't need to do that. Recall that embed users are added at runtime, the first time they access any embedded content, in the Parent application. Their permission level is also set automatically by the embed API, via a required parameter that specifies the Sigma account type they are assigned. 
 </aside>
 
-Exiting Administration (upper left corner Sigma Back Button or click the papercrane icon) you can click on the `Workspaces` menu item and see that this also created a Workspace for each Team. This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. This functionality provides a lot of flexibility in how your users access shared work. 
+Create one more team called `Sales_People`, setting it up as follows:
 
-<img src="assets/accounttypes6.png" width="600"/>
+<img src="assets/accounttypes5.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Notice that we have not added any users, Sigma will do that automatically when the Embed tries to load content via the API. 
-</aside>
+Exit `Administration` by clicking either the Sigma back icon or clicking the Papercrane icon: 
 
-From the `Workspaces menu`, click the "hamburger menu" (the 3-dots) to the right of the `FinanceViewers` Team. 
+<img src="assets/accounttypes5c.png" width="600"/>
+
+Click on the `Workspaces` menu item and see the workspace for each team. 
+
+This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. This functionality provides a lot of flexibility in how your users access shared work. 
+
+<img src="assets/accounttypes5d.png" width="800"/>
+
+Let's share the `Sale_People` workspace with the `Sales_Managers` so they can save content there too.
+
+From the `Workspaces menu`, click the "hamburger menu" (the 3-dots) to the right of the `Sales_People` team. 
 
 Select `Share`:
 
-![Alt text](assets/accounttypes7a.png)
+<img src="assets/accounttypes7.png" width="800"/>
 
- Use the search feature to locate and add add `FinanceCreators (Team)`, setting the permission to `Can Contribute`. This will allow members of the FinanceCreators Team to share data to this Workspace.
+Use the search feature to locate and add add `Sales_Managers (Team)`, setting the permission to `Can Contribute`. 
 
-![Alt text](assets/accounttypes7.png)
+This will allow members of the team to share data to this Workspace.
+
+No need to send them an email, but this option is there for you later:
+
+<img src="assets/accounttypes7b.png" width="800"/>
+
+Click `Share`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Create a Shared Dataset
+## Create a Sigma Content
 Duration: 5
 
-In this step we are logged into Sigma as Administrator and will create a curated set of data that we will expose to others via their Account Team later. 
+Sigma is very flexible and we have different workflows when it comes to creating content, based on source data. 
 
-To leverage the features in User-backed embedding you must grant permissions to your data. Creating a Dataset and setting permissions on it is considered best practice.
+For example, we could first create a dataset, set permission on it, and then save it off for later use in a workbook(s). We would then create a workbook with a table that shows data from the dataset we saved earlier.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> To leverage the features in secure embedding permission to your data is required at some level. Creating a dataset and granting permissions to it is considered best practice.
+</aside>
+
+To minimize the steps, we will leverage a different workflow.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> In either case, customers should evaluate the many options in Sigma against their own InfoSec, compliance and governance policies in order to make the best choices for their organizations. Sigma will be there to assist in these decisions at any time.
+</aside>
 
 From Sigma / `Home` click the `+` Create New button and click `Dataset`:
 
-<img src="assets/accounttypes8.png" width="300"/>
+<img src="assets/accounttypes8.png" width="400"/>
 
-We will use Table from the options; click Select under Table:
+We will use `Table` from the options:
 
-<img src="assets/accounttypes9.png" width="600"/>
+<img src="assets/accounttypes9.png" width="400"/>
 
-We will use sample data as in other QuickStarts as below. You must first select a `Connection`. Use the Sigma Sample Database provided and then use the `PLUGS_ELECTRONICS_HANDS_ON_LAB` table as shown:
+Next we need to select our source data. We will use the typical sample data, as in other QuickStarts.
 
-<img src="assets/accounttypes10.png" width="300"/>
+Click the `New` tab and then select `Tables and Datasets`:
 
-Once you have selected the table it will show it and then you can click the `Get Started` button:
+<img src="assets/accounttypes9a.png" width="400"/>
 
-<img src="assets/accounttypes11.png" width="900"/>
+Select the `Sigma Sample Database` connection and navigate the tree to find the `PLUGS_ELECTRONICS_HANDS_ON_LAB` table as shown:
 
-Change the name of the new Dataset to `Application Embedding` by just double-clicking over the existing name. Then click `Publish`.
+<img src="assets/accounttypes10.png" width="800"/>
 
-<img src="assets/accounttypes12.png" width="900"/>
+This opens the selected table in a new (unpublished) workbook.
 
-Click the caret (▼) to the right of the Dataset name. We will want to save this Dataset in a place we can easily find it later. `Create a Workspace` folder called `Datasets` to save this one in. Click Move after you have navigated to where you want to save the Dataset. 
+The first thing we want to do is click the `Save As` button:
 
-<img src="assets/accounttypes13.png" width="700"/>
+<img src="assets/accounttypes13a.png" width="800"/>
 
-We now have a Dataset but users have no ability to view them yet. We can consider this our data library and we can decide who else can work with each Dataset. We will share the “Application Embedding” Dataset.
+When prompted, we navigate to `Workspaces` >  `Sales_Managers` workspace folder, name the workbook `Plugs Sales Table` and save it.
 
-Click `Permissions` and the `Add Permission` button. Add permission for the Finance Teams as below. Since users will be coming in with different Account Types, adjusted at runtime, we will `use View rights` for now. 
+<img src="assets/accounttypes11.png" width="400"/>
 
-Uncheck the send email checkbox. Click `Save`. Click `Publish` (if it was not already Published).
+We now have a workbook that is ready to be shared with our teams:
 
-<img src="assets/accounttypes14.png" width="700"/>
+<img src="assets/accounttypes12.png" width="800"/>
 
-You now have a Dataset that is available to users in our Application embeds, on the Finance Team.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> At this point we have content created, but since we have not shared it, only Sigma customer administrators have access to the workbook.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Create a Workbook
+## Share the Workbook
 Duration: 5
 
-From Sigma / Home click the + Create New button and click `Workbook` and add a Table to it. We called ours `Application Embedding`. 
+Click the `caret (▼)` to the right of the workbook name and select `Share`:
 
-Select `Tables and Datasets`. You will have to use the navigation in the modal, click back and find the location where you saved the Dataset. Choose your Dataset and click the Select button:
+<img src="assets/accounttypes14.png" width="500"/>
 
-<img src="assets/accounttypes15.png" width="400"/>
+Notice that the `Sales_Managers (Team)` already is permitted `Can Explore` permission to the workbook?
 
-`Click Publish`. **A Workbook must be published to create or manage embeds.**
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This is because we saved the workbook to the Sales_Managers workspace folder, which grants them access automatically, since the Sales_Managers Team owns this folder. 
+</aside>
 
-The Workbook is now ready for Application embedding. The Workbook looks like this:
+Search and add the `Sales_People (Team)` and grant them `Can view` access to this specific workbook:
 
-![Alt text](assets/accounttypes16.png)
+<img src="assets/accounttypes14a.png" width="700"/>
 
-Share the workbook with the Finance Teams. Click the caret (▼) icon button to the right of the workbook title in the header and click Share. Untick the send email checkbox and click Save. 
-
-![Alt text](assets/accounttypes17.png)
-
-We are now ready to work on the first Application embedding use case.
+While content is very basic, we can move on to embedding as the process will be very similar for any type of Sigma content.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -247,34 +298,47 @@ We are now ready to work on the first Application embedding use case.
 ## Embed Secrets and Links
 Duration: 5
 
-We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us but not always).
+We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us).
 
-### Enable Application Embedding
+### Enable Secure Embedding
 
-Application Embedding is a premium feature of Sigma, but while in a trial account, we can use it for free.
+Secure Embedding is a premium feature of Sigma, but while in a trial account, we can use it for free.
 
 In Sigma, navigate to `Administration` > `Account`. 
 
-Under the group `Embedding` we can see that Application Embedding has not been added.
+Under the group `Embedding` we can see that Embedding has not been added:
 
 <img src="assets/aefix1.png" width="800"/>
 
-Click the `Add` button to add the feature. Once enabled, a checkmark will appear and buttons for `Revoke` and `Manage` will appear:
+Click the `Add` button to add the feature. Once enabled, a checkmark will appear and button for `Revoke` will appear:
 
 <img src="assets/aefix2.png" width="800"/>
 
-Click `Manage` and then `Enable` in the pop-up.
+### Sigma Embed Secret and ClientID (Embed Keys)
 
-Click `Copy` to copy the Secret to the clipboard. Close the popup.
+Embed keys are a crucial component for creating a Sigma embed. These keys are encoded within your embed URL, providing an additional layer of validation to ensure the embed's authenticity and security.
 
-<img src="assets/aefix3.png" width="500"/>
+The embed keys are made up of the Client ID and Client Secret, and are generated using the Sigma UI.
 
-Paste the Secret into a known safe location. We can use this single secret for all embeds, but instead we will create a secret for each embed we want to allow. This option is there for you to decide how you want to manage your embed security.
+The embed keys will be used in the embed API, to ensure your embed URLs are valid at run-time.
 
-**You cannot look up your organizations existing embed secret after it has been created.** If you lose your embed secret, you can generate a new one. In this case your existing embeds will be rendered invalid until the API is updated with the new secret.
+**Here are some important points to note about the embed keys:**
 
-### Generate Dashboard Embed Secret
-We will now create a secret that is specific to our Dashboard embed. This secret will be used server-side and encrypted in your embed URLs to ensure your application embed URLs are valid at run-time.
+**Irretrievable**: Once created, you cannot retrieve the original embed keys. Ensure to store them securely.
+
+**Regeneration**: If the embed keys are lost, they can be regenerated. However, this will invalidate all existing embeds. 
+
+**Update Requirement**: After regenerating new embed keys, you must update all existing embeds, using the Embed API for that change. 
+
+Remember to keep your embed keys in a secure location, as losing them requires action to maintain your embedded analytics functionality.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> You cannot look up your organizations existing embed keys (Sigma support has no access to your embed keys) after they have been created. If you lose your embed keys, you must regenerate new keys. If this happens, your existing embeds will be rendered invalid until the API is updated with the new keys.
+</aside>
+
+### Embed Key Creation
+
+We will now create keys that are specific to our workbook embed. 
 
 **1:** Navigate to `Administration` > `APIs & Embed Secrets`:
 
@@ -286,43 +350,65 @@ We will now create a secret that is specific to our Dashboard embed. This secret
 
 **4:** Enter a Name and Description as you see fit.
 
-**5:** Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself.
+**5:** Under Owner, select an organization member with the account type you would like to associate with the embed secret. For now, just select `Administrator`.
 
 **6:** Click Create:
 
-<img src="assets/ae2.png" width="500">
+<img src="assets/ae2.png" width="700">
 
 **7:** Copy the provided `ClientID` and `Secret` and store them.
 
-<img src="assets/ae3.png" width="500">
+<img src="assets/ae3.png" width="700">
 
-**8:** Click Close
+**8:** Click Close.
 
-### Generate Embed Links
+Paste the keys into a known safe location in case you need to use them later (you will!). 
+
+We can use these keys for all embeds, but you may create as many keys as you prefer.
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Generate Embed Links
 Return to our Workbook.
 
 Click the caret (▼) icon button to the right of the workbook title in the header.
 
 Click `Embedding` to open the Application tab.
 
-Under `Generate Application Embed Path` for, select your embed target. We selected the Entire Workbook.
+Under `Generate Application Embed Path` for, select your embed target. We selected the `Entire Workbook.`
 
 <img src="assets/accounttypes18.png" width="500"/>
 
-The embed path will automatically be generated. `Click Copy` to copy this path. Save this off to a text file for later use. Close the modal.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma provides a built-in "Embed Sandbox" that allows you to quickly test embeds too. Some people prefer to use this option because they can quickly evaluate the effects of changing configurations, directly in the UI. This can be a real time-saver.
+</aside>
+
+For more information on the [Embed Sandbox, click here.](https://help.sigmacomputing.com/docs/embed-sandbox)
+
+The embed path will automatically be generated. Click `Copy` to copy this path. 
+
+Save this off to a text file for later use and `close` the modal.
+
+We have the everything we need from Sigma now, and can move on to working on the embed API/
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+
 ## Parent Application Setup
 Duration: 10
-Download and unzip the project file to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called sigma_embedding_viewer.
 
-[Click here to download sigma_application_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
+Download and unzip the project files to a suitable location of your choice, that is easily accessible on your system. 
+
+We placed it in a folder on the computer's desktop called `sigma_embedding`.
+
+[Click here to download sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
 
 The zip file contains these two files:
 
-**Index.html:** the web page that contains the iFrame we are embedding into. No changes are required for this file.<br><br>
-**Server.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the Parent API.
+**index.html:** the web page that contains the iframe we are embedding into. No changes are required for this file.
+
+**server.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. This is a example of an `Embed API`.
 
 ### Edit server.js
 Open server.js in a text editor and review all the comments (lines starting with “//”). This will give you an understanding of the minimum required parameters to pass to make Embedding work. We will pass more in later sections so it is good to get familiar now. 
