@@ -12,8 +12,8 @@ lastUpdated: 2024-01-31
 Jan 5 (was included in Jan FFF)
 Jan 12: done
 Jan 19: done
-Jan 26: 
-
+Jan 26: done
+Feb 2:
 -->
 
 # (01-2024) January
@@ -70,13 +70,14 @@ For more information, see [Create an audit logs storage integration](https://hel
 
 ![Footer](assets/sigma_footer.png)
 
-## Embedding
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
 
 ## Input Tables
 Duration: 20
+
+### Input table row deletion
+You can now delete any row (saved or unsaved) when editing an input table in the permitted workbook version (based on element’s data entry permission).
+
+The ability to delete saved rows was previously restricted when the [data entry permission](https://help.sigmacomputing.com/docs/create-and-manage-input-tables#set-data-entry-permission) was set to `Only on Published` version. Therefore, users could only delete unsaved rows while editing an input table in a workbook’s published version. This update removes the restriction and allows users to delete any row while editing the draft (via `Edit` mode) or published version (via `View` or `Explore` mode).
 
 ![Footer](assets/sigma_footer.png)
 
@@ -103,7 +104,21 @@ Returns the current (signed-in) user’s first and last name as configured in th
 ## New QuickStarts in January
 Duration: 20
 
+**Version Tagging with Sigma (non-embed user cases):** <br>
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_version_tagging/index.html?index=..%2F..index#0), we cover how Sigma version tagging can be used (inside Sigma itself) to provide a controlled release experience, which should result in less reported issues and happier end-users.
+
+**Getting Started with Period Over Period Analysis in Sigma:** <br>
+In this [QuickStart](https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html?index=..%2F..index#0), we will focus on the PoP analysis scenarios, where two specific time periods are selected and compared, against key metrics or data points between these periods.
+
+![Footer](assets/sigma_footer.png)
+
+## Regional Support (Infrastructure)
+
+Sigma is now deployed in AWS UK in compliance with UK GDPR ([Data Protection Act 2018](https://www.gov.uk/data-protection)). 
+
+Located in London, United Kingdom, the deployment gives customers in the UK more control over data storage while enabling compliance with internal policies and external data residency requirements.
+
+To accompany the region expansion, Sigma now supports the English (United Kingdom) (en-gb) locale for enhanced localization. When enabled, dates display as DD/MM/YYYY or Day Month Year, and time displays in the 24-hour format.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -112,14 +127,11 @@ Duration: 20
 
 ### Bug Fixes
 
-Sigma successfully exports a tagged workbook version when recipients have access to the tagged version. The export no longer relies on recipient's access to the source workbook.
+1: Sigma successfully exports a tagged workbook version when recipients have access to the tagged version. The export no longer relies on recipient's access to the source workbook.
 
-Resolved an issue that periodically caused the `Move tag to` functionality to incorrectly apply the selected tag to a previous workbook version.
+2: Resolved an issue that periodically caused the `Move tag to` functionality to incorrectly apply the selected tag to a previous workbook version.
 
-![Footer](assets/sigma_footer.png)
-
-## Visualizations
-Duration: 20
+3: Sigma now exports a tagged workbook version to Google Drive without requiring recipients to have access to the source workbook.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -133,6 +145,11 @@ The feature provides admins with the flexibility to restrict or grant access to 
 For more information, [see Column-level security.](https://help.sigmacomputing.com/docs/column-level-security)
 
 There is also a [QuickStart on CLS here.](https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html?index=..%2F..index#0)
+
+### Dynamic element titles
+Workbook element titles now support dynamic values. This update allows you to create more relevant and detailed element titles that adapt to selected control values.
+
+For more information, see [Create a dynamic title](https://help.sigmacomputing.com/docs/customize-element-title#create-a-dynamic-title) in [Customize element title.](https://help.sigmacomputing.com/docs/customize-element-title)
 
 ### Dynamic text style update
 In workbook Edit mode, the pill-style display of dynamic text has been updated to a more sleek and simple underlined format to enhance readability.
