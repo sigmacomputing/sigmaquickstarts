@@ -88,7 +88,7 @@ The Google Analytics data that the Snowflake Connector loads into your account i
 
 To make it analytics-ready, we provide you with a SQL script that transforms the data into the format needed for the template.  The script requires you to input a few fields, then creates a new table called `events` and a stored procedure to update the `events` table with new rows each day.  It will also grant access on the table to the role used in your Sigma connection.
 
-[Download the SQL script here](NEED_URL) and copy/paste it into a new worksheet in Snowflake.  Input the required fields and run the script.
+[Download the SQL script here](https://github.com/sigmacomputing/quickstarts-public/tree/main/templates/google_analytics_4/google_analytics_events.sql) and copy/paste it into a new worksheet in Snowflake.  Input the required fields and run the script.
 
 The necessary input fields are:
 <ul>
