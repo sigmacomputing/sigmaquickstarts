@@ -64,7 +64,7 @@ Duration: 5
 
 To create a Public embed, you will need to complete a few steps in Sigma and your Parent application. 
 
-This requires implementation of client `(the index.html file)` and server-side embed API `(the server.js file)` code. 
+This requires implementation of client `(index.html)` and server-side embed API `(embed-api.js)` code. 
 
 Of course, customers may just embed the iframe anywhere, as there is no security involved. 
 
@@ -129,10 +129,10 @@ Now that we have the `embed URL,` we can simple paste it into the URL address of
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Using the iframe in Node Example
+## Embed into Parent Application
 Duration: 10
 
-Browsing directly to the dashboard is useful, but what if we want to embed the Public Sigma embed into our own publicly available application framework?2
+Browsing directly to the dashboard is useful, but what if we want to use the public Sigma embed into our own publicly available application framework?
 
 We will now reuse the Node-based framework we setup in the [Embedded Prerequisites QuickStart,](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0), but with a few more configuration details in them to support the Public embed. 
 
@@ -141,13 +141,17 @@ Let's not modify our QuickStart prerequisite files, in case we want them in the 
 
 Instead, download and unzip the project files for this QuickStart to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called `sigma_embedding`. 
 
+<aside class="negative">
+<strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
+</aside>
+
 [The download is here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_public_embed.zip) 
 
 Like in the prerequisite QuickStart, the zip file contains two files:
  
  <ul>
-      <li><strong>Index.html: </strong> the web page that contains the iframe we are embedding into</li>
-      <li><strong>Server.js:</strong>  a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the server-side embed API.</li>
+      <li><strong>index.html: </strong> the web page that contains the iframe we are embedding into</li>
+      <li><strong>embed-api.js:</strong>  a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the server-side embed API.</li>
 </ul>
 
 ### Install Node Packages for Folder
@@ -162,8 +166,10 @@ Open a new Terminal session from the folder 'sigma_public_embed` and run this co
 
 **Run the command tro install the Express web-server:**
 ```code
-npm install express
+npm init
 ```
+
+As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
 
 and...
 
@@ -172,13 +178,9 @@ and...
 npm install supervisor
 ```
 
-The returns will appear similar to this:
+### Edit embed-api.js
 
-<img src="assets/public7c.png" width="600"/>
-
-### Edit server.js
-
-Open `server.js` in a text editor and paste the `Public Link` url you copied from Sigma as shown below, over-writing the value provided in the sample:
+Open `embed-api.js` in a text editor and paste the `Public Link` url you copied from Sigma as shown below, over-writing the value provided in the sample:
 
 <img src="assets/public8.png" width="600"/>
 
@@ -189,9 +191,13 @@ Open `server.js` in a text editor and paste the `Public Link` url you copied fro
 
 <img src="assets/public9.png" width="600"/>
 
-The Embed Code is not just the URL but rather the full iframe, so don't just replace the URL.
+The `Embed code` is not just the URL but rather the full iframe, so don't just replace the URL.
 
 `Save the file` and `Close` it.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma also provides just the URL ("Public link") when it generates the embed links. Once an iframe is in place, we can just substitute the URL the igrame is using with a different "Public link" if we prefer.
+</aside>
 
 ### Start the Web Server
 You are now ready to start the Node.js Express web server.
@@ -200,7 +206,7 @@ Reuse the same Terminal session or reopen Terminal as done earlier.
 
 Run the command from the folder where you stored the unzipped download:
 ```code
-supervisor server.js
+supervisor embed-api.js
 ```
 
 <img src="assets/public10.png" width="600"/>
@@ -217,7 +223,7 @@ You should see the webpage with the title and the iframe embed below as show:
 Once the embed is in place and working, changing it is as easy as updating the content in Sigma and Publishing it.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Any changes you make to server.js after starting the Express server via supervisor will be automatically available but the browser page will need to be refreshed to reflect your code change.
+<strong>NOTE:</strong><br> Any changes you make to embed-api.js after starting the Express server via supervisor will be automatically available but the browser page will need to be refreshed to reflect your code change.
 </aside>
 
 ## Final Thoughts 

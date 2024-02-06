@@ -117,7 +117,7 @@ Lastly, iFrames can be made "responsive" to optimize the end-users browser exper
 ## Parent Application Setup
 Duration: 20
 
-First, we need to install and configure the portal where we can embed Sigma content. 
+First, we need to install Node.js and configure a local project folder (with the associated project files), where we can embed Sigma content. 
 
 We will provide instructions for Mac systems, but the process is nearly identical for Windows and Linux. It does not matter which system you decide to use since Sigma runs in a browser. **The Parent application can be developed and run in the environment of your choice.**
  
@@ -127,33 +127,34 @@ Node.js (Node) is an open-source, cross-platform, back-end JavaScript runtime en
  
 Node is going to allow us to set up a local web server that will make a web page available that we will use to securely embed our Sigma content. 
 
-### Prerequisite Embed Project Files
-Before we get into the details of Sigma embedding, we want to just verify that our locally installed web-server is working properly.
+### Create Top Level Project Folder
+Create a new folder on your local system where we will store individual project folders as we progress through the QuickStart embedding series. 
 
-Download and unzip the project file to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called `sigma_embedding`. 
+Each QuickStart in the series should end up with it's own folder. 
 
-[Download sigma_embed_prerequisites.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_prerequisites.zip)
+Each folder will have it's own version of the required code and dependencies.
 
-The zip file contains these two files:
+There may be some overlap as we progress through each QuickStart, but that is to be expected as some people may not do every QuickStart in the embedded series.
 
- <ul>
-      <li><strong>Index.html:</strong> the web page that contains the iframe we are embedding into</li>
-      <li><strong>Server.js:</strong> a JavaScript routine that sets up the services required and allows configuration of the Sigma options. This is also referred to as the server-side JavaScript API.</li>
-</ul>
+It is a development best practice to isolate project and their respective dependencies. 
 
-<img src="assets/applicationsetup1.png" width="400"/>
+We created a top level folder called `sigma_embedding` on our systems's desktop, for ease of access. 
 
-### **Node.js Installation and Setup**
+### Node.js Installation
 
 [Download and install Node.js from here:](https://Nodejs.org/en/download/)
 
 Use the LTS (long term supported) version appropriate for your operating system.
 
-Run the installer selecting all the defaults. This will install both Node and the Node package manager (which manages optional Node components). The package manager is abbreviated to “npm” when running commands.
+Run the installer selecting all the defaults. **We do not need to specify our project folder for this installation.**
+
+This will install both Node and the Node package manager (which manages optional Node components, which add more functionality). 
+
+The package manager is abbreviated to “npm” when running commands.
 
 You can verify your installation using Terminal:
 
-`Right click` on the prerequisite folder and select `New terminal at folder`:
+`Right click` on the `sigma_embedding` folder and select `New terminal at folder`:
 
 <img src="assets/applicationsetup2.png" width="500"/>
 
@@ -164,35 +165,75 @@ node -v
 
 This should return the version number as below:
 
-<img src="assets/applicationsetup3.png" width="500"/>
+<img src="assets/applicationsetup3.png" width="400"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
-We now need to install two Node.js Packages. 
+Exit Terminal.
 
-These will provide a web server and a random number generator for our web application. 
+### Prerequisite Embed Project Files
+Download and unzip the project file (for this QuickStart) to the folder called `sigma_embedding`.
 
-To do this, we will use the Node Package Manager (npm) which was installed as part of the Node installation.
+[Download sigma_embed_prerequisites.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_prerequisites.zip)
 
-Reuse the same Terminal session (or open a new one using the same method we just did).
+The zip file contains these two files:
 
-**Run the command tro install the Express web-server:**
-```code
-npm install express
-```
+ <ul>
+      <li><strong>index.html:</strong> the simplified HTML web page that contains the iframe we are embedding into</li>
+      <li><strong>embed-api.js:</strong> a JavaScript routine that sets up the services required and allows configuration of the Sigma options. This is referred to as the server-side Embed API, and is created by the customer and stored server-side.</li>
+</ul>
+
+<img src="assets/applicationsetup1.png" width="400"/>
+
+### Install Node Dependencies Locally
+
+We now need to initialize Node and install two Node packages inside our local project folder.
+
+These will provide a web server and a "manager" for our web application. We will explain the manager in a bit.
+
+To do this, we will use the Node Package Manager (npm) which was installed as part of the main Node installation.
+
+We do this to make sure the next steps are done from the correct folder. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> For packages that your project depends on (like Express.js in a web application), it's common to install them locally, within each project to avoid version conflicts between different projects. 
+<strong>IMPORTANT:</strong><br> For Node and packages that your project depends on (like Express.js), it's common to install them locally, within each project to avoid version conflicts between different projects. 
 
 You may also use the -g flag (global) to make the express package available to all your Node.js projects, not just the one in your current directory. 
 
 We have seen some instances (on various versions of operating systems and system configurations) where Express could not be found when trying to run our node application after using the -g flag. 
 
-For this reason will just install Express for any embed QuickStart folders we create later too.
+For this reason will just install Node and packages for any embed QuickStart folders we create later too.
 </aside>
-<br>
+
+`Right click` on the `sigma_embed_prerequisites` folder (inside the `sigma_embedding` folder) and select `New terminal at folder`:
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure your terminal is using the correct directory when running the next three command. Failure to do so will result in unexpected behavior later.
+</aside>
+
+<img src="assets/pr1.png" width="400"/>
+
+**Run the command to initialize Node locally:**
+```code
+npm init
+```
+
+Npm will prompt you:
+
+**"This utility will walk you through creating a package.json file. It only covers the most common items, and tries to guess sensible defaults."**
+
+Keep pressing `Enter` to accept the defaults till you get to `Is this OK? (yes)` and hit `Enter` one last time:
+
+<img src="assets/pr2.png" width="400"/>
+
+This creates a new file in our project folder called `package.json`. This file allows `npm` to correctly manage the dependencies for your project. This is very useful for project with a large number or different versions of dependencies. We will not need to edit this file at this time.
+
+**Run the command to install the Express web-server:**
+```code
+npm install express
+```
 
 <img src="assets/applicationsetup5.png" width="700"/>
 
@@ -201,7 +242,7 @@ Node-supervisor is a package that runs your program, and watches for plaintext c
 
 A browser refresh will still be required to see the changes on the webpage. 
 
-While this Package is technically not required, it is a real time-saver in the QuickStart.
+While this Package is technically not required, it is a real time-saver when making quick code changes during the QuickStart embed series.
 
 **Run the command:**
 ```code
@@ -219,21 +260,25 @@ You are now ready to test Node using your server.js file.
 
 **Run the command:** 
 ```code
-supervisor server.js
+supervisor embed-api.js
 ```
 <aside class="negative">
-<strong>NOTE:</strong><br> Make sure to run this from the folder where the server.js file is stored.
+<strong>NOTE:</strong><br> Make sure to run this from the folder where the embed-api.js file is stored.
 </aside>
 
-You should see the output as shown below indicating that the Express Web server is running and Node-supervisor is watching for plaintext changes:
+You should see the output as shown below indicating that the Express Web server is running and Node-supervisor is watching for code changes/saves:
 
 <img src="assets/applicationsetup7.png" width="700"/>
 
 **How is Node Express running, we did not start it did we?**
 
-By opening `server.js` in a text editor, we can see that there are commands to require Express be loaded when Node is started. Recall that our Node command requested Supervisor to also read server.js when it starts Node, all inside our local folder we created called "sigma_embed_prerequisites":
+By opening `embed-api.js` in a text editor, we can see that there are commands to require Express be loaded when Node is started. 
 
-<img src="assets/applicationsetup7a.png" width="600"/>
+Recall that our Node command requested Supervisor to also read embed-api.js.js when it starts Node, all inside our local folder we created called "sigma_embed_prerequisites".
+
+We also set the running port to be 3000:
+
+<img src="assets/pr3.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
@@ -272,7 +317,7 @@ Supervisor will notice the change and restart Express to load your changes.
 
 Just refresh your browser page to see the changes. When you make changes, you may notice activity in the Terminal window and this is expected and normal. 
 
-Make sure that Terminal is still open and running the last command `npm run supervisor`. 
+Make sure that Terminal is still open and running the last command `supervisor embed-api.js`. 
 
 Right-click on the `index.html` file and open it in a text editor:
 
@@ -282,7 +327,7 @@ Add and new line and some text just below the `Sigma Embed Prerequisite Complete
 
 <img src="assets/applicationsetup10.png" width="500"/>
 
-If you do, you are ready to progress to the next QuickStart in this Series which will use this framework we have setup.
+If you do, you are ready to progress to the next QuickStart in this series. which will extend this framework.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
