@@ -141,29 +141,9 @@ The **Creator Account Type** has many more permissions, which allows them to cre
 
 <img src="assets/accounttypes1a.png" width="700"/>
 
-Now let's create a new account type called `Embed_Premium`:
+Default `Account Types` look like:
 
-Click the button to `Create New Account Type`:
-
-<img src="assets/accounttypes2.png" width="800"/>
-
-On this page we see all the possible features that can be controlled for an account type. This is how Role-based Access Control (RBAC) is configured in Sigma:
-
-Set the `Name` as "Embed_Premium", add an optional `Description` and then give this account type the permission grants shown in the screenshot:
-
-<aside class="negative">
-<strong>NOTE:</strong><br> For "Explore Workbooks" you may need to check "Create, edit and publish workbooks" on first, then disable that, leaving only "Explore workbooks" enabled.
-</aside>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> New account types are automatically granted "Viewer" permissions, as that is the lowest level of access permitted.
-</aside>
-
-<img src="assets/accounttypes2c.png" width="800"/>
-
-When done your Account Types should look like:
-
-<img src="assets/accounttypes4.png" width="800"/>
+<img src="assets/accounttypes2a.png" width="800"/>
 
 ### Teams:
 Navigate to the `Administration` > `Teams` page and use the `Create Team` button to add a new team called `Sales Managers` team. 
@@ -179,7 +159,11 @@ Set the team to `Private` and ticking the checkbox to create a Workspace (we can
 Click the `Create` button.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> On the next page we are able to add users to the new team but since we are using this team only in the embedded context, we don't need to do that. Recall that embed users are added at runtime, the first time they access any embedded content, in the Parent application. Their permission level is also set automatically by the embed API, via a required parameter that specifies the Sigma account type they are assigned. 
+<strong>IMPORTANT:</strong><br> On the next page we are able to add users to the new team, but since we are using this team only in the embedded context, we don't need to do that. 
+
+Recall that embed users are added at runtime, the first time they access any content embedded in the Parent application. 
+
+Their permission level is also set automatically by the embed API, via a required parameter that specifies the Sigma account type they are assigned. 
 </aside>
 
 Create one more team called `Sales_People`, setting it up as follows:
@@ -192,7 +176,9 @@ Exit `Administration` by clicking either the Sigma back icon or clicking the Pap
 
 Click on the `Workspaces` menu item and see the workspace for each team. 
 
-This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. This functionality provides a lot of flexibility in how your users access shared work. 
+This is useful when we later want to save the default Workbook as a copy, make changes and share with the rest of the Team. 
+
+This functionality provides a lot of flexibility in how your users access shared work. 
 
 <img src="assets/accounttypes5d.png" width="800"/>
 
@@ -217,7 +203,7 @@ Click `Share`.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Create a Sigma Content
+## Create Sigma Content
 Duration: 5
 
 Sigma is very flexible and we have different workflows when it comes to creating content, based on source data. 
@@ -231,10 +217,10 @@ For example, we could first create a dataset, set permission on it, and then sav
 To minimize the steps, we will leverage a different workflow.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> In either case, customers should evaluate the many options in Sigma against their own InfoSec, compliance and governance policies in order to make the best choices for their organizations. Sigma will be there to assist in these decisions at any time.
+<strong>IMPORTANT:</strong><br> In either case, customers should evaluate the many options in Sigma against their own InfoSec, compliance and governance policies, in order to make the best choices for their organizations. Sigma will be there to assist in these decisions, at any time.
 </aside>
 
-From Sigma / `Home` click the `+` Create New button and click `Dataset`:
+From Sigma / `Home` click the `+` Create New button and click `Workbook`:
 
 <img src="assets/accounttypes8.png" width="400"/>
 
@@ -262,7 +248,7 @@ When prompted, we navigate to `Workspaces` >  `Sales_Managers` workspace folder,
 
 <img src="assets/accounttypes11.png" width="400"/>
 
-We now have a workbook that is ready to be shared with our teams:
+We now have a workbook that can be accessed by anyone on the `Sales_Managers` team.
 
 <img src="assets/accounttypes12.png" width="800"/>
 
@@ -270,35 +256,25 @@ We now have a workbook that is ready to be shared with our teams:
 <strong>IMPORTANT:</strong><br> At this point we have content created, but since we have not shared it, only Sigma customer administrators have access to the workbook.
 </aside>
 
-![Footer](assets/sigma_footer.png)
-<!-- END -->
+If we look at the current sharing settings for this workbook:
 
-## Share the Workbook
-Duration: 5
+<img src="assets/ae5.png" width="400"/>
 
-Click the `caret (▼)` to the right of the workbook name and select `Share`:
+We can see that the `Sales_Managers (Team)` is already present. This is because we created this workspace when we created the team:
 
-<img src="assets/accounttypes14.png" width="500"/>
+<img src="assets/ae6.png" width="400"/>
 
-Notice that the `Sales_Managers (Team)` already is permitted `Can Explore` permission to the workbook?
+Any user who is a member of the `Sales_Managers` team will be able to `Explore` content stored in this workspace. 
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This is because we saved the workbook to the Sales_Managers workspace folder, which grants them access automatically, since the Sales_Managers Team owns this folder. 
-</aside>
-
-Search and add the `Sales_People (Team)` and grant them `Can view` access to this specific workbook:
-
-<img src="assets/accounttypes14a.png" width="700"/>
-
-While content is very basic, we can move on to embedding as the process will be very similar for any type of Sigma content.
+We can also raise the permission of these users to allow `edit` if we want, or add other users or teams to provide them access. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Embed Secrets and Links
+## Prepare Embed in Sigma
 Duration: 5
 
-We will create the Embedding information that we will pass to the developer of the Parent application (in this case the developer is us).
+We will create the required information to pass to the developer of the Parent application (in this case the developer is us).
 
 ### Enable Secure Embedding
 
@@ -314,33 +290,37 @@ Click the `Add` button to add the feature. Once enabled, a checkmark will appear
 
 <img src="assets/aefix2.png" width="800"/>
 
-### Sigma Embed Secret and ClientID (Embed Keys)
+### Sigma Embed Client credentials
 
-Embed keys are a crucial component for creating a Sigma embed. These keys are encoded within your embed URL, providing an additional layer of validation to ensure the embed's authenticity and security.
+Embed `Client credentials` ("credentials") are a crucial component for creating a Sigma embed. These credentials are encoded within your embed URL, providing an additional layer of validation to ensure the embed's authenticity and security.
 
-The embed keys are made up of the Client ID and Client Secret, and are generated using the Sigma UI.
+The credentials are made up of the `Client ID` and `Client Secret`, and are generated using the Sigma UI.
 
-The embed keys will be used in the embed API, to ensure your embed URLs are valid at run-time.
+The credentials will be used in the embed API, to ensure your embed URLs are valid at run-time.
 
-**Here are some important points to note about the embed keys:**
+**Here are some important points to note about the credentials:**
 
-**Irretrievable**: Once created, you cannot retrieve the original embed keys. Ensure to store them securely.
+**Irretrievable**: Once created, you cannot retrieve the original credentials. Ensure to store them securely.
 
-**Regeneration**: If the embed keys are lost, they can be regenerated. However, this will invalidate all existing embeds. 
+**Regeneration**: If the credentials are lost, they can be regenerated. However, this will invalidate all existing embeds. 
 
-**Update Requirement**: After regenerating new embed keys, you must update all existing embeds, using the Embed API for that change. 
+**Update Requirement**: After regenerating new credentials, you must update all existing embeds, using the Embed API for that change. 
 
-Remember to keep your embed keys in a secure location, as losing them requires action to maintain your embedded analytics functionality.
+Remember to keep your credentials in a secure location, as losing them requires action to maintain your embedded analytics functionality.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> You cannot look up your organizations existing embed keys (Sigma support has no access to your embed keys) after they have been created. If you lose your embed keys, you must regenerate new keys. If this happens, your existing embeds will be rendered invalid until the API is updated with the new keys.
+<strong>IMPORTANT:</strong><br> You cannot look up your organizations existing credentials (Sigma support has no access to your credentials) after they have been created. 
+
+If you lose your credentials, you must regenerate new credentials. 
+
+If this happens, your existing embeds will be rendered invalid until the API is updated with the new embed credentials.
 </aside>
 
-### Embed Key Creation
+### Client Credentials Creation
 
-We will now create keys that are specific to our workbook embed. 
+We will now create credentials that are specific to our workbook embed. 
 
-**1:** Navigate to `Administration` > `APIs & Embed Secrets`:
+**1:** Navigate to `Administration` > `Developer Access`:
 
 **2:** Click `Create New`, located in the page's top right corner. This will open the Create New API Token or Embed Secret modal:
 
@@ -362,14 +342,14 @@ We will now create keys that are specific to our workbook embed.
 
 **8:** Click Close.
 
-Paste the keys into a known safe location in case you need to use them later (you will!). 
+Paste the credentials into a known safe location in case you need to use them later (you will!). 
 
-We can use these keys for all embeds, but you may create as many keys as you prefer.
+We can use these credentials for all embeds, but you may create as many credentials as you prefer.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Generate Embed Links
+## Generate Embed Path
 Return to our Workbook.
 
 Click the caret (▼) icon button to the right of the workbook title in the header.
@@ -398,9 +378,11 @@ We have the everything we need from Sigma now, and can move on to working on the
 ## Parent Application Setup
 Duration: 10
 
-Download and unzip the project files to a suitable location of your choice, that is easily accessible on your system. 
+Download and unzip the project files into the folder on the computer's desktop called `sigma_embedding`.
 
-We placed it in a folder on the computer's desktop called `sigma_embedding`.
+<aside class="negative">
+<strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
+</aside>
 
 [Click here to download sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
 
@@ -408,169 +390,147 @@ The zip file contains these two files:
 
 **index.html:** the web page that contains the iframe we are embedding into. No changes are required for this file.
 
-**server.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. This is a example of an `Embed API`.
+**embed-api.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. This is a example of an `Embed API`.
 
-### Edit server.js
-Open server.js in a text editor and review all the comments (lines starting with “//”). This will give you an understanding of the minimum required parameters to pass to make Embedding work. We will pass more in later sections so it is good to get familiar now. 
+### Install Node Packages for Folder
 
-We have organized the file into sections that have “Required to Change”, “Optional to Change” and “Don’t Change” values.  We will show the entire file for completeness.
+If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 1: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#2)
 
-**Section 1:**<br>
-All required values, nothing to change.
+If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_secure_embed` folder that was created when we unzipped the download into the `sigma_embedding` folder.
 
-<img src="assets/accounttypes19.png" width="500"/>
+Open a new Terminal session from the folder `sigma_secure_embed` and run this command:
 
-**Section 2:**<br>
-`Lines 2A-2H` will need to be changed to match values for your embed. 
-
-**Read the comments for each item in server.js and it will be clear what the required values are.**
-
-For example notice item 2A’s EMBED_PATH value is what was generated for my Workbook embed. Also notice that we are using the Finance Team that we created earlier.
-
-The email address and external userID would normally be passed by the Parent Application at runtime after user login but since our Parent application code is hard coded, we will use a unique email for the three Account Types. This matters because when a Creator shares content, the content is owned by the Creator. If you just try to cheat here and use the same email for all three, you will find Viewers have elevated permission in content shared by the Creator. 
-
-We want to avoid that in the QuickStart although it is not likely to happen in the real world. It is helpful to understand how things can go awry.
-
-Here are the email addresses we used. You can use the same or make up your own:
-```plaintext
-embed_viewer@sigmacomputing.com = Viewer
-embed_viewer+@sigmacomputing.com = Viewer+
-embed_creator@sigmacomputing.com = Creator
+**Run the command tro install the Express web-server:**
+```code
+npm init
 ```
+
+As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
+
+and...
+
+**Run the command:**
+```code
+npm install supervisor
+```
+
+### Edit embed-api.js
+Open embed-api.js in a text editor and review all the comments (lines starting with “//”). 
+
+This will give you an understanding of the minimum required parameters to pass to make Embedding work. We will pass more in later sections so it is good to get familiar now. 
+
+The items in section #3 of the the embed-api.js code needs to be changed, replacing the values for `EMBED_PATH`, `EMBED_SECRET` and `CLIENT_ID`.
+
+The items in section #6 need to be changed, replacing values for `email`, `external_user_id`, `external_user_team` and `account_type`.
+
+All other values can be left as they are.
+
+<img src="assets/accounttypes19.png" width="800"/>
+
+For example notice that the `EMBED_PATH` value is what was generated in our Workbook. 
+
+Also notice that we are using the `Sales_Managers` team that we created earlier.
+
+The `email address` and `external userID` would normally be passed at runtime after a successful user login to the Parent Application, but we are just hard coding those values for demonstration.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Take care when pasting values into your server.js to not remove any required syntax, add any spaces etcetera. A leading space in server.js (for example an email address) will throw an error on page load.
+<strong>NOTE:</strong><br> Take care when pasting values into your embed-api.js to not remove any required syntax, add any spaces etcetera. A leading space in embed-api.js (for example an email address) will throw an error on page load.
 </aside>
 
-We have provided inline comments to guide you through.
-
-![Alt text](assets/accounttypes20.png)
-
-**Section 3:**<br>
-All required values, nothing to change in this use case. 
-
-![Alt text](assets/accounttypes21.png)
-
 ### Start the Web Server
-You are now ready to start the Node.js Express web server. Use Terminal and navigate to the Public folder where you just modified the two files. 
+You are now ready to start the Node.js Express web server. Use Terminal and navigate to the `sigma_secure_embed` folder where you just modified the two files. 
 
 **Run the command from the folder where you stored the unzipped download:**
-```plaintext
-supervisor server.js
+```code
+supervisor embed-api.js
 ```
-If you get an error about port 3000 being used already (not typically) you can change the port value in the server.js to use a different port. That is configured in server.js on `line 3H`.
 
+If you get an error about port 3000 being used already (not typically) you can change the port value in the embed-api.js to use a different port. That is configured in embed-api.js in section #3. You will also need to edit `index.html` for the new port on this line:
 
-### Additional Information - Optional Reading
-This provides a little more information about each numbered step of server.js. The sample file has some in-line comments but we did not want to overly clutter the file with long text descriptions. If you are satisfied with your understanding of server.js already, you may skip this section. 
-
-<img src="assets/horizonalline.png" width="800"/>
-
-**SECTION 1:**<br>
-This section sets up an Express web server and a route handler for GET requests.
-
-For more information on the Express webserver, [click here](https://expressjs.com/)
-
-**1A:**<br>
-The Express package for Node.js is imported.
-
-**1B:**<br> 
-A route is defined to handle GET requests to the base URL ('/'). When a request is made to this URL, the server responds by sending the file 'index.html' located in the current directory.
-
-**1C:**<br> 
-Another route is defined to handle GET requests to the URL '/api/foo'. This route will trigger the function 'foo' when accessed.
-
-**1D:**<br> 
-The function 'foo' is defined. This function will be called when a GET request is made to '/api/foo'.
-
-**1E:**<br> 
-The Node.js "crypto" module is imported. The crypto module is a core module in Node.js, meaning it is included with Node.js and does not need to be installed separately. It provides cryptographic functionalities that include a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
-
-**1F:**<br> 
-A unique identifier (nonce) is created using the 'randomUUID' function from the 'crypto' module. The crypto.randomUUID() function is used to generate a version 4 random UUID (Universally Unique Identifier). A UUID is a 128-bit number used to uniquely identify some object or entity on the Internet. In this case, it's being used to generate a nonce, or "number used once", which is a unique, random value meant to be used for a single operation, often to prevent replay attacks.
-
-**1G:**<br> 
-A search parameter string is initialized with the nonce.
+<img src="assets/ae4.png" width="500"/>
 
 <img src="assets/horizonalline.png" width="800"/>
 
-**SECTION 2:**<br>
-This section contains user-specific variables that need to be updated by the user.
-
-**2A:**<br>
-The path for the Sigma embed is set.
-
-**2B:**<br>
-The secret key for the Sigma embed is set.
-
-**2C:**<br> 
-The client_id parameter is added to the search parameters string.
-
-**2D:**<br>
-The email parameter is added to the search parameters string. This should be the email of the authenticated user in the parent application.
-
-**2E:**<br>
-The external_user_id parameter is added to the search parameters string. This should be the user ID of the authenticated user in the parent application.
-
-**2F:**<br>
-The external_user_team parameter is added to the search parameters string. The content must be shared with this team for the request to work.
-
-**2G:**<br> 
-The account_type parameter is added to the search parameters string. This specifies the account type of the user, which must exist in Sigma first.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-**SECTION 3:**<br>
-This section constructs the final URL that will be sent.
-
-**3A:**<br>
-The mode parameter is added to the search parameters string. This will always be 'userbacked' for application embedding.
-
-**3B:**<br> 
-The session_length parameter is added to the search parameters string. This is the number of seconds the user should be allowed to view the embed before logging out.
-
-**3C:**<br> 
-The time parameter is added to the search parameters string. This is the current time in Unix timestamp format.
-
-**3D:**<br>
-The final URL with all the search parameters is constructed.
-
-**3E:**<br>
-Here, the crypto module is used to create an HMAC, or Hash-Based Message Authentication Code. This is a type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. It's used to verify both the data integrity and the authenticity of a message.
-
-Broken down into individual parts:
-
-`crypto.createHmac('sha256', Buffer.from(EMBED_SECRET, 'utf8'))`<br>
-This line of code is creating the HMAC object. 
-
-The "sha256" is the specific type of hash function used, and `EMBED_SECRET` is the secret key. `Buffer.from(EMBED_SECRET, 'utf8')` is converting the secret key from a string to a buffer, which is the type of data the `createHmac` function expects.
-
-`.update(Buffer.from(URL_WITH_SEARCH_PARAMS, 'utf8'))`<br>
-This is updating the HMAC object with the data that you want to create a hash of, which is `URL_WITH_SEARCH_PARAMS` in this case. The data is converted from a string to a buffer because that's what the `update` function expects.
-
-`.digest('hex')`<br>
-This is generating the actual hash and returns it as a hexadecimal string. The "hex" argument specifies the output format of the hash.
-
-In summary, what this line of code is doing is it's creating a cryptographic hash of the URL parameters using a secret key. The hash is unique to the specific URL parameters and secret key. **Any slight change in either the URL parameters or the secret key would result in a completely different hash.** 
-
-This hash (or "signature") is then added to the URL parameters as a way to verify that the parameters haven't been tampered with. When the server receives the URL, it can generate its own hash of the parameters using the secret key and compare it to the signature in the URL. 
-
-If they match, then it knows the URL parameters are authentic and haven't been tampered with. If they don't match, then it knows something is wrong and can reject the request.
-
-For more information on crypto with HMAC, [click here](https://nodejs.org/api/crypto.html#cryptocreatehmacalgorithm-key-options)
-
-**3F:**<br>
-The final URL is constructed by combining the URL from 3D and the signature from 3E.
-
-**3G:**<br>
-The final URL is sent as a response to the GET request.
-
-**3H:**<br>
-The Express application is set to listen for requests on port 3000.
-
+We are now ready to test the Parent application that has the embedded content.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+
+## Embed API Detail (optional reading)
+Duration: 10
+
+The following provides a little more information about each numbered step of embed-api.js. 
+
+The sample file has some in-line comments but we did not want to overly clutter the file with long text descriptions. If you are satisfied with your understanding of embed-api.js already, you may skip this section. 
+
+### Item #1: Require Necessary Node.js Modules:
+**express:** a fast, minimalist web framework for Node.js, used here to create the web server and define routes.
+
+**crypto:** a core Node.js module providing cryptographic functionality, used here to generate a secure, random nonce and to create a signature for the embed URL.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item #2: Initialize an Express Application:
+Initializes an Express application instance (app), which is used to set up the server, define routes, and handle requests.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item #3: Manually Set Configuration Variables:
+Defines essential configuration variables for embedding Sigma content, including the embed path (EMBED_PATH), a secret key for signing requests (EMBED_SECRET), and a client identifier (CLIENT_ID). These are used to construct the secure embed URL.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item #4: Server Setup:
+Sets up a route that serves the main HTML file (index.html) when the root URL (/) is accessed. This is typically the entry point for users accessing your web application.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item #5: Define a Route Handler for Generating Sigma Embed URLs:
+Defines an API endpoint (/api/generate-embed-url) that, when accessed, triggers the generation of a signed URL for embedding Sigma content securely. This is where the bulk of the embed URL generation logic resides.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item 6: Construct Required Search Parameters:
+Generates a unique nonce (number used once) to prevent replay attacks and constructs a string of search parameters that will be appended to the embed URL. These parameters include client identification, user information (like email and user ID), team information, account type, embedding mode, session length, and the current time. These are required to tailor and secure the embed content.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item 7: Construct the URL with Search Parameters and Generate a Signature:
+Concatenates the base embed path with the search parameters and generates a cryptographic signature using the provided EMBED_SECRET. This signature is appended to the URL, ensuring the embed link is secure and tamper-proof.
+
+Critically important is the used of HMAC and SHA-256 in this section.
+
+**HMAC** stands for Hash-based Message Authentication Code. It is a mechanism for calculating a message authentication code involving a cryptographic hash function in combination with a secret cryptographic key. It provides both integrity and authentication: integrity, by ensuring that the message (in this case, the URL and its parameters) has not been altered, and authentication, by proving that the message was created by a known sender (the server in this scenario), which possesses the shared secret key.
+
+**SHA-256** is a cryptographic hash function belonging to the SHA-2 family, where "256" denotes the bit length of the hash output. Hash functions are designed to take an input (or 'message') and return a fixed-length string of bytes, typically a digest that is unique to each unique input. They are one-way functions, meaning it is infeasible to reverse the function to obtain the original input from the hash. SHA-256 is widely recognized for its security and is used in various security applications and protocols.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item 8: Send the Final URL to the Requester:
+Responds to the API request with the securely signed embed URL in JSON format. This URL is then used on the client-side, typically to set the src attribute of an iframe, embedding the Sigma content securely.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Item 9: Start the Server:
+Starts listening for incoming connections on the specified PORT, effectively starting the server. Prints a message to the console indicating the server is running and listening for requests.
+
+This setup allows for the secure and dynamic generation of embed URLs for Sigma Computing content, ensuring that embedded analytics are both personalized and secure, leveraging Sigma's capabilities within your own application's context.
+
+This setup allows for the secure and dynamic generation of embed URLs for Sigma Computing content, ensuring that embedded analytics are both personalized and secure, leveraging Sigma's capabilities within your own application's context.
+
+The implications of this setup are:
+
+ <ul>
+      <li><strong>Signature Creation: </strong> The server uses the EMBED_SECRET to create a cryptographic signature by applying the HMAC with SHA-256 algorithm to the URL and its query parameters. This signature is unique to the contents of the URL and the secret key used.</li>
+      <li><strong>Integrity and Authenticity:</strong> When Sigma receives the embed URL with the signature, it looks up the EMBED_SECRET using the client_id provided in the URL. Sigma then recreates the HMAC signature on their side using the received URL (minus the signature part) and the EMBED_SECRET associated with the provided client_id. If the signature Sigma computes matches the one sent with the URL, it confirms that the URL has not been altered and that the request is authentic. This process ensures the integrity of the URL (it has not been tampered with) and authenticates the source (the sender knows the 
+      secret).</li>
+      <li><strong>Role of client_id and EMBED_SECRET:</strong> The client_id is sent in clear text as part of the URL, acting as an identifier that Sigma uses to look up the corresponding EMBED_SECRET. The EMBED_SECRET is never transmitted with the request, safeguarding it from interception. Only entities that know the EMBED_SECRET can generate a valid signature, ensuring that even if someone intercepts the URL, they cannot alter it or generate a new, valid URL without access to the secret.</li>
+      <li><strong>Preventing Replay Attacks: </strong> The inclusion of a nonce (crypto.randomUUID()) and the current timestamp (Math.floor(new Date().getTime() / 1000)) as part of the URL parameters further secures the URL. The nonce is a random value that should be used only once, and the timestamp helps in ensuring the URL is used within a specific time frame. These elements make prevents reuse of the embed URL.</li>
+</ul>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
 ## Test the Embed
 Duration: 5
 
@@ -578,26 +538,24 @@ Open your browser and navigate to:
 ```plaintext
  http://localhost:3000
 ```
- 
-You should see the webpage with the Title and the iframe embed below as shown. Notice that Page Controls are available on the Dashboard tab. 
 
-The red arrows point to functionality that is allowed to the Account Type we passed in the API, in this case, Viewer. This is very limited but very useful for static dashboards and reports.
+You should see the webpage with the title and the embedded workbook below as shown. 
 
-![Alt text](assets/accounttypes22.png)
+Notice that Page Controls are available on the Dashboard tab, because we are passing an `Account Type` of `Creator`.
 
-We can do only a limited number of things to the Table like sort columns and refresh the data. If we click the folder link shown below, we see that this is the only document you currently have access to and you cannot save a copy. As a Viewer, the page will always look the same to you on each visit. 
+<img src="assets/ae7.png" width="800"/>
 
-Clink in the menu in the lower left corner and expand the `Workspace folder`. Because we shared the Finance Workspace earlier with the team members, the Viewer has access to it. It is empty for now.
+`Creators` have additional capabilities and we can explore them by clicking on the various controls available:
 
-<img src="assets/accounttypes23.png" width="300"/>
+<img src="assets/accounttypes23.png" width="800"/>
 
 Notice that there is a new user in Sigma, `Administration`, `People` now as an “Embed User” with the email we set and Viewer Account Type. This was automatically added by the API on first successful access of the Parent application.
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Embed User types will not be able to login to Sigma directly. 
+<strong>IMPORTANT:</strong><br> Embed users are not be able to login to Sigma directly. 
 </aside>
 
-<img src="assets/accounttypes24.png" width="800"/>
+<img src="assets/ae8.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -605,23 +563,23 @@ Notice that there is a new user in Sigma, `Administration`, `People` now as an �
 ## Debugging Issues
 Duration: 10
 
-So that you are generally familiar with how you might debug the problem **we will make an intentional error** in our server.js file, see the error and use common web inspection tools to evaluate the request URL that was passed to Sigma. 
+So that you are generally familiar with how you might debug the problem **we will make an intentional error** in our embed-api.js file, see the error and use common web inspection tools to evaluate the request URL that was passed to Sigma. 
 
-This is not the only method; just an example you can use if you have an issue in the Embedding QuickStarts. 
+This is not the only method; just an example you can use if you have an issue in the embedding QuickStarts. 
 
 If you are already experienced in web debugging you can skip this section. 
 
-Remove the last value from the ClientID in section 2C. In this case we removed the trailing `2`. 
+Remove the last value from the ClientID in item #3 of the embed API. In this case we removed the trailing `2`. 
 
 Save the file.
 
 Browse to the site again at:
-```plaintext
+```code
 http://localhost:3000
 ```
 You will see an error message:
 
-![Alt text](assets/accounttypes25.png)
+<img src="assets/accounttypes25.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Error messages may be different depending on the source of the issue.
@@ -633,15 +591,15 @@ Open your web browser inspector. How to do that varies between browsers so we wi
 
 Click the Elements tab and look for the node `iframe id`, It will be in under the body section as shown below and you may have to click the arrows to expand the body node. Note that you can now see the “src” url and as you hover over it, you can see the entire url. 
 
-![Alt text](assets/accounttypes26.png)
+<img src="assets/accounttypes26.png" width="800"/>
 
 Right click on the url and click `copy link address`.
 
 Paste the url in a text editor. You can also separate each parameter for readability as I have below. In this case, I did not paste the last digit of the ClientID:
 
-![Alt text](assets/accounttypes27.png)
+<img src="assets/accounttypes27.png" width="800"/>
 
-Go ahead and fix the ClientID in server.js and save. Check to make sure your embed works again. 
+Go ahead and fix the ClientID in embed-api.js and save. Check to make sure your embed works again. 
 
 **But wait, you now can use inspector to grab any Sigma embed url and just use that access the embed right? Let’s test that assumption.**
 
@@ -649,122 +607,55 @@ With your page working, open Inspector and copy the link url again. This time pa
 
 Notice the error? 
 
-![Alt text](assets/accounttypes28.png)
+<img src="assets/accounttypes28.png" width="800"/>
 
 URL snooping and reuse is not possible.
 
+For more information on common error messages related to embedding, [please section 6 of this QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Viewer+ Use Case
+## Viewer Use Case
 Duration: 5
 
-We are ready to start working on the second use case, reusing the same content but accessing it with the high level Account Type (Viewer+) we created earlier. We will start moving faster now that you are familiar with the Sigma workflows. 
+Let's use the same configuration, but make a few adjustments to restrict a different user of the parent application to `Viewer` permission. 
 
-Recall that earlier we shared the Workbook and Dataset with everyone on the Finance Team so now we just want to give users slightly more functionality using the Viewer+ Account Type. 
+We will start moving faster now that you are familiar with the Sigma workflows. 
 
-All we need to do is pass the Viewer+ Account Type to Sigma for the user and the additional functionality afforded to that role is unlocked. 
+Recall that earlier we saved the workbook in the `Sales_Managers` workspace and that is only shared with members of the `Sales_Managers Team`.  
 
-`Open server.js` and change the values for:
+There are a few ways to go about getting non-Sales_Managers (ie: Sales_People) viewer access to this workbook. How we do it really depends on what type of workflow is preferred. 
 
-**Section 2F:**
-```plaintext
-searchParams += '&:external_user_id=embed_viewer+@sigmacomputing.com';
-```
-**Section 2H:**
-```plaintext
-searchParams += '&:account_type=Viewer+';
-```
+Some customers just prefer to have a single copy of a workbook stored in a folder (as opposed to a workspace) and directly manage permissions against each individual workbook. While this works fine, it can become cumbersome to manage when there are a large number of workbooks.
+
+Workspaces are a great way to manage access since all content stored within are permitted by the workspace permissions.
+
+A third method exists, that aligns with companies who wish to follow more common content promotion workflows (ie: DevOps). This is supported in Sigma and called [Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0).
+
+For simplicity, we will just grant access to this workbook to the `Sales_People (Team)` with `Viewer` permission:
+
+<img src="assets/ae9.png" width="800"/>
+
+
+### Adjust embed-api for Sales Person as viewer
+
+`Open embed-api.js` and change the values for:
+
+<img src="assets/ae9a.png" width="800"/>
 
 Refresh your webpage. 
 
-You will see some additional options available now based on our Account Type settings. For example, the user can send a copy of the Workbook in email and they can also download the data (limited to 1M rows).
+The embed has reduced functionality, and is now based on our `Account Type` settings for `Viewers`. 
 
-This user can also see the Finance Workspace being a member of the Finance Team still:
+Users also cannot access the `Sales_Managers` workspace, even though this workbook is stored there:
 
-![Alt text](assets/accounttypes30.png)
+<img src="assets/ae10.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Creator Use Case
-Duration: 10
-
-We are ready to start working on the third use case, reusing the same content but accessing it with the high level Account Type `Creator` we created earlier. 
-
-Open server.js and change the values for section account_type to creator (2H)
-
-Change the values for email (2E):
-```plaintext
-searchParams += '&:email=embed_creator@sigmacomputing.com';
-```
-
-Change the value of external_userID (2F):
-```plaintext
-searchParams += '&:external_user_id=embed_creator@sigmacomputing.com';
-```
-
-Change the value of external_user_team (2G):
-```plaintext
-searchParams += '&:external_user_team=FinanceCreators';
-```
-
-Change the value of account_type (2H):
-```plaintext
-searchParams += '&:account_type=Creator';
-```
-
-![Alt text](assets/accounttypes31.png)
-
-Refresh your webpage. 
-
-You are now looking at the fixed Workbook that will always look this way (or until someone with the rights to change it using the Sigma portal does so). 
-
-The big addition here is the Save As button as shown below. This allows the Creator to make a copy, change it and share it with others.
-
-![Alt text](assets/accounttypes32.png)
-
-`Click the Save As` button and use the modal to navigate to the `FinanceViewers folder`. Give the new Workbook a name. We called ours `Working Copy for Finance (by Creator)` to be obvious later and click `Save`.
-
-<img src="assets/accounttypes33.png" width="400"/>
-
-The new Workbook is opened in the Embed window. It looks a little different and there is an `Edit button in the lower left corner`. Click that.
-
-You are now able to Edit (as Creator) just as if you were working in Sigma’s portal. Any changes you publish will be available to anyone who has access to the Finance Workspace.
-
-Let's make some changes.
-
-Add a visualization that suits you. We added a pie chart showing sales by Region. It doesn't really matter, just make some changes that are obvious. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Take care when selecting the source data for the new Viz. You want to use the data that is on this page and so that the experience is consistent as you add functionality. To do that, select the dataset from “Page Elements” as below:
-</aside>
-
-![Alt text](assets/accounttypes34.png)
-
-We also added a Title to our Workbook:
-
-![Alt text](assets/accounttypes35.png)
-
-Click Save/Publish.
-
-### Let's Switch Users in Real Time
-Now change the 4 values in server.js to use the Viewer type, save that change. You may have to review earlier sections of the QuickStart if you have issues doing this:
-
-![Alt text](assets/accounttypes36.png)
-
-Refresh your browser page. 
-
-Notice that even though you were just working on the new Finance page as `Creator`, you are now back to the initial Workbook as `Viewer`.
-
-![Alt text](assets/accounttypes37.png)
-
-Open the Workspace menu and navigate to the Finance Workspace. You should see the new Workbook that the Creator saved there for users to access. Click to open that and see new shared content:
-
-![Alt text](assets/accounttypes35.png)
-
-![Footer](assets/sigma_footer.png)
-<!-- END -->
 
 ## People (user) Accounts
 Duration: 5
