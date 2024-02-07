@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_dynamic_iframes
-summary: embedding_dynamic_iframes
+id: 10_embedding_dynamic_iframes
+summary: embedding_10_dynamic_iframes
 categories: Embedding
 environments: web
 status: Published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
 lastUpdated: 2023-08-18
 
-# How to: Responsive iframes with Sigma
+# 10: Responsive iframes with Sigma Embeds
 
 ## Overview 
 Duration: 5 

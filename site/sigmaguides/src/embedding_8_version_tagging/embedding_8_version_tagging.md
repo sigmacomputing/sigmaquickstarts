@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_8_version_tagging
+id: 08_embedding_version_tagging
 summary: embedding_8_version_tagging
 categories: embedding
 environments: web
@@ -7,7 +7,8 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-24
-# Embedding 8: Version Tagging
+
+# 08: Embedded Version Tagging
 
 ## Overview 
 Duration: 5 

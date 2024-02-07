@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_2_public_embedding
+id: 02_embedding_public_embedding
 summary: How to embed Sigma in Public websites with no security
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-15
 
-# Embedding 2: Public Embedding
+# 02: Public Embedding
 
 ## Overview 
 Duration: 5 

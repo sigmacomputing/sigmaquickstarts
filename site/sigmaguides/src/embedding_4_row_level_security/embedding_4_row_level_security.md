@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_4_row_level_security
+id: 04_embedding_row_level_security
 summary: Application Embedding with Row Level Security using User Attributes
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-01-12
 
-# Embedding 4: Application Row Level Security
+# 04: Embedded Application Row Level Security
 
 ## Overview 
 Duration: 5 

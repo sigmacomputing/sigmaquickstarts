@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_9_embedding_into_streamlit
+id: 12_embedding_into_streamlit
 summary: embedding5_embedding_into_streamlit
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-07-18
 
-# Embedding Sigma in Streamlit Applications
+# 12: Embedding Sigma in Streamlit Applications
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 

@@ -1,6 +1,6 @@
 git author: pballai
-id: embedding_how_to_federate_access_with_sigma
-summary: embedding_how_to_federate_access_with_sigma
+id: 11_federated_access_with_sigma
+summary: embedding_11_federated_access_with_sigma
 categories: Embedding
 environments: web
 status: Published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-08-17
 
-# How to: Federate Access with Sigma Embedding
+# 11: Federated Access with Sigma Embedding
 
 ## Overview 
 Duration: 5 

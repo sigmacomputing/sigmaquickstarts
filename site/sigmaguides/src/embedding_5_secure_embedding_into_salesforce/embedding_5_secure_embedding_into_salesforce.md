@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_5_secure_embedding_into_salesforce
+id: 05_embedding_secure_embedding_into_salesforce
 summary: How to securely embed Sigma into SalesForce
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-15
 
-# Embedding 5: Secure Embedding into Salesforce
+# 05: Secure Embedding into Salesforce
 
 ## Overview 
 Duration: 5 

@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_1_prerequisites
+id: 01_embedding_prerequisites
 summary: Prerequisites for the Sigma Embedding Series of QuickStarts
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-01-31
 
-# Embedding 1: Prerequisites
+# 01: Embedding Prerequisites
 
 ## Overview 
 Duration: 5 
