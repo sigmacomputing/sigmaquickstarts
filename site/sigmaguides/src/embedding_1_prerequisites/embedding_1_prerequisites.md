@@ -17,12 +17,14 @@ This QuickStart introduces you to the user interface and embedding capabilities 
  
 We have broken the different types of embeds into separate documents based on use cases to allow a user to focus on those areas of interest and improve overall readability and supportability of each document.
  
-**This QuickStart is foundational to all the other embedding QuickStarts.** Additionally, it will demonstrate how to set up a local web application so that you can simulate using Sigma Embedding on your local computer. The local web application (Parent application) is to be reused on a few of the other embedding QuickStarts as required. 
+**This QuickStart is foundational to all the other embedding QuickStarts.** 
+
+Additionally, it will demonstrate how to set up a local web application so that you can simulate using Sigma Embedding on your local computer. The local web application (Parent application) is to be reused on a few of the other embedding QuickStarts as required. 
 
 For those interested, there is a comprehensive whitepaper, [Embedded Analytics Solutions for Secure Embedding](https://www.sigmacomputing.com/white-papers/white-paper-embedded-analytics) 
 
  ### Target Audience
-Semi-technical users who will be aiding in the planning or implementation of Sigma with Embedding. No SQL or technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
+Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
 
 ### Prerequisites
 
@@ -44,27 +46,27 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
         <ul>
         <li>Express</li>
         <li>Node-supervisor</li>
-        <li>crypto (is now included with Node.js installation)</li>
+        <li>crypto (included with Node.js installation)</li>
         </ul>
     </li>
 </ul>
 
 ### What You’ll Learn
-We will cover the types of Embedding Sigma provides and how to setup a local environment to simulate an Application that we can embed into.
+We will cover the types of embedding Sigma provides, and how to setup a local environment to simulate an application that we can embed into.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> This QuickStart series demonstrates methods using Node.js, JavaScript and HTML but Sigma also provides an "Embed Sandbox" built directly into Sigma's interface. This allows you to quickly test configurations / parameters / theming without leaving Sigma. It is good to have options!
+<strong>IMPORTANT:</strong><br> This QuickStart series demonstrates methods using Node.js, JavaScript and HTML, but Sigma also provides an "Embed Sandbox" built directly into Sigma's interface. This allows developers to quickly test configurations / parameters / theming, without leaving Sigma. It is good to have options!
 </aside>
 
 ### What You’ll Build
-We will install, configure and verify a local Node.js web server to be used in later Embedding Series QuickStarts.
+We will install, configure and verify a local Node.js web server to be used in later embedding series QuickStarts.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> There are many programming languages and libraries you can use to plaintext a client and server-side application. Node.js is the one we will be using today. The plaintext today will also be highly simplified and commented to assist in your learning.
+<strong>NOTE:</strong><br> There are many programming languages and libraries you can use to develop a server-side application. Node.js is the one we will be using today. The sample code provided is simplified and commented to assist in your learning.
 </aside>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We will refer to the Node.js Express web application as the “Parent” application going forward. This is analogous to a customer’s application that Sigma would be embedded into. 
+<strong>IMPORTANT:</strong><br> We will refer to the Node.js Express web application as the “Parent” application going forward. This is analogous to a customer’s application that Sigma is be embedded into. 
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -76,11 +78,11 @@ There are two types of embedding in Sigma: **Secure** and **Public**.
 ### **Secure Embedding**
 **Secure** is the most common type of Sigma embedding. 
 
-This is used when a company has a web portal that they wish to embed Sigma content directly into while retaining security, tenancy and a tailored user experience.
+This is used when a company has a web portal that they wish to embed Sigma content directly into while retaining security, tenancy, and a tailored user experience.
  
 For example, a company may have an internal web site that employees have to log onto with single-sign-on where they want to provide a dashboard that only shows data filtered for each employee’s region. 
 
-Another common use case is where a company has a web portal that their customers or partners can securely log onto to see data filtered for their own organization.
+Another common use case is where a company has a web portal that their customers or partners can securely log onto to see data filtered for their own organization. 
  
 Sigma also allows you to extend or create custom Secure embed experiences as well.
 
@@ -88,28 +90,43 @@ These are the high-level use cases of Secure embedding that are most commonly se
 
 ![Alt text](assets/usecases1.png)
 
-Sigma also supports Secure embedding in other 3rd party applications like Salesforce or Streamlit:
+Sigma also supports **Secure** embedding in other 3rd party applications like Salesforce or Streamlit:
 
 [QuickStart: Embedding 5: Application Embedding into SalesForce.](https://quickstarts.sigmacomputing.com/guide/embedding_5_application_embedding_into_salesforce/index.html?index=..%2F..index#0)
 
 [QuickStart: Embedding Sigma in Streamlit Applications.](https://quickstarts.sigmacomputing.com/guide/embedding_9_embedding_into_streamlit/index.html?index=..%2F..index#0)
  
 ### **Public Embedding**
-The simplest use case we provide is called Public embedding. **Customers use this when security is not required,** but there is a need to embed Sigma content. 
+The simplest use case we provide is called **Public** embedding. 
 
-For example, embedding some KPIs or charts on a company’s public website that anyone can see. We will demonstrate Public embedding in a separate QuickStart:[Embedding 2: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html) 
+**Customers use this when security is not required,** but there is a need to embed Sigma content. 
 
-### **A word about iframes**
-Sigma uses iframe(s) to embed Sigma content. An iframe is the type of HTML element that renders the embed in the browser. To tell the iframe what to render, you will need to pass it an embed URL. 
+For example, embedding some KPIs or charts on a company’s public website that anyone can see. 
 
-Embed URL creation affords a great deal of flexibility for customization by passing runtime parameters to render the embed, but also to pass parameters between the Parent application and the iframe, and back. Sigma provides a built-in JavaScript event "listener" in support of this along with allowing customer created parameters. This is covered in the [QuickStart: Embedding 6: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_6_actions_events/index.html?index=..%2F..index#1)
+We demonstrate Public embedding in a separate [QuickStart: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html) 
+
+### **Interactivity**
+
+Sigma uses iframe(s) to embed Sigma content. An iframes are HTML elements that renders external content (in this case, a Sigma embed) in a browser. 
+
+To tell the iframe what to render, you will need to pass it a URL. 
+
+Sigma embed URLs offer a great deal of flexibility for customization by passing runtime parameters to render the embed. 
+
+The parent application make use of standard and custom parameters passing (think "variables") at user login.
 
 This parameter passing is an **"easy-to-implement"** method for developers, but also provides for richer end user experience through deep interactivity of all the page/iframe elements.
-There is a QuickStart that covers parameters and all the available options: [How To: Leverage Parameters and User-Attributes with Sigma Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
-Lastly, iFrames can be made "responsive" to optimize the end-users browser experience: 
+There is a QuickStart that covers parameters and all the available options: [QuickStart: Leverage Parameters and User-Attributes with Sigma Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
+Once a user is logged in, the parent application and embed can interact by passing parameters to each other.
+
+Sigma provides a built-in JavaScript event "listener" in support of this. 
+
+This is covered in the [QuickStart: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_6_actions_events/index.html?index=..%2F..index#1)
+
+Lastly, iframes can be made "responsive" to optimize the end-users browser experience: 
 [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -125,9 +142,9 @@ We will use the popular framework [Node.js. ](https://nodejs.org/en)
 
 Node.js (Node) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on a JavaScript engine and executes JavaScript plaintext outside a web browser, which was designed to build scalable network applications.
  
-Node is going to allow us to set up a local web server that will make a web page available that we will use to securely embed our Sigma content. 
+With Node, we are able to set up a local web server that will make a web page available, that we will use to securely embed our Sigma content. 
 
-### Create Top Level Project Folder
+### **Create Top Level Project Folder**
 Create a new folder on your local system where we will store individual project folders as we progress through the QuickStart embedding series. 
 
 Each QuickStart in the series should end up with it's own folder. 
@@ -136,11 +153,13 @@ Each folder will have it's own version of the required code and dependencies.
 
 There may be some overlap as we progress through each QuickStart, but that is to be expected as some people may not do every QuickStart in the embedded series.
 
-It is a development best practice to isolate project and their respective dependencies. 
+<aside class="negative">
+<strong>NOTE:</strong><br> It is a development best practice to isolate project and their respective dependencies.
+</aside>
 
 We created a top level folder called `sigma_embedding` on our systems's desktop, for ease of access. 
 
-### Node.js Installation
+### **Node.js Installation**
 
 [Download and install Node.js from here:](https://Nodejs.org/en/download/)
 
@@ -148,15 +167,15 @@ Use the LTS (long term supported) version appropriate for your operating system.
 
 Run the installer selecting all the defaults. **We do not need to specify our project folder for this installation.**
 
-This will install both Node and the Node package manager (which manages optional Node components, which add more functionality). 
+This will install both `Node` and the `Node package manager` (which manages optional Node components, which add more functionality). 
 
-The package manager is abbreviated to “npm” when running commands.
+The package manager is abbreviated to `npm` when running commands.
 
 You can verify your installation using Terminal:
 
 `Right click` on the `sigma_embedding` folder and select `New terminal at folder`:
 
-<img src="assets/applicationsetup2.png" width="500"/>
+<img src="assets/applicationsetup2.png" width="400"/>
 
 **Run the command:**
 ```code
@@ -165,15 +184,15 @@ node -v
 
 This should return the version number as below:
 
-<img src="assets/applicationsetup3.png" width="400"/>
+<img src="assets/applicationsetup3.png" width="6`00"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
-Exit Terminal.
+`Exit` Terminal.
 
-### Prerequisite Embed Project Files
+### **Prerequisite Embed Project Files**
 Download and unzip the project file (for this QuickStart) to the folder called `sigma_embedding`.
 
 [Download sigma_embed_prerequisites.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_prerequisites.zip)
@@ -181,13 +200,13 @@ Download and unzip the project file (for this QuickStart) to the folder called `
 The zip file contains these two files:
 
  <ul>
-      <li><strong>index.html:</strong> the simplified HTML web page that contains the iframe we are embedding into</li>
-      <li><strong>embed-api.js:</strong> a JavaScript routine that sets up the services required and allows configuration of the Sigma options. This is referred to as the server-side Embed API, and is created by the customer and stored server-side.</li>
+      <li><strong>index.html:</strong> the simplified HTML web page that contains the iframe we are embedding into.</li>
+      <li><strong>embed-api.js:</strong> a JavaScript routine that sets up the services required and allows configuration of the Sigma options. This is referred to as the server-side embed API (embed API), and is created by the customer, and stored server-side.</li>
 </ul>
 
 <img src="assets/applicationsetup1.png" width="400"/>
 
-### Install Node Dependencies Locally
+### **Install Node Dependencies Locally**
 
 We now need to initialize Node and install two Node packages inside our local project folder.
 
@@ -213,7 +232,7 @@ For this reason will just install Node and packages for any embed QuickStart fol
 <strong>IMPORTANT:</strong><br> Make sure your terminal is using the correct directory when running the next three command. Failure to do so will result in unexpected behavior later.
 </aside>
 
-<img src="assets/pr1.png" width="400"/>
+<img src="assets/pr1.png" width="500"/>
 
 **Run the command to initialize Node locally:**
 ```code
@@ -226,9 +245,11 @@ Npm will prompt you:
 
 Keep pressing `Enter` to accept the defaults till you get to `Is this OK? (yes)` and hit `Enter` one last time:
 
-<img src="assets/pr2.png" width="400"/>
+<img src="assets/pr2.png" width="600"/>
 
-This creates a new file in our project folder called `package.json`. This file allows `npm` to correctly manage the dependencies for your project. This is very useful for project with a large number or different versions of dependencies. We will not need to edit this file at this time.
+This creates a new file in our project folder called `package.json`. This file allows `npm` to correctly manage the dependencies for your project. This is very useful for project with a large number or different versions of dependencies. 
+
+We will not need to edit this file at this time.
 
 **Run the command to install the Express web-server:**
 ```code
@@ -238,11 +259,17 @@ npm install express
 <img src="assets/applicationsetup5.png" width="700"/>
 
 ### Node Supervisor
-Node-supervisor is a package that runs your program, and watches for plaintext changes, so you can have hot-plaintext reloading-ish behavior. This means that you don't need to  worry about restarting your application (in this case, Node) each time you make a change to the server.js file.
+Node-supervisor is a package that runs our program, and watches for plaintext changes, so we can have hot-reloading-ish behavior. 
 
-A browser refresh will still be required to see the changes on the webpage. 
+This means that we don't need to  worry about restarting your application (in this case, Node) each time we make a change to the server.js file.
 
-While this Package is technically not required, it is a real time-saver when making quick code changes during the QuickStart embed series.
+**A browser refresh will still be required to see the changes on the webpage. **
+
+<aside class="negative">
+<strong>NOTE:</strong><br> There is an extension for Chrome called "LiveReload" which will also handle the browser refresh for you. We leave that up to the user to decide if they want to install and enable any browser extension.
+</aside>
+
+While the supoervisor package is not technically required, it is a real time-saver when making quick code changes during the QuickStart embed series.
 
 **Run the command:**
 ```code
@@ -254,7 +281,7 @@ npm install supervisor
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## Bring up Express
+## Setup the Webserver
 
 You are now ready to test Node using your server.js file. 
 
@@ -274,7 +301,7 @@ You should see the output as shown below indicating that the Express Web server 
 
 By opening `embed-api.js` in a text editor, we can see that there are commands to require Express be loaded when Node is started. 
 
-Recall that our Node command requested Supervisor to also read embed-api.js.js when it starts Node, all inside our local folder we created called "sigma_embed_prerequisites".
+Recall that our Node command requested Supervisor to also read embed-api.js when it starts Node, all inside our local folder we created called "sigma_embed_prerequisites".
 
 We also set the running port to be 3000:
 
@@ -323,9 +350,13 @@ Right-click on the `index.html` file and open it in a text editor:
 
 <img src="assets/applicationsetup9.png" width="600"/>
 
-Add and new line and some text just below the `Sigma Embed Prerequisite Complete!` line. Save the change and refresh your browser. You should see the change:
+Add and new line and some text just below the `Sigma Embed Prerequisite Complete!` line. 
 
-<img src="assets/applicationsetup10.png" width="500"/>
+Save the change and refresh your browser. 
+
+You should see the change:
+
+<img src="assets/applicationsetup10.png" width="800"/>
 
 If you do, you are ready to progress to the next QuickStart in this series. which will extend this framework.
 
