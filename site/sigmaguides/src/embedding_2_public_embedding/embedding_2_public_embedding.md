@@ -21,9 +21,13 @@ Public embedding allows you to present content outside of Sigma, in a controlled
 
 This is a good option if you want to display an embed on a public facing website (for example). 
 
-Access to a public embed will not allow someone to access your data deeper in Sigma without a Sigma account for your organization and proper permissions. 
+Access to a public embed will not allow someone to access yourSigma account. 
 
 There is support for embedding a Sigma workbook, page or single element.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We will move a little faster in some steps as hey have already been covered in the prerequisite QuickStart on embedding.
+</aside>
 
  ### Target Audience
 Semi-technical users who will be aiding in the planning or implementation of Sigma with Embedding. No SQL or technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
@@ -45,7 +49,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 ### What You’ll Learn
-The exercises in this QuickStart will discuss and walk you through the steps to embed Sigma content in a demonstration web application without security (ie: Public).
+The exercises in this QuickStart will discuss, and demonstrate the steps to embed Sigma content in a web application, without security (ie: Public).
 
 ### What You’ll Build
 We will embed a Sigma dashboard, inside a html page, served by a Node web application. The final result will look like this:
@@ -70,7 +74,7 @@ Of course, customers may just embed the iframe anywhere, as there is no security
 
 This generalized workflow provides a visual overview of the steps:
 
-![Alt text](assets/public1.png)
+<img src="assets/public1.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -78,7 +82,9 @@ This generalized workflow provides a visual overview of the steps:
 ## Content Preparation
 Duration: 5
 
-Log into Sigma and navigate to a workbook you want to embed. It doesn't really matter what you choose and once you have completed your first embed, this portion of the process is very straightforward regardless of embedding an entire workbook, page or single element.
+Log into Sigma and navigate to a workbook you want to embed. 
+
+It doesn't really matter what you choose and once you have completed your first embed, this portion of the process is very straightforward regardless of embedding an entire workbook, page or single element.
 
 We will use one of the pre-built templates that are included in a Sigma trial, but the steps are the same regardless of what you choose to work with.
 
@@ -100,7 +106,7 @@ Click the `Save As` button and give your workbook any name you like:
 
 We called our workbook `Public Embed Dashboard` and clicked the `Save` button. The workbook is now `Published`. 
 
-We could continue to make edits, but they will not show up later in the Public embed until they are again published.
+We could continue to make edits, but they will not show up later in the public embed until they are again published.
 
 Click the `caret (▼)` icon button to the right of the Workbook title in the header and select `Embedding`:
 
@@ -110,7 +116,7 @@ This modal displays all available embeds.
 
 Select the `Public (0)` tab and then select `Profit Planning Tool`. 
 
-This will allow us to only display the Profit Planning Page in our embed.
+This will allow us to only display the `Profit Planning Tool` page only, in our embed.
 
 <img src="assets/public7.png" width="500"/>
 
@@ -122,7 +128,7 @@ You will be presented with the required links to embed in your application. Copy
 
 <img src="assets/public7a.png" width="600"/>
 
-Now that we have the `embed URL,` we can simple paste it into the URL address of  a browser, hit enter and we can see the `Profit Panning` Dashboard:
+Now that we have the `embed URL,` we can simple paste it into the URL address of  a browser, hit enter and we can see the `Profit Panning Tool` dashboard:
 
 <img src="assets/public7b.png" width="800"/>
 
@@ -134,15 +140,17 @@ Duration: 10
 
 Browsing directly to the dashboard is useful, but what if we want to use the public Sigma embed into our own publicly available application framework?
 
-We will now reuse the Node-based framework we setup in the [Embedded Prerequisites QuickStart,](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0), but with a few more configuration details in them to support the Public embed. 
+We will now reuse the Node-based framework we setup in the [Embedded Prerequisites QuickStart,](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) but with a few more configuration details in them to support the public embed. 
 
 ### Download the Project Files
-Let's not modify our QuickStart prerequisite files, in case we want them in the future. 
+Let's not modify our QuickStart prerequisite files in case we want them in the future. 
 
-Instead, download and unzip the project files for this QuickStart to a suitable location of your choice that is easily accessible on your system. We placed it in a folder on the computer's desktop called `sigma_embedding`. 
+Instead, download and unzip the project files for this QuickStart to our folder on the computer's desktop called `sigma_embedding`. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
+<strong>NOTE:</strong><br> This folder should already exist if you completed the prerequisites QuickStart. 
+
+If not, manually create it.
 </aside>
 
 [The download is here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_public_embed.zip) 
@@ -151,7 +159,7 @@ Like in the prerequisite QuickStart, the zip file contains two files:
  
  <ul>
       <li><strong>index.html: </strong> the web page that contains the iframe we are embedding into</li>
-      <li><strong>embed-api.js:</strong>  a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the server-side embed API.</li>
+      <li><strong>embed-api.js:</strong>  a JavaScript routine that sets up the services required and configuration of the Sigma options. We refer to this file as the server-side embed API (embed API).</li>
 </ul>
 
 ### Install Node Packages for Folder
@@ -171,7 +179,7 @@ npm init
 
 As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
 
-and...
+Now...
 
 **Run the command:**
 ```code
@@ -214,13 +222,13 @@ supervisor embed-api.js
 ### Test your Web Application
 Open your browser and navigate to `http://localhost:3000`. 
 
-Notice that we only show the Profit Planning Tool since we decided to embed only that.  
+Notice that we only show the Profit Planning Tool, since we decided to embed only that.  
 
 You should see the webpage with the title and the iframe embed below as show:
 
 <img src="assets/public11.png" width="800"/>
 
-Once the embed is in place and working, changing it is as easy as updating the content in Sigma and Publishing it.
+Once the embed is in place and working, changing it is as easy as updating the content in Sigma and `Publishing` it.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Any changes you make to embed-api.js after starting the Express server via supervisor will be automatically available but the browser page will need to be refreshed to reflect your code change.
@@ -231,7 +239,7 @@ Duration: 5
  <ul>
       <li>Public embeds are available to anyone with the embed url. </li><br><br>
       <li>Users will be able to input values into any controls you make visible on the workbook. </li><br><br>
-      <li>Access to a public embed will not allow anyone to access additional data in Sigma without a Sigma account for your organization and proper on the workbook. 
+      <li>Access to a public embed will not allow anyone to access additional data in Sigma without a Sigma account for your organization and proper permissions. 
       </li><br><br>
 </ul>
 
@@ -243,7 +251,7 @@ Duration: 5
 
 In this QuickStart we learned how to how to embed Sigma into a Public facing website. 
 
-<button>[Click to move to the next QuickStart in the Embedding Series](https://quickstarts.sigmacomputing.com/guide/embedding_3_secure_embedding/index.html)</button>
+For those interested in embedding with security, proceed to [QuickStart: Embedding 3: Secure Embedding ](https://quickstarts.sigmacomputing.com/guide/embedding_3_secure_embedding/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 

@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_3_application_embedding
+id: embedding_3_secure_embedding
 summary: How to securely embed Sigma content in an external Application.
 categories: Embedding
 environments: web
