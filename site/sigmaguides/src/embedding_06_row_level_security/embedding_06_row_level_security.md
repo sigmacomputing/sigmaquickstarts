@@ -42,7 +42,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
         <ul>
         <li>Express</li>
         <li>Node-supervisor</li>
-        <li>crypto (is now included with Node.js installation)</li>
+        <li>crypto (is included with Node.js installation)</li>
         </ul>
     </li>
 </ul>
@@ -87,7 +87,7 @@ Duration: 20
 
 Let's build an example based on the previous QuickStart, Embedding 4: Application Row Level Security. It is ok to build your own if you are familiar with Sigma.
 
-Download the Lab file called [sigma_application_embed_RLS.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed_RLS.zip). 
+Click to download the sample Embed API file called [sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_secure_embed.zip)
 
 Unzip the file and use Terminal to launch the Node web server.
 
@@ -108,14 +108,14 @@ Rename the new Dataset to `Application Embedding RLS`.
 
 Click on the Worksheet tab of the new dataset and ensure that they are in Edit mode.
 
-Add an `new Column` and rename it to `ua_Region`.
+Add an `new Column` and rename it to `Region`.
 
 Use this formula for column:
 ```plaintext
 Contains(CurrentUserAttributeText("Region"), [Store Region])
 ```
 
-On the `left sidebar`, add a `filter`. Filter against the column `ua_Region = True`.
+On the `left sidebar`, add a `filter`. Filter against the column `Region = True`.
 
 It is ok that you don't see data here.
 
@@ -123,53 +123,54 @@ It is ok that you don't see data here.
 
 **At Runtime (page refresh in this case):**
  <ul>
-      <li>The new column `ua_region` will be evaluated against the Store Region column for each row</li>
-      <li>The filter will only show rows where there is a match for ua_Region and Store Region</li>
+      <li>The new column `Region` will be evaluated against the Store Region column for each row</li>
+      <li>The filter will only show rows where there is a match for Region and Store Region</li>
       </ul>
 
 `Open` the Workbook `Application Embedding` and add a `new Page` called `Application RLS`
 
 Add a new table to the page, based on the Dataset you just created `"Application Embedding RLS"` and `Publish` the changes. 
 
-`Open server.js` from the downloaded files. 
+`Open embed-api.js` from the downloaded files. 
+
+Add the new UA in section six as:
+
+<img src="assets/rls2.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We have hardcoded the value to equal “East”. This value would normally be provided by the Parent application at runtime. 
 </aside>
-<img src="assets/rls2.png" width="800"/>
+
 
 You are now ready to start the Node.js Express web server. Use Terminal and navigate to the Public folder where you just modified the two files. 
 
 **In Terminal run the command:**
 ```plaintext
-supervisor server.js
+supervisor embed-api.js
 ```
 
 Browse to `http://localhost:3000`. You should only see rows from the East Region. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We did not hide the ua_column so that you could see its value but normally you would hide this column since the user does need to see it. Its value can only be True or False so there is no risk of data exposure anyway; users just won’t get any value from seeing it. 
-</aside>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> The syntax for the user attribute param, as this gives you trouble if your UA is not specifically called "Region", is:
-searchParams += &:ua_${attribute_name}=${attribute_value}
+<strong>NOTE:</strong><br> We did not hide the column, so that you could see its value, but normally you would hide this column since the user does need to see it. Its value can only be True or False so there is no risk of data exposure anyway; users just won’t get any value from seeing it. 
 </aside>
 
 ![Alt text](assets/rls3.png)
 
-Back in your server.js file, `change the ua_Region to East,West`. `Save` the file. 
+Back in your embed-api.js file, `change the Region to East,West`. `Save` the file. 
 
-Sending comma separated values via embed UA param requires a step for updating the column formula in the underlying Sigma RLS Dataset for the ua_Region column. The equality formula needs to be replaced with a Contains(), for ex: Contains(CurrentUserAttributeText("Darien_Region"), [Store Region])
+Sending comma separated values via embed UA parameters requires a step for updating the column formula in the underlying Sigma RLS Dataset for the Region column. The equality formula needs to be replaced with a Contains(). 
+
+For example, Contains(CurrentUserAttributeText("Darien_Region"), [Store Region]).
 
 and `refresh the browser` page. You should see the Region has been updated to reflect the new values. 
 
-You can use the Column Details feature to see that there East and West are present in the data now. 
+You can use the `Column Details` feature to see that there East and West are present in the data now. 
 
 ![Alt text](assets/rls4.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Be sure to leave no space after the commas as the server.js code does not provide handling for that and your browser page will not load as expected. This could be handled by the Parent application API but we want to keep it simple for this exercise.
+<strong>NOTE:</strong><br> Be sure to leave no space after the commas as the embed-api.js code does not provide handling for that and your browser page will not load as expected. This could be handled by the Parent application API but we want to keep it simple for this exercise.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -227,7 +228,7 @@ This SQL code will get all columns from the table we have used previously but li
 <strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, in the select clause or where clause.
 </aside>
 
-Set to value for ua_region in server.js to `East`.
+Set to value for Region in embed-api.js to `East`.
 
 `Click Run.` You should only see rows from Store Region=East (since that is the UA Default). Click `Done` and `Publish`.
 
@@ -241,14 +242,14 @@ Refresh your browser to see the embed (make sure you are looking at the right Wo
 <strong>NOTE:</strong><br> Using this workflow, the Workbook Page is using custom SQL but there is no Dataset also created. You could also have created a new Dataset based on custom SQL following the workflows we have done previously. In this case, you do not need to add Permissions for the Finance Teams to view this Dataset because there is no Dataset.
 </aside>
 
-Change server.js to `West` and `save`. 
+Change embed-api.js to `West` and `save`. 
 
 Check your embed in the browser. You should now see Region = West. 
 
 ![Alt text](assets/rls8.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The actual syntax used in server.js or the customer SQL may vary when attempting to pass more than one value for region in a comma delimited list. This will be dependent on the data source (ie: Snowflake, BigQuery etcetera) and how it interprets the request syntax.
+<strong>NOTE:</strong><br> The actual syntax used in embed-api.js or the customer SQL may vary when attempting to pass more than one value for region in a comma delimited list. This will be dependent on the data source (ie: Snowflake, BigQuery etcetera) and how it interprets the request syntax.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -284,7 +285,7 @@ Make a duplicate of the dataset and rename it to `Embedding RLS - SuperUser Step
 
 <img src="assets/rls9.png" width="400"/>
 
-Place the dataset in `Edit` mode, click the `ua_Region` column and replace it's existing formula with this one:
+Place the dataset in `Edit` mode, click the `Region` column and replace it's existing formula with this one:
 
 ```code
 If(CurrentUserAttributeText("Region") = "All", True, If(CurrentUserAttributeText("Region") = [Store Region], True, False))
@@ -320,7 +321,7 @@ If this condition is true, the expression evaluates to True.
 If the condition is false, the expression evaluates to False.
 <img src="assets/horizonalline.png" width="800"/>
 
-Hit enter. All the cell values under `ua_Region` should be `True` as the "current user" is an Administrator:
+Hit enter. All the cell values under `_Region` should be `True` as the "current user" is an Administrator:
 
 <img src="assets/rls12.png" width="600"/>
 
@@ -374,7 +375,7 @@ Paste the following code in the query window:
 ```code
 SELECT 
     current_role() as current_role,
-    '{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region,
+    '{{#raw system::CurrentUserAttributeText::Region}}' as Region,
     *
 
 FROM
@@ -400,7 +401,7 @@ Here is a line-by-line breakdown for those interested:
 ```code
 SELECT 
     current_role() as current_role,
-    '{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region,
+    '{{#raw system::CurrentUserAttributeText::Region}}' as Region,
     *
 ```
 
@@ -410,8 +411,8 @@ This is the command used to specify which columns to retrieve from the database.
 **current_role() as current_role:**<br>
 This retrieves the current role of the user executing the query in Snowflake and aliases it as current_role.
 
-**'{{#raw system::CurrentUserAttributeText::Region}}' as ua_Region:**<br> 
-This is the Sigma user attribute (Region) gets replaced with a value at runtime, based on the logged on user. It is aliased as ua_Region. 
+**'{{#raw system::CurrentUserAttributeText::Region}}' as Region:**<br> 
+This is the Sigma user attribute (Region) gets replaced with a value at runtime, based on the logged on user. It is aliased as Region. 
     
 **The star (*):**<br> 
 This is used to select all remaining columns from the specified tables in the query.

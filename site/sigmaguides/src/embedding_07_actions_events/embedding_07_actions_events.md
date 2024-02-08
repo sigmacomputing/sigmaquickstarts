@@ -26,11 +26,17 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
+  <li>A working web server based on Node.js as demonstrated in the QuickStart: Embedding 01: Prerequisites.</li>
   <li>Some content to embed. You can embed a Workbook, Table or Visualization.</li>
 </ul>
 
-<button>[Required QuickStart download](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_eventsv2.zip)</button> The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. **There are three folders; two for Actions and one for Events.** This will minimize the effort as you go through the QuickStart adjusting the files for the different exercises. They are named to be clear which section they are to be used. 
+<button>[Required QuickStart download](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_eventsv2.zip)</button> 
+
+The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. 
+
+**There are three folders; two for Actions and one for Events.** T
+
+his will minimize the effort as you go through the QuickStart adjusting the files for the different exercises. They are named to be clear which section they are to be used. 
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 

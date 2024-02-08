@@ -135,12 +135,12 @@ Let's change the name of the new Workspace to something more descriptive. We wil
 <strong>IMPORTANT:</strong><br> Creating a team with all of your embedded customers means that you don’t have to give explicit access to the “Curated Dashboard” Workspace every time, which is less of a headache for onboarding. It’s like a catch all.
 </aside>
 
-Once you’ve done this, server.js (our server-side API from QuickStart Embedding 3: Application Embedding) needs to be updated to pass the new team value:
+Once you’ve done this, embed-api.js (our server-side API from [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)) needs to be updated to pass the new team value:
 
 <img src="assets/fa7.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We reference server.js only as an example of how the code looks, based on our example code in previous QuickStarts. It is assumed that your code may be different, but the value passed as a parameter will still need to be the same.
+<strong>NOTE:</strong><br> We reference embed-api.js only as an example of how the code looks, based on our example code in previous QuickStarts. It is assumed that your code may be different, but the value passed as a parameter will still need to be the same.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -185,7 +185,7 @@ Select `Profit Planning Tool` for only the Profit Planning Tool page and then se
 
 <img src="assets/di5.png" width="600"/>
 
-In the node project folder, open `server.js` and replace the value for `EMBED PATH` with this new value.
+In the node project folder, open `embed-api.js` and replace the value for `EMBED PATH` with this new value.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from "Administration > "APIs & Embed Secrets".
@@ -195,13 +195,13 @@ In the node project folder, open `server.js` and replace the value for `EMBED PA
 
 Let's pass a new embed user into Sigma to demonstrate this works as expected.
 
-Edit server.js to change the embed user and userID to use `common_client@sigmacomputing.com`. 
+Edit embed-api.js to change the embed user and userID to use `common_client@sigmacomputing.com`. 
 
 Set the values as displayed in image below, specifically for `&email` and `&external_user_id`, then save the changes:
 
 <img src="assets/fa13.png" width="800"/>
 
-Once server.js is setup, make sure that node's express server is running:
+Once embed-api.js is setup, make sure that node's express server is running:
 
 <img src="assets/di6.png" width="800"/>
 
@@ -217,7 +217,7 @@ We can see some data, but are not allowed to explore it. We do not see the Sigma
 
 In Sigma, navigate back to `Administration` > `Teams` and click into the `all_clients_team`. 
 
-The embed user we just used (via the server.js api) was added to the team automatically. 
+The embed user we just used (via the embed-api.js api) was added to the team automatically. 
 
 <img src="assets/fa12.png" width="800"/>
 
@@ -287,7 +287,7 @@ Share the Workbook withe `CustomerA` and `Explore` rights:
 
 <img src="assets/fa20.png" width="800"/>
 
-Make the following four changes to server.js:
+Make the following four changes to embed-api.js:
 
 <img src="assets/fa19.png" width="800"/>
 

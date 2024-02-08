@@ -56,7 +56,7 @@ Developers can learn how to utilize required and optional parameters, as well as
 ## Required Parameters
 Duration: 20
 
-This section is provided for completeness. While it's assumed that you are already familiar with these parameters—having completed the [Embedding 3: Application Embedding QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0), we have included them here for reference. 
+This section is provided for completeness. While it's assumed that you are already familiar with these parameters, having completed the [Embedding 3: Application Embedding QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0), we have included them here for reference. 
 
 For each required parameter, an example based on Node.js code is provided
 
@@ -487,7 +487,7 @@ Sample Code:
 searchParams += '&:loading_bg=FF0000';
 ```
 
-If we create an error (remove the API secret from server.js, save the change, and reload the browser), we see a red background:
+If we create an error (remove the API secret from embed-api.js, save the change, and reload the browser), we see a red background:
 
 <img src="assets/pua20.png" width="500"/>
 
@@ -502,7 +502,7 @@ Sample Code:
 searchParams += '&:loading_text=FFFFFF';
 ```
 
-If we create an error (remove the API secret from server.js, save the change, and reload the browser), we see a white font:
+If we create an error (remove the API secret from embed-api.js, save the change, and reload the browser), we see a white font:
 
 <img src="assets/pua21.png" width="500"/>
 
@@ -574,11 +574,11 @@ For example, we set the theme in this Workbook to be `Dark`:
 
 <img src="assets/pua28.png" width="500"/><br><br>
 
-When we reload the embed page, the embed has adopted the `Dark` theme because we did not specify one in server.js.
+When we reload the embed page, the embed has adopted the `Dark` theme because we did not specify one in embed-api.js.
 
 <img src="assets/pua29.png" width="500"/>
 
-Specify the theme to be `Light` in server.js, save the change and reload the browser page.
+Specify the theme to be `Light` in embed-api.js, save the change and reload the browser page.
 
 Now the embed has adopted the `Light` theme, even though the `Dark` theme was set in the Workbook.
 
@@ -647,7 +647,7 @@ Sample Code:
 searchParams += '&Store-Region=East';
 ```
 
-After updating server.js and saving the changes, reloading the embed page results in the table showing only stores in the east store region:
+After updating embed-api.js and saving the changes, reloading the embed page results in the table showing only stores in the east store region:
 
 <img src="assets/pua32.png" width="800"/>
 
