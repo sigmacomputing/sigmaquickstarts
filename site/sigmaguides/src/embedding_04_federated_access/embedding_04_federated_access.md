@@ -1,6 +1,6 @@
 git author: pballai
-id: 11_federated_access_with_sigma
-summary: embedding_11_federated_access_with_sigma
+id: embedding_04_federated_access
+summary: embedding_04_federated_access
 categories: Embedding
 environments: web
 status: Published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-08-17
 
-# 11: Federated Access with Sigma Embedding
+# Embedding 04: Federated Access
 
 ## Overview 
 Duration: 5 
@@ -32,7 +32,7 @@ For further details on [using SSO with Sigma, click here.](https://help.sigmacom
 For details on [managing user and teams with SCIM, click here.](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
 
 
-In this QuickStart, we will use the local node.js application framework we created in [QuickStart: Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local node.js application framework we created in [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
  ### Target Audience
 Sigma Administrators and developers keen on understanding strategies for dictating what users can view and perform when Sigma is embedded within an application.
@@ -320,7 +320,8 @@ In this QuickStart, we learned how to use Sigma Teams and Workspaces to provide 
 There is information on related content you can also review:
 
 [Embedding QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding)<br>
-[Row Level Security QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
+
+[QuickStart: Embedding 06: Row Level Security.](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

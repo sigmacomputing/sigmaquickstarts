@@ -1,5 +1,5 @@
 author: pballai
-id: 06_embedding_actions_events
+id: embedding_07_actions_events
 summary: Sigma Embedding with Actions and Events
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-16
 
-# 06: Embedded Actions and Events
+# Embedding 07: Actions and Events
 
 ## Overview 
 Duration: 5 

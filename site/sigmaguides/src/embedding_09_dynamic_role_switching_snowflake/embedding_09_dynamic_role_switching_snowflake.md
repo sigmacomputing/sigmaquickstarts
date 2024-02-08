@@ -1,5 +1,5 @@
 author: pballai
-id: 07_embedding_dynamic_role_switching_snowflake 
+id: embedding_09_dynamic_role_switching_snowflake 
 summary: Using Sigma Dynamic Role Switching with Embeds
 categories: embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-15
 
-# 07: Embedded Dynamic Role Switching with Snowflake
+# Embedding 09: Dynamic Role Switching with Snowflake
 
 ## Overview 
 Duration: 5 

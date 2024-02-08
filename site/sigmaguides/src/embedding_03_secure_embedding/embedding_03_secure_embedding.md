@@ -1,5 +1,5 @@
 author: pballai
-id: 03_embedding_secure_embedding
+id: embedding_03_secure_access
 summary: How to securely embed Sigma content in an external Application.
 categories: Embedding
 environments: web
@@ -8,16 +8,16 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-05-18
 
-# 03: Secure Embedding
+# Embedding 03: Secure Access
 
 ## Overview 
 Duration: 5 
 
 This QuickStart introduces you to Sigma `Secure` embedding and demonstrates how to leverage it, to embed Sigma content in a external website.
  
-This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites,](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart assumes you have already taken the [QuickStart: Embedding 01: Prerequisites,](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
  
-Sigma supports embedding without any user security ([Public embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html?index=..%2F..index#0)) and Secure embedding, which as the name implies, implements a robust security framework. 
+Sigma supports embedding without any user security ([QuickStart: Embedding 02: Public Access,](https://quickstarts.sigmacomputing.com/guide/embedding_02_public_access/index.html?index=..%2F..index#0)) and Secure embedding, which as the name implies, implements a robust security framework. 
 
 Secure embedding is by far the most popular method Sigma customer use, as it works the Parent application’s authentication, to pass user-level permissions and more at runtime.
 
@@ -85,7 +85,7 @@ This embed URL is generated on the server side of your Parent application, acces
 
 When you create the embed API to generate your embed URL, you can specify parameters that define who the user is, what role they have (account type / team membership), what they will see, and how they can interact with your embedded content.
 
-There are many required and optional parameters available. This [QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0) details all of the available required and optional embed parameters.
+There are many required and optional parameters available. The [QuickStart: Embedding 05: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0) details all of the available required and optional embed parameters.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> If the user logging into the Parent application does not exist in Sigma, it will be created automatically in Sigma once authenticated by the Parent application. Sigma is relying on the Parent application authentication to determine user entitlements, along with account type / team membership in Sigma.
@@ -97,7 +97,7 @@ Of course, you can still have manually created Sigma users for internal use or o
 
 It is also very important to understand that **each embed API generated URL can only be used once,** and if modified externally and resent, will generate an error message in the browser. 
 
-A list of [common errors when embedding is in this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
+A list of [common errors when embedding is in this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
 
 The flowchart below provides a high-level overview of how **secure embedding** works for Sigma, step-by-step:
 
@@ -370,7 +370,7 @@ Download and unzip the project files into the folder on the computer's desktop c
 <strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
 </aside>
 
-[Click here to download sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_application_embed.zip)
+[Click here to download sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_secure_embed.zip)
 
 The zip file contains these two files:
 
@@ -380,7 +380,7 @@ The zip file contains these two files:
 
 ### Install Node Packages for Folder
 
-If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 1: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#2)
+If you haven't installed Node already, please do so by referring to section 3 of the [QQuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
 
 If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_secure_embed` folder that was created when we unzipped the download into the `sigma_embedding` folder.
 
@@ -407,7 +407,7 @@ This will give you an understanding of the minimum required parameters to pass t
 
 **Required Changes:**
 
-To see all the available required and options parameters, there is a [QuickStart: Leverage Parameters and User-Attributes with Sigma Embedding.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+To see all the available required and options parameters, there is a [QuickStart: Embedding 05: Parameters and User-Attributes.](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
 The items in section #3 of the the embed-api.js code needs to be changed, replacing the values for `EMBED_PATH`, `EMBED_SECRET` and `CLIENT_ID`.
 
@@ -565,7 +565,7 @@ Some customers just prefer to have a single copy of a workbook stored in a folde
 
 Workspaces are a great way to manage access, since all content stored within are permitted by the workspace permissions.
 
-A third method exists, that aligns with companies who wish to follow more common content promotion workflows (ie: DevOps). This is supported in Sigma and called [Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0).
+A third method exists, that aligns with companies who wish to follow more common content promotion workflows (ie: DevOps). This is supported in Sigma and called `Version Tagging` and is detailed in this [QuickStart: Embedding 08: Version Tagging.](https://quickstarts.sigmacomputing.com/guide/embedding_08_version_tagging/index.html?index=..%2F..index#0)
 
 For simplicity, we will just grant access to this workbook to the `Sales_People (Team)` with `Viewer` permission:
 
@@ -649,7 +649,7 @@ Notice the error?
 
 URL snooping and reuse is not possible.
 
-For more information on common error messages related to embedding, [please section 6 of this QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
+For more information on common error messages related to embedding, [please section 6 of this QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#5)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

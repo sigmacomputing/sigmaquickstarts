@@ -1,5 +1,5 @@
 author: pballai
-id: 02_embedding_public_embedding
+id: embedding_02_public_access
 summary: How to embed Sigma in Public websites with no security
 categories: Embedding
 environments: web
@@ -8,14 +8,14 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-15
 
-# 02: Public Embedding
+# Embedding 02: Public Access
 
 ## Overview 
 Duration: 5 
 
 This QuickStart introduces you to Sigma Public embedding and demonstrates how to embed Sigma content in a public (no user security) website. 
 
-This QuickStart assumes you have already taken the [QuickStart: Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart assumes you have already taken the [QuickStart: Embedding 01: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
  
 Public embedding allows you to present content outside of Sigma, in a controlled manner for public consumption. 
 
@@ -140,7 +140,7 @@ Duration: 10
 
 Browsing directly to the dashboard is useful, but what if we want to use the public Sigma embed into our own publicly available application framework?
 
-We will now reuse the Node-based framework we setup in the [Embedded Prerequisites QuickStart,](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) but with a few more configuration details in them to support the public embed. 
+We will now reuse the Node-based framework we setup in the [QuickStart: Embedding 01: Prerequisites,](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) but with a few more configuration details in them to support the public embed. 
 
 ### Download the Project Files
 Let's not modify our QuickStart prerequisite files in case we want them in the future. 
@@ -153,7 +153,7 @@ Instead, download and unzip the project files for this QuickStart to our folder 
 If not, manually create it.
 </aside>
 
-[The download is here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_public_embed.zip) 
+[The download is here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_public_embed.zip) 
 
 Like in the prerequisite QuickStart, the zip file contains two files:
  
@@ -164,7 +164,7 @@ Like in the prerequisite QuickStart, the zip file contains two files:
 
 ### Install Node Packages for Folder
 
-If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 1: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#2)
+If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
 
 If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_public_embed` folder. 
 
@@ -251,7 +251,7 @@ Duration: 5
 
 In this QuickStart we learned how to how to embed Sigma into a Public facing website. 
 
-For those interested in embedding with security, proceed to [QuickStart: Embedding 3: Secure Embedding ](https://quickstarts.sigmacomputing.com/guide/embedding_3_secure_embedding/index.html?index=..%2F..index#0)
+For those interested in embedding with security, proceed to [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 

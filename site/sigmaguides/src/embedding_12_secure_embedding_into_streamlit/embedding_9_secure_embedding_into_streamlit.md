@@ -1,6 +1,6 @@
 author: pballai
-id: 12_embedding_into_streamlit
-summary: embedding5_embedding_into_streamlit
+id: embedding_12_secure_embedding_into_streamlit
+summary: embedding_12_embedding_into_streamlit
 categories: Embedding
 environments: web
 status: Published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-07-18
 
-# 12: Embedding Sigma in Streamlit Applications
+# Embedding 12: Secure Embedding into Streamlit
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 

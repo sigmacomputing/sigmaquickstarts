@@ -1,5 +1,5 @@
 author: pballai
-id: 09_leverage_parameters_and_ua
+id: embedding_05_leverage_parameters_and_ua
 summary: embedding_9_leverage_parameters_and_ua
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-08-23
 
-# 09: Leverage Parameters and User-Attributes with Sigma Embedding
+# Embedding 05: Parameters and User-Attributes
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 

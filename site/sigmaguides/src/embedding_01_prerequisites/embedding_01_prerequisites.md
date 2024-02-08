@@ -1,5 +1,5 @@
 author: pballai
-id: 01_embedding_prerequisites
+id: embedding_01_prerequisites
 summary: Prerequisites for the Sigma Embedding Series of QuickStarts
 categories: Embedding
 environments: web
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-01-31
 
-# 01: Embedding Prerequisites
+# Embedding 01: Prerequisites
 
 ## Overview 
 Duration: 5 
@@ -92,9 +92,9 @@ These are the high-level use cases of Secure embedding that are most commonly se
 
 Sigma also supports **Secure** embedding in other 3rd party applications like Salesforce or Streamlit:
 
-[QuickStart: Embedding 5: Application Embedding into SalesForce.](https://quickstarts.sigmacomputing.com/guide/embedding_5_application_embedding_into_salesforce/index.html?index=..%2F..index#0)
+[QuickStart: Embedding 11: Embed into Salesforce.](https://quickstarts.sigmacomputing.com/guide/embedding_12_secure_embedding_into_streamlit/index.html?index=..%2F..index#0)
 
-[QuickStart: Embedding Sigma in Streamlit Applications.](https://quickstarts.sigmacomputing.com/guide/embedding_9_embedding_into_streamlit/index.html?index=..%2F..index#0)
+[QuickStart: Embedding 12: Secure Embedding into Streamlit.]()
  
 ### **Public Embedding**
 The simplest use case we provide is called **Public** embedding. 
@@ -103,7 +103,7 @@ The simplest use case we provide is called **Public** embedding.
 
 For example, embedding some KPIs or charts on a company’s public website that anyone can see. 
 
-We demonstrate Public embedding in a separate [QuickStart: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html) 
+We demonstrate Public embedding in a separate [QuickStart: Embedding 02: Public Access.](https://quickstarts.sigmacomputing.com/guide/embedding_02_public_access/index.html?index=..%2F..index#0) 
 
 ### **Interactivity**
 
@@ -117,13 +117,13 @@ The parent application make use of standard and custom parameters passing (think
 
 This parameter passing is an **"easy-to-implement"** method for developers, but also provides for richer end user experience through deep interactivity of all the page/iframe elements.
 
-There is a QuickStart that covers parameters and all the available options: [QuickStart: Leverage Parameters and User-Attributes with Sigma Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+There is a QuickStart that covers parameters and all the available options: [Embedding 05: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
 Once a user is logged in, the parent application and embed can interact by passing parameters to each other.
 
 Sigma provides a built-in JavaScript event "listener" in support of this. 
 
-This is covered in the [QuickStart: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_6_actions_events/index.html?index=..%2F..index#1)
+This is covered in the [Embedding 07: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_07_actions_events/index.html?index=..%2F..index#0)
 
 Lastly, iframes can be made "responsive" to optimize the end-users browser experience: 
 [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
@@ -195,7 +195,7 @@ This should return the version number as below:
 ### **Prerequisite Embed Project Files**
 Download and unzip the project file (for this QuickStart) to the folder called `sigma_embedding`.
 
-[Download sigma_embed_prerequisites.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_prerequisites.zip)
+[Download sigma_embed_prerequisites.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_embed_prerequisites.zip)
 
 The zip file contains these two files:
 
@@ -368,11 +368,11 @@ Duration: 5
 
 We covered the types of embedding Sigma provides, common use cases, and how to setup a local environment to simulate an application that we can embed into.
 
-For those interested in embedding without security (ie: Public embedding), proceed to [QuickStart: Embedding 2: Public Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_2_public_embedding/index.html?index=..%2F..index#0)
+For those interested in embedding without security (ie: Public embedding), proceed to [QuickStart: Embedding 02: Public Access.](https://quickstarts.sigmacomputing.com/guide/embedding_02_public_access/index.html?index=..%2F..index#0)
 
-If you are only interested in the Secure method, you can skip `Embedding 2: Public Embedding`.
+If you are only interested in the Secure method, you can skip `Embedding 02: Public Access`.
 
-For those interested in embedding with security, proceed to [QuickStart: Embedding 3: Secure Embedding ](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+For those interested in embedding with security, proceed to [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
                                                                   
 **Additional Resource Links**

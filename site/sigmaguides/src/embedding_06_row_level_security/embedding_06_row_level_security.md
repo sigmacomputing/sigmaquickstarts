@@ -1,5 +1,5 @@
 author: pballai
-id: 04_embedding_row_level_security
+id: embedding_06_row_level_security
 summary: Application Embedding with Row Level Security using User Attributes
 categories: Embedding
 environments: web
@@ -8,11 +8,10 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-01-12
 
-# 04: Embedded Application Row Level Security
+# Embedding 06: Row Level Security
 
 ## Overview 
 Duration: 5 
-
 
 This QuickStart introduces you to Sigma embedding using Row-Level Security **(RLS)** to personalize / limit the data exposed to a user based on values passed to Sigma at runtime. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html) so that you have a sample environment to complete the tasks in this QuickStart.
 
