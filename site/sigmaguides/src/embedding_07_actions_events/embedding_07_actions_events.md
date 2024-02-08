@@ -104,7 +104,7 @@ Using Sigma. `create the Embed URL` for this Workbook page and `save it off to a
 
 We will have to also share this Workbook with a Team for the embed to work
 
-Open the server.js file subfolder called `sigma_embed_actions` in a text editor and change the values for:
+Open the embed-api.js file subfolder called `sigma_embed_actions` in a text editor and change the values for:
 
 <ul>
       <li>Embed Path</li>
@@ -189,13 +189,13 @@ Move the Filter Control to the new Page:
 ## Actions using URL
 Duration: 15
 
-For this example we will reuse the same embed but this time we will modify the server.js script in the Actions download zip file to append the variable “StoreRegion” to be “West” regions instead of the Page default of “All”.
+For this example we will reuse the same embed but this time we will modify the embed-api.js script in the Actions download zip file to append the variable “StoreRegion” to be “West” regions instead of the Page default of “All”.
 
 `Close the terminal` window (and end session) from the previous exercise. 
 
 Locate the `sigma_embed_actions_url folder`.
 
-Open the server.js file in this folder in a text editor and change the values for:
+Open the embed-api.js file in this folder in a text editor and change the values for:
 
 <ul>
       <li>Embed Path</li>
@@ -221,7 +221,7 @@ From the `sigma_embed_actions_url folder`launch a terminal window:
 
 Execute the terminal command:
 ```plaintext 
-supervisor server.js
+supervisor embed-api.js
 ```
 
 In Chrome, refresh the page 
@@ -250,7 +250,7 @@ In this example we will add a listener to the Parent and reuse the same embed fr
 
 Locate the `sigma_embed_actions_events folder`.
 
-Open the server.js file in this folder in a text editor and change the values for:
+Open the embed-api.js file in this folder in a text editor and change the values for:
 
 <ul>
       <li>Embed Path</li>
@@ -279,7 +279,7 @@ Launch a `new terminal` window.
 
 Execute the terminal command:
 ```plaintext
-supervisor server.js
+supervisor embed-api.js
 ```
 
 In Chrome, refresh the page 
