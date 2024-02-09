@@ -34,7 +34,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 
 The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. 
 
-**There are three folders; two for Actions and one for Events.** T
+**There are three folders; two for Actions and one for Events.** 
 
 his will minimize the effort as you go through the QuickStart adjusting the files for the different exercises. They are named to be clear which section they are to be used. 
 
@@ -52,7 +52,7 @@ his will minimize the effort as you go through the QuickStart adjusting the file
 </ul>
   
 ### What You’ll Learn
-The exercises in this QuickStart will discuss and walk you through the steps to send messages from a Parent application to Sigma (Actions) and also receive messages from Sigma in a Parent application (Events) using HTML and Javascript.
+The exercises in this QuickStart will discuss and walk you through the steps to send messages from a Parent application to Sigma (Actions) and also receive messages from Sigma in a Parent application (Events) using HTML and JavaScript.
 
 ### What You’ll Build
 Functioning examples of Sigma Actions and Events, embedded inside a Parent application. 
@@ -60,7 +60,7 @@ Functioning examples of Sigma Actions and Events, embedded inside a Parent appli
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Javascript Actions vs. Events
+## JavaScript Actions vs. Events
 Duration: 5
 
 In this QuickStart we will be demonstrating passing variables between the Parent application and Sigma. Sigma is embedded in the Parent application using HTML iframe(s). 
@@ -68,11 +68,11 @@ In this QuickStart we will be demonstrating passing variables between the Parent
 **Actions:**<br>
 Are variables sent from the Parent application to Sigma. **There is no “listener” to code into the iframe; Sigma handles that out-of-the-box**. Sigma can use these messages to update control values. For example, passing a new value to a Sigma control that is used to filter table data.
 
-Actions can be passed using either Javascript or URL. 
+Actions can be passed using either JavaScript or URL. 
 
 ***In general:***
 <ul>
-      <li>Javascript is used when you want to pass values from the Parent to the embed without causing the embed to refresh.</li>
+      <li>JavaScript is used when you want to pass values from the Parent to the embed without causing the embed to refresh.</li>
       <li>The URL method is used at runtime and the variable values are appended to the embed url. </li>
 </ul>
 
@@ -85,7 +85,7 @@ Are variables sent from Sigma to the Parent application which must have a “lis
 ## Parent Application Setup
 Duration: 15
 
-Let’s first make sure that you have an embed that we can work with. We will be using Node.js and the setup, configuration and use of this was covered in the  [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) and  [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html#0). Go back and review those QuickStarts if you need a refresher. 
+Let’s first make sure that you have an embed that we can work with. We will be using Node.js and the setup, configuration and use of this was covered in the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) and the [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0). Go back and review those QuickStarts if you need a refresher. 
 
 **Create Sigma content to embed:**<br>
 We will use the Sigma sample database to create a Workbook Page that has one control and one table as shown below. 
@@ -102,7 +102,10 @@ Set the filter control to target the table:
 
 Using Sigma. `create the Embed URL` for this Workbook page and `save it off to a text file` for now. This is your `Embed Path`.
 
-We will have to also share this Workbook with a Team for the embed to work
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We will have to also share this Workbook with the Team we are passing in the Embed API for the embed to work.
+</aside>
 
 Open the embed-api.js file subfolder called `sigma_embed_actions` in a text editor and change the values for:
 
@@ -118,14 +121,19 @@ Open the embed-api.js file subfolder called `sigma_embed_actions` in a text edit
 
 <img src="assets/ae2.png" width="500"/>
 
+Start the webserver:
+```code
+supervisor embed-api.js
+```
+
 Use Chrome to browse to:
-```plaintext
+```code
 http://localhost:3000
 ```
 
 Assuming you got something like the screenshot below, we are ready to send some Actions:
 
-<img src="assets/ae3.png" width="500"/>
+<img src="assets/ae3.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -133,25 +141,33 @@ Assuming you got something like the screenshot below, we are ready to send some 
 ## Actions
 Duration: 15
 
-In our configuration, the file Index.html is analogous to the Parent application Sigma is embedded into. We will first send a message to the embedded iframe and see the table data change.
+In our configuration, the file Index.html is analogous to the Parent application Sigma is embedded into. 
 
-For this demonstration, we will use Chrome Inspector (Inspector) to execute Javascript commands and see the results. This is the easiest way to see Actions working without even changing the Index.html code.
+We will first send a message to the embedded iframe and see the table data change.
+
+For this demonstration, we will use Chrome Inspector (Inspector) to execute JavaScript commands and see the results. This is the easiest way to see Actions working without even changing the Index.html code.
 
 Back in Chrome and on the embed page (localhost:3000), `press your F12 key to open Inspector`. Click the `Console tab` in Inspector. Your browser should look like this:
 
-<img src="assets/ae4.png" width="700"/>
+<img src="assets/ae4.png" width="800"/>
 
-We will use the Inspector Console to send two Javascript commands to the application. This simulates Parent application controls (drop list selection, buttons, etc.) sending commands to the Sigma embed. 
+We will use the Inspector Console to send two JavaScript commands to the application. 
+
+This simulates Parent application controls (drop list selection, buttons, etc.) sending commands to the Sigma embed. 
 
 The first command give the Parent access to the iframe document window:
-```plaintext
+```code
 const sigma_iframe = document.getElementById('sigmaDashboard');
 ```
+
+Chrome may through an error (for security reasons). You may need to `allow pasting` of code into Inspector:
+
+<img src="assets/ae4a.png" width="500"/>
 
 Here is an explanation of the first command:<br>
 <img src="assets/ae5.png" width="500"/>
 
-The second command sends a new value for the variable called “StoreRegion” to the Sigma iframe using the Javascript postmessage method. PostMessage() is a global method that safely enables cross-origin communication. It’s a lot like Ajax, but with cross-domain capability (ie: communication between two websites with different domains).
+The second command sends a new value for the variable called “StoreRegion” to the Sigma iframe using the JavaScript postmessage method. PostMessage() is a global method that safely enables cross-origin communication. It’s a lot like Ajax, but with cross-domain capability (ie: communication between two websites with different domains).
 
 Here is an explanation of the second command:<br>
 <img src="assets/ae6.png" width="600"/>
@@ -168,7 +184,7 @@ Run each command one at a time. Inspector’s Console should return “undefined
 
 Your results should look like this after running each command:
 
-![Alt text](assets/ae7.png)
+<img src="assets/ae7.png" width="800"/>
 
 It is probably undesirable to have the `Store Region` control filter show in the embedded since you are driving the filtering from the Parent application. In this case, simply create a new Page in Sigma and move the Control to that page. Since we are only embedding the Workbook Page, the user can’t see the new Page. You can also hide the Workbook Page if you prefer.
 
@@ -176,12 +192,17 @@ It is probably undesirable to have the `Store Region` control filter show in the
 <strong>NOTE:</strong><br> It does not matter what you name your Page, we called ours “HiddenPageControls” to make it obvious to the Sigma user.
 </aside>
 
-Move the Filter Control to the new Page:
-![Alt text](assets/ae8.png)
+`Move` the Filter Control to the new Page:
 
-`Publish` your Sigma changes and then `refresh the browser` with the embed. The Page Control is not displayed but the Javascript commands still work in Inspector:
+<img src="assets/ae8.png" width="400"/>
 
-![Alt text](assets/ae9.png)
+`Publish` your Sigma changes and then `refresh the browser` with the embed. 
+
+Execute both of the JavaScript commands in Inspector again.
+
+Now the embed works as expected (filtering for `West`) but the page control is not displayed to the user:
+
+<img src="assets/ae9.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -189,7 +210,9 @@ Move the Filter Control to the new Page:
 ## Actions using URL
 Duration: 15
 
-For this example we will reuse the same embed but this time we will modify the embed-api.js script in the Actions download zip file to append the variable “StoreRegion” to be “West” regions instead of the Page default of “All”.
+For this example, we will reuse the same embed, but this time we will modify the embed-api.js script in the Actions download zip file. 
+
+We want to append the variable “StoreRegion” to be “West” regions, instead of the Page default of “All”.
 
 `Close the terminal` window (and end session) from the previous exercise. 
 
@@ -207,34 +230,38 @@ Open the embed-api.js file in this folder in a text editor and change the values
 
 Scroll down to `section 3D`.` You will see these lines:
 
-![Alt text](assets/ae10.png)
+<img src="assets/ae10.png" width="800"/>
 
 To make this method work we merely use the existing “searchParams” variable and append the required values to it using the encodeURIComponent() method.
 
-We are appending “StoreRegion” and two values, Midwest and Southwest. 
+To pass multiple values, comment line 39 and uncomment line 41 as shown below:
 
-Notice the line above the last one that is commented out (red arrow). This commented line is an example of passing a single value. You can pass as many values as you like now that you have the syntax.
+<img src="assets/ae10a.png" width="800"/>
 
-The Javascript encodeURIComponent() method encodes certain chars that would normally be recognized as special chars for URIs so that many components may be included. Note that this method does not encode the ‘ character, as it is a valid character within URIs. Most commonly used to handle spaces and also handles special characters.
+In line 41, we are appending “StoreRegion” and two values, `Midwest` and `Southwest`. 
+
+Notice line 39, which is an example of passing a single value. You can pass as many values as you like now that you have the syntax.
+
+The JavaScript encodeURIComponent() method encodes certain chars that would normally be recognized as special chars for URIs so that many components may be included. Note that this method does not encode the ‘ character, as it is a valid character within URIs. Most commonly used to handle spaces and also handles special characters.
 
 From the `sigma_embed_actions_url folder`launch a terminal window:
 
 Execute the terminal command:
-```plaintext 
+```code 
 supervisor embed-api.js
 ```
 
 In Chrome, refresh the page 
-```plaintext
+```code
 http://localhost:3000
 ``` 
-We should see the results as below with the filter set at Southwest and Midwest:
+We should see the results as below (looking at `Column Details` for the `Store Region` column):
 
-![Alt text](assets/ae11.png)
+<img src="assets/ae11.png" width="800"/>
 
 In `Inspector`, open the `Elements tab` and hover over the `src=url` that is listed. You can see the full URL and see where the variable values were assigned as below:
 
-![Alt text](assets/ae12.png)
+<img src="assets/ae12.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -242,11 +269,15 @@ In `Inspector`, open the `Elements tab` and hover over the `src=url` that is lis
 ## Events
 Duration: 5
 
-Events are communications in the opposite direction of Actions; from Sigma’s iframe to the Parent. The main difference is that the Parent application will need to be “listening” for Events via code that needs to be added. We will demonstrate using Javascript in our HTML page. Once the Parent receives the message, it can decide how it is used.
+Events are communications in the opposite direction of Actions; from Sigma’s iframe to the Parent. 
 
-In this example we will add a listener to the Parent and reuse the same embed from Actions to generate an Event by changing the StoreRegion drop filter settings.
+The main difference is that the Parent application will need to be “listening” for Events via code that needs to be added. 
 
-`Close the terminal window` (and end session) from the previous exercise. 
+We will demonstrate using JavaScript in our HTML page. Once the Parent receives the message, it can decide how it is used.
+
+In this example we will add a listener to the Parent and reuse the same embed from Actions to generate an Event, by changing the `StoreRegion` drop filter settings.
+
+`Close the terminal window` (ending the session) from the previous exercise. 
 
 Locate the `sigma_embed_actions_events folder`.
 
@@ -293,17 +324,13 @@ You should see Sigma Events now in the Inspector Console.
 
 The `workbook:loaded` informs the Parent that the Sigma workbook embed has finished loading the metadata but has not started evaluating the workbook elements.
 
-![Alt text](assets/ae16.png)
-
 This is coming from the HTML.index logic that checks if the workbook has fully loaded yet:
 
-![Alt text](assets/ae17.png)
+<img src="assets/ae17.png" width="800"/>
 
-Go ahead and `select South` from the Sigma control. 
+Notice that two new Events appear in Inspector. The first is the console.log message we set to display when the user changed a filter (onchange) and second is the addition of `Southwest,Midwest` to the StoreRegion list:
 
-Notice that two new Events appear in Inspector. The first is the console.log message we set to display when the user changed a filter (onchange) and second is the addition of “South” to the StoreRegion filter list:
-
-![Alt text](assets/ae18.png)
+<img src="assets/ae18.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -311,7 +338,7 @@ Notice that two new Events appear in Inspector. The first is the console.log mes
 ## What we've covered
 Duration: 5
 
-In this QuickStart will built functioning examples of Sigma embeds that use Actions and Events to exchange messages using HTML and Javascript.
+In this QuickStart will built functioning examples of Sigma embeds that use Actions and Events to exchange messages using HTML and JavaScript.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
