@@ -30,7 +30,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
   <li>Some content to embed. You can embed a Workbook, Table or Visualization.</li>
 </ul>
 
-<button>[Required QuickStart download](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding/sigma_embed_actions_eventsv2.zip)</button> 
+<button>[Required QuickStart download](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_embed_actions_events.zip)</button> 
 
 The downloaded zip file is the embedding code and simple webpage we will use during this QuickStart. 
 
@@ -316,7 +316,7 @@ supervisor embed-api.js
 In Chrome, refresh the page 
 ```plaintext
 http://localhost:3000
-``` 
+```
 
 In Chrome, press your `F12 key` to open Inspector again and select the `Console tab`. 
 
