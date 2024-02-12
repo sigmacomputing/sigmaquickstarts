@@ -380,7 +380,7 @@ The zip file contains these two files:
 
 ### Install Node Packages for Folder
 
-If you haven't installed Node already, please do so by referring to section 3 of the [QQuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
+If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
 
 If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_secure_embed` folder that was created when we unzipped the download into the `sigma_embedding` folder.
 
