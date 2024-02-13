@@ -65,9 +65,41 @@ Developers who are interested in how to leverage dynamic iframes to embed Sigma 
 ## Sigma Content
 Duration: 20
 
+[Click here to download sigma_embed_responsive.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_embed_responsive.zip)
+
+The zip file contains these two files:
+
+**index.html:** the web page that contains the iframe we are embedding into. No changes are required for this file.
+
+**embed-api.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. This is a example of an `Embed API`.
+
+### Install Node Packages for Folder
+
+If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
+
+If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_embed_responsive` folder that was created when we unzipped the download into the `sigma_embedding` folder.
+
+Open a new Terminal session from the folder `sigma_embed_drs` and run this command:
+
+**Run the command tro install the Express web-server:**
+```code
+npm init
+```
+
+As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
+
+and...
+
+**Run the command:**
+```code
+npm install supervisor
+```
+
+### Sigma Content
+
 Login to Sigma and navigate to the `Templates` page.
 
-Click to select the `Plugs Electronics Sales Performance` template:
+Click to select the `Plugs Electronics Profit Planning Tool` template:
 
 <img src="assets/di1.png" width="800"/>
 
@@ -75,39 +107,44 @@ Click to select the `Plugs Electronics Sales Performance` template:
 
 Click the `Save As` button and name the Workbook `Dynamic iframes`.
 
-`Share` the Workbook with the `Finance Team` we created in the earlier QuickStarts.
+`Share` the Workbook with the `Sales_Managers` team we created in the earlier QuickStarts.
 
 <img src="assets/di2.png">
 
-<img src="assets/di3.png" width="800"/>
+Give the team `Can view` permission.
 
 Open the `Embedding` controls:
 
-<img src="assets/di4.png" width="800"/>
+<img src="assets/di4.png" width="600"/>
 
-Select `Dashboard` for just the entire workbook and select `Copy`:
+Select `Profit Planning Tool` and select `Copy`:
 
-<img src="assets/di5.png" width="800"/>
+<img src="assets/di5.png" width="600"/>
 
-In the node project folder, open `server.js` and replace the value for `EMBED PATH` with this new value.
+In the node project folder, open `embed-api.js` and replace the value for `EMBED PATH` with this new value.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from "Administration > "APIs & Embed Secrets".
+<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from Administration > Developer Access.
 </aside>
 
 <img src="assets/di7.png" width="800"/>
 
-Ensure that server.js has the correct API and Embed Secrets.
+Ensure that embed-api.js has the correct API and Embed Secrets.
 
-Once server.js is setup, make sure that node's express server is running:
+Once embed-api.js is setup, make sure that node's express server is running:
 
+Start Terminal and run:
+```code
+cd\site
+supervisor embed-api.js
+```
 <img src="assets/di6.png" width="800"/>
 
 Browse to localhost:3000 to verify that we have a working application with our Sigma table on it.
 
 When you reduce the size of the browser you can see that there are two scroll bars present. 
 
-<img src="assets/scrollbars1.gif">
+<img src="assets/di6a.png" width="800"/>
 
 This is what we want to try and avoid by making our iframe dynamic.
 
@@ -168,11 +205,11 @@ Replace the code in your embed project folder for `index.html` with this code:
 
 <body>
     <h2>Sigma Embedding - Application</h2>
-    <h3>iframe URL below comes from API call to server.js</h3>
+    <h3>iframe URL below comes from API call to embed-api.js</h3>
     <iframe id="sigmaDashboard"></iframe> <!-- This is the iframe that will embed the content. -->
     <script>
         /* Define the API URL from where the iframe's source will be fetched. */
-        const URL = "http://localhost:3000/api/foo";
+        const URL = "http://localhost:3000/api/generate-embed-url";
 
         /* Fetch the URL using the Fetch API */
         fetch(URL)
@@ -253,7 +290,7 @@ To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is
 
 <body>
     <h2>Sigma Embedding - Application</h2>
-    <h3>iframe URL below comes from API call to server.js</h3>
+    <h3>iframe URL below comes from API call to embed-api.js</h3>
     <iframe id="sigmaDashboard"></iframe>
     <script>
         const URL = "http://localhost:3000/api/foo";
@@ -275,7 +312,9 @@ To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is
       <li><strong>Complementary to Other CSS:</strong> calc() is not an alternative to the other CSS properties or values we have used; it's complementary. We can use it in conjunction with other properties to achieve the desired layout.</li>
 </ul>
  
-In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't immediately solve the scrollbar issues. It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
+In summary, while calc() is a valuable tool in CSS for dynamic calculations, it doesn't immediately solve the scrollbar issues. 
+
+It can aid in setting dimensions based on other known dimensions or viewport sizes, but it won't "dynamically" adjust the iframe's height based on its content. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -283,13 +322,13 @@ In summary, while calc() is a valuable tool in CSS for dynamic calculations, it 
 ## Responsive iframes
 Duration: 5
 
-Sigma provides a Javascript method that enables developers to dynamically adjust the iframe height, based on the content's actual height.
+Sigma provides a JavaScript method that enables developers to dynamically adjust the iframe height, based on the content's actual height.
 
 This is especially useful when the content inside the iframe can change dynamically, leading to different height requirements.
 
 **This can be used to fully address the scroll bar issues.**
 
-The method is `workbook:pageheight:onchange`, and is an "event" in Sigma.
+The method is `workbook:pageheight:onchange`, and is an `event` in Sigma.
 
 You can read about [Javascript actions in user-backed embeds here.](https://help.sigmacomputing.com/docs/javascript-events-for-embedded-elements#actions)
 
@@ -332,7 +371,7 @@ Here's the modified script to include the handling of the workbook:pageheight:on
 
 <body>
     <h2>Sigma Embedding - Application</h2>
-    <h3>iframe URL below comes from API call to server.js</h3>
+    <h3>iframe URL below comes from API call to embed-api.js</h3>
     <iframe id="sigmaDashboard"></iframe> <!-- The iframe that will embed content. -->
 
     <script>
@@ -369,7 +408,9 @@ Here's the modified script to include the handling of the workbook:pageheight:on
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> For the postMessage and event listener to work, the iframe's source domain must allow cross-document messaging with the parent page's domain. If Sigma's iframe content sends this event using postMessage, it should work. However, if there are any security restrictions, you might encounter issues. Always ensure that you're only accepting messages from trusted sources to prevent potential vulnerabilities.
+<strong>IMPORTANT:</strong><br> For the postMessage and event listener to work, the iframe's source domain must allow cross-document messaging with the parent page's domain. If Sigma's iframe content sends this event using postMessage, it should work. 
+
+However, if there are any security restrictions, you might encounter issues. Always ensure that you're only accepting messages from trusted sources to prevent potential vulnerabilities.
 </aside>
 
 In the sample code:

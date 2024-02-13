@@ -397,7 +397,7 @@ Duration: 10
 
 We will move through this quickly, as it is assumed you have done this operation before in earlier QuickStarts in the Embedding Series. If not, go back and review them as mentioned in the Overview section of this QuickStart.
 
-[Click here to download sigma_embed_drs.zip]()
+[Click here to download sigma_embed_drs.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_embed_drs.zip)
 
 The zip file contains these two files:
 
