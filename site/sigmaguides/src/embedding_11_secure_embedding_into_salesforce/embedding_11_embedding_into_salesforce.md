@@ -46,38 +46,60 @@ We will build a Salesforce page using Sigma content, embedded securely on a Visu
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-
-## **Application Embed**
+## **Secure Embedding Configuration in Sigma**
 Duration: 20
 
 In this use case we will embed a Sigma Dashboard based on one of the samples provided in the Sigma trial account. The high-level process looks like this:
 
-![Alt text](assets/sf2.png)
+<img src="assets/sf2.png" width="800"/>
 
-### Sigma Configuration
-Login to Sigma and navigate to the `Administration` / `APIs & Embed Secrets` page. 
+### Sigma Client Credentials
+Login to Sigma and navigate to the `Administration` / `Developer Access` page. 
 
-Generate a `new Embed Secret`, copy it off for later use. 
+Click the `Create new` button:
 
-`Copy the Client ID` value for later use.
+<img src="assets/sf2a.png" width="800"/>
 
-![Alt text](assets/sf3.png)
+Create new `Client Credentials as:
+
+<img src="assets/sf2b.png" width="800"/>
+
+Copy the `ClientID` and `Secret` off to a text file. We will use them later on.
+
+### Sigma Content
 
 Navigate to the `Templates` page.
 
 Select `Plugs Electronics Profit Planning Tool`. 
 
-Dismiss the help popup and click the Dashboard tab (bottom of the page). This is the Page we want to embed.
+`Dismiss` the help popup and click the Dashboard tab (bottom of the page). This is the Page we want to embed.
 
 Click the `Save As button` (upper right corner). Name the Workbook `Salesforce Embed` and click `Save`.
 
-Click the label `Salesforce Embed` and select `Embedding` and then select `Dashboard` to generate a URL for the entire Dashboard tab:
+Click the label `Salesforce Embed` and select `Embedding`:
 
-<img src="assets/sf4.png" width="200"/>&ensp;&ensp;&ensp;<img src="assets/sf5.png" width="300"/>
+<img src="assets/sf4.png" width="800"/>
 
-Click Copy to copy the Embed Path URL and save it into a text file for later use.
+Select `Profit Planning Tool` to generate a URL for the single workbook page:
 
-### Salesforce Configuration
+<img src="assets/sf5.png" width="600"/>
+
+Click `Copy` to copy the Embed Path URL and save it into a text file for later use.
+
+Lastly, `Share` the workbook with the `Sales_Managers` team:
+
+<img src="assets/sf5a.png" width="600"/>
+
+and...
+
+<img src="assets/sf5b.png" width="600"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Salesforce Configuration
+Duration: 20min
+
 Salesforce is very flexible but also can confuse non-administrative users who are trying to perform more advanced configuration. With that in mind we will just do a simple, secure embed. You will notice similarities to embedding from previous QuickStarts but also see things that are required by Salesforce. 
 
 Salesforce has its own language called “Apex” which is an object-oriented programming language created by Salesforce that allows you to extend the platform’s existing functionality and create your own custom cloud-based software applications.
@@ -93,18 +115,17 @@ This is a small, reusable piece of functionality—think widgets, panels, user i
 **Visualforce Page:**<br>
 The basic building block for application developers. A Visualforce page is similar to a standard Web page, but includes powerful features to access, display, and update your organization's data. We will embed Sigma into a Visualforce Page we will create.
 
-
 In Salesforce, login (**admin rights required**) and navigate to `Setup` using the `gear icon` in the upper right corner: 
 
-<img src="assets/sf6.png" width="500"/>
+<img src="assets/sf6.png" width="800"/>
 
 In the left sidebar menu use `Quick Find` to search for `Apex Classes` and select that:
 
-<img src="assets/sf7.png" width="300"/>
+<img src="assets/sf7.png" width="500"/>
 
 Click the `New` button to create a new Apex Class:
 
-<img src="assets/sf8.png" width="500"/>
+<img src="assets/sf8.png" width="800"/>
 
 Paste the following code into the class window. The Apex Class name is defined in the class code itself as `SigmaEmbedClass`.
 
@@ -115,7 +136,7 @@ Paste the following code into the class window. The Apex Class name is defined i
 public class SigmaEmbedClass {
     // Declare string values to be used in Class:
     private string secret = 'YOUR SIGMA EMBED SECRET HERE';
-    private string client_id = ''YOUR SIGMA CLIENT ID HERE ';
+    private string client_id = 'YOUR SIGMA CLIENT ID HERE';
     
     // Declare string values to be used in Apex:
     public string embed_path {get; set;}

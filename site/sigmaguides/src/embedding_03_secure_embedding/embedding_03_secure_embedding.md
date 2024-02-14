@@ -437,8 +437,6 @@ If you get an error about port 3000 being used already (not typical) you can cha
 
 <img src="assets/ae4.png" width="500"/>
 
-<img src="assets/horizonalline.png" width="800"/>
-
 We are now ready to test the Parent application that has the embedded content.
 
 ![Footer](assets/sigma_footer.png)

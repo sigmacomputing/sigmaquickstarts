@@ -13,7 +13,9 @@ lastUpdated: 2023-01-12
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to Sigma embedding using Row-Level Security **(RLS)** to personalize / limit the data exposed to a user based on values passed to Sigma at runtime. This QuickStart assumes you have already taken the QuickStart [QuickStart: Embedding 01: Prerequisites,](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart introduces you to Sigma embedding using Row-Level Security **(RLS)** to personalize / limit the data exposed to a user based on values passed to Sigma at runtime. 
+
+This QuickStart assumes you have already taken the QuickStart [QuickStart: Embedding 01: Prerequisites,](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks.
 
 We also recommend you take the the QuickStart [QuickStart: Embedding 03: Secure Access,](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0) as we will build on that content. 
 
@@ -42,16 +44,16 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
         <ul>
         <li>Express</li>
         <li>Node-supervisor</li>
-        <li>crypto (is now included with Node.js installation)</li>
+        <li>crypto (included with Node.js installation)</li>
         </ul>
     </li>
 </ul>
   
 ### What You’ll Learn
-The exercises in this QuickStart will discuss and walk you through the steps to implement Dataset RLS with User Attributes (UA for short).
+The exercises in this QuickStart will discuss and walk you through the steps to implement Dataset RLS with User Attributes (**UA**).
 
 ### What You’ll Build
-We will embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate Row-Level-Security.
+We will embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate Row-Level Security.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -67,7 +69,7 @@ The UA must be defined ahead of time (one time) in the Sigma portal. You can def
 
 The Parent application must pass an embed `mode` argument of `userbacked`.
 
-To implement this feature, you must have minimum Can Edit access on the individual dataset.
+To implement this feature, you must have minimum `Can edit` access on the individual dataset.
 
 The workflow (as shown below) is very straightforward and yet flexible to allow only the data that is appropriate for the user to be shown, based on one or more UAs. How you decide to filter the data is up to your organization's roles/rules. 
 
@@ -82,16 +84,111 @@ The workflow (as shown below) is very straightforward and yet flexible to allow 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
+## Sigma Content
+
+First, let's prepare Sigma for this by creating a new `Dataset`, based on the `Sigma Sample Database` > `Retail` > `PLUGS_ELECTRONICS` > `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table:
+
+<img src="assets/newRLS1.png" width="800"/>
+
+Once the dataset is published, click the `Explore` button to use it in a new wookbook.
+
+Rename the workbook page tab to `Original Dataset`.
+
+Save this workbook as `Embedding RLS`.
+
+Share it with the `Sales_Managers` team, with `Can view` permission. We created this team in other QuickStarts, but if it does not exist, go back and create it.
+
+Generate a new `Embed url` for the Page `Orginal Dataset`:
+
+<img src="assets/newRLS2.png" width="500"/>
+
+We are now ready to setup the Parent application where we will display our embed.
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Parent Application Setup
+Download and unzip the project files into the folder on the computer's desktop called `sigma_embedding`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
+</aside>
+
+[Click here to download sigma_embed_rls.zip]()
+
+The zip file contains these two files:
+
+**index.html:** the web page that contains the iframe we are embedding into. No changes are required for this file.
+
+**embed-api.js:** a JavaScript routine that sets up the services required and configuration of the Sigma options. This is a example of an `Embed API`.
+
+### Install Node Packages for Folder
+
+If you haven't installed Node already, please do so by referring to section 3 of the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#2)
+
+If you have already installed Node, recall that we still need to install the required Node packages for our new `sigma_embed_rls` folder that was created when we unzipped the download into the `sigma_embedding` folder.
+
+Open a new Terminal session from the folder `sigma_embed_rls` and run this command:
+
+**Run the command tro install the Express web-server:**
+```code
+npm init
+```
+
+As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
+
+and...
+
+**Run the command:**
+```code
+npm install supervisor
+```
+
+### Edit embed-api.js
+Open embed-api.js in a text editor and review all the comments (lines starting with “//”). 
+
+This will give you an understanding of the minimum required parameters to pass to make Embedding work. We will pass more in later sections, so it is good to get familiar now. 
+
+**Required Changes:**
+
+The items in section #3 of the the embed-api.js code needs to be changed, replacing the values for `EMBED_PATH`, `EMBED_SECRET` and `CLIENT_ID` with your values.
+
+Notice that we are using the `Sales_Managers` team that we created earlier:
+
+<img src="assets/newRLS3.png" width="800"/>
+
+To see all the available required and options parameters, there is a [QuickStart: Embedding 05: Parameters and User-Attributes.](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Take care when pasting values into your embed-api.js to not remove any required syntax, add any spaces etcetera. A leading space in embed-api.js (for example an email address) is likely to throw an error on page load.
+</aside>
+
+### Start the Web Server
+You are now ready to start the Node.js Express web server. Use Terminal and navigate to the `sigma_secure_embed` folder where you just modified the two files. 
+
+**Make sure to run the command from the folder where you stored the unzipped download:**
+```code
+supervisor embed-api.js
+```
+
+Open your browser and navigate to:
+```code
+ http://localhost:3000
+```
+
+You should see the webpage with the title and the embedded workbook below as shown. 
+
+<img src="assets/newRLS4.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+
+
 ## Dataset RLS
 Duration: 20
 
-Let's build an example based on the previous QuickStart, Embedding 4: Application Row Level Security. It is ok to build your own if you are familiar with Sigma.
-
-Click to download the sample Embed API file called [sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_secure_embed.zip)
-
-Unzip the file and use Terminal to launch the Node web server.
-
-### Steps:
+### Create a User Attribute
 Open Sigma.
 
 Navigate to `Administration` / `User Attributes` and add a new attribute called `Region`. You can give it a description but no need for any default value. `Click Create`.
@@ -99,6 +196,22 @@ Navigate to `Administration` / `User Attributes` and add a new attribute called 
 <aside class="negative">
 <strong>NOTE:</strong><br> There is no need to assign the UA to a Team, so you can ignore the next screen. We are not filtering based on Team membership in this QuickStart.
 </aside>
+
+### Duplicate Dataset
+
+Click the `Crane` icon (in the upper left corner) to return home and then click `Recent` and select the `Embedding RLS` dataset. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The Recent list is a great way to get back to content you are active in quickly!
+</aside>
+
+Notice how there are two objects with the same name? 
+
+We did that on purpose, so you can see that there are different icons. One for the workbook and one for the dataset (number 3):
+
+<img src="assets/newRLS5.png" width="800"/>
+
+
 
 Open the `Dataset` called `Application Embedding`.
 
@@ -131,7 +244,7 @@ It is ok that you don't see data here.
 
 Add a new table to the page, based on the Dataset you just created `"Application Embedding RLS"` and `Publish` the changes. 
 
-`Open server.js` from the downloaded files. 
+`Open embed-api.js` from the downloaded files. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We have hardcoded the value to equal “East”. This value would normally be provided by the Parent application at runtime. 
@@ -142,7 +255,7 @@ You are now ready to start the Node.js Express web server. Use Terminal and navi
 
 **In Terminal run the command:**
 ```plaintext
-supervisor server.js
+supervisor embed-api.js
 ```
 
 Browse to `http://localhost:3000`. You should only see rows from the East Region. 
@@ -158,7 +271,7 @@ searchParams += &:ua_${attribute_name}=${attribute_value}
 
 ![Alt text](assets/rls3.png)
 
-Back in your server.js file, `change the ua_Region to East,West`. `Save` the file. 
+Back in your embed-api.js file, `change the ua_Region to East,West`. `Save` the file. 
 
 Sending comma separated values via embed UA param requires a step for updating the column formula in the underlying Sigma RLS Dataset for the ua_Region column. The equality formula needs to be replaced with a Contains(), for ex: Contains(CurrentUserAttributeText("Darien_Region"), [Store Region])
 
@@ -169,7 +282,7 @@ You can use the Column Details feature to see that there East and West are prese
 ![Alt text](assets/rls4.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Be sure to leave no space after the commas as the server.js code does not provide handling for that and your browser page will not load as expected. This could be handled by the Parent application API but we want to keep it simple for this exercise.
+<strong>NOTE:</strong><br> Be sure to leave no space after the commas as the embed-api.js code does not provide handling for that and your browser page will not load as expected. This could be handled by the Parent application API but we want to keep it simple for this exercise.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -227,7 +340,7 @@ This SQL code will get all columns from the table we have used previously but li
 <strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, in the select clause or where clause.
 </aside>
 
-Set to value for ua_region in server.js to `East`.
+Set to value for ua_region in embed-api.js to `East`.
 
 `Click Run.` You should only see rows from Store Region=East (since that is the UA Default). Click `Done` and `Publish`.
 
@@ -241,14 +354,14 @@ Refresh your browser to see the embed (make sure you are looking at the right Wo
 <strong>NOTE:</strong><br> Using this workflow, the Workbook Page is using custom SQL but there is no Dataset also created. You could also have created a new Dataset based on custom SQL following the workflows we have done previously. In this case, you do not need to add Permissions for the Finance Teams to view this Dataset because there is no Dataset.
 </aside>
 
-Change server.js to `West` and `save`. 
+Change embed-api.js to `West` and `save`. 
 
 Check your embed in the browser. You should now see Region = West. 
 
 ![Alt text](assets/rls8.png)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The actual syntax used in server.js or the customer SQL may vary when attempting to pass more than one value for region in a comma delimited list. This will be dependent on the data source (ie: Snowflake, BigQuery etcetera) and how it interprets the request syntax.
+<strong>NOTE:</strong><br> The actual syntax used in embed-api.js or the customer SQL may vary when attempting to pass more than one value for region in a comma delimited list. This will be dependent on the data source (ie: Snowflake, BigQuery etcetera) and how it interprets the request syntax.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
