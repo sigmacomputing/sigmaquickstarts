@@ -114,7 +114,7 @@ Download and unzip the project files into the folder on the computer's desktop c
 <strong>NOTE:</strong><br> This folder should already exist if your completed the perquisites QuickStart. If not, manually create it.
 </aside>
 
-[Click here to download sigma_embed_rls.zip]()
+[Click here to download sigma_embed_rls.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_embed_rls.zip)
 
 The zip file contains these two files:
 
