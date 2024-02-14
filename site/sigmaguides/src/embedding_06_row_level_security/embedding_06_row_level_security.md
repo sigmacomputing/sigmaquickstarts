@@ -185,7 +185,7 @@ You should see the webpage with the title and the embedded workbook below as sho
 
 
 
-## Dataset RLS
+## Dataset RLS with UA
 Duration: 20
 
 ### Create a User Attribute
@@ -211,52 +211,75 @@ We did that on purpose, so you can see that there are different icons. One for t
 
 <img src="assets/newRLS5.png" width="800"/>
 
+Open the `Dataset` called `Embedding RLS`.
 
+Click on the workbook title's menu and select `Duplicate Dataset`. 
 
-Open the `Dataset` called `Application Embedding`.
+<img src="assets/newRLS6.png" width="500"/>
 
-Click on the `three vertical dots` next to the Dataset name at the top of the page and select `Duplicate Dataset`.  
+Rename the new Dataset to `User Attribute RLS`.
 
-Rename the new Dataset to `Application Embedding RLS`.
+Return the the workbook `Embedding RLS` and add a new page. Rename it to `User Attribute RLS`
 
-Click on the Worksheet tab of the new dataset and ensure that they are in Edit mode.
+Add a new table to this page based on the `User Attribute RLS` dataset:
 
-Add an `new Column` and rename it to `ua_Region`.
+<img src="assets/newRLS7.png" width="500"/>
+
+Now return to the `User Attribute RLS` dataset and let's enforce RLS on it.
+
+You could use the `Recent` list again, or you can get there directly from the workbook:
+
+<img src="assets/newRLS8.png" width="800"/>
+
+Place the dataset in `Edit` mode.
+
+Navigate to the `Worksheet` tab (at the top of the page).
+
+Click on the `Order Number` columns menu and add an `Add New Column`, and rename it to `ua_Region`.
+
+<img src="assets/newRLS9.png" width="600"/>
 
 Use this formula for column:
-```plaintext
+```code
 Contains(CurrentUserAttributeText("Region"), [Store Region])
 ```
 
+<img src="assets/newRLS10.png" width="700"/>
+
+The formula results in `False` for all cells in `ua_Region` because we set no default value for the `User Attribute` when we created it.
+
 On the `left sidebar`, add a `filter`. Filter against the column `ua_Region = True`.
 
-It is ok that you don't see data here.
+<img src="assets/newRLS11.png" width="700"/>
 
 `Publish` the new Dataset.
 
-**At Runtime (page refresh in this case):**
+It is ok that you don't see data here; there are no `True` values yet. 
+
+Once we embed content that uses this dataset, data will appear based on the values we pass via the `Embed API`.
+
  <ul>
       <li>The new column `ua_region` will be evaluated against the Store Region column for each row</li>
       <li>The filter will only show rows where there is a match for ua_Region and Store Region</li>
       </ul>
 
-`Open` the Workbook `Application Embedding` and add a `new Page` called `Application RLS`
+Return to the workbook `Embedding RLS` and page `User Attribute RLS`.
 
-Add a new table to the page, based on the Dataset you just created `"Application Embedding RLS"` and `Publish` the changes. 
+Generate a new embed URL for this workbook page only:
 
-`Open embed-api.js` from the downloaded files. 
+<img src="assets/newRLS12.png" width="700"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> We have hardcoded the value to equal “East”. This value would normally be provided by the Parent application at runtime. 
-</aside>
-<img src="assets/rls2.png" width="800"/>
+### Adjust the Embed API for UA
 
-You are now ready to start the Node.js Express web server. Use Terminal and navigate to the Public folder where you just modified the two files. 
+Open `embed-api.js` in an editor.
 
-**In Terminal run the command:**
-```plaintext
-supervisor embed-api.js
+Add the following code as shown and save the file:
+
+```code
+searchParams += '&:ua_Region=East';
 ```
+
+Also replace the value for `EMBED_PATH` with the new one we just generated.
 
 Browse to `http://localhost:3000`. You should only see rows from the East Region. 
 
@@ -269,17 +292,39 @@ Browse to `http://localhost:3000`. You should only see rows from the East Region
 searchParams += &:ua_${attribute_name}=${attribute_value}
 </aside>
 
-![Alt text](assets/rls3.png)
+<aside class="negative">
+<strong>NOTE:</strong><br> You will need to scroll the table left to see the Region column.
+</aside>
 
-Back in your embed-api.js file, `change the ua_Region to East,West`. `Save` the file. 
+Notice only `East` regions are shown now, and the row count is much lower (is was originally >4M rows)
 
-Sending comma separated values via embed UA param requires a step for updating the column formula in the underlying Sigma RLS Dataset for the ua_Region column. The equality formula needs to be replaced with a Contains(), for ex: Contains(CurrentUserAttributeText("Darien_Region"), [Store Region])
+<img src="assets/newRLS13.png" width="800"/>
 
-and `refresh the browser` page. You should see the Region has been updated to reflect the new values. 
+### Sending Multiple UA
 
-You can use the Column Details feature to see that there East and West are present in the data now. 
+Back in your `embed-api.js` file, change the `ua_Region` parameter to send `East,West`. 
+```code
+searchParams += '&:ua_Region=East,West';
+```
 
-![Alt text](assets/rls4.png)
+`Save` the file. 
+
+Sending comma separated values via embed UA param requires a step for updating the column formula in the underlying Sigma RLS Dataset for the ua_Region column.
+
+The equality formula needs to be replaced with a Contains(), for ex: 
+```code
+Contains(CurrentUserAttributeText("Region"), [Store Region])
+```
+
+Refresh the browser page after changing the formula in the dataset. You should see the `Region` has been updated to reflect the new values. 
+
+You can use the `Column Details` feature to see that there `East and West` are present in the data now. 
+
+<img src="assets/newRLS14.png" width="800"/>
+
+Column details:
+
+<img src="assets/newRLS15.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Be sure to leave no space after the commas as the embed-api.js code does not provide handling for that and your browser page will not load as expected. This could be handled by the Parent application API but we want to keep it simple for this exercise.
@@ -291,7 +336,11 @@ You can use the Column Details feature to see that there East and West are prese
 ## Custom SQL Query
 Duration: 20
 
-Once we successfully configured User Attributes, we can use them in a Custom SQL dataset to provide security. This method can be used anywhere in the SQL statement for any user attribute. For example, it can be used to switch the database name, table name, in the select clause or where clause.
+Now that we successfully configured user attributes, we can use them in a Custom SQL dataset to provide security. 
+
+This method can be used anywhere in the SQL statement for any user attribute. 
+
+For example, it can be used to switch the database name, table name, in the select clause or where clause.
 
 For instance, assume that data for each customer is present in a separate schema. We can leverage Custom SQL to switch the schema based on the user.
 
@@ -299,28 +348,15 @@ For instance, assume that data for each customer is present in a separate schema
 <strong>NOTE:</strong><br> To use Custom SQL in the manner described above, the tables must have the same schema.
 </aside>
 
-Using the example we just did in the last exercise, you can create a Dataset based on SQL query instead of Table and leverage a SQL Where clause to enforce the UA passed at runtime. 
+Using the example we just did in the last exercise, you can create a Dataset based on SQL query instead of table and leverage a SQL `Where clause` to enforce the UA passed at runtime. 
 
 We will reuse the embedding framework used in the last section except that we will create a new Dataset based on SQL Query and use the Where clause to accept the UA passed at runtime.
 
-### Steps:
-`Open Sigma` and navigate to `Administration` / `Attributes` and open the `Region` attribute.
+Navigate to the `Embedding RLS` workbook and `edit` it.
 
-Click `Edit`
+Create a `new Page` and rename it to `SQL Query`.
 
-This time set the default Value to `East`. 
-
-`Click Save`
-</aside>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Prior to this, when developing in Sigma we would get “no data” until we looked at the actual embed page with UA passed for Region. That can be desirable in the case that the Parent Application fails to pass a value for Region and we show data we should not. 
-</aside>
-Navigate to the `Application RLS` Workbook and `edit` it.
-
-Create a `new Page` and rename it to `RLS SQL Query`.
-
-Click `+ Add New` and `Table`. 
+Click `+` > `Add New` and `Table`. 
 
 For `Source`, select `Write SQL`.
 
@@ -334,31 +370,29 @@ WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
 LIMIT 10
 ```
 
-This SQL code will get all columns from the table we have used previously but limit the return based on the “Region” UA and return only 10 rows.
+This SQL code will get all columns from the table we have used previously but limit the return based on the `Region` UA and return only 10 rows (to keep it simple).
 
 <aside class="negative">
 <strong>NOTE:</strong><br>  This syntax ('{{#raw system::CurrentUserAttributeText::Region}}') can be used anywhere in the SQL statement for any user attribute e.g. it can be used to switch the database name, table name, in the select clause or where clause.
 </aside>
 
-Set to value for ua_region in embed-api.js to `East`.
+`Run` the query. It will return no data as we never set a default value for the `Region` UA.
 
-`Click Run.` You should only see rows from Store Region=East (since that is the UA Default). Click `Done` and `Publish`.
+Click `Publish`.
 
-![Alt text](assets/rls7.png)
+Like before, generate an `Embed URL` for this workbook page and update `embed-api.js` with the new value.
+
+Also set to value for `ua_region` in `embed-api.js` to `East`.
+
+Save the `embed-api.js` file.
 
 Refresh your browser to see the embed (make sure you are looking at the right Workbook Page `RLS SQL Query`):
 
-![Alt text](assets/rls6.png)
+<img src="assets/newRLS16.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Using this workflow, the Workbook Page is using custom SQL but there is no Dataset also created. You could also have created a new Dataset based on custom SQL following the workflows we have done previously. In this case, you do not need to add Permissions for the Finance Teams to view this Dataset because there is no Dataset.
+<strong>NOTE:</strong><br> Using this workflow, the workbook page is using custom SQL, but there was no dataset created. You could also have created a new dataset based on custom SQL, following the workflows we have done previously. 
 </aside>
-
-Change embed-api.js to `West` and `save`. 
-
-Check your embed in the browser. You should now see Region = West. 
-
-![Alt text](assets/rls8.png)
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The actual syntax used in embed-api.js or the customer SQL may vary when attempting to pass more than one value for region in a comma delimited list. This will be dependent on the data source (ie: Snowflake, BigQuery etcetera) and how it interprets the request syntax.
@@ -387,23 +421,18 @@ Log into Sigma as an Administrator and navigate to `Administration` > `User Attr
 
 <img src="assets/rls21.png" width="800"/>
 
-Now reopen the Dataset called `Application Embedding - RLS`.
+Now reopen the Dataset called `User Attribute RLS` and duplicate it.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> If you don't have that anymore, create a new dataset and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA' table from Sigma's sample database to a new dataset.
-</aside>
+Make a duplicate of the dataset and rename it to `Embedding RLS - SuperUser`:
 
-Make a duplicate of the dataset and rename it to `Embedding RLS - SuperUser Step`:
-
-<img src="assets/rls9.png" width="400"/>
-
-Place the dataset in `Edit` mode, click the `ua_Region` column and replace it's existing formula with this one:
+Place the dataset in `Edit` mode, click the `Worksheet` tab and select the `ua_Region` column and replace it's existing formula with this one:
 
 ```code
 If(CurrentUserAttributeText("Region") = "All", True, If(CurrentUserAttributeText("Region") = [Store Region], True, False))
 ```
 
 Here is a line-by-line breakdown for those interested:
+
 <img src="assets/horizonalline.png" width="800"/>
 
 **If(CurrentUserAttributeText("Region") = "All", True,**<br>
@@ -435,34 +464,36 @@ If the condition is false, the expression evaluates to False.
 
 Hit enter. All the cell values under `ua_Region` should be `True` as the "current user" is an Administrator:
 
-<img src="assets/rls12.png" width="600"/>
+<img src="assets/newRLS17.png" width=800"/>
 
 There are about 4.5M rows shown.
 
-Before we move on, we need to make sure to share the dataset (in a Workbook) with our test users.
+`Publish` the dataset, then return the our workbook `Embedding RLS`, add a new page called `SuperUser` and add the new dataset to that page.
 
-`Publish` the dataset, then `explore` and `Save As` in the new Workbook. Give it a name `Embedding RLS - SuperUser Step`:
+Click `Publish`
 
-<img src="assets/rls13.png" width="800"/>
-
-Share the Workbook with our test user:
-
-<img src="assets/rls14.png" width="600"/>
+<img src="assets/newRLS18.png" width="800"/>
 
 Now we want to switch users, just using user impersonation.
 
 Navigate to `Administration` > `People` and find our test user that only has access to the `East` region. Click the `3-dot` menu and select 
 `Impersonate user`:
 
-<img src="assets/rls15.png" width="800"/>
+<img src="assets/newRLS19.png" width="800"/>
 
-Navigate to `Shared with me` and click the new workbook:
+Navigate to `Shared with me` and click the workbook:
 
-<img src="assets/rls16.png" width="800"/>
+<img src="assets/newRLS20.png" width="800"/>
+
+Click the `SuperUser` tab.
 
 We now see only regions in the `East` and the row count is much lower.
 
 <img src="assets/rls17.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We would normally separate this workbooks pages based on use case. We left it this way to simply the number of workbook and step in this QuickStart. For that reason, ignore that the "Sales" user can see the other pages as well, even though those pages have the correct rows counts as well.
+</aside>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We can also pass values in the embed API as we have done many times already but user impersonation is a quick method evaluate results as well.
@@ -475,13 +506,15 @@ In the next section, we will demonstrate a method using custom SQL.
 
 ## Superuser Via Custom SQL
 
-There are few ways to go about setting this up, but we will just add a new table to the `Embedding RLS - SuperUser Step` workbook, and base the new table on custom SQL. 
+There are few ways to go about setting this up, but we will just add a page and table (based on custom SQL) to the `Embedding RLS` workbook.
 
 If you are still running user impersonation, click to stop it.
 
-In the workbook, click the `+` and select `Table`. Then select a data source for the table as `Write SQL`:
+In the `Embedding RLS` workbook, in `Edit` mode, add a new page called `SuperUser SQL`.  
 
-<img src="assets/rls18.png" width="800"/>
+Click the `+` and select `Table`. Then select a data source for the table as `Write SQL` (use the `Sigma Sample Database` as source):
+
+<img src="assets/newRLS21.png" width="800"/>
 
 Paste the following code in the query window:
 ```code
@@ -500,7 +533,7 @@ WHERE
 
 Click `Run`. The results should look like this (about 4.5M rows):
 
-<img src="assets/rls19.png" width="800"/>
+<img src="assets/newRLS22.png" width="800"/>
 
 ### Explanation of the SQL script:
 Overall, this query selects all columns from the specified table, along with the current user's role and a user attribute (Region). It filters the rows based on the user's region, showing all rows if the user's region is 'All', or filtering to rows matching the user's region otherwise.
@@ -576,14 +609,17 @@ The entire IFF function is compared against True, meaning the row is selected on
 <strong>NOTE:</strong><br> The "Current Role" column returns as a Sigma GUID and this is expected. We can hide this column but wanted to make you are how we retrieve the user's role.
 </aside>
 
-Once you `Run` the query, the `Save` button becomes active and we can save the new dataset. 
+Once you `Run` the query, the `Publish` button becomes active.
 
-Once the dataset is saved, we can impersonate our test user (who has rights only to the East region):
+Once the changes are saved, we can impersonate our test user (who has rights only to the East region):
 
-<img src="assets/rls20.png" width="800"/>
+<img src="assets/newRLS23.png" width="800"/>
+
+NOTE: We may want to not displace the SQL query to our user. In that case, click the SQL icon as shown to hide that, and re-publish:
+
+<img src="assets/newRLS24.png" width="800"/>
 
 [Click here for more information on custom SQL in Sigma](https://help.sigmacomputing.com/docs/write-custom-sql)
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
