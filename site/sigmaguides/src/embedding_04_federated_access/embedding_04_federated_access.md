@@ -188,7 +188,7 @@ Select `Profit Planning Tool` for only the Profit Planning Tool page and then se
 In the node project folder, open `embed-api.js` and replace the value for `EMBED PATH` with this new value.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from "Administration > "APIs & Embed Secrets".
+<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from Administration > Developer Access > Create New, as below:
 </aside>
 
 <img src="assets/di7.png" width="800"/>
