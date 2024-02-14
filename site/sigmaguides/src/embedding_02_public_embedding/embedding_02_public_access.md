@@ -90,7 +90,7 @@ We will use one of the pre-built templates that are included in a Sigma trial, b
 
 After `logging into Sigma`, navigate to `Templates` and click the `Plugs Electronics Profit Planning Tool` example to open that workbook:
 
-<img src="assets/public2.png" width="600"/>
+<img src="assets/public2.png" width="800"/>
 
 Click `Dismiss` to exit the on-screen help:
 

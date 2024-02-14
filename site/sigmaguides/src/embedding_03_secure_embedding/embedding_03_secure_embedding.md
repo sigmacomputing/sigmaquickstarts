@@ -304,15 +304,17 @@ We will now create credentials that are specific to our workbook embed.
 
 **1:** Navigate to `Administration` > `Developer Access`:
 
-**2:** Click `Create New`, located in the page's top right corner. This will open the `Create New API Token or Embed Secret` modal:
-
 <img src="assets/ae1.png" width="800">
 
-**3:** Under `API Token or Embed Secret` select `Embed Secret`.
+**2:** Click `Create New`, located in the page's top right corner. This will open the `Create Client Credentials` modal.
+
+**3:** Under `Access Credential Type?` select `Embedding`.
 
 **4:** Enter a `Name` and `Description` as you see fit.
 
-**5:** Under `Owner`, select an organization member with the account type you would like to associate with the embed secret. For now, just select `Administrator`.
+**5:** Under `Owner`, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself or an `Administrator`.
+
+<img src="assets/ae2.png" width="700">
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Some customers elect to have a "Service Account" user with administrative privileges for this "owner" assignment.
@@ -320,11 +322,9 @@ We will now create credentials that are specific to our workbook embed.
 
 **6:** Click Create:
 
-<img src="assets/ae2.png" width="700">
-
 **7:** Copy the provided `ClientID` and `Secret` and store them.
 
-<img src="assets/ae3.png" width="700">
+<img src="assets/ae1a.png" width="700">
 
 **8:** Click Close.
 
@@ -435,7 +435,7 @@ supervisor embed-api.js
 
 If you get an error about port 3000 being used already (not typical) you can change the port value in the embed-api.js to use a different port. That is configured in embed-api.js in section #3. You will also need to edit `index.html` for the new port on this line:
 
-<img src="assets/ae4.png" width="500"/>
+<img src="assets/ae4.png" width="800"/>
 
 We are now ready to test the Parent application that has the embedded content.
 
@@ -533,8 +533,6 @@ Notice that Page Controls are available on the Dashboard tab, because we are pas
 
 `Creators` have additional capabilities and we can explore them by clicking on the various controls available:
 
-<img src="assets/accounttypes23.png" width="800"/>
-
 Notice that there is a new user in Sigma, `Administration`, `People` now as an “Embed User” with the email we set and `Viewer` Account Type. This was automatically added by the API on first successful access of the Parent application.
 
 <aside class="postive">
@@ -568,7 +566,6 @@ A third method exists, that aligns with companies who wish to follow more common
 For simplicity, we will just grant access to this workbook to the `Sales_People (Team)` with `Viewer` permission:
 
 <img src="assets/ae9.png" width="800"/>
-
 
 ### Adjust embed-api for Sales Person as viewer
 
