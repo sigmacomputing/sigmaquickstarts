@@ -46,7 +46,7 @@ his will minimize the effort as you go through the QuickStart adjusting the file
         <ul>
         <li>Express</li>
         <li>Node-supervisor</li>
-        <li>crypto (is now included with Node.js installation)</li>
+        <li>crypto (included with Node.js installation)</li>
         </ul>
     </li>
 </ul>

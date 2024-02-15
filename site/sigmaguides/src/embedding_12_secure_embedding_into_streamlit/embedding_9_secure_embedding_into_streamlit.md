@@ -316,7 +316,7 @@ Click the `Save As` button in the upper right corner and use the name `Sigma Das
 
 Now click the drop menu (as shown below) and select `Embedding`:
 
-<img src="assets/sl15.png" width="800"/>
+<img src="assets/sl15.png" width="500"/>
 
 In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow followed by the `Profit Planning Tool`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
 

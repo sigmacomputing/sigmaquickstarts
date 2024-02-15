@@ -124,18 +124,15 @@ Select `Profit Planning Tool` and select `Copy`:
 In the node project folder, open `embed-api.js` and replace the value for `EMBED PATH` with this new value.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid APIs and Embed Secrets. If you don't, you will need to generate them from Administration > Developer Access.
+<strong>NOTE:</strong><br> If you recently completed the QuickStarts for embedding, you probably already have valid Embed Client Credentials. If you don't, you will need to generate them from Administration > Developer Access.
 </aside>
 
-<img src="assets/di7.png" width="800"/>
+Ensure that `embed-api.js` has the correct API and Embed Secrets.
 
-Ensure that embed-api.js has the correct API and Embed Secrets.
-
-Once embed-api.js is setup, make sure that node's express server is running:
+Once `embed-api.js` is setup, make sure that node's express server is running:
 
 Start Terminal and run:
 ```code
-cd\site
 supervisor embed-api.js
 ```
 <img src="assets/di6.png" width="800"/>
