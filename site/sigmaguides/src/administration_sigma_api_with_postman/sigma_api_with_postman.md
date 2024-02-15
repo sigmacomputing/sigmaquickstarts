@@ -73,9 +73,7 @@ Click the `Collections` icon and click then the `Import` icon:
 
 Next we will need to get the link (URL) to the latest Sigma API. Open another browser tab.
 
-[Browse to this Sigma Help page](https://help.sigmacomputing.com/hc/en-us/articles/4408827709459-Sigma-s-Swagger-Playground) and click the link as shown below:
-
-<img src="assets/pm5.png" width="800"/>
+[Browse to the Sigma API Swagger.](https://docs.sigmacomputing.com/api/v2/?_gl=1*1mzzs1a*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwODAyNTc1NS41MTEuMC4xNzA4MDI1NzU1LjYwLjAuMA..)
 
 Click the button `View OpenAPI Spec (New Tab1)`:
 
@@ -97,13 +95,13 @@ Expand the `Sigma Public API` to see the available methods as below:
 
 <img src="assets/pm33.png" width="500"/>
 
-In order to be able to use any API in the web version of Postman, you need to install the Postman Agent on your local machine. 
+In order to be able to use any API in the web version of Postman, you need to install the `Postman Agent` on your local machine. 
 
 The Postman Desktop Agent is a micro-application that runs locally on your desktop. It enables you to bypass the limitations that exist in the browser by allowing API requests to originate in the browser, but be routed through your local machine and network. The Postman Desktop Agent overcomes the Cross Object Resource Sharing (CORS) limitations of browsers and acts as your agent for making API requests from the Postman web app.
 
 Download and install the Postman Desktop Agent. You will need to unzip to perform the installation. 
 
-<img src="assets/pm10.png" width="800"/>
+<button>[Login or Sign Up to Postman](https://www.postman.com/downloads/postman-agent/)</button>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -119,7 +117,7 @@ Click the `Create New` button:
 
 <img src="assets/pm11.png" width="800"/>
 
-Select `API Token`, give it a name and description. Notice that we have also created a Service Account user for automation purposes; this is a best practice. Since we are just testing, you can choose any Admin user you prefer. Click `Create`.
+Select `REST API`, give it a name and description. Some customers create a `Service Account` user for automation purposes; this is a best practice. Since we are just testing, you can choose any `Admin` user you prefer. Click `Create`.
 
 <img src="assets/pm12.png" width="800"/>
 
@@ -274,7 +272,7 @@ message="jwt expired"<br>
 
 One more step is required so that the values in the response are stored into our variables we setup earlier. 
 
-On the `Authenticate` > `Test` tab, paste the following code:
+On the `Authenticate` > `Tests` tab, paste the following code:
 
 ```console
 let response=pm.response.json();
@@ -291,7 +289,7 @@ Earlier, we ran `Authenticate` and got a valid response so we want to clear that
 
 Go back to the `top level node` > `variables` tab and click to `Reset all`:
 
-<img src="assets/pm13d.png" width="500">
+<img src="assets/pm13d.png" width="900">
 
 This reset clears the three values related to the token. `Current value` will now be blank (Initial was already blank).
 
@@ -301,7 +299,7 @@ Now return to the `Authenticate` tab, run the method and get another token.
 
 Then return to the `top level node` > `Variables` tab and we see that new values have appeared in the `Current value` fields for the three token related items:
 
-<img src="assets/pm13e.png" width="500">
+<img src="assets/pm13e.png" width="800">
 
 We are now ready to proceed to using other API methods.
 

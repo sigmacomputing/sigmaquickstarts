@@ -58,7 +58,7 @@ We will embed Sigma content inside a Node.js web application, passing runtime pa
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## **User Attributes**
+## User Attributes
 Duration: 10
 
 Sigma uses this method to restrict data access based on **user identity combined with User Attributes (UA)** passed by the Parent application at runtime.
