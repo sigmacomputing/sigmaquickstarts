@@ -88,22 +88,54 @@ The Google Analytics data that the Snowflake Connector loads into your account i
 
 To make it analytics-ready, we provide you with a SQL script that transforms the data into the format needed for the template.  The script requires you to input a few fields, then creates a new table called `events` and a stored procedure to update the `events` table with new rows each day.  It will also grant access on the table to the role used in your Sigma connection.
 
-[Download the SQL script here](https://github.com/sigmacomputing/quickstarts-public/tree/main/templates/google_analytics_4/google_analytics_events.sql) and copy/paste it into a new worksheet in Snowflake.  Input the required fields and run the script.
+[Download the SQL script here](https://github.com/sigmacomputing/quickstarts-public/blob/main/google_analytics_4_template/google_analytics_4_setup_script.sql) and copy/paste it into a new worksheet in Snowflake.  Input the required fields and run the script.
 
 The necessary input fields are:
 <ul>
-  <li><strong>ga_raw_data_dest_db</strong>: the destination database you specified in Snowflake when setting up the connector</li>
-  <li><strong>ga_raw_data_dest_schema</strong>: the destination schema you specified in Snowflake when setting up the connector</li>
-  <li><strong>ga_raw_data_dest_table</strong>: the table created by the Snowflake connector (usually like ANALYTICS_123546)</li>
-  <li><strong>ga_modeled_data_target_db</strong>: the database where the modeled GA data will live.  Needs to be accessible in Sigma.</li>
-  <li><strong>ga_modeled_data_target_schema</strong>: the schema where the modeled GA data will live.  Needs to be accessible in Sigma.</li>
+  <li><strong>ga_raw_data_dest_db</strong>: the destination database you specified in Snowflake when setting up the GARD connector</li>
+  <li><strong>ga_raw_data_dest_schema</strong>: the destination schema you specified in Snowflake when setting up the GARD connector</li>
+  <li><strong>ga_raw_data_dest_table</strong>: the table that contains raw GA4 events data (created by the connector, named like ANALYTICS_123546)</li>
+  <li><strong>ga_modeled_data_target_db</strong>: the target database for the modeled Google Analytics data (must exist already)</li>
+  <li><strong>ga_modeled_data_target_schema</strong>: the target schema for modeled Google Analytics data (must exist already)</li>
   <li><strong>materialization_role_name</strong>: the Snowflake role that will own the modeled GA data and materialization</li>
-  <li><strong>materialization_warehouse_name</strong>: the warehouse to use for creating and materializing the GA data</li>
-  <li><strong>materialization_CRON_string</strong>: the materialization schedule </li>
+  <li><strong>materialization_warehouse_name</strong>: the warehouse used to create and update the modeled events table</li>
+  <li><strong>materialization_CRON_string</strong>: the materialization schedule.  Default is every weekday at 3am PT</li>
   <li><strong>sigma_role_name</strong>: the role used in your Sigma connection</li>
 </ul>
 
-Once the script runs successfully, verify that you can see the new `events` table in your Sigma connection browser.
+
+You will be instructed how to input these fields in Section 1 of the SQL script.  For each variable, delete the placeholder text and enter the desired value inside the single quotes.
+<br>
+<br>
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Setup is not done at this point.  Read below. 
+</aside>
+
+Then, you'll need to set the argument for the stored procedure called by the task `task_call_usp_materialize_ga_events`.
+At the end of Section 1, you will see the following statement:
+
+```plaintext
+create or replace task task_call_usp_materialize_ga_events
+warehouse = $materialization_warehouse_name
+schedule = $materialization_CRON_string
+as
+call usp_materialize_ga_events('raw_database.raw_schema.raw_table');
+```
+
+You need to replace the argument passed to `usp_materialize_ga_events()` with the name of your **raw** Google Analytics events table.
+For example, if your raw table (the one created by the GARD connector) is located at `GA_RAW_DATA_DEST_DB.GA_RAW_DATA_DEST_SCHEMA.ANALYTICS_123456`,
+you would edit the argument in the stored procedure like so:
+```plaintext
+create or replace task task_call_usp_materialize_ga_events
+warehouse = $materialization_warehouse_name
+schedule = $materialization_CRON_string
+as
+call usp_materialize_ga_events('GA_RAW_DATA_DEST_DB.GA_RAW_DATA_DEST_SCHEMA.ANALYTICS_123456');
+```
+<br>
+<br>
+<br>
+Once you've set this value, you can run the entire script and verify that you can see the new `events` table in your Sigma connection browser.
 <br>
 <img src="assets/events_in_connection.png" width=300>
 
