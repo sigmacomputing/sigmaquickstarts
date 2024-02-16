@@ -114,6 +114,11 @@ Duration: 20
 ## New QuickStarts in November
 Duration: 20
 
+### Google Analytics 4 Template Setup
+This template gives you a prebuilt analytics package for Google Analytics 4 events data, including detailed page-level metrics for every page and the ability to dive into event-level details, and is based on reports from Universal Analytics/GA3.
+
+[Link to QuickStart](https://quickstarts.sigmacomputing.com/guide/google_analytics_4_template_setup/index.html?index=..%2F..index#0)
+
 ![Footer](assets/sigma_footer.png)
 
 ## Visualizations
