@@ -11,6 +11,7 @@ lastUpdated: 2024-02-28
 <!--
 Feb 2 was included in Jan done
 Feb 9 done
+Feb 16 done
 
 -->
 
@@ -78,6 +79,28 @@ To learn how to use actions and events in Sigma, please refer to this [QuickStar
 
 ![Footer](assets/sigma_footer.png)
 
+## Functions
+Duration: 20
+
+### ConvertTimezone function improvement
+The ConvertTimezone function now supports an optional from_timezone argument that allows you to specify the time zone from which the datetime value is converted. 
+
+This argument can be used when the data’s originating time zone differs from [your organization’s configured account time zone.](https://help.sigmacomputing.com/docs/account-time-zone)
+
+For example, adding a column to display another columns date into the US Pacific Timezone:
+
+<img src="assets/feb_2024_5.png" width="800"/>
+
+For more information, [see ConvertTimezone.](https://help.sigmacomputing.com/docs/converttimezone)
+
+### MakeDate function improvements
+The MakeDate function now supports optional hour, minute, and second arguments that enable more precision when specifying the datetime components.
+
+For more information, [see MakeDate.](https://help.sigmacomputing.com/docs/makedate)
+
+![Footer](assets/sigma_footer.png)
+
+
 ## Input Tables
 Duration: 20
 
@@ -124,6 +147,30 @@ For more information about workbook actions, see [Create and manage workbook act
 The [Schedule Exports](https://help.sigmacomputing.com/docs/send-and-schedule-exports-from-workbooks) modal has been redesigned to make it easier for users to find it, and the overall user experience when scheduling an export.
 
 <img src="assets/feb_2024_3.png" width="800"/>
+
+### Dynamic page visibility (BETA)
+Dynamic page visibility allows you to restrict the visibility of individual workbook pages based on specific users and teams. By default, pages are visible to all users with permission to view, explore, or edit the workbook, but you can now choose from three options:
+
+ <ul>
+      <li><strong>Hide page from all users:</strong> Hides page from all users when the workbook is open in View or Explore mode.</li>
+      <li><strong>Show page to all users (default):</strong> Shows page to all users when the workbook is open in any mode.</li>
+      <li><strong>Only show to select users or teams:</strong> Shows page to select users and teams when the workbook is open in any mode. Hides page from unselected users when the workbook is open in View or Explore mode.</li>
+</ul>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Page visibility settings apply to View and Explore mode only. The workbook owner and all users with Can edit access to the particular workbook can access all pages in Edit mode, regardless of page visibility settings.
+</aside>
+
+For more information, [see Customize workbook page visibility.](https://help.sigmacomputing.com/docs/customize-workbook-page-visibility)
+
+### Permanent filter icon display
+The inline toolbar for data elements now includes a filter icon at all times, regardless of whether a filter or control is already applied. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This update enables quick access to filtering options for every data element added to the workbook.
+</aside>
+
+<img src="assets/feb_2024_6.png" width="800"/>
 
 ### Text input control type
 The former Text box control element has been renamed to Text input to differentiate it from the Text UI element.
