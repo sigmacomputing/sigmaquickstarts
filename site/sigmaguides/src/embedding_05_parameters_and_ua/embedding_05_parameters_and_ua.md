@@ -24,7 +24,7 @@ You can find detailed documentation of this functionality [here.](https://docs.s
 
 This QuickStart guide provides illustrative examples and screenshots of both required and optional parameters, helping developers understand the importance of each.
 
-Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 3: Application Embedding QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0)
+Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 03: Secure Access QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
  ### Target Audience
 
