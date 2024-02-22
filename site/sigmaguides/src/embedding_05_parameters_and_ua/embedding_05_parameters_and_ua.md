@@ -700,15 +700,15 @@ The primary uses for UAs are to set values for:
 
 1: Enforcing row-level security:<br>
 [Documentation](https://help.sigmacomputing.com/docs/dataset-row-level-security)<br>
-[QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#0)
+[QuickStart Embedding 06: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0)
 
 2: In custom SQL, as a where clause:<br>
 [Documentation](https://help.sigmacomputing.com/docs/write-custom-sql)<br>
-[QuickStart Embedding 4: Application Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html?index=..%2F..index#3)
+[QuickStart Embedding 06: Row Level Security / Page 6](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#5)
 
 3: Dynamic warehouse role switching:<br>
 [Documentation](https://help.sigmacomputing.com/hc/en-us/articles/12717103444755-Configure-User-Attributes-on-a-Snowflake-Connection-#h_01GPHF4EJ127Z9453ZSQMBCP7Q)<br>
-[QuickStart Embedding 7: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0)
+[QuickStart Embedding 09: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_09_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0)
 
 Sample Code:
 ```code
