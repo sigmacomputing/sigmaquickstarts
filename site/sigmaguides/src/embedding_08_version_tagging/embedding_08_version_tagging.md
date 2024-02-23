@@ -215,12 +215,16 @@ You should now have three working connections. The only difference is the table 
 ## Sigma Tags
 Duration: 5
 
-
 Log into Sigma as an Administrator and head to the `Administration` / `Tags` page.
 
 Click `Create` to add a new tag, 
 
 Set the name to `Development` (pick any color you prefer, it won't matter for our example). 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> How you decide to name tags is totally up to you. The "draft/published" state of a new workbook is technically the "development" version but we wanted to show that you are in control of the workflow. If you prefer, you could just use the draft/published state as development and only have a "QA" and "Production" tags.
+</aside>
+
 
 <img src="assets/vt1.png" width="500"/>
 
