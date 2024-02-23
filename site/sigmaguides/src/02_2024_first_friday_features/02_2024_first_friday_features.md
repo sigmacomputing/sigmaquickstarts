@@ -12,7 +12,7 @@ lastUpdated: 2024-02-28
 Feb 2 was included in Jan done
 Feb 9 done
 Feb 16 done
-
+FEb 23 done
 -->
 
 # (02-2024) February
@@ -48,6 +48,25 @@ Duration: 20
 
 ## Embedding
 Duration: 20
+
+### Embedding workflows UI refresh
+The following UI changes have been applied to the embedding workflows in Sigma:
+
+1: Embed types now include `Secure` or `Public`. 
+2: All references to `Application` and `User-backed` embedding have been removed.
+3: The former `APIs & Embed Secrets` page in the Administration portal is now labeled `Developer Access`. 
+    - This page displays existing credentials and allows you to create new ones.
+4: The former Application Embedding Secret modal (accessible from the Developer Access page) is now labeled `Secure Embedding Credentials`. 
+    - This modal displays the client ID and embed secret upon creation.
+
+In support of this, the [help documentation](https://help.sigmacomputing.com/docs/workbook-embedding-overview) and [Embed QuickStart series](https://quickstarts.sigmacomputing.com/?cat=embedding) have been refresh.
+
+### Hide run as recipient
+Embeds now support a `hide_run_as_recipient` parameter that allows you to hide the Run queries as recipient option in the `Send Now` and `Schedule Exports` modals. 
+
+This removes the ability for embed users to configure exports that run queries using the recipient’s permissions and data access. 
+
+A `Hide run as recipient` option has also been added to the Embed configurations panel in the embed sandbox.
 
 ### View embed URL in Embed Sandbox
 When an embed is loaded in the sandbox environment, you can now click a View Url option to display the embed URL.
@@ -119,6 +138,11 @@ This template gives you a prebuilt analytics package for Google Analytics 4 even
 
 [Link to QuickStart](https://quickstarts.sigmacomputing.com/guide/google_analytics_4_template_setup/index.html?index=..%2F..index#0)
 
+### Embedding Series
+In support of some announced changes to embed terminology, we also took the opportunity to completely update the entire series, adding any recent "goodness" related to embedding.
+
+[Embed QuickStart series](https://quickstarts.sigmacomputing.com/?cat=embedding)
+
 ![Footer](assets/sigma_footer.png)
 
 ## Visualizations
@@ -147,6 +171,13 @@ Workbook actions also support dynamic cross-element filtering, which enables use
 For example, when a user clicks a data point in one chart (the trigger element), Sigma automatically applies a filter to another chart (the target element) using the dimension value of the clicked data point (see the interactive demo).
 
 For more information about workbook actions, see [Create and manage workbook actions](https://help.sigmacomputing.com/docs/create-and-manage-workbook-actions) and [Configure a cross-element filter.](https://help.sigmacomputing.com/docs/configure-a-cross-element-filter)
+
+### Clear segmented control selection
+Segmented control elements now feature a `Show clear option` setting in the `Element properties` > `Settings` tab. 
+
+Enable this and customize the display label (default “None”) to add an option that allows users to clear the selected control value.
+
+<img src="assets/clear-control.gif">
 
 ### Design improvements for scheduled exports
 The [Schedule Exports](https://help.sigmacomputing.com/docs/send-and-schedule-exports-from-workbooks) modal has been redesigned to make it easier for users to find it, and the overall user experience when scheduling an export.
