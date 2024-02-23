@@ -622,9 +622,9 @@ Notice that #4 shows no data for the Fiscal Year= 2019. Filter that out:
 
 <img src="assets/CDUC32.png" width="800"/>
 
-Let's say we want to see the Sale Store Sales for Thanksgiving. Since 2022 is the most recent year we had a Thanksgiving, the `Fiscal Day of the Year` value according to the 4-5-4 Calendar is `299. 
+Let's say we want to see the Sale Store Sales for Thanksgiving. Since 2022 is the most recent year we had a Thanksgiving, the `Fiscal Day of the Year` value according to the 4-5-4 Calendar is `299*`. 
 
-<img src="assets/CDUC33b.png" width="600"/>
+[*The NRF Retail Calendars are located here.](https://nrf.com/resources/4-5-4-calendar)
 
 Now we can see the year-over-year side by side with just a few clicks to expand as show:
 
