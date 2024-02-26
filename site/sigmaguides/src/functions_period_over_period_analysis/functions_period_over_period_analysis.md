@@ -149,7 +149,9 @@ In general, these factors require consideration when creating a PoP analysis:
       <li><strong>Metric Selection:</strong> The metrics compared can vary widely, from sales figures and website traffic to production costs and customer engagement metrics, depending on the industry and the specific questions being addressed.</li>
  </ul>
 
-### Why PoP is important
+### Why PoP is important - common use cases
+
+PoP is widely used across industries and these are the most common reasons why:
 
  <ul>
       <li><strong>Trend Identification:</strong> PoP analysis helps identify trends over time, allowing technical professionals to see whether certain metrics are improving, declining, or remaining stable.</li>
@@ -160,6 +162,10 @@ In general, these factors require consideration when creating a PoP analysis:
 </ul>
 
 As you can see, gaining insights into what drives changes in data over time is invaluable in a variety of technical and business contexts. This is why it's so widely used across almost any industry.
+
+There really is no end to the ways companies need to leverage PoP analysis. 
+
+The common thread is always to identify a meaningful change, and react to it as fast as possible, in order to operate efficiently and drive better outcomes. 
 
 #### Technical considerations
 While it is tempting to just "jump right in" and start comparing values based on different time periods, there are some things to keep in ming at all times.
@@ -174,21 +180,6 @@ While it is tempting to just "jump right in" and start comparing values based on
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma addresses these areas by proving direct access to the data warehouse at massive scale, creating and materializing datasets, and allowing users to drill anywhere in the data using a familiar spreadsheet interface. 
 </aside>
-
-### Common use cases
-PoP is widely used across industries and these are the most common reasons why:
-
- <ul>
-      <li><strong>Trend Identification:</strong> For example, healthcare wants to know which patients receiving the same treatment are improving, declining, or remaining stable.</li>
-      <li><strong>Seasonal Adjustments:</strong> For example, retail businesses often compare month-over-month (MoM) or year-over-year (YoY) sales to plan inventory and marketing strategies.</li>
-      <li><strong>Performance Measurement:</strong>  If a new marketing campaign was launched, comparing sales figures before and after the campaign can gauge its impact.</li>
-      <li><strong>Forecasting and Planning:</strong> Sales management always wants to know where products are selling well (or not), and make adjustments accordingly to inventory or staffing levels.</li>
-      <li><strong> Anomaly Detection:</strong> Product managers might react to a sudden spike or drop in a normally consistent item. This can indicate an issue or an opportunity that might require further investigation.</li>
-</ul>
-
-There really is no end to the ways companies need to leverage PoP analysis. 
-
-The common thread is always to identify a meaningful change, and react to it as fast as possible, in order to operate efficiently and drive better outcomes. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
