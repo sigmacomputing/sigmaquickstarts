@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-08-23
+lastUpdated: 2024-02-26
 
 # Embedding 05: Parameters and User-Attributes
 <!-- The above name is what appears on the website and is searchable. -->
@@ -367,8 +367,10 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
+**6: hide_run_as_recipient:**<br>
+When set to true, hides the `Run queries as recipient` option in the `Send Now` and `Schedule Exports` modals. Default = `false`.
 
-**6: hide_schedule:**<br>
+**7: hide_schedule:**<br>
 Hides the Schedule exports option in the menu for saved workbooks. Default = `false`.
 
 Sample Code:
@@ -391,7 +393,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**7: hide_send:**<br>
+**8: hide_send:**<br>
 Hides the `Send now` option in the menu for saved workbooks. Default = `false`.
 
 Sample Code:
@@ -410,7 +412,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**8: hide_sheet_interactions:**<br>
+**9: hide_sheet_interactions:**<br>
 This hides the `sort` dropdown on a column header or filter bar access for users of the embedded workbook. Default = `false`.
 
 Sample Code:
@@ -429,7 +431,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**9: hide_tooltip:**<br>
+**10: hide_tooltip:**<br>
 If set to true and a user hovers over a tooltip, the tooltip is no longer displayed. 
 
 This applies to charts (line, bar, area, etc) and map chart marks. 
@@ -450,7 +452,7 @@ When set to `true`, looks like this:
 
 <img src="assets/horizonalline.png"/>
 
-**10: hide_workbook_name:**<br> 
+**11: hide_workbook_name:**<br> 
 A boolean value that hides the workbook name near the folder icon, in the embed footer. Default = `false`
 
 Sample Code:
@@ -461,7 +463,7 @@ searchParams += '&:hide_workbook_name=true';
 
 <img src="assets/horizonalline.png"/>
 
-**11: last_name:**<br>
+**12: last_name:**<br>
 Sets the last name of the current embed user. The name, if set, will show in the folder menu and in the emails that are sent out.
 
 Sample Code:
@@ -478,7 +480,7 @@ If both first_name and last_name parameters are absent, the current user keeps t
 
 <img src="assets/horizonalline.png"/>
 
-**12: loading_bg:**<br> 
+**13: loading_bg:**<br> 
 Allows you to change the background on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -493,7 +495,7 @@ If we create an error (remove the API secret from embed-api.js, save the change,
 
 <img src="assets/horizonalline.png"/>
 
-**13: loading_text:**<br> 
+**14: loading_text:**<br> 
 Allows you to change the font color on the loading and error screens when used with hex color codes.
 
 Sample Code:
@@ -508,7 +510,7 @@ If we create an error (remove the API secret from embed-api.js, save the change,
 
 <img src="assets/horizonalline.png"/>
 
-**14: menu_position:**<br>
+**15: menu_position:**<br>
 Allows you to change the position of the toolbar to `top`, `bottom`, or `none`.
 
 `none` removes the toolbar. 
@@ -531,7 +533,7 @@ Examples:
 
 <img src="assets/horizonalline.png"/>
 
-**15: responsive_height:**<br>
+**16: responsive_height:**<br>
 Setting this to true this allows developers access to workbook:pageheight:onchange JavaScript event.
 
 This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
@@ -544,7 +546,7 @@ searchParams += '&:responsive_height=true';
 
 <img src="assets/horizonalline.png"/>
 
-**16: show_footer:**<br>
+**17: show_footer:**<br>
 If set to false, it hides the file explorer, workbook page tabs, `Save As` / `Edit` options, and Sigma logo in footer. Default = `true`. 
 
 Sample Code:
@@ -559,7 +561,7 @@ searchParams += '&:show_footer=false';
 
 <img src="assets/horizonalline.png"/>
 
-**17: theme:**<br>
+**18: theme:**<br>
 Use any of the default themes (Light, Dark, and Surface) or any themes defined in your org. Use the name of the theme as the value. The value is case-sensitive. 
 
 Sample Code:
@@ -590,7 +592,7 @@ Now the embed has adopted the `Light` theme, even though the `Dark` theme was se
 
 To learn more about [custom themes in Sigma, click here.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
-**18: use_user_name:**<br>
+**19: use_user_name:**<br>
 Displays the workbook creator’s name (instead of email) in embed menus and system-generated emails.
 
 Sample Code:
