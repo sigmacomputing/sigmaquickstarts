@@ -12,7 +12,8 @@ lastUpdated: 2024-02-28
 Feb 2 was included in Jan done
 Feb 9 done
 Feb 16 done
-FEb 23 done
+Feb 23 done
+Feb 29 done
 -->
 
 # (02-2024) February
@@ -34,15 +35,25 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ![Footer](assets/sigma_footer.png)
 
-## Audit Logging (Beta)
+## Administration
 Duration: 20
+
+### Updated account type permissions for explore access
+Account types now support two permissions that enable users to be granted `Can explore` workbook permission. These account type permissions determine how users interact with workbooks in specific modes.
+
+**Basic explore:** Enables users to access View mode with additional capabilities when granted Can explore workbook permission.
+
+**Full explore:** (formerly named Explore workbooks) Enables Basic explore capabilities in View mode as well as the full scope of user interactions in Explore mode.
+
+For a detailed comparison of user interactions supported by each permission, [see Basic explore vs. Full explore.](https://help.sigmacomputing.com/docs/basic-explore-vs-full-explore)
+
 
 ![Footer](assets/sigma_footer.png)
 
 ## Bug Fixes
 Duration: 20
 
-**1:** Can write only permission set at the connection level no longer blocks additive permissions set at the schema or database table levels.
+**1:** The `Can write only` permission set at the connection level no longer blocks additive permissions set at the schema or database table levels.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -119,17 +130,6 @@ For more information, [see MakeDate.](https://help.sigmacomputing.com/docs/maked
 
 ![Footer](assets/sigma_footer.png)
 
-
-## Input Tables
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-
-## Metrics
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-
 ## New QuickStarts in November
 Duration: 20
 
@@ -142,6 +142,25 @@ This template gives you a prebuilt analytics package for Google Analytics 4 even
 In support of some announced changes to embed terminology, we also took the opportunity to completely update the entire series, adding any recent "goodness" related to embedding.
 
 [Embed QuickStart series](https://quickstarts.sigmacomputing.com/?cat=embedding)
+
+![Footer](assets/sigma_footer.png)
+
+## Templates
+
+Sigma provides a `Templates gallery` for every customer which includes a set of Sigma-created examples. There are 15 standard templates (as of this QuickStart), and we are adding more all the time:
+
+<img src="assets/templates.png" width="800"/>
+
+Templates allow users to create standard models (or Templates!) and share workbook structures for quick and consistent reuse.
+
+### New templates
+The following templates are now available in the `Template`s > `External` tab:
+
+**Google Analytics 4:** Offers visibility into GA4 events data not provided by the Google Analytics platform. There is a QuickStart that [details the functionality here.](https://quickstarts.sigmacomputing.com/guide/google_analytics_4_template_setup/index.html?index=..%2F..index#0)
+
+**Plugs Electronics Profit Planning Tool:** Leverages Sigma’s latest design features for an improved look and feel.
+
+**Loan Analysis:** Analyzes loan portfolio performance using publicly available loan data from `Lending Club`.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -183,6 +202,13 @@ Enable this and customize the display label (default “None”) to add an optio
 The [Schedule Exports](https://help.sigmacomputing.com/docs/send-and-schedule-exports-from-workbooks) modal has been redesigned to make it easier for users to find it, and the overall user experience when scheduling an export.
 
 <img src="assets/feb_2024_3.png" width="800"/>
+
+### Display or hide legends in maps
+
+Map elements now support the ability to display or hide legends. In the  `Element properties` > `Legend` section, select the `Show legend` checkbox to display the legend or clear the checkbox to hide it:
+
+<img src="assets/maplegend.png" width="800"/>
+
 
 ### Dynamic page visibility (BETA)
 Dynamic page visibility allows you to restrict the visibility of individual workbook pages based on specific users and teams. By default, pages are visible to all users with permission to view, explore, or edit the workbook, but you can now choose from three options:
