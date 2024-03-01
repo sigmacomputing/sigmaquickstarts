@@ -56,7 +56,7 @@ Developers can learn how to utilize required and optional parameters, as well as
 ## Required Parameters
 Duration: 20
 
-This section is provided for completeness. While it's assumed that you are already familiar with these parameters, having completed the [Embedding 3: Application Embedding QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html?index=..%2F..index#0), we have included them here for reference. 
+This section is provided for completeness. While it's assumed that you are already familiar with these parameters, having completed the [Embedding 03: Secure Access](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0), we have included them here for reference. 
 
 For each required parameter, an example based on Node.js code is provided
 
@@ -70,7 +70,7 @@ Sample Code:
 //CREATE A NONCE (NUMBER USED ONCE) BASED ON CRYPTO'S UUID FUNCTION:
 const nonce = crypto.randomUUID();
 
-//TART TO CONSTRUCT THE LIST OF PARAMETERS TO BE SENT WITH THE URL BY THE API:
+//START TO CONSTRUCT THE LIST OF PARAMETERS TO BE SENT WITH THE URL BY THE API:
 let searchParams = `?:nonce=${nonce}`;
 ```
 
