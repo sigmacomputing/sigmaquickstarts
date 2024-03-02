@@ -130,7 +130,7 @@ For more information, [see MakeDate.](https://help.sigmacomputing.com/docs/maked
 
 ![Footer](assets/sigma_footer.png)
 
-## New QuickStarts in November
+## New QuickStarts in February
 Duration: 20
 
 ### Google Analytics 4 Template Setup
