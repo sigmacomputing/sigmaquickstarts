@@ -84,7 +84,7 @@ Duration: 5
 
 Another way to create the `query_history_enriched` table is by running the attached SQL script in your Snowflake account.
 
-[Download the SQL script here!](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/templates/query_history_enriched.sql)
+[Download the SQL script here!](https://github.com/sigmacomputing/quickstarts-public/blob/main/snowflake_cost_per_query_template/query_history_enriched.sql)
 
 **The script requires you to specify a few parameters:**
 <ul>
