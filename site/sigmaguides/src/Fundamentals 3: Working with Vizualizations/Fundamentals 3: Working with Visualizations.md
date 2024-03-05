@@ -229,9 +229,9 @@ Sum([Price]) / CountDistinct([Cust Key])
 
 <img src="assets/maps4.png" width="500"/>
 
-Add the new column `Revenue per Customer` to the `Map color scale` as shown:
+Add the new column `Revenue per Customer` to the `Map color scale` as shown, selecting "By scale" from the drop-list:
 
-<img src="assets/maps5.png" width="500"/>
+<img src="assets/maps5.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> When you hover over each US-State, the States data value is shown for us. Right clicking on any State allows you to include/exclude it from the dataset or drill down to the underlying data. 
