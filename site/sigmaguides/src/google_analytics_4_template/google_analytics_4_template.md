@@ -58,7 +58,7 @@ Before configuring the Snowflake Connector for Google Analytics Raw Data (GARD),
 At a high level, the necessary actions in your Google account are
 <ol>
   <li>Migrate your Google Analytics from Universal Analytics to GA4.  This is done inside the GA platform.</li>
-  <li>Configure a BigQuery link for GA4 data.  This is done inside the GA platform and allows raw GA data to be dumped into a GCP project.</li>
+  <li>Configure a BigQuery link for GA4 data.  This is done inside the GA platform and allows raw GA data to be dumped into a GCP project.  Note that you should use the Daily export option.</li>
   <li>Configure a service account or OAuth authentication to allow Snowflake to read data from BigQuery storage.  This is done in the GCP platform.</li>
 </ol> 
 
