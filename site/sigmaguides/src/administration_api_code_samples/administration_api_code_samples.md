@@ -61,7 +61,7 @@ Create a new folder on your local computer called `rest_api_recipes`. It does no
 
 ### Source Code Editor - VSCode 
 
-For this QuickStart, we will demonstrate using Visual Studio Code (VSCode) but you may use any IDE you prefer. 
+For this QuickStart, we will demonstrate using Visual Studio Code (VSCode), but you may use any IDE you prefer. 
 
 VSCode, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git.
 
@@ -73,42 +73,108 @@ Open VSCode and make sure it loads without error and open the folder `rest_api_r
 
 <img src="assets/apics2.png" width="800"/>
 
-
-
-
-
-
-
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Runtime Environment - Node.js
+### Runtime Environment - Node.js
 Duration: 20
 
 While developers can use any language to communicate with the Sigma REST API, we will use the popular framework [Node.js. ](https://nodejs.org/en) for our examples.
 
-The [Sigma API Reference Swagger](https://help.sigmacomputing.com/reference/explanation) provides sample code for all the popular programming languages, so definitely check that out:
-
-<img src="assets/apics1.png" width="800"/>
-
-We need to install Node.js (Node) and configure a local folder with the associated project files, for our project.
-
 Node.js (Node) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on a JavaScript engine and executes JavaScript plaintext outside a web browser, which was designed to build scalable network applications.
  
-With Node, we are able to set up a local web server that will make a web page available, that we will use to securely embed our Sigma content. 
+[Download and install Node.js from here:](https://Nodejs.org/en/download/)
 
-### Node modules
+Use the LTS (long term supported) version appropriate for your operating system.
 
+Run the installer selecting all the defaults. **We do not need to specify our project folder for this installation.**
+
+This will install both `Node` and the `Node package manager` (which manages optional Node components, which add more functionality). 
+
+The package manager is abbreviated to `npm` when running commands.
+
+You can verify your installation using VSCode's built-in Terminal:
+
+<img src="assets/apics3.png" width="800"/>
+
+**Run the command:**
+```code
+node -v
+```
+
+This should return the version number as below:
+
+<img src="assets/apics4.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
+</aside>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Use Node version 20.6.1 or higher. This allows us to avoid installing a module (typically DotENV) to manage environment variables (for example: our API Secret). Since Node v20.6.1, the ability to reference a specific file containing environment variables from the command line is supported.
+</aside>
+
+You can leave the Terminal session open as we will use that in the next section.
+
+### Node module
+
+We need to install a few Node modules **in our local folder** with the associated project files.
+
+This process is the same when installing common Node modules. We will start with two, but in later use-cases we may require others to be installed so watch for that along the way, in other sections of this QuickStart.
+
+### Axios
+
+The first module we will install is called `Axios`, and is one of the most popular JavaScript libraries in the world. It is an HTTP client that can be used to make requests from both browsers and NodeJS. We will use this to make calls to the Sigma REST API, via a Javascript.
+
+In VSCode Terminal, run:
+```
+npm install axios
+```
+<img src="assets/apics5.png" width="800"/>
+
+No errors should be returned. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+### Environment Variables
+
+We need to create a file to store our environment variables. These variables will change as we work with each use-case. 
+
+This file keeps our bearer token out of our scripts. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The token value will need to be refreshed each hour.
+</aside>
 
 ## Change a Members's Account Type
 Duration: 20
 
+With our system setup, we can try our first script. 
+
+We want to call the Sigma API endpoint to `Update the specified member` account type.
+
+For this use case, we will be using [this endpoint.](https://help.sigmacomputing.com/reference/updatemember-1)
+
+In VSCode, click to create a new file in our project folder:
+
+<img src="assets/apics6.png" width="400"/>
+
+Next, paste the following code into the codeblock section as shown.
+```code
+
+```
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## **NEXT SECTION**
+Duration: 20
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -124,20 +190,12 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Hold content
 Duration: 20
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+The [Sigma API Reference Swagger](https://help.sigmacomputing.com/reference/explanation) provides sample code for all the popular programming languages, so definitely check that out:
 
-## **NEXT SECTION**
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## **NEXT SECTION**
-Duration: 20
+<img src="assets/apics1.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
