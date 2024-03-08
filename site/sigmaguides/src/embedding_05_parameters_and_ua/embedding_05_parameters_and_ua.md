@@ -669,6 +669,11 @@ Sample Code:
 //HIDE UNDERLYING DATA OPTION FROM EMBED USERS. DEFAULT=false
 searchParams += '&:showUnderlyingData=true';
 ```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is important to understand that a users "account type" is considered first and then this parameter. For example, if a user has permission to view the underlying data, even if the parameter to hide it was sent in the embed API, the toggle button to show it again is still there.
+</aside>
+
 <img src="assets/horizonalline.png"/>
 
 **4: oauth_token:**<br>
