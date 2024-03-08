@@ -1,0 +1,107 @@
+author: pballai
+id: 03_2024_first_friday_features
+summary: 03_2024_first_friday_features
+categories: Administration
+environments: web
+status: Published
+feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
+tags: first_friday_features
+lastUpdated: 2024-03-31
+
+# (03-2024) March
+<!-- The above name is what appears on the website and is searchable. -->
+
+## Overview 
+Duration: 5 
+
+This QuickStart lists all the new and public beta features released, as well as bugs fixed in March 2024.
+
+It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
+
+**Public beta features will carry the section text "Beta".**
+
+All other features are considered released (**GA** or generally available).
+
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
+
+New first Friday features QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
+
+![Footer](assets/sigma_footer.png)
+
+## Administration
+Duration: 20
+
+### Updated licensing model
+Sigma’s license tiers are now labeled `Lite`, `Essential`, and `Pro` to bring clarity and simplicity to the licensing model.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> No action is required to accommodate the update, as all user functionality and experiences will continue seamlessly.
+</aside>
+
+**Here’s what you need to know:**
+<ul>
+      <li>No action is required from your end. Your Sigma experience will continue seamlessly.</li>
+      <li>Default account names will be automatically updated to reflect the new license names.</li>
+      <li>If your organization was previously subscribed to the two-license model, it will continue using two license tiers: `Lite (formerly Viewer)` and Pro `(formerly Creator)`.<li>
+      <li>Custom account names will remain unchanged.<li>
+      <li>All Embed URLs will continue to function as usual. The old default account names will automatically map to the new names.<li>
+      <li>SCIM processes will continue to function as normal and old license names will continue to work.<li>
+      <li>Your Admin Portal and Usage Dashboards will be updated to reflect the new license names..<li>
+      <li>Existing licensing agreements and terms will remain unchanged.<li>
+</ul>
+
+For more information, [see the Sigma Community post.](https://community.sigmacomputing.com/t/sigma-license-name-changes-no-action-needed/3332?_gl=1*1gugfu2*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwOTkyMTA5My41NTIuMS4xNzA5OTI1MDE1LjYwLjAuMA..)
+
+![Footer](assets/sigma_footer.png)
+
+## Embedding
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+
+## Input Tables
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+
+## Functions
+Duration: 20
+
+### DateFormat function enhancement
+The `DateFormat` function now supports the `%q` specifier that allows you to extract the **quarter** component from a datetime value.
+
+For more information about the function and supported format specifiers, [see DateFormat.](https://help.sigmacomputing.com/docs/dateformat)
+
+![Footer](assets/sigma_footer.png)
+
+## New QuickStarts in March
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+
+## Visualizations
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+
+## Workbooks
+
+![Footer](assets/sigma_footer.png)
+
+## Additional Information
+Duration: 20
+
+**Additional Resource Links**
+
+[Blog](https://www.sigmacomputing.com/blog/)<br>
+[Community](https://community.sigmacomputing.com/)<br>
+[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
+<br>
+
+[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
+[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+
+![Footer](assets/sigma_footer.png)
