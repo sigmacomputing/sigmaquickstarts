@@ -107,17 +107,13 @@ This should return the version number as below:
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Use Node version 20.6.1 or higher. This allows us to avoid installing a module (typically DotENV) to manage environment variables (for example: our API Secret). Since Node v20.6.1, the ability to reference a specific file containing environment variables from the command line is supported.
-</aside>
-
 You can leave the Terminal session open as we will use that in the next section.
 
-### Node module
+### Node modules
 
-We need to install a few Node modules **in our local folder** with the associated project files.
+We need to install a few Node modules **in our local folder.**
 
-This process is the same when installing common Node modules. We will start with two, but in later use-cases we may require others to be installed so watch for that along the way, in other sections of this QuickStart.
+This process is the same for many Node modules. We will start with two, but in later use-cases we may require others to be installed, so watch for that along the way.
 
 ### Axios
 
@@ -131,36 +127,160 @@ npm install axios
 
 No errors should be returned. 
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+### dotenv
+
+[dotenv](https://www.npmjs.com/package/dotenv) is a popular Node. js module that allows you to load environment variables from a `.env` file into your Node. js application. This will simplify our project code. 
+
+Run the following command in Terminal:
+```code
+npm install dotenv
+```
+
+No errors should be returned. 
 
 ### Environment Variables
 
-We need to create a file to store our environment variables. These variables will change as we work with each use-case. 
+We need to create a file to store our environment variables. 
 
-This file keeps our bearer token out of our scripts. 
+This file keeps our bearer token out of our scripts and also contains other variables we may want to change in different use-cases.
+
+In VSCode, click the icon to create a new file, name the file `.env` and paste the following code into the editor.
+
+<img src="assets/apics7.png" width="800"/>
+
+```code
+CLIENT_ID=yourClientId
+SECRET=yourSecret
+MEMBER_ID=yourMemberId
+```
+
+Replace the placeholders for `yourClientId` and `yourSecret`. We will replace `yourMemberId` later on.
+
+Save the file.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The token value will need to be refreshed each hour.
+<strong>IMPORTANT:</strong><br> The token value will need to be refreshed each hour. We will handle that in our Javascript code.
 </aside>
+
+### Create Test Member
+Let's create new member to test with. We could also do this with the API, but we will use the UI, since we want to use it to also verify API changes after the fact. 
+
+If you prefer, you can use any non-production user you want, but we recommend creating a test user for this purpose. 
+
+If you are not sure how to create a user (member) in Sigma, [please refer to this documentation.](https://help.sigmacomputing.com/docs/invite-people-to-your-organization).
+
+We created a test user using [Gmail's email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) feature. 
+
+Our test user is called `sales_rep`.
+
+Make a note of the test user's memberId. Again, we could get this using the API, but in this example, we will just copy it from the URL, when looking at the user's profile from the `Administration` > `People` list:
+
+<img src="assets/apics8.png" width="800"/>
+
+In this case, the memberId is `KteJXJQfHuei5GxxY9hQOnFZHP91A`. Yours will be different.
+
+Add this value to the .env file we created and save the change.
+```code
+MEMBER_ID=KteJXJQfHuei5GxxY9hQOnFZHP91A
+```
+
+### Bearer Token Script
+In this step, we will create a script that exports a Javascript function to request a bearer token (token) each time it is called. 
+
+We will be able to reference this function from any other API scripts we create, saving time.
+
+Create a new file called `authenticate-bearer.js` and paste this code into it:
+```code
+STOPPED HERE PHIL
+```
+
+Save the file.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Change a Members's Account Type
 Duration: 20
 
 With our system setup, we can try our first script. 
 
-We want to call the Sigma API endpoint to `Update the specified member` account type.
+### Change Test Members's Account Type
+Our test user is currently a `Viewer` account type. We want to call the Sigma API endpoint to `Update the specified member` account type to `Creator`.
 
-For this use case, we will be using [this endpoint.](https://help.sigmacomputing.com/reference/updatemember-1)
+<img src="assets/apics9.png" width="800"/>
 
-In VSCode, click to create a new file in our project folder:
+We will be using [this endpoint.](https://help.sigmacomputing.com/reference/updatemember-1)
+
+In VSCode, click to create a new file called `change-member-account-type.js` in our project folder:
 
 <img src="assets/apics6.png" width="400"/>
 
-Next, paste the following code into the codeblock section as shown.
+Next, paste the following code into the codeblock section as shown. There are in-line comments to describe the major sections:
 ```code
+// Use Axios module:
+const axios = require('axios');
 
+// Load environment variables directly:
+const clientId = process.env.CLIENT_ID; // Loaded from the .env file
+const secret = process.env.SECRET; // Loaded from the .env file
+const memberId = process.env.MEMBER_ID; // Loaded from the .env file
+
+// Set member type desired into a variable:
+const newMemberType = 'Creator';
+
+// Sigma API authentication endpoint (BaseURL):
+const authUrl = 'https://aws-api.sigmacomputing.com/auth'; // Update with the baseURL where your Sigma instance is hosted 
+
+// Function to obtain Bearer token:
+async function getBearerToken() {
+  try {
+    const response = await axios.post(authUrl, {
+      clientId,
+      secret,
+    });
+    return response.data.accessToken; // Adjust according to the actual response structure
+  } catch (error) {
+    console.error('Error obtaining Bearer token:', error);
+    return null;
+  }
+}
+
+// Main function to update member type:
+async function updateMemberType() {
+  const token = await getBearerToken();
+  if (!token) {
+    console.log('Failed to obtain Bearer token.');
+    return;
+  }
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  };
+
+  const data = {
+    memberType: newMemberType
+  };
+
+  axios.patch(`https://aws-api.sigmacomputing.com/v2/members/${memberId}`, data, { headers })
+    .then(response => {
+      console.log('User account type updated successfully:', JSON.stringify(response.data, null, 2));
+    })
+    .catch(error => {
+      const errorMessage = error.response ? JSON.stringify(error.response.data, null, 2) : error.message;
+      console.error('Error updating user account type:', errorMessage);
+    });
+}
+
+// Call the main function
+updateMemberType();
 ```
+
+Save the file.
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
