@@ -285,13 +285,13 @@ Click `Save`:
 
 You should now see your saved Template:
 
-<img src="assets/settingupthetemplateinSigma15.png" width="800"/>
+<img src="assets/settingupthetemplateinsigma15.png" width="800"/>
 
 Templates created in Sigma can be located via the homepage. 
 
 To see where your template is saved, click the `papercrane` icon in the top left of your workbook to navigate back to the homepage: 
 
-<img src="assets/settingupthetemplateinSigma16.png" width="600"/>
+<img src="assets/settingupthetemplateinsigma16.png" width="600"/>
 
 From the home page, click `Templates` in the left-hand navigation menu:
 
