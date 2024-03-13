@@ -55,9 +55,9 @@ INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
 
 ## Environment Setup
 
-### Create Project Folder
+### Create Sigma Project Folder
 
-Create a new folder on your local computer called `rest_api_recipes`. It does not matter where, as long as you can navigate to it easily.
+Create a new folder on your local computer called `Sigma_QuickStart_Public_Repo`. It does not matter where, as long as you can navigate to it easily.
 
 ### Source Code Editor - VSCode 
 
@@ -69,7 +69,7 @@ VSCode, is a source-code editor developed by Microsoft for Windows, Linux and ma
 
 Run the installation with all defaults.
 
-Open VSCode and make sure it loads without error and open the folder `rest_api_recipes` we created earlier:
+Open VSCode and make sure it loads without error and open the folder `Sigma_QuickStart_Public_Repo` we created earlier:
 
 <img src="assets/apics2.png" width="800"/>
 
@@ -138,32 +138,98 @@ npm install dotenv
 
 No errors should be returned. 
 
-### Environment Variables
+### Project Files
 
-We need to create a file to store our environment variables. 
+To save you time, we have stored all the required project files in Git, so you can just download them, and explore the use cases that interest you. This QuickStart will guide you, based on use case name, so feel free to skip to the section that interests you most.
 
-This file keeps our bearer token out of our scripts and also contains other variables we may want to change in different use-cases.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The section named "Get Bearer Token Script" is a must read, as proper authentication is required in all use cases. Do that section once you finish this section.
+</aside>
 
-In VSCode, click the icon to create a new file, name the file `.env` and paste the following code into the editor.
+To clone the Git repository in VSCode, open the `Command palette`:
 
-<img src="assets/apics7.png" width="800"/>
+<img src="assets/apics10.png" width="800"/>
 
+Type `Clo` into the command palette bar and then click `Git: Clone`:
+
+<img src="assets/apics11.png" width="800"/>
+
+Paste this URL and hit enter:
 ```code
-CLIENT_ID=yourClientId
-SECRET=yourSecret
-MEMBER_ID=yourMemberId
+https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
-Replace the placeholders for `yourClientId` and `yourSecret`. We will replace `yourMemberId` later on.
+VSCode will prompt for the location to store the files on your computer. Navigate to the `Sigma_QuickStart_Public_Repo` folder and click the `Select as Repository Destination` button.
+
+<img src="assets/apics12.png" width="800"/>
+
+If prompted to open the cloned repository, click `Open`.
+
+The repository contains other code samples you can explore, but we are interested in the `rest-api-recipes` folder:
+
+<img src="assets/apics13.png" width="800"/>
+
+### Environment Variables
+We need to update the file that stores our environment variables. 
+
+First, you will need to provide the values for `ClientID`, `Secret`, `Base` and `AuthURL`. [Instructions can be found in the API Swagger if needed.](https://help.sigmacomputing.com/reference/explanation)
+
+This file keeps our keys out of our scripts and also contains other variables we may want to change in different use-cases:
+
+<img src="assets/apics14.png" width="800"/>
+
+Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. If you are not sure, check the instructions mentioned above (in the API Swagger).
 
 Save the file.
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Get Bearer Token Script
+In this step, we will look at a script that authenticates to the [Sigma get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token)
+
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The token value will need to be refreshed each hour. We will handle that in our Javascript code.
+<strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed.
 </aside>
 
+It also exports a Javascript function to request a bearer token (token) each time it is called. We can reference this function from any other API scripts we create, saving time later.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed. Our Javascript function will handle that.
+</aside>
+
+Open the file `authenticate-bearer` and review it's contents. Each section is commented so it can be understood. 
+
+Start the VSCode debugger against this code by pressing `F5` on your keyboard.
+
+If prompted by VSCode to select a debugger, select `Node.js`:
+
+<img src="assets/apics15.png" width="800"/>
+
+The VSCode debugger console will show this API response if the .env variables are configured correctly:
+
+<img src="assets/apics16.png" width="800"/>
+
+The script is configured to run standalone as well as export a function that we can call from other scripts too. 
+
+The ability to run it standalone is only for convenience, so that we can verify it obtains a token.
+
+We can now move on to use cases, leveraging the `getBearerToken` function.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Change a Members's Account Type
+Duration: 20
+
+With our system setup, we can try our first script. 
+
 ### Create Test Member
-Let's create new member to test with. We could also do this with the API, but we will use the UI, since we want to use it to also verify API changes after the fact. 
+Let's create new member in Sigma to test with. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We could also do this with the API, but we will use the UI to create a test member. We want to use the UI to verify API changes we make via API too.
+</aside>
 
 If you prefer, you can use any non-production user you want, but we recommend creating a test user for this purpose. 
 
@@ -179,115 +245,57 @@ Make a note of the test user's memberId. Again, we could get this using the API,
 
 In this case, the memberId is `KteJXJQfHuei5GxxY9hQOnFZHP91A`. Yours will be different.
 
-Add this value to the .env file we created and save the change.
+Add these values to the .env file we created and save the change.
 ```code
 MEMBER_ID=KteJXJQfHuei5GxxY9hQOnFZHP91A
+NEW_MEMBER_TYPE=Creator
 ```
 
-### Bearer Token Script
-In this step, we will create a script that exports a Javascript function to request a bearer token (token) each time it is called. 
-
-We will be able to reference this function from any other API scripts we create, saving time.
-
-Create a new file called `authenticate-bearer.js` and paste this code into it:
-```code
-STOPPED HERE PHIL
-```
-
-Save the file.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Change a Members's Account Type
-Duration: 20
-
-With our system setup, we can try our first script. 
+<img src="assets/apics17.png" width="800"/>
 
 ### Change Test Members's Account Type
 Our test user is currently a `Viewer` account type. We want to call the Sigma API endpoint to `Update the specified member` account type to `Creator`.
 
 <img src="assets/apics9.png" width="800"/>
 
-We will be using [this endpoint.](https://help.sigmacomputing.com/reference/updatemember-1)
+We will be using the [Update the specified member](https://help.sigmacomputing.com/reference/updatemember-1) endpoint.
 
-In VSCode, click to create a new file called `change-member-account-type.js` in our project folder:
+### Running the Script
+Open the file `change-member-account-type.js`. 
 
-<img src="assets/apics6.png" width="400"/>
+Each code block is commented to explain what operations are being performed. 
 
-Next, paste the following code into the codeblock section as shown. There are in-line comments to describe the major sections:
-```code
-// Use Axios module:
-const axios = require('axios');
+Press `F5` to run the script with VSCode's debugger. 
 
-// Load environment variables directly:
-const clientId = process.env.CLIENT_ID; // Loaded from the .env file
-const secret = process.env.SECRET; // Loaded from the .env file
-const memberId = process.env.MEMBER_ID; // Loaded from the .env file
+The expected response is:
 
-// Set member type desired into a variable:
-const newMemberType = 'Creator';
+<img src="assets/apics18.png" width="800"/>
 
-// Sigma API authentication endpoint (BaseURL):
-const authUrl = 'https://aws-api.sigmacomputing.com/auth'; // Update with the baseURL where your Sigma instance is hosted 
+A quick check against the member in Sigma shows them having the `Creator` account type now:
 
-// Function to obtain Bearer token:
-async function getBearerToken() {
-  try {
-    const response = await axios.post(authUrl, {
-      clientId,
-      secret,
-    });
-    return response.data.accessToken; // Adjust according to the actual response structure
-  } catch (error) {
-    console.error('Error obtaining Bearer token:', error);
-    return null;
-  }
-}
-
-// Main function to update member type:
-async function updateMemberType() {
-  const token = await getBearerToken();
-  if (!token) {
-    console.log('Failed to obtain Bearer token.');
-    return;
-  }
-
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  };
-
-  const data = {
-    memberType: newMemberType
-  };
-
-  axios.patch(`https://aws-api.sigmacomputing.com/v2/members/${memberId}`, data, { headers })
-    .then(response => {
-      console.log('User account type updated successfully:', JSON.stringify(response.data, null, 2));
-    })
-    .catch(error => {
-      const errorMessage = error.response ? JSON.stringify(error.response.data, null, 2) : error.message;
-      console.error('Error updating user account type:', errorMessage);
-    });
-}
-
-// Call the main function
-updateMemberType();
-```
-
-Save the file.
-
-
-
-
-
+<img src="assets/apics19.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Workbooks Last Accessed for a Member
 Duration: 20
+
+In this use case, we want to return a list of the Workbooks (by name), the permission and when they last accessed for each Workbook, ordered by most recent first.
+
+Open the file called `.env` and ensure that the memberID is set for someone who has accessed Workbooks in your Sigma instance. In a trial environment, pick someone who is very active or yourself if that is the case. As long as there is activity, it does not matter otherwise.
+
+If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Change a Members's Account Type`.
+
+Open the file called `most-recent-workbook-access.js`.
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics20.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
