@@ -3,10 +3,10 @@ id: partners-snowflake-sigma-health-check-native-app
 summary: partners-snowflake-sigma-health-check-native-app
 categories: partners
 environments: web
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: 2024-03-14
+tags: 
+lastUpdated: 2024-03-13
 
 # Getting Started with the Sigma Health Check Native App for Snowflake
 <!-- The above name is what appears on the website and is searchable. -->
@@ -285,25 +285,21 @@ Click `Save`:
 
 You should now see your saved Template:
 
-<img src="assets/settingupthetemplateinSigma14.png" width="600"/>
-<settingupthetemplateinSigma15.png>
+<img src="assets/settingupthetemplateinSigma15.png" width="800"/>
 
 Templates created in Sigma can be located via the homepage. 
 
 To see where your template is saved, click the `papercrane` icon in the top left of your workbook to navigate back to the homepage: 
 
-<img src="assets/settingupthetemplateinSigma14.png" width="600"/>
-<settingupthetemplateinSigma16.png>
+<img src="assets/settingupthetemplateinSigma16.png" width="600"/>
 
 From the home page, click `Templates` in the left-hand navigation menu:
 
-<img src="assets/settingupthetemplateinSigma14.png" width="600"/>
-<settingupthetemplateinSigma17.png>
+<img src="assets/settingupthetemplateinSigma17.png" width="600"/>
 
 Under `Internal`, you should now see your saved `Health Check Native App` workbook:
 
-<img src="assets/settingupthetemplateinSigma14.png" width="600"/>
-<settingupthetemplateinSigma18.png>
+<img src="assets/settingupthetemplateinSigma18.png" width="600"/>
 
 To learn more about Templates in Sigma, [click here.](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates)
 
