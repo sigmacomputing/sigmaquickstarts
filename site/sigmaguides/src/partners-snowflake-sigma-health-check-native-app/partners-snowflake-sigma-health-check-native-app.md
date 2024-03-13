@@ -67,7 +67,7 @@ Sign in to your Snowflake instance by entering your `Username`, `Password`, and 
 
 Ensure you are in the `ACCOUNTADMIN` role by clicking your username in the bottom left, scrolling up to roles, and selecting `ACCOUNTADMIN`. 
 
-<img src="assets/acceptingtheappinSnowflake2.png" width="600"/>
+<img src="assets/hc2.png" width="600"/>
 
 In the left-hand navigation menu, find `Data Products`, then `Apps`. You should see `Sigma Health Check` under `Recently Shared with You`: 
 
@@ -149,11 +149,11 @@ For the first, input the date that you would like the workbooks analysis to begi
 
 For the second, input a chron statement to indicate the refresh rate you would like for the data in the application. In our example, we selected `March 11, 2024` as the start date, and set the task to `refresh at 1 am PST`: 
 
-<img src="assets/acceptingtheappinSnowflake16.png" width="800"/>
+<img src="assets/hc16.png" width="800"/>
 
 Then, run all three statements:
 
-<img src="assets/acceptingtheappinSnowflake17.png" width="800"/>
+<img src="assets/hc17.png" width="800"/>
 
 You will know the set up was successful when you see `The Refresh Task is configured`:
 
