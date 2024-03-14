@@ -11,7 +11,7 @@ lastUpdated: 2024-03-13
 # Getting Started with the Sigma Health Check Native App for Snowflake
 <!-- The above name is what appears on the website and is searchable. -->
 
-## Overview 
+## 1: Overview 
 Duration: 5 
 
 The Sigma Health Check Native App is designed to provide insights into the overall health and performance of your Snowflake environment. This native app includes insights into architecture, user and role grants, as well as warehouse performance and sizing recommendation. 
@@ -19,38 +19,37 @@ The Sigma Health Check Native App is designed to provide insights into the overa
 This Quickstart is designed to provide guidance in the set up of the Sigma Health Check Native App for Snowflake. 
 
  ### Target Audience
-Sigma administrators or other users who are interested in monitoring the state of their Snowflake connection with Sigma and how the resources it leverages in Snowflake.
+Sigma Administrators and other users who are interested in monitoring the performance of their Snowflake environment and how Sigma is leveraging the resources in Snowflake.
 
 ### Prerequisites
 
 The Health Check Native App is currently only available to existing Sigma customers. 
 
-If your Sigma instance is hosted at GCP, this functionality is not available. This is due to the Snowflake Native App framework not being currently available on the Google Cloud Platform. 
+If your **SNOWFLAKE** instance is hosted in GCP, this functionality is not available. This is due to the Snowflake Native App framework not being currently available on the Google Cloud Platform. 
 
 **Basic Requirements:**
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
+  <li>Access to your Sigma Environment with Sigma Admin Permissions.</li>
+  <li>SAccess to your Snowflake Environment with access to the ACCOUNTADMIN role.</li>
 </ul>
-
 
 To access this native app, **please contact your Sigma account team.** 
 
 Your account team will process your request, and reach out when the application has been granted to your Snowflake instance. 
-
-Once you have requested the Native Application, you will need to ensure your Snowflake account has the appropriate permissions set up to work with native application listings. 
 
 You can find instructions for preparing your Snowflake account here: [Become a Consumer of Snowflake Listings.](https://other-docs.snowflake.com/en/collaboration/consumer-becoming).
 
 Once your Snowflake account is ready to consume listings and the Native App has been granted to your Snowflake instance, you are ready to begin installing the application with this Quickstart. 
 
 ### What You’ll Learn
-How to leverage the Sigma Health Check Native App, inside your Sigma environment to build this useful Sigma workbook:
+ In this guide you will learn how to set up and configure the Sigma Health Check Native app in your Snowflake environment, as well as how to connect it to the front end of the application that lives in Sigma.
 
 <img src="assets/settingupthetemplateinsigma15.png" width="800"/>
 
-## Accepting the App in Snowflake
+## 2: Accepting the App in Snowflake
 Duration: 20
 
 If you prefer, you may watch a video that shows all the steps required in Snowflake for this to work:
@@ -180,7 +179,7 @@ You are now done installing and configuring the native application in Snowflake,
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Setting up the Template in Sigma 
+## 3: Setting Up the Template in Sigma 
 Duration: 20
 
 The Health Check Native Application in Snowflake created the tables and objects needed for the health check analysis. 
@@ -306,7 +305,7 @@ To learn more about Templates in Sigma, [click here.](https://help.sigmacomputin
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## OPTIONAL - Sigma Input Tables with the Native App
+## 4: OPTIONAL - Sigma Input Tables with the Native App
 Duration: 20
 
 The Health Check Native App contains input tables that allow you to categorize and group warehouses, then leverage those groupings in your analysis. 
@@ -367,7 +366,7 @@ To see common use cases for Sigma Input Tables, review this [QuickStart](https:/
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## What we've covered
+## 5: What we've covered
 Duration: 5
 
 We hope this set up process was quick and simple for you, and that you find value in the Sigma Health Check Native Application. 
@@ -383,7 +382,7 @@ We are always looking for ways to improve our optimization assets, so please sha
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
