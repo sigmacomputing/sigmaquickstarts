@@ -60,39 +60,39 @@ If you prefer, you may watch a video that shows all the steps required in Snowfl
 
 The following will guide you through configuring a Snowflake instance in preparation of the application.
 
-Sign in to your Snowflake instance by entering your `Username`, `Password`, and clicking `Sign in`:
+1: Sign in to your Snowflake instance by entering your `Username`, `Password`, and clicking `Sign in`:
 
 <img src="assets/acceptingtheappinsnowflake1.png" width="400"/>
 
-Ensure you are in the `ACCOUNTADMIN` role by clicking your username in the bottom left, scrolling up to roles, and selecting `ACCOUNTADMIN`. 
+2: Ensure you are in the `ACCOUNTADMIN` role by clicking your username in the bottom left, scrolling up to roles, and selecting `ACCOUNTADMIN`. 
 
 <img src="assets/hc2.png" width="600"/>
 
-In the left-hand navigation menu, find `Data Products`, then `Apps`. You should see `Sigma Health Check` under `Recently Shared with You`: 
+3: In the left-hand navigation menu, find `Data Products`, then `Apps`. You should see `Sigma Health Check` under `Recently Shared with You`: 
 
 <img src="assets/acceptingtheappinsnowflake3.png" width="600"/>
 
-Click `Get` next to `Sigma Health Check`: 
+4: Click `Get` next to `Sigma Health Check`: 
 
 <img src="assets/acceptingtheappinsnowflake4.png" width="500"/>
 
-Select `Options` on the pop up window:
+5: Select `Options` on the pop up window:
 
 <img src="assets/acceptingtheappinsnowflake5.png" width="500"/>
 
-Ensure the application name is `Sigma_Health_Check`. Then assign a warehouse to use for installation, and click `Get`:
+6: Ensure the application name is `Sigma_Health_Check`. Then assign a warehouse to use for installation, and click `Get`:
 
 <img src="assets/acceptingtheappinsnowflake6.png" width="500"/>
 
-When the installation is complete, you will see the Sigma Health Check under `Installed Apps`:
+7: When the installation is complete, you will see the Sigma Health Check under `Installed Apps`:
 
 <img src="assets/acceptingtheappinsnowflake7.png" width="800"/>
 
-Click on the application name. This will open a window that says `Welcome to the Sigma Health Check Application`: 
+8: Click on the application name. This will open a window that says `Welcome to the Sigma Health Check Application`: 
 
 <img src="assets/acceptingtheappinsnowflake8.png" width="800"/>
 
-On this page you will notice several blocks of code. 
+9: On this page you will notice several blocks of code. 
 
 In the first block titled `Grants for the application`, hover over the top right corner until you see the icon for `Open in Worksheets.` 
 
@@ -100,29 +100,29 @@ Click this icon:
 
 <img src="assets/acceptingtheappinsnowflake9.png" width="600"/>
   
-Snowflake will open a new tab in your browser, with the first block of commands already loaded. 
+10: Snowflake will open a new tab in your browser, with the first block of commands already loaded. 
 
 Run each command on this worksheet in the order they appear:
 
 <img src="assets/acceptingtheappinsnowflake10.png" width="800"/>
 
-Return to the Sigma Health Check tab, and hover over the upper right-hand side of the second block labeled `Create Application Warehouse`. 
+11: Return to the Sigma Health Check tab, and hover over the upper right-hand side of the second block labeled `Create Application Warehouse`. 
 
 Once again, click `Open in Worksheets:`
 
 <img src="assets/acceptingtheappinsnowflake11.png" width="600"/>
 
-Once again, Snowflake will open a worksheet with the commands pre-loaded. 
+12: Once again, Snowflake will open a worksheet with the commands pre-loaded. 
 
 Run each command in the order they appear, starting with `CALL ASSETS.WAREHOUSE_SETUP();`:
 
 <img src="assets/acceptingtheappinsnowflake12.png" width="800"/>
 
-Return to the Sigma Health Check tab and repeat this process for the third block of code, hovering over the top right corner to select `Open in worksheet.` 
+13: Return to the Sigma Health Check tab and repeat this process for the third block of code, hovering over the top right corner to select `Open in worksheet.` 
 
 <img src="assets/acceptingtheappinsnowflake13.png" width="600"/>
 
-The warehouse created by the application for use in analysis and set up is called `SIGMA_HEALTHCHECK_MATERIALIZATION_WH.` 
+14: The warehouse created by the application for use in analysis and set up is called `SIGMA_HEALTHCHECK_MATERIALIZATION_WH.` 
 
 Upon creation, its size is a small. 
 
@@ -136,13 +136,13 @@ For our set up we leveraged the pre-written command and re-sized to a large ware
 
 <img src="assets/acceptingtheappinsnowflake14.png" width="800"/>
 
-Return to the main Sigma Health Check tab, and locate the fourth block of code titled `Table Creation`, `table population`, and `creation of refresh task`.
+15: Return to the main Sigma Health Check tab, and locate the fourth block of code titled `Table Creation`, `table population`, and `creation of refresh task`.
 
 Once again, hover over the top right corner and select `Open in Worksheet:` 
 
 <img src="assets/acceptingtheappinsnowflake15.png" width="800"/>
 
-In the new worksheet, you will see two commands that require your input, marked `1` and `2` in the screenshot below. 
+16: In the new worksheet, you will see two commands that require your input, marked `1` and `2` in the screenshot below. 
 
 For the first, input the date that you would like the workbooks analysis to begin with. This can be any date within the past year, as the application leverages data from your query history. 
 
@@ -154,17 +154,17 @@ Then, run all three statements:
 
 <img src="assets/hc17.png" width="800"/>
 
-You will know the set up was successful when you see `The Refresh Task is configured`:
+17: You will know the set up was successful when you see `The Refresh Task is configured`:
 
 <img src="assets/acceptingtheappinsnowflake18.png" width="800"/>
 
- Once more, return to the main Sigma Health Check tab, and scroll to the final block of code. 
+18: Once more, return to the main Sigma Health Check tab, and scroll to the final block of code. 
  
- Hover over the top right corner and select `Open in Worksheets`:
+Hover over the top right corner and select `Open in Worksheets`:
 
 <img src="assets/acceptingtheappinsnowflake19.png" width="800"/>
 
-Update the command shown to reflect which user role you use to connect to Sigma, and run the command.
+19: Update the command shown to reflect which user role you use to connect to Sigma, and run the command.
 
 In the example below, we grant the application role to the `SIGMA_PERFORMANCE_OPTIMIZATION_ROLE` role in our Snowflake account. 
 
@@ -174,7 +174,7 @@ In the example below, we grant the application role to the `SIGMA_PERFORMANCE_OP
 
 <img src="assets/acceptingtheappinsnowflake20.png" width="800"/>
 
-You are now done installing and configuring the native application in Snowflake, and are ready to connect it to Sigma. 
+20: You are now done installing and configuring the native application in Snowflake, and are ready to connect it to Sigma. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -200,13 +200,13 @@ If you prefer, you may watch a video that shows all the steps required in Snowfl
 
 ### Step by Step Instructions
 
-Login into Sigma as an `Administrator.`
+1: Login into Sigma as an `Administrator.`
 
-Navigate to administration by clicking the icon in the top right, then selecting `Administration` from the drop down.
+2: Navigate to administration by clicking the icon in the top right, then selecting `Administration` from the drop down.
 
 <img src="assets/settingupthetemplateinSigma2.png" width="400"/>
 
-From the left-hand menu, select `Connections`, then click `Create Connection`. 
+3: From the left-hand menu, select `Connections`, then click `Create Connection`. 
 
 <img src="assets/settingupthetemplateinSigma3.png" width="800"/>
 
@@ -214,25 +214,25 @@ From the left-hand menu, select `Connections`, then click `Create Connection`.
 <strong>IMPORTANT:</strong><br> Sigma strongly recommends you create a unique connection for the Health Check Native App.
 </aside>
  
-Provide a `Name` for the connection, then select the `Snowflake` icon:
+4: Provide a `Name` for the connection, then select the `Snowflake` icon:
 
 <img src="assets/settingupthetemplateinSigma4.png" width="800"/>
 
-Enter your Snowflake account locator. 
+5: Enter your Snowflake account locator. 
 
 The Health Check Native App created the warehouses needed for the workbook in the set up script. For warehouse enter `SIGMA_HEALTHCHECK_ANALYTICS_WH`:
 
 <img src="assets/settingupthetemplateinSigma5.png" width="800"/>
 
-For `User`, enter the credentials of the user you use to connect to Sigma, as well as the `Role` that you granted the application role to in the previous section:
+6: For `User`, enter the credentials of the user you use to connect to Sigma, as well as the `Role` that you granted the application role to in the previous section:
 
 <img src="assets/settingupthetemplateinSigma6.png" width="600"/>
 
-Scroll down, and toggle the `Enable Write Access` switch to on:
+7: Scroll down, and toggle the `Enable Write Access` switch to on:
 
 <img src="assets/settingupthetemplateinSigma7.png" width="600"/>
 
-For `Write database` enter `SIGMA_HEALTH_CHECK`. 
+8: For `Write database` enter `SIGMA_HEALTH_CHECK`. 
 
 For `Write schema`, enter `SIGMA_WRITEBACK`. 
 
@@ -242,11 +242,11 @@ All three of these objects were created on the backend during the native app set
 
 <img src="assets/settingupthetemplateinSigma8.png" width="600"/>
 
-Click `Create` in the top right corner to finish creating the connection:
+9: Click `Create` in the top right corner to finish creating the connection:
 
 <img src="assets/settingupthetemplateinSigma9.png" width="800"/>
 
-Now that the connection is established, locate the email you received from Sigma. 
+10: Now that the connection is established, locate the email you received from Sigma. 
 
 It will likely be titled `Health Check Native App - Invitation to Use`. 
 
@@ -254,9 +254,9 @@ Click `Open in Sigma`:
 
 <img src="assets/settingupthetemplateinSigma10.png" width="800"/>
 
-You should now see the `Swap Data Sources` module. 
+11: You should now see the `Swap Data Sources` module. 
 
-You will notice that Sigma intuitively located the new connection, and matched the data within the connection to the appropriate elements in the inbound workbook share. 
+12: You will notice that Sigma intuitively located the new connection, and matched the data within the connection to the appropriate elements in the inbound workbook share. 
 
 Click `Choose`:
 
@@ -268,11 +268,11 @@ Click `Accept` in the top right corner:
 
 <img src="assets/settingupthetemplateinSigma12.png" width="800"/>
 
-Click the drop down to the right of the title, and click `Save As`:
+13: Click the drop down to the right of the title, and click `Save As`:
 
 <img src="assets/settingupthetemplateinSigma13.png" width="600"/>
 
-In the popup, enter a name for the workbook, or leave it as `Health Check Native App`. 
+14: In the popup, enter a name for the workbook, or leave it as `Health Check Native App`. 
 
 You may also use this screen to share the workbook with members of your team and delegate permissions. 
 
@@ -282,21 +282,21 @@ Click `Save`:
 
 <img src="assets/settingupthetemplateinSigma14.png" width="600"/>
 
-You should now see your saved Template:
+15: You should now see your saved Template:
 
 <img src="assets/settingupthetemplateinsigma15.png" width="800"/>
 
-Templates created in Sigma can be located via the homepage. 
+16: Templates created in Sigma can be located via the homepage. 
 
 To see where your template is saved, click the `papercrane` icon in the top left of your workbook to navigate back to the homepage: 
 
 <img src="assets/settingupthetemplateinsigma16.png" width="600"/>
 
-From the home page, click `Templates` in the left-hand navigation menu:
+17: From the home page, click `Templates` in the left-hand navigation menu:
 
 <img src="assets/settingupthetemplateinSigma17.png" width="600"/>
 
-Under `Internal`, you should now see your saved `Health Check Native App` workbook:
+18: Under `Internal`, you should now see your saved `Health Check Native App` workbook:
 
 <img src="assets/settingupthetemplateinSigma18.png" width="600"/>
 
@@ -313,11 +313,11 @@ The Health Check Native App contains input tables that allow you to categorize a
 This functionality enables you to look at Snowflake performance by business unit, associated 3rd party tool, or whatever category you choose to leverage. 
 Using these input tables is not required for the native app to function properly, so the below section is optional.
 
-Navigate to the “Warehouse Sizing” page of the workbook using the tabs at the bottom or the buttons along the top.
+1: Navigate to the “Warehouse Sizing” page of the workbook using the tabs at the bottom or the buttons along the top.
 
 <img src="assets/workingwithinputtables1.png" width="800"/>
 
-You will notice two `input tables` in the middle of the page. 
+2: You will notice two `input tables` in the middle of the page. 
 
 These input tables are designed to allow you to create categories, then assign them to your warehouses for use in your analysis. 
 
@@ -325,11 +325,11 @@ Warehouse groupings can be different business units, external tools that leverag
 
 <img src="assets/workingwithinputtables2.png" width="800"/>
 
-Click `Edit Data` next to the input table on the left that is labeled `Input Warehouse Categories`:
+3: Click `Edit Data` next to the input table on the left that is labeled `Input Warehouse Categories`:
 
 <img src="assets/workingwithinputtables3.png" width="800"/>
 
-Enter the categories you would like to use.
+4: Enter the categories you would like to use.
 
 For the purposes of this QuickStart, we chose `business units` for the category. 
 
@@ -341,11 +341,11 @@ Click the blue `Save` button.
 
 <img src="assets/workingwithinputtables4.png" width="600"/>
 
-Once you have saved the first input table, click `Edit Data` next to the right-hand input table labeled `Categorize Warehouses`:
+5: Once you have saved the first input table, click `Edit Data` next to the right-hand input table labeled `Categorize Warehouses`:
 
 <img src="assets/workingwithinputtables5.png" width="800"/>
 
-Using the drop downs in the `Warehouse Category` column, assign each warehouse a category value. 
+6: Using the drop downs in the `Warehouse Category` column, assign each warehouse a category value. 
 
 These category values are pulled from the first input table we worked with. 
 
@@ -353,7 +353,7 @@ Once you have entered categories, click `Save`:
 
 <img src="assets/workingwithinputtables6.png" width="600"/>
 
-You will now be able to use the `Warehouse Category` filter, located directly below the input tables, in your analysis. 
+7: You will now be able to use the `Warehouse Category` filter, located directly below the input tables, in your analysis. 
 
 This filter can be leveraged to see sizing and concurrency metrics only for a specific group of warehouses across both the Warehouse Sizing and Warehouse Concurrency pages of the Health Check workbook. 
 
