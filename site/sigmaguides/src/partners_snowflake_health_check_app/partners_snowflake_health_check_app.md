@@ -5,7 +5,7 @@ categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: partners
+tags: default
 lastUpdated: 2024-03-13
 
 # Getting Started with the Sigma Health Check Native App for Snowflake
