@@ -1,4 +1,4 @@
-author: pballai
+author: Fran Britschgi
 id: partner_snowflake_predictive_model_using_sigma
 summary: partner_snowflake_predictive_model_using_sigma
 categories: partners
@@ -37,12 +37,14 @@ Anyone who is interested in learning how to easily leverage the power of Snowfla
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>Sigma Write back is enabled to your Snowflake environment.</li>
   <li>A snowflake role with Usage rights on a Snowflake schema that the Sigma Service Role has access to, as well as to the writeback location.</li>
-  <li>A code editor (IDE) with a python interpreter defined with the package requirements from [this yaml file.](https://github.com/Snowflake-Labs/sfguide-intro-to-machine-learning-with-snowpark-ml-for-python/blob/main/conda_env.yml) You can download this file and then create the env using the following terminal code:</li>
+  <li>A code editor (IDE) with a python interpreter defined with the package requirements from the required yaml file (button below). You can download this file and then create the env using the following terminal code:</li>
 </ul>
 
-...code
+<button>[Download yaml file](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/conda_env.yml)</button>
+
+```code
 conda env create -f /Users/[USER_NAME]/Downloads/conda_env.yml
-...
+```
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This will create a conda env named snowpark-ml-hol that you can then connect to from your IDE.
@@ -59,7 +61,7 @@ In this case, we don’t have that data in Snowflake, so we’ll need to upload 
 
 Let's upload a CSV file of shift sales from the city of Seattle.
 
-[Click to download the CSV file:](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/SHIFT_SALES.csv)
+<button>[Download required CSV file](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/SHIFT_SALES.csv)</button>
 
 Log into Sigma.
 
@@ -69,7 +71,7 @@ From the Sigma home page, click the `Create New` button in the top left corner a
 
 Now that you are in the Workbook, let's start by saving it with the name `ML Shift Sales` by clicking `Save As` in the top right. 
 
-<img src="assets/ml2.png" width="400"/>
+<img src="assets/ml2.png" width="600"/>
 
 Add a `new table`:
 
@@ -103,11 +105,11 @@ Let’s make a visual to explore this.
 
 Create a `Child element` visual: 
 
-<img src="assets/ml7.png" width="800"/>
+<img src="assets/ml7.png" width="600"/>
 
 Drag `Date` and `Shift Sales` columns to the `X` and `Y axis`, respectively:
 
-<img src="assets/ml8.png" width="800"/>
+<img src="assets/ml8.png" width="600"/>
 
 We can see that Sigma automatically aggregates our data to the `Day level` and applies a `Sum`. 
 
@@ -133,7 +135,7 @@ The third factor that we think may play a role is the weekday that the sales too
 
 We can duplicate the table:
 
-<img src="assets/ml12.png" width="800"/>
+<img src="assets/ml12.png" width="600"/>
 
 Drag it next to our first chart: 
  
@@ -209,9 +211,9 @@ Finally, we can make all this work available in your Snowflake writeback schema 
 
 We recommend calling it `Train`, but you can name it anything you’d like:
 
-<img src="assets/ml23.png" width="800"/>
+<img src="assets/ml23.png" width="800"/><br>
 
-<img src="assets/ml24.png" width="800"/>
+<img src="assets/ml24.png" width="600"/>
  
 <aside class="negative">
 <strong>NOTE:</strong><br> Note that this will get us a fully qualified name that our data scientist can use in their programming.
@@ -231,13 +233,14 @@ Duration: 20
 
 We can now let our data scientist know that `TASTY_BITES_TRAIN` is ready for them to train their model on Month, Weekday, and Shift. 
 
-The data scientist can now begin their work in their code editor (VSCode in this case).
+The data scientist can now begin their work in their code editor.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We will give these steps as code chunks in a notebook style, but you can feel free to compile this into a single python script if desired.
 </aside>
 
-### Authenticate using the Snowflake module
+### 1: Authenticate using the Snowflake module
+
 ```python
 # Authenticate
 
@@ -259,7 +262,10 @@ connection_parameters = {
 session = Session.builder.configs(connection_parameters).create()
 ```
 
-### Create a Model Registry in your database that you will use to store this and future models 
+### 2: Create a Model Registry
+
+This is created in your database that you will use to store this and future models.
+
 ```python
 from snowflake.ml.registry import Registry
 
@@ -268,13 +274,14 @@ session.sql("CREATE SCHEMA IF NOT EXISTS ML_REGISTRY").collect()
 reg = Registry(session, database_name="SE_DEMO_DB", schema_name="ML_REGISTRY")
 ```
 
-### 
+### 3: Snowpark ML Functions
 
-The new Snowpark ML functions make it super easy to train open-source models on optimized and scalable Snowflake compute.
+The new Snowpark ML functions make it super easy to train open-source models on optimized and scalable Snowflake compute. 
 
 We can set up a code block that allows us to easily train a linear regression model with just a few lines. 
 
 You will use the warehouse view locations that you generated in your sigma workbook in the session table calls below:
+
 ```python
 from snowflake.ml.modeling.linear_model import LinearRegression
 
@@ -296,69 +303,107 @@ my_model.set_label_cols(target_col)
 my_model.set_output_cols("PRED_" + target_col)
 
 my_model.fit(training_table)
-
 ```
 
+### 4: Create Governed Metrics
 
+Snowflake also offers a large library of metrics that allow us to record the quality of a given model.
 
-### 
 ```python
+from snowflake.ml.modeling.metrics import mean_absolute_error
 
+predictions = my_model.predict(testing_table)
+mae_score = mean_absolute_error(
+    df=predictions, y_true_col_names="SHIFT_SALES", y_pred_col_names="PRED_SHIFT_SALES"
+)
+mae_score
 ```
 
+### 5: Log the Model
 
+Finally, we can log this model, and its version, comments, and metrics into the registry that we created above. 
 
-### 
+The final line of this code prints the results, where we see that this model is now deployed to our registry where we can review, improve, and call the model.
+
 ```python
+# Log the model
+model_ver = reg.log_model(
+    model_name="SHIFT_SALES_MODEL", version_name="Version_1", model=my_model
+)
 
+# Add a description to the model -
+model_ver.set_metric(metric_name="MAE Score", value=mae_score)
+model_ver.comment = "This linear regression model predicts the Shift Sales for a given Location, using Features discovered through Sigma"
+
+reg.get_model("SHIFT_SALES_MODEL").show_versions()
 ```
 
+### 6: Give Permissions to Sigma
 
+Thanks to Sigma’s direct to CDW connection, all we have to do is give the Sigma Role access, and the model will be automatically available to Sigma! 
 
-### 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure to update this to your registry and your Sigma role.
+</aside>
+
 ```python
-
-```
-
-
-
-### 
-```python
-
-```
-
-
-
-### 
-```python
-
+session.sql("GRANT USAGE ON ALL MODELS IN SCHEMA SE_DEMO_DB.ML_REGISTRY TO ROLE PAPERCRANE").collect()
 ```
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
-
-
-
-
-
-
-## What we've covered
+## Using the Model in Sigma
 Duration: 5
 
-In this lab we learned how to.........
+We’ll now show how we can apply that trained model in Sigma, and look at an example application of that method. 
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+Create a `Child table` from our `Test` table, and call it `Deploy Model`. 
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
-**Additional Resource Links**
+We’ll be calling our model here. 
+
+Create a `New column`, and use the following syntax and your own model location to define a function like this:
+```code
+CallVariant(“SE_DEMO_DB.ML_REGISTRY.SHIFT_SALES_MODEL!Predict”) 
+```
+
+You should see an error about argument types, as we haven’t provided any input yet:
+
+<img src="assets/ml25.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you get an error about the UDF not existing, there is like a permissions error. Make sure you have given usage to the model as described in the visual studio code section on step 5.
+</aside>
+
+Now let’s add the arguments. These should be provided in the same order as in your code: `MONTH_OF_DATE`, `WEEKDAY_OF_DATE`, `ENCODED_SHIFT`. 
+
+Voila, you should now see a JSON output in this column:
+
+<img src="assets/ml26.png" width="800"/>
+
+Finally, we can now extract the prediction from the column. 
+
+Sigma [reads JSON](https://help.sigmacomputing.com/docs/extract-semi-structured-json-or-variant-data) right out of the box, so we can just right click and extract the columns:
+
+<img src="assets/ml27.png" width="800"/>
+
+For linear regression, there is only one output that we care about; `PRED_SHIFT_SALES`, but we could imagine other models that would have multiple outputs here. 
+
+Confirm your selection, and we have our final prediction that directly runs the model we defined in Snowflake:
+
+<img src="assets/ml28.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Additional Resource Links
+Duration: 5
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
