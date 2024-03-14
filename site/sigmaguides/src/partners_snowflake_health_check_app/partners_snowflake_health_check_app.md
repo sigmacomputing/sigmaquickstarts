@@ -1,11 +1,11 @@
-author: pballai
+author: Kelsey Hammock
 id: partners_snowflake_health_check_app
 summary: partners_snowflake_health_check_app
 categories: partners
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: partners
 lastUpdated: 2024-03-13
 
 # Getting Started with the Sigma Health Check Native App for Snowflake
