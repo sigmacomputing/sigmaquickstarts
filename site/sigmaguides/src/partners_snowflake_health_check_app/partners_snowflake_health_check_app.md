@@ -11,7 +11,7 @@ lastUpdated: 2024-03-13
 # Getting Started with the Sigma Health Check Native App for Snowflake
 <!-- The above name is what appears on the website and is searchable. -->
 
-## 1: Overview 
+## Overview 
 Duration: 5 
 
 The Sigma Health Check Native App is designed to provide insights into the overall health and performance of your Snowflake environment. This native app includes insights into architecture, user and role grants, as well as warehouse performance and sizing recommendation. 
@@ -33,7 +33,7 @@ If your **SNOWFLAKE** instance is hosted in GCP, this functionality is not avail
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>Access to your Sigma Environment with Sigma Admin Permissions.</li>
-  <li>SAccess to your Snowflake Environment with access to the ACCOUNTADMIN role.</li>
+  <li>Access to your Snowflake Environment with access to the ACCOUNTADMIN role.</li>
 </ul>
 
 To access this native app, **please contact your Sigma account team.** 
@@ -49,7 +49,7 @@ Once your Snowflake account is ready to consume listings and the Native App has 
 
 <img src="assets/settingupthetemplateinsigma15.png" width="800"/>
 
-## 2: Accepting the App in Snowflake
+## Accepting the App in Snowflake
 Duration: 20
 
 If you prefer, you may watch a video that shows all the steps required in Snowflake for this to work:
@@ -179,7 +179,7 @@ You are now done installing and configuring the native application in Snowflake,
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## 3: Setting Up the Template in Sigma 
+## Setting Up the Template in Sigma 
 Duration: 20
 
 The Health Check Native Application in Snowflake created the tables and objects needed for the health check analysis. 
@@ -305,7 +305,7 @@ To learn more about Templates in Sigma, [click here.](https://help.sigmacomputin
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## 4: OPTIONAL - Sigma Input Tables with the Native App
+## OPTIONAL - Sigma Input Tables with the Native App
 Duration: 20
 
 The Health Check Native App contains input tables that allow you to categorize and group warehouses, then leverage those groupings in your analysis. 
@@ -366,7 +366,7 @@ To see common use cases for Sigma Input Tables, review this [QuickStart](https:/
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## 5: What we've covered
+## What we've covered
 Duration: 5
 
 We hope this set up process was quick and simple for you, and that you find value in the Sigma Health Check Native Application. 
