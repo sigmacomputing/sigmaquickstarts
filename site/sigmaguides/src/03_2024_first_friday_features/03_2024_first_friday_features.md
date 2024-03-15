@@ -39,16 +39,22 @@ Sigma’s license tiers are now labeled `Lite`, `Essential`, and `Pro` to bring 
 </aside>
 
 **Here’s what you need to know:**
-<ul>
-      <li>No action is required from your end. Your Sigma experience will continue seamlessly.</li>
-      <li>Default account names will be automatically updated to reflect the new license names.</li>
-      <li>If your organization was previously subscribed to the two-license model, it will continue using two license tiers: `Lite (formerly Viewer)` and Pro `(formerly Creator)`.<li>
-      <li>Custom account names will remain unchanged.<li>
-      <li>All Embed URLs will continue to function as usual. The old default account names will automatically map to the new names.<li>
-      <li>SCIM processes will continue to function as normal and old license names will continue to work.<li>
-      <li>Your Admin Portal and Usage Dashboards will be updated to reflect the new license names..<li>
-      <li>Existing licensing agreements and terms will remain unchanged.<li>
-</ul>
+
+1: No action is required from your end. Your Sigma experience will continue seamlessly.<br>
+
+2: Default account names will be automatically updated to reflect the new license names.<br>
+
+3: If your organization was previously subscribed to the two-license model, it will continue using two license tiers: Lite (formerly Viewer) and Pro (formerly Creator).<br>
+
+4: Custom account names will remain unchanged.<br>
+
+5: All Embed URLs will continue to function as usual. The old default account names will automatically map to the new names.<br>
+
+6: SCIM processes will continue to function as normal and old license names will continue to work.<br>
+
+7: Your Admin Portal and Usage Dashboards will be updated to reflect the new license names.<br>
+
+8: Existing licensing agreements and terms will remain unchanged.
 
 For more information, [see the Sigma Community post.](https://community.sigmacomputing.com/t/sigma-license-name-changes-no-action-needed/3332?_gl=1*1gugfu2*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwOTkyMTA5My41NTIuMS4xNzA5OTI1MDE1LjYwLjAuMA..)
 
@@ -66,6 +72,17 @@ Duration: 20
 
 ## Functions
 Duration: 20
+
+### Array function
+The Array function returns an array containing specified values.
+
+This function allows users to create and manipulate arrays, which are collections of elements that can store various types of data, such as numbers, strings, and even other arrays. With the "Array" function, users can perform a wide range of operations, including adding or removing elements, accessing specific items, and iterating over the elements for processing.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This function is currently supported by Snowflake, PostgreSQL, BigQuery, and MySQL connections only.
+</aside>
+
+For more information, [see the Array documentation.](https://help.sigmacomputing.com/docs/array)
 
 ### DateFormat function enhancement
 The `DateFormat` function now supports the `%q` specifier that allows you to extract the **quarter** component from a datetime value.
@@ -86,6 +103,26 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 
 ## Workbooks
+
+### Bulk column drag-and-drop
+When interacting with a visualization, table, pivot table, or input table elements, you can now `bulk drag-and-drop columns` in the `Element properties` > `Columns` tab to reorder multiple columns or add them to groupings, calculations, or other properties.
+
+<img src="assets/workbook_buttons.gif">
+
+### Button element formatting
+Sigma is continuing to deliver polish and customization to our workbooks and in this case has improved the styling options for buttons.
+
+Users now have more options to adjust the look-and-feel of their button elements, including new `styles`, `shapes`, and `sizes` in the `Element properties` panel:
+
+<img src="assets/workbook_buttons.png">
+
+### Repeat pivot values in exports
+When sending or scheduling an export, you now have the option to repeat pivot values in Excel or CSV output.
+
+In the Send Now or Schedule Exports modal, go to More options and select the Repeat pivot values checkbox. This ensures the pivot header values are populated in every applicable row or column:
+
+<img src="assets/fff_03_2024_1.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 
