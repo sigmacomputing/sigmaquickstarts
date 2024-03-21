@@ -222,7 +222,7 @@ We can now move on to use cases, leveraging the `getBearerToken` function.
 ## Change a Members's Account Type
 Duration: 20
 
-With our system setup, we can try our first script. 
+With our system setup and getting a bearer token from the authentication endpoint, we can try our first script. 
 
 ### Create Test Member
 Let's create new member in Sigma to test with. 
@@ -300,8 +300,37 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Pagination   NEEDS WORK AND CLARIFICATION FROM SAM S.
 Duration: 20
+
+Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
+
+Many of Sigma's API operations support `page` and `limit` as query parameters. 
+
+These parameters can be used in different ways but generally they are used to:
+
+1: Reduces the load on the server and the amount of data transmitted over the network at any one time.
+2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
+3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
+
+### The Page parameter
+The page parameter indicates the current page of data to retrieve.
+
+In Sigma, this is a `string` value. 
+
+
+
+### The Limit parameter
+
+
+
+
+### Used Together
+
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
