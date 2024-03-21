@@ -12,24 +12,19 @@ lastUpdated: 2024-03-01
 
 ## Overview 
 Duration: 5 
-<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart is designed to support Sigma's [API Code Samples](https://help.sigmacomputing.com/recipes) and will demonstrate some common operations that customers may use the REST API for.
 
-Sample code and examples are shown for each item.
+All code samples provided here are based on javaScript, although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages.
 
-We encourage you to review the QS called 
-
-This QuickStart assumes you........
-
- ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+### Target Audience
+Developers who are evaluating or working with Sigma's REST API. 
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment.</li>
+  <li>Administrative access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
 </ul>
@@ -39,19 +34,6 @@ Anyone who is trying to create QS content for Sigma.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-  
-### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
-
-### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
-
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
-
-![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
-<!-- END OF OVERVIEW -->
-
 
 ## Environment Setup
 
@@ -185,8 +167,8 @@ Save the file.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Get Bearer Token Script
-In this step, we will look at a script that authenticates to the [Sigma get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token)
+## Authentication - REQUIRED
+In this step, we will look at a script that authenticates to the [get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed.
