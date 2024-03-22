@@ -430,6 +430,8 @@ The expected response is:
 
 <img src="assets/apics29.png" width="800"/>
 
+Copy the `WorkspaceId` in the response. We will use that in the next step.
+
 Checking in the Sigma UI we can see the new Workspace:
 
 <img src="assets/apics30.png" width="800"/>
@@ -438,21 +440,34 @@ Checking in the Sigma UI we can see the new Workspace:
 
 ### Running the "create-workspace-permission.js" script
 
+Open the file `.env` and update the value for `WORKSPACEID` that we recieved from the `create-workspace.js` script
+
+Save the change.
+
 Open the file `create-workspace-permission.js` in the `members` folder.
 
 Each code block is commented to explain what operations are being performed. 
 
+<aside class="negative">
+<strong>NOTE:</strong><br> We give this member "View" permission to the workspace because we created the member with "Viewer" rights earlier. This can be adjusted to suit whatever use case is required.
+</aside>
+
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
-
-<img src="assets/apics3.png" width="800"/>
+```code
+URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
+create-workspace-permission.js:27
+New workspace permission added successfully: {}
+```
 
 Checking in the Sigma UI we can check the Workspace sharing permissions:
 
-<img src="assets/apics3.png" width="800"/>
+<img src="assets/apics31.png" width="800"/>
 
-STOPPED HERE. Need to create the script for this section and update screenshots.
+STOPPED HERE. 
+
+### Running the "create-connection-permission.js" script
 
 
 ![Footer](assets/sigma_footer.png)
