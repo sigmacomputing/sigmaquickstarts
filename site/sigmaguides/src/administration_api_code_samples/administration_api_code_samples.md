@@ -15,7 +15,9 @@ Duration: 5
 
 This QuickStart is designed to support Sigma's [API Code Samples](https://help.sigmacomputing.com/recipes) and will demonstrate some common operations that customers may use the REST API for.
 
-All code samples provided here are based on javaScript, although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages.
+The actual code shown is available in Sigma's [quickstart-public git repository](https://github.com/sigmacomputing/quickstarts-public)
+
+All code samples provided here are based on javaScript, although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages, including [curl.](https://curl.se/)
 
 ### Target Audience
 Developers who are evaluating or working with Sigma's REST API. 
@@ -168,25 +170,28 @@ Save the file.
 <!-- END OF SECTION-->
 
 ## Authentication - REQUIRED
-In this step, we will look at a script that authenticates to the [get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token)
+This section demonstrates the code that was provided on the `API Code Samples` > `Authentication: Get Access Token` page, [located here.](https://help.sigmacomputing.com/recipes/authentication-get-access-token)
+
+In this step, we will look at a script that authenticates to the [get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token).
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed.
 </aside>
 
-It also exports a Javascript function to request a bearer token (token) each time it is called. We can reference this function from any other API scripts we create, saving time later.
+It also exports a Javascript function to request a bearer token (token) each time it is called. 
+
+We reference this function from other API scripts we create later, saving time and simplifying code.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed. Our Javascript function will handle that.
 </aside>
 
-Open the file `authenticate-bearer` and review it's contents. Each section is commented so it can be understood. 
+
+In the project root directory, open the file `get-access-token.js` and review it's contents. Each section is commented so it can be understood. 
 
 Start the VSCode debugger against this code by pressing `F5` on your keyboard.
 
-If prompted by VSCode to select a debugger, select `Node.js`:
-
-<img src="assets/apics15.png" width="800"/>
+If prompted by VSCode to select a debugger, select `Node.js`.
 
 The VSCode debugger console will show this API response if the .env variables are configured correctly:
 
@@ -194,17 +199,52 @@ The VSCode debugger console will show this API response if the .env variables ar
 
 The script is configured to run standalone as well as export a function that we can call from other scripts too. 
 
+This is why we show the bearer token twice in the response. Other scripts that call this one, will only show the token one time in the console.
+
 The ability to run it standalone is only for convenience, so that we can verify it obtains a token.
 
-We can now move on to use cases, leveraging the `getBearerToken` function.
+We can now move on to use cases, leveraging the `getBearerToken` function:
+
+<img src="assets/apics21.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Change a Members's Account Type
+## Members: List
 Duration: 20
 
-With our system setup and getting a bearer token from the authentication endpoint, we can try our first script. 
+We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://help.sigmacomputing.com/reference/listmembers-1)
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: List` page, [located here.](https://help.sigmacomputing.com/recipes/members-list)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Running the Script
+Open the file `list-simple.js` in the `members` folder:
+
+<img src="assets/apics23.png" width="800"/>
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics24.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Members: Update
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://help.sigmacomputing.com/recipes/members-update)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
 
 ### Create Test Member
 Let's create new member in Sigma to test with. 
@@ -235,7 +275,7 @@ NEW_MEMBER_TYPE=Creator
 
 <img src="assets/apics17.png" width="800"/>
 
-### Change Test Members's Account Type
+### Change Test Members' Account Type
 Our test user is currently a `Viewer` account type. We want to call the Sigma API endpoint to `Update the specified member` account type to `Creator`.
 
 <img src="assets/apics9.png" width="800"/>
@@ -243,7 +283,9 @@ Our test user is currently a `Viewer` account type. We want to call the Sigma AP
 We will be using the [Update the specified member](https://help.sigmacomputing.com/reference/updatemember-1) endpoint.
 
 ### Running the Script
-Open the file `change-member-account-type.js`. 
+Open the file `update.js` in the `members` folder:
+
+<img src="assets/apics22.png" width="800"/>
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -260,16 +302,23 @@ A quick check against the member in Sigma shows them having the `Creator` accoun
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks Last Accessed for a Member
+## Members: Recent Workbooks
 Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Recent Workbooks` page, [located here.](https://help.sigmacomputing.com/recipes/members-recent-workbooks)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
 
 In this use case, we want to return a list of the Workbooks (by name), the permission and when they last accessed for each Workbook, ordered by most recent first.
 
 Open the file called `.env` and ensure that the memberID is set for someone who has accessed Workbooks in your Sigma instance. In a trial environment, pick someone who is very active or yourself if that is the case. As long as there is activity, it does not matter otherwise.
 
-If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Change a Members's Account Type`.
+If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Member: Update`.
 
-Open the file called `most-recent-workbook-access.js`.
+Open the file called `recent-workbooks.js` in the `members` folder.
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -282,8 +331,14 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Pagination   NEEDS WORK AND CLARIFICATION FROM SAM S.
+## Members: Pagination   NEEDS WORK AND CLARIFICATION FROM SAM S.
 Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/members-paginatation)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
 
 Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
 
@@ -317,17 +372,65 @@ In Sigma, this is a `string` value.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+## Members: Create New
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Create New` page, [located here.](https://help.sigmacomputing.com/recipes/members-create-new/members-list)
+
+### Required Body Parameters
+Open the `.env` file and add the required parameters. You will need to provide different values as shown below:
+```code
+NEW_MEMBER_EMAIL=someone@company.com
+NEW_MEMBER_FIRST_NAME=API
+NEW_MEMBER_LAST_NAME=Generated
+NEW_MEMBER_TYPE=Viewer
+```
+
+<img src="assets/apics25.png" width="800"/>
+
+Save the changes.
+
+### Running the Script
+
+Open the file `create-new.js` in the `members` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics26.png" width="800"/>
+
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## export_workbook.py
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **NEXT SECTION**
+
+## onboard_member.py
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+
+
+
+
+
+
+
+
+
 
 ## Hold content
 Duration: 20
@@ -357,7 +460,7 @@ INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
