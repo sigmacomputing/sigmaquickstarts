@@ -380,17 +380,23 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 ### Required Body Parameters
 Open the `.env` file and add the required parameters. You will need to provide different values as shown below:
 ```code
-NEW_MEMBER_EMAIL=someone@company.com
+EMAIL={your example email}
 NEW_MEMBER_FIRST_NAME=API
 NEW_MEMBER_LAST_NAME=Generated
 NEW_MEMBER_TYPE=Viewer
 ```
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> For email, we use the value provided in "EMAIL" as a base address. The script is designed to make the address unique, automatically by leveraging the Gmail alias feature. In this way, we always are creating a new member while testing.<br>
+
+We recommend you use the UI to delete these members later, if desired. In a Sigma trial environment, this cleanup is not required.  
+</aside>
+
 <img src="assets/apics25.png" width="800"/>
 
 Save the changes.
 
-### Running the Script
+### Running the "create-new.js" script
 
 Open the file `create-new.js` in the `members` folder:
 
@@ -402,8 +408,51 @@ The expected response is:
 
 <img src="assets/apics26.png" width="800"/>
 
+Copy the `memberId` provided in the response. We will use that in the next step.
+
+Checking in the UI, we can see the new member has been added. This member does not have a `Workspace`, the rights to one, or rights to any data (Connections). We will do each of these in steps first. Then will will put it all together in a script we will call `Member: Onboarding"
+
+<img src="assets/apics27.png" width="800"/>
+
+### Running the "create-workspace.js" script
+
+Update `.env` with the `memmberId` we received in the `create-new` script response:
+
+<img src="assets/apics28.png" width="800"/>
+
+Open the file `create-workspace.js` in the `members` folder.
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics29.png" width="800"/>
+
+Checking in the Sigma UI we can see the new Workspace:
+
+<img src="assets/apics30.png" width="800"/>
 
 
+
+### Running the "create-workspace-permission.js" script
+
+Open the file `create-workspace-permission.js` in the `members` folder.
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics3.png" width="800"/>
+
+Checking in the Sigma UI we can check the Workspace sharing permissions:
+
+<img src="assets/apics3.png" width="800"/>
+
+STOPPED HERE. Need to create the script for this section and update screenshots.
 
 
 ![Footer](assets/sigma_footer.png)
