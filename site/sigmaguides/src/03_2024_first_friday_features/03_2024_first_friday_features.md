@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-03-31
 
-<!--  1, 8, 15 done  -->
+<!--  1, 8, 15 22 done  -->
 
 # (03-2024) March
 <!-- The above name is what appears on the website and is searchable. -->
@@ -32,6 +32,22 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ## Administration
 Duration: 20
+
+### Account type permissions for export destinations
+The [Account types](https://help.sigmacomputing.com/docs/license-and-account-type-overview) feature separates permissions for individual export destinations, enabling granular control over members’ ability to export workbook content to Google Sheets, Google Drive, Slack, cloud storage, and webhooks.
+
+For more information, see the account type permission availability matrix (Sharing and exports section) in [License and account type overview.](https://help.sigmacomputing.com/docs/license-and-account-type-overview)
+
+### Separate export warehouse
+If your Sigma organization is connected to Snowflake, you can run all scheduled, direct, and on-demand exports through a separate warehouse. 
+
+This practice isolates export operations to optimize performance and reduce computing costs.
+
+In the `Administration` > `Connection` > `Connection Features` section, locate the `Export Warehouse` field and enter the name of the virtual warehouse created for export queries:
+
+<img src="assets/fff_03_2024_2.png" width="800"/>
+
+For more information, see [Configure an export warehouse.](https://help.sigmacomputing.com/docs/configure-an-export-warehouse)
 
 ### Updated licensing model
 Sigma’s license tiers are now labeled `Lite`, `Essential`, and `Pro` to bring clarity and simplicity to the licensing model.
@@ -96,6 +112,20 @@ For more information about the function and supported format specifiers, [see Da
 ## New QuickStarts in March
 Duration: 20
 
+### Sigma Health Check Native App
+The Sigma Health Check Native App is designed to provide insights into the overall health and performance of your Snowflake environment. This native app includes insights into architecture, user and role grants, as well as warehouse performance and sizing recommendation.
+
+[Getting Started with the Sigma Health Check Native App for Snowflake](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_health_check_app/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+
+## Redshift Connections
+Duration: 20
+
+### SUPER data type support
+Sigma now natively supports the `SUPER` data type to seamlessly handle semi-structured data from Redshift connections.
+
+For more information, see [SUPER type](https://docs.aws.amazon.com/redshift/latest/dg/r_SUPER_type.html) in the AWS developer documentation.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -117,6 +147,19 @@ Sigma is continuing to deliver polish and customization to our workbooks and in 
 Users now have more options to adjust the look-and-feel of their button elements, including new `styles`, `shapes`, and `sizes` in the `Element properties` panel:
 
 <img src="assets/workbook_buttons.png">
+
+### Default value for empty pivot table cells
+When there’s no corresponding source data for a pivot table value cell to reference (no record exists for the particular combination of dimensions), the cell is empty by default. 
+
+To customize the value for all empty cells, go to  `Element format` > `Format` and enter the preferred value in the `Empty cell` display value field.
+
+### Default table styling
+You can now configure a default table style for an **entire workbook** (in the Workbook settings panel), or an organization theme (in the Administration portal).
+
+This allows users to make bulk styling changes across their entire workbook (or theme), rather than making adjustments one by one, saving lots of time.
+
+For more information, see [Customize table styles](https://help.sigmacomputing.com/docs/customize-table-style) and [Create and manage workbook themes.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
+
 
 ### Repeat pivot values in exports
 When sending or scheduling an export, you now have the option to repeat pivot values in Excel or CSV output.
