@@ -372,10 +372,21 @@ In Sigma, this is a `string` value.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: Create New
+## Members: Onboarding
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: Create New` page, [located here.](https://help.sigmacomputing.com/recipes/members-create-new/members-list)
+This section demonstrates the common steps to add a new member (user) to Sigma, via the API. 
+
+We will break each step into it's own script and once each step is verified to work, we will run them as one step.
+
+The steps are:
+1: Create a new member
+2: Create a new Workspace for the member
+3: Grant permission to the workspace to the new member
+4: Add the member to a team
+5: Grant permission to a connection (data) to the member
+
+In each section, we export the script to a Javascript function so that when we are done, we can put it all together to run as one script.
 
 ### Required Body Parameters
 Open the `.env` file and add the required parameters. You will need to provide different values as shown below:
@@ -384,6 +395,10 @@ EMAIL={your example email}
 NEW_MEMBER_FIRST_NAME=API
 NEW_MEMBER_LAST_NAME=Generated
 NEW_MEMBER_TYPE=Viewer
+
+WORKSPACEID=
+TEAMID=
+CONNECTIONID=
 ```
 
 <aside class="positive">
@@ -401,6 +416,11 @@ Save the changes.
 Open the file `create-new.js` in the `members` folder:
 
 Each code block is commented to explain what operations are being performed. 
+
+Note the line of code that uses the [Javascript split function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) to ensure that the members's email address is unique:
+```code
+const newMemberEmail = `${baseEmail.split('@')[0]}+${new Date().getTime()}@${baseEmail.split('@')[1]}`;
+```
 
 Press `F5` to run the script with VSCode's debugger. 
 
@@ -436,11 +456,9 @@ Checking in the Sigma UI we can see the new Workspace:
 
 <img src="assets/apics30.png" width="800"/>
 
-
-
 ### Running the "create-workspace-permission.js" script
 
-Open the file `.env` and update the value for `WORKSPACEID` that we recieved from the `create-workspace.js` script
+Open the file `.env` and update the value for `WORKSPACEID` that we received from the `create-workspace.js` script
 
 Save the change.
 
@@ -457,7 +475,6 @@ Press `F5` to run the script with VSCode's debugger.
 The expected response is:
 ```code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
-create-workspace-permission.js:27
 New workspace permission added successfully: {}
 ```
 
@@ -465,50 +482,110 @@ Checking in the Sigma UI we can check the Workspace sharing permissions:
 
 <img src="assets/apics31.png" width="800"/>
 
-STOPPED HERE. 
+### Running the "add-member-to-team" script 
+
+For this script we will need to have a `TeamId` is Sigma that we want to assign the new member to.
+
+We already have a script we built in section 5, and we can use that to update the member's team assignment.  We can grab the TeamId for one from the UI for this demonstration:
+
+<img src="assets/apics33.png" width="800"/>
+
+Open the file `.env` and update the value for `TEAMID`, using your value.
+
+Save the change.
+
+Open the file `add-member-to-team.js` in the `members` folder.
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+```code
+URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/teams/25d48b2e-b36b-4db2-98a9-2c474f4144da/members
+Member successfully added to team: {}
+```
+
+Checking in the Sigma UI we can check the Workspace sharing permissions:
+
+<img src="assets/apics34.png" width="800"/>
 
 ### Running the "create-connection-permission.js" script
 
+For this script we will need to have a Connection is Sigma that we want to grant the new member permission to use. 
+
+There is an endpoint to [GET all connections](https://help.sigmacomputing.com/reference/listconnections-1), but we can also just grab the connectionId for one from the UI for this demonstration:
+
+<img src="assets/apics32.png" width="800"/>
+
+The connection shown above has no grants yet and the connectionId is in the URL (#2 in the image).
+
+Open the file `.env` and update the value for `CONNECTIONID`, using your value.
+
+Save the change.
+
+Open the file `create-connection-permission.js` in the `members` folder.
+
+Each code block is commented to explain what operations are being performed. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We give this member "View" permission to the workspace because we created the member with "Viewer" rights earlier. This can be adjusted to suit whatever use case is required.
+</aside>
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+```code
+URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
+create-workspace-permission.js:27
+New workspace permission added successfully: {}
+```
+
+Checking in the Sigma UI (from `Home` > `Connections`) we see our new member has connection permission:
+
+<img src="assets/apics35.png" width="800"/>
+
+### Putting it all together
+
+Now that each step is working as expected, we can create a master script that calls each step's module and just one run script to onboard a new member.
+
+We are faced with a challenge in that we do not know the memberId until the first script is run. Previously, we hard-coded this value and for the sake of not changing any of the other scripts, we will manually run the `create-new.js` script and then run all the other scripts from one master script. 
+
+This method strikes a balance between demonstrating individual script functions and showing how they can be integrated into a larger workflow with a simple manual step bridging the gap. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Recall that our new member script automatically creates a unique email address, so now changes are required to .env file. 
+</aside>
+
+Open the file `create-new.js` in the `members` folder:
+
+Press `F5` to run the script with VSCode's debugger. 
+
+Copy the `memberId` provided in the response, and update the `MEMBERID` with this new value.
+
+Next, open the file `master-script.js` and press `F5` to run the script with VSCode's debugger. 
+
+Each code block is commented to explain what operations are being performed. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We will also reuse the TeamId and ConnectionId from the .env file, assuming that all new members would go use these. In practice, these values could also be made dynamic from some other system of record.  
+</aside>
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+```code
+URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
+create-workspace-permission.js:26
+New workspace permission added successfully: {}
+Connection permissions granted successfully.
+Onboarding process completed successfully.
+```
+
+Verify the new member is created in the UI, has workspace permission, is a member of the expected team, and has connection permission.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-## export_workbook.py
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-## onboard_member.py
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-
-
-
-
-
-
-
-
-
-## Hold content
-Duration: 20
-
-The [Sigma API Reference Swagger](https://help.sigmacomputing.com/reference/explanation) provides sample code for all the popular programming languages, so definitely check that out:
-
-<img src="assets/apics1.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-
-
 
 ## What we've covered
 Duration: 5
