@@ -356,42 +356,108 @@ session.sql("GRANT USAGE ON ALL MODELS IN SCHEMA SE_DEMO_DB.ML_REGISTRY TO ROLE 
 ## Using the Model in Sigma
 Duration: 5
 
-We’ll now show how we can apply that trained model in Sigma, and look at an example application of that method. 
+We’ll now show how we can apply that trained model in sigma, and look at an example application of that method. 
 
-Create a `Child table` from our `Test` table, and call it `Deploy Model`. 
+1: Create a child table from our `Test` table, and call it `Deploy Model.` We’ll be calling our model here. 
 
-We’ll be calling our model here. 
-
-Create a `New column`, and use the following syntax and your own model location to define a function like this:
-```code
+2: Create a new column, and use the following syntax and your own model location to define a function like this:
+```code 
 CallVariant(“SE_DEMO_DB.ML_REGISTRY.SHIFT_SALES_MODEL!Predict”) 
 ```
+You should see an error about argument types, as we haven’t provided any input yet. 
 
-You should see an error about argument types, as we haven’t provided any input yet:
+If you get an error about the UDF not existing, there is likely a permissions error. 
+
+Make sure you have given usage to the model as described in the visual studio code section on step 6:
 
 <img src="assets/ml25.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> If you get an error about the UDF not existing, there is like a permissions error. Make sure you have given usage to the model as described in the visual studio code section on step 5.
-</aside>
+3: Now let’s add the arguments. These should be provided in the same order as in your code: 
+`MONTH_OF_DATE`, `WEEKDAY_OF_DATE`, `ENCODED_SHIFT`. 
 
-Now let’s add the arguments. These should be provided in the same order as in your code: `MONTH_OF_DATE`, `WEEKDAY_OF_DATE`, `ENCODED_SHIFT`. 
-
-Voila, you should now see a JSON output in this column:
+Voila, you should now see a JSON output in this column. 
 
 <img src="assets/ml26.png" width="800"/>
 
-Finally, we can now extract the prediction from the column. 
+4: Finally, we can now extract the prediction from the column. Sigma [reads JSON right out of the box](https://help.sigmacomputing.com/docs/json), so we can just right click and extract the columns. 
 
-Sigma [reads JSON](https://help.sigmacomputing.com/docs/extract-semi-structured-json-or-variant-data) right out of the box, so we can just right click and extract the columns:
-
-<img src="assets/ml27.png" width="800"/>
-
-For linear regression, there is only one output that we care about; `PRED_SHIFT_SALES`, but we could imagine other models that would have multiple outputs here. 
+For linear regression, there is only one output, `PRED_SHIFT_SALES`, that we care about, but we could imagine other models that would have multiple outputs here. 
 
 Confirm your selection, and we have our final prediction that directly runs the model we defined in Snowflake:
 
+<img src="assets/ml27.png" width="800"/>
+
+<br>
+
 <img src="assets/ml28.png" width="800"/>
+
+5: Now, if we combine the steps of the prediction above, we end up with a final syntax that looks something like this:
+```code
+Number(CallVariant("SE_DEMO_DB.ML_REGISTRY.SHIFT_SALES_MODEL!PREDICT", [Month of Date], [Weekday of Date], [Encoded Shift]).PRED_SHIFT_SALES)
+```
+
+That’s quite a mouthful, and it is clearly unrealistic to expect later business users to invoke the model in this way. Luckily, we can use a [Sigma Custom Function](https://help.sigmacomputing.com/docs/custom-functions) to encode this for future use in a friendlier syntax. 
+
+Open up your `Admin Panel` to access the custom functions:
+
+<img src="assets/ml29.png" width="800"/>
+
+6: Currently, `Custom Functions` are located on the bottom of our `Admin Panel`. 
+
+Scroll down to the bottom of the page, and then select `Add`:
+
+<img src="assets/ml30.png" width="800"/>
+
+7: We can paste the formula from Step 5 into the formula box, and then update to your own model location. 
+
+We can then give the Custom Function an easy-to-find name, `PredictShiftSales` - and let our users know what it does:
+
+<img src="assets/ml31.png" width="800"/>
+
+8: Now, we can define the arguments, again using User-Friendly variable names and descriptions. You don’t need the descriptions, but they are a great way to explain and specify what users should enter here. 
+
+For this QuickStart, you can just use the names `Month Number`, `Weekday Number` and `Shift Number` and save the descriptions for later:
+
+<img src="assets/ml32.png" width="800"/>
+
+9: Once we update the formula bar to use these new friendly names, making sure to maintain the order of the arguments, we can save the Custom Function and it will now be available in our workbook:
+
+<img src="assets/ml33.png" width="800"/>
+
+10: Go back to the `ML Shift Sales` workbook and add a `new column` to our `Deploy Model` table. 
+
+You’ll be able to now run the exact same ML model by entering in `PredictShiftSales` and filling in the arguments! 
+
+This simple format for calling the model will make your Model far more accessible to the end users who stand to benefit from it:
+
+<img src="assets/ml34.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Extended Applications
+Duration: 5
+
+This section documents examples of how different personas can benefit from deployed ML functions.
+
+**1: Business Ops: Scoring new data through Input tables**
+It’s very common for organizations to have operational steps outside the CDW, in the format of Excel or Google Sheets files. Incorporating those files into a Machine Learning framework has historically involved a fair amount of friction. In Sigma, we can do it very simply using an input table. The input table allows us to paste the values from a Google Sheets table, and then transform the variables for the model, and apply the model all in one step:
+
+<img src="assets/ml35.png" width="800"/>
+
+Our Business Op persona can then quickly identify the shifts with the most predicted earnings and allocate more resources to those shifts! In this example, we use a RankPercentile function to find the top and bottom 10% predicted shifts, and mark those for Boosting and Dropping, respectively ml36.png
+
+**2: Data Apps: Scoring a specific shift**
+Suppose you want to build your manager a tool that allows them to know whether a specific shift is expected to perform well or not. We can build that Data App in seconds in Sigma. In our example, we create two controls for the date and the shift. We can then handle the transformation within a Dynamic Text Element, such that the control is properly formatted for the Model Call. As a result, we get a ready-made Scoring App, where any business user can tweak what day or shift they want to get the prediction for:
+
+<img src="assets/ml37.png" width="800"/>
+
+**3: Data Science: Reviewing the quality of a model.**
+Sigma can also be an excellent place to check the accuracy and performance of an ML model. In this example, we run the Custom Function against our Test Set and compare the output against the actual observed shift sales we saw for that day. We can create a new column, `Residual`, that measures the difference between the observed and predicted value.
+
+Then, the residuals can be plotted to see if the predictive power of our model is sufficient for our use case, or if further refinements in Snowpark or EDA are needed. Because Sigma is so flexible in the calculations and groupings we can apply, customers use Sigma for all sorts of statistical applications, including Power Analyses, Confusion Matrices, and Lift, ROC, and Gain charts:
+
+<img src="assets/ml38.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
