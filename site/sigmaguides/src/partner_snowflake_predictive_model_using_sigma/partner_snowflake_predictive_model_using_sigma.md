@@ -368,7 +368,7 @@ You should see an error about argument types, as we haven’t provided any input
 
 If you get an error about the UDF not existing, there is likely a permissions error. 
 
-Make sure you have given usage to the model as described in the visual studio code section on step 6:
+Make sure you have given usage to the model as described in the [visual studio code section in section 5 / step 6:](https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#4)
 
 <img src="assets/ml25.png" width="800"/>
 
