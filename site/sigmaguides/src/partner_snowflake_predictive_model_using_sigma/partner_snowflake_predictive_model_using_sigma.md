@@ -3,10 +3,10 @@ id: partner_snowflake_predictive_model_using_sigma
 summary: partner_snowflake_predictive_model_using_sigma
 categories: partners
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-03-15
+tags: default
+lastUpdated: 2024-03-25
 
 # Develop a Predictive Model using Snowflake and Sigma
 <!-- The above name is what appears on the website and is searchable. -->
