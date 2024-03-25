@@ -440,19 +440,19 @@ Duration: 5
 
 This section documents examples of how different personas can benefit from deployed ML functions.
 
-**1: Business Ops: Scoring new data through Input tables**
+**1: Business Ops: Scoring new data through Input tables**<br>
 It’s very common for organizations to have operational steps outside the CDW, in the format of Excel or Google Sheets files. Incorporating those files into a Machine Learning framework has historically involved a fair amount of friction. In Sigma, we can do it very simply using an input table. The input table allows us to paste the values from a Google Sheets table, and then transform the variables for the model, and apply the model all in one step:
 
 <img src="assets/ml35.png" width="800"/>
 
 Our Business Op persona can then quickly identify the shifts with the most predicted earnings and allocate more resources to those shifts! In this example, we use a RankPercentile function to find the top and bottom 10% predicted shifts, and mark those for Boosting and Dropping, respectively ml36.png
 
-**2: Data Apps: Scoring a specific shift**
+**2: Data Apps: Scoring a specific shift**<br>
 Suppose you want to build your manager a tool that allows them to know whether a specific shift is expected to perform well or not. We can build that Data App in seconds in Sigma. In our example, we create two controls for the date and the shift. We can then handle the transformation within a Dynamic Text Element, such that the control is properly formatted for the Model Call. As a result, we get a ready-made Scoring App, where any business user can tweak what day or shift they want to get the prediction for:
 
 <img src="assets/ml37.png" width="800"/>
 
-**3: Data Science: Reviewing the quality of a model.**
+**3: Data Science: Reviewing the quality of a model.**<br>
 Sigma can also be an excellent place to check the accuracy and performance of an ML model. In this example, we run the Custom Function against our Test Set and compare the output against the actual observed shift sales we saw for that day. We can create a new column, `Residual`, that measures the difference between the observed and predicted value.
 
 Then, the residuals can be plotted to see if the predictive power of our model is sufficient for our use case, or if further refinements in Snowpark or EDA are needed. Because Sigma is so flexible in the calculations and groupings we can apply, customers use Sigma for all sorts of statistical applications, including Power Analyses, Confusion Matrices, and Lift, ROC, and Gain charts:
