@@ -215,7 +215,7 @@ Duration: 20
 
 We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://help.sigmacomputing.com/reference/listmembers-1)
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: List` page, [located here.](https://help.sigmacomputing.com/recipes/members-list)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -595,9 +595,7 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 </aside>
 
 ### Running the Script
-Open the file `list-simple.js` in the `members` folder:
-
-<img src="assets/apics23.png" width="800"/>
+Open the file `list-all.js` in the `workbooks` folder:
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -605,9 +603,32 @@ Press `F5` to run the script with VSCode's debugger.
 
 The expected response is:
 
-<img src="assets/apics24.png" width="800"/>
+<img src="assets/apics36.png" width="800"/>
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
+## Workbooks: Shared with Me
+Duration: 20
+
+A common use case is to provide the user a list of workbooks that are shared with, and have the list hyperlinked to the workbook so the user can just click and go.
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Shared with Me` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-shared-with-me)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Running the Script
+Open the file `shared-with-memberId.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics37.png" width="800"/>
 
 
 ![Footer](assets/sigma_footer.png)
@@ -618,6 +639,7 @@ Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 
 
 ## What we've covered
