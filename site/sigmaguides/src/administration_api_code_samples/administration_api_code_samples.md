@@ -3,9 +3,9 @@ id: administration_api_code_samples
 summary: administration_api_code_samples
 categories: Administration
 environments: web
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-03-01
 
 # Sigma REST API Code Samples
@@ -537,7 +537,6 @@ Press `F5` to run the script with VSCode's debugger.
 The expected response is:
 ```code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
-create-workspace-permission.js:27
 New workspace permission added successfully: {}
 ```
 
@@ -576,7 +575,6 @@ Press `F5` to run the script with VSCode's debugger.
 The expected response is:
 ```code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
-create-workspace-permission.js:26
 New workspace permission added successfully: {}
 Connection permissions granted successfully.
 Onboarding process completed successfully.
@@ -586,6 +584,41 @@ Verify the new member is created in the UI, has workspace permission, is a membe
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Workbooks: List All
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Running the Script
+Open the file `list-simple.js` in the `members` folder:
+
+<img src="assets/apics23.png" width="800"/>
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics24.png" width="800"/>
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## wqasd
+Duration: 20
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## What we've covered
 Duration: 5
