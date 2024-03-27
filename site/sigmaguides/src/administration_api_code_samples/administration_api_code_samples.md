@@ -634,13 +634,58 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Workbooks: Initiate a Materialization
+Duration: 20
+
+A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+The script initiates a materialization job for a specified workbook. 
+
+It retrieves required the sheet ID, from the materialization schedules of the workbook. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This script will use "WORKBOOKID" from the .env file, and requires that a schedule has already been created in Sigma.
+</aside>
+
+Then, it starts the materialization job using the workbookId and sheet ID. After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. 
+
+Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+
+### Create a Materialization Schedule
+
+
+zsasdasDasdasd
+
+
+
+
+
+### Running the Script
+Open the file `initiate-materialization.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics38.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## wqasd
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
 
 ## What we've covered
 Duration: 5
