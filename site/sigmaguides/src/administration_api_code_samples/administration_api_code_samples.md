@@ -172,21 +172,16 @@ Save the file.
 ## Authentication - REQUIRED
 This section demonstrates the code that was provided on the `API Code Samples` > `Authentication: Get Access Token` page, [located here.](https://help.sigmacomputing.com/recipes/authentication-get-access-token)
 
-In this step, we will look at a script that authenticates to the [get access token endpoint](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token).
+### Description
+This script retrieves a bearer token from the Sigma API using client credentials authentication. It extracts required credentials from environment variables, sends a POST request to the authentication endpoint, and logs the obtained token. The function getBearerToken can be imported into other scripts for accessing protected resources.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed.
-</aside>
-
+This actual javascript is available as part of the git repository mentioned earlier or is available to copy directly from our API Code Samples site under: [Authentication: Get Access Token](https://help.sigmacomputing.com/recipes/authentication-get-access-token) and returns a bearer token (token).
 It also exports a Javascript function to request a bearer token (token) each time it is called. 
-
-We reference this function from other API scripts we create later, saving time and simplifying code.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed. Our Javascript function will handle that.
 </aside>
-
-
+`
 In the project root directory, open the file `get-access-token.js` and review it's contents. Each section is commented so it can be understood. 
 
 Start the VSCode debugger against this code by pressing `F5` on your keyboard.
@@ -197,7 +192,7 @@ The VSCode debugger console will show this API response if the .env variables ar
 
 <img src="assets/apics16.png" width="800"/>
 
-The script is configured to run standalone as well as export a function that we can call from other scripts too. 
+The script is configured to run standalone, as well as export a function that we can call from other scripts too. 
 
 This is why we show the bearer token twice in the response. Other scripts that call this one, will only show the token one time in the console.
 
@@ -210,19 +205,23 @@ We can now move on to use cases, leveraging the `getBearerToken` function:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: List
+## Members: List All
 Duration: 20
+
+### Description
 
 We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://help.sigmacomputing.com/reference/listmembers-1)
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
+
+This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Running the Script
-Open the file `list-simple.js` in the `members` folder:
+Open the file `list-all.js` in the `members` folder:
 
 <img src="assets/apics23.png" width="800"/>
 
@@ -241,6 +240,9 @@ The expected response is:
 Duration: 20
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://help.sigmacomputing.com/recipes/members-update)
+
+### Description
+This script updates the account type of a member on the Sigma platform by sending a PATCH request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -311,9 +313,11 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
-
+### Description
+This script fetches recent documents and folders for a specified member from the Sigma API. It retrieves a bearer token for authentication, constructs the API endpoint URL, and makes a GET request to fetch the recent items. The response is then processed to extract relevant information and sorted by the last interaction date in descending order before logging the results.
 In this use case, we want to return a list of the Workbooks (by name), the permission and when they last accessed for each Workbook, ordered by most recent first.
 
+### Running the Script
 Open the file called `.env` and ensure that the memberID is set for someone who has accessed Workbooks in your Sigma instance. In a trial environment, pick someone who is very active or yourself if that is the case. As long as there is activity, it does not matter otherwise.
 
 If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Member: Update`.
@@ -340,6 +344,9 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
+### Description
+This script fetches all members from the Sigma API, handling pagination for large datasets. It retrieves a bearer token for authentication, constructs the API endpoint URL with pagination parameters, and iteratively fetches members until all pages are retrieved. The fetched member data is then formatted into a table for display in the console. If an error occurs during the process, it is logged accordingly.
+
 Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
 
 Many of Sigma's API operations support `page` and `limit` as query parameters. 
@@ -350,7 +357,7 @@ These parameters can be used in different ways but generally they are used to:
 2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
 3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
 
-### The Page parameter
+### The Page Parameter
 The page parameter indicates the current page of data to retrieve.
 
 In Sigma, this is a `string` value. 
@@ -377,10 +384,17 @@ Duration: 20
 
 This section demonstrates the common steps to add a new member (user) to Sigma, via the API. 
 
+### Description
+This script creates a new member in Sigma by sending a POST request to the API endpoint. It dynamically generates a unique email address for the new member to ensure uniqueness during testing. 
+
+The script utilizes environment variables to specify the base URL, email, first name, last name, and member type. 
+
+Upon successful creation, it logs the newly added member's details, and in case of an error, it logs the error message.
+
 We will break each step into it's own script and once each step is verified to work, we will run them as one step.
 
 The steps are:
-1: Create a new member
+1: Create a unique, new member
 2: Create a new Workspace for the member
 3: Grant permission to the workspace to the new member
 4: Add the member to a team
@@ -594,6 +608,9 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
+### Description
+This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
+
 ### Running the Script
 Open the file `list-all.js` in the `workbooks` folder:
 
@@ -618,6 +635,9 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
+
+### Description
+This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
 
 ### Running the Script
 Open the file `shared-with-memberId.js` in the `workbooks` folder:
@@ -645,9 +665,13 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
-The script initiates a materialization job for a specified workbook. 
+### Description
 
-It retrieves required the sheet ID, from the materialization schedules of the workbook. 
+This script initiates a materialization job for a specified workbook. 
+
+It retrieves required the sheet ID, from the materialization schedules of the workbook. Then, it starts the materialization job using the workbookId and sheet ID. 
+
+After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This script will use "WORKBOOKID" from the .env file, and requires that a schedule has already been created in Sigma.
@@ -659,12 +683,31 @@ Once the status indicates that the materialization is "ready", the script stops 
 
 ### Create a Materialization Schedule
 
+Log into Sigma as an `Administrator`. 
 
-zsasdasDasdasd
+Navigate to a Workbook that you want to materialize. We created a simple workbook that has two pages, one for a `Dashboard` and one for the source data, which is based on the `Sigma Sample Database` > `Retail` > `Plugs Electronics` > `Plugs Electronics Hands On Lab` table. This second page is labeled `Data`. 
 
+<aside class="negative">
+<strong>NOTE:</strong><br> We selected to materialize this table since it is small (4.5M rows) and the runtime to materialize will be less than 20 seconds in our test environment.
+</aside>
 
+On the `Data` page, we select `Schedule materialization` as shown:
 
+<img src="assets/apics39.png" width="800"/>
 
+We configured the schedule to run once a month:
+
+<img src="assets/apics41.png" width="800"/>
+
+The materialization job ("Job") needs to run to success the first time, and then is available to the API.
+
+<img src="assets/apics40.png" width="800"/>
+
+We can check the status of all Jobs by navigating to `Administration` > `Materializations`:
+
+<img src="assets/apics42.png" width="800"/>
+
+We can now call this Job using the API.
 
 ### Running the Script
 Open the file `initiate-materialization.js` in the `workbooks` folder:
@@ -673,10 +716,23 @@ Each code block is commented to explain what operations are being performed.
 
 Press `F5` to run the script with VSCode's debugger. 
 
-The expected response is:
+As the script runs the materialization status is checked and goes through three states, pending, building and ready.
+
+Pending indicates job is queued.
+
+Building indicates the job is running.
+
+Ready indicated the job is completed to success.
+
+The expected response looks like this:
 
 <img src="assets/apics38.png" width="800"/>
 
+If we want to check the status of this Job, we can use the UI, by navigating to `Administration` > `Materializations`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> As a best practice, remove (or suspend) any materialization jobs that are no longer needed. 
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
