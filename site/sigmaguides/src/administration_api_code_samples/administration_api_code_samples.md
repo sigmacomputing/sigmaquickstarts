@@ -335,50 +335,6 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: Pagination   NEEDS WORK AND CLARIFICATION FROM SAM S.
-Duration: 20
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Members: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/members-paginatation)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
-
-### Description
-This script fetches all members from the Sigma API, handling pagination for large datasets. It retrieves a bearer token for authentication, constructs the API endpoint URL with pagination parameters, and iteratively fetches members until all pages are retrieved. The fetched member data is then formatted into a table for display in the console. If an error occurs during the process, it is logged accordingly.
-
-Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
-
-Many of Sigma's API operations support `page` and `limit` as query parameters. 
-
-These parameters can be used in different ways but generally they are used to:
-
-1: Reduces the load on the server and the amount of data transmitted over the network at any one time.
-2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
-3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
-
-### The Page Parameter
-The page parameter indicates the current page of data to retrieve.
-
-In Sigma, this is a `string` value. 
-
-
-
-### The Limit parameter
-
-
-
-
-### Used Together
-
-
-
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Members: Onboarding
 Duration: 20
 
@@ -595,6 +551,48 @@ Onboarding process completed successfully.
 ```
 
 Verify the new member is created in the UI, has workspace permission, is a member of the expected team, and has connection permission.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbooks: Pagination
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-pagination)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches all workbooks from the Sigma API, handling pagination for large datasets. 
+
+It retrieves a bearer token for authentication, constructs the API endpoint URL with pagination parameters, and iteratively fetches workbooks (in groups of 50) until all pages are retrieved. 
+
+The fetched workbook data is then formatted into a table for display in the console. 
+
+If an error occurs during the process, it is logged accordingly.
+
+Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
+
+Many of Sigma's API operations support `page` and `limit` as query parameters. 
+
+These parameters can be used in different ways but generally they are used to:
+
+1: Reduces the load on the server and the amount of data transmitted over the network at any one time.
+2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
+3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
+
+### Running the Script
+Open the file `pagination.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics44.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
