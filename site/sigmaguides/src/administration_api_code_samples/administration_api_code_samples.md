@@ -737,8 +737,36 @@ If we want to check the status of this Job, we can use the UI, by navigating to 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## wqasd
+## Workbooks: List all Input Tables
 Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all-input-tables)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script performs a targeted search across all workbooks for an organization, looking specifically for elements of the type "input-table." 
+
+It logs concise details about each found element, including the workbook's name and path, the page's name, and the input table's name and ID. 
+
+It's designed to run silently, only outputting information when relevant elements are discovered, and includes basic error handling to manage issues quietly without interrupting the process.
+
+### Running the Script
+Open the file `all-input-tables.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics43.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is possible to alter this script to retrieve other types of elements. For example, other type are can be: "control", "text", "visualization", "table" and so on.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
