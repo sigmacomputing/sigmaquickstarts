@@ -846,6 +846,7 @@ async function addMemberToTeam(memberId, teamId, token) {
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 
