@@ -769,6 +769,83 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Teams: Bulk Add/Remove Members
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Teams: Bulk Assign Members` page, [located here.](https://help.sigmacomputing.com/recipes/member-bulk-assign-to-team)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script is designed to bulk assign existing members to a specific team within Sigma Computing's platform, utilizing the members' emails as identifiers. It operates by reading a list of email addresses from a .member-emails file, finding each member's ID through the Sigma API, and then assigning each member to a designated team. 
+
+Here's a summary of how the script works (not including the environmental setup, which has been covered earlier):
+
+**1: Reading Member Emails:**
+Reads a list of member emails from a .member-emails file located relative to the script. This file contains the emails of the members to be assigned to the team, separated by commas.
+
+**2: Member ID Lookup:** 
+For each email, makes an API request to Sigma's /members endpoint to find the member's ID based on their email. This is necessary because the subsequent API call to assign a member to a team requires the member's ID.
+
+**3:Assigning Members to Team:** 
+Once the member ID is obtained, makes another API request to the /teams/{teamId}/members endpoint to add the member to the specified team using the team ID provided in the environment variables.
+
+**4: Error Handling:** 
+Includes error handling for various steps of the process, logging any issues encountered during the member lookup or assignment process.
+
+**5: Script Execution:** 
+Orchestrates the overall process through a main function that initiates the token retrieval, member processing, and assignment tasks.
+
+### Running the Script
+Open the file `bulk-assign-team.js` in the `tables` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+In this example, we had three emails in the `../member-emails` file that the script will iterate through and add to a team. 
+
+Configure the emails in the file using comma separation. 
+
+The teamId is specified in the .env file.
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is (showing two members being added in the screenshot):
+
+<img src="assets/apics45.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is possible to alter this script to "remove" members from a team by altering the code line as shown below.
+</aside>
+
+```code
+// Function to add/remove a member to a specified team by their member ID.
+      // change logging messages to remove instead of add
+async function addMemberToTeam(memberId, teamId, token) {
+    const requestUrl = `${baseURL}/teams/${teamId}/members`; // API endpoint for adding a member to a team.
+    
+    //Change the job to remove a member:
+    const payload = { add: [], remove: [memberId] }; // Payload specifying the member to add (and none to remove).
+    const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }; // Request headers.
+    
+    // Log the request details for debugging.
+
+    console.log(`Removed member to team with URL: ${requestUrl}`);
+ //   console.log(`Headers:`, JSON.stringify(headers, null, 2));
+    console.log(`Payload:`, JSON.stringify(payload, null, 2));
+
+    try {
+        const response = await axios.patch(requestUrl, payload, { headers });
+        console.log(`Member ${memberId} removed from team ${teamId}. Response:`, response.data);
+    } catch (error) {
+        console.error(`Error removing member ${memberId} to team ${teamId}:`, error.response ? error.response.data : error);
+    }
+}
+```
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 ## What we've covered
 Duration: 5
 
