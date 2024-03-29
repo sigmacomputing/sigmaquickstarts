@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-03-31
 
-<!--  1, 8, 15 22 done  -->
+<!--  1, 8, 15 22, 29  done  -->
 
 # (03-2024) March
 <!-- The above name is what appears on the website and is searchable. -->
@@ -78,8 +78,30 @@ For more information, [see the Sigma Community post.](https://community.sigmacom
 
 ![Footer](assets/sigma_footer.png)
 
+## Bug Fixes
+Duration: 20
+
+1: Selecting the `Impersonate user` function for a user assigned the `Embed` member type no longer redirects admins to the `Home` page.
+
+2: Admins can now successfully update a user’s member type from `Internal` to `Guest.`
+
+3: Sigma now emits the `workbook:error` JavaScript event when an embed user is logged out, due to a session timeout.
+
+![Footer](assets/sigma_footer.png)
+
 ## Embedding
 Duration: 20
+
+### JavaScript event for saved bookmark
+Sigma now listens for the following JavaScript event sent by a user to save a bookmark on an embedded workbook:
+```code
+{
+      type: 'workbook-bookmark-current';
+      bookmarkName: string;
+      isDefault: boolean;
+      isShared: boolean;
+}
+```
 
 ![Footer](assets/sigma_footer.png)
 
@@ -148,6 +170,11 @@ Users now have more options to adjust the look-and-feel of their button elements
 
 <img src="assets/workbook_buttons.png">
 
+### Conditional formatting using hidden controls
+Conditional formatting rules referencing hidden controls are now applied reliably to visible data elements in embeds and published workbook versions (`View` and `Explore` mode).
+
+For more information about hidden controls and filter accessibility, see [Create a hidden control.](https://help.sigmacomputing.com/docs/create-a-hidden-control)
+
 ### Default value for empty pivot table cells
 When there’s no corresponding source data for a pivot table value cell to reference (no record exists for the particular combination of dimensions), the cell is empty by default. 
 
@@ -160,6 +187,18 @@ This allows users to make bulk styling changes across their entire workbook (or 
 
 For more information, see [Customize table styles](https://help.sigmacomputing.com/docs/customize-table-style) and [Create and manage workbook themes.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
+### Map region improvements
+Sigma now uses `Mapbox` to render regions in map elements.
+
+This update contributes **overall performance improvements**, including **more precise boundaries** for mapped regions.
+
+For example:
+
+<img src="assets/fff_03_2024_3.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Due to updated place name specifications, Mapbox may not render some regions in existing maps. Update place names in map element data sources if needed.
+</aside>
 
 ### Repeat pivot values in exports
 When sending or scheduling an export, you now have the option to repeat pivot values in Excel or CSV output.
