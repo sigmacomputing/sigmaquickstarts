@@ -6,7 +6,7 @@ environments: web
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2024-03-01
+lastUpdated: 2024-03-29
 
 # Sigma REST API Code Samples
 
