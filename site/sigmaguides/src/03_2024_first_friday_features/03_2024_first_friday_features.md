@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-03-31
 
-<!--  1, 8, 15 22, 29  done  -->
+<!--  1, 8, 15 22, 29. Included April 5 releases -->
 
 # (03-2024) March
 <!-- The above name is what appears on the website and is searchable. -->
@@ -103,10 +103,7 @@ Sigma now listens for the following JavaScript event sent by a user to save a bo
 }
 ```
 
-![Footer](assets/sigma_footer.png)
-
-## Input Tables
-Duration: 20
+Read more about Sigma Actions and Events in this [QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_07_actions_events/index.html?index=..%2F..index#0).
 
 ![Footer](assets/sigma_footer.png)
 
@@ -139,6 +136,11 @@ The Sigma Health Check Native App is designed to provide insights into the overa
 
 [Getting Started with the Sigma Health Check Native App for Snowflake](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_health_check_app/index.html?index=..%2F..index#0)
 
+### Develop a Predictive Model using Snowflake and Sigma
+This QuickStart discusses and demonstrates creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
+
+[Develop a Predictive Model using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#0).
+
 ![Footer](assets/sigma_footer.png)
 
 ## Redshift Connections
@@ -148,11 +150,6 @@ Duration: 20
 Sigma now natively supports the `SUPER` data type to seamlessly handle semi-structured data from Redshift connections.
 
 For more information, see [SUPER type](https://docs.aws.amazon.com/redshift/latest/dg/r_SUPER_type.html) in the AWS developer documentation.
-
-![Footer](assets/sigma_footer.png)
-
-## Visualizations
-Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 
@@ -174,6 +171,13 @@ Users now have more options to adjust the look-and-feel of their button elements
 Conditional formatting rules referencing hidden controls are now applied reliably to visible data elements in embeds and published workbook versions (`View` and `Explore` mode).
 
 For more information about hidden controls and filter accessibility, see [Create a hidden control.](https://help.sigmacomputing.com/docs/create-a-hidden-control)
+
+### Customizable page tab color
+You can now customize the color of individual page tabs for added clarity and organization in workbooks.
+
+On a workbooks's `Page` menu, click `Change color` and select an option from the color palette:
+
+<img src="assets/fff_03_2024_4.png" width="800"/>
 
 ### Default value for empty pivot table cells
 When there’s no corresponding source data for a pivot table value cell to reference (no record exists for the particular combination of dimensions), the cell is empty by default. 
