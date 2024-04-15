@@ -5,11 +5,11 @@ categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: first_friday_features
 lastUpdated: 2024-04-31
 
 
-# AAA_NEW_GUIDE_NAME_HERE
+# (04-2024) April
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
