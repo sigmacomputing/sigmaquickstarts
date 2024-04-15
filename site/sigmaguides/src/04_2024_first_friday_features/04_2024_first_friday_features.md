@@ -1,42 +1,13 @@
 author: pballai
-id: PROVIDE A UNIQUEID (use the QS name with no spaces)
-summary: This is a sample Sigma Guide
+id: 04_2024_first_friday_features
+summary: 04_2024_first_friday_features
 categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: {lasted updated using the date format yyyy-mm-dd}
+lastUpdated: 2024-04-31
 
-<!-- NOTES:
-1: THE "tags" VALUE ABOVE SHOULD BE SET TO "default" UNLESS YOU INTEND TO PUBLISH WITH A "status: Hidden". IN THAT CASE, LEAVE THE VALUE FOR "tags" empty.
-
-2: THE "id: VALUE IS THE STRING THAT WILL APPEAR IN THE URL OF THE QUICKSTART
-
-3: SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL
-AVAILABLE CATEGORIES ARE Tables, Visualizations, Functions, Embedding, Controls, Sharing, Use Cases, Partners, Administration
-
-4: PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO
-THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED
-YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-https://customerquickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0
-
-AVAILABLE CATEGORIES ARE:
-Administration
-Embedding
-Functions
-Fundamentals
-Partners
-Snowflake
-Tables (include pivot and input tables for now)
-Use-cases
-Templates
-
-PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. 
-
-YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
--->
 
 # AAA_NEW_GUIDE_NAME_HERE
 <!-- The above name is what appears on the website and is searchable. -->
