@@ -8,6 +8,11 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-04-31
 
+<!-- 
+04-05 (in previous month)
+04-12 done 
+
+-->
 
 # (04-2024) April
 <!-- The above name is what appears on the website and is searchable. -->
@@ -32,22 +37,27 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Administration
 Duration: 20
 
-### Separate export warehouse
-If your Sigma organization is connected to Snowflake, you can run all scheduled, direct, and on-demand exports through a separate warehouse. 
-
-This practice isolates export operations to optimize performance and reduce computing costs.
-
-In the `Administration` > `Connection` > `Connection Features` section, locate the `Export Warehouse` field and enter the name of the virtual warehouse created for export queries:
-
-<img src="assets/fff_03_2024_2.png" width="800"/>
-
-For more information, see [Configure an export warehouse.](https://help.sigmacomputing.com/docs/configure-an-export-warehouse)
-
 ![Footer](assets/sigma_footer.png)
 
 ## Bug Fixes
 Duration: 20
 
+1: To preserve data integrity, Sigma no longer converts `Yes/No` and `0/1` values to True/False boolean values in CSV uploads.
+
+![Footer](assets/sigma_footer.png)
+
+## Data models (BETA)
+Duration: 20
+
+Sigma Data Models represent the next iteration of Datasets and their introduction is a **foundational change that offers significant benefits** over the existing Dataset functionality. We’re investing heavily in Data Models over the coming months and years, with plans to add a whole suite of functionality, coupled with the ease-of-use that you have come to expect from Sigma.
+
+<img src="assets/fff_04_2024_2.png" width="800"/>
+
+This is large topic, and we will be providing a ton of resources for customers to take advantage of, including a new QuickStart. 
+
+For now, we strongly recommend reading this post in [Sigma Community on DataModels.](https://community.sigmacomputing.com/t/data-model-faqs/3481)
+
+There is also some documentation (with more to come) [here.](https://help.sigmacomputing.com/docs/intro-to-data-models)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -58,6 +68,18 @@ Duration: 20
 
 ## Functions
 Duration: 20
+
+### Advanced calculation options for metrics
+Quickly convert metrics to cumulative aggregates (grand total) or relative aggregates (percent of total) in tables, pivot tables, and visualizations. 
+
+Open the relevant metric column menu, then hover over `Advanced calculations` and select an option to show the `grand total` or `percent of total`. 
+
+Available percentage breakdowns (by grand total, x-axis, row, column, etc.) depend on the element type.
+
+For example:
+
+<img src="assets/fff_04_2024_1.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 
@@ -75,25 +97,23 @@ Interact with chart legend entries to quickly focus on specific data subsets.
 
 Charts containing legends that represent qualitative segments (like categories or series) support the following interactive filtering capabilities:
 
- <ul>
-      <li><strong> Hover over a legend entry to highlight corresponding data points.</li>
-      <li><strong> Click a legend entry label to isolate corresponding data points.</li>
-      <li><strong> Select or clear the checkbox of one or more legend entries to show or hide corresponding data points.</li>
-      <li><strong> Click anywhere (within the element) outside of the plot area or legend to reset the chart display.</li>
+<ul>
+      <li><strong> Hover over a legend entry to highlight corresponding data points.</strong></li>
+      <li><strong> Click a legend entry label to isolate corresponding data points.</strong></li>
+      <li><strong> Select or clear the checkbox of one or more legend entries to show or hide corresponding data points.</strong></li>
+      <li><strong> Click anywhere (within the element) outside of the plot area or legend to reset the chart display.</strong></li>
 </ul>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Changes resulting from chart legend interactions persist when you switch between workbook modes; however, they don’t persist across user sessions and aren’t saved when the workbook is published.
 </aside>
 
-
+<img src="assets/interactive-chart.gif" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 
-
-
-
 ## Workbooks
+Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 
