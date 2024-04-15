@@ -14,67 +14,98 @@ lastUpdated: 2024-04-31
 
 ## Overview 
 Duration: 5 
-<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart lists all the new and public beta features released, as well as bugs fixed in April 2024.
 
-Sample code and examples are shown for each item.
+It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
-We encourage you to review the QS called 
+**Public beta features will carry the section text "Beta".**
 
-This QuickStart assumes you........
+All other features are considered released (**GA** or generally available).
 
- ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
 
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-</ul>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
-</aside>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-  
-### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
-
-### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
-
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+New first Friday features QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
-<!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## Administration
+Duration: 20
+
+### Separate export warehouse
+If your Sigma organization is connected to Snowflake, you can run all scheduled, direct, and on-demand exports through a separate warehouse. 
+
+This practice isolates export operations to optimize performance and reduce computing costs.
+
+In the `Administration` > `Connection` > `Connection Features` section, locate the `Export Warehouse` field and enter the name of the virtual warehouse created for export queries:
+
+<img src="assets/fff_03_2024_2.png" width="800"/>
+
+For more information, see [Configure an export warehouse.](https://help.sigmacomputing.com/docs/configure-an-export-warehouse)
+
+![Footer](assets/sigma_footer.png)
+
+## Bug Fixes
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+
+## Embedding
 Duration: 20
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
-## What we've covered
-Duration: 5
+## Functions
+Duration: 20
 
-In this lab we learned how to.........
+![Footer](assets/sigma_footer.png)
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+## New QuickStarts in March
+Duration: 20
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
+
+![Footer](assets/sigma_footer.png)
+
+## Visualizations
+Duration: 20
+
+### Interactive chart legends
+Interact with chart legend entries to quickly focus on specific data subsets. 
+
+Charts containing legends that represent qualitative segments (like categories or series) support the following interactive filtering capabilities:
+
+ <ul>
+      <li><strong> Hover over a legend entry to highlight corresponding data points.</li>
+      <li><strong> Click a legend entry label to isolate corresponding data points.</li>
+      <li><strong> Select or clear the checkbox of one or more legend entries to show or hide corresponding data points.</li>
+      <li><strong> Click anywhere (within the element) outside of the plot area or legend to reset the chart display.</li>
+</ul>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Changes resulting from chart legend interactions persist when you switch between workbook modes; however, they don’t persist across user sessions and aren’t saved when the workbook is published.
+</aside>
+
+
+
+![Footer](assets/sigma_footer.png)
+
+
+
+
+## Workbooks
+
+![Footer](assets/sigma_footer.png)
+
+## Additional Information
+Duration: 20
+
 **Additional Resource Links**
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
-Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
@@ -82,5 +113,3 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF WHAT WE COVERED -->
-<!-- END OF QUICKSTART -->
