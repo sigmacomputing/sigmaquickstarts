@@ -13,7 +13,7 @@ lastUpdated: 2023-03-15
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to Sigma embedding into Salesforce. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites]([https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0)) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart introduces you to Sigma embedding into Salesforce. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
 We also recommend you take the the QuickStart [Embedding 03: Secure Access](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0).
 
