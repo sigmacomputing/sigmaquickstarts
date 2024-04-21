@@ -11,6 +11,7 @@ lastUpdated: 2024-04-31
 <!-- 
 04-05 (in previous month)
 04-12 done 
+04-19
 
 -->
 
@@ -36,6 +37,34 @@ New first Friday features QuickStarts will be published on the first Friday of e
 
 ## Administration
 Duration: 20
+
+### Cross-org template sharing
+Send and accept workbook templates across different Sigma organizations.
+
+With secure cross-org sharing, a receiving organization must choose its own data source to populate the shared template, ensuring no data from the sharing organization is disclosed.
+
+For more information, see [Share and accept cross-org workbook templates.](https://help.sigmacomputing.com/docs/share-and-accept-cross-org-workbook-templates)
+
+### Snowflake key pair authentication and rotation
+Create a Snowflake connection using the key pair authentication method, and protect your data with key rotation.
+
+Key pair authentication offers enhanced security through the use of a private key (secured by Sigma) and a public key (shared with Snowflake) for encryption and decryption. By implementing periodic key rotation, you can further protect your data from threats of exposure and compromised keys.
+
+For more information, see Sigma’s [Snowflake Key-pair Authorization QuickStart.](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation?_gl=1*tpxaou*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcxMzU0ODkyNS42NDAuMS4xNzEzNTU2MzUyLjM3LjAuMA..)
+
+![Footer](assets/sigma_footer.png)
+
+## API
+Duration: 20
+
+### Scoped API keys
+This update provides more control over API privileges to ensure developers are granted relevant feature access.
+
+You are now able to define the scope of an API key to permit access to APIs only, embeds only, or both:
+
+<img src="assets/fff_04_2024_3.png" width="800"/>
+
+For more information about client credentials, see [Generate API client credentials](https://help.sigmacomputing.com/docs/generate-api-client-credentials) and [Generate embed client credentials.](https://help.sigmacomputing.com/docs/generate-embed-client-credentials)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -64,6 +93,13 @@ There is also some documentation (with more to come) [here.](https://help.sigmac
 ## Embedding
 Duration: 20
 
+### Embed API Code Samples (signing packages)
+Sigma has previously provided code samples based on node.js and Javascript. 
+
+Now you can see sample code for additional languages, for signing embed URLs to reduce time to deploy embedded applications.
+
+For sample code in Go, Python, Ruby, and JavaScript, see the [Embed Signing Packages Github repository.](https://github.com/sigmacomputing/embed-signing-packages)
+
 ![Footer](assets/sigma_footer.png)
 
 ## Functions
@@ -79,13 +115,6 @@ Available percentage breakdowns (by grand total, x-axis, row, column, etc.) depe
 For example:
 
 <img src="assets/fff_04_2024_1.png" width="800"/>
-
-
-![Footer](assets/sigma_footer.png)
-
-## New QuickStarts in March
-Duration: 20
-
 
 ![Footer](assets/sigma_footer.png)
 
@@ -114,6 +143,19 @@ Charts containing legends that represent qualitative segments (like categories o
 
 ## Workbooks
 Duration: 20
+
+
+### Actions
+Build workbook interactivity with actions (now generally available) to create efficient workflows that produce quick and relevant data insights.
+
+The GA release features additional effects in navigation, control value management, element modification, and data transfer. For more information, see the following documentation:
+
+Create actions that navigate to destinations
+Create actions that manage control values
+Create actions that modify or refresh elements
+Create actions that download and export
+
+
 
 ![Footer](assets/sigma_footer.png)
 
