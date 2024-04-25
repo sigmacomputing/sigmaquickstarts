@@ -11,7 +11,8 @@ lastUpdated: 2024-04-31
 <!-- 
 04-05 (in previous month)
 04-12 done 
-04-19
+04-19 done
+04-26
 
 -->
 
@@ -144,17 +145,24 @@ Charts containing legends that represent qualitative segments (like categories o
 ## Workbooks
 Duration: 20
 
-
 ### Actions
-Build workbook interactivity with actions (now generally available) to create efficient workflows that produce quick and relevant data insights.
+Sigma's "Actions" feature offers several capabilities to enhance dashboard interactivity:
 
-The GA release features additional effects in navigation, control value management, element modification, and data transfer. For more information, see the following documentation:
+ <ul>
+      <li><strong>Navigational Actions:</strong>  Users can configure dashboard elements to act as links, enabling navigation to specific destinations based on the displayed data, which facilitates seamless integration with other tools or detailed reports.</li>
+      <li><strong>Control Management:</strong> These actions allow users to dynamically manage control values such as filters and parameters directly from the dashboard, enhancing user interaction and data exploration flexibility.</li>
+      <li><strong>Element Modification:</strong> Users can set actions to modify or refresh dashboard elements in real-time, ensuring data visualizations are always current and relevant.</li>
+      <li><strong>Download and Export:</strong> This feature enables the automatic downloading and exporting of data or reports directly from the dashboard, streamlining data handling and reporting processes.</li>
+</ul>
 
-Create actions that navigate to destinations
-Create actions that manage control values
-Create actions that modify or refresh elements
-Create actions that download and export
+Each of these functionalities adds significant value by making dashboards more interactive, user-friendly, and efficient in handling complex data workflows.
 
+An ***simple example*** of this can be found in the free Sigma Loan Analysis template. In this example, there are three action buttons on the page and the "Performance" button has a click-action that will take the user to a specific workbook page. 
+
+<img src="assets/actions.png" width="800"/>
+
+
+For more information, see [Intro to Actions](https://help.sigmacomputing.com/docs/intro-to-actions)
 
 
 ![Footer](assets/sigma_footer.png)
