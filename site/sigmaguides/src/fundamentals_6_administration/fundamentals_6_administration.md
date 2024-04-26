@@ -360,7 +360,7 @@ Duration: 20
 Sigma provides all customers with extensive reporting on various aspects of user activity. All the reports are built using Sigma and are provided at no-cost to customers. Admins can use this area to get a quick visibility to important KPIs but also leverage Sigmas "drill anywhere" capability to get to the lowest level of detail required.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The usage section does not required customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
+<strong>IMPORTANT:</strong><br> The usage section does not require customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
 </aside>
 
 [To learn more about external logging, please review this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)

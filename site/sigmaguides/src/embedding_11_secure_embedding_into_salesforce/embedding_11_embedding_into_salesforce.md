@@ -13,9 +13,9 @@ lastUpdated: 2023-03-15
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to Sigma embedding into Salesforce. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart introduces you to Sigma embedding into Salesforce. This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
-We also recommend you take the the QuickStart [Embedding 3: Application Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html).
+We also recommend you take the the QuickStart [Embedding 03: Secure Access](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0).
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
@@ -107,7 +107,8 @@ Salesforce has its own language called “Apex” which is an object-oriented pr
 Apex is specifically designed for accessing and manipulating data. The method we will be using in Salesforce requires three objects to be configured:
 
 **Apex Class:**<br>
-You can think of a class as a template containing all the necessary information and instructions that you can build upon and create class instances called objects. Sigma will use an Apex class to dynamically create	the secure URL used by the iframe. You can use the Class to pass both required and optional parameters including pulling variables from the Salesforce session to pass through to Sigma to enable Row Level Security and other useful functionality. Row Level Security was covered in the QuickStart: [Embedding 4: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_4_row_level_security/index.html).
+You can think of a class as a template containing all the necessary information and instructions that you can build upon and create class instances called objects. Sigma will use an Apex class to dynamically create	the secure URL used by the iframe. You can use the Class to pass both required and optional parameters including pulling variables from the Salesforce session to pass through to Sigma to enable Row Level Security and other useful functionality. Row Level Security was covered in the QuickStart: [
+Embedding 06: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0).
 
 **Visualforce Component:**<br>
 This is a small, reusable piece of functionality—think widgets, panels, user interface elements, that kind of thing—that you use in Visualforce page markup. You can use standard Visualforce components in our case we will create a custom component for Sigma.
@@ -295,8 +296,6 @@ Navigate back to the Sales homepage (or the page where you decided to embed) and
 Duration: 5
 
 In this QuickStart we embedded a Sigma Dashboard securely into a SalesForce VisualForce page, building on the lessons in previous embedding QuickStarts.
-
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/embedding_6_actions_events/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

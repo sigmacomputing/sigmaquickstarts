@@ -273,6 +273,8 @@ Events are communications in the opposite direction of Actions; from Sigma’s i
 
 The main difference is that the Parent application will need to be “listening” for Events via code that needs to be added. 
 
+To see a full list of all the supported events, [click here.](https://help.sigmacomputing.com/docs/actions-and-events-in-embeds)
+
 We will demonstrate using JavaScript in our HTML page. Once the Parent receives the message, it can decide how it is used.
 
 In this example we will add a listener to the Parent and reuse the same embed from Actions to generate an Event, by changing the `StoreRegion` drop filter settings.
