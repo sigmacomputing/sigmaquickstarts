@@ -91,44 +91,11 @@ This should return the version number as below:
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
-You can leave the Terminal session open as we will use that in the next section.
-
-### Node modules
-
-We need to install a few Node modules **in our local folder.**
-
-This process is the same for many Node modules. We will start with two, but in later use-cases we may require others to be installed, so watch for that along the way.
-
-### Axios
-
-The first module we will install is called `Axios`, and is one of the most popular JavaScript libraries in the world. It is an HTTP client that can be used to make requests from both browsers and NodeJS. We will use this to make calls to the Sigma REST API, via a Javascript.
-
-In VSCode Terminal, run:
-```
-npm install axios
-```
-<img src="assets/apics5.png" width="800"/>
-
-No errors should be returned. 
-
-### dotenv
-
-[dotenv](https://www.npmjs.com/package/dotenv) is a popular Node. js module that allows you to load environment variables from a `.env` file into your Node. js application. This will simplify our project code. 
-
-Run the following command in Terminal:
-```code
-npm install dotenv
-```
-
-No errors should be returned. 
+You can leave the Terminal session open for now.
 
 ### Project Files
 
-To save you time, we have stored all the required project files in Git, so you can just download them, and explore the use cases that interest you. This QuickStart will guide you, based on use case name, so feel free to skip to the section that interests you most.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The section named "Get Bearer Token Script" is a must read, as proper authentication is required in all use cases. Do that section once you finish this section.
-</aside>
+To save you time, we've stored all the necessary project files in Git. Simply download them using git clone and explore the recipes that interest you.
 
 To clone the Git repository in VSCode, open the `Command palette`:
 
@@ -149,9 +116,25 @@ VSCode will prompt for the location to store the files on your computer. Navigat
 
 If prompted to open the cloned repository, click `Open`.
 
-The repository contains other code samples you can explore, but we are interested in the `rest-api-recipes` folder:
+The repository contains other code samples you can explore, but we are interested in the `sigma-api-recipes` folder:
 
-<img src="assets/apics13.png" width="800"/>
+<img src="assets/apics13.png" width="500"/>
+
+Once the project is open, return (or reopen a new) terminal session inside the project. 
+
+Run the command:
+```code
+npm install
+```
+
+This will automatically install the project dependencies we use in the recipes. 
+
+You can verify that the dependencies (at the time of this QuickStart) were installed by running:
+```code
+npm list
+```
+
+<img src="assets/apics2-2.png" width="800"/>
 
 ### Environment Variables
 We need to update the file that stores our environment variables. 
@@ -162,9 +145,13 @@ This file keeps our keys out of our scripts and also contains other variables we
 
 <img src="assets/apics14.png" width="800"/>
 
-Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. If you are not sure, check the instructions mentioned above (in the API Swagger).
+Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. If you are not sure, check the instructions mentioned above or [in the API Swagger.](https://help.sigmacomputing.com/reference/explanation)
 
 Save the file.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The section named "Get Bearer Token Script" is a must read, as proper authentication is required in all use cases. Do that section once you finish this section.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -285,9 +272,7 @@ Our test user is currently a `Viewer` account type. We want to call the Sigma AP
 We will be using the [Update the specified member](https://help.sigmacomputing.com/reference/updatemember-1) endpoint.
 
 ### Running the Script
-Open the file `update.js` in the `members` folder:
-
-<img src="assets/apics22.png" width="800"/>
+Open the file `update.js` in the `members` folder.
 
 Each code block is commented to explain what operations are being performed. 
 
