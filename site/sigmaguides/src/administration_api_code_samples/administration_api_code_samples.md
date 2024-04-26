@@ -770,22 +770,89 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 </aside>
 
 ### Description
+This script facilitates the automation of exporting data from Sigma. Here's a breakdown of its functionality and its potential utility for Sigma customers:
 
+ <ul>
+      <li><strong>Initiating Export:</strong> The script first retrieves necessary environment variables from an .env file and initiates an export job in Sigma. It uses Axios to make HTTP POST requests to the Sigma API. Customers can specify the workbook and element from which data should be exported, along with export options like format (e.g., CSV), date filters, and whether to run the export asynchronously.</li>
+      <li><strong>Checking Export Readiness:</strong> After initiating the export, the script continuously checks if the export is ready for download. It polls the Sigma API, waiting for the export to complete. This ensures that the script doesn't proceed to download an incomplete export.</li>
+      <li><strong>Downloading Export:</strong> Once the export is ready, the script downloads the exported data. It handles the download process, including managing file streams and writing the exported data to a file on the local system.</li>
+      <li><strong>Workflow Management:</strong> The script orchestrates the entire export process, from initiation to completion. It ensures that each step is executed sequentially and handles errors gracefully.</li>
+</ul>
+     
+This script can be particularly useful for Sigma customers who need to automate the extraction of data from Sigma for further analysis, reporting, or integration with other systems. By automating the export process, customers can save time and ensure consistency in data retrieval tasks.
 
 ### Running the Script
-Open the file `all-input-tables.js` in the `workbooks` folder:
+Open the file `export-workbook-element-csvs.js` in the `workbooks` folder:
 
 Each code block is commented to explain what operations are being performed. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is recommended to keep the date range window small while testing to limit the number of rows being downloaded. 
+</aside>
+
+In our sample code, the date range is set in this code block:
+
+<img src="assets/apics48.png" width="800"/>
+
+The "DateFilter" in code refers to the `Control ID` that is filtering the data in our Sigma workbook:
+
+<img src="assets/apics49.png" width="800"/>
 
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics43.png" width="800"/>
+<img src="assets/apics46.png" width="800"/>
+
+The contents of `export.csv` is:
+
+<img src="assets/apics47.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbook: Export to PDF
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Export to CSV with Date Range Parameters` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-export-to-pdf)
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It is possible to alter this script to retrieve other types of elements. For example, other type are can be: "control", "text", "visualization", "table" and so on.
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
+
+### Description
+This script automates the process of exporting a Sigma workbook to PDF format and downloading the export once it's ready. 
+
+It loads environment variables from an .env file for configuration, including the base URL for the Sigma API and the workbook ID. 
+
+The script then triggers an export job for the entire workbook in PDF format, specifying the layout as portrait. 
+
+It continuously checks the export's readiness for download and, once ready, downloads the exported PDF file. 
+
+This automation simplifies the process of exporting Sigma workbooks to PDF, enabling users to streamline their workflow and access PDF exports efficiently."
+
+### Running the Script
+Open the file `export-workbook-pdf.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Set a value for `WORKBOOK_ID` in `.env` that will produce results that might present well in PDF format. 
+
+We used the `Plugs Sale Performance Workbook` template to save a workbook for this testing. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics49.png" width="800"/>
+
+The exported PDF is saved here: `export-workbook-pdf.pwd`:
+
+<img src="assets/apics50.png" width="800"/>
+
+The PDF looks like this `export-workbook-pdf.pwd`:
+
+<img src="assets/apics51.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
