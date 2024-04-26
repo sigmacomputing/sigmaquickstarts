@@ -1,109 +1,228 @@
 author: pballai
-id: PROVIDE A UNIQUEID (use the QS name with no spaces)
-summary: This is a sample Sigma Guide
+id: 03_2024_first_friday_features
+summary: 03_2024_first_friday_features
 categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: {lasted updated using the date format yyyy-mm-dd}
+tags: first_friday_features
+lastUpdated: 2024-03-31
 
-<!-- NOTES:
-1: THE "tags" VALUE ABOVE SHOULD BE SET TO "default" UNLESS YOU INTEND TO PUBLISH WITH A "status: Hidden". IN THAT CASE, LEAVE THE VALUE FOR "tags" empty.
+<!--  1, 8, 15 22, 29. Included April 5 releases -->
 
-2: THE "id: VALUE IS THE STRING THAT WILL APPEAR IN THE URL OF THE QUICKSTART
-
-3: SETTING THE AVAILABLE CATEGORIES WILL MAKE YOUR QUICKSTART PART OF A GROUP THAT USERS CAN FILTER ON IN THE QUICKSTART PORTAL
-AVAILABLE CATEGORIES ARE Tables, Visualizations, Functions, Embedding, Controls, Sharing, Use Cases, Partners, Administration
-
-4: PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO
-THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED
-YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-https://customerquickstarts.sigmacomputing.com/guide/sigma-style-guide/index.html?index=..%2F..index#0
-
-AVAILABLE CATEGORIES ARE:
-Administration
-Embedding
-Functions
-Fundamentals
-Partners
-Snowflake
-Tables (include pivot and input tables for now)
-Use-cases
-Templates
-
-PLEASE REVIEW THE SIGMA QUICKSTART STYLE GUIDE. ALL QUICKSTART SHOULD SHARE A COMMON LOOK AND FEEL. 
-
-YOU MAY WANT TO REVIEW A PUBLISHED GUIDE FIRST SO THAT YOU ARE FAMILIAR WITH HOW COMMON MARKDOWN IS APPLIED YOU CAN ACCESS THE SIGMA QUICKSTART STYLE GUIDE HERE:
-http://localhost:8000/guide/sigma-style-guide/index.html?index=..%2F..internal#0
--->
-
-# AAA_NEW_GUIDE_NAME_HERE
+# (03-2024) March
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 
-<!--Duration is deprecated and no longer required, however the code still expects to see it so include it for each section. The actual time value does not matter. -->
 
-This QuickStart **QS** provides all the common Markup to be used in new QS. 
+This QuickStart lists all the new and public beta features released, as well as bugs fixed in March 2024.
 
-Sample code and examples are shown for each item.
+It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
-We encourage you to review the QS called 
+**Public beta features will carry the section text "Beta".**
 
-This QuickStart assumes you........
+All other features are considered released (**GA** or generally available).
 
- ### Target Audience
-Anyone who is trying to create QS content for Sigma. 
+Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
 
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-</ul>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
-</aside>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-  
-### What You’ll Learn
-How to apply Sigma approved Markdown for your QS.
-
-### What You’ll Build
-[I good example of the Sigma style that we want to try to adhere to is here](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
-
-INSERT IMAGE OF FINAL BUILD IF APPROPRIATE.........
+New first Friday features QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
 
 ![Footer](assets/sigma_footer.png)
-<!-- NOTE: SIGMA LOGO REQUIRED AT END OF EACH ## SECTION -->
-<!-- END OF OVERVIEW -->
 
-## **NEXT SECTION**
+## Administration
 Duration: 20
 
+### Account type permissions for export destinations
+The [Account types](https://help.sigmacomputing.com/docs/license-and-account-type-overview) feature separates permissions for individual export destinations, enabling granular control over members’ ability to export workbook content to Google Sheets, Google Drive, Slack, cloud storage, and webhooks.
+
+For more information, see the account type permission availability matrix (Sharing and exports section) in [License and account type overview.](https://help.sigmacomputing.com/docs/license-and-account-type-overview)
+
+### Separate export warehouse
+If your Sigma organization is connected to Snowflake, you can run all scheduled, direct, and on-demand exports through a separate warehouse. 
+
+This practice isolates export operations to optimize performance and reduce computing costs.
+
+In the `Administration` > `Connection` > `Connection Features` section, locate the `Export Warehouse` field and enter the name of the virtual warehouse created for export queries:
+
+<img src="assets/fff_03_2024_2.png" width="800"/>
+
+For more information, see [Configure an export warehouse.](https://help.sigmacomputing.com/docs/configure-an-export-warehouse)
+
+### Updated licensing model
+Sigma’s license tiers are now labeled `Lite`, `Essential`, and `Pro` to bring clarity and simplicity to the licensing model.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> No action is required to accommodate the update, as all user functionality and experiences will continue seamlessly.
+</aside>
+
+**Here’s what you need to know:**
+
+1: No action is required from your end. Your Sigma experience will continue seamlessly.<br>
+
+2: Default account names will be automatically updated to reflect the new license names.<br>
+
+3: If your organization was previously subscribed to the two-license model, it will continue using two license tiers: Lite (formerly Viewer) and Pro (formerly Creator).<br>
+
+4: Custom account names will remain unchanged.<br>
+
+5: All Embed URLs will continue to function as usual. The old default account names will automatically map to the new names.<br>
+
+6: SCIM processes will continue to function as normal and old license names will continue to work.<br>
+
+7: Your Admin Portal and Usage Dashboards will be updated to reflect the new license names.<br>
+
+8: Existing licensing agreements and terms will remain unchanged.
+
+For more information, [see the Sigma Community post.](https://community.sigmacomputing.com/t/sigma-license-name-changes-no-action-needed/3332?_gl=1*1gugfu2*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwOTkyMTA5My41NTIuMS4xNzA5OTI1MDE1LjYwLjAuMA..)
+
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
-## What we've covered
-Duration: 5
+## Bug Fixes
+Duration: 20
 
-In this lab we learned how to.........
+1: Selecting the `Impersonate user` function for a user assigned the `Embed` member type no longer redirects admins to the `Home` page.
 
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+2: Admins can now successfully update a user’s member type from `Internal` to `Guest.`
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
+3: Sigma now emits the `workbook:error` JavaScript event when an embed user is logged out, due to a session timeout.
+
+![Footer](assets/sigma_footer.png)
+
+## Embedding
+Duration: 20
+
+### JavaScript event for saved bookmark
+Sigma now listens for the following JavaScript event sent by a user to save a bookmark on an embedded workbook:
+```code
+{
+      type: 'workbook-bookmark-current';
+      bookmarkName: string;
+      isDefault: boolean;
+      isShared: boolean;
+}
+```
+
+Read more about Sigma Actions and Events in this [QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_07_actions_events/index.html?index=..%2F..index#0).
+
+![Footer](assets/sigma_footer.png)
+
+## Functions
+Duration: 20
+
+### Array function
+The Array function returns an array containing specified values.
+
+This function allows users to create and manipulate arrays, which are collections of elements that can store various types of data, such as numbers, strings, and even other arrays. With the "Array" function, users can perform a wide range of operations, including adding or removing elements, accessing specific items, and iterating over the elements for processing.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This function is currently supported by Snowflake, PostgreSQL, BigQuery, and MySQL connections only.
+</aside>
+
+For more information, [see the Array documentation.](https://help.sigmacomputing.com/docs/array)
+
+### DateFormat function enhancement
+The `DateFormat` function now supports the `%q` specifier that allows you to extract the **quarter** component from a datetime value.
+
+For more information about the function and supported format specifiers, [see DateFormat.](https://help.sigmacomputing.com/docs/dateformat)
+
+![Footer](assets/sigma_footer.png)
+
+## New QuickStarts in March
+Duration: 20
+
+### Sigma Health Check Native App
+The Sigma Health Check Native App is designed to provide insights into the overall health and performance of your Snowflake environment. This native app includes insights into architecture, user and role grants, as well as warehouse performance and sizing recommendation.
+
+[Getting Started with the Sigma Health Check Native App for Snowflake](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_health_check_app/index.html?index=..%2F..index#0)
+
+### Develop a Predictive Model using Snowflake and Sigma
+This QuickStart discusses and demonstrates creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
+
+[Develop a Predictive Model using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#0).
+
+![Footer](assets/sigma_footer.png)
+
+## Redshift Connections
+Duration: 20
+
+### SUPER data type support
+Sigma now natively supports the `SUPER` data type to seamlessly handle semi-structured data from Redshift connections.
+
+For more information, see [SUPER type](https://docs.aws.amazon.com/redshift/latest/dg/r_SUPER_type.html) in the AWS developer documentation.
+
+![Footer](assets/sigma_footer.png)
+
+## Workbooks
+
+### Bulk column drag-and-drop
+When interacting with a visualization, table, pivot table, or input table elements, you can now `bulk drag-and-drop columns` in the `Element properties` > `Columns` tab to reorder multiple columns or add them to groupings, calculations, or other properties.
+
+<img src="assets/workbook_buttons.gif">
+
+### Button element formatting
+Sigma is continuing to deliver polish and customization to our workbooks and in this case has improved the styling options for buttons.
+
+Users now have more options to adjust the look-and-feel of their button elements, including new `styles`, `shapes`, and `sizes` in the `Element properties` panel:
+
+<img src="assets/workbook_buttons.png">
+
+### Conditional formatting using hidden controls
+Conditional formatting rules referencing hidden controls are now applied reliably to visible data elements in embeds and published workbook versions (`View` and `Explore` mode).
+
+For more information about hidden controls and filter accessibility, see [Create a hidden control.](https://help.sigmacomputing.com/docs/create-a-hidden-control)
+
+### Customizable page tab color
+You can now customize the color of individual page tabs for added clarity and organization in workbooks.
+
+On a workbooks's `Page` menu, click `Change color` and select an option from the color palette:
+
+<img src="assets/fff_03_2024_4.png" width="800"/>
+
+### Default value for empty pivot table cells
+When there’s no corresponding source data for a pivot table value cell to reference (no record exists for the particular combination of dimensions), the cell is empty by default. 
+
+To customize the value for all empty cells, go to  `Element format` > `Format` and enter the preferred value in the `Empty cell` display value field.
+
+### Default table styling
+You can now configure a default table style for an **entire workbook** (in the Workbook settings panel), or an organization theme (in the Administration portal).
+
+This allows users to make bulk styling changes across their entire workbook (or theme), rather than making adjustments one by one, saving lots of time.
+
+For more information, see [Customize table styles](https://help.sigmacomputing.com/docs/customize-table-style) and [Create and manage workbook themes.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
+
+### Map region improvements
+Sigma now uses `Mapbox` to render regions in map elements.
+
+This update contributes **overall performance improvements**, including **more precise boundaries** for mapped regions.
+
+For example:
+
+<img src="assets/fff_03_2024_3.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Due to updated place name specifications, Mapbox may not render some regions in existing maps. Update place names in map element data sources if needed.
+</aside>
+
+### Repeat pivot values in exports
+When sending or scheduling an export, you now have the option to repeat pivot values in Excel or CSV output.
+
+In the Send Now or Schedule Exports modal, go to More options and select the Repeat pivot values checkbox. This ensures the pivot header values are populated in every applicable row or column:
+
+<img src="assets/fff_03_2024_1.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+
+## Additional Information
+Duration: 20
+
 **Additional Resource Links**
 
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
-Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
@@ -111,5 +230,3 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF WHAT WE COVERED -->
-<!-- END OF QUICKSTART -->
