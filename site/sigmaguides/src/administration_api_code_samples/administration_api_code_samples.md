@@ -198,7 +198,7 @@ This is why we show the bearer token twice in the response. Other scripts that c
 
 The ability to run it standalone is only for convenience, so that we can verify it obtains a token.
 
-We can now move on to use cases, leveraging the `getBearerToken` function:
+You can now move on to whichever use case is most interesting, leveraging the `getBearerToken` function:
 
 <img src="assets/apics21.png" width="800"/>
 
@@ -214,7 +214,7 @@ We will start with a very simple example that calls the `Members` > `Get` endpoi
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
 
-This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
+This script retrieves all members from the Sigma API by making `GET` requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -242,7 +242,7 @@ Duration: 20
 This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://help.sigmacomputing.com/recipes/members-update)
 
 ### Description
-This script updates the account type of a member on the Sigma platform by sending a PATCH request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
+This script updates the account type of a member on the Sigma platform by sending a `PATCH` request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -257,13 +257,13 @@ Let's create new member in Sigma to test with.
 
 If you prefer, you can use any non-production user you want, but we recommend creating a test user for this purpose. 
 
-If you are not sure how to create a user (member) in Sigma, [please refer to this documentation.](https://help.sigmacomputing.com/docs/invite-people-to-your-organization).
+If you are not sure how to create a user (member) in Sigma, [please refer to this documentation.](https://help.sigmacomputing.com/docs/invite-people-to-your-organization)
 
 We created a test user using [Gmail's email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) feature. 
 
 Our test user is called `sales_rep`.
 
-Make a note of the test user's memberId. Again, we could get this using the API, but in this example, we will just copy it from the URL, when looking at the user's profile from the `Administration` > `People` list:
+Make a note of the test user's `memberId.` Again, we could get this using the API, but in this example we will just copy it from the URL when looking at the user's profile from the `Administration` > `People` list:
 
 <img src="assets/apics8.png" width="800"/>
 
@@ -404,6 +404,10 @@ Checking in the UI, we can see the new member has been added. This member does n
 
 <img src="assets/apics27.png" width="800"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> There is an additional script that will delete a member should you want to do that. It is very similar to the "create-new.js" script so we just present it for your convenience. It is named "delete-existing.js".
+</aside>
+
 ### Running the "create-workspace.js" script
 
 Update `.env` with the `memmberId` we received in the `create-new` script response:
@@ -456,7 +460,7 @@ Checking in the Sigma UI we can check the Workspace sharing permissions:
 
 For this script we will need to have a `TeamId` is Sigma that we want to assign the new member to.
 
-We already have a script we built in section 5, and we can use that to update the member's team assignment.  We can grab the TeamId for one from the UI for this demonstration:
+We already have a script we built in section 5, and we can use that to update the member's team assignment.  We can grab the `TeamId` for one from the UI for this demonstration:
 
 <img src="assets/apics33.png" width="800"/>
 
@@ -518,7 +522,9 @@ Checking in the Sigma UI (from `Home` > `Connections`) we see our new member has
 
 Now that each step is working as expected, we can create a master script that calls each step's module and just one run script to onboard a new member.
 
-We are faced with a challenge in that we do not know the memberId until the first script is run. Previously, we hard-coded this value and for the sake of not changing any of the other scripts, we will manually run the `create-new.js` script and then run all the other scripts from one master script. 
+We are faced with a challenge in that we do not know the `memberId` until the first script is run. 
+
+Previously, we hard-coded this value and for the sake of not changing any of the other scripts, we will manually run the `create-new.js` script and then run all the other scripts from one master script. 
 
 This method strikes a balance between demonstrating individual script functions and showing how they can be integrated into a larger workflow with a simple manual step bridging the gap. 
 
@@ -530,7 +536,7 @@ Open the file `create-new.js` in the `members` folder:
 
 Press `F5` to run the script with VSCode's debugger. 
 
-Copy the `memberId` provided in the response, and update the `MEMBERID` with this new value.
+Copy the `memberId` provided in the response, and update the `MEMBERID` in `.env` with this new value.
 
 Next, open the file `master-script.js` and press `F5` to run the script with VSCode's debugger. 
 
@@ -540,9 +546,9 @@ Each code block is commented to explain what operations are being performed.
 <strong>NOTE:</strong><br> We will also reuse the TeamId and ConnectionId from the .env file, assuming that all new members would go use these. In practice, these values could also be made dynamic from some other system of record.  
 </aside>
 
-Press `F5` to run the script with VSCode's debugger. 
+Press `F5` to run the script with VSCode's debugger. The output will also include redundant bearer token responses but that is something that could be removed for production usage. 
 
-The expected response is:
+The last four lines of the expected response is:
 ```code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
 New workspace permission added successfully: {}
@@ -555,7 +561,7 @@ Verify the new member is created in the UI, has workspace permission, is a membe
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Pagination
+## Workbook: Pagination
 Duration: 20
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-pagination)
@@ -594,10 +600,14 @@ The expected response is:
 
 <img src="assets/apics44.png" width="800"/>
 
+In this example, each `page` has 50 rows followed by:
+
+<img src="assets/apics44-2.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: List All
+## Workbook: List All
 Duration: 20
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
@@ -623,7 +633,7 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Shared with Me
+## Workbook: Shared with Me
 Duration: 20
 
 A common use case is to provide the user a list of workbooks that are shared with, and have the list hyperlinked to the workbook so the user can just click and go.
@@ -652,7 +662,7 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Initiate a Materialization
+## Workbook: Initiate a Materialization
 Duration: 20
 
 A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
@@ -669,7 +679,9 @@ This script initiates a materialization job for a specified workbook.
 
 It retrieves required the sheet ID, from the materialization schedules of the workbook. Then, it starts the materialization job using the workbookId and sheet ID. 
 
-After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. 
+
+Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This script will use "WORKBOOKID" from the .env file, and requires that a schedule has already been created in Sigma.
@@ -735,7 +747,7 @@ If we want to check the status of this Job, we can use the UI, by navigating to 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: List all Input Tables
+## Workbook: List all Input Tables
 Duration: 20
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all-input-tables)
@@ -843,6 +855,11 @@ async function addMemberToTeam(memberId, teamId, token) {
     }
 }
 ```
+
+## Workbook: Export to CSV with Date Range Parameters
+Duration: 20
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
