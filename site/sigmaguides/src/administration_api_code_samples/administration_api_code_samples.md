@@ -157,7 +157,7 @@ Save the file.
 <!-- END OF SECTION-->
 
 ## Authentication - REQUIRED
-This section demonstrates the code that was provided on the `API Code Samples` > `Authentication: Get Access Token` page, [located here.](https://help.sigmacomputing.com/recipes/authentication-get-access-token)
+This section demonstrates the code that was provided on the `API Code Samples` > `Authentication: Get Access Token` page, [located here.](https://docs.sigmacomputing.com/api/v2/#auth)
 
 ### Description
 This script retrieves a bearer token from the Sigma API using client credentials authentication. It extracts required credentials from environment variables, sends a POST request to the authentication endpoint, and logs the obtained token. The function getBearerToken can be imported into other scripts for accessing protected resources.
@@ -197,7 +197,7 @@ Duration: 20
 
 ### Description
 
-We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://help.sigmacomputing.com/reference/listmembers-1)
+We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members)
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
 
@@ -226,7 +226,7 @@ The expected response is:
 ## Members: Update
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://help.sigmacomputing.com/recipes/members-update)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-)
 
 ### Description
 This script updates the account type of a member on the Sigma platform by sending a PATCH request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
@@ -289,10 +289,10 @@ A quick check against the member in Sigma shows them having the `Creator` accoun
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: Recent Workbooks
+## Members: Recent Workbook
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: Recent Workbooks` page, [located here.](https://help.sigmacomputing.com/recipes/members-recent-workbooks)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Recent Workbook` page, [located here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members/-memberId-/files/recents)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -469,7 +469,7 @@ Checking in the Sigma UI we can check the Workspace sharing permissions:
 
 For this script we will need to have a Connection is Sigma that we want to grant the new member permission to use. 
 
-There is an endpoint to [GET all connections](https://help.sigmacomputing.com/reference/listconnections-1), but we can also just grab the connectionId for one from the UI for this demonstration:
+There is an endpoint to [GET all connections](https://docs.sigmacomputing.com/api/v2/#get-/v2/connections), but we can also just grab the connectionId for one from the UI for this demonstration:
 
 <img src="assets/apics32.png" width="800"/>
 
@@ -540,10 +540,10 @@ Verify the new member is created in the UI, has workspace permission, is a membe
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Pagination
+## Workbook: Pagination
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-pagination)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-pagination)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -582,10 +582,10 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: List All
+## Workbook: List All
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -608,12 +608,12 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Shared with Me
+## Workbook: Shared with Me
 Duration: 20
 
 A common use case is to provide the user a list of workbooks that are shared with, and have the list hyperlinked to the workbook so the user can just click and go.
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Shared with Me` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-shared-with-me)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Shared with Me` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-shared-with-me)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -637,12 +637,12 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: Initiate a Materialization
+## Workbook: Initiate a Materialization
 Duration: 20
 
 A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -720,10 +720,10 @@ If we want to check the status of this Job, we can use the UI, by navigating to 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbooks: List all Input Tables
+## Workbook: List all Input Tables
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbooks: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all-input-tables)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all-input-tables)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -735,6 +735,36 @@ This script performs a targeted search across all workbooks for an organization,
 It logs concise details about each found element, including the workbook's name and path, the page's name, and the input table's name and ID. 
 
 It's designed to run silently, only outputting information when relevant elements are discovered, and includes basic error handling to manage issues quietly without interrupting the process.
+
+### Running the Script
+Open the file `all-input-tables.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics43.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> It is possible to alter this script to retrieve other types of elements. For example, other type are can be: "control", "text", "visualization", "table" and so on.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbook: Export to CSV with Date Range Parameters
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Export to CSV with Date Range Parameters` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-export-to-csv-with-date-range-parameters)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+
 
 ### Running the Script
 Open the file `all-input-tables.js` in the `workbooks` folder:
@@ -801,33 +831,8 @@ The expected response is (showing two members being added in the screenshot):
 <img src="assets/apics45.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It is possible to alter this script to "remove" members from a team by altering the code line as shown below.
+<strong>IMPORTANT:</strong><br> We have also provided a script for bulk removal of team members. This script is called "bulk-remove-team" and functions the same way, but instead of adding it removes members from a team.
 </aside>
-
-```code
-// Function to add/remove a member to a specified team by their member ID.
-      // change logging messages to remove instead of add
-async function addMemberToTeam(memberId, teamId, token) {
-    const requestUrl = `${baseURL}/teams/${teamId}/members`; // API endpoint for adding a member to a team.
-    
-    //Change the job to remove a member:
-    const payload = { add: [], remove: [memberId] }; // Payload specifying the member to add (and none to remove).
-    const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }; // Request headers.
-    
-    // Log the request details for debugging.
-
-    console.log(`Removed member to team with URL: ${requestUrl}`);
- //   console.log(`Headers:`, JSON.stringify(headers, null, 2));
-    console.log(`Payload:`, JSON.stringify(payload, null, 2));
-
-    try {
-        const response = await axios.patch(requestUrl, payload, { headers });
-        console.log(`Member ${memberId} removed from team ${teamId}. Response:`, response.data);
-    } catch (error) {
-        console.error(`Error removing member ${memberId} to team ${teamId}:`, error.response ? error.response.data : error);
-    }
-}
-```
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
