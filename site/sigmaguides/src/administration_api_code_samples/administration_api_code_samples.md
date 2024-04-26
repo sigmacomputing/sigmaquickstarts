@@ -17,7 +17,9 @@ This QuickStart is designed to support Sigma's [API Code Samples](https://help.s
 
 The actual code shown is available in Sigma's [quickstart-public git repository](https://github.com/sigmacomputing/quickstarts-public)
 
-All code samples provided here are based on javaScript, although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages, including [curl.](https://curl.se/)
+All code samples provided here are based on javaScript.
+
+<!-- although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages, including [curl.](https://curl.se/) -->
 
 ### Target Audience
 Developers who are evaluating or working with Sigma's REST API. 
@@ -139,13 +141,17 @@ npm list
 ### Environment Variables
 We need to update the file that stores our environment variables. 
 
-First, you will need to provide the values for `ClientID`, `Secret`, `Base` and `AuthURL`. [Instructions can be found in the API Swagger if needed.](https://help.sigmacomputing.com/reference/explanation)
+First, you will need to provide the values for `ClientID`, `Secret`, `Base` and `AuthURL`. 
+
+<!-- [Instructions can be found in the API Swagger if needed.](https://help.sigmacomputing.com/reference/explanation) -->
 
 This file keeps our keys out of our scripts and also contains other variables we may want to change in different use-cases:
 
 <img src="assets/apics14.png" width="800"/>
 
-Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. If you are not sure, check the instructions mentioned above or [in the API Swagger.](https://help.sigmacomputing.com/reference/explanation)
+Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. 
+
+<!-- If you are not sure, check the instructions mentioned above or [in the API Swagger.](https://help.sigmacomputing.com/reference/explanation) -->
 
 Save the file.
 
@@ -269,7 +275,7 @@ Our test user is currently a `Viewer` account type. We want to call the Sigma AP
 
 <img src="assets/apics9.png" width="800"/>
 
-We will be using the [Update the specified member](https://help.sigmacomputing.com/reference/updatemember-1) endpoint.
+We will be using the [Update the specified member](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-) endpoint.
 
 ### Running the Script
 Open the file `update.js` in the `members` folder.
