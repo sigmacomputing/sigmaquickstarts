@@ -295,6 +295,32 @@ A quick check against the member in Sigma shows them having the `Creator` accoun
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Members: Change email address
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
+
+### Running the Script
+Open the file `list-all.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics36.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Members: Recent Workbook
 Duration: 20
 
@@ -973,9 +999,7 @@ The expected response is (showing two members being added in the screenshot):
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we covered setting up a local test environment leveraging Sigma's git repository of sample API recipes in support of a variety of use cases.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
