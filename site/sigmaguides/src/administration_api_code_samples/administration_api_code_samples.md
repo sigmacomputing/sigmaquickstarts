@@ -900,7 +900,6 @@ By impersonating our user, we can see that they only have two folders in `My Doc
 
 <img src="assets/apics46.png" width="800"/>
 
-
 We are expecting this API script to place a copy of the workbook in this location and we use impersonation to verify that.
 
 Press `F5` to run the script with VSCode's debugger. 
