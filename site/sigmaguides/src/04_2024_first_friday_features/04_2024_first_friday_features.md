@@ -12,7 +12,8 @@ lastUpdated: 2024-04-31
 04-05 (in previous month)
 04-12 done 
 04-19 done
-04-26
+04-26 -done
+05-03 pending
 
 -->
 
@@ -44,7 +45,21 @@ Send and accept workbook templates across different Sigma organizations.
 
 With secure cross-org sharing, a receiving organization must choose its own data source to populate the shared template, ensuring no data from the sharing organization is disclosed.
 
+<img src="assets/fff_04_2024_4.png" width="800"/>
+
+<img src="assets/fff_04_2024_5.png" width="800"/>
+
 For more information, see [Share and accept cross-org workbook templates.](https://help.sigmacomputing.com/docs/share-and-accept-cross-org-workbook-templates)
+
+### Customizable session length
+
+If your organization uses password or SAML authentication, you can customize the session length to control how long internal and guest users stay logged in before Sigma requires re-authentication.
+
+**By default, the session length is set to 720 hours, meaning users must log in every 30 days.** 
+
+Adjust the session length to align with internal security policies and external regulatory requirements.
+
+For more information, see [Manage authentication method and options.](https://help.sigmacomputing.com/docs/manage-authentication#manage-authentication-method-and-options)
 
 ### Snowflake key pair authentication and rotation
 Create a Snowflake connection using the key pair authentication method, and protect your data with key rotation.
@@ -100,6 +115,13 @@ Sigma has previously provided code samples based on node.js and Javascript.
 Now you can see sample code for additional languages, for signing embed URLs to reduce time to deploy embedded applications.
 
 For sample code in Go, Python, Ruby, and JavaScript, see the [Embed Signing Packages Github repository.](https://github.com/sigmacomputing/embed-signing-packages)
+
+### Explore mode and bookmarks in embeds
+Explore mode is now available in embedded workbooks.
+
+Embed users can perform ad hoc analysis, save the explored state as a personal bookmark, and manage existing bookmarks.
+
+For more information, [see Explore a published workbook](https://help.sigmacomputing.com/docs/explore-a-published-workbook) and [Bookmarks in embedded workbooks.](https://help.sigmacomputing.com/docs/create-and-manage-bookmarks#bookmarks-in-embedded-workbooks)
 
 ![Footer](assets/sigma_footer.png)
 
