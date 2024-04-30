@@ -298,25 +298,47 @@ A quick check against the member in Sigma shows them having the `Creator` accoun
 ## Members: Change email address
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Change Email Address` page, [located here.](https://help.sigmacomputing.com/recipes/members-change-email-address-1)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
+This script automates the process of changing a member's email address in the Sigma. Here's a summary of what the code does:
+
+ <ul>
+      <li><strong>Environment Setup:</strong> Loads necessary environment variables from a .env file, including the new email address (EMAIL) to assign and the unique identifier of the member whose email address will be updated (MEMBERID).</li>
+      <li><strong>Authentication:</strong> Obtains a bearer token required for authentication with the Sigma API using the getBearerToken function.
+</li>
+      <li><strong>HTTP Requests:</strong> It utilizes Axios for making HTTP requests to the Sigma API.</li>
+      <li><strong>Update Member's Email Address:</strong> Defines an asynchronous function (updateMemberAccountType) to update the member's email address. Within this function, it constructs the request URL using the base URL and member ID, then makes a PATCH request to the API to update the member's email address. It logs the constructed URL before sending the request.</li>
+      <li><strong>Error Handling:</strong> Throughout the process, the script handles potential errors gracefully, logging error messages if any step fails.</li>
+      <li><strong>Execution:</strong> Executes the updateMemberAccountType function to initiate the process of updating the member's email address.</li>
+ </ul>
 
 ### Running the Script
-Open the file `list-all.js` in the `workbooks` folder:
+Open the file `change-email.js` in the `members` folder:
 
 Each code block is commented to explain what operations are being performed. 
+
+Select a test user from Sigma and place their email address in the `.env` file, commented out. Replace the active email address in `.env`with a variation. 
+
+For example:
+
+<img src="assets/apics55.png" width="800"/>
 
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics36.png" width="800"/>
+<img src="assets/apics56.png" width="800"/>
+
+Confirm the new email has been set in Sigma:
+
+<img src="assets/apics57.png" width="800"/>
+
+You can revert the email by editing the `.env` file and rerunning the script's debugger.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
