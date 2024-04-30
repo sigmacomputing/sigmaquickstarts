@@ -295,6 +295,54 @@ A quick check against the member in Sigma shows them having the `Creator` accoun
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Members: Change email address
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Change Email Address` page, [located here.](https://help.sigmacomputing.com/recipes/members-change-email-address-1)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script automates the process of changing a member's email address in the Sigma. Here's a summary of what the code does:
+
+ <ul>
+      <li><strong>Environment Setup:</strong> Loads necessary environment variables from a .env file, including the new email address (EMAIL) to assign and the unique identifier of the member whose email address will be updated (MEMBERID).</li>
+      <li><strong>Authentication:</strong> Obtains a bearer token required for authentication with the Sigma API using the getBearerToken function.
+</li>
+      <li><strong>HTTP Requests:</strong> It utilizes Axios for making HTTP requests to the Sigma API.</li>
+      <li><strong>Update Member's Email Address:</strong> Defines an asynchronous function (updateMemberAccountType) to update the member's email address. Within this function, it constructs the request URL using the base URL and member ID, then makes a PATCH request to the API to update the member's email address. It logs the constructed URL before sending the request.</li>
+      <li><strong>Error Handling:</strong> Throughout the process, the script handles potential errors gracefully, logging error messages if any step fails.</li>
+      <li><strong>Execution:</strong> Executes the updateMemberAccountType function to initiate the process of updating the member's email address.</li>
+ </ul>
+
+### Running the Script
+Open the file `change-email.js` in the `members` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Select a test user from Sigma and place their email address in the `.env` file, commented out. Replace the active email address in `.env`with a variation. 
+
+For example:
+
+<img src="assets/apics55.png" width="800"/>
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics56.png" width="800"/>
+
+Confirm the new email has been set in Sigma:
+
+<img src="assets/apics57.png" width="800"/>
+
+You can revert the email by editing the `.env` file and rerunning the script's debugger.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Members: Recent Workbook
 Duration: 20
 
@@ -857,6 +905,66 @@ The PDF looks like this `export-workbook-pdf.pwd`:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Workbook: Copy Workbook to Member "My Documents" Folder
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/copy-workbook-to-member-my-documents-folder)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script automates the process of copying a specific workbook for a designated user in Sigma. Here's a breakdown of what the script does:
+
+ <ul>
+      <li><strong>Environment Setup:</strong> Loads necessary environment variables from a .env file, including the base URL of the Sigma API, the ID of the workbook to be copied (WORKBOOK_ID), and the ID of the user who will own the copied workbook (MEMBERID).</li>
+      <li><strong>Authentication:</strong> It obtains a bearer token required for authentication with the Sigma API using the getBearerToken function.</li>
+      <li><strong>Retrieve "My Documents" Folder ID:</strong> Retrieves the ID of the designated user's "My Documents" folder. This folder is where the copied workbook will be placed.</li>
+      <li><strong>Copy Workbook:</strong> Defines the necessary payload for copying the workbook, including the name, description, owner ID, and destination folder ID. Then, it sends a POST request to the Sigma API to initiate the workbook copying process.</li>
+      <li><strong>Error Handling:</strong> Throughout the process, the script handles potential errors gracefully, logging detailed error messages if any step fails.
+</li>
+      <li><strong>Execution:</strong> Finally, the script executes the main function, initiating the process of copying the workbook for the designated user. If successful, it logs a success message along with the ID of the copied workbook.</li>
+</ul>  
+
+### Running the Script
+Open the file `copy-workbook-folder.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Set a value for `WORKBOOK_ID` and `MEMBERID` in `.env` to reflect which member will receive a copy of your workbook. 
+
+It does not matter which workbook you want to use for this testing, as long as it is published.
+
+We need to select a member to use as the "recipient" of this copied workbook. In our case, we selected our QA user. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma supports administrative user impersonation which is a real time saver when testing changes.
+</aside>
+
+By [impersonating](https://help.sigmacomputing.com/docs/impersonate-users) our user, we can see that they only have two folders in `My Documents` at the moment.
+
+<img src="assets/apics52.png" width="800"/>
+
+We are expecting this API script to place a copy of the workbook in this location, and we use impersonation to verify that.
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics53.png" width="800"/>
+
+In Sigma, we can see the copied workbook has been created in their `My Documents` folder:
+
+<img src="assets/apics54.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> In looking at the last screenshot, we can see that the workbook's owner is set to "Sigma Administrator". This may be intended but if not, the script should be modified to specify a memberId who will own the workbook. The operation that can do this is "files/Update an inode", which allows updating "ownerId" for the specified workbook (inode).
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Teams: Bulk Add/Remove Members
 Duration: 20
 
@@ -913,9 +1021,7 @@ The expected response is (showing two members being added in the screenshot):
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we covered setting up a local test environment leveraging Sigma's git repository of sample API recipes in support of a variety of use cases.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
