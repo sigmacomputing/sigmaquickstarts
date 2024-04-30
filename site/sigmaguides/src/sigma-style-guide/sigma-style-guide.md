@@ -182,6 +182,13 @@ Duration: 5
 </ul>
 ```
 
+**Empty Version for quick copy***
+ <ul>
+      <li><strong></strong> </li>
+      <li><strong></strong> </li>
+      <li><strong></strong> </li>
+</ul>
+
 ![Alt text](assets/horizonalline.png)
 
 **NESTED LIST:**
