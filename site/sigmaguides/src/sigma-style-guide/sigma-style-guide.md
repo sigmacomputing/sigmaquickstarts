@@ -183,11 +183,13 @@ Duration: 5
 ```
 
 **Empty Version for quick copy***
+```console
  <ul>
       <li><strong></strong> </li>
       <li><strong></strong> </li>
       <li><strong></strong> </li>
 </ul>
+```
 
 ![Alt text](assets/horizonalline.png)
 
