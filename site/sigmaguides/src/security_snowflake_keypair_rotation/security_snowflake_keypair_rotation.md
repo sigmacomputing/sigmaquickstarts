@@ -136,11 +136,11 @@ Here are the basic steps involved:
 **1. Key Pair Generation:**<br>
 The user or service generates a pair of keys (private and public). This is typically accomplished using [OpenSSL](https://www.openssl.org/).<br>
 
-**2. Sigma Connection Creation and Configuration:**<br>
-After generating the keys, a Sigma connection is created and set up using the private key from step 1.
-
-**3. Public Key Registration with Snowflake:**<br>
+**2. Public Key Registration with Snowflake:**<br>
 The public key is then registered with Snowflake.
+
+**3. Sigma Connection Creation and Configuration:**<br>
+After generating the keys, a Sigma connection is created and set up using the private key from step 1.
 
 **4. Authentication:**<br>
 To authenticate a Sigma connection request, Snowflake issues a challenge to Sigma. Sigma then verifies its identity using its private key, without ever exposing it.

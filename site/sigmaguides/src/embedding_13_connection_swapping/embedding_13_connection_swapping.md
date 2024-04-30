@@ -8,26 +8,29 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-04-30
 
-# Embedding 13: Connection Swapping (Snowflake)
+# Embedding 13: Connection Swapping
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 
-This QuickStart introduces and demonstrates Sigma embedding using Dynamic Connection Swapping with Snowflake; **(DCS)**. 
 
-This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart introduces and demonstrates Sigma embedding using Dynamic Connection Swapping **(DCS)**. 
 
-We also recommend you table the the QuickStart [Embedding 3: Secure Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0) as we will build on that content. 
+This QuickStart assumes you have already taken the [QuickStart Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
-**Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
+We also recommend you take the the [QuickStart Embedding 3: Secure Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0) as we will build on that content. 
 
-DSC with Sigma can be efficiently managed through embedding parameters, specifically the parameter
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.
+</aside>
+
+DSC with Sigma can be efficiently managed through embedding parameters, specifically the parameter:
 
 ```code
 :eval_connection_id=<connection_id> 
 ```
 
-This parameter, when added to an embed URL, allows the embedded Sigma application to dynamically switch the database connection used for queries, based on the specified connection ID.
+This parameter, when added to an embed URL, allows the embedded Sigma application to dynamically switch the Sigma database connection used for queries, based on the specified `connectionId.`
 
 This functionality is particularly useful in environments where different users or groups require access to **different data sources that share the same schema.**
 
@@ -59,8 +62,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
   <li>Some content to embed. You can embed a workbook, Table or Visualization.</li>
-  <li>Downloadable project files discussed later in this document.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>Two Snowflake accounts with the proper administrative and security admin access.</li>
 </ul>
 
 <aside class="postive">
@@ -84,7 +86,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 The exercises in this QuickStart will discuss and walk you through the steps to implement DCS with User Attributes (**UA**).
 
 ### What You’ll Build
-We will embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate limiting data based on passed Snowflake Warehouse and/or Role.
+We will embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate using different Sigma connections, based on passed `connectionId`.
 
 ![Footer](assets/sigma_footer.png)
 
