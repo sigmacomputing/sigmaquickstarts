@@ -42,8 +42,9 @@ This functionality is particularly useful in environments where different users 
      
 ### Important Caveats:
 <ul>
+      <li><strong>Different Schema / Same Structure :</strong> The structure of the tables, the columns, and other objects within these schemas must be identical<li>
       <li><strong>Limited to Read-Only Features:</strong> The dynamic connection swapping feature is limited to read-only operations. It does not support writeback features like materialization or input tables, which means any functions involving writing data back to the database cannot use this dynamic switching mechanism.</li>
-      <li><strong>Overrides User Attributes:</strong> Using this parameter will override any configurations set via user attributes for warehouse or role switching within Sigma. This means the connection specified in the URL takes precedence over any user-specific settings.</li>
+      <li><strong>Overrides User-Attributes:</strong> Using this parameter will override any configurations set via user attributes for warehouse or role switching within Sigma. This means the connection specified in the URL takes precedence over any user-specific settings.</li>
       <li><strong>Scheduled Exports:</strong> The data connection used will be the one specified in the URL at the time the schedule was created or last modified.</li>
       <li><strong>Immediate Exports:</strong> Immediate data exports will utilize the connection specified in the current embed URL.</li>
       <li><strong>Session Consistency:</strong> Throughout an embed session, any workbook opened will utilize the connection ID provided in the embed URL, ensuring consistency in data source usage.</li>
@@ -62,7 +63,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
   <li>Some content to embed. You can embed a workbook, Table or Visualization.</li>
-  <li>Two Snowflake accounts with the proper administrative and security admin access.</li>
+  <li>A Snowflake account with the proper administrative and security admin access.</li>
 </ul>
 
 <aside class="postive">
@@ -90,14 +91,83 @@ We will embed Sigma content inside a Node.js web application, passing runtime pa
 
 ![Footer](assets/sigma_footer.png)
 
-## lij;lkj
+## Typical Use Case: Multi-Tenant Dashboard
 Duration: 20
 
+Imagine a scenario where a Sigma dashboard is embedded into a SaaS application used by multiple clients. Each client accesses the same type of data (e.g., sales, operations) but their data is stored in separate databases or schemas to ensure data isolation.
 
+### Setup:
+The dashboard is designed once using Sigma, based on a standard schema that includes tables like Sales, Inventory, and Orders.
+
+There are two connections configured in Sigma, each having their own `connectionId`.
+
+Each client's data is stored in a different schema in Snowflake, but the structure (DDL) of these schemas is the same.
+
+### Usage:
+**User-A:** 
+When User-A logs into the SaaS application, the application determines that User-A belongs to Client A. The embed URL for the Sigma dashboard is dynamically generated to include :eval_connection_id=<connection_id_for_client_a>, which points to Client-A's specific schema.
+
+**User B:** 
+Similarly, when User-B logs in and they belong to Client-B, their dashboard embed URL includes :eval_connection_id=<connection_id_for_client_b>.
+
+### Result:
+Each user sees data only from their respective schema, ensuring data security and privacy. 
+
+Despite accessing different data sets, both users experience the same dashboard functionality because the underlying data structure is consistent across schemas.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sample Data
+Duration: 20
+
+Snowflake provides sample data in trial instances and that makes it easy for us to demonstrate DCS.
+
+If you do not have this dataset and would like to, see [https://docs.snowflake.com/en/user-guide/sample-data-using](https://docs.snowflake.com/en/user-guide/sample-data-using) in Snowflake's documentation.
+
+We will focus on two sample databases, that contain the same structure but differ in the amount of data they contain. 
+
+We will configure our Sigma connections accordingly, providing the Snowflake role for each client. Here is what that will look like:
+
+### Client-A
+Database: TPCH_SF1
+Customer Table: 150,000 rows
+Snowflake Role: Client-A
+
+### Client-B
+Database: TPCH_SF10
+Customer Table: 1.5 million rows
+Snowflake Role: Client-B
+
+In Sigma, we will demonstrate by creating one workbook that has the `Customer` table on it.
+
+We will embed this workbook page and populate the table's data at runtime, with the data for the correct client.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Configuration 
+Duration: 20
+
+Log into Sigma as `Administrator`.
+
+### Create a Connection - Client-A
+Create a new connection in `Administration` > `Connections` and configure it for the TPCH_SF1 database.
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+
+
+
+## asdqsgfsdfg
+Duration: 20
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## What we've covered
 Duration: 5
