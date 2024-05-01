@@ -109,10 +109,7 @@ Duration: 5
 
 1. In the top ribbon of the Snowflake UI, click on the Partner Connect icon. From here you can automatically connect your Snowflake account with our partner applications available for a free trial. Click on the Sigma tile on the first row to start our new Sigma free trial.
 
-![Partner Connect Button](assets/Provisioning_Sigma_1.png)
-
-
-![Partner Connect Menu](assets/Provisioning_Sigma_2.png)
+![Partner Connect Menu](assets/partnerconnect.png)
 
   - Sigma is the only cloud analytics and BI platform purpose-built as software-as-a service for Snowflake. Sigma offers a spreadsheet-like interface anyone can use to explore, analyze, and visualize data at unlimited scale.
 
