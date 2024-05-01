@@ -118,26 +118,18 @@ Despite accessing different data sets, both users experience the same dashboard 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Sample Data
+## Snowflake Configuration
 Duration: 20
 
-Snowflake provides sample data in trial instances and that makes it easy for us to demonstrate DCS.
+We have created the following Snowflake script to automate the process of creating users, roles and sample data, so that it is easy for us to demonstrate DCS.
 
-If you do not have this dataset and would like to, see [https://docs.snowflake.com/en/user-guide/sample-data-using](https://docs.snowflake.com/en/user-guide/sample-data-using) in Snowflake's documentation.
+We will create one database that has two schema; one for each customer ("client"). The data is different for each client and consists of retail store sales data. 
 
-We will focus on two sample databases, that contain the same structure but differ in the amount of data they contain. 
+Client_A only sells in the eastern region of the US. Client_B only in the south.
 
-We will configure our Sigma connections accordingly, providing the Snowflake role for each client. Here is what that will look like:
+<img src="assets/dcs1.png" width="800"/>
 
-### Client-A
-Database: TPCH_SF1
-Customer Table: 150,000 rows
-Snowflake Role: Client-A
 
-### Client-B
-Database: TPCH_SF10
-Customer Table: 1.5 million rows
-Snowflake Role: Client-B
 
 In Sigma, we will demonstrate by creating one workbook that has the `Customer` table on it.
 
