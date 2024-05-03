@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2024-03-29
 
-# Sigma REST API Code Samples
+# Sigma REST API Recipes
 
 ## Overview 
 Duration: 5 
@@ -961,6 +961,50 @@ In Sigma, we can see the copied workbook has been created in their `My Documents
 <aside class="negative">
 <strong>NOTE:</strong><br> In looking at the last screenshot, we can see that the workbook's owner is set to "Sigma Administrator". This may be intended but if not, the script should be modified to specify a memberId who will own the workbook. The operation that can do this is "files/Update an inode", which allows updating "ownerId" for the specified workbook (inode).
 </aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Embedding: Generate Embeds Path for Member - All Workbooks
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/embedding-generate-embed-path-for-member-all-workbooks)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches a list of workbooks available to a specific member from the API, retrieves the workbook name, and constructs embed URLs for each workbook. 
+
+Here's a summary of its functionality:
+
+ <ul>
+      <li>Loads environment variables from a specific .env file, including the base URL for the Sigma API and the unique identifier of the member.</li>
+      <li>Imports necessary modules, such as the function to obtain a bearer token and Axios for making HTTP requests.</li>
+      <li>The fetchWorkbooks function is defined to fetch the list of available workbooks for a given member ID. It constructs the API URL, sends a GET request, and returns an array of workbook details (IDs and names).</li>
+      <li>The main function main manages the overall workflow. It retrieves the bearer token, fetches the workbooks using the member ID and access token, and constructs embed URLs for each workbook.</li>
+      <li>If workbooks are found, it logs each workbook's name and its corresponding embed URL.</li>
+      <li> If no workbooks are available, it logs a message indicating that there are no workbooks to process or embed.</li>
+      <li></li>
+ </ul>
+
+The script can be executed directly, and the main function is exported for use in other modules if needed.
+
+### Running the Script
+Open the file `generate_workbook_embed_path.js` in the `embedding` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Set a value for `MEMBERID` in `.env` to reflect which member's workbooks to generate embed urls for.
+
+It does not matter which member you want to use for this testing, as long as they have some workbooks they created or have been shared with.
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics58.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
