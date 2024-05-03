@@ -196,7 +196,7 @@ Each of these functionalities adds significant value by making dashboards more i
 
 An ***simple example*** of this can be found in the free Sigma Loan Analysis template. In this example, there are three action buttons on the page and the "Performance" button has a click-action that will take the user to a specific workbook page. 
 
-<img src="assets/actions.png" width="800"/>
+<img src="assets/Actions.png" width="800"/>
 
 
 For more information, see [Intro to Actions](https://help.sigmacomputing.com/docs/intro-to-actions)
