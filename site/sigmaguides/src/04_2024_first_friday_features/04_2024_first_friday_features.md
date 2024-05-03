@@ -182,8 +182,6 @@ Charts containing legends that represent qualitative segments (like categories o
 ## Workbooks
 Duration: 20
 
-### Actions
-Sigma's "Actions" feature offers several capabilities to enhance dashboard interactivity:
 
  <ul>
       <li><strong>Navigational Actions:</strong>  Users can configure dashboard elements to act as links, enabling navigation to specific destinations based on the displayed data, which facilitates seamless integration with other tools or detailed reports.</li>
@@ -196,11 +194,9 @@ Each of these functionalities adds significant value by making dashboards more i
 
 An ***simple example*** of this can be found in the free Sigma Loan Analysis template. In this example, there are three action buttons on the page and the "Performance" button has a click-action that will take the user to a specific workbook page. 
 
-<img src="assets/Actions.png" width="800"/>
-
+<img src="assets/actions1.png" width="800"/>
 
 For more information, see [Intro to Actions](https://help.sigmacomputing.com/docs/intro-to-actions)
-
 
 ![Footer](assets/sigma_footer.png)
 
