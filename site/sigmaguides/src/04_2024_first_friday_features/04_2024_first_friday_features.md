@@ -3,19 +3,10 @@ id: 04_2024_first_friday_features
 summary: 04_2024_first_friday_features
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: first_friday_features
 lastUpdated: 2024-04-31
-
-<!-- 
-04-05 (in previous month)
-04-12 done 
-04-19 done
-04-26
-- Rename Actions.png to actions.png
-
--->
 
 # (04-2024) April
 <!-- The above name is what appears on the website and is searchable. -->
@@ -45,7 +36,21 @@ Send and accept workbook templates across different Sigma organizations.
 
 With secure cross-org sharing, a receiving organization must choose its own data source to populate the shared template, ensuring no data from the sharing organization is disclosed.
 
+<img src="assets/fff_04_2024_4.png" width="800"/>
+
+<img src="assets/fff_04_2024_5.png" width="800"/>
+
 For more information, see [Share and accept cross-org workbook templates.](https://help.sigmacomputing.com/docs/share-and-accept-cross-org-workbook-templates)
+
+### Customizable session length
+
+If your organization uses password or SAML authentication, you can customize the session length to control how long internal and guest users stay logged in before Sigma requires re-authentication.
+
+**By default, the session length is set to 720 hours, meaning users must log in every 30 days.** 
+
+Adjust the session length to align with internal security policies and external regulatory requirements.
+
+For more information, see [Manage authentication method and options.](https://help.sigmacomputing.com/docs/manage-authentication#manage-authentication-method-and-options)
 
 ### Snowflake key pair authentication and rotation
 Create a Snowflake connection using the key pair authentication method, and protect your data with key rotation.
@@ -73,7 +78,11 @@ For more information about client credentials, see [Generate API client credenti
 ## Bug Fixes
 Duration: 20
 
-1: To preserve data integrity, Sigma no longer converts `Yes/No` and `0/1` values to True/False boolean values in CSV uploads.
+**1:** To preserve data integrity, Sigma no longer converts `Yes/No` and `0/1` values to `True/False` boolean values in CSV uploads.<br><br>
+**2:** In embeds, the `workbook:chart:onvalueselect` event no longer sends an empty value property.<br><br>
+**3:** Users no longer encounter false permission errors when accessing permitted tagged workbook versions.<br><br>
+**4:** Sigma now displays an error when an admin attempts to generate a signed embed URL for a public embed.<br><br>
+**5:** Bookmark selection for exports is now available only when all attachments are PDF or PNG files.<br>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -102,6 +111,13 @@ Now you can see sample code for additional languages, for signing embed URLs to 
 
 For sample code in Go, Python, Ruby, and JavaScript, see the [Embed Signing Packages Github repository.](https://github.com/sigmacomputing/embed-signing-packages)
 
+### Explore mode and bookmarks in embeds
+Explore mode is now available in embedded workbooks.
+
+Embed users can perform ad hoc analysis, save the explored state as a personal bookmark, and manage existing bookmarks.
+
+For more information, [see Explore a published workbook](https://help.sigmacomputing.com/docs/explore-a-published-workbook) and [Bookmarks in embedded workbooks.](https://help.sigmacomputing.com/docs/create-and-manage-bookmarks#bookmarks-in-embedded-workbooks)
+
 ![Footer](assets/sigma_footer.png)
 
 ## Functions
@@ -117,6 +133,26 @@ Available percentage breakdowns (by grand total, x-axis, row, column, etc.) depe
 For example:
 
 <img src="assets/fff_04_2024_1.png" width="800"/>
+
+### ArrayAggDistinct function
+The `ArrayAggDistinct` function identifies distinct non-null row values of a column or group and aggregates them into a single array.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This function is supported by AlloyDB, BigQuery, Databricks, PostgreSQL and Snowflake connections.
+</aside>
+
+For more information see [ArrayAggDistinct.](https://help.sigmacomputing.com/docs/arrayaggdistinct)
+
+### Record formula support
+Record formulas enhances data processing and user interaction. Record formulas allow you to create structured objects, such as JSON, directly within your workbooks and data models.
+
+**Key Benefits:**
+     <ul>
+      <li><strong>Data Type Preservation:</strong> When Sigma processes these structured objects, it maintains the specific data types of each field. This not only preserves data integrity and accuracy but also simplifies data manipulation by eliminating the need for type conversions.</li>
+      <li><strong>Ease of Access:</strong> The structured format ensures that you can easily access and manipulate the values within these objects.</li>
+</ul>
+ 
+For more information, see [Generate and access structured objects.](https://help.sigmacomputing.com/docs/generate-and-access-structured-objects)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -160,7 +196,8 @@ Each of these functionalities adds significant value by making dashboards more i
 
 An ***simple example*** of this can be found in the free Sigma Loan Analysis template. In this example, there are three action buttons on the page and the "Performance" button has a click-action that will take the user to a specific workbook page. 
 
-<img src="assets/fff_04_2024_4.png" width="800"/>
+<img src="assets/actions.png" width="800"/>
+
 
 For more information, see [Intro to Actions](https://help.sigmacomputing.com/docs/intro-to-actions)
 
