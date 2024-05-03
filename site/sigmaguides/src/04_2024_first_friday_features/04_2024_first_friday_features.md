@@ -8,15 +8,6 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-04-31
 
-<!-- 
-04-05 (in previous month)
-04-12 done 
-04-19 done
-04-26 -done
-05-03 pending
-
--->
-
 # (04-2024) April
 <!-- The above name is what appears on the website and is searchable. -->
 
@@ -87,7 +78,11 @@ For more information about client credentials, see [Generate API client credenti
 ## Bug Fixes
 Duration: 20
 
-1: To preserve data integrity, Sigma no longer converts `Yes/No` and `0/1` values to True/False boolean values in CSV uploads.
+**1:** To preserve data integrity, Sigma no longer converts `Yes/No` and `0/1` values to `True/False` boolean values in CSV uploads.<br><br>
+**2:** In embeds, the `workbook:chart:onvalueselect` event no longer sends an empty value property.<br><br>
+**3:** Users no longer encounter false permission errors when accessing permitted tagged workbook versions.<br><br>
+**4:** Sigma now displays an error when an admin attempts to generate a signed embed URL for a public embed.<br><br>
+**5:** Bookmark selection for exports is now available only when all attachments are PDF or PNG files.<br>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -138,6 +133,26 @@ Available percentage breakdowns (by grand total, x-axis, row, column, etc.) depe
 For example:
 
 <img src="assets/fff_04_2024_1.png" width="800"/>
+
+### ArrayAggDistinct function
+The `ArrayAggDistinct` function identifies distinct non-null row values of a column or group and aggregates them into a single array.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This function is supported by AlloyDB, BigQuery, Databricks, PostgreSQL and Snowflake connections.
+</aside>
+
+For more information see [ArrayAggDistinct.](https://help.sigmacomputing.com/docs/arrayaggdistinct)
+
+### Record formula support
+Record formulas enhances data processing and user interaction. Record formulas allow you to create structured objects, such as JSON, directly within your workbooks and data models.
+
+**Key Benefits:**
+     <ul>
+      <li><strong>Data Type Preservation:</strong> When Sigma processes these structured objects, it maintains the specific data types of each field. This not only preserves data integrity and accuracy but also simplifies data manipulation by eliminating the need for type conversions.</li>
+      <li><strong>Ease of Access:</strong> The structured format ensures that you can easily access and manipulate the values within these objects.</li>
+</ul>
+ 
+For more information, see [Generate and access structured objects.](https://help.sigmacomputing.com/docs/generate-and-access-structured-objects)
 
 ![Footer](assets/sigma_footer.png)
 
