@@ -3,10 +3,10 @@ id: administration_api_code_samples
 summary: administration_api_code_samples
 categories: Administration
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-03-29
+tags: default
+lastUpdated: 2024-04-07
 
 # Sigma REST API Recipes
 
