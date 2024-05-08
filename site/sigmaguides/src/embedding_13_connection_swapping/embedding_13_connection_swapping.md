@@ -16,7 +16,7 @@ Duration: 5
 
 This QuickStart introduces and demonstrates Sigma embedding using Dynamic Connection Swapping **(DCS)**. 
 
-This QuickStart assumes you have already taken the [QuickStart Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_3_application_embedding/index.html#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart assumes you have already taken the [QuickStart Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
 We also recommend you take the the [QuickStart Embedding 3: Secure Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0) as we will build on that content. 
 
@@ -30,24 +30,24 @@ DCS with Sigma can be efficiently managed through embedding parameters, specific
 :eval_connection_id=<connection_id> 
 ```
 
-This parameter, when added to an embed URL, allows the embedded Sigma application to dynamically switch the Sigma database connection used for queries, based on the specified `connectionId.`
+This parameter, when added to an embed URL, allows the embedded Sigma application to dynamically switch the Sigma connection used for queries, based on the specified `connectionId.`
 
 This functionality is particularly useful in environments where different users or groups require access to **different data sources that share the same schema.**
 
 ### Key Features and Benefits:
  <ul>
-      <li><strong>Seamless Integration:</strong> By simply appending the ":eval_connection_id" parameter to the embed URL, the Sigma application can change its data source without requiring any changes to the dashboard or report setup.</li>
-      <li><strong>Dynamic Data Access:</strong> This feature enhances flexibility for single-tenant architectures.</li>
+      <li><strong>Seamless Integration:</strong> By simply appending the ":eval_connection_id" parameter to the embed URL, the Sigma application can change it's data source without requiring any changes to the dashboard or report setup.</li>
+      <li><strong>Dynamic Data Access:</strong> This feature enhances flexibility for data isolation options as well as requiring fewer workbooks.</li>
 </ul>   
      
 ### Important Caveats:
 <ul>
-      <li><strong>Different Schema / Same Structure :</strong> The structure of the tables, the columns, and other objects within these schemas must be identical<li>
+      <li><strong>Different Schema / Same Structure :</strong> The structure of the tables, the columns, and other objects within these schemas must be identical.</li>
       <li><strong>Limited to Read-Only Features:</strong> The dynamic connection swapping feature is limited to read-only operations. It does not support writeback features like materialization or input tables, which means any functions involving writing data back to the database cannot use this dynamic switching mechanism.</li>
       <li><strong>Overrides User-Attributes:</strong> Using this parameter will override any configurations set via user attributes for warehouse or role switching within Sigma. This means the connection specified in the URL takes precedence over any user-specific settings.</li>
       <li><strong>Scheduled Exports:</strong> The data connection used will be the one specified in the URL at the time the schedule was created or last modified.</li>
       <li><strong>Immediate Exports:</strong> Immediate data exports will utilize the connection specified in the current embed URL.</li>
-      <li><strong>Session Consistency:</strong> Throughout an embed session, any workbook opened will utilize the connection ID provided in the embed URL, ensuring consistency in data source usage.</li>
+      <li><strong>Session Consistency:</strong> Throughout an embed session, any workbook opened will utilize the connectionId provided in the embed URL, ensuring consistency in data source usage.</li>
 </ul>
 
 ### Implementation Considerations:
@@ -61,9 +61,9 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites</li>
-  <li>Some content to embed. You can embed a workbook, Table or Visualization.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
+  <li>A working web server based on Node.js as demonstrated in the QuickStart Embedding 1: Prerequisites.</li>
+  <li>Some content to embed. You can embed a workbook, page, table or visualization.</li>
+  <li>Snowflake account(s) with the proper administrative and security admin access.</li>
 </ul>
 
 <aside class="postive">
@@ -84,68 +84,66 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 </ul>
 
 ### What You’ll Learn
-The exercises in this QuickStart will discuss and walk you through the steps to implement DCS with User Attributes (**UA**).
+The exercises in this QuickStart will discuss and walk you through the steps to implement DCS in two different use cases.
 
 ### What You’ll Build
 We will embed Sigma content inside a Node.js web application, passing runtime parameters to configure the embed and demonstrate using different Sigma connections, based on passed `connectionId`.
 
 ![Footer](assets/sigma_footer.png)
 
-## Use Case: Multi-Tenant Dashboard
+## Typical Use Cases
 Duration: 20
 
-Sigma DCS supports the common multi-tenant architectures that many businesses use today when they need to provide portal access but also ensure data separation. 
+Sigma DCS supports the common multi-tenant architectures that many businesses use today when they need to provide portal access, but also ensure data separation. 
 
 The most common examples of this are:
 
-1: One Snowflake account, per customer databases.
-2: One Snowflake account, single database, per customer schema.
-3: Per customer Snowflake accounts.
+### Primary Use Case: 
 
-Imagine a scenario where a Sigma dashboard is embedded into a SaaS application used by multiple clients. 
+**Per-customer Snowflake accounts:**<br>
+This works just using eval_connection_id. Must have the same database and schema names AND column structure. If names different, UA is required.
 
-Each client accesses the same type of data (e.g., sales, operations) but their data is stored in single database, with per-customer schemas to ensure data isolation.
+### Other Similar Use Cases:
 
-For our demonstration, assume a retail distributor who has customers (clients) who sell goods in each region of the country. 
+**1: One Snowflake account, per customer databases:**<br>
+This requires eval_connection_id and custom user attribute for database name and custom SQL for the dataset/tables.
 
-The distributor has a portal they want to embed Sigma in, and want to use a common dashboard that all clients have access to. 
+**2: One Snowflake account, single database, per customer schema:**<br>
+Can be solved with just UA and Custom SQL
 
-Client data needs to be restricted to only their region (schema) at all times.
+**3: Two Snowflake accounts with databases and/or schema that has same structure but different names:**<br>
+Can be solved with just UA and Custom SQL
+
+There are more variations of other use cases but these are the ones that are most commonly seen. The basic design pattern with DCS and custom user attributes provides flexibility to allow customers to select the model that best suits their architectural needs. 
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Use case 1: per-customer Snowflake accounts
+Duration: 20
+
+Imagine a scenario where Sigma content is embedded into a customer's SaaS application that used by multiple clients. 
+
+Each client accesses the same type of data (e.g., store sales data) but their data is stored in two distinct Snowflake accounts. The database name and schema names are the same for both clients. Each new client is on-boarded with a new Snowflake account.
+
+For our demonstration, lets assume the SaaS provider is a national retail distributor who has clients who sell goods in specific regions of the United States. 
+
+The distributor has a client portal they want to embed Sigma in. The prefer that all clients use a common dashboard to ease training, support and related development work as new clients are on-boarded. 
 
 There are two clients, `Client_A` only sells in the eastern region of the US. `Client_B` only in the south.
 
-### Snowflake Setup
+The data consists of typical retail store sales data.
 
-To accomplish this, we will create one database that has two schema; one for each client.
+Each client has a `STORE_SALES` table with the same structure, but the sales data is different for each client. 
 
-Each client has a `STORE_SALES` table with the same structure, but the data is different for each. 
+### The source data
 
-The data consists of typical retail store sales data. 
-
-<img src="assets/dcs1.png" width="800"/>
-
-We will use Snowflake roles in two Sigma connections to ensure data isolation.
+To accomplish this, we will use two Snowflake accounts and create a common database that has the same schema in each account.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We have created small datasets for each client to make this demonstration simple. With Sigma, the size of the dataset does not really matter; Sigma can handle very large datasets that are common these days.
+<strong>NOTE:</strong><br> If you don't have access to two Snowflake accounts, that's fine; simply follow along, as the steps are straightforward.
 </aside>
-
-### Sigma Setup:
-There are two connections configured in Sigma, each having their own `connectionId`, but use different Snowflake user and role configurations.
-
-The dashboard is designed once using Sigma, based on a standard schema that is common across clients. 
-
-### Usage:
-**User-A:** 
-When User-A logs into the SaaS application, the application determines that User-A belongs to Client A. The embed URL for the Sigma dashboard is dynamically generated (by the [Embed API](https://help.sigmacomputing.com/docs/example-embed-api-and-url)) to include :eval_connection_id=<connection_id_for_client_a>, which points to Client-A's schema.
-
-**User B:** 
-Similarly, when User-B logs in and they belong to Client-B, their dashboard embed URL includes :eval_connection_id=<connection_id_for_client_b>.
-
-### Result:
-Each user sees data only from their respective schema, ensuring data security and privacy. 
-
-Despite accessing different data sets, both users experience the same dashboard functionality because the underlying data structure is consistent across schemas.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -155,11 +153,434 @@ Duration: 20
 
 We have created the following Snowflake script to automate the process of creating users, roles and sample data, so that it is easy for us to demonstrate DCS.
 
-It is recommended to run commands one at a time to ensure success.
+<aside class="negative">
+<strong>NOTE:</strong><br> It is recommended to run commands one at a time to ensure success.
+</aside>
 
 For example, in the screenshot below we highlight the command `USE ROLE ACCOUNTADMIN` and click the run icon in the upper right corner:
 
-<img src="assets/dcs2.png" width="800"/>
+<img src="assets/dcs2.png" width="500"/>
+
+If you are familiar with Snowflake scripts, you can just highlight rows `1-99` and click the run icon.
+
+First, log into the first Snowflake account as `ACCOUNTADMIN`.
+
+Open a new `Worksheet`.
+
+Copy and paste this code into the worksheet:
+```code
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 1: DATA CONFIGURATION
+// ----------------------------------------------------------------------------------------------------------
+
+USE ROLE ACCOUNTADMIN;
+
+// 1: CREATE OR REPLACE DATABASE AND SWITCH TO IT
+CREATE OR REPLACE DATABASE SIGMA_DCS_USECASE_1;
+USE DATABASE SIGMA_DCS_USECASE_1;
+
+// 2: CREATE A NEW SCHEMA TO HOLD OUR FUTURE SAMPLE DATA TABLE:
+CREATE SCHEMA IF NOT EXISTS CLIENTS;
+
+// 3: CREATE THE SAMPLE DATA TABLE SCHEMA
+CREATE OR REPLACE TABLE CLIENTS.STORE_SALES (
+    CLIENT_NAME VARCHAR,
+    STORE_REGION VARCHAR,
+    ORDER_NUMBER VARCHAR,
+    DATE TIMESTAMP,
+    SKU_NUMBER VARCHAR,
+    QUANTITY INT,
+    COST FLOAT,
+    PRICE FLOAT,
+    COGS FLOAT,
+    SALES FLOAT,
+    PROFIT FLOAT,
+    PROFIT_MARGIN FLOAT,
+    PRODUCT_TYPE VARCHAR,
+    PRODUCT_FAMILY VARCHAR,
+    PRODUCT_LINE VARCHAR,
+    BRAND VARCHAR,
+    PRODUCT_NAME VARCHAR,
+    STORE_NAME VARCHAR,
+    STORE_KEY VARCHAR,
+    STORE_STATE VARCHAR,
+    STORE_CITY VARCHAR,
+    STORE_ZIP_CODE VARCHAR,
+    STORE_LATITUDE FLOAT,
+    STORE_LONGITUDE FLOAT,
+    CUST_KEY INT,
+    CUSTOMER_NAME VARCHAR,
+    DAY VARCHAR,
+    WEEK VARCHAR,
+    MONTH VARCHAR,
+    QUARTER VARCHAR,
+    YEAR VARCHAR
+);
+
+// 4: CREATE STAGES FOR EXTERNAL STORAGE OF CSV FILES
+CREATE STAGE IF NOT EXISTS CLIENT_B_DATA URL='s3://sigma-quickstarts-main/embedding_2/Client_B_Store_Sales.csv';
+
+// 5: CSV FORMAT TO HANDLE HEADER ROW IN DATA FILES
+CREATE OR REPLACE FILE FORMAT my_csv_format
+  TYPE = 'CSV'
+  FIELD_DELIMITER = ','
+  SKIP_HEADER = 1   -- Skip the first line of the file
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  ESCAPE_UNENCLOSED_FIELD = 'NONE'
+  NULL_IF = ('NULL', 'null');
+
+// 6: COPY DATA FROM STAGE TO RESPECTIVE TABLE
+COPY INTO CLIENTS.STORE_SALES FROM @CLIENT_B_DATA FILE_FORMAT= my_csv_format;
+
+// 7: CONFIRM DATA IS LANDED IN SNOWFLAKE TABLE:
+SELECT * FROM CLIENTS.STORE_SALES; //EAST
+
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 2: ROLE AND USER CONFIGURATION
+// ----------------------------------------------------------------------------------------------------------
+
+// 1: CREATE ROLES FOR OUR USE CASES:
+CREATE OR REPLACE ROLE CLIENT_B;
+
+// 2: CREATE USERS FOR EACH CLIENT
+CREATE USER IF NOT EXISTS CLIENT_B_USER PASSWORD = 'StrongPassword2!';
+
+// 3: GRANT ROLES TO USERS
+GRANT ROLE CLIENT_B TO USER CLIENT_B_USER;
+
+// 4: GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLES
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_B;
+
+// 5: GRANT USAGE PERMISSION ON THE DATABASE TO NEW ROLES:
+GRANT USAGE ON DATABASE SIGMA_DCS_USECASE_1 TO ROLE CLIENT_B;
+
+// 6: GRANT USAGE ON SCHEMA TO NEW ROLES:
+GRANT USAGE ON SCHEMA SIGMA_DCS_USECASE_1.CLIENTS TO ROLE CLIENT_B;
+
+// 7: ALLOW NEW ROLES TO QUERY TABLES WE CREATED:
+GRANT SELECT ON ALL TABLES IN SCHEMA SIGMA_DCS_USECASE_1.CLIENTS TO ROLE CLIENT_B;
+
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 5:  TESTING
+// ----------------------------------------------------------------------------------------------------------
+
+// 1: 
+SELECT * FROM SIGMA_DCS_USECASE_1.CLIENTS.STORE_SALES; // SHOULD SHOW ROW DATA
+```
+
+Execute the script. When it completes, you will see some row data:
+
+<img src="assets/dcs31.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> A small sample dataset is provided automatically when running each of these scripts.
+</aside>
+
+#### Second Snowflake account
+We want to perform the same operations in the second account, adjusting the Snowflake script to load a different set of data into the same structure.
+
+Log into a second Snowflake account as `ACCOUNTADMIN` and paste this script into a new Worksheet:
+```code
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 1: DATA CONFIGURATION
+// ----------------------------------------------------------------------------------------------------------
+
+USE ROLE ACCOUNTADMIN;
+
+// 1: CREATE OR REPLACE DATABASE AND SWITCH TO IT
+CREATE OR REPLACE DATABASE SIGMA_DCS_USECASE_2;
+USE DATABASE SIGMA_DCS_USECASE_2;
+
+// 2: CREATE A NEW SCHEMA TO HOLD OUR FUTURE SAMPLE DATA TABLE:
+CREATE SCHEMA IF NOT EXISTS CLIENTS;
+
+// 3: CREATE THE SAMPLE DATA TABLE SCHEMA
+CREATE OR REPLACE TABLE CLIENTS.STORE_SALES (
+    CLIENT_NAME VARCHAR,
+    STORE_REGION VARCHAR,
+    ORDER_NUMBER VARCHAR,
+    DATE TIMESTAMP,
+    SKU_NUMBER VARCHAR,
+    QUANTITY INT,
+    COST FLOAT,
+    PRICE FLOAT,
+    COGS FLOAT,
+    SALES FLOAT,
+    PROFIT FLOAT,
+    PROFIT_MARGIN FLOAT,
+    PRODUCT_TYPE VARCHAR,
+    PRODUCT_FAMILY VARCHAR,
+    PRODUCT_LINE VARCHAR,
+    BRAND VARCHAR,
+    PRODUCT_NAME VARCHAR,
+    STORE_NAME VARCHAR,
+    STORE_KEY VARCHAR,
+    STORE_STATE VARCHAR,
+    STORE_CITY VARCHAR,
+    STORE_ZIP_CODE VARCHAR,
+    STORE_LATITUDE FLOAT,
+    STORE_LONGITUDE FLOAT,
+    CUST_KEY INT,
+    CUSTOMER_NAME VARCHAR,
+    DAY VARCHAR,
+    WEEK VARCHAR,
+    MONTH VARCHAR,
+    QUARTER VARCHAR,
+    YEAR VARCHAR
+);
+
+// 4: CREATE STAGES FOR EXTERNAL STORAGE OF CSV FILES
+CREATE STAGE IF NOT EXISTS CLIENT_B_DATA URL='s3://sigma-quickstarts-main/embedding_2/Client_B_Store_Sales.csv';
+
+// 5: CSV FORMAT TO HANDLE HEADER ROW IN DATA FILES
+CREATE OR REPLACE FILE FORMAT my_csv_format
+  TYPE = 'CSV'
+  FIELD_DELIMITER = ','
+  SKIP_HEADER = 1   -- Skip the first line of the file
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  ESCAPE_UNENCLOSED_FIELD = 'NONE'
+  NULL_IF = ('NULL', 'null');
+
+// 6: COPY DATA FROM STAGE TO RESPECTIVE TABLE
+COPY INTO CLIENTS.STORE_SALES FROM @CLIENT_B_DATA FILE_FORMAT= my_csv_format;
+
+// 7: CONFIRM DATA IS LANDED IN SNOWFLAKE TABLE:
+SELECT * FROM CLIENTS.STORE_SALES; //EAST
+
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 2: ROLE AND USER CONFIGURATION
+// ----------------------------------------------------------------------------------------------------------
+
+// 1: CREATE ROLES FOR OUR USE CASES:
+CREATE OR REPLACE ROLE CLIENT_B;
+
+// 2: CREATE USERS FOR EACH CLIENT
+CREATE USER IF NOT EXISTS CLIENT_B_USER PASSWORD = 'StrongPassword1!';
+
+// 3: GRANT ROLES TO USERS
+GRANT ROLE CLIENT_B TO USER CLIENT_B_USER;
+
+// 4: GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLES
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_B;
+
+// 5: GRANT USAGE PERMISSION ON THE DATABASE TO NEW ROLES:
+GRANT USAGE ON DATABASE SIGMA_DCS_USECASE_2 TO ROLE CLIENT_B;
+
+// 6: GRANT USAGE ON SCHEMA TO NEW ROLES:
+GRANT USAGE ON SCHEMA SIGMA_DCS_USECASE_2.CLIENTS TO ROLE CLIENT_B;
+
+// 7: ALLOW NEW ROLES TO QUERY TABLES WE CREATED:
+GRANT SELECT ON ALL TABLES IN SCHEMA SIGMA_DCS_USECASE_2.CLIENTS TO ROLE CLIENT_B;
+
+// ----------------------------------------------------------------------------------------------------------
+// SECTION 5:  TESTING
+// ----------------------------------------------------------------------------------------------------------
+
+// 1: 
+SELECT * FROM SIGMA_DCS_USECASE_2.CLIENTS.STORE_SALES; // SHOULD SHOW ROW DATA
+```
+
+Execute the script and verify the data show rows for `Client_B`:
+
+<img src="assets/dcs34.png" width="800"/>
+
+Once Snowflake is configured, we can move on to the Sigma configuration.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Configuration 
+Duration: 20
+
+Log into Sigma as `Administrator`.
+
+### Create Connections:<br>
+Create a new connection in `Administration` > `Connections` and configure it for the `SIGMA_DCS` database.
+
+Recall that the `Role`, `User` and `Password` were specified in each Snowflake script. 
+
+Here they are again for convenience:
+
+#### CLIENT_A - Snowflake Account 1:
+User: CLIENT_A_USER<br>
+Role: CLIENT_A<br>
+Password: StrongPassword1!
+
+Create another connection for `Client_B`:
+
+#### CLIENT_B - Snowflake Account 2:
+User: CLIENT_B_USER<br>
+Role: CLIENT_B<br>
+Password: StrongPassword2!
+
+<img src="assets/dcs32.png" width="800"/>
+
+Verify both connections are providing the expected data isolation by clicking the `Browse Connection` button:
+
+<img src="assets/dcs33.png" width="800"/>
+
+Click the `Explore` button to open the `STORE_SALES` table in a new Sigma workbook. It does not matter if you were browsing the `Client_A` or `Client_B` connection. 
+
+Rename the `Page 1` tab to `Use Case 1`.
+
+Use the `Save As` button to create the new workbook named `DCS QuickStart`. 
+
+<img src="assets/dcs17c.png" width="800"/>
+
+### Create Teams
+Navigation to `Administration` > `Teams` and create add the `CLIENT_A` and `CLIENT_B` teams.
+
+<img src="assets/dcs24.png" width="800"/>
+
+No need to assign anyone to these teams now. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Users are added automatically to Sigma, when coming in via the embedding integration. They will be  added to the user database, assigned to the specified team and permissions by the Embed API. You will not have to manage Sigma embed users separately from your existing user management system, saving you time.
+</aside>
+
+### Share with Team
+To be able to test this workbook, we need to share it with the two team. 
+
+In the drop menu for the workbook, click `Share`:
+
+<img src="assets/dcs17a.png" width="800"/>
+
+Add the `CLIENT_A` and `CLIENT_B` teams. Det the permission to `Can View` and select `Share`:
+
+<img src="assets/dcs19.png" width="800"/>
+
+### Embed Configuration
+
+Click as shown to access the `Embedding` options:
+
+<img src="assets/dcs15.png" width="500"/>
+
+Select `Embed Path` and select the workbook page `Use Case 1`. Copy the `Embed path` url to a text file. We will use that later. 
+
+<img src="assets/dcs16a.png" width="500"/>
+
+### Connection IDs
+Before we try to test the embed, we need to get the ID of each of our Snowflake connections.
+
+Navigate to `Administration` > `Connections` and select the `Client_A` connection. 
+
+The ID for `Client_A` is shown in the URL:
+
+<img src="assets/dcs17.png" width="800"/>
+
+For example, the id for this example is (your's will be different):
+```code
+e168cc27-50e9-4de3-81b6-32c8ff17d3b1
+```
+
+Copy this connectionId off to a text file for use later.
+
+Do the same for `Client_B`.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Testing
+For testing, we will use the same Node.js framework that was setup during the [QuickStart: Embedding 01: Prerequisites.](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.tml?index=..%2F..index#0)
+
+You will also need to provide embed client credentials. It is fine to reuse one that you created during the prerequisite QuickStart. 
+
+If you have not created [embed client credentials](https://help.sigmacomputing.com/docs/generate-embed-client-credentials) yet, go back and do that. 
+
+To save time, we have provided the required project files for download.
+
+Download the [project files here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_DCS.zip)
+
+Unzip the folder `sigma_DCS.zip` and open a Terminal session from it (right-click and select `):
+
+<img src="assets/dcs25.png" width="400"/>
+
+Run the command:
+```code
+supervisor embed-api.js
+```
+
+The expected response is:
+
+<img src="assets/dcs26.png" width="800"/>
+
+Open the file `embed-api.js` and change the values for `YOUR_EMBED_PATH`, `YOUR_EMBED_SECRET` and `YOUR_CLIENT_ID` for your configuration.
+
+Save the changes.
+
+Scroll to section #5 in the file and study the searchParams for `Client A` and `Client B`. They are very similar, but not the same.
+
+For this use case, we will only be changing the value for `connectionId`, **using your values.**
+
+Update the values for each client's `eval_connection_id`, using values for each `connectionId` that was created earlier in this QuickStart. 
+
+All other value can remain the same:
+
+<img src="assets/dcs27.png" width="800"/>
+
+Client B's searchParams are all commented out, so when we check our embed in the browser, we will see only values for `Client_A` as that is the connectionId we are passing to Sigma.
+
+```code 
+localhost:3000
+```
+
+<img src="assets/dcs28a.png" width="800"/>
+
+Commenting out the `Client A` lines and uncommenting the `Client B` lines will result in only `Client_B` rows appearing:
+
+<img src="assets/dcs29.png" width="800"/>
+
+Save the file `embed-api.js`.
+
+Refreshing the browser for the embed results in `Client_B` data being displayed from the second Snowflake connection:
+
+<img src="assets/dcs30a.png" width="800"/>
+
+We can now deploy a Sigma dashboard that is shared across multiple clients, ensuring data isolation through dynamic connection swapping in Sigma.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Use case 2: One Snowflake account, per customer databases
+Duration: 20
+
+For this use case, we will reuse much of the previous exercises learning but in this example we will have only one Snowflake account that has per-customer databases and a common schema.
+
+To support this use case we will need to use DCS, Sigma custom user attributes and custom SQL to ensure data isolation.
+
+### How it works
+
+When a user logs into the SaaS application, the application determines that the user belongs to Client_A (for example). 
+
+The embed URL for the Sigma dashboard is dynamically generated (by the [Embed API](https://help.sigmacomputing.com/docs/example-embed-api-and-url)) to include two user attributes:
+```code
+:eval_connection_id=<connectionId for client_a>; 
+:ua_schema_name=<schema name for client_a>;
+:external_user_team=CLIENT_A';
+```
+
+**User B:** 
+Similarly, when another user logs in and they belong to Client-B, their embed URL includes:
+```code
+:eval_connection_id=<connectionId for_Client_b>; 
+:ua_schema_name=<schema name for Client_b>;
+:external_user_team=CLIENT_B';
+```
+
+### Result
+Each user sees data only from their respective schema, ensuring data security and privacy. 
+
+Despite accessing different data sets, both users experience the same dashboard functionality because the underlying data structure is consistent across schemas.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Snowflake Configuration
+We have created the following Snowflake script to automate the process of creating users, roles and sample data, so that it is easy for us to demonstrate this use case. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> To avoid overlap with use case 1, we will be using "Client_C" and "Client_D" for this use case.
+</aside>
 
 If you are familiar with Snowflake scripts, highlight rows `1-91` and click the run icon.
 
@@ -172,41 +593,54 @@ Copy and paste this code into a new Snowflake Worksheet:
 USE ROLE ACCOUNTADMIN;
 
 // 1: CREATE OR REPLACE DATABASE AND SWITCH TO IT
-CREATE OR REPLACE DATABASE SIGMA_DCS;
-USE DATABASE SIGMA_DCS;
+CREATE OR REPLACE DATABASE SIGMA_DCS_USECASE_2;
+USE DATABASE SIGMA_DCS_USECASE_2;
+
+// DROP DATABASE SIGMA_DCS_USECASE_2;
 
 // 2: CREATE A NEW SCHEMA TO HOLD OUR FUTURE SAMPLE DATA TABLE:
-CREATE SCHEMA IF NOT EXISTS CLIENT_A;
-CREATE SCHEMA IF NOT EXISTS CLIENT_B;
+CREATE SCHEMA IF NOT EXISTS CLIENT_C;
+CREATE SCHEMA IF NOT EXISTS CLIENT_D;
 
-// 3: CREATE THE SAMPLE DATA TABLE SCHEMA after switching context to the respective schema
-CREATE OR REPLACE TABLE CLIENT_A.STORE_SALES (
-    order_number VARCHAR,
-    date DATETIME,
-    sku_number VARCHAR,
-    quantity VARCHAR,
-    cost VARCHAR,
-    price VARCHAR,
-    product_type VARCHAR,
-    product_family VARCHAR,
-    product_name VARCHAR,
-    store_name VARCHAR,
-    store_key VARCHAR,
-    store_region VARCHAR,
-    store_state VARCHAR,
-    store_city VARCHAR,
-    store_latitude VARCHAR,
-    store_longitude VARCHAR,
-    customer_name VARCHAR,
-    cust_key VARCHAR,
-    cust_json VARCHAR
+CREATE OR REPLACE TABLE CLIENT_C.STORE_SALES (
+    CLIENT_NAME VARCHAR,
+    STORE_REGION VARCHAR,
+    ORDER_NUMBER VARCHAR,
+    DATE TIMESTAMP,
+    SKU_NUMBER VARCHAR,
+    QUANTITY INT,
+    COST FLOAT,
+    PRICE FLOAT,
+    COGS FLOAT,
+    SALES FLOAT,
+    PROFIT FLOAT,
+    PROFIT_MARGIN FLOAT,
+    PRODUCT_TYPE VARCHAR,
+    PRODUCT_FAMILY VARCHAR,
+    PRODUCT_LINE VARCHAR,
+    BRAND VARCHAR,
+    PRODUCT_NAME VARCHAR,
+    STORE_NAME VARCHAR,
+    STORE_KEY VARCHAR,
+    STORE_STATE VARCHAR,
+    STORE_CITY VARCHAR,
+    STORE_ZIP_CODE VARCHAR,
+    STORE_LATITUDE FLOAT,
+    STORE_LONGITUDE FLOAT,
+    CUST_KEY INT,
+    CUSTOMER_NAME VARCHAR,
+    DAY VARCHAR,
+    WEEK VARCHAR,
+    MONTH VARCHAR,
+    QUARTER VARCHAR,
+    YEAR VARCHAR
 );
 
-CREATE OR REPLACE TABLE CLIENT_B.STORE_SALES LIKE CLIENT_A.STORE_SALES;
+CREATE OR REPLACE TABLE CLIENT_D.STORE_SALES LIKE CLIENT_C.STORE_SALES;
 
 // 4: CREATE STAGES FOR EXTERNAL STORAGE OF CSV FILES
-CREATE STAGE IF NOT EXISTS CLIENT_A_DATA URL='s3://sigma-quickstarts-main/embedding/Client_A_Store_Sales.csv';
-CREATE STAGE IF NOT EXISTS CLIENT_B_DATA URL='s3://sigma-quickstarts-main/embedding/Client_B_Store_Sales.csv';
+CREATE STAGE IF NOT EXISTS CLIENT_C_DATA URL='s3://sigma-quickstarts-main/embedding_2/Client_C_Store_Sales.csv';
+CREATE STAGE IF NOT EXISTS CLIENT_D_DATA URL='s3://sigma-quickstarts-main/embedding_2/Client_D_Store_Sales.csv';
 
 // 5: CSV FORMAT TO HANDLE HEADER ROW IN DATA FILES
 CREATE OR REPLACE FILE FORMAT my_csv_format
@@ -218,219 +652,236 @@ CREATE OR REPLACE FILE FORMAT my_csv_format
   NULL_IF = ('NULL', 'null');
 
 // 6: COPY DATA FROM STAGE TO RESPECTIVE TABLES
-COPY INTO CLIENT_A.STORE_SALES FROM @CLIENT_A_DATA FILE_FORMAT= my_csv_format;
-COPY INTO CLIENT_B.STORE_SALES FROM @CLIENT_B_DATA FILE_FORMAT= my_csv_format;
-
-// 7: CONFIRM DATA IS LANDED IN SNOWFLAKE TABLE:
-SELECT * FROM CLIENT_A.STORE_SALES; //EAST
-SELECT * FROM CLIENT_B.STORE_SALES; //SOUTH
+COPY INTO CLIENT_C.STORE_SALES FROM @CLIENT_C_DATA FILE_FORMAT= my_csv_format;
+COPY INTO CLIENT_D.STORE_SALES FROM @CLIENT_D_DATA FILE_FORMAT= my_csv_format;
 
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 2: ROLE AND USER CONFIGURATION
 // ----------------------------------------------------------------------------------------------------------
 
 // 1: CREATE ROLES FOR OUR USE CASES:
-CREATE OR REPLACE ROLE CLIENT_A;
-CREATE OR REPLACE ROLE CLIENT_B;
+CREATE OR REPLACE ROLE CLIENT_C;
+CREATE OR REPLACE ROLE CLIENT_D;
 
 // 2: CREATE USERS FOR EACH CLIENT
-CREATE USER CLIENT_A_USER PASSWORD = 'StrongPassword1!';
-CREATE USER CLIENT_B_USER PASSWORD = 'StrongPassword2!';
+CREATE OR REPLACE USER CLIENT_C_USER PASSWORD = 'StrongPassword1!';
+CREATE OR REPLACE USER CLIENT_D_USER PASSWORD = 'StrongPassword2!';
 
 // 3: GRANT ROLES TO USERS
-GRANT ROLE CLIENT_A TO USER CLIENT_A_USER;
-GRANT ROLE CLIENT_B TO USER CLIENT_B_USER;
+GRANT ROLE CLIENT_C TO USER CLIENT_C_USER;
+GRANT ROLE CLIENT_D TO USER CLIENT_D_USER;
 
 // 4: GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLES
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_A;
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_B;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_C;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CLIENT_D;
 
 // 5: GRANT USAGE PERMISSION ON THE DATABASE TO NEW ROLES:
-GRANT USAGE ON DATABASE SIGMA_DCS TO ROLE CLIENT_A;
-GRANT USAGE ON DATABASE SIGMA_DCS TO ROLE CLIENT_B;
+GRANT USAGE ON DATABASE SIGMA_DCS_USECASE_2 TO ROLE CLIENT_C;
+GRANT USAGE ON DATABASE SIGMA_DCS_USECASE_2 TO ROLE CLIENT_D;
 
 // 6: GRANT USAGE ON SCHEMA TO NEW ROLES:
-GRANT USAGE ON SCHEMA CLIENT_A TO ROLE CLIENT_A;
-GRANT USAGE ON SCHEMA CLIENT_B TO ROLE CLIENT_B;
+GRANT USAGE ON SCHEMA CLIENT_C TO ROLE CLIENT_C;
+GRANT USAGE ON SCHEMA CLIENT_D TO ROLE CLIENT_D;
 
 // 7: ALLOW NEW ROLES TO QUERY TABLES WE CREATED:
-GRANT SELECT ON ALL TABLES IN SCHEMA CLIENT_A TO ROLE CLIENT_A;
-GRANT SELECT ON ALL TABLES IN SCHEMA CLIENT_B TO ROLE CLIENT_B;
+GRANT SELECT ON ALL TABLES IN SCHEMA CLIENT_C TO ROLE CLIENT_C;
+GRANT SELECT ON ALL TABLES IN SCHEMA CLIENT_D TO ROLE CLIENT_D;
 
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 5:  TEST OUT ROLES AND SEE DIFFERENT RESULTS. *** RUN ONE ROLE AT A TIME ***
 // ----------------------------------------------------------------------------------------------------------
 
-// 1: GRANT TO ACCOUNTADMIN FOR TESTING
-GRANT ROLE CLIENT_A TO ROLE ACCOUNTADMIN;
-GRANT ROLE CLIENT_B TO ROLE ACCOUNTADMIN;
-
-// 2: AS CLIENT_A, VIEW STORE_SALES
-USE ROLE CLIENT_A;
-SELECT * FROM CLIENT_A.STORE_SALES; // SHOULD SHOW ROW DATA
-SELECT * FROM CLIENT_B.STORE_SALES; // SHOULD FAIL WITH "Schema 'SIGMA_DCS.CLIENT_B' does not exist or not authorized.""
-
-
-// 3: AS CLIENT_B, VIEW STORE_SALES
-USE ROLE CLIENT_B;
-SELECT * FROM CLIENT_B.STORE_SALES; // SHOULD SHOW ROW DATA
-SELECT * FROM CLIENT_A.STORE_SALES; // SHOULD FAIL WITH "Schema 'SIGMA_DCS.CLIENT_A' does not exist or not authorized.""
+// 2: AS CLIENT_C, VIEW STORE_SALES
+// SELECT * FROM SIGMA_DCS_USECASE_2.CLIENT_C.STORE_SALES; // SHOULD SHOW ROW DATA
+// SELECT * FROM CLIENT_D.STORE_SALES; // SHOULD SHOW ROW DATA
 ```
 
-One Snowflake is configured, we can move on to Sigma.
+Once Snowflake is configured, we can move on to Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Sigma Configuration 
-Duration: 20
+We will need to add two new connections in Sigma, each having their own `connectionId`, but use different Snowflake user and role configurations.
+
+We will reuse the `DCS QuickStart` workbook that we created earlier, but add a new page called `Use Case 2`. 
+
+We will create a new embed path for the new workbook page. 
+
+We will reuse the existing client teams, giving permission to one connection for one team.
 
 Log into Sigma as `Administrator`.
 
-### Create a Connection - Client-A
-Create a new connection in `Administration` > `Connections` and configure it for the TPCH_SF1 database.
+### Create Connections:<br>
+Create a new connection in `Administration` > `Connections` and configure it for the `SIGMA_DCS` database.
 
-Recall that the Role, User and Password where specified in the Snowflake script. Here they are again for convenance:
+Recall that the `Role`, `User` and `Password` where specified in the Snowflake script. Here they are again for convenance:
 
-**For Connection `Client_A`:**
-User: CLIENT_A_USER
-Role: CLIENT_A
+#### Connection `Client_C`:
+User: CLIENT_C_USER<br>
+Role: CLIENT_C<br>
 Password: StrongPassword1!
 
-**For Connection `Client_B`:**
-User: CLIENT_B_USER
-Role: CLIENT_B
+Create another connection for `Client_D`:
+
+#### Connection `Client_D`:
+User: CLIENT_D_USER<br>
+Role: CLIENT_D<br>
 Password: StrongPassword2!
 
-<img src="assets/dcs4.png" width="800"/>
+<img src="assets/dcs35.png" width="800"/>
 
 Verify the connection is providing the expected data isolation by clicking the `Browse Connection` button:
 
-<img src="assets/dcs5.png" width="800"/>
+<img src="assets/dcs36.png" width="800"/>
 
-Click the `Store Region` drop arrow and select `Column details` to see that only the expected region is exposed:
-
-<img src="assets/dcs6.png" width="800"/>
-
-<img src="assets/dcs7.png" width="800"/>
+Create the another connection to the same Snowflake account, but use the `User` and `Role` for `Client_D`.
 
 ### Connection IDs
 Before we try to test the embed, we need to get the ID of each of our client connections.
 
-Navigate to `Connections` and select the `Client_A` connection. The ID for Client_A is shown in the URL:
+Navigate to `Administration` > `Connections` and select the `Client_C` connection. The ID for Client_C is shown in the URL:
 
-<img src="assets/dcs17.png" width="800"/>
+<img src="assets/dcs37.png" width="800"/>
 
 For example, the id for this example is (your's will be different):
 ```code
-3FPtHAqcaJ8Hs8Xx0i9gKc
+e168cc27-50e9-4de3-81b6-32c8ff17d3b1
 ```
 
-Copy this and the connectionId for the "Client_B" connection off to a text file for use later.
+Copy this and the connectionId for the "Client_D" connection off to a text file for use later.
 
-### Optional
-While it is possible to build the Sigma dashboard that will common to all clients using just one of the "Client" connections, you can also create an additional connection that has access to all schemas in the `SIGMA_DCS` database. This can be useful when building as well as subsequent administrative tasks. 
+### Create Custom User Attributes
+Navigate in Sigma to  > `Administration` > `User Attributes` and click `Create Attribute`:
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> We provide this optional step for information only. Care must be taking to ensure that no client every has access to this connection to ensure data isolation. 
-</aside>
+<img src="assets/dcs21.png" width="800"/>
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+For Name, use `schema_name`, provide a useful description and the `Default Value` to `CLIENT_C`:
 
-## Common Dashboard
-Duration: 20
+<img src="assets/dcs38.png" width="800"/>
 
-We will not use a Sigma Template to create the common dashboard, based on the client data we created earlier in Snowflake. 
+### Create Teams
+Navigation to `Administration` > `Teams` and create add the `CLIENT_C` and `CLIENT_D` teams.
 
-In Sigma, navigate to `Templates` and select the `Plugs Electronics Profit Planning Tool`:
+<img src="assets/dcs41.png" width="800"/>
 
-<img src="assets/dcs8.png" width="800"/>
-
-Select `Swap now` on the next screen:
-
-<img src="assets/dcs9.png" width="800"/>
-
-We want to use one of the client connections we created earlier to drive this dashboard. 
-
-Sigma will try to match another connection and datasource if it can but if not, you can select the specific connection and manually match the datasource:
-
-<img src="assets/dcs10.png" width="800"/>
-
-When selecting manual match, we are presented with the current source/columns and a button that allows us to `Select Source` for the match. Click that:
-
-<img src="assets/dcs11.png" width="800"/>
-
-Under `Select Source`, expand `Sigma_DCS` > `Client_A` and click `STORE_SALES`. You could also have selected `Client_B` as the columns are the same.
-
-<img src="assets/dcs12.png" width="800"/>
-
-Notice that we have matches on 22/22 columns. This means we are good to go, and can click `Swap`.
-
-<img src="assets/dcs13.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> This interface allows for remapping of columns to handle source > destination terminology adjustments and so forth.
-</aside>
-
-We now have an un-saved dashboard and if we check the `Region` filter control, we only have access to the `East` region:
-
-<img src="assets/dcs14.png" width="800"/>
-
-Click `Save As` and name the workbook `DCS QuickStart`.
+No need to assign anyone to these teams now. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> This works because this dashboard is being driven off the data in the "Data" workbook page. Our Snowflake client data has the same column structure so it all just works. Very cool!.
+<strong>IMPORTANT:</strong><br> Users are added automatically to Sigma, when coming in via the embedding integration. They will be  added to the user database, assigned to the specified team and permissions by the Embed API. You will not have to manage Sigma embed users separately from your existing user management system, saving you time.
 </aside>
 
 ### Share with Team
-To be able to test this workbook, we need to share it with at least one team. We will use this team later when we test the embed.
+To be able to test this workbook, we need to share it with the two team. 
 
-In the `` workbook, click `Share`:
+In the drop menu for the workbook, click `Share`:
 
-<img src="assets/dcs17.png" width="800"/>
+<img src="assets/dcs42.png" width="800"/>
 
-Select an existing team, set the permission to `Can View` and select `Share`:
+Add the `CLIENT_C` and `CLIENT_C` teams. Det the permission to `Can View` and select `Share`:
 
 <img src="assets/dcs19.png" width="800"/>
 
-## Embed Configuration
+### Common Dashboard
+
+Click the `Crane` icon to return home and reopen the workbook `DCS QuickStart`.
+
+Add a new `page` and rename it to `Use Case 2`.
+
+Add a new `TABLE` > `New` > `WRITE SQL` and select the connection for `Client_C`.
+
+Paste the following SQL statement in the area `Enter Custom SQL`:
+```code
+SELECT * FROM SIGMA_DCS_USECASE_2.{{#raw system::CurrentUserAttributeText::schema_name}}.STORE_SALES
+```
+
+Click `Run` to see the results:
+
+<img src="assets/dcs39.png" width="800"/>
+
+We see rows for `Client_C` only. This is because we set the default value for the custom user attribute `schema_name` to `CLIENT_C`.
+
+Click `Save`.
+
+Click `Publish` in the workbook `DCS QuickStart`.
+
+### Embed Configuration
 
 Click as shown to access the `Embedding` options:
 
-<img src="assets/dcs15.png" width="800"/>
+<img src="assets/dcs15.png" width="500"/>
 
-Select `Entire Workbook`, and then click `Test`. 
+Select `Use Case 2`, and then copy the url off to a text file. We will use that shortly. 
 
-<img src="assets/dcs16.png" width="800"/>
+<img src="assets/dcs40.png" width="500"/>
 
-### Testing: Embed Sandbox
-Sigma provides a sandbox to allow for "in-product" testing of embed functionality. This saves developers time by allowing quick validation of all the various configuration options available. 
+![Footer](assets/sigma_footer.png)
 
-Read more about the [Embed Sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
+## Testing
 
-In the embed sandbox, we need to select a valid `Client credential` from the available list. 
+<aside class="negative">
+<strong>NOTE:</strong><br> If you already completed the first use case, you can skip to the "Start Testing" section below.
+</aside>
+
+For testing, we will use the same Node.js framework that was setup during the [QuickStart: ](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0).
+
+You will also need to provide embed client credentials. It is fine to reuse one that you created during the prerequisite QuickStart. 
 
 If you have not created [embed client credentials](https://help.sigmacomputing.com/docs/generate-embed-client-credentials) yet, go back and do that. 
 
-For `Mode`, make sure `Secure` is selected.
+### Start Testing
+Download the [project files for this use case here:](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_DCS_Usecase_2.zip)
 
-Select any team that is available. If you need to add one, see [Create and manage teams](https://help.sigmacomputing.com/docs/manage-teams)
+Unzip the folder `sigma_DCS_Usecase_2.zip` and open a Terminal session from it (right-click and select `):
 
-For email, we an use `embed_test@test.com`.
-
-Select `Viewer` as account type to keep this simple.
-
+<img src="assets/dcs45.png" width="400"/>
 
 
-![Footer](assets/sigma_footer.png)
+Run the command:
+```code
+supervisor embed-api.js
+```
+
+The expected response is:
+
+<img src="assets/dcs46.png" width="600"/>
+
+Open the file `embed-api.js` and update the values for `YOUR_EMBED_PATH`, `YOUR_EMBED_SECRET` and `YOUR_CLIENT_ID` for your configuration.
+
+`Save` the changes.
+
+Scroll to `section #5` in the file and study the searchParams for `Client C` and `Client D`. They are very similar, but not the same.
+
+Update the values for each client's eval_connection, using the `connectionId` that was created earlier in this QuickStart. 
+
+All other value can remain the same:
+
+<img src="assets/dcs47.png" width="800"/>
+
+Client D's searchParams are all commented out so when we check our embed in the browser, we will see only values for `Client_C` in the `East` region:
+```code 
+localhost:3000
+```
+
+<img src="assets/dcs43.png" width="800"/>
+
+Commenting out the `Client C` lines and uncommenting the `Client D` lines will result in only `Client_D` and `South` region rows to appear:
+
+Save the file `embed-api.js`.
+
+Refreshing the browser for the embed results in:
+
+<img src="assets/dcs44.png" width="800"/>
+
+We are now able to deploy embedded Sigma content, and restrict different clients based on a single Snowflake account and per-customer schemas.
+
+[Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to setup Sigma embedding using Dynamic Connection Swapping with Snowflake and the different use-cases where it could be useful.
+In this lab we learned how to setup Sigma embedding using Dynamic Connection Swapping with Snowflake and the different use-cases where it is useful.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
