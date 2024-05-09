@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-04-30
+lastUpdated: 2024-05-09
 
 # Embedding 13: Connection Swapping
 <!-- The above name is what appears on the website and is searchable. -->
@@ -164,15 +164,13 @@ We have created the following Snowflake script to automate the process of creati
 <strong>NOTE:</strong><br> It is recommended to run commands one at a time to ensure success.
 </aside>
 
-For example, in the screenshot below we highlight the command `USE ROLE ACCOUNTADMIN` and click the run icon in the upper right corner:
+For example, in the screenshot below we highlight the command `USE DATABASE SNOWFLAKE_SAMPLE_DATA;` and click the run icon in the upper right corner:
 
 <img src="assets/dcs2.png" width="500"/>
 
-If you are familiar with Snowflake scripts, you can just highlight rows `1-97` and click the run icon.
-
 First, log into the first Snowflake account as `ACCOUNTADMIN`.
 
-Open a new `Worksheet`.
+Open a new `SQL Worksheet`.
 
 Copy and paste this code into the worksheet:
 ```code
@@ -250,7 +248,7 @@ SELECT * FROM CLIENTS.STORE_SALES; //EAST
 CREATE OR REPLACE ROLE CLIENT_A;
 
 // 2: CREATE USERS FOR EACH CLIENT
-CREATE USER IF NOT EXISTS CLIENT_A_USER PASSWORD = 'StrongPassword2!';
+CREATE USER IF NOT EXISTS CLIENT_A_USER PASSWORD = 'StrongPassword1!';
 
 // 3: GRANT ROLES TO USERS
 GRANT ROLE CLIENT_A TO USER CLIENT_A_USER;
@@ -275,6 +273,8 @@ GRANT SELECT ON ALL TABLES IN SCHEMA SIGMA_DCS_USECASE_1.CLIENTS TO ROLE CLIENT_
 SELECT * FROM SIGMA_DCS_USECASE_1.CLIENTS.STORE_SALES; // SHOULD SHOW ROW DATA
 ```
 
+If you are familiar with Snowflake scripts, you can just highlight rows `1-97` and click the run icon.
+
 Execute the script. When it completes, you will see some row data:
 
 <img src="assets/dcs31.png" width="800"/>
@@ -286,7 +286,7 @@ Execute the script. When it completes, you will see some row data:
 #### Second Snowflake account
 We want to perform the same operations in the second account, adjusting the Snowflake script to load a different set of data into the same structure.
 
-Log into a second Snowflake account as `ACCOUNTADMIN` and paste this script into a new Worksheet:
+Log into a **second** Snowflake account as `ACCOUNTADMIN` and paste this script into a new Worksheet:
 ```code
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 1: DATA CONFIGURATION
@@ -352,7 +352,7 @@ CREATE OR REPLACE FILE FORMAT my_csv_format
 COPY INTO CLIENTS.STORE_SALES FROM @CLIENT_B_DATA FILE_FORMAT= my_csv_format;
 
 // 7: CONFIRM DATA IS LANDED IN SNOWFLAKE TABLE:
-SELECT * FROM CLIENTS.STORE_SALES; //EAST
+SELECT * FROM CLIENTS.STORE_SALES; //SOUTH
 
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 2: ROLE AND USER CONFIGURATION
@@ -362,7 +362,7 @@ SELECT * FROM CLIENTS.STORE_SALES; //EAST
 CREATE OR REPLACE ROLE CLIENT_B;
 
 // 2: CREATE USERS FOR EACH CLIENT
-CREATE USER IF NOT EXISTS CLIENT_B_USER PASSWORD = 'StrongPassword1!';
+CREATE USER IF NOT EXISTS CLIENT_B_USER PASSWORD = 'StrongPassword2';
 
 // 3: GRANT ROLES TO USERS
 GRANT ROLE CLIENT_B TO USER CLIENT_B_USER;
@@ -409,6 +409,7 @@ Recall that the `Role`, `User` and `Password` were specified in each Snowflake s
 Here they are again for convenience:
 
 #### CLIENT_A - Snowflake Account 1:
+Connection Name: CLIENT_A - Snowflake Account 1<br>
 User: CLIENT_A_USER<br>
 Role: CLIENT_A<br>
 Password: StrongPassword1!
@@ -416,6 +417,7 @@ Password: StrongPassword1!
 Create another connection for `Client_B`:
 
 #### CLIENT_B - Snowflake Account 2:
+Connection Name: CLIENT_B - Snowflake Account 2<br>
 User: CLIENT_B_USER<br>
 Role: CLIENT_B<br>
 Password: StrongPassword2!
@@ -672,7 +674,6 @@ COPY INTO CLIENT_C.STORE_SALES FROM @CLIENT_C_DATA FILE_FORMAT= my_csv_format;
 
 // 1: CREATE ROLES FOR OUR USE CASES:
 CREATE OR REPLACE ROLE CLIENT_C;
-CREATE OR REPLACE ROLE CLIENT_D;
 
 // 2: CREATE USERS FOR EACH CLIENT
 CREATE OR REPLACE USER CLIENT_C_USER PASSWORD = 'StrongPassword1!';
@@ -811,9 +812,12 @@ While the steps are similar to the first use case, there are a few adjustments w
  <ul>
       <li>Add new custom user attribute for schema name.</li>
       <li>Add new connections in Sigma.</li>
+      <li>Copy new connectionIds.</li>
+      <li>Create new teams.</li>
+      <li>Share workbook with new teams.</li>
       <li>Adjust the `DCS QuickStart` workbook that we created earlier, adding a new page called `Use Case 2`.</li>
       <li>Create a new embed path for the new workbook page.</li>
-      <li>Create new client teams.</li>
+
       <li>Download and adjust new project files.</li>
 </ul>
 
@@ -831,29 +835,27 @@ For Name, use `schema_name`, provide a useful description and the `Default Value
 ### Create Connections:<br>
 Create two new connections in `Administration` > `Connections` and configure them for the `SIGMA_DCS_USECASE_2` databases.
 
-Name the first connection `DCS QuickStart Use Case 2`.
-
 Recall that the `Role`, `User` and `Password` values where specified in the Snowflake script.
 
 Here they are again for convenience:
 
 #### CLIENT_C - Snowflake Account 1:
+Connection Name: CLIENT_C - Snowflake Account 1<br>
 User: CLIENT_C_USER<br>
 Role: CLIENT_C<br>
 Password: StrongPassword1!
-
-Create another connection for `Client_B`:
-
-#### CLIENT_D - Snowflake Account 2:
-User: CLIENT_D_USER<br>
-Role: CLIENT_D<br>
-Password: StrongPassword2!
 
 Verify the connection is providing the expected data isolation by clicking the `Browse Connection` button:
 
 <img src="assets/dcs36.png" width="800"/>
 
 Create the another connection to the same Snowflake account, but use the `User` and `Role` for `Client_D`.
+
+#### CLIENT_D - Snowflake Account 2:
+Connection Name: CLIENT_D - Snowflake Account 2<br>
+User: CLIENT_D_USER<br>
+Role: CLIENT_D<br>
+Password: StrongPassword2!
 
 ### Connection IDs
 Before we try to test the embed, we need to get the ID of each of our client connections.
@@ -867,7 +869,7 @@ For example, the id for this example is (your's will be different):
 e168cc27-50e9-4de3-81b6-32c8ff17d3b1
 ```
 
-Copy this and the connectionId for the "Client_D" connection off to a text file for use later.
+Copy this and the connectionId for the `Client_D` connection off to a text file for use later.
 
 ### Create Teams
 Navigation to `Administration` > `Teams` and create add the `CLIENT_C` and `CLIENT_D` teams.
@@ -897,6 +899,8 @@ Place the workbook in `edit` mode.
 Add a new `page` and rename it to `Use Case 2`.
 
 Add a new `TABLE` > `NEW` > `WRITE SQL` and select the connection for `Client_C`.
+
+Select the connection for `CLIENT_C - Snowflake Account 1`.
 
 Paste the following SQL statement in the area `Enter Custom SQL`:
 ```code
