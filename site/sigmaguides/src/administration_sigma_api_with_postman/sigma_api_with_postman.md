@@ -65,7 +65,7 @@ Give it the `name`, `description` and set the `visibility to Personal` for now. 
 
 <img src="assets/pm3.png" width="400"/>
 
-We want to create a new API and there are several ways to do that. In our case, we will use the `Import` option as we will grab the latest Sigma API release from our public Swagger page.
+We want to create a new API and there are several ways to do that. In our case, we will use the `Import` option as we will grab the latest Sigma API release from our public API Reference page.
 
 Click the `Collections` icon and click then the `Import` icon:
 
@@ -73,17 +73,17 @@ Click the `Collections` icon and click then the `Import` icon:
 
 Next we will need to get the link (URL) to the latest Sigma API. Open another browser tab.
 
-[Browse to the Sigma API Swagger.](https://docs.sigmacomputing.com/api/v2/?_gl=1*1mzzs1a*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwODAyNTc1NS41MTEuMC4xNzA4MDI1NzU1LjYwLjAuMA..)
+[Browse to the Sigma API Reference.](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-Click the button `View OpenAPI Spec (New Tab1)`:
+Click the button `Download the Sigma OpenAPI Definitions`:
 
 <img src="assets/pm6.png" width="800"/>
 
-Copy the URL from the address bar:
+Using Postman, click to `import` the downloaded file:
 
 <img src="assets/pm30.png" width="800"/>
 
-Paste the address into the Postman UI (in the link section) as shown and click `Import`:
+Drag and drop the downloaded file into the space provided by Postman and click `Import`:
 
 <img src="assets/pm31.png" width="500"/>
 
@@ -335,7 +335,7 @@ The API provides methods to *add/update/delete* a Sigma instance using `POST` me
 
 We will use the following code to configure a POST message to create a new connection in Sigma. 
 
-[You can get this code and more information here.](https://docs.sigmacomputing.com/#post-/v2/connections)
+[You can get this code and more information here.](https://help.sigmacomputing.com/reference/createconnection)
 
 **The values shown below are for example only:**
 
@@ -374,6 +374,8 @@ Logging into the Sigma portal we can see we have a new connection:
 Duration: 5
 
 We created a Postman account, created API token secrets in Sigma, imported the Sigma API to a new Postman API, configured authorization and tested GET and POST methods.
+
+Sigma also provides sample code for many common API use cases (called "Recipes"). You can read more about using [Sigma Recipes here.](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
