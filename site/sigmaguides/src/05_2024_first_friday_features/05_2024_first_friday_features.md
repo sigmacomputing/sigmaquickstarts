@@ -36,7 +36,6 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Administration
 Duration: 20
 
-Administrators can no longer circumvent UI restrictions to raise privileges of guest and embed users.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -118,12 +117,12 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
-### Embed Sigma's Documentation now supported
+### Embedding Sigma's documentation now supported
 Many customers provide useful information on how to best use Sigma workbooks directly in the workbook itself. 
 
 There are time when it can be used to embed specific Sigma documentation content from the Sigma help pages. 
 
-This is quit4e easy to do now using the [Embed` element](https://help.sigmacomputing.com/docs/intro-to-ui-elements#embed-element)
+This is quite easy to do now using the [Embed element](https://help.sigmacomputing.com/docs/intro-to-ui-elements#embed-element)
 
 For example, you may want to provide a basic introduction to your new users on how to get started with Sigma:
 
@@ -133,8 +132,7 @@ Another example is to provide the list of popular functions that are available:
 
 <img src="assets/fff_05_2024_2.png" width="800"/>
 
-
-
+Users will appreciate the time saved by avoiding opening another browser page to access documentation.
 
 ![Footer](assets/sigma_footer.png)
 
