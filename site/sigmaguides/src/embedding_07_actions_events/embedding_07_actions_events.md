@@ -59,7 +59,7 @@ Functioning examples of Sigma Events, embedded inside a Parent application.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## JavaScript Events 2 types
+## JavaScript Events Types
 Duration: 5
 
 In this QuickStart we will be demonstrating passing variables between the Parent application and Sigma. Sigma is embedded in the Parent application using HTML iframe(s). 
