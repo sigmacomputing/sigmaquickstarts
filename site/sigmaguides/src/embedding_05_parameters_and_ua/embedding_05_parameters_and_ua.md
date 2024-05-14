@@ -221,7 +221,8 @@ However, if the team is left completely blank, a this message will be shown inst
 
 <img src="assets/pua13.png" width="500"/>
 
-To learn more about [user access in Sigma, click here.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+To learn more about [user access in Sigma, click here.](https://quickstarts.sigmacomputing.com/guide/embedding_04_federated_access/index.html?index=..%2F..index#0)
+
 <img src="assets/horizonalline.png"/>
 
 **9: session_length:**<br> 
