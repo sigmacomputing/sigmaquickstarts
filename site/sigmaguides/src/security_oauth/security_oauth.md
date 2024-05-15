@@ -1,11 +1,11 @@
 author: pballai
 id: security_oauth
 summary: security_oauth
-categories: Administration
+categories: security
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: security
+tags: default
 lastUpdated: 2024-05-30
 
 # Open Authorization (OAuth)
@@ -119,14 +119,6 @@ Once the token is verified and the user is identified, Snowflake creates a sessi
 
 This process ensures that user credentials are never exposed directly to third-party applications. Instead, OAuth tokens are used to securely delegate access, providing a streamlined and secure method for connecting Sigma to Snowflake.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## OAuth with Snowflake
-Duration: 20
-
-In this section, we will demonstrate using OAuth with Snowflake.
-
 Configuring OAuth with Snowflake and Sigma will allow you to pass Snowflake roles to Sigma organization members. 
 
 This is accomplished by establishing a chain of trust between your IdP, Snowflake warehouse, and Sigma.
@@ -135,7 +127,13 @@ This is accomplished by establishing a chain of trust between your IdP, Snowflak
 <strong>NOTE:</strong><br> After you configure these three entities, you can enable OAuth on a per-connection basis in Sigma for any of your Snowflake connections.
 </aside>
 
-### IdP Configuration: 
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## IdP Configuration
+Duration: 20
+
+### Okta developers account
 In order to use OAuth with Sigma, we need to have administrative access to an IdP. We will demonstrate using Okta, but any of the other popular IdPs can be substituted. 
 
 Other popular IdP providers are Azure AD (Microsoft), Amazon AWS Identity and Access Management (IAM), Google Identity Platform, Auth0, OneLogin, Ping Identity and so on.
@@ -146,10 +144,9 @@ Other popular IdP providers are Azure AD (Microsoft), Amazon AWS Identity and Ac
 <strong>NOTE:</strong><br> We show the IdP setup as example. If you are already familiar with setting up your IdP, feel free to skip the section .......
 </aside>
 
-**1: Log in to Okta**
-Go to your Okta admin console and log in with your admin credentials.
+### Create a new application integration
 
-**2: Navigate to Applications**
+Go to your Okta admin console and log in with your admin credentials.
 
 From the Okta admin dashboard, scroll down and click the button to `Add App`
 
@@ -161,7 +158,7 @@ Click the `Create a new integration` button and select `OIDC - OpenID Connect` a
 
 Click `Next`.
 
-**3: Configure OpenID Connect Settings**
+### Configure OpenID connect
 
 Enter a name for your app, such as `Sigma OAuth QuickStart`.
 
@@ -191,7 +188,7 @@ Since we have not setup any groups or users, just select `Skip group assignment 
 
 <img src="assets/oa5.png" width="800"/>
 
-**4: Retrieve Client ID and Client Secret**
+### Retrieve Client ID and Client Secret
 
 After saving, you will be redirected to the application's settings page.
 
@@ -202,6 +199,109 @@ Under the `Client Credentials` section, save the `Client ID` and `Client Secret`
 These credentials are required for the Sigma configuration:
 
 <img src="assets/oa6.png" width="800"/>
+
+### Create an authorization server
+
+From the Okta admin dashboard, click on `Security` in the left-hand sidebar.
+
+Select `API` from the dropdown menu.
+
+In the `Authorization Servers` tab, click on the `Add Authorization Server` button:
+
+<img src="assets/oa9.png" width="800"/>
+
+Enter a name for your authorization server, such as `Sigma OAuth QuickStart Server.`
+
+Provide a description for the authorization server if desired.
+
+For `Audience`, we must provide the URL of the Snowflake account we intend to use with a Sigma connection. 
+
+For example: https://<your-snowflake-account>.snowflakecomputing.com
+
+Click `Save`:
+
+<img src="assets/oa10.png" width="800"/>
+
+After saving, Okta will return us to the `Sigma OAuth QuickStart Server` page. Scroll down to copy the `Metadata URI`:
+
+<img src="assets/oa11.png" width="800"/>
+
+Copy this value off for later use.
+
+Change the Issuer from `Dynamic` to the the Okta supplied URL:
+
+<img src="assets/oa13.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The supplied URL will be different for your Okta application.
+</aside
+
+Click `Save`.
+
+From the `Settings` page, copy the `Issuer URL` and paste it into a text file.
+
+Append the text `/v1/keys` to it. For example:
+```code
+https://dev-22485935.okta.com/oauth2/aush3ykxbpFJ6Qmby5d7/v1/keys
+```
+
+This URL represents the `JWKS URL` and will be used later. 
+
+### Configure Claims in Okta for Snowflake
+
+To correctly map the Snowflake username using claims in Okta, you'll need to define a claim that matches the expected format in Sigma and Snowflake. 
+
+Click on the `Claims` tab within the authorization server settings and click `Add Claim`:
+
+<img src="assets/oa14.png" width="800"/>
+
+Configure the claim as shown:
+
+<img src="assets/oa15.png" width="800"/>
+
+Click the `Create` button.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Snowflake Configuration
+Duration: 20
+
+Log in to your Snowflake account with the necessary `ACCOUNTADMIN` privileges.
+
+### Create a Security Integration:
+
+We will use the previously copied `Issuer URL` and `JWKS URL` in the Snowflake security integration configuration.
+
+
+Run the following script in a Snowflake SQL Worksheet, changing the values for `EXTERNAL_OAUTH_ISSUER`
+and `EXTERNAL_OAUTH_JWS_KEYS_URL` for your values:
+```code
+CREATE SECURITY INTEGRATION Sigma_Okta_security_integration
+TYPE = EXTERNAL_OAUTH
+ENABLED = TRUE
+EXTERNAL_OAUTH_TYPE = 'OKTA'
+EXTERNAL_OAUTH_ISSUER = 'YOUR VALUE'
+EXTERNAL_OAUTH_JWS_KEYS_URL = 'YOUR VALUE'
+EXTERNAL_OAUTH_AUDIENCE_LIST = ('https://api.sigmacomputing.com')
+EXTERNAL_OAUTH_TOKEN_USER_MAPPING_CLAIM = 'snowflake_username'
+EXTERNAL_OAUTH_SNOWFLAKE_USER_MAPPING_ATTRIBUTE = 'login_name'
+EXTERNAL_OAUTH_ANY_ROLE_MODE = 'ENABLE';
+```
+
+The expected result is:
+
+<img src="assets/oa16.png" width="800"/>
+
+
+**Explanation of each script parameter:**
+EXTERNAL_OAUTH_TYPE: Specifies the type of external OAuth provider (Okta in this case).
+EXTERNAL_OAUTH_ISSUER: The Issuer URL from your Okta authorization server.
+EXTERNAL_OAUTH_JWS_KEYS_URL: The JWKS URL for fetching the signing keys.
+EXTERNAL_OAUTH_AUDIENCE_LIST: Specifies the expected audience of the OAuth token.
+EXTERNAL_OAUTH_TOKEN_USER_MAPPING_CLAIM: The claim in the OAuth token that maps to the Snowflake user (usually sub for subject).
+EXTERNAL_OAUTH_SNOWFLAKE_USER_MAPPING_ATTRIBUTE: The Snowflake user attribute to map the OAuth claim to (login_name is commonly used, but this can be customized based on your setup).
+EXTERNAL_OAUTH_ANY_ROLE_MODE: Enables or disables the ability for the user to assume any role specified in the token.
 
 
 ![Footer](assets/sigma_footer.png)
@@ -224,29 +324,29 @@ To keep this simple for now, disable `Guest access` and `2-Factor Authentication
 
 <img src="assets/oa8.png" width="800"/>
 
-Scroll down and enter the values for `Metadata URI`, `Client ID` and `Client Secret`:
+Scroll down and enter the values for `Metadata URI`, `Client ID` and `Client Secret` we saved from Okta earlier, and click `Save`:
 
-
-
-
+<img src="assets/oa12.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## asdasd
+## Create New Sigma Connection
 Duration: 20
 
+In Sigma, navigate to `Administration` > `Connections` and click `Create Connection`.
+
+Configure a `Snowflake` connection using the name `OAuth QuickStart to Snowflake`.
+
+<img src="assets/oa17png" width="800"/>
+
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## asdasd
-Duration: 20
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-
-## What we've covere
+## What we've covered
 Duration: 5
 
 In this lab we learned how to.........
