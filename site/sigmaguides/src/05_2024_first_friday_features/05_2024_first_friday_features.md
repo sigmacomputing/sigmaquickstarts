@@ -43,6 +43,15 @@ Duration: 20
 Duration: 20
 
 
+
+
+
+
+
+
+
+
+
 ![Footer](assets/sigma_footer.png)
 
 ## Bug Fixes
