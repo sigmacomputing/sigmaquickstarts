@@ -40,12 +40,60 @@ No SQL or technical data skills are required for using Sigma.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
+## Snowflake Preparation
+Duration: 20
+
+Before we provision a new Sigma instance, we need to create a database in Snowflake where we will store data that will be created during the hackathon session.
+
+Log into your Snowflake trial account. 
+
+Using the sidebar, open a new `SQL Worksheet` and paste the following code into it:
+```code
+-- Use the appropriate warehouse
+USE WAREHOUSE COMPUTE_WH;
+
+-- Create the database Sigma
+CREATE DATABASE Sigma;
+
+-- Switch to using the Sigma database
+USE DATABASE SIGMA;
+
+-- Create the WRITE schema within the Sigma database
+CREATE SCHEMA WRITE;
+
+-- Grant usage on the database to the ACCOUNTADMIN role
+GRANT USAGE ON DATABASE SIGMA TO ROLE ACCOUNTADMIN;
+
+-- Grant various permissions on the WRITE schema to the ACCOUNTADMIN role
+GRANT USAGE, 
+      CREATE TABLE, 
+      CREATE VIEW, 
+      CREATE STAGE 
+ON SCHEMA WRITE 
+TO ROLE ACCOUNTADMIN;
+```
+
+Highlight the codeblock (item number 3) and click the run arrow:
+
+<img src="assets/hack10.png" width="800"/>
+
+This creates the table, schema and permission required for Sigma to write data back to Snowflake, when required.
+
+<img src="assets/hack11.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF OVERVIEW -->
+
+
 ## Provisioning Sigma
 Duration: 20
 
 ### Provisioning Sigma via Snowflake Partner Connect
 
-Log into Snowflake.
+Snowflake and Sigma have made it really simple to spin up a Sigma trial in just a few minutes, via Snowflake Partner Connect.
+
+Partner Connect is an integral part of the Snowflake console. 
 
 On the left hand side of the Snowflake UI, navigate to `Data Products`, then select `Partner Connect.` 
 
@@ -55,7 +103,7 @@ Click the icon for `Sigma.`
 
 You will see a dialog box that will show the objects that will be created in your Snowflake account by Sigma. 
 
-We will be using the `PC_SIGMA_WH` warehouse, `PC_SIGMA_DB` database, and the `PC_SIGMA_ROLE`, which are automatically created for you when you click `Connect:` 
+We will be using the `PC_SIGMA_WH` warehouse, `PC_SIGMA_DB` database, and the `PC_SIGMA_ROLE`, which are automatically created for you when you click `Connect`: 
 
 <img src="assets/hack2.png" width="800"/>
 
@@ -71,7 +119,11 @@ A message will appear that indicates "Your partner account has been created":
 
 Click `Activate`.
 
-Sigma will open in a new browser tab and prompt you to choose a name for the new Sigma Organization:
+Sigma will open in a new browser tab and prompt you to choose a name for the new Sigma Organization.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The organization name you choose must be unique.
+</aside>
 
 <img src="assets/hack5.png" width="800"/>
 
@@ -79,7 +131,7 @@ Once you have chosen a name, click `Continue.`
 
 Provide your `first name` and `last name` and `password` and click `Create`:
 
-<img src="assets/hack6.png" width="800"/>
+<img src="assets/hack6.png" width="500"/>
 
 You can ignore the IP whitelisting screen; click `Get Started Using Sigma.` 
 
@@ -144,6 +196,112 @@ On the top right corner is a box with your username initial. Clicking on it reve
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Basic Terminology
+Duration: 5
+
+Let’s begin by establishing some basic terminology Sigma uses. 
+
+A workbook is akin to an Excel file or Google Sheet.
+
+Each workbook can have many pages, which are akin to Excel worksheets.
+
+Each page can have anything from a simple table to a complete dashboard or data application.
+
+Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. 
+
+This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a workbook, at least one page and some data. Data can come from the cloud data warehouse or end user input, but will talk more about that later.
+
+The last feature we will mention now (there are SO MANY FEATURES) called controls. 
+
+A Sigma control is typically a drop list that filters the Page data (or individual item). There are many variations of controls, and all are really easy to use.
+
+Of course, this is all baseline terminology, and pretty easy to understand.
+
+The last point we will make on this topic is that there are different icons for different objects in Sigma. 
+
+For example here are the most common ones that you will see:
+
+<img src="assets/icons.png" width="400"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## High Level Stuff
+
+Click on `Templates` and then click the `Plugs Electronics Profit Planning Tool`. 
+
+[Workbook templates](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates) allow users to create and share workbook structures for quick and consistent reuse and further customization.
+
+<img src="assets/examplepageicon.png" width="800"/>
+
+Click `Dismiss` when asked about swapping to use your data.
+
+The `Plugs Profit Planning Tool` is a live data application the (fictitious) business uses to collaborate on price modeling and forecasting. 
+
+<img src="assets/hack12.png" width="800"/>
+
+This sample Workbook gives you an idea of what a dashboard could look like in Sigma.
+
+Use `Save As` to store a copy if this workbook as you see fit. 
+
+For example, you may want to have a copy just for yourself stored in `My Documents` or you may want to have a folder where you store workbooks that you intend to share with others. 
+
+Sigma has a full [role-based-access system](https://help.sigmacomputing.com/docs/create-and-manage-account-types) that allows for granular control over who can do and see information. 
+
+Would you like more information about Sigma? Navigate to the `Why Sigma?` workbook page at the bottom of the screen.
+
+<img src="assets/hack13.png" width="800"/>
+
+Notice that there another page that has the icon called `Data`?. This page has data that the main page uses to drive tables, visualization and controls, but will be hidden from users who do not have the elevated permission. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Using hidden data pages to drive workbook content is a great way to stay organized and is considered a best practice. 
+</aside>
+
+### Drill Anywhere
+Scroll down to the `Historical Profit and Margin` chart and right-click on one of the bars.
+
+Sigma lets you filter, drill-down, sort and access the underlying data in a single click:
+
+<img src="assets/hack14.png" width="800"/>
+
+This is built-in and automatic so that you you don't have to waste time configuring things over and over again.
+
+Want to see all the data?, click the `expand` arrows in the corner of any page element:
+
+<img src="assets/hack15.png" width="800"/>
+
+Now we can see all the table data that is driving the chart and manipulate at the lowest level of granularity.
+
+### Massive Data Scale 
+You might also notice that his table is over 2.3 million rows but even with a Snowflake X-small compute tier serving the data, performance is a non-issue. 
+
+Sigma has customers that routinely build dashboards against billions of rows of data.
+
+### Version History
+You may have noticed the `Publish` button in the upper right corner. Users can `edit` content and it is not shown to anyone else until it is published. 
+
+In addition to that, Sigma maintains a version history of all edits and published workbook versions so that you can easily revert anytime:
+
+<img src="assets/hack17.png" width="800"/>
+
+That is a VERY small preview of what is possible. 
+
+Now click the Sigma papercrane <img src="assets/crane.png" width="35"/> to return to the homepage where we will create some content of our own.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Creating Some Content
+Duration: 5
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## What we've covered
 Duration: 5
