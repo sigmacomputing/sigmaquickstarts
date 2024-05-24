@@ -432,6 +432,139 @@ If everything is correct, the page will return with no errors and your will see 
 
 Now that you have had some time wih Sigma, lets press that knowledge forward further while we also learn the power of Input Tables.
 
+### Forecast Adjustment
+
+In this use-case, Paula, the VP of EMEA sales, is running her End-of-Year forecast call where her country managers each call out the final numbers for the year. 
+
+She enters these into an Input Table which already has the targets for the year. 
+
+A map visualizes which countries are way off their targets.  
+
+She's also planning out the next year and adds growth numbers for each country. 
+
+This gets combined with a parameter that adjusts for inflation to show FY 23 vs 24 on a bar chart.
+
+The final version looks like this:
+
+![Alt text](assets/fa1.png)
+
+### How to build it:
+
+Open Sigma and create a new Workbook.
+
+Click `Save As` and name of the Workbook to `Input Table Use Cases`.
+
+Rename the default `Page 1` to `Forecast Adjustment`.
+
+<button>[Download the sample Country Manager data](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/input_tables/Forecasts+from+Country+Managers.xls)</button>
+
+Open the downloaded file in Excel (or Google Sheets). There should be 3 columns and 13 rows.
+
+Click the `+` and `Input Table` > `EMPTY` to the Page and rename it `Forecasts from Country Managers`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Input Tables store data back to the selected Warehouse. Write Access is required to support this functionality. Sigma is storing Input Table data separately and only using the Warehouse Connection you specify. Other warehouse data is unaffected. 
+</aside>
+
+Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+v` or `command+v` (for Macs) to paste the data.
+</aside>
+
+Notice that Sigma automatically identified the data types for you, saving time.
+
+<img src="assets/fa2.png" width="600"/>
+
+Add a new Visualization to the Page, use the Input Table as it data source, set it to `Map - Region` and drag the `Country` column up the Regions.
+
+We want this Map to show different colors for FY23 Targets vs FY23 Forecasts so we need to add a new Column to the data that represents this calculated value.
+
+In the Element Panel / Columns click the `+` icon and select `new column`.
+
+<img src="assets/fa3a.png" width="400"/>
+
+Set the formula for this column to:
+```plaintext
+([FY23 Forecasts] - [FY23 Targets]) / [FY23 Targets]
+```
+Your map configuration should look like this now:
+
+<img src="assets/fa3.png" width="800"/>
+
+The manager in Austria tells you she's cutting her forecast down to $10k because there was a strike at one of the factories.
+
+Update the input table and see the map change. Wait, we are not able to enter new values into the Input Table?
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Changes to Input Table data requires the Workbook be in Edit mode
+</aside>
+Edit the Workbook.
+
+Now change the FY23 Forecast value for Austria down to $10K and hit `Enter`.
+
+The Map changes automatically to reflect this revision.
+
+<img src="assets/fa3b.png" width="800"/>
+
+We can also change a value in the `Forecasts from Country Managers` Input Table / Column `Country Growth Adjustment` and see similar changes automatically reflected in the Chart.
+
+The Map will not change as it is not looking at FY24 projections.
+
+### Drive Input Table Values from Control
+
+We can also drive the Input Table from in-page Controls. For example we can add a Control that allows the user to set a value for a `Global Inflation Adjustment` and have that update a chart.
+
+Add a new `Number` Column to the Input Table and rename it to: `Country Growth Adjustment`. 
+
+Set the Column Type to be `Percent`.
+
+Add a new Control / `Text Box` to the Page. Rename it to `Global Inflation Adjustment`.
+
+Adjust it's properties as shown. The `Control ID` is case sensitive and it's current value will drive in calculations later:
+
+<img src="assets/fa6a.png" width="800"/>
+
+Set a value in the new Control `Global Inflation Adjustment` = .10 and hit return.
+
+Lets add a bar chart and compare the FY23 and FY24 forecasts (by country).
+
+Add a Visualization and configure it as follows (we will manually add a calculated column for the X-Axis Column shown for `F24 Forecast`):
+
+<img src="assets/fa4.png" width="800"/>
+
+Lets add that new column to the X-Axis (click the `+` icon to the right of the X-Axis in the Element Panel) and select `Add new column`.
+
+Set the formula bar for this new Column to:
+```plaintext
+(1 + [P_Global_Inflation] + Coalesce([Country Growth Adjustment], 0)) * [FY23 Forecasts]
+```
+
+Rename the new Column to `FY24 Forecasts`.
+
+Click on the County column (in the Element Panel / Y-Axis) and set a filter on this map to not show any null values. 
+
+The Chart and it's configuration now looks like this:
+
+<img src="assets/fa7.png" width="600"/>
+
+Publish your Page.
+
+After making any final tweaks you want to make to the layout of the page, it is ready, the VP can make some forecast changes.
+
+Inflation is **really** bad right now, so increase the `Global Inflation Adjustment` parameter from 0.10 to 0.15 and hit enter.
+
+The Bar Chart will respond, adjusting for the increase in inflation across the entirety of EMEA.
+
+The manager for the Czech Republic has resolved some supply chain issues and is reporting an anticipated 10% forecast lift.
+
+Enter the new value into the `Country Growth Adjustment` column for Czech Republic to reflect 10% uplift. Hit Enter and the Map and Chart update automatically to reflect the increase:
+
+<img src="assets/fa8.png" width="600"/>
+
+<aside class="postive">
+<strong>The VP Loves it!</strong><br> Input Tables allows the VP to not only review the current and next year forecast for her territory, it also allows her to update it for real changes as well as do some "what-if-analysis" to help her make critical decisions in real time. Corporate Governance is maintained since the source data does not change and everything stays in the corporate cloud data warehouse, even the Input Table and it's values.
+</aside>
 
 
 
@@ -444,13 +577,14 @@ Now that you have had some time wih Sigma, lets press that knowledge forward fur
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to.........
-
-INSERT FINAL IMAGE OF BUILD IF APPROPRIATE
+In this QuickStart we have learned about the power of Sigma and Snowflake and just how easy it is anyone with basic spreadsheet skills to accomplish more in less time and at any scale.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
+[Other Snowflake Summit sessions.](https://reg.summit.snowflake.com/flow/snowflake/summit24/sessions/page/catalog/session/1710875911333001BsCF)
+
+**Sigma Resources:**<br>
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
