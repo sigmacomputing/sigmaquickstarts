@@ -43,7 +43,7 @@ We have made it easier to serve Sigma users in your organization and consumers o
 
 Sigma admins can create organization-wide `translation files` to translate custom strings that are common across workbooks in an organization, saving time and ensuring a consistent experience. 
 
-<img src="assets/fff_05_2024_6.png" width="800"/>
+<img src="assets/fff_05_2024_6.png" width="400"/>
 
 Workbook owners inherit the organization-level translations and can override and supplement them with translations unique to an individual workbook. For more information, see:
 
@@ -177,8 +177,7 @@ Duration: 20
 ## New QuickStarts in May
 Duration: 20
 
-### 
-Sigma REST API Recipes
+### Sigma REST API Recipes
 
 This [QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?_gl=1*2dnp9q*_ga*ODgwOTI4NTIyLjE3MTM1NjI2OTE.*_ga_PMMQG4DCHC*MTcxNjU3MzM1OC4yOC4xLjE3MTY1NzM0MTMuNS4wLjA.#0) is designed to support Sigma's API Recipes and demonstrates many common operations that customers may use the REST API for.
 
@@ -238,7 +237,7 @@ For more information about reference marks, see [Display chart reference marks.]
 ### Donut hole value in donut charts
 Display an aggregate value within the hole of a donut chart to add more context to your visualization.
 
-<img src="assets/fff_05_2024_7.png" width="800"/>
+<img src="assets/fff_05_2024_7.png" width="400"/>
 
 For details about adding a donut hole value, see [Pie and donut charts.](https://help.sigmacomputing.com/docs/pie-and-donut-charts)
 
