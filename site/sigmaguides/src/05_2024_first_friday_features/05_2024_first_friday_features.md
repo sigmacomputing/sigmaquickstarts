@@ -199,6 +199,8 @@ For more information about buttons, see [Create a button element.](https://help.
 Duration: 20
 
 ### Enhanced SQL editor (Beta)
+We have added a new, in-line SQL editor that allows SQL users to write their code directly in the workbook, and reference / build on top of other elements in the workbook.
+
 Use the new SQL editor—featuring a more integrated and collaborative experience—to build workbooks, datasets, and elements (tables, pivot tables, and visualizations) with custom SQL.
 
 <aside class="positive">
