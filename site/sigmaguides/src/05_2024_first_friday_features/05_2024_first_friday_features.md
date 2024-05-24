@@ -74,6 +74,13 @@ The following Recipes are available today:
 
 <img src="assets/recipeslist.png" width="800"/>
 
+### SUPPORT_CHATS audit log dimension table
+We have added a new log table that provides reference information about user interactions with Sigma's live chat support feature.
+
+The `SIGMA_SHARED` schema in the Sigma `Audit Logs` connection now features a `SUPPORT_CHATS` dimension table containing information about individual live chat conversations, including timestamp, user name, user email, and the full chat transcript.
+
+Customers can build a dashboard or report that includes this information to allow others to access or be updated on support status.
+
 ![Footer](assets/sigma_footer.png)
 
 ## Bug Fixes
@@ -81,6 +88,8 @@ Duration: 20
 
 **1:** Administrators can no longer circumvent UI restrictions to raise privileges of guest and embed users.<br><br>
 **2:** Sigma no longer throws an error when multiple embeds attempt to add a new user at the same time.<br><br>
+**3:** In the `Administration` > `Embeds` page, you can now successfully preview an embed in the `Embed Sandbox` when you click `More` and select `Test embed`.<br><br>
+**4:** When viewing an individual embed user's profile in the `Administration` > `People` page, the `Edit member` and account type modal now displays "Embed user" in the Account type field instead of “Invalid selection.”<br><br>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -146,6 +155,17 @@ workbook:published
 
 For more information, see [Implement inbound and outbound events in embeds.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
 
+
+
+### nodeType property for workbook:selectednodeid:update
+We have added the ability to programmatically determine whether a selected node is a page or an element by referencing the nodeType property in the inbound event.
+
+```code 
+workbook:selectednodeid:update
+```
+
+For more information, see [Available inbound events.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds#workbookselectednodeidupdate)
+
 ![Footer](assets/sigma_footer.png)
 
 ## Functions
@@ -178,6 +198,49 @@ For more information about buttons, see [Create a button element.](https://help.
 
 ## Workbooks
 Duration: 20
+
+### Enhanced SQL editor (Beta)
+Use the new SQL editor—featuring a more integrated and collaborative experience—to build workbooks, datasets, and elements (tables, pivot tables, and visualizations) with custom SQL.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The new SQL editor replaces a previous, more limited SQL editing feature. This is a public beta feature that’s subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+The `Beta` release includes the following enhanced capabilities:
+
+ <ul>
+      <li> Toggle to an inline SQL editor view within any SQL-based workbook element, and expand the element to enter full screen mode.</li>
+      <li> Collaborate with other workbook developers in a live editing environment.</li>
+      <li> Use search and replace functionality within the custom SQL.</li>
+      <li> Apply autocomplete suggestions featuring improved performance.</li>
+      <li> View and access custom SQL from the workbook Lineage view.</li>
+
+</ul>
+
+For more information about using custom SQL directly in Sigma, see [Write custom SQL.](https://help.sigmacomputing.com/docs/write-custom-sql)
+
+For a video demonstration, [click here.](https://www.loom.com/share/4ae2e65a1d18447b867e209d7f6e1887?sid=bd5366a2-a372-4396-b437-e8b6f7e43bef)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma is continually working to improve usability for our customers. We want Sigma to not only be simple to use, but also beautiful looking.
+</aside>
+
+### Data labels in maps
+Add one or more columns to generate data labels in point and region maps. This update makes it easier to quickly view at-a-glance details directly in the element.
+
+For more information, see [Display chart data labels.](https://help.sigmacomputing.com/docs/display-chart-data-labels)
+
+### Custom formula aggregations in chart reference marks
+You can now specify a `custom formula aggregation` when configuring reference marks in charts.
+
+For more information about reference marks, see [Display chart reference marks.](https://help.sigmacomputing.com/docs/display-chart-reference-marks)
+
+### Donut hole value in donut charts
+Display an aggregate value within the hole of a donut chart to add more context to your visualization.
+
+<img src="assets/fff_05_2024_7.png" width="800"/>
+
+For details about adding a donut hole value, see [Pie and donut charts.](https://help.sigmacomputing.com/docs/pie-and-donut-charts)
 
 ### Embedding Sigma's documentation now supported
 Many customers provide useful information on how to best use Sigma workbooks directly in the workbook itself. 
