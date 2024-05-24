@@ -212,7 +212,9 @@ Analysis and presentation are now seamlessly integrated in a spreadsheet-like ex
 
 This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a workbook, at least one page and some data. Data can come from the cloud data warehouse or end user input, but will talk more about that later.
 
-The last feature we will mention now (there are SO MANY FEATURES) called controls. 
+One particular may be new to users of traditional BI products. This feature, called `Input Tables` allow data to be captured from the user, and stored in the warehouse. In addition, data in an Input Table can be joined (via a [lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)) to other warehouse tables. This enables many powerful use cases, a few are covered in this ]QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
+
+The last feature we will mention now (there are **SO MANY FEATURES**) called `Controls`. 
 
 A Sigma control is typically a drop list that filters the Page data (or individual item). There are many variations of controls, and all are really easy to use.
 
@@ -286,7 +288,7 @@ In addition to that, Sigma maintains a version history of all edits and publishe
 
 <img src="assets/hack17.png" width="800"/>
 
-That is a VERY small preview of what is possible. 
+That is a **VERY** small preview of what is possible. 
 
 Now click the Sigma papercrane <img src="assets/crane.png" width="35"/> to return to the homepage where we will create some content of our own.
 
@@ -295,6 +297,142 @@ Now click the Sigma papercrane <img src="assets/crane.png" width="35"/> to retur
 
 ## Creating Some Content
 Duration: 5
+
+After returning to the homepage, click the `+ Create New` icon and click `Workbook`:
+
+<img src="assets/hack18.png" width="300"/>
+
+On the left side we are presented the `Element panel`. This is where various types of objects can be added to a workbook live. It is also where elements that have been added can be configured, upon selection of any workbook element on a page. 
+
+Click `Table`.
+
+Type `Plugs` into the `Select source` search and click the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA`:
+
+<img src="assets/hack19.png" width="800"/>
+
+The new workbook opens with the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` tables added to it. 
+
+Notice that the workbook is not yet saved and is open in `Edit` mode so that we can modify it as needed.
+
+In the image below, we have highlighted areas of functionality that are most often used and frankly, they are pretty self-explanatory. 
+
+Click on any of them to discover what they do and additional content menus.
+
+Simple things like drag and dropping columns for reordering can be done on either the table, or the `COLUMNS` listing in the sidebar. 
+
+There is a **TON** of functionality in this simple interface, and we won't cover much of it now, but definitely explore. If you make some change you don't like, click the back arrow (numbered item 8) to undo the last action(s).
+
+<img src="assets/hack20.png" width="800"/>
+
+Let's use this table as the basis for other content.
+
+Rename the Page to `Data` and click the `+` to add a new page:
+
+<img src="assets/hack26.png" width="800"/>
+
+### Add a column
+Click the `Price` column's down-arrow and select `Add new column`:
+
+<img src="assets/hack21.png" width="800"/>
+
+In the `Function bar`, type the formula:
+```code
+Price-Cost
+```
+
+<img src="assets/hack22.png" width="800"/>
+
+and hit `Enter`. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Did you notice while you were typing Sigma's formula bar was constantly providing you with valid, content-based assistance? This is really useful as you begin to use more complex formulas. 
+</aside>
+
+The new column is added, but we need to click to format the data in two decimal and currency:
+
+Renaming columns is just a double-click on the name and type `Profit`:
+
+<img src="assets/hack23.png" width="800"/>
+
+### Grouping
+
+Click to the new page and create a new table, but this time, we will base it off the table that is on the `Data` page instead of getting it from the warehouse:
+
+<img src="assets/hack27.png" width="800"/>
+
+Maybe we want to group the data by `Region`. Simply drag the `Store Region` column (in the element panel) to the `GROUPINGS` section:
+
+<img src="assets/grouping.gif">
+
+Add a new column as before, but this time, click on the `Store Region` column and use the formula:
+```code
+sum(Profit)
+```
+
+<img src="assets/hack24.png" width="800"/>
+
+Now we have profit for each region:
+
+<img src="assets/hack25.png" width="800"/>
+
+### Visualization
+
+Let's add a bar chart:
+
+<img src="assets/barchart.gif">
+
+Sigma supports all the common chart types and you can [read more about that here.](https://help.sigmacomputing.com/docs/intro-to-visualizations)
+
+### Pivot Table
+
+This time, let's add a new `Pivot Table` and base it off our table in the `Data` page as before:
+
+<img src="assets/hack28.png" width="800"/>
+
+Configuring the new pivot is not much different that we have already done with groupings, using drag and drop to select columns.
+
+We can easily get the count of items sold for each brand by using these columns:
+
+<img src="assets/hack29.png" width="800"/>
+
+Click the `Save As` button and give your workbook a useful name.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Enable Write Access
+Duration: 5
+
+Earlier on in this QuickStart we covered setting up write access to Snowflake.
+
+We now can configure Sigma's connection to Snowflake to use that configuration.
+
+In Sigma, navigate to `Administration` > `Connections` and click the `Edit` button:
+
+<img src="assets/hack30.png" width="800"/>
+
+Scroll down to `Write Access` and enable it. 
+
+Add the values for `Write database` and `Write schema` as shown:
+
+<img src="assets/hack31.png" width="800"/>
+
+Enter your password that you use to login into your Snowflake trial account.
+
+Click the `Save` button in the upper right corner.
+
+If everything is correct, the page will return with no errors and your will see `Write access` in enabled:
+
+<img src="assets/hack32.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Input Tables
+
+Now that you have had some time wih Sigma, lets press that knowledge forward further while we also learn the power of Input Tables.
+
+
 
 
 
