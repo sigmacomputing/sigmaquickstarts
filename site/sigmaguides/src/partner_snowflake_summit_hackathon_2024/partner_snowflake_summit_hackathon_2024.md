@@ -3,7 +3,7 @@ id: partner_snowflake_summit_hackathon_2024
 summary: partner_snowflake_summit_hackathon_2024
 categories: partners
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 1024-05-24
