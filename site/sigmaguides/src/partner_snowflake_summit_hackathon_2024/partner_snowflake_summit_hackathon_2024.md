@@ -40,50 +40,6 @@ No SQL or technical data skills are required for using Sigma.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## Snowflake Preparation
-Duration: 20
-
-Before we provision a new Sigma instance, we need to create a database in Snowflake where we will store data that will be created during the hackathon session.
-
-Log into your Snowflake trial account. 
-
-Using the sidebar, open a new `SQL Worksheet` and paste the following code into it:
-```code
--- Use the appropriate warehouse
-USE WAREHOUSE COMPUTE_WH;
-
--- Create the database Sigma
-CREATE DATABASE Sigma;
-
--- Switch to using the Sigma database
-USE DATABASE SIGMA;
-
--- Create the WRITE schema within the Sigma database
-CREATE SCHEMA WRITE;
-
--- Grant usage on the database to the ACCOUNTADMIN role
-GRANT USAGE ON DATABASE SIGMA TO ROLE ACCOUNTADMIN;
-
--- Grant various permissions on the WRITE schema to the ACCOUNTADMIN role
-GRANT USAGE, 
-      CREATE TABLE, 
-      CREATE VIEW, 
-      CREATE STAGE 
-ON SCHEMA WRITE 
-TO ROLE ACCOUNTADMIN;
-```
-
-Highlight the codeblock (item number 3) and click the run arrow:
-
-<img src="assets/hack10.png" width="800"/>
-
-This creates the table, schema and permission required for Sigma to write data back to Snowflake, when required.
-
-<img src="assets/hack11.png" width="800"/>
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF OVERVIEW -->
 
 
 ## Provisioning Sigma
@@ -92,6 +48,8 @@ Duration: 20
 ### Provisioning Sigma via Snowflake Partner Connect
 
 Snowflake and Sigma have made it really simple to spin up a Sigma trial in just a few minutes, via Snowflake Partner Connect.
+
+Log into your Snowflake trial account.
 
 Partner Connect is an integral part of the Snowflake console. 
 
@@ -141,6 +99,48 @@ This will open Sigma in a new tab, and you are ready to start exploring.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Snowflake Preparation
+Duration: 20
+
+Before we provision a new Sigma instance, we need to create a database in Snowflake where we will store data that will be created during the Hackathon session.
+
+Log into your Snowflake trial account. 
+
+Using the sidebar, open a new `SQL Worksheet` and paste the following code into it:
+```code
+-- Use the appropriate warehouse
+USE WAREHOUSE COMPUTE_WH;
+
+-- Switch to using the Sigma database
+USE DATABASE PC_SIGMA_DB;
+
+-- Create the WRITE schema within the Sigma database
+CREATE SCHEMA WRITE;
+
+-- Grant usage on the database to the ACCOUNTADMIN role
+GRANT USAGE ON DATABASE PC_SIGMA_DB TO ROLE ACCOUNTADMIN;
+
+-- Grant various permissions on the WRITE schema to the ACCOUNTADMIN role
+GRANT USAGE, 
+      CREATE TABLE, 
+      CREATE VIEW, 
+      CREATE STAGE 
+ON SCHEMA WRITE 
+TO ROLE ACCOUNTADMIN;
+```
+
+Highlight the codeblock (item number 3) and click the run arrow:
+
+<img src="assets/hack10.png" width="800"/>
+
+This creates the table, schema and permission required for Sigma to write data back to Snowflake, when required.
+
+We will configure write access in Sigma later on.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF OVERVIEW -->
+
 
 ## Getting around in the UI
 Duration: 5
@@ -476,6 +476,10 @@ Notice that Sigma automatically identified the data types for you, saving time.
 
 <img src="assets/fa2.png" width="600"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Change the `F23 Targets` and F23 Forecasts` columns to currency.
+</aside>
+
 Add a new Visualization to the Page, use the Input Table as it data source, set it to `Map - Region` and drag the `Country` column up the Regions.
 
 We want this Map to show different colors for FY23 Targets vs FY23 Forecasts so we need to add a new Column to the data that represents this calculated value.
@@ -488,11 +492,14 @@ Set the formula for this column to:
 ```plaintext
 ([FY23 Forecasts] - [FY23 Targets]) / [FY23 Targets]
 ```
+
+Rename the new column to `Forecast vs Target`.
+
 Your map configuration should look like this now:
 
 <img src="assets/fa3.png" width="800"/>
 
-The manager in Austria tells you she's cutting her forecast down to $10k because there was a strike at one of the factories.
+The manager in France tells you she's cutting her forecast down to $200k because there was a strike at one of the factories.
 
 Update the input table and see the map change. Wait, we are not able to enter new values into the Input Table?
 
@@ -501,74 +508,19 @@ Update the input table and see the map change. Wait, we are not able to enter ne
 </aside>
 Edit the Workbook.
 
-Now change the FY23 Forecast value for Austria down to $10K and hit `Enter`.
+Now change the FY23 Forecast value for France down to $200K and hit `Enter`.
 
 The Map changes automatically to reflect this revision.
 
+Lower the map opacity as shown in the image below to reveal the country names:
+
 <img src="assets/fa3b.png" width="800"/>
 
-We can also change a value in the `Forecasts from Country Managers` Input Table / Column `Country Growth Adjustment` and see similar changes automatically reflected in the Chart.
+This is just a simple example of what is possible with Sigma Input Tables. 
 
-The Map will not change as it is not looking at FY24 projections.
+If you are interested in seeing other user cases, [see this QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
-### Drive Input Table Values from Control
-
-We can also drive the Input Table from in-page Controls. For example we can add a Control that allows the user to set a value for a `Global Inflation Adjustment` and have that update a chart.
-
-Add a new `Number` Column to the Input Table and rename it to: `Country Growth Adjustment`. 
-
-Set the Column Type to be `Percent`.
-
-Add a new Control / `Text Box` to the Page. Rename it to `Global Inflation Adjustment`.
-
-Adjust it's properties as shown. The `Control ID` is case sensitive and it's current value will drive in calculations later:
-
-<img src="assets/fa6a.png" width="800"/>
-
-Set a value in the new Control `Global Inflation Adjustment` = .10 and hit return.
-
-Lets add a bar chart and compare the FY23 and FY24 forecasts (by country).
-
-Add a Visualization and configure it as follows (we will manually add a calculated column for the X-Axis Column shown for `F24 Forecast`):
-
-<img src="assets/fa4.png" width="800"/>
-
-Lets add that new column to the X-Axis (click the `+` icon to the right of the X-Axis in the Element Panel) and select `Add new column`.
-
-Set the formula bar for this new Column to:
-```plaintext
-(1 + [P_Global_Inflation] + Coalesce([Country Growth Adjustment], 0)) * [FY23 Forecasts]
-```
-
-Rename the new Column to `FY24 Forecasts`.
-
-Click on the County column (in the Element Panel / Y-Axis) and set a filter on this map to not show any null values. 
-
-The Chart and it's configuration now looks like this:
-
-<img src="assets/fa7.png" width="600"/>
-
-Publish your Page.
-
-After making any final tweaks you want to make to the layout of the page, it is ready, the VP can make some forecast changes.
-
-Inflation is **really** bad right now, so increase the `Global Inflation Adjustment` parameter from 0.10 to 0.15 and hit enter.
-
-The Bar Chart will respond, adjusting for the increase in inflation across the entirety of EMEA.
-
-The manager for the Czech Republic has resolved some supply chain issues and is reporting an anticipated 10% forecast lift.
-
-Enter the new value into the `Country Growth Adjustment` column for Czech Republic to reflect 10% uplift. Hit Enter and the Map and Chart update automatically to reflect the increase:
-
-<img src="assets/fa8.png" width="600"/>
-
-<aside class="postive">
-<strong>The VP Loves it!</strong><br> Input Tables allows the VP to not only review the current and next year forecast for her territory, it also allows her to update it for real changes as well as do some "what-if-analysis" to help her make critical decisions in real time. Corporate Governance is maintained since the source data does not change and everything stays in the corporate cloud data warehouse, even the Input Table and it's values.
-</aside>
-
-
-
-
+To learn more about Input Tables, [see the documentation.](https://help.sigmacomputing.com/docs/intro-to-input-tables)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
