@@ -429,6 +429,7 @@ If everything is correct, the page will return with no errors and your will see 
 <!-- END OF SECTION-->
 
 ## Input Tables
+Duration: 5
 
 Now that you have had some time wih Sigma, lets press that knowledge forward further while we also learn the power of Input Tables.
 
@@ -521,6 +522,40 @@ This is just a simple example of what is possible with Sigma Input Tables.
 If you are interested in seeing other user cases, [see this QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
 To learn more about Input Tables, [see the documentation.](https://help.sigmacomputing.com/docs/intro-to-input-tables)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Add Cybersyn datasets from Snowflake Marketplace
+Duration: 5
+
+If you have not already added the Cybersyn datasets to your Snowflake account, add them from the Snowflake Marketplace. 
+
+There are two datasets we want to add:
+
+[Government Essentials](https://app.snowflake.com/marketplace/listing/GZTSZAS2KGK/cybersyn-government-essentials)
+
+[Financial & Economic Essentials](https://app.snowflake.com/marketplace/listing/GZTSZAS2KF7/cybersyn-financial-economic-essentials)
+
+Click each link above and then click the `Get` button:
+
+<img src="assets/hack34.png" width="800"/>
+
+Select the `Government_Essentials` database and `PC_SIGMA_ROLE` and click `Get`:
+
+<img src="assets/hack35.png" width="500"/>
+
+The data will be added to your Snowflake account:
+
+<img src="assets/hack36.png" width="800"/>
+
+The data will appear in Sigma once you refresh the Snowflake connection:
+
+<img src="assets/hack37.png" width="800"/>
+
+Select a table and click `Explore`. Now your off to the races:
+
+<img src="assets/hack38.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

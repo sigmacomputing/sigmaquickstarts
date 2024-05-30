@@ -155,10 +155,12 @@ There are different icons for different objects in Sigma. For example here are t
 
 Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
 ![Alt text](assets/plugshomepage.png)
-This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left. `Click into them` to see what information is available QuickStart. Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
+
+This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left.
+
+Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
 
 When you are done, click the Sigma icon to go Home. 
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WOOKBOOKS DATASETS AND PAGES -->
@@ -176,7 +178,7 @@ We can see all the different database samples available to my user account but t
 
 <img src="assets/sigmasampledatabase2.png" width="800"/>
 
-Select the `RETAIL` schema and the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 22 columns**.
+Select the `RETAIL` schema and the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. We now have a direct view into the Snowflake database table. Notice that the data is loaded onto the Canvas. The name is shown at the top middle of the screen and the total row count is about **4.58 million rows in 23 columns**.
 
 <img src="assets/plugstable.png" width="800"/>
 
