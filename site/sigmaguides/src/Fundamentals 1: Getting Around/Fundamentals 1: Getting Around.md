@@ -15,12 +15,6 @@ Duration: 6
 
 This QuickStart is part of a series designed to provide new users with an overview of Sigma, helping them quickly get up to speed and start leveraging its powerful capabilities.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The first thing to remember about Sigma is that its user interface is designed to be instantly familiar to business users with experience working with spreadsheets.
-</aside>
-
-Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
-
 The fundamental series of QuickStarts is designed to address a wide audience with varying skill sets. To support this, we have included many useful links to other relevant content. You don’t need to read everything, but feel free to explore anything that piques your interest.
 
 Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
@@ -28,6 +22,25 @@ Each QuickStart in the series will use sample data Sigma provides to all custome
 We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from other sources.
 
 The other “Fundamentals” QuickStarts explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The first thing to remember about Sigma is that its user interface is designed to be instantly familiar to business users with experience working with spreadsheets.
+</aside>
+
+### About Sigma
+Sigma is the data workspace for everyone, allowing you to perform analysis in spreadsheets, build dashboards and reports, run your business with data applications, and even monetize your business through embedding.
+
+There are many providers that provide BI solutions but Sigma is different; here's how.
+
+Sigma isn’t designed for a single skill-set;it’s multi-modal. If you are a data engineer, you can write SQL and build a chart from that. If you are a data scientist you can write Python. If you are a business user you can use spreadsheet functions.
+
+Sigma is he first-and-only platform to allow users to securely write back data to rows or columns without writing over the data in the warehouse.
+
+Sigma enables collaboration; it’s about solving problems with team members of various skills. Just like in a game, teams expect to be able to work together, in real time, on live data. 
+
+
+
+As a development team building Sigma assets to embed in your platform you are able to freely build using any sigma feature, and without having to manually create elements with code. This full feature parity and the lack of necessary coding makes Sigma the fastest, most flexible and powerful embedding tool in the market.
 
  ### Sigma Target Audience
 Sigma’s target audience includes data analysts, business users, decision-makers, and anyone who needs to work with data, providing intuitive and powerful tools to explore, analyze, and visualize information without requiring deep technical expertise.
@@ -191,37 +204,34 @@ Now that we have our initial orientation done, we can move on to the next sectio
 ## **Workbooks, Pages and Datasets**
 Duration: 6
 
-Let’s begin by establishing some basic terminology Sigma uses. Consider that a `Workbook is like a book you have read; `the Workbook is the title of the book. Each page of the book is a Canvas and the words are all part of a Dataset. 
+Let’s begin by establishing some basic terminology Sigma uses. 
 
-From that we can understand that a `Workbook contains Pages` (each with one Canvas) that display information that comes from a Dataset. 
+A workbook is akin to an Excel file or Google Sheet.
 
-The `Canvas on each Page` makes it easy to bring multiple data elements, including tables, charts, free-form text, and images into a Single page to make it easy to tell a data story or narrative with live data and collaborate with colleagues. Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. Run meetings or your entire business on Sigma
+Each workbook can have many pages, which are akin to Excel worksheets.
 
-This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a Workbook, at least one Page and some data. 
+Each page can have anything from a simple table to a complete dashboard or data application.
 
-Now there is one more feature to mention; `Controls`. A Sigma control is typically a drop list that filters the Page data (or individual item). There are more Controls than drop lists but we will cover that later. 
+Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. 
 
-Of course, this is all baseline terminology that Sigma uses to make it easy to understand.<br>
+This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a workbook, at least one page and some data. Data can come from the cloud data warehouse or end user input, but will talk more about that later.
 
-There are different icons for different objects in Sigma. For example here are three you will look for often:
+One particular may be new to users of traditional BI products. This feature, called `Input Tables` allow data to be captured from the user, and stored in the warehouse. In addition, data in an Input Table can be joined (via a [lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)) to other warehouse tables. This enables many powerful use cases, a few are covered in this ]QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
-![Alt text](assets/icons.png)
+The last feature we will mention now (there are **SO MANY FEATURES**) called `Controls`. 
 
-`Click on My Documents` and then click into the `Examples` folder and then click the `Plugs Electronics Sales Performance Workbook`. 
+A Sigma control is typically a drop list that filters the Page data (or individual item). There are many variations of controls, and all are really easy to use.
 
-![Alt text](assets/examplepageicon.png)
+Of course, this is all baseline terminology, and pretty easy to understand.
 
-Notice the icon to the left of the Workbook title? That represents a Workbook. <br>
-![Alt text](assets/plugshomepage.png)
+The last point we will make on this topic is that there are different icons for different objects in Sigma. 
 
-This sample Workbook gives you an idea of what a Dashboard might look like in Sigma. Notice the name at the top middle and the three Pages at the bottom left.
+For example here are the most common ones that you will see:
 
-Sigma allows you to build this type of content from massive datasets really quickly. Of course there is more you can do but this just gets you familiar with the Elements and navigation.
-
-When you are done, click the Sigma icon to go Home. 
+<img src="assets/icons.png" width="400"/>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF WOOKBOOKS DATASETS AND PAGES -->
+<!-- END OF SECTION-->
 
 ## **Workbooks** ##
 Duration: 6
