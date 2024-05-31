@@ -112,7 +112,7 @@ The main functions are numbered and described below:
 
 <img src="assets/f5.png" width="800"/>
 
-**1 - Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
+<img src="../_shared_assets/1.png" width="20"/> - Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
 
 Once you open a different page, you may notice the back arrow next to the Sigma logo. This allows you to go back one level:
 
@@ -128,7 +128,25 @@ Once you open a different page, you may notice the back arrow next to the Sigma 
       <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
       <li><strong>Upload CSV:</strong> allows you to upload a csv to the warehouse in order to perform analysis.</li>
     </ul>
-  
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The second thing to remember is that we have built Sigma from day one on a modern cloud architecture. This allows us to add new functionality really quickly!.
+</aside>
+
+If at anytime you notice an item labeled "BETA", that means that the feature is mature enough to be included for all customers to evaluate while we finalize it's release.
+
+For example, at the time of this QuickStart, Data Models carried the beta tag:
+
+<img src="assets/f7.png" width="400"/>
+
+If you ever need to know what is new in Sigma there are two resources for that:
+
+[Release Notes](https://help.sigmacomputing.com/changelog)
+
+We also provide a summary on the ‘First Friday’ of each month, which includes everything released in the prior month, including bug fixes.
+
+[First Friday Features can be found here.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+ 
 **4 - My Content:**
  <ul>
       <li><strong>Home:</strong> will bring back to home screen.</Li>
@@ -139,30 +157,33 @@ Once you open a different page, you may notice the back arrow next to the Sigma 
       <li><strong>Recent:</strong> will bring up items you have accessed recently.</Li>
       <li><strong>Favorites:</strong> will show a list of items that you have favorite or quicker access.</Li>
       <li><strong>Trash:</strong> the typical recycle bin functionality.</Li>
-      <li><strong>Connections</strong> (visible to Administrators and Creators by default): Connections list the data warehouses you have connections to. Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the "Administration" section.<br>
  </ul>
 
+ **5 - Connections Section:**
+Visible to Administrators and Creators by default, connections list the data warehouses available. 
+
+Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the "Administration" section.
+
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma trial accounts provide access to the “Sigma Sample Database” database, in Snowflake. 
+<strong>NOTE:</strong><br> Trials created from the Sigma website show the `Sigma Sample Database` which uses a Sigma provided Snowflake account. Trials created from cloud provider marketplaces may have additional connections.
 </aside>
 
-**5 - Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
+**6 - Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
 
-**6 - Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
-
-**7 - Help:** has lots of useful information for you to explore later.
+**7 - Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable "convenience"; users in Sigma can be managed in the Administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
 
 **8 - User Profile:** 
 On the top right corner is a box with your username initial. Clicking on it reveals your profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions. 
 
+**9 - Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it!. Sigma is fanatical about supporting our customers. 
+</aside>
 
+**10 - Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
 
-
-
-
-
-
+Now that we have our initial orientation done, we can move on to the next section.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GETTING AROUND IN THE UI -->
