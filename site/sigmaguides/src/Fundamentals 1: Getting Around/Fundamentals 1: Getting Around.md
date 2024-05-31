@@ -112,15 +112,15 @@ The main functions are numbered and described below:
 
 <img src="assets/f5.png" width="800"/>
 
-<img src="../_shared_assets/1.png" width="20"/> - Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
+<img src="_shared_assets/1.png" width="25"/> **Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
 
 Once you open a different page, you may notice the back arrow next to the Sigma logo. This allows you to go back one level:
 
 <img src="assets/f6.png" width="200"/>
 
-**2 - Search:** You can click in the search bar at any point to search for content within Sigma.
+<img src="_shared_assets/2.png" width="25"/> **Search:** You can click in the search bar at any point to search for content within Sigma.
 
-**3 - Create New:** Use this anytime you want to create new content.
+<img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
     <ul>
       <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</li>
       <li><strong>Data Model:</strong> enables the curation of data objects to then be shared with others.</li>
@@ -147,7 +147,7 @@ We also provide a summary on the ‘First Friday’ of each month, which include
 
 [First Friday Features can be found here.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
  
-**4 - My Content:**
+<img src="_shared_assets/4.png" width="25"/> **My Content:**
  <ul>
       <li><strong>Home:</strong> will bring back to home screen.</Li>
       <li><strong>My Documents</strong> is a personal folder for you to save content you have created.</Li>
@@ -159,7 +159,7 @@ We also provide a summary on the ‘First Friday’ of each month, which include
       <li><strong>Trash:</strong> the typical recycle bin functionality.</Li>
  </ul>
 
- **5 - Connections Section:**
+<img src="_shared_assets/5.png" width="25"/> **Connections Section:**
 Visible to Administrators and Creators by default, connections list the data warehouses available. 
 
 Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the "Administration" section.
@@ -168,20 +168,20 @@ Clicking on one of them shows the tables in that warehouse you can access. There
 <strong>NOTE:</strong><br> Trials created from the Sigma website show the `Sigma Sample Database` which uses a Sigma provided Snowflake account. Trials created from cloud provider marketplaces may have additional connections.
 </aside>
 
-**6 - Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
+<img src="_shared_assets/6.png" width="25"/> **Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
 
-**7 - Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable "convenience"; users in Sigma can be managed in the Administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
+<img src="_shared_assets/7.png" width="25"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable "convenience"; users in Sigma can be managed in the Administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
 
-**8 - User Profile:** 
+<img src="_shared_assets/8.png" width="25"/> **User Profile:**
 On the top right corner is a box with your username initial. Clicking on it reveals your profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions. 
 
-**9 - Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
+<img src="_shared_assets/9.png" width="25"/> **Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it!. Sigma is fanatical about supporting our customers. 
 </aside>
 
-**10 - Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
+<img src="_shared_assets/10.png" width="25"/> **Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
 
 Now that we have our initial orientation done, we can move on to the next section.
 
