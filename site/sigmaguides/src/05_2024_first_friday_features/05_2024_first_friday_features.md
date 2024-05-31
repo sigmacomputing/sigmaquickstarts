@@ -38,6 +38,11 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Administration
 Duration: 20
 
+### OAuth write access (Beta)
+Configure an OAuth connection with write access to leverage the benefits of OAuth permission management with Sigma’s write-access features, including input tables, warehouse views, workbook materializations, and CSV uploads.
+
+For more information, see [Configure OAuth with write access.](https://help.sigmacomputing.com/docs/configure-oauth-with-write-access)
+
 ### Organization translation files
 We have made it easier to serve Sigma users in your organization and consumers of embedded analytics with content in their preferred language.
 
@@ -90,13 +95,8 @@ Duration: 20
 **2:** Sigma no longer throws an error when multiple embeds attempt to add a new user at the same time.<br><br>
 **3:** In the `Administration` > `Embeds` page, you can now successfully preview an embed in the `Embed Sandbox` when you click `More` and select `Test embed`.<br><br>
 **4:** When viewing an individual embed user's profile in the `Administration` > `People` page, the `Edit member` and account type modal now displays "Embed user" in the Account type field instead of “Invalid selection.”<br><br>
-
-![Footer](assets/sigma_footer.png)
-
-## Data models (BETA)
-Duration: 20
-
-
+**5:**A user’s Sigma access token now expires when the OAuth access token expires, ensuring the user is logged out when the OAuth session has ended.<br><br>
+**6:**Updates to filters and sorting in tagged workbook versions are now reflected in exports and no longer trigger errors.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -109,6 +109,8 @@ You can now pre-populate a new input table with uploaded CSV data that you can t
 Like empty input tables, CSV input tables support data entry independent of existing data, enabling you to add editable rows and columns to construct the table as you see fit.
 
 For more information, [see Intro to input tables](https://help.sigmacomputing.com/docs/intro-to-input-tables) and [Create new input tables.](https://help.sigmacomputing.com/docs/create-new-input-tables)
+
+There is also a [QuickStart that covers several common use cases here.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -135,15 +137,19 @@ Embed Events are discussed and demonstrated in this [QuickStart.](https://quicks
 Sigma has added many new events to support existing and new functionality.
 
 #### New Inbound events:
+```code
 workbook:bookmark:create
 workbook:fullscreen:update
 workbook:selectednodeid:update
 workbook:variables:list
 workbook:variables:update
+```
 
 #### New Outbound events:
+```code
 url:onchange
 workbook:bookmark:oncreate
+workbook:bookmark:update
 workbook:chart:error
 workbook:dataloaded
 workbook:error
@@ -152,10 +158,11 @@ workbook:id:onchange
 workbook:pageheight:onchange
 workbook:pivottable:oncellselect
 workbook:published
+```
 
 For more information, see [Implement inbound and outbound events in embeds.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
 
-
+There is also a [QuickStart for using events with Sigma embedding.](https://quickstarts.sigmacomputing.com/guide/embedding_07_events/index.html?index=..%2F..index#0)
 
 ### nodeType property for workbook:selectednodeid:update
 We have added the ability to programmatically determine whether a selected node is a page or an element by referencing the nodeType property in the inbound event.
@@ -165,12 +172,6 @@ workbook:selectednodeid:update
 ```
 
 For more information, see [Available inbound events.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds#workbookselectednodeidupdate)
-
-![Footer](assets/sigma_footer.png)
-
-## Functions
-Duration: 20
-
 
 ![Footer](assets/sigma_footer.png)
 
@@ -197,6 +198,47 @@ For more information about buttons, see [Create a button element.](https://help.
 
 ## Workbooks
 Duration: 20
+
+### Custom formula aggregations in chart reference marks
+You can now specify a `custom formula aggregation` when configuring reference marks in charts.
+
+For more information about reference marks, see [Display chart reference marks.](https://help.sigmacomputing.com/docs/display-chart-reference-marks)
+
+### Data labels in maps
+Add one or more columns to generate data labels in point and region maps. This update makes it easier to quickly view at-a-glance details directly in the element.
+
+For more information, see [Display chart data labels.](https://help.sigmacomputing.com/docs/display-chart-data-labels)
+
+### Default version tags
+Users with `Can edit` workbook permission can now designate a tag as the default tag for a workbook. As a result, any user who does not have access to the `Published` workbook will see the default tagged version. 
+
+Applying default tags to workbooks with multiple tags results in a more consistent viewing experience.
+
+For more information, see [Set a default tag for a workbook.](https://help.sigmacomputing.com/docs/version-tagging#set-a-default-tag-for-a-workboo)
+
+### Donut hole value in donut charts
+Display an aggregate value within the hole of a donut chart to add more context to your visualization.
+
+<img src="assets/fff_05_2024_7.png" width="400"/>
+
+For details about adding a donut hole value, see [Pie and donut charts.](https://help.sigmacomputing.com/docs/pie-and-donut-charts)
+
+### Embedding Sigma's documentation now supported
+Many customers provide useful information on how to best use Sigma workbooks directly in the workbook itself. 
+
+There are time when it can be used to embed specific Sigma documentation content from the Sigma help pages. 
+
+This is quite easy to do now using the [Embed element](https://help.sigmacomputing.com/docs/intro-to-ui-elements#embed-element)
+
+For example, you may want to provide a basic introduction to your new users on how to get started with Sigma:
+
+<img src="assets/fff_05_2024_1.png" width="800"/>
+
+Another example is to provide the list of popular functions that are available:
+
+<img src="assets/fff_05_2024_2.png" width="800"/>
+
+Users will appreciate the time saved by avoiding opening another browser page to access documentation.
 
 ### Enhanced SQL editor (Beta)
 We have added a new, in-line SQL editor that allows SQL users to write their code directly in the workbook, and reference / build on top of other elements in the workbook.
@@ -225,40 +267,6 @@ For a video demonstration, [click here.](https://www.loom.com/share/4ae2e65a1d18
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma is continually working to improve usability for our customers. We want Sigma to not only be simple to use, but also beautiful looking.
 </aside>
-
-### Data labels in maps
-Add one or more columns to generate data labels in point and region maps. This update makes it easier to quickly view at-a-glance details directly in the element.
-
-For more information, see [Display chart data labels.](https://help.sigmacomputing.com/docs/display-chart-data-labels)
-
-### Custom formula aggregations in chart reference marks
-You can now specify a `custom formula aggregation` when configuring reference marks in charts.
-
-For more information about reference marks, see [Display chart reference marks.](https://help.sigmacomputing.com/docs/display-chart-reference-marks)
-
-### Donut hole value in donut charts
-Display an aggregate value within the hole of a donut chart to add more context to your visualization.
-
-<img src="assets/fff_05_2024_7.png" width="400"/>
-
-For details about adding a donut hole value, see [Pie and donut charts.](https://help.sigmacomputing.com/docs/pie-and-donut-charts)
-
-### Embedding Sigma's documentation now supported
-Many customers provide useful information on how to best use Sigma workbooks directly in the workbook itself. 
-
-There are time when it can be used to embed specific Sigma documentation content from the Sigma help pages. 
-
-This is quite easy to do now using the [Embed element](https://help.sigmacomputing.com/docs/intro-to-ui-elements#embed-element)
-
-For example, you may want to provide a basic introduction to your new users on how to get started with Sigma:
-
-<img src="assets/fff_05_2024_1.png" width="800"/>
-
-Another example is to provide the list of popular functions that are available:
-
-<img src="assets/fff_05_2024_2.png" width="800"/>
-
-Users will appreciate the time saved by avoiding opening another browser page to access documentation.
 
 ### Improved data source selection UI
 Select data sources for workbook elements using a new popover UI. 

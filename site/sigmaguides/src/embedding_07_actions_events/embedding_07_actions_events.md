@@ -19,6 +19,8 @@ We also recommend you table the the QuickStart [Embedding 3: Application Embeddi
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
+A list of all the [available events is available here.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
+
 ### Target Audience
 Semi-technical users who will be aiding in the planning or implementation of Sigma. Limited SQL and technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and edit/copy/paste operations.
 
