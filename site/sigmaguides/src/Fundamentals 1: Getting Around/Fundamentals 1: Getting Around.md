@@ -4,8 +4,8 @@ categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-authors: Phil Ballai-Sigma Computing
-lastUpdated: 2023-07-19
+authors: phil@sigmacomputing.com
+lastUpdated: 2024-06-15
 
 # Fundamentals 1: Getting Around
 <!-- ------------------------ -->
@@ -13,16 +13,24 @@ lastUpdated: 2023-07-19
 ## Overview 
 Duration: 6
 
-This QuickStart is part of a series designed to instruct new users how to use Sigma to explore and analyze data using Pivot Tables. 
+This QuickStart is part of a series designed to provide new users with an overview of Sigma, helping them quickly get up to speed and start leveraging its powerful capabilities.
 
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The first thing to remember about Sigma is that its user interface is designed to be instantly familiar to business users with experience working with spreadsheets.
+</aside>
+
+Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
+
+The fundamental series of QuickStarts is designed to address a wide audience with varying skill sets. To support this, we have included many useful links to other relevant content. You don’t need to read everything, but feel free to explore anything that piques your interest.
+
+Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
+
+We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from other sources.
 
 The other “Fundamentals” QuickStarts explore topics such as working with Tables, Pivot Tables, Dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
 
  ### Sigma Target Audience
-Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
-
-Typical audience for this QuickStart is users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
+Sigma’s target audience includes data analysts, business users, decision-makers, and anyone who needs to work with data, providing intuitive and powerful tools to explore, analyze, and visualize information without requiring deep technical expertise.
 
 ### Prerequisites
 <ul>
@@ -40,37 +48,47 @@ Typical audience for this QuickStart is users of Excel, common Business Intellig
 ### What You’ll Learn
 Through this QuickStart we will walk through how to access a Sigma Trial environment, navigate the user interface and more. 
 
-### What You’ll Build
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
 ## **Sigma Trial Setup**
 Duration: 6
 
-Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.<br>
-Sign up for a free trial (if you do not already have an account):
-Sign up for a free trial account here: 
-<button>
-[Free Trial](https://www.sigmacomputing.com/free-trial/)
-</button>
+If you do not already have a Sigma account, you can sign up for a free trial in order to work through QuickStarts.
+ 
+<button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 **Fill out the form on Sigma's Trial page:**
-![Alt text](assets/trial-landing-page.png)<br>
 
-**You will receive an Email invitation:**<br>
-Open the email and click `Verify Email Address`. If you have not received this email within 10 minutes, please check your spam folder and if not there, ask for assistance immediately. The link will open a new tab on the profile creation page. Enter in your name and a password and click `CONTINUE`.
-![Alt text](assets/trial-terms-conditions.png)
+When ready, click the `START TRIAL` button.
 
-Create your user profile and click `Create`:<br>
-<img src="assets/create-profile.png" alt="drawing" width="400"/>
+<img src="assets/trial-landing-page.png" width="600"/>
 
-You should now see the Welcome Message on your `Sigma Trial` homepage:<br>
-<img src="assets/welcome.png" alt="drawing" width="800"/>
+**You will receive notice that Sigma is sending an email invitation:**<br>
 
-**Review the Tutorial (optional)**<br>
-If this is the first time you have used Sigma you may want to spend a few minutes reviewing the short video tutorial but this QuickStart will cover most of these topics so it is not really necessary. 
+<img src="assets/trial-landing-page1.png" width="600"/>
+
+In your email application, open the email from Sigma and click `Verify Email Address`.  
+
+<img src="assets/f1.png" width="400"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you have not received this email within 10 minutes, please check your spam folder and if not there, ask for assistance immediately. The email will be "from" Sigma Computing using the address: info@send.sigmacomputing.com.
+</aside>
+
+Feel free to contact Sigma support at any time using the [methods listed here.](https://help.sigmacomputing.com/docs/sigma-support)
+
+When the page loads in your default browsers, enter in your `Company Name` and `Company Login URL` (if you prefer something different) and click the `Continue` button:
+
+<img src="assets/f2.png" width="800"/>
+
+Create your user profile and click the `Create` button:
+
+<img src="assets/f3.png" alt="drawing" width="800"/>
+
+You should now see the Welcome Message for your `Sigma Trial`. There is a video tutorial you can watch if you like but for this QuickStart, just click `Go to home page`:
+
+<img src="assets/f4.png" alt="drawing" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SIGMA TRIAL SETUP -->
@@ -78,53 +96,72 @@ If this is the first time you have used Sigma you may want to spend a few minute
 ## **Getting Around the UI**
 Duration: 6
 
+On the homepage, click `Hide` to remove the trial guide.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Click the `Show guide` link anytime to display the trial guide later.
+</aside>
+
 The Home page is organized logically to make it easy to get to things quickly. The main functions are highlighted below:<br>
 
 <aside class="negative">
-<strong>NOTE:</strong> As the user who initiated the Trial you are granted Admin rights. Other users may not see every option as dictated by their role assignment. Administration is covered in a different QuickStart.
+<strong>NOTE:</strong> As the user who initiated the Trial you are granted "Admin" rights. Other users will only see content/features as configured by their assigned "Account Type". 
 </aside>
 
-![Alt text](assets/pagelayout.png)<br>
+The main functions are numbered and described below:
 
-If you want to get Home from anywhere in the portal, just click the Sigma logo in the upper left corner.
+<img src="assets/f5.png" width="800"/>
 
-Once you open a different page you may notice the back arrow next to the Sigma logo. This allows you to go back one level.
-<br>
-![Alt text](assets/pagelayout-search.png) 
+**1 - Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
 
-<ol type="1">
-  <li><strong>Search:</strong> You can click in the search bar at any point to search for content within Sigma.</li>
+Once you open a different page, you may notice the back arrow next to the Sigma logo. This allows you to go back one level:
+
+<img src="assets/f6.png" width="200"/>
+
+**2 - Search:** You can click in the search bar at any point to search for content within Sigma.
+
+**3 - Create New:** Use this anytime you want to create new content.
+    <ul>
+      <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</li>
+      <li><strong>Data Model:</strong> enables the curation of data objects to then be shared with others.</li>
+      <li><strong>Dataset:</strong> provides data modelling.</li>
+      <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
+      <li><strong>Upload CSV:</strong> allows you to upload a csv to the warehouse in order to perform analysis.</li>
+    </ul>
   
-  <li><strong>My Content:</strong> Use this anytime you want to create new content 
-    <ol type="i"> 
-      <li><strong>Home</strong> will bring back to home screen</Li>
-      <li><strong>Recents</strong> will bring up items you have accessed recently</Li>
-      <li><strong>Favorites</strong> will show a list of items that you have favorite or quicker access</Li>
-      <li><strong>Shared with Me</strong> will show a list of items others have shared directly with you</Li>
-      <li><strong>My Documents</strong> is a personal folder for you to save content you have created</Li>
+**4 - My Content:**
+ <ul>
+      <li><strong>Home:</strong> will bring back to home screen.</Li>
+      <li><strong>My Documents</strong> is a personal folder for you to save content you have created.</Li>
       <li><strong>Workspaces</strong> are a way to organize and share content with specific members or teams within your organization. Items placed in workspaces can be accessed by anyone who has permission to that workspace.</Li>
-      <li><strong>Connections</strong> (visible to Administrators and Creators by default): Connections list the data warehouses you have connections to. Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams.<br>
-      </ol>
+      <li><strong>Templates</strong> allow users to standardize and share workbook structures for quick and consistent reuse.</Li>
+      <li><strong>Shared with Me:</strong> will show a list of items others have shared directly with you.</Li>
+      <li><strong>Recent:</strong> will bring up items you have accessed recently.</Li>
+      <li><strong>Favorites:</strong> will show a list of items that you have favorite or quicker access.</Li>
+      <li><strong>Trash:</strong> the typical recycle bin functionality.</Li>
+      <li><strong>Connections</strong> (visible to Administrators and Creators by default): Connections list the data warehouses you have connections to. Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the "Administration" section.<br>
+ </ul>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In this QuickStart you can only see and access the “Sigma Sample Database” database used for this QuickStart.
+<strong>NOTE:</strong><br> Sigma trial accounts provide access to the “Sigma Sample Database” database, in Snowflake. 
 </aside>
 
-  <li><strong>Create New:</strong> Access various content available to your role. These include:
-    <ol type="i"> 
-      <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</Li>
-      <li><strong>Dataset:</strong> enables the curation of data to then be shared with others</Li>
-      <li><strong>Custom SQL:</strong> allows you to write SQL to run against the data warehouse
-      <li><strong>CSV upload:</strong> allows you to upload a csv in order to perform analysis within a Workbook</Li>
-    </ol>
-  </li>
+**5 - Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
 
-  </li>
-    <li><strong>Administration:</strong> Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
-   <li><strong>Canvas:</strong> This area is where most of your working sessions will be. The Home page will change based on what you are doing over time, showing your most recent work and other useful links. </li>
-   <li><strong>User Profile:</strong> On the top right corner is a box with your username initial. Clicking on it reveals Profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions.  These options will be covered in a different module.</li>
-   <li><strong>Help:</strong> has lots of useful information for you to explore later.</li>
-</ol>
+**6 - Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
+
+**7 - Help:** has lots of useful information for you to explore later.
+
+**8 - User Profile:** 
+On the top right corner is a box with your username initial. Clicking on it reveals your profile where you can make changes to your preferences and sign out.  Other UI options may or may not be visible to you depending on your permissions. 
+
+
+
+
+
+
+
+
 
 
 ![Footer](assets/sigma_footer.png)
