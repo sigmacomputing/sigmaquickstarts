@@ -15,7 +15,9 @@ Duration: 6
 
 This QuickStart is part of a series designed to instruct new users how to use Sigma to explore and analyze data using Tables. 
 
-**This QuickStart assumes you have already taken the QuickStart “Fundamentals 1: Getting Around” and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail.** 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart “Fundamentals 1: Getting Around” and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail.
+</aside>
 
 If you're familiar with traditional spreadsheet tools, such as Excel, you are likely to associate data and formulas with individual cells. While Sigma Tables are very spreadsheet-like, data is managed at the column level rather than on individual cells.  This means actions such as calculations and formatting changes are applied to every cell in a column.
 

@@ -17,6 +17,8 @@ This QuickStart is part of a series designed to provide new users with an overvi
 
 The fundamental series of QuickStarts is designed to address a wide audience with varying skill sets. To support this, we have included many useful links to other relevant content. You don’t need to read everything, but feel free to explore anything that piques your interest.
 
+We recognize that many people have been using BI platforms for years and since Sigma is designed to be easy to use, these users may wish to just learn the key differences with Sigma. If you fall into that category, [please review this summary.](https://community.sigmacomputing.com/docs?topic=3285)
+
 Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
 
 We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from other sources.
