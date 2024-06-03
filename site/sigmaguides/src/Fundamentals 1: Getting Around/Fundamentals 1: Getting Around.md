@@ -235,11 +235,11 @@ The last point we will make on this topic is that there are different icons for 
 
 For example here are the most common ones that you will see when looking at the `Recents` list and in other places:
 
-<img src="assets/f8.png" width="600"/>
+<img src="assets/f8.png" width="400"/>
 
 It can be handy to know what these icons represent:
 
-<img src="assets/f9.png" width="300"/>
+<img src="assets/f9.png" width="250"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -323,7 +323,7 @@ Notice that we are given options on where to save it, using a familiar folder st
 
 Click `Create Folder` and name it `Fundamentals`. Then click into the `Fundamentals` folder, and name the workbook `Plugs Sales`:
 
-<img src="assets/f13.png" alt="drawing" width="400"/>
+<img src="assets/f13.png" alt="drawing" width="350"/>
 
 If you need to rename it later you can by clicking on the workbook name's drop menu and selecting `Rename`. You could also just double-click the workbook name and type a new one:
 
@@ -335,7 +335,7 @@ If you need to rename it later you can by clicking on the workbook name's drop m
 
 Now that you have saved the workbook, it's state is changed to `Published` and we are still in `Editing` mode. The `Publish` button is not active.
 
-<img src="assets/plugstable3dots.png" alt="drawing" width="800"/>
+<img src="assets/plugstable3dots.png" alt="drawing" width="500"/>
 
 **These options allow you to:**
 <ul>
@@ -355,7 +355,7 @@ In the lower left corner of the workbook there is a tab called `Page `.
 
 Click the `down-arrow` and rename the tab to `Data`. We will use this table as the source of data going forward.
 
-<img src="assets/plugstabledetails2.png" width="500"/>
+<img src="assets/plugstabledetails2.png" width="400"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You can also just double-click on the page name and enter a new name too.
@@ -367,7 +367,7 @@ Now that we have made changes to the workbook, the `Publish` button becomes acti
 
 Click the `Publish` button and then click `Editing / Go to the published version` link. 
 
-<img src="assets/f15.png" width="500"/>
+<img src="assets/f15.png" width="800"/>
 
 We are taken to the published version of the workbook. This is what a user who does not have the right to edit workbooks would see. 
 
@@ -377,7 +377,7 @@ The available options are limited based on the mode you are in (Published, Edit)
 
 These will be very useful as we go forward. Feel free to click into any of them now. 
 
-<img src="assets/f16.png" width="500"/>
+<img src="assets/f16.png" width="800"/>
 
 Notice that the **file download is limited to 1M rows** (the Excel limit). 
 
@@ -478,11 +478,11 @@ As an `Administrator`, we can the default account types by navigating to `Admini
 
 Here we see the three default types, description and can also create a new custom account type:
 
-<img src="assets/f22.png" width="500"/>
+<img src="assets/f22.png" width="800"/>
 
 Custom account types provide the ability to define a granular permission level using `Account Types`. In the example below, the license consumed is `Essential` because both `Lite` and `Essential` are selected:
 
-<img src="assets/f23.png" width="500"/>
+<img src="assets/f23.png" width="800"/>
 
 To read more about [account types and licensing, click here.](https://help.sigmacomputing.com/docs/license-and-account-type-overview)
 
@@ -492,13 +492,15 @@ Return to the `Plugs Sales` workbook and click the `Share` icon as shown:
 
 In the share modal we select the team or member that we want to share the workbook, and at what permission level.
 
-In this case, we shared the workbook with a sample `Lite` account type user and sent them a welcome email that has a link back to the workbook.
+In this case, we shared the workbook with a sample `Pro` account type user and sent them a welcome email that has a link back to the workbook.
 
-Since this users license is `Lite`, that is the only permission available for selection:
+Since this users license is `Pro`, that we can pick from three different permissions:
 
 <img src="assets/sharewitheveryone.png" width="800"/>
 
-The `Share Workbook` modal shows who has access and their permission level. There are also a few other options to grant access via link (#1).
+The `Share Workbook` modal shows who has access and their permission level. There are also a few other options to grant access via link (#2).
+
+We granted the second use `edit` permission for now, so they can edit the workbook.
 
 <img src="assets/sharewhohasaccess.png" width="800"/>
 
@@ -510,9 +512,9 @@ Duration: 6
 
 Sigma is all about collaboration and `Live Edit` takes that to another level. 
 
-**Live Edits allows multiple users to work on the same Workbook in real time, with all editors sharing one live draft.** 
-
 Our customers told us they wanted the ability to work on the same document simultaneously with others, allowing their businesses to use Sigma to move faster than ever.
+
+**Live Edits allows multiple users to work on the same Workbook in real time, with all editors sharing one live draft.** 
 
 <aside class="negative">
 <strong>NOTE:</strong> This feature requires another user in the Sigma trial. As an administrator, you can add one if you like, or simply follow along. 
@@ -531,20 +533,33 @@ Have the new user accept the email invitation from Sigma, and set up their accou
 So we could have both accounts logged into Sigma at the same time, we use two browsers, Chrome for one and Firefox for the other.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong> Using your original Sigma trial account, Share the Plugs Sales Workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; for Live Edit the user needs Edit Permission. 
+<strong>IMPORTANT:</strong> Using your original Sigma trial account, share the Plugs Sales workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which permission level you set; for Live Edit the second user needs a Pro license with "Can Edit" access. 
 </aside>
 
-Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sales Workbook Shared with me on the `Shared with Me` page:
+Using Firefox (and logged in as the second user) I can see that I have the Plugs Sales Workbook Shared with me on the `Shared with Me` page:
 
 <img src="assets/liveedit.png" width="800"/>
 
-**Put the Workbook into Edit mode in both browsers** and you will notice that you can see that there is another user working on the same workbook. Notice that in Firefox the user is “EP” but there is another user also making edits (PB).
+**Put the workbook into "Edit" mode in both browsers.** 
+
+Notice that in Chrome, the user `Quick Starts` is identified by their initials (#1) the second user is `QP` (#2). 
+
+In this way, Sigma informs you that another person has the workbook open, and in edit mode.
 
 <img src="assets/liveeditusers.png" width="800"/>
 
 **But which part of the Workbook is each user active in?**
 
-`Click the Table` and you will see who is active on that Element:
+In both browsers, `click the table`. 
+
+Sigma will now show that both users have selected the `PLUGS_DATA` table:
+
+For this example, there are two users:
+```code
+Firstname:    Lastname:
+Quick         Start
+QuickStarts   Pro
+```
 
 <img src="assets/liveedittable.png" width="800"/>
 
@@ -553,68 +568,83 @@ Using Firefox (and logged in as the 2nd user) I can see that I have the Plugs Sa
 ![Footer](assets/sigma_footer.png)
 <!-- END OF LIVE EDIT -->
 
-## **Scheduling** ##
+## Scheduling
 Duration: 6
 
-You can send Workbook content on a schedule using the option off the Workbook name drop list as shown:
+Sigma workbooks support the ability export data immediately or on a user-defined schedule.
 
-<img src="assets/scheduling.png" width="400"/>
+Open the workbooks menu and select `Schedule exports`:
+
+<img src="assets/f24.png" width="500"/>
 
 In the modal window, click `Add Schedule`
 
-<img src="assets/scheduling1.png" width="400"/>
+<img src="assets/scheduling1.png" width="600"/>
 
-You are able to customize several areas of this operation. Feel free to try it as the Sigma trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. For Workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
+You are able to customize several areas of this operation. 
 
-<img src="assets/scheduling2.png" width="800"/>
+Feel free to try it, as the Sigma trial is a live system and will act on your instructions. 
 
+<img src="assets/scheduling2.png" width="600"/>
 
-You can also use the  `+ Add another attachment` to build a message from more than one part of a Workbook. 
+We can get granular on which part of the workbook is sent and what format to send it in. 
+
+Use the  `+ Add another attachment` to build a message from more than one part of a Workbook.
 
 <img src="assets/scheduling3.png" width="800"/>
 
-A very powerful feature of scheduling allows you to deliver reports deterministically based on parameters you define. You can even test if the condition is met or not, against the existing data:
+For workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
+
+<img src="assets/f25.png" width="700"/>
+
+A very powerful feature of scheduling allows you to deliver reports deterministically, based on parameters you define. 
+
+We can even test if the condition is met or not, against the existing data.
+
+For example, if we want to be notified when a specific customer places and order, we can easily set that up as:
 
 <img src="assets/scheduling4.png" width="800"/>
 
-There is a lot of flexibility in this operation, most of which is very straightforward. 
-
-**Controls:** allows you to send Page Controls (ie: drop list filter settings) in the exported content. In the search box below Controls, search for and select the control by control-id. You must have a Page Control to use this; we have not added one so far but will learn about them later. 
-
-**Send Condition:**
-Allows you to set more specific conditions which must be met if a Schedule is to be executed. 
-
-<aside class="negative">
-<strong>NOTE:</strong> You can also test each one of these to make sure that you get the results you expect.</aside>
-
-**Always:** you're all set. Continue to the next step.
-
-**If there's no data:** select a determining element under In data element.
-
-**If there's data:** select a determining element under In data element.
-
-**If a condition is met:** Allows you to check the data for specific conditions to determine if a condition is met and send the message. For example, we are checking the Quality column in the Table data to see if there are 10 or less items in stock. If true, the condition is met and the message would be sent on the schedule configured.
+There is a lot of power and flexibility in this operation and it is really simple for any user to understand.
 
 The message received has a link the Sigma Workbook (whatever was selected to send) as well as the attachment in PDF:
 
-<img src="assets/schedulingemail.png" width="400"/><br><br>
+<img src="assets/schedulingemail.png" width="600"/><br><br>
 
 <img src="assets/schedulingemailPDF.png" width="800"/>
 
-Once you have created a schedule, you can see it on the list of available `Schedule Exports`.
+Once you have created a schedule, Administrators can see it on the list of available `Schedule Exports`:
 
-Back in the Sigma Workbook select the `Workbook name` drop list and click `Schedule Exports`.
+<img src="assets/f26.png" width="800"/>
+
+
+Back in the workbook select the `Workbook name` drop list and click `Schedule Exports`.
 
 Here, you can edit, delete, pause or "send now" any listed export job:
 
 <img src="assets/schedulingsendnow.png" width="800"/>
 
-[For more information on Scheduling click here.](https://help.sigmacomputing.com/docs/manage-organization-schedules)
+### Export element
+There is also a method to export the data for any single workbook element.
+
+For example, our workbook as one table, `PLUGS_DATA`. 
+
+We can access the element menu for this table and select `Export` to download up to one million rows of data in the available format. 
+
+We can also send the data to several supported destinations or schedule an export as previously described.
+
+<img src="assets/scheduling.png" width="500"/>
+
+[For more information on Exporting to email, click here](https://help.sigmacomputing.com/docs/export-to-email)
+
+[For more information on Exporting to Google Sheets or Drive, click here](https://help.sigmacomputing.com/docs/export-to-google-sheets-or-drive)
+
+[For more information on Exporting to cloud storage, click here](https://help.sigmacomputing.com/docs/export-to-cloud-storage)
+
+[For more information on Exporting to webhook, click here](https://help.sigmacomputing.com/docs/export-to-webhook)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SCHEDULING -->
-
-
 
 ## What we've covered
 Duration: 6
