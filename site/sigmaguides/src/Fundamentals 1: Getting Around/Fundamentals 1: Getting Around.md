@@ -524,11 +524,11 @@ Click the `Invite People` button.
 
 Fill out the pop-up:
 
-<img src="assets/invitepeople.png" width="600"/>
+<img src="assets/invitepeople1.png" width="500"/>
 
-Have the new user accept the email invitation from Sigma and set up their account. 
+Have the new user accept the email invitation from Sigma, and set up their account. 
 
-So we could have both accounts logged into Sigma at the same time, we used Chrome for one and Firefox for the other.
+So we could have both accounts logged into Sigma at the same time, we use two browsers, Chrome for one and Firefox for the other.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong> Using your original Sigma trial account, Share the Plugs Sales Workbook with the new user. This was shown earlier and go back if you don’t remember the steps. Take care which Permission level you set; for Live Edit the user needs Edit Permission. 
