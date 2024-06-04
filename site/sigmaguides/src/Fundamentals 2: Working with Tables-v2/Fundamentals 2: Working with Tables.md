@@ -66,9 +66,9 @@ In the function bar, start typing `Sum`. Sigma tries to provide all the possible
 
 <img src="assets/fun2_2.png" width="800"/>
 
-This is a simple example but when you type ``, Sigma also provides detailed help on the required syntax for complex functions too:
+This is a simple example but when you type `ListAggDistinct(`, Sigma also provides detailed help on the required syntax for complex functions too:
 
-<img src="assets/fun2_3.png" width="800"/>
+<img src="assets/fun2_3.png" width="600"/>
 
 Enter the formula:
 ```plaintext
@@ -106,7 +106,7 @@ Lastly, click the `Cost` column, hold down `shift` on your keyboard and click th
 
 Apply `currency` formatting to them all at once:
 
-<img src="assets/fix2.png" width="800"/>
+<img src="assets/fix2.png" width="500"/>
 
 Click `Publish`.
 
@@ -114,7 +114,7 @@ Now that we have updated our "source" data in Sigma, click on the `Dashboard` pa
 
 At first glance, it looks the same. Click to select it and now we have new columns available to the user:
 
-<img src="assets/fun2_6.gif" width="800"/>
+<img src="assets/fun2_6.png" width="800"/>
 
 This is because the table on the `Dashboard` page is using data that comes from the `Data` page.
 
@@ -123,6 +123,8 @@ This is because the table on the `Dashboard` page is using data that comes from 
 </aside>
 
 If you are REALLY interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
+
+
 
 
 
