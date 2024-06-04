@@ -350,6 +350,8 @@ Thanks to Sigma’s direct to CDW connection, all we have to do is give the Sigm
 session.sql("GRANT USAGE ON ALL MODELS IN SCHEMA SE_DEMO_DB.ML_REGISTRY TO ROLE PAPERCRANE").collect()
 ```
 
+[Snowflake Notebook Alternative here](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/notebooks/notebook_app.ipynb)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
