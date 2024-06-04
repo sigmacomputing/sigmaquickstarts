@@ -1,7 +1,7 @@
 summary: Fundamentals for new users and Sigma Trials
 id: fundamentals-1-getting-around-v2
 categories: fundamentals
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
@@ -17,7 +17,12 @@ This QuickStart is part of a series designed to provide new users with an overvi
 
 The fundamental series of QuickStarts is designed to address a wide audience with varying skill sets. To support this, we have included many useful links to other relevant content. You don’t need to read everything, but feel free to explore anything that piques your interest.
 
-We recognize that many people have been using BI platforms for years and since Sigma is designed to be easy to use, these users may wish to just learn the key differences with Sigma. If you fall into that category, [please review this summary.](https://community.sigmacomputing.com/docs?topic=3285)
+We recognize that many people have been using BI platforms for years and since Sigma is designed to be easy to use, these users may wish to just learn the key differences with Sigma. 
+
+If you fall into that category, please review these summaries:
+[Sigma Differences From Other BI Tools Overview For New Sigma Creators.](https://community.sigmacomputing.com/docs?topic=3285)
+
+[I am a Dashboard Builder New to Sigma. How Can I Quickly Get Up To Speed?](https://community.sigmacomputing.com/docs?topic=3650)
 
 Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
 
@@ -653,7 +658,7 @@ Duration: 6
 
 In this QuickStart we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
 
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html)
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables-v2/index.html)
 
 **Additional Resource Links**
 
