@@ -37,11 +37,21 @@ The other “Fundamentals” QuickStarts explore topics such as working with Tab
 ### About Sigma
 Sigma is the data workspace for everyone, allowing you to perform analysis in spreadsheets, build dashboards and reports, run your business with data applications, and even monetize your business through embedding.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to the Cloud Data Warehouse (CDW), and pushes all queries to the CDW for execution. Benefits of this include:
+
+- Data accessed by Sigma is always live and accurate
+- Unlimited query speed and scale as Sigma leverages the compute resources of the CDW. Queries across millions of rows are performant.
+- Stronger security and governance as data never leaves the CDW and it is easy to control permissions via a single point of access. 
+
+With many other BI products, data is extracted out of the CDW to local desktops/servers for analysis which leads to stale data, limited scale and speed, and security issues with extracts scattered across many desktops and file shares.
+</aside>
+
 There are many providers that provide BI solutions but Sigma is different; here's how.
 
-Sigma isn’t designed for a single skill-set;it’s multi-modal. If you are a data engineer, you can write SQL and build a chart from that. If you are a data scientist you can write Python. If you are a business user you can use spreadsheet functions.
+Sigma isn’t designed for a single skill-set; it’s multi-modal. If you are a data engineer, you can write SQL and build a chart from that. If you are a data scientist you can write Python. If you are a business user you can use spreadsheet functions.
 
-Sigma is he first-and-only platform to allow users to securely write back data to rows or columns without writing over the data in the warehouse.
+Sigma is the first-and-only platform to allow users to securely write back data to rows or columns without writing over the data in the warehouse.
 
 Sigma enables collaboration; it’s about solving problems with team members of various skills. Just like in a game, teams expect to be able to work together, in real time, on live data. 
 
@@ -377,6 +387,11 @@ Click the `Publish` button and then click `Editing / Go to the published version
 <img src="assets/f15.png" width="800"/>
 
 We are taken to the published version of the workbook. This is what a user who does not have the right to edit workbooks would see. 
+
+<aside class="positive">
+<strong>Spreadsheet-like, Tabular Interface:</strong><br>
+Sigma is unique in empowering users to do analysis in an interface they already know and love: the spreadsheet. It also uses familiar functions found in spreadsheets. No need for SQL knowledge as the Sigma interface automatically, and behind the scenes, converts all user actions into optimized SQL. This spreadsheet-like interface helps speed up user adoption and success, especially with non-technical business users.
+</aside>
 
 Each column has a drop menu (#1) and there are also some controls (#2) in the upper right corner of the table.
 

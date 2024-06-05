@@ -15,6 +15,8 @@ Duration: 6
 
 This QuickStart is part of a series designed to instruct new users on how to use Sigma to explore and analyze data using Tables.
 
+We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart “Fundamentals 1: Getting Around”.
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart “Fundamentals 1: Getting Around” and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
 </aside>
@@ -22,8 +24,6 @@ This QuickStart is part of a series designed to instruct new users on how to use
 If you’re familiar with traditional spreadsheet tools, such as Excel, you are likely to associate data and formulas with individual cells. While Sigma tables are very spreadsheet-like, data is managed at the column level rather than at the individual cell level. This means actions such as calculations and formatting changes are applied to every cell in a column.
 
 Managing data at the column level ensures consistency and accuracy, preventing common errors across large and ever-growing sets of data.
-
-We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart “Fundamentals 1: Getting Around”.
 
 ### Prerequisites
 <ul>
@@ -122,93 +122,24 @@ This is because the table on the `Dashboard` page is using data that comes from 
 <strong>IMPORTANT:</strong><br> There are several methods for data "reuse" in Sigma. The data in the "Data" table is coming from Snowflake one time and then enriched in Sigma. From there, it can be reused as many times as needed while only querying Snowflake one time, improving user experience and saving compute costs. How Sigma performs calculations is a complex topic and we will discuss this more as we go along. 
 </aside>
 
-If you are REALLY interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
+While not required, it is easy to order the columns to whatever is preferred:
 
+<img src="assets/fun2_7.png" width="800"/>
 
+Now lets truncate the `Date` column to `Month`. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Month`.
 
-
-
-Add a `new Page` and name it `Tables`. Your Workbook should look like this:
-
-<img src="assets/tablebasics1.png" width="300"/>
-
-Click the `+ icon` to open the Editor Panel. This panel gives you access to all the objects possible to add to a Page. 
-
-Select `Table` and for the source of data; we will use the table on the workbooks's `Data` page (under `PAGE ELEMENTS`):
-
-<img src="assets/tablebasics2.png" width="300"/>
-
-Notice that there are a few options for the source data. Reusing data that has already been queried from the Connection can help improve performance by limiting the number of queries sent to the Cloud Data Warehouse (CDW).
-
-<aside class="positive">
-<strong>Browser Query:</strong><br>
-While Sigma does push queries to the CDW to take advantage of its scale and speed, Sigma is unique in that it first does an evaluation to see if the query or operation can be done in the end user’s browser using the data in the browser cache. This functionality is called Browser Query and leads to near-instant results and a faster, better user experience. 
-
-Browser Query can perform operations like queries, filters, and sorts. And it is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools. Browser Query uses fresh data from the CDW and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risk.
-</aside>
-
-<ul>
-  <li><strong>New:</strong> Allows you to obtain data from any of your Connections.</li>
-  <li><strong>In Use:</strong> Allow you use source data that is already in use on another Page in this Workbook</li>
-  <li><strong>Page Elements:</strong> Table and visualization elements can be selected as a source from the open Workbook</li>
-</ul>
-
-
-We now have our table and can begin working just like a normal spreadsheet. Get ready, you may be pleasantly surprised by how easy this is in Sigma.
-
-<aside class="positive">
-<strong>Spreadsheet-like, Tabular Interface:</strong><br>
-Sigma is unique in empowering users to do analysis in an interface they already know and love: the spreadsheet. It also uses familiar functions found in spreadsheets. No need for SQL knowledge as the Sigma interface automatically, and behind the scenes, converts all user actions into optimized SQL. This spreadsheet-like interface helps speed up user adoption and success, especially with non-technical business users. This interface appears when working with tables or clicking into the underlying data powering a visualization. 
-</aside>
-
-First, let’s truncate the Date column to Month. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Month`.
-
-<img src="assets/tablebasics3.png" width="800"/>
+<img src="assets/fun2_8.png" width="400"/>
  
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() Function in the Function bar.
+<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the Function bar.
 </aside>
 
-<img src="assets/tablebasics4.png" width="800"/>
+<img src="assets/fun2_9.png" width="400"/>
+
+Now that we know the basics, lets look at the common ways tables are used in Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE BASICS -->
-
-## Behind the Scenes
-Duration: 6
-
-Sigma makes things easy for you but there is a ton of power being applied in the background to make it that way. 
-
-At any time you can click on the dropdown next to the refresh icon and select the query history to see exactly what is being run each time a change is made. This can be very useful for those with knowledge of SQL.
-
-<img src="assets/behindthescenes1.png" width="800"/>
-
-Clicking into the first `Query` gives every last detail:
-
-<img src="assets/behindthescenes2.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into SQL and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
-</aside>
-
-<img src="assets/behindthescenes3.png" width="800"/>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to the Cloud Data Warehouse (CDW), and pushes all queries to the CDW for execution. Benefits of this include:
-
-- Data accessed by Sigma is always live and accurate
-- Unlimited query speed and scale as Sigma leverages the compute resources of the CDW. Queries across millions of rows are performant.
-- Stronger security and governance as data never leaves the CDW and it is easy to control permissions via a single point of access. 
-
-With many other BI products, data is extracted out of the CDW to local desktops/servers for analysis which leads to stale data, limited scale and speed, and security issues with extracts scattered across many desktops and file shares.
-</aside>
-
-Related to the last item there is another feature that lets you “peek” behind a column to see some useful information. `Click on the column Store Region’s` drop list and click `Column Details`. This will display a pop-up to help you see things like Top Values and if nulls exist and more:
-
-<img src="assets/behindthescenes4.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF BEHIND THE SCENES -->
 
 ## Calculated Columns
 Duration: 6
@@ -216,10 +147,12 @@ Duration: 6
 There are times when a column has not been made available in the source data. It is still possible for users to add them (assuming they have been granted permission). 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Calculated columns are not written back to your data warehouse unless using Sigma materialization. This is covered in more advanced QuickStart.
+<strong>IMPORTANT:</strong><br> Calculated columns are not written back to your data warehouse unless using Sigma Materialization. 
 </aside>
 
-We know our profit made for each transaction, but we also are interested to know the `Profit Margin` percentage on each item. Add a new column (next to `Profit`), and use the formula:
+We know the profit made for each transaction, but we also are interested to know the `Profit Margin` percentage on each item. 
+
+Add a new column (next to `Profit`), and use the formula:
 ```plaintext
 [Profit] / [Revenue]
 ```
@@ -234,9 +167,108 @@ Your Page should now look similar to this:
 <strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.
 </aside>
 
-Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. We will get into some more advanced functions later, but you can always check out the complete list by clicking the ‘Help’ button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/docs/popular-functions)
+Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. 
+
+We will get into some more advanced functions later, but you can always check out the complete list by clicking the `Help` button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/docs/popular-functions)
 
 <img src="assets/fix3.png" width="400"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF CALCULATED COLUMNS -->
+
+## Filtering Data
+Duration: 6
+
+Sigma also has the ability to easily filter any type of data. 
+
+Lets filter for only stores in the East region. 
+
+Click on the `Store Region` column and select `Filter`:
+
+<img src="assets/fun2_10.png" width="400"/>
+
+Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the available distinct list of Store Regions:
+
+<img src="assets/fun2_11.png" width="800"/>
+
+Also notice that there is a small filter icon (#1) with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
+
+<img src="assets/filters1.png" width="500"/>
+
+Click the checkbox for `East` and see the table update for just the East region:
+
+<img src="assets/filters2.png" width="800"/>
+
+Wouldn't it be great if I could just have this filter as as dropdown on the Page? **No problem.** 
+
+Just click the vertical `3-dots` and click `Convert to Page Control`. 
+
+<img src="assets/filters2a.png" width="400"/>
+
+Now the table can be filtered by using the dropdown filter list as shown below:
+
+<img src="assets/filters3.png" width="800"/>
+
+It is really easy to resize elements and move them around on the canvas. Feel free to explore doing that until you get comfortable. 
+
+<img src="assets/filters3a.gif" width="800"/>
+
+### More Filters
+The filter control provides more functionality that we want to touch on.
+
+Setting different filter types is really easy by accessing the filter menu:
+
+<img src="assets/filters3a.png" width="400"/>
+
+You can add more filters by clicking on the `+` button here:
+
+<img src="assets/filters3b.png" width="400"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma selects a filter automatically (that you can change) based on the data type of the selected column. 
+</aside>
+
+For example, if we select the `Month of Date` column, Sigma knows that is a date column, and provides filtering options based on that:
+
+<img src="assets/filters3c.png" width="400"/>
+
+Filters can be deleted (#2) or disabled temporarily (#3) easily:
+
+<img src="assets/filters3d.png" width="400"/>
+
+A complete list of available filtering options is [available here. ](https://help.sigmacomputing.com/docs/data-element-filters)
+
+There is also a great community post that details some ways to [best use filters in Sigma.](https://community.sigmacomputing.com/t/filtering-data-in-sigma-overview/3429)
+
+For now, lets just leave the `Store Region` filter on the page and no other filters.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF FILTERING -->
+
+## Sorting Data
+Duration: 6
+
+There are several ways to sort data in Sigma.
+
+Since we have a page control for `Store Regions` on the page, we can access the sort options it provides:
+
+<img src="assets/sort1.png" width="400"/>
+
+Sorting on any column is available by accessing the column's menu:
+
+<img src="assets/sort2.png" width="400"/>
+
+When a column as a sort order set, it will display an icon:
+
+<img src="assets/sort4.png" width="400"/>
+
+Along with ascending/descending options there is a custom sort that provides a way to create sorts based on multiple columns and orders:
+
+<img src="assets/sort3.png" width="600"/>
+
+While we have not gotten to visualizations just yet, it is good to know that sort can be applied there as well. Just right-click on any chart bar (for example) and select sort:
+
+<img src="assets/sort5.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF CALCULATED COLUMNS -->
@@ -244,76 +276,47 @@ Some of these functions have been pretty easy, but Sigma is capable of performin
 ## Grouping Data
 Duration: 6
 
-So far we have done some pretty simple operations. Let's go a bit deeper and group the data, building on the work we just did. There are two ways to group data. One is selecting the column and using the drop list and clicking “Group column”. 
+So far we have done some pretty simple operations. 
 
-<img src="assets/grouping1.png" width="400"/>
+Let's go a bit deeper and group the data, building on the work we just did. 
 
-This works fine but there is another method that introduces you to using the element configuration panel.
+There are a few ways to group data. 
 
-Using the `Element Panel` (and with the table selected) just drag and drop the `Month of Date` column up to the `GROUPINGS`	section as shown below:
+1: Column menu (#3)
+2: Drag and drop a column using the element panel (#6)
+3: Click the `+` icon in the element panel > `GROUPINGS` section (#5)
 
-<img src="assets/grouping2.png" width="800"/>
+### Group by Store Region
+Group against the `Store Region` column using one of these methods, or use one method, undo that and try another. 
 
-The table will automatically group on this column which allows us to perform calculations at his level of grouping.
+Whichever works best for you is fine.
 
-Using the `Month of Date` column's drop arrow, add a `New column` and rename it `Monthly Profit`:
+<img src="assets/grouping1.png" width="800"/>
 
-Use the following formula:
-```plaintext
-Sum([Profit])
-```
+After grouping, you can collapse the groupings by clicking the `-` to the left of the `Store Region` column name (#3 in the image above).
+
+In our case, we also needed to reset the `Store Region` filter to show all regions. If this is the case for you, click the `x` on the right of the `Store Region` page control (#4 image above).
+
+<img src="assets/grouping1a.png" width="600"/>
+
+### Summarizing Profit
+We want to show the sum of profit for each region and we already have added a calculated column that shows profit per row.
+
+To add this rollup, we simply drag and drop the `Profit` column in the element panel (the PLUGS_DATA table has to be selected), and place it in the `GROUP BY` > ` CALCULATIONS` section of the `GROUPINGS` panel:
+
+<img src="assets/region_profit.gif" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This is one workflow. You could also just drag the Profit column up to the Calculations area, in the desired grouping.
+<strong>NOTE:</strong><br> This is one workflow. You could also add a calculation from the "CALCULATION" panel (+ icon) or adding another column and settings its formula manually.
 </aside>
-
-Notice how the new column is part of the `Element panel` / `Grouping` / `Calculation` under `Month of Date`?
-
-<img src="assets/grouping2a.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma automatically aggregated the profit at the monthly level, because we created the new column off the "Month of date" column. This is very powerful and quite different than if we had just added another table column with calculations in it. In that case, the new column would not be automatically aggregated.
+<strong>IMPORTANT:</strong><br> Sigma automatically aggregated the profit at the region level, creating the formula for us. This is very powerful and quite different than if we had just added another table column with calculations in it. In that case, the new column would not be automatically calculated or aggregated.
 </aside>
 
-You can at any point collapse a single month, or all the months to hide the underlying data. You can do this by clicking the minimize hash next to the column header of `Month of Date` or any Monthly values.  
+We can add as many groupings and calculations as required.
 
-Click on the minimize hash next to `Month of Date` to collapse all the Months.
-
-<img src="assets/grouping4.png" width="400"/>
-
-Scrolling to the right of the table, find the column `Store Region`.  Using the dropdown, select `Group column`.
-
-Scrolling back to the left, you see that we have created another grouping below the Month grouping.  We can now perform calculations at this grouping level. You may want to expand just the first `Month of Date` to see the `Store Region` groups:
-
-<img src="assets/grouping4a.png" width="800"/>
-
-Let's add a new column next to `Store Region` for `Region Profit` using the formula:
-```plaintext
-Sum([Profit])
-```
-
-We can now see all our months and regional profits.
-
-<img src="assets/grouping4b.png" width="600"/>
-
-Taking this one step further, we can also perform calculations across the different grouping levels.
-
-Clicking the dropdown next to `Region Profit`, select `Add new column`. Use the formula: 
-```plaintext
-[Region Profit] / [Monthly Profit]
-```
-
-Format this as a percentage.
-
-Rename the column `Contribution`:
-
-<img src="assets/grouping6.png" width="800"/>
-
-We can now see exactly how much each region is contributing to the monthly profit. 
-
-There are no limitations in Sigma tables for how many groupings you can have. 
-
-You can also swap the order of the groupings in the left hand pane using a simple drag and drop method. We will leave the groupings alone for now.
+To learn more about [grouping in Sigma, see here.](https://help.sigmacomputing.com/docs/create-and-manage-tables#groups-and-groupings)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GROUPING DATA -->
@@ -321,94 +324,69 @@ You can also swap the order of the groupings in the left hand pane using a simpl
 ## Table Totals
 Duration: 6
 
-Sigma Workbook Tables have many ways to get totals, sub-totals, and summary values.  We will explore them now.
+Sigma workbook tables provide a simple way to get totals and subtotals. 
 
-First, from the `Store Region` column header dropdown, select `Show Totals`. 
+From the `Store Region` column header dropdown, select `Show Totals`:
 
-You can now see we have totals aggregated at the Regional levels:
+<img src="assets/totals1.png" width="400"/>
 
-<img src="assets/totals1.png" width="800"/>
+We now have totals, aggregated at the regional level:
 
-Taking this a step further we can do the same thing for our months.  From the `Month of Date` column header dropdown, select `Show Totals`.
-
-We now have totals at the Monthly level as well.
-
-<img src="assets/totals2.png" width="800"/>
+<img src="assets/totals1a.png" width="400"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE TOTALS -->
 
-## Styling
-Duration: 6
-
-When working with tables, Sigma provides style presets for out-of-the-box aesthetics and readability. You can customize all style components independently for more personalized table designs. 
-
-There are two table presets that can be quickly set and then further customized to suit your needs.
-
-### Spreadsheet
-This preset, which is the default for new tables, is designed for ongoing analysis and collaboration and will feel familiar to uses of Excel or Google Sheets.
-
-For example, in this new table, we can see that the default `Table Style` is automatically set to `Spreadsheet` and there are additional customization options:
-
-<img src="assets/tablebasics8.png" width="800"/>
-
-### Presentation
-Changing the setting `Table Style` to `Presentation` results in this:
-
-<img src="assets/tablebasics9.png" width="800"/>
-
-This preset is designed is ideal for aligning with company branding and adding visual appeal to your workbook:
-
-Sigma will warn you if the styling set is problematic for some people. For example:
-
-<img src="assets/tablebasics10.png" width="600"/>
-
-There are many additional customizations you can do to enhance your tables. It is really easy to experiment and see what you can come up with:
-
-<img src="assets/tablebasics11.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF CONDITIONAL FORMATTING -->
-
-## Conditional Formatting
-Duration: 6
-
-Sigma Workbook Tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of Conditional Formatting. 
-
-Using the drop-down on the `Contribution` select `Conditional Formatting`. Sigma automatically applies a base color scheme to the column. You can use the Elements Panel to adjust to suit your needs. 
-
-In the left-hand pane, select `Single Color` and set the values as shown below. We can now see which regions had a Contribution lower than 10% in red.
-
-There are many things you can do to enhance your Table; feel free to experiment and see what you can come up with. 
-
-<img src="assets/conditionalformatting1.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF CONDITIONAL FORMATTING -->
-
 ## Summarizing Data
 Duration: 6
 
-Sigma also has the ability to create Summary Values or KPIs across the entire table.  At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
+Sigma also has the ability to create `Summary Values` across the entire table.  
 
-At the bottom left corner of the table click on the caret and select the `+ button`. 
+At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
 
-<img src="assets/summary1.png" width="600"/>
+At the bottom left corner of the table click on the caret:
 
-Select the `Revenue` column. Sigma will automatically sum the column. 
+<img src="assets/summary1.png" width="400"/>
 
-<img src="assets/summary2.png" width="400"/>
+the `+ button`:
 
-You can adjust this formula at any time from the formula bar to be anything you want. 
+<img src="assets/summary1a.png" width="300"/>
 
-<img src="assets/summary3.png" width="600"/>
+Select the `Region Profit` column. Sigma will automatically sum the column. 
 
-Rename the summary to `Total Sales`, format it as `currency` and trim the trailing `cents` values.
+<img src="assets/summary1b.png" width="400"/>
 
-These summary values can now be accessed in any formula (by name) anywhere in the table and can also be leveraged with our KPI visualizations.
+Apply formatting to the value for `currency`, remove the extra decimals and double-click on the summaries name to change it to `Total Profit`:
+
+<img src="assets/summary1c.png" width="400"/>
+
+The new summary should match the `Total` in the table from the previous section. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma is very flexible and there is often more than one way to visualize the information. Be creative!
+</aside>
+
+### Year to date
+Lets reduce the data so that we are just evaluating year-to-date performance.
+
+Add another filter, this time on the `Month of Date` column and configure it as show:
+
+<img src="assets/summary1e.png" width="400"/>
+
+Rename the table to `Plugs Sales - Year to Date`:
+
+<img src="assets/summary1f.png" width="400"/>
+
+Publish the workbook.
+
+### Accessing summaries in formulas
+
+Click the `+` to add another summary but this time don't select a column. We can also create a `New summary` that will be based on some formula we write:
+
+<img src="assets/summary1d.png" width="400"/>
 
 <aside class="negative">
-<strong>NOTE:</strong> Sigma references summaries by name and can be used in other formulas inside the Workbook. 
+<strong>NOTE:</strong> Sigma references summaries by name and can be used in other formulas inside the workbook. 
 </aside>
 
 Let's create one more summary value by clicking on the caret `^`, and selecting the `+ button`.  This time select the `Cost` column.
@@ -444,37 +422,98 @@ Set the format to `Number` and remove trailing decimals:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SUMMARIES -->
 
-## Filtering Data
+## Conditional Formatting
 Duration: 6
 
-Sigma also has the ability to easily filter table data. Lets filter for only stores in the East region. 
+Sigma Workbook Tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of Conditional Formatting. 
 
-Click on the `Store Region` column and select `Filter`. 
+Using the drop-down on the `Contribution` select `Conditional Formatting`. Sigma automatically applies a base color scheme to the column. You can use the Elements Panel to adjust to suit your needs. 
 
-Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the available distinct list of Store Regions. 
+In the left-hand pane, select `Single Color` and set the values as shown below. We can now see which regions had a Contribution lower than 10% in red.
 
-Also notice that under `number 3` there is a small filter icon with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
+There are many things you can do to enhance your Table; feel free to experiment and see what you can come up with. 
 
-<img src="assets/filters1.png" width="800"/>
+<img src="assets/conditionalformatting1.png" width="800"/>
 
-Click the checkbox for `East` and see the table update for just the East region. **The summaries are also updated.** 
+![Footer](assets/sigma_footer.png)
+<!-- END OF CONDITIONAL FORMATTING -->
 
-<img src="assets/filters2.png" width="800"/>
+## Styling
+Duration: 6
 
-Wouldn't it be great if I could just have this filter as as dropdown on the Page? **No problem.** 
+When working with tables, Sigma provides style presets for out-of-the-box aesthetics and readability. You can customize all style components independently for more personalized table designs. 
 
-Just click the vertical `3-dots` and click `Convert to Page Control`. 
+There are two table presets that can be quickly set and then further customized to suit your needs.
 
-<img src="assets/filters2a.png" width="400"/>
+### Spreadsheet
+This preset, which is the default for new tables, is designed for ongoing analysis and collaboration and will feel familiar to uses of Excel or Google Sheets.
 
-Now the Table can be filtered by using the dropdown filter list as shown below:
+For example, in this new table, we can see that the default `Table Style` is automatically set to `Spreadsheet` and there are additional customization options:
 
-<img src="assets/filters3.png" width="700"/>
+<img src="assets/tablebasics8.png" width="800"/>
 
-You may want a totally different page layout and we will cover that along with more information on page controls in the [Dashboard QuickStart.](https://quickstarts.sigmacomputing.com/guide/Fundamentals%205:%20Working%20with%20Dashboards/index.html?index=..%2F..index#0)
+### Presentation
+Changing the setting `Table Style` to `Presentation` results in this:
+
+<img src="assets/tablebasics9.png" width="800"/>
+
+This preset is designed is ideal for aligning with company branding and adding visual appeal to your workbook:
+
+Sigma will warn you if the styling set is problematic for some people. For example:
+
+<img src="assets/tablebasics10.png" width="600"/>
+
+There are many additional customizations you can do to enhance your tables. It is really easy to experiment and see what you can come up with:
+
+<img src="assets/tablebasics11.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF CONDITIONAL FORMATTING -->
+
+
+
+## Joining Data
+Duration: 6
+
+Up until now we have been using one table....
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF FILTERING -->
+
+## Behind the Scenes
+Duration: 6
+
+Sigma makes things easy for you but there is a ton of power being applied in the background to make it that way. 
+
+At any time you can click on the dropdown next to the refresh icon and select the query history to see exactly what is being run each time a change is made. This can be very useful for those with knowledge of SQL.
+
+<img src="assets/behindthescenes1.png" width="800"/>
+
+Clicking into the first `Query` gives every last detail:
+
+<img src="assets/behindthescenes2.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into SQL and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
+</aside>
+
+<img src="assets/behindthescenes3.png" width="800"/>
+
+<aside class="positive">
+<strong>Sigma Alpha Query:</strong><br>
+While Sigma does push queries to the CDW to take advantage of its scale and speed, Sigma is unique in that it first does an evaluation to see if the query or operation can be done in the end user’s browser using the data in the browser cache. This functionality is called Browser Query and leads to near-instant results and a faster, better user experience. 
+
+Alpha Query can perform operations like queries, filters, and sorts. And it is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools. Alpha Query uses fresh data from the CDW and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risk.
+</aside>
+
+If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
+
+Related to the last item there is another feature that lets you “peek” behind a column to see some useful information. `Click on the column Store Region’s` drop list and click `Column Details`. This will display a pop-up to help you see things like Top Values and if nulls exist and more:
+
+<img src="assets/behindthescenes4.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF BEHIND THE SCENES -->
 
 ## What we've covered
 Duration: 6
