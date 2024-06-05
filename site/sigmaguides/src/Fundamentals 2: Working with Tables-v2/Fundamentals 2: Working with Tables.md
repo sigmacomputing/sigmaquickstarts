@@ -48,15 +48,21 @@ In Sigma, open the workbook `Plugs Sales` and place it in `edit` mode.
 
 We should still have two pages, `Dashboard` and `Data`. Both have the `PLUGS_DATA` table on it; click to use the `Data` page.
 
-Our source data in Snowflake is missing a few columns that we want users to have access to, but **we want to control how the column values are calculated.**
+Our source data in Snowflake does not have a few columns that we want users to have access to. 
 
-The two missing column are `Revenue` and `Profit`.
+Instead of users calculations themselves, we will do that for them so that **we control how the column values are calculated.**
+
+The missing columns are `Sales`, `COGs` (cost of goods sold) and `Profit`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma is able to enrich the existing data but does not change the underlying data in the warehouse at any time.
+</aside>
 
 Click the column dropdown from the `Price` column and select `Add new column`. 
 
 <img src="assets/fun2_1.png" width="800"/>
 
-Rename the new column `Revenue`.
+Rename the new column `Sales`.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Did you notice that you can just double-click a column header to rename it?
@@ -71,7 +77,7 @@ This is a simple example but when you type `ListAggDistinct(`, Sigma also provid
 <img src="assets/fun2_3.png" width="600"/>
 
 Enter the formula:
-```plaintext
+```code
 [Price] * [Quant] 
 ```
 		
@@ -89,24 +95,17 @@ Easy to fix, just adjust the column name to `Quantity` and `click the checkmark 
 
 <img src="assets/calculatedcols2.png" width="600"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br>You may want to reorder the columns. Just drag and drop the columns to reorder them anyway you want. Hold he shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
-</aside>
-
-<img src="assets/fun2_1.gif" width="800"/>
-
-Now that we have our `Revenue`, we should be able to calculate our `Profit`. 
+Now that we have our `Sales`, we should be able to calculate our `COGs`. 
 
 You can do this one yourself now:
-```plaintext
-[Revenue] - [Cost]
+```code
+[Sales] - [Cost]
 ```
 
-Lastly, click the `Cost` column, hold down `shift` on your keyboard and click the `Profit` column. All four columns are selected now.
-
-Apply `currency` formatting to them all at once:
-
-<img src="assets/fix2.png" width="500"/>
+Do the same to add the `Profit` column:
+```code
+[Sales] - [COGs]
+```
 
 Click `Publish`.
 
@@ -122,19 +121,23 @@ This is because the table on the `Dashboard` page is using data that comes from 
 <strong>IMPORTANT:</strong><br> There are several methods for data "reuse" in Sigma. The data in the "Data" table is coming from Snowflake one time and then enriched in Sigma. From there, it can be reused as many times as needed while only querying Snowflake one time, improving user experience and saving compute costs. How Sigma performs calculations is a complex topic and we will discuss this more as we go along. 
 </aside>
 
-While not required, it is easy to order the columns to whatever is preferred:
-
-<img src="assets/fun2_7.png" width="800"/>
-
-Now lets truncate the `Date` column to `Month`. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Month`.
+Now lets truncate the `Date` column to `Year`. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Year`.
 
 <img src="assets/fun2_8.png" width="400"/>
  
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the Function bar.
+<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the function bar.
 </aside>
 
-<img src="assets/fun2_9.png" width="400"/>
+<img src="assets/fun2_9.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br>You may want to reorder the columns. Just drag and drop the columns to reorder them anyway you want. Hold he shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
+</aside>
+
+<img src="assets/fun2_1.gif" width="800"/>
+
+Click `Plublish`.
 
 Now that we know the basics, lets look at the common ways tables are used in Sigma.
 
@@ -153,13 +156,13 @@ There are times when a column has not been made available in the source data. It
 We know the profit made for each transaction, but we also are interested to know the `Profit Margin` percentage on each item. 
 
 Add a new column (next to `Profit`), and use the formula:
-```plaintext
-[Profit] / [Revenue]
+```code
+[Profit] / [Sales]
 ```
 
-Rename the column `Profit Margin`  In this case, `change the formatting to a %`.
+Rename the column `Profit Margin`  In this case, change the formatting to a `%`.
 
-Your Page should now look similar to this:
+Your table should now look similar to this:
 
 <img src="assets/calculatedcols3.png" width="800"/>
 
@@ -189,7 +192,7 @@ Click on the `Store Region` column and select `Filter`:
 
 Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the available distinct list of Store Regions:
 
-<img src="assets/fun2_11.png" width="800"/>
+<img src="assets/fun2_11.png" width="500"/>
 
 Also notice that there is a small filter icon (#1) with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
 
@@ -228,19 +231,29 @@ You can add more filters by clicking on the `+` button here:
 <strong>IMPORTANT:</strong><br> Sigma selects a filter automatically (that you can change) based on the data type of the selected column. 
 </aside>
 
-For example, if we select the `Month of Date` column, Sigma knows that is a date column, and provides filtering options based on that:
+For example, if we select the `Year of Date` column, Sigma knows that is a date column, and provides filtering options based on that:
 
 <img src="assets/filters3c.png" width="400"/>
+
+Lets set the table to just show year-to-date rows:
+
+<img src="assets/filters3e.png" width="400"/>
 
 Filters can be deleted (#2) or disabled temporarily (#3) easily:
 
 <img src="assets/filters3d.png" width="400"/>
 
+Go ahead and click the `x` in the `Store Regions` control to show all regions:
+
+<img src="assets/filters3g.png" width="400"/>
+
 A complete list of available filtering options is [available here. ](https://help.sigmacomputing.com/docs/data-element-filters)
 
 There is also a great community post that details some ways to [best use filters in Sigma.](https://community.sigmacomputing.com/t/filtering-data-in-sigma-overview/3429)
 
-For now, lets just leave the `Store Region` filter on the page and no other filters.
+At this point, our dashboard looks like this (in edit mode still), with about 572K rows:
+
+<img src="assets/filters3f.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF FILTERING -->
@@ -283,7 +296,9 @@ Let's go a bit deeper and group the data, building on the work we just did.
 There are a few ways to group data. 
 
 1: Column menu (#3)
+
 2: Drag and drop a column using the element panel (#6)
+
 3: Click the `+` icon in the element panel > `GROUPINGS` section (#5)
 
 ### Group by Store Region
