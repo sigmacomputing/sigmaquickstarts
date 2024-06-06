@@ -44,7 +44,7 @@ Duration: 6
 
 Our starting point is the `Plugs Sales` workbook created in the `Fundamentals 1: Getting Around` QuickStart. 
 
-In Sigma, open the workbook `Plugs Sales` and place it in `edit` mode. 
+In Sigma, open the workbook `Fundamentals` and place it in `edit` mode. 
 
 We should still have two pages, `Dashboard` and `Data`. Both have the `PLUGS_DATA` table on it; click to use the `Data` page.
 
@@ -72,16 +72,18 @@ In the function bar, start typing `Sum`. Sigma tries to provide all the possible
 
 <img src="assets/fun2_2.png" width="800"/>
 
-This is a simple example but when you type `ListAggDistinct(`, Sigma also provides detailed help on the required syntax for complex functions too:
+This is a simple example but when you type `ListAggD` and hit `enter`. 
+
+Sigma also provides detailed help on the required syntax for complex functions too:
 
 <img src="assets/fun2_3.png" width="600"/>
 
-Enter the formula:
+With the `Sales` column selected, enter the formula:
 ```code
 [Price] * [Quant] 
 ```
 		
-This is an **intentional mistake** in our formula; `Quant is not a valid column` and it does not exist anywhere else in the Workbook. What happened?
+This is an **intentional mistake** in our formula; `Unknown column "Quant"`; it does not exist anywhere else in the Workbook. What happened?
 
 Sigma makes you immediately aware the function has a problem:
 
@@ -106,6 +108,12 @@ Do the same to add the `Profit` column:
 ```code
 [Sales] - [COGs]
 ```
+
+Click the `Cost` column, hold down the shift key and click the `Profit` column.
+
+With the five columns all selected, click the `$` icon in the toolbar to change them all to currency format:
+
+<img src="assets/calculatedcols3.png" width="600"/>
 
 Click `Publish`.
 
