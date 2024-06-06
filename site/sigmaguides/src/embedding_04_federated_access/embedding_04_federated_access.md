@@ -247,7 +247,7 @@ Let's consider the case where you want to provide some specialized reports or da
 
 Sigma supports this use case through `Teams` and `Account Types`. 
 
-Using the same framework we have already explored, we can create easily control what a user can access, and what they are allow to do with that content. 
+Using the same framework we have already explored, we can easily control what a user can access, and what they are allow to do with that content. 
 
 Back in Sigma, create a new private `Team` called `CustomerA` and check the `Create a Workspace` check-box on.
 
@@ -291,7 +291,7 @@ Make the following four changes to embed-api.js:
 
 <img src="assets/fa19.png" width="800"/>
 
-Refresh the browser page. Now we can see the dashboard which is stored in the `Common` Workpsace but we also have `Explore` rights.
+Refresh the browser page. Now, you can see the dashboard stored in the `Common` Workspace`, and you also have Explore rights.
 
 Now if we click the <img src="assets/arrows.png" width="25"/> icon for the `Historical Profit and Margin` chart, we can see that we have the ability to explore the underlying data. 
 
