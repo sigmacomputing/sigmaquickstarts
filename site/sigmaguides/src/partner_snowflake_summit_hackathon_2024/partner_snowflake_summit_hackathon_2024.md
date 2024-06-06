@@ -45,6 +45,9 @@ No SQL or technical data skills are required for using Sigma.
 ## Provisioning Sigma
 Duration: 20
 
+**Note:**<br>
+If you have previously use Snowflake Partner Connect to establish a Sigma instance and you are still using that instance to do additional QuickStarts, you will need to [resync the connection to Snowflake in Sigma.](https://help.sigmacomputing.com/docs/troubleshoot-your-connection#sync-your-data)
+
 ### Provisioning Sigma via Snowflake Partner Connect
 
 Snowflake and Sigma have made it really simple to spin up a Sigma trial in just a few minutes, via Snowflake Partner Connect.

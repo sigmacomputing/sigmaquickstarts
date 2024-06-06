@@ -104,6 +104,8 @@ First let’s get you acquainted with Snowflake! This section covers the basic c
 ## Provisioning Sigma
 Duration: 5
 
+**Note:**<br>
+If you have previously use Snowflake Partner Connect to establish a Sigma instance and you are still using that instance to do additional QuickStarts, you will need to [resync the connection to Snowflake in Sigma.](https://help.sigmacomputing.com/docs/troubleshoot-your-connection#sync-your-data)
 
 ### Provisioning Sigma via Partner Connect 
 

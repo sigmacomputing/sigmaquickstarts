@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-08-21
 
-# How Sigma Performs Calculations
+# Sigma's Query Engine
 
 ## Overview 
 Duration: 5 
