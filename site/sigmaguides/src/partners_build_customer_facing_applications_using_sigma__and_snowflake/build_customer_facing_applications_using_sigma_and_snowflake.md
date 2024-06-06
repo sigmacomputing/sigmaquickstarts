@@ -71,7 +71,11 @@ Duration: 5
 
  ![Footer](assets/Sigma_Footer.png)
   ## Provisioning Sigma
-  ### Provisioning Sigma via Snowflake Partner Connect
+
+**Note:**<br>
+If you have previously use Snowflake Partner Connect to establish a Sigma instance and you are still using that instance to do additional QuickStarts, you will need to [resync the connection to Snowflake in Sigma.](https://help.sigmacomputing.com/docs/troubleshoot-your-connection#sync-your-data)
+
+### Provisioning Sigma via Snowflake Partner Connect
 
 1. On the left hand side of the Snowflake UI, navigate to Admin, then select partner connect. Click the icon for Sigma.
    
