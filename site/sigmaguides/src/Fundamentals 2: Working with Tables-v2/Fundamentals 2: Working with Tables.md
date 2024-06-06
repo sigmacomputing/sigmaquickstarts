@@ -99,7 +99,7 @@ Now that we have our `Sales`, we should be able to calculate our `COGs`.
 
 You can do this one yourself now:
 ```code
-[Sales] - [Cost]
+[Quantity] * [Cost]
 ```
 
 Do the same to add the `Profit` column:
@@ -283,8 +283,12 @@ While we have not gotten to visualizations just yet, it is good to know that sor
 
 <img src="assets/sort5.png" width="600"/>
 
+At this point (with filters removed), our dashboard still looks like this (in edit mode still), with about 572K rows:
+
+<img src="assets/filters3f.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
-<!-- END OF CALCULATED COLUMNS -->
+<!-- END OF SECTION-->
 
 ## Grouping Data
 Duration: 6
@@ -317,7 +321,9 @@ In our case, we also needed to reset the `Store Region` filter to show all regio
 ### Summarizing Profit
 We want to show the sum of profit for each region and we already have added a calculated column that shows profit per row.
 
-To add this rollup, we simply drag and drop the `Profit` column in the element panel (the PLUGS_DATA table has to be selected), and place it in the `GROUP BY` > ` CALCULATIONS` section of the `GROUPINGS` panel:
+To add this rollup, we simply drag and drop the `Profit` column in the element panel (the PLUGS_DATA table has to be selected), and place it in the `GROUP BY` > ` CALCULATIONS` section of the `GROUPINGS` panel.
+
+Rename the calculation column to `Region Profit:
 
 <img src="assets/region_profit.gif" width="800"/>
 

@@ -112,11 +112,11 @@ When the page loads in your default browsers, enter in your `Company Name` and `
 
 Create your user profile and click the `Create` button:
 
-<img src="assets/f3.png" alt="drawing" width="800"/>
+<img src="assets/f3.png"  width="800"/>
 
 You should now see the Welcome Message for your `Sigma Trial`. There is a video tutorial you can watch if you like but for this QuickStart, just click `Go to home page`:
 
-<img src="assets/f4.png" alt="drawing" width="800"/>
+<img src="assets/f4.png"  width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SIGMA TRIAL SETUP -->
@@ -280,11 +280,13 @@ We can see all the different data available, and we are prompted to `Select a ta
 
 Select the `RETAIL` schema and the `Plugs_Electronics` (we will just call it “Plugs”) database, expand it and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. 
 
-We can see exactly what is **live** in the Snowflake table. 
+We can see all the data that is **live** in the Snowflake table. 
 
 The path and name is shown at the top middle of the screen (#2) and the total row count (#3) is about **4.58+ million rows in 23 columns**.
 
 We are looking at the data (in the Overview tab) and we can also look at the column detail, permissions and other information about this table (#4).
+
+<img src="assets/f11.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> There is a lot more we can do with this table in this interface such as "pre-assign" friendly column names, create "metrics" and assign permissions and more. Feel free to explore if you are comfortable doing so.
@@ -310,13 +312,15 @@ This means you have one central location to start both your ad hoc analysis and 
 
 We are now inside a Sigma Workbook. 
 
+<img src="assets/f12.png" width="800"/>
+
 As you can see our table was added to the canvas (#1).  
 
 Each Workbook can have one or more `Pages` (#2), and each page has its own canvas. 
 
 Each canvas supports one or more visual elements (e.g. charts, tables, controls, images, etc). 
 
-Click on the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table (if not already selected).
+Click on the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. When an element on the canvas is selected, it will have a blue border.
 
 The left hand pane (#3) shows a vertical view of all our columns, groupings, metrics and more.
 
@@ -338,13 +342,27 @@ It is best practice to name workbooks something that makes sense to you and othe
 
 Notice that we are given options on where to save it, using a familiar folder structure. 
 
-Click `Create Folder` and name it `Fundamentals`. Then click into the `Fundamentals` folder, and name the workbook `Plugs Sales`:
+Click `Create Folder` and name it `QuickStarts`. Then click into the `QuickStarts` folder, and name the workbook `Fundamentals`:
 
-<img src="assets/f13.png" alt="drawing" width="350"/>
+<img src="assets/f13.png"  width="350"/>
 
-If you need to rename it later you can by clicking on the workbook name's drop menu and selecting `Rename`. You could also just double-click the workbook name and type a new one:
+Workbooks have a menu that is accessed by clicking the down-arrow to the right of the name (#1):
 
-<img src="assets/f14.png" alt="drawing" width="400"/>
+The path to the workbook is shown (#2) along with the menu of features (#3).
+
+Clicking the star icon (#4) will add the workbook to your favorites list that is shown on the homepage.
+
+<img src="assets/f14.png" width="400"/>
+
+Badges (#5) can be added to indicate a [workbook is endorse in some way.](https://help.sigmacomputing.com/docs/add-or-update-a-workbook-badge)
+
+For example, we might want to warn others that this workbook is under construction still:
+
+<img src="assets/f14a.png" width="400"/>
+
+Once set, the workbook will show both the endorsement and the text:
+
+<img src="assets/f14b.png" width="400"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Rename any column in the same way. The name change does not effect the source data in Snowflake but rather provides a simple way to make the data more accessible to the users looking at the workbook.
@@ -352,7 +370,7 @@ If you need to rename it later you can by clicking on the workbook name's drop m
 
 Now that you have saved the workbook, it's state is changed to `Published` and we are still in `Editing` mode. The `Publish` button is not active.
 
-<img src="assets/plugstable3dots.png" alt="drawing" width="500"/>
+<img src="assets/plugstable3dots.png"  width="500"/>
 
 **These options allow you to:**
 <ul>
@@ -386,7 +404,9 @@ Click the `Publish` button and then click `Editing / Go to the published version
 
 <img src="assets/f15.png" width="800"/>
 
-We are taken to the published version of the workbook. This is what a user who does not have the right to edit workbooks would see. 
+We are taken to the published version of the workbook. 
+
+The `published version` is what a user sees when they do not have the right to edit the workbook. 
 
 <aside class="positive">
 <strong>Spreadsheet-like, Tabular Interface:</strong><br>
@@ -397,17 +417,23 @@ Each column has a drop menu (#1) and there are also some controls (#2) in the up
 
 The available options are limited based on the mode you are in (Published, Edit) and what account type (role) the user has. 
 
-These will be very useful as we go forward. Feel free to click into any of them now. 
+These will be very useful as we go forward. Feel free to click into any of them now, but undo any changes when done exploring.
 
 <img src="assets/f16.png" width="800"/>
 
-Notice that the **file download is limited to 1M rows** (the Excel limit). 
+Undo changes using the toolbar as shown:
+
+<img src="assets/f16b.png" width="600"/>
+
+Click the `3-dot` menu > `Export`:
+
+<img src="assets/f16a.png" width="500"/>
+
+While there are times when downloading data is needed, we do not want users to download the huge volumes of data that Sigma routinely handles. A better practice would be to send a report and also to use Sigma to provide only send the relevant information, formatted for easy consumptions by the recipient.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> You want users working in Sigma and not downloading data and building ungoverned spreadsheets with potentially old data and incorrect formulas. 
 </aside>
-
-<img src="assets/f17.png" width="500"/>
 
 Return to edit mode via the `Edit` button. 
 
@@ -417,12 +443,12 @@ Click the menu arrow on the `Data` page and select `Hide page`:
 
 The `Data` tab now carries an icon (#3) to indicate that it will not be visible to users who do not have edit rights.
 
+Drag the `Dashboard` page to be first in line:
+
 <img src="assets/f18.png" width="500"/>
 
-
-
 ![Footer](assets/sigma_footer.png)
-<!-- END OF WOOKBOOKS -->
+<!-- END OF WORKBOOKS -->
 
 ## Pages
 Duration: 6
@@ -639,7 +665,6 @@ Once you have created a schedule, Administrators can see it on the list of avail
 
 <img src="assets/f26.png" width="800"/>
 
-
 Back in the workbook select the `Workbook name` drop list and click `Schedule Exports`.
 
 Here, you can edit, delete, pause or "send now" any listed export job:
@@ -672,6 +697,10 @@ We can also send the data to several supported destinations or schedule an expor
 Duration: 6
 
 In this QuickStart we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
+
+This is where we left our `Fundamentals` workbook, in preparation for the next QuickStart:
+
+<img src="assets/f27.png" width="800"/>
 
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables-v2/index.html)
 
