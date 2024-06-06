@@ -119,7 +119,7 @@ Click `Publish`.
 
 Now that we have updated our "source" data in Sigma, click on the `Dashboard` page and observe what happened to our table.
 
-At first glance, it looks the same. Click to select it and now we have new columns available to the user:
+At first glance, it looks the same. Click to select it and now we have three new columns at the end of the table (and column listing) available to the user:
 
 <img src="assets/fun2_6.png" width="800"/>
 
@@ -129,23 +129,39 @@ This is because the table on the `Dashboard` page is using data that comes from 
 <strong>IMPORTANT:</strong><br> There are several methods for data "reuse" in Sigma. The data in the "Data" table is coming from Snowflake one time and then enriched in Sigma. From there, it can be reused as many times as needed while only querying Snowflake one time, improving user experience and saving compute costs. How Sigma performs calculations is a complex topic and we will discuss this more as we go along. 
 </aside>
 
-Now lets truncate the `Date` column to `Year`. You can do this by selecting the dropdown on the header column for `Date` and select `Truncate date` and click `Year`.
+### Simple Date Handling
 
-<img src="assets/fun2_8.png" width="400"/>
+Open the `Date` column's menu and select `Duplicate column`:
+
+<img src="assets/fun2_8a.png" width="400"/>
+
+Sigma names the new column `Date (1)`. Open `Date (1)'s` menu and select `Truncate date` > `Month`:
+
+<img src="assets/fun2_8c.png" width="400"/>
  
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the function bar.
+<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the function bar. We could have done this manually but Sigma made it too easy for us!
 </aside>
 
 <img src="assets/fun2_9.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br>You may want to reorder the columns. Just drag and drop the columns to reorder them anyway you want. Hold he shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
-</aside>
+We are not really concerned with the `Date` column, so lets just hide that:
+
+<img src="assets/fun2_9.png" width="800"/>
+
+Reorder the columns.
 
 <img src="assets/fun2_1.gif" width="800"/>
 
-Click `Plublish`.
+<aside class="negative">
+<strong>NOTE:</strong><br>Just drag and drop the columns to reorder them anyway you want. Hold the shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
+</aside>
+
+The final column order will look like this:
+
+<img src="assets/fun2_9b.png" width="800"/>
+
+Click `Publish`.
 
 Now that we know the basics, lets look at the common ways tables are used in Sigma.
 
@@ -200,7 +216,7 @@ Click on the `Store Region` column and select `Filter`:
 
 Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the available distinct list of Store Regions:
 
-<img src="assets/fun2_11.png" width="500"/>
+<img src="assets/fun2_11.png" width="400"/>
 
 Also notice that there is a small filter icon (#1) with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
 
@@ -216,16 +232,16 @@ Just click the vertical `3-dots` and click `Convert to Page Control`.
 
 <img src="assets/filters2a.png" width="400"/>
 
-Now the table can be filtered by using the dropdown filter list as shown below:
+Now the table can be filtered from `East` to `West` by using the dropdown filter list as shown below:
 
-<img src="assets/filters3.png" width="800"/>
+<img src="assets/filters3.png" width="500"/>
 
 It is really easy to resize elements and move them around on the canvas. Feel free to explore doing that until you get comfortable. 
 
 <img src="assets/filters3a.gif" width="800"/>
 
 ### More Filters
-The filter control provides more functionality that we want to touch on.
+The filter control provides more functionality we want to touch on.
 
 Setting different filter types is really easy by accessing the filter menu:
 
@@ -239,7 +255,7 @@ You can add more filters by clicking on the `+` button here:
 <strong>IMPORTANT:</strong><br> Sigma selects a filter automatically (that you can change) based on the data type of the selected column. 
 </aside>
 
-For example, if we select the `Year of Date` column, Sigma knows that is a date column, and provides filtering options based on that:
+For example, if we select the hidden column `Date` in the element panel, open it's menu and select `filter`, Sigma knows that is a date column, and provides filtering options based on that:
 
 <img src="assets/filters3c.png" width="400"/>
 
@@ -258,6 +274,8 @@ Go ahead and click the `x` in the `Store Regions` control to show all regions:
 A complete list of available filtering options is [available here. ](https://help.sigmacomputing.com/docs/data-element-filters)
 
 There is also a great community post that details some ways to [best use filters in Sigma.](https://community.sigmacomputing.com/t/filtering-data-in-sigma-overview/3429)
+
+Click `Publish`.
 
 At this point, our dashboard looks like this (in edit mode still), with about 572K rows:
 
@@ -281,7 +299,7 @@ Sorting on any column is available by accessing the column's menu:
 
 When a column as a sort order set, it will display an icon:
 
-<img src="assets/sort4.png" width="400"/>
+<img src="assets/sort4.png" width="300"/>
 
 Along with ascending/descending options there is a custom sort that provides a way to create sorts based on multiple columns and orders:
 
@@ -307,24 +325,20 @@ Let's go a bit deeper and group the data, building on the work we just did.
 
 There are a few ways to group data. 
 
-1: Column menu (#3)
+1: The specific column's menu in the table.
 
-2: Drag and drop a column using the element panel (#6)
+2: Drag and drop a column using the element panel
 
-3: Click the `+` icon in the element panel > `GROUPINGS` section (#5)
+3: Click the `+` icon in the element panel > `GROUPINGS` section (#4)
 
 ### Group by Store Region
-Group against the `Store Region` column using one of these methods, or use one method, undo that and try another. 
+Group the `Store Region` column using one of these methods, or use one method, undo that and try another. 
 
 Whichever works best for you is fine.
 
+After grouping, you can collapse the groupings by clicking the `-` to the left of the `Store Region` column name (#3).
+
 <img src="assets/grouping1.png" width="800"/>
-
-After grouping, you can collapse the groupings by clicking the `-` to the left of the `Store Region` column name (#3 in the image above).
-
-In our case, we also needed to reset the `Store Region` filter to show all regions. If this is the case for you, click the `x` on the right of the `Store Region` page control (#4 image above).
-
-<img src="assets/grouping1a.png" width="600"/>
 
 ### Summarizing Profit
 We want to show the sum of profit for each region and we already have added a calculated column that shows profit per row.
