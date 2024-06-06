@@ -361,6 +361,12 @@ We can add as many groupings and calculations as required.
 
 To learn more about [grouping in Sigma, see here.](https://help.sigmacomputing.com/docs/create-and-manage-tables#groups-and-groupings)
 
+Click `Publish`.
+
+The table should now look like this:
+
+<img src="assets/region_profita.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GROUPING DATA -->
 
@@ -373,9 +379,11 @@ From the `Store Region` column header dropdown, select `Show Totals`:
 
 <img src="assets/totals1.png" width="400"/>
 
-We now have totals, aggregated at the regional level:
+We now have the total for all `Store Regions`:
 
 <img src="assets/totals1a.png" width="400"/>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE TOTALS -->
@@ -385,13 +393,13 @@ Duration: 6
 
 Sigma also has the ability to create `Summary Values` across the entire table.  
 
-At the bottom of the table you will see a line that says `Summary` which shows the number of rows as well as the number of columns.
+At the bottom of the table you will see a line that says `SUMMARY`, which shows the number of rows as well as the number of columns.
 
 At the bottom left corner of the table click on the caret:
 
 <img src="assets/summary1.png" width="400"/>
 
-the `+ button`:
+And click the `+ button`:
 
 <img src="assets/summary1a.png" width="300"/>
 
@@ -399,32 +407,29 @@ Select the `Region Profit` column. Sigma will automatically sum the column.
 
 <img src="assets/summary1b.png" width="400"/>
 
-Apply formatting to the value for `currency`, remove the extra decimals and double-click on the summaries name to change it to `Total Profit`:
+Apply formatting to the value for `currency`, remove the extra decimals (#3) and double-click on the summaries name to change it to `Total Profit` (#2):
 
 <img src="assets/summary1c.png" width="400"/>
 
 The new summary should match the `Total` in the table from the previous section. 
 
+Go ahead and add two more summaries based on the `COGs` and `Sales` columns. 
+
+<img src="assets/summary1g.png" width="800"/>
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma is very flexible and there is often more than one way to visualize the information. Be creative!
 </aside>
 
-### Year to date
-Lets reduce the data so that we are just evaluating year-to-date performance.
-
-Add another filter, this time on the `Month of Date` column and configure it as show:
-
-<img src="assets/summary1e.png" width="400"/>
-
 Rename the table to `Plugs Sales - Year to Date`:
 
-<img src="assets/summary1f.png" width="400"/>
+<img src="assets/summary1f.png" width="600"/>
 
 Publish the workbook.
 
 ### Accessing summaries in formulas
 
-Click the `+` to add another summary but this time don't select a column. We can also create a `New summary` that will be based on some formula we write:
+Click the `+` to add another summary but this time don't select a column. We can also create a `New summary` (instead of selected a column) that will be based on some formula we write:
 
 <img src="assets/summary1d.png" width="400"/>
 
@@ -432,35 +437,42 @@ Click the `+` to add another summary but this time don't select a column. We can
 <strong>NOTE:</strong> Sigma references summaries by name and can be used in other formulas inside the workbook. 
 </aside>
 
-Let's create one more summary value by clicking on the caret `^`, and selecting the `+ button`.  This time select the `Cost` column.
-
-Rename this summary to `Total Costs` and trim the trailing `cents`.
-
 Let's create one more summary value by clicking on the caret `^`, and selecting the `+ button`.  This time Select `New Summary`. This will give us a blank summary which we can write a function for:
 
-<img src="assets/summary4.png" width="500"/>
+<img src="assets/summary4.png" width="700"/>
 
 In the function bar, enter the formula bar enter:
-```plaintext
-[Total Sales] - [Total Costs]
+```code
+[YTD Profit] / [YTD Sales]
 ```
 
-Also rename this Summary to `Total Profit`.
+It will initially show `$0`, but we need to change this to be percentage. 
 
-<img src="assets/summary5.png" width="500"/>
+Also rename this Summary to `YTD Profit Margin`.
+
+<img src="assets/summary5.png" width="700"/>
+
+### Grand Total
 
 It may also be helpful to have the total number of orders represented in the data. Sigma has a function for that. 
 
 Add another `New summary` and set the formula to:
-```plaintext
+```code
 GrandTotal(CountDistinct([Order Number]))
 ```
 
-Rename it to `Total Order Count`.
-
-Set the format to `Number` and remove trailing decimals:
+Rename it to `Total Order Count`:
 
 <img src="assets/summary6.png" width="800"/>
+
+It is easy to reorder the summaries with drag and drop:
+
+<img src="assets/summary.gif" width="800"/>
+
+The table should now look like this:
+
+<img src="assets/summary6a.png" width="800"/>
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SUMMARIES -->
