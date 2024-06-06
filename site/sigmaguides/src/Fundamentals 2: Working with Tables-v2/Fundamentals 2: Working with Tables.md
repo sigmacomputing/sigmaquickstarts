@@ -473,64 +473,57 @@ The table should now look like this:
 
 <img src="assets/summary6a.png" width="800"/>
 
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SUMMARIES -->
 
-## Conditional Formatting
-Duration: 6
-
-Sigma Workbook Tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of Conditional Formatting. 
-
-Using the drop-down on the `Contribution` select `Conditional Formatting`. Sigma automatically applies a base color scheme to the column. You can use the Elements Panel to adjust to suit your needs. 
-
-In the left-hand pane, select `Single Color` and set the values as shown below. We can now see which regions had a Contribution lower than 10% in red.
-
-There are many things you can do to enhance your Table; feel free to experiment and see what you can come up with. 
-
-<img src="assets/conditionalformatting1.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF CONDITIONAL FORMATTING -->
-
-## Styling
-Duration: 6
-
-When working with tables, Sigma provides style presets for out-of-the-box aesthetics and readability. You can customize all style components independently for more personalized table designs. 
-
-There are two table presets that can be quickly set and then further customized to suit your needs.
-
-### Spreadsheet
-This preset, which is the default for new tables, is designed for ongoing analysis and collaboration and will feel familiar to uses of Excel or Google Sheets.
-
-For example, in this new table, we can see that the default `Table Style` is automatically set to `Spreadsheet` and there are additional customization options:
-
-<img src="assets/tablebasics8.png" width="800"/>
-
-### Presentation
-Changing the setting `Table Style` to `Presentation` results in this:
-
-<img src="assets/tablebasics9.png" width="800"/>
-
-This preset is designed is ideal for aligning with company branding and adding visual appeal to your workbook:
-
-Sigma will warn you if the styling set is problematic for some people. For example:
-
-<img src="assets/tablebasics10.png" width="600"/>
-
-There are many additional customizations you can do to enhance your tables. It is really easy to experiment and see what you can come up with:
-
-<img src="assets/tablebasics11.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF CONDITIONAL FORMATTING -->
-
-
-
 ## Joining Data
 Duration: 6
 
-Up until now we have been using one table....
+Up until now we have been using one table but in practice it is often required to do some "lite" data modelling. 
+
+Data modelling is a broad topic and in order make this section "fundamental", we will join a sample table from our `Sigma Sample Database` connection as before.
+
+**We will also move a little faster now that we have been oriented in Sigma.**
+
+We want to add a column to show inventory on-hand, from the `F_INVENTORY_ADJUSTED` table:
+
+We will add this to our `PLUGS_DATA` table on the `Data` page:
+
+<img src="assets/join1.png" width="800"/>
+
+In the `Source selector`, search for `F_Invent` and select the one that has `PLUGS_ELE` (#2). 
+
+When you click it, a preview of the data is shown. Click `Select`:
+
+<img src="assets/join2.png" width="800"/>
+
+We need to configure the join keys and type. In this case, we are joining on `Sku Number` in each table. 
+
+In this example, having no `Keys with no matches` means that every record in our base table has a matching row in the `F_INVENTORY_ADJUSTED` table:
+
+<img src="assets/join2a.png" width="800"/>
+
+Click `Preview Output`.
+
+Sigma does not know which columns from the `F_INVENTORY_ADJUSTED` table we want to add; we need to tell it. 
+
+Deselect all the columns except the `Quantity on Hand` column:
+
+<img src="assets/join3.png" width="600"/>
+
+Click `Done` and `Publish`.
+
+Return to the `Dashboard`. 
+
+We can see that the `Quantity on Hand` column is now shown in our table.
+
+<img src="assets/join4.png" width="500"/>
+
+We can edit the join at any time by returning to the `Data` page and:
+
+<img src="assets/join5.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF FILTERING -->
@@ -538,9 +531,13 @@ Up until now we have been using one table....
 ## Behind the Scenes
 Duration: 6
 
-Sigma makes things easy for you but there is a ton of power being applied in the background to make it that way. 
+In the last section, we joined two tables from our warehouse, selected join keys, join type and saw the results. We never wrote SQL or any other proprietary code to make that happen. 
 
-At any time you can click on the dropdown next to the refresh icon and select the query history to see exactly what is being run each time a change is made. This can be very useful for those with knowledge of SQL.
+Sigma makes things easy for you and there is a ton of power being applied in the background to make it that way. 
+
+Click on the dropdown next to the refresh icon and select ‘Query History’ to see exactly what is being run each time a change is made. This can be very useful for those with knowledge of SQL.
+
+<img src="assets/behindthescenes1a.png" width="600"/><br>
 
 <img src="assets/behindthescenes1.png" width="800"/>
 
@@ -549,7 +546,7 @@ Clicking into the first `Query` gives every last detail:
 <img src="assets/behindthescenes2.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into SQL and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
+<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into machine-optimized SQL, and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
 </aside>
 
 <img src="assets/behindthescenes3.png" width="800"/>
@@ -563,17 +560,85 @@ Alpha Query can perform operations like queries, filters, and sorts. And it is i
 
 If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
 
-Related to the last item there is another feature that lets you “peek” behind a column to see some useful information. `Click on the column Store Region’s` drop list and click `Column Details`. This will display a pop-up to help you see things like Top Values and if nulls exist and more:
+Related to the last item, there is another cool feature that lets you “peek” behind a column, to see some useful information. 
+
+Click on the `Brand` columns menu, and click `Column Details`. This will display a pop-up to help you see things like `Top Values` and if Nulls exist, and more:
 
 <img src="assets/behindthescenes4.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF BEHIND THE SCENES -->
 
+## Styling
+Duration: 6
+
+When working with tables, Sigma provides style presets for out-of-the-box aesthetics and readability. You can customize all style components independently for more personalized table designs. 
+
+There are two table presets that can be quickly set and then further customized to suit your needs, `Spreadsheet` and `Presentation`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Many Sigma customers have stopped using slides for presentations in favor of just using Sigma to drive their meetings!
+</aside>
+
+Click the table to select it, and then click the paint brush icon (#1 in the image below) in the element panel. 
+
+This exposes the many options for styling the various aspects of the table. 
+
+Experiment with them to find a style that pleases.
+
+<img src="assets/tablebasics8.png" width="800"/>
+
+There are many possible customizations to enhance tables. It is really easy to experiment and see what the results. 
+
+<img src="assets/tablebasics11.png" width="800"/>
+
+Sigma will warn you if the styling set is problematic for some people. For example:
+
+<img src="assets/tablebasics10.png" width="600"/>
+
+Once satisfied, click `Publish`.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF CONDITIONAL FORMATTING -->
+
+## Conditional Formatting
+Duration: 6
+
+Sigma workbook tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of `Conditional Formatting`. 
+
+Using the `Store Reqion` control, filter the table to show only the `Midwest`.
+
+Expand the `Midwest` Store Region column.
+
+<img src="assets/conditionalformatting1a.png" width="800"/>
+
+We want to apply a `Conditional Format` to the `Profit Margin` column:
+
+<img src="assets/conditionalformatting1b.png" width="400"/>
+
+In the left-hand pane, configure the conditional formatting rule for the values as shown below. 
+
+<img src="assets/conditionalformatting1c.png" width="800"/>
+
+We can now see which transactions have a negative profit margin in red:
+
+Add as many rules (and customize each rule) by clicking `+ Add rule` (#6)
+
+There are many things you can do to enhance your table; feel free to experiment and see what you can come up with.
+
+Click `Publish`.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF CONDITIONAL FORMATTING -->
+
 ## What we've covered
 Duration: 6
 
-In this QuickStart we covered how to access sample data to build a table, add new calculated columns, group and filter data and apply conditional formatting and filter the result set. 
+In this QuickStart, we covered how to access sample data to build a table, join other tables, add calculated columns, group and filter data, apply conditional formatting, and filter the result set.
+
+Our `Fundamentals` workbook looks something like this:
+
+<img src="assets/finalFun1.png" width="800"/>
 
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html?index=..%2F..index#0)
 
