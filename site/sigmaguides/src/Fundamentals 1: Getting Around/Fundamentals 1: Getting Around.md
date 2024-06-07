@@ -345,7 +345,7 @@ In the modal window, click `Add Schedule`
 
 <img src="assets/scheduling1.png" width="400"/>
 
-You are able to customize several areas of this operation. Feel free to try it as the Sigma trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. For Workbooks that have parameter driven data based on the user, you sent items can be run with data filtered for the recipient. 
+You are able to customize several areas of this operation. Feel free to try it as the Sigma trial is a live system and will act on your instructions. Notice that you can get granular on which part of the Workbook is sent and what format to send. If your workbook contains parameter-driven data based on the user, sent items will use filtered data based on the recipient. 
 
 <img src="assets/scheduling2.png" width="800"/>
 

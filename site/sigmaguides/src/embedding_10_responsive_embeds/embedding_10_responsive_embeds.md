@@ -39,7 +39,7 @@ In essence, making an iframe dynamic or responsive is about ensuring that the co
 
 Since Sigma uses iframes for embedding, it is fairly easy to avoid this situation.
 
-This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_1_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
  ### Target Audience
 Developers who are interested in how to leverage dynamic iframes to embed Sigma into their applications.

@@ -107,13 +107,13 @@ We demonstrate Public embedding in a separate [QuickStart: Embedding 02: Public 
 
 ### **Interactivity**
 
-Sigma uses iframe(s) to embed Sigma content. An iframes are HTML elements that renders external content (in this case, a Sigma embed) in a browser. 
+Sigma uses iframe(s) to embed Sigma content. An iframe is an HTML element that renders external content (in this case, a Sigma embed) in a browser.
 
 To tell the iframe what to render, you will need to pass it a URL. 
 
 Sigma embed URLs offer a great deal of flexibility for customization by passing runtime parameters to render the embed. 
 
-The parent application make use of standard and custom parameters passing (think "variables") at user login.
+The parent application makes use of standard and custom parameters passing (think “variables”) at user login.
 
 This parameter passing is an **"easy-to-implement"** method for developers, but also provides for richer end user experience through deep interactivity of all the page/iframe elements.
 
@@ -125,7 +125,7 @@ Sigma provides a built-in JavaScript event "listener" in support of this.
 
 This is covered in the [Embedding 07: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_07_actions_events/index.html?index=..%2F..index#0)
 
-Lastly, iframes can be made "responsive" to optimize the end-users browser experience: 
+Lastly, iframe can be made "responsive" to optimize the end-users browser experience: 
 [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
