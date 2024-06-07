@@ -1,18 +1,26 @@
 summary: Fundamentals for new users and Sigma Visualizations
-id: fundamentals-3-working-with-visualizations
+id: fundamentals-3-working-with-visualizations-v2
 categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-authors: Phil Ballai - Sigma Computing
-lastUpdated: 2023-07-19
+authors: pballai
+lastUpdated: 2024-06-31
 
-# Fundamentals 3: Working with Visualizations
+# Fundamentals 3: Working with Visualizations v2
 
 ## Overview 
 Duration: 5
 
-This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (Viz). Sigma supports a wide variety of types, and are adding others so be sure to check our documentation for the latest list:
+This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (**Viz**). 
+
+We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart “Fundamentals 1: Getting Around”.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart Fundamentals 1 and 2, and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
+</aside>
+
+Sigma supports a wide variety of types, and are adding others so be sure to check our documentation for the latest list:
 
 <table>
     <thead>
@@ -24,38 +32,33 @@ This QuickStart is part of a series of QuickStarts designed to instruct new user
         <tr>
             <td> 
               <ul>
-                <li><strong>Area charts</strong></li>
-                <li><strong>Bar charts</strong></li>
-                <li><strong>Box and Whisker charts</strong></li>
+                <li><strong>Area chart</strong></li>
+                <li><strong>Bar chart</strong></li>
+                <li><strong>Box and Whisker chart</strong></li>
                 <li><strong>Combo chart</strong></li>                
-                <li><strong>Donut / Pie charts</strong></li>
-                <li><strong>Funnel charts</strong></li>
-                <li><strong>Gauge charts</strong></li>
+                <li><strong>Pie / Donut chart</strong></li>
+                <li><strong>Funnel chart</strong></li>
+                <li><strong>Gauge chart</strong></li>
                 <li><strong>Geography Map</strong></li>                
               </ul>
             </td>
             <td>
             <ul>
                 <li><strong>KPI chart</strong></li>                
-                <li><strong>Line charts</strong></li>
+                <li><strong>Line chart</strong></li>
                 <li><strong>Maps – by region, point (lat/long), or GeoJSON</strong></li>
-                <li><strong>Point chart</strong></li>                
-                <li><strong>Sankey</strong></li>                
-                <li><strong>Scatter charts</strong></li>
+                <li><strong>Point map</strong></li>                
+                <li><strong>Sankey diagram</strong></li>                
+                <li><strong>Scatter plot</strong></li>
                 <li><strong>Single value visualizations</strong></li>
+                <li><strong>Dynamic text value</strong></li>
               </ul>
               </td>
         </tr>
     </tbody>
 </table>
 
-For the latest list of supported viz types, [click here.](https://help.sigmacomputing.com/docs/intro-to-visualizations)
-
-This QuickStart assumes you have already taken the Fundamentals 1 & 2 QuickStarts, and are now familiar with Sigma’s user interface (UI). Given this, some steps are assumed to be known and may not be shown in detail. 
-
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. We will look at sales data, but throughout the course of other QuickStarts will incorporate more sources from associated store, product, and customer data.
-
-The other “Fundamental Series” QuickStarts explore topics such as working with tables, pivot tables, dashboards and more. We have broken these QuickStarts up so that they can be taken in any order you want, except the “Fundamentals 1: Getting Around” QuickStart should be taken first.
+For the latest list of supported Viz types, [click here.](https://help.sigmacomputing.com/docs/intro-to-visualizations)
 
  ### Target Audience
 Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
@@ -65,7 +68,7 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Fundamentals 1: Getting Around”</li>
+  <li>Completion of the QuickStarts Fundamentals 1 and 2</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -79,114 +82,135 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 ### What You’ll Learn
 Through this QuickStart we will walk through how to use Sigma to create beautiful charts and maps, changing configuration parameters to suit your needs.
 
-### What You’ll Build
-We will be working with some common sales data from our fictitious company ‘Plugs Electronics’. This data is provided to you automatically. 
-
-We will build a Sigma workbook that looks like this:
-
-<img src="assets/Overview1.png" width="800"/>
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
 ## **Viz Basics**
 Duration: 30
 
-Our starting point is the “Plugs Sales” Workbook created in the “Fundamentals 2: Working with Tables” QuickStart. It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
+Our starting point is the “Fundamentals” workbook created in the “Fundamentals 2: Working with Tables” QuickStart. 
 
-In Sigma, open the Workbook `Plugs Sales` and place it in `edit mode`.
+It is often easier to spot trends, outliers, or insights that lead to further questions when viewing data in a visualization.
 
-You should have the Page from the “Getting Around” QuickStart called “Data” already. If not, review that QuickStart to create it.
+Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up those visualizations.
 
-Create a `new Page` called `Viz`.
+In Sigma, open the Workbook `Fundamentals` and place it in `edit mode`.
 
-You are probably thinking we will use the Element Panel to add a Viz, (as we learned in the tables QuickStart) and we could do that, but let's try a different workflow.
+### Visualization as Child
 
-Open the Workbook’s `Data Page`. Click on the icon as shown below and click `Create Child Element`. Select `Visualization` from the drop list.
+Our workbook has a page called `Data`.
+
+Click on the table's icon, as shown below, and click `Create Child Element`. 
+
+Select `Visualization` from the drop list.
+
+<img src="assets/viz2_2a.png" width="800"/>
+
+Sigma creates a new page element below the table as an un-configured placeholder for the new visualization.
+
+Move the Viz to the `Dashboard` page:
+
+<img src="assets/viz2_2.png" width="800"/>
+
+Drag the Viz above the table:
 
 <img src="assets/vizbasics1.png" width="800"/>
 
-Sigma has created a new Page Element below the Table as an un-configured placeholder for the new Viz. This placeholder is a child of the table as it references everything in the parent table so it is now easy to build whatever Viz we want from that data. 
+This placeholder is a child of the table, as it references everything in the parent table, making it easy to build whatever visualization we want from that data.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> This is awesome because it means someone who knows the underlying data could make this table available with careful curation, and others could just use it. There are other ways to create curated datasets that you will learn later.
+<strong>NOTE:</strong><br> This is awesome because it means someone who knows the underlying data could make this table available with careful curation, and others could just use it.
 </aside>
 
-We prefer that this new Viz is on its own page so click the `vertical dot menu` and select `Move to` and then click `Viz`. The Viz is now on the `Viz` page and it is open for us.
+Rename this bar chart reflect `Profit and Sales by Store Region`.
 
-<img src="assets/vizbasics2.png" width="800"/>
+Now that you have completed the first two QuickStarts in this series, you know how easy it is to use the element panel to configure elements on the canvas. 
 
-Let's make this bar chart reflect `Profits by Region`.
+Use the element panel to configure the bar chart as shown below:
 
-In the `Element Panel` click on the + of the `X-Axis` and select `Store Region` as below. Use the search feature when you have a large number of columns to save scrolling time:
+<img src="assets/vizbasics3.png" width="800"/>
 
-<img src="assets/vizbasics3.png" width="400"/>
-
-We can also **drag values onto the axis** instead of using the add button.  
-
-Drag and drop the `Profit` column to the `Y-AXIS`.
-
-We have our first Chart:
+We have our first Viz:
 
 <img src="assets/vizbasics4.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma automatically summed the profit to create an aggregate.  You can change the type of aggregate at any time using the dropdown, or if you do not wish to aggregate the values you can uncheck the ‘Aggregate Values’ checkbox.
+<strong>NOTE:</strong><br> Sigma automatically summed the sales and profit columns to create an aggregate. You can change the type of aggregate at any time using the dropdown, or if you do not wish to aggregate the values you can uncheck the ‘Aggregate Values’ checkbox.
 </aside>
 
 <img src="assets/vizbasics5.png" width="500"/>
 
-Now let's look at our profits over time to get an understanding of how we are trending. 
+### Customizations
 
-Another way to create a new chart is by selecting the `+ icon` on the top left panel next to the `Page Elements` title:
+We can further customize many of the bar chart's attributes using the `element panel` > `chart` icon:
+
+<img src="assets/viz2_3.png" width="800"/>
+
+Explore both the `Chart` and `Paint Brush` icons to see what can be customized for the selected chart.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The available customizations are driven by the type of Viz that is currently selected. 
+</aside>
+
+### Adding new Viz
+
+Another way to create a new Viz is by selecting the `+ icon` on the top left panel next to the `Page Elements` title, and selecting `VIZ`:
 
 <img src="assets/vizbasics6.png" width="500"/>
 
-After selecting the ‘Viz’ icon, you will be prompted to select a source to use for that ‘Viz’.  
+After selecting the ‘VIZ’ icon, Sigma prompts us to select a source to use for that ‘Viz’.
 
-You can see tabs for selecting:
-
- <ul>
-      <li><strong>In Use: </strong>Sources that are currently being used by other elements in the workbook.</li>
-      <li><strong>New: </strong>A new source that could be a table, dataset, sql, or uploaded csv.</li>
-      <li><strong>Page Elements: </strong>Any data elements already in the workbook such as the bar chart we created.<li>
-</ul>
-
-From the `Select Sources...` tab select `PAGE ELEMENTS` and `Data` Page and `PLUGS_ELECTRONICS_Hand...` as the desired source. You could have also used the `IN USE` tab if the source was already in use elsewhere in the workbook:
+We will use the same `source selector` that we used when we added a table in Fundamentals #2.
 
 <img src="assets/vizbasics7.png" width="500"/>
 
-We now have a new chart below our bar chart. If like you can select the new Viz and use the hand control to drag the new Viz to be side by side with the bar chart:
+We now have a new chart below our bar chart. 
+
+Drag the new Viz to be side by side with the bar chart, and use the `element panel` to configure it as a pic chart:
 
 <img src="assets/vizbasics8.png" width="800"/>
 
-This time, using the Visualization dropdown, select a line chart. 
+Sort the `Brand` column by `Sum of Profit`.
 
 <aside class="negative">
-<strong>NOTE:</strong> Make sure you have the new, empty chart selected. You don't want to change the first chart you made by accident.
+<strong>NOTE:</strong> Always make sure you have the correct canvas element selected when making changes. You don't want to change the first chart you made by accident.
 </aside>
+
+Now we have two charts:
 
 <img src="assets/vizbasics9.png" width="800"/>
 
-To create the line chart, the operations are the same as the bar chart, dragging and dropping (or selecting from the axis drop down menu) to select the data columns. 
+We want the two charts to change, when the `Region` control is changed by the user. 
 
-Let's drag the `Date` column into the `X-Axis` and truncate it to `Month`:
+This is done by adding the two new charts as `Targets` of the control:
 
-<img src="assets/vizbasics9a.png" width="600"/>
+<img src="assets/vizbasics9b.png" width="600"/>
 
-Next we can place our `Profit` column on the `Y-Axis` to see our profit over time. Again, Sigma has automatically applied aggregation (in this case, sum) to the monthly level.
+Go ahead and add both the charts as targets:
 
-The Line chart should look like this now:
+<img src="assets/vizbasics9c.png" width="600"/>
 
-<img src="assets/vizbasics11.png" width="700"/>
+Change the `Region` control to `West`. 
 
-Taking this one step further, we can compare our different regions by placing `Store Region` on color.  You can do this by finding the `Store Region` column in the `Columns` tray and dragging it into the `Color tab` in the `Elements Panel`.
+The `Profit by Brand` chart now shows `No Data`. **What happened?**
 
-Rename the chart to `Profit by Month per Store Region`.
+<img src="assets/vizbasics9d.png" width="800"/>
 
-We now have a multi-line chart showing our Revenue over time by Store Region:
+That chart does not have the `Region` column, so the  query returns no data. 
 
-<img src="assets/vizbasics12.png" width="700"/>
+Remove that chart from the target list to fix that issue. 
+
+Now, setting the `Region` control to `West` updates the table and bar chart only:
+
+<img src="assets/vizbasics9e.png" width="800"/>
+
+Click `Publish`.
+
+There are many different chart-type visualizations available to experiment with; we will not cover them all since they are all added and configured as we have already done. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This consistency of design is really important to Sigma; it makes working with data easy!
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF VIZ BASICS -->
