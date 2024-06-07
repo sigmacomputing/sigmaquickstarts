@@ -116,7 +116,7 @@ Each category has distinct `Events` and `Event Entry Data` that is related to th
 
 As there is a large number of options and they are subject to change over time, we will not list them here. 
 
-[The current list is available here.](hhttps://help.sigmacomputing.com/docs/audit-log-events-and-metadata-beta)
+[The current list is available here.](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

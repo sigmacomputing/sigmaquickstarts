@@ -19,7 +19,7 @@ This QuickStart assumes you have already taken the [QuickStart: Embedding 01: Pr
  
 Sigma supports embedding without any user security ([QuickStart: Embedding 02: Public Access,](https://quickstarts.sigmacomputing.com/guide/embedding_02_public_access/index.html?index=..%2F..index#0)) and Secure embedding, which as the name implies, implements a robust security framework. 
 
-Secure embedding is by far the most popular method Sigma customer use, as it works the Parent application’s authentication, to pass user-level permissions and more at runtime.
+Secure embedding is by far the most popular method Sigma customers use, as it works with the Parent application’s authentication, to pass user-level permissions and more at runtime.
 
 With this method, each user is treated as an individual, with an account type and team permissions. We will refer to these individuals as `embed users`. 
 
@@ -139,19 +139,23 @@ We will use account types to allow different users, different rights, as we go t
 
 Navigate to `Administration` / `Account Types`.
 
-Sigma provides two account types out-of-the-box; `Viewer` and `Creator`. 
+Sigma provides four account types out-of-the-box; `Lite` `Essential` and `Pro`. 
 
-The **Viewer Account Type** has these permissions:
+**Lite** has these permissions:
 
 <img src="assets/accounttypes1.png" width="500"/>
 
-The **Creator Account Type** has many more permissions, which allows them to create and manage content in Sigma, that will be embedded for others to see:
+**Essential** has these permissions:
+
+<img src="assets/accounttypes1b.png" width="500"/>
+
+**PRO** has many more permissions, which allows them to create and manage content in Sigma, that will be embedded for others to see:
 
 <img src="assets/accounttypes1a.png" width="700"/>
 
-Default `Account Types` look like:
+Default `Account Types` look like (including the `Admin` account type (#1), which is the fourth type):
 
-<img src="assets/accounttypes2a.png" width="800"/>
+<img src="assets/accounttypes1c.png" width="800"/>
 
 ### Teams:
 Navigate to the `Administration` > `Teams` page and use the `Create Team` button to add a new team called `Sales Managers` team. 
@@ -632,7 +636,7 @@ In this case, I did not paste the last digit of the `ClientID`:
 
 Go ahead and fix the ClientID in embed-api.js and save. Check to make sure your embed works again. 
 
-**But wait; could'nt some bad actor use inspector to grab the Sigma embed url, and then reuse that access the embed right?**
+**But wait; couldn’t some bad actor use the inspector to grab the Sigma embed URL and then reuse that to access the embed, right?**
 
 **Let’s test that assumption.**
 

@@ -256,6 +256,12 @@ If you have done everything correctly, the Sigma Sales Dashboard page should app
 
 ![Alt text](assets/sf10.png)
 
+In the event the `Insufficient Privileges` error appears, the Visualforce page has to be shared with the profile:
+
+![Alt text](assets/sf18.png)
+
+Please refer to this [Salesforce document](https://developer.salesforce.com/docs/atlas.en-us.250.0.apexcode.meta/apexcode/apex_classes_security.htm) to resolve the issue.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
