@@ -151,11 +151,16 @@ Once you open a different page, you may notice the back arrow next to the Sigma 
 <img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
     <ul>
       <li><strong>Workbook:</strong> our spreadsheet UI for analyzing data</li>
-      <li><strong>Data Model:</strong> enables the curation of data objects to then be shared with others.</li>
-      <li><strong>Dataset:</strong> provides data modelling.</li>
+       <li><strong>Dataset:</strong> Model your data in Sigma using datasets, or collections of data based on tables in your CDW or DBMS.</li>
+      <li><strong>Datamodel:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
       <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
       <li><strong>Upload CSV:</strong> allows you to upload a csv to the warehouse in order to perform analysis.</li>
     </ul>
+     
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Datamodels will eventually replace Datasets, which is the older method Sigma provided. Customer's using Datasets can continue to use them, but Datamodels will provide more functionality and is the preferred method of modeling data in Sigma, once released from Beta.
+</aside>
+
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The second thing to remember is that we have built Sigma from day one on a modern cloud architecture. This allows us to add new functionality really quickly!.
@@ -236,7 +241,7 @@ Analysis and presentation are seamlessly integrated into a spreadsheet-like expe
 
 This is useful to know because if you want to build something in Sigma (e.g., a dashboard, report, etc.), you’ll need a workbook, at least one page, and some data. Data can come from a cloud data warehouse or end-user input, but we’ll talk more about that later.
 
-One unique feature that may be new to users of traditional BI products is the `Input Tables`. This feature allows data to be captured from the user and stored in the warehouse. 
+One unique feature that may be new to users of traditional BI products is the “Input Tables.” feature. Input Tables allow data to be captured from the user and stored in the warehouse. 
 
 In addition, data in an Input Table can be joined via a [lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup) to other warehouse tables. 
 
