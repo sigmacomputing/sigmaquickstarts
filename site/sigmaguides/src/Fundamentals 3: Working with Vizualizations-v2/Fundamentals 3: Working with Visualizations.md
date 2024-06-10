@@ -85,7 +85,7 @@ Through this QuickStart we will walk through how to use Sigma to create beautifu
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Viz Basics**
+## Viz Basics
 Duration: 30
 
 Our starting point is the “Fundamentals” workbook created in the “Fundamentals 2: Working with Tables” QuickStart. 
@@ -215,93 +215,219 @@ There are many different chart-type visualizations available to experiment with;
 ![Footer](assets/sigma_footer.png)
 <!-- END OF VIZ BASICS -->
 
-## **Maps**
+## KPI Charts
+Duration: 5
+
+As you have seen, there are many different types of visualizations available, and they all follow the same basic workflow. Once you know how to create one, the others will seem obvious.
+
+For example, let's say we want a `KPI` that shows `Revenue`, and compares the current month with the same month from the previous year. 
+
+Use the same workflow to add a new Viz, set its data source to the `PLUGS`_DATA table on the `Data` page, and change the `VISUALIZATION` type to `KPI`.
+
+Now simply use the element panel as before to configure the KPI as shown below:
+
+<img src="assets/viz2_4.png" width="500"/>
+
+These steps are very much like ones that we have already done, which makes this straightforward. 
+
+The exception might be how to get the value formatted as in millions, instead of the default.
+
+In the `VALUE` element, open the menu for `Sum of Sales` > `Format` and select `Custom`:
+
+<img src="assets/viz2_4a.png" width="500"/>
+
+The `Custom Format` modal lets us adjust how the data is displayed using standard formatting, based on D3.js (D3). [D3 is a free, open-source JavaScript library.](https://d3js.org/what-is-d3)
+
+<img src="assets/viz2_4b.png" width="500"/>
+
+The `Dashboard` should now look similar to this:
+
+<img src="assets/viz2_4c.png" width="800"/>
+
+Click `Publish`.
+
+Add other KPIs as you like; for example, `COGS`, `Profit` and `Profit Margin` would be good to add:
+
+<img src="assets/viz2_4d.png" width="800"/>
+
+One way to do this is simply use the `Revenue` KPI menu and select `Duplicate` to quickly create copies. 
+
+COGS and Profit are done by swapping the `VALUE` column from `Sum of Sales` to `COGS` and `Profit` respectively.
+
+However, this does not work for the `Profit Margin` column. **Why not?**
+
+In looking at our `Data` page > `PLUGS_DATA` table, we have a column for `Profit` but that is profit in dollars. We are looking for margin.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Thoughtful source data design can save time for the designer and users later, by avoiding having to add things later. We want users using curated data as much as possible to avoid mistakes in calculations later. 
+</aside>
+
+We could add `Profit Margin` to our source data (and that is best practice) but in this case, we will add the formula in the KPI, just to demonstration that functionality exists:
+
+Use the following formula for the `Profit Margin` columns value:
+```code
+Sum([Sales] - [COGs]) / Sum([Sales])
+```
+
+<img src="assets/viz2_4d.png" width="800"/>
+
+The `Dashboard` should now look similar to this:
+
+<img src="assets/viz2_4e.png" width="800"/>
+
+Click `Publish`.
+
+Read more about [KPI charts here.](https://help.sigmacomputing.com/docs/build-a-kpi-chart)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF KPI -->
+
+## Maps
 Duration: 15
 
 Geographic data can tell a powerful story. Whether analyzing regional trends or plotting sites, maps are packed with insights generated from your location data. Sigma Maps help contextualize geospatial information and provide greater understanding when analyzing data. With Sigma, you can create interactive maps using regions, latitude and longitude, or map paths and areas utilizing geoJSON.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> If maps are not used in your role, feel free to skip this section. 
+</aside>
+
+Workbooks support three distinct map types: Region, Point and Geography:
+
  <ul>
-      <li><strong>Region maps: </strong>Require a single text column on the map's REGION field. For example, you can use a column “US State” to distinguish between “regions” or states in this example</li>
-      <li><strong>Point maps: </strong>Require a number column on both the map's LATITUDE and LONGITUDE fields. For example, you may want to show store locations on a map.</li>
-      <li><strong>GeoJSON blobs: </strong>Allow for storage of more complex geographical data than simple numeric lat/long columns.<li>
+      <li><strong>Region: </strong>Require a single text column on the map's REGION field. For example, you can use a column “US State” to distinguish between “regions” or states in this example</li>
+      <li><strong>Point: </strong>Require a number column on both the map's LATITUDE and LONGITUDE fields. For example, you may want to show store locations on a map.</li>
+      <li><strong>Geography: </strong>Support datasets with geography data (WKT format) or variant data (GeoJSON format) and are typically used to illustrate geospatial objects on a map.<li>
 </ul>
 
-Add a `new Viz`to the ` Viz` page and set its source of data to the `Workbook Element / Plugs Sales / Data table`.
+Our `PLUGS_DATA` table has columns for the `Region` and `Point` map types:
 
-Change the `Visualization type` to `Map-Region`.
+<img src="assets/viz2_5.png" width="500"/>
 
-Set the Region to `Store State` and in the region type dropdown below, choose `US States`.
+### Json Data
+You many have noticed there is a column called `Cust Json` that has some odd looking cell data in it:
 
-We now have a map that shows the data grouped by US-State:
+<img src="assets/viz2_5a.png" width="800"/>
 
-![Alt text](assets/maps1.png)
+This data is stored in the warehouse using the `Json` format. It is common to see data stored this way and this can present a challenge as it needs to be transformed somewhere in an organizations data management workflows. We have seen many instances where data is received from a third party in this format and everything slows down as importing it can be problematic. 
 
-We can make this more useful by adding an additional grouping to make the high and low performing regions stand out visually. Let’s assume we want to see how each region is performing by revenue per customer. 	
+Sigma can extract json data in seconds. To read more about that, [see the Parsing JSON Data in Seconds QuickStart.](https://quickstarts.sigmacomputing.com/guide/tables_json_parsing/index.html?index=..%2F..index#0)
 
-Click the button in the upper right corner of the map to show the underlying data:
+If we just want to see what is "inside" the json data, just double-click one of the column cells:
 
-<img src="assets/maps2.png" width="600"/>
+<img src="assets/viz2_5b.png" width="800"/>
 
-Notice that the underlying data is already grouped by US State. Add a `new column` called `Revenue per Customer`. 
+### Map by Region (State)
+Since we have the US State in the `State Name` column, we can quickly build a region map.
 
-<img src="assets/maps3.png" width="400"/>
+Use the same workflow to add a new Viz, set its data source to the `PLUGS_DATA` table on the `Data` page, and change the `VISUALIZATION` type to `Map-Region`.
 
-We want this column to calculate the total revenue for each unique customer so set the formula for this new column to:
-```plaintext
-Sum([Price]) / CountDistinct([Cust Key])
-```
+Now simply use the element panel as before to configure the map as shown below:
 
-<img src="assets/maps4.png" width="500"/>
+<img src="assets/viz2_5c.png" width="800"/>
 
-Add the new column `Revenue per Customer` to the `Map color scale` as shown, selecting "By scale" from the drop-list:
+We also want to configure `LABEL` and `TOOLIP` options:
 
-<img src="assets/maps5.png" width="800"/>
+<img src="assets/viz2_5d.png" width="700"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> When you hover over each US-State, the States data value is shown for us. Right clicking on any State allows you to include/exclude it from the dataset or drill down to the underlying data. 
-</aside>
+When you hover over each US-State, the States data value is shown for us: 
+
+<img src="assets/viz2_5e.png" width="500"/>
+
+Right clicking on any State allows you to include/exclude it from the dataset or drill down to underlying data.
 
 <aside class="positive">
-<strong>Drill Anywhere: </strong><br>The ability to drill anywhere did not have to be programmed ahead of time by a developer.
-Unconstrained, ad-hoc analysis gives you the power to explore the data beyond what was originally intended and as you see fit.
+<strong>Drill Anywhere: </strong><br>The ability to drill anywhere did not have to be programmed ahead of time by a developer. Unconstrained, ad-hoc analysis gives the user the power to explore the data beyond what was originally intended and as they see fit.
 </aside>
 
-Right-click on `California` and `Keep only` California. Now we can work with only the California data. We can browse the data or duplicate it to create different views for our own analysis. 
+Click on the `expand` icon in the upper right corner of the map:
 
-<img src="assets/maps7.png" width="600"/>
+<img src="assets/viz2_5g.png" width="800"/>
 
-To revert the Map you can either click the `Back icon` on the control bar or delete the `Map Filter`:
+Now we can work with the underlying data, which has been grouped and aggregated for us, based on the map's configuration. 
 
-<img src="assets/maps8.png" width="600"/>
+We can browse the data or duplicate it to create different views for our own analysis. 
+
+<img src="assets/viz2_5h.png" width="800"/>
+
+To revert back to the map view by clicking the <img src="assets/contract.png" width="30"/> icon.
+
+The `Dashboard` should now look similar to this:
+
+<img src="assets/viz2_5i.png" width="800"/>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF MAPS -->
 
-## **Single Value KPI**
-Duration: 5
+## Dynamic Text
+Duration: 15
 
-As you have seen, there are many different types of Viz available and they all follow the same basic workflow, so once you know how to do one, the others will seem obvious. 
+Adding a sentence at the top of a dashboard that summarizes important information is really easy in Sigma. We do this in Sigma by adding a `Text` element to the Dashboard:
 
-For example, let's say we want a `Single Value KPI` that shows `Total Sales` at the top of the Page. Just use the same workflow to add a new Viz, set its data source and change the Viz type to Single Value. 
+<img src="assets/viz2_6a.png" width="300"/>
 
-From there you want to add `Revenue` to the value. It will automatically be named `Sum of Revenue`, but we can rename it `Total Sales` instead. 
+In the function bar, copy and paste the following text:
+```code
+Current year-to-date gross margin sits at value, driven by value in revenue and value in COGS.
+```
 
-If the data is not formatted as currency, you can easily change it and truncate the trailing decimals for a cleaner look.
+We left the work `value` in the text so that we can demonstrate how to make it dynamic.
 
-We have done all this before on the bar and line charts, so you already know how. Sigma is designed from the ground up to be as easy as 1-2-3!
+After selecting the new text element, double-click on the first instance of the word `value`:
 
-<img src="assets/otherviz1.png" width="600"/>
+<img src="assets/viz2_6b.png" width="800"/>
 
-There are many configuration options for charts that can be accessed by clicking on the `paintbrush` icon:
+Press the `=` key on your keyboard. 
 
-<img src="assets/otherviz1a.png" width="600"/>
+This opens the function editor, where we can write a formula to be used in place of the text.
 
-Add as many KPI as you like; for example, total profit, total order count and Total COGs would be good to add.
+<img src="assets/viz2_6c.png" width="800"/>
 
-If you are interested in having a KPI that also shows trend data, [checkout the KPI Chart viz](https://help.sigmacomputing.com/docs/build-a-kpi-chart)
+In this case, we need `YTD Gross Margin`. Since we have that in the dashboard table as a summary value already, we can just reference that. 
+
+```code
+[Plugs Sales - Year to Date/YTD Profit Margin]
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We could also have written a formula to calculate "YTD Profit Margin" from any data that is available to this workbook.
+</aside>
+
+<img src="assets/viz2_6d.png" width="600"/>
+
+Now replace the other two instances of `value` with the correct values:
+
+<img src="assets/viz2_6e.png" width="800"/>
+
+### Add a logo
+To wrap up this section, lets add a logo to the Dashboard.
+
+Add another element to the Dashboard, using the `Element panel` > `IMAGE`.
+
+Here is a sample image URL we can just use:
+
+```code
+https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/plugs_logo.png
+```
+
+Configure it as follows, using this sample image (or any other image you prefer):
+
+<img src="assets/viz2_6f.png" width="600"/>
+
+Click `Publish` and `Go to published version`.
+
+After some repositioning of elements, our Dashboard should look something like this:
+
+<img src="assets/viz2_6g.png" width="800"/>
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF KPI -->
+<!-- END OF MAPS -->
+
 
 ## What we've covered
 Duration: 5
