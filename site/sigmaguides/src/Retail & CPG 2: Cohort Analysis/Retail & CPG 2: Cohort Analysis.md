@@ -52,7 +52,7 @@ Duration: 10
 
 ![image2](assets/creatingachildtable_2.png)
 
-5. Now hover over the top right of the “Revenue Cohort” table, select the “Kebab” icon and click “Move to page” → “New Page”.
+5. Now hover over the top right of the “Revenue Cohort” table, select the `3-dots` icon and click “Move to page” → “New Page”.
 
 ![image3](assets/creatingachildtable_3.png)
 
@@ -88,7 +88,7 @@ Duration: 10
 
 ![image11](assets/creatingachildtable_11.png)
 
-14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen, select the “DATA BARS” tab strip to apply them to the column.
+14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen. Select the “DATA BARS” tab strip to apply them to the column.
 
 ![image12](assets/creatingachildtable_12.png)
 
