@@ -28,7 +28,7 @@ Managing data at the column level ensures consistency and accuracy, preventing c
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart “Fundamentals 1: Getting Around”</li>
+  <li>Completion of the QuickStart Fundamentals 1: Getting Around</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -640,7 +640,7 @@ Our `Fundamentals` workbook looks something like this:
 
 <img src="assets/finalFun1.png" width="800"/>
 
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations/index.html?index=..%2F..index#0)
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations-v2/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 
