@@ -1,7 +1,7 @@
 summary: Fundamentals for new users and Sigma Visualizations
 id: fundamentals-3-working-with-visualizations-v2
 categories: fundamentals
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: pballai
