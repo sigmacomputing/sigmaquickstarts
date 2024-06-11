@@ -213,14 +213,148 @@ Our pivot table now looks like this **(after disabling the two filters)**:
 <!-- END OF DRILL ANYWHERE  -->
 
 
+## Customization / Styles
+Duration: 5
+
+Following the same workflow we used in the tables and visualization QuickStarts, we can apply customizations to our pivot table to make it easier on the user's eyes.
+
+Using the `Element panel` > `Paintbrush` icon, we can adjust the various items in the pivot to suit our needs.
+
+In the `TABLES STYLES` section, we can easily make adjustments as shown in the image below. Note that there are separate configurations for `Header`, `Subheader` and `Cell` in this section:
+
+<img src="assets/pivot2_20.png" width="800"/>
+
+Each section will carry an asterisk when the defaults have been changed:
+
+<img src="assets/pivot2_21.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Control Filter
+Duration: 5
+
+It may be useful to include a page control so that users can look at a subset of the data that interests them.
+
+Lets add a control that allows users to select the time period that the pivot is using. There are many controls but we will use a segmented control in this case.
+
+Add a new `SEGMENTED CONTROL` to the `Pivot Tables` page and drag it above the table.
+
+<img src="assets/pivot2_23.png" width="300"/>
+
+In the tables fundamental QuickStart we used a table column to populate the list control (ie: East, West, South...).
+
+We will do something a little different in this case, to demonstrate just some of the flexibility in Sigma.
+
+With the new control selected on the canvas, configure it as shown below:
+
+<img src="assets/pivot2_22.png" width="300"/>
+
+The `Control ID` is a critical value as that is how we can reference the current value the user has set the control to.
+
+Our control is now configured (we renamed it in the UI too), but the pivot table is not aware of it yet.
+
+We need to configure the pivot table to handle the time period values when the user changes the time period contol. 
+
+In the tables QuickStart, we just used a column (Store Region) in the table and the user used a control to pick a valid value. 
+
+We do not have a column in this pivot for `time period`, but we don't need one either. We can use a function to work around that using the existing `Date` column.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma functions have the flexibility you expect and may already be familiar with if if you are an experienced Excel or Google Sheets user.
+</aside>
+
+CLick anywhere on the pivot table to select it and then click the `Year of Date` on the element panel.
+
+We want to replace formula (#2 in the image below) to the following code:
+
+```code
+If([p_date_dimension] = "Month", Concat(Text(DatePart("year", [Date])), "-", Text(DatePart("month", [Date]))), If([p_date_dimension] = "Quarter", Concat("Q", Text(Quarter([Date])), " ", Text(Year([Date]))), If([p_date_dimension] = "Year", Text(DatePart("year", [Date])))))
+```
+
+<img src="assets/pivot2_27.png" width="800"/>
+
+Lets pause and explore the formula and it's parts.
+
+Here is the code again, but formatted for readability:
+
+**// Month Section of Code**<br>
+If([p_date_dimension] = "Month", Concat(Text(DatePart("year", [Date])), "-", Text(DatePart("month", [Date]))), 
+
+**Explanation:**<br>
+Formats the date as YYYY-MM using [DATEPART()](https://help.sigmacomputing.com/docs/datepart) to extract the year and month, ensuring correct sorting.<br>
+Creates a string value using the [TEXT()](https://help.sigmacomputing.com/docs/text) function to combine year-month.
+
+**// Quarter Section of Code**<br>
+If([p_date_dimension] = "Quarter", Concat("Q", Text(Quarter([Date])), " ", Text(Year([Date]))), 
+
+**Explanation:**<br>
+Formats the date as Qn YYYY, where n is the quarter number, ensuring readability and correct sorting.<br>
+Creates a string value using the TEXT() function to combine "Q" and the quarter number plus the year in YYYY format.
+
+**// Year Section of Code**<br>
+If([p_date_dimension] = "Year", Text(DatePart("year", [Date])))))
+
+**Explanation:**<br>
+Formats the date as YYYY, showing only the year.
+
+After copy/pasting the code, click the green checkmark:
+
+<img src="assets/pivot2_28.png" width="400"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Whenever editing values in the function bar, if the green checkmark is not active, there is some problem with the formula being used. Syntax errors such as missing brackets or commas are things to look for. Sigma provides guides to syntax under the function bar as you type.
+</aside>
+
+Clicking the `Select a Time Period` control > `Year` will make the pivot table display pivot columns in years.
+
+Click one of the years, and change the sort from ascending to descending:
+
+<img src="assets/pivot2_29.png" width="500"/>
+
+Clicking on `Month` or `Quarter` will orient the pivot columns accordingly.
+
+We should change the `Year of Date` column name to `Date` to avoid confusion. This label is displayed to the user at the top of the pivot table:
+
+<img src="assets/pivot2_30.png" width="800"/>
+
+Our pivot table can now be filtered by the time period control:
+
+<img src="assets/timeperiod.gif" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
 ## Conditional Formatting
 Duration: 5
+
+Lets apply some conditional formatting to the pivot table, based on values in cells.
+
+### Color Scales
+
+Click the pivot table to select it, then click the `Paint brush` icon in the element panel. Then click `Conditional formatting`:
+
+<img src="assets/pivot2_31.png" width="800"/>
+
+This opens the conditional formatting panel. We use this to create "rules" that will allow different styling effects to be applied based on the the evaluation of the rule.
+
+For example; show all transactions in red where the margin in negative (sold at a loss).
+
+In our case, we will configure a simple rule to drive the cell colors used in the `Margin` column:
+
+<img src="assets/pivot2_32.png" width="800"/>
+
+The rule is applied automatically and we now can see which products are green (happy) and which are red (sad).
+
+### Data Bars
+
 
 
 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
+
 
 ## What we've covered
 Duration: 5
