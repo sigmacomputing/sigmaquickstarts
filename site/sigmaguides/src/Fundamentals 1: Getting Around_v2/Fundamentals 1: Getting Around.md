@@ -359,7 +359,7 @@ Clicking the star icon (#4) will add the workbook to your favorites list that is
 
 <img src="assets/f14.png" width="400"/>
 
-Badges (#5) can be added to indicate a [workbook is endorse in some way.](https://help.sigmacomputing.com/docs/add-or-update-a-workbook-badge)
+Badges (#5) can be added to indicate a [workbook is endorsed in some way.](https://help.sigmacomputing.com/docs/add-or-update-a-workbook-badge)
 
 For example, we might want to warn others that this workbook is under construction still:
 
@@ -370,7 +370,7 @@ Once set, the workbook will show both the endorsement and the text:
 <img src="assets/f14b.png" width="400"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Rename any column in the same way. The name change does not effect the source data in Snowflake but rather provides a simple way to make the data more accessible to the users looking at the workbook.
+<strong>NOTE:</strong><br> Rename any column in the same way. The name change does not affect the source data in your cloud data warehouse but rather provides a simple way to make the data more accessible to users viewing the workbook.
 </aside>
 
 Now that you have saved the workbook, it's state is changed to `Published` and we are still in `Editing` mode. The `Publish` button is not active.
@@ -434,7 +434,7 @@ Click the `3-dot` menu > `Export`:
 
 <img src="assets/f16a.png" width="500"/>
 
-While there are times when downloading data is needed, we do not want users to download the huge volumes of data that Sigma routinely handles. A better practice would be to send a report and also to use Sigma to provide only send the relevant information, formatted for easy consumptions by the recipient.
+While there are times when downloading data is needed, we do not want users to download the huge volumes of data that Sigma routinely handles. A better practice would be to send a report and use Sigma to provide only the relevant information, formatted for easy consumption by the recipient.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> You want users working in Sigma and not downloading data and building ungoverned spreadsheets with potentially old data and incorrect formulas. 
@@ -522,9 +522,9 @@ Each license tier establishes a different set of available permissions that enab
 
 There are three default account types: `Lite`, `Essential` and `Pro`.
 <ul>
-  <li><strong>Lite:</strong> is a read only user who can view, create a copy,  send and schedule exports.</li>
-  <li><strong>Essential:</strong> is a user who want to perform additional analysis in an unconstrained fashion</li>
-  <li><strong>Pro:</strong> allows the original Workbook to be altered as if they were the owner.</li>
+  <li><strong>Lite:</strong> is a read only user who can view, create a copy, send and schedule exports.</li>
+  <li><strong>Essential:</strong> is a user who wants to perform additional analysis in an unconstrained fashion</li>
+  <li><strong>Pro:</strong> allows the original workbook to be altered as if they were the owner.</li>
 </ul>
 
 As an `Administrator`, we can the default account types by navigating to `Administration` > `Account Types`.

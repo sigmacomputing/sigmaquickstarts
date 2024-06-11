@@ -86,96 +86,141 @@ In Sigma, open the workbook `Fundamentals` and place it in edit mode. We should 
 
 Add a `New page` and name it `Pivot Table`. 
 
-Add a new element, `PIVOT TABLE` and select the `PLUGS_DATA` table on the `Data` page as its source:
+Add a new element, `PIVOT TABLE` and select the `PLUGS_DATA` table on the `Data` page as its source.
 
 <img src="assets/pivot2_1.png" width="800"/>
 
+Drag the `Store Region` column to `PIVOT ROWS` in the element panel:
 
+<img src="assets/pivot2_2.png" width="800"/>
+
+Do the same with `Product Type`:
+
+<img src="assets/pivot2_3.png" width="800"/>
+
+At this point, `Product Type` is nested under `Store Region`. 
+
+Click this icon (#1 in image below) to switch to columnar instead:
+
+<img src="assets/pivot2_4.png" width="800"/>
+
+Add `Date` to the `PIVOT COLUMNS` section in the element panel.
+
+Sigma warns us that there more than 1,000 columns and we need to filter to reduce the number. This makes sense as the `Day` column needs to be a period of time like month, quarter or year.
+
+<img src="assets/pivot2_5.png" width="800"/>
+
+Lets adjust the `Day of Date` pivot column to `year` by using the `DateTrnuc` function:
+``` code
+DateTrunc("year", [Date])
+```
+
+<img src="assets/pivot2_6.png" width="800"/>
+
+Sigma has also provided all the most common functions (ie: write the function for you!) as menu options off of a column, so you could have just applied that too:
+
+<img src="assets/pivot2_7.png" width="800"/>
+
+Our pivot table now looks like this:
+
+<img src="assets/pivot2_8.png" width="800"/>
+
+Add the `Profit` and `Order Number` columns to `VALUES`.
+
+We need to set the aggregation method on the `Order Number` column to `CountDistinct`:
+
+<img src="assets/pivot2_9.png" width="800"/>
+
+Rename these `VALUE` columns to `Total Profit` and `# Orders`.
+
+Our pivot table now looks like this:
+
+<img src="assets/pivot2_10.png" width="800"/>
+
+### Missing Columns
+We want to include `Margin` in this pivot, but it does not exist in our `PLUGS_DATA` table.
+
+Click the `+` icon in the element panel > `VALUES` and search for `Mar`; no columns exist so we can click `Add new column`:
+
+<img src="assets/pivot2_11.png" width="800"/>
 
 <aside class="positive">
-<strong>Browser Query:</strong><br>
-While Sigma does push queries to the CDW to take advantage of its scale and speed, Sigma is unique in that it first does an evaluation to see if the query or operation can be done in the end user’s browser using the data in the browser cache. This functionality is called Browser Query and leads to near-instant results and a faster, better user experience. 
-
-Browser Query can perform operations like queries, filters, and sorts. And it is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools. Browser Query uses fresh data from the CDW and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risk.
+<strong>IMPORTANT:</strong><br> New columns are not written into the cloud data warehouse. These new columns are metadata that Sigma automatically manages for you and are typically used for calculations and transformations of existing warehouse columns.
 </aside>
 
-<ul>
-  <li><strong>New:</strong> Allows you to obtain data from any of your Connections.</li>
-  <li><strong>In Use:</strong> Allow you use source data that is already in use on another Page in this Workbook</li>
-  <li><strong>Page Elements:</strong> Table and visualization elements can be selected as a source from the open Workbook</li>
-</ul>
+Set the formula to:
+```code
+Sum([Sales] - [COGS]) / Sum([Sales])
+```
 
-We now have our Pivot Table and can begin working just like a normal spreadsheet. Get ready, you may be pleasantly surprised by how easy this is in Sigma.
+Rename the new column to `Margin` and set it to `Percentage (%)`:
 
-![Alt text](assets/createpivot1.png)
+<img src="assets/pivot2_12.png" width="800"/>
 
-First we will want to drag `Store Region` and `Product Type` to our `Pivot row`. Notice that the Pivot table appears as we build? Already the resultant table is making more sense than our grouping example earlier:
+Our pivot table now looks like this:
 
-<img src="assets/createpivot4.png" width="600"/>
-
-Next we will want to drag `Date` to the `Pivot column`. We also want to `truncate` the date to `Year`:
-
-Depending on if you sorted your source data the most current year may not be shown first. Lets change to sort order to have our most recent year at the far left. You can either do this from the Pivot Column panel using the `dropdown` next to the `Year of Date` field, or we can do it directly in the Pivot Table itself by selecting the dropdown next to ‘Year of Date’ column header and clicking sort ‘Year of Date’:
-
-<img src="assets/createpivot5.png" width="600"/>
-
-Lastly, we will want to add our values which we want to look at. Drag the `Profit` and `ProfitMargin` fields into the `Value` shelf.
-
-Our `Profit Margin` is a little off, so let’s change it to be an Average instead of a Sum by clicking
-the dropdown menu next to `Sum of Profit Margin` and selecting an `aggregation of AVG`:
-
-<img src="assets/createpivot6.png" width="400"/>
-
-You also may want to change the Pivot Row and Column names to suit your needs.
-
-<img src="assets/createpivot7.png" width="300"/>
-
-Let's say we only want to see the current and last year's data along with Totals. Just `enable the filter` the Pivot as shown below:
-
-<img src="assets/createpivot8.png" width="300"/>
-
-Set the desired Date range:
-
-<img src="assets/createpivot9.png" width="400"/>
-
-Apply Conditional Formatting to make the potential problems stand stand out. `Enable Conditional Formatting`:
-
-<img src="assets/createpivot11.png" width="400"/>
-
-Se the Conditional Format rule as shown to high-light the Margin less than or equal to 25 percent in red:
-
-<img src="assets/createpivot12.png" width="700"/>
-
-That's it; we now have a beautiful Pivot Table we can explore:
-
-![Alt text](assets/createpivot13.png)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF CREATE A PIVOT TABLE  -->
-
-## **Drill Anywhere**
-Duration: 10
-
-The presentation of the Pivot is just the starting point for the user who most likely cares about spotting problems or trends and taking action. From the last exercise we can see that the **East Region / Entertainment category is selling below margin guidelines**. We want more details!
-
-`Right click` on the `Entertainment` product type in the Pivot and select `Keep only Entertainment`:
-
-<img src="assets/drill1.png" width="400"/>
-
-Next , `right click` on the `Entertainment` product type in the Pivot and select `Show underlying data`. You could also just click the `expand` icon as shown below with the red arrow:
-
-<img src="assets/drill2.png" width="700"/>
-
-We are shown only the subset of data specified and can easily work with all the row level detail to see which transactions are being sold at lower than desired margins; in this case, televisions.
-
-<img src="assets/drill3.png" width="700"/>
-
-You can get back to the original Pivot by either clicking the `Back` icon or deleting any active filters you set (either click the x or use the 3-vertical-dot menu) as shown below:
-
-<img src="assets/drill4.png" width="700"/>
+<img src="assets/pivot2_13.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF DRILL ANYWHERE  -->
+
+## Drill Anywhere
+Duration: 10
+
+The presentation of the pivot is just the starting point for the user who most likely cares about spotting problems or trends and taking action. 
+
+Sigma allows users to access all the data they are permitted to see, so they get to use their business knowledge, unconstrained by the analytics.
+
+In the pivot table `right click` on `East` > `Mobiles` cell and select `Drill down`:
+
+<img src="assets/pivot2_14.png" width="800"/>
+
+On the `Drill down` modal, select `Brand`:
+
+<img src="assets/drill1.png" width="400"/>
+
+`Brand` is added to the pivot table and we can see sales figures accordingly. 
+
+We might want to see the most recent year first. That is simple enough. 
+
+Click on the `Year of Date` > `Year (ie: 2020)` and select sort and descending.
+
+<img src="assets/pivot2_15.png" width="800"/>
+
+We also want to sort `Brand` by `Total Profit` so we can more easily see the bottom dwellers:
+
+<img src="assets/pivot2_16.png" width="800"/>
+
+Now it is plainly clear which vendors are performing poorly:
+
+<img src="assets/pivot2_17.png" width="800"/>
+
+The action of drilling down on `Brand` added the column as a pivot row (#1 in the image below). We can keep that or remove it just as easily using the `Brand's` column menu.
+
+The drill down action also created two filters that we can keep, or disable as shown below (#2-#4). 
+
+<img src="assets/pivot2_18.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Two filters were created since we selected Mobiles in the East region so both were added as filters.
+</aside>
+
+Our pivot table now looks like this **(after disabling the two filters)**:
+
+<img src="assets/pivot2_19.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF DRILL ANYWHERE  -->
+
+
+## Conditional Formatting
+Duration: 5
+
+
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
 
 ## What we've covered
 Duration: 5
