@@ -218,7 +218,7 @@ This means that viewers can still work with the data, but only users with the `e
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-### Where is all the data coming from?
+## Where is all the data coming from?
 Duration: 20
 
 Sigma workbooks can get really expansive and it can be useful to see add the source data and relationships visually.
@@ -235,23 +235,18 @@ Clicking the `Show controls` checkbox also will show any control elements and th
 
 <img src="assets/fit12.png" width="800"/>
 
+To learn more about [workbook data lineage, see here.](https://help.sigmacomputing.com/docs/workbook-data-lineage)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-### Governance columns
+## Governance columns
 Duration: 20
 
 
 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
-
-
-
-
 
 
 
