@@ -391,6 +391,12 @@ Now we have a title that changes when the time period control changes:
 
 <img src="assets/pivot2_36.png" width="500"/>
 
+Click `Publish`.
+
+Our pivot table now looks like this:
+
+<img src="assets/pivot2_37.png" width="800"/>
+
 To learn more about [pivot tables in Sigma, see here.](https://help.sigmacomputing.com/docs/working-with-pivot-tables)
 
 ![Footer](assets/sigma_footer.png)
