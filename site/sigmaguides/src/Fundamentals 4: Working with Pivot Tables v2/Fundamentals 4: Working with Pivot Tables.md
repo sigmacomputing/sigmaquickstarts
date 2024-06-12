@@ -15,7 +15,7 @@ Duration: 5
 
 This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using pivot tables.
 
-Through this QuickStart we will walk through why use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
+Through this QuickStart, we will walk through why to use a pivot table, how to use Sigma to create one, adding conditional formatting, and drilling down on table data.
 
 We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart [Fundamentals 1: Getting Around.](https://quickstarts.sigmacomputing.com/guide/fundamentals-1-getting-around-v2/index.html?index=..%2F..index#0)
 
@@ -48,9 +48,9 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 ## Pivot Table Defined
 Duration: 10
 
-It is important to understand what a Pivot Table **(Pivot)** is and how it is different from a typical table that might use grouping to provide the desired result set.
+It is important to understand what a pivot table is and how it differs from a typical table that might use grouping to provide the desired result set.
 
-A Pivot Table is an interactive way to quickly **summarize** large amounts of data. You can use a Pivot Table to analyze numerical data in detail, and answer unanticipated questions about your data. A Pivot Table is especially designed for:
+A pivot table is an interactive way to quickly summarize large amounts of data. You can use a pivot table to analyze numerical data in detail and answer unanticipated questions about your data. A pivot table is especially designed for:
 
  <ul>
       <li>Querying large amounts of data in a user-friendly way.</li>
@@ -62,8 +62,12 @@ A Pivot Table is an interactive way to quickly **summarize** large amounts of da
 
 Tables tend to provide a flat organization of the data, although grouping and other features can make less obvious to users who are unfamiliar with the differences. 
 
-It is important to understand that a strong case can be made to use tables instead of pivots. A discussion of this is outside the scope of a fundamentals QuickStart, but if you are interested, review the Sigma community post, [Best practice 1](https://community.sigmacomputing.com/docs?topic=3285) for that information. 
+It is also important to understand that a strong case can be made to use tables instead of pivots. A discussion of this is outside the scope of a fundamentals QuickStart, but if you are interested, review the Sigma community post, [Best practice 1](https://community.sigmacomputing.com/docs?topic=3285) for that information.
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF PIVOT TABLE BASICS -->
+
+## Use Case
 Lets assume we want to look at a breakdown of Profit, Margin and Order quantities by Store Region, Product type and month.
 
 We have the required columns in our `PLUGS_DATA` table and could **possibly** satisfy the requirement by grouping the data but the end result will not be easy for the viewer to interpret and they may have to make multiple clicks to orient the table to suit their interests. 
@@ -74,7 +78,7 @@ The grouped output of this may look something like this and you can easily see h
 
 <img src="assets/pivotdef2.png" width="800"/>
 
-Let's create a Pivot instead.
+Let's create a pivot table instead.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PIVOT TABLE BASICS -->
@@ -82,13 +86,13 @@ Let's create a Pivot instead.
 ## Creating a Pivot Table
 Duration: 10
 
-In Sigma, open the workbook `Fundamentals` and place it in edit mode. We should still have the Page tab called `Data` that has the `PLUGS_DATA` table on it. 
+In Sigma, open the workbook `Fundamentals` and place it in edit mode. We should still have the page called `Data` that has the `PLUGS_DATA` table on it. 
 
-Add a `New page` and name it `Pivot Table`. 
+Add a `New page` and rename it `Pivot Table`. 
 
-Add a new element, `PIVOT TABLE` and select the `PLUGS_DATA` table on the `Data` page as its source.
+Add a new element, `PIVOT TABLE` and select the `PLUGS_DATA` table from the `Data` page as its source.
 
-<img src="assets/pivot2_1.png" width="800"/>
+<img src="assets/pivot2_1.png" width="600"/>
 
 Drag the `Store Region` column to `PIVOT ROWS` in the element panel:
 
@@ -106,7 +110,7 @@ Click this icon (#1 in image below) to switch to columnar instead:
 
 Add `Date` to the `PIVOT COLUMNS` section in the element panel.
 
-Sigma warns us that there more than 1,000 columns and we need to filter to reduce the number. This makes sense as the `Day` column needs to be a period of time like month, quarter or year.
+Sigma warns us that there more than 1,000 columns; we need to filter to reduce the number. This makes sense as we are currently using the `Day of Date` column. This needs to be a period of time like month, quarter or year.
 
 <img src="assets/pivot2_5.png" width="800"/>
 
@@ -119,7 +123,7 @@ DateTrunc("year", [Date])
 
 Sigma has also provided all the most common functions (ie: write the function for you!) as menu options off of a column, so you could have just applied that too:
 
-<img src="assets/pivot2_7.png" width="800"/>
+<img src="assets/pivot2_7.png" width="600"/>
 
 Our pivot table now looks like this:
 
@@ -129,7 +133,7 @@ Add the `Profit` and `Order Number` columns to `VALUES`.
 
 We need to set the aggregation method on the `Order Number` column to `CountDistinct`:
 
-<img src="assets/pivot2_9.png" width="800"/>
+<img src="assets/pivot2_9.png" width="600"/>
 
 Rename these `VALUE` columns to `Total Profit` and `# Orders`.
 
@@ -142,7 +146,7 @@ We want to include `Margin` in this pivot, but it does not exist in our `PLUGS_D
 
 Click the `+` icon in the element panel > `VALUES` and search for `Mar`; no columns exist so we can click `Add new column`:
 
-<img src="assets/pivot2_11.png" width="800"/>
+<img src="assets/pivot2_11.png" width="600"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> New columns are not written into the cloud data warehouse. These new columns are metadata that Sigma automatically manages for you and are typically used for calculations and transformations of existing warehouse columns.
@@ -153,9 +157,7 @@ Set the formula to:
 Sum([Sales] - [COGS]) / Sum([Sales])
 ```
 
-Rename the new column to `Margin` and set it to `Percentage (%)`:
-
-<img src="assets/pivot2_12.png" width="800"/>
+Rename the new column to `Margin` and set it to `Percentage (%)`.
 
 Our pivot table now looks like this:
 
@@ -173,7 +175,7 @@ Sigma allows users to access all the data they are permitted to see, so they get
 
 In the pivot table `right click` on `East` > `Mobiles` cell and select `Drill down`:
 
-<img src="assets/pivot2_14.png" width="800"/>
+<img src="assets/pivot2_14.png" width="400"/>
 
 On the `Drill down` modal, select `Brand`:
 
@@ -183,13 +185,13 @@ On the `Drill down` modal, select `Brand`:
 
 We might want to see the most recent year first. That is simple enough. 
 
-Click on the `Year of Date` > `Year (ie: 2020)` and select sort and descending.
+Click on the `Year of Date` > `Year (ie: 2020)` and select sort and descending (down arrow):
 
-<img src="assets/pivot2_15.png" width="800"/>
+<img src="assets/pivot2_15.png" width="500"/>
 
-We also want to sort `Brand` by `Total Profit` so we can more easily see the bottom dwellers:
+We also want to sort `Brand` by `Total Profit`, so we can more easily see the bottom dwellers:
 
-<img src="assets/pivot2_16.png" width="800"/>
+<img src="assets/pivot2_16.png" width="500"/>
 
 Now it is plainly clear which vendors are performing poorly:
 
@@ -228,6 +230,8 @@ Each section will carry an asterisk when the defaults have been changed:
 
 <img src="assets/pivot2_21.png" width="800"/>
 
+Experiment as much as you want. Each section has the option to `Restore to default.`
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
@@ -252,7 +256,7 @@ With the new control selected on the canvas, configure it as shown below:
 
 The `Control ID` is a critical value as that is how we can reference the current value the user has set the control to.
 
-Our control is now configured (we renamed it in the UI too), but the pivot table is not aware of it yet.
+Our control is now configured, but the pivot table is not aware of it yet.
 
 We need to configure the pivot table to handle the time period values when the user changes the time period contol. 
 
@@ -264,7 +268,7 @@ We do not have a column in this pivot for `time period`, but we don't need one e
 <strong>IMPORTANT:</strong><br> Sigma functions have the flexibility you expect and may already be familiar with if if you are an experienced Excel or Google Sheets user.
 </aside>
 
-CLick anywhere on the pivot table to select it and then click the `Year of Date` on the element panel.
+Click anywhere on the pivot table to select it and then click the `Year of Date` on the element panel.
 
 We want to replace formula (#2 in the image below) to the following code:
 
@@ -278,21 +282,21 @@ Lets pause and explore the formula and it's parts.
 
 Here is the code again, but formatted for readability:
 
-**// Month Section of Code**<br>
+**1: Month Section of Code**<br>
 If([p_date_dimension] = "Month", Concat(Text(DatePart("year", [Date])), "-", Text(DatePart("month", [Date]))), 
 
 **Explanation:**<br>
 Formats the date as YYYY-MM using [DATEPART()](https://help.sigmacomputing.com/docs/datepart) to extract the year and month, ensuring correct sorting.<br>
 Creates a string value using the [TEXT()](https://help.sigmacomputing.com/docs/text) function to combine year-month.
 
-**// Quarter Section of Code**<br>
+**2: Quarter Section of Code**<br>
 If([p_date_dimension] = "Quarter", Concat("Q", Text(Quarter([Date])), " ", Text(Year([Date]))), 
 
 **Explanation:**<br>
 Formats the date as Qn YYYY, where n is the quarter number, ensuring readability and correct sorting.<br>
 Creates a string value using the TEXT() function to combine "Q" and the quarter number plus the year in YYYY format.
 
-**// Year Section of Code**<br>
+**3: Year Section of Code**<br>
 If([p_date_dimension] = "Year", Text(DatePart("year", [Date])))))
 
 **Explanation:**<br>
@@ -300,7 +304,7 @@ Formats the date as YYYY, showing only the year.
 
 After copy/pasting the code, click the green checkmark:
 
-<img src="assets/pivot2_28.png" width="400"/>
+<img src="assets/pivot2_28.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Whenever editing values in the function bar, if the green checkmark is not active, there is some problem with the formula being used. Syntax errors such as missing brackets or commas are things to look for. Sigma provides guides to syntax under the function bar as you type.
@@ -310,13 +314,9 @@ Clicking the `Select a Time Period` control > `Year` will make the pivot table d
 
 Click one of the years, and change the sort from ascending to descending:
 
-<img src="assets/pivot2_29.png" width="500"/>
+<img src="assets/pivot2_29.png" width="800"/>
 
 Clicking on `Month` or `Quarter` will orient the pivot columns accordingly.
-
-We should change the `Year of Date` column name to `Date` to avoid confusion. This label is displayed to the user at the top of the pivot table:
-
-<img src="assets/pivot2_30.png" width="800"/>
 
 Our pivot table can now be filtered by the time period control:
 
@@ -347,19 +347,59 @@ In our case, we will configure a simple rule to drive the cell colors used in th
 The rule is applied automatically and we now can see which products are green (happy) and which are red (sad).
 
 ### Data Bars
+We can also apply a progress bar inside of a column's cells. This can be color based and include a min/max value range.
 
+Click the link for `Add rule`.
 
+Click the `DATA BARS` box.
 
+Select the `Total Profit` and `Order Qty` columns. 
 
+Deselect the `Margin` column (if it is selected).
+
+The fill colors are already set for us; we can just use those.
+
+It we wanted to set min/max values, click the `Customize Domain` checkbox.
+
+Our pivot table now looks like this:
+
+<img src="assets/pivot2_33.png" width="800"/>
+
+## Dynamic Text - Pivot Title
+
+we did touch on this topic in the previous QuickStart (by referencing table summary values), we want to reinforce an important point.
+
+The `Control ID` for a Sigma control can be accessed anywhere in a workbook by using the name in a formula, to return the current value of the control.
+ 
+For this example, we will dynamically adjust the title of the pivot table so that the user has a better idea of what the table represents, when a specific time period it set.
+
+Click on the pivot table's title and backspace over it. Sigma now prompts you to either enter a title or press `=` to add dynamic text:
+
+<img src="assets/pivot2_34.png" width="600"/>
+
+Our time period control's ID is `p_date_dimension` so we can copy and paste the formula below to get it's current value, and append some text to it:
+
+** Be sure to first type `=` and then paste the code.**
+
+<img src="assets/pivot2_35.png" width="600"/>
+
+```code
+[p_date_dimension] & "ly " & "Product Breakdown"
+```
+
+Now we have a title that changes when the time period control changes:
+
+<img src="assets/pivot2_36.png" width="500"/>
+
+To learn more about [pivot tables in Sigma, see here.](https://help.sigmacomputing.com/docs/working-with-pivot-tables)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-
 ## What we've covered
 Duration: 5
 
-In this QuickStart we covered why you might use a Pivot Table, how to use Sigma to create one adding conditional formatting and drilling down on table data.
+In this QuickStart, we covered why you might use a pivot table, how to use Sigma to create one, add conditional formatting, and drill down on table data.
 
 **Additional Resource Links**
 
