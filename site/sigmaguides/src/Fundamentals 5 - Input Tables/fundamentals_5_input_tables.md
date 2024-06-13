@@ -240,75 +240,132 @@ To learn more about [workbook data lineage, see here.](https://help.sigmacomputi
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Governance columns
+## Capture Comments
 Duration: 20
 
+We want users to have a place to add comments about order status as they make changes. Adding columns to input tables is the same as for regular tables, except these new columns can write back to the warehouse.
 
+With the workbook in `Edit` mode, click the `+` in the column header of the last column:
+
+<img src="assets/fit13.png" width="800"/>
+
+In the column type list, select `Text`, since this will be a comments column:
+
+<img src="assets/fit14.png" width="800"/>
+
+Rename the column to `Comments` and click to open its menu. Input table columns have all the same features as regular tables. 
+
+<img src="assets/fit15.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> All these column features allows a great deal of flexibility to build some really unique data-driven applications.
+</aside>
+
+Now users can add free-form comments as they update orders:
+
+<img src="assets/fit16.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Track Changes
+Duration: 20
 
+Sigma input table provide two built-in columns that can be exposed easily.
 
+Adding another column, we can see that there are two history columns available to add:
 
+<img src="assets/fit17.png" width="800"/>
 
-We want the user to be able to filter the Input Table Table to specific Companies.
+Adding both of these will provide information on who made the last edit, and when.
 
-Add a new Element / Control Element / List Value element and configure it as follows:
+These four columns are written back to the warehouse, each time the user makes a change.
 
-<img src="assets/dc10.png" width="400"/>
-
-Set the `Target` as:
-
-<img src="assets/dc10a.png" width="400"/>
+<img src="assets/fit18.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Notice that we are not targeting the Input Table but rather the Table on the hidden Data Page that is linked to the Input Table. This can also be used to drive Row Level Security.
+<strong>NOTE:</strong><br> You may have noticed we changed the date format using the columns menu.
 </aside>
 
-We now are ready to add our columns that are enabled for data capture.
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-Add a new Column to the Input Table called `Status`.
+## Filter Control
+Duration: 20
 
-Add another new Column to the Input Table called `Notes`.
+No large table, input table or not, is all that useful without some filtering. Filtering in Sigma is so easy it only takes seconds to do.
 
-We did Data Validation in an earlier use case but this time will just limit the `Status` column to values we will manually provide:
+Imagine a scenario where a customer calls and wants to check their order status, but does not have the order number. We need a quick way to find their orders, using their name.
 
-<img src="assets/dc11.png" width="400"/>
+Previously, we used the `+` in the element panel to add a control filter. This is fine, but lets do it a different way.
 
-We want the user to "work" the data down so we need another Input List to filter the table, not showing rows that have a Status = Fulfilled,
+This time, click the `Customer Name` menu and select `Filter`.
 
-Set a Filter on the Table to only show rows that have not been Fulfilled:
+<img src="assets/fit19.png" width="800"/>
 
-<img src="assets/dc13.png" width="800"/>
+This opens the selected column as a filter for the `Order Status` table.
 
-Now we can filter by Company, adjust the Status and add notes.
+Click the `3-dots` icon and `Change filter type` to `Text match`.
 
-Last step before we test is to enable editing in Explorer Mode:
+<img src="assets/fit20.png" width="800"/>
 
-<img src="assets/dc14.png" width="800"/>
+We also want to use `Contains` instead of `Equal to` so we can get results more quickly and avoid having to spell th whole name:
 
-Publish the Workbook and go to the Publish version so that we are looking at this Page as the end-user would see and work with it.
+<img src="assets/fit21.png" width="800"/>
 
-Now we have an `Edit Data` button. Click that:
+We have our filter, but don't want to have to make the user click the filter icon to expose it. That is too many clicks!
 
-<img src="assets/dc15.png" width="800"/>
+Open the `3-dot` menu and select `Convert to page control`:
 
-Lets test by updating the first four records as shown for each Status:
+<img src="assets/fit22.png" width="800"/>
 
-<img src="assets/dc16.png" width="800"/>
+Type `Daria G` and hit enter.
 
-Click the `Save` button.
+We can quickly see that Daria has a recent order. We will let you explain that the box was received opened....
 
-Each time we save, any records set `Fulfilled` are longer visible. Looking at `Column Details` for `Status` we see that there are no rows where Status = Fulfilled. 
+<img src="assets/fit23.png" width="800"/>
 
-<img src="assets/dc16.png" width="800"/>
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-In this way, the user can just do the updates they need and not be concerned about records that are completed.
+## Actions
+Duration: 20
 
-<aside class="postive">
-<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
-</aside>
+Actions brings even more interactivity to life, that can be configured within and across workbook elements. 
+
+By automating responses to specific user interactions, we can create efficient workbook workflows that produce quick and relevant data insights.
+
+Lets use a simple example to get you familiar with actions.
+
+Use the element panel, `+` icon to add a new `Button` element to the page. Drag it next to the `Customer Name` filter control:
+
+<img src="assets/fit24.png" width="800"/>
+
+Change the button's label to `Clear Filter`:
+
+<img src="assets/fit24a.png" width="800"/>
+
+With the new button selected, click the actions icon and `Add action`:
+
+<img src="assets/fit25.png" width="800"/>
+
+Set the control value to `Clear control`:
+
+<img src="assets/fit26.png" width="800"/>
+
+Select the `Control` as our `Customer Name` filter:
+
+<img src="assets/fit27.png" width="800"/>
+
+Click `Publish`.
+
+Users can now reset the filter by clicking the `Clear Filter` button:
+
+<img src="assets/actions.gif" width="800"/>
+
+While this was a simple example, actions enable really interesting data-driven application workflows in Sigma.
+
+To learn more about [actions, see here.](https://help.sigmacomputing.com/docs/intro-to-actions)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -319,7 +376,11 @@ Duration: 5
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-In this QuickStart we covered three popular used cases for Sigma Input Tables in great detail. 
+In this QuickStart we covered the basic functionality provide by Sigma input tables. We explored a simple use case and demonstrated just how easy it can be to solve business problems without long develop cycles or purchasing additional software applications.
+
+<aside class="postive">
+<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
+</aside>
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
