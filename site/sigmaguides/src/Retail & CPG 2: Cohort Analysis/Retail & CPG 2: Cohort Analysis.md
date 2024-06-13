@@ -88,7 +88,7 @@ Duration: 10
 
 ![image11](assets/creatingachildtable_11.png)
 
-14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen. Select the “DATA BARS” tab strip to apply them to the column.
+14. Let's add data bars to the “% of Region” column by right clicking it and selecting “Conditional formatting”. This will pop out the formatting pane on the left side of the screen. Then, select the "DATA BARS" tab strip to apply them to the column.
 
 ![image12](assets/creatingachildtable_12.png)
 
