@@ -28,9 +28,9 @@ We will be working with some common sales data from our fictitious company `Plug
 </aside>
 
  ### Target Audience
-Sigma combines with the unlimited power of the cloud data warehouse and the familiar feel of a spreadsheet; no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
+Sigma combines the unlimited power of the cloud data warehouse with the familiar feel of a spreadsheet, with no limit on the amount of data you wish to analyze. Sigma is awesome for users of Excel and even better for customers who have millions of rows of data.
 
-Typical audience for this QuickStart are users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
+The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma. Everything is done in a browser, so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
@@ -41,7 +41,7 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 </ul>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma trial instances provide a sample database in Snowflake and write access for input tables is already configured for you. Production environments need to have write access configured by your Sigma administrator. It only takes a few minutes!
+<strong>IMPORTANT:</strong><br> Sigma trial instances provide a sample database in Snowflake, and write access for input tables is already configured for you. Production environments need to have write access configured by your Sigma administrator. It only takes a few minutes!
 </aside>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
@@ -59,23 +59,18 @@ Anyone who is trying to create QS content using Sigma and wants to augment, adju
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-  <li>Downloadable project files discussed later in this document.</li>
-  <li>A Snowflake account with the proper administrative and security admin access.</li>
-  <li>Microsoft Excel or Google Sheets (for accessing the provided sample data)</li>
 </ul>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
 
 ![Footer](assets/sigma_footer.png)
 
 ## Why Use Input Tables?
 Duration: 5 
 
-When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
+When data isn’t in the warehouse, it usually requires a cumbersome technical or human process to ETL data into the warehouse. Now, users who need to add data to the warehouse can do so directly.
 
-With input tables, what can be built in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data application platform. 
+With input tables, what can be built in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data application platform.
 
-Input tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+Input tables give users the power to augment, adjust, interact, and create ‘what-if’ scenarios in real-time, without changing the source data.
 
 Input tables can also be use as sources for tables, pivot tables, and visualizations, or incorporate the data using [lookups](https://help.sigmacomputing.com/docs/join-types#lookup) and joins. And when you create [warehouse views](https://help.sigmacomputing.com/docs/create-and-manage-workbook-warehouse-views) for input tables, you can reuse the manually entered data across your broader data ecosystem.
 
@@ -127,14 +122,16 @@ Why not just create a Sigma workbook and augment it with the ability for the use
 Sigma will do the heavy lifting of presenting a familiar user interface, restrict the functionality to those permitted to use it and store the new data in your warehouse. 
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma does not store data and with input tables outside of your warehouse. Data is stored in your warehouse only, where you specify. Existing data is NEVER changed in any way.
+<strong>IMPORTANT:</strong><br> Sigma does not store your data outside of your warehouse. Data is stored in your warehouse only, where you specify. Existing data is NEVER changed in any way.
 </aside>
 
-Allowing users to add/supplement warehouse data opens a world of possibilities. We can demonstrate how this can be done we will use a very simple example.
+Allowing users to supplement warehouse data opens a world of possibilities. 
+
+We will demonstrate how this can be done using a simple example.
 
 ### Use case description
 
-There is a need for various employees to to update the delivery status of orders, adding comments/notes, but don't want to provide access to the accounting system to employees outside of accounting.
+There is a need for various employees to update the delivery status of orders, adding comments. We don't want to provide access to other internal systems to enable this process.
 
 Sigma can easily solve this challenge using input tables and our curated warehouse table, `PLUGS_DATA`, without wasting software developers or database administrators valuable time.
 
@@ -159,9 +156,9 @@ There are actually three types of input tables to choose from.
       <li><strong>LINKED:</strong> supports data entry alongside existing data from other elements in the same workbook, via a lookup.</li>
 </ul>
 
-Choose the following columns from the list of available and click `Create Input Table`:
+Choose the following columns to include from the `PLUGS_DATA` table and click `Create Input Table`:
 
-<img src="assets/fit2.png" width="800"/>
+<img src="assets/fit2.png" width="600"/>
 
 We now have an input table with columns from the `PLUGS_DATA` table:
 
@@ -175,7 +172,7 @@ Observe that the columns that have been linked from the `PLUGS_DATA` table have 
 
 The lock indicates that those columns are not editable. The `Text` column was added by Sigma as an starting point for adding more input table columns.
 
-We also reordered our columns assuming that an employee might be on the phone with a customer and want to easily locate the customer's order by name, order number and have a few order details on-hand too.
+We also reordered our columns, assuming that an employee might be on the phone with a customer and want to easily locate the customer’s order by name, order number, and have a few order details on hand too.
 
 Lets center the `Order Number` and `Quantity` columns:
 
@@ -191,15 +188,15 @@ Duration: 20
 
 We don't want employees making mistakes manually typing the order status. We want them to pick from a valid list.
 
-Change the `Text` column name to `Order Status` by double-clicking the word "Text".
+Change the `Text` column name to `Order Status` by double-clicking the word `Text`.
 
 Click the `Order Status` menu and select `Data validation`:
 
-<img src="assets/fit6.png" width="800"/>
+<img src="assets/fit6.png" width="300"/>
 
 We will use a manual list, but the option can also be data driven if preferred:
 
-<img src="assets/fit7.png" width="800"/>
+<img src="assets/fit7.png" width="500"/>
 
 Now the users can just select from a list of validate status, or clear the cell out as well (#2 in the image below):
 
@@ -207,7 +204,7 @@ Now the users can just select from a list of validate status, or clear the cell 
 
 Click `Publish`.
 
-Out `Order Status` page now looks like this, when looking at the published version:
+Our `Order Status` page now looks like this, when looking at the published version:
 
 <img src="assets/fit9.png" width="800"/>
 
@@ -218,12 +215,12 @@ This means that viewers can still work with the data, but only users with the `e
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Where is all the data coming from?
+## Where is the Data Coming From?
 Duration: 20
 
-Sigma workbooks can get really expansive and it can be useful to see add the source data and relationships visually.
+Sigma workbooks can get really expansive, and it can be useful to visually see and add the source data and relationships.
 
-Sigma provides a quick way to see that using the `view lineage` option:
+Sigma provides a quick way to see that using the `View lineage` option:
 
 <img src="assets/fit10.png" width="800"/>
 
@@ -243,7 +240,9 @@ To learn more about [workbook data lineage, see here.](https://help.sigmacomputi
 ## Capture Comments
 Duration: 20
 
-We want users to have a place to add comments about order status as they make changes. Adding columns to input tables is the same as for regular tables, except these new columns can write back to the warehouse.
+We want users to have a place to add comments about order status as they make changes. 
+
+Adding columns to input tables is the same as for regular tables, except these new columns are written back to the warehouse.
 
 With the workbook in `Edit` mode, click the `+` in the column header of the last column:
 
@@ -251,11 +250,11 @@ With the workbook in `Edit` mode, click the `+` in the column header of the last
 
 In the column type list, select `Text`, since this will be a comments column:
 
-<img src="assets/fit14.png" width="800"/>
+<img src="assets/fit14.png" width="500"/>
 
 Rename the column to `Comments` and click to open its menu. Input table columns have all the same features as regular tables. 
 
-<img src="assets/fit15.png" width="800"/>
+<img src="assets/fit15.png" width="500"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> All these column features allows a great deal of flexibility to build some really unique data-driven applications.
@@ -263,7 +262,7 @@ Rename the column to `Comments` and click to open its menu. Input table columns 
 
 Now users can add free-form comments as they update orders:
 
-<img src="assets/fit16.png" width="800"/>
+<img src="assets/fit16.png" width="700"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -275,7 +274,7 @@ Sigma input table provide two built-in columns that can be exposed easily.
 
 Adding another column, we can see that there are two history columns available to add:
 
-<img src="assets/fit17.png" width="800"/>
+<img src="assets/fit17.png" width="400"/>
 
 Adding both of these will provide information on who made the last edit, and when.
 
@@ -293,35 +292,41 @@ These four columns are written back to the warehouse, each time the user makes a
 ## Filter Control
 Duration: 20
 
-No large table, input table or not, is all that useful without some filtering. Filtering in Sigma is so easy it only takes seconds to do.
+Any type of table can be made more useful with some filtering, especially when the data gets large. 
 
-Imagine a scenario where a customer calls and wants to check their order status, but does not have the order number. We need a quick way to find their orders, using their name.
+Filtering in Sigma is really easy, and it only takes seconds to do.
 
-Previously, we used the `+` in the element panel to add a control filter. This is fine, but lets do it a different way.
+Imagine a scenario where a customer calls and wants to check their order status, but does not have the order number. 
+
+We need a quick way to find their orders, using their name.
+
+In other fundamentals QuickStarts, we used the `+` in the element panel to add a control filter. 
+
+This is fine, but lets do it a different way.
 
 This time, click the `Customer Name` menu and select `Filter`.
 
-<img src="assets/fit19.png" width="800"/>
+<img src="assets/fit19.png" width="400"/>
 
 This opens the selected column as a filter for the `Order Status` table.
 
 Click the `3-dots` icon and `Change filter type` to `Text match`.
 
-<img src="assets/fit20.png" width="800"/>
+<img src="assets/fit20.png" width="400"/>
 
-We also want to use `Contains` instead of `Equal to` so we can get results more quickly and avoid having to spell th whole name:
+We also want to use `Contains` instead of `Equal to` so we can get results more quickly and avoid having to spell the whole name:
 
-<img src="assets/fit21.png" width="800"/>
+<img src="assets/fit21.png" width="400"/>
 
 We have our filter, but don't want to have to make the user click the filter icon to expose it. That is too many clicks!
 
 Open the `3-dot` menu and select `Convert to page control`:
 
-<img src="assets/fit22.png" width="800"/>
+<img src="assets/fit22.png" width="400"/>
 
 Type `Daria G` and hit enter.
 
-We can quickly see that Daria has a recent order. We will let you explain that the box was received opened....
+We can quickly see that Daria has a recent order.
 
 <img src="assets/fit23.png" width="800"/>
 
@@ -331,7 +336,7 @@ We can quickly see that Daria has a recent order. We will let you explain that t
 ## Actions
 Duration: 20
 
-Actions brings even more interactivity to life, that can be configured within and across workbook elements. 
+Actions brings even more interactivity that can be configured within and across workbook elements. 
 
 By automating responses to specific user interactions, we can create efficient workbook workflows that produce quick and relevant data insights.
 
@@ -339,7 +344,7 @@ Lets use a simple example to get you familiar with actions.
 
 Use the element panel, `+` icon to add a new `Button` element to the page. Drag it next to the `Customer Name` filter control:
 
-<img src="assets/fit24.png" width="800"/>
+<img src="assets/fit24.png" width="300"/>
 
 Change the button's label to `Clear Filter`:
 
@@ -347,7 +352,7 @@ Change the button's label to `Clear Filter`:
 
 With the new button selected, click the actions icon and `Add action`:
 
-<img src="assets/fit25.png" width="800"/>
+<img src="assets/fit25.png" width="600"/>
 
 Set the control value to `Clear control`:
 
@@ -373,13 +378,10 @@ To learn more about [actions, see here.](https://help.sigmacomputing.com/docs/in
 ## What we've covered
 Duration: 5
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
-
-In this QuickStart we covered the basic functionality provide by Sigma input tables. We explored a simple use case and demonstrated just how easy it can be to solve business problems without long develop cycles or purchasing additional software applications.
+In this QuickStart we covered the basic functionality provide by Sigma input tables. We explored a simple use case and demonstrated just how easy it can be to solve business problems without long development cycles or purchasing additional software applications.
 
 <aside class="postive">
-<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
+<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With input tables you can now capture information that is trapped in the end user's minds without investing in another application. Imagine the possibilities.
 </aside>
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
