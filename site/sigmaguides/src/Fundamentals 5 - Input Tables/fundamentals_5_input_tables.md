@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-06-31
 
-# Fundamentals 5: Input Tables
+# Fundamentals 5: Input Tables v2
 
 ## Overview 
 Duration: 5 
@@ -49,17 +49,6 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
-
-### Target Audience
-Anyone who is trying to create QS content using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
-
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-</ul>
 
 ![Footer](assets/sigma_footer.png)
 
