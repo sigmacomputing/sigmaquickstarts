@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-06-31
 
-# Fundamentals 5: Input Tables
+# Fundamentals 5: Input Tables v2
 
 ## Overview 
 Duration: 5 
@@ -49,17 +49,6 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
-
-### Target Audience
-Anyone who is trying to create QS content using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
-
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-</ul>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -383,6 +372,8 @@ In this QuickStart we covered the basic functionality provide by Sigma input tab
 <aside class="postive">
 <strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With input tables you can now capture information that is trapped in the end user's minds without investing in another application. Imagine the possibilities.
 </aside>
+
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls/index.html)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
