@@ -94,7 +94,7 @@ Sigma also supports **Secure** embedding in other 3rd party applications like Sa
 
 [QuickStart: Embedding 11: Embed into Salesforce.](https://quickstarts.sigmacomputing.com/guide/embedding_12_secure_embedding_into_streamlit/index.html?index=..%2F..index#0)
 
-[QuickStart: Embedding 12: Secure Embedding into Streamlit.]()
+[QuickStart: Embedding 12: Secure Embedding into Streamlit.](https://quickstarts.sigmacomputing.com/guide/embedding_12_secure_embedding_into_streamlit/index.html?index=..%2F..index#0)
  
 ### **Public Embedding**
 The simplest use case we provide is called **Public** embedding. 
