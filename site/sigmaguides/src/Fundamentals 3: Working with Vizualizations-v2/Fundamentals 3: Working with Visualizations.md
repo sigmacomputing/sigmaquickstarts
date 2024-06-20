@@ -431,8 +431,31 @@ After some repositioning of elements, our Dashboard should look something like t
 
 <img src="assets/viz2_6g.png" width="800"/>
 
+Click `Publish`.
+
+## Workbook Styling
+Now is a good time to pause and mention that Sigma workbooks can be stylized using `Themes`.
+
+Sigma provides several preset themes we can just use right away. 
+
+With a just a few clicks, we can change our workbook to a dark theme:
+
+<img src="assets/vizbasics13.png" width="800"/>
+
+Administrators can set a default theme for all workbooks in an organization.
+
+This is done in the `Administration` section of Sigma:
+
+<img src="assets/vizbasics14.png" width="800"/>
+
+Creating custom themes is also supported.
+
+[Read more about workbook themes here.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
+
+Sigma also supports [custom fonts](https://help.sigmacomputing.com/docs/custom-fonts) for workbooks, worksheet visualizations, and dashboards. Custom fonts can be uploaded at the organization level and used on any workbooks, worksheet visualizations, and dashboards in that organization.
+
 ![Footer](assets/sigma_footer.png)
-<!-- END OF MAPS -->
+<!-- END -->
 
 ## What we've covered
 Duration: 5
