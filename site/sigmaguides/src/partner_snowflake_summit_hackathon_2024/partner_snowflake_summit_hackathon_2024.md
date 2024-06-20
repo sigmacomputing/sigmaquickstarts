@@ -5,7 +5,7 @@ categories: partners
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 1024-05-24
 
 # HACKATHON: DIGNITY FROM DATA
