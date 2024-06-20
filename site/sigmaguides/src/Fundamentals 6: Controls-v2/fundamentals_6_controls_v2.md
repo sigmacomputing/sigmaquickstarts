@@ -401,6 +401,8 @@ In this QuickStart, we covered the the variety of the more popular controls prov
 
 For more information on [Sigma controls, see here.](https://help.sigmacomputing.com/docs/intro-to-control-elements)
 
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_administration_v2/index.html#0)
+
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
