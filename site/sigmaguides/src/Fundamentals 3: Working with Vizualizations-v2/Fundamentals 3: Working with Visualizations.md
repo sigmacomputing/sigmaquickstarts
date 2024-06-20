@@ -3,7 +3,7 @@ id: fundamentals-3-working-with-visualizations-v2
 categories: fundamentals
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 authors: pballai
 lastUpdated: 2024-06-31
 

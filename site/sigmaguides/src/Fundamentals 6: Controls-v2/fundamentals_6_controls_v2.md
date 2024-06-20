@@ -5,7 +5,7 @@ categories: Fundamentals
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-06-31
 
 # Fundamentals 6: Controls

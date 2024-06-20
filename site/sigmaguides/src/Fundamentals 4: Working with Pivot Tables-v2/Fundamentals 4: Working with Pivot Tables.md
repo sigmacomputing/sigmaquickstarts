@@ -3,7 +3,7 @@ id: fundamentals-4-working-with-pivot-tables-v2
 categories: fundamentals
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 authors: PhilB
 lastUpdated: 2023-03-29
 
