@@ -1,6 +1,6 @@
 author: pballai
-id: fundamentals_6_controls
-summary: fundamentals_6_controls
+id: fundamentals_6_controls_v2
+summary: fundamentals_6_controls_v2
 categories: Fundamentals
 environments: web
 status: Hidden
@@ -112,6 +112,8 @@ The process for adding the control to the canvas is the same, regardless which c
 ![Footer](assets/sigma_footer.png)
 
 ## Slider
+Duration: 5 
+
 The slider control enables users to select a single value from a continuous range by sliding a handle along a track.
 
 Lets say we want to see who are big spenders are by filtering `Sales` to display high values. 
@@ -191,6 +193,8 @@ Click `Publish`.
 ![Footer](assets/sigma_footer.png)
 
 ## Range Slider
+Duration: 5 
+
 This control is very similar to the slider, except that the user is able to adjust both the min and max values in the control itself.
 
 For example, we might want to target customers who spent a fair modest amount of money on computers to see if we can sell them upgrades or accessories.
@@ -212,6 +216,8 @@ Reset the range slider control to show all rows (don't forget to clear the `Prod
 ![Footer](assets/sigma_footer.png)
 
 ## Date
+Duration: 5 
+
 Configuring a basic date control is done in just a few clicks, giving it a target of `DATA` > `PLUGS_DATA` > `DATE` and a `Control ID`:
 
 <img src="assets/control9.png" width="600"/>
@@ -239,6 +245,8 @@ Reset both controls to show all rows and click `Publish`:
 
 
 ## Top N
+Duration: 5 
+
 If you have done any of the other sections, you know how to make the `Top N` control work. 
 
 Here is what that might look like, targeting the `Profit` column:
@@ -250,6 +258,8 @@ Sigma provides the `Top N` user the ability to select from four different groupi
 ![Footer](assets/sigma_footer.png)
 
 ## Switch
+Duration: 5 
+
 The Switch control in Sigma allows users to toggle between `True` and `False` values, and then filter for matching records. 
 
 It is a simple "on/off" toggle that can be used to dynamically adjust the rows within a dashboard based on a binary choice.
@@ -358,6 +368,29 @@ Hide the `Switch` column, as users do not need to see that:
 <img src="assets/control26b.png" width="800"/>
 
 Click `Publish`.
+
+![Footer](assets/sigma_footer.png)
+
+## Controls and Formulas
+Duration: 5 
+
+One of the ***lightbulb has come on*** moments is when users realize that controls can be referenced anywhere in a workbook, by `Control ID`.
+
+Another one of these moments is when users realize that controls can be created based on a some formula too.
+
+Lets explore that concept.
+
+Add a new page and rename it to `Formulas`.
+
+Add a `child` table to the page, based on the `PLUGS_DATA` table on the `DATA` page. 
+
+Add a `list control` to the page:
+
+<img src="assets/fic1.png" width="800"/>
+
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 
