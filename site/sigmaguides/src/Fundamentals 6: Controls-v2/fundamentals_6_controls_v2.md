@@ -33,7 +33,7 @@ In [Fundamentals 4: Working with Pivot Tables v2](https://quickstarts.sigmacompu
 
 Selecting the correct control is often more art than science, as there many controls to choose from. 
 
-In general, if using the control is obvious to the user, and uses the minimum number of clicks, it is a good choice.
+In general, if using the control is obvious to the user, requires the minimum number of clicks, and produces the desired results, it is a good choice.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> In some cases, performance should be considered when using data-driven controls. We will discuss this later.
@@ -59,10 +59,6 @@ The typical audience for this QuickStart includes users of Excel, common Busines
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma trial instances provide a sample database in Snowflake, and write access for input tables is already configured for you. Production environments need to have write access configured by your Sigma administrator. It only takes a few minutes!
-</aside>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
@@ -116,7 +112,7 @@ Duration: 5
 
 The slider control enables users to select a single value from a continuous range by sliding a handle along a track.
 
-Lets say we want to see who are big spenders are by filtering `Sales` to display high values. 
+Lets say we want to see who are big spenders are, by filtering `Sales` to display high values. 
 
 First, it would be nice to know the min and max values in our 4.5M row table.
 
@@ -140,7 +136,7 @@ Set the `Target` of the control to `Controls` > `PLUGS_DATA`:
 
 <img src="assets/control5b.png" width="600"/>
 
-Slide the control to around 20k. These customers might a good list of a marketing campaign:
+Slide the control to around 20k. These customers might make a good list for a marketing campaign:
 
 <img src="assets/control5d.png" width="500"/>
 
@@ -176,7 +172,11 @@ Now adjust the `Profit` slider to be around $6500. These are are target high-val
 <img src="assets/control4a.png" width="800"/>
 
 ### Sanity Check
-When creating controls, it is always a good idea to make sure the row counts are what is expected. For example, we just set our maximum sales value over the highest value in the table and no minimum. We would expect the table to have the same row count as our un-filtered source table and it is easy to compare the two as a quick validation. We want to be sure we have not inadvertently created a filter that does not initially show all the rows, based on its configuration (unless that was intended).
+When creating controls, it is always a good idea to make sure the row counts are what is expected. For example, we just set our maximum sales value over the highest value in the table and no minimum. 
+
+We would expect the table to have the same row count as our un-filtered source table, and it is easy to compare the two, as a quick validation. 
+
+We want to ensure that we did not inadvertently create a filter that does not initially show all the rows, based on its configuration (unless that was intended).
 
 Reset both controls to show all rows, and verify the total row count matches the total row count on the `Data` page > `PLUGS_DATA` source table.
 
@@ -197,7 +197,7 @@ Duration: 5
 
 This control is very similar to the slider, except that the user is able to adjust both the min and max values in the control itself.
 
-For example, we might want to target customers who spent a fair modest amount of money on computers to see if we can sell them upgrades or accessories.
+For example, we might want to target customers who spent a fair modest amount of money on computers, to see if we can sell them upgrades or accessories.
 
 We can easily filter for computers:
 
@@ -234,15 +234,11 @@ The date control's options make it really simple to get to the data that you nee
 
 <img src="assets/control14.png" width="600"/>
 
-Reset both controls to show all rows and click `Publish`:
+Reset both controls to show all rows, and click `Publish`:
 
 <img src="assets/control15.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
-
-
-
-
 
 ## Top N
 Duration: 5 
@@ -253,27 +249,29 @@ Here is what that might look like, targeting the `Profit` column:
 
 <img src="assets/control4d.png" width="800"/>
 
-Sigma provides the `Top N` user the ability to select from four different groupings of values, as shown in the image above, #2.
+The `Top N` control provides the user the ability to select from four different groupings of values, as shown in the image above, #2.
 
 ![Footer](assets/sigma_footer.png)
 
 ## Switch
 Duration: 5 
 
-The Switch control in Sigma allows users to toggle between `True` and `False` values, and then filter for matching records. 
+The `Switch control`2 in Sigma allows users to toggle between `True` and `False` values, and then filter for matching records. 
 
-It is a simple "on/off" toggle that can be used to dynamically adjust the rows within a dashboard based on a binary choice.
+It is a simple "on/off" toggle that can be used to dynamically adjust the rows within a dashboard, based on a binary choice.
 
-Lets create a simple example based on filtering our `PLUGS_DATA` by transaction type.
+Lets create a simple example, based on filtering our `PLUGS_DATA` by transaction type.
 
 ### Scenario:
-Imagine Plugs wants to analyze it's sales transactions, differentiating between `Purchase` and `Returns`. 
+Imagine Plugs users want to analyze sales transactions, differentiating between `Purchase` and `Returns`. 
 
 By using the switch control, users can easily toggle between `Purchase` and `Returns`, within a dashboard. From there, users can drill further into the data to gain the insights that interest them.
 
 A problem we notice right away is that our `PLUGS_DATA` table is missing the `transaction type` column; we need to add that. 
 
-Sigma is flexible, and the decision of where to add this column has some implications. We could add it independently of `PLUGS_DATA`, so that other tables in the workbook do not have access to this column. However, this column ‘feels useful’, so we want all the other "child elements" of `PLUGS_DATA` to be able to use it if desired.
+Sigma is flexible, and the decision of where to add this column has some implications. 
+
+We could add it independently of `PLUGS_DATA`, so that other tables in the workbook do not have access to this column. However, this column ‘feels useful’, so we want all the other "child elements" of `PLUGS_DATA` to be able to use it if desired.
 
 Since this column does not exist anywhere in our workbook, we can't use a Sigma `Lookup`, but we can create a join to it, as it does exist in a related table in the warehouse.
 
@@ -295,7 +293,7 @@ Sigma suggests that we might want to join on matching `ORDER_NUMBER` columns. We
 
 The next step shows us the current join configuration, allowing us to make adjustments, add more sources and the results.
 
-In this case, there are less matched records than total records, which indicates that some transactions do not have a matching record. This is because our sample data does not have order numbers for cash sales transactions. That is fine; we don't care about those on our example right now. 
+In this case, there are less matched records than total records, which indicates that some transactions do not have a matching record. This is because our sample data does not have order numbers for cash sales transactions. That is fine; we can ignore those for now. 
 
 Click `Preview Output`:
 
@@ -317,11 +315,13 @@ If we want to see the distribution of purchase to online transactions, we can lo
 
 <img src="assets/control22.png" width="600"/>
 
-We can see the row counts for purchase and return. Now we know what to expect when we enable our switch control. It is handy to know ahead of time what the row counts will be so we know switch is working right when we implement that.
+We can see the row counts for purchase and return. Now we know what to expect when we enable our switch control. 
+
+It is handy to know ahead of time what the row counts will be, so we know switch is working right when we implement that.
 
 <img src="assets/control23.png" width="800"/>
 
-Close the details modal.
+`Close` the details modal.
 
 The last step is to expose the new column on the `Controls` page.
 
@@ -341,9 +341,9 @@ Add a `Switch` control to the page, rename it `Transaction Type` and set it's `C
 
 <img src="assets/control25.png" width="800"/>
 
-We can now toggle the switch control on and off, but the table is not yet "aware" of it.
+We can now toggle the switch control on and off, but the table is "aware" of it yet.
 
-We need to make the table respond to this controls value as it changed.
+We need to make the table respond to this controls value, as it is changed.
 
 Add a new column next to `Transaction Type`, rename it to `Switch` and set its formula to:
 
@@ -353,9 +353,32 @@ If([switch-example] = True, If([Transaction Type] = "Purchase", True, False), If
 
 <img src="assets/control26a.png" width="800"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> This function allows for dynamic filtering based on the state of a switch control and the type of transaction. When the switch is TRUE, it filters for “Purchase” transactions. When the switch is FALSE, it filters for “Return” transactions. 
+</aside>
+
+#### How It Works in Detail:
+  <li><strong>When [switch-example] is TRUE:</strong> 
+    <ul>
+        <li>The function checks if Transaction Type is “Purchase”.</li>
+        <li>If Transaction Type is “Purchase”, the function returns TRUE.</li>
+        <li>If Transaction Type is not “Purchase”, the function returns FALSE.</li>
+        </ul>
+    </li>
+    <li><strong>When [switch-example] is FALSE:</strong> 
+        <ul>
+        <li>The function checks if Transaction Type is “Return”.</li>
+        <li>If Transaction Type is “Return”, the function returns TRUE.</li>
+        <li>If Transaction Type is not “Return”, the function returns FALSE.</li>
+        </ul>
+    </li>
+</ul>
+
+<img src="assets/horizonalline.png" width="800"/>
+
 The last step is to add a table filter on the `Switch` column, so that it responds to changes of the control.
 
-Be sure to select only the `True` value, as that is what the control should be set to, while we create this filter:
+Be sure to select only the True value, as that is what the control should be set to while we create this filter:
 
 <img src="assets/control26.png" width="800"/>
 
@@ -371,26 +394,102 @@ Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 
-## Controls and Formulas
+## Synced Copies
 Duration: 5 
 
-One of the ***lightbulb has come on*** moments is when users realize that controls can be referenced anywhere in a workbook, by `Control ID`.
+A `Synced control` is different than a `Duplicate` copy. 
 
-Another one of these moments is when users realize that controls can be created based on a some formula too.
+<img src="assets/control31.png" width="300"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Synced copies can help maintain context when a control affects elements across several workbook pages. 
+</aside>
+
+For example, you may want to track your organization’s high-level sales data on one page and drill down into region-specific data on another.
+
+If the same filter control targets elements on both pages, we recommend that you display the control on both pages; this enables you and your workbook's viewers to edit the control value from either page, instead of switching back and forth.
+
+Add a new page and rename it to `Synced Controls`.
+
+Add a `Table` to the page, using the `PLUGS_DATA` table on the `DATA` page as the source.
+
+Add a new `List control` to the page and set it to use the `PLUGS_DATA` > `Region` column.
+
+Set the `Control ID` to `Synced-Region`.
+
+Now `Create a synced copy` from the `Synced-Region` control:
+
+<img src="assets/control32.png" width="600"/>
+
+Now the second control can be moved to another page in the workbook, and be set to target some other element.
+
+There are a few use cases where this functionality can be useful:
+
+1: Two controls, one target.<br>
+2: Maintaining context across pages.<br>
+3: Preselecting control values for users.
+
+[To read more about synced controls, see here.](https://help.sigmacomputing.com/docs/synced-controls)
+
+![Footer](assets/sigma_footer.png)
+
+## Reference Controls in Formula
+Duration: 5 
+
+One of the ***"ah-ha"*** moments, is when users realize that controls can be created based on a formula too.
 
 Lets explore that concept.
 
 Add a new page and rename it to `Formulas`.
 
-Add a `child` table to the page, based on the `PLUGS_DATA` table on the `DATA` page. 
+Add a `Table` to the page, using the `PLUGS_DATA` table on the `DATA` page as the source.
 
-Add a `list control` to the page:
+For this exercise, lets reduce the available data down so that refresh is as fast as possible.
 
-<img src="assets/fic1.png" width="800"/>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma is optimized for cloud operations. Sigma trial instances use a Snowflake x-small warehouse, so while performance is still good for our 4.5+ record PLUGS_DATA table, the cloud compute size will "bottle-neck" our performance to some extent. 
 
+Reducing the size of the data will allow us to move as fast as possible in our demonstration. 
 
+Consideration of what data the user requires vs. performance and cost optimization is important to keep in mind.
 
+[Best practices when working with large data sets](https://www.sigmacomputing.com/resources/product-faq/best-practices-when-working-with-large-data-sets)
 
+[How to improve workbook performance](https://community.sigmacomputing.com/t/how-to-improve-workbook-performance/2456)
+</aside>
+
+Filter the `Date` column to the `current 1 year only`, to reduce the data to around 600k records.
+
+<img src="assets/control28.png" width="800"/>
+
+Add a `List control` to the page and configure as:
+
+<img src="assets/control29.png" width="600"/>
+
+Make sure the `Control ID` is set to `Stack-By`; we will reference that in our formula, so syntax matters.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When we configured controls earlier, we also set the target to be the PLUGS_DATA table. 
+
+This is not required when using this method. 
+
+We will add a column to the table that references the current value of the control. 
+
+This is how the table "targets" the control, as opposed to the control managing the target.
+</aside>
+
+Add a new column to the table, in the first position. Rename it to `Stack By` and set it's formula to:
+```code
+Switch([Stack-By], "State", [Store State], "Region", [Store Region], "Brand", [Brand])
+```
+
+This formula will change the `Stack By` columns value, based on the selection made in the control. 
+
+As a last step, we can `Group` the table by `Stack By`. How slick is this!
+
+<img src="assets/stackby.gif" width="800"/>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -400,8 +499,6 @@ Duration: 5
 In this QuickStart, we covered the the variety of the more popular controls provided by Sigma. We explored using them to manipulate sample data and demonstrated just how easy it can be to solve business problems.
 
 For more information on [Sigma controls, see here.](https://help.sigmacomputing.com/docs/intro-to-control-elements)
-
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_administration_v2/index.html#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
