@@ -1,9 +1,9 @@
 summary: QuickStart for new users and Sigma Pivot Tables
-id: fundamentals-4-working-with-pivot-tables
+id: fundamentals-4-working-with-pivot-tables-v1-deprecated
 categories: fundamentals
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 authors: Phil Ballai - Sigma Computing
 lastUpdated: 2023-03-29
 

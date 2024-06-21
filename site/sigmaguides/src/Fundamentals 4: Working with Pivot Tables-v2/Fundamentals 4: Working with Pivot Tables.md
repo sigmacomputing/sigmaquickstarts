@@ -1,9 +1,9 @@
 summary: QuickStart for new users and Sigma Pivot Tables
 id: fundamentals-4-working-with-pivot-tables-v2
 categories: fundamentals
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 authors: PhilB
 lastUpdated: 2023-03-29
 
@@ -68,13 +68,13 @@ It is also important to understand that a strong case can be made to use tables 
 <!-- END OF PIVOT TABLE BASICS -->
 
 ## Use Case
-Lets assume we want to look at a breakdown of Profit, Margin and Order quantities by Store Region, Product type and month.
+Lets assume we want to look at a breakdown of profit, margin and order quantities by store region, product type and month.
 
-We have the required columns in our `PLUGS_DATA` table and could **possibly** satisfy the requirement by grouping the data but the end result will not be easy for the viewer to interpret and they may have to make multiple clicks to orient the table to suit their interests. 
+We have the required columns in our `PLUGS_DATA` table and could potentially satisfy the requirement by grouping the data, but the end result will not be easy for the viewer to interpret. They may have to make multiple clicks to orient the table to suit their interests.
 
 <img src="assets/pivotdef1.png" width="800"/>
 
-The grouped output of this may look something like this and you can easily see how the consumer may be frustrated:
+The grouped output of this may look something like this and you can easily see how a user may be frustrated:
 
 <img src="assets/pivotdef2.png" width="800"/>
 
@@ -163,6 +163,8 @@ Our pivot table now looks like this:
 
 <img src="assets/pivot2_13.png" width="800"/>
 
+Click `Publish`.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF DRILL ANYWHERE  -->
 
@@ -207,9 +209,11 @@ The drill down action also created two filters that we can keep, or disable as s
 <strong>NOTE:</strong><br> Two filters were created since we selected Mobiles in the East region so both were added as filters.
 </aside>
 
-Our pivot table now looks like this **(after disabling the two filters)**:
+Our pivot table now looks like this **(after disabling the two filters and removing the Brand pivot row.)**:
 
 <img src="assets/pivot2_19.png" width="800"/>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF DRILL ANYWHERE  -->
@@ -222,7 +226,7 @@ Following the same workflow we used in the tables and visualization QuickStarts,
 
 Using the `Element panel` > `Paintbrush` icon, we can adjust the various items in the pivot to suit our needs.
 
-In the `TABLES STYLES` section, we can easily make adjustments as shown in the image below. Note that there are separate configurations for `Header`, `Subheader` and `Cell` in this section:
+In the `TABLES STYLES` section, we can easily make adjustments as shown in the image below. Note that there are separate configurations for `Header` and `Subheader` in this section:
 
 <img src="assets/pivot2_20.png" width="800"/>
 
@@ -231,6 +235,8 @@ Each section will carry an asterisk when the defaults have been changed:
 <img src="assets/pivot2_21.png" width="800"/>
 
 Experiment as much as you want. Each section has the option to `Restore to default.`
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -260,7 +266,7 @@ Our control is now configured, but the pivot table is not aware of it yet.
 
 We need to configure the pivot table to handle the time period values when the user changes the time period contol. 
 
-In the tables QuickStart, we just used a column (Store Region) in the table and the user used a control to pick a valid value. 
+In the tables QuickStart, we just used a column (Store Region) in the table, and the user used a control to pick a valid value. 
 
 We do not have a column in this pivot for `time period`, but we don't need one either. We can use a function to work around that using the existing `Date` column.
 
@@ -322,6 +328,10 @@ Our pivot table can now be filtered by the time period control:
 
 <img src="assets/timeperiod.gif" width="800"/>
 
+Rename the `Calc` column (in the pivot table > PIVOT COLUMNS section) to `Time Period`.
+
+Click `Publish`.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
@@ -365,9 +375,11 @@ Our pivot table now looks like this:
 
 <img src="assets/pivot2_33.png" width="800"/>
 
+Click `Publish`.
+
 ## Dynamic Text - Pivot Title
 
-we did touch on this topic in the previous QuickStart (by referencing table summary values), we want to reinforce an important point.
+We did touch on this topic in the previous QuickStart (by referencing table summary values), but we want to reinforce an important point.
 
 The `Control ID` for a Sigma control can be accessed anywhere in a workbook by using the name in a formula, to return the current value of the control.
  
@@ -377,7 +389,7 @@ Click on the pivot table's title and backspace over it. Sigma now prompts you to
 
 <img src="assets/pivot2_34.png" width="600"/>
 
-Our time period control's ID is `p_date_dimension` so we can copy and paste the formula below to get it's current value, and append some text to it:
+Our time period control's ID is `p_date_dimension`, so we can copy and paste the formula below to get it's current value, and append some text to it:
 
 ** Be sure to first type `=` and then paste the code.**
 
