@@ -1,13 +1,13 @@
 summary: Fundamentals for new users and Sigma Trials
-id: fundamentals-1-getting-around
+id: fundamentals-1-getting-around-v1-deprecated
 categories: fundamentals
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 authors: Phil Ballai-Sigma Computing
 lastUpdated: 2023-07-19
 
-# Fundamentals 1: Getting Around
+# Fundamentals 1: Getting Around-v1-deprecated
 <!-- ------------------------ -->
 
 ## Overview 
