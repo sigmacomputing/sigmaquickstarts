@@ -1,14 +1,14 @@
 author: pballai
-id: fundamentals_6_administration
-summary: fundamentals_6_administration
+id: fundamentals_6_administration-v1-deprecated
+summary: fundamentals_6_administration-v1-deprecated
 categories: Fundamentals
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-09-18
 
-# Fundamentals 6: Administration
+# Fundamentals 6: Administration-v1-deprecated
 
 ## Overview 
 Duration: 5
