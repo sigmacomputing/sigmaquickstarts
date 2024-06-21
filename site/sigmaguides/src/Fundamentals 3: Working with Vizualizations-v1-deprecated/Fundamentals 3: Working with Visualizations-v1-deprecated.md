@@ -1,13 +1,13 @@
 summary: Fundamentals for new users and Sigma Visualizations
-id: fundamentals-3-working-with-visualizations
+id: fundamentals-3-working-with-visualizations-v1-deprecated
 categories: fundamentals
-status: Published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 authors: Phil Ballai - Sigma Computing
 lastUpdated: 2023-07-19
 
-# Fundamentals 3: Working with Visualizations
+# Fundamentals 3: Working with Visualizations-v1-deprecated
 
 ## Overview 
 Duration: 5

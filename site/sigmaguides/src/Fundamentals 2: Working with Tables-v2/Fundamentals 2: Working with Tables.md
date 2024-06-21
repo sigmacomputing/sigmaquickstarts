@@ -175,6 +175,8 @@ Now that we know the basics, lets look at the common ways tables are used in Sig
 ## Calculated Columns
 Duration: 6
 
+We are still on the `Dashboard` page.
+
 There are times when a column has not been made available in the source data. It is still possible for users to add them (assuming they have been granted permission). 
 
 <aside class="positive">
