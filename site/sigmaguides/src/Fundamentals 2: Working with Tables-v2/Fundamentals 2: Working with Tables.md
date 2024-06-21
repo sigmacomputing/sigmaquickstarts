@@ -1,11 +1,11 @@
 summary: Fundamentals for new users and Sigma Tables
 id: fundamentals-2-working-with-tables-v2
 categories: fundamentals
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-authors: Phil Ballai - Sigma Computing
-lastUpdated: 2024-06-31
+tags: default
+authors: phil@sigmacomputing.com
+lastUpdated: 2024-06-21
 
 # Fundamentals 2: Working with Tables v2
 <!-- ------------------------ -->
@@ -13,7 +13,7 @@ lastUpdated: 2024-06-31
 ## Overview 
 Duration: 6
 
-This QuickStart is part of a series designed to instruct new users on how to use Sigma to explore and analyze data using Tables.
+This QuickStart is part of a series designed to instruct new users on how to use Sigma to explore and analyze data using tables.
 
 We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart “Fundamentals 1: Getting Around”.
 
@@ -50,12 +50,12 @@ We should still have two pages, `Dashboard` and `Data`. Both have the `PLUGS_DAT
 
 Our source data in Snowflake does not have a few columns that we want users to have access to. 
 
-Instead of users calculations themselves, we will do that for them so that **we control how the column values are calculated.**
+Instead of users making calculations themselves, we will do that for them, so that we **control how the column values are calculated.**
 
 The missing columns are `Sales`, `COGs` (cost of goods sold) and `Profit`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma is able to enrich the existing data but does not change the underlying data in the warehouse at any time.
+<strong>IMPORTANT:</strong><br> Sigma is able to enrich the existing data, but not change the underlying data in the warehouse.
 </aside>
 
 Click the column dropdown from the `Price` column and select `Add new column`. 
@@ -72,7 +72,7 @@ In the function bar, start typing `Sum`. Sigma tries to provide all the possible
 
 <img src="assets/fun2_2.png" width="800"/>
 
-This is a simple example but when you type `ListAggD` and hit `enter`. 
+This is a simple example, but when you start typing `ListAggD`, Sigma displays the list of available functions.
 
 Sigma also provides detailed help on the required syntax for complex functions too:
 
@@ -113,20 +113,24 @@ Click the `Cost` column, hold down the shift key and click the `Profit` column.
 
 With the five columns all selected, click the `$` icon in the toolbar to change them all to currency format:
 
-<img src="assets/calculatedcols3.png" width="600"/>
+<img src="assets/calculatedcols3.png" width="800"/>
 
 Click `Publish`.
 
 Now that we have updated our "source" data in Sigma, click on the `Dashboard` page and observe what happened to our table.
 
-At first glance, it looks the same. Click to select it and now we have three new columns at the end of the table (and column listing) available to the user:
+At first glance, it looks the same. Click to select the table. Now we have three new columns at the end of the table (and column listing) available to the user:
 
 <img src="assets/fun2_6.png" width="800"/>
 
 This is because the table on the `Dashboard` page is using data that comes from the `Data` page.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> There are several methods for data "reuse" in Sigma. The data in the "Data" table is coming from Snowflake one time and then enriched in Sigma. From there, it can be reused as many times as needed while only querying Snowflake one time, improving user experience and saving compute costs. How Sigma performs calculations is a complex topic and we will discuss this more as we go along. 
+<strong>IMPORTANT:</strong><br> There are several methods for data "reuse" in Sigma. 
+
+The data in the "Data" table is coming from Snowflake, one time, and then enriched in the user's browser using Sigma Alpha Query. 
+
+From there, it can be reused as many times as needed while only querying Snowflake one time, improving user experience and saving compute costs. How Sigma performs calculations is a complex topic and we will discuss this more as we go along. 
 </aside>
 
 ### Simple Date Handling
@@ -140,14 +144,14 @@ Sigma names the new column `Date (1)`. Open `Date (1)'s` menu and select `Trunca
 <img src="assets/fun2_8c.png" width="400"/>
  
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the function bar. We could have done this manually but Sigma made it too easy for us!
+<strong>NOTE:</strong><br> Sigma does not ever change the underlying data, we simply added a DateTrunc() function in the function bar. We could have done this manually, but Sigma made it too easy for us!
 </aside>
 
 <img src="assets/fun2_9.png" width="800"/>
 
 We are not really concerned with the `Date` column, so lets just hide that:
 
-<img src="assets/fun2_9.png" width="800"/>
+<img src="assets/fun2_9a.png" width="400"/>
 
 Reorder the columns.
 
@@ -170,6 +174,8 @@ Now that we know the basics, lets look at the common ways tables are used in Sig
 
 ## Calculated Columns
 Duration: 6
+
+We are still on the `Dashboard` page.
 
 There are times when a column has not been made available in the source data. It is still possible for users to add them (assuming they have been granted permission). 
 
@@ -218,7 +224,7 @@ Notice that a `FILTERS & CONTROLS` panel opens and it auto-populates with the av
 
 <img src="assets/fun2_11.png" width="400"/>
 
-Also notice that there is a small filter icon (#1) with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy to know as you work.
+Also notice that there is a small filter icon (#1) with a `1` next to it. This lets you know that the table has a filter set against it. This will come in handy as we work.
 
 <img src="assets/filters1.png" width="500"/>
 
@@ -245,7 +251,7 @@ The filter control provides more functionality we want to touch on.
 
 Setting different filter types is really easy by accessing the filter menu:
 
-<img src="assets/filters3a.png" width="400"/>
+<img src="assets/filters3a.png" width="800"/>
 
 You can add more filters by clicking on the `+` button here:
 
@@ -277,7 +283,7 @@ There is also a great community post that details some ways to [best use filters
 
 Click `Publish`.
 
-At this point, our dashboard looks like this (in edit mode still), with about 572K rows:
+At this point, our dashboard looks like this (in edit mode still), with about 4.58M rows:
 
 <img src="assets/filters3f.png" width="800"/>
 
@@ -309,7 +315,7 @@ While we have not gotten to visualizations just yet, it is good to know that sor
 
 <img src="assets/sort5.png" width="600"/>
 
-At this point (with filters removed), our dashboard still looks like this (in edit mode still), with about 572K rows:
+At this point (with filters removed), our dashboard still looks like this (in edit mode still), with about 4.58M rows:
 
 <img src="assets/filters3f.png" width="800"/>
 
@@ -361,6 +367,8 @@ We can add as many groupings and calculations as required.
 
 To learn more about [grouping in Sigma, see here.](https://help.sigmacomputing.com/docs/create-and-manage-tables#groups-and-groupings)
 
+Sort the `Region Profit` column.
+
 Click `Publish`.
 
 The table should now look like this:
@@ -377,7 +385,7 @@ Sigma workbook tables provide a simple way to get totals and subtotals.
 
 From the `Store Region` column header dropdown, select `Show Totals`:
 
-<img src="assets/totals1.png" width="400"/>
+<img src="assets/totals1.png" width="500"/>
 
 We now have the total for all `Store Regions`:
 
@@ -397,7 +405,7 @@ At the bottom of the table you will see a line that says `SUMMARY`, which shows 
 
 At the bottom left corner of the table click on the caret:
 
-<img src="assets/summary1.png" width="400"/>
+<img src="assets/summary1.png" width="300"/>
 
 And click the `+ button`:
 
@@ -407,7 +415,7 @@ Select the `Region Profit` column. Sigma will automatically sum the column.
 
 <img src="assets/summary1b.png" width="400"/>
 
-Apply formatting to the value for `currency`, remove the extra decimals (#3) and double-click on the summaries name to change it to `Total Profit` (#2):
+Remove the extra decimals and rename to change it to `YTD Profit`:
 
 <img src="assets/summary1c.png" width="400"/>
 
@@ -421,15 +429,11 @@ Go ahead and add two more summaries based on the `COGs` and `Sales` columns.
 <strong>IMPORTANT:</strong><br> Sigma is very flexible and there is often more than one way to visualize the information. Be creative!
 </aside>
 
-Rename the table to `Plugs Sales - Year to Date`:
-
-<img src="assets/summary1f.png" width="600"/>
-
-Publish the workbook.
+`Publish` the workbook.
 
 ### Accessing summaries in formulas
 
-Click the `+` to add another summary but this time don't select a column. We can also create a `New summary` (instead of selected a column) that will be based on some formula we write:
+Click the `+` to add another summary, but this time don't select a column. We can also create a `New summary` (instead of selected a column) that will be based on some formula we write:
 
 <img src="assets/summary1d.png" width="400"/>
 
@@ -481,15 +485,15 @@ Click `Publish`.
 ## Joining Data
 Duration: 6
 
-Up until now we have been using one table but in practice it is often required to do some "lite" data modelling. 
+Up until now, we have been using one table, but in practice, it is often necessary to do some “lite” data modeling.
 
-Data modelling is a broad topic and in order make this section "fundamental", we will join a sample table from our `Sigma Sample Database` connection as before.
+Data modelling is a broad topic, and in order make this section "fundamental", we will join a sample table from our `Sigma Sample Database` connection as before.
 
 **We will also move a little faster now that we have been oriented in Sigma.**
 
-We want to add a column to show inventory on-hand, from the `F_INVENTORY_ADJUSTED` table:
+We want to add a column to show inventory on-hand, from the `F_INVENTORY_ADJUSTED` table by joining it to the existing `PLUGS_DATA` table, on the `Data` page.
 
-We will add this to our `PLUGS_DATA` table on the `Data` page:
+Add an `Element source` > `Join` from the `PLUGS_DATA` table (on the `Data` page):
 
 <img src="assets/join1.png" width="800"/>
 
@@ -549,13 +553,18 @@ Clicking into the first `Query` gives every last detail:
 <strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action is transformed into machine-optimized SQL, and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
 </aside>
 
-<img src="assets/behindthescenes3.png" width="800"/>
+<img src="assets/behindthescenes3.png" width="500"/>
 
 <aside class="positive">
 <strong>Sigma Alpha Query:</strong><br>
-While Sigma does push queries to the CDW to take advantage of its scale and speed, Sigma is unique in that it first does an evaluation to see if the query or operation can be done in the end user’s browser using the data in the browser cache. This functionality is called Browser Query and leads to near-instant results and a faster, better user experience. 
+While Sigma does push queries to the CDW to take advantage of its scale and speed, Sigma is unique in that it first evaluates whether the query or operation can be performed in the end user’s browser using the data in the browser cache.
 
-Alpha Query can perform operations like queries, filters, and sorts. And it is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools. Alpha Query uses fresh data from the CDW and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risk.
+This functionality is called Browser Query and leads to near-instant results and a faster, better user experience.
+
+In addition, Sigma Alpha Query can perform operations like queries, filters, and sorts. It is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools.
+
+Alpha Query uses fresh data from the CDW, and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risks.
+
 </aside>
 
 If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
@@ -588,7 +597,9 @@ Experiment with them to find a style that pleases.
 
 <img src="assets/tablebasics8.png" width="800"/>
 
-There are many possible customizations to enhance tables. It is really easy to experiment and see what the results. 
+There are many possible customizations to enhance tables. It is really easy to experiment and see what the results.
+
+`Revert to default` anytime:
 
 <img src="assets/tablebasics11.png" width="800"/>
 
@@ -620,11 +631,13 @@ In the left-hand pane, configure the conditional formatting rule for the values 
 
 <img src="assets/conditionalformatting1c.png" width="800"/>
 
-We can now see which transactions have a negative profit margin in red:
+We can now see which transactions have a negative profit margin in red (you may have to change the sort on the `Profit Margin` column to show the lowest values).
 
-Add as many rules (and customize each rule) by clicking `+ Add rule` (#6)
+Add as many rules (and customize each rule) by clicking `+ Add rule`.
 
 There are many things you can do to enhance your table; feel free to experiment and see what you can come up with.
+
+Clear the `Store Region` control.
 
 Click `Publish`.
 

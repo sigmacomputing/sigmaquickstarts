@@ -3,12 +3,12 @@ id: fundamentals_6_controls_v2
 summary: fundamentals_6_controls_v2
 categories: Fundamentals
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-06-31
 
-# Fundamentals 6: Controls
+# Fundamentals 6: Controls v2
 
 ## Overview 
 Duration: 5 
@@ -36,7 +36,7 @@ Selecting the correct control is often more art than science, as there many cont
 In general, if using the control is obvious to the user, requires the minimum number of clicks, and produces the desired results, it is a good choice.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> In some cases, performance should be considered when using data-driven controls. We will discuss this later.
+<strong>IMPORTANT:</strong><br> In some cases, performance should be considered when using data-driven controls. Care should be taken such that any control does not use a source column that has too many values. While technically possible, this may impact performance and also frustrate users.
 </aside>
 
 Since we have already used a few controls, we will focus on areas of interest that have not been covered, but are important to understand as you build in Sigma.
@@ -184,7 +184,9 @@ Check that the values match:
 
 <img src="assets/control4b.png" width="800"/>
 
-It is recommended to rename the controls, so users understand them as best possible:
+It is recommended to rename the controls, so users understand them as best possible.
+
+Also, reset the two sliders to show the full range of data for now:
 
 <img src="assets/control4c.png" width="800"/>
 
@@ -499,6 +501,8 @@ Duration: 5
 In this QuickStart, we covered the the variety of the more popular controls provided by Sigma. We explored using them to manipulate sample data and demonstrated just how easy it can be to solve business problems.
 
 For more information on [Sigma controls, see here.](https://help.sigmacomputing.com/docs/intro-to-control-elements)
+
+[The next QuickStart in this series covers administration in Sigma.](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_administration_v2/index.html#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

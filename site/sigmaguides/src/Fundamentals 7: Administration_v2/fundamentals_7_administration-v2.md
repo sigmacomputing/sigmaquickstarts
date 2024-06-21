@@ -3,9 +3,9 @@ id: fundamentals_7_administration_v2
 summary: fundamentals_7_administration_v2
 categories: Fundamentals
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-06-21
 
 # Fundamentals 7: Administration v2
@@ -45,10 +45,7 @@ How to leverage the available administrative functions in Sigma to get things do
 ## Accessing Administration
 Duration: 20
 
-
-here
-
-We will first cover how to access the administrative ("admin") areas of Sigma and then list and describe each of the available options.
+We will first cover how to access the administrative ("admin") areas of Sigma, and then list and describe each of the available options.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The admin area of Sigma requires a user to have an account type permission of "Admin". Users who do not have this permission will not be able to access any administrative function and the option is not displayed on the interface either.
@@ -305,7 +302,7 @@ For example, we can easily add a new font, "Coffee House" in this case:
 
 <img src="assets/fa3.png" width="600"/>
 
-[Documentation Link]([Documentation Link](https://help.sigmacomputing.com/docs/custom-fonts)
+[Documentation Link](https://help.sigmacomputing.com/docs/custom-fonts)
 
 <img src="assets/horizonalline.png">
 
@@ -461,7 +458,7 @@ Granting write-back to a database enables the use of several Sigma features:
 
 [CSV upload](https://help.sigmacomputing.com/docs/upload-csvs)<br>
 [Materialization](https://help.sigmacomputing.com/docs/materialization)<br>
-[Dataset warehouse views](https://help.sigmacomputing.com/docs/materialization)<br>
+[Dataset warehouse views](https://help.sigmacomputing.com/docs/create-and-manage-workbook-warehouse-views)<br>
 [Input Tables](https://help.sigmacomputing.com/docs/intro-to-input-tables)
 
 By the way; **Sigma input tables are a game-changer,** and if you have not seen why, [check out this QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
@@ -583,6 +580,8 @@ Sigma uses teams to organize and manage users in groups.
 
 You can use Sigma to manage user group membership or leverage your organizations Identity Provider (IdP).
 
+[Manage Users and Teams with SCIM](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
+
 Teams can be `Public` or `Private`.
 
 Public teams are seen and searchable by all members of your Sigma org. Anyone will be able to share documents with public teams.
@@ -609,7 +608,7 @@ When creating a new team, you are prompted to also create a new workspace (optio
 ## Account Types
 Duration: 20
 
-`Account Types` allow different users different rights, and is Sigma's RBAC (role-base access control) system.
+`Account Types` allow different users different rights and are part of Sigma’s RBAC (role-based access control) system.
 
 A user's account type determines their highest level of interaction with data and content in Sigma. 
 
@@ -635,7 +634,7 @@ Duration: 20
 
 `User Attributes` can be used to provide a customized experience for your Sigma teams, people, or embedded users. 
 
-They can be assigned as a function in a dataset/data-model to provide row-level security.
+For example, they can be assigned as a function in a dataset/data-model to provide row-level security.
 
 There are QuickStarts that cover row level security:
 
@@ -644,7 +643,7 @@ There are QuickStarts that cover row level security:
 [Embedding 06: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0)
 
 
-Once you create and assign a user attribute to teams, you can use this functionality in a dataset to enforce row-level security using the function CurrentUserAttributeText in a formula.  
+Once you create and assign a user attribute to teams, you can use this functionality in a dataset to enforce row-level security using the function [CurrentUserAttributeText](https://help.sigmacomputing.com/docs/currentuserattributetext) in a formula.  
 
 For example, if we want to restrict a user `Finance TestUser` to only the rows that are in the `East` region, we create a user attribute like this:
 
@@ -670,7 +669,7 @@ Duration: 20
 
 The `Embeds` page lists all of the workbooks or dashboards that are active. 
 
-It is common when using Sigma to embed content into another application(s), that many "embeds" are created. 
+It is common when using Sigma to embed content into another application, that many "embeds" are created. 
 
 This page provides a simple way to manage them all in one place. 
 
@@ -796,7 +795,7 @@ When a warehouse view is created, a live link is established between Snowflake a
 ## Developer Access
 Duration: 20
 
-`Developer Access` provides a way to create client credentials for programmatic access to Sigma for developers. 
+`Developer Access` provides a way to create client credentials for programmatic access to Sigma. 
 
 It supports the generation of client credentials for Sigma's REST API or for embedded applications. 
 

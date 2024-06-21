@@ -1,14 +1,14 @@
 author: pballai
-id: Fundamentals 5: Working with Dashboards
+id: Fundamentals 5: Working with Dashboards-v1-deprecated
 summary: New and trial users who want to learn about creating Dashboards in Sigma
 categories: fundamentals
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2023-03-15
 
-# Fundamentals 5: Working with Dashboards
+# Fundamentals 5: Working with Dashboards-v1-deprecated
 
 ## Overview 
 Duration: 5 

@@ -1,9 +1,9 @@
 summary: Fundamentals for new users and Sigma Visualizations
 id: fundamentals-3-working-with-visualizations-v2
 categories: fundamentals
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 authors: pballai
 lastUpdated: 2024-06-31
 
@@ -14,13 +14,13 @@ Duration: 5
 
 This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (**Viz**). 
 
-We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart [Fundamentals 1: Getting Around.](https://quickstarts.sigmacomputing.com/guide/fundamentals-1-getting-around-v2/index.html?index=..%2F..index#0)
+We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart fundamentals 1 and 2.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart Fundamentals 1 and 2, and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
 </aside>
 
-Sigma supports a wide variety of types, and are adding others so be sure to check our documentation for the latest list:
+Sigma supports a wide variety of types so be sure to check our documentation for the latest list:
 
 <table>
     <thead>
@@ -98,7 +98,7 @@ In Sigma, open the Workbook `Fundamentals` and place it in `edit mode`.
 
 ### Visualization as Child
 
-Our workbook has a page called `Data`.
+Our workbook has a page called `Data`; navigate to that and place the workbook in `Edit` mode.
 
 Click on the table's icon, as shown below, and click `Create Child Element`. 
 
@@ -114,7 +114,7 @@ Move the Viz to the `Dashboard` page:
 
 Drag the Viz above the table:
 
-<img src="assets/vizbasics1.png" width="800"/>
+<img src="assets/vizbasics1.png" width="600"/>
 
 This placeholder is a child of the table, as it references everything in the parent table, making it easy to build whatever visualization we want from that data.
 
@@ -180,29 +180,19 @@ Now we have two charts:
 
 <img src="assets/vizbasics9.png" width="800"/>
 
-We want the two charts to change, when the `Region` control is changed by the user. 
+We want the two charts to change when the `Region` control is changed by the user. 
 
-This is done by adding the two new charts as `Targets` of the control:
-
-<img src="assets/vizbasics9b.png" width="600"/>
+This is done by adding the two new charts as `Targets` of the control.
 
 Go ahead and add both the charts as targets:
 
-<img src="assets/vizbasics9c.png" width="600"/>
+<img src="assets/vizbasics9b.png" width="600"/>
 
-Change the `Region` control to `West`. 
-
-The `Profit by Brand` chart now shows `No Data`. **What happened?**
-
-<img src="assets/vizbasics9d.png" width="800"/>
-
-That chart does not have the `Region` column, so the  query returns no data. 
-
-For now we can simply remove that chart from the target list to fix the issue. 
-
-Now, setting the `Region` control to `West` updates the table and bar chart only:
+Change the `Region` control to `West`. All three page elements change:
 
 <img src="assets/vizbasics9e.png" width="800"/>
+
+Clear the `Store Region` control.
 
 Click `Publish`.
 
@@ -218,7 +208,9 @@ There are many different chart-type visualizations available to experiment with;
 ## KPI Charts
 Duration: 5
 
-As you have seen, there are many different types of visualizations available, and they all follow the same basic workflow. Once you know how to create one, the others will be obvious.
+As you have seen, there are many different types of visualizations available, and they all follow the same basic workflow. 
+
+Once you know how to create one, the others will be obvious.
 
 For example, let's say we want a `KPI` that shows `Revenue`, and compare the current month with the same month from the previous year. 
 
@@ -232,11 +224,13 @@ These steps are very much like ones that we have already done, which makes this 
 
 The exception might be how to get the value formatted as in millions, instead of the default.
 
-In the `VALUE` element, open the menu for `Sum of Sales` > `Format` and select `Custom`:
+In the `VALUE` element, open the menu for `Revenue` > `Format` and select `Custom`:
 
 <img src="assets/viz2_4a.png" width="500"/>
 
-The `Custom Format` modal lets us adjust how the data is displayed using standard formatting, based on D3.js (D3). [D3 is a free, open-source JavaScript library.](https://d3js.org/what-is-d3)
+The `Custom Format` modal lets us adjust how the data is displayed using standard formatting, based on D3.js (D3). 
+
+[D3 is a free, open-source JavaScript library.](https://d3js.org/what-is-d3)
 
 <img src="assets/viz2_4b.png" width="500"/>
 
@@ -246,13 +240,11 @@ The `Dashboard` should now look similar to this:
 
 Click `Publish`.
 
-Add other KPIs as you like; for example, `COGS`, `Profit` and `Profit Margin` would be good to add:
-
-<img src="assets/viz2_4d.png" width="800"/>
+Add other KPIs as you like; for example, `COGS`, `Profit` and `Profit Margin` would be good to add.
 
 One way to do this is simply use the `Revenue` KPI menu and select `Duplicate` to quickly create copies. 
 
-COGS and Profit are done by swapping the `VALUE` column from `Sum of Sales` to `COGS` and `Profit` respectively.
+`COGS` and `Profit` are done by swapping the `VALUE` column from `Sum of Sales` to `COGS` and `Profit` respectively.
 
 However, this does not work for the `Profit Margin` column. **Why not?**
 
@@ -262,9 +254,13 @@ In looking at our `Data` page > `PLUGS_DATA` table, we have a column for `Profit
 <strong>IMPORTANT:</strong><br> Thoughtful source data design can save time for the designer and users later, by avoiding having to add things later. We want users using curated data as much as possible to avoid mistakes in calculations later. 
 </aside>
 
-We could add `Profit Margin` to our source data (and that is best practice) but in this case, we will add the formula in the KPI, just to demonstration that functionality exists:
+We could add `Profit Margin` to our source data (and that is best practice) but in this case, we will add the formula in the KPI, just to demonstration that functionality exists.
 
-Use the following formula for the `Profit Margin` columns value:
+With the target KPI chart selected, click the `+` and `Add new column`:
+
+<img src="assets/viz2_4fix.png" width="400"/>
+
+Use the following formula for the `Profit Margin` value:
 ```code
 Sum([Sales] - [COGs]) / Sum([Sales])
 ```
@@ -285,7 +281,9 @@ Read more about [KPI charts here.](https://help.sigmacomputing.com/docs/build-a-
 ## Maps
 Duration: 15
 
-Geographic data can tell a powerful story. Whether analyzing regional trends or plotting sites, maps are packed with insights generated from your location data. Sigma Maps help contextualize geospatial information and provide greater understanding when analyzing data. With Sigma, you can create interactive maps using regions, latitude and longitude, or map paths and areas utilizing GeoJSON.
+Geographic data can tell a powerful story. Whether analyzing regional trends or plotting sites, maps are packed with insights generated from your location data. 
+
+Sigma Maps help contextualize geospatial information and provide greater understanding when analyzing data. With Sigma, you can create interactive maps using regions, latitude and longitude, or map paths and areas utilizing GeoJSON.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> If maps are not used in your role, feel free to skip this section. 
@@ -310,7 +308,9 @@ You many have noticed there is a column called `Cust Json` that has some odd loo
 
 In the case of mapping, this json data contains state and region fields we might want to use for a map.
 
-This data is stored in the warehouse using the `Json` format. It is common to see data stored this way and this can present a challenge as it needs to be transformed somewhere in an organizations data management workflows. We have seen many instances where data is received from a third party in this format and everything slows down as importing it can be problematic. 
+This data is stored in the warehouse using the `Json` format. It is common to see data stored this way and this can present a challenge as it needs to be transformed somewhere in an organizations data management workflows. 
+
+We have seen many instances where data is received from a third party in this format and everything slows down as importing it can be problematic. 
 
 Sigma can extract json data in seconds. To read more about that, [see the Parsing JSON Data in Seconds QuickStart.](https://quickstarts.sigmacomputing.com/guide/tables_json_parsing/index.html?index=..%2F..index#0)
 
@@ -327,11 +327,11 @@ Now simply use the element panel as before to configure the map as shown below:
 
 <img src="assets/viz2_5c.png" width="800"/>
 
-We also want to configure `LABEL` and `TOOLIP` options in the element panel:
+We also want to configure `TOOLIP` options in the element panel:
 
 <img src="assets/viz2_5d.png" width="700"/>
 
-When you hover over each State, the values configured into our `Label` and `Tooltip` are shown: 
+When you hover over each State, the values configured into our `Tooltips` are shown: 
 
 <img src="assets/viz2_5e.png" width="500"/>
 
@@ -341,7 +341,7 @@ Right clicking on any State allows you to include/exclude it from the dataset or
 <strong>Drill Anywhere: </strong><br>The ability to drill anywhere did not have to be programmed ahead of time by a developer. Unconstrained, ad-hoc analysis gives the user the power to explore the data beyond what was originally intended and as they see fit.
 </aside>
 
-Click on the `expand` icon in the upper right corner of the map:
+Click on the `expand` icon in the upper right corner of the map.
 
 <img src="assets/viz2_5g.png" width="800"/>
 
@@ -391,7 +391,7 @@ This opens the function editor, where we can write a formula to be used in place
 In this case, we need `YTD Gross Margin`. Since we have that in the dashboard table as a summary value already, we can just reference that. 
 
 ```code
-[Plugs Sales - Year to Date/YTD Profit Margin]
+[PLUGS_DATA/YTD Profit Margin]
 ```
 
 <aside class="negative">
@@ -400,7 +400,7 @@ In this case, we need `YTD Gross Margin`. Since we have that in the dashboard ta
 
 <img src="assets/viz2_6d.png" width="600"/>
 
-Now replace the other two instances of `value` with the correct values, using the summaries under the `Plugs Sales - Year to Date` table.
+Now replace the other two instances of `value` with the correct values, using the summaries under the `PLUGS_DATA` table.
 
 We now have a working example of dynamic text. 
 
@@ -409,6 +409,8 @@ We now have a working example of dynamic text.
 We can use the toolbar to change text size, colors and more.
 
 To learn more about [Dynamic Text, click here.](https://help.sigmacomputing.com/docs/text-elements#add-dynamic-text-based-on-your-data)
+
+Click `Publish`.
 
 ### Add a logo
 To wrap up this section, lets add a logo to the Dashboard.

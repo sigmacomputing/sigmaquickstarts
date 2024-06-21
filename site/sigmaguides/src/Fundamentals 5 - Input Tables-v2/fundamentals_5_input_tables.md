@@ -3,9 +3,9 @@ id: fundamentals_5_input_tables
 summary: fundamentals_5_input_tables
 categories: Fundamentals
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-06-31
 
 # Fundamentals 5: Input Tables v2
@@ -59,7 +59,7 @@ When data isn’t in the warehouse, it usually requires a cumbersome technical o
 
 With input tables, what can be built in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data application platform.
 
-Input tables give users the power to augment, adjust, interact, and create ‘what-if’ scenarios in real-time, without changing the source data.
+Input tables give users the power to augment, adjust, interact, and create "what-if" scenarios in real-time, without changing the source data.
 
 Input tables can also be use as sources for tables, pivot tables, and visualizations, or incorporate the data using [lookups](https://help.sigmacomputing.com/docs/join-types#lookup) and joins. And when you create [warehouse views](https://help.sigmacomputing.com/docs/create-and-manage-workbook-warehouse-views) for input tables, you can reuse the manually entered data across your broader data ecosystem.
 
@@ -253,6 +253,8 @@ Now users can add free-form comments as they update orders:
 
 <img src="assets/fit16.png" width="700"/>
 
+Click `Publish`.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -274,6 +276,8 @@ These four columns are written back to the warehouse, each time the user makes a
 <aside class="negative">
 <strong>NOTE:</strong><br> You may have noticed we changed the date format using the columns menu.
 </aside>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -318,6 +322,8 @@ Type `Daria G` and hit enter.
 We can quickly see that Daria has a recent order.
 
 <img src="assets/fit23.png" width="800"/>
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
