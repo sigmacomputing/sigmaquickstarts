@@ -19,7 +19,7 @@ Tags provide control over which workbook versions are available to your users, a
 
 In this QuickStart, we will confine the use and management of version tagging inside Sigma itself. 
 
-For those interested in integrating with external tools, [please check out the QuickStart: Embedding 8: Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0) 
+For those interested in integrating with external tools, [please check out the QuickStart: Embedding 8: Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_08_version_tagging/index.html?index=..%2F..index#0) 
 
 ### Tagging concept
 
