@@ -124,7 +124,7 @@ If the input date is a Saturday, the function returns the date of the Friday imm
 
 <img src="assets/CDUC9.png" width="500"/>
 
-[A breakdown of this Function's parts is available here.](https://help.sigmacomputing.com/hc/en-us/articles/360042442014-Find-Latest-Weekday-and-Previous-Weekday)
+[A breakdown of this Function's parts is available here.](https://help.sigmacomputing.com/docs/dateformat)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

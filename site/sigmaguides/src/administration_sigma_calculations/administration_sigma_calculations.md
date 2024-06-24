@@ -367,7 +367,7 @@ At the time of this QuickStart, the following are Snowflake's result cache rules
 </ul>
 
 ***NOTE:***
-There are some cases where the warehouse role is made dynamic in Sigma. (ie: [Sigma dynamic role switching](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0)) 
+There are some cases where the warehouse role is made dynamic in Sigma. (ie: [Sigma dynamic role switching](https://www.sigmacomputing.com/blog/dynamically-assign-snowflake-roles-and-warehouses-with-sigma-user-attributes#0)) 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

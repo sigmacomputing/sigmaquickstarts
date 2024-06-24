@@ -620,7 +620,7 @@ It is recommended to send a value, at the lowest level of permissions for users 
 
 [To read more about account types in Sigma, click here.](https://help.sigmacomputing.com/docs/user-account-types)
 
-There is also a [QuickStart: How To: Federated Access with Sigma.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+There is also a [QuickStart: How To: Federated Access with Sigma.](https://quickstarts.sigmacomputing.com/guide/embedding_04_federated_access/index.html?index=..%2F..index#0)
 
 Sample Code:
 ```code

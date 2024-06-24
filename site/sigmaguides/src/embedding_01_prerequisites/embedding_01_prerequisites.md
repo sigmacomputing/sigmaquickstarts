@@ -123,10 +123,10 @@ Once a user is logged in, the parent application and embed can interact by passi
 
 Sigma provides a built-in JavaScript event "listener" in support of this. 
 
-This is covered in the [Embedding 07: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_07_actions_events/index.html?index=..%2F..index#0)
+This is covered in the [Embedding 07: Actions and Events.](https://quickstarts.sigmacomputing.com/guide/embedding_07_events/index.html?index=..%2F..index#0)
 
 Lastly, iframe can be made "responsive" to optimize the end-users browser experience: 
-[QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
+[QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_10_responsive_embeds/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

@@ -597,7 +597,7 @@ Verify the new member is created in the UI, has workspace permission, is a membe
 ## Workbook: Pagination
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-pagination)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-pagination-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -639,7 +639,7 @@ The expected response is:
 ## Workbook: List All
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -777,7 +777,7 @@ If we want to check the status of this Job, we can use the UI, by navigating to 
 ## Workbook: List all Input Tables
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbooks-list-all-input-tables)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript-input-tables)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -908,7 +908,7 @@ The PDF looks like this `export-workbook-pdf.pwd`:
 ## Workbook: Copy Workbook to Member "My Documents" Folder
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/copy-workbook-to-member-my-documents-folder)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-copy-workbook-to-member-my-documents-folder-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -1012,7 +1012,7 @@ The expected response is:
 ## Teams: Bulk Add/Remove Members
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Teams: Bulk Assign Members` page, [located here.](https://help.sigmacomputing.com/recipes/member-bulk-assign-to-team)
+This section demonstrates the code that was provided on the `API Code Samples` > `Teams: Bulk Assign Members` page, [located here.](https://help.sigmacomputing.com/recipes/teams-bulk-assign-members-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
