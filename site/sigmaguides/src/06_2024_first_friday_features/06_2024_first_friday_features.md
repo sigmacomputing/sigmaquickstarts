@@ -11,7 +11,7 @@ lastUpdated: 2024-06-31
 <-- 
 June 7 - done
 June 14 - done
-June 21-
+June 21- done
 June 28-
 !-->
 
@@ -70,7 +70,7 @@ For more information, [see Explain a visualization with AI.](https://help.sigmac
 ## API
 Duration: 20
 
-## New folder and document "favoriting" endpoints
+### New folder and document "favoriting" endpoints
 We have added operations for managing favorite documents and folders for a user:
 
 ```code
@@ -79,7 +79,7 @@ POST /v2/favorites favorites a document or folder for a user.
 DELETE /v2/favorites/member/{memberId}/file/{inodeId} unfavorites a document or folder for a user.
 ```
 
-### New workbook template endpoints
+#### New workbook template endpoints
 We have added operations for managing workbook templates:
 
 ```code
@@ -118,10 +118,34 @@ For a tutorial that walks you through sending and receiving events from a parent
 
 ![Footer](assets/sigma_footer.png)
 
-## New QuickStarts in May
+## Functions / Calculations
 Duration: 20
 
+### ArrayJoin function
+The ArrayJoin function joins elements of an array into a single text string.
 
+For more information, [see ArrayJoin.]()
+
+![Footer](assets/sigma_footer.png)
+
+## New QuickStarts in June
+Duration: 20
+
+### All new Sigma fundamentals series
+After over a year in service, it was time to retire the existing series and replace it with an updated one.
+
+Each QuickStart in the series has been rewritten and screenshots have been updated.
+
+The series has changed somewhat and now contains the following QuickStarts:
+Fundamental 1 - Getting Around
+Fundamental 2 - Working with Tables
+Fundamentals 3: Working with Visualizations
+Fundamentals 4: Working with Pivot Tables
+Fundamentals 5: Input Tables
+Fundamentals 6: Controls
+Fundamentals 7: Administration
+
+You can access the [new series here.](https://quickstarts.sigmacomputing.com/?cat=fundamentals)
 
 ## Visualizations
 Duration: 20
@@ -168,6 +192,15 @@ There are currently ten beautify presets to choose from!
 Here is how to access it:
 
 <img src="assets/fff_06_2024_6.png" width="600"/>
+
+### Placeholder text in control elements
+You can now customize placeholder text for any input-based control element (List values, Text input, Number input, Date, and Date range) to provide context about the expected user input.
+
+Go to `Element format` > `General` and update the `Placeholder` field. 
+
+Placeholder text displays directly in the control’s input field and clears when the field contains user input:
+
+<img src="assets/fff_06_2024_8.png" width="600"/>
 
 ### Zip file option for attachments in scheduled exports
 When scheduling exports it is now optional to compress export attachments into a single zip file. This will result in smaller attachments and more reliable delivery over email.
