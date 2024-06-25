@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-03-25
+lastUpdated: 2024-06-25
 
 # Develop a Predictive Model using Snowflake and Sigma
 <!-- The above name is what appears on the website and is searchable. -->
@@ -34,13 +34,17 @@ Anyone who is interested in learning how to easily leverage the power of Snowfla
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>A Sigma instance that has a connection established to your own Snowflake instance.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-  <li>Sigma Write back is enabled to your Snowflake environment.</li>
-  <li>A snowflake role with Usage rights on a Snowflake schema that the Sigma Service Role has access to, as well as to the writeback location.</li>
-  <li>A code editor (IDE) with a python interpreter defined with the package requirements from the required yaml file (button below). You can download this file and then create the env using the following terminal code:</li>
+  <li>Sigma Write-back is enabled to your Snowflake environment</li>
+  <li>A snowflake role with Usage rights on a Snowflake schema that the Sigma Service Role has access to, as well as to the Write-back location.</li>
+  <li>Download a copy of the notebook to be used in Snowflake</li>
+
 </ul>
 
-<button>[Download yaml file](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/conda_env.yml)</button>
+<button>[Download Snowflake Notebook](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/notebooks/notebook_app.ipynb)</button>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We will use the Snowflake notebook later in the QuickStart. For now, just leave a copy in your downloads folder.
+</aside>
 
 ```code
 conda env create -f /Users/[USER_NAME]/Downloads/conda_env.yml
@@ -228,12 +232,12 @@ Repeat this for `Test` to create a warehouse view for the Test table.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Visual Studio Code Programming
+## Snowflake Programming
 Duration: 20
 
-We can now let our data scientist know that `TASTY_BITES_TRAIN` is ready for them to train their model on Month, Weekday, and Shift. 
+We can now let our data scientist know that `TASTY_BITES_TRAIN` is ready for them to train their model on Month, Weekday, and Shift. The Data Scientist can now begin their work in the Snowflake Notebook that was downloaded in the beginning section of this hands on lab.
 
-The data scientist can now begin their work in their code editor.
+We will give these steps as code chunks with notation, but you can simply follow through the notebook as well. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We will give these steps as code chunks in a notebook style, but you can feel free to compile this into a single python script if desired.
