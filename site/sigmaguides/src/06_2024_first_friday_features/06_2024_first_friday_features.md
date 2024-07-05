@@ -38,6 +38,13 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Administration
 Duration: 20
 
+### OAuth write access
+OAuth with write access is now generally available (GA). For customers using the Beta version, that have been no changes since May 2024.
+
+Configure an OAuth connection with write access to leverage the benefits of OAuth permission management with Sigma’s write-access features, including input tables, warehouse views, workbook materializations, and CSV uploads.
+
+For more information, see [Configure OAuth with write access.](https://help.sigmacomputing.com/docs/configure-oauth-with-write-access)
+
 
 ![Footer](assets/sigma_footer.png)
 
@@ -69,6 +76,11 @@ For more information, [see Explain a visualization with AI.](https://help.sigmac
 
 ## API
 Duration: 20
+
+### Connection sync endpoint
+This endpoint provide a method to "sync" the connection to a specific database, schema, or table, so that the data Sigma displays is the most recent.
+
+For more information, see [POST /v2/connections/{connectionId}/sync.](https://help.sigmacomputing.com/reference/syncconnectionpath)
 
 ### New folder and document "favoriting" endpoints
 We have added operations for managing favorite documents and folders for a user:
@@ -106,6 +118,13 @@ Duration: 20
 
 ## Embedding
 Duration: 20
+
+### Additional language support for workbook localization
+You can now localize workbook text into Simplified Chinese, Korean, and Swedish.
+
+For more information, see [Manage workbook localization.](https://help.sigmacomputing.com/docs/manage-workbook-localization)
+
+<img src="assets/fff_06_2024_9.png" width="600"/>
 
 ### Self-service embed usage analytics
 Use a third-party tool, like [Pendo.io](https://www.pendo.io/), to track inbound and outbound events implemented in your embedded analytics.
@@ -150,12 +169,30 @@ You can access the [new series here.](https://quickstarts.sigmacomputing.com/?ca
 ## Visualizations
 Duration: 20
 
+### Waterfall chart (Beta)
+Waterfall charts in Sigma are perfect for illustrating changes in data over a period of time. 
 
+They are particularly useful in financial analytics use cases, such as tracking revenue and expenditures for a project, department, or entire organization. 
+
+Additionally, you can format the shape, start, and end values of a waterfall chart to better tailor the visualization to your specific needs.
+
+<img src="assets/fff_06_2024_10.png" width="800"/>
+
+For more information, see [Build a waterfall chart.](https://help.sigmacomputing.com/docs/build-a-waterfall-chart)
 
 ![Footer](assets/sigma_footer.png)
 
 ## Workbooks
 Duration: 20
+
+### Checkbox control element
+Use the `Checkbox control` element to allow users to select or deselect an option.
+
+The `Checkbox control` element is similar to the [Switch control](https://help.sigmacomputing.com/docs/intro-to-control-elements#switch) element but in a different format, which users may prefer.
+
+For example, it can used to simply toggle a boolean column to show purchases or returns only:
+
+<img src="assets/checkbox.gif" width="800"/>
 
 ### Color picker now available
 A small but very useful usability addition is the color picker, which is available anywhere there is a choice of single colors.
@@ -201,6 +238,22 @@ Go to `Element format` > `General` and update the `Placeholder` field.
 Placeholder text displays directly in the control’s input field and clears when the field contains user input:
 
 <img src="assets/fff_06_2024_8.png" width="600"/>
+
+### Repeat row labels in pivot tables
+In pivot tables with multiple pivot rows, you can format your table to repeat row labels.
+
+For example, `Arts & Entertainment` in `Product Types` is repeated for each additional row having a `Product Family` in that grouping:
+
+<img src="assets/fff_06_2024_11.png" width="800"/>
+
+For more information, see [Working with pivot tables.](https://help.sigmacomputing.com/docs/working-with-pivot-tables)
+
+### Text area control element
+The `Text area` control element in Sigma allows for multi-line text input, making it ideal for forms and other scenarios requiring larger amounts of text.
+
+With customizable input field height and vertical scrolling to view text overflow, it more effectively supports extensive text input compared to the `Text input` control element.
+
+<img src="assets/fff_06_2024_12.png" width="600"/>
 
 ### Zip file option for attachments in scheduled exports
 When scheduling exports it is now optional to compress export attachments into a single zip file. This will result in smaller attachments and more reliable delivery over email.
