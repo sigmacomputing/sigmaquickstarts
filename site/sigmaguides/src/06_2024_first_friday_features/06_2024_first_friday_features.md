@@ -8,13 +8,6 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
 lastUpdated: 2024-06-31
 
-<-- 
-June 7 - done
-June 14 - done
-June 21- done
-June 28-
-!-->
-
 # (06-2024) June
 <!-- The above name is what appears on the website and is searchable. -->
 
@@ -39,12 +32,11 @@ New first Friday features QuickStarts will be published on the first Friday of e
 Duration: 20
 
 ### OAuth write access
-OAuth with write access is now generally available (GA). For customers using the Beta version, that have been no changes since May 2024.
+OAuth with write access is now generally available (GA). For customers using the Beta version, there have been no changes since May 2024.
 
 Configure an OAuth connection with write access to leverage the benefits of OAuth permission management with Sigma’s write-access features, including input tables, warehouse views, workbook materializations, and CSV uploads.
 
 For more information, see [Configure OAuth with write access.](https://help.sigmacomputing.com/docs/configure-oauth-with-write-access)
-
 
 ![Footer](assets/sigma_footer.png)
 
@@ -52,7 +44,9 @@ For more information, see [Configure OAuth with write access.](https://help.sigm
 Duration: 20
 
 ### Explain visualizations with AI (Beta)
-Instantly generate a description of any chart with the AI Explain visualization feature. Details can include key insights, observations, data distribution summaries, and other context that can enhance your understanding of the visualized data and help drive informed decisions.
+Instantly generate a description of any chart with the `AI Explain visualization` feature. 
+
+Details can include key insights, observations, data distribution summaries, and other context that can enhance your understanding of the visualized data and help drive informed decisions.
 
 For example, once configured users can click on any visualization and select `Explain visualization`:
 
@@ -101,20 +95,9 @@ POST /v2/workbooks/{workbookId}/saveTemplate saves an existing workbook as a tem
 
 ![Footer](assets/sigma_footer.png)
 
-## Bug Fixes
-Duration: 20
-
-**1:** <br><br>
-**2:** 
 
 
-![Footer](assets/sigma_footer.png)
 
-## Input Tables
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
 
 ## Embedding
 Duration: 20
@@ -143,7 +126,7 @@ Duration: 20
 ### ArrayJoin function
 The ArrayJoin function joins elements of an array into a single text string.
 
-For more information, [see ArrayJoin.]()
+For more information, [see ArrayJoin.](https://help.sigmacomputing.com/docs/arrayjoin)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -155,13 +138,14 @@ After over a year in service, it was time to retire the existing series and repl
 
 Each QuickStart in the series has been rewritten and screenshots have been updated.
 
-The series has changed somewhat and now contains the following QuickStarts:
-Fundamental 1 - Getting Around
-Fundamental 2 - Working with Tables
-Fundamentals 3: Working with Visualizations
-Fundamentals 4: Working with Pivot Tables
-Fundamentals 5: Input Tables
-Fundamentals 6: Controls
+The series has changed somewhat and now contains the following QuickStarts:<br>
+
+Fundamental 1 - Getting Around<br>
+Fundamental 2 - Working with Tables<br>
+Fundamentals 3: Working with Visualizations<br>
+Fundamentals 4: Working with Pivot Tables<br>
+Fundamentals 5: Input Tables<br>
+Fundamentals 6: Controls<br>
 Fundamentals 7: Administration
 
 You can access the [new series here.](https://quickstarts.sigmacomputing.com/?cat=fundamentals)
@@ -224,7 +208,7 @@ Edit your workbook color settings directly from the `Color` section of the `Work
 
 The element panel provides a real-time preview of your workbook colors that automatically updates as you adjust the settings.
 
-There are currently ten beautify presets to choose from!
+There are currently ten beautiful presets to choose from!
 
 Here is how to access it:
 
