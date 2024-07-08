@@ -95,10 +95,6 @@ POST /v2/workbooks/{workbookId}/saveTemplate saves an existing workbook as a tem
 
 ![Footer](assets/sigma_footer.png)
 
-
-
-
-
 ## Embedding
 Duration: 20
 
@@ -149,6 +145,8 @@ Fundamentals 6: Controls<br>
 Fundamentals 7: Administration
 
 You can access the [new series here.](https://quickstarts.sigmacomputing.com/?cat=fundamentals)
+
+![Footer](assets/sigma_footer.png)
 
 ## Visualizations
 Duration: 20
