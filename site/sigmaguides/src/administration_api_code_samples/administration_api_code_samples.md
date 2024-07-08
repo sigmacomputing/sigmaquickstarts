@@ -168,7 +168,7 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 ### Description
 This script retrieves a bearer token from the Sigma API using client credentials authentication. It extracts required credentials from environment variables, sends a POST request to the authentication endpoint, and logs the obtained token. The function getBearerToken can be imported into other scripts for accessing protected resources.
 
-This actual javascript is available as part of the git repository mentioned earlier or is available to copy directly from our API Code Samples site under: [Authentication: Get Access Token](https://help.sigmacomputing.com/recipes/authentication-get-access-token) and returns a bearer token (token).
+This actual javascript is available as part of the git repository mentioned earlier or is available to copy directly from our API Code Samples site under: [Authentication: Get Access Token](https://help.sigmacomputing.com/reference/token) and returns a bearer token (token).
 It also exports a Javascript function to request a bearer token (token) each time it is called. 
 
 <aside class="positive">
