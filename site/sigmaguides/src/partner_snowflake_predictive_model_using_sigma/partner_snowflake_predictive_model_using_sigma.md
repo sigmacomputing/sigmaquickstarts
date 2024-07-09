@@ -14,7 +14,7 @@ lastUpdated: 2024-07-09
 ## Pre-work (hosted on Snowflake QuickStart) for reference 
 Duration: 5
 
-Thanks for signing up for Snowflake & Sigma’s Virtual Hands-On Lab, “Develop a Predictive Model Using Snowflake and Sigma”. To ensure that you can follow along during the lab, please complete the work below prior to the start of the lab. You can find the quickstart associated with the lab [here.](https://quickstarts.snowflake.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#0)
+Thanks for signing up for Snowflake & Sigma’s Virtual Hands-On Lab, “Develop a Predictive Model Using Snowflake and Sigma”. To ensure that you can follow along during the lab, please complete the work below prior to the start of the lab. You can find the QuickStart associated with the lab [here.](https://quickstarts.snowflake.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#0)
 
 1: Sign up for a Snowflake Trial - You can sign up for a 30-day free trial of Snowflake [here.](https://signup.snowflake.com/) Even if you have a login on an existing Snowflake account, you should still create a new Snowflake account, as you’ll be asked to utilize the ACCOUNTADMIN role for some steps below.
 
