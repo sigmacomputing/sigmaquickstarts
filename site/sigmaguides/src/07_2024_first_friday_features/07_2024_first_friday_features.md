@@ -11,8 +11,8 @@ lastUpdated: 2024-07-31
 # (07-2024) July
 <!-- The above name is what appears on the website and is searchable. 
 
-6
-12
+6 - Done
+12 - Done
 19
 26
 Publish on Aug 2.
@@ -39,12 +39,12 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ## Administration
 Duration: 20
 
-### OAuth write access
-OAuth with write access is now generally available (GA). For customers using the Beta version, there have been no changes since May 2024.
+### New version tag metadata in audit log (Beta)
+The `AUDIT_LOG` > `SIGMA_SHARED` > `DOCUMENTS` dimension table now contains the following columns:
 
-Configure an OAuth connection with write access to leverage the benefits of OAuth permission management with Sigma’s write-access features, including input tables, warehouse views, workbook materializations, and CSV uploads.
+<img src="assets/FFF_07_2024_1.png" width="800"/>
 
-For more information, see [Configure OAuth with write access.](https://help.sigmacomputing.com/docs/configure-oauth-with-write-access)
+This metadata enables you to obtain information related to both the source workbook and the tagged version when referencing audit log entries for events like exports and downloads.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -58,8 +58,20 @@ Duration: 20
 
 ![Footer](assets/sigma_footer.png)
 
+## Bug Fixes
+Duration: 20
+
+*1:* The `Administration` > `Account Types` > `New Account Type` page now correctly shows the `Create, edit, and publish` workbooks permission as auto-enabled (checkbox selected) when the `Apply tags` permission is enabled.
+
+![Footer](assets/sigma_footer.png)
+
 ## Embedding
 Duration: 20
+
+### Sequence function
+The Sequence function returns an arithmetic sequence as an array of integers based on a specified range and increment.
+
+For more information, see [Sequence.](https://help.sigmacomputing.com/docs/sequence)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -76,7 +88,16 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
-<img src="assets/fff_07_2024_1.png" width="800"/>
+### Support for emailing exports to organization users and teams
+When configuring an email export, the `Recipients` field now features an autocomplete dropdown that helps you search for and select an organization team or user. 
+
+You can also continue to input specific email addresses for non-organization members with authorized domains.
+
+For example, searching to find a specific team:
+
+<img src="assets/fff_07_2024_2.png" width="500"/>
+
+For more information about emailing workbook content , see [Export to email.](https://help.sigmacomputing.com/docs/export-to-email)
 
 ![Footer](assets/sigma_footer.png)
 
