@@ -70,7 +70,7 @@ Login into Okta as Administrator and navigate to `Applications` > `Applications`
 
 <img src="assets/ok1.png" width="800"/>
 
-Type `Sigma` into the search bar and select either "Sigma on AWS" or "Sigma on GPC" depending on where your Sigma instance is hosted:
+Type `Sigma` into the search bar and select either "Sigma on AWS" or "Sigma on GCP" depending on where your Sigma instance is hosted:
 
 <img src="assets/ok2.png" width="800"/>
 
