@@ -269,7 +269,7 @@ This means that we don't need to  worry about restarting your application (in th
 <strong>NOTE:</strong><br> There is an extension for Chrome called "LiveReload" which will also handle the browser refresh for you. We leave that up to the user to decide if they want to install and enable any browser extension.
 </aside>
 
-While the supoervisor package is not technically required, it is a real time-saver when making quick code changes during the QuickStart embed series.
+While the supervisor package is not technically required, it is a real time-saver when making quick code changes during the QuickStart embed series.
 
 **Run the command:**
 ```code
@@ -278,10 +278,19 @@ npm install supervisor
 
 <img src="assets/applicationsetup6.png" width="700"/>
 
+#### "Module Not Found" issues
+We have seen some instances where node refuses to run supervisor (or any other installed node.js packages). The common error is "Module not found". 
+
+This is often due to differences in operating system and system configuration differences. The "Module not found" issue is usually solved by either:
+
+1: Install the failing node.js package globally, instead of in the local project folder. Reference the npm documentation; [Downloading and installing packages globally](https://docs.npmjs.com/downloading-and-installing-packages-globally)
+
+2: Adjust the system path as described in this issue on Stack Overflow; [Global Node modules not installing correctly. Command not found](https://stackoverflow.com/questions/15054388/global-node-modules-not-installing-correctly-command-not-found)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## Setup the Webserver
+## Setup the Web-server
 
 You are now ready to test Node using your server.js file. 
 
