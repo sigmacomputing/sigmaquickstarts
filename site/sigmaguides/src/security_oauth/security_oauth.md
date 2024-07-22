@@ -87,16 +87,21 @@ It is widely used as a way to grant websites or applications limited access to a
 
 ### Benefits of Using OAuth with Sigma
 
-#### Secure Data Access:
-By using OAuth, Sigma users can securely connect to Snowflake, ensuring that their data access is controlled and monitored.
+By using OAuth, Sigma users can securely connect to Snowflake (or another supported Cloud Data Warehouse, CDW), ensuring that their data access is controlled and monitored. OAuth facilitates the secure exchange of tokens, minimizing the risk of exposing sensitive credentials.
 
-#### Simplified Integration:
-OAuth simplifies the integration process between Sigma and Snowflake, reducing the complexity of managing credentials and access permissions.
+#### Centralized Permission and Access Control
+Sigma does not use its own permission system but instead relies on Snowflake’s credentials for user authentication. This is achieved through the Sigma logon UI in combination with OAuth. By using OAuth, users can log into Sigma using their Snowflake credentials, ensuring that Snowflake manages all user permissions and access controls.
 
-#### Improved Compliance:
-OAuth helps organizations comply with security and privacy regulations by providing robust access control mechanisms and minimizing the exposure of sensitive credentials.
+#### Alternative to Sigma-Managed Permissions
+In scenarios where organizations prefer to use CDW-based user permission and access control, OAuth provides an alternative to having Sigma manage table access for various users. This allows organizations to maintain a consistent and centralized permission strategy, leveraging Snowflake’s robust access control features.
 
-By using OAuth, you enhance the security, control, and user experience of your data access processes, ensuring a seamless and secure interaction between Sigma and the cloud data warehouse.
+#### Simplified Integration
+OAuth simplifies the integration process between Sigma and Snowflake, reducing the complexity of managing credentials and access permissions. Instead of Sigma managing individual user permissions, Snowflake handles all data access and logon credentials for every user, streamlining the entire process.
+
+#### Improved Compliance
+OAuth helps organizations comply with security and privacy regulations by providing robust access control mechanisms and minimizing the exposure of sensitive credentials. By leveraging Snowflake’s permission system, organizations can ensure that all access controls and compliance requirements are uniformly enforced.
+
+By using OAuth, you enhance the security, control, and user experience of your data access processes, ensuring a seamless and secure interaction between Sigma and the cloud data warehouse. This configuration leverages Snowflake’s existing infrastructure to manage user credentials and permissions, reducing administrative overhead and improving overall security.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -159,7 +164,6 @@ In order to use OAuth with Sigma, we need to have administrative access to an Id
 <strong>IMPORTANT:</strong><br> Make sure that the email used for Okta administration is the same as is used in Sigma and Snowflake for administration. While not required, this will make this demonstration easier. 
 </aside>
 
-
 Other popular IdP providers are Azure AD (Microsoft), Amazon AWS Identity and Access Management (IAM), Google Identity Platform, Auth0, OneLogin, Ping Identity and so on.
 
 [Okta offers free developers accounts](https://developer.okta.com/signup/), and we will log into one and demonstrate the process. 
@@ -175,7 +179,6 @@ Temporarily holding these values will make things a little easier for us as we g
 
 Create the following placeholders in the text file:
 ```code
-
 TEST USER CREDENTIALS:
 EMAIL = 
 PASSWORD = 
@@ -208,9 +211,8 @@ BEARER TOKEN =
 </aside>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
-## Create a new Okta application integration (app)
+## Create a new Okta application integration
 Duration: 5 
 
 We are still in Okta as administrator.
@@ -238,7 +240,12 @@ If running Sigma on AWS, use:
 https://aws-api.sigmacomputing.com/api/v2/oauth/1/authcode
 ```
 
-If running Sigma on Azure or GCP, use:
+If running Sigma on Azure use:
+```code
+https://api.us.azure.sigmacomputing.com/
+```
+
+If running Sigma on GCP use:
 ```code
 https://api.sigmacomputing.com/api/v2/oauth/1/authcode
 ```
