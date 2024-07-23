@@ -21,7 +21,7 @@ We have broken the different types of embeds into separate documents based on us
 
 Additionally, it will demonstrate how to set up a local web application so that you can simulate using Sigma Embedding on your local computer. The local web application (Parent application) is to be reused on a few of the other embedding QuickStarts as required. 
 
-For those interested, there is a comprehensive whitepaper, [Embedded Analytics Solutions for Secure Embedding](https://www.sigmacomputing.com/white-papers/white-paper-embedded-analytics) 
+For those interested, there is a comprehensive ebook, [The Ultimate Guide To Embedded Analytics](https://www.sigmacomputing.com/white-papers/white-paper-embedded-analytics) 
 
  ### Target Audience
 Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
@@ -259,17 +259,26 @@ npm install express
 <img src="assets/applicationsetup5.png" width="700"/>
 
 ### Node Supervisor
-Node-supervisor is a package that runs our program, and watches for plaintext changes, so we can have hot-reloading-ish behavior. 
+This package is the "manager" that we referred to earlier and is not really required, but can be a time-saver, so we prefer to include it. 
 
-This means that we don't need to  worry about restarting your application (in this case, Node) each time we make a change to the server.js file.
-
-**A browser refresh will still be required to see the changes on the webpage. **
-
-<aside class="negative">
-<strong>NOTE:</strong><br> There is an extension for Chrome called "LiveReload" which will also handle the browser refresh for you. We leave that up to the user to decide if they want to install and enable any browser extension.
-</aside>
+Node-supervisor is a node package that monitors our parent application, and watches for plaintext changes to the code. As we make configuration changes and save them, supervisor "sees" this and forces a reload. This means that we don't need to  worry about restarting your application (in this case, Node) each time we make a change to the server.js file. 
 
 While the supervisor package is not technically required, it is a real time-saver when making quick code changes during the QuickStart embed series.
+
+You can complete this QuickStart without supervisor. If you elect to do that, all that is required is that you restart node after each change to the project files code.
+
+To do that, all that is required is to stop node in the terminal session where it is running (CTRL+C), and then restart node again.
+
+To run our project without supervisor, a terminal session is opened and the command that is run is:
+```code
+node embed-api.js
+```
+
+**A browser refresh will still be required to see the changes on the final application webpage. **
+
+<aside class="negative">
+<strong>NOTE:</strong><br> There is an extension for Chrome / Firefox called "LiveReload" which will also handle the browser refresh for you. We leave that up to the user to decide if they want to install and enable any browser extension.
+</aside>
 
 **Run the command:**
 ```code
