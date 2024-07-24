@@ -6,24 +6,24 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-06-02
+lastUpdated: 2024-07-24
 
 # Sigma Input Tables: Use Cases
 
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides an overview and the steps required to recreate three unique use cases that leverage Sigma Input Tables. 
+This QuickStart **QS** provides an overview and the steps required to recreate three unique use cases that leverage Sigma input tables. 
 
-Input Tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
+input tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
 
 <aside class="postive">
-<strong>WHY USE INPUT TABLES?</strong><br> With Input Tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. Input Tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
+<strong>Why use input tables?</strong><br> With input tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. input tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
 When data isn’t in the warehouse, it usually requires a cumbersome technical and people process to ETL data into the warehouse. Now users who need to add data to the warehouse are able to do so directly.
 
-Sigma customers already use Input Tables for:
+Sigma customers already use input tables for:
 <ul>
   <li>Manual data entry of key values</li>
   <li>Analytic Modeling
@@ -55,7 +55,7 @@ Anyone who is trying to create QS content using Sigma and wants to augment, adju
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
   
 ### What You’ll Learn
-We will review a few different ways customers are using Input Tables already and show you how to make them work in your own Sigma environment.
+We will review a few different ways customers are using input tables already and show you how to make them work in your own Sigma environment.
 
 ### What You’ll Build
 
@@ -72,53 +72,47 @@ We will review a few different ways customers are using Input Tables already and
 ## Forecast Adjustment
 Duration: 20
 
-In our first use case, Paula, the VP of EMEA sales, is running her End-of-Year forecast call where her country managers each call out the final numbers for the year. 
+In our first use case, Paula, the VP of EMEA sales, is running her forecast call, where her country managers each call out the final numbers for the year, and any adjustments that they may want to make. 
 
-She enters these into an Input Table which already has the targets for the year. 
-
-A map visualizes which countries are way off their targets.  
+This has traditionally been done on a spreadsheet that Paula created by merging multiple spreadsheets together.
 
 She's also planning out the next year and adds growth numbers for each country. 
 
-This gets combined with a parameter that adjusts for inflation to show FY 23 vs 24 on a bar chart.
+The spreadsheet work is a time-waster for her and can also be error prone.
 
-The final version looks like this:
+### Input tables to the rescue
 
-![Alt text](assets/fa1.png)
+Open Sigma and create a new workbook.
 
-### How to build it:
+Change the name of the workbook to `Input Table Use Cases`.
 
-Open Sigma and create a new Workbook.
-
-Change the name of the Workbook to `Input Table Use Cases`.
-
-Add a new Page to our Workbook and rename it to `Forecast Adjustment`.
+Add a new page to our workbook and rename it to `Forecast Adjustment`.
 
 <button>[Download the sample Country Manager data](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/Forecasts-from-Country-Managers.csv)</button>
 
-Open the downloaded csv file in Excel (or Google Sheets). There should be 3 columns and 13 rows.
+Add a new `CSV Input Table` to the page and rename it `Forecasts from Country Managers`:
 
-Add a new Input Table to the Page and rename it `Forecasts from Country Managers`.
+<img src="assets/fa9.png" width="300"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Input Tables store data back to the selected Warehouse. Write Access is required to support this functionality. Sigma is storing Input Table data separately and only using the Warehouse Connection you specify. Other warehouse data is unaffected. 
-</aside>
+Use Sigma to import the downloaded file, import it and click `Save`:
 
-[Click here for information on setting up Write Access.](https://help.sigmacomputing.com/docs/set-up-write-access)
-
-Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table. 
+<img src="assets/fa10.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Once you have the Excel data copied, just click the Input Table and press `ctl+v` or `command+v` (for Macs) to paste the data.
+<strong>NOTE:</strong><br> Input tables store data back to the selected warehouse. Write access is required to support this functionality. Sigma is storing input table data separately and only using the warehouse connection you specify. Other warehouse data is unaffected. 
 </aside>
+
+[Click here for information on setting up Write access.](https://help.sigmacomputing.com/docs/set-up-write-access)
+
+Rename the new input table to `Forecasts from Country Managers`.
 
 Notice that Sigma automatically identified the data types for you, saving time.
 
 <img src="assets/fa2.png" width="800"/>
 
-Add a new Visualization to the Page, use the Input Table as it data source, set it to `Map - Region` and drag the `Country` column up the Regions.
+Add a new `Visualization` to the page, use the input table as it data source, set it to `Map - Region` and drag the `Country` column up the Regions.
 
-We want this Map to show different colors for FY23 Targets vs FY23 Forecasts so we need to add a new Column to the data that represents this calculated value.
+We want this map to show different colors for `FY23 Targets vs FY23 Forecasts`, so we need to add a new column to the data that represents this calculated value.
 
 In the Element Panel / Columns click the `+` icon and select `new column`.
 
@@ -132,78 +126,52 @@ Adjust the element panel, so that the map appears as shown below:
 
 <img src="assets/fa3.png" width="800"/>
 
-The manager in Austria tells you she's cutting her forecast down to $10k because there was a strike at one of the factories.
+The manager in `Austria` tells you she's cutting her forecast `down to $10k` because there was a strike at one of the factories.
 
-Update the input table and see the map change. Wait, we are not able to enter new values into the Input Table?
+Update the input table and see the map change. 
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Changes to Input Table data requires the Workbook be in Edit mode
+<strong>IMPORTANT:</strong><br> Changes to input table data requires the workbook be in edit mode
 </aside>
-Edit the Workbook.
 
-Now change the `FY23 Forecast` value for `Austria` down to $10K and hit `Enter`.
+Change the `FY23 Forecast` value for `Austria` down to `$10K` and hit `Enter`.
 
-The Map changes automatically to reflect this revision.
+The map changes automatically to reflect this revision.
 
 <img src="assets/fa3b.png" width="800"/>
 
-We can also change a value in the `Forecasts from Country Managers` Input Table / Column `Country Growth Adjustment` and see similar changes automatically reflected in the Chart.
+### Real-time modelling
+Paula wants to make her own adjustments after the call and wants to be able to just experiment with making adjustments while considering the impact of small changes in a visualization before making a final decision.
 
-The Map will not change as it is not looking at FY24 projections.
+#### Bar chart
 
-### Drive Input Table Values from Control
+Lets add a bar chart to give Paula the visualization she is wanting, and start by comparing the `FY23 and FY24 forecasts (by country)`.
 
-We can also drive the Input Table from in-page Controls. For example we can add a Control that allows the user to set a value for a `Global Inflation Adjustment` and have that update a chart.
-
-Add a new `Number` Column to the Input Table and rename it to: `Country Growth Adjustment`. 
-
-Set the Column Type to be `Percent`.
-
-Add a new Control / `Text Box` to the Page. Rename it to `Global Inflation Adjustment`.
-
-Adjust it's properties as shown. The `Control ID` is case sensitive and it's current value will drive in calculations later:
-
-<img src="assets/fa6a.png" width="800"/>
-
-Set a value in the new Control `Global Inflation Adjustment` = .10 and hit return.
-
-Lets add a bar chart and compare the FY23 and FY24 forecasts (by country).
-
-Add a Visualization and configure it as follows (we will manually add a calculated column for the X-Axis Column shown for `F24 Forecast`):
+Add a visualization and configure it as follows:
 
 <img src="assets/fa4.png" width="800"/>
 
-Lets add that new column to the X-Axis (click the `+` icon to the right of the X-Axis in the Element Panel) and select `Add new column`.
+Lets add the `Growth Adjustment` column to the Y-Axis. At the moment, all the values in this column are zero and that is fine, we will adjust the formula.
 
-Set the formula bar for this new Column to:
+We want this new bar on the chart to show the `FY23 forecast` after the growth adjustment is made in the input table. In this way, Paula can quickly see how a small percentage gain (or loss) will impact the country forecast.
+
+Set the formula bar for this new column to:
 ```plaintext
-(1 + [P_Global_Inflation] + Coalesce([Country Growth Adjustment], 0)) * [FY23 Forecasts]
+[FY23 Forecasts] + ([Growth Adjustment] * [FY23 Forecasts])
 ```
 
-Rename the new Column to `FY24 Forecasts`.
+Rename the new Column to `Paula's Adjustment`.
 
-Click on the County column (in the Element Panel / Y-Axis) and set a filter on this map to not show any null values. 
+Paula has done some reasearch and thinks that the strike in Austria is not going to happen. She also has been speaking to a large customer in Austria and found that a very large order is coming in that is not forecast. 
 
-The Chart and it's configuration now looks like this:
+She reverts the `FY23 forecast` back to `$74655` and also adjusts the growth to `50%`, so she can see the impact:
 
-<img src="assets/fa7.png" width="600"/>
-
-Publish your Page.
-
-After making any final tweaks you want to make to the layout of the page, it is ready, the VP can make some forecast changes.
-
-Inflation is **really** bad right now, so increase the `Global Inflation Adjustment` parameter from 0.10 to 0.15 and hit enter.
-
-The Bar Chart will respond, adjusting for the increase in inflation across the entirety of EMEA.
-
-The manager for the Czech Republic has resolved some supply chain issues and is reporting an anticipated 10% forecast lift.
-
-Enter the new value into the `Country Growth Adjustment` column for Czech Republic to reflect 10% uplift. Hit Enter and the Map and Chart update automatically to reflect the increase:
-
-<img src="assets/fa8.png" width="600"/>
+<img src="assets/fa-gif.gif" width="800"/>
 
 <aside class="postive">
-<strong>The VP Loves it!</strong><br> Input Tables allows the VP to not only review the current and next year forecast for her territory, it also allows her to update it for real changes as well as do some "what-if-analysis" to help her make critical decisions in real time. Corporate Governance is maintained since the source data does not change and everything stays in the corporate cloud data warehouse, even the Input Table and it's values.
+<strong>The VP Loves it!</strong><br> input tables allows the VP to not only review the current and next year forecast for her territory, it also allows her to update it for real changes as well as do some "what-if-analysis" to help her make critical decisions in real time. 
+
+Corporate governance is maintained since the source data does not change and everything stays in the corporate cloud data warehouse, even the input table and its values.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -224,7 +192,9 @@ She has the Shopify data in google sheets where she's been playing around with i
 
 She needs to see the data from B&M against Shopify in real time.
 
-Sigma allows Lucy to copy and paste the Shopify data into an Input Table and then is able to compare online vs B&M sales by category and SKU. This informs her about the strengths and weakness of the online business vs the established B&M, right away.
+Sigma allows Lucy to copy and paste the Shopify data into an input table and then is able to compare online vs B&M sales by category and SKU. 
+
+This informs her about the strengths and weakness of the online business vs the established B&M, right away.
 
 ### How to build it:
 
@@ -232,41 +202,41 @@ Sigma allows Lucy to copy and paste the Shopify data into an Input Table and the
 
 Open the downloaded file in Excel (or Google Sheets). There should be 5 columns and 82 rows.
 
-We will copy this data into a Sigma Input Table later.
+We will copy this data into a Sigma input table later.
 
-Add a new Page to our Sigma Workbook and rename it to `Rapid Data Prototyping`.
+Add a new page to our Sigma workbook, and rename it to `Rapid Data Prototyping`.
 
 We will add two tables from the warehouse to the page. One for `Product Information` and another for `Brick and Mortar Sales`. 
 
-For Product Information we will use the `Sigma Sample Database` and the `D_Product` table as shown. 
+For `Product Information` we will use the `Sigma Sample Database` and the `D_Product` table as shown. 
 
 Rename the table to "Product Information".
 
 <img src="assets/it2.png" width="800"/>
 
-Create a second Workbook Page and rename it `Data`. We will use this Page to hold master reference data that will be reused for this use case and the later ones too. 
+Create a second workbook Page and rename it `Data`. We will use this page to hold master reference data that will be reused for this use case and the later ones too. 
 
-On the new Data page, add a new table as shown:
+On the new `Data` page, add a new table as shown:
 
 <img src="assets/it3.png" width="800"/>
 
 Rename the table to `Brick and Mortar Sales`.
 
-At this point your Workbook should look like this:
+At this point your workbook should look like this:
 
 <img src="assets/it4.png" width="800"/>
 
 Return to the `Rapid Data Prototyping` page.
 
-Add a new `Empty Input Table` to the Page.
+Add a new `Empty input table` to the Page.
 
 <img src="assets/it1.png" width="600"/>
 
 Use the `Sigma Sample Database`.
 
-Rename the new Input Table `Shopify Data`.
+Rename the new input table `Shopify Data`.
 
-Copy all rows and columns from the downloaded Excel file and paste them into the new Input Table as we did in the first use case.
+Copy all rows and columns from the downloaded Excel file and paste them into the new input table as we did in the first use case.
 
 <img src="assets/it1.gif">
 
@@ -284,7 +254,7 @@ Configure the Lookup as shown:
 
 <img src="assets/it7a.png" width="400"/>
 
-Many products have not been sold online yet so right click on the first cell with a null and select `Exclude null`:
+Many products have not been sold online yet, so right click on the first cell with a null and select `Exclude null`:
 
 <img src="assets/it8.png" width="400"/>
 
@@ -292,7 +262,7 @@ Rename this new column `Shopify Reveune` and format it as `Currency`.
 
 Add another new column and use the same workflow. 
 
-This time we want to pull in the revenue from the B&M table. However, the column Revenue does not exist in the warehouse table `Brick and Mortar Sales` so we need to add that first.
+This time we want to pull in the revenue from the B&M table. However, the column `Revenue` does not exist in the warehouse table `Brick and Mortar Sales`, so we need to add that first.
 
 Click on the `Data` page tab and add the new column to the `Brick and Mortar Sales` table.
 
@@ -311,35 +281,37 @@ Now we can add a new column to the `Product Information` table called `B&M Reven
 
 Rename the new column `B&M Revenue`.
 
-Now that we have the data ready we want to add a new Visualization (Bar Chart in this case) to compare the revenue streams by category for B&M vs. Online.
+Now that we have the data ready we want to add a new Visualization (Bar Chart in this case) to compare the revenue streams by category for B&M vs. online.
 
 Add a Child Element / Visualization (from the Product Information Table) and set the X and Y axis as shown:
 
 <img src="assets/it11.png" width="800"/>
 
-Doing a tiny bit of additional clean-up, changing the names of the X-Axis columns and removing a grid-line and we have our chart:
+Doing a tiny bit of additional clean-up, we have our chart:
 
 <img src="assets/it12.png" width="800"/>
 
-What the chart shows is the relative strength of in-store sales vs. online for each category. Now Lucy (our Merchandiser) can begin to see which catagories are not selling well online or where to invest more marketing dollars.
+What the chart shows is the relative strength of in-store sales vs. online for each category. 
+
+Lucy (our merchandiser) can begin to see which catagories are not selling well online or where to invest more marketing dollars.
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Lucy loves how she can leverage Input Tables and the power of Sigma to let move at the speed of the online world making business decisions based on live data at scale.
+<strong>IMPORTANT:</strong><br> Lucy loves how she can leverage input tables and the power of Sigma to let move at the speed of the online world making business decisions based on live data at scale.
 </aside>
 
 
 ## Territory Planning
 Duration: 20
 
-This next use case is a bit more sophisticated, using **Linked Input Tables and Data Validation** to allow the user to make on-the-fly adjustments to a sales territory.
+This next use case is a bit more sophisticated, using **Linked input tables and data validation** to allow the user to make on-the-fly adjustments to a sales territory.
 
-Mike, is VP of Sales for the US. The company has grown quickly and the regions need to be rebalanced. 
+Mike, is VP of Sales for the US. His company has grown quickly and the regions need to be rebalanced. 
 
 Using Salesforce data in Snowflake, he's able to leverage the power of Sigma and see that the West region has brought in the most revenue. 
 
 Specifically, California sales are leading the charts. 
 
-Using a Linked Input Table, Mike can dynamically get a list of States and Regions based on the latest assignments. 
+Using a linked input table, Mike can dynamically get a list of states and regions based on the latest assignments. 
 
 This allows Mike to experiment with the re-balancing, instantly seeing how revenue would change by region based on the new mapping. 
 
@@ -347,25 +319,25 @@ The final build will look like this:
 
 <img src="assets/tp1.png" width="800">
 
-In Sigma, create a new Page in our `Input Tables Demo` Workbook and rename it `Territory Planning`.
+In Sigma, create a new Page in our `input tables Demo` workbook and rename it `Territory Planning`.
 
-We will add tables to the Page from the Sigma Sample Database / Applications / Salesforce data source. 
+We will add tables to the page from the `Sigma Sample Database` / `Applications` / `Salesforce` data source. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You can cull the use only the columns shown to make the UI easier to work with or bring them all; it is up to preference. Be sure to minimally include the ones shown below.
 </aside>
 
-Add `USERS` as shown:
+Add `USERS`, culling the column list as shown:
 
-<img src="assets/tp2.png" width="800">
+<img src="assets/tp2.png" width="500">
 
 Add `OPPORTUNITY` as shown:
 
 <img src="assets/tp3.png" width="800">
 
-Since the Opportunity table does not contain Region or Territory we we add them using Sigma's Lookup function.
+Since the `Opportunity` table does not contain `Region` or `Territory` we we add them using Sigma's `Lookup` function.
 
-From the Opportunity table and click `Add a new column via lookup` as shown:
+From the `Opportunity` table and click `Add a new column via lookup` as shown:
 
 a<img src="assets/tp4.png" width="600">
 
@@ -373,23 +345,25 @@ a<img src="assets/tp4.png" width="600">
 
 <img src="assets/tp5.png" width="400">
 
-Do the same steps but this time add the `USERS` column `SubRegion`. 
+Do the same steps but this time add the `USERS` column `SubRegion`:
 
-Your Page should now look like this:
+<img src="assets/tp5a.png" width="400">
+
+Your page should now look like this:
 
 <img src="assets/tp6.png" width="800">
 
-Let's add a chart that shows the current distribution of Sales by Region so that we can evaluate what adjustments to territories may be needed.
+Let's add a chart that shows the current distribution of `Sales by Region`, so that we can evaluate what adjustments to territories may be needed.
 
-Create a Child Element / Visualization from the `Opportunity` table. Configure it as follows to show the total sales by region:
+Create a `Child Element` / `Visualization` from the `Opportunity` table. Configure it as follows to show the total sales by region:
 
 <img src="assets/tp7.png" width="800"/>
 
 Our chart is sorted by `Sum of Amount` to have the largest on top. Rename the chart to `Sum of Amount by New Sub Region - BEFORE`
 
-We are ready to add a method for users to reassign territories and see the effect in real-time in terms of total regional sales.
+We are ready to add a method for users to reassign territories, and see the effect in real-time in terms of total regional sales.
 
-Create a new `Linked Input Table` off the `USER` table:
+Create a new `Linked input table` off the `USER` table:
 
 <img src="assets/tp8.png" width="600"/>
 <br>
@@ -412,7 +386,7 @@ Now that we have a column where a user can change the value of region, we should
 <strong>NOTE:</strong><br> Data Validation prevents users from making mistakes and also ensures that if regions are added later, they are automatically available to the user on a select list. It is also possible to create a manual lists or load lists from any other Sigma data source.
 </aside>
 
-In the new Input Table, click the new column `New Sub Region` and select `Data Validation` from the list:
+In the new input table, click the new column `New Sub Region` and select `Data Validation` from the list:
 
 <img src="assets/tp14.png" width="600"/>
 
@@ -420,9 +394,9 @@ In the new Input Table, click the new column `New Sub Region` and select `Data V
 
 <img src="assets/tp15.png" width="400"/>
 
-Now users are limited to selecting valid values from data that exists in Snowflake / USERS table. 
+Now users are limited to selecting valid values from data that exists in `USERS` table. 
 
-Even though we configured the new column's Data Validation to point to the Input Table, the Sub Region column is "linked" to the data coming from the Users table so it will always be up to date.
+Even though we configured the new column's data validation to point to the input table, the `Sub Region` column is "linked" to the data coming from the `Users` table, so it will always be up to date.
 
 Next we want to add a `New column via lookup` to the `Opportunities` table.
 
@@ -436,17 +410,17 @@ The Page now looks like this (after some re-sizing and arranging to suit your pr
 
 <img src="assets/tp18.png" width="800"/>
 
-Lastly, we will add another Visualization (as a child of the `Opportunities`  table) to represent the **"after"** state of user changes on the Linked Input Table. 
+Lastly, we will add another visualization (as a child of the `Opportunities`  table) to represent the **"after"** state of user changes on the linked input table. 
 
-Add a new Child Visualization and configure it as follows:
+Add a new `Child Visualization` and configure it as follows:
 
 <img src="assets/tp19.png" width="800"/>
 
 Rename the chart to `Sum of Amount by New Sub Region - AFTER`.
 
-We are ready to evaluate the Territory and make some adjustments. 
+We are ready to evaluate the `Territory`, and make some adjustments. 
 
-First we need to see why the Midwest so much larger than the TOLA in terms of sales. We want to close this gap if we can. 
+First. we need to see why the `Midwest` so much larger than the TOLA in terms of sales. We want to close this gap if we can. 
 
 In the `Before` chart, click the Midwest bar and `Drill down` into `Territory`.
 
@@ -467,7 +441,7 @@ Also change the `New Sub Region` for `Iowa` to be in `TOLA`.
 The gap is much better now, Mike is happy.
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Input Tables allow end users to quickly iterate over "what-if-scenarios` with violating corporate governance rules; making better decisions based on actual data.
+<strong>IMPORTANT:</strong><br> input tables allow end users to quickly iterate over "what-if-scenarios` with violating corporate governance rules; making better decisions based on actual data.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -476,17 +450,17 @@ The gap is much better now, Mike is happy.
 ## Embedding Input Tables
 Duration: 20
 
-Many customers are embedding content in their internal and external business applications. Now you can also embed Input Tables and really take it to the next level for your users. With Input Tables your applications can become more than just a way to communicate **TO** your users. Capturing small amounts of critical data from your customers opens up that "conversation" to be two-way.
+Many customers are embedding content in their internal and external business applications. Now you can also embed input tables and really take it to the next level for your users. With input tables your applications can become more than just a way to communicate **TO** your users. Capturing small amounts of critical data from your customers opens up that "conversation" to be two-way.
 
 This QuickStart assumes familiarity with how to embed in Sigma. 
 
 <aside class="negative"><strong>NOTE:</strong><br> We will not review the steps to setup Embedding here, but rather show the relevant screens. To learn more about Sigma Embedding, visit the Embedding Series QuickStarts which cover the topic extensively.</aside>
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> Embed users with the "Creator" role can make edits to allow cells on an Input Table. Users with "View/Explore" role can't edit data but can view the Input Table and latest edits.</aside></aside>
+<aside class="postive"><strong>IMPORTANT:</strong><br> Embed users with the appropriate role can make edits to allow cells on an input table. Users who lack the appropriate role can't edit data, but can view the input table and latest edits.</aside></aside>
 
-Create a new Workbook and add a new empty Input Table table to the page. You will be prompted to provide a location to save the Input Table date. We will use the `Sigma Sample Database`. 
+Create a new workbook and add a new empty input table table to the page. You will be prompted to provide a location to save the input table date. We will use the `Sigma Sample Database`. 
 
-<aside class="negative"><strong>NOTE:</strong><br> Input Table data is stored automatically and is not editable outside of the Sigma Workbook. It can be joined to other Sigma Elements to drive more sophisticated workflows as shown in the Territory Planning use case of this QuickStart. </aside>
+<aside class="negative"><strong>NOTE:</strong><br> Input table data is stored automatically and is not editable outside of the Sigma workbook. It can be joined to other Sigma elements to drive more sophisticated workflows as shown in the territory planning use case of this QuickStart. </aside>
 
 Now add another column and set it's type to `number`.
 
@@ -494,17 +468,17 @@ Enter a line of data and your page should now look like this:
 
 <img src="assets/st1.png" width="700"/>
 
-Click the Input Tables menu and enable `Allow data editing in explore mode`. 
+Click the input tables menu and enable `Allow data editing in explore mode`. 
 
-Publish the Workbook. 
+Publish the workbook. 
 
-Make sure that the Workbook is Shared to the Creator team with `Explore` or `Creator` rights:
+Make sure that the workbook is Shared to the Creator team with `Explore` or `Creator` rights:
 
 <img src="assets/st3.png" width="700"/>
 
-Using the methods outlined in the Quickstart `Embedding 3: Application Embedding`, configure this Workbook page into an embed.
+Using the methods outlined in the Quickstart `Embedding 3: Application Embedding`, configure this workbook page into an embed.
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the Input Table itself.</aside></aside>
+<aside class="postive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the input table itself.</aside></aside>
 
 <img src="assets/it13.png" width="700"/>
 
@@ -512,7 +486,7 @@ We will need to adjust `server.js` for the `Embed Path`, `User Team` and `Accoun
 
 <img src="assets/it14.png" width="800"/>
 
-Assuming you started Terminal and ran `supervisor server.js` without error, browser to `http://localhost:3000`. You should see your embedded Input Table. 
+Assuming you started Terminal and ran `supervisor server.js` without error, browser to `http://localhost:3000`. You should see your embedded input table. 
 
 Enter some text and click `Save`.
 
@@ -528,7 +502,7 @@ Refresh the browser and see that the information is as we entered it but there i
 
 If you recall, we enabled `Allow data editing in explore mode`. Lets test that.
 
-In the Workbook / Sharing change the Viewer to use the `Explore` role:
+In the workbook / Sharing change the Viewer to use the `Explore` role:
 
 <img src="assets/it18.png" width="600"/>
 
@@ -540,10 +514,6 @@ Refresh the browser and see that we have the `Edit` button.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
-
-
 
 ## Data Collection
 Duration: 20
@@ -558,35 +528,35 @@ There are times when capturing a small amount of data from a Sigma user can be v
       <li><strong>Lots of other questions to be sure!</strong></li>
 </ul>
 
-Since users are already using Sigma (**or spreadsheets and should be using Sigma instead!**), Input Tables can help solve this problem. 
-Why not just create a Sigma Workbook and augment it with the ability for the user to enter small amounts of data in real time?
+Since users are already using Sigma (**or spreadsheets and should be using Sigma instead!**), input tables can help solve this problem. 
+Why not just create a Sigma workbook and augment it with the ability for the user to enter small amounts of data in real time?
 Sigma will do the heavy lifting of UI and data operations to store the data in your warehouse. 
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma does not store data and with Input Tables, data is stored in your warehouse but adjacent to your existing data. Existing data is NEVER changed in any way.
+<strong>IMPORTANT:</strong><br> Sigma does not store data and with input tables, data is stored in your warehouse but adjacent to your existing data. Existing data is NEVER changed in any way.
 </aside>
 
 Allowing users to add/supplement warehouse data opens a world of possibilities. We can demonstrate how this can be done we will use a very simple example.
 
 There is a need for accounting to update the status of Invoices, adding comments/notes but don't want to give the data entry clerk access to the accounting system.
 
-We solution this in Sigma using Input Tables without involving developers or database administrators valuable time.
+We solution this in Sigma using input tables without involving developers or database administrators valuable time.
 
-In our Workbook, create a new Page and rename it to `Data Collection`. 
+In our workbook, create a new Page and rename it to `Data Collection`. 
 
 We need to use different data for this use case, joining two tables. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Did you know you can see the data linage of a Workbook Element? Sometimes it is really useful to visually see the path the data is taking as it sourced to your Element.
+<strong>NOTE:</strong><br> Did you know you can see the data linage of a workbook Element? Sometimes it is really useful to visually see the path the data is taking as it sourced to your Element.
 </aside>
 
 In our use case, the final lineage for the source data table looks like this:
 
 <img src="assets/dc1.png" width="800"/>
 
-In Edit mode, navigate to the `Data` Page. 
+In Edit mode, navigate to the `Data` page. 
 
-Add a new Table for `INVOICE_LINE_ITEMS` as shown:
+Add a new table for `INVOICE_LINE_ITEMS` as shown:
 
 <img src="assets/dc2.png" width="800"/>
 
@@ -606,62 +576,55 @@ We don't need every column so let's delete the ones we wont require:
 
 <img src="assets/dc6.png" width="400"/>
 
-Rename the new Table to `Customer Invoice Line Items`.
-
-Add a new column using the formula:
-```plaintext
-[Quantity] * [Unit Price]
-```
-
-Rename this column to `Line Item Total`.
-
-<img src="assets/dc7.png" width="800"/>
+Rename the new table to `Customer Invoice Line Items`.
 
 Now create a `Linked Input Table`, selecting the columns as shown:
 
 <img src="assets/dc8.png" width="800"/>
 
-Move the new Input Table to the Page `Data Collection`:
+Move the new input table to the page `Data Collection`:
 
 <img src="assets/dc9.png" width="800"/>
 
-We want the user to be able to filter the Input Table Table to specific Companies.
+We want the user to be able to filter the input table to specific `Companies`.
 
-Add a new Element / Control Element / List Value element and configure it as follows:
+Add a new `Element` / `Control Element` / `List Value` element and configure it as follows:
 
-<img src="assets/dc10.png" width="400"/>
+<img src="assets/dc10.png" width="600"/>
 
 Set the `Target` as:
 
 <img src="assets/dc10a.png" width="400"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Notice that we are not targeting the Input Table but rather the Table on the hidden Data Page that is linked to the Input Table. This can also be used to drive Row Level Security.
+<strong>NOTE:</strong><br> Notice that we are not targeting the input table but rather the Table on the hidden data page that is linked to the input table. This can also be used to drive row level security.
 </aside>
 
 We now are ready to add our columns that are enabled for data capture.
 
-Add a new Column to the Input Table called `Status`.
+Add a new Column to the input table called `Status`.
 
-Add another new Column to the Input Table called `Notes`.
+Add another new Column to the input table called `Notes`.
 
-We did Data Validation in an earlier use case but this time will just limit the `Status` column to values we will manually provide:
+We demonstrated data validation in an earlier use case, but this time will just limit the `Status` column to values we will manually provide:
 
 <img src="assets/dc11.png" width="400"/>
 
-We want the user to "work" the data down so we need another Input List to filter the table, not showing rows that have a Status = Fulfilled,
+Now we can filter by `Company`, select a `Status` and add `Notes`.
 
-Set a Filter on the Table to only show rows that have not been Fulfilled:
-
-<img src="assets/dc13.png" width="800"/>
-
-Now we can filter by Company, adjust the Status and add notes.
-
-Last step before we test is to enable editing in Explorer Mode:
+The last step before we test, is to set the data entry permission:
 
 <img src="assets/dc14.png" width="800"/>
 
-Publish the Workbook and go to the Publish version so that we are looking at this Page as the end-user would see and work with it.
+Sigma presents two choices explaining who can edit the input table:
+
+<img src="assets/dc14a.png" width="500"/>
+
+Select `Only on Published version (view/explore mode)` and click `Save`.
+
+`Publish` the workbook and go to the published version, so that we are looking at this as the end-user would see and work with it.
+
+<img src="assets/dc14b.png" width="300"/>
 
 Now we have an `Edit Data` button. Click that:
 
@@ -673,25 +636,17 @@ Lets test by updating the first four records as shown for each Status:
 
 Click the `Save` button.
 
-Each time we save, any records set `Fulfilled` are longer visible. Looking at `Column Details` for `Status` we see that there are no rows where Status = Fulfilled. 
-
-<img src="assets/dc16.png" width="800"/>
-
-In this way, the user can just do the updates they need and not be concerned about records that are completed.
-
 <aside class="postive">
-<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With Input Tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
+<strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With input tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF NEXT SECTION-->
-
-In this QuickStart we covered three popular used cases for Sigma Input Tables in great detail. 
+In this QuickStart we covered three popular used cases for Sigma input tables in great detail. 
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
