@@ -94,9 +94,9 @@ Change the name of the Workbook to `Input Table Use Cases`.
 
 Add a new Page to our Workbook and rename it to `Forecast Adjustment`.
 
-<button>[Download the sample Country Manager data](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/input_tables/Forecasts+from+Country+Managers.xls)</button>
+<button>[Download the sample Country Manager data](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/Forecasts-from-Country-Managers.csv)</button>
 
-Open the downloaded file in Excel (or Google Sheets). There should be 3 columns and 13 rows.
+Open the downloaded csv file in Excel (or Google Sheets). There should be 3 columns and 13 rows.
 
 Add a new Input Table to the Page and rename it `Forecasts from Country Managers`.
 
@@ -114,7 +114,7 @@ Copy all rows and columns from the downloaded Excel file and paste them into the
 
 Notice that Sigma automatically identified the data types for you, saving time.
 
-<img src="assets/fa2.png" width="600"/>
+<img src="assets/fa2.png" width="800"/>
 
 Add a new Visualization to the Page, use the Input Table as it data source, set it to `Map - Region` and drag the `Country` column up the Regions.
 
@@ -124,11 +124,11 @@ In the Element Panel / Columns click the `+` icon and select `new column`.
 
 <img src="assets/fa3a.png" width="400"/>
 
-Set the formula for this column to:
+Rename the column to `Forecast to Target` and set the formula to:
 ```plaintext
-([FY23 Forecasts] - [FY23 Targets]) / [FY23 Targets]
+(([FY23 Forecasts] - [FY23 Targets]) / [FY23 Targets])
 ```
-Your map configuration should look like this now:
+Adjust the element panel, so that the map appears as shown below:
 
 <img src="assets/fa3.png" width="800"/>
 
@@ -141,7 +141,7 @@ Update the input table and see the map change. Wait, we are not able to enter ne
 </aside>
 Edit the Workbook.
 
-Now change the FY23 Forecast value for Austria down to $10K and hit `Enter`.
+Now change the `FY23 Forecast` value for `Austria` down to $10K and hit `Enter`.
 
 The Map changes automatically to reflect this revision.
 
