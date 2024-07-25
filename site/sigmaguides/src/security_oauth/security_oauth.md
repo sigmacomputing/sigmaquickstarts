@@ -3,10 +3,10 @@ id: security_oauth
 summary: security_oauth
 categories: security
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-05-30
+lastUpdated: 2024-07-25
 
 # Open Authorization (OAuth)
 
