@@ -3,9 +3,9 @@ id: embedding_14_parameterized_queries
 summary: embedding_14_parameterized_queries
 categories: Embedding
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-08-05
 
 # Embedding 14: Parameterized Queries
