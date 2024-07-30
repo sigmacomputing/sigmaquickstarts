@@ -124,7 +124,7 @@ The basic design pattern with DCS and UA provides flexibility to allow customers
 ## Use case 1: per-customer Snowflake accounts
 Duration: 20
 
-Imagine a scenario where Sigma content is embedded into a customer's SaaS application that used os by multiple clients. 
+Imagine a scenario where Sigma content is embedded into a customers SaaS application that used by multiple clients. 
 
 Each client accesses the same type of data (e.g., store sales data) but their data is stored in two distinct Snowflake accounts. 
 
