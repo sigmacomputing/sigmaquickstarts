@@ -3,10 +3,10 @@ id: embedding_14_parameterized_queries
 summary: embedding_14_parameterized_queries
 categories: Embedding
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-08-05
+tags: default
+lastUpdated: 2024-08-02
 
 # Embedding 14: Parameterized Queries
 <!-- The above name is what appears on the website and is searchable. -->
@@ -301,6 +301,10 @@ Use the `Save As` button to create the new workbook named `Parameterized Queries
 <img src="assets/pq10.png" width="500"/>
 
 It is really great that Sigma can just launch a connection to data directly into a familiar spreadsheet interface, creating optimized SQL on-the-fly for us in seconds.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> For use cases that require row-level-security it is recommended to base the parameterized query off of a dataset instead. The workflow is slightly different but the application of the query is the same.
+</aside>
 
 However, we want to have a single workbook that provides all clients a common interface, using each clients data only. 
 
