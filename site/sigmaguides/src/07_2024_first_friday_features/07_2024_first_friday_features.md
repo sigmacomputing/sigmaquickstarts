@@ -10,13 +10,11 @@ lastUpdated: 2024-07-31
 
 # (07-2024) July
 <!-- The above name is what appears on the website and is searchable. 
-
 6 - Done
 12 - Done
 19 - Done
-26
+26 - 
 Publish on Aug 2.
-
 -->
 
 ## Overview 
