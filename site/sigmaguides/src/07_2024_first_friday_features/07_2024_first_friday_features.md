@@ -217,7 +217,7 @@ You can also continue to input specific email addresses for non-organization mem
 
 For example, searching to find a specific team:
 
-<img src="assets/fff_07_2024_2.png" width="500"/>
+<img src="assets/FFF_07_2024_2.png" width="500"/>
 
 For more information about emailing workbook content , see [Export to email.](https://help.sigmacomputing.com/docs/export-to-email)
 
