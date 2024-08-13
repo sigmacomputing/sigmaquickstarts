@@ -88,7 +88,7 @@ Through this QuickStart we will walk through how to access a Sigma trial environ
 ## Sigma Trial Setup
 Duration: 6
 
-If you dom't already have a Sigma account, you can sign up for a free trial in order to work through QuickStarts.
+If you don't already have a Sigma account, you can sign up for a free trial in order to work through QuickStarts.
  
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
@@ -345,7 +345,7 @@ Buttons for undo, redo and other column-specific features (#4) can always be fou
 <strong>IMPORTANT:</strong><br> Use the undo and redo arrows in the toolbar instead of the browser back button.
 </aside>
 
-The `Function bar` is item #6. This is where we can leverage Sigma's [extensive library of functions. ](https://help.sigmacomputing.com/docs/popular-functions)
+The `Function bar` is item #5. This is where we can leverage Sigma's [extensive library of functions. ](https://help.sigmacomputing.com/docs/popular-functions)
 
 Let’s save this workbook for now. Click the `Save As` button in the upper right corner (#6). 
 
