@@ -13,11 +13,11 @@ lastUpdated: 2024-08-12
 ## Overview 
 Duration: 5 
 
-Sigma provides many methods to allow users and developers to interact with its systems including web-ui, REST API, Javascript Embed API and an SDK for the React framework. 
+Sigma provides many methods to allow users and developers to interact with its systems including web-ui, [REST API,](https://help.sigmacomputing.com/reference/get-started-sigma-api) [Javascript Embed API](https://help.sigmacomputing.com/docs/example-embed-api-and-url) and an SDK for the [React](https://react.dev/) framework. 
 
-The Embed-SDK for [React](https://react.dev/) provides an addition avenue, targeted at software developers who prefer to use a software development kit (SDK), as opposed to using the Sigmas JavaScript Embed-API, which can require writing additional code.
+The Embed-SDK for React provides an addition avenue, targeted at software developers who prefer to use a software development kit (SDK), as opposed to using the Sigmas JavaScript Embed-API, which can require writing additional code.
 
-There are several reasons why developers might choose one over the other. Each method offers distinct advantages depending on the project requirements, developer expertise, and desired level of control or simplicity.
+There are some reasons why developers might choose one over the other. Each method offers distinct advantages depending on the project requirements, developer expertise, and desired level of control or simplicity.2
 
 Some of those reasons can be:
 
@@ -79,7 +79,7 @@ Open VSCode and make sure it loads without error.
 ## Clone Embed-SDK Repository (repo)
 Duration: 5 
 
-To save you time, we've stored all the necessary project files in Git-Hub ("git"). Simply clone the git repo using a VSCode to download a copy to our local computer.
+To save you time, we've stored all the necessary project files in a [GitHub](https://github.com/) repository ("git repo"). Simply clone the git repo using a VSCode to download a copy to our local computer.
 
 To clone the git repository in VSCode, click the link to `Clone Git Repository`:
 
@@ -175,12 +175,9 @@ The expected response looks like this:
 
 <img src="assets/sdk18.png" width="800"/>
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ### Runtime Environment - Node.js
 
-Node.js (Node) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on a JavaScript engine and executes JavaScript plaintext outside a web browser, which was designed to build scalable network applications.
+[Node.js](https://nodejs.org/en) (Node) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on a JavaScript engine and executes JavaScript plaintext outside a web browser, which was designed to build scalable network applications.
  
 We will install Node by using a terminal session in VSCode and leverage Homebrew via command line.
 
@@ -200,7 +197,7 @@ If Node.js is not already installed, install it by running the following command
 brew install node
 ```
 
-This command will download and install the latest stable version of Node along with npm (Node Package Manager) on your system. Once the installation is complete, you can verify the installation by checking the versions of Node.js as described earlier.
+This command will download and install the latest stable version of Node along with `npm` (Node Package Manager) on your system. Once the installation is complete, you can verify the installation by checking the versions of Node.js as described earlier.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
@@ -209,7 +206,7 @@ This command will download and install the latest stable version of Node along w
 ### Additional Dependencies
 
 #### Corepack 
-Corepack is a Node.js tool intended to manage versions of your package managers (Yarn, pnpm) without needing global installs of these package managers. It comes pre-installed with Node.js starting from version 16.10. We need to enable it.
+[Corepack](https://nodejs.org/api/corepack.html) is a Node tool intended to manage package managers without needing global installs of these package managers. It comes pre-installed with Node starting from version 16.10, but we still need to enable it.
 
 Run the following command to enable `Corepack`:
 
@@ -224,9 +221,9 @@ The terminal prompt will appear with no other message unless there is an error.
 </aside>
 
 #### pnpm
-pnpm is a package manager like npm or Yarn, known for its efficiency regarding disk space and speed.
+[pnpm](https://www.npmjs.com/package/pnpm) is a package manager like npm or Yarn, known for its efficiency regarding disk space and speed.
 
-Running pnpm i installs the dependencies listed in your project’s package.json file. It creates a node_modules directory where all your project’s dependencies are stored and also updates the pnpm-lock.yaml file, which ensures that the same versions of the dependencies are installed every time you or anyone else runs pnpm install.
+Running `pnpm i` installs the dependencies listed in your project’s package.json file. It creates a node_modules directory where all your project’s dependencies are stored and also updates the pnpm-lock.yaml file, which ensures that the same versions of the dependencies are installed every time you or anyone else runs pnpm install.
 
 Run the following command to install  `pnpm`:
 
@@ -236,7 +233,7 @@ pnpm i
 
 The results look like this:
 
-<img src="assets/sdk18.png" width="800"/>
+<img src="assets/sdk19.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
