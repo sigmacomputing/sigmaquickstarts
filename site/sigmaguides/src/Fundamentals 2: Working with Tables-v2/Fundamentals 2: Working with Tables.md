@@ -269,7 +269,7 @@ Lets set the table to just show year-to-date rows:
 
 <img src="assets/filters3e.png" width="400"/>
 
-Filters can be deleted (#2) or disabled temporarily (#3) easily:
+Filters can be deleted (#3) or disabled temporarily (#2) easily:
 
 <img src="assets/filters3d.png" width="400"/>
 
