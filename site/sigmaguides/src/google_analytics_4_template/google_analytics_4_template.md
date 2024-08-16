@@ -66,7 +66,7 @@ For a detailed step-by-step process, we refer to Snowflake's documentation on [P
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Install and configure Snowflake's Google Analytcs Raw Data Connector
+## Install and configure Snowflake's Google Analytics Raw Data Connector
 Duration: 10
 
 Once your Google Analytics data is in BigQuery, it's time to install the GARD Connector. To do that, find the [Snowflake Connector for Google Analytics Raw Data](https://app.snowflake.com/marketplace/listing/GZSTZTP0KKC/snowflake-snowflake-connector-for-google-analytics-raw-data) listing on the Snowflake Marketplace.
