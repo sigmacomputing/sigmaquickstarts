@@ -15,7 +15,7 @@ Duration: 5
 
 Sigma provides many methods to allow users and developers to interact with its systems including web-ui, [REST API,](https://help.sigmacomputing.com/reference/get-started-sigma-api) [Javascript Embed API](https://help.sigmacomputing.com/docs/example-embed-api-and-url) and an SDK for the [React](https://react.dev/) framework. 
 
-The Embed-SDK for React provides an addition avenue, targeted at software developers who prefer to use a software development kit (SDK), as opposed to using the Sigmas JavaScript Embed-API, which can require writing additional code.
+The Embed-SDK for React offers a higher-level, developer-friendly interface that simplifies integration into applications, in contrast to Sigma’s lower-level JavaScript Embed-API, which provides more granular control but may require additional coding
 
 There are some reasons why developers might choose one over the other. Each method offers distinct advantages depending on the project requirements, developer expertise, and desired level of control or simplicity.2
 
@@ -76,7 +76,114 @@ Open VSCode and make sure it loads without error.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Clone Embed-SDK Repository (repo)
+## Simple React Project 
+Duration: 5
+
+For experienced developers who just want to see how to use the SDK in a React project, we will demonstrate in this section.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you are interested in running the sample example that is included in the git repo, skip to the section "Running the Sample Application".
+</aside>
+
+### Step 1: Install Node.js and npm
+Ensure that Node.js and npm (Node Package Manager) are installed on your machine. You can download them from [Node.js official website.](https://nodejs.org/)
+
+Verify the are installed:
+```code
+node -v
+npm -v
+```
+
+### Step 2: Create a New React Application
+In `Terminal (or command prompt)` and navigate to the directory where you want to create your React app and run the following command:
+```
+sudo npx create-react-app sigma-sdk-react
+```
+
+#### Enable read/wite on project (if required)
+```code
+sudo chown -R $(whoami) sigma-sdk-react
+```
+
+### Step 3: Install the Sigma SDK
+```
+npm install @sigmacomputing/react-embed-sdk
+```
+
+### Step 4: Open the project in your code editor (e.g., VSCode).
+In the src folder, open the App.js file and modify it as follows:
+```code
+import React from 'react';
+import './App.css';
+
+function App({ embedUrl }) {
+  return (
+    <div className="App">
+      <iframe
+        src={embedUrl}
+        width="100%"
+        height="600px"
+        title="Sigma Embed"
+        style={{ border: "none" }}
+      ></iframe>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Step 4: Modify index.js to Include client_id, secret, and Embed Parameters
+```code
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+import SigmaEmbed from '@sigmacomputing/react-embed-sdk';2
+
+const client_id = 'your-client-id'; // Replace with your actual client_id
+const secret = 'your-secret'; // Replace with your actual secret
+
+// Set up parameters required to generate the embed URL
+const options = {
+  // Add any required parameters here
+  datasetId: 'your-dataset-id', // Replace with your actual datasetId
+  theme: 'light', // Example of setting a theme
+  // ... other options
+};
+
+// Generate the embed URL using SigmaEmbed SDK
+const embedUrl = SigmaEmbed.createEmbedUrl({
+  clientId: client_id,
+  secret: secret,
+  options: options,
+  context: { email: 'user@example.com' }, // Replace with the actual user context
+});
+
+// Render the App component with the generated embedUrl
+ReactDOM.render(
+  <React.StrictMode>
+    <App embedUrl={embedUrl} />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+### Step 5: Start the React Application
+```code
+npm start
+```
+
+Browse to:
+```code
+http://localhost:3000
+```
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Running the Sample Application
 Duration: 5 
 
 To save you time, we've stored all the necessary project files in a [GitHub](https://github.com/) repository ("git repo"). Simply clone the git repo using a VSCode to download a copy to our local computer.
@@ -104,6 +211,8 @@ Before we do that, we need to install a few other dependencies to prepare the pr
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+
 
 ## Environment Setup
 Duration: 20
