@@ -82,7 +82,7 @@ Examples:<br>
 <strong>NOTE:</strong><br> - Most embed URL parameters are not currently supported in JWT-signed embed URLs.
 </aside>
 
-For more information on JWT claims in Sigma, [see here.](https://help.sigmacomputing.com/docs/example-embed-api-and-jwt-signed-url)
+For more information on JWT claims in Sigma, [see here.](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens)
 
 ### How JWT Works in Sigma
 
@@ -409,7 +409,7 @@ async function generateSignedUrl() {
         const time = Math.floor(Date.now() / 1000); // Generate the current time as a Unix timestamp
 
         // Generate JWT with claims
-        // See https://help.sigmacomputing.com/docs/example-embed-api-and-jwt-signed-url for list of available claims
+        // See https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens for list of available claims
         const token = jwt.sign({
             sub: email, // Subject (the email of the user)
             iss: process.env.EMBED_CLIENT_ID, // Issuer (client ID)
@@ -489,16 +489,69 @@ An alternative method is to use a third-party website to decode the token. For e
 
 Sigma allows a workbook, page or single element to be embedded. 
 
-Let's imagine that there are multiple tables and visualizations in this workbook. If we only wanted to embed the table element, we simply click on it to expose it's `nodeId` and the longer URL becomes the value we reference from our embedding scripts `.env` file.
+In the case of single elements and workbook pages, we need to manually adjust the copied url (at the time of this QuickStart). This will be automated in the near term in the Sigma UI.
+
+### Single Elements
+
+The correct URL syntax that is required by the Embed_API is:
+```code
+https://app.sigmacomputing.com/{organization-name}/workbook/{workbookname}-{workbookUrlId}/element/{elementId}
+```
 
 If we add a quick bar chart to the workbook, based on the table data:
 
 <img src="assets/accounttypes23.png" width="800"/>
 
-
-We can select the bar chart and grab it's URL:
+We can select the bar chart and grab it's URL, and format using the syntax described above.
 ```code
-https://app.sigmacomputing.com/XXXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe?:nodeId=bAGJb_-0AS
+https://app.sigmacomputing.com/XXXXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/element/bAGJb_-0AS
+```
+
+Paste the URL into the `.env` file, over-writing the existing value for `EMBED_URL` and save the file.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> No need to restart the server session. Nodemon is configured to detect changes to the project files, including the environment file.
+</aside>
+
+Refresh the browser page to see the single element embed:
+
+<img src="assets/accounttypes25.png" width="800"/>
+
+### Workbook page embed:
+We can repeat the single element workflow, adjusting the workbook to have a second page and using the page's URL in .env.
+
+The correct syntax for constructing the page URL is:
+```code
+https://app.sigmacomputing.com/{organization-name}/workbook/{workbookname}-{workbookUrlId}/page/{pageId}
+```
+
+We added a second page to our workbook that looks like this:
+<img src="assets/accounttypes26.png" width="800"/>
+
+After adjusting the `.env` file for the page URL, the embed looks like this:
+
+<img src="assets/accounttypes27.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> For convenience, we modified our .env file by commenting out our three test urls. This allows us to switch between them easily. 
+</aside>
+
+Our .env looks like this (just for your information):
+```code
+# .env file
+
+# Sigma embed configuration - REQUIRED parameters:
+
+# Workbook:
+#EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe
+
+# Element
+#EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/element/bAGJb_-0AS
+
+#Page (this one is enabled for testing...)
+EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/page/GHs4vJQxig
+
+...the rest of the file's contents
 ```
 
 ![Footer](assets/sigma_footer.png)
