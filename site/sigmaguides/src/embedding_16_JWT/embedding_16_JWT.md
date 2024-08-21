@@ -3,10 +3,10 @@ id: embedding_16_jwt
 summary: embedding_16_jwt
 categories: Embedding
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-08-20
+tags: default
+lastUpdated: 2024-08-21
 
 # Embedding 16: Secure Embedding with JWT
 
