@@ -19,7 +19,7 @@ To enable this, Sigma supports authenticating secure embeds using <a href="https
 
 ### Benefits of JWT
 
-- JWTs enhance security of your content. JWTs are compact, URL-safe tokens that can be digitally signed, ensuring that the data they contain is tamper-proof.
+- JWTs are compact, URL-safe tokens that can be digitally signed, ensuring that the data they contain is tamper-proof.
 
 - Embed developers no longer have to use the Sigma UI to generate embed paths; they may use the URL instead.
 
