@@ -109,7 +109,7 @@ The server constructs a signed URL that includes the JWT as a query parameter. T
 **Authorization:** When the client uses this URL to access the embedded content, the JWT is used by the Sigma server to verify the user’s identity and permissions, granting or denying access accordingly.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Existing embed customers are likely familiar with Sigma’s “signed URL” embed-API, which uses a nonce to ensure that the constructed URL is one-time use only. Similarly, JWTs can also be made one-time use. When a JWT is issued, the jti claim—a unique identifier for the token—is stored server-side. When the JWT is used (e.g., to access an embedded Sigma dashboard), the server checks whether the jti has already been seen. If it has, the token is rejected as a replay attempt, ensuring it cannot be reused.
+<strong>IMPORTANT:</strong><br> Existing embed customers are likely familiar with Sigma’s “signed URL” embed-API, which uses a nonce to ensure that the constructed URL is one-time use only. Similarly, JWTs are also one-time use. When a JWT is issued, the jti claim—a unique identifier for the token—is stored server-side. When the JWT is used (e.g., to access an embedded Sigma dashboard), the server checks whether the jti has already been seen. If it has, the token is rejected as a replay attempt, ensuring it cannot be reused.
 </aside>
 
 <aside class="positive">
