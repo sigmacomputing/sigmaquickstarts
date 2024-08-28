@@ -617,7 +617,7 @@ Duration: 6
 
 Sigma workbook tables can use colors to give the user a more comfortable experience, drawing their eyes to important information through the use of `Conditional Formatting`. 
 
-Using the `Store Reqion` control, filter the table to show only the `Midwest`.
+Using the `Store Region` control, filter the table to show only the `Midwest`.
 
 Expand the `Midwest` Store Region column.
 
