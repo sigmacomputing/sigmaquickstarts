@@ -482,7 +482,7 @@ This is how the table "targets" the control, as opposed to the control managing 
 
 Add a new column to the table, in the first position. Rename it to `Stack By` and set it's formula to:
 ```code
-Switch([Stack-By], "State", [Store State], "Region", [Store Region], "Brand", [Brand])
+Switch([Stack-By], "State", [Store State], "Store Region", [Store Region], "Brand", [Brand])
 ```
 
 This formula will change the `Stack By` columns value, based on the selection made in the control. 
