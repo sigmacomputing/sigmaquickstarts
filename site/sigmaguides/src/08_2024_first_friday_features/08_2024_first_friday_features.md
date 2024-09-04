@@ -3,10 +3,10 @@ id: 08_2024_first_friday_features
 summary: 08_2024_first_friday_features
 categories: Administration
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: first_friday_features
-lastUpdated: 2024-09-05
+tags: 
+lastUpdated: 2024-09-06
 
 # (08-2024) August
 <!-- The above name is what appears on the website and is searchable. 
