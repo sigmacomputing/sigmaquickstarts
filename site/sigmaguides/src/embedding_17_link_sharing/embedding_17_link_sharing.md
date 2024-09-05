@@ -3,9 +3,9 @@ id: embedding_17_link_sharing
 summary: embedding_17_link_sharing
 categories: Embedding
 environments: web
-status: published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: 
 lastUpdated: 2024-08-31
 
 # Embedding 17: Link Sharing 
