@@ -3,9 +3,9 @@ id: embedding_17_link_sharing
 summary: embedding_17_link_sharing
 categories: Embedding
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-08-31
 
 # Embedding 17: Link Sharing 
@@ -31,7 +31,7 @@ Alternatively, customer developers can use these links to enhance their applicat
 **Sharing a Bookmark:**
 - Users can create and share bookmarks, which save the state of a workbook or exploration at a specific point in time. The shared link brings recipients directly to the bookmarked view, maintaining the exact state of the data.
 
-**Scheduling an Export of a Workbook, Exploration, or Bookmark:**
+**Scheduling an Export of a Workbook:**
 - Users can schedule an export of a workbook, exploration, or bookmark. The export emails include a link that directs recipients to the specific embedded content, ensuring they access the relevant data directly from the email.
 
 ### Benefits of Embedded Link Sharing
@@ -40,12 +40,6 @@ Alternatively, customer developers can use these links to enhance their applicat
 
 **Consistency Across Platforms:**
 - Shared links bring recipients back to the same embedded content within the customer’s application, whether it’s a full workbook, an exploration, or a bookmark.
-
-**Improved User Experience:**
-- By including details like explorations and bookmarks in shared links, users can ensure that recipients see the exact analysis or data state they intended to share.
-
-**Streamlined Workflow:**
-- The feature integrates with export scheduling, allowing recipients of scheduled reports to access the relevant embedded content—be it a workbook, exploration, or bookmark—directly from their emails.
 
 ### How It Works
 Developers can trigger an iframe event in Sigma to set a `sharingLink` or `sharingExplorationLink` and include `bookmarks` when needed:
@@ -61,7 +55,7 @@ Developers can trigger an iframe event in Sigma to set a `sharingLink` or `shari
 This event allows Sigma to generate the appropriate link, which users can share. The link ensures that recipients access the exact workbook, exploration, or bookmarked view within the embedded Sigma environment.
 
 ### Target Audience
-Developers using Sigma for embedding and may want toi allow users to generate sharing links in various scenarios.
+Developers using Sigma for embedding who may want to allow users to generate sharing links in various scenarios.
 
 ### Prerequisites
 
@@ -292,8 +286,6 @@ We can now see the cloned project folder:
 
 <img src="assets/ae17.png" width="800"/>
 
-The project has almost everything we need, but we will need some embedded content and credentials from Sigma before we can test this out.
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -315,7 +307,7 @@ nodemon server.js
 Make sure the command is run in the correct directory, using the terminal command `pwd` or "present working directory".
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Your directory structure will very likely be different than shown in the screenshot.
+<strong>IMPORTANT:</strong><br> Your actual directory structure may be different than shown in the screenshot.
 </aside>
 
 The response in terminal will look like this:
@@ -335,10 +327,6 @@ http://localhost:3000
 It should look like this the screenshot below. Notice that there are now sharing options shown (#2/3 and #4):
 
 <img src="assets/ls6.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> We could still schedule an export, but that does not generate a sharable link back to the workbook. It just contains the report in the selected export format.
-</aside>
 
 Now that we have a working embed, we can test embed link sharing.
 
@@ -467,9 +455,13 @@ Once the email is received and opened, the recipient can just click the link to 
 
 <img src="assets/ae22.png" width="500"/>
 
-Clicking the link opens the bookmarked workbook with the exploration: 
+Clicking the link opens the original workbook since that is the link passed in sharingLink in the iframe event:
 
 <img src="assets/ae23.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Without setting up link sharing, users can still schedule an export without  a sharable link back to the workbook. It would just contain the report in the selected export format.
+</aside>
 
 Don't forget to delete the schedule export job:
 
@@ -478,7 +470,7 @@ Don't forget to delete the schedule export job:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## What we've covered
+## What We've Covered
 Duration: 5
 
 In this QuickStart, we explained and demonstrated how to enable embedded link sharing in Sigma.
