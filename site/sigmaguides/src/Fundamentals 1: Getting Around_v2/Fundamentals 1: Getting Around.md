@@ -524,6 +524,32 @@ Click `Publish`.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
 
+## Containers
+Duration: 6
+
+While this QuickStart is mainly focused on high-level features of Sigma, we want to include the container element up front in the discussion. 
+
+Sigma's container feature allows you to organize workbook pages by grouping elements within a customizable container. 
+
+This provides an intuitive way to manage layouts, ensuring that related elements remain visually cohesive. Containers not only streamline the design process by enabling you to adjust and style grouped components collectively but also enhance flexibility when rearranging or resizing elements on the canvas. This powerful feature simplifies complex workbook structures, making it easier to maintain consistency in both functionality and appearance.
+
+By using containers, workbook design takes on a whole new meaning. 
+
+In the animation below, we show how containers are dramatically improve the appearance of existing Sigma workbooks.
+
+<img src="assets/containers.gif">
+
+We won't focus on using containers as we go along, as they are really easy to use and very flexible. Feel free to add them to your work as you go, if you have a flair for design!
+
+Adding a container element is shown below:
+
+<img src="assets/f1a.png" width="800"/>
+
+To learn more about using containers, [see here.](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF PAGES -->
+
 ## Sharing with Others
 Duration: 6
 
