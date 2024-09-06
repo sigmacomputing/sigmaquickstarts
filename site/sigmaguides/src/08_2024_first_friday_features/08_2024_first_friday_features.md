@@ -3,9 +3,9 @@ id: 08_2024_first_friday_features
 summary: 08_2024_first_friday_features
 categories: Administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: first_friday_features
 lastUpdated: 2024-09-06
 
 # (08-2024) August
@@ -154,13 +154,6 @@ Sigma supports authenticating secure embeds using JSON Web Tokens (JWTs). JWTs a
 For more information, see [Create an embed API with JSON web tokens.](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens)
 
 There is also a [QuickStart: Embedding 16: Secure Embedding with JWT.](https://quickstarts.sigmacomputing.com/guide/embedding_16_jwt/index.html?index=..%2F..index#0)
-
-
-![Footer](assets/sigma_footer.png)
-
-## Functions / Calculations
-Duration: 20
-
 
 
 ![Footer](assets/sigma_footer.png)
