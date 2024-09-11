@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-04-06
+lastUpdated: 2023-09-12
 
 # Audit Logging
 
@@ -27,7 +27,7 @@ Since the data is available as a Sigma connection, we can explore it in a Sigma 
 
 
 ### Target Audience
-Anyone who is trying to monitor lower level activities and details related to Sigma.
+Anyone who is trying to monitor backend service activities and details related to Sigma.
 
 ### Prerequisites
 
@@ -68,14 +68,13 @@ From here, we are able to:
 
  <li>
     <ol type="n"> 
-      <li>Browse into the "Audit Logs" table directly.</li>
+      <li>Browse into the various audit tables directly, and create explorations.</li>
       <li>Grant permission for another user to access the log table.</li>
-      <li>Manage the connection (not recommended to do.)</li>
     </ol>
   </li>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The audit log connection is provided and managed by Sigma. Changing connection parameters may cause the feature to stop working.
+<strong>IMPORTANT:</strong><br> The audit log connection is provided and managed by Sigma.
 </aside>
 
 <img src="assets/al2.png" width="800"/>
@@ -89,8 +88,10 @@ Your table will have different row information as Sigma is logging events for yo
 Sliding right on the table to see more columns we see some columns have data and some do not (nulls). This is normal and expected as each event will have different characteristics and therefore record different details. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Audit Logs are 90 days in duration by default. In order to retain entries for an extended period of time, we recommend saving the AUDIT_LOGS table as a Workbook and scheduling exports to a cloud-based storage service.
+<strong>IMPORTANT:</strong><br> Audit Logs are 30 days in duration. In order to retain entries for an extended period of time, we recommend enable storage integration to export audit log data
 </aside>
+
+[How to Export audit log data to cloud storage.](https://help.sigmacomputing.com/docs/export-audit-log-data-to-cloud-storage)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -124,7 +125,7 @@ As there is a large number of options and they are subject to change over time, 
 ## **Exploring the Audit Log**
 Duration: 20
 
-It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to ten minutes between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
+It is important to understand that Audit Logging does not capture event data in real time. There is a short lag as data is batched into the log from multiple cloud-based background services, depending on event type. **Expect a lag of up to one hour between event and log entry becoming available.** The actual time will most likely be less than this. Refresh the browser to see the latest log entries. 
 
 Since your Log may not have much data if you are in a Sigma Trial, we will use a Sigma internal instance to demonstrate how to use the Audit Log to see how many daily login attempts have occurred, both successful and failed. The methods will apply to any other instance of Sigma but with different log data.
 
@@ -195,7 +196,7 @@ Duration: 20
 There may be reasons to store Audit Log data outside of Sigma. A few examples are:
 
  <ul>
-      <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 90 days only.</li>
+      <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 30 days.</li>
       <li><strong>Provide access to third party tool:</strong> Many organizations have central anomaly detection tools they prefer to use.</li>
       <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.<li>
 </ul>
