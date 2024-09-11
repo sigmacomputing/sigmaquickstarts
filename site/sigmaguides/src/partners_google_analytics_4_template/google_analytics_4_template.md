@@ -1,7 +1,7 @@
 author: obashaw
 id: google_analytics_4_template_setup
 summary: google_analytics_4_template_setup
-categories: partner
+categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
