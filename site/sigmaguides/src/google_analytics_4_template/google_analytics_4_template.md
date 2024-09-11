@@ -3,7 +3,7 @@ id: google_analytics_4_template_setup
 summary: google_analytics_4_template_setup
 categories: templates
 environments: web
-status: Draft
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-02-01
