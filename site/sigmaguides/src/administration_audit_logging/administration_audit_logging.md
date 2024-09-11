@@ -115,9 +115,9 @@ For all events, there is a set of `Base Data` that is included for each row of d
 
 Each category has distinct `Events` and `Event Entry Data` that is related to the category.
 
-As there is a large number of options and they are subject to change over time, we will not list them here. 
+The audit log records user events in the following categories, as [documented here.](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata#event-categories) 
 
-[The current list is available here.](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
+All audit entries—regardless of event category or type—include the following base metadata, [as documented here.](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata#audit-events-reference)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
