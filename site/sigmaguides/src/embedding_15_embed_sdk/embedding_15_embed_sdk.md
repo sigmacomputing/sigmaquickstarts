@@ -3,10 +3,10 @@ id: embedding_15_embed_sdk
 summary: embedding_15_embed_sdk
 categories: Embedding
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-08-12
+tags: default
+lastUpdated: 2024-09-18
 
 # Embedding 15: Embed-SDK for React
 
@@ -76,109 +76,60 @@ Open VSCode and make sure it loads without error.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Simple React Project 
+## Using in Projects
 Duration: 5
 
-For experienced developers who just want to see how to use the SDK in a React project, we will demonstrate in this section.
+For experienced developers who just want to see how to use the SDK in a React project, we provide the following information.
+
+The pubic embed-sdk git repository is [here.](https://github.com/sigmacomputing/embed-sdk)
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you are interested in running the sample example that is included in the git repo, skip to the section "Running the Sample Application".
+<strong>NOTE:</strong><br> If you are interested in running a sample application that is included in a git repo, skip to the section "Running the Sample Application".
 </aside>
 
-### Step 1: Install Node.js and npm
-Ensure that Node.js and npm (Node Package Manager) are installed on your machine. You can download them from [Node.js official website.](https://nodejs.org/)
+### For react-embed-sdk:
+Use the following command, depending on your package manager:
 
-Verify the are installed:
 ```code
-node -v
-npm -v
-```
-
-### Step 2: Create a New React Application
-In `Terminal (or command prompt)` and navigate to the directory where you want to create your React app and run the following command:
-```
-sudo npx create-react-app sigma-sdk-react
-```
-
-#### Enable read/wite on project (if required)
-```code
-sudo chown -R $(whoami) sigma-sdk-react
-```
-
-### Step 3: Install the Sigma SDK
-```
+npm:
 npm install @sigmacomputing/react-embed-sdk
+
+yarn:
+yarn add @sigmacomputing/react-embed-sdk
+
+pnpm:
+pnpm add @sigmacomputing/react-embed-sdk
 ```
 
-### Step 4: Open the project in your code editor (e.g., VSCode).
-In the src folder, open the App.js file and modify it as follows:
+### For embed-sdk:
+Use the following command, depending on your package manager:
+
 ```code
-import React from 'react';
-import './App.css';
+npm:
+npm install @sigmacomputing/embed-sdk
 
-function App({ embedUrl }) {
-  return (
-    <div className="App">
-      <iframe
-        src={embedUrl}
-        width="100%"
-        height="600px"
-        title="Sigma Embed"
-        style={{ border: "none" }}
-      ></iframe>
-    </div>
-  );
-}
+yarn:
+yarn add @sigmacomputing/embed-sdk
 
-export default App;
+pnpm:
+pnpm add @sigmacomputing/embed-sdk
 ```
 
-### Step 4: Modify index.js to Include client_id, secret, and Embed Parameters
+### Building
+The repo uses turbo for its build system. It currently has 3 packages:
+
+- embed-sdk: "bare-bones" wrappers over postMessages
+- react-embed-sdk: React hooks to easily use the embed-sdk
+- docs: A bare-bone documentation / examples
+
+To build:
 ```code
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import SigmaEmbed from '@sigmacomputing/react-embed-sdk';2
-
-const client_id = 'your-client-id'; // Replace with your actual client_id
-const secret = 'your-secret'; // Replace with your actual secret
-
-// Set up parameters required to generate the embed URL
-const options = {
-  // Add any required parameters here
-  datasetId: 'your-dataset-id', // Replace with your actual datasetId
-  theme: 'light', // Example of setting a theme
-  // ... other options
-};
-
-// Generate the embed URL using SigmaEmbed SDK
-const embedUrl = SigmaEmbed.createEmbedUrl({
-  clientId: client_id,
-  secret: secret,
-  options: options,
-  context: { email: 'user@example.com' }, // Replace with the actual user context
-});
-
-// Render the App component with the generated embedUrl
-ReactDOM.render(
-  <React.StrictMode>
-    <App embedUrl={embedUrl} />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+pnpm run build
 ```
 
-### Step 5: Start the React Application
-```code
-npm start
-```
+For additional information on Sigma embedding, see the [documentation.](https://help.sigmacomputing.com/docs/intro-to-embedded-analytics)
 
-Browse to:
-```code
-http://localhost:3000
-```
-
+There is also a QuickStart series on embedding [here.](https://quickstarts.sigmacomputing.com/?cat=embedding)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -186,33 +137,66 @@ http://localhost:3000
 ## Running the Sample Application
 Duration: 5 
 
+We created a simple application, that you can add an embed to.
+
 To save you time, we've stored all the necessary project files in a [GitHub](https://github.com/) repository ("git repo"). Simply clone the git repo using a VSCode to download a copy to our local computer.
 
 To clone the git repository in VSCode, click the link to `Clone Git Repository`:
 
-<img src="assets/apics10.png" width="800"/>
+We have made the source code available for this QuickStart's demonstration in a [public GitHub repository.](https://github.com/sigmacomputing/quickstarts-public).
 
-Paste this URL and hit enter:
+While you may clone the entire repository (it is not that large), we want to avoid cloning sections of the repository that are not of immediate interest. 
+
+Instead, we will use VSCode and terminal to perform a git `sparse-checkout` of the specific project folder we are interested in. A few extra steps, but cleaner local project folder. 
+
+Open `VSCode` and a new `terminal` session.
+
+In terminal, navigate to the desired directory where we want to clone the repo folder into.
+
+For example:
 ```code
-https://github.com/sigmacomputing/embed-sdk.git
+cd {/path/to/your/directory}
 ```
 
-VSCode will prompt for the location to store the files on your computer. Navigate to the a top-level folder of your choice and click the `Select as Repository Destination` button.
+Execute the terminal command:
+```code
+git init
+```
 
-<aside class="negative">
-<strong>NOTE:</strong><br> The cloning process will create a new folder called "Embed-SDK", so there is no need to create the folder ahead of time.
-</aside>
+Add the remote repository as the origin:
+```code
+git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
+```
 
-When prompted, open the cloned repository.
+Enable sparse checkout:
+```code
+git config core.sparseCheckout true
+```
 
-The repository contains the entire `Embed-SDK` for you to explore, and there is a sample application we will use for demonstration. 
+Specify the folder you want to clone by adding it to the sparse-checkout configuration:
+```code
+echo "embed-sdk-react" > .git/info/sparse-checkout
+```
+
+At this point, we have run each command and not seen any errors:
+
+<img src="assets/ae16.png" width="800"/>
+
+Finally, pull the specified folder from the repository:
+```code
+git pull origin main
+```
+
+We can now see the cloned project folder:
+
+<img src="assets/ae17.png" width="800"/>
+
+The folder contains the entire `embed-sdk-react` for you to explore, and there is a sample application we will use for demonstration. 
 
 Before we do that, we need to install a few other dependencies to prepare the project folder for initial use.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
 
 ## Environment Setup
 Duration: 20
@@ -221,7 +205,7 @@ We need to install Node and other related packages. While this can be done manua
 
 This avoids the need to manually download and install from the official websites.
 
-Using VSCode, open a new terminal session:
+Using VSCode, open a terminal session (or use the old session):
 
 <img src="assets/sdk17.png" width="800"/>
 
@@ -262,6 +246,8 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Review the other content of the .zshrc to make sure there the path to Homebrew is not already set from a previous installation. The path value needs to be assigned to where the Homebrew code is actually installed. 
+
+If the path was already present, close the editor and run the command shown below.
 </aside>
 
 Save the changes, overwriting the existing file (the commands are shown on the editor's footer). 
@@ -340,6 +326,11 @@ Run the following command to install  `pnpm`:
 pnpm i
 ```
 
+If terminal throws an error "This project is configured to use yarn", make sure you are in the correct directory, which should be:
+```code
+{your path}/embed-sdk-react
+```
+
 The results look like this:
 
 <img src="assets/sdk19.png" width="800"/>
@@ -385,6 +376,10 @@ The sample application has an example of a Sigma embed (provided from a Sigma in
 
 The list of files has tooltips to provide general information but the files themselves are commented to assist you.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> The "Sample embed" in the screenshot below will not render as we need to provide an embed and credentials from your Sigma environment.
+</aside>
+
 <img src="assets/sdk21.png" width="800"/>
 
 ### Primary source files
@@ -393,6 +388,7 @@ There are five files involved in this example embed:
 
  <ul>
       <li><strong>.env:</strong> Application environment variables file. This is where we are storing the Sigma embed credentials</li>
+      <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/.env</li>
 </ul>
 
 ```code
@@ -400,16 +396,14 @@ There are five files involved in this example embed:
 # Sigma Embed Credentials. These two values will need to be changed when using your own Sigma instance to embed content
 
 # Values from my Sigma instance
-# EMBED_CLIENT_ID=
-# EMBED_SECRET=
-
-# Original values from git
-EMBED_CLIENT_ID=eeb0cc6caa7d5aa25088145c08041d1fa98de36916545fbe0fe7d31442509d38
-EMBED_SECRET=0d5ec5ab0c1c3f452c146ebd74f645c0ac17a27137bd93d2e3ad5313be3624c476fced8a2f5ca8dc49dcf4f54548a95752600fe22a02b50b584ba90a8affdb55
+EMBED_URL={url path to embed}
+EMBED_CLIENT_ID={your client id}
+EMBED_SECRET=(your embed secret)
 ```
 
 <ul>
       <li><strong>utils.ts:</strong> This file contains utility functions that facilitate the embedding of Sigma dashboards into a web application by generating signed URLs. These signed URLs ensure secure and authorized access to Sigma dashboards or visualizations.</li>
+      <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/lib/utils.ts</li>
 </ul>
 
 ```code
@@ -520,12 +514,13 @@ export async function signEmbedUrl(dashboard: string): Promise<string> {
 
 <ul>
 	<li><strong>basic-example-wrapper.tsx:</strong> The SignedIframe component is responsible for securely embedding a Sigma Computing dashboard into a React application.</li>
+  <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/app/examples/basic-example/basic-example-wrapper.tsx</li>
 </ul>
 
 ```code
 // basic-example-wrapper.tsx
 // The SignedIframe component is responsible for securely embedding a Sigma Computing dashboard into a React application.
-// signEmbedUrl: This function is imported from the Sigma Embed SDK library and is used to generate a signed URL for secure access to a Sigma dashboard.
+// 	signEmbedUrl: This function is imported from the Sigma Embed SDK library and is used to generate a signed URL for secure access to a Sigma dashboard.
 
 // Import the signEmbedUrl function from the utilities module
 import { signEmbedUrl } from "@/lib/utils";
@@ -534,9 +529,9 @@ import BasicExample from "./basic-example-embed";
 
 // Define an asynchronous component to sign the URL and render the iframe
 export default async function SignedIframe() {
-  // The base URL for the Sigma Computing dashboard or visualization to be embedded
-  const src = "https://app.sigmacomputing.com/embed/2jRbZzf2xabnOdBvd3TPRE";
-  
+  // Get the base URL from the environment variable
+  const src = process.env.EMBED_URL || ""; // Use the value from the .env file
+
   try {
     // Await the signed URL by passing the base URL to the signEmbedUrl function
     const signedSrc = await signEmbedUrl(src);
@@ -717,10 +712,7 @@ Open the workbook's menu again and select `Embedding...` this time.
 
 Select `Secure` and `Entire Workbook`. Copy this url and click `Close`.
 
-Open the project file `basic-example-wrapper`, comment out the existing value for `const src` and place the following code for the new one, adjusting for your actual embed url value:
-```code
-const src = "";
-```
+Open the project file `.env`, and add your `client_ID`, `secret` and `embed url` values:
 
 <img src="assets/sdk26.png" width="800"/>
 
