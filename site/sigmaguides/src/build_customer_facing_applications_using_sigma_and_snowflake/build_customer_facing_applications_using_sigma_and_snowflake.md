@@ -51,7 +51,7 @@ In this lab you’ll learn how to:
       <li>See the end user experience in data products built on Sigma & Snowflake</li>
 </ul>
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF OVERVIEW -->
 
 ## Setting up the Lab Environment
@@ -135,7 +135,7 @@ Upon save, Sigma will validate the connection is reachable.
 
 <img src="assets/ss13.png" width="600"/>
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF SECTION-->
 
 ## Setting up the Workbook
@@ -241,7 +241,7 @@ This will create a new calculated column. Name this column `COGS` (Cost of Goods
 
 <img src="assets/ss33.png" width="600"/>
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF SECTION-->
 
 ## Building the Workbook 
@@ -420,7 +420,7 @@ From the drop down next to the data page, click `Hide`:
 
 Click the blue `Publish` button in the top right corner.
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF SECTION-->
 
 ## Setting up Security 
@@ -697,7 +697,7 @@ You will now see your new Tasty Bytes Workspace. Click on its title, then select
 
 <img src="assets/ss86.png" width="400"/>
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF SECTION-->
 
 ## Exploring Embedding
@@ -790,7 +790,7 @@ You should now see the new version of the workbook that was created by your Embe
 
 <img src="assets/verifyproduction.png" width="800">
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF SECTION-->
 
 ## Conclusion And Resources
@@ -805,6 +805,6 @@ In this lab we learned how to connect Sigma to Snowflake, create interactive, em
 [Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 [Resources and Case Studies](https://www.sigmacomputing.com/resources/)
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/Sigma_Footer.png)
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
