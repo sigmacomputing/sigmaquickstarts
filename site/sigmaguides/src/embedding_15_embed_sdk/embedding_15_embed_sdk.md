@@ -482,7 +482,7 @@ export async function signEmbedUrl(dashboard: string): Promise<string> {
   const searchParamsObject = {
     ":mode": "userbacked", // mode for secure embedding
     ":email": "embed-sdk@sigmacomputing.com", // Email associated with the embedded session
-    ":external_user_team": "Embed-SDK-Team", // External team associated with the user
+    ":external_user_team": "Sales_People", // External team associated with the user
     ":account_type": "viewer", // Account type, e.g., viewer or editor
     ":nonce": uuid(), // Unique identifier for the session to prevent replay attacks
     ":time": `${Math.floor(new Date().getTime() / 1000)}`, // Current timestamp in seconds
