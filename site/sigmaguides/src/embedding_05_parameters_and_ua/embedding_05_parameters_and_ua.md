@@ -599,7 +599,7 @@ Displays the workbook creator’s name (instead of email) in embed menus and sys
 Sample Code:
 ```code
 //Sets the workbook creator’s name (instead of email) in embed menus and system-generated emails. DEFAULT=
-searchParams += '&:use_user_name='Bob Smith`;
+searchParams += '&:use_user_name=Bob Smith';
 ```
 
 <img src="assets/horizonalline.png"/>
