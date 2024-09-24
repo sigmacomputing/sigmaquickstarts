@@ -158,7 +158,7 @@ Default `Account Types` look like (including the `Admin` account type (#1), whic
 <img src="assets/accounttypes1c.png" width="800"/>
 
 ### Teams:
-Navigate to the `Administration` > `Teams` page and use the `Create Team` button to add a new team called `Sales Managers` team. 
+Navigate to the `Administration` > `Teams` page and use the `Create Team` button to add a new team called `Sales_Managers` team. 
 
 Set the team to `Private` and ticking the checkbox to create a Workspace (we can use this later to share user created content directly from the embed):
 
