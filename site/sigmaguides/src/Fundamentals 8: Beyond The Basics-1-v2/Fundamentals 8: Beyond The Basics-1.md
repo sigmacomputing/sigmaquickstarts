@@ -3,9 +3,9 @@ id: fundamentals_8_beyond_the_basics_1
 summary: fundamentals_8_beyond_the_basics_1
 categories: Fundamentals
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-09-24
 
 # Fundamentals 8: Beyond the Basics
