@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-08-21
+lastUpdated: 2024-09-27
 
 # Embedding 16: Secure Embedding with JWT
 
@@ -336,18 +336,20 @@ The first thing we want to do is click the `Save As` button, choose where to sto
 
 You may have noticed that Sigma provides `folders`, a `My Documents` folder and also [workspaces](https://help.sigmacomputing.com/docs/manage-workspaces). This enables a variety of use-cases to be possible with regards to how documents are stored, managed and shared with others.
 
-Before we move to the next step, copy the URL for the workbook so that we can reference it in the embedding script. 
+### BASE_URL vs. Embed Path
+For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create an "Workbook URL" > "Embed Path". **This is no longer required when using JWT.**
 
-Since we are in `edit` mode currently, we can copy the url as shown (#1 in the screenshot) and simply remove the tailing `/edit` or `Go to published version` (#2). The resulting URL will be the same, trailing edit aside. 
+With JWT embedding, we simply use the `Published` url, taken directly from the browser.
 
-For example, my URL looks like this:
-```code
-https://app.sigmacomputing.com/XXXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe
-```
+In light of this change, our Git project will refer to this URL as the `BASE_URL`.
 
-<img src="assets/accounttypes11a.png" width="400"/>
+Go to the `Published` version of our workbook:
 
-Copy your selected URL off to a text file; we will use that shortly.
+<img src="assets/accounttypes28.png" width="800"/>
+
+Copy the URL of to a text file, so that we can reference it in the embedding script later:
+
+<img src="assets/accounttypes29.png" width="800"/>
 
 ### Share the Workbook
 
@@ -376,12 +378,7 @@ Replace the three placeholders with the values we saved from earlier steps:
 For example:
 <img src="assets/accounttypes18.png" width="800"/>
 
-The `BASE_URL` has been provided for you and assumes your Sigma instance is hosted at AWS. If it is not, you will need to update that for Azure or GCP as required. This information can be confirmed in Sigma, as shown below:
-
-<img src="assets/accounttypes19.png" width="800"/>
-
 ### Embed-API Script
-
 We have commented the code in the Embed-API script so that you can understand what it is doing at each step. The code is shown below, although you can just review it in VSCode as well.
 
 <aside class="negative">
@@ -389,6 +386,8 @@ We have commented the code in the Embed-API script so that you can understand wh
 </aside>
 
 ```code
+// embed-api.js
+
 const jwt = require('jsonwebtoken'); // Import jsonwebtoken library for handling JWTs
 const { v4: uuid } = require('uuid'); // Import uuid for generating unique identifiers
 const dotenv = require('dotenv'); // Import dotenv for loading environment variables
@@ -396,11 +395,11 @@ const dotenv = require('dotenv'); // Import dotenv for loading environment varia
 dotenv.config(); // Load environment variables from .env file
 
 // Define constants for the embed URL and session length
-const EMBED_URL = process.env.EMBED_URL;
+const BASE_URL = process.env.BASE_URL;
 const SESSION_LENGTH = Math.min(process.env.SESSION_LENGTH || 3600, 2592000); // Max 30 days in seconds
 
 // Log important configuration details to ensure they are correctly set
-console.log('EMBED_URL:', EMBED_URL);
+console.log('BASE_URL:', BASE_URL);
 console.log('SESSION_LENGTH:', SESSION_LENGTH);
 console.log('EMBED_CLIENT_ID:', process.env.EMBED_CLIENT_ID); // Verify the client ID
 
@@ -432,7 +431,7 @@ async function generateSignedUrl() {
         console.log('Decoded JWT:', decodedToken); // Log the decoded JWT for debugging
 
         // Construct the signed embed URL by appending the JWT and embed parameters
-        const signedEmbedUrl = `${EMBED_URL}?:jwt=${token}&:embed=true`;
+        const signedEmbedUrl = `${BASE_URL}?:jwt=${token}&:embed=true`;
 
         // Log the constructed signed URL
         console.log('Signed Embed URL:', signedEmbedUrl);
@@ -455,14 +454,14 @@ module.exports = { generateSignedUrl };
 ## Test the Project
 Duration: 5 
 
-In VSCode, open a new terminal session, make sure to be in the correct folder (as shown in the screenshot below):
-
-<img src="assets/accounttypes20.png" width="800"/>
+In VSCode, open a new terminal session, make sure to be in the correct folder (as shown in the screenshot below).
 
 Run the command:
 ```code
 nodemon server.js
 ```
+
+<img src="assets/accounttypes20.png" width="800"/>
 
 In a browser, browse to:
 ```code
@@ -478,7 +477,8 @@ For example, my log of the last step looks like this:
 
 <img src="assets/accounttypes22.png" width="800"/>
 
-We use the the jwt.decode() function that is provided by the jsonwebtoken library to decodes a JWT without verifying its signature.
+We use the the `jwt.decode()` function that is provided by the `jsonwebtoken` library to decodes a JWT without verifying its signature.
+
 It simply parses the JWT and returns its payload (the claims it contains) along with the header and signature if you use the complete.
 
 <aside class="positive">
@@ -542,18 +542,18 @@ After adjusting the `.env` file for the page URL, the embed looks like this:
 
 Our .env looks like this (just for your information):
 ```code
-# .env file
+# JWT .env file
 
 # Sigma embed configuration - REQUIRED parameters:
 
 # Workbook:
-#EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe
+#BASE_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe
 
 # Element
-#EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/element/bAGJb_-0AS
+#BASE_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/element/bAGJb_-0AS
 
 #Page (this one is enabled for testing...)
-EMBED_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/page/GHs4vJQxig
+#BASE_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe/page/GHs4vJQxig
 
 ...the rest of the file's contents
 ```
