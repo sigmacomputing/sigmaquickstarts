@@ -337,7 +337,7 @@ The first thing we want to do is click the `Save As` button, choose where to sto
 You may have noticed that Sigma provides `folders`, a `My Documents` folder and also [workspaces](https://help.sigmacomputing.com/docs/manage-workspaces). This enables a variety of use-cases to be possible with regards to how documents are stored, managed and shared with others.
 
 ### BASE_URL vs. Embed Path
-For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create an "Workbook URL" > "Embed Path". **This is no longer required when using JWT.**
+For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create a "Workbook URL" > "Embed Path". **This is no longer required when using JWT.**
 
 With JWT embedding, we simply use the `Published` url, taken directly from the browser.
 
@@ -468,7 +468,9 @@ In a browser, browse to:
 http://locahost:3000
 ```
 
-We now see our workbook embedded into a parent application. The parent only has a header of `Sigma Embed with JWT` but as a demonstration, this is sufficient.
+We now see our workbook embedded into a parent application. The parent only has a header of `Sigma Embed with JWT` but as a demonstration, this is sufficient:
+
+<img src="assets/accounttypes21.png" width="800"/>
 
 ### Logging
 We have include code that returns key values in the terminal console, for debugging and demonstration purposes only. These would normally not be included in production code and are not required to make this work. We felt is was useful to see these values to better understand what is being passed. 
