@@ -680,7 +680,7 @@ searchParams += '&:showUnderlyingData=true';
 **4: oauth_token:**<br>
 You can pass secure tokens to Sigma to authenticate users into Sigma's embedded analytics and drive granular user permissions. 
 
-Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/docs/user-backed-embedding#oauth-for-embeds)
+Read more about [OAuth for Embeds here.](https://help.sigmacomputing.com/docs/oauth-for-embeds)
 
 This feature allows embedding customers to enhance authentication security using OAuth. See our [complete documentation for OAuth with Snowflake.](https://help.sigmacomputing.com/docs/oauth-with-snowflake)
 
