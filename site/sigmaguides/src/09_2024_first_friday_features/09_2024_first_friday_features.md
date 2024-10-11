@@ -250,7 +250,7 @@ For more information, see [SHA256.](https://help.sigmacomputing.com/docs/sha256)
 
 ![Footer](assets/sigma_footer.png)
 
-## New QuickStarts in August
+## New QuickStarts in September
 Duration: 20
 
 [Embedding 15: Embed-SDK for React:](https://quickstarts.sigmacomputing.com/guide/embedding_15_embed_sdk/index.html?index=..%2F..index#0  
