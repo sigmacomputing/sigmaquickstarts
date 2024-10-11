@@ -487,7 +487,7 @@ It simply parses the JWT and returns its payload (the claims it contains) along 
 <strong>IMPORTANT:</strong><br> jwt.decode() only reveals the data (claims) inside the token and some metadata from the header. The secret key is never included in the JWT itself and remains on the server where the JWT was signed.
 </aside>
 
-An alternative method is to use a third-party website to decode the token. For example [JWT Debugger](https://token.dev/) can decode the token just ass we have done in our sample code:
+An alternative method is to use a third-party website to decode the token. For example [JWT Debugger](https://token.dev/) can decode the token just as we have done in our sample code:
 
 <img src="assets/accounttypes24.png" width="800"/>
 
