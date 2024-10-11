@@ -371,7 +371,7 @@ Duration: 5
 
 Return to VSCode and open the file `.env`. It will have placeholders for the values we need to provide:
 
-<img src="assets/accounttypes17.png" width="800"/>
+<img src="assets/accounttypes17fixed.png" width="800"/>
 
 Replace the three placeholders with the values we saved from earlier steps:
 
