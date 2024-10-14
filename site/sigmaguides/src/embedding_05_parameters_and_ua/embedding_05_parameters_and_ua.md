@@ -305,8 +305,9 @@ Translations are managed per-workbook and are available when viewing embedded wo
 
 Sample Code:
 ```code
-//SET A VALUE FOR language. Default=en 
-searchParams += '&:lng=fa-ca';
+//SET A VALUE FOR language. Default=en
+ // Change to French (Canada) 
+searchParams += '&:lng=fr-ca';
 ```
 
 [List of supported languages is here.](https://help.sigmacomputing.com/docs/embedded-workbook-localization#supported-languages-and-locales)
