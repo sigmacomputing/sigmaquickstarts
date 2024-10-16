@@ -172,7 +172,7 @@ The folder is created for you when you extract the project zip file.
 
 Open a new Terminal session from the folder `sigma_public_embed` and run this command:
 
-**Run the command tro install the Express web-server:**
+**Run the command to install the Express web-server:**
 ```code
 npm init
 ```
