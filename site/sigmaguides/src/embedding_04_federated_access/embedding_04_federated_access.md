@@ -137,7 +137,7 @@ Let's change the name of the new Workspace to something more descriptive. We wil
 
 Once you’ve done this, embed-api.js (our server-side API from [QuickStart: Embedding 03: Secure Access.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)) needs to be updated to pass the new team value:
 
-<img src="assets/fa7.png" width="800"/>
+<img src="assets/fa-7a.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We reference embed-api.js only as an example of how the code looks, based on our example code in previous QuickStarts. It is assumed that your code may be different, but the value passed as a parameter will still need to be the same.

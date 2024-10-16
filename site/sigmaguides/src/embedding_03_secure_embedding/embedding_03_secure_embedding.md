@@ -418,7 +418,7 @@ The items in section #3 of the the embed-api.js code needs to be changed, replac
 The items in section #6 need to be changed, replacing values for `email`, `external_user_id`, `external_user_team` and `account_type`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We are hard-coding the items in section #6 to keep this demonstration simple. In practice, these values would be generated programmatically bu the parent application and passed to the embed API at runtime, setting these values as appropriate for the user.
+<strong>IMPORTANT:</strong><br> We are hard-coding the items in section #6 to keep this demonstration simple. In practice, these values would be generated programmatically but the parent application and passed to the embed API at runtime, setting these values as appropriate for the user.
 </aside>
 
 All other values can be left as they are.
