@@ -71,7 +71,7 @@ We will need to create three schemas in Snowflake, each having the same tables w
 
 To help you accomplish this, we will provide the Snowflake script required to do this. 
 
-<aside class="negative"><strong>NOTE:</strong><br> The remainder of this QuickStart with reference these tables as our workbook is promoted from Development to Staging to Prod.</aside>
+<aside class="negative"><strong>NOTE:</strong><br> The remainder of this QuickStart will reference these tables as our workbook is promoted from Development to Staging to Prod.</aside>
 
 ```code
 // 1: CREATE OR REPLACE DATABASE AND SET IT TO CURRENT
