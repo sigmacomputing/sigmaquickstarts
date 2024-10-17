@@ -372,6 +372,12 @@ When set to `true`, looks like this:
 **6: hide_run_as_recipient:**<br>
 When set to true, hides the `Run queries as recipient` option in the `Send Now` and `Schedule Exports` modals. Default = `false`.
 
+Sample Code:
+```code
+HIDE THE "Run queries as recipient" OPTION THE `Send Now` AND `Schedule Exports` MODALS. DEFAULT = `false`.
+searchParams += '&:hide_run_as_recipient=true';
+```
+
 **7: hide_schedule:**<br>
 Hides the Schedule exports option in the menu for saved workbooks. Default = `false`.
 

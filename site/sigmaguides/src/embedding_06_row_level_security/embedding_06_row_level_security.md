@@ -464,7 +464,7 @@ If the condition is false, the expression evaluates to False.
 
 Hit enter. All the cell values under `ua_Region` should be `True` as the "current user" is an Administrator:
 
-<img src="assets/newRLS17.png" width=800"/>
+<img src="assets/newRLS17.png" width="800"/>
 
 There are about 4.5M rows shown.
 
@@ -606,7 +606,7 @@ The entire IFF function is compared against True, meaning the row is selected on
 <img src="assets/horizonalline.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The "Current Role" column returns as a Sigma GUID and this is expected. We can hide this column but wanted to make you are how we retrieve the user's role.
+<strong>NOTE:</strong><br> The "Current Role" column returns as a Sigma GUID, and this is expected. We can hide this column but wanted to make you aware of how we retrieve the user's role.
 </aside>
 
 Once you `Run` the query, the `Publish` button becomes active.
