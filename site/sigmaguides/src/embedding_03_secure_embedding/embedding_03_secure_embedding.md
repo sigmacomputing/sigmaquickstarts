@@ -310,9 +310,9 @@ We will now create credentials that are specific to our workbook embed.
 
 <img src="assets/ae1.png" width="800">
 
-**2:** Click `Create New`, located in the page's top right corner. This will open the `Create Client Credentials` modal.
+**2:** Click `Create New`, located in the page's top right corner. This will open the `Create client credentials` modal.
 
-**3:** Under `Access Credential Type?` select `Embedding`.
+**3:** Under `Select privileges` select `Embedding`.
 
 **4:** Enter a `Name` and `Description` as you see fit.
 
