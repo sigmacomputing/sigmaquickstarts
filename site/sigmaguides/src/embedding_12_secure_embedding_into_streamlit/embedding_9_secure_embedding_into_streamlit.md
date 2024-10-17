@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-07-18
+lastUpdated: 2023-10-17
 
 # Embedding 12: Secure Embedding into Streamlit
 <!-- The above name is what appears on the website and is searchable. -->
@@ -65,7 +65,7 @@ What is Snowflake Streamlit and how can we embed Sigma content into it.
 
 ### What You’ll Build
 
-We will use Streamlit and Sigma to build a webpage that embed a Sigma dashboard:
+We will use Streamlit and Sigma to build a webpage that embeds a Sigma dashboard:
 
 <img src="assets/sl19.png" width="800"/>
 
@@ -122,7 +122,7 @@ Search for `Python` and select the extension from the list as shown. Click `Inst
 <img src="assets/sp2.png" width="500"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Microsoft has made a Python extention for VSCode and you may want to install that as well although not required to complete this QuickStart. Pylance enhances productivity, minimizes the likelihood of errors, and improves the overall efficiency of writing Python code in VS Code.
+<strong>NOTE:</strong><br> Microsoft has made a Python extension for VSCode and you may want to install that as well although not required to complete this QuickStart. Pylance enhances productivity, minimizes the likelihood of errors, and improves the overall efficiency of writing Python code in VS Code.
 </aside>
 
 [Link to Pylance Extension page.](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
@@ -137,7 +137,7 @@ Duration: 20
 
 Since we installed Miniconda, every available Conda package is not present in our system. While this saves install time and saves disk-space, we will have to be aware that each VScode project will need to have required package dependencies installed at runtime. 
 
-We could solve this by installing packages globally but we prefer to avoid that and maintain tight control of our development environment. 
+We could solve this by installing packages globally, but we prefer to avoid that and maintain tight control of our development environment. 
 
 To properly support this control, we will make use of `Python environments` to create project/package isolation. 
 
@@ -181,10 +181,13 @@ conda env list
 
 We are ready with our new Conda environment called `streamlit`. 
 
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
+
 ## Install Streamlit
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The following instructions demonstrate installation on MacOS, your installation will differ somewhat on a different Operating System.
+<strong>NOTE:</strong><br> The following instructions demonstrate installation on MacOS, your installation will differ somewhat on a different operating system.
 </aside>
 
 To install Streamlit on our local computer, execute the following command in Terminal:
@@ -214,85 +217,72 @@ Streamlit will automatically open your default browser to the standard webpage t
 <img src="assets/sl7.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Streamlit uses port 8501 on your local computer. This port is not commonly used but if it happens to be in use, you will need to stop the other service temporarily. If port 8501 is unavailable, or if you are running multiple Streamlit apps, it will try to launch on sequentially additive ports such as 8502, 8503, etc, however you may still want to stop other services temporarily.
+<strong>NOTE:</strong><br> Streamlit uses port 8501 on your local computer. This port is not commonly used, but if it happens to be in use, you will need to stop the other service temporarily. If port 8501 is unavailable, or if you are running multiple Streamlit apps, it will try to launch on subsequent ports such as 8502, 8503, etc. However, you may still want to stop other services temporarily.
 </aside>
 
-## Streamlit - Hello World
-Duration: 20
+![Footer](assets/sigma_footer.png)
+<!-- END OF NEXT SECTION-->
 
-Open VSCode. 
+## Source Code from Git
+Duration: 5 
 
-We need to select the Python interpreter we want to use for our project.
+To make this easier, we have stored the project code in Git. While you may clone the entire repository (it is not that large), we want to avoid cloning sections of the repository that are not of immediate interest. 
 
-Access the VSCode editor commands. `Ctrl+Shift+P` will bring you directly to the editor commands.
+Instead, we will use VSCode and terminal to perform a git `sparse-checkout` of the specific project folder we are interested in. A few extra steps, but cleaner local project folder. 
 
-<aside class="negative">
-<strong>NOTE:</strong><br> This is not the same thing as the VSCode search bar that is always on by default.
-</aside>
+Open `VSCode` and a new `terminal` session.
 
-In the editor bar, type `select inter` and you should see `Python: Select Interpreter` listed. Select that.
+In terminal, navigate to the desired directory where we want to clone the repo folder into.
 
-<img src="assets/sp3.png" width="800"/>
-
-There may by a few versions installed (depending on your system) and we want to select the one that is based on our `streamlit` environment.
-
-We can tell which that is as it will say `streamlit`. 
-
-<img src="assets/sp13.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> We have seen VSCode request another restart after this step so check (lower left corner of VSCode) to see if it is required again. 
-</aside>
-
-After restart (if required), VSCode will revert to the default Python environment so change that back to `streamlit` again. 
-
-Make sure that the Python Interpreter selected in blue is `streamlit`, indicating that it is active.
-
-<img src="assets/sp13.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> It is possible to change the default interpreter, but that is a distraction and we want to just start building.
-</aside>
-
-We are now setup to get build a Python webpage for Streamlit using VSCode.
-
-Using the VSCode button (or the file menu if you dont see the button), click to `Open Folder`:
-
-<img src="assets/sl8.png" width="800"/>
-
-Navigate to where you installed Streamlit and select that top-level folder:
-
-<img src="assets/sl9.png" width="800"/>
-
-Right-click on new file icon (as shown) to create a blank new file:
-
-<img src="assets/sl10.png" width="800"/>
-
-Name the new file `hello-world.py` and paste the following code in editor for this new file:
-```plaintext
-import streamlit as st
-
-st.write("Hello, World!")
+For example:
+```code
+cd {/path/to/your/directory}
 ```
 
-<img src="assets/sl11.png" width="800"/>
-
-Save the file.
-
-Open a new Terminal session inside VSCode:
-
-<img src="assets/sl12.png" width="800"/>
-
-In the VSCode Terminal session, execute the following command:
-```plaintext
-streamlit run hello_world.py
+Make a new directory:
+```code
+mkdir embedding_streamlit
 ```
 
-Streamlit will open in your default browser with our new webpage:
+Change to the new directory:
+```code
+cd embedding_streamlit
+```
 
-<img src="assets/sl13.png" width="600"/>
+Execute the terminal command:
+```code
+git init
+```
 
-We are now ready to embed Sigma into our new Streamlit page.
+Add the remote repository as the origin:
+```code
+git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
+```
+
+Enable sparse checkout:
+```code
+git config core.sparseCheckout true
+```
+
+Specify the folder you want to clone by adding it to the sparse-checkout configuration:
+```code
+echo "embedding-streamlit/" >> .git/info/sparse-checkout
+```
+
+At this point, we have run each command and not seen any errors.
+
+Finally, pull the specified folder from the repository:
+```code
+git pull origin main
+```
+
+After the command runs, click the button to `Open Folder`:
+
+We can now see the project called `embedding-streamlit`:
+
+<img src="assets/sp11.png" width="800"/>
+
+The project has almost everything we need, but we will need some embedded content and credentials from Sigma before we can test this out.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -300,13 +290,9 @@ We are now ready to embed Sigma into our new Streamlit page.
 ## Sigma Embed Content
 Duration: 20
 
-We will need something to embed into Streamlit from Sigma. To keep this simple, we will use a [Public Embed](hhttps://help.sigmacomputing.com/docs/public-embedding) of the Plugs Electronics Profit Planning Tool Template.
+We will need something to embed into Streamlit from Sigma. To keep this simple, we will embed the `Plugs Electronics Profit Planning Tool Template.`
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> It is also possible to secure the Streamlit application and use Sigma's secure embedding methods but that is out-side the scope of this QuickStart.
-</aside
-
-Log into Sigma (as Administrator) and navigate to `Templates` and click the **Plugs Electronics Profit Planning Tool** Template:
+Log into Sigma (as Administrator) and navigate to `Templates` and click the `Plugs Profit Planning Tool Template`:
 
 <img src="assets/sl14.png" width="800"/>
 
@@ -318,35 +304,100 @@ Now click the drop menu (as shown below) and select `Embedding`:
 
 <img src="assets/sl15.png" width="500"/>
 
-In the `Embed workbook` pop-up, click the `Public` tab and then the drop arrow followed by the `Profit Planning Tool`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
+In the `Embed workbook` pop-up, click the `Secure` tab, and then the drop arrow, followed by the `Profit Planning Tool`. This will define all the elements on the Workbook's Dashboard page to be embedded. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma embedding supports a Workbook, Page or any Elements to be embedded into external applications.
-</aside
+</aside>
 
-<img src="assets/sl16.png" width="800"/>
+<img src="assets/sl16a.png" width="600"/>
 
-Once we selected to embed the Profit Planning Tool, we are presented with both a Public Link to the content as well as the Embed Code. 
+Once we selected to embed the `Profit Planning Tool`, we are presented with the `Embed path`.
 
-Click `Copy` to select the `Public Link` and paste it into a text file; we will use it in the next step:
+Click `Copy` to select the `Embed path` and paste it into a text file; we will use it in the next step:
 
-<img src="assets/sl17.png" width="800"/>
+<img src="assets/sl17a.png" width="600"/>
 
-In VSCode, we are going to delete the code in our "hello_world.py" file with this code:
-```plaintext
-import streamlit as st
+### Share with Team
+We need to share our workbook with a Sigma team. Creating a team is an `Administration` function in Sigma. To learn how to to create a team in Sigma, see [here.]()
 
-st.write("Hello, World!")
-st.components.v1.iframe("REPLACE WITH PATH TO YOUR SIGMA PUBIC EMBED")
+### Sigma Embed Credentials
+We will now create credentials that will be used to secure the embed in Streamlit.
+
+Navigate to `Administration` > `Developer Access`:
+
+<img src="assets/ae1.png" width="800">
+
+Click `Create New`, located in the page's top right corner. This will open the `Create client credentials` modal.
+
+Under `Select privileges` select `Embedding`.
+
+Enter a `Name` and `Description` as you see fit.
+
+Under `Owner`, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself or an `Administrator`.
+
+<img src="assets/ae2.png" width="600">
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Some customers elect to have a "Service Account" user with administrative privileges for this "owner" assignment.
+</aside>
+
+Click `Create.`
+
+Copy the provided `ClientID` and `Secret` and store them:
+
+<img src="assets/ae1a.png" width="600">
+
+Click `Close.`
+
+Paste the credentials into a known safe location in case they are needed again in the future. 
+
+We can use these credentials for all embeds, but you may create as many credentials as you prefer.
+
+### Variables management
+Our project separates variables into a file called `.env`.
+
+This approach is helpful for storing configuration variables and secrets (like API keys and database passwords) outside of your main codebase, enhancing security and flexibility.
+
+We need to install the `python-dotenv` package to load environment variables from a `.env` file. 
+
+Run the following command in a VSCode terminal session to install the `python-dotenv` package:
+```code
+pip install python-dotenv
 ```
 
-You may have noticed that the code is the identical but extended with a call to the st.components.v1.iframe function to add the required iframe.
+<img src="assets/ae3.png" width="800">
 
-Save the new code and refresh the browser page to see the embedded Sigma content:
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Testing the Secure Embed in Streamlit
+
+Open the `embedding-streamlit` folder in VSCode and open the `.env` file.
+
+**Make sure to replace the placeholder values with your actual values for the four variables:**
+
+<img src="assets/ae4.png" width="800"/>
+
+After updating `.env` with your values, `save` the file.
+
+Open a new terminal window in VSCode and run the command:
+```code
+conda activate streamlit
+```
+
+Start the Streamlit app:
+```code
+streamlit run app.py
+```
+
+<img src="assets/ae4a.png" width="800"/>
+
+The default browser should open and display the webpage with the Sigma embed inside it:
 
 <img src="assets/sl19.png" width="800"/>
 
-Congratulations, you have setup your Streamlit app with Sigma embedded into it. 
+Congratulations, you have setup your Streamlit app with a secure Sigma embed.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
