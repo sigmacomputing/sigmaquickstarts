@@ -353,7 +353,7 @@ We made some changes for you, to pass the tag to Sigma (and add it to the URL) a
 We need to change the value for `embed path` as that is generated in from the `Embedding 8: Version Tagging` workbook. Go ahead and generate a new `embed path` for the entire workbook and replace the value in `embed-api.js` with the new value.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In the string `/tag/Development` the work "Development" should match a Tag that exists in Sigma. We will use this to inform the embed which tagged version to use later. The specific workbook version number will also be passed in the API call, but is not part of the URL string.
+<strong>NOTE:</strong><br> In the string `/tag/Development` the word "Development" should match a Tag that exists in Sigma. We will use this to inform the embed which tagged version to use later. The specific workbook version number will also be passed in the API call, but is not part of the URL string.
 </aside>
 
 We provided the values under item 1 for you, assuming the `QA_Testing` team was created earlier.
@@ -487,7 +487,7 @@ Now share the workbook with the `QA_Testing` team, with `Can view` permission an
 
 Browse the Parent application page. 
 
-We now see the table is using the Staging connection's data and the embed URL is using the `Stating` tag.
+We now see the table is using the Staging connection's data and the embed URL is using the `Staging` tag.
 
 <img src="assets/vt39e.png" width="800"/>
 
