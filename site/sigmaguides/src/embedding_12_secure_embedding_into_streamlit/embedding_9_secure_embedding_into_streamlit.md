@@ -354,20 +354,6 @@ Paste the credentials into a known safe location in case they are needed again i
 
 We can use these credentials for all embeds, but you may create as many credentials as you prefer.
 
-### Variables management
-Our project separates variables into a file called `.env`.
-
-This approach is helpful for storing configuration variables and secrets (like API keys and database passwords) outside of your main codebase, enhancing security and flexibility.
-
-We need to install the `python-dotenv` package to load environment variables from a `.env` file. 
-
-Run the following command in a VSCode terminal session to install the `python-dotenv` package:
-```code
-pip install python-dotenv
-```
-
-<img src="assets/ae3.png" width="800">
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -385,6 +371,20 @@ Open a new terminal window in VSCode and run the command:
 ```code
 conda activate streamlit
 ```
+
+### Variables management
+Our project separates variables into a file called `.env`.
+
+This approach is helpful for storing configuration variables and secrets (like API keys and database passwords) outside of your main codebase, enhancing security and flexibility.
+
+We need to install the `python-dotenv` package to load environment variables from a `.env` file. 
+
+Run the following command in a VSCode terminal session to install the `python-dotenv` package:
+```code
+pip install python-dotenv
+```
+
+<img src="assets/ae3.png" width="800">
 
 Start the Streamlit app:
 ```code

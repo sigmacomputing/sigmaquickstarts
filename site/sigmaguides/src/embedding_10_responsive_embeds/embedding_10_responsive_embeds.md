@@ -290,7 +290,7 @@ To test this, we simple replace the relevant code for `#sigmaDashboard`. Here is
     <h3>iframe URL below comes from API call to embed-api.js</h3>
     <iframe id="sigmaDashboard"></iframe>
     <script>
-        const URL = "http://localhost:3000/api/foo";
+        const URL = "http://localhost:3000/api/generate-embed-url";
         fetch(URL)
         .then(data => { return data.json() })
         .then(res => { document.getElementById("sigmaDashboard").src = res.url })
@@ -373,7 +373,7 @@ Here's the modified script to include the handling of the workbook:pageheight:on
 
     <script>
         /* Define the API URL from which the iframe's source will be fetched. */
-        const URL = "http://localhost:3000/api/foo";
+        const URL = "http://localhost:3000/api/generate-embed-url";
 
         /* Fetch the URL using the Fetch API. */
         fetch(URL)
