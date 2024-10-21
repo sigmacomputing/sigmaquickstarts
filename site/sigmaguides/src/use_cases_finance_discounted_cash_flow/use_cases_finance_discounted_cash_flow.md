@@ -3,9 +3,9 @@ id: use_cases_finance_discounted_cash_flow
 summary: use_cases_finance_discounted_cash_flow
 categories: use-cases
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-09-27
 
 # Discounted Cash Flow
