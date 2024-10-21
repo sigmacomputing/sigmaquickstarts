@@ -420,7 +420,10 @@ npm init
 
 As in the prerequisites QuickStart, accept all the defaults by pressing enter until completed.
 
-and...
+**Run the command (unless previously installed globally):**
+```code
+npm install express
+```
 
 **Run the command:**
 ```code
@@ -465,15 +468,11 @@ Duration: 5
 
 To save time we will not worry about changing embed users in embed-api.js. 
 
-We will just change the Role the embed user configured in embed-api.js uses. 
+We will just change the `Role` the embed user configured in embed-api.js uses. 
 
 You can create different values in embed-api.js for `email address`, `userid` and `account type` if you prefer; that is not really the point of the exercise but will also work as expected.
 
 In `embed-api.js`, add this one line of code as shown to section 6:
-
-```code
-searchParams += '&:ua_DRS_REGION=DRS_EAST';
-```    
 
 <img src="assets/drs23a.png" width="800"/>
 
