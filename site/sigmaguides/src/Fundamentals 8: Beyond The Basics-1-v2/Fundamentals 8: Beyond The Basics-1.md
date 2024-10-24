@@ -116,7 +116,7 @@ We are shown the updated `lineage` and have to opportunity to go back and make a
 Before we click `Done`, notice that the row count still has the expected value (around 4.5 million rows) that we had at the start. This makes sense since the base table is retail sales, each sale having a customer and a store. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Paying attention to how your joins effects row count can be a clue to potential problems in join types, join keys or other configuration issues. 
+<strong>IMPORTANT:</strong><br> Paying attention to how your join affects row count can be a clue to potential problems in join types, join keys or other configuration issues. 
 </aside>
 
 Click `Done`.
@@ -455,7 +455,7 @@ Rename the new table `Q1 Sales Detail`.
 
 Click `Publish`.
 
-### Linage
+### Lineage
 As workbooks become more complex, it can be really useful to see graphically see how the data is sourced. 
 
 Sigma provides this `Lineage` automatically and it is accessed by clicking the icon in the lower corner of the workbook:
@@ -507,7 +507,7 @@ We can easily sum `Sales` and also select to compare the `Date` columns value to
 Also check the `Output` boxes on for `Difference`, `% difference` and `Value`. This will create columns for each of these options.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Columns that are "created" in this way in Sigma are added by making calculations in your local browser. They are not stored in your cloud data warehouse or effect your source data in any way.
+<strong>NOTE:</strong><br> Columns that are "created" in this way in Sigma are added by making calculations in your local browser. They are not stored in your cloud data warehouse and do not affect your source data in any way.
 </aside>
 
 Click `Done`.
@@ -529,7 +529,7 @@ The Sigma function [DateLookback](https://help.sigmacomputing.com/docs/datelookb
 
 <img src="assets/dm_47.png" width="800"/>
 
-If you have need more information on functions in Sigma, we have included a link for your convenience:
+If you need more information on functions in Sigma, we have included a link for your convenience:
 
 <img src="assets/dm_48.png" width="800"/>
 
@@ -700,7 +700,7 @@ Add a new column in the `VALUES` section of `PIVOT COLUMNS` and set it's formula
 Sum([Sales]) / [Sum of Sales (Grand Total)]
 ```
 
-Rename the new column `Contribution` and set it's format to `Percentage`:
+Rename the new column `Contribution` and set its format to `Percentage`:
 
 <img src="assets/dm_66.png" width="800"/>
 
