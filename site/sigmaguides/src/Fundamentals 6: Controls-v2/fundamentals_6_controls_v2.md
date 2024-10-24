@@ -164,7 +164,7 @@ We checked and found there are some orders sold a big losses, so we set the mini
 Also set the `Control ID` for `Profit` to `profit-slider`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Be sure to pay attention to the "Control ID" used for each control. They need to be unique and Sigma will ensure this, of you don't. We can reference the current value that a control is set to by referring to it's Control ID. This can be useful in a variety of use cases, especially in formulas.
+<strong>IMPORTANT:</strong><br> Be sure to pay attention to the "Control ID" used for each control. They need to be unique and Sigma will ensure this if you don't. We can reference the current value that a control is set to by referring to it's Control ID. This can be useful in a variety of use cases, especially in formulas.
 </aside>
 
 Now adjust the `Profit` slider to be around $6500. These are are target high-value customers:
@@ -449,7 +449,7 @@ Add a `Table` to the page, using the `PLUGS_DATA` table on the `DATA` page as th
 For this exercise, lets reduce the available data down so that refresh is as fast as possible.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma is optimized for cloud operations. Sigma trial instances use a Snowflake x-small warehouse, so while performance is still good for our 4.5+ record PLUGS_DATA table, the cloud compute size will "bottle-neck" our performance to some extent. 
+<strong>IMPORTANT:</strong><br> Sigma is optimized for cloud operations. Sigma trial instances use a Snowflake x-small warehouse, so while performance is still good for our 4.5M+ record PLUGS_DATA table, the cloud compute size will "bottle-neck" our performance to some extent. 
 
 Reducing the size of the data will allow us to move as fast as possible in our demonstration. 
 
