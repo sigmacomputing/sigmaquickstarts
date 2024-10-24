@@ -174,7 +174,7 @@ Once you open a different page, you may notice the back arrow next to the Sigma 
 <strong>IMPORTANT:</strong><br> The second thing to remember is that we built Sigma from day one on a modern cloud architecture. This allows us to add new functionality very quickly!
 </aside>
 
-If at anytime you notice an item labeled **BETA**, that means that the feature is mature enough to be included for all customers to evaluate while we finalize it's release.
+If at anytime you notice an item labeled **BETA**, that means that the feature is mature enough to be included for all customers to evaluate while we finalize its release.
 
 For example, at the time of this QuickStart, data models carried the beta tag:
 
@@ -568,7 +568,7 @@ There are three default account types: `Lite`, `Essential` and `Pro`.
   <li><strong>Pro:</strong> allows the original workbook to be altered as if they were the owner.</li>
 </ul>
 
-As an `administrator`, we can the default account types by navigating to `Administration` > `Account Types`.
+As an `administrator`, we can see these default account types by navigating to `Administration` > `Account Types`.
 
 Here we see the three default types, description and can also create a new custom account type:
 
