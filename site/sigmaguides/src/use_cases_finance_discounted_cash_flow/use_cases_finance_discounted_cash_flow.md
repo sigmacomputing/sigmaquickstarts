@@ -158,7 +158,7 @@ In the `CV 0` column, insert:
 If([Rank of Year of Date] > 1, Lag([ECV 0], 1, Null))
 ```
 
-This gives us:
+This gives us (after sorting the `Year of Date` column to show the most recent date first):
 
 <img src="assets/dcf_8.png" width="800"/>
 
