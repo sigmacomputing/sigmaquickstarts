@@ -155,6 +155,8 @@ Click on the `Add` button to create a new environment.
 
 <img src="assets/pmRevised2.png" width="800"/>
 
+In the modal window that Postman display, select `Environment`.
+
 Give the new environment a meaningful name, such as `Sigma AWS Production`.
 
 We need to add some variables. The `Current Value` will populate automatically and in the case of the blank variables, will populate with we actually authenticate. 
