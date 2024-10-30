@@ -245,7 +245,7 @@ Provide the request url using the curly-brace format to leverage our environment
 
 We want to persist this new `access_token` in our environment variable under the same name.
 
-To do that, we need to add this script to the authenticate method, under the `Tests` tab:
+To do that, we need to add this script to the authenticate method, under the `Scripts` > `Post-response` tab:
 ```code
 let responseData = pm.response.json(); // Extract the JSON response
 pm.environment.set("access_token", responseData.access_token); // Store the access token as an environment variable
