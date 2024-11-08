@@ -175,7 +175,7 @@ git config core.sparseCheckout true
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
 ```code
-echo "embed-sdk-react" > .git/info/sparse-checkout
+echo "embedding_sdk_react" > .git/info/sparse-checkout
 ```
 
 At this point, we have run each command and not seen any errors:
