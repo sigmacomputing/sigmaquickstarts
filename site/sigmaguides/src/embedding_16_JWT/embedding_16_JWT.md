@@ -154,12 +154,12 @@ cd {/path/to/your/directory}
 
 Make a new directory:
 ```code
-mkdir sigma_secure_embed_JWT
+mkdir sigma_secure_embed_jwt
 ```
 
 Change to the new directory:
 ```code
-cd sigma_secure_embed_JWT
+cd sigma_secure_embed_jwt
 ```
 
 Execute the terminal command:
@@ -179,7 +179,7 @@ git config core.sparseCheckout true
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
 ```code
-echo "sigma_secure_embed_JWT/" >> .git/info/sparse-checkout
+echo "embedding_jwt/jwt/" >> .git/info/sparse-checkout
 ```
 
 At this point, we have run each command and not seen any errors:
@@ -195,13 +195,9 @@ After the command runs, click the button to `Open Folder`:
 
 <img src="assets/jwt2.png" width="800"/>
 
-Navigate to where your folder is and click `Open`:
+Navigate to where your folder is and click `Open`.
 
-For example, our folder is in the `GitHub` folder on the local machine:
-
-<img src="assets/jwt2.png" width="800"/>
-
-We can now see the project called `sigma_secure_embed_JWT`:
+We can now see the project called `embedding_JWT` with the files stored in the `jwt` folder:
 
 <img src="assets/jwt4.png" width="800"/>
 
@@ -216,7 +212,6 @@ Duration: 5
 We will create the required information to pass to the developer of the Parent application (in this case the developer is us).
 
 ### Sigma Embed Client credentials
-
 Embed `Client credentials` ("credentials") are a crucial component for creating a Sigma embed. These credentials are encoded within your embed URL, providing an additional layer of validation to ensure the embed's authenticity and security.
 
 The credentials are made up of the `Client ID` and `Client Secret`, and are generated using the Sigma UI.
@@ -337,7 +332,7 @@ The first thing we want to do is click the `Save As` button, choose where to sto
 You may have noticed that Sigma provides `folders`, a `My Documents` folder and also [workspaces](https://help.sigmacomputing.com/docs/manage-workspaces). This enables a variety of use-cases to be possible with regards to how documents are stored, managed and shared with others.
 
 ### BASE_URL vs. Embed Path
-For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create a "Workbook URL" > "Embed Path". **This is no longer required when using JWT.**
+For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create a `Workbook URL` > `Embed Path`. **This is no longer required when using JWT.**
 
 With JWT embedding, we simply use the `Published` url, taken directly from the browser.
 
@@ -373,7 +368,7 @@ Return to VSCode and open the file `.env`. It will have placeholders for the val
 
 <img src="assets/accounttypes17fixed.png" width="800"/>
 
-Replace the three placeholders with the values we saved from earlier steps:
+Replace the six placeholders with the values we saved from earlier steps:
 
 For example:
 <img src="assets/accounttypes18.png" width="800"/>
@@ -386,65 +381,46 @@ We have commented the code in the Embed-API script so that you can understand wh
 </aside>
 
 ```code
-// embed-api.js
+const jwt = require('jsonwebtoken');
+const { v4: uuid } = require('uuid');
+const dotenv = require('dotenv');
 
-const jwt = require('jsonwebtoken'); // Import jsonwebtoken library for handling JWTs
-const { v4: uuid } = require('uuid'); // Import uuid for generating unique identifiers
-const dotenv = require('dotenv'); // Import dotenv for loading environment variables
+dotenv.config();
 
-dotenv.config(); // Load environment variables from .env file
-
-// Define constants for the embed URL and session length
-const BASE_URL = process.env.BASE_URL;
-const SESSION_LENGTH = Math.min(process.env.SESSION_LENGTH || 3600, 2592000); // Max 30 days in seconds
-
-// Log important configuration details to ensure they are correctly set
-console.log('BASE_URL:', BASE_URL);
-console.log('SESSION_LENGTH:', SESSION_LENGTH);
-console.log('EMBED_CLIENT_ID:', process.env.EMBED_CLIENT_ID); // Verify the client ID
-
-// Function to generate a signed URL for embedding Sigma dashboards
 async function generateSignedUrl() {
     try {
-        // Retrieve the secret and email from environment variables
-        const secret = process.env.EMBED_SECRET;
-        const email = process.env.EMBED_EMAIL;
-        const time = Math.floor(Date.now() / 1000); // Generate the current time as a Unix timestamp
+        const time = Math.floor(Date.now() / 1000); // Current Unix timestamp
+        const expirationTime = time + Math.min(parseInt(process.env.SESSION_LENGTH) || 3600, 2592000);
 
-        // Generate JWT with claims
-        // See https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens for list of available claims
         const token = jwt.sign({
-            sub: email, // Subject (the email of the user)
-            iss: process.env.EMBED_CLIENT_ID, // Issuer (client ID)
-            jti: uuid(), // JWT ID (unique identifier for the token)
-            iat: time, // Issued at time (current time)
-            exp: time + SESSION_LENGTH, // Expiration time (current time + session length)
-            account_type: "lite", // Optional claim for account type
-            teams: ["Sales_People"] // Optional claim for user teams
-        }, secret, {
-            algorithm: 'HS256', // Algorithm used for signing the JWT
-            keyid: process.env.EMBED_CLIENT_ID // Key ID for the JWT header, should match Sigma's expectations
+            sub: process.env.EMAIL,
+            iss: process.env.CLIENT_ID,
+            jti: uuid(),
+            iat: time,
+            exp: expirationTime,
+            account_type: process.env.ACCOUNT_TYPE,
+            team: process.env.TEAM,
+        }, process.env.SECRET, {
+            algorithm: 'HS256',
+            keyid: process.env.CLIENT_ID
         });
 
-        // Decode the JWT to inspect its content and log it
-        const decodedToken = jwt.decode(token, { complete: true });
-        console.log('Decoded JWT:', decodedToken); // Log the decoded JWT for debugging
-
-        // Construct the signed embed URL by appending the JWT and embed parameters
-        const signedEmbedUrl = `${BASE_URL}?:jwt=${token}&:embed=true`;
-
-        // Log the constructed signed URL
+        const signedEmbedUrl = `${process.env.BASE_URL}?:jwt=${token}&:embed=true`;
+        // Log important configuration details to ensure they are correctly set
+        console.log('BASE_URL:', process.env.BASE_URL);
+        console.log('CLIENT_ID:', process.env.CLIENT_ID); // Verify the client ID
+        console.log('SESSION_LENGTH:', process.env.SESSION_LENGTH);
+        console.log('TEAMS:', process.env.TEAM);
+        console.log('ACCOUNT_TYPE:', process.env.ACCOUNT_TYPE);
         console.log('Signed Embed URL:', signedEmbedUrl);
 
-        return signedEmbedUrl; // Return the signed embed URL
+        return signedEmbedUrl;
     } catch (error) {
-        // Log any errors that occur during JWT generation
         console.error("Failed to generate JWT:", error);
-        throw new Error("JWT generation failed"); // Throw an error if JWT generation fails
+        throw new Error("JWT generation failed");
     }
 }
 
-// Export the generateSignedUrl function so it can be used in other files
 module.exports = { generateSignedUrl };
 ```
 
@@ -457,6 +433,11 @@ Duration: 5
 In VSCode, open a new terminal session, make sure to be in the correct folder (as shown in the screenshot below).
 
 Run the command:
+```code
+npm install nodemon
+```
+
+Next, run the command:
 ```code
 nodemon server.js
 ```
@@ -544,9 +525,7 @@ After adjusting the `.env` file for the page URL, the embed looks like this:
 
 Our .env looks like this (just for your information):
 ```code
-# JWT .env file
-
-# Sigma embed configuration - REQUIRED parameters:
+# .env configuration file for Sigma Embed JWT QuickStart
 
 # Workbook:
 #BASE_URL=https://app.sigmacomputing.com/XXXXXX/workbook/My-Plugs-Sales-Table-JWT-28xgywpg21TkRWtz3jVRCe
