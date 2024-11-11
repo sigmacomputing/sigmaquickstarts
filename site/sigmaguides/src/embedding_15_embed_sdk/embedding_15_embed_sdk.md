@@ -175,7 +175,7 @@ git config core.sparseCheckout true
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
 ```code
-echo "embedding_sdk_react" > .git/info/sparse-checkout
+echo "embed-sdk-react" > .git/info/sparse-checkout
 ```
 
 At this point, we have run each command and not seen any errors:
@@ -338,9 +338,7 @@ The results look like this:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
 ## Start Development Server
-
 We are ready to test the `Embed-SDK` application. Run the following command in terminal:
 
 ```code
@@ -370,298 +368,23 @@ In the next section will will look at how the embed is configured in code.
 ## Sample Application
 Duration: 5 
 
-From the landing page, click the link for the `Sample Application`.
-
-The sample application has an example of a Sigma embed (provided from a Sigma instance) along with a list of the primary files involved. 
-
-The list of files has tooltips to provide general information but the files themselves are commented to assist you.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> The "Sample embed" in the screenshot below will not render as we need to provide an embed and credentials from your Sigma environment.
-</aside>
-
-<img src="assets/sdk21.png" width="800"/>
+Before we load the `Sample Application`, lets review which files are involved in this sample application. 
 
 ### Primary source files
-
 There are five files involved in this example embed:
 
- <ul>
-      <li><strong>.env:</strong> Application environment variables file. This is where we are storing the Sigma embed credentials</li>
-      <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/.env</li>
-</ul>
-
-```code
-# .env
-# Sigma Embed Credentials. These two values will need to be changed when using your own Sigma instance to embed content
-
-# Values from my Sigma instance
-EMBED_URL={url path to embed}
-EMBED_CLIENT_ID={your client id}
-EMBED_SECRET=(your embed secret)
-```
-
 <ul>
-      <li><strong>utils.ts:</strong> This file contains utility functions that facilitate the embedding of Sigma dashboards into a web application by generating signed URLs. These signed URLs ensure secure and authorized access to Sigma dashboards or visualizations.</li>
-      <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/lib/utils.ts</li>
+  <li><strong>utils.ts:</strong> Defines utility functions and constants, including HMAC signing logic and configuration parameters, to generate a secure, signed URL for embedding the Sigma dashboard.</li>
+  <li><strong>route.js:</strong> Generates a securely signed embed URL for the Sigma dashboard by using HMAC signing and serves it via an API endpoint.</li>
+  <li><strong>basic-example-wrapper.tsx:</strong> Fetches the signed embed URL from the API and conditionally renders the basic-example-embed.tsx component once the URL is retrieved.</li>
+  <li><strong>basic-example-embed.tsx:</strong> Embeds the Sigma dashboard iframe into the React application, using the Sigma SDK’s useSigmaIframe hook to manage loading and error states.</li>
+  <li><strong>page.mdx:</strong> Renders the webpage, SignedIframe, and logs the signed URL for console log display only.</li>
 </ul>
-
-```code
-/* utils.tx */
-/* contains utility functions that facilitate the embedding of Sigma dashboards into a web application by generating signed URLs */
-
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { v4 as uuid } from "uuid";
-
-/**
- * Merges Tailwind CSS classes conditionally.
- * @param inputs - An array of class values to conditionally merge.
- * @returns A string of merged class names.
- */
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-/**
- * Converts an ArrayBuffer to a hex string.
- * - Converts the buffer to a byte array.
- * - Maps each byte to a two-character hex string.
- * @see https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#converting_a_digest_to_a_hex_string
- */
-export function bufferToHex(buffer: ArrayBuffer) {
-  return Array.from(new Uint8Array(buffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-/**
- * Uses the Web Crypto API to create a SHA256 HMAC hex string.
- * @param key - The key used for signing.
- * @param data - The data to be signed.
- * @returns An object containing the hex string of the HMAC signature.
- */
-async function simpleHmac({ key, data }: { key: string; data: string }) {
-  const encoder = new TextEncoder();
-  const encodedKey = encoder.encode(key);
-  const encodedData = encoder.encode(data);
-
-  // Import the key for HMAC signing
-  const hmacKey = await crypto.subtle.importKey(
-    "raw",
-    encodedKey,
-    {
-      name: "HMAC",
-      hash: "SHA-256",
-    },
-    true,
-    ["sign", "verify"],
-  );
-
-  // Sign the data using the imported key
-  const signature = await crypto.subtle.sign("HMAC", hmacKey, encodedData);
-
-  // Convert the signature to a hex string
-  const hex = bufferToHex(signature);
-
-  return { hex };
-}
-
-/**
- * Signs a Sigma embed URL with a cryptographic signature.
- * @param dashboard - The base URL of the Sigma dashboard or visualization.
- * @returns A signed URL with appended query parameters.
- */
-export async function signEmbedUrl(dashboard: string): Promise<string> {
-  const { EMBED_SECRET, EMBED_CLIENT_ID } = process.env;
-  if (!EMBED_SECRET || !EMBED_CLIENT_ID) {
-    throw new Error("SIGMA_EMBED_SECRET is not set");
-  }
-
-  // Sigma Embed Parameters (normally, these are generated programmatically)
-  const searchParamsObject = {
-    ":mode": "userbacked", // mode for secure embedding
-    ":email": "embed-sdk@sigmacomputing.com", // Email associated with the embedded session
-    ":external_user_team": "Sales_People", // External team associated with the user
-    ":account_type": "viewer", // Account type, e.g., viewer or editor
-    ":nonce": uuid(), // Unique identifier for the session to prevent replay attacks
-    ":time": `${Math.floor(new Date().getTime() / 1000)}`, // Current timestamp in seconds
-    ":session_length": "36000", // Session length in seconds (10 hours)
-    ":client_id": EMBED_CLIENT_ID, // Client ID for authentication
-    ":external_user_id": "123", // External user ID for tracking purposes
-  };
-
-  const searchParams = new URLSearchParams(searchParamsObject);
-
-  // Append search parameters to the base dashboard URL
-  const urlWithSearchParams = `${dashboard}?${searchParams.toString()}`;
-
-  // Create a cryptographic signature using the embed secret
-  const SIGNATURE = await simpleHmac({
-    key: EMBED_SECRET,
-    data: urlWithSearchParams,
-  });
-
-  // Append the signature to the query parameters
-  searchParams.append(":signature", SIGNATURE.hex);
-
-  // Construct the final signed URL
-  const signedUrl = `${dashboard}?${searchParams.toString()}`;
-
-  return signedUrl;
-}
-```
-
-<ul>
-	<li><strong>basic-example-wrapper.tsx:</strong> The SignedIframe component is responsible for securely embedding a Sigma Computing dashboard into a React application.</li>
-  <li><strong>File Path: </strong>embed-sdk-react/docs/basic-examples/app/examples/basic-example/basic-example-wrapper.tsx</li>
-</ul>
-
-```code
-// basic-example-wrapper.tsx
-// The SignedIframe component is responsible for securely embedding a Sigma Computing dashboard into a React application.
-// 	signEmbedUrl: This function is imported from the Sigma Embed SDK library and is used to generate a signed URL for secure access to a Sigma dashboard.
-
-// Import the signEmbedUrl function from the utilities module
-import { signEmbedUrl } from "@/lib/utils";
-// Import the BasicExample component, which is responsible for rendering the iframe
-import BasicExample from "./basic-example-embed";
-
-// Define an asynchronous component to sign the URL and render the iframe
-export default async function SignedIframe() {
-  // Get the base URL from the environment variable
-  const src = process.env.EMBED_URL || ""; // Use the value from the .env file
-
-  try {
-    // Await the signed URL by passing the base URL to the signEmbedUrl function
-    const signedSrc = await signEmbedUrl(src);
-
-    // Log the base and signed URLs as output in server-side terminal session
-    console.log("Signed URL:", signedSrc);
-
-    // Return the BasicExample component with the signed URL as a prop
-    return <BasicExample src={signedSrc} />;
-  } catch (error) {
-    // Log any errors encountered during signing
-    console.error("Error signing URL:", error);
-    return <p>Error loading iframe</p>;
-  }
-}
-```
-
-<ul>
-	<li><strong>basic-example-embed.tsx:</strong> This file is a React component designed to embed a Sigma Computing dashboard using an iframe within a React application.</li>
-</ul>
-
-```code
-// basic-example-embed.tsx
-// Utilizes the Sigma Computing Embed SDK to integrate an iframe within a React application.
-
-"use client"; // Next.js directive to ensure this component runs only on the client-side.
-
-import React from "react";
-// Import the useSigmaIframe hook from the Sigma Computing React Embed SDK
-import { useSigmaIframe } from "@sigmacomputing/react-embed-sdk";
-
-// Define the BasicExample component, which receives a 'src' prop for the iframe URL
-export default function BasicExample({ src }: { src: string }) {
-  // Destructure the iframeRef, loading, and error values from the useSigmaIframe hook
-  const { iframeRef, loading, error } = useSigmaIframe();
-
-  return (
-    // Parent container with full height
-    <div className="h-full">
-      {/* Conditional rendering: Display loading text if the iframe is loading */}
-      {loading && <p className="text-center">Loading...</p>}
-      {/* Conditional rendering: Display error message if there is an error loading the iframe */}
-      {error && <p className="text-center text-red-500">Error loading iframe</p>}
-      {/* Render the iframe, filling the parent container */}
-      <iframe
-        src={src} // Source URL for the iframe
-        ref={iframeRef} // Reference from useSigmaIframe hook for managing iframe interactions
-        className={`w-full h-full ${loading || error ? "hidden" : ""}`} // CSS classes for full width/height and conditional visibility
-        style={{ border: "none" }} // Inline style to remove default border
-      />
-    </div>
-  );
-}
-```
-
- <ul>
-      <li><strong>page.mdx:</strong> Renders the webpage, SignedIframe and logs the Signed URL for console log display only.</li>
-</ul>
-
-```code
-{/* page.mdx */}
-{/*Renders the webpage and SignedIframe*/}
-
-import SignedIframe from './basic-example-wrapper';
-import TooltipComponent from './TooltipComponent';
-
-export default function ExamplePage() {
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Sigma Dashboard Example</h1>
-
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-
-        {/* Example Embed */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md mb-8">
-          <h2 className="text-xl font-bold">Example Embed</h2>
-          <p>
-            The embed shown below is provided free of charge by Sigma Computing, as an example only. The files that
-            have been customized are listed on your left.
-          </p>
-          <p>
-            While you will not be able to customize this example in terms of parameters that are
-            sent to Sigma by the Embed-SDK, you can review the files involved to see a working example of what is
-            minimally required.
-          </p>
-        </div>
-
-        {/*Files Involved*/}
-        <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-8">
-          <h2 className="text-xl font-bold">Files Involved (all files in docs/basic-examples/..) </h2>
-          <ul className="list-disc pl-5 mt-2 space-y-2">
-    <li className="list-inside">
-              <TooltipComponent text="Application environment variables file. This is where we are storing the Sigma embed credentials">
-               .env
-              </TooltipComponent>
-            </li>
-    <li className="list-inside">
-              <TooltipComponent text="This file contains utility functions that facilitate the embedding of Sigma dashboards into a web application by generating signed URLs. These signed URLs ensure secure and authorized access to Sigma dashboards or visualizations.">
-                /lib/utils.ts
-              </TooltipComponent>
-            </li>
-    <li className="list-inside">
-              <TooltipComponent text="The SignedIframe component is responsible for securely embedding a Sigma Computing dashboard into a React application.">
-                app/examples/basic-example/basic-example-wrapper.tsx
-              </TooltipComponent>
-            </li>
-    <li className="list-inside">
-              <TooltipComponent text="This file is a React component designed to embed a Sigma Computing dashboard using an iframe within a React application.">
-                /app/examples/basic-example/basic-example-embed.tsx
-              </TooltipComponent>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* BasicExample Block - Full Width */}
-      <div className="bg-white p-6 rounded-lg shadow-md h-[calc(100vh-16rem)] w-full">
-        <SignedIframe />
-      </div>
-    </div>
-  );
-}
-    
-{/* Generate Signed URL for console log display only */}
-console.log("Signed URL:", signedSrc);
-```
 
 ### Logging
-When the sample application is running, the server displayed in VSCode’s Terminal will show a one-time-use SignedURL for debugging purposes only. **While not required**, we’ve included this to demonstrate and assist in debugging any issues you may encounter while customizing embed parameters.
+When the sample application is running, the server displayed in VSCode’s Terminal will show a one-time-use SignedURL for debugging purposes only. 
+
+**While not required**, we’ve included this to demonstrate and assist in debugging any issues you may encounter while customizing embed parameters.
 
 <img src="assets/sdk22.png" width="800"/>
 
@@ -671,7 +394,7 @@ When the sample application is running, the server displayed in VSCode’s Termi
 ## Customize the Embed
 Duration: 5 
 
-We want to use our own Sigma instance for this embed, so we will need to do a few things.
+We want to use your Sigma instance for this embed, so we will need to do a few things.
 
 ### 1: Embed credentials
 Log into your own Sigma instance as `Administrator` and navigate to `Administration` > `Developer Access` and click the button to `Create New` client credentials. 
@@ -683,7 +406,6 @@ Copy the `Client Id` and `Secret` and update the `.env` file that is part of the
 For more information on generating embed client credentials, [see here.](https://help.sigmacomputing.com/docs/generate-embed-client-credentials)
 
 ### 2: Create a new workbook
-
 Create a new workbook in Sigma and add any available table to it. It does not matter at this point what content is added.
 
 <aside class="negative">
@@ -708,32 +430,25 @@ We are sharing ours with the `Sales_People` team:
 For more information on teams in Sigma, [see here.](https://help.sigmacomputing.com/docs/manage-teams)
 
 ### Generate Embed URL
-Open the workbook's menu again and select `Embedding...` this time.
+Open the workbook's menu again and select `Embedding` this time.
 
 Select `Secure` and `Entire Workbook`. Copy this url and click `Close`.
 
-Open the project file `.env`, and add your `client_ID`, `secret` and `embed url` values:
+Open the project file `/embed-sdk-react/docs/basic-examples/lib/utils.ts`.
+
+Replace the placeholder values for `EMBED_PATH`, `CLIENT_ID`, `EMBED_SECRET`, `EMAIL` and `EXTERNAL_USER_TEAM` to match your values created/used earlier.
+
+For `EMAIL` you can make up any address, formatted appropriately. 
+
+For `ACCOUNT_TYPE` use `Pro`.
 
 <img src="assets/sdk26.png" width="800"/>
-
-### Embed parameters
-The last step is to adjust the parameters that the parent application will send to Sigma as it constructs the signedURL.
-
-Recall that this is done in the `utils.ts` file in the section `const searchParamsObject`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We are hard-coding parameter values but these are normally generate programmatically by the parent application at runtime and are based on the requesting user.
 </aside>
 
-The only value we will change is the `external_user_team`, which we will set to `Sales_People` (yours may be different).
-
-We commented the old value and made a copy of the line, adjusting for the value of `Sales_People`:
-
-<img src="assets/sdk30.png" width="800"/>
-
-The rest can stay the same for now, while we test this works.
-
-Save the `utils.tx` file.
+Make sure the terminal session does not throw unexpected errors after saving both of the files.
 
 ### Test the application
 
