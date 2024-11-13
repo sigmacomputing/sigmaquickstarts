@@ -17,9 +17,11 @@ This QuickStart is designed to support Sigma's [API Code Samples](https://help.s
 
 The actual code shown is available in Sigma's [quickstart-public git repository](https://github.com/sigmacomputing/quickstarts-public)
 
-All code samples provided here are based on javaScript.
+All code samples provided here are based on JavaScript.
 
-<!-- although [Sigma's Swagger](https://help.sigmacomputing.com/reference/explanation) provides code snippets for all the most common languages, including [curl.](https://curl.se/) -->
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> The methods presented here are not in alphabetical order but do align with the recipes webpage. If you don't see what you are looking for right away, scroll down the QuickStart page.
+</aside>
 
 ### Target Audience
 Developers who are evaluating or working with Sigma's REST API. 
@@ -93,36 +95,51 @@ This should return the version number as below:
 <strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
-You can leave the Terminal session open for now.
+You can leave the terminal session open for now.
 
-### Project Files
+### Git Repository
 
 To save you time, we've stored all the necessary project files in Git. Simply download them using git clone and explore the recipes that interest you.
 
-To clone the Git repository in VSCode, open the `Command palette`:
+In terminal, navigate to the desired directory where we want to clone the repo folder into.
 
-<img src="assets/apics10.png" width="800"/>
-
-Type `Clo` into the command palette bar and then click `Git: Clone`:
-
-<img src="assets/apics11.png" width="800"/>
-
-Paste this URL and hit enter:
+For example:
 ```code
-https://github.com/sigmacomputing/quickstarts-public.git
+cd {/path/to/your/directory}
 ```
 
-VSCode will prompt for the location to store the files on your computer. Navigate to the `Sigma_QuickStart_Public_Repo` folder and click the `Select as Repository Destination` button.
+Execute the terminal command:
+```code
+git init
+```
 
-<img src="assets/apics12.png" width="800"/>
+Add the remote repository as the origin:
+```code
+git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
+```
 
-If prompted to open the cloned repository, click `Open`.
+Enable sparse checkout:
+```code
+git config core.sparseCheckout true
+```
 
-The repository contains other code samples you can explore, but we are interested in the `sigma-api-recipes` folder:
+Specify the folder you want to clone by adding it to the sparse-checkout configuration:
+```code
+echo "sigma-api-recipes" > .git/info/sparse-checkout
+```
 
-<img src="assets/apics13.png" width="500"/>
+At this point, we have run each command and not seen any errors:
 
-Once the project is open, return (or reopen a new) terminal session inside the project. 
+<img src="assets/apics4d.png" width="800"/>
+
+Finally, pull the specified folder from the repository:
+```code
+git pull origin main
+```
+
+We can now see the cloned project folder:
+
+<img src="assets/apics4e.png" width="800"/>
 
 Run the command:
 ```code
@@ -151,12 +168,12 @@ This file keeps our keys out of our scripts and also contains other variables we
 
 Replace the placeholders for `YourClientID` and `YourAPISecret`. The values for auth and baseURL are for Sigma instances hosted in AWS-US. You may need to change these based on where your instance is running. 
 
-<!-- If you are not sure, check the instructions mentioned above or [in the API Swagger.](https://help.sigmacomputing.com/reference/explanation) -->
+For more information on the supported API instances, see [Identify your API request URL.](https://help.sigmacomputing.com/reference/get-started-sigma-api#identify-your-api-request-url)
 
-Save the file.
+`Save` the file.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The section named "Get Bearer Token Script" is a must read, as proper authentication is required in all use cases. Do that section once you finish this section.
+<strong>IMPORTANT:</strong><br> The next section named "Authentication - REQUIRED" is a must read. Authentication is required in all use cases.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -1090,6 +1107,177 @@ Press `F5` to run the script with VSCode's debugger.
 The expected response is:
 
 <img src="assets/apics59.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Members: Bulk Deactivate / Delete
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Bulk Deactivate / Delete` page, [located here.](https://help.sigmacomputing.com/recipes/members-bulk-deactivate-delete)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+The `Members: Bulk Deactivate / Delete` script provides a method to deactivate, reassigning content and optionally deleting one or many members whose names match a pattern specified by `USER_NAME_PATTERN` in the `.env` file
+
+The script first deactivates each user that matches the specified name pattern. During this deactivation, it also reassigns the user’s content to the member specified in `NEW_OWNER_ID.` This ensures that any content the deactivated member owns will not be orphaned, but instead assigned to the new owner.
+
+**Optional Deletion:**
+After deactivation (and reassignment of content), the script checks the `DEACTIVATE_ONLY` flag:
+
+- If `DEACTIVATE_ONLY` is set to `true`, the script stops (after reassigning content) and does not delete the user.
+
+- If `DEACTIVATE_ONLY` is `false`, the script also proceeds to delete the user, who is now already deactivated and has no remaining assigned content.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Assigning content to a Sigma member who has a lower license type may result in loss of functionality. 
+</aside>
+
+<aside class="positive">
+<strong>WARNING:</strong><br> This script both deactivates and DELETES Sigma users. Great care must be taken when using this and we recommend testing thoroughly prior to any production use.
+</aside>
+
+### Endpoints used
+
+**List Members Endpoint (GET /v2/members):**<br>
+Retrieves a list of all members, allowing for optional filtering, such as including inactive users (includeInactive=true).
+
+**Deactivate Member Endpoint (POST /v2/members/{memberId}/deactivate):**<br>
+Deactivates a specific member account by memberId, making the user inactive but not permanently deleted.
+
+**Delete Member Endpoint (DELETE /v2/members/{memberId}):**<br>
+Permanently deletes a specific member account by memberId, removing it completely from the system.
+
+### Regex
+The `USER_NAME_PATTERN` variable in the `.env` file uses regular expressions (regex) to specify patterns for matching usernames. 
+
+Here are some formatting examples and explanations to help you configure this variable:
+
+**1: Exact Match**
+Matches usernames that exactly match the specified name.
+
+This will only match the username "JohnDoe" exactly, without any variations.
+
+Sample code:
+```code
+USER_NAME_PATTERN=^JohnDoe$
+```
+
+**2: Wildcard Match (Start of Name)**
+Matches any username that starts with a specific string.
+This pattern will match usernames like "API_User1", "API_Test", etc.
+
+Sample code:
+```code
+USER_NAME_PATTERN=^API
+```
+
+**3: Wildcard Match (End of Name)**
+Matches any username that ends with a specific string.
+
+This pattern will match usernames like "SystemAdmin", "JohnAdmin", etc.
+
+Sample code:
+```code
+USER_NAME_PATTERN=Admin$
+```
+
+**4: Contains Match**
+Matches any username that contains a specific string.
+
+This pattern will match usernames like "Embed_User", "API_Embed_Test", "EmbedManager", etc.
+
+Sample code:
+```code
+USER_NAME_PATTERN=Embed
+```
+
+**5: Case-Insensitive Match**
+If you want the search to be case-insensitive, add the i flag at the end of the regex pattern.
+
+This pattern will match "Embed User", "embed user", "EMBED USER", etc.
+
+Sample code:
+```code
+USER_NAME_PATTERN=(?i)^embed user
+```
+
+**6: Multiple Patterns (Using OR)**
+Matches usernames that meet one of multiple patterns.
+
+This pattern will match any username that starts with "API" or is exactly "Embed User".
+
+Sample code:
+```code
+USER_NAME_PATTERN=^(API|Embed User)
+```
+
+**7: Match with Number Ranges**
+Matches usernames with specific numeric patterns.
+
+This pattern will match usernames like "User001", "User123", "User999", etc.
+
+Sample code:
+```code
+USER_NAME_PATTERN=^User[0-9]{3}$
+```
+
+**Anchors:**<br>
+Use ^ to match the start of a name and $ to match the end. Omitting these will allow partial matches within the username.
+
+**Special Characters:**<br>
+Characters like . or * have special meanings in regex (e.g., . matches any character), so escape them with \ if you want them to be literal (e.g., User\.Test matches "User.Test").
+
+**Regex Flags:**<br>
+You can add (?i) at the beginning of the pattern to make it case-insensitive.
+
+### Running the Script
+Open the file `bulk-deactivate-delete-users.js` in the `members` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+In our case, we have been rather lax in our test Sigma instance, but we can use this script to clean up the `People` page in one step. This is much faster than manually removing members one at at time.
+
+However, lets remove one user only first, to make sure the script performs as expected. 
+
+There is a `Active` member, `Bob Somebody` who was a fake test member:
+
+<img src="assets/apics60.png" width="800"/>
+
+A quick [Sigma user impersonation]() of this member shows they have one workbook called `Bob's Favorite Data`. This is good to know as we can check to make sure it gets reassigned using the `NEW_OWNER_ID` in the .env file. 
+
+<img src="assets/apics61.png" width="800"/>
+
+To make sure that more than one workbook will be reassigned, we made a quick copy of this and named it `Bob's Favorite Data 2`. This will make a more complete test.
+
+Lets now configure `.env` for this member, deactivate them and assign their content to ourself using `memberId`: 
+
+```code
+# bulk-deactivate-delete-users variables
+USER_NAME_PATTERN=Bob Somebody
+NEW_OWNER_ID=
+DEACTIVATE_ONLY=true
+```
+
+Running the script results in `No NEW_OWNER_ID specified in the .env file. Aborting process.` 
+
+This is expected as we did not provide the value for `NEW_OWNER_ID`. Once we do that and rerun we get:
+
+
+
+
+
+
+
+
+
+
+Press `F5` to run the script with VSCode's debugger. 
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
