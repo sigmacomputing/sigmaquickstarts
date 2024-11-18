@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-09-27
+lastUpdated: 2024-10-24
 
 # Embedding 16: Secure Embedding with JWT
 
@@ -15,9 +15,10 @@ Duration: 5
 
 Many customers want a simple, but secure way to embed content that can be accessed by both external (users who do not have a registered account in Sigma) and internal user (users who access Sigma only through an embed, inside a parent application). 
 
-To enable this, Sigma supports authenticating secure embeds using <a href="https://jwt.io/" target="_blank">JSON Web Tokens (JWTs)</a>. Signing your secure embed URLs with JWTs has several advantages, but a few limitations too:
+To enable this, Sigma supports authenticating secure embeds using <a href="https://jwt.io/" target="_blank">JSON Web Tokens (JWT)</a>. 
 
 ### Benefits of JWT
+Signing your secure embed URLs with JWTs has several advantages:
 
 - JWTs are compact, URL-safe tokens that can be digitally signed, ensuring that the data they contain is tamper-proof.
 
@@ -27,28 +28,100 @@ To enable this, Sigma supports authenticating secure embeds using <a href="https
 
 - JWT-signed embed URLs can authenticate internal Sigma users to access embedded content with the same email address they use for their Sigma account. 
 
-### Limitations
-
-- Most embed URL parameters are not currently supported in JWT-signed embed URLs.
-
-- Only admins will be able to impersonate other users (including embed users). Non-admins can only login as themselves.
-
-- You cannot test an JWTs in the embed sandbox.
+- When using JWT-signed URLs with Sigma, you have the option to disable automatic embed user account provisioning for non-Sigma users, effectively restricting your embed content to the users you have explicitly provisioned in Sigma or your IdP.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The existing secure Embed-API solution will continue to work. Customers will not have to make any changes immediately, although JWT is likely to become the preferred solution over time.
+<strong>REPLAY ATTACK PREVENTION:</strong><br> Existing embed customers are likely familiar with Sigma’s "signed URL" embed-API, which uses a nonce to ensure that the constructed URL is for one-time use only. Similarly, JWTs are also for one-time use. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The existing secure Embed-API solution will continue to work. Customers will not have to make any changes immediately, although JWT is likely to become the preferred solution over time, due to it's many benefits.
 </aside>
 
-### What is JWT?
-JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and/or encrypted.
+
+When a JWT is issued, the jti claim—a unique identifier for the token—is stored server-side. 
+
+When the JWT is used (e.g., to access an embedded Sigma dashboard), the server checks whether the jti has already been seen. 
+
+If it has, the token is rejected as a replay attempt, ensuring it cannot be reused.
+</aside>
+
+### Target Audience
+Developers evaluating Sigma embedding and the security options.
+
+### Prerequisites
+
+<ul>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment.</li>
+  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
+  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions.</li>
+</ul>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+ 
+![Footer](assets/sigma_footer.png)
+
+## How JWT Works
+Duration: 5
+
+JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties. It is a product of the Internet Engineering Task Force (IETF) [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519).
+
+The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and/or encrypted.
 
 The remaining discussion in this section is intended for those less familiar with JWT, how it is structured, the transaction flow and benefits. Feel free to jump to the next section if you just want a demonstration of JWT in Sigma.
 
+In the typical workflow, a client requests embedded content using a JSON Web Token (JWT), and the server processes, validates, and serves the embedded content based on user credentials and environment variables.
+
+#### Step-by-Step JWT Flow:
+
+**1. Client Request (ie: end user's web browser):**<br>
+The client (e.g., a web application or another service) sends a request to the server to obtain a URL for accessing embedded Sigma content. This request may include user-related information, such as identity or a general request for access to Sigma content.
+
+**2. Server-Side JWT Generation (ie: customer created embed-API):**
+***Credential Handling:***<br>
+The server securely manages the necessary credentials to generate the JWT, such as the secret key (EMBED_SECRET) and client ID (EMBED_CLIENT_ID). These credentials ensure that the JWT is properly signed and trusted by Sigma.
+
+***User Claims:***<br>
+The server retrieves or determines relevant claims about the user, such as their email (sub), roles, or team memberships. These claims are vital for defining what the user can do in the embedded Sigma content and ensure that permissions are enforced correctly.
+
+***JWT Creation:***<br>
+The server combines these user claims with the necessary credentials to create a JWT. The JWT is signed using the server’s secret key, ensuring its integrity and authenticity. The JWT contains claims that specify key information, including:
+
+- Who the user is (email, user roles)
+- What permissions they have
+- How long the JWT is valid (expiry or exp claim)
+
+This process ensures that each JWT is unique, secure, and reflects the user's specific access rights.
+
+**3. Response with Signed URL:**<br>
+The server responds to the client with a signed URL, which contains the JWT as a query parameter. For example, the URL might look like:
+```code
+https://app.sigmacomputing.com/<org-slug>?jwt=<jwt>
+```
+
+This URL includes the signed JWT that will be used to authenticate and authorize the user when they access the embedded Sigma content.
+
+**4. Client Accesses the Signed URL:**<br>
+When the client (e.g., the end-user's browser or a web app) loads the signed URL, Sigma verifies the JWT. Sigma ensures that:
+
+- The JWT signature is valid, confirming that the token hasn’t been tampered with.
+- The claims (like sub, roles, exp) are still valid, checking whether the user is authorized and whether the token is within its allowed time frame.
+- Replay protection is enforced by validating the jti (JWT ID) claim, ensuring that the token is not reused maliciously.
+
+**5. Sigma Provides Embedded Content:**<br>
+If the JWT passes all verification checks (valid claims, signature, jti uniqueness, etc.), Sigma serves the requested embedded content. The content provided matches the user’s permissions and scope, ensuring that users can only access what they are authorized to view.
+
+This workflow ensures secure, one-time use access to Sigma’s embedded content, protecting both user data and application integrity.
+
 ### Structure of JWT:
 
-A JWT is composed of three parts: `Header`, `Payload`, and `Signature`, which are concatenated with dots (.) to form a single string:
+An actual JWT is composed of three parts: `Header`, `Payload`, and `Signature`, which are concatenated with dots (.) to form a single string:
 
-**Header:** Typically consists of two parts: the type of token (JWT) and the signing algorithm (e.g., HMAC SHA256).
+**Header:** Typically consists of two parts: the type of token (JWT) and the signing algorithm (e.g., [HMAC SHA256](https://en.wikipedia.org/wiki/HMAC)).
 
 **Payload:** Contains the claims. Claims are statements about an entity (typically, the user) and additional data. There are three types of claims: registered, public, and private claims.
 
@@ -78,66 +151,21 @@ Examples:<br>
 - custom user attributes
 - eval_connection_id
 
-<aside class="negative">
-<strong>NOTE:</strong><br> - Most embed URL parameters are not currently supported in JWT-signed embed URLs.
-</aside>
-
 For more information on JWT claims in Sigma, [see here.](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens)
 
-### How JWT Works in Sigma
 
-Let’s walk through a typical workflow where a client requests an embedded content using a JSON Web Token (JWT) and how the server handles this request, validates it, and serves the embedded content based on the credentials and environment variables.
-
-Upon receiving a request from the client for a URL to access embedded Sigma content, the server securely generates a JWT by combining the configured embed client credentials with known user claims (such as email, account type, and team). This signed and encrypted JWT is then embedded into the URL returned to the client, enabling secure and authorized access to the content.
-
-Expanding on this description a bit more:
-
-#### 1: Client Request:
-The client (e.g., a web application or another service) sends a request to the server to obtain a URL for accessing embedded Sigma content. 
-This request might include minimal information, such as the user’s identity or a general request for access.
-	
-#### 2: Server-Side JWT Generation:
-**Credential Handling:** The server securely manages the necessary credentials, such as the secret key (EMBED_SECRET) and client ID (EMBED_CLIENT_ID), that are required to generate the JWT.
-
-**User Claims:** The server retrieves or determines relevant claims about the user, such as their email address (sub), roles, or teams. These claims are crucial for defining the user’s permissions and the scope of access within the embedded content.
-
-**JWT Creation:** The server uses the credentials and claims to create a JWT. This JWT is signed with the secret key, ensuring its authenticity. The JWT includes claims that specify who the user is, what they are allowed to do, and how long their access is valid.
-	
-#### 3: Response with Signed URL:
-The server constructs a signed URL that includes the JWT as a query parameter. This URL is then sent back to the client.
-
-**Authorization:** When the client uses this URL to access the embedded content, the JWT is used by the Sigma server to verify the user’s identity and permissions, granting or denying access accordingly.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Existing embed customers are likely familiar with Sigma’s “signed URL” embed-API, which uses a nonce to ensure that the constructed URL is one-time use only. Similarly, JWTs are also one-time use. When a JWT is issued, the jti claim—a unique identifier for the token—is stored server-side. When the JWT is used (e.g., to access an embedded Sigma dashboard), the server checks whether the jti has already been seen. If it has, the token is rejected as a replay attempt, ensuring it cannot be reused.
-</aside>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> JWT-signed embed URLs can authenticate internal Sigma users to access embedded content with the same email address they use for their Sigma account.
 </aside>
 
-### Target Audience
-Developers evaluating Sigma embedding and the security options.
-
-### Prerequisites
-
-<ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
-  <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
-</ul>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
-</aside>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
- 
 ![Footer](assets/sigma_footer.png)
 
-## Clone the Git Repository Project Folder
+## Making it Work In Sigma
 Duration: 5 
+
+### Clone the Git Repository Project Folder
+We have made sample project code available in a public GitHub repository to save time.
 
 While you may clone the entire repository (it is not that large), we want to avoid cloning sections of the repository that are not of immediate interest. 
 
@@ -201,6 +229,31 @@ We can now see the project called `embedding_JWT` with the files stored in the `
 
 <img src="assets/jwt4.png" width="800"/>
 
+### Additional node.js packages
+We need to install two additional node packages that provide us some additional "convenience functionality". 
+
+**1: nodemon:**<br>
+This package is a development tool that automatically restarts our Node.js application whenever it detects changes in specific code files. This helps streamline development by eliminating the need to manually restart the server after each change we make.
+
+**2: jsonwebtoken**<br>
+We use this package to decode a JWT in the VSCode console. This allows us to read the payload and header data from the token without verifying its authenticity. This is helpful when you need to access the information embedded within the token for non-secure contexts or for inspection/debugging purposes.
+
+To install these two packages, open a new terminal window in VSCode in the project folder.
+
+Run the command:
+```code
+npm install jsonwebtoken
+```
+
+and
+```code
+npm install nodemon
+```
+
+The expected output is:
+
+<img src="assets/jwt6.png" width="800"/>
+
 The project has almost everything we need, but we will need some embedded content and credentials from Sigma before we can test this out.
 
 ![Footer](assets/sigma_footer.png)
@@ -233,7 +286,7 @@ Remember to keep your credentials in a secure location, as losing them requires 
 
 If you lose your credentials, you must regenerate new credentials. 
 
-If this happens, your existing embeds will be rendered invalid until the API is updated with the new embed credentials.
+If this happens, your existing embeds will be rendered invalid until the embed API is updated with the new credentials.
 </aside>
 
 ### Client Credentials Creation
@@ -275,14 +328,14 @@ Paste the credentials into a text file for now, we will use them later.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Select Something to Embed
+## Something to Embed
 Duration: 5 
 
 This embedding method allows you to use any Sigma URL to embed, assuming the proper permissions are passed along with it as parameters. 
 
 Sigma is very flexible and has different workflows for creating content, based on source data. 
 
-For example, we could first create a [data model](https://help.sigmacomputing.com/docs/intro-to-data-models), set permission on it, and then save it off for later use in a workbook(s). We would then create a workbook with a table, that shows data from the data model we saved earlier.
+For example, we could first create a [data model](https://help.sigmacomputing.com/docs/intro-to-data-models), set permission on it, and then save it off for later use in a workbook. We would then create a workbook with a table, that shows data from the data model we saved earlier.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> To leverage the features in secure embedding, permission to your data is required at some level. Creating a data model and granting permissions to it is considered a best practice.
@@ -302,7 +355,13 @@ Navigate to `Administration` > `Teams` and click `Create Team`.
 Name the new team `Sales_People`, and click `Create`. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We don't need to add any people to this team as they will be added automatically after they are authenticated by the parent application and access any embedded Sigma content.
+<strong>AUTOMATIC EMBED USER ACCOUNT CREATION - PLEASE READ!</strong><br> We don't need to manually add users to this team, as they will be added automatically once they are authenticated by the parent application and access any embedded Sigma content.
+
+When using JWT-signed URLs for secure embeds, you have the option to disable the automatic creation and updating of embed user accounts for non-Sigma users.
+
+If you choose to disable this default behavior, you can restrict access to your embed content exclusively to users that you have explicitly provisioned in Sigma or your Identity Provider (IdP).
+
+By default, automatic user creation is enabled. Sigma will automatically create embed users and assign them to the team specified in the teams claim. It will also update existing user assignments if new teams are provided in the teams claim.
 </aside>
 
 ### Create a Workbook with Sample Data
@@ -331,7 +390,21 @@ The first thing we want to do is click the `Save As` button, choose where to sto
 
 You may have noticed that Sigma provides `folders`, a `My Documents` folder and also [workspaces](https://help.sigmacomputing.com/docs/manage-workspaces). This enables a variety of use-cases to be possible with regards to how documents are stored, managed and shared with others.
 
+### Share the Workbook
+Click the caret to the right of the workbook's name and select `Share`
+
+<img src="assets/accounttypes15.png" width="600"/>
+
+Search for the `Sales_People` team, select it and provision `Can view` permission:
+
+<img src="assets/accounttypes16.png" width="800"/>
+
 ### BASE_URL vs. Embed Path
+
+For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create an `Embed Path`. 
+
+**This is no longer required when using JWT.**
+=======
 For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create a `Workbook URL` > `Embed Path`. **This is no longer required when using JWT.**
 
 With JWT embedding, we simply use the `Published` url, taken directly from the browser.
@@ -345,16 +418,6 @@ Go to the `Published` version of our workbook:
 Copy the URL of to a text file, so that we can reference it in the embedding script later:
 
 <img src="assets/accounttypes29.png" width="800"/>
-
-### Share the Workbook
-
-Click the caret to the right of the workbook's name and select `Share`
-
-<img src="assets/accounttypes15.png" width="800"/>
-
-Search for the `Sales_People` team, select it and provision `Can view` permission:
-
-<img src="assets/accounttypes16.png" width="800"/>
 
 We are now ready to configure our secure embed for our workbook and team.
 
@@ -454,18 +517,22 @@ We now see our workbook embedded into a parent application. The parent only has 
 <img src="assets/accounttypes21.png" width="800"/>
 
 ### Logging
-We have include code that returns key values in the terminal console, for debugging and demonstration purposes only. These would normally not be included in production code and are not required to make this work. We felt is was useful to see these values to better understand what is being passed. 
+We have included code that returns key values in the terminal console, for debugging and demonstration purposes only. These would normally not be included in production code and are not required to make this work. We felt is was useful to see these values to better understand what is being passed. 
 
 For example, my log of the last step looks like this:
 
 <img src="assets/accounttypes22.png" width="800"/>
+
+The log will show a decoded JWT each time a embedded webpage is loaded.
 
 We use the the `jwt.decode()` function that is provided by the `jsonwebtoken` library to decodes a JWT without verifying its signature.
 
 It simply parses the JWT and returns its payload (the claims it contains) along with the header and signature if you use the complete.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> jwt.decode() only reveals the data (claims) inside the token and some metadata from the header. The secret key is never included in the JWT itself and remains on the server where the JWT was signed.
+<strong>IMPORTANT:</strong><br> jwt.decode() only reveals the claims and metadata inside the token (such as the data in the header), but does not include the secret key. The secret key used to sign the JWT is never included in the token itself. It remains securely stored on the server where the JWT was generated.
+
+This ensures that the integrity of the JWT can be verified without exposing the secret key to any client or external party.
 </aside>
 
 An alternative method is to use a third-party website to decode the token. For example [JWT Debugger](https://token.dev/) can decode the token just as we have done in our sample code:
@@ -473,10 +540,11 @@ An alternative method is to use a third-party website to decode the token. For e
 <img src="assets/accounttypes24.png" width="800"/>
 
 ## Single Element or Page
+Duration: 5 
 
 Sigma allows a workbook, page or single element to be embedded. 
 
-In the case of single elements and workbook pages, we need to manually adjust the copied url (at the time of this QuickStart). This will be automated in the near term in the Sigma UI.
+In the case of single elements and workbook pages, we need to adjust the copied url.
 
 ### Single Elements
 
@@ -541,6 +609,25 @@ Our .env looks like this (just for your information):
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Deeper Integration - REST API (API)
+Duration: 5 
+
+We have already demonstrated how to obtain a Sigma URL manually, using the UI and browser. Many customers will want to automate this in order to create their own navigation menus (for example). To enable this, Sigma provides a REST API. 
+
+The API supports all the common methods for programmatically interacting with Sigma. In the case mentioned (navigation menu), the specific endpoint can be [List all workbooks](https://help.sigmacomputing.com/reference/listworkbooks).
+
+However, it is likely that a navigation menu would benefit from only showing workbooks that are `shared with me`. In support of this, Sigma provides [API Recipes](https://help.sigmacomputing.com/recipes) that are API scripts (in JavaScript), demonstrating common use-cases. 
+
+There are also two QuickStarts to assist with using the API and Recipes. 
+
+[Sigma API with Postman](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
+
+[Sigma REST API Recipes](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## What we've covered
 Duration: 5
