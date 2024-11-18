@@ -266,19 +266,19 @@ git config core.sparseCheckout true
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
 ```code
-echo "embedding-streamlit/" >> .git/info/sparse-checkout
+echo "embedding_signed_URL/streamlit/" >> .git/info/sparse-checkout
 ```
 
-At this point, we have run each command and not seen any errors.
+At this point, we have run each command and not seen any errors:
+
+<img src="assets/sp10a.png" width="800"/>
 
 Finally, pull the specified folder from the repository:
 ```code
 git pull origin main
 ```
 
-After the command runs, click the button to `Open Folder`:
-
-We can now see the project called `embedding-streamlit`:
+We can now see the project called `streamlit`:
 
 <img src="assets/sp11.png" width="800"/>
 
@@ -361,13 +361,15 @@ We can use these credentials for all embeds, but you may create as many credenti
 
 Open the `embedding-streamlit` folder in VSCode and open the `.env` file.
 
-**Make sure to replace the placeholder values with your actual values for the four variables:**
+Replace the placeholder values for `EMBED_PATH`, `CLIENT_ID`, `EMBED_SECRET`, `EMAIL` and `EXTERNAL_USER_TEAM` to match your values created earlier.
+
+For `ACCOUNT_TYPE` use `Pro` for now.
 
 <img src="assets/ae4.png" width="800"/>
 
 After updating `.env` with your values, `save` the file.
 
-Open a new terminal window in VSCode and run the command:
+In VSCode terminal run the command:
 ```code
 conda activate streamlit
 ```

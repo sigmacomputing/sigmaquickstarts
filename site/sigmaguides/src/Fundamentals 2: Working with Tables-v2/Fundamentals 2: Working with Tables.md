@@ -200,7 +200,7 @@ Your table should now look similar to this:
 <strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.
 </aside>
 
-Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in excel/google sheets or SQL. 
+Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in Excel/Google Sheets or SQL. 
 
 We will get into some more advanced functions later, but you can always check out the complete list by clicking the `Help` button <img src="assets/calculatedcols4.png" width="25"/> in the lower right hand corner and selecting [Function Index](https://help.sigmacomputing.com/docs/popular-functions)
 

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-03-15
+lastUpdated: 2023-06-11
 
 # Embedding 11: Embed into Salesforce 
 
@@ -46,7 +46,7 @@ We will build a Salesforce page using Sigma content, embedded securely on a Visu
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## **Secure Embedding Configuration in Sigma**
+## Secure Embedding Configuration in Sigma
 Duration: 20
 
 In this use case we will embed a Sigma Dashboard based on one of the samples provided in the Sigma trial account. The high-level process looks like this:
@@ -100,15 +100,21 @@ and...
 ## Salesforce Configuration
 Duration: 20min
 
-Salesforce is very flexible but also can confuse non-administrative users who are trying to perform more advanced configuration. With that in mind we will just do a simple, secure embed. You will notice similarities to embedding from previous QuickStarts but also see things that are required by Salesforce. 
+Salesforce is highly flexible but can sometimes confuse non-administrative users who attempt to perform more advanced configurations. With that in mind, we will focus on creating a simple, secure embed. You may notice similarities to previous QuickStarts on embedding, along with specific requirements unique to Salesforce.
 
-Salesforce has its own language called “Apex” which is an object-oriented programming language created by Salesforce that allows you to extend the platform’s existing functionality and create your own custom cloud-based software applications.
+Salesforce has its own programming language called "Apex," an object-oriented language created by Salesforce that allows you to extend the platform's functionality and create custom cloud-based software applications.
 
 Apex is specifically designed for accessing and manipulating data. The method we will be using in Salesforce requires three objects to be configured:
 
 **Apex Class:**<br>
 You can think of a class as a template containing all the necessary information and instructions that you can build upon and create class instances called objects. Sigma will use an Apex class to dynamically create	the secure URL used by the iframe. You can use the Class to pass both required and optional parameters including pulling variables from the Salesforce session to pass through to Sigma to enable Row Level Security and other useful functionality. Row Level Security was covered in the QuickStart: [
 Embedding 06: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0).
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> In Salesforce Apex, moving sensitive information like API keys and client secrets to a more secure location is both possible and highly recommended.
+</aside>
+
+[Salesforce offers many pages to assist in this area. For example:](https://developer.salesforce.com/docs/atlas.en-us.secure_coding_guide.meta/secure_coding_guide/secure_coding_storing_sensitive_data.htm)
 
 **Visualforce Component:**<br>
 This is a small, reusable piece of functionality—think widgets, panels, user interface elements, that kind of thing—that you use in Visualforce page markup. You can use standard Visualforce components in our case we will create a custom component for Sigma.
@@ -137,66 +143,73 @@ Replace the values for `Client ID` and `Secret` with your values in the code bel
 
 ```code
 public class SigmaEmbedClass {
-    // Declare string values to be used in Class:
+    // Client ID for authentication with Sigma
     private string client_id = 'Your Client ID';
-    private string secret = 'You Embed Secret';
     
-    // Declare string values to be used in Apex:
-    public string embed_path {get; set;}
-    public string embed_user {get; set;}
-        
-    // Generate a unique value to be used as nonce (number used only once) later:
-    private String generateRandomString(Integer len) 
-        {
+    // Secret key used for signing the embed URL for secure access
+    private string secret = 'Your Embed Secret';
+
+    // URL path to the Sigma embed, provided by the user
+    public String embed_path { get; set; }
+    
+    // User email for the embed session, provided by the user
+    public String embed_user { get; set; }
+
+    // Helper method to generate a random alphanumeric string of a given length
+    private String generateRandomString(Integer len) {
         final String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         String randStr = '';
-        while (randStr.length() < len) 
-            {
+        
+        // Loop until random string reaches the desired length
+        while (randStr.length() < len) {
             Integer idx = Math.mod(Math.abs(Crypto.getRandomInteger()), chars.length());
-            randStr += chars.substring(idx, idx+1);
-            }
-        return randStr;
+            randStr += chars.substring(idx, idx + 1);
         }
-        
-    // Declare string value to hold url to call Sigma embed:
-        public String getGenerateIframeUrl() {      
-        string url = this.embed_path + '?';
-        
-    // Append nonce to url using generateRandomString defined earlier
-        url += ':nonce=' + generateRandomString(16);
-              
-    // :client_id - account-specific permissions to apply to the embed  
-        url += '&:client_id=' + this.client_id;      
+        return randStr;
+    }
 
-    // Append the email address of Salesforce user:
-    // NOTE: For Sigma embedding the user must be created on the fly the first time and used thereafter:
+    // Generates a unique identifier (UUID) in the format 8-4-4-4-12
+    private String generateUUID() {
+        return generateRandomString(8) + '-' +
+               generateRandomString(4) + '-' +
+               generateRandomString(4) + '-' +
+               generateRandomString(4) + '-' +
+               generateRandomString(12);
+    }
+
+    // Main method to construct the full iframe URL for embedding Sigma
+    public String getGenerateIframeUrl() {
+        // Initialize URL with the base embed path
+        String url = this.embed_path + '?';
+        
+        // Add a unique nonce parameter using the UUID
+        url += ':nonce=' + generateUUID();
+
+        // Append client ID to authenticate the request
+        url += '&:client_id=' + this.client_id;
+
+        // Add the user email to specify the session owner
         url += '&:email=' + this.embed_user;
-        
-    // APPEND External_user_id - a unique string identifying the user. We are using Salesforce user email address:
-        url += '&:external_user_id=' + this.embed_user;
 
-    // Append Sigma Team of user:
-    // IMPORTANT: The embedded content (WB, Page or Viz) must be shared with the Team in Sigma or permission will be denied:
+        // Set static external user ID and team parameters for this session
         url += '&:external_user_team=Sales_Managers';
 
-    // Append the Sigma account type that you wish for each user to inherit during creation. In this example, we have an account
-    // type called 'Viewer' with viewer permissions:
+        // Specify the account type and mode for the embed session
         url += '&:account_type=Viewer';
-        
-    // Append the Sigma embedding method to the url. For secure embedding, always use "userbacked":
         url += '&:mode=userbacked';
 
-    // Append a value to the url (in seconds) the user is allowed to view the embed before the url becomes invalid
-        url += '&:session_length=86400';
-              
-    // Append current time as UNIX Timestamp to url
-        url += '&:time=' + json.serialize(datetime.now().getTime()/1000);
-                           
-    // Generate the cryptographic hash key using a combination of the URL and Sigma secret using SHA256 cypher
-        url += '&:signature=' + EncodingUtil.convertToHex(Crypto.generateMac('HMacSHA256',Blob.valueOf(url),Blob.valueOf(this.secret))); 
-        
-    // Class return of url to be used by Visualforce Component
-        return url;
+        // Set session length in seconds
+        url += '&:session_length=3600';
+
+        // Add a timestamp for the session start time
+        url += '&:time=' + String.valueOf(DateTime.now().getTime()/1000);
+
+        // Generate and append a secure signature using HMAC SHA-256 with the secret
+        url += '&:signature=' + EncodingUtil.convertToHex(
+            Crypto.generateMac('HMacSHA256', Blob.valueOf(url), Blob.valueOf(this.secret))
+        );
+
+        return url; // Return the fully constructed and signed URL
     }
 }
 ```
@@ -217,11 +230,10 @@ Create a `new` one called `SigmaEmbedComponent` and paste the following code int
 
 ```code
 <apex:component controller="SigmaEmbedClass">
-    <apex:attribute name="embedPath" description="embed URL generated by Sigma" type="String" required="true" assignTo="{!embed_path}"/>
-    <apex:attribute name="embedUser" description="Salesforce user email" type="String" required="true" assignTo="{!embed_user}"/>  
-    <apex:iframe id="sigmaEmbed" src="{!generateIframeUrl}" frameborder="0" ></apex:iframe> 
-</apex:component>
-                        
+    <apex:attribute name="embedPath" description="Embed URL generated by Sigma" type="String" required="true" assignTo="{!embed_path}"/>
+    <apex:attribute name="embedUser" description="Salesforce user email" type="String" required="true" assignTo="{!embed_user}"/>
+    <apex:iframe id="sigmaEmbed" src="{!generateIframeUrl}" frameborder="0"></apex:iframe> 
+</apex:component>                        
 ```
 </aside>
 
@@ -232,19 +244,12 @@ In the left sidebar menu use Quick Find to search for `Visualforce` and select `
 <aside class="negative">
 <strong>NOTE:</strong><br> Create a new one called "SigmaSales" and paste the following code into the window, replacing for "Your Sigma Embed Path Here".
 
-
 ```code
 <apex:page >
-    <c:SigmaEmbedComponent embedPath="Your Sigma Embed Path here" embedUser="{!$User.Email}"/>
-    <script>
-        document.getElementById('sigmaEmbed').height = window.innerHeight - 10;
-        document.getElementById('sigmaEmbed').width = window.innerWidth - 15;
-        document.body.setAttribute('style', 'overflow: hidden; position: fixed;');
-    </script>
+    <c:SigmaEmbedComponent embedPath="YOUR EMBED PATH" embedUser="{!$User.Email}"/>
 </apex:page>
 ```
 </aside>
-
 
 Click `Save`:
 
@@ -288,12 +293,254 @@ We can then `select SigmaSales` from the right side menu as shown:
 
 We will want to set the `Height to 800` so that the Component is taller on the page:
 ![Alt text](assets/sf16.png)
-
+embe
 Click `Save`.
 
 Navigate back to the Sales homepage (or the page where you decided to embed) and see the results:
 
 ![Alt text](assets/sf17.png)
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Passing Values to Sigma
+Duration: 5
+
+It is often useful to enhance the level of interactivity between Salesforce and Sigma by passing values to Sigma when a user clicks a value in Salesforce.
+
+For example, a user viewing an account list in Salesforce may want to select a specific account and have Sigma filter the embedded data to display information relevant to that account only.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Since your Salesforce opportunity list will not contain the same key identifiers as Sigma's sample data, we won't build a fully functional example. Instead, we will demonstrate how to code the Salesforce key values to pass to Sigma.
+</aside>
+
+### Example: Salesforce AccountID
+Lets use the example of a Salesforce user clicking on an opportunity and passing that unique `AccountID` to Sigma, where it will show the value in a workbook page.
+
+The revised code blocks are provided below, with comments on what has been added.
+
+The previous version was simple, with no dynamic components or interaction with Salesforce account data. It just displayed a Sigma embed in a static manner, without specific account-based customization.
+
+Replacing the code with the following sections will providing an example of passing a value directly to a specific Sigma dashboard control from within Salesforce.
+
+The Sigma control would then be used to filter the data displayed in the Sigma embed.
+
+### Apex Class
+The revised code allows dynamic account selection, passing the selected `accountId` to Sigma and displaying it within Sigma using a specified control.
+
+Major changes are:
+
+**1: Account Selection:**
+- The revised code queries a list of accounts from Salesforce, presenting them as selectable options.
+- A selected account’s Id is stored in `embed_account` and used to dynamically update the Sigma embed URL.
+
+**2: Dynamic URL Generation with Control ID:**
+- Instead of passing static session parameters, the revised URL includes the selected accountId using Sigma’s control ID format; `SF_AccountID`.
+- This enables Sigma to display specific data or text related to the selected account.
+
+**3: Improved Debugging and Default Values:**
+- Added debug statements to trace variable states.
+- Initialized `selectedAccountId` with a default placeholder text ("Select an account to show") for a clear indication of the initial state.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The debugging code can be removed with no impact to the functionality. It can be useful to observe Salesforce debug logs when working with development of Apex classes and other custom Salesforce customizations. 
+</aside>
+
+Here is the revised Apex class code, so we can just replace the existing class code in total and save after replacement.
+
+Make sure to update the `client_ID` an `secret` values in this code:
+
+```code
+public class SigmaEmbedClass {
+    private string client_id = 'YOUR SIGMA CLIENT_ID';
+    private string secret = 'YOUR SIGMA SECRET';
+    public string embed_path { get; set; }
+    public string embed_user { get; set; }
+    public string embed_account { get; set; }
+    public String selectedAccountId { get; set; }
+    public List<Account> accounts { get; set; }
+
+    public SigmaEmbedClass() {
+        accounts = [SELECT Id, Name FROM Account LIMIT 10];
+        // Set default placeholder text for the initial load
+        selectedAccountId = 'Select an account to show';
+        System.debug('Initial selectedAccountId set to: ' + selectedAccountId);
+    }
+    
+    public PageReference selectAccount() {
+        System.debug('selectAccount() called');
+        System.debug('selectedAccountId before assignment: ' + selectedAccountId);
+        
+        // Update embed_account with the selected account ID when an account is chosen
+        embed_account = selectedAccountId;
+        
+        System.debug('embed_account after assignment in selectAccount: ' + embed_account);
+        return null;
+    }
+
+    private String generateRandomString(Integer len) {
+        final String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        String randStr = '';
+        while (randStr.length() < len) {
+            Integer idx = Math.mod(Math.abs(Crypto.getRandomInteger()), chars.length());
+            randStr += chars.substring(idx, idx + 1);
+        }
+        return randStr;
+    }
+public String getGenerateIframeUrl() {      
+    System.debug('getGenerateIframeUrl() called');
+    
+    string url = this.embed_path + '?';
+    url += ':nonce=' + generateRandomString(16);
+    url += '&:allow_export=true';
+    url += '&:time=' + json.serialize(datetime.now().getTime()/1000);
+    url += '&:session_length=86400';
+    url += '&:mode=explore';
+    url += '&:external_user_id=' + EncodingUtil.urlEncode(this.embed_user, 'UTF-8');
+    
+    // Pass the account ID to the control ID in Sigma
+    String controlId = 'SF_AccountID'; // Replace with the actual control ID
+    url += '&' + EncodingUtil.urlEncode(controlId, 'UTF-8') + '=' + EncodingUtil.urlEncode(this.embed_account, 'UTF-8').replace('+', '%20');
+
+    url += '&:client_id=' + this.client_id;
+    url += '&:signature=' + EncodingUtil.convertToHex(Crypto.generateMac('HMacSHA256', Blob.valueOf(url), Blob.valueOf(this.secret))); 
+
+    System.debug('Generated URL with Control ID: ' + url);
+    return url;
+    }
+}
+```
+
+`Save` the changes. Do not use `Quick Save` for this step.
+
+### Visualforce Component
+This revised component code now dynamically passes the selected `accountId` from Salesforce to Sigma, allowing Sigma to display content based on that account selection.
+
+Major changes are:
+
+**1: Dynamic Account Passing:**
+- The embedAccount attribute is now required, but its purpose has changed significantly: it directly links to embed_account in the `SigmaEmbedClass`, which holds the dynamically selected account ID.
+
+**2: URL Construction with Dynamic Account Control ID::**
+-   The `generateIframeUrl` method in `SigmaEmbedClass` now dynamically incorporates the selected `accountId` via a specified control ID ("SF_AccountID", which we will create shortly), which allows the Sigma embed to reflect account-specific content. This change means that each time `generateIframeUrl` is called, it reflects the current account selection, rather than a static embed.
+
+- The revised component leverages the `embedAccount` dynamically to ensure that the URL in the iframe changes based on the user’s selection in real-time, improving interactivity.
+
+Here is the revised Visualforce component code, so we can just replace the existing `component` code in total and save after replacement:
+
+```code
+<apex:component controller="SigmaEmbedClass">
+    <apex:attribute name="embedPath" description="Embed URL generated by Sigma" type="String" required="true" assignTo="{!embed_path}"/>
+    <apex:attribute name="embedUser" description="Salesforce user email" type="String" required="true" assignTo="{!embed_user}"/>
+    <apex:attribute name="embedAccount" description="Salesforce Account ID" type="String" required="true" assignTo="{!embed_account}"/>
+    <apex:iframe id="sigmaEmbed" src="{!generateIframeUrl}" frameborder="0"></apex:iframe> 
+</apex:component>
+```
+
+`Quick Save` the changes.
+
+### Visualforce Page
+The revised page list some accounts from Salesforce and dynamically updates the Sigma embed based on the selected account. The Sigma embed will show the selected `Account_ID` passed from Salesforce.
+
+The Salesforce account clicked will appear in the embed using a Sigma `CONTROL ELEMENT` > `LIST VALUES` control.
+
+Major changes are:
+
+**1: Dynamic Account Selection with Command Link:**
+- Each account name in the `pageBlockTable` is now paired with a "View in Sigma" link. When a user clicks this link, it triggers the `selectAccount` method in `SigmaEmbedClass`, updating the `selectedAccountId` with the clicked account’s ID.
+- The use of `apex:param` within the `commandLink` ensures that the correct `accountId` is passed to the controller, allowing Sigma to receive the specific account ID dynamically.
+
+
+**2: Conditional Display of Sigma Embed:**
+- A Salesforce `outputPanel` with embedPanel ID wraps the Sigma embed section, allowing it to be re-rendered dynamically when the selected account changes.
+- Conditional Salesforce `outputText` components are used to show a placeholder message ("Select an account to show") if no account is selected, improving user guidance.
+- Once an account is selected, the outputText conditionally displays the `SigmaEmbedComponent`, passing the dynamically updated `selectedAccountId` as `embedAccount.`
+
+**3: Embedding Sigma with Account-Specific Context:**
+- The `SigmaEmbedComponent` in the embed panel now receives the selected `accountId` dynamically, updating the Sigma embed URL to reflect the current account context.
+- This dynamic embedding allows Sigma to display data or information specific to the chosen account, providing the desired interactivity.
+
+Here is the revised Visualforce page code, so we can just replace the existing page code in total and save after replacement:
+
+```code
+<apex:page controller="SigmaEmbedClass">
+    <apex:form >
+        <apex:pageBlock title="Account List">
+            <apex:pageBlockTable value="{!accounts}" var="account">
+                <apex:column value="{!account.Name}"/>
+                <apex:column >
+                    <apex:commandLink value="View in Sigma" action="{!selectAccount}" reRender="embedPanel">
+                        <apex:param name="accountId" value="{!account.Id}" assignTo="{!selectedAccountId}"/>
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <!-- Wrap the iframe in an outputPanel with ID "embedPanel" to enable re-rendering -->
+        <apex:outputPanel id="embedPanel">
+            <apex:pageBlock title="Sigma Embed">
+                <apex:outputText rendered="{!selectedAccountId == 'Select an account to show'}">
+                    <p>Select an account to show</p>
+                </apex:outputText>
+                <apex:outputText rendered="{!selectedAccountId != 'Select an account to show'}">
+                    <c:SigmaEmbedComponent embedPath="YOUR SIGMA EMBED PATH FOR THE NEW PAGE WITH CONTROL ELEMENT" 
+                                           embedUser="{!$User.Email}" 
+                                           embedAccount="{!selectedAccountId}"/>
+                </apex:outputText>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>
+```
+
+`Quick Save` the changes.
+
+## Configuring Sigma 
+
+#### User Attribute
+In Sigma, navigate to `Administration` > `User Attributes` and click the `Create Attribute` button.
+
+Name the new attribute `sfaccount`. 
+
+Assign the new user attribute to the `Sales_Managers` team with a placeholder default value of `0`.
+
+Click `Save`:
+
+<img src="assets/sf19.png" width="800"/>
+
+#### Configure Sigma workbook
+Navigate back to the `Profit Planning Tool` workbook we used for the embed, place it in `Edit` mode and add a new workbook page.
+
+On the new page, add a new `UI ELEMENT` > `CONTROLS` > `LIST VALUES.`
+
+Configure it's properties to be:
+
+<img src="assets/sf20.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The `CONTROL_ID` used must match exactly, as it is reference in the Salesforce code by name.
+</aside>
+
+The `Control_ID` used needs to be `SF_AccountID`.
+
+`Publish` the workbook.
+
+Generate a new `Embed path` for the new page only:
+
+<img src="assets/sf21.png" width="600"/>
+
+Copy this new `Embed path` and use the new url to update the `Visualforce page` code with this new URL:
+
+<img src="assets/sf23.png" width="800"/>
+
+Save the `Visualforce page` after updating the url.
+
+### Testing the changes
+Click the `Preview` button to see the new Salesforce page render:
+
+<img src="assets/sf24.gif" width="800"/>
+
+For more information on sing controls to filter data in Sigma, see [Intro to control elements](https://help.sigmacomputing.com/docs/intro-to-control-elements#how-controls-work)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

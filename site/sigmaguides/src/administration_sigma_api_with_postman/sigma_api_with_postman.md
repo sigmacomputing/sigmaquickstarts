@@ -155,6 +155,8 @@ Click on the `Add` button to create a new environment.
 
 <img src="assets/pmRevised2.png" width="800"/>
 
+In the modal window that Postman display, select `Environment`.
+
 Give the new environment a meaningful name, such as `Sigma AWS Production`.
 
 We need to add some variables. The `Current Value` will populate automatically and in the case of the blank variables, will populate with we actually authenticate. 
@@ -243,7 +245,7 @@ Provide the request url using the curly-brace format to leverage our environment
 
 We want to persist this new `access_token` in our environment variable under the same name.
 
-To do that, we need to add this script to the authenticate method, under the `Tests` tab:
+To do that, we need to add this script to the authenticate method, under the `Scripts` > `Post-response` tab:
 ```code
 let responseData = pm.response.json(); // Extract the JSON response
 pm.environment.set("access_token", responseData.access_token); // Store the access token as an environment variable

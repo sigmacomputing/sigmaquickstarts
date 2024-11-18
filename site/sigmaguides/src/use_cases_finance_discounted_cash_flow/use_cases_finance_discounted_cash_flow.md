@@ -3,9 +3,9 @@ id: use_cases_finance_discounted_cash_flow
 summary: use_cases_finance_discounted_cash_flow
 categories: use-cases
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-09-27
 
 # Discounted Cash Flow
@@ -158,7 +158,7 @@ In the `CV 0` column, insert:
 If([Rank of Year of Date] > 1, Lag([ECV 0], 1, Null))
 ```
 
-This gives us:
+This gives us (after sorting the `Year of Date` column to show the most recent date first):
 
 <img src="assets/dcf_8.png" width="800"/>
 

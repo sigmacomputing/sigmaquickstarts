@@ -1062,6 +1062,38 @@ The expected response is (showing two members being added in the screenshot):
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Workbook: Change Owner
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript-input-tables)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script updates the ownership of a specified workbook (referred to as an `inode`) in Sigma by changing its ownerId. 
+
+The script achieves this by calling Sigma's `Update an inode` API endpoint, using the workbook ID (WORKBOOK_ID) to identify the inode and a new owner ID (MEMBERID) to assign ownership.
+
+WORKBOOK_ID and MEMBERID use values in the .env file. For demonstration usage, these can be hardcoded but normally would be generated programmatically as well. 
+
+It logs concise details about each found element,  `id`, `urlId` `name`, `type` `parentId` ect.
+
+### Running the Script
+Open the file `update-owner.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics59.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 

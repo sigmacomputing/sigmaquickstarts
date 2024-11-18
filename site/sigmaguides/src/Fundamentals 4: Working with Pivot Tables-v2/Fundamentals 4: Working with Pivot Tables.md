@@ -121,7 +121,7 @@ DateTrunc("year", [Date])
 
 <img src="assets/pivot2_6.png" width="800"/>
 
-Sigma has also provided all the most common functions (ie: write the function for you!) as menu options off of a column, so you could have just applied that too:
+Sigma has also provided all the most common functions (i.e., write the function for you!) as menu options off of a column, so you could have just applied that too:
 
 <img src="assets/pivot2_7.png" width="600"/>
 
