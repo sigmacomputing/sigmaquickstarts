@@ -27,7 +27,30 @@ All other features are considered released (**GA** or generally available).
 ## Administration
 Duration: 20
 
-## Audit Logging (Beta)
+### Audit Logging (Beta)
+
+**New connection schema and dimension tables:**<br>
+The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema, with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
+
+<img src="assets/fff_08_01.png" width="300"/>
+
+The dimension tables can be joined with the AUDIT_LOGS table to add context to audit log events. 
+
+For example, join AUDIT_LOGS with the DOCUMENTS table to add document attributes (e.g., creation date, document path, and archive status) to event entries related to user interactions with workbooks, datasets, etc.
+
+<img src="assets/fff_08_02.png" width="700"/>
+
+**List of New Dimension tables:**
+  <ul>
+     <li><Strong>CONNECTIONS:</Strong> Connection attributes</li>
+     <li><Strong>DOCUMENTS:</Strong> Document attributes (for folders, workbooks, datasets, etc.)</li>
+     <li><Strong>SCHEDULED_NOTIFICATIONS:</Strong> Notification attributes for scheduled exportss</li>
+     <li><Strong>SENDGRID_LOGS:</Strong> Email attributes for exports</li>
+     <li><Strong>TEAMS:</Strong> Organization team attributes</li>
+     <li><Strong>USERS:</Strong> Organization user attributes</li>
+</ul>
+
+### Audit Log `SIGMA_SHARED` schema additions
 The `SIGMA_SHARED` schema in the Sigma Audit Logs connection now features the following dimension tables containing information about your organization:
 
 **TEAM_MEMBERS:**<br>
@@ -46,14 +69,59 @@ These new tables can be joined with the AUDIT_LOGS table to add context to audit
 
 [There is a QuickStart on using Audit Logs here:](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
 
-### User Attribute assignment for org members:
-Prior to this feature, administrators had to create a Sigma Team in order to assign specific attributes to users, who needed to be a member of this team.
+### Bulk actions for admins
+In order to improve the admin experience and provide admin functionality at scale, numerous actions can now be performed in bulk. 
 
-Sigma now supports assigning specific user attribute values directly to users. 
+  <li></li>
+    <li><Strong>User Management:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk password reset</li>
+           <li>Bulk invite resend</li>
+           <li>Bulk invite delete</li>
+           <li>Bulk reactivate disabled users</li>
+        </ul>
+    </li>
+</ul>
 
-For example, the user `Finance TestUser` has the Attribute `Region` set to the value `East`. This attribute will be used to filter data automatically, to the "East" region.
+  <li></li>
+    <li><Strong>Team Management:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk add team members</li>
+           <li>Bulk team member transfer</li>
+           <li>Bulk remove members from team</li>
+           <li>Bulk team delete</li>
+        </ul>
+    </li>
+</ul>
 
-<img src="assets/fff_09_2023_01.png" width="800"/>
+  <li></li>
+    <li><Strong>User Attributes and Exports:</Strong> </li>
+    <li>
+        <ul>
+           <li>Bulk delete of User Attributes</li>
+           <li>Bulk delete of Scheduled Exports</li>
+        </ul>
+    </li>
+</ul>
+
+### Column-Level Security (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+Column-Level Security provides granular control over data access allowing you the flexibility to restrict or grant access to column-level data. This ensures that the security of sensitive or confidential information is only accessible to authorized users.  Column-Level Security (CLS) is managed through team membership and user attributes.  
+
+**Column-Level Security provides the following benefits:**
+
+ <ul>
+      <li><strong>Data Protection:</strong> Secures columns that contain sensitive information.</li>
+      <li><strong>Data sharing and collaboration:</strong> Organizations can share specific columns with external parties or partners without exposing the entire dataset.</li>
+      <li><strong>Data Confidentiality in Multi-Tenant Environments:</strong> In multi-tenant systems or cloud-based environments, where multiple clients or orgs share the same infrastructure, CLS ensures that each tenant's data remains isolated and protected from other tenants.</li>
+      <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
+</ul>
 
 ### Custom Home Pages (Beta)
 
@@ -111,90 +179,30 @@ When a user clicks on one of the buttons, they stay inside Sigma, but can review
 <strong>NOTE:</strong><br> Anything you can create in a Sigma workbook can be used in a custom home page. Let your imagination run wild!
 </aside>
 
-### Audit Logging (BETA)
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
-</aside>
-
-**New connection schema and dimension tables:**<br>
-The Sigma Audit Logs connection now features a `SIGMA_SHARED` schema, with dimension tables containing information about your Sigma organization's resources, objects, assets, etc.
-
-<img src="assets/fff_08_01.png" width="300"/>
-
-The dimension tables can be joined with the AUDIT_LOGS table to add context to audit log events. 
-
-For example, join AUDIT_LOGS with the DOCUMENTS table to add document attributes (e.g., creation date, document path, and archive status) to event entries related to user interactions with workbooks, datasets, etc.
-
-<img src="assets/fff_08_02.png" width="700"/>
-
-**List of New Dimension tables:**
-  <ul>
-     <li><Strong>CONNECTIONS:</Strong> Connection attributes</li>
-     <li><Strong>DOCUMENTS:</Strong> Document attributes (for folders, workbooks, datasets, etc.)</li>
-     <li><Strong>SCHEDULED_NOTIFICATIONS:</Strong> Notification attributes for scheduled exportss</li>
-     <li><Strong>SENDGRID_LOGS:</Strong> Email attributes for exports</li>
-     <li><Strong>TEAMS:</Strong> Organization team attributes</li>
-     <li><Strong>USERS:</Strong> Organization user attributes</li>
-</ul>
-
-### Bulk actions for admins
-
-In order to improve the admin experience and provide admin functionality at scale, numerous actions can now be performed in bulk. 
-
-  <li></li>
-    <li><Strong>User Management:</Strong> </li>
-    <li>
-        <ul>
-           <li>Bulk password reset</li>
-           <li>Bulk invite resend</li>
-           <li>Bulk invite delete</li>
-           <li>Bulk reactivate disabled users</li>
-        </ul>
-    </li>
-</ul>
-
-  <li></li>
-    <li><Strong>Team Management:</Strong> </li>
-    <li>
-        <ul>
-           <li>Bulk add team members</li>
-           <li>Bulk team member transfer</li>
-           <li>Bulk remove members from team</li>
-           <li>Bulk team delete</li>
-        </ul>
-    </li>
-</ul>
-
-  <li></li>
-    <li><Strong>User Attributes and Exports:</Strong> </li>
-    <li>
-        <ul>
-           <li>Bulk delete of User Attributes</li>
-           <li>Bulk delete of Scheduled Exports</li>
-        </ul>
-    </li>
-</ul>
-
-### Column-Level Security (Beta)
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
-</aside>
-
-Column-Level Security provides granular control over data access allowing you the flexibility to restrict or grant access to column-level data. This ensures that the security of sensitive or confidential information is only accessible to authorized users.  Column-Level Security (CLS) is managed through team membership and user attributes.  
-
-**Column-Level Security provides the following benefits:**
-
- <ul>
-      <li><strong>Data Protection:</strong> Secures columns that contain sensitive information.</li>
-      <li><strong>Data sharing and collaboration:</strong> Organizations can share specific columns with external parties or partners without exposing the entire dataset.</li>
-      <li><strong>Data Confidentiality in Multi-Tenant Environments:</strong> In multi-tenant systems or cloud-based environments, where multiple clients or orgs share the same infrastructure, CLS ensures that each tenant's data remains isolated and protected from other tenants.</li>
-      <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
-</ul>
-
 ### New permission in Account Types
 This new permission provides the option to restrict or grant folder creation permissions. To configure this go to `Administration` > `Account Types` > `Create New Account Type`.
 
 To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
+
+### User Attribute assignment for org members:
+Prior to this feature, administrators had to create a Sigma Team in order to assign specific attributes to users, who needed to be a member of this team.
+
+Sigma now supports assigning specific user attribute values directly to users. 
+
+For example, the user `Finance TestUser` has the Attribute `Region` set to the value `East`. This attribute will be used to filter data automatically, to the "East" region.
+
+<img src="assets/fff_09_2023_01.png" width="800"/>
+
+### Native JSON support for BigQuery
+Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
+
+### Remove Team Members in Bulk
+Admins can now remove multiple members of a team using a bulk action. To remove team members in bulk, go to your `Administration` > `Teams` > select a team > select members to remove > and click the `Remove` from team button.
+
+For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/docs/manage-teams)
+
+### Reset Password for Users in Bulk
+Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
 
 ### User Impersonation
 Administrators can now impersonate users from the Team page in the Admin portal. 
@@ -214,17 +222,6 @@ To stop impersonation:
 <img src="assets/fffJune2023_6.png" width="800"/>
 
 To learn more about user impersonation [click here.](https://help.sigmacomputing.com/docs/impersonate-users)
-
-### Remove Team Members in Bulk
-Admins can now remove multiple members of a team using a bulk action. To remove team members in bulk, go to your `Administration` > `Teams` > select a team > select members to remove > and click the `Remove` from team button.
-
-For more information about managing teams, [see Manage Teams.](https://help.sigmacomputing.com/docs/manage-teams)
-
-### Reset Password for Users in Bulk
-Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
-
-### Native JSON support for BigQuery
-Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
 
 ### Warehouse Views
 Workbook warehouse views are now generally available **(GA)**. 
