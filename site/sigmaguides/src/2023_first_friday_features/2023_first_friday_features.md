@@ -5,10 +5,10 @@ categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: first_friday_features_2023
+tags: end_of_year_compilations
 lastUpdated: 2024-11-01
 
-# 2023 First Friday Features Compilation
+# 2023 Compliation
 
 ## Overview 
 Duration: 5 
