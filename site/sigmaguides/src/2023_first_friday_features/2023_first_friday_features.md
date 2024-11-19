@@ -123,6 +123,11 @@ Column-Level Security provides granular control over data access allowing you th
       <li><strong>Data Masking and Anonymization:</strong> Combine CLS with data masking and anonymization techniques to protect sensitive data, while allowing certain authorized users to work with pseudo or obfuscated values.</li>
 </ul>
 
+### Connect to MySQL (BETA)
+You can now connect Sigma directly to your data in a MySQL data warehouse. Learn how to create and manage the connection in Connect to MySQL.
+
+<img src="assets/fffJune2023_3.png" width="800"/>
+
 ### Custom Home Pages (Beta)
 
 <aside class="positive">
@@ -184,15 +189,6 @@ This new permission provides the option to restrict or grant folder creation per
 
 To learn how to configure federated access in Sigma, [refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_how_to_federate_access_with_sigma/index.html?index=..%2F..index#0)
 
-### User Attribute assignment for org members:
-Prior to this feature, administrators had to create a Sigma Team in order to assign specific attributes to users, who needed to be a member of this team.
-
-Sigma now supports assigning specific user attribute values directly to users. 
-
-For example, the user `Finance TestUser` has the Attribute `Region` set to the value `East`. This attribute will be used to filter data automatically, to the "East" region.
-
-<img src="assets/fff_09_2023_01.png" width="800"/>
-
 ### Native JSON support for BigQuery
 Sigma provides full native support for the JSON data type in BigQuery connections. This enables you to process and analyze semi-structured data effectively. For details on how to use JSON, see Google documentation on [Working with JSON data in GoogleSQL](https://cloud.google.com/bigquery/docs/json-data).
 
@@ -203,6 +199,15 @@ For more information about managing teams, [see Manage Teams.](https://help.sigm
 
 ### Reset Password for Users in Bulk
 Admins can now initiate a password reset for multiple users with a bulk action setting. The selected users receive an email alerting them to reset their password. 
+
+### User Attribute assignment for org members:
+Prior to this feature, administrators had to create a Sigma Team in order to assign specific attributes to users, who needed to be a member of this team.
+
+Sigma now supports assigning specific user attribute values directly to users. 
+
+For example, the user `Finance TestUser` has the Attribute `Region` set to the value `East`. This attribute will be used to filter data automatically, to the "East" region.
+
+<img src="assets/fff_09_2023_01.png" width="800"/>
 
 ### User Impersonation
 Administrators can now impersonate users from the Team page in the Admin portal. 
@@ -267,55 +272,14 @@ For more information, see [Create and manage workbook warehouse views](https://s
 ## API
 Duration: 20
 
+### Auto-select input table connection and schema:
+When an embed user creates an input table, Sigma **automatically** selects the connection and write schema if the user only has access to a single connection with one schema. 
+
+This update bypasses the `Select a connection` requirement when applicable, providing a more simple and streamlined user workflow. 
+
 ### Bug Fixes
+
 `POST /v2/teams` API no longer limits the number of team members returned.
-
-### New endpoint: Teams
-Returns a paginated list of team members and can be used to identify team admins, based on a unique identifier (teamId)
-
-GET /v2/teams/{teamId}/members
-
-```code
-curl -X GET "https://api.sigmacomputing.com/v2/teams//members" \
- -H "accept: application/json" \
-```
-
-[Try it in Swagger](https://docs.sigmacomputing.com/?_gl=1*1clytiy*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NjU0NzIxMy4yNDkuMS4xNjk2NTQ3MjI3LjQ2LjAuMA..#get-/v2/teams/-teamId-/members)
-
-### The `GET /v2/workbooks/{workbookId}/embeds` method now includes `public` in the response to indicate if the embed is an application or public workbook.
-
-[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/embeds)
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### The `GET /v2/workbooks/{workbookId}/controls` method returns the name and value-type for all Sigma `Controls` present in the specified workbook:
-
-<img src="assets/fff_28.png" width="800"/>
-
-[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/controls)
-
-
-### A new parameter, `userKind`, is now available for the `Update a Member in Your Organization` endpoint. This parameter defines the type of user. 
-
-The three possible values are `guest`, `internal`, or `embed`. 
-
-### Changes to existing methods
-
-The **/v2/workbooks/{workbookId}/queries** endpoint now returns elementName. 
-
-The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** endpoint now returns name and columns.   
-
-The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** now returns visualization Type.  
-
-### Members
-You can now use the `PATCH /v2/members/{memberId}` endpoint to reassign specific documents when you archive a member. In the request body, set `isArchived`` to `true`, and set `newOwnerId` to the member who will receive the documents from the archived member.
-
-### Workbooks
-Workbooks enable you to manage specific tasks within your system. When you create a new workbook using the `POST /v2/workbooks` endpoint, you can assign an owner by passing the `ownerId` in the request body. 
-
-If you don't include this, the owner is the user whose token was used to call the API.
-
-A new query parameter is also available for this endpoint: `versionTagId`. For more information on using Sigma version tagging, [click here](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
 ### Connections
 The `/v2/connections` endpoint now returns the following connection metadata fields:
@@ -344,6 +308,53 @@ The `/v2/connections` endpoint now returns the following connection metadata fie
   "materializationWarehouse": "string"
 }
 ```
+
+### New endpoint: Teams
+Returns a paginated list of team members and can be used to identify team admins, based on a unique identifier (teamId)
+
+GET /v2/teams/{teamId}/members
+
+```code
+curl -X GET "https://api.sigmacomputing.com/v2/teams//members" \
+ -H "accept: application/json" \
+```
+
+[Try it in Swagger](https://docs.sigmacomputing.com/?_gl=1*1clytiy*_ga*MTAyNTE4NzQ5NC4xNjg3NTUxNjQ5*_ga_PMMQG4DCHC*MTY5NjU0NzIxMy4yNDkuMS4xNjk2NTQ3MjI3LjQ2LjAuMA..#get-/v2/teams/-teamId-/members)
+
+### Changes to endpoints
+
+**1:** The `GET /v2/workbooks/{workbookId}/embeds` method now includes `public` in the response to indicate if the embed is an application or public workbook.
+
+[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/embeds)
+
+<img src="assets/horizonalline.png" width="800"/>
+
+**2:** The `GET /v2/workbooks/{workbookId}/controls` method returns the name and value-type for all Sigma `Controls` present in the specified workbook:
+
+<img src="assets/fff_28.png" width="800"/>
+
+[Documentation Link:](https://docs.sigmacomputing.com/api/v2/#get-/v2/workbooks/-workbookId-/controls)
+
+**3:** A new parameter, `userKind`, is now available for the `Update a Member in Your Organization` endpoint. This parameter defines the type of user. 
+
+The three possible values are `guest`, `internal`, or `embed`. 
+
+**4:** The **/v2/workbooks/{workbookId}/queries** endpoint now returns elementName. 
+
+**5:** The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** endpoint now returns name and columns.   
+
+**6:** The **/v2/workbooks/{workbookId}/pages/{pageId}/elements** now returns visualization Type.  
+
+### Members
+You can now use the `PATCH /v2/members/{memberId}` endpoint to reassign specific documents when you archive a member. In the request body, set `isArchived`` to `true`, and set `newOwnerId` to the member who will receive the documents from the archived member.
+
+### Workbooks
+Workbooks enable you to manage specific tasks within your system. When you create a new workbook using the `POST /v2/workbooks` endpoint, you can assign an owner by passing the `ownerId` in the request body. 
+
+If you don't include this, the owner is the user whose token was used to call the API.
+
+A new query parameter is also available for this endpoint: `versionTagId`. For more information on using Sigma version tagging, [click here](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
+
 
 ## Bug Fixes
 Duration: 20
@@ -449,55 +460,74 @@ No release notes during this period.
 Duration: 20
 
 ### Bug Fixes:
-Sigma now verifies user account type permissions and only sends version tag email requests to users granted the `Create`, `edit`, and `publish` workbooks and `Apply tag` permissions. 
+**1** Sigma now verifies user account type permissions and only sends version tag email requests to users granted the `Create`, `edit`, and `publish` workbooks and `Apply tag` permissions. 
 
-Viewer-licensed users (who cannot edit workbooks or apply tags) no longer receive the requests.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-Initial clicks on list control elements in embedded workbooks no longer cause the iframe display to jump to the top of the workbook.
+**2** Viewer-licensed users (who cannot edit workbooks or apply tags) no longer receive the requests.
 
 <img src="assets/horizonalline.png" width="800"/>
 
-### New postMessage event for element errors:
-Elements that fail to load in embedded workbooks now trigger a postMessage event that includes the element ID, message, and API error code.
+**3** Initial clicks on list control elements in embedded workbooks no longer cause the iframe display to jump to the top of the workbook.
 
-{
-      type: 'workbook:chart:error';
-      nodeId: string;
-      message: string | undefined;
-      code: string;
-}
+<img src="assets/horizonalline.png" width="800"/>
 
-Where nodeId refers to the id of the element that failed to load in the embedded workbook, and the message and error code provide more info as to why. 
+**4** The PDF export feature now executes successfully in user-backed embeds.
 
-The errorCode will be one of the API error codes:<br>
-"EEXIST" | "EPERM" | "ENOENT" | "EACCES" | "EINVAL" | "ESTALE" | "ETIMEDOUT" | "EAGAIN" | "EFBIG" | "NETWORK" | "UNKNOWN"
+**5** Administrators can now view all scheduled exports for published and tagged versions at the workbook level. Schedule views are no longer impacted by version permissions granted to users who create the schedules.
 
-### Write-only data permission:
-Sigma provides access and capabilities based on a cumulative set of permissions inherited or granted at different levels of the data architecture (connection, schema, database table) and organizational structure (organization, team, user).
+**6** When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
 
-We have added an additional permission level to the list of permissions that already exist.
+**7** Use of the API to generate a public embed for workbook elements no longer results in a broken link.
 
-The `Can write only` permission restricts access to data while enabling users to create input tables and CSV upload that write data to the connection’s write-back destination. This permission type is ideal for enabling input tables and CSV uploads in embedded workbooks with restricted data access.
+**8** The embed menu now updates the workbook owner when ownership is reassigned.
 
-For more information about the new permission type, see [Data permissions overview.](https://help.sigmacomputing.com/hc/en-us/articles/24087589760659)
+**9** Resolved an issue that prevented users from deleting hidden pages in workbooks.
+
+**10** When swapping the source of a tagged workbook version, the `Sources` of tagged workbook dropdown now excludes connections with a different Cloud Data Warehouse or Database Management System provider as the initial source.
+
+### Dynamic Connection & Role Switching (DRS) 
+allows run-time swapping of the Snowflake Warehouse and Role for a Sigma connection. There are ways to leverage this using one or both Warehouse and/or Role along with different methods to restrict data access in Snowflake itself.
+
+[Please refer to this QuickStart on how to implement dynamic role switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
+
+To learn more about dynamic role switching with Snowflake, [click here.](https://help.sigmacomputing.com/docs/configure-user-attributes-on-a-snowflake-connection#role-attribute)
+
+### Convert Embed Users to Standard
+Admins can now convert Embed users to Standard, or vice versa. If you convert an Embed user to Standard, you must define their Account Type. 
+
+<img src="assets/07_2023_fff10.png" width="800"/>
+
+### Enhancements
+ <ul>
+      <li>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
+      <li>Users can now copy and paste elements in an embed.</li>
+</ul>
+
+### Embed Parameters
+The following optional user-backed embed parameters are now available:
+<ul>
+      <li><strong>show_workbook_name:</strong> A boolean value that displays the workbook name near the folder icon.</li>
+      <li><strong>menu_position:</strong> Allows you to change the position of the toolbar to top, bottom, or none.</li>
+</ul>
+
+The `:show_footer` embed parameter is now case-insensitive, for example: `allow :show_footer=False`.
 
 
-### Bug Fixes:
-1: The PDF export feature now executes successfully in user-backed embeds.
 
-2: Administrators can now view all scheduled exports for published and tagged versions at the workbook level. Schedule views are no longer impacted by version permissions granted to users who create the schedules.
+### Embed Sandbox is now generally available. 
 
-3: When a user configures an export for a tagged workbook version and doesn’t have access to the source workbook, the document version or bookmark field in the `Send Now` or `Schedule Exports` modal now defaults to the current version. The field no longer defaults to “Invalid selection.”
+For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/docs/embed-sandbox)
 
-4: Use of the API to generate a public embed for workbook elements no longer results in a broken link.
+<img src="assets/fffJune2023_4.png" width="800"/>
 
-5: The embed menu now updates the workbook owner when ownership is reassigned.
+### Embed sandbox URL syntax:
+Sigma no longer automatically adds colons (:) to separate parameters in the embed sandbox URL. 
 
-6: Resolved an issue that prevented users from deleting hidden pages in workbooks.
+For example, if you enter `param1=value1 param2=value2` in the `Other Parameters` field, the URL is appended with `?param1=value1&`   
+`param2=value2` 
 
-### New Optional Interface Parameters:
+Previously, the URL would be appended with `?:param1=value1&:param2=value2`.
+
+### New optional interface parameters:
 We have added three new parameters to the embedding API. 
 
 [You can review all the available parameters here.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
@@ -514,21 +544,27 @@ The **first_name and last_name** (have to use both) parameters replace the defau
 
 If both `first_name` and `last_name` parameters are absent, the current user keeps their current name (or, if a new user is created, their first name will be set to Embed, last name to User)
 
-### Bug Fixes:
-When swapping the source of a tagged workbook version, the `Sources` of tagged workbook dropdown now excludes connections with a different Cloud Data Warehouse or Database Management System provider as the initial source.
+### New optional parameter
+The parameter, **disable_mobile_view** for user-backed embeds is available. If this parameter is set to yes, workbooks won't automatically resize to the mobile layout.
 
-### Embed sandbox URL syntax:
-Sigma no longer automatically adds colons (:) to separate parameters in the embed sandbox URL. 
+<aside class="negative">
+<strong>NOTE:</strong><br> The optional parameter "disable_mobile_view" is only available after upgrading a workbook to the new grid layouts and is not supported in the Classic layouts.
+</aside>
 
-For example, if you enter `param1=value1 param2=value2` in the `Other Parameters` field, the URL is appended with `?param1=value1&`   
-`param2=value2` 
+### New postMessage event for element errors:
+Elements that fail to load in embedded workbooks now trigger a postMessage event that includes the element ID, message, and API error code.
 
-Previously, the URL would be appended with `?:param1=value1&:param2=value2`.
+{
+      type: 'workbook:chart:error';
+      nodeId: string;
+      message: string | undefined;
+      code: string;
+}
 
-### Auto-select input table connection and schema:
-When an embed user creates an input table, Sigma **automatically** selects the connection and write schema if the user only has access to a single connection with one schema. 
+Where nodeId refers to the id of the element that failed to load in the embedded workbook, and the message and error code provide more info as to why. 
 
-This update bypasses the `Select a connection` requirement when applicable, providing a more simple and streamlined user workflow. 
+The errorCode will be one of the API error codes:<br>
+"EEXIST" | "EPERM" | "ENOENT" | "EACCES" | "EINVAL" | "ESTALE" | "ETIMEDOUT" | "EAGAIN" | "EFBIG" | "NETWORK" | "UNKNOWN"
 
 ### New parameters available:
 We added the following optional parameters for user-backed embeds. 
@@ -540,57 +576,6 @@ We added the following optional parameters for user-backed embeds.
 </ul>
 
 [For more information about using embed parameters with Sigma, please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
-
-### Version Tagging for Embed Sandbox
-
-Admins can now use version tags with embeds, in the embed sandbox. 
-
-This allows you to test before using them in your production environment.
-
-For example:
-
-<img src="assets/fff_29.png" width="800"/>
-
-### Convert Embed Users to Standard
-Admins can now convert Embed users to Standard, or vice versa. If you convert an Embed user to Standard, you must define their Account Type. 
-
-<img src="assets/07_2023_fff10.png" width="800"/>
-
-### Embed Parameters
-The following optional user-backed embed parameters are now available:
-<ul>
-      <li><strong>show_workbook_name:</strong> A boolean value that displays the workbook name near the folder icon.</li>
-      <li><strong>menu_position:</strong> Allows you to change the position of the toolbar to top, bottom, or none.</li>
-</ul>
-
-The `:show_footer` embed parameter is now case-insensitive, for example: `allow :show_footer=False`.
-
-### Enhancements
- <ul>
-      <li>When a user downloads a CSV from an embed, a status bar now appears at the bottom of the screen.</li>
-      <li>Users can now copy and paste elements in an embed.</li>
-</ul>
-
-
-### Dynamic Connection & Role Switching (DRS) 
-allows run-time swapping of the Snowflake Warehouse and Role for a Sigma connection. There are ways to leverage this using one or both Warehouse and/or Role along with different methods to restrict data access in Snowflake itself.
-
-[Please refer to this QuickStart on how to implement dynamic role switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_7_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) using User Attributes defined in Sigma, with an Application Embed.
-
-To learn more about dynamic role switching with Snowflake, [click here.](https://help.sigmacomputing.com/docs/configure-user-attributes-on-a-snowflake-connection#role-attribute)
-
-### Embed Sandbox is now generally available. 
-
-For more information, [see Embed Sandbox.](https://help.sigmacomputing.com/docs/embed-sandbox)
-
-<img src="assets/fffJune2023_4.png" width="800"/>
-
-### New optional parameter
-The parameter, **disable_mobile_view** for user-backed embeds is available. If this parameter is set to yes, workbooks won't automatically resize to the mobile layout.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> The optional parameter "disable_mobile_view" is only available after upgrading a workbook to the new grid layouts and is not supported in the Classic layouts.
-</aside>
 
 ### Version Tagging
 Version Tagging is now generally available. For more information, see [Version Tagging](https://help.sigmacomputing.com/docs/version-tagging)
@@ -606,11 +591,47 @@ One of the benefits of this solution is your org can modify a Development workbo
 
 If you are interested in Version Tagging in an embedded scenario, [please refer to this QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
+
+### Version Tagging for Embed Sandbox
+
+Admins can now use version tags with embeds, in the embed sandbox. 
+
+This allows you to test before using them in your production environment.
+
+For example:
+
+<img src="assets/fff_29.png" width="800"/>
+
+### Write-only data permission:
+Sigma provides access and capabilities based on a cumulative set of permissions inherited or granted at different levels of the data architecture (connection, schema, database table) and organizational structure (organization, team, user).
+
+We have added an additional permission level to the list of permissions that already exist.
+
+The `Can write only` permission restricts access to data while enabling users to create input tables and CSV upload that write data to the connection’s write-back destination. This permission type is ideal for enabling input tables and CSV uploads in embedded workbooks with restricted data access.
+
+For more information about the new permission type, see [Data permissions overview.](https://help.sigmacomputing.com/hc/en-us/articles/24087589760659)
+
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
 
 ## Filters and Controls
 Duration: 10
+
+### Segmented controls:
+A segmented control provides a "linear strip" of two or more named segments. 
+
+Each segment acts exactly like a radio button, selecting the matches and excluding other data records. 
+
+When you have to make selections from a long list of values, segmented controls can be a better option because they provide a smaller subset of relevant values, a more economical dashboard layout, and a nicer overall experience for viewers.
+
+**There are two types of segmented controls:**
+Based on a manually-entered list. You must have values that select data on the target of the control.
+
+<img src="assets/fff_09_2023_06.png" width="800"/>
+
+Based on a column in the data source or workbook element. These controls can have a maximum of 5 distinct values, sorted on record count or alphabetically.
+
+<img src="assets/horizonalline.png" width="800"/>
 
 ### Tabular data in list filters and controls:
 
@@ -626,64 +647,28 @@ Suppose we want to search a 4M row table for just a list of target `Order Number
 
 <img src="assets/control_autofill.gif">
 
+### Controls
+You can use the new `Create list` from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Functions / Calculations
 Duration: 20
 
-### Metrics
-Metrics are custom aggregate calculations that you can reuse across workbook data elements that share the same data source: a dataset or a connection table
+### ArraySlice Function
+ArraySlice takes any array  and extracts a subarray given starting location/index and desired length. The length is optional field here. So if this is absent, then the entire array starting at start location will be returned.
 
-We have added search functionality to find reusable metrics saved to datasets and connection tables, to save your valuable time.
+It can take dynamic values, meaning you can choose different starting indices and different lengths for each row.
 
-<img src="assets/search_metrics.gif">
+If you specify starting location negative then it will consider it from the back of the array. So if you want to extract last element, just type ArraySlice([array], -1)
 
-For more information, [see Using Metrics](https://help.sigmacomputing.com/docs/create-and-manage-metrics).
+### ArrayDistinct function added
+ <strong>[ArrayDistinct](https://help.sigmacomputing.com/docs/arraydistinct)</strong> - Returns the array without duplicate values.<br>
 
-### DateLookback function (Beta):
-Sigma has added a new function that makes it easy to compare one column's value with another when working with dates.
+To learn more about array functions, [click here](hhttps://help.sigmacomputing.com/docs/array-functions-overview)
 
-For example, let's assume we have a table that includes an `Annual Gross Profit` column containing the gross profit for each year between 2019 and 2023. 
-
-We can use the `DateLookback` function to return the previous year’s gross profit and facilitate a period-over-period analysis. 
-
-We simply use this formula in a new column:
-
-```code
-DateLookback([Annual Gross Profit], [Year], 1, "year")
-```
-
-The formula above determines a one-year offset from the period in the `Year` column, then references the offset period and returns the corresponding value from the Annual Gross Profit column. 
-
-The results look like this:
-
-<img src="assets/fff_10_2023_5.png" width="500"/>
-
-The `DateLookBack` > `Period` can be and of these values:
-
-"year", "quarter", "month", "week", "day", "hour", "minute", or "second"
-
-### Regular expression (RegExp) text match filtering:
-We have added a new RegExp text match filter to enable you to filter text columns, based on specified patterns. 
-
-These included text strings, character classes, ranges, etc. 
-
-These filters support the RegExp syntax and behavior of the connected CDW or DBMS.
-
-You can either match or not match:
-
-**Matches RegExp:** Includes values that match one or more specified patterns.
-
-**Does not match RegExp:** Excludes values that match one or more specified patterns.
-
-For example, if you want to only see items in the `Product Line` that contain the text `TV` or `4K`:
-
-<img src="assets/regex.gif">
-
-<aside class="negative">
-<strong>NOTE:</strong><br> You can use the "disjunction operator (|)" to filter multiple values. For example, abc|xyz filters values that contain “abc” or “xyz.”
-</aside>
+<img src="assets/horizonalline.png" width="800"/>
 
 ### Custom Functions (Beta)
 <aside class="positive">
@@ -716,29 +701,30 @@ The user is made aware that this is a custom function by the bubble with the tit
 <strong>IMPORTANT:</strong><br> Custom functions unlock the world of capabilities for Sigma users. For example, let's say your data science team has created User Defined Functions in Snowflake, using Python. Custom functions can be created to leverage those into functions that are accessible to Sigma users in the same way we just demonstrated above, but without any knowledge of the underlying complexity. This can be extremely powerful.
 </aside>
 
-### New Financial Functions
-To complement the Pmt (payment) function that calculates the size of a loan repayment with a constant interest rate and equal installments, Sigma added two more financial functions:
+### DateLookback function (Beta)
+Sigma has added a new function that makes it easy to compare one column's value with another when working with dates.
 
-  <ul>
-    <li><strong>IPmt (interest payment):</strong> calculates the part of a loan payment that is allocated to the compounding interest on the loan.</li>
-    <li><strong>PPmt (principal payment):</strong> calculates the part of a loan payment that is allocated to reducing the principal owed.</li>
-  </ul>
+For example, let's assume we have a table that includes an `Annual Gross Profit` column containing the gross profit for each year between 2019 and 2023. 
 
-### ArraySlice Function
-ArraySlice takes any array  and extracts a subarray given starting location/index and desired length. The length is optional field here. So if this is absent, then the entire array starting at start location will be returned.
+We can use the `DateLookback` function to return the previous year’s gross profit and facilitate a period-over-period analysis. 
 
-It can take dynamic values, meaning you can choose different starting indices and different lengths for each row.
+We simply use this formula in a new column:
 
-If you specify starting location negative then it will consider it from the back of the array. So if you want to extract last element, just type ArraySlice([array], -1)
+```code
+DateLookback([Annual Gross Profit], [Year], 1, "year")
+```
 
-### ArrayDistinct function added: 
- <strong>[ArrayDistinct](https://help.sigmacomputing.com/docs/arraydistinct)</strong> - Returns the array without duplicate values.<br>
+The formula above determines a one-year offset from the period in the `Year` column, then references the offset period and returns the corresponding value from the Annual Gross Profit column. 
 
-To learn more about array functions, [click here](hhttps://help.sigmacomputing.com/docs/array-functions-overview)
+The results look like this:
 
-<img src="assets/horizonalline.png" width="800"/>
+<img src="assets/fff_10_2023_5.png" width="500"/>
 
-### Financial functions added:
+The `DateLookBack` > `Period` can be and of these values:
+
+"year", "quarter", "month", "week", "day", "hour", "minute", or "second"
+
+### Financial functions added
 Sigma has added support (based on customer feedback) for a few specific functions that are critical for financial calculations. They include:
 
  <strong>[CAGR](https://help.sigmacomputing.com/docs/cagr)</strong> - Returns the compound annual growth rate of an investment.<br>
@@ -752,7 +738,7 @@ Sigma has added support (based on customer feedback) for a few specific function
 
 <img src="assets/horizonalline.png" width="800"/>
 
-### Geographic functions added:
+### Geographic functions added
 Sigma added support for the Geography data type, and the corresponding set of 
 
  <strong>[Area](https://help.sigmacomputing.com/docs/area)</strong> - Calculates the area of a geography, in specified units.<br>
@@ -773,6 +759,24 @@ Sigma added support for the Geography data type, and the corresponding set of
 
 <img src="assets/horizonalline.png" width="800"/>
 
+### Metrics
+Metrics are custom aggregate calculations that you can reuse across workbook data elements that share the same data source: a dataset or a connection table
+
+We have added search functionality to find reusable metrics saved to datasets and connection tables, to save your valuable time.
+
+<img src="assets/search_metrics.gif">
+
+For more information, [see Using Metrics](https://help.sigmacomputing.com/docs/create-and-manage-metrics).
+
+### New financial functions
+To complement the Pmt (payment) function that calculates the size of a loan repayment with a constant interest rate and equal installments, Sigma added two more financial functions:
+
+  <ul>
+    <li><strong>IPmt (interest payment):</strong> calculates the part of a loan payment that is allocated to the compounding interest on the loan.</li>
+    <li><strong>PPmt (principal payment):</strong> calculates the part of a loan payment that is allocated to reducing the principal owed.</li>
+  </ul>
+
+
 ### Passthrough functions added
 You can also use two new Passthrough functions to support the Geography data type:
 
@@ -781,7 +785,28 @@ You can also use two new Passthrough functions to support the Geography data typ
 
 <img src="assets/horizonalline.png" width="800"/>
 
-### Repeat Function Added:
+### Regular expression (RegExp) text match filtering
+We have added a new RegExp text match filter to enable you to filter text columns, based on specified patterns. 
+
+These included text strings, character classes, ranges, etc. 
+
+These filters support the RegExp syntax and behavior of the connected CDW or DBMS.
+
+You can either match or not match:
+
+**Matches RegExp:** Includes values that match one or more specified patterns.
+
+**Does not match RegExp:** Excludes values that match one or more specified patterns.
+
+For example, if you want to only see items in the `Product Line` that contain the text `TV` or `4K`:
+
+<img src="assets/regex.gif">
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You can use the "disjunction operator (|)" to filter multiple values. For example, abc|xyz filters values that contain “abc” or “xyz.”
+</aside>
+
+### Repeat Function Added
 The Repeat function returns the results of repeating a string a specified number of times.
 
 For example, adding these five new columns:
@@ -799,7 +824,7 @@ Repeat([Product Type],-1)
 
 Repeat is one of the [Text functions](https://help.sigmacomputing.com/docs/callgeography) supported by Sigma.
 
-### VariancePop:
+### VariancePop
 The VariancePop function calculates **population variance**, which determines the spread of distribution or degree to which the column or grouped values deviate from the mean. 
 
 The addition of this function complements the existing Variance function, which estimates sample variance. For more information about these functions and when to use each, see [VariancePop](https://help.sigmacomputing.com/hc/en-us/articles/23724296595859) and [Variance.](https://help.sigmacomputing.com/hc/en-us/articles/23724255727123)
@@ -826,30 +851,20 @@ To utilize a calculation column, open the element menu, select `Add new column` 
 
 <img src="assets/fff_12_2023_5.png" width="800"/>
 
-### Duplicate Columns
-You are now able to duplicate columns in input table elements the same way you can in table and pivot table elements.
+### Checkbox column type in input tables
+Input tables now support a checkbox column type in place of the logical type. 
 
-Click the caret (<img src="assets/caret.png" width="25"/>) in the column header to open the column menu, then select `Duplicate column.`
+To update these to the Checkbox type, open the `column menu` and select `Change column type` > `Checkbox.` 
 
-<img src="assets/fff_12_2023_6.png" width="800"/>
+`True` values convert to selected checkboxes, while `False` values convert to cleared checkboxes. 
 
-### Input table edit versioning:
-Sigma supports multiple users working on content at the same time. This functionality is great for collaboration and efficiency but in the case of input tables, can create a problem too when saves are happening at nearly the same time. 
+Checkboxes enable additional workflow capabilities by simply capturing a "yes/no" response from a Sigma user. For example, record approvals, validations and enabling data triggers based on the user's response.
 
-For example, if one user is editing an input table in a workbook’s published version (in `View` or `Explore` mode) and another user concurrently publishes an updated version of that workbook, what happens to the input table data that is "in-flight"?
+<img src="assets/fff_09_2023_05.png" width="800"/>
 
-We have addressed this edge use case to prevent input table data loss without impacting collaboration.
+<img src="assets/horizonalline.png" width="800"/>
 
-When you click `Save` in the input table element, Sigma informs the user that there has been an update by another user.Sigma provides the option to load and apply your changes to the latest workbook version, so that nothing is lost. 
-
-Granted, this is an edge use-case, but we have taken action to address it so that no data is potentially lost.
-
-### Input table lineage summary card:
-In the workbook lineage, input table summary cards now include a `Connection` field that identifies the connection Sigma uses to write the input table data to the CDW/DBMS. This makes it easier to determine the input table's destination for the added data.
-
-<img src="assets/it_lineage.gif">
-
-### Conditional formatting in input tables:
+### Conditional formatting in input tables
 We have added the ability to apply rules based on specified conditions to format single colors, color scales, or data bars in input table columns. 
 
 Conditional formatting is accessed in the  `Element` format panel, or open a `column menu` and select `Conditional formatting`:
@@ -860,7 +875,54 @@ In this example, `FY23Forecasts` cell is red when the `At Risk` checkbox in the 
 
 <img src="assets/fff_10_2023_1.png" width="800"/>
 
-### Hyperlinks in input tables:
+### Conditional formatting is now available for input tables
+You may now apply conditional formatting to Input Tables in a similar fashion as you would typical tables, using conditional formatting rules.
+
+<img src="assets/input_table_cf.gif">
+<br>
+<br>
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Data autofill in input tables
+Input tables (and individual columns) now support autofill, which will save users time in certain use cases.
+
+Select a cell or range of cells, then drag the fill handle (blue box in the lower right corner of the selection) to highlight adjacent cells you want to populate. 
+
+Sigma automatically fills the highlighted cell or range with data based on the selected values and patterns. 
+
+For text and checkbox columns, Sigma repeats the selected cell values. 
+
+For number and date columns, Sigma projects values to continue a patterned sequence (like consecutive numbers or incremental dates). 
+
+If no pattern is detected, it repeats the selected cell values.
+
+<img src="assets/input-table_autofill.gif">
+
+### Databricks Support
+Input tables are now compatible with Databricks connections. These dynamic workbook elements support structured data entry that allows you to integrate new data points into your analysis and augment existing data from Snowflake or Databricks. 
+
+To review how Input Tables solves several common use cases, [check out this QuickStart](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
+
+### Duplicate Columns
+You are now able to duplicate columns in input table elements the same way you can in table and pivot table elements.
+
+Click the caret (<img src="assets/caret.png" width="25"/>) in the column header to open the column menu, then select `Duplicate column.`
+
+<img src="assets/fff_12_2023_6.png" width="800"/>
+
+### Fill range keyboard shortcut
+Use the `fill range` keyboard shortcut to overwrite selected cells with the value in the first (top-left) cell of the range. Select a range and apply the applicable keyboard shortcut based on your operating system:
+
+**For macOS:**
+⌘ + return
+
+**For Windows:**
+ctrl + enter
+
+<img src="assets/input_table_copy_paste.gif">
+
+### Hyperlinks in input tables
 You can now add hyperlinks to Input Table columns. 
 
 In the column menu, select `Transform` > `Set link`, then choose a column as the link source or create URLs with a custom formula:
@@ -883,60 +945,23 @@ Now the `Image Name` column is a hyperlink and we can just hide the `Image URL c
 <strong>IMPORTANT:</strong><br> You can also get URLs from another column using Sigma's Lookup feature.
 </aside>
 
-### Data autofill in input tables:
-Input tables (and individual columns) now support autofill, which will save users time in certain use cases.
+### Input table edit versioning
+Sigma supports multiple users working on content at the same time. This functionality is great for collaboration and efficiency but in the case of input tables, can create a problem too when saves are happening at nearly the same time. 
 
-Select a cell or range of cells, then drag the fill handle (blue box in the lower right corner of the selection) to highlight adjacent cells you want to populate. 
+For example, if one user is editing an input table in a workbook’s published version (in `View` or `Explore` mode) and another user concurrently publishes an updated version of that workbook, what happens to the input table data that is "in-flight"?
 
-Sigma automatically fills the highlighted cell or range with data based on the selected values and patterns. 
+We have addressed this edge use case to prevent input table data loss without impacting collaboration.
 
-For text and checkbox columns, Sigma repeats the selected cell values. 
+When you click `Save` in the input table element, Sigma informs the user that there has been an update by another user.Sigma provides the option to load and apply your changes to the latest workbook version, so that nothing is lost. 
 
-For number and date columns, Sigma projects values to continue a patterned sequence (like consecutive numbers or incremental dates). 
+Granted, this is an edge use-case, but we have taken action to address it so that no data is potentially lost.
 
-If no pattern is detected, it repeats the selected cell values.
+### Input table lineage summary card
+In the workbook lineage, input table summary cards now include a `Connection` field that identifies the connection Sigma uses to write the input table data to the CDW/DBMS. This makes it easier to determine the input table's destination for the added data.
 
-<img src="assets/input-table_autofill.gif">
+<img src="assets/it_lineage.gif">
 
-### Checkbox column type in input tables:
-Input tables now support a checkbox column type in place of the logical type. 
-
-To update these to the Checkbox type, open the `column menu` and select `Change column type` > `Checkbox.` 
-
-`True` values convert to selected checkboxes, while `False` values convert to cleared checkboxes. 
-
-Checkboxes enable additional workflow capabilities by simply capturing a "yes/no" response from a Sigma user. For example, record approvals, validations and enabling data triggers based on the user's response.
-
-<img src="assets/fff_09_2023_05.png" width="800"/>
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Conditional formatting is now available for input tables:
-You may now apply conditional formatting to Input Tables in a similar fashion as you would typical tables, using conditional formatting rules.
-
-<img src="assets/input_table_cf.gif">
-<br>
-<br>
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Databricks Support:
-Input tables are now compatible with Databricks connections. These dynamic workbook elements support structured data entry that allows you to integrate new data points into your analysis and augment existing data from Snowflake or Databricks. 
-
-To review how Input Tables solves several common use cases, [check out this QuickStart](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
-
-### Fill range keyboard shortcut
-Use the `fill range` keyboard shortcut to overwrite selected cells with the value in the first (top-left) cell of the range. Select a range and apply the applicable keyboard shortcut based on your operating system:
-
-**For macOS:**
-⌘ + return
-
-**For Windows:**
-ctrl + enter
-
-<img src="assets/input_table_copy_paste.gif">
-
-### Input tables - Now with AI! (Beta)
+### Input tables - mow with AI! (Beta)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -962,56 +987,18 @@ Once enabled, OpenAI functionality (as described above) is made available in Inp
 
 AI-enhanced input tables utilize the OpenAI integration, which allows Sigma to leverage OpenAI language models (e.g., GPT-3.5 and GPT-4 models that power ChatGPT).
 
-<img src="assets/sigma_footer.png" width="800"/>
-<!-- END OF SECTION-->
+### Version tag connection swapping with input yables:
+Organizations can now swap the connection source when applying version tags to workbooks containing input tables.
 
-## Infrastructure
-Duration: 20
+Connection swapping allows you to move the workbook through the development process.
 
+<img src="assets/horizonalline.png" width="800"/>
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
 
 ## New QuickStarts in 2023
 Duration: 20
-
-### Implementing Column Level Security
-[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html?index=..%2F..index#0), we discuss column level security and demonstrate how to apply it in Sigma, using the administrative user interface.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Snowflake Key-pair Authorization
-[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0), we will cover the recently added support for the key pair authentication method (public key + private key) for Snowflake connections.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Extend Sigma with Plugins
-[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_plugins/index.html?index=..%2F..index#0) we discuss and demonstrate how to extend Sigma's functionality by crating their own plugins.
-
-[There is a QuickStart on using Audit Logs here:](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
-
-### QuickStarts - Templates:
-We have added an additional QuickStart category called "Templates" that will cover how to take advantage of all the amazing Sigma templates that are included for free, for all Sigma customers.
-
-The first QuickStart in this category is [Snowflake Cost per Query Template Setup](https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html?index=..%2F..index#0) 
-
-This QuickStart provides instructions on how to set up Sigma's Snowflake Cost per Query template.
-
-[For more information on Sigma Templates, click here.](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates)
-
-<img src="assets/fff_11_2023_11.png" width="800"/>
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Secure Your Organization with Security Analytics Using Snowflake and Sigma:
-
-This QuickStart walks you through the process of connecting to a Sigma template, exploring security data, customizing the template for more interactivity, and connecting the template to your Snowflake environment's data (optional).
-
-[Secure Your Organization with Security Analytics Using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html?index=..%2F..index#0) 
-
-### Embed Parameters
-
-[You can review all the available parameters here.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
 ### Embedding for "Superuser" Row Level Security:
 We have updated the existing "Embedding 4: Application Row Level Security" QuickStart for a "superuser" use case.
@@ -1031,6 +1018,42 @@ This QuickStart provides insight into the different methods available for conten
 [How To: Leverage Parameters and User-Attributes with Sigma Embedding](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
 
 [Fundamentals 6: Administration](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_administration/index.html?index=..%2F..index#0)
+
+### Embed Parameters
+[You can review all the available parameters here.](https://quickstarts.sigmacomputing.com/guide/embedding_howto_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+
+### Extend Sigma with Plugins
+[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_plugins/index.html?index=..%2F..index#0) we discuss and demonstrate how to extend Sigma's functionality by crating their own plugins.
+
+[There is a QuickStart on using Audit Logs here:](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
+
+### Implementing Column Level Security
+[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html?index=..%2F..index#0), we discuss column level security and demonstrate how to apply it in Sigma, using the administrative user interface.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Secure Your Organization with Security Analytics Using Snowflake and Sigma:
+This QuickStart walks you through the process of connecting to a Sigma template, exploring security data, customizing the template for more interactivity, and connecting the template to your Snowflake environment's data (optional).
+
+[Secure Your Organization with Security Analytics Using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html?index=..%2F..index#0)
+
+### Snowflake Key-pair Authorization
+[In this QuickStart](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0), we will cover the recently added support for the key pair authentication method (public key + private key) for Snowflake connections.
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Templates
+We have added an additional QuickStart category called "Templates" that will cover how to take advantage of all the amazing Sigma templates that are included for free, for all Sigma customers.
+
+The first QuickStart in this category is [Snowflake Cost per Query Template Setup](https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html?index=..%2F..index#0) 
+
+This QuickStart provides instructions on how to set up Sigma's Snowflake Cost per Query template.
+
+[For more information on Sigma Templates, click here.](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates)
+
+<img src="assets/fff_11_2023_11.png" width="800"/>
+
+<img src="assets/horizonalline.png" width="800"/>
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
@@ -1065,6 +1088,27 @@ The templates tab is now split between `External` and `Internal`.
 ## Visualizations
 Duration: 5
 
+### Bug Fixes:
+1: Dynamic text now reflects date or number formatting changes applied to the source column.
+
+### Cartesian chart default value formatting:
+Cartesian charts (bar, line, area, scatter, box, and combo) now display the value axis and data labels with metric abbreviations or SI units when the `Automatic format` option is applied by default or through manual selection. 
+
+For example, the value 10,000,000,000 is displayed as 10B. However, if a chart’s source element uses a specific format (number, currency, financial, etc.), the `Automatic` option inherits the source format. 
+
+<img src="assets/horizonalline.png" width="800"/>
+
+### Centered reference mark labels
+Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
+
+<img src="assets/07_2023_fff9.png" width="800"/>
+### Chart color scales
+When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
+
+The full palette:
+
+<img src="assets/07_2023_fff8.png" width="800"/>
+
 ### Chart and table element descriptions:
 Add descriptions to chart and table elements and display them as subtitles or tooltips. 
 
@@ -1076,13 +1120,16 @@ For more information about element descriptions, see the [Sigma Community post](
 
 Not a member of the Sigma Community? [Sign up today!](https://community.sigmacomputing.com/)
 
-### Vertical alignment in text elements:
-Control the vertical alignment of content in text elements for improved text display. 
+### Chart Legend Header Visibility
+You are now able to configure the visibility of chart legend headers.
 
-Go to `Element` properties and choose `top`, `center`, or `bottom` alignment.
+In the `Element format` > `Legend` section, the new `Show legend header` setting is enabled by default. Disable the setting to hide the header. When the element features two chart legends (i.e., color and size), the setting applies to both legend headers.
 
-### Bug Fixes:
-1: Dynamic text now reflects date or number formatting changes applied to the source column.
+### Geography map (BETA)
+Illustrate geospatial objects on a map with the new Map - Geography visualization. Create a connection map to display spatial networks, correlations, and relationships, or build a choropleth map to identify variability and patterns across distinct geographic areas.
+
+For example:
+<img src="assets/fffJune2023_7.png" width="800"/>
 
 ### Color by category in region and geography maps:
 You can now add chart mark colors by category in the `Map` - `Region` and `Map` - `Geography` visualizations. Previously, these were not available in these map types.
@@ -1096,49 +1143,34 @@ Here are some examples:
 
 <img src="assets/fff_11_2023_14.png" width="800"/><br>
 
+### Data point filters
+Charts now include additional date filtering options in the data point menu, which can be accessed by right-clicking any data point. 
+
+Previously, the `Keep only` and `Exclude` filters allowed you to filter based on the single date value associated with a data point. Now, you can filter a date range that starts or ends with the data point's date value by selecting the `On and after` or `On and before` options:
+
+<img src="assets/07_2023_fff14.png" width="800"/>
+
+### Double-click chart legend values
+Chart legends in Sigma now support double-click actions. 
+
+Before this update, a rapid double-click was interpreted as two separate inputs, selecting the value with the first click and deselecting it with the second. Now, Sigma treats a rapid double-click as a single input.
+
+### Duplicate reference marks
+Charts that support references marks now allow you to duplicate existing reference lines or bands in the `Element format` > `Reference marks` section:
+
+<img src="assets/07_2023_fff15.png" width="500"/>
+
+### KPI Charts
+KPI chart elements are now generally available (GA). 
+
+These new elements add a new level of visual interactivity to your Sigma workbooks, enhancing user engagement and encouraging repeated visits.
+
+<img src="assets/kpi_chart.gif">
+
+For more information about KPI charts, see [Build a KPI chart](https://sigma.bi/build-a-kpi-chart).
+
 ### KPI chart correction:
 When the `Comparison` property is configured in a KPI chart, both the comparison value and label are now hidden if the referenced benchmark or target value is null. 
-
-### Trellis chart enhancements:
-Trellis charts (also known as small multiples or panel charts) have been enhanced with the following upgrades:
-
- <ul>
-      <li> Improved performance with large datasets.</li>
-      <li> Better column and row spacing.</li>
-      <li> Scrollable charts and legends.</li>
-      <li> Larger minimum panel size.</li>
-      <li> Tooltip bug fixes.</li>          
-</ul>
-
-If you never used trellising to enhance a visualization, here is why you may find them useful.
-
-**Without trellis:**<br>
-This initial chart shows a basic view that compares total revenue per fiscal year from 2019 to 2023. The stacked bars differentiate revenue for each product family, providing an additional dimension to explore within and across each year.
-
-<img src="assets/fff_10_2023_6.png" width="800"/><br>
-
-**With trellis:**<br>
-By incorporating trellis columns to our example, we deepen the analysis. We can still analyze total revenue by fiscal year and product family, but the additional dimension allows us to compare these data points within and across smaller data subsets based on store region.
-
-<img src="assets/fff_10_2023_7.png" width="800"/><br>
-
-This is just a quick example, and there is much more we can do by using a trellis.
-
-### Cartesian chart default value formatting:
-Cartesian charts (bar, line, area, scatter, box, and combo) now display the value axis and data labels with metric abbreviations or SI units when the `Automatic format` option is applied by default or through manual selection. 
-
-For example, the value 10,000,000,000 is displayed as 10B. However, if a chart’s source element uses a specific format (number, currency, financial, etc.), the `Automatic` option inherits the source format. 
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Y-axis in KPI chart trend lines:
-KPI chart trend lines can now display y-axis grid lines and value labels. 
-
-To enable the y-axis, go to `icon Element format` > `Trend` and select the `Show y-axis` checkbox.
-
-<img src="assets/fff_09_2023_07.png" width="800"/>
-
-For more information about formatting KPI chart trend lines,[ see Build a KPI chart.](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707#h_01GZBDEM8V5D4EAFP5QZY8KH4X)
 
 ### KPI chart replaces "Single Value" visualization element
 Sigma's KPI visualization element has replaced the Single Value visualization (SVV) option. 
@@ -1150,25 +1182,6 @@ While you can no longer create new SVV elements, you can instead build KPI chart
 </aside>
 
 For more information about the SVV deprecation and benefits of KPI charts, [see the Sigma Community post.](https://community.sigmacomputing.com/t/kpi-chart-to-replace-single-value-visualization-chart/2533)
-
-### Sankey diagrams (GA release) 
-Sankey visualization elements are now available for general use (GA).
-
-Sankey diagrams are typically used to assess the flow and change of data between stages in a process or system. Create simple Sankey diagrams to demonstrate data distribution, workflows, networks, etc., or build advanced multi-level diagrams to analyze complex data relationships and identify changes in variables across stages, categories, or periods.
-
-<img src="assets/fff_08_03.png" width="800"/>
-
-
-### Chart Legend Header Visibility
-You are now able to configure the visibility of chart legend headers.
-
-In the `Element format` > `Legend` section, the new `Show legend header` setting is enabled by default. Disable the setting to hide the header. When the element features two chart legends (i.e., color and size), the setting applies to both legend headers.
-
-### Geography map (BETA)
-Illustrate geospatial objects on a map with the new Map - Geography visualization. Create a connection map to display spatial networks, correlations, and relationships, or build a choropleth map to identify variability and patterns across distinct geographic areas.
-
-For example:
-<img src="assets/fffJune2023_7.png" width="800"/>
 
 ### Map - Geography replaces the Map - GeoJSON visualization 
 Now supports for [geography data is in WKT format](https://help.sigmacomputing.com/docs/geography) **(using Snowflake and BigQuery connections only)** and variant data in GeoJSON format.
@@ -1182,6 +1195,13 @@ See `Label font` options in `Element formatting` > `Reference marks`.
 
 <img src="assets/fffJune2023_2.png" width="800"/>
 
+### Sankey diagrams (GA release) 
+Sankey visualization elements are now available for general use (GA).
+
+Sankey diagrams are typically used to assess the flow and change of data between stages in a process or system. Create simple Sankey diagrams to demonstrate data distribution, workflows, networks, etc., or build advanced multi-level diagrams to analyze complex data relationships and identify changes in variables across stages, categories, or periods.
+
+<img src="assets/fff_08_03.png" width="800"/>
+
 ### Scatter Plot Legend Header Visibility
 When a scatter plot features two chart legends (i.e., color and size), you can now configure the visibility of each legend individually. Previously, only the Show legend setting was available, which allows you to show or hide both legends. 
 
@@ -1192,24 +1212,15 @@ Customize data labels in Stacked 100% bar charts with new number formatting opti
 
 In the `Element format` > `Data labels` section, the new `Display value as a percent` setting is enabled by default. Disable the setting to display the labels as absolute values. When displaying percentages, you can use the percent decimal precision tool to increase or decrease decimal places.
 
+### Stretchable buttons
+You can now stretch your button elements to take up the entire width of the element. 
+
+This adjustment allows you to align your buttons regardless of the text length. It's a small but useful user interface improvement that some users will certainly appreciate.
+
+<img src="assets/fffbuttons.gif" width="800"/>
+
 ### Table Summary KPI
 Quickly highlight summarized totals by creating KPI visualizations directly from table summaries. To add a KPI, right-click a table summary to open the menu, then select Create KPI element.
-
-### Theme Palette & Hex Color Picker
-Customize chart mark colors with more flexibility and control using the enhanced color selector. Select the  and  icons to toggle between the color palette—now featuring a Theme palette—and the new hex color picker.
-
-Theme palette: provides a predefined set of colors based on the selected workbook theme (`Workbook settings` > `Workbook formatting` > `Theme`).
-
-**Hex color picker** allows you to enter a hex value or select the tint, tone, or shade of a specific hue.
-
-### KPI Charts
-KPI chart elements are now generally available (GA). 
-
-These new elements add a new level of visual interactivity to your Sigma workbooks, enhancing user engagement and encouraging repeated visits.
-
-<img src="assets/kpi_chart.gif">
-
-For more information about KPI charts, see [Build a KPI chart](https://sigma.bi/build-a-kpi-chart).
 
 ### Time series KPI updates:
 
@@ -1224,196 +1235,58 @@ Change the default display type (the value displayed when not interacting with t
 You can now add reference lines and bands to the trend line in `Element format` > `Reference marks`.
 
 <img src="assets/07_2023_fff17.png" width="800"/>
- 
-### Centered reference mark labels
-Chart reference marks now support center-positioned labels. In the `Element format` > `Reference marks` section, click the `Position` field and select `Top center` or `Bottom center` to display the label above or below the line.
 
-<img src="assets/07_2023_fff9.png" width="800"/>
+### Theme Palette & Hex Color Picker
+Customize chart mark colors with more flexibility and control using the enhanced color selector. Select the  and  icons to toggle between the color palette—now featuring a Theme palette—and the new hex color picker.
 
-### Chart color scales
-When you apply color scales to charts (in the `Element properties` > `Marks` > `Color tab`), the color menu now displays all options in various sequential and diverging color scale categories. The menu also offers new color scales, including color-blind accessible options.
+Theme palette: provides a predefined set of colors based on the selected workbook theme (`Workbook settings` > `Workbook formatting` > `Theme`).
 
-The full palette:
+**Hex color picker** allows you to enter a hex value or select the tint, tone, or shade of a specific hue.
 
-<img src="assets/07_2023_fff8.png" width="800"/>
+### Trellis chart enhancements:
+Trellis charts (also known as small multiples or panel charts) have been enhanced with the following upgrades:
 
-### Data point filters
-Charts now include additional date filtering options in the data point menu, which can be accessed by right-clicking any data point. 
+ <ul>
+      <li> Improved performance with large datasets.</li>
+      <li> Better column and row spacing.</li>
+      <li> Scrollable charts and legends.</li>
+      <li> Larger minimum panel size.</li>
+      <li> Tooltip bug fixes.</li>          
+</ul>
 
-Previously, the `Keep only` and `Exclude` filters allowed you to filter based on the single date value associated with a data point. Now, you can filter a date range that starts or ends with the data point's date value by selecting the `On and after` or `On and before` options:
+If you never used trellising to enhance a visualization, here is why you may find them useful.
 
-<img src="assets/07_2023_fff14.png" width="800"/>
+### Y-axis in KPI chart trend lines:
+KPI chart trend lines can now display y-axis grid lines and value labels. 
 
-### Duplicate reference marks
-Charts that support references marks now allow you to duplicate existing reference lines or bands in the `Element format` > `Reference marks` section:
+To enable the y-axis, go to `icon Element format` > `Trend` and select the `Show y-axis` checkbox.
 
-<img src="assets/07_2023_fff15.png" width="500"/>
+<img src="assets/fff_09_2023_07.png" width="800"/>
 
-### Double-click chart legend values
-Chart legends in Sigma now support double-click actions. 
+For more information about formatting KPI chart trend lines,[ see Build a KPI chart.](https://help.sigmacomputing.com/hc/en-us/articles/16233707698707#h_01GZBDEM8V5D4EAFP5QZY8KH4X)
 
-Before this update, a rapid double-click was interpreted as two separate inputs, selecting the value with the first click and deselecting it with the second. Now, Sigma treats a rapid double-click as a single input.
+### Vertical alignment in text elements:
+Control the vertical alignment of content in text elements for improved text display. 
 
-### Stretchable buttons
-You can now stretch your button elements to take up the entire width of the element. 
+Go to `Element` properties and choose `top`, `center`, or `bottom` alignment.
 
-This adjustment allows you to align your buttons regardless of the text length. It's a small but useful user interface improvement that some users will certainly appreciate.
+**Without trellis:**<br>
+This initial chart shows a basic view that compares total revenue per fiscal year from 2019 to 2023. The stacked bars differentiate revenue for each product family, providing an additional dimension to explore within and across each year.
 
-<img src="assets/fffbuttons.gif" width="800"/>
+<img src="assets/fff_10_2023_6.png" width="800"/><br>
+
+**With trellis:**<br>
+By incorporating trellis columns to our example, we deepen the analysis. We can still analyze total revenue by fiscal year and product family, but the additional dimension allows us to compare these data points within and across smaller data subsets based on store region.
+
+<img src="assets/fff_10_2023_7.png" width="800"/><br>
+
+This is just a quick example, and there is much more we can do by using a trellis.
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
 
 ## Workbooks
 Duration: 20
-
-### Bug Fixes
-Badges are now applied to the source workbook and visible on all tagged versions of the workbook.
-
-### Additional entry point to license upgrade request:
-When a Viewer-licensed user clicks `Create New` in the side panel, Sigma notifies them that the ability to create workbooks requires an account upgrade. 
-
-<img src="assets/fff_12_2023_1.png" width="400"/>
-
-The user can send a request to organization admins, who can then upgrade the user’s license by reassigning them to an account type with `Create`, `edit`, and `publish` workbooks permission.
-
-### Customizable table styles (BETA)
-Enhance visual appeal and table readability with pre-configured table styles with customizable configurations. Easily personalize the appearance of tables to seamlessly align with branding preferences and personal aesthetics.
-
-Sigma provides style presets for out-of-the-box aesthetics and readability, and you can customize all style components independently for more personalized table designs. 
-
-For more information about table style options and how to customize them, see [Customize table styles.](https://help.sigmacomputing.com/docs/customize-table-styles)
-
-This is also covered in the QuickStart, [Fundamentals 2: Working with Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html?index=..%2F..index#6)
-
-<img src="assets/fff_12_2023_4.png" width="800"/>
-
-The highlight functionality allows you to quickly identify rows with a common value. Right-click any cell containing the value you want to highlight, then click Highlight rows with {value}. Sigma automatically creates a conditional formatting rule that can be modified or deleted in the  Element format panel.
-
-### Enhanced version tag review workflow
-Tags are a way to support continuous workbook development without affecting what outside audiences see. 
-
-We have added approval workflows into the existing version tagging functionality.
-
-When a user doesn’t have permission to use a protected tag, they can submit a request for an authorized user to review and apply the tag 
-
-Authorized users include all Admin users and any user who’s granted permission to use the tag and also assigned to an account type with the `Create`, `edit`, and `publish` workbooks permission enabled. 
-
-This action triggers the following improved review and approval workflow:
-
- <ul>
-      <li> Sigma notifies authorized users of the request by email and directly in the application.</li>
-      <li> Authorized users can review the request in the workbook’s version history.</li>
-      <li> Sigma provides a reviewer with the option to approve or deny the request. If the reviewer approves the request, they can set the requested tag or choose a different one.</li>
-      <li> Sigma removes the request from the version history and notifies the requesting user of the reviewer’s action by email and directly in Sigma.</li>
-      <li> While the request is pending, the user who submitted it can return to the version tag feature and update their request.</li>
-</ul>
-
-
-### Highlight rows with {value}
-The highlight functionality allows you to quickly identify rows with a common value. 
-
-Right-click any cell containing the value you want to highlight, then click `Highlight rows with {value}.` 
-
-Sigma automatically creates a conditional formatting rule that can be modified or deleted in the `Element format` panel.
-
-This is a real time-saver.
-
-<img src="assets/fff_12_2023_7.png" width="800"/>
-
-### Version tag filter in version history
-You are now able to filter a workbook’s version history by `applied` or `requested` version tag. This results in a a more focused list of records.
-
-### Conditional alerts for data elements and input tables:
-The element menu now features an `Alert` action that opens the `Schedule exports` modal and auto-populates select fields based on the corresponding data element or input table. 
-
-This allows users to quickly create a recurring export as a conditional alert to monitor a specific element.
-
-For example, we may want to set an alert when a specific KPI falls below a threshold:
-
-<img src="assets/fff_11_2023_7.png" width="800"/><br>
-
-Selecting `Alert when` from an elements menu will then allow the user to configure a schedule for delivery, using the existing schedule exports modal:
-
-<img src="assets/fff_11_2023_8.png" width="800"/><br>
-
-For more information, [see Schedule a conditional export or alert.](hhttps://help.sigmacomputing.com/docs/schedule-a-conditional-export-or-alert)
-
-### Control element label formatting:
-Label configurations for control elements are now consolidated in the `Element format` > `Label` section with the following new options:
-
- <ul>
-      <li><strong>Label position:</strong>  Display the element above (Top) or beside (Left) the interactive control UI.</li>
-      <li><strong>Label width:</strong> When Left position is selected, customize the width of the label relative to the full element area.</li>
-</ul>
-
-<img src="assets/control_label.gif">
-
-### CSV upload on Azure and AWS-EU:
-CSV upload is now available to Sigma organizations hosted on Microsoft Azure and Amazon Web Services Europe (AWS-EU). 
-
-[For more information, see Upload CSVs.](https://help.sigmacomputing.com/docs/upload-csvs)
-
-### Shared bookmarks:
-In addition to [personal bookmarks](hhttps://help.sigmacomputing.com/docs/bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
-
-Any time a workbook has controls where multiple different configurations are common, shared bookmarks can be used to make the user experience of navigating to those configurations easier.
-
-For example, a sales workbook can have pre-filtered bookmarks for each sales region; a Quarterly Business Review workbook can have bookmarks set up for each quarter; a Product workbook can have bookmarks set up for each product area -- the possibilities are endless.
-
-Shared bookmarks are always available to everyone who has access to a Workbook.
-
-<img src="assets/fff_11_2023_9.png" width="800"/><br>
-
-### Warehouse views with row-level security:
-Users can now create warehouse views from workbooks that use row level security. 
-
-When they do so, the warehouse view popup will contain a `Data permissions` row displaying the user who configured the warehouse view, whose permissions are used to create the view. 
-
-Additionally, if any of the user’s system functions values change, the view will automatically get updated.
-
-**Creating a new warehouse view:**
-<img src="assets/fff_11_2023_2.png" width="800"/><br>
-
-<img src="assets/fff_11_2023_3.png" width="800"/><br>
-
-<img src="assets/fff_11_2023_4.png" width="800"/><br>
-
-<img src="assets/fff_11_2023_1.png" width="600"/><br>
-
-<img src="assets/fff_11_2023_5.png" width="800"/><br>
-
-<img src="assets/fff_11_2023_6.png" width="600"/>
-
-### Bulk column relocation:
-Sigma has added this very useful enhancement to make your workflows even faster.
-
-When interacting with a data element or input table, we can now bulk relocate multiple columns using the `Move to` action in the `Columns` menu. 
-
-This functionality is available in the `Element properties` panel and directly in the element.
-
-In the animation below, take note that the order of the columns we select to move is maintained when they are moved to the `start` using this new feature:
-
-<img src="assets/bcr.gif">
-
-### Classic layout feature sunset:
-We want to make you are aware that as part of Sigma’s plan to sunset the classic workbook layout and transition to exclusive use of the newer grid layout, the `Revert to Classic Layout` option has been removed from `Workbook` settings > `Layout` settings. 
-
-The feature requires the following:
-
- <ul>
-      <li> You must be assigned an account type with the `Edit Workbook` and/or `Explore Workbook` permission enabled.</li>
-      <li> You must be the workbook owner or be granted `Can explore` or `Can edit` workbook permission.</li>
-</ul>
-
-For more information about this update, [see the Sigma Community post.](https://community.sigmacomputing.com/t/goodbye-to-classic-layout-and-embrace-grid-layout/2631)
-
-### Period-over-period workflow (Beta)
-Sigma has added a **guided workflow** (think "wizard") for building period-over-period analyses. This new functionality provides a quick and convenient way to evaluate performance over time. 
-
-This allows users to generate dynamic period comparisons without entering complex custom formulas, then easily visualize the results to identify trends, patterns, and anomalies.
-
-<img src="assets/pop.gif">
 
 ### Allow users to request permission to explore workbooks:
 Users with `Viewer` licenses can now request permission to explore workbooks by clicking `Request explore access` in any workbook header. 
@@ -1425,91 +1298,6 @@ For example, this is what a user with `Viewer` rights would see when a workbook 
 <img src="assets/fff_09_2023_04.png" width="800"/>
 
 <img src="assets/horizonalline.png" width="800"/>
-
-### Segmented controls:
-
-A segmented control provides a "linear strip" of two or more named segments. 
-
-Each segment acts exactly like a radio button, selecting the matches and excluding other data records. 
-
-When you have to make selections from a long list of values, segmented controls can be a better option because they provide a smaller subset of relevant values, a more economical dashboard layout, and a nicer overall experience for viewers.
-
-**There are two types of segmented controls:**
-Based on a manually-entered list. You must have values that select data on the target of the control.
-
-<img src="assets/fff_09_2023_06.png" width="800"/>
-
-Based on a column in the data source or workbook element. These controls can have a maximum of 5 distinct values, sorted on record count or alphabetically.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Text element background options:
-We have added the ability to change the background color in text elements. 
-
-In the  Element properties panel, choose to show or hide the text element background area. 
-
-Enabling the background creates a card display and adds padding around the text content for consistency with data elements and input tables. 
-
-You can then select a custom background color from the color palette or picker, or you can keep the default selection based on the workbook theme. 
-
-For example:
-
-<img src="assets/fff_09_2023_03.png" width="800"/>
-
-### Version Tag Connection Swapping with Input Tables:
-Organizations can now swap the connection source when applying version tags to workbooks containing input tables.
-
-Connection swapping allows you to move the workbook through the development process.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Tag Permissions (Beta):
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
-</aside>
-
-When you create a version tag, you can now select a permission level for users or teams: `Public` or `Protected`. 
-
-This allows org's greater control over who can publish updates to important workbooks that are exposed to stakeholders and embed customers.
-
-Protected tags allow you to restrict access and select the users or teams that can apply a tag on a workbook. 
-
-The users must have `Can edit` permissions for the workbook. 
-
-Public tags are unprotected, and the user must have `Can edit` permissions for the workbook as well.
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Version Tag Requests:
-Users (the "requestor") without permission to use a protected tag can now submit a request to set that tag on a specific workbook version.
-
-After the request is made, an email is sent to all the members (the "approvers") with explicit access to the protected tag. 
-
-After reviewing the workbook, the approver then can apply the requested tag to the workbook in question.
-
-### Pivot Table wrap text:
-Users now have the ability to wrap the text in their pivot tables. By default, we truncate text that is too long to fit in a cell. 
-
-Users now have the option to expand the line height and see the entire content of the header or cell.
-
-<img src="assets/fff_09_2023_02.png" width="500"/>
-
-<img src="assets/horizonalline.png" width="800"/>
-
-### Option to sort null values first or last:
-When sorting a table column, you can force nulls to be ordered first or last regardless of the selected sort order (descending or ascending). 
-
-To customize null value sorting, right-click the column header and select `Custom sort`, then select an option in the Nulls field:
-
-<img src="assets/fff_09_2023_08.png" width="800"/>
-
-<strong>Nulls field options:</strong>
- <ul>
-      <li><strong>Default:</strong> Orders nulls based on the CDW or DBMS method.</li>
-      <li><strong>First:</strong> Orders nulls at the top of the column.</li>
-      <li><strong>Last:</strong> Orders nulls at the bottom of the column.<li>
-</ul>
 
 ### Attach images to annotations
 Users can now attach annotated screenshots to their comments in Sigma. 
@@ -1538,6 +1326,94 @@ Use the `@` character to direct your comment to any valid Sigma user:
 
 <img src="assets/fff_12.png" width="600"/>
 
+### Bug Fixes
+Badges are now applied to the source workbook and visible on all tagged versions of the workbook.
+
+### Additional entry point to license upgrade request:
+When a Viewer-licensed user clicks `Create New` in the side panel, Sigma notifies them that the ability to create workbooks requires an account upgrade. 
+
+<img src="assets/fff_12_2023_1.png" width="400"/>
+
+The user can send a request to organization admins, who can then upgrade the user’s license by reassigning them to an account type with `Create`, `edit`, and `publish` workbooks permission.
+
+### Bulk column relocation:
+Sigma has added this very useful enhancement to make your workflows even faster.
+
+When interacting with a data element or input table, we can now bulk relocate multiple columns using the `Move to` action in the `Columns` menu. 
+
+This functionality is available in the `Element properties` panel and directly in the element.
+
+In the animation below, take note that the order of the columns we select to move is maintained when they are moved to the `start` using this new feature:
+
+<img src="assets/bcr.gif">
+
+### Classic layout feature sunset:
+We want to make you are aware that as part of Sigma’s plan to sunset the classic workbook layout and transition to exclusive use of the newer grid layout, the `Revert to Classic Layout` option has been removed from `Workbook` settings > `Layout` settings. 
+
+The feature requires the following:
+
+ <ul>
+      <li> You must be assigned an account type with the `Edit Workbook` and/or `Explore Workbook` permission enabled.</li>
+      <li> You must be the workbook owner or be granted `Can explore` or `Can edit` workbook permission.</li>
+</ul>
+
+For more information about this update, [see the Sigma Community post.](https://community.sigmacomputing.com/t/goodbye-to-classic-layout-and-embrace-grid-layout/2631)
+
+### Conditional alerts for data elements and input tables:
+The element menu now features an `Alert` action that opens the `Schedule exports` modal and auto-populates select fields based on the corresponding data element or input table. 
+
+This allows users to quickly create a recurring export as a conditional alert to monitor a specific element.
+
+For example, we may want to set an alert when a specific KPI falls below a threshold:
+
+<img src="assets/fff_11_2023_7.png" width="800"/><br>
+
+Selecting `Alert when` from an elements menu will then allow the user to configure a schedule for delivery, using the existing schedule exports modal:
+
+<img src="assets/fff_11_2023_8.png" width="800"/><br>
+
+For more information, [see Schedule a conditional export or alert.](hhttps://help.sigmacomputing.com/docs/schedule-a-conditional-export-or-alert)
+
+### Control element label formatting:
+Label configurations for control elements are now consolidated in the `Element format` > `Label` section with the following new options:
+
+ <ul>
+      <li><strong>Label position:</strong>  Display the element above (Top) or beside (Left) the interactive control UI.</li>
+      <li><strong>Label width:</strong> When Left position is selected, customize the width of the label relative to the full element area.</li>
+</ul>
+
+<img src="assets/control_label.gif">
+
+### Copy + Paste Full Workbook Pages (Beta)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+
+You can copy a page from one workbook to another, and from one page to another. 
+
+This feature will save users time by allowing easy reuse of existing, full pages. This eliminates the need to copy individual page elements, one at a time.
+
+[Link to documentation](https://help.sigmacomputing.com/docs/copy-a-page-within-and-between-workbooks)
+
+### CSV upload on Azure and AWS-EU:
+CSV upload is now available to Sigma organizations hosted on Microsoft Azure and Amazon Web Services Europe (AWS-EU). 
+
+[For more information, see Upload CSVs.](https://help.sigmacomputing.com/docs/upload-csvs)
+
+### Customizable table styles (BETA)
+Enhance visual appeal and table readability with pre-configured table styles with customizable configurations. Easily personalize the appearance of tables to seamlessly align with branding preferences and personal aesthetics.
+
+Sigma provides style presets for out-of-the-box aesthetics and readability, and you can customize all style components independently for more personalized table designs. 
+
+For more information about table style options and how to customize them, see [Customize table styles.](https://help.sigmacomputing.com/docs/customize-table-styles)
+
+This is also covered in the QuickStart, [Fundamentals 2: Working with Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables/index.html?index=..%2F..index#6)
+
+<img src="assets/fff_12_2023_4.png" width="800"/>
+
+The highlight functionality allows you to quickly identify rows with a common value. Right-click any cell containing the value you want to highlight, then click Highlight rows with {value}. Sigma automatically creates a conditional formatting rule that can be modified or deleted in the  Element format panel.
+
 ### Default blue in custom themes
 Sigma now features a new default blue (#0059EB) across the product. 
 
@@ -1547,8 +1423,47 @@ Sigma now features a new default blue (#0059EB) across the product.
 
 You must manually update custom workbook themes to change the primary color to the new default blue. 
 
-### Search results improvements
-Sigma has been making lots of improvements to the search result rankings over the last few months to make your search experience even better! Sometimes it’s difficult to notice search improvements since they’re typically released incrementally over time, but we want to let you know that we are constantly improving your Sigma experience.
+### Enhanced version tag review workflow
+Tags are a way to support continuous workbook development without affecting what outside audiences see. 
+
+We have added approval workflows into the existing version tagging functionality.
+
+When a user doesn’t have permission to use a protected tag, they can submit a request for an authorized user to review and apply the tag 
+
+Authorized users include all Admin users and any user who’s granted permission to use the tag and also assigned to an account type with the `Create`, `edit`, and `publish` workbooks permission enabled. 
+
+This action triggers the following improved review and approval workflow:
+
+ <ul>
+      <li> Sigma notifies authorized users of the request by email and directly in the application.</li>
+      <li> Authorized users can review the request in the workbook’s version history.</li>
+      <li> Sigma provides a reviewer with the option to approve or deny the request. If the reviewer approves the request, they can set the requested tag or choose a different one.</li>
+      <li> Sigma removes the request from the version history and notifies the requesting user of the reviewer’s action by email and directly in Sigma.</li>
+      <li> While the request is pending, the user who submitted it can return to the version tag feature and update their request.</li>
+</ul>
+
+### Grid Layout
+Grid Layout mobile view has been enhanced with the following updates:
+
+   <ul>
+      <li>New option to enable/disable responsive layout.</li>
+      <li>Updated viewport control design.</li>
+      <li>Ability to auto-arrange elements in synced mode.</li>
+   </ul>
+
+### Grid layout PDF export
+Workbooks with Grid Layout (BETA) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
+
+### Highlight rows with {value}
+The highlight functionality allows you to quickly identify rows with a common value. 
+
+Right-click any cell containing the value you want to highlight, then click `Highlight rows with {value}.` 
+
+Sigma automatically creates a conditional formatting rule that can be modified or deleted in the `Element format` panel.
+
+This is a real time-saver.
+
+<img src="assets/fff_12_2023_7.png" width="800"/>
 
 ### Hierarchies (Beta)
 
@@ -1593,11 +1508,8 @@ The rest of the pivot is configured as normally and the results are:
 
 While this was a simple example, hierarchies can save you time and effort when there are many columns to choose from.
 
-### Connect to MySQL (BETA)
-
-You can now connect Sigma directly to your data in a MySQL data warehouse. Learn how to create and manage the connection in Connect to MySQL.
-
-<img src="assets/fffJune2023_3.png" width="800"/>
+### Keyboard shortcuts
+We added new keyboard shortcuts to help you work with input tables. See `Keyboard shortcuts` > `Input tables`.
 
 ### Materialization (BETA) 
 You can now suspend the scheduled refresh of materializations if they are not accessed for an extended period of time.
@@ -1608,46 +1520,60 @@ To review the [Materialization with Sigma QuickStart](https://quickstarts.sigmac
 
 Users can now send workbook error reports with trace IDs that facilitate improved, targeted error investigations.
 
-### Controls
-You can use the new Create list from preset option to easily create a drill down control for a visualization that has year, month, and day categories, without manually creating them. 
-
-### Grid Layout
-Grid Layout mobile view has been enhanced with the following updates:
-
-   <ul>
-      <li>New option to enable/disable responsive layout.</li>
-      <li>Updated viewport control design.</li>
-      <li>Ability to auto-arrange elements in synced mode.</li>
-   </ul>
-
-### Grid layout PDF export
-Workbooks with Grid Layout (BETA) enabled now support PDF exports. A scheduled export PDF attachment can capture an individual element, a single workbook page, or the entire workbook, and you can choose between portrait or landscape orientation.
-
-### Keyboard shortcuts
-We added new keyboard shortcuts to help you work with input tables. See `Keyboard shortcuts` > `Input tables`.
-
 ### Multi-element delete confirmation
 When you select multiple elements to delete, the confirmation modal now lists all dependencies. View names of elements to be deleted alongside the impacted elements that currently use them as sources.
+
+### Option to sort null values first or last:
+When sorting a table column, you can force nulls to be ordered first or last regardless of the selected sort order (descending or ascending). 
+
+To customize null value sorting, right-click the column header and select `Custom sort`, then select an option in the Nulls field:
+
+<img src="assets/fff_09_2023_08.png" width="800"/>
+
+<strong>Nulls field options:</strong>
+ <ul>
+      <li><strong>Default:</strong> Orders nulls based on the CDW or DBMS method.</li>
+      <li><strong>First:</strong> Orders nulls at the top of the column.</li>
+      <li><strong>Last:</strong> Orders nulls at the bottom of the column.<li>
+</ul>
 
 ### Others
 You can now detach a control directly from its element without having to go to the control first.
 
-Custom options for number formatting now includes “pp”, for percentage point, a formatting option for values and value comparisons. 
+Custom options for number formatting now includes “pp”, for percentage point, a formatting option for values and value comparisons.
+
+### Period-over-period workflow (Beta)
+Sigma has added a **guided workflow** (think "wizard") for building period-over-period analyses. This new functionality provides a quick and convenient way to evaluate performance over time. 
+
+This allows users to generate dynamic period comparisons without entering complex custom formulas, then easily visualize the results to identify trends, patterns, and anomalies.
+
+<img src="assets/pop.gif">
+
+### Pivot Table wrap text:
+Users now have the ability to wrap the text in their pivot tables. By default, we truncate text that is too long to fit in a cell. 
+
+Users now have the option to expand the line height and see the entire content of the header or cell.
+
+<img src="assets/fff_09_2023_02.png" width="500"/>
+
+<img src="assets/horizonalline.png" width="800"/>
 
 ### Scheduled exports
 Scheduled exports now provide the option to select which tagged version of the workbook you want to include in the export.
 
-### Copy + Paste Full Workbook Pages (Beta)
+### Search results improvements
+Sigma has been making lots of improvements to the search result rankings over the last few months to make your search experience even better! Sometimes it’s difficult to notice search improvements since they’re typically released incrementally over time, but we want to let you know that we are constantly improving your Sigma experience.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
-</aside>
+### Shared bookmarks:
+In addition to [personal bookmarks](hhttps://help.sigmacomputing.com/docs/bookmarks), you can now create **shared bookmarks** that are available to all users with access to the workbook.
 
-You can copy a page from one workbook to another, and from one page to another. 
+Any time a workbook has controls where multiple different configurations are common, shared bookmarks can be used to make the user experience of navigating to those configurations easier.
 
-This feature will save users time by allowing easy reuse of existing, full pages. This eliminates the need to copy individual page elements, one at a time.
+For example, a sales workbook can have pre-filtered bookmarks for each sales region; a Quarterly Business Review workbook can have bookmarks set up for each quarter; a Product workbook can have bookmarks set up for each product area -- the possibilities are endless.
 
-[Link to documentation](https://help.sigmacomputing.com/docs/copy-a-page-within-and-between-workbooks)
+Shared bookmarks are always available to everyone who has access to a Workbook.
+
+<img src="assets/fff_11_2023_9.png" width="800"/><br>
 
 ### Multi-tab Excel Exports (GA)
 The Multi-tab Excel export feature has been promoted to general availability (GA), for all Sigma customers.
@@ -1706,14 +1632,8 @@ Image columns have some display options:
 <img src="assets/07_2023_fff6.png" width="400"/>
 
 <img src="assets/sigma_footer.png" width="800"/>
-<!-- END OF SECTION-->
 
 ### Tag Permissions (Beta)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is currently in Beta and subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
-</aside>
-
 When you create a version tag, you can now select a permission level for users or teams: `Public` or `Protected`. 
 
 This allows org's greater control over who can publish updates to important workbooks that are exposed to stakeholders and embed customers.
@@ -1721,6 +1641,50 @@ This allows org's greater control over who can publish updates to important work
 Protected tags allow you to restrict access and select the users or teams that can apply a tag on a workbook. 
 
 The users must have Can edit permissions for the workbook. Public tags are unprotected, but the user must have Can edit permissions for the workbook as well.
+
+### Text element background options:
+We have added the ability to change the background color in text elements. 
+
+In the  Element properties panel, choose to show or hide the text element background area. 
+
+Enabling the background creates a card display and adds padding around the text content for consistency with data elements and input tables. 
+
+You can then select a custom background color from the color palette or picker, or you can keep the default selection based on the workbook theme. 
+
+For example:
+
+<img src="assets/fff_09_2023_03.png" width="800"/>
+
+### Version Tag Requests:
+Users (the "requestor") without permission to use a protected tag can now submit a request to set that tag on a specific workbook version.
+
+After the request is made, an email is sent to all the members (the "approvers") with explicit access to the protected tag. 
+
+After reviewing the workbook, the approver then can apply the requested tag to the workbook in question.
+
+### Version tag filter in version history
+You are now able to filter a workbook’s version history by `applied` or `requested` version tag. This results in a a more focused list of records.
+
+### Warehouse views with row-level security:
+Users can now create warehouse views from workbooks that use row level security. 
+
+When they do so, the warehouse view popup will contain a `Data permissions` row displaying the user who configured the warehouse view, whose permissions are used to create the view. 
+
+Additionally, if any of the user’s system functions values change, the view will automatically get updated.
+
+**Creating a new warehouse view:**
+<img src="assets/fff_11_2023_2.png" width="800"/><br>
+
+<img src="assets/fff_11_2023_3.png" width="800"/><br>
+
+<img src="assets/fff_11_2023_4.png" width="800"/><br>
+
+<img src="assets/fff_11_2023_1.png" width="600"/><br>
+
+<img src="assets/fff_11_2023_5.png" width="800"/><br>
+
+<img src="assets/fff_11_2023_6.png" width="600"/>
+
 
 ## Additional Information
 Duration: 20
