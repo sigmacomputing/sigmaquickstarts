@@ -5,7 +5,7 @@ categories: Administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: end_of_year_compilations
+tags: archive
 lastUpdated: 2024-11-01
 
 # 2023 Compliation
