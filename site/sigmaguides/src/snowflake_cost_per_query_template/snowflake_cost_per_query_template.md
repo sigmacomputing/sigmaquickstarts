@@ -46,8 +46,7 @@ How to deploy Sigma's **Snowflake Cost per Query** template.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## Building the query_history_enriched table without dbt
-Duration: 5
+## Building the query_history_enriched table
 
 You will create the `query_history_enriched` table by running the attached SQL script in your Snowflake account.
 
