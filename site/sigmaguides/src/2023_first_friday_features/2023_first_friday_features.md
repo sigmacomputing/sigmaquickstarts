@@ -355,6 +355,8 @@ If you don't include this, the owner is the user whose token was used to call th
 
 A new query parameter is also available for this endpoint: `versionTagId`. For more information on using Sigma version tagging, [click here](https://quickstarts.sigmacomputing.com/guide/embedding_8_version_tagging/index.html?index=..%2F..index#0)
 
+<img src="assets/sigma_footer.png" width="800"/>
+<!-- END OF SECTION-->
 
 ## Bug Fixes
 Duration: 20
@@ -1685,6 +1687,8 @@ Additionally, if any of the user’s system functions values change, the view wi
 
 <img src="assets/fff_11_2023_6.png" width="600"/>
 
+<img src="assets/sigma_footer.png" width="800"/>
+<!-- END OF SECTION-->
 
 ## Additional Information
 Duration: 20
