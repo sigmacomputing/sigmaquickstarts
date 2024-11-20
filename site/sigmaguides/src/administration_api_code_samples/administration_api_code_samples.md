@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-04-07
+lastUpdated: 2024-11-20
 
 # Sigma REST API Recipes
 
@@ -20,7 +20,7 @@ The actual code shown is available in Sigma's [quickstart-public git repository]
 All code samples provided here are based on JavaScript.
 
 <aside class="postive">
-<strong>IMPORTANT:</strong><br> The methods presented here are not in alphabetical order but do align with the recipes webpage. If you don't see what you are looking for right away, scroll down the QuickStart page.
+<strong>IMPORTANT:</strong><br> The methods presented here are in alphabetical order to align with the recipes webpage. If you don't see what you are looking for right away, scroll down the QuickStart page.
 </aside>
 
 ### Target Audience
@@ -215,99 +215,46 @@ We can now move on to use cases, leveraging the `getBearerToken` function:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: List All
+## Embedding: Generate Embeds Path for Member - All Workbooks
 Duration: 20
 
-### Description
-
-We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members)
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
-
-This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/embedding-generate-embed-path-for-member-all-workbooks)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
-### Running the Script
-Open the file `list-all.js` in the `members` folder:
-
-<img src="assets/apics23.png" width="800"/>
-
-Each code block is commented to explain what operations are being performed. 
-
-Press `F5` to run the script with VSCode's debugger. 
-
-The expected response is:
-
-<img src="assets/apics24.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Members: Update
-Duration: 20
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-)
-
 ### Description
-This script updates the account type of a member on the Sigma platform by sending a PATCH request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
+This script fetches a list of workbooks available to a specific member from the API, retrieves the workbook name, and constructs embed URLs for each workbook. 
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
+Here's a summary of its functionality:
 
-### Create Test Member
-Let's create new member in Sigma to test with. 
+ <ul>
+      <li>Loads environment variables from a specific .env file, including the base URL for the Sigma API and the unique identifier of the member.</li>
+      <li>Imports necessary modules, such as the function to obtain a bearer token and Axios for making HTTP requests.</li>
+      <li>The fetchWorkbooks function is defined to fetch the list of available workbooks for a given member ID. It constructs the API URL, sends a GET request, and returns an array of workbook details (IDs and names).</li>
+      <li>The main function main manages the overall workflow. It retrieves the bearer token, fetches the workbooks using the member ID and access token, and constructs embed URLs for each workbook.</li>
+      <li>If workbooks are found, it logs each workbook's name and its corresponding embed URL.</li>
+      <li> If no workbooks are available, it logs a message indicating that there are no workbooks to process or embed.</li>
+      <li></li>
+ </ul>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> We could also do this with the API, but we will use the UI to create a test member. We want to use the UI to verify API changes we make via API too.
-</aside>
-
-If you prefer, you can use any non-production user you want, but we recommend creating a test user for this purpose. 
-
-If you are not sure how to create a user (member) in Sigma, [please refer to this documentation.](https://help.sigmacomputing.com/docs/invite-people-to-your-organization).
-
-We created a test user using [Gmail's email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) feature. 
-
-Our test user is called `sales_rep`.
-
-Make a note of the test user's memberId. Again, we could get this using the API, but in this example, we will just copy it from the URL, when looking at the user's profile from the `Administration` > `People` list:
-
-<img src="assets/apics8.png" width="800"/>
-
-In this case, the memberId is `KteJXJQfHuei5GxxY9hQOnFZHP91A`. Yours will be different.
-
-Add these values to the .env file we created and save the change.
-```code
-MEMBER_ID=KteJXJQfHuei5GxxY9hQOnFZHP91A
-NEW_MEMBER_TYPE=Creator
-```
-
-<img src="assets/apics17.png" width="800"/>
-
-### Change Test Members' Account Type
-Our test user is currently a `Viewer` account type. We want to call the Sigma API endpoint to `Update the specified member` account type to `Creator`.
-
-<img src="assets/apics9.png" width="800"/>
-
-We will be using the [Update the specified member](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-) endpoint.
+The script can be executed directly, and the main function is exported for use in other modules if needed.
 
 ### Running the Script
-Open the file `update.js` in the `members` folder.
+Open the file `generate_workbook_embed_path.js` in the `embedding` folder:
 
 Each code block is commented to explain what operations are being performed. 
+
+Set a value for `MEMBERID` in `.env` to reflect which member's workbooks to generate embed urls for.
+
+It does not matter which member you want to use for this testing, as long as they have some workbooks they created or have been shared with.
 
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics18.png" width="800"/>
-
-A quick check against the member in Sigma shows them having the `Creator` account type now:
-
-<img src="assets/apics19.png" width="800"/>
+<img src="assets/apics58.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -360,25 +307,116 @@ You can revert the email by editing the `.env` file and rerunning the script's d
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Members: Recent Workbook
+## Members: Create New
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Member: Recent Workbook` page, [located here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members/-memberId-/files/recents)
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Create New` page, [located here.](https://help.sigmacomputing.com/recipes/members-create-new-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script fetches recent documents and folders for a specified member from the Sigma API. It retrieves a bearer token for authentication, constructs the API endpoint URL, and makes a GET request to fetch the recent items. The response is then processed to extract relevant information and sorted by the last interaction date in descending order before logging the results.
-In this use case, we want to return a list of the Workbooks (by name), the permission and when they last accessed for each Workbook, ordered by most recent first.
+This script automates the process of creating a new member in Sigma. Here's a summary of what the code does:
+
+<ul>
+   <li><strong>Environment Setup:</strong> Loads necessary environment variables from a `.env` file, including the base URL (`baseURL`), base email (`EMAIL`), and the new member's details such as first name, last name, and member type.</li>
+   <li><strong>Authentication:</strong> Obtains a bearer token required for authentication with the Sigma API using the `getBearerToken` function.</li>
+   <li><strong>Dynamic Email Generation:</strong> Dynamically generates a unique email address for the new member by appending a compact timestamp to the base email (format: `baseEmail+mmddhhmm@example.com`). This ensures the creation of distinct accounts during testing.</li>
+   <li><strong>Member Existence Check:</strong> Uses the Sigma API's `/members` endpoint with the `search` parameter to verify whether the email already exists before attempting to create a new member.</li>
+   <li><strong>HTTP Requests:</strong> Utilizes Axios for making HTTP requests to the Sigma API. Sends a `POST` request to the `/members` endpoint with the new member's details and logs the full API response for transparency.</li>
+   <li><strong>Log Details:</strong> Logs the constructed API request URL, the success response from the Sigma API (including member ID and account type), and the full response body for better understanding.</li>
+   <li><strong>Error Handling:</strong> Handles potential errors gracefully, logging detailed error messages and responses if any step fails.</li>
+   <li><strong>Execution:</strong> Executes the `addNewMember` function if the script is run directly to initiate the process of creating a new member.</li>
+</ul>
 
 ### Running the Script
-Open the file called `.env` and ensure that the memberID is set for someone who has accessed Workbooks in your Sigma instance. In a trial environment, pick someone who is very active or yourself if that is the case. As long as there is activity, it does not matter otherwise.
 
-If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Member: Update`.
+Open the file `create-new.js` in the members folder:
 
-Open the file called `recent-workbooks.js` in the `members` folder.
+Each code block is commented to explain what operations are being performed.
+
+Open the `env` file and update the following required values:
+
+<img src="assets/apics62.png" width=“800”/>
+
+From the `create-new.js` file, press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics63.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The new member will receive an automated welcome email with instructions. They will also appear in the portal under Administration > People > Pending Invitations until they confirm their account via the email.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Members: Get Member Details
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Get Member Details` page, [located here.](https://help.sigmacomputing.com/recipes/member-get-member-details-javascript)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script all member details from Sigma, for a specified memberID. Here's a summary of what the code does:
+
+<ul>
+   <li><strong>Environment Setup:</strong> Loads necessary environment variables from a `.env` file, including the base URL (`baseURL`), the member ID (`MEMBERID`), and optionally an email address (`EMAIL`) for member lookup.</li>
+   <li><strong>Authentication:</strong> Obtains a bearer token required for authentication with the Sigma API using the `getBearerToken` function.</li>
+   <li><strong>Input Validation:</strong> Determines whether to use `MEMBERID` or `EMAIL` for the member lookup. Logs an error and exits if neither is provided.</li>
+   <li><strong>Member Lookup:</strong> 
+      <ul>
+         <li>If `MEMBERID` is provided, the script queries the Sigma API's `/members/{memberId}` endpoint to retrieve the member details.</li>
+         <li>If `EMAIL` is provided, the script uses the `/members` endpoint with the `search` query parameter to locate the member.</li>
+      </ul>
+   </li>
+   <li><strong>HTTP Requests:</strong> Utilizes Axios for making HTTP requests to the Sigma API. Logs the full API response for transparency and better understanding.</li>
+   <li><strong>Log Details:</strong> Logs the constructed API request URL and the member details retrieved from the Sigma API in a readable JSON format.</li>
+   <li><strong>Error Handling:</strong> Handles potential errors gracefully, logging detailed error messages and responses if any step fails.</li>
+   <li><strong>Execution:</strong> Executes the `getMemberDetails` function if the script is run directly to retrieve the member details based on the input provided.</li>
+</ul>
+
+### Running the Script
+
+Open the file `get-member-details.js` in the members folder:
+
+Each code block is commented to explain what operations are being performed.
+
+Open the `env` file and provide either a `MEMBERID` or `EMAIL` to use for the API call. 1
+
+From the `create-new.js` file, press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics64.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Members: List All
+Duration: 20
+
+### Description
+
+We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members)
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
+
+This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Running the Script
+Open the file `list-all.js` in the `members` folder:
+
+<img src="assets/apics23.png" width="800"/>
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -386,7 +424,7 @@ Press `F5` to run the script with VSCode's debugger.
 
 The expected response is:
 
-<img src="assets/apics20.png" width="800"/>
+<img src="assets/apics24.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -611,36 +649,25 @@ Verify the new member is created in the UI, has workspace permission, is a membe
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbook: Pagination
+## Members: Recent Workbook
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-pagination-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Recent Workbook` page, [located here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members/-memberId-/files/recents)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script fetches all workbooks from the Sigma API, handling pagination for large datasets. 
-
-It retrieves a bearer token for authentication, constructs the API endpoint URL with pagination parameters, and iteratively fetches workbooks (in groups of 50) until all pages are retrieved. 
-
-The fetched workbook data is then formatted into a table for display in the console. 
-
-If an error occurs during the process, it is logged accordingly.
-
-Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
-
-Many of Sigma's API operations support `page` and `limit` as query parameters. 
-
-These parameters can be used in different ways but generally they are used to:
-
-1: Reduces the load on the server and the amount of data transmitted over the network at any one time.
-2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
-3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
+This script fetches recent documents and folders for a specified member from the Sigma API. It retrieves a bearer token for authentication, constructs the API endpoint URL, and makes a GET request to fetch the recent items. The response is then processed to extract relevant information and sorted by the last interaction date in descending order before logging the results.
+In this use case, we want to return a list of the Workbooks (by name), the permission and when they last accessed for each Workbook, ordered by most recent first.
 
 ### Running the Script
-Open the file `pagination.js` in the `workbooks` folder:
+Open the file called `.env` and ensure that the memberID is set for someone who has accessed Workbooks in your Sigma instance. In a trial environment, pick someone who is very active or yourself if that is the case. As long as there is activity, it does not matter otherwise.
+
+If you are not sure how to obtain a memberID, review the section called `Create Test Member` in the step called `Member: Update`.
+
+Open the file called `recent-workbooks.js` in the `members` folder.
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -648,167 +675,61 @@ Press `F5` to run the script with VSCode's debugger.
 
 The expected response is:
 
-<img src="assets/apics44.png" width="800"/>
+<img src="assets/apics20.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbook: List All
+## Members: Update
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Member: Update` page, [located here.](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-)
+
+### Description
+This script updates the account type of a member on the Sigma platform by sending a PATCH request to the API with the new member type. It retrieves the necessary information such as the member ID and new member type from environment variables and constructs the request URL accordingly. Finally, it makes the API call to update the member's account type.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
-### Description
-This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
-
-### Running the Script
-Open the file `list-all.js` in the `workbooks` folder:
-
-Each code block is commented to explain what operations are being performed. 
-
-Press `F5` to run the script with VSCode's debugger. 
-
-The expected response is:
-
-<img src="assets/apics36.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Workbook: Shared with Me
-Duration: 20
-
-A common use case is to provide the user a list of workbooks that are shared with, and have the list hyperlinked to the workbook so the user can just click and go.
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Shared with Me` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-shared-with-me)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
-
-### Description
-This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
-
-### Running the Script
-Open the file `shared-with-memberId.js` in the `workbooks` folder:
-
-Each code block is commented to explain what operations are being performed. 
-
-Press `F5` to run the script with VSCode's debugger. 
-
-The expected response is:
-
-<img src="assets/apics37.png" width="800"/>
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Workbook: Initiate a Materialization
-Duration: 20
-
-A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
-
-### Description
-
-This script initiates a materialization job for a specified workbook. 
-
-It retrieves required the sheet ID, from the materialization schedules of the workbook. Then, it starts the materialization job using the workbookId and sheet ID. 
-
-After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+### Create Test Member
+Let's create new member in Sigma to test with. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This script will use "WORKBOOKID" from the .env file, and requires that a schedule has already been created in Sigma.
+<strong>NOTE:</strong><br> We could also do this with the API, but we will use the UI to create a test member. We want to use the UI to verify API changes we make via API too.
 </aside>
 
-Then, it starts the materialization job using the workbookId and sheet ID. After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. 
+If you prefer, you can use any non-production user you want, but we recommend creating a test user for this purpose. 
 
-Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+If you are not sure how to create a user (member) in Sigma, [please refer to this documentation.](https://help.sigmacomputing.com/docs/invite-people-to-your-organization).
 
-### Create a Materialization Schedule
+We created a test user using [Gmail's email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) feature. 
 
-Log into Sigma as an `Administrator`. 
+Our test user is called `sales_rep`.
 
-Navigate to a Workbook that you want to materialize. We created a simple workbook that has two pages, one for a `Dashboard` and one for the source data, which is based on the `Sigma Sample Database` > `Retail` > `Plugs Electronics` > `Plugs Electronics Hands On Lab` table. This second page is labeled `Data`. 
+Make a note of the test user's memberId. Again, we could get this using the API, but in this example, we will just copy it from the URL, when looking at the user's profile from the `Administration` > `People` list:
 
-<aside class="negative">
-<strong>NOTE:</strong><br> We selected to materialize this table since it is small (4.5M rows) and the runtime to materialize will be less than 20 seconds in our test environment.
-</aside>
+<img src="assets/apics8.png" width="800"/>
 
-On the `Data` page, we select `Schedule materialization` as shown:
+In this case, the memberId is `KteJXJQfHuei5GxxY9hQOnFZHP91A`. Yours will be different.
 
-<img src="assets/apics39.png" width="800"/>
+Add these values to the .env file we created and save the change.
+```code
+MEMBER_ID=KteJXJQfHuei5GxxY9hQOnFZHP91A
+NEW_MEMBER_TYPE=Creator
+```
 
-We configured the schedule to run once a month:
+<img src="assets/apics17.png" width="800"/>
 
-<img src="assets/apics41.png" width="800"/>
+### Change Test Members' Account Type
+Our test user is currently a `Viewer` account type. We want to call the Sigma API endpoint to `Update the specified member` account type to `Creator`.
 
-The materialization job ("Job") needs to run to success the first time, and then is available to the API.
+<img src="assets/apics9.png" width="800"/>
 
-<img src="assets/apics40.png" width="800"/>
-
-We can check the status of all Jobs by navigating to `Administration` > `Materializations`:
-
-<img src="assets/apics42.png" width="800"/>
-
-We can now call this Job using the API.
+We will be using the [Update the specified member](https://docs.sigmacomputing.com/api/v2/#patch-/v2/members/-memberId-) endpoint.
 
 ### Running the Script
-Open the file `initiate-materialization.js` in the `workbooks` folder:
-
-Each code block is commented to explain what operations are being performed. 
-
-Press `F5` to run the script with VSCode's debugger. 
-
-As the script runs the materialization status is checked and goes through three states, pending, building and ready.
-
-Pending indicates job is queued.
-
-Building indicates the job is running.
-
-Ready indicated the job is completed to success.
-
-The expected response looks like this:
-
-<img src="assets/apics38.png" width="800"/>
-
-If we want to check the status of this Job, we can use the UI, by navigating to `Administration` > `Materializations`.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> As a best practice, remove (or suspend) any materialization jobs that are no longer needed. 
-</aside>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Workbook: List all Input Tables
-Duration: 20
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript-input-tables)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
-
-### Description
-This script performs a targeted search across all workbooks for an organization, looking specifically for elements of the type "input-table." 
-
-It logs concise details about each found element, including the workbook's name and path, the page's name, and the input table's name and ID. 
-
-It's designed to run silently, only outputting information when relevant elements are discovered, and includes basic error handling to manage issues quietly without interrupting the process.
-
-### Running the Script
-Open the file `all-input-tables.js` in the `workbooks` folder:
+Open the file `update.js` in the `members` folder.
 
 Each code block is commented to explain what operations are being performed. 
 
@@ -816,10 +737,123 @@ Press `F5` to run the script with VSCode's debugger.
 
 The expected response is:
 
-<img src="assets/apics43.png" width="800"/>
+<img src="assets/apics18.png" width="800"/>
+
+A quick check against the member in Sigma shows them having the `Creator` account type now:
+
+<img src="assets/apics19.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Teams: Bulk Assign/Remove Members
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Teams: Bulk Assign Members` page, [located here.](https://help.sigmacomputing.com/recipes/teams-bulk-assign-members-javascript)
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It is possible to alter this script to retrieve other types of elements. For example, other type are can be: "control", "text", "visualization", "table" and so on.
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script is designed to bulk assign existing members to a specific team within Sigma Computing's platform, utilizing the members' emails as identifiers. It operates by reading a list of email addresses from a .member-emails file, finding each member's ID through the Sigma API, and then assigning each member to a designated team. 
+
+Here's a summary of how the script works (not including the environmental setup, which has been covered earlier):
+
+**1: Reading Member Emails:**
+Reads a list of member emails from a .member-emails file located relative to the script. This file contains the emails of the members to be assigned to the team, separated by commas.
+
+**2: Member ID Lookup:** 
+For each email, makes an API request to Sigma's /members endpoint to find the member's ID based on their email. This is necessary because the subsequent API call to assign a member to a team requires the member's ID.
+
+**3:Assigning Members to Team:** 
+Once the member ID is obtained, makes another API request to the /teams/{teamId}/members endpoint to add the member to the specified team using the team ID provided in the environment variables.
+
+**4: Error Handling:** 
+Includes error handling for various steps of the process, logging any issues encountered during the member lookup or assignment process.
+
+**5: Script Execution:** 
+Orchestrates the overall process through a main function that initiates the token retrieval, member processing, and assignment tasks.
+
+### Running the Script
+Open the file `bulk-assign-team.js` in the `tables` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+In this example, we had three emails in the `../member-emails` file that the script will iterate through and add to a team. 
+
+Configure the emails in the file using comma separation. 
+
+The teamId is specified in the .env file.
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is (showing two members being added in the screenshot):
+
+<img src="assets/apics45.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We have also provided a script for bulk removal of team members. This script is called "bulk-remove-team" and functions the same way, but instead of adding it removes members from a team.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbook: Copy Workbook to Member "My Documents" Folder
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-copy-workbook-to-member-my-documents-folder-javascript)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script automates the process of copying a specific workbook for a designated user in Sigma. Here's a breakdown of what the script does:
+
+ <ul>
+      <li><strong>Environment Setup:</strong> Loads necessary environment variables from a .env file, including the base URL of the Sigma API, the ID of the workbook to be copied (WORKBOOK_ID), and the ID of the user who will own the copied workbook (MEMBERID).</li>
+      <li><strong>Authentication:</strong> It obtains a bearer token required for authentication with the Sigma API using the getBearerToken function.</li>
+      <li><strong>Retrieve "My Documents" Folder ID:</strong> Retrieves the ID of the designated user's "My Documents" folder. This folder is where the copied workbook will be placed.</li>
+      <li><strong>Copy Workbook:</strong> Defines the necessary payload for copying the workbook, including the name, description, owner ID, and destination folder ID. Then, it sends a POST request to the Sigma API to initiate the workbook copying process.</li>
+      <li><strong>Error Handling:</strong> Throughout the process, the script handles potential errors gracefully, logging detailed error messages if any step fails.
+</li>
+      <li><strong>Execution:</strong> Finally, the script executes the main function, initiating the process of copying the workbook for the designated user. If successful, it logs a success message along with the ID of the copied workbook.</li>
+</ul>  
+
+### Running the Script
+Open the file `copy-workbook-folder.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Set a value for `WORKBOOK_ID` and `MEMBERID` in `.env` to reflect which member will receive a copy of your workbook. 
+
+It does not matter which workbook you want to use for this testing, as long as it is published.
+
+We need to select a member to use as the "recipient" of this copied workbook. In our case, we selected our QA user. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma supports administrative user impersonation which is a real time saver when testing changes.
+</aside>
+
+By [impersonating](https://help.sigmacomputing.com/docs/impersonate-users) our user, we can see that they only have two folders in `My Documents` at the moment.
+
+<img src="assets/apics52.png" width="800"/>
+
+We are expecting this API script to place a copy of the workbook in this location, and we use impersonation to verify that.
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics53.png" width="800"/>
+
+In Sigma, we can see the copied workbook has been created in their `My Documents` folder:
+
+<img src="assets/apics54.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> In looking at the last screenshot, we can see that the workbook's owner is set to "Sigma Administrator". This may be intended but if not, the script should be modified to specify a memberId who will own the workbook. The operation that can do this is "files/Update an inode", which allows updating "ownerId" for the specified workbook (inode).
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -922,164 +956,311 @@ The PDF looks like this `export-workbook-pdf.pwd`:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbook: Copy Workbook to Member "My Documents" Folder
+## Workbook: Get Column Names by Page and Element
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-copy-workbook-to-member-my-documents-folder-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Members: Get Member Details` page, [located here.]()
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script automates the process of copying a specific workbook for a designated user in Sigma. Here's a breakdown of what the script does:
+This script automates the process of retrieving column names for all elements in each page of a workbook in Sigma. Here's a summary of what the code does:
 
- <ul>
-      <li><strong>Environment Setup:</strong> Loads necessary environment variables from a .env file, including the base URL of the Sigma API, the ID of the workbook to be copied (WORKBOOK_ID), and the ID of the user who will own the copied workbook (MEMBERID).</li>
-      <li><strong>Authentication:</strong> It obtains a bearer token required for authentication with the Sigma API using the getBearerToken function.</li>
-      <li><strong>Retrieve "My Documents" Folder ID:</strong> Retrieves the ID of the designated user's "My Documents" folder. This folder is where the copied workbook will be placed.</li>
-      <li><strong>Copy Workbook:</strong> Defines the necessary payload for copying the workbook, including the name, description, owner ID, and destination folder ID. Then, it sends a POST request to the Sigma API to initiate the workbook copying process.</li>
-      <li><strong>Error Handling:</strong> Throughout the process, the script handles potential errors gracefully, logging detailed error messages if any step fails.
-</li>
-      <li><strong>Execution:</strong> Finally, the script executes the main function, initiating the process of copying the workbook for the designated user. If successful, it logs a success message along with the ID of the copied workbook.</li>
-</ul>  
+<ul>
+   <li><strong>Environment Setup:</strong> Loads necessary environment variables from a `.env` file, including the base URL (`baseURL`) and a single workbook ID (`WORKBOOK_ID`) to analyze.</li>
+   <li><strong>Authentication:</strong> Obtains a bearer token required for authentication with the Sigma API using the `getBearerToken` function.</li>
+   <li><strong>Workbook Analysis:</strong> 
+      <ul>
+         <li>Uses the Sigma API's `/workbooks/{workbookId}` endpoint to dynamically retrieve the workbook name.</li>
+         <li>Uses the `/workbooks/{workbookId}/pages` endpoint to retrieve all pages in the specified workbook.</li>
+         <li>For each page, the `/workbooks/{workbookId}/pages/{pageId}/elements` endpoint retrieves all elements on the page.</li>
+         <li>For each element, the `/workbooks/{workbookId}/elements/{elementId}/columns` endpoint fetches the columns associated with that element, handling pagination if necessary.</li>
+      </ul>
+   </li>
+   <li><strong>HTTP Requests:</strong> Utilizes Axios for making HTTP requests to the Sigma API. Handles pagination to ensure all columns are retrieved for each element.</li>
+   <li><strong>Log Details:</strong> Logs the following details for each page and element:
+      <ul>
+         <li>Workbook name</li>
+         <li>Page name</li>
+         <li>Element name and ID</li>
+         <li>Column count and names for each element</li>
+      </ul>
+   </li>
+   <li><strong>Error Handling:</strong> Handles potential errors gracefully, logging detailed error messages and API responses if any step fails.</li>
+   <li><strong>Execution:</strong> Executes the `fetchColumnsForWorkbook` function if the script is run directly to initiate the column retrieval process for the specified workbook.</li>
+</ul>
 
-### Running the Script
-Open the file `copy-workbook-folder.js` in the `workbooks` folder:
+### Workbook Configuration
+While this script can be run against any single workbook by `workbookID`, we configured a workbook to have three pages, each with a table of varying column count. One page also had a child bar chart with a column count intentionally reduced to three columns. In this way, we could validate the script.
 
-Each code block is commented to explain what operations are being performed. 
+Our test workbook looked like this (using Sigma sample data and selecting random content, are we were not really concerned with anything other than column counts for the test):
 
-Set a value for `WORKBOOK_ID` and `MEMBERID` in `.env` to reflect which member will receive a copy of your workbook. 
+**Page 1:**
+<img src="assets/apics66.png" width="800"/>
 
-It does not matter which workbook you want to use for this testing, as long as it is published.
+**Page 2:**
+<img src="assets/apics67.png" width="800"/>
 
-We need to select a member to use as the "recipient" of this copied workbook. In our case, we selected our QA user. 
+**Page 3:**
+<img src="assets/apics68.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma supports administrative user impersonation which is a real time saver when testing changes.
+<strong>IMPORTANT:</strong><br> There is a variable called "LIMIT" in .env. If not value is set, the default value of 50 will be applied.
 </aside>
-
-By [impersonating](https://help.sigmacomputing.com/docs/impersonate-users) our user, we can see that they only have two folders in `My Documents` at the moment.
-
-<img src="assets/apics52.png" width="800"/>
-
-We are expecting this API script to place a copy of the workbook in this location, and we use impersonation to verify that.
-
-Press `F5` to run the script with VSCode's debugger. 
-
-The expected response is:
-
-<img src="assets/apics53.png" width="800"/>
-
-In Sigma, we can see the copied workbook has been created in their `My Documents` folder:
-
-<img src="assets/apics54.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In looking at the last screenshot, we can see that the workbook's owner is set to "Sigma Administrator". This may be intended but if not, the script should be modified to specify a memberId who will own the workbook. The operation that can do this is "files/Update an inode", which allows updating "ownerId" for the specified workbook (inode).
+<strong>NOTE:</strong><br> This script can be modified to retrieve the same results for all workbooks in a Sigma instance or workbooks in a specified folder. 
+</aside>
+
+### Running the Script
+Open the file `get-column-names-all-pages.js` in the `workbook` folder:
+
+Each code block is commented to explain what operations are being performed.
+
+Open the `env` file and provide a `WORKBOOKID`.
+
+From the `get-column-names-all-pages.js` file, press `F5` to run the script with VSCode's debugger. 
+
+The expected response is (partial shown):
+
+<img src="assets/apics65.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Log output has been formatted for readability only. This formatting can be removed to meet your requirements.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Embedding: Generate Embeds Path for Member - All Workbooks
+## Workbook: Initiate a Materialization
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Copy Workbook to Member "My Documents" Folder` page, [located here.](https://help.sigmacomputing.com/recipes/embedding-generate-embed-path-for-member-all-workbooks)
+A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script fetches a list of workbooks available to a specific member from the API, retrieves the workbook name, and constructs embed URLs for each workbook. 
 
-Here's a summary of its functionality:
+This script initiates a materialization job for a specified workbook. 
 
- <ul>
-      <li>Loads environment variables from a specific .env file, including the base URL for the Sigma API and the unique identifier of the member.</li>
-      <li>Imports necessary modules, such as the function to obtain a bearer token and Axios for making HTTP requests.</li>
-      <li>The fetchWorkbooks function is defined to fetch the list of available workbooks for a given member ID. It constructs the API URL, sends a GET request, and returns an array of workbook details (IDs and names).</li>
-      <li>The main function main manages the overall workflow. It retrieves the bearer token, fetches the workbooks using the member ID and access token, and constructs embed URLs for each workbook.</li>
-      <li>If workbooks are found, it logs each workbook's name and its corresponding embed URL.</li>
-      <li> If no workbooks are available, it logs a message indicating that there are no workbooks to process or embed.</li>
-      <li></li>
- </ul>
+It retrieves required the sheet ID, from the materialization schedules of the workbook. Then, it starts the materialization job using the workbookId and sheet ID. 
 
-The script can be executed directly, and the main function is exported for use in other modules if needed.
+After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This script will use "WORKBOOKID" from the .env file, and requires that a schedule has already been created in Sigma.
+</aside>
+
+Then, it starts the materialization job using the workbookId and sheet ID. After initiating the job, it continually checks the status of the materialization until it either completes successfully or fails. 
+
+Once the status indicates that the materialization is "ready", the script stops execution, indicating that the job has been completed successfully.
+
+### Create a Materialization Schedule
+
+Log into Sigma as an `Administrator`. 
+
+Navigate to a Workbook that you want to materialize. We created a simple workbook that has two pages, one for a `Dashboard` and one for the source data, which is based on the `Sigma Sample Database` > `Retail` > `Plugs Electronics` > `Plugs Electronics Hands On Lab` table. This second page is labeled `Data`. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We selected to materialize this table since it is small (4.5M rows) and the runtime to materialize will be less than 20 seconds in our test environment.
+</aside>
+
+On the `Data` page, we select `Schedule materialization` as shown:
+
+<img src="assets/apics39.png" width="800"/>
+
+We configured the schedule to run once a month:
+
+<img src="assets/apics41.png" width="800"/>
+
+The materialization job ("Job") needs to run to success the first time, and then is available to the API.
+
+<img src="assets/apics40.png" width="800"/>
+
+We can check the status of all Jobs by navigating to `Administration` > `Materializations`:
+
+<img src="assets/apics42.png" width="800"/>
+
+We can now call this Job using the API.
 
 ### Running the Script
-Open the file `generate_workbook_embed_path.js` in the `embedding` folder:
+Open the file `initiate-materialization.js` in the `workbooks` folder:
 
 Each code block is commented to explain what operations are being performed. 
 
-Set a value for `MEMBERID` in `.env` to reflect which member's workbooks to generate embed urls for.
+Press `F5` to run the script with VSCode's debugger. 
 
-It does not matter which member you want to use for this testing, as long as they have some workbooks they created or have been shared with.
+As the script runs the materialization status is checked and goes through three states, pending, building and ready.
+
+Pending indicates job is queued.
+
+Building indicates the job is running.
+
+Ready indicated the job is completed to success.
+
+The expected response looks like this:
+
+<img src="assets/apics38.png" width="800"/>
+
+If we want to check the status of this Job, we can use the UI, by navigating to `Administration` > `Materializations`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> As a best practice, remove (or suspend) any materialization jobs that are no longer needed. 
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Workbook: List All
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
+
+### Running the Script
+Open the file `list-all.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
 
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics58.png" width="800"/>
+<img src="assets/apics36.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Teams: Bulk Add/Remove Members
+## Workbook: List all Input Tables
 Duration: 20
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Teams: Bulk Assign Members` page, [located here.](https://help.sigmacomputing.com/recipes/teams-bulk-assign-members-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript-input-tables)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
 </aside>
 
 ### Description
-This script is designed to bulk assign existing members to a specific team within Sigma Computing's platform, utilizing the members' emails as identifiers. It operates by reading a list of email addresses from a .member-emails file, finding each member's ID through the Sigma API, and then assigning each member to a designated team. 
+This script performs a targeted search across all workbooks for an organization, looking specifically for elements of the type "input-table." 
 
-Here's a summary of how the script works (not including the environmental setup, which has been covered earlier):
+It logs concise details about each found element, including the workbook's name and path, the page's name, and the input table's name and ID. 
 
-**1: Reading Member Emails:**
-Reads a list of member emails from a .member-emails file located relative to the script. This file contains the emails of the members to be assigned to the team, separated by commas.
-
-**2: Member ID Lookup:** 
-For each email, makes an API request to Sigma's /members endpoint to find the member's ID based on their email. This is necessary because the subsequent API call to assign a member to a team requires the member's ID.
-
-**3:Assigning Members to Team:** 
-Once the member ID is obtained, makes another API request to the /teams/{teamId}/members endpoint to add the member to the specified team using the team ID provided in the environment variables.
-
-**4: Error Handling:** 
-Includes error handling for various steps of the process, logging any issues encountered during the member lookup or assignment process.
-
-**5: Script Execution:** 
-Orchestrates the overall process through a main function that initiates the token retrieval, member processing, and assignment tasks.
+It's designed to run silently, only outputting information when relevant elements are discovered, and includes basic error handling to manage issues quietly without interrupting the process.
 
 ### Running the Script
-Open the file `bulk-assign-team.js` in the `tables` folder:
+Open the file `all-input-tables.js` in the `workbooks` folder:
 
 Each code block is commented to explain what operations are being performed. 
 
-In this example, we had three emails in the `../member-emails` file that the script will iterate through and add to a team. 
-
-Configure the emails in the file using comma separation. 
-
-The teamId is specified in the .env file.
-
 Press `F5` to run the script with VSCode's debugger. 
 
-The expected response is (showing two members being added in the screenshot):
+The expected response is:
 
-<img src="assets/apics45.png" width="800"/>
+<img src="assets/apics43.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We have also provided a script for bulk removal of team members. This script is called "bulk-remove-team" and functions the same way, but instead of adding it removes members from a team.
+<strong>IMPORTANT:</strong><br> It is possible to alter this script to retrieve other types of elements. For example, other type are can be: "control", "text", "visualization", "table" and so on.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbook: Change Owner
+## Workbook: Pagination
+Duration: 20
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Pagination` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-pagination-javascript)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches all workbooks from the Sigma API, handling pagination for large datasets. 
+
+It retrieves a bearer token for authentication, constructs the API endpoint URL with pagination parameters, and iteratively fetches workbooks (in groups of 50) until all pages are retrieved. 
+
+The fetched workbook data is then formatted into a table for display in the console. 
+
+If an error occurs during the process, it is logged accordingly.
+
+Query parameters page and limit are commonly used together in APIs to implement pagination. This mechanism allows clients to request data in discrete chunks or "pages", making it easier to handle large datasets. Here's how these parameters typically work together in API use cases:
+
+Many of Sigma's API operations support `page` and `limit` as query parameters. 
+
+These parameters can be used in different ways but generally they are used to:
+
+1: Reduces the load on the server and the amount of data transmitted over the network at any one time.
+2: Make it easier for clients to consume data in manageable chunks, especially important for user interfaces where users scroll through lists or tables of data.
+3: Provide flexibility so customers can adjust the limit based on their current needs or capabilities/ For example, requesting more data on a powerful desktop browser or less on a mobile device with limited bandwidth.
+
+### Running the Script
+Open the file `pagination.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics44.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+## Workbook: Shared with Me
+Duration: 20
+
+A common use case is to provide the user a list of workbooks that are shared with, and have the list hyperlinked to the workbook so the user can just click and go.
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Shared with Me` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-shared-with-me)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This script fetches all workbooks accessible to a specific member based on their memberId. It retrieves the member's files, filters out the workbooks, and then lists their names, URLs, and version numbers.
+
+### Running the Script
+Open the file `shared-with-memberId.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics37.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
+
+
+
+
+
+
+
+
+
+
+## Workbook: Update Owner
 Duration: 20
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List all Input Tables` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript-input-tables)
@@ -1107,177 +1288,6 @@ Press `F5` to run the script with VSCode's debugger.
 The expected response is:
 
 <img src="assets/apics59.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Members: Bulk Deactivate / Delete
-Duration: 20
-
-This section demonstrates the code that was provided on the `API Code Samples` > `Members: Bulk Deactivate / Delete` page, [located here.](https://help.sigmacomputing.com/recipes/members-bulk-deactivate-delete)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
-</aside>
-
-### Description
-The `Members: Bulk Deactivate / Delete` script provides a method to deactivate, reassigning content and optionally deleting one or many members whose names match a pattern specified by `USER_NAME_PATTERN` in the `.env` file
-
-The script first deactivates each user that matches the specified name pattern. During this deactivation, it also reassigns the user’s content to the member specified in `NEW_OWNER_ID.` This ensures that any content the deactivated member owns will not be orphaned, but instead assigned to the new owner.
-
-**Optional Deletion:**
-After deactivation (and reassignment of content), the script checks the `DEACTIVATE_ONLY` flag:
-
-- If `DEACTIVATE_ONLY` is set to `true`, the script stops (after reassigning content) and does not delete the user.
-
-- If `DEACTIVATE_ONLY` is `false`, the script also proceeds to delete the user, who is now already deactivated and has no remaining assigned content.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Assigning content to a Sigma member who has a lower license type may result in loss of functionality. 
-</aside>
-
-<aside class="positive">
-<strong>WARNING:</strong><br> This script both deactivates and DELETES Sigma users. Great care must be taken when using this and we recommend testing thoroughly prior to any production use.
-</aside>
-
-### Endpoints used
-
-**List Members Endpoint (GET /v2/members):**<br>
-Retrieves a list of all members, allowing for optional filtering, such as including inactive users (includeInactive=true).
-
-**Deactivate Member Endpoint (POST /v2/members/{memberId}/deactivate):**<br>
-Deactivates a specific member account by memberId, making the user inactive but not permanently deleted.
-
-**Delete Member Endpoint (DELETE /v2/members/{memberId}):**<br>
-Permanently deletes a specific member account by memberId, removing it completely from the system.
-
-### Regex
-The `USER_NAME_PATTERN` variable in the `.env` file uses regular expressions (regex) to specify patterns for matching usernames. 
-
-Here are some formatting examples and explanations to help you configure this variable:
-
-**1: Exact Match**
-Matches usernames that exactly match the specified name.
-
-This will only match the username "JohnDoe" exactly, without any variations.
-
-Sample code:
-```code
-USER_NAME_PATTERN=^JohnDoe$
-```
-
-**2: Wildcard Match (Start of Name)**
-Matches any username that starts with a specific string.
-This pattern will match usernames like "API_User1", "API_Test", etc.
-
-Sample code:
-```code
-USER_NAME_PATTERN=^API
-```
-
-**3: Wildcard Match (End of Name)**
-Matches any username that ends with a specific string.
-
-This pattern will match usernames like "SystemAdmin", "JohnAdmin", etc.
-
-Sample code:
-```code
-USER_NAME_PATTERN=Admin$
-```
-
-**4: Contains Match**
-Matches any username that contains a specific string.
-
-This pattern will match usernames like "Embed_User", "API_Embed_Test", "EmbedManager", etc.
-
-Sample code:
-```code
-USER_NAME_PATTERN=Embed
-```
-
-**5: Case-Insensitive Match**
-If you want the search to be case-insensitive, add the i flag at the end of the regex pattern.
-
-This pattern will match "Embed User", "embed user", "EMBED USER", etc.
-
-Sample code:
-```code
-USER_NAME_PATTERN=(?i)^embed user
-```
-
-**6: Multiple Patterns (Using OR)**
-Matches usernames that meet one of multiple patterns.
-
-This pattern will match any username that starts with "API" or is exactly "Embed User".
-
-Sample code:
-```code
-USER_NAME_PATTERN=^(API|Embed User)
-```
-
-**7: Match with Number Ranges**
-Matches usernames with specific numeric patterns.
-
-This pattern will match usernames like "User001", "User123", "User999", etc.
-
-Sample code:
-```code
-USER_NAME_PATTERN=^User[0-9]{3}$
-```
-
-**Anchors:**<br>
-Use ^ to match the start of a name and $ to match the end. Omitting these will allow partial matches within the username.
-
-**Special Characters:**<br>
-Characters like . or * have special meanings in regex (e.g., . matches any character), so escape them with \ if you want them to be literal (e.g., User\.Test matches "User.Test").
-
-**Regex Flags:**<br>
-You can add (?i) at the beginning of the pattern to make it case-insensitive.
-
-### Running the Script
-Open the file `bulk-deactivate-delete-users.js` in the `members` folder:
-
-Each code block is commented to explain what operations are being performed. 
-
-In our case, we have been rather lax in our test Sigma instance, but we can use this script to clean up the `People` page in one step. This is much faster than manually removing members one at at time.
-
-However, lets remove one user only first, to make sure the script performs as expected. 
-
-There is a `Active` member, `Bob Somebody` who was a fake test member:
-
-<img src="assets/apics60.png" width="800"/>
-
-A quick [Sigma user impersonation]() of this member shows they have one workbook called `Bob's Favorite Data`. This is good to know as we can check to make sure it gets reassigned using the `NEW_OWNER_ID` in the .env file. 
-
-<img src="assets/apics61.png" width="800"/>
-
-To make sure that more than one workbook will be reassigned, we made a quick copy of this and named it `Bob's Favorite Data 2`. This will make a more complete test.
-
-Lets now configure `.env` for this member, deactivate them and assign their content to ourself using `memberId`: 
-
-```code
-# bulk-deactivate-delete-users variables
-USER_NAME_PATTERN=Bob Somebody
-NEW_OWNER_ID=
-DEACTIVATE_ONLY=true
-```
-
-Running the script results in `No NEW_OWNER_ID specified in the .env file. Aborting process.` 
-
-This is expected as we did not provide the value for `NEW_OWNER_ID`. Once we do that and rerun we get:
-
-
-
-
-
-
-
-
-
-
-Press `F5` to run the script with VSCode's debugger. 
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
