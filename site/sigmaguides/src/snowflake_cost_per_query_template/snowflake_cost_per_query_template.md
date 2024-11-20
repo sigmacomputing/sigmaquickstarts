@@ -46,45 +46,14 @@ How to deploy Sigma's **Snowflake Cost per Query** template.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## Building the query_history_enriched table with dbt
-Duration: 5
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> If your company does not use dbt, skip this page and advance to step 3 
-</aside>
-
-One way to create the `query_history_enriched` table is by deploying the <a href="https://github.com/get-select/dbt-snowflake-monitoring/tree/main">dbt-snowflake-monitoring</a> dbt package from <a href="https://select.dev/">Select</a>.
-
-This package has a model called `query_history_enriched` that enriches the Snowflake `query_history` table with query cost information.  It will calculate the actual cost (in currency) for every query run in your Snowflake account.
-
-Once the package has been deployed, Sigma needs to be able to access the table(s) created.  
-<ol>
-  <li>Identify the role used in your Sigma connection.
-  <li>Run the following command: 
-</ol>   
-
-```plaintext
-grant select on table {database name}.{schema name}.query_history_enriched to role {role used in Sigma connection};
-```
-Note that you may need to grant usage on the database and schema that host this table.
-
-Verify that you can see the new table(s) in the Sigma connection browser:
-
-<img src="assets/qhe_in_connection.png" width=300>
-
-**Next, advance to step 4.**
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Building the query_history_enriched table without dbt
 Duration: 5
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The steps on this page are only for companies that do not use DBT. If you use DBT, skip ahead to step 4. 
-</aside>
 
-Another way to create the `query_history_enriched` table is by running the attached SQL script in your Snowflake account.
+You will create the `query_history_enriched` table by running the attached SQL script in your Snowflake account.
 
 [Download the SQL script here!](https://github.com/sigmacomputing/quickstarts-public/blob/main/snowflake_cost_per_query_template/query_history_enriched.sql)
+
+This script takes Snowflake's new `query_attribution_history` table, which attributes compute credits to each query, and uses it to enrich the `query_history` table.  The script also sets up incremental materialization of the new `query_history_enriched` table so that it updates nightly.
 
 **The script requires you to specify a few parameters:**
 <ul>
