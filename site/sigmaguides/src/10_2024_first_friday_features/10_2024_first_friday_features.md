@@ -266,7 +266,7 @@ For example:
 
 <img src="assets/versions.gif">
 
-For more details, see [Workbook versions and version history]https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
+For more details, see [Workbook versions and version history](https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
 
 ### Updated file names for scheduled element exports
 For scheduled exports of elements that use **dynamic text in the title,** the file name now reflects the value of the dynamic text when the export was performed.

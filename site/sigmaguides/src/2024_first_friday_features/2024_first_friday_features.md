@@ -71,6 +71,13 @@ The `AUDIT_LOG` > `SIGMA_SHARED` > `DOCUMENTS` dimension table now contains the 
 
 This metadata enables you to obtain information related to both the source workbook and the tagged version when referencing audit log entries for events like exports and downloads.
 
+### Authenticate Databricks connections with OAuth (Beta)
+You can now connect to Databricks using OAuth and inherit all security policies from Databricks. 
+
+Databricks connections authenticated with OAuth allow your users to read data and use write-back features like input tables, warehouse views, materializations, and CSV uploads with their own individual credentials instead of a service account.
+
+See [Configure OAuth with Databricks (Beta).](https://help.sigmacomputing.com/docs/configure-oauth-with-databricks)
+
 ### Cross-org template sharing
 Send and accept workbook templates across different Sigma organizations.
 
@@ -91,6 +98,37 @@ If your organization uses password or SAML authentication, you can customize the
 Adjust the session length to align with internal security policies and external regulatory requirements.
 
 For more information, see [Manage authentication method and options.](https://help.sigmacomputing.com/docs/manage-authentication#manage-authentication-method-and-options)
+
+### Manage upgrade requests in the Administration portal (Beta):
+Admins can now view and respond to account upgrade requests in the Administration portal. 
+
+When a user requests an upgrade to their account type to explore or create workbooks, an admin can review the request in the Administration portal. Admins still receive emails about these requests.
+
+For example:
+
+<img src="assets/fff_09_2024_1.png" width="800"/>
+
+For more information, see [Respond to account upgrade requests (Beta)](https://help.sigmacomputing.com/docs/respond-to-account-upgrade-requests).
+
+### Audit logging (GA) <img src="assets/heart_icon.png" width="25"/>
+The Administration portal now includes an `Account` > `General Settings` > `Audit Logging` section that supports the following self-serve features:
+
+<img src="assets/fff_09_2024_4.png" width="800"/>
+
+- Sigma Audit Logs: Enable audit logging by activating the Sigma Audit Logs connection.
+Create, update, or delete an Audit Logs Storage Integration: Add, update, or delete a cloud storage integration specifically for exporting audit log data to AWS, Azure, or GCP
+
+- Audit logs functionality also has improved SLIs for data freshness and delivery. Fresh event data is available within an hour 99.9% of the time, and new audit log events are available at least once 99.9% of the time.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Once enabled, it may take a few minutes for the logging to start. While this is being setup, the feature will display "Feature Pending". Once ready, the new connection can be browsed.
+</aside>
+
+For more information, see [Enable audit logging and Create, update](https://help.sigmacomputing.com/docs/enable-audit-logging), and [delete an audit logs storage integration.](https://help.sigmacomputing.com/docs/create-update-and-delete-an-audit-logs-storage-integration)
+
+Sigma Audit Logs stores entries for 30 days by default, but you can retain audit log data for extended periods by exporting it to cloud storage.
+
+For more information, see [Create, update or delete an audit logs storage integration (Beta)](https://help.sigmacomputing.com/docs/create-update-and-delete-an-audit-logs-storage-integration).
 
 ### New permission for AI features
 Manage access to new AI features in Sigma with the Use AI features permission. Users must have a `Pro license` to be granted this permission.
@@ -145,6 +183,13 @@ Sigma now supports connecting to your Snowflake, Databricks, BigQuery, or Postgr
 
 For more information, see [Connect to Starburst.](https://help.sigmacomputing.com/docs/connect-to-starburst)
 
+### Team provisioning for SAML SSO
+Team provisioning for SAML SSO is now supported. Team assignments for a SAML user are synced when logging into Sigma. 
+
+For more information, see [Single sign-on with SAML.](https://help.sigmacomputing.com/docs/single-sign-on-with-saml)
+
+![Footer](assets/sigma_footer.png)
+
 ### Updated account type permissions for explore access
 Account types now support two permissions that enable users to be granted `Can explore` workbook permission. These account type permissions determine how users interact with workbooks in specific modes.
 
@@ -181,13 +226,24 @@ Sigma’s license tiers are now labeled `Lite`, `Essential`, and `Pro` to bring 
 
 For more information, [see the Sigma Community post.](https://community.sigmacomputing.com/t/sigma-license-name-changes-no-action-needed/3332?_gl=1*1gugfu2*_ga*MTM0MjUwMjM2Ny4xNzAwMjQxMDE5*_ga_PMMQG4DCHC*MTcwOTkyMTA5My41NTIuMS4xNzA5OTI1MDE1LjYwLjAuMA..)
 
+### Updated and new permissions for exports
+Export permissions are now more granular. The `Download `or `Send Now` permission is now two permissions, `Download` and `Export to email`:
+
+<img src="assets/fff_10_2024_1.png" width="800"/>
+
+The functionality managed by these permissions has not changed, and existing account types have been migrated to use the new permissions.
+
+In addition, the ability to have an export run as the recipient is managed by a new permission, `Run exports as recipient.`
+
+For more information, see [License and account type overview.](https://help.sigmacomputing.com/docs/license-and-account-type-overview) 
+
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
 
-## Actions (BETA)
+## Actions
 Duration: 20
 
-Workbook actions allow you to configure interactivity within and across elements in a workbook.
+Workbook actions <img src="assets/heart_icon.png" width="25"/> allow you to configure interactivity within and across elements in a workbook.
 
 By automating responses to specific user interactions, you can create efficient workbook workflows that produce quick and relevant data insights.
 
@@ -208,13 +264,37 @@ An ***simple example*** of this can be found in the free Sigma Loan Analysis tem
 
 For more information about workbook actions, see [Create and manage workbook actions](https://help.sigmacomputing.com/docs/create-and-manage-workbook-actions) and [Configure a cross-element filter.](https://help.sigmacomputing.com/docs/configure-a-cross-element-filter)
 
-### Use actions to insert rows into input tables (Beta)
-Use the [Insert row action](https://help.sigmacomputing.com/changelog#:~:text=Use%20the-,Insert%20row,-action%20to%20insert) to insert a row into an input table based on a user’s interaction with another workbook element. 
+### Make actions conditional (Beta) <img src="assets/heart_icon.png" width="25"/>
+When you define an action for a workbook element, you can now define an optional condition for that action. Customize the trigger behavior of your action based on the value of a control element or using a custom formula.
 
+Enable conditional actions:
+<img src="assets/fff_09_2024_7.png" width="600"/>
 
-<img src="assets/actions1.png" width="800"/>
+Below is a GIF showing a visualization of `Total sales by country over time` and a control with two values, `Individual trend` and `Comparison`.
 
-For more information, see [Intro to Actions](https://help.sigmacomputing.com/docs/intro-to-actions)
+In the animation, a user clicks each of the two values, demonstrating that the chart visualization switches between a trellis view of each country and a combined view in a stacked bar chart.
+
+<img src="assets/action.gif">
+
+For more information, see [Make an action conditional (Beta).](https://help.sigmacomputing.com/docs/make-an-action-conditional)
+
+### Use actions to insert rows into input tables (GA) <img src="assets/heart_icon.png" width="25"/>
+The `Insert row action` to insert a row into an input table based on a user’s interaction with another workbook element is now **GA.**
+
+The feature can be found here:
+
+<img src="assets/fff_10_2024_3.png" width="800"/>
+
+For more information about actions in Sigma, see [Intro to actions.](https://help.sigmacomputing.com/docs/intro-to-actions)
+
+### Use workbook actions to set a date range control
+The date range control is now a valid target for workbook actions that target controls.
+
+There are many possibilities with this new action. 
+
+For example, a segmented control can be used to allow users to easily click on common date ranges. This saves time for the user, and keeps them focused on the data:
+
+<img src="assets/datarange.gif">
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION--
@@ -249,6 +329,23 @@ For more information, [see Explain a visualization with AI.](https://help.sigmac
 If you have an OpenAI integration configured, you can now import data from an image of a table or a simple chart. The data is parsed and uploaded to a connection with Write-back support. Then you can start exploring the data in a workbook.
 
 For more information and recommendations, see [Import data from an image.](https://help.sigmacomputing.com/docs/import-data-from-an-image)
+
+### Write, correct, and explain formulas using the AI formula assistant (Beta) <img src="assets/heart_icon.png" width="25"/>
+Sigma’s formula assistant uses AI to write new formulas, correct formula errors, and explain existing formulas applied to elements in workbooks and data models. These AI capabilities can help enhance productivity and accuracy, ensuring you get the most out of custom calculations and available functions.
+
+For example, lets assume we have create a union on two tables of customer names and addresses. We need to derive which customers exist in both tables.
+
+We can add a new column and use Sigma's `AI formula assistant` to write it for us, saving us time.
+
+<img src="assets/fff_09_2024_5.png" width="800"/>
+
+Looking at the `Column details` for the new column, we can see that the formula produced to expected results:
+
+<img src="assets/fff_09_2024_6.png" width="800"/>
+
+We can just filter the table to show rows that `Exists in Both`.
+
+For more information, see [Use AI with formulas (Beta).](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION--
@@ -300,6 +397,11 @@ The `List connections` endpoint now includes the includeArchived query parameter
 
 ***GET /v2/connections***
 
+### New API rate limit
+The `v2/auth/toke`n endpoint is now rate limited to **one request per second.**
+
+For more information, see [Get started with the Sigma REST API.](https://help.sigmacomputing.com/reference/get-started-sigma-api#api-limits)
+
 ### New API reference and recipes
 We have migrated to a new API Reference platform that is far more feature rich while being easier to use.
 
@@ -316,6 +418,11 @@ All the current "Recipes" are written in JavaScript today. The recipes can be do
 The following Recipes are available today:
 
 <img src="assets/recipeslist.png" width="800"/>
+
+### New endpoint for workbook version history
+The following endpoint for retrieving the version history of a workbook is now available:
+
+- [Get version history for a workbook:](https://help.sigmacomputing.com/reference/getversionhistory) (GET /v2/workbooks/{workbookId}/version-history)
 
 ### New file type for List files and List member files endpoints
 The `typeFilter` query parameter for the [List files](https://help.sigmacomputing.com/reference/fileslist) and [List member](https://help.sigmacomputing.com/reference/listaccessibleinodes) files endpoints now includes a symlink option that you can use to filter shortcuts in your request. 
@@ -353,6 +460,11 @@ The options for this method are available to test in our public [API Reference:]
 ### New option for update an inode endpoint
 The [Update an inode](https://help.sigmacomputing.com/reference/filesupdate) endpoint now includes the restore option. Include the `restore` option in your request to restore previously deleted files.
 
+### New parameter for Tag a workbook endpoint
+The [Tag a workbook](https://help.sigmacomputing.com/reference/tagworkbook) (POST v2/workbooks/tag) endpoint now supports the `isDefault` parameter. 
+
+If you want users that only have access to tagged versions of the document to open this tagged version by default, set `isDefault` to `true`.
+
 ### New response output for Get embeds for a workbook endpoint:
 The entries array includes two additional properties in the response for the [Get embeds for a workbook](https://help.sigmacomputing.com/reference/listworkbookembeds) 
 
@@ -387,19 +499,48 @@ An example response for this method will look like this:
 }
 ```
 
-### Pagination required for List endpoints
-List endpoints that did not already require pagination will start requiring pagination on **September 4, 2024.**
+### New response output for List templates shared with your organization endpoint
+The `entries` array includes one additional property in the response for the [List templates shared with your organization:](https://help.sigmacomputing.com/reference/listtemplatessharedwithyou) (GET /v2/shared_templates/shared_with_you) endpoint:
 
-**Specific Endpoints:**<br>
-[List members](https://help.sigmacomputing.com/reference/listmembers)<br>
-[List teams](https://help.sigmacomputing.com/reference/listteams)<br>
-[List workspaces](https://help.sigmacomputing.com/reference/listworkspaces)<br>
-[List materialization schedules for a workbook](https://help.sigmacomputing.com/reference/listmaterializationschedules)<br>
-[List scheduled exports for a workbook](https://help.sigmacomputing.com/reference/listworkbookschedules)<br>
+- **createdAt:** When the template was shared with your organization
+
+### New workbook bookmarks API endpoints
+The following endpoints to work with bookmarks in workbooks, including version tagged workbooks, are now available:
+
+- [List bookmarks in a workbook:](https://help.sigmacomputing.com/reference/getworkbookbookmarks) (GET /v2/workbooks/{workbookId}/bookmarks)
+- [Add a bookmark to a workbook:](https://help.sigmacomputing.com/reference/postworkbookbookmarks) (POST /v2/workbooks/{workbookId}/bookmarks)
+- [Get a bookmark:](https://help.sigmacomputing.com/reference/getworkbookbookmark) (GET /v2/workbooks/{workbookId}/bookmarks/{bookmarkId})
+- [Update a workbook bookmark:](https://help.sigmacomputing.com/reference/updateworkbookbookmark) (PATCH /v2/workbooks/{workbookId}/bookmarks/{bookmarkId})
+- [Delete a bookmark from a workbook:](https://help.sigmacomputing.com/reference/deleteworkbookbookmarks) (DELETE /v2/workbooks/{workbookId}/bookmarks/{bookmarkId})
+
+The same endpoints are available for tagged workbooks:
+
+- [List bookmarks in a tagged workbook](https://help.sigmacomputing.com/reference/gettaggedworkbookbookmarks) (GET /v2/workbooks/{workbookId}/tags/{tagName}/bookmarks)
+- [Add a bookmark to a tagged workbook](https://help.sigmacomputing.com/reference/createtaggedworkbookbookmark) (POST /v2/workbooks/{workbookId}/tags/{tagName}/bookmarks/)
+- [Get a bookmark in a tagged workbook](https://help.sigmacomputing.com/reference/gettaggedworkbookbookmark) (GET /v2/workbooks/{workbookId}/tags/{tagName}/bookmarks/{bookmarkId})
+- [Update a bookmark in a tagged workbook](https://help.sigmacomputing.com/reference/updatetaggedworkbookbookmark) (PATCH /v2/workbooks/{workbookId}/tags/{tagName}/bookmarks/{bookmarkId})
+- [Delete a bookmark from a tagged workbook](https://help.sigmacomputing.com/reference/deletetaggedworkbookbookmark) (DELETE /v2/workbooks/{workbookId}/tags/{tagName}/bookmarks/{bookmarkId})
+
+### Pagination required for list endpoints:
+List endpoints that did not already require pagination **now require pagination as of September 4, 2024.**
+
+- [List members:](https://help.sigmacomputing.com/reference/listmembers)
+(GET /v2/members)
+- [List teams:](https://help.sigmacomputing.com/reference/listteams) (GET /v2/teams)
+- [List workspaces:](https://help.sigmacomputing.com/reference/listworkspaces) (GET /v2/workspaces)
+- [List materialization schedules for a workbook:](https://help.sigmacomputing.com/reference/listmaterializationschedules) (GET /v2/workbooks/{workbookId}/materialization-schedules)
+- [List scheduled exports for a workbook:](https://help.sigmacomputing.com/reference/listworkbookschedules) (GET /v2/workbooks/{workbookId}/schedules)
+
+If you use these endpoints, update your API requests to include the limit query parameter to return a paginated response. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> If you use these endpoints, update your API requests to include the limit query parameter to return a paginated response. After the change, requests without the limit parameter return a paginated response of the default page size (50).
+<strong>IMPORTANT:</strong><br> Requests without the limit parameter now return a paginated response of the default page size (50).
 </aside>
+
+### Reorganized API endpoint documentation:
+The API endpoint documentation is now organized in logical subsections to make endpoints easier to find and use.
+
+Access the [API reference here.](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
 ### Scoped API keys
 This update provides more control over API privileges to ensure developers are granted relevant feature access.
@@ -463,7 +604,41 @@ Duration: 20
 
 **20:** Sorting pivot columns in a pivot table with more than `25,000 cells` of data now works as expected.
 
+**21:** Copying and pasting an input table element no longer results in the error “Unfortunately, something went wrong. Pasting failed.”
 
+**22:** Insert row action (beta) now prohibits row insertion into tables with protected columns.
+
+**23:** Modifying the permissions for a nested folder that inherited its permissions from the parent folder no longer affects the parent folder permissions.
+
+**24:** Tagging a workbook after removing a version tag no longer results in an error indicating "Failed to tag workbook, $workbookname$ is archived."
+
+**25:** When tagging a version of a workbook that contains only input tables, you can now swap data sources successfully.
+
+**26:** When a workbook action is configured to set a control value on click in a visualization element, clicking on the white space outside the chart now clears the control value as expected.
+
+**27:** Workbook actions triggered from interactions with tables which have columns that either do not have a type or an error type now run as expected.
+
+**28:** When users send a request to their admins for a tag to be applied to their workbook, the resulting email notifications now use custom branding settings configured for the organization.
+
+**29:** Copying a single element with a configured action or clicking Copy page on a workbook page containing actions now copies action configurations between elements on the page.
+
+**30:** Theme fonts are now applied to all embed modal views.
+
+**31:** The Get a team API endpoint now returns an error message when trying to retrieve an unexpected team.
+
+**32:** Users can now export from embeds authenticated with client ID and secret when eval_connection_id is set.
+
+**33:** When including a PNG file in an scheduled or ad hoc email export, the resulting image now uses the full width of the email body.
+
+**34:** Swapping data sources when promoting a workbook from one tag to another tag now works as expected.
+
+**35:** When creating a dynamic title, the type ahead suggestions in the formula bar in the overlay now include the available table columns as well as controls.
+
+**36:** When responsive height is enabled in an embedded object, opening a modal in the embedded content now displays the modal at the current scroll position.
+
+**37:** When using the embed sandbox UI in an organization with a high number of teams, the left navigation now loads teams progressively on scroll without throwing a RESOURCE_EXHAUSTED error.
+
+**38:** When you specify a text alignment for a row header or column header, all header values are aligned instead of the lowest level header.
 
 
 
@@ -533,6 +708,11 @@ For more information, see [Implement inbound and outbound events in embeds.](htt
 
 Embed Events are discussed and demonstrated in this [QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_07_events/index.html?index=..%2F..index#0)
 
+### Embed SDK for React (Beta)
+The Embed SDK for React offers a developer-friendly interface that simplifies integration into applications. Developers can access detailed installation and usage guides on [Github.](https://github.com/sigmacomputing/embed-sdk)
+
+See [Embed SDK for React](https://help.sigmacomputing.com/docs/embed-sdk-for-react) or follow this [QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_15_embed_sdk/index.html?index=..%2F..index&_gl=1*kllv3*_gcl_au*NDE1NjcyODMyLjE3MjEzOTgwOTA.*_ga*MjAyNzIyMDcwLjE3MTcxODQ4Nzk.*_ga_PMMQG4DCHC*MTcyNjg0NTgzMy4yMjQuMS4xNzI2ODQ2MjM4LjYwLjAuMA..#0) for an in-depth guide to using the SDK.
+
 ### Embedding workflows UI refresh
 The following UI changes have been applied to the embedding workflows in Sigma:
 
@@ -565,6 +745,34 @@ Embeds now support a `hide_run_as_recipient` parameter that allows you to hide t
 This removes the ability for embed users to configure exports that run queries using the recipient’s permissions and data access. 
 
 A `Hide run as recipient` option has also been added to the Embed configurations panel in the embed sandbox.
+
+### Improved data source selection UI in embeds
+Select data sources for workbook elements using a new popover UI. 
+
+With the new experience, you can search for data sources, review a list of suggested sources, and preview data sources. Preview a data source to review the source data and choose specific columns to apply to the element.
+
+For example:
+
+<img src="assets/fff_10_2024_4.png" width="800"/>
+
+This allows an embed user (with the appropriate permission) to access the new experience.
+
+<img src="assets/fff_10_2024_5.png" width="800"/>
+
+For more information, see [Create a data element.](https://help.sigmacomputing.com/docs/create-a-data-element)
+
+### Link sharing for secure embeds: <img src="assets/heart_icon.png" width="25"/>
+Embedded Link Sharing, when enabled, allows users to share specific workbooks, explorations, or bookmarks through URLs generated within an embed as they work in Sigma.
+
+These links can be copied and pasted into user-created emails (or other systems), allowing recipients to access the relevant content directly from their emails without needing to navigate back to Sigma.
+
+These links will also be included in any scheduled exports created by the user, allowing recipients to click a link to access the shared content.
+
+Alternatively, customer developers can use these links to enhance their application's functionality.
+
+To review the documentation, see [Configure a shareable link for an embed.](https://help.sigmacomputing.com/changelog#:~:text=Configure%20shareable%20links,an%20embed.)
+
+For a detailed demonstration of embedded link sharing, there is a [QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_17_link_sharing/index.html?index=..%2F..index#0)
 
 ### JavaScript event for saved bookmark
 Sigma now listens for the following JavaScript event sent by a user to save a bookmark on an embedded workbook:
@@ -609,6 +817,13 @@ workbook:published
 For more information, see [Implement inbound and outbound events in embeds.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
 
 There is also a [QuickStart for using events with Sigma embedding.](https://quickstarts.sigmacomputing.com/guide/embedding_07_events/index.html?index=..%2F..index#0)
+
+### New inbound events in embeds
+Use two new inbound events, `workbook:bookmark:delete` and `workbook:bookmark:select` to display, clear, or delete bookmarks.
+
+For more information, see [Implement inbound and outbound events in embeds.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
+
+There is also a [QuickStart that covers eventing in Sigma embeds.](https://quickstarts.sigmacomputing.com/guide/embedding_07_events/index.html?index=..%2F..index#0)
 
 ### New JavaScript Event Type
 We we have added the ability to create bookmarks via a postMessage event.
@@ -700,6 +915,21 @@ This function allows users to create and manipulate arrays, which are collection
 
 For more information, [see the Array documentation.](https://help.sigmacomputing.com/docs/array)
 
+### ArrayIntersection function
+The `ArrayIntersection` function compares two arrays and returns an array of all overlapping elements, without duplicates. 
+
+A business user can gain significant value this simple function, by leveraging it to identify common elements between two datasets, which is a common need in various business scenarios. Just a few examples are listed;
+
+- Identify customers who have purchased both Product A and Product B by intersecting purchase lists.
+- Find customers who are both high spenders and frequent shoppers to offer them exclusive rewards.
+- Determine which products are available in multiple warehouses by intersecting inventory lists. This aids in efficient stock redistribution.
+- Find common products supplied by multiple vendors to negotiate better pricing or consolidate suppliers.
+- Identify duplicate records across datasets when merging databases, ensuring data accuracy and consistency.
+
+The function is now supported for BigQuery, Snowflake, and PostgreSQL.
+
+For more information, see [ArrayIntersection.](https://help.sigmacomputing.com/docs/arrayintersection)
+
 ### ArrayJoin function
 The ArrayJoin function joins elements of an array into a single text string.
 
@@ -716,11 +946,19 @@ For example, adding a column to display another columns date into the US Pacific
 
 For more information, [see ConvertTimezone.](https://help.sigmacomputing.com/docs/converttimezone)
 
+### Create time series forecasts (Beta)
+In a Sigma workbook, you can use `historical time series data` to predict and visualize future values and trends, leveraging [Snowflake’s forecasting ML function](https://docs.snowflake.com/en/user-guide/ml-functions/forecasting). 
+
+Forecasting employs a machine learning algorithm to predict future numeric data based on historical time series data. A common use case is to forecast sales by item for the next two weeks.
+
+No prior SQL knowledge us required to make this work.
+
+For more information, see [Create time series forecasts (Beta).](https://help.sigmacomputing.com/docs/create-time-series-forecasts)  
+
 ### DateFormat function enhancement
 The `DateFormat` function now supports the `%q` specifier that allows you to extract the **quarter** component from a datetime value.
 
 For more information about the function and supported format specifiers, [see DateFormat.](https://help.sigmacomputing.com/docs/dateformat)
-
 
 ### Misc. New Functions
 We have added to new system functions to allow more personalization for users.
@@ -758,16 +996,35 @@ The Sequence function returns an arithmetic sequence as an array of integers bas
 
 For more information, see [Sequence.](https://help.sigmacomputing.com/docs/sequence)
 
+### SHA256 function
+The `SHA256` function transforms text input into a 256-bit hash value. 
+
+The function is supported for all databases except for PostgreSQL.
+
+In the example below, patient data contains social security number and we obfuscated it, using this new function as:
+
+<img src="assets/fff_09_2024_3.png" width="800"/>
+
+For more information, see [SHA256.](https://help.sigmacomputing.com/docs/sha256)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Infrastructure
 
+### Sigma now supports AWS UK region
 Sigma is now deployed in AWS UK in compliance with UK GDPR ([Data Protection Act 2018](https://www.gov.uk/data-protection)). 
 
 Located in London, United Kingdom, the deployment gives customers in the UK more control over data storage while enabling compliance with internal policies and external data residency requirements.
 
 To accompany the region expansion, Sigma now supports the English (United Kingdom) (en-gb) locale for enhanced localization. When enabled, dates display as DD/MM/YYYY or Day Month Year, and time displays in the 24-hour format.
+
+### Sigma now supports Azure Western Europe region
+Sigma is now deployed in Azure West Europe in compliance with [EU GDPR.](https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_en) 
+
+Located in the `Netherlands`, this deployment gives customers in the EU more control over data storage while enabling compliance with internal policies and external data residency requirements.
+
+<img src="assets/sigma_footer.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -813,13 +1070,27 @@ You can access the [new series here.](https://quickstarts.sigmacomputing.com/?ca
 
 
 ### API Recipes
-
+This QuickStart is designed to support Sigma's API Code Samples and will demonstrate some common operations that customers may use the REST API for.
 This [QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?_gl=1*2dnp9q*_ga*ODgwOTI4NTIyLjE3MTM1NjI2OTE.*_ga_PMMQG4DCHC*MTcxNjU3MzM1OC4yOC4xLjE3MTY1NzM0MTMuNS4wLjA.#0) is designed to support Sigma's API Recipes and demonstrates many common operations that customers may use the REST API for.
+
+### Build and Secure Multi-Tenant Data Applications with Snowflake and Sigma
+This Sigma and Snowflake lab is designed to teach you how to build customer facing analytics applications that allow your end users to dive deeper and go further with data.
+Read all about it [here.](https://quickstarts.sigmacomputing.com/guide/snowflake_build_secure_multitenant_data_applications_snowflake_sigma/index.html?index=..%2F..index#0)<br>
+
 
 ### Develop a Predictive Model using Snowflake and Sigma
 This QuickStart discusses and demonstrates creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
 
 [Develop a Predictive Model using Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html?index=..%2F..index#0).
+
+### Discounted cash flow use case
+This QuickStart describes and demonstrations how to handle a discounted cash flow (DCF) in Sigma. DCF is a common financial analysis that values some type of asset over a period of time. More simply put, it allows someone to understand how much future money is worth in today's terms.
+
+[Read all about it here.](https://quickstarts.sigmacomputing.com/guide/use_cases_finance_discounted_cash_flow/index.html?index=..%2F..index#0)
+
+An example of what is built is shown below:
+
+<img src="assets/fff_10_2024_9.png" width="800"/>
 
 ### Embedding 14: Parameterized Queries
 In this QuickStart, we discuss and demonstrate Sigma embedding using parameterized queries and user attributes.
@@ -827,6 +1098,11 @@ In this QuickStart, we discuss and demonstrate Sigma embedding using parameteriz
 Parameterized queries are quite useful when embedded customers have per-customer databases with the same schema.
 
 [Link to QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_14_parameterized_queries/index.html?index=..%2F..index#0)
+
+### Embedding 15: Embed-SDK for React
+Sigma provides many methods to allow users and developers to interact with its systems including web-ui, REST API, Javascript Embed API and an SDK for the React framework. The Embed-SDK for React offers a higher-level, developer-friendly interface that simplifies integration into applications, in contrast to Sigma's lower-level JavaScript Embed-API, which provides more granular control but may require additional coding.
+Read all about it [here.](https://quickstarts.sigmacomputing.com/guide/embedding_15_embed_sdk/index.html?index=..%2F..index#0  
+)
 
 ### Embedding 16: Secure Embedding with JWT
 Many customers want a simple, but secure way to embed content that can be accessed by both external (users who do not have a registered account in Sigma) and internal user (users who access Sigma only through an embed, inside a parent application).
@@ -842,6 +1118,9 @@ In support of some announced changes to embed terminology, we also took the oppo
 
 **Getting Started with Period Over Period Analysis in Sigma:** <br>
 In this [QuickStart](https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html?index=..%2F..index#0), we will focus on the PoP analysis scenarios, where two specific time periods are selected and compared, against key metrics or data points between these periods.
+
+This QuickStart covers some of the more common questions we receive from Sigma customers. It is not comprehensive but is intended to present topics that often arise after users have completed the [QuickStart Fundamentals](https://quickstarts.sigmacomputing.com/?cat=fundamentals) and begin using Sigma with their own data.
+Read all about it [here.](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_beyond_the_basics_1/#0) <img src="assets/heart_icon.png" width="25"/><br>
 
 ### Google Analytics 4 Template Setup
 This template gives you a prebuilt analytics package for Google Analytics 4 events data, including detailed page-level metrics for every page and the ability to dive into event-level details, and is based on reports from Universal Analytics/GA3.
@@ -864,6 +1143,23 @@ The Sigma Health Check Native App is designed to provide insights into the overa
 
 ### Version Tagging with Sigma (non-embed use cases)
 [In this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_version_tagging/index.html?index=..%2F..index#0), we cover how Sigma version tagging can be used (inside Sigma itself) to provide a controlled release experience, which should result in less reported issues and happier end-users.
+
+<img src="assets/sigma_footer.png" width="800"/>
+<!-- END OF SECTION-->
+
+## Plugins
+Duration: 20
+
+Developers can access detailed installation and usage guides on [GitHub.](https://github.com/sigmacomputing/plugin)
+
+There have been many eEnhancements including:
+
+- Plugins can now trigger actions in other workbook elements.
+- User-defined functions can now be called in plugins through workbook actions.
+- Paginated data fetching, allowing you to fetch more than 25,000 data points.
+- Warning messages if configuration items are passed into functions/hooks before they are registered
+
+There is also a [QuickStart on Plugins.](https://quickstarts.sigmacomputing.com/guide/administration_plugins/index.html?index=..%2F..index#0)
 
 <img src="assets/sigma_footer.png" width="800"/>
 <!-- END OF SECTION-->
@@ -907,6 +1203,33 @@ Duration: 20
 
 ## Visualizations
 Duration: 5
+
+### Bars in combo charts support color by category (Beta) <img src="assets/heart_icon.png" width="25"/>
+If your combo chart includes a bar chart, you can add a column to split the color of the bar series by category.
+
+For example:
+
+<img src="assets/fff_10_2024_8.png" width="800"/>
+
+For more information, see [Configure a chart color by category. (Beta)](https://help.sigmacomputing.com/docs/combo-charts#configure-a-chart-color-by-category-beta)
+ 
+### Cartesian charts support trellis by series (Beta)
+If your bar, line, area, or scatter chart has multiple series, you can create a trellis chart for each series.
+
+**This approach provides several advantages:**
+ <ul>
+      <li><strong>Enhanced Comparisons:</strong> By breaking down the data into series-based subsets, analysts can easily compare patterns across different categories, time periods, or groups within the same chart type.</li>
+      <li><strong>Focused Insights:</strong> Each segment within the trellis isolates a single series, reducing clutter and helping analysts focus on specific relationships or trends relevant to each subset.</li>
+      <li><strong>Detailed Multi-Dimensional Analysis:</strong> </li>
+      <li><strong></strong> Trellising enables the analysis of multiple variables at once. For example, in a scatter trellis, each pane could represent a different product or location, showing how variables interact within each distinct category.</li>
+      <li><strong>Efficient Data Exploration:</strong> Trellis charts streamline the comparison of segmented data without needing separate charts, improving efficiency in exploratory data analysis.</li>
+</ul>
+
+For example:
+
+<img src="assets/fff_10_2024_7.png" width="800"/>
+
+For more information, see [Create a trellis chart with multiple series. (Beta)](https://help.sigmacomputing.com/docs/create-and-format-trellis-charts#create-a-trellis-chart-with-multiple-series-beta)
 
 ### Interactive chart legends
 Interact with chart legend entries to quickly focus on specific data subsets. 
@@ -957,6 +1280,13 @@ Underlying data is now accessible from individual data points in visualization e
 You can explore the underlying data for specific data points or the entire chart by modifying filters, adding and removing columns, and interacting directly with the chart and data table.
 
 <img src="assets/feb_2024_4.png" width="800"/>
+
+### Updated Geography map visualization
+The Geography map visualization now uses [Mapbox.](https://www.mapbox.com/) The existing Point and Region map visualizations had already been using Mapbox.
+
+As part of this change, the default zoom of your map might be different. 
+
+Use the `Pin viewport` option on a map to persist the desired zoom level.
 
 ### Waterfall chart (GA)
 Waterfall charts are now generally available (GA). Build a waterfall chart to show changes in data over a period of time. Waterfall charts are perfect for financial analytics use cases where you track revenue and spend for a project, department, or an entire organization, and other use cases. You can format the shape, start, and end values of a waterfall chart as well.
@@ -1026,6 +1356,19 @@ The `Combine attachments` option expands the previous ability to merge Excel att
 
 For more information, [see Merge PDF or Excel files.](https://help.sigmacomputing.com/docs/configure-additional-options-for-exports#merge-pdf-or-excel-files)
 
+### Containers (Beta) <img src="assets/heart_icon.png" width="25"/>
+Sigma's container feature allows you to organize workbook pages by grouping elements within a customizable container.
+
+This provides an intuitive way to manage layouts, ensuring that related elements remain visually cohesive. Containers not only streamline the design process by enabling you to adjust and style grouped components collectively but also enhance flexibility when rearranging or resizing elements on the canvas. This powerful feature simplifies complex workbook structures, making it easier to maintain consistency in both functionality and appearance.
+
+By using containers, workbook design takes on a whole new meaning.
+
+In the animation below, we show how containers are dramatically improve the appearance of existing Sigma workbooks.
+
+<img src="assets/containers.gif">
+
+For more information, see [Organize workbook layouts with containers (Beta).](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers)
+
 ### Control element naming updates
 For consistency and clarity, the control elements formerly labeled `Text control` and `Number` are now labeled `Text input` and `Number input`.
 
@@ -1041,6 +1384,22 @@ You can now specify a `custom formula aggregation` when configuring reference ma
 
 For more information about reference marks, see [Display chart reference marks.](https://help.sigmacomputing.com/docs/display-chart-reference-marks)
 
+### Custom sort null values in pivot tables
+Specify the sort order of null values in a pivot row or pivot column using custom sort. Choose from the default option, which mimics your data warehouse sort order for null values, listing all null values first, or listing all null values last.
+
+For more information, see [Customize the sort order of data elements.](https://help.sigmacomputing.com/docs/configure-custom-sort)
+
+### Customize element styles in a workbook layout (Beta)
+You can now customize the styling of data elements such as tables, input tables, visualizations, and UI elements. 
+
+This provides users a great deal of flexibility to make their work visually appealing, which helps with end-user adoption.
+
+Add or remove padding, change the corner style, add a border, and change the text alignment for text elements.
+
+Set default styles in an organization theme, customize styles for an entire workbook in the workbook settings, or style individual elements.
+
+For more information, see [Customize element background and styles](https://help.sigmacomputing.com/docs/customize-element-background-and-styles) and [Workbook settings overview.](https://help.sigmacomputing.com/docs/workbook-settings-overview)
+
 ### Customizable page tab color
 You can now customize the color of individual page tabs for added clarity and organization in workbooks.
 
@@ -1054,7 +1413,6 @@ Set a custom page width for a workbook. Specify a pixel width to constrain the e
 <img src="assets/FFF_07_2024_6.png" width="800"/>
 
 If you export workbook pages to PDF, use this setting to approximate the layout size of a PDF page. See [Format PDF page export layout.](https://help.sigmacomputing.com/docs/configure-additional-options-for-exports#format-pdf-export-page-layout)
-
 
 ### Data labels in maps
 Add one or more columns to generate data labels in point and region maps. This update makes it easier to quickly view at-a-glance details directly in the element.
@@ -1192,6 +1550,15 @@ For a video demonstration, [click here.](https://www.loom.com/share/4ae2e65a1d18
 <strong>IMPORTANT:</strong><br> Sigma is continually working to improve usability for our customers. We want Sigma to not only be simple to use, but also beautiful looking.
 </aside>
 
+### Export any supported format to Google Drive <img src="assets/heart_icon.png" width="25"/>
+You can now export one or more workbook elements, workbook pages, or an entire workbook to a new folder in Google Drive. 
+
+Additional file format types are now supported, such as `PDF` and `PNG.`
+
+The current list of supported types are:
+
+<img src="assets/fff_10_2024_2.png" width="800"/>
+
 ### Improved data source selection UI
 Select data sources for workbook elements using a new popover UI. 
 
@@ -1239,6 +1606,14 @@ The inline toolbar for data elements now includes a filter icon at all times, re
 <strong>IMPORTANT:</strong><br> This update enables quick access to filtering options for every data element added to the workbook.
 </aside>
 
+### Pivot table changes
+
+#### Copy pivot table contents
+You can now copy cells, rows, and columns in pivot tables to your clipboard.
+
+#### Highlight the selected row and column for the pivot table
+When you select a cell in a pivot table, the corresponding pivot rows and columns are highlighted.
+
 <img src="assets/feb_2024_6.png" width="800"/>
 
 ### Placeholder text in control elements
@@ -1265,6 +1640,25 @@ When sending or scheduling an export, you now have the option to repeat pivot va
 In the Send Now or Schedule Exports modal, go to More options and select the Repeat pivot values checkbox. This ensures the pivot header values are populated in every applicable row or column:
 
 <img src="assets/fff_03_2024_1.png" width="800"/>
+
+### Restore a workbook to a previous change
+You can now restore a workbook to a previous change in the edit history for a draft or previously published version.
+
+This can be really useful if something you are working on stopped working and you are not sure what change caused the issue. Now you can quickly revert versions to see what changed caused the issue.
+
+For example:
+
+<img src="assets/versions.gif">
+
+For more details, see [Workbook versions and version history](https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
+
+### Send bug reports from error messages
+For select errors, you can now send a bug report to Sigma from a link in the error message.
+
+### Specify color palette with hex codes
+To more precisely specify the visualization color palette for your workbook, you can specify a custom color palette with hex codes.
+
+For more information, see [Workbook settings overview.](https://help.sigmacomputing.com/docs/workbook-settings-overview)
 
 ### Support for emailing exports to organization users and teams
 When configuring an email export, the `Recipients` field now features an autocomplete dropdown that helps you search for and select an organization team or user. 
@@ -1310,6 +1704,31 @@ This change makes these export naming conventions consistent with Sigma's other 
 
 For example, for a workbook with the name workbookName, exported on `August 2nd`, the file name changes from `2024-08-02 10:07 - workbookName` to `workbookName_elementName_20240802T1007`.
 
+### Updated file names for scheduled element exports
+For scheduled exports of elements that use **dynamic text in the title,** the file name now reflects the value of the dynamic text when the export was performed.
+
+### Updated workbook theme colors and settings <img src="assets/heart_icon.png" width="25"/>
+The colors used for organization and workbook themes have been updated, and there are new settings to override the canvas color or element background color for a workbook theme.
+
+Workbooks using existing themes have been migrated to the new colors. As a result, existing theme colors might have an override canvas color or override element background color already set. If your workbook does not look as expected, review the following known issues and workarounds:
+
+- If your background is no longer white or black, set override colors for both the Canvas and Element.
+- If your workbook is oddly pastel and bright, adjust the Surface color. Open the color picker and drag the color picker to the bottom of the color field.
+- If your workbook has a tinted color instead of gray, adjust the Surface color. Open the color picker and drag the color picker all the way to the left of the color field.
+- If your theme was originally based on a preset theme, reapply the preset and adjust the Primary color.
+- If the colors in your workbook appear overly saturated, adjust the Theme colors to use less saturated colors.
+
+For more information, see [Theme settings for more details.](https://help.sigmacomputing.com/docs/workbook-settings-overview#theme-settings)
+
+### Workbook elements
+
+#### Format segmented control alignment
+You can now format the alignment of a segmented control. Align the control to the left or right, or stretch the control to the full width of the control element.
+
+For more details, see [Create and configure a segmented control.](https://help.sigmacomputing.com/docs/segmented-control)
+
+#### Expanded text formatting options for conditional formatting
+When you apply conditional formatting to a table or pivot table, you can format the style of the text. Conditionally apply underline, italics, or a specific text color to text.
 
 ### Zip file option for attachments in scheduled exports
 When scheduling exports it is now optional to compress export attachments into a single zip file. This will result in smaller attachments and more reliable delivery over email.
