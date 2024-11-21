@@ -8,7 +8,15 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: archive
 lastUpdated: 2024-11-01
 
+Waiting on Nov and Dec
+Publish in Feb 2025
+
 # 2024 Compliation
+<!-- The above name is what appears on the website and is searchable. 
+
+Waiting on Nov and Dec
+Publish in Feb 2025
+-->
 
 ## Overview 
 Duration: 5 

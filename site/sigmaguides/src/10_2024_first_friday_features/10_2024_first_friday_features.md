@@ -9,11 +9,7 @@ tags: first_friday_features
 lastUpdated: 2024-11-01
 
 # (10-2024) October
-<!-- The above name is what appears on the website and is searchable. 
 
-Waiting on Nov and Dec
-Publish in Feb 2025
--->
 
 ## Overview 
 Duration: 5 
