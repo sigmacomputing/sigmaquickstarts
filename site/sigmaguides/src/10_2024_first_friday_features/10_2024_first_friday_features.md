@@ -11,20 +11,8 @@ lastUpdated: 2024-11-01
 # (10-2024) October
 <!-- The above name is what appears on the website and is searchable. 
 
-Oct 4 - done
-Oct 11 - done
-Oct 18 - done
-Oct 25 - done
-Nov 1 - done
-Publish on Nov 1
-
-### Customize element styles in a workbook layout (Beta)
-
-For more information, see []() 
-
-<img src="assets/heart_icon.png" width="25"/>
-
-<img src="assets/fff_10_2024_1.png" width="800"/>
+Waiting on Nov and Dec
+Publish in Feb 2025
 -->
 
 ## Overview 
