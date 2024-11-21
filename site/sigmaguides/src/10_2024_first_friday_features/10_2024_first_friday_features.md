@@ -9,23 +9,7 @@ tags: first_friday_features
 lastUpdated: 2024-11-01
 
 # (10-2024) October
-<!-- The above name is what appears on the website and is searchable. 
 
-Oct 4 - done
-Oct 11 - done
-Oct 18 - done
-Oct 25 - done
-Nov 1 - done
-Publish on Nov 1
-
-### Customize element styles in a workbook layout (Beta)
-
-For more information, see []() 
-
-<img src="assets/heart_icon.png" width="25"/>
-
-<img src="assets/fff_10_2024_1.png" width="800"/>
--->
 
 ## Overview 
 Duration: 5 
@@ -266,7 +250,7 @@ For example:
 
 <img src="assets/versions.gif">
 
-For more details, see [Workbook versions and version history]https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
+For more details, see [Workbook versions and version history](https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
 
 ### Updated file names for scheduled element exports
 For scheduled exports of elements that use **dynamic text in the title,** the file name now reflects the value of the dynamic text when the export was performed.

@@ -44,7 +44,7 @@ Duration: 5
 When you define an action for a workbook element, you can now define an optional condition for that action. Customize the trigger behavior of your action based on the value of a control element or using a custom formula.
 
 Enable conditional actions:
-<img src="assets/fff_08_2024_7.png" width="600"/>
+<img src="assets/fff_09_2024_7.png" width="600"/>
 
 Below is a GIF showing a visualization of `Total sales by country over time` and a control with two values, `Individual trend` and `Comparison`.
 
@@ -73,14 +73,14 @@ When a user requests an upgrade to their account type to explore or create workb
 
 For example:
 
-<img src="assets/fff_08_2024_1.png" width="800"/>
+<img src="assets/fff_09_2024_1.png" width="800"/>
 
 For more information, see [Respond to account upgrade requests (Beta)](https://help.sigmacomputing.com/docs/respond-to-account-upgrade-requests).
 
 ### Audit logging (GA) <img src="assets/heart_icon.png" width="25"/>
 The Administration portal now includes an `Account` > `General Settings` > `Audit Logging` section that supports the following self-serve features:
 
-<img src="assets/fff_08_2024_4.png" width="800"/>
+<img src="assets/fff_09_2024_4.png" width="800"/>
 
 - Sigma Audit Logs: Enable audit logging by activating the Sigma Audit Logs connection.
 Create, update, or delete an Audit Logs Storage Integration: Add, update, or delete a cloud storage integration specifically for exporting audit log data to AWS, Azure, or GCP
@@ -114,11 +114,11 @@ For example, lets assume we have create a union on two tables of customer names 
 
 We can add a new column and use Sigma's `AI formula assistant` to write it for us, saving us time.
 
-<img src="assets/fff_08_2024_5.png" width="800"/>
+<img src="assets/fff_09_2024_5.png" width="800"/>
 
 Looking at the `Column details` for the new column, we can see that the formula produced to expected results:
 
-<img src="assets/fff_08_2024_6.png" width="800"/>
+<img src="assets/fff_09_2024_6.png" width="800"/>
 
 We can just filter the table to show rows that `Exists in Both`.
 
@@ -244,7 +244,7 @@ The function is supported for all databases except for PostgreSQL.
 
 In the example below, patient data contains social security number and we obfuscated it, using this new function as:
 
-<img src="assets/fff_08_2024_3.png" width="800"/>
+<img src="assets/fff_09_2024_3.png" width="800"/>
 
 For more information, see [SHA256.](https://help.sigmacomputing.com/docs/sha256)
 

@@ -63,7 +63,7 @@ The results of this QuickStart will be a Sigma instance that only allows SSO, wi
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Initial SSO Configuration**
+## Initial SSO Configuration
 Duration: 20
 
 Login into Okta as Administrator and navigate to `Applications` > `Applications` and click `Browse App Catalog`:
@@ -226,7 +226,7 @@ Another inspection of the Okta log for the Sigma application reveals the two ste
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION -->
 
-## **Disable Standard Authentication**
+## Disable Standard Authentication
 Duration: 20
 
 We want to disable username/password logins to Sigma and enforce only SSO with Okta.
@@ -252,7 +252,7 @@ The Sigma admin user is still able to login, but only with SSO.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **SCIM**
+## SCIM
 Duration: 20
 
 So far, we have only used the admin user account in Sigma to setup and test Okta SSO with. Now we want to learn how to manage other users who may have different roles with SSO. There are many ways to do this, but we will focus on using **“System for Cross-domain Identity Management”**, better known by its acronym **SCIM**, which is a standard for the automation of user and group provisioning between two services. In this case, the two services are Okta and Sigma.
@@ -386,9 +386,9 @@ Click on the "pencil" icon for `User Type`:
 
 We are presented with the pre-configured settings for `User Type`. We see that the "base" Sigma `Account Types` that are included in all Sigma accounts are pre-configured for us:
 ```console
-Viewer
-Author (also called "Creator")
-Admin
+Pro
+Essential
+Lite
 ```
 
 <img src="assets/ok15i.png" width="800"/>
@@ -396,7 +396,7 @@ Admin
 This is where we can also `+ Add Another` to support Sigma custom `Account Types` later. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Custom Account Types in Sigma provide a way to restrict users to specific Sigma functionality. For example, not allow users to export data.
+<strong>NOTE:</strong><br> The "value" of a default user type attribute must be lower case.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -437,11 +437,11 @@ Click the `Assign` button in the `Sigma on AWS` row.
 
 We now need to set the Sigma `Account Type` this new group will use. We have the three standard Sigma `Account Types` to choose from. 
 
-Select `Viewer` and click `Save` and `Done`.
+Select `Lite` and click `Save` and `Done`.
 
-Anyone who is a member of this group will get `Viewer` access as defined in Sigma > `Administration` > `Account Types` > `Viewer`.
+Anyone who is a member of this group will get view access as defined in Sigma > `Administration` > `Account Types` > `Lite`.
 
-While we are here, lets create another `Group` for Sigma Creators Account Type. The workflow is the same, but in the last step, assign the new group the `Account Type` of `Author` (which maps to Sigma Creators).
+While we are here, lets create another `Group` for Sigma `Essentials` Account Type. The workflow is the same, but in the last step, assign the new group the `Account Type` of `Essentials` (which maps to Sigma Essentials).
 
 We can call this group `OktaCreators`.
 
@@ -475,13 +475,13 @@ Then click `Save`. The new groups should show a status as `Pushing` to `Active` 
 ## Add User(s)
 Duration: 20
 
-Now we can assign new users to groups in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the group rights that are afforded to them by Sigma Account Type.
+Now we can assign new users to groups in Okta as we create them. These new users can then use SSO to gain access to Sigma and will have the group rights that are afforded to them by Sigma `Account Type.`
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We are demonstrating the general framework / workflow, which can be used to create any RBAC integration between Okta and Sigma that your organization may need. The Okta / Sigma integration is very flexible. 
 </aside>
 
-We will make our first new user a `Viewer` in Sigma.
+We will make our first new user a `Lite` user in Sigma.
 
 In Okta, navigate to `Directory` > `People` and click the `Add Person` button:
 
@@ -559,7 +559,7 @@ Clicking on the tile will take you directly into Sigma, as your user is Okta aut
 ![Footer](assets/sigma_footer.png)
 <!-- END OF NEXT SECTION-->
 
-## **Custom Account Types with Okta**
+## Custom Account Types with Okta
 Duration: 20
 
 It is common for companies to give users access to Sigma, but disallow them the ability to export (download) data for various reasons. This is done by creating an `Account Type` in Sigma, with exporting restricted, and map an Okta group to it.
@@ -637,6 +637,10 @@ Configure the Account Type as shown. Notice that we are not allowing any Export 
 <img src="assets/ok62.png" width="800"/>
 
 Click `Create`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Group / Team values are case sensitive and should should match the exactly to prevent errors.
+</aside>
 
 ### Test New Role in Sigma
 
