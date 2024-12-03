@@ -1,7 +1,7 @@
 author: pballai
 id: sigma_api_with_postman
 summary: How to use the Sigma API with Postman
-categories: administration
+categories: Developers
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
