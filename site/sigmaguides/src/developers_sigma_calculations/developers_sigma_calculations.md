@@ -1,7 +1,7 @@
 author: pballai
-id: administration_sigma_calculations
-summary: administration_sigma_calculations
-categories: Administration
+id: developers_sigma_calculations
+summary: developers_sigma_calculations
+categories: Developers
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

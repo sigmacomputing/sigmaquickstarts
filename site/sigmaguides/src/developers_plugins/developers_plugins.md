@@ -1,7 +1,7 @@
 author: pballai
-id: administration_plugins
-summary: administration_plugins
-categories: Administration
+id: developers_plugins
+summary: developers_plugins
+categories: developers
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

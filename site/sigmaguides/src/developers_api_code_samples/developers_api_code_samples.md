@@ -1,7 +1,7 @@
 author: pballai
-id: administration_api_code_samples
-summary: administration_api_code_samples
-categories: Administration
+id: developers_api_code_samples
+summary: developers_api_code_samples
+categories: Developers
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
