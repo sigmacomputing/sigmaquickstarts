@@ -154,9 +154,27 @@ For more information, see [Delete API credentials](https://help.sigmacomputing.c
 ### New API Recipe: Workbook: Get Column Names by Page and Element
 This script automates the process of retrieving column names for all elements in each page of a workbook in Sigma.
 
-For more information, see [Get Column Names by Page and Element (Javascript](https://help.sigmacomputing.com/recipes/get-column-names-by-page-and-element-javascript)
+For more information, see [Get Column Names by Page and Element (Javascript)](https://help.sigmacomputing.com/recipes/get-column-names-by-page-and-element-javascript)
 
 It is also referenced in the QuickStart, [Sigma REST API Recipes](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?_gl=1*1sjorgy*_gcl_au*NzIyMTMyNjkwLjE3MjkxODg5MzQ.*_ga*MjAyNzIyMDcwLjE3MTcxODQ4Nzk.*_ga_PMMQG4DCHC*MTczMjI4ODE1My4zMjkuMS4xNzMyMjg4NDY0LjM1LjAuMA..#15)
+
+### New API Recipe: Connections - List All
+This script lists all connections in alphabetically order by name.
+
+For more information, see [Connections - List All (Javascript)](https://help.sigmacomputing.com/recipes/connections-list-all)
+
+It is also referenced in the QuickStart, [Sigma REST API Recipes](http://localhost:8000/guide/developers_api_code_samples/index.html?index=..%2F..index#3)
+
+### New API Recipe: Connections - Sync All Tables in Schema <img src="assets/heart_icon.png" width="25"/>
+This script automates the synchronization of tables within a schema that is specified in the .env file.
+
+The script resolves the schema's inodeId based on the provided SYNC_PATH in the .env file, lists all tables within the schema, and constructs full paths for each table.
+
+Finally, it syncs each table individually using the full path, ensuring that the process dynamically handles all tables within the specified schema.
+
+For more information, see [Connections: Sync All Tables in Schema (Javascript)](https://help.sigmacomputing.com/recipes/connections-sync-all-tables-in-schema-javascript)
+
+It is also referenced in the QuickStart, [Sigma REST API Recipes](https://quickstarts.sigmacomputing.com/guide/developers_api_code_samples/index.html?index=..%2F..index#4)
 
 ### Use OAuth override tokens in API calls
 The Sigma API now supports the use of `OAuth override tokens` in API calls. 
@@ -271,6 +289,8 @@ Export bursting ("bursting") is a powerful feature that enables automated distri
 **4:** Collapsed all past First Friday Feature QuickStarts from 2023 into a single QuickStart for that year. The same will be done for 2024, after the month of the year is released in 2025. [Link to FFF Archive](https://quickstarts.sigmacomputing.com/archive/) 
 
 **5:** Updated [Embedding into Salesforce QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_11_embedding_into_salesforce/index.html?index=..%2F..index#4) to show how to pass a Salesforce value to Sigma.
+
+**6:** Added three new API recipes to the [Sigma REST API Recipes](https://quickstarts.sigmacomputing.com/guide/developers_api_code_samples/index.html?index=..%2F..index#4) QuickStart. Details on the new recipes are found in the API section of this months FFF QuickStart. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
