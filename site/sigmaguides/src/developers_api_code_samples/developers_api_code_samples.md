@@ -225,7 +225,7 @@ We can now move on to use cases, leveraging the `getBearerToken` function:
 ## Connections - List All
 Duration: 5 
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Connections: List all` page, [located here.](https://help.sigmacomputing.com/recipes/connections-list-all)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -236,17 +236,17 @@ This script lists all connections in a specific Sigma instance, based on cloud p
 
 ### Running the Script
 
-Open the file `get-member-details.js` in the members folder:
+Open the file `list_all_connections.js` in the connections folder:
 
 Each code block is commented to explain what operations are being performed.
 
-Open the `env` file and provide either a `MEMBERID` or `EMAIL` to use for the API call. 1
+Open the `env` file and provide a `CONNECTIONID` to use for the API call.
 
-From the `create-new.js` file, press `F5` to run the script with VSCode's debugger. 
+From the `list_all_connections.js` file, press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics64.png" width="800"/>
+<img src="assets/apics69.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -254,7 +254,7 @@ The expected response is:
 ## Connections - Sync All Tables in Schema
 Duration: 5 
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-list-all-javascript)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/connections-sync-schema)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -263,23 +263,23 @@ This section demonstrates the code that was provided on the `API Code Samples` >
 ### Description
 This script automates the synchronization of tables within a schema that is specified in the `.env` file.
 
-The script resolves the schema's inodeId based on the provided SYNC_PATH in the .env file, lists all tables within the schema, and constructs full paths for each table. 
+The script resolves the schema's `inodeId` based on the provided `SYNC_PATH` in the .env file, lists all tables within the schema, and constructs full paths for each table. 
 
 Finally, it syncs each table individually using the full path, ensuring that the process dynamically handles all tables within the specified schema.
 
 ### Running the Script
 
-Open the file `get-member-details.js` in the members folder:
+Open the file `sync_schema.js` in the connections folder:
 
 Each code block is commented to explain what operations are being performed.
 
-Open the `env` file and provide either a `MEMBERID` or `EMAIL` to use for the API call. 1
+Open the `env` file and provide either a `CONNECTIONID` and `SYNC_PATH` to use for the API call.
 
-From the `create-new.js` file, press `F5` to run the script with VSCode's debugger. 
+From the `sync_schema.js` file, press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
 
-<img src="assets/apics64.png" width="800"/>
+<img src="assets/apics70.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -456,7 +456,7 @@ Open the file `get-member-details.js` in the members folder:
 
 Each code block is commented to explain what operations are being performed.
 
-Open the `env` file and provide either a `MEMBERID` or `EMAIL` to use for the API call. 1
+Open the `env` file and provide either a `MEMBERID` or `EMAIL` to use for the API call.
 
 From the `create-new.js` file, press `F5` to run the script with VSCode's debugger. 
 
