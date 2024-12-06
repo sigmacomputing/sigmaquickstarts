@@ -133,14 +133,11 @@ The following endpoint to retrieve the full path to a table in a connection is n
 
 For more information, see [Get connection path for a table](https://help.sigmacomputing.com/reference/getinodeconnectionpath)
 
-### New endpoints:  Get document sources
+### New endpoints: Get document sources
 The following endpoints to get the source of a workbook or get the source of a dataset are now available:
 
 `GET /v2/workbooks/{workbookId}/sources`
 For more information, see [Get workbook source](https://help.sigmacomputing.com/reference/getworkbooksources)
-
-`GET /v2/datasets/{datasetId}/source`
-For more information, see [Get dataset source](https://help.sigmacomputing.com/reference/getdatasetsource)
 
 ### New endpoints: Post/Delete API credentials
 The following endpoints to create and delete API credentials are now available:
