@@ -254,7 +254,7 @@ The expected response is:
 ## Connections - Sync All Tables in Schema
 Duration: 5 
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/connections-sync-schema)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: List All` page, [located here.](https://help.sigmacomputing.com/recipes/connections-sync-all-tables-in-schema-javascript)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
