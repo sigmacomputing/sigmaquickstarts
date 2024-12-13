@@ -404,7 +404,7 @@ Search for the `Sales_People` team, select it and provision `Can view` permissio
 For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create an `Embed Path`. 
 
 **This is no longer required when using JWT.**
-=======
+
 For those users who have used Sigma embedding before, this step is a little different. We used to use Sigma's UI to create a `Workbook URL` > `Embed Path`. **This is no longer required when using JWT.**
 
 With JWT embedding, we simply use the `Published` url, taken directly from the browser.
@@ -455,6 +455,9 @@ async function generateSignedUrl() {
         const time = Math.floor(Date.now() / 1000); // Current Unix timestamp
         const expirationTime = time + Math.min(parseInt(process.env.SESSION_LENGTH) || 3600, 2592000);
 
+        // Convert TEAM into an array if it is a single value
+        const teamsArray = process.env.TEAM ? [process.env.TEAM] : [];
+
         const token = jwt.sign({
             sub: process.env.EMAIL,
             iss: process.env.CLIENT_ID,
@@ -462,18 +465,22 @@ async function generateSignedUrl() {
             iat: time,
             exp: expirationTime,
             account_type: process.env.ACCOUNT_TYPE,
-            team: process.env.TEAM,
+            teams: teamsArray,
         }, process.env.SECRET, {
             algorithm: 'HS256',
             keyid: process.env.CLIENT_ID
         });
 
-        const signedEmbedUrl = `${process.env.BASE_URL}?:jwt=${token}&:embed=true`;
+        // Decode the JWT to inspect its content and log it
+        const decodedToken = jwt.decode(token, { complete: true });
+        console.log('Decoded JWT:', decodedToken); // Log the decoded JWT for debugging
+        
+        const signedEmbedUrl = `${process.env.BASE_URL}?:jwt=${encodeURIComponent(token)}&:embed=true`;
         // Log important configuration details to ensure they are correctly set
         console.log('BASE_URL:', process.env.BASE_URL);
         console.log('CLIENT_ID:', process.env.CLIENT_ID); // Verify the client ID
         console.log('SESSION_LENGTH:', process.env.SESSION_LENGTH);
-        console.log('TEAMS:', process.env.TEAM);
+        console.log('TEAMS:', teamsArray);
         console.log('ACCOUNT_TYPE:', process.env.ACCOUNT_TYPE);
         console.log('Signed Embed URL:', signedEmbedUrl);
 
