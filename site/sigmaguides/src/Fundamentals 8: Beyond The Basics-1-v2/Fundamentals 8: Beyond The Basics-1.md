@@ -494,7 +494,7 @@ Now click on the `OrderID` column's menu and select `Add column via` > `Period o
 
 <img src="assets/dm_44.png" width="800"/>
 
-The provides us a simple way to `Add Comparison` to our table.
+This provides us a simple way to `Add Comparison` to our table.
 
 We can easily sum `Sales` and also select to compare the `Date` columns value to the `Same quarter last year`:
 
