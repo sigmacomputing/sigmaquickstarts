@@ -567,7 +567,7 @@ Alpha Query uses fresh data from the CDW, and as soon as the browser is closed, 
 
 </aside>
 
-If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/administration_sigma_calculations/index.html?index=..%2F..index#0)
+If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html?index=..%2F..index#0)
 
 Related to the last item, there is another cool feature that lets you “peek” behind a column, to see some useful information. 
 
