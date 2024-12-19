@@ -3,22 +3,26 @@ id: dataaps_fundamentals
 summary: dataaps_fundamentals
 categories: dataapps
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-12-19
+tags: default
+lastUpdated: 2024-10-24
 
 # Data Apps Fundamentals
 
 ## Overview 
 Duration: 5 
 
+To be written by PB
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Keep naming structures the same as in this document, especially around control IDs. This will make your build far easier as the sections progress.
 </aside>
 
+### What we will build
+After completing this QuickStart we will have built a fully functional data app based on a project management use case. The finished will look something like this (depending on your styling choices!):
 
+<img src="assets/dataaps_fun_done.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -731,7 +735,7 @@ Set the `Control ID` value `ups_Project-Status:
 
 <img src="assets/dataaps_fun_5a.png" width="600"/>
 
-Rename the modal page to `Modal - Project Status`.
+Rename the modal page to `Modal - Update Status`.
 
 ### Step 3: 
 Change the `Label` > `Lable position` under `Format` to put the `Project Status` title on the left:
@@ -1005,22 +1009,133 @@ We can apply some styling by we will touch on that in the last section. Syling i
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Create an Approval Workflow
+## Approval Workflow
 Duration: 5
 
 ### Step 1: 
+On the `Project Tracker` page, add a `Controls` > `Segmented Control`
+
+Configure the `Values` as `Project Owner View` and `Project Reviewer View`. 
+
+Remove the label (title) as we have done the previous steps. The page will look like this:
+
+<img src="assets/dataaps_fun_7.png" width="800"/>
+
 ### Step 2: 
+Add a new `Calculation` column to the `Project Tracker Input Table` called `Reviewer Approval`.
+
+Set the formula to `Click to Review` and add it to the existing conditional formatting we have done before:
+
+<img src="assets/dataaps_fun_7a.png" width="800"/>
+
 ### Step 3: 
+Select the segmented control and add an action.
+
+Add a `Condition`:
+
+<img src="assets/dataaps_fun_7b.png" width="600"/>
+
+And select the `Project Owner View:
+
+<img src="assets/dataaps_fun_7c.png" width="600"/>
+
+Configure the action to:
+
+<img src="assets/dataaps_fun_7d.png" width="600"/>
+
+Repeat this process for the `Project Reviewer View`, this time setting the `What to modify` to `Show columns`:
+
+<img src="assets/dataaps_fun_7e.png" width="500"/>
+
 ### Step 4: 
+On the `Data Validation` page, create a child table off `Status Type` and call it `Status Type Stable Table`.
+
+Move this table to the `Control Panel`. 
+
 ### Step 5: 
+One the `Control Panel` page, add a filter for `Status Category` and convert it to a page control. 
+
+Set the page control to only `Show Clear Button` and `Show Search Button`. Update the `Control ID` to use the pattern we established earlier. Configure the `Value source` and `Source column` too:
+
+<img src="assets/dataaps_fun_7g.png" width="500"/>
+
+Set the `TARGETS` to 
+
+<img src="assets/dataaps_fun_7j.png" width="400"/>
+
 ### Step 6: 
+Return to the `Project Tracker` page and select the `Project Tracker Input Table`. 
+
+In `actions`, add an action in the third position, it the sequence shown below. Configure to match:
+
+<img src="assets/dataaps_fun_7h.png" width="600"/>
+
 ### Step 7: 
+On the `Modal - Update Status` control titled `Project Status`. 
+
+Switch the `Value Source` to the `Status Type` and the column switch to `Status` on the selected element panel:
+
+<img src="assets/dataaps_fun_7i.png" width="800"/>
+
 ### Step 8: 
+Go back to the `Project Tracker` page and select the`Project Tracker Input Table`.
+
+Click a cell with `Update Status` to test that only 4 options appear on the modal's list control:
+
+<img src="assets/dataaps_fun_7k.png" width="400"/>
+
 ### Step 9: 
-### Step 10: 
+On the `Project Tracker` page, click the `Project Reviewer View` button in the segmented control. 
+
+Now select the `Project Tracker Input Table` > `Actions` and duplicate the `Update Project Status` action.
+
+Scroll to the bottom of the actions list to see the duplicate action.
+
+Change the target to `Reviewer Approval`. 
+
+Change `Set Status Category` to be `Reviewer` too:
+
+<img src="assets/dataaps_fun_7l.png" width="400"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Note: If the "Reviewer approval" column target is grayed out (or not present in the list), check the segmented control to ensure the "Project reviewer view" button is selected.
+</aside>
+
+### Step 10:
+Select `Click to Review` in any cell and confirm again that the `Modal - Update Status` only shows the values that cooresponding to the category `Project Reviewer View`.
+
+<img src="assets/dataaps_fun_7m.png" width="400"/>
+
+Test the view comparing `Project Owner` and `Project Reviewer Views` to test conditional actions and how these scenarios direct access, inputs, and functionality. 
+
 ### Step 11: 
-### Step 12: 
-### Step 13: 
+Hide all pages except the `Project Tracker` page and click `Publish`. 
+
+Switch to the `Published version` and test the entire data app:
+
+<img src="assets/dataaps_fun_7n.png" width="400"/>
+
+The data app should look like this now:
+
+<img src="assets/dataaps_fun_7o.png" width="800"/>
+
+### Step 12: Data Lineage
+Sigma 
+Review the data lineage view to review and confirm all connections and lookups. 
+
+Click the green <img src="assets/closeview.png" width="75"/> button, and then click the `edit` link.
+
+Open the workbook's lineage:
+
+<img src="assets/dataaps_fun_7p.png" width="600"/>
+
+When workbooks become large, working with the lingeage is a great way to find what you are after, jump right to the desired element and even see the SQL use to create the data for an element too. 
+
+Here is a quick demo:
+
+<img src="assets/lineage.gif"/>
+
+To learn more about workbook data lineage in Sigma see [View workbook data lineage](https://help.sigmacomputing.com/docs/workbook-data-lineage)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -1029,9 +1144,31 @@ Duration: 5
 Duration: 5
 
 ### Step 1: 
-### Step 2: 
+With the bulk of the data app functionality complete, visual design and accessibility is the next step. 
+
+Sigma provide many "out-of-the-box" themes; experiment with them and adjust from there are desired too.
+
+This enables a range of functionality including the ability to toggle between light and dark modes, preset swapping, custom colors that affect elements throughout the workbook (big time saver), fonts, layouts, and additional design settings: 
+
+<img src="assets/dataaps_fun_8.png" width="600"/>
+
+### Step 2: Containers - Containers - Containers
+It is a good practice to package elements in containers in a manner that will be easy for users to access and understand. 
+
+We have also demonstrated the other cool benefit of using containers; they can be targeted by an action!
+
 ### Step 3: 
-### Step 4: 
+With Sigma, your data apps can support whatever branding may be required. 
+
+You can ustomize to match your own branding and style considerations while maintaining accessibility and visual design best practices. 
+
+Images and icons can be added for additional personalization:
+
+<img src="assets/dataaps_fun_done.png" width="800"/>
+
+Here are some example of styled data apps in Sigma:
+
+<img src="assets/containers.gif" />
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -1039,7 +1176,7 @@ Duration: 5
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we 
+In this QuickStart, we built a fully functional project tracking application using Sigma and sample data. Hopefully, this was a smooth and eye-opening process that showed just how easy building data apps can be with Sigma. Additional resources are provided below.
 
 **Additional Resource Links**
 
