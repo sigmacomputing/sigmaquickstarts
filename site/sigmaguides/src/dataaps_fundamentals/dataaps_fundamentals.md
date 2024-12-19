@@ -994,7 +994,7 @@ Going one step further, lets add a `Charts` > `Bar chart` to the `Project Detail
 
 We now have:
 
-<img src="assets/dataaps_fun_60.png" width="800"/>
+<img src="assets/dataaps_fun_6o.png" width="800"/>
 
 We can apply some styling by we will touch on that in the last section. Syling in Sigma is really easy so it is best to make sure the functionality all works first, and then make it look pleasing to the eye. 
 
