@@ -3,9 +3,9 @@ id: dataaps_fundamentals
 summary: dataaps_fundamentals
 categories: dataapps
 environments: web
-status: published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-10-24
 
 # Data Apps Fundamentals
