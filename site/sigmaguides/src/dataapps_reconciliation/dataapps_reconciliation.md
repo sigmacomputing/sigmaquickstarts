@@ -1,6 +1,6 @@
 author: pballai
-id: dataapps_snapshot_and_inventory_adjustments
-summary: dataapps_snapshot_and_inventory_adjustments
+id: dataapps_reconciliation
+summary: dataapps_reconciliation
 categories: dataapps
 environments: web
 status: hidden
@@ -8,16 +8,16 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
 lastUpdated: 2024-12-19
 
-# Snapshot and Inventory Adjustments
+# Reconciliation
 
 ## Overview
 Duration: 5 
 
-The ability to take snapshots and run stored procedures directly from a Sigma data app empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes. 
+The ability to take snapshots and run stored procedures directly from a Sigma data app empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes.
 
-Using a Sigma data app, users can capture snapshots of live data stored in a cloud data warehouse (CDW), such as Snowflake, preserving frozen records of data at specific points in time for reliable retrieval and analysis.
+Using a Sigma data app, such as in this "Reconciliations" QuickStart, users can capture snapshots of live data stored in a cloud data warehouse (CDW), such as Snowflake, preserving frozen records of data at specific points in time for reliable retrieval and analysis.
 
-Snapshots are invaluable for tracking changes in data over time, a crucial requirement for teams managing dynamic datasets. They ensure data accuracy and consistency by allowing comparisons between live data and historical snapshots. 
+Snapshots are invaluable for tracking changes in data over time, a crucial requirement for teams managing dynamic datasets. They ensure data accuracy and consistency by allowing comparisons between live data and historical snapshots.
 
 The flexibility to execute stored procedures from the Sigma UI further enhances these workflows, enabling teams to integrate complex data operations seamlessly into their applications, reducing manual effort, and driving greater efficiency.
 
@@ -25,7 +25,6 @@ The flexibility to execute stored procedures from the Sigma UI further enhances 
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
  
-
 ### Common Use Cases
 The ability to take snapshots and run stored procedures directly from a Sigma data app offers unparalleled flexibility for teams working in diverse domains. These capabilities enable teams to automate workflows, track progress over time, and maintain data accuracy across various scenarios.
 
