@@ -38,6 +38,12 @@ Sigma customers already use input tables for:
     </li>
 </ul>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
 ### Target Audience
 Anyone who is trying to create QS content using Sigma and wants to augment, adjust, interact and create "what-if" scenarios.
 

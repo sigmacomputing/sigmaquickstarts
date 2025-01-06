@@ -21,6 +21,12 @@ Sigma with BigQuery eliminates BI bottlenecks by turning the data modeling proce
 
 In this article, we will discuss what differentiates Sigma, how you can set up Sigma to take advantage of BigQuery's capabilities, and create visualizations with Sigma
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 Customers who are interested in Sigma’s cloud analytics and BI platform to tap into BigQuery’s virtually unlimited scale and speed.
 

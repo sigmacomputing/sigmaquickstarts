@@ -25,6 +25,12 @@ We will demonstrate, (at a high-level) how we can start to use Snowpark, **as a 
 
 This will give us the foundational software configurations and a base understanding of the workflow involved. In subsequent QuickStarts, we will increase the complexity by diving into specific uses cases found in real world applications, leveraging Sigma. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 Anyone interested in learning about Snowpark and how to leverage UDFs in Sigma.
 

@@ -18,6 +18,12 @@ The Sigma Health Check Native App is designed to provide insights into the overa
 
 This Quickstart is designed to provide guidance in the set up of the Sigma Health Check Native App for Snowflake. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 Sigma Administrators and other users who are interested in monitoring the performance of their Snowflake environment and how Sigma is leveraging the resources in Snowflake.
 

@@ -21,6 +21,12 @@ Whether you are a global retailer, a tech company, or a financial services firm,
 
 This Sigma and Snowflake lab is designed to teach you how to build customer facing analytics applications that allow your end users to dive deeper and go further with data. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
 ### Target Audience
 Data Analysts, Business Analysts, or others who are doing next level analysis on their data in Sigma. No SQL is required for this lab, but the concepts do get technically complex.
 

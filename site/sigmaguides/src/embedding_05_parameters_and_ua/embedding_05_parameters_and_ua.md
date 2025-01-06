@@ -26,6 +26,12 @@ This QuickStart guide provides illustrative examples and screenshots of both req
 
 Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 03: Secure Access QuickStart.](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 
 Developers interested in leveraging both required and optional parameters, as well as user attributes, when embedding Sigma into their applications should refer to this guide.

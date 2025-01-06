@@ -36,11 +36,15 @@ No SQL or technical data skills are required for using Sigma.
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 <button>[Snowflake Free Trial](https://trial.snowflake.com](https://trial.snowflake.com))</button>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
   
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
-
-
 
 ## Provisioning Sigma
 Duration: 20
