@@ -3,9 +3,9 @@ id: dataaps_fundamentals
 summary: dataaps_fundamentals
 categories: dataapps
 environments: web
-status: published
+status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-10-24
 
 # Data Apps Fundamentals
@@ -712,7 +712,7 @@ On the `Modal - Create Task` page, revise the title to include the project name.
 
 Select the text `Create Task` and append it with `for ` followed by `=`, which opens the formula bar.
 
-Type `[master_ProjectName]` and click the green checkmark:
+Type `[master_Project-Name]` and click the green checkmark:
 
 <img src="assets/dataaps_fun_4n.png" width="600"/>
 
@@ -732,7 +732,7 @@ The new task should appear in the `Task Tracking Input Table`:
 Try this multiple times to add new tasks to the task tracking table.
 
 ### Step 15: 
-On the `Project Tracking` page, add a new `Column via lookup` to the `Task Tracking Input Table`.
+On the `Project Tracker` page, add a new `Column via lookup` to the `Task Tracking Input Table`.
 
 This time we used the selected element panel, `COLUMNS` menu to add a new column to demonstrate another way to do it:
 
