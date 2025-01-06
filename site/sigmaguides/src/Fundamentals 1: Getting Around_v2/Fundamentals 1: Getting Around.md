@@ -63,7 +63,13 @@ Development teams building Sigma assets for embedding in a larger platform are a
 
 This full feature parity, combined with the lack of necessary coding, makes Sigma the fastest, most flexible, and most powerful embedding tool in the market.
 
- ### Sigma Target Audience
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
+ ### Target Audience
 Sigma’s target audience includes data analysts, business users, decision-makers, and anyone who needs to work with data, providing intuitive and powerful tools to explore, analyze, and visualize information without requiring deep technical expertise.
 
 ### Prerequisites

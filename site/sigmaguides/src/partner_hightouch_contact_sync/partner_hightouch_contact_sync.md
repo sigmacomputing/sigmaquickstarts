@@ -24,6 +24,12 @@ This QuickStart walks through using a Sigma workbook and Hightouch to sync conta
 
 The use-case is creating and maintaining a  marketing campaign that targets the most loyal customers in the United States only. We need an easy way to get the data from the Snowflake warehouse over to HubSpot, where we will run the campaign from. We don't have development resources to do this right now so we have to do it ourselves.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
 ### Target Audience
 
 Businesses who need to move data from one place to another while allowing end-users to directly work with the data and make decisions about which data is selected, how it is organized and even provide additional data to enrich it prior to it landing in the target system. 

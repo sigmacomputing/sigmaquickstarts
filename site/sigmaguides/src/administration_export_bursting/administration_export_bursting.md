@@ -39,6 +39,12 @@ For example, reports containing sensitive information that require enhanced secu
 
 Additionally, for frequent or high-volume email distributions, ensuring recipients receive only the most relevant information at a manageable pace can help maintain engagement. In such cases, using secure portals or leveraging Sigma’s role-based access may offer a more tailored solution.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
 ### Target Audience
 
 Anyone responsible for regularly distributing tailored reports to specific groups within an organization. Users who manage reporting workflows, especially those needing to deliver customized content to diverse stakeholders efficiently, will find export bursting a valuable tool for automating and streamlining report delivery.

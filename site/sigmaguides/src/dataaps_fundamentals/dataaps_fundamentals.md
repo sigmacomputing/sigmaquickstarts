@@ -100,6 +100,8 @@ The finished can look something like this (depending on your styling choices!):
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
  
 ### Target Audience
 Developers evaluating Sigma embedding and the security options.
@@ -145,6 +147,10 @@ Duration: 5
 Input tables are dynamic workbook elements that support structured data entry. They allow you to integrate new data points into your analysis and augment existing data from your data platform to facilitate rapid prototyping, advanced modeling, forecasting, what-if analysis, and more—without overwriting source data.
 
 Use input tables as sources for tables, pivot tables, and visualizations, or incorporate the data using lookups and joins. And when you create warehouse views for input tables, you can reuse the manually entered data across your broader data ecosystem.
+
+There are many options to control how users are permitted to use input tables. 
+
+For more information on this topic, see: [Configure data governance options in input tables](https://help.sigmacomputing.com/docs/configure-data-governance-options-in-input-tables)
 
 ### Create Project Tracker Input Table
 
@@ -313,6 +319,16 @@ Once the action has been set up we may wanty to adjust the size of each control 
 
 Now lets some projects. It does not really matter what your decide to use for the control, it is test data anyway.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Input tables support controlling when and who can enter data. While in development, we can leave this setting to "Editable in draft". Prior to production use we want to restrict this setting more. 
+</aside>
+
+When editing input tables in this QuickStart, set the permission to:
+
+<img src="assets/dataaps_fun_1t1.png" width="800"/>
+
+For more information on this topic, see: [Configure data governance options in input tables](https://help.sigmacomputing.com/docs/configure-data-governance-options-in-input-tables)
+
 Click the `Create Project` button to test if everything was set up correctly:
 
 <img src="assets/dataaps_fun_1t.png" width="800"/>
@@ -342,7 +358,7 @@ Rename the container `Create Project Container`
 </aside>
 
 #### Step 18: 
-Click on your `Create Project” button`, and go to `Actions`. 
+Click on your `Create Project` button, and go to `Actions`. 
 
 Create a second action set to `Clear control` applied to `Container` with our newly created `Create Project Container`. This will set the action to automatically target all four control elements:
 
@@ -898,7 +914,7 @@ After setting a status and clicking the `Update Project Stauts` button we are re
 </aside>
 
 ### Step 12: 
-On the `Control Panel` page > `Project Status Input Table`, add a new field `via lookup` on the Status Update Table` adding `Project Status` based on `Project ID`. 
+On the `Control Panel` page > `Project Status Input Table`, add a new field `via lookup` on the `Status Update Table` adding `Project Status` based on `Project ID`. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Projects having no current status set will make the lookup show less than 100% mapping and that is fine.
@@ -1055,6 +1071,8 @@ We also want to include all the related tasks for the selected project.
 Repeat the steps for used for the `Details` table to add a `Tasks` table.
 
 On the `Control Panel` page, create a `Child table` on the `Task Tracking Input Table` and move it to the` Modal - Project Details`. 
+
+Open the modal by clicking the `ⓘ` or by directly opening the modal page.
 
 Remove the `summary bar` and add change the table's name to `Tasks`.
 

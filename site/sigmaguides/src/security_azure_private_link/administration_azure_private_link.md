@@ -31,6 +31,12 @@ Standing up a Private Link requires a customer's cloud administrator (or similar
 
 The process of creating the Private Link can take 2-3 business days once the request is acknowledged by Sigma. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 Administrators who require secure, private connections between Sigma and data in a warehouse.
 

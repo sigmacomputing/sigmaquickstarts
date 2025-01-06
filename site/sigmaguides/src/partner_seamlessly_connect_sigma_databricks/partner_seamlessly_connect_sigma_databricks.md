@@ -29,6 +29,12 @@ This is an entry-level lab that will show you how to create a Sigma account thro
 3: Ability to create tokens within your Databricks workspace<br>
 4: Access to data within your Databricks workspace to visualize within Sigma<br>
 5: The Sigma instance will be provided via Databricks Partner Connect. No need to create an Independent Sigma trial account.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
   
 ### What You’ll Learn
 

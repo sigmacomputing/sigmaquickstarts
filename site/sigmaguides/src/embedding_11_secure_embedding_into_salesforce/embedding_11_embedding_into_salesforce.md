@@ -19,6 +19,12 @@ We also recommend you take the the QuickStart [Embedding 03: Secure Access](http
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
  ### Target Audience
 Semi-technical users who will be aiding in the planning or implementation of Sigma. Limited Salesforce and technical data skills are needed to do this QuickStart. It does assume some common computer skills like configuring software, navigating folders and edit/copy/paste operations.
 
@@ -187,6 +193,9 @@ public class SigmaEmbedClass {
 
         // Append client ID to authenticate the request
         url += '&:client_id=' + this.client_id;
+
+        // Append the external user id (required by Sigma)
+        url += '&:external_user_id=' + EncodingUtil.urlEncode(this.embed_user, 'UTF-8');
 
         // Add the user email to specify the session owner
         url += '&:email=' + this.embed_user;
