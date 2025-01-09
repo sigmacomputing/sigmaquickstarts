@@ -229,7 +229,7 @@ You may also use the -g flag (global) to make the express package available to a
 
 We have seen some instances (on various versions of operating systems and system configurations) where Express could not be found when trying to run our node application after using the -g flag. 
 
-For this reason will just install Node and packages for any embed QuickStart folders we create later too.
+For this reason we will just install Node and packages for any embed QuickStart folders we create later too.
 </aside>
 
 `Right click` on the `sigma_embed_prerequisites` folder (inside the `sigma_embedding` folder) and select `New terminal at folder`:
