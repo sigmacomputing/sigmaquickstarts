@@ -142,10 +142,9 @@ gulp.task('export:codelabs', (callback) => {
     // claat.run(CODELABS_SRC_DIR, 'export', CODELABS_ENVIRONMENT, CODELABS_FORMAT, DEFAULT_GA, "../../"+CODELABS_BUILD_DIR, sources, callback);
     claat.run(CODELABS_SRC_DIR, 'export', CODELABS_ENVIRONMENT, CODELABS_FORMAT, DEFAULT_GA, "../../" + CODELABS_BUILD_DIR, CODELABS_ELEMENTS_PREFIX, sources, callback);
   } else {
-    const sources = ["**/*.md", "!_imports/**"];
-    // const sources = ["[^_]*/*.md"]; //export all markdown files in the src directory, except _imports
+    const sources = ["[^_]*/*.md"]; //export all markdown files in the src directory, except _imports
     // claat.run(CODELABS_SRC_DIR, 'export', CODELABS_ENVIRONMENT, CODELABS_FORMAT, DEFAULT_GA, "../../"+CODELABS_BUILD_DIR, sources, callback);
-    claat.run(CODELABS_SRC_DIR, 'export', CODELABS_ENVIRONMENT, CODELABS_FORMAT, DEFAULT_GA, "../../" + CODELABS_BUILD_DIR, CODELABS_ELEMENTS_PREFIX, sources, callback, { noDrive: true });
+    claat.run(CODELABS_SRC_DIR, 'export', CODELABS_ENVIRONMENT, CODELABS_FORMAT, DEFAULT_GA, "../../" + CODELABS_BUILD_DIR, CODELABS_ELEMENTS_PREFIX, sources, callback);
   }
 });
 
