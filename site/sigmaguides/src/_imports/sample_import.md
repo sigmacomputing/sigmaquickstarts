@@ -1,3 +1,9 @@
+---
+id: sample_id
+title: Sample Title
+description: Description goes here.
+---
+
 This content has been imported from another markdown file. An imported document is called a fragment. Fragments are great when you have common information across multiple sigmaguides. 
 
 
