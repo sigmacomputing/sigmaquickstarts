@@ -10,8 +10,10 @@ lastUpdated: 2023-09-12
 
 # Testing QS - Ignore
 
-## Overview 
+## Testing Only
 Duration: 5 
 
-![Footer](assets/sigma_footer.png)
+We are testing QuickStarts.....
+
+
 <!-- END OF OVERVIEW -->
