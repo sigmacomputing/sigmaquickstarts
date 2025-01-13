@@ -1,3 +1,12 @@
+author: Marc DiPasquale
+summary: Create a CodeLab Using Markdown
+id: example
+categories: codelab,markdown
+environments: Web
+status: Published
+feedback link: https://github.com/Mrc0113/codelab-4-codelab
+
+
 This content has been imported from another markdown file. An imported document is called a fragment. Fragments are great when you have common information across multiple sigmaguides. 
 
 
