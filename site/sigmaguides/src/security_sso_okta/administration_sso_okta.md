@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-05-01
+lastUpdated: 2023-01-12
 
 # Single Sign-On with Sigma and Okta
 <!-- The above name is what appears on the website and is searchable. -->
