@@ -397,7 +397,7 @@ Essential
 Lite
 ```
 
-<img src="assets/ok15i.png" width="800"/>
+<img src="assets/ok15i.png" width="600"/>
 
 This is where we can also `+ Add Another` to support Sigma custom `Account Types` later. 
 
@@ -572,6 +572,10 @@ It is common for companies to give users access to Sigma, but disallow them the 
 
 Any users who are assigned to this "download restricted" group/team, will not be able to export content. 
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Customer account types are case sensitive and should the value should match the team name in Sigma exactly.
+</aside>
+
 Lets see how to adjust the user we just created in Okta to grant more rights, but also not allow exports.
 
 Since Okta has no record for a new `Account Type` we need to add it so we can then assign it to group(s).
@@ -582,7 +586,7 @@ Navigate to `Directory` > `Profile Editor`. Locate the `Attributes` section and 
 
 Click `Add another` and enter the values as shown:
 
-<img src="assets/ok80.png" width="800"/>
+<img src="assets/ok80.png" width="600"/>
 
 Scroll to the bottom and click `Save Attribute`.
 
@@ -602,7 +606,7 @@ Give the `Group` a name and description as shown and click `Ok`.
 
 We need to assign this new group to the `Sigma on AWS` application:
 
-<img src="assets/ok57b.png" width="800"/>
+<img src="assets/ok57b1.png" width="800"/>
 
 Click `Save and Go Back` and then `Done`.
 
@@ -638,7 +642,9 @@ Lets add a new `Account Type`. Click on `Account Types` > and `Create New Accoun
 
 <img src="assets/ok61.png" width="800"/>
 
-Configure the Account Type as shown. Notice that we are not allowing any Export functionality (shown in light red):
+Configure the Account Type as shown. Notice that we are not allowing any Export functionality:
+
+<img src="assets/ok61.png" width="800"/><br>
 
 <img src="assets/ok62.png" width="800"/>
 
@@ -685,7 +691,6 @@ A few of them are:
 Duration: 5
 
 In this lab we learned how to implement and customize Sigma Single-Sign-On using Okta as the identity provider. 
-
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
