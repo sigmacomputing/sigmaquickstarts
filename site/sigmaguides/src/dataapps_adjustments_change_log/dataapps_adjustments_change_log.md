@@ -199,7 +199,7 @@ To support the required passing of user selected values, we will use a few Sigma
 Once the controls are in place, we will return to creating some actions to control the passing of values to them.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Usings Actions and Controls together unlocks limitless possibilites to create feature rich data applications extremely quickly. 
+<strong>IMPORTANT:</strong><br> Using Actions and Controls together unlocks limitless possibilites to create feature rich data applications extremely quickly. 
 </aside>
 
 On the `Adjustments` modal, add the following controls and text elements.
