@@ -17,7 +17,7 @@ This workflow demonstrates how to streamline retail revenue adjustments by enabl
 
 The example highlights a common use case: providing a price reduction on a line item to address a customer satisfaction issue. 
 
-Adjusters can propose changes to the revenue column, while Approvers review, reject or adjust them before finally approving an adjustments. 
+Adjusters can propose changes to the revenue column, while Approvers review, reject or adjust them before finally approving an adjustment. 
 
 This interactive example showcases Sigma's ability to build workflows that are both flexible and intuitive, allowing users to efficiently manage and track revenue adjustments in real time.
 
@@ -68,17 +68,17 @@ Filter the table down to just `Order Number` and set the range to `131-133`:
 Lets just assume these are the orders in the cloud data warehouse ("warehouse") that require review, modification and approval. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The methods demonstrated can be applied to any set of data really. For example, of the data is project management oriented, these methods will translate easily to that dataset, or any other too.
+<strong>NOTE:</strong><br> The methods demonstrated can be applied to any set of data really. For example, if the data is project management oriented, these methods will translate easily to that dataset, or any other too.
 </aside>
 
-Since it is possible that each order can have multiple items (`SKUs`). We need add a column to ensure that we can easily identify any row uniquely. 
+Since it is possible that each order can have multiple items (`SKUs`). We need to add a column to ensure that we can easily identify any row uniquely. 
 
 Add a new column, rename it to `Key` and set the formula to:
 ```code
 MD5(Text([Order Number]) & [Sku Number] & Text([Cust Key]))
 ```
 
-The [MD5](https://help.sigmacomputing.com/docs/md5) function is a nice way to create unique identifiers, in this case by combining the `Order Number`, `SKU` and `Cust Key`. For the purposes of this QuickStart, what should be sufficient.
+The [MD5](https://help.sigmacomputing.com/docs/md5) function is a nice way to create unique identifiers, in this case by combining the `Order Number`, `SKU` and `Cust Key`. For the purposes of this QuickStart, that should be sufficient.
 
 <img src="assets/af-2.png" width="700"/>
 
@@ -224,7 +224,7 @@ Add a `Controls` > `Text input` control and set the `Control ID` to `am_status.`
 Add a `Controls` > `Number input` control and set the `Control ID` to `am_Order_Number.`
 
 #### Current Revenue - am_Revenue
-Add a `Controls` > `Number` input control and set the `Control ID` to `am_Revenue.` Also set the `Data format` to `Currency.`
+Add a `Controls` > `Number input` control and set the `Control ID` to `am_Revenue.` Also set the `Data format` to `Currency.`
 
 #### Current Status - am_Brand
 Add a `Controls` > `Text input` control and set the `Control ID` to `am_Brand.`
@@ -318,7 +318,7 @@ On the `Approvals` page, create a new `Input` > `Empty` input table below the ex
 
 Set the connection to the `Sigma sample database`.
 
-We will need to add anc configure a few columns. These columns will populated by data sent by the `Approvals Modal` when the user saves an override.
+We will need to add and configure a few columns. These columns will be populated by data sent by the `Approvals Modal` when the user saves an override.
 
 Add and configure the following columns:
 ```code
@@ -461,7 +461,7 @@ It is fine to switch between modes when we are building. We just want to make su
 
 With the workbook still in `Edit` mode, retest the workflow again. It should work as expected now.
 
-The `Approval Log` wass moved back to the `Approvals` page for this video only:
+The `Approval Log` was moved back to the `Approvals` page for this video only:
 
 <img src="assets/af-demo2.gif">
 
@@ -500,10 +500,10 @@ Lets pause for a moment to add the `Adjuster` modal so that we have all the UI e
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Adjuster Modal
+## Approver Modal
 Duration: 5
 
-Now that we have to personas, we can start to expand the functionality to make the data app respond to actions based on the selected persona.
+Now that we have personas, we can start to expand the functionality to make the data app respond to actions, based on the selected persona.
 
 In the `Actions` panel on the `Orders to Approve` table, we have our existing action sequence that reacts when the user clicks the `EDIT` cell. 
 
@@ -550,7 +550,7 @@ The actual arrangement and styling you decide on is up to you. Spend time if you
 
 When we duplicated the `Adjuster Modal` the controls came over too but their `Control IDs` will just have `2` appended to each if their names; not ideal. 
 
-Adjust each controls ID to follow our arbatrary pattern rule mentioned earlier. For example, for the `Over Ride` control we set the ID to `ap_Over_Ride`, the `ap_` indicating the control is on the `Approval Modal` modal. 
+Adjust each controls ID to follow our arbitrary pattern rule mentioned earlier. For example, for the `Over Ride` control we set the ID to `ap_Over_Ride`, the `ap_` indicating the control is on the `Approval Modal` modal. 
 
 <img src="assets/af-47.png" width="500"/>
 
@@ -563,7 +563,7 @@ Make sure to update every control on the page to the pattern.
 Lastly, rename the two containers to `Requested Adjustment Approver` and `Order Details Approver` so that we can reference them by name easily.
 
 ### Reject button actions
-We want the reject button to update a targeted row in the `Approval Log` table.
+We want the reject button to insert a row in the `Approval Log` table.
 
 For the `Latest Status` column we will use a `Static value` of `Rejected`.
 
@@ -618,7 +618,7 @@ From the `Orders to Approve` table, `Actions`, we want to duplicate the `New Ord
 
 Rename the new duplicate to `Rejected`. 
 
-In the `Condition`, revise the `Text contains` to check to `Rejected`.
+In the `Condition`, revise the `Text contains` to check to `Rejected`, using `Lastest Status`.
 
 In the `Set Am Status` action, revise the `Static value` to send `Resumbmission`.
 
