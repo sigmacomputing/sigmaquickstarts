@@ -59,7 +59,7 @@ Add a new column, rename it to `Revenue` and set the formula to:
 ```code
 [Price] * [Quantity]
 ```
-Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficency matters. 
+Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
 
 Filter the table down to just `Order Number` and set the range to `131-133`:
 
@@ -178,7 +178,7 @@ To support the required passing of user selected values, we will use a few Sigma
 Once the controls are in place, we will return to creating some actions to control the passing of values from `Orders to Approve` to the `Adjuster Modal`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Using actions and controls together unlocks limitless possibilites to create feature rich data applications extremely quickly.
+<strong>IMPORTANT:</strong><br> Using actions and controls together unlocks limitless possibilities to create feature rich data applications extremely quickly.
 </aside>
 
 We will start by adding a `Controls` > `Text input` control to the modal and setting its `Control ID` to `am-Key`:
@@ -190,7 +190,7 @@ This will hold the key value that allows us to identify the exact row we are tar
 Since this process will be somewhat repetitive, lets make this first one work first before we add the rest.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We dont really need to show the "Key" value on the modal. This is done for demonstration and learning only.
+<strong>NOTE:</strong><br> We don't really need to show the "Key" value on the modal. This is done for demonstration and learning only.
 
 We are also going to use input controls on the modals for all values, just to make this simple to demonstrate. There are many other controls available to experiment with, based on your use case needs.
 </aside>
@@ -247,7 +247,7 @@ Add a `Controls` > `Number input` control and set the `Control ID` to `am_Over_R
 
 The `OverRide` values represents whatever value the user decides is an appropriate adjustment. When we store this value, **we will not alter the source data value for revenue in any way.** 
 
-Instead, we will store it in a log table, and later we will also show it in a reporting table along with the orginal value for `Revenue` for easy comparison.
+Instead, we will store it in a log table, and later we will also show it in a reporting table along with the original value for `Revenue` for easy comparison.
 
 At this point we have all our controls and need to map actions to populate them with values. We have not worried about UI appearance; that is easy and we will do that later. 
 
@@ -279,7 +279,7 @@ We can organized the controls a bit and added a `UI` > `Text` to each "block" of
 
 <img src="assets/af-18.png" width="500"/>
 
-We also want to place the two groups of controls into their own [Containers](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers). This will allow us to taget everything in a container by its name. A big time saver.
+We also want to place the two groups of controls into their own [Containers](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers). This will allow us to target everything in a container by its name. A big time saver.
 
 Just click-hold and drag around the controls and select the container icon as shown below:
 
@@ -469,12 +469,12 @@ The `Approval Log` was moved back to the `Approvals` page for this video only:
 <!-- END OF SECTION-->
 
 ## Personas
-Our use case calls for two user personas. We will use `Adjuster` to represent the person interating with a customer, making adjustments and dealing with rejections after the fact. 
+Our use case calls for two user personas. We will use `Adjuster` to represent the person interacting with a customer, making adjustments and dealing with rejections after the fact. 
 
 The second persona will be the person who has the final say on any adjustment request. We will call them the `Approver`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We are hard-coding two personas so that we don't have to deal with the extra steps having to logout/login as differnt users or even simply using Sigma's "User Impersonation" feature. The data app can easily be converted to use a user's team or user attribute so that personal control is automated and controlled centrally.
+<strong>IMPORTANT:</strong><br> We are hard-coding two personas so that we don't have to deal with the extra steps having to logout/login as different users or even simply using Sigma's "User Impersonation" feature. The data app can easily be converted to use a user's team or user attribute so that personal control is automated and controlled centrally.
 </aside>
 
 On the `Approvals` page, add a new `List control` and configure it as shown:
@@ -491,7 +491,7 @@ Configure for these columns, matching on the `Key` column in the two elements:
 
 <img src="assets/af-40.png" width="400"/>
 
-While testing it can be useful to hide some columns in the `Orders to Approve` table, which should look something like this after addin the lookup:
+While testing it can be useful to hide some columns in the `Orders to Approve` table, which should look something like this after adding the lookup:
 
 <img src="assets/af-41.png" width="800"/>
 
@@ -603,7 +603,7 @@ Adjust the `Open a modal` to target the `Approver Modal` for each `Set contol va
 
 Drag the `Open a modal` action to the last position.
 
-A quick test with an order that has been `Adjusted` already should then be routed to the `Approver Modal` with all contols showing the correct values:
+A quick test with an order that has been `Adjusted` already should then be routed to the `Approver Modal` with all controls showing the correct values:
 
 <img src="assets/af-53.png" width="800"/>
 
@@ -612,7 +612,7 @@ A quick test with an order that has been `Adjusted` already should then be route
 </aside>
 
 ### Reject handling
-We added a way for the appover to reject records, but we also need a way for the adjuster to resubmit rejects for approval again too. This is just a repeat of what we just did.
+We added a way for the approver to reject records, but we also need a way for the adjuster to resubmit rejects for approval again too. This is just a repeat of what we just did.
 
 From the `Orders to Approve` table, `Actions`, we want to duplicate the `New Orders` sequence (since this one opens the adjuster modal).
 

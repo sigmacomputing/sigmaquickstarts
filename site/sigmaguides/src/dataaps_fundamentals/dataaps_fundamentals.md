@@ -3,9 +3,9 @@ id: dataaps_fundamentals
 summary: dataaps_fundamentals
 categories: dataapps
 environments: web
-status: published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2024-10-24
 
 # Data Apps Fundamentals
@@ -87,7 +87,7 @@ The `Project Tracker` will support the following:
 </ul>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Pay attention to naming concentions used this QuickStart, especially around control IDs. This will make your build far easier as the sections progress.
+<strong>NOTE:</strong><br> Pay attention to naming conventions used this QuickStart, especially around control IDs. This will make your build far easier as the sections progress.
 </aside>
 
 ### What we will build
@@ -395,7 +395,7 @@ Rename the title from `New Modal` to `Create a New Project`.
 
 Deselect both `Primary` and `Secondary` button options under `Footer` in the selected element panel.
 
-Move the various elements around and resize everthing to suit. Trim any unnecessary space:
+Move the various elements around and resize everything to suit. Trim any unnecessary space:
 
 <img src="assets/dataaps_fun_2a.png" width="300"/>
 
@@ -411,7 +411,7 @@ Add an action to the `Create Project` button to `Close Modal`:
 
 <img src="assets/dataaps_fun_2c.png" width="800"/>
 
-Actions can be added in series to create dynamic behavors. For more information see [Configure an action sequence](https://help.sigmacomputing.com/docs/configure-actions-in-sequences)
+Actions can be added in series to create dynamic behaviors. For more information see [Configure an action sequence](https://help.sigmacomputing.com/docs/configure-actions-in-sequences)
 
 ### Step 5: 
 Return to the `Project Tracker` page and add a button titled `Create Project`. 
@@ -763,7 +763,7 @@ We need to let Sigma know which column(s) we want to bring in and how to "match"
 <img src="assets/dataaps_fun_4r.png" width="400"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma lookups are similiar (but easier) than VLOOKUP in Excel or INDEX-MATCH in Google Sheets.
+<strong>NOTE:</strong><br> Sigma lookups are similar (but easier) than VLOOKUP in Excel or INDEX-MATCH in Google Sheets.
 </aside>
 
 ### Step 16: 
@@ -860,7 +860,7 @@ Add a `button and rename it to `Update Project Status`:
 ### Step 5: 
 On the `Project Tracker` page and the `Project Tracker Input Table`, add a new column via `Calculation` after the `Add Task` field and rename it to `Update Project Status` with a formula of “Update Status”.
 
-Lets use conditional formatting to set the new columns apperance to the same as the `Add a Task` column. 
+Lets use conditional formatting to set the new columns appearance to the same as the `Add a Task` column. 
 
 This is made easy by adding the `Update Project Status` column to the `Apply to` list and changing the `Formatting rule` to `Is not null` as shown in the screenshot below:
 
@@ -904,7 +904,7 @@ Saving clicks is always appreciated!
 ### Step 11: 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> When we were building this, we noticed that a few rows were accidentially (on the "Control Panel" > "Status Update Input Table") created, so before we tested, we just manually deleted them so we could have a clean test.
+<strong>NOTE:</strong><br> When we were building this, we noticed that a few rows were accidentally (on the "Control Panel" > "Status Update Input Table") created, so before we tested, we just manually deleted them so we could have a clean test.
 </aside>
 
 Back on the `Project Tracker` page, select `Update Status` for any project and test out the functionality of `Modal - Update Status`. 
@@ -1120,7 +1120,7 @@ We now have:
 
 <img src="assets/dataaps_fun_6o.png" width="800"/>
 
-We can apply some styling by we will touch on that in the last section. Syling in Sigma is really easy so it is best to make sure the functionality all works first, and then make it look pleasing to the eye. 
+We can apply some styling by we will touch on that in the last section. Styling in Sigma is really easy so it is best to make sure the functionality all works first, and then make it look pleasing to the eye. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> While we have not really been focused on it so far, designing forms for mobile users may be an important design consideration in many use cases. 
@@ -1224,7 +1224,7 @@ Change `Set Status Category` to be `Reviewer` too:
 </aside>
 
 ### Step 10:
-Select `Click to Review` in any cell and confirm again that the `Modal - Update Status` only shows the values that cooresponding to the category `Project Reviewer View`.
+Select `Click to Review` in any cell and confirm again that the `Modal - Update Status` only shows the values that corresponding to the category `Project Reviewer View`.
 
 <img src="assets/dataaps_fun_7m.png" width="400"/>
 
@@ -1251,7 +1251,7 @@ Open the workbook's lineage:
 
 <img src="assets/dataaps_fun_7p.png" width="600"/>
 
-When workbooks become large, working with the lingeage is a great way to find what you are after, jump right to the desired element and even see the SQL use to create the data for an element too. 
+When workbooks become large, working with the lineage is a great way to find what you are after, jump right to the desired element and even see the SQL use to create the data for an element too. 
 
 Here is a quick demo:
 
@@ -1282,7 +1282,7 @@ We have also demonstrated the other cool benefit of using containers; they can b
 ### Step 3: 
 With Sigma, your data apps can support whatever branding may be required. 
 
-You can ustomize to match your own branding and style considerations while maintaining accessibility and visual design best practices. 
+You can customize to match your own branding and style considerations while maintaining accessibility and visual design best practices. 
 
 Images and icons can be added for additional personalization:
 

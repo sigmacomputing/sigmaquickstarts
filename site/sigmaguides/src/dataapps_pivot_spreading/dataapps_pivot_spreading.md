@@ -387,7 +387,7 @@ Rename the page to `Adjustments` and the title from `New Modal` to `Adjustments`
 For the purposes of this demonstration, this modal will allow the user to adjust the selected `Coalesced Revenue` from the pivot table, choosing from three different methods. It will also display information about selections have been made.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It production, it may not be desireable to show the additional details we will configure for display. We do so now for clarity only.
+<strong>IMPORTANT:</strong><br> It production, it may not be desirable to show the additional details we will configure for display. We do so now for clarity only.
 </aside>
 
 ### Adding the Controls
@@ -407,7 +407,7 @@ Add `Number input` control and set the `Control ID` to `p_current`. Also set the
 #### 2: Level selected (p_level):
 Add `nunber input` control and set the `Control ID` to `p_level`. Also set the `Data format` to `Automatic`.
 
-#### 3: Key correcsponding to the level selected (p_key):
+#### 3: Key corresponding to the level selected (p_key):
 Add `text input` control and set the `Control ID` to `p_key`. Also set the `Operator` to `Equal to`.
 
 #### 4: Selected product type (p_type):
@@ -549,7 +549,7 @@ Duration: 5
 
 Sigma users will click a button to execute a stored procedure, named `SPREAD`, that is designed to handle pivot table spreading by adjusting values in a designated Snowflake table called `SPREAD_UPDATE`, based on user input. 
 
-The procedure interacts with the `BASE_TABLE` to prepare data, applies adjustments (e.g., scaling, direct changes, or percentage changes), and ensures data integrity vy not altering the source data. 
+The procedure interacts with the `BASE_TABLE` to prepare data, applies adjustments (e.g., scaling, direct changes, or percentage changes), and ensures data integrity while not altering the source data. 
 
 It also logs SQL operations for troubleshooting purposes.
 
@@ -576,7 +576,7 @@ Apply the user-specified adjustment method to update the SPREAD_UPDATE table.
 Track all SQL executions for troubleshooting and transparency.
 
 
-### Spreading caclculations used:
+### Spreading calculations used:
 The spreading method selected by the user in Sigma (`Adjust`, `Change` or `Scale`) determines the type of adjustment.
 
 For those interested, here are the formula applied for each method:
@@ -736,7 +736,7 @@ Once Sigma evaluate the selected procedure, we are prompted to choose how requir
 
 <img src="assets/pts_29.png" width="400"/>
 
-Add another action to refesh the `Revenue Planning` pivot with the new data.
+Add another action to refresh the `Revenue Planning` pivot with the new data.
 
 Add another action to clear the `Selected Adjustments` and `Desire Adjustment` containers, just so we are always sure that the current values are removed prior to using the modal.
 
@@ -772,7 +772,7 @@ Feel free to try more adjustments using the `Adjust` or `Scale` methods. They wi
 
 ## Logging
 Duration: 5
-To assist in debugging and to also have a detailed audit of the adjustmnents, we have included a log table of all the adjustments.
+To assist in debugging and to also have a detailed audit of the adjustments, we have included a log table of all the adjustments.
 
 Add a new page to the workbook and rename it to `Log`.
 
@@ -782,7 +782,7 @@ Add a new table and connect it to the `SQL_LOG` table:
 
 For clarity, we cleared the `SQL_LOG` table and did one adjustment so we could show the expected results from each adjustment saved. 
 
-`SQL Text` contains the actual query that was built and exectuted by the procedure:
+`SQL Text` contains the actual query that was built and executed by the procedure:
 
 <img src="assets/pts_36.png" width="800"/>
 
