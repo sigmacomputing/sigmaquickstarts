@@ -76,7 +76,7 @@ Add another new column, rename it to `Month` and set the formula to:
 DateTrunc("month", [Date])
 ```
 
-Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficency matters. 
+Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
 
 Filter the table down to just `Mobiles`:
 
@@ -176,7 +176,7 @@ We need to change the value in the `When selecting cells in column` to be `Sum o
 Once that change is made, click the `+` to add another action.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Adding actions and action sequences is really simple and gets repetitve so we may not show every step. We will show the configurations when they are not obvious. 
+<strong>NOTE:</strong><br> Adding actions and action sequences is really simple and gets repetitive so we may not show every step. We will show the configurations when they are not obvious. 
 </aside>
 
 <img src="assets/acl-7.png" width="800"/>
@@ -199,7 +199,7 @@ To support the required passing of user selected values, we will use a few Sigma
 Once the controls are in place, we will return to creating some actions to control the passing of values to them.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Using Actions and Controls together unlocks limitless possibilites to create feature rich data applications extremely quickly. 
+<strong>IMPORTANT:</strong><br> Using Actions and Controls together unlocks limitless possibilities to create feature rich data applications extremely quickly. 
 </aside>
 
 On the `Adjustments` modal, add the following controls and text elements.
@@ -341,7 +341,7 @@ On the `On click - secondary` action, add three actions, two to clear the modals
 <strong>NOTE:</strong><br> Clearing all the control values in a container is big time saver!
 </aside>
 
-### Primary button (Save Adustment)
+### Primary button (Save Adjustment)
 We need to handle this button a bit different to account for things that ***might*** happen. 
 
 For example, if the user does not enter a value for `A Adjustment` but clicks `Save`, what should happen?
@@ -397,7 +397,7 @@ Switch([Method], "Percent", [a_current] * (1 + [a_adjustment] / 100), "Absolute"
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The calculations in the formula above are somwhat unimportant in this demonstration. We just picked something simple to make it understandable. Sigma can handle complex calculations in this same workflow. 
+<strong>NOTE:</strong><br> The calculations in the formula above are somewhat unimportant in this demonstration. We just picked something simple to make it understandable. Sigma can handle complex calculations in this same workflow. 
 </aside>
 
 Add another action to `Navigate` back to `Home`. 
