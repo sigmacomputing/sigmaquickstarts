@@ -337,16 +337,6 @@ Add an additional column and rename it to `Adjusted_Qty`. Be sure to change it's
 
 Rename the input table to `Please provide adjusted stock quantities`.
 
-Before we can do a quick test, we need to set the input table to allow others to edit it:
-
-<img src="assets/da_swh_25.png" width="800"/>
-
-Click `Publish`.
-
-Set the workbook into published version:
-
-<img src="assets/da_swh_26.png" width="500"/>
-
 Searching again for the product `aquamarine frosted tomato medium navy`, we can click the `EDIT` link in the first row.
 
 Our modal now looks like this, and we can update the row(s) we are interested in by clicking the `Edit Data` button:
@@ -457,16 +447,25 @@ This table plays a crucial role in enabling incremental snapshots, ensuring that
 
 Run the following command in Snowflake to create the schema, table and permissions:
 ```code
--- Create the Snapshot Metadata schema, table and permissions
+-- Create the Snapshot Metadata schema, table, and permissions
 -- This table will store information about each snapshot, enabling the filtering logic.
+
 USE DATABASE SIGMA_QUICKSTARTS;
 CREATE SCHEMA IF NOT EXISTS SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA;
+
 CREATE TABLE IF NOT EXISTS SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA (
-    snapshot_id STRING PRIMARY KEY,
-    snapshot_time TIMESTAMP,
-    snapshot_name STRING
+    snapshot_id STRING PRIMARY KEY, -- Unique identifier for each snapshot
+    snapshot_time TIMESTAMP,        -- Timestamp indicating when the snapshot was created
+    snapshot_name STRING,           -- Name of the snapshot table (includes a timestamp)
+    supplier_key STRING,            -- Supplier identifier associated with the row
+    part_name STRING,               -- Name of the part being adjusted
+    brand STRING,                   -- Brand of the inventory item
+    manufacturer STRING             -- Manufacturer of the inventory item
 );
-GRANT CREATE TABLE, CREATE VIEW, CREATE STAGE ON SCHEMA SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA TO ROLE ACCOUNTADMIN;
+
+GRANT CREATE TABLE, CREATE VIEW, CREATE STAGE 
+ON SCHEMA SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA 
+TO ROLE ACCOUNTADMIN;
 ```
 
 <table>
@@ -761,9 +760,11 @@ Next, configure an action to trigger our stored procedure in Snowflake:
 <img src="assets/da_swh_34.png" width="600"/>
 
 #### Secondary button
-Configure an action for the button to return the user to `Inventor Master` and clear the control so that the table is not filtered when the user is landed there:
+Configure an action for the button to return the user to `Inventory Master` and clear the control so that the table is not filtered when the user is landed there:
 
 <img src="assets/da_swh_35.png" width="600"/>
+
+Add another action to close the modal.
 
 `Publish` the workbook and return to the `published version`.
 
