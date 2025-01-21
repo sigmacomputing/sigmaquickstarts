@@ -37,7 +37,7 @@ Our cloud-based architecture offers:
 
 - Enhanced Governance and Security: Sigma inherits all the governance features from your cloud data warehouse, including audit trails and version history, ensuring data accuracy and reducing risks associated with manual errors.
 
-This QuickStart will provides an example of DCF, based on Sigma provided sample data, so users can build on their own. 
+This QuickStart provides an example of DCF, based on Sigma provided sample data, so users can build on their own. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
