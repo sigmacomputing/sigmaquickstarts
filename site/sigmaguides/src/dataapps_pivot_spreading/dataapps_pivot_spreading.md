@@ -405,7 +405,7 @@ Add the following controls to the `Adjustments` modal:
 Add `Number input` control and set the `Control ID` to `p_current`. Also set the `Data format` to `Currency`.
 
 #### 2: Level selected (p_level):
-Add `nunber input` control and set the `Control ID` to `p_level`. Also set the `Data format` to `Automatic`.
+Add `number input` control and set the `Control ID` to `p_level`. Also set the `Data format` to `Automatic`.
 
 #### 3: Key corresponding to the level selected (p_key):
 Add `text input` control and set the `Control ID` to `p_key`. Also set the `Operator` to `Equal to`.
