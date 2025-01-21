@@ -320,7 +320,7 @@ Act as a Data Adjustment Target:
 - This table holds the rows that will be updated during the spread process.
 - Adjustments made in the pivot table are applied to this table, modifying the relevant rows based on the selected `KEY` and `LEVEL` values passed.
 
-Act as am Intermediate Layer:
+Act as an Intermediate Layer:
 - It acts as a bridge between the source data (BASE_TABLE) and the final output.
 - Rows from the `BASE_TABLE` are merged into the `SPREAD_UPDATE` table if they don’t already exist, ensuring that all necessary data is available for spreading.
 
@@ -384,10 +384,10 @@ This creates a new `hidden` page called `Modal 1`. The page is hidden as we only
 
 Rename the page to `Adjustments` and the title from `New Modal` to `Adjustments`.
 
-For the purposes of this demonstration, this modal will allow the user to adjust the selected `Coalesced Revenue` from the pivot table, choosing from three different methods. It will also display information about selections have been made.
+For the purposes of this demonstration, this modal will allow the user to adjust the selected `Coalesced Revenue` from the pivot table, choosing from three different methods. It will also display information about which selections have been made.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> It production, it may not be desirable to show the additional details we will configure for display. We do so now for clarity only.
+<strong>IMPORTANT:</strong><br> Im production, it may not be desirable to show the additional details we will configure for display. We do so now for clarity only.
 </aside>
 
 ### Adding the Controls
@@ -738,7 +738,7 @@ Once Sigma evaluate the selected procedure, we are prompted to choose how requir
 
 Add another action to refresh the `Revenue Planning` pivot with the new data.
 
-Add another action to clear the `Selected Adjustments` and `Desire Adjustment` containers, just so we are always sure that the current values are removed prior to using the modal.
+Add another action to clear the `Selected Adjustments` and `Desired Adjustment` containers, just so we are always sure that the current values are removed prior to using the modal.
 
 Add one more action to `Navigate in this workbook` to the `Pivot` pages, `Top of page`.
 

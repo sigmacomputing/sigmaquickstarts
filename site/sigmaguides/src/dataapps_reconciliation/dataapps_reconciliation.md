@@ -705,7 +705,7 @@ Before we configure Sigma to run the script on demand, we should make sure it wo
 
 Execute the following script in the Snowflake console:
 ```code
-CALL SIGMA_QUICKSTARTS_SNAPSHOTS.STORED_PROCEDURES.SNAPSHOT_INVENTORY_ADJUSTMENTS();
+ALL SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT();
 ```
 
 The expected response is:
@@ -778,9 +778,9 @@ Duration: 5
 <strong>IMPORTANT:</strong><br> Be aware that there may be a small amount of lag time (depending on the Snowflake warehouse configuration) between when a users clicks "Save" on an input table and the data being available in Snowflake. If we run our stored procedure before the data has landed, the latest edits will not appear in the the metadata table or snapshot. For the purposes of this QuickStart, we did not include logic to check the the data has landed, but wanted to mention this potential situation so that developers can include scripting to handle it.
 </aside>
 
-Lets perform to editing "runs" in Sigma, each time saving the edits and taking a snapshot. The expected outcome will be two additional snapshot tables. 
+Lets perform two editing "runs" in Sigma, each time saving the edits and taking a snapshot. The expected outcome will be two additional snapshot tables. 
 
-### Reset the text environment
+### Reset the test environment
 While not required, it may be helpful to know how to quickly reset the data so that the test results are more easily seen. Here is how to do that:
 
 **1:** Clear the one cell that was edited (to have the "1000" value). Do this directly in the Sigma UI. Just click on the cell that has the value, press the delete key and then enter. Save the input table data. It will not matter that Sigma will record this action in Snowflake, we are only concerned with rows that have values for `Ajusted_Qty`, so this edit will be ignored when we snapshot.
