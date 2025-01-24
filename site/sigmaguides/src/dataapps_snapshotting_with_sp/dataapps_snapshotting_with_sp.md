@@ -1,9 +1,9 @@
 author: pballai
-id: dataapps_snapshotting_with_stored_procedures
-summary: dataapps_snapshotting_with_stored_procedures
+id: dataapps_snapshotting_with_sp
+summary: dataapps_snapshotting_with_sp
 categories: dataapps
 environments: web
-status: hidden
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
 lastUpdated: 2024-01-24
