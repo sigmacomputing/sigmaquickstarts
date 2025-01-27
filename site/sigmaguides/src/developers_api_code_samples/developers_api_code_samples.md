@@ -334,6 +334,56 @@ The expected response is:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Members: Bulk Deactivate
+Duration: 20
+
+This script identifies users in Sigma matching a specified name pattern, retrieves their status, and deactivates them by marking them as inactive using the Sigma API.
+
+It can be used to bulk deactivate users through the use of a regex pattern match against the user's `name`. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+Here's a summary of what the code does:
+
+ <ul>
+      <li><strong>Load Environment Variables: </strong>Loads configuration details (e.g., base URL, user name pattern, and API keys) from a .env file.</li>
+      <li><strong>Obtain a Bearer Token: </strong>Authenticates with the Sigma API to retrieve a bearer token for authorization.</li>
+      <li><strong>List Users: </strong> Fetches all users (both active and inactive) from the Sigma API and filters them based on a regex pattern for their names (first name and last name combined).</li>
+      <li><strong>Fetch User Status: </strong>For each filtered user, retrieves additional details, including their isInactive status, to confirm if they are already deactivated.</li>
+      <li><strong>Deactivate Users: </strong>If a user is active, sends a request to the Sigma API to mark them as inactive using their memberId.</li>
+       <li><strong>Log Results: </strong>Logs the status of each operation (e.g., successful deactivations or errors) for monitoring and debugging purposes.</li>      
+</ul>
+
+The following demonstrates the code that was provided on the `API Code Samples` > `Members: Bulk Deactivate` page, [located here.](https://help.sigmacomputing.com/recipes/members-bulk-deactivate)
+
+### Running the Script
+Open the file `bulk-deactivate.js` in the `members` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+Update the `.env` file, providing a `USER_NAME_PATTERN` that will be used to identify members that are to be deleted.
+
+For example:
+
+<img src="assets/apics71.png" width="500"/>
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics72.png" width="800"/>
+
+Confirm the users have been deactivated in Sigma:
+
+<img src="assets/apics73.png" width="800"/>
+
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Members: Change email address
 Duration: 20
 
