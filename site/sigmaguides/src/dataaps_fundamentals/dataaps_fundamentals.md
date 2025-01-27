@@ -918,7 +918,7 @@ After setting a status and clicking the `Update Project Stauts` button we are re
 </aside>
 
 ### Step 12: 
-On the `Control Panel` page > `Project Status Input Table`, add a new field `via lookup` on the `Status Update Table` adding `Project Status` based on `Project ID`. 
+On the Project Tracker page > Project Tracker Input Table, add a new field via lookup on the Status Update Table adding Project Status based on Project ID.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Projects having no current status set will make the lookup show less than 100% mapping and that is fine.
