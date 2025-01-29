@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: archive
 lastUpdated: 2024-11-01
 
-# 2023 Compliation
+# 2023 Compilation
 
 ## Overview 
 Duration: 5 
