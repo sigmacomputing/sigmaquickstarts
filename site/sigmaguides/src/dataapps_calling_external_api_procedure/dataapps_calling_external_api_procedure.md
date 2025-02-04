@@ -72,7 +72,7 @@ For that level of detail, please see [External Functions.](https://docs.snowflak
 
 Log into your Snowflake instance as `ACCOUNTADMIN` and create a new SQL worksheet.
 
-### Load the "Dirty" Dataset inn Snowflake, by running this script:
+### Load the "Dirty" Dataset in Snowflake, by running this script:
 ```code
 -- Step 1: Create a database and schema for logging requests and responses
 CREATE DATABASE IF NOT EXISTS SIGMA_QUICKSTARTS;
