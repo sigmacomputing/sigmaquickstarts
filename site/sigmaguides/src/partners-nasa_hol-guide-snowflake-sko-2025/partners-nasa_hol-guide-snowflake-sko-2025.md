@@ -78,7 +78,7 @@ We also need to download a zip file that contains two CSV files and one text fil
 
 We will use these later in the lab. 
 
-<button>[Download the Lab Files](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/SnowSko2025HoL.zip)</button>
+<button>[Download the Lab Files](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/SnowSkoHoL+Docs.zip)</button>
 
 Extract these somewhere on your local computer where you can find them later.
 
