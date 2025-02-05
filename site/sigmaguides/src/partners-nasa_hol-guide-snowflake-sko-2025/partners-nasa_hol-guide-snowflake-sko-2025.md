@@ -13,7 +13,7 @@ lastUpdated: 2024-02-04
 ## Overview 
 Duration: 5 
 
-**Houston, we solved the consumption estimate problem: A Hands-On Lab with Sigma’s New Activity Sizing Application (NASA)**
+**Houston, We Solved the Consumption Estimate Problem: A Hands-On Lab with Sigma’s New Activity Sizing Application (NASA)**
 
 Welcome to NASA, Sigma’s New Activity Sizing Application! In this hands-on-lab you will be taking on the role of a Snowflake Sales Engineer. 
 
@@ -36,17 +36,13 @@ No SQL or technical data skills are required for this hands-on-lab.
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment.</li>
-  <li>A Snowflake free 30-day trial environment.</li>
+  <li>Access to a Sigma environment, using the Sigma tile in Okta.</li>
+  <li>A Snowflake demo environment.</li>
 </ul>
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
-
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-
-<button>[Snowflake Free Trial](https://trial.snowflake.com](https://trial.snowflake.com))</button>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
