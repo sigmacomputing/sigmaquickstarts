@@ -22,8 +22,10 @@ Snapshots are invaluable for tracking changes in data over time, a crucial requi
 The flexibility to execute stored procedures from the Sigma UI further enhances these workflows, enabling teams to integrate complex data operations seamlessly into their applications, reducing manual effort, and driving greater efficiency.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
+
+[How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
  
 ### Common Use Cases
 The ability to take snapshots and run stored procedures directly from a Sigma data app offers unparalleled flexibility for teams working in diverse domains. These capabilities enable teams to automate workflows, track progress over time, and maintain data accuracy across various scenarios.
@@ -74,12 +76,6 @@ This process offers several key benefits:
 
 This QuickStart focuses on inventory management, but the same methodology can be applied to other use cases where consistent and reliable data tracking is critical, such as billing adjustments, account reconciliations, or validating data integrity during migration projects.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
-</aside>
-
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
-
 ### Target Audience
 Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps. 
 
@@ -97,6 +93,12 @@ Sigma builders interested in leveraging the advanced capabilities to create full
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
 ![Footer](assets/sigma_footer.png)
 

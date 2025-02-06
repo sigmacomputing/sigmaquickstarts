@@ -17,6 +17,12 @@ This QuickStart demonstrates how to use Sigma's native capabilities to build a B
 
 The focus is on enabling snapshotting functionality entirely within Sigma, contrasting with previous approaches that relied on cloud data warehouse procedures.
 
+<aside class="positive">
+<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+</aside>
+
+[How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
 **The workflow includes three core components:**
 - **Editable Budget Table:** Users can modify budget data interactively through a pivot table, with changes captured via an input table.
 
@@ -73,6 +79,12 @@ Sigma builders interested in leveraging the advanced capabilities to create full
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+<aside>
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
  
 ![Footer](assets/sigma_footer.png)
 

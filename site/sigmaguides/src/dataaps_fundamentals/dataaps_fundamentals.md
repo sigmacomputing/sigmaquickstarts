@@ -25,6 +25,12 @@ This QuickStart demonstrates how to use Sigma to build a data application (app) 
 
 This QuickStart is a bit longer than usual, and we understand that people can be pressed for time. While it is well worth the investment, if you can’t spare the time, you can instead [watch this 5-minute video](https://sigmacomputing.wistia.com/medias/6lneuw4062?__hstc=191098485.ee45354cafd3cb03900ca8358c6cba7c.1713989091503.1733934938183.1734711950588.87&__hssc=191098485.2.1734711950588&__hsfp=336580338) to see how impactful Sigma data apps can be for your organization.
 
+<aside class="positive">
+<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+</aside>
+
+[How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
 ### Project Tracker use case
 The `Project Tracker` will support the following:
 
