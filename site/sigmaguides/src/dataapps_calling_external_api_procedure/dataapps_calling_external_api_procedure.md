@@ -17,6 +17,12 @@ This QuickStart demonstrates how to use Sigma to clean and validate business add
 
 There are many address correction services available today. For this QuickStart, we will use [The Geocodio API](https://www.geocod.io) because it provides a free-tier, and provides straightforward and easy-to-use geocoding, reverse geocoding, and data matching for US and Canadian addresses.
 
+<aside class="positive">
+<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+</aside>
+
+[How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
 ### What we will cover:<br>
 ✅ Loading an intentionally "dirty" business address dataset into Snowflake<br>
 ✅ Using Sigma to display and interact with the dataset<br>

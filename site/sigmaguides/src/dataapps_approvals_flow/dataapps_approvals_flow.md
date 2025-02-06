@@ -21,6 +21,12 @@ Adjusters can propose changes to the revenue column, while Approvers review, rej
 
 This interactive example showcases Sigma's ability to build workflows that are both flexible and intuitive, allowing users to efficiently manage and track revenue adjustments in real time.
 
+<aside class="positive">
+<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+</aside>
+
+[How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
 ### Target Audience
 Developers interested in using Sigma to build interactive data applications.
 
