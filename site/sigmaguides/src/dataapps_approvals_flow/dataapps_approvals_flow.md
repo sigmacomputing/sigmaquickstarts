@@ -3,9 +3,9 @@ id: dataapps_approvals_flow
 summary: dataapps_approvals_flow
 categories: dataapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: Default
 lastUpdated: 2025-01-16
 
 # Approvals

@@ -25,6 +25,7 @@
 /* 
 Sigma specific category classes */
 $color-administration: #000000;
+$color-dataapps: #4BDA84;
 $color-developers: #000000;
 $color-embedding: #000000;
 $color-fundamentals: #000000;
@@ -36,6 +37,7 @@ $color-partners: #000000;
 $color-templates: #000000;
 
 $icon-administration: 'administration.svg';
+$icon-dataapps: 'dataapps.svg';
 $icon-developers: 'developers.svg';
 $icon-embedding: 'embedding.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
@@ -47,6 +49,7 @@ $icon-partners: 'partners.svg';
 $icon-templates: 'workbook-template.svg';
 
 @include codelab-card(['administration'], $color-fundamentals, $icon-administration);
+@include codelab-card(['dataapps'], $color-dataapps, $icon-dataapps);
 @include codelab-card(['developers'], $color-developers, $icon-developers);
 @include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
@@ -59,6 +62,7 @@ $icon-templates: 'workbook-template.svg';
 
 /** Categories in Use (so far):
 Administration
+Data Apps
 Developers
 Embedding
 Functions

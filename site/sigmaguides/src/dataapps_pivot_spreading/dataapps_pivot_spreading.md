@@ -3,9 +3,9 @@ id: dataapps_pivot_spreading
 summary: dataapps_pivot_spreading
 categories: dataapps
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2025-01-06
 
 # Pivot Spreading

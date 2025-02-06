@@ -3,9 +3,9 @@ id: dataapps_reconciliation
 summary: dataapps_reconciliation
 categories: dataapps
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2024-12-19
 
 # Reconciliation

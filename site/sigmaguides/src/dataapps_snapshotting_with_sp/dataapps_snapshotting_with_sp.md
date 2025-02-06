@@ -3,9 +3,9 @@ id: dataapps_snapshotting_with_sp
 summary: dataapps_snapshotting_with_sp
 categories: dataapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: Default
 lastUpdated: 2024-01-24
 
 # Snapshotting with Stored Procedures

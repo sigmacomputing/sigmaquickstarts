@@ -3,9 +3,9 @@ id: dataapps_calling_external_api_procedure
 summary: dataapps_calling_external_api_procedure
 categories: dataapps
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: Default
 lastUpdated: 2024-02-01
 
 # Integrate 3rd Party REST API via Stored Procedure
