@@ -1,9 +1,9 @@
 author: pballai
-id: use_cases_finance_discounted_cash_flow
-summary: use_cases_finance_discounted_cash_flow
-categories: use-cases
+id: dataapps_finance_discounted_cash_flow
+summary: dataapps_finance_discounted_cash_flow
+categories: dataapps
 environments: web
-status: published
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-09-27

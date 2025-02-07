@@ -3,9 +3,9 @@ id: dataapps_create_a_form_simple
 summary: dataapps_create_a_form_simple
 categories: dataapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: Default
 lastUpdated: 2024-02-06
 
 # Forms: Quick Capture and Analysis with Sigma

@@ -3,10 +3,10 @@ id: dataapps_adjustments_change_log
 summary: dataapps_adjustments_change_log
 categories: dataapps
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2025-01-08
+tags: Default
+lastUpdated: 2025-02-07
 
 # Adjustments - Change Log
 
