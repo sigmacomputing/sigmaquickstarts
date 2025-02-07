@@ -100,7 +100,7 @@ Once extracted, there will be two files:
 - Annual Budget Upload - One Time.csv
 - Batched Edits Storage.csv
 
-`Batched Edits Storage.csv` will only one row of data and that is expected.
+`Batched Edits Storage.csv` will have only one row of data, and that is expected.
 
 Log into Sigma as Administrator and create a new workbook.
 
