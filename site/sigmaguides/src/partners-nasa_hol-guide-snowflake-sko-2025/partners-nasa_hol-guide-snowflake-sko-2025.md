@@ -256,7 +256,7 @@ Rename this column to `Daily Sigma Driven Credits`:
 
 4.28 Next, scroll down to the `Sigma UI Events` table. 
 
-We are going to create a "stable table" off of is input table for analysis, as some functionality is not currently available on input tables directly. 
+We are going to create a "stable table" off of this input table for analysis, as some functionality is not currently available on input tables directly. 
 
 Hover over the top right, select `Create Child Element`, then select `table`.
 
