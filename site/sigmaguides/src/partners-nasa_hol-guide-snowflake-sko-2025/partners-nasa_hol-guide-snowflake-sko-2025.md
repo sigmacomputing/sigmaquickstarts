@@ -62,11 +62,11 @@ Duration: 5
 ## Setting up the Workbook
 Duration: 5
 
-4.1 Once the workbook is open, click the <img src="assets/caret.png" width="40"/> by the template title and select `Save As.`:
+3.1 Once the workbook is open, click the <img src="assets/caret.png" width="40"/> by the template title and select `Save As.`:
 
 <img src="assets/nasa-2-1.png" width="500"/>
 
-4.2 Rename the workbook `NASA - {YOUR NAME HERE}` and click `Save.`:
+3.2 Rename the workbook `NASA - {YOUR NAME HERE}` and click `Save.`:
 
 <img src="assets/nasa-2-2.png" width="400"/>
 
@@ -474,15 +474,15 @@ From the menu, select `Move to` and then `Consumption Calculator`:
 ## Using the Calculator
 Duration: 5
 
-4.1 Click the drop down next to the white `Editing` button and click `Go to Published Version`:
+5.1 Click the drop down next to the white `Editing` button and click `Go to Published Version`:
 
 <img src="assets/nasa-4-1.png" width="500"/>
 
-4.2 Click the blue `Launch Calculator` button in the workbook header:
+5.2 Click the blue `Launch Calculator` button in the workbook header:
 
 <img src="assets/nasa-4-2.png" width="800"/>
 
-4.3 For workload name, type `Sigma Admins`. 
+5.3 For workload name, type `Sigma Admins`. 
 
 For License type, select `Admin` from the drop down. 
 
@@ -500,7 +500,7 @@ Click `Submit Workload`:
 
 <img src="assets/nasa-4-3.png" width="800"/>
 
-4.4 Prepare another workload by entering `Customer Cohort Pro` as the workload name. 
+5.4 Prepare another workload by entering `Customer Cohort Pro` as the workload name. 
 
 For License type select `Pro`. 
 
@@ -516,7 +516,7 @@ Finally, for Calculated Credit Burn Rate, enter the value you see for `Customer 
 
 Click `Submit Workload`.
 
-4.5 Finally, enter `Customer Cohort Viewer` as the workload name. 
+5.5 Finally, enter `Customer Cohort Viewer` as the workload name. 
 
 For license type, select `Viewer`. 
 
@@ -530,7 +530,7 @@ Finally, for `Calculated Credit Burn` value enter the value you see for `Custome
 
 Click `Submit Workload`. 
 
-4.6 We have used the calculator to create three workloads.
+5.6 We have used the calculator to create three workloads.
 
 Scroll to the bottom of the calculator. 
 
@@ -538,7 +538,7 @@ You will see a table holding the submitted workloads, as well as the final credi
 
 <img src="assets/nasa-4-6.png" width="800"/>
 
-4.7 Click the `Close Calculator` button. 
+5.7 Click the `Close Calculator` button. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -546,11 +546,11 @@ You will see a table holding the submitted workloads, as well as the final credi
 ## Configuring the POV Readout (Optional)
 Duration: 5
 
-5.1 From the `Homepage` click the `Input POV Details` button to open the `POV Detail Form`: 
+6.1 From the `Homepage` click the `Input POV Details` button to open the `POV Detail Form`: 
 
 <img src="assets/nasa-5-1.png" width="800"/>
 
-5.2 For Customer Company, type `Papercrane Inc`. 
+6.2 For Customer Company, type `Papercrane Inc`. 
 
 In Stakeholders, enter `David Chen, Director of Data Analytics`. 
 
@@ -567,13 +567,13 @@ Improve time to insight, reduce data extracts, provide self-service capabilities
 
 <img src="assets/nasa-5-2.png" width="800"/>
 
-5.3 Click `Submit` on the `POV Detail Form`.
+6.3 Click `Submit` on the `POV Detail Form`.
 
 Click `Close` on the `Thank you!` modal:
 
 <img src="assets/nasa-5-3.png" width="400"/>
 
-5.4 Finally, copy the text from the `POV_Readout_Gong_call.txt` file that was included in the zip file we downloaded earlier.
+6.4 Finally, copy the text from the `POV_Readout_Gong_call.txt` file that was included in the zip file we downloaded earlier.
 
 Paste the text into the `Additional Information` box on the screen and click `Summarize`. 
 
