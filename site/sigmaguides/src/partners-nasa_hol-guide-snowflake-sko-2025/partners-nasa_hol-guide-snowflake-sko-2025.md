@@ -333,17 +333,17 @@ Double click `Daily Events(1)` and rename the column `Workbook Events`:
 
 <img src="assets/nasa-3-41.png" width="800"/>
 
-4.43 Next, drag `Daily Events(2)` from the `Day` grouping to the grouping under `Account Type Name` in the lefthand panel.
+4.42 Next, drag `Daily Events(2)` from the `Day` grouping to the grouping under `Account Type Name` in the lefthand panel.
 
 Rename `Daily Events (2)` to `WB Events by License Type`:
 
 <img src="assets/nasa-3-43.png" width="400"/>
 
-4.45 Click the drop down next to the new `Daily Events` column and select `Add new column Via Lookup`:
+4.43 Click the drop down next to the new `Daily Events` column and select `Add new column Via Lookup`:
 
 <img src="assets/nasa-3-45.png" width="700"/>
 
-4.46 We want to look up to the `WH Metering History` table. 
+4.44 We want to look up to the `WH Metering History` table. 
 
 For columns to add, select `Daily Sigma Driven Credits`. 
 
@@ -351,11 +351,11 @@ Finally, map the columns on `Day = Day of Start Time` and click `Done`:
 
 <img src="assets/nasa-3-46.png" width="400"/>
 
-4.47 Rename this new column `Daily Credits`:
+4.45 Rename this new column `Daily Credits`:
 
 <img src="assets/nasa-3-47.png" width="600"/>
 
-4.48 At the next grouping on `Inode Name`, click the down arrow by `Workbook Events` and click `Add new Column`. 
+4.46 At the next grouping on `Inode Name`, click the down arrow by `Workbook Events` and click `Add new Column`. 
 
 In the formula bar, enter 
 ```code
@@ -368,7 +368,7 @@ Rename this new column `Portion of Daily Usage`:
 
 <img src="assets/nasa-3-48b.png" width="800"/>
 
-4.49 Finally, add one more column off of `Portion of Daily Usage`. 
+4.47 Finally, add one more column off of `Portion of Daily Usage`. 
 
 In the formula bar, type:
 ```code
@@ -379,7 +379,7 @@ Rename this column `Workbook Daily Credits`:
 
 <img src="assets/nasa-3-49.png" width="800"/>
 
-4.50 At the `Account Type Name` grouping, add a new column off of `WB Events by License Type`: 
+4.48 At the `Account Type Name` grouping, add a new column off of `WB Events by License Type`: 
 
 <img src="assets/nasa-3-50a.png" width="800"/>
 
@@ -392,7 +392,7 @@ Rename this new column `Portion of WB Usage`:
 
 <img src="assets/nasa-3-50b.png" width="800"/>
 
-4.52 Next, add a new column off of `Portion of WB Usage` and set the formula to:
+4.49 Next, add a new column off of `Portion of WB Usage` and set the formula to:
 ```code
 CountDistinct([Event Fe User Uuid]).
 ```
@@ -405,7 +405,7 @@ Rename this column `Active Licensed Users`:
 <strong>NOTE:</strong><br> This column represents the number of users by each license type who generated events for each workbook each day.
 </aside>
 
-4.54 Finally, add one last column to the right of `Active Licensed Users`. 
+4.50 Finally, add one last column to the right of `Active Licensed Users`. 
 
 Set the formula bar to:
 ```code 
@@ -416,31 +416,31 @@ Rename this new column `Daily Credits per Licensed User`:
 
 <img src="assets/nasa-3-54.png" width="800"/>
 
-4.56 Using the buttons next to the formula bar, adjust the decimal places so that the value is four characters past the zero:
+4.51 Using the buttons next to the formula bar, adjust the decimal places so that the value is four characters past the zero:
 
 <img src="assets/nasa-3-56.png" width="800"/>
 
-4.57 Click the minus symbol next to the `Account Type Name` grouping to collapse the table at this level:
+4.52 Click the minus symbol next to the `Account Type Name` grouping to collapse the table at this level:
 
 <img src="assets/nasa-3-57.png" width="600"/>
 
-4.58 On the `Sigma UI Events` table, in the upper righthand side, click and select `Create Child Element`, then `Pivot Table`: 
+4.53 On the `Sigma UI Events` table, in the upper righthand side, click and select `Create Child Element`, then `Pivot Table`: 
 
 <img src="assets/nasa-3-58.png" width="800"/>
 
-4.59 For pivot rows, select `Inode Name`. 
+4.54 For pivot rows, select `Inode Name`. 
 
 For columns, select `Account Type Name`, and for values, use `Daily Credits Per Licensed User`: 
 
 <img src="assets/nasa-3-59.png" width="800"/>
 
-4.60 You will notice Sigma automatically `Sums the Daily Credits` column. 
+4.55 You will notice Sigma automatically `Sums the Daily Credits` column. 
 
 Change the aggregate for this value to `Average`, by clicking the drop down, `Set Aggregate`, then `AVG`:
 
 <img src="assets/nasa-3-60.png" width="500"/>
 
-4.61 Rename the average value to `Avg Credit Burn`. 
+4.56 Rename the average value to `Avg Credit Burn`. 
 
 Also rename the pivot table `Average Burn Rates` by double clicking the title. 
 
@@ -450,13 +450,13 @@ We can take this information and leverage the `Consumption Calculator` within th
 
 <img src="assets/nasa-3-62.png" width="600"/>
 
-4.63 Click on your pivot table, then select the `three dots`.
+4.57 Click on your pivot table, then select the `three dots`.
 
 From the menu, select `Move to` and then `Consumption Calculator`:
 
 <img src="assets/nasa-3-63.png" width="600"/>
 
-4.64  Drag the pivot table so that it sits directly below the `Submit Workload` button:
+4.58  Drag the pivot table so that it sits directly below the `Submit Workload` button:
 
 <img src="assets/nasa-3-64.png" width="600"/>
 
@@ -464,7 +464,7 @@ From the menu, select `Move to` and then `Consumption Calculator`:
 <strong>NOTE:</strong><br> You may have to re-adjust the pivot table after dragging/dropping. Sigma provides "handles" at the borders of selected elements that allow easy re-sizing. When there is extra space between elements, a "Trim space" button will appear to make removing the extra space simple.
 </aside>
 
-4.65 At the top of the page, click the blue `Publish` button to save your work:
+4.59 At the top of the page, click the blue `Publish` button to save your work:
 
 <img src="assets/nasa-3-65.png" width="800"/>
 
