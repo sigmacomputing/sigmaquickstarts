@@ -1,5 +1,5 @@
-summary: Fundamentals for new users and Sigma Visualizations
-id: fundamentals-3-working-with-visualizations-v2
+summary: Fundamentals for new users and Sigma Charts
+id: fundamentals-3-working-with-Charts-v2
 categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
@@ -7,12 +7,12 @@ tags: default
 authors: pballai
 lastUpdated: 2024-06-31
 
-# Fundamentals 3: Working with Visualizations v2
+# Fundamentals 3: Working with Charts v2
 
 ## Overview 
 Duration: 5
 
-This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Visualizations (**Viz**). 
+This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma to explore and analyze data using Charts (**Viz**). 
 
 We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart fundamentals 1 and 2.
 
@@ -25,7 +25,7 @@ Sigma supports a wide variety of types so be sure to check our documentation for
 <table>
     <thead>
         <tr>
-            <th colspan="2"><strong>Supported Visualizations Types:</strong></th>
+            <th colspan="2"><strong>Supported Charts Types:</strong></th>
         </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@ Sigma supports a wide variety of types so be sure to check our documentation for
                 <li><strong>Point map</strong></li>                
                 <li><strong>Sankey diagram</strong></li>                
                 <li><strong>Scatter plot</strong></li>
-                <li><strong>Single value visualizations</strong></li>
+                <li><strong>Single value Charts</strong></li>
                 <li><strong>Dynamic text value</strong></li>
               </ul>
               </td>
@@ -58,7 +58,7 @@ Sigma supports a wide variety of types so be sure to check our documentation for
     </tbody>
 </table>
 
-For the latest list of supported Viz types, [click here.](https://help.sigmacomputing.com/docs/intro-to-visualizations)
+For the latest list of supported Viz types, [click here.](https://help.sigmacomputing.com/docs/intro-to-Charts)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -91,38 +91,34 @@ Through this QuickStart, we will walk through how to use Sigma to create beautif
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## Viz Basics
+## Chart Basics
 Duration: 30
 
 Our starting point is the workbook created in the QuickStart, [Fundamentals 2: Working with Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables-v2/index.html?index=..%2F..index#0)
 
-It is often easier to spot trends, outliers, or insights that lead to further questions when viewing data in a visualization.
+It is often easier to spot trends, outliers, or insights that lead to further questions when viewing data in a Chart.
 
-Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up those visualizations.
+Sigma makes it easy to create Charts of your data while also enabling you to dig into the data that makes up those Charts.
 
 In Sigma, open the Workbook `Fundamentals` and place it in `edit mode`.
 
-### Visualization as Child
+### Chart as Child
 
-Our workbook has a page called `Data`; navigate to that and place the workbook in `Edit` mode.
+Place the workbook in `edit` mode and select the `Dashboard` page
 
-Click on the table's icon, as shown below, and click `Create Child Element`. 
+Click on the `PLUGS_DATA` tables icon, and click `Create Child Element`.
 
-Select `Visualization` from the drop list.
+Select `Chart` from the drop list.
 
 <img src="assets/viz2_2a.png" width="800"/>
 
-Sigma creates a new page element below the table as an un-configured placeholder for the new visualization.
-
-Move the Viz to the `Dashboard` page:
-
-<img src="assets/viz2_2.png" width="800"/>
+Sigma creates a new page element below the table as an un-configured placeholder for the new Chart.
 
 Drag the Viz above the table:
 
 <img src="assets/vizbasics1.png" width="600"/>
 
-This placeholder is a child of the table, as it references everything in the parent table, making it easy to build whatever visualization we want from that data.
+This placeholder is a child of the table, as it references everything in the parent table, making it easy to build whatever Chart we want from that data.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> This is awesome because it means someone who knows the underlying data could make this table available with careful curation, and others can just use it.
@@ -132,7 +128,12 @@ Rename this bar chart reflect `Profit and Sales by Store Region`.
 
 Now that you have completed the first two QuickStarts in this series, you know how easy it is to use the element panel to configure elements on the canvas. 
 
-Use the element panel to configure the bar chart as shown below:
+Use the element panel to configure the bar chart.
+
+First, we need to tell the chart to use all the available columns from the table (recall that the table is grouped...). With the chart selected, scroll down to the bottom and select `All source columns`:
+
+<img src="assets/vizbasics3b.png" width="800"/>
+
 
 <img src="assets/vizbasics3.png" width="800"/>
 
@@ -202,7 +203,7 @@ Clear the `Store Region` control.
 
 Click `Publish`.
 
-There are many different chart-type visualizations available to experiment with; we will not cover them all since they are all added and configured as we have already done. 
+There are many different chart-type Charts available to experiment with; we will not cover them all since they are all added and configured as we have already done. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This consistency of design is really important to Sigma; it makes working with data easy!
@@ -214,13 +215,13 @@ There are many different chart-type visualizations available to experiment with;
 ## KPI Charts
 Duration: 5
 
-As you have seen, there are many different types of visualizations available, and they all follow the same basic workflow. 
+As you have seen, there are many different types of Charts available, and they all follow the same basic workflow. 
 
 Once you know how to create one, the others will be obvious.
 
-For example, let's say we want a `KPI` that shows `Revenue`, and compare the current month with the same month from the previous year. 
+For example, let's say we want a `KPI` that shows `Sales`, and compare the current month with the same month from the previous year. 
 
-Add a new Viz, set its data source to the `PLUGS_DATA` table on the `Data` page, and change the `VISUALIZATION` type to `KPI`.
+Add a new Chart, set its data source to the `PLUGS_DATA` table on the `Dashboard` page, and change the `Chart` type to `KPI`.
 
 Now simply use the element panel as before to configure the KPI as shown below:
 
@@ -230,7 +231,7 @@ These steps are very much like ones that we have already done, which makes this 
 
 The exception might be how to get the value formatted as in millions, instead of the default.
 
-In the `VALUE` element, open the menu for `Revenue` > `Format` and select `Custom`:
+In the `VALUE` element, open the menu for `Sum of Sales` > `Format` and select `Custom`:
 
 <img src="assets/viz2_4a.png" width="500"/>
 
@@ -240,15 +241,15 @@ The `Custom Format` modal lets us adjust how the data is displayed using standar
 
 <img src="assets/viz2_4b.png" width="500"/>
 
-The `Dashboard` should now look similar to this:
+The KPI should now look similar to this:
 
-<img src="assets/viz2_4c.png" width="800"/>
+<img src="assets/viz2_4c.png" width="400"/>
 
 Click `Publish`.
 
 Add other KPIs as you like; for example, `COGS`, `Profit` and `Profit Margin` would be good to add.
 
-One way to do this is simply use the `Revenue` KPI menu and select `Duplicate` to quickly create copies. 
+One way to do this is simply use the `Sum of Sales` KPI menu and select `Duplicate` to quickly create copies. 
 
 `COGS` and `Profit` are done by swapping the `VALUE` column from `Sum of Sales` to `COGS` and `Profit` respectively.
 
@@ -327,7 +328,7 @@ If we just want to see what is "inside" the json data, just double-click one of 
 Since our `PLUGS_DATA` table already has `Store State` we can just use that for demonstration.
 
 ### Map by Region (State)
-Add a new Viz, set its data source to the `PLUGS_DATA` table on the `Data` page, and change the `VISUALIZATION` type to `Map-Region`.
+Add a new Viz, set its data source to the `PLUGS_DATA` table on the `Data` page, and change the `Chart` type to `Map-Region`.
 
 Now simply use the element panel as before to configure the map as shown below:
 
@@ -460,7 +461,7 @@ Creating custom themes is also supported.
 
 [Read more about workbook themes here.](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
-Sigma also supports [custom fonts](https://help.sigmacomputing.com/docs/custom-fonts) for workbooks, worksheet visualizations, and dashboards. Custom fonts can be uploaded at the organization level and used on any workbooks, worksheet visualizations, and dashboards in that organization.
+Sigma also supports [custom fonts](https://help.sigmacomputing.com/docs/custom-fonts) for workbooks, worksheet Charts, and dashboards. Custom fonts can be uploaded at the organization level and used on any workbooks, worksheet Charts, and dashboards in that organization.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

@@ -119,7 +119,7 @@ Click the `Cost` column, hold down the shift key and click the `Profit` column.
 
 With the five columns all selected, click the `$` icon in the toolbar to change them all to currency format:
 
-<img src="assets/calculatedcols3.png" width="800"/>
+<img src="assets/calculatedcols3a.png" width="800"/>
 
 Click `Publish`.
 
@@ -200,7 +200,7 @@ Rename the column `Profit Margin`  In this case, change the formatting to a `%`.
 
 Your table should now look similar to this:
 
-<img src="assets/calculatedcols3.png" width="800"/>
+<img src="assets/calculatedcols3a.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.

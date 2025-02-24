@@ -208,7 +208,7 @@ Rename the column `Profit Margin`  In this case, `change the formatting to a %`.
 
 Your Page should now look similar to this:
 
-<img src="assets/calculatedcols3.png" width="800"/>
+<img src="assets/calculatedcols3a.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Negative values for Profit and Profit Margin indicates items sold at a loss.
