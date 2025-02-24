@@ -78,9 +78,7 @@ Lets assume we want to look at a breakdown of profit, margin and order quantitie
 
 We have the required columns in our `PLUGS_DATA` table and could potentially satisfy the requirement by grouping the data, but the end result will not be easy for the viewer to interpret. They may have to make multiple clicks to orient the table to suit their interests.
 
-<img src="assets/pivotdef1.png" width="800"/>
-
-The grouped output of this may look something like this and you can easily see how a user may be frustrated:
+Using standard table grouping, the output may look something like this. It is easy to see how this view of the data is useful:
 
 <img src="assets/pivotdef2.png" width="800"/>
 
