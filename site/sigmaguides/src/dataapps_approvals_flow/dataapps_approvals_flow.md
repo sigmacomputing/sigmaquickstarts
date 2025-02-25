@@ -172,7 +172,7 @@ Rename the `Modal 1` to `Adjuster Modal` and change its tile to `Adjuster Modal`
 
 <img src="assets/af-13.png" width="600"/>
 
-Now it a cell is clicked in the `EDIT` column, the modal will appear.
+Now if a cell is clicked in the `EDIT` column, the modal will appear.
 
 This is all very slick, but lets get back to what we need to do here; allow an authorized person to apply an `OverRide` (ie: order discount for example) to a specific order (perhaps as a customer service issue) and submit it for final approval. 
 
