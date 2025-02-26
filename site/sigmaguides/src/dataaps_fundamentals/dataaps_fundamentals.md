@@ -209,7 +209,7 @@ In this step we will create three additional input tables, reloading them with d
 <strong>NOTE:</strong><br> Add these to the "Data Validation" workbook page.
 </aside>
 
-Click the button below to download the files (in zip format). Extract them to a known location to make the easy to find.
+Click the button below to download the files (in zip format). Extract them to a known location to make them easy to find.
 
 <button>[Download the CSV files](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/input_tables/dataapps_qs_fundamentals.zip)</button>
 
