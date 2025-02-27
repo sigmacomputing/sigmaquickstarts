@@ -99,7 +99,7 @@ The `Project Tracker` will support the following:
 ### What we will build
 After completing this QuickStart we will have built a fully functional data app based on a project management use case. 
 
-The finished can look something like this (depending on your styling choices!):
+The finished product can look something like this (depending on your styling choices!):
 
 <img src="assets/dataaps_fun_done.png" width="800"/>
 
@@ -110,7 +110,7 @@ The finished can look something like this (depending on your styling choices!):
 For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
  
 ### Target Audience
-Developers evaluating Sigma embedding and the security options.
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps.
 
 ### Prerequisites
 
@@ -261,7 +261,7 @@ Add the following row of data to the `Project Tracker Input Table`.
 Click the `Save as` button and name workbook as `Data Apps Fundamentals`.
 
 #### Step 9: 
-Using the element barm, in the `Controls` group, add a `Text Input` control above the input table: 
+Using the element bar, in the `Controls` group, add a `Text Input` control above the input table: 
 
 <img src="assets/dataaps_fun_1n.png" width="400"/>
 
@@ -778,7 +778,7 @@ Rename the new lookup column to `Project Name` and move it to the first column:
 <img src="assets/dataaps_fun_4s.png" width="600"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Columns created thru a lookup appear as "pills" to make them obvious.
+<strong>NOTE:</strong><br> Columns created through a lookup appear as "pills" to make them obvious.
 </aside>
 
 For more information on lookups in Sigma, see [Add columns through Lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)
