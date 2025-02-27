@@ -11,13 +11,14 @@ lastUpdated: 2024-01-24
 # Snapshotting with Stored Procedures
 
 ## Overview
-Duration: 5 
 
-The ability to take snapshots and run stored procedures directly from a Sigma data app empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes. 
+Duration: 5
+
+The ability to take snapshots and run stored procedures directly from a Sigma data app empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes.
 
 Using a Sigma data app, users can capture snapshots of live data stored in a cloud data warehouse (CDW), such as Snowflake, preserving frozen records of data at specific points in time for reliable retrieval and analysis.
 
-Snapshots are invaluable for tracking changes in data over time, a crucial requirement for teams managing dynamic datasets. They ensure data accuracy and consistency by allowing comparisons between live data and historical snapshots. 
+Snapshots are invaluable for tracking changes in data over time, a crucial requirement for teams managing dynamic datasets. They ensure data accuracy and consistency by allowing comparisons between live data and historical snapshots.
 
 The flexibility to execute stored procedures from the Sigma UI further enhances these workflows, enabling teams to integrate complex data operations seamlessly into their applications, reducing manual effort, and driving greater efficiency.
 
@@ -28,6 +29,7 @@ The flexibility to execute stored procedures from the Sigma UI further enhances 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Common Use Cases
+
 The ability to take snapshots and run stored procedures directly from a Sigma data app offers unparalleled flexibility for teams working in diverse domains. These capabilities enable teams to automate workflows, track progress over time, and maintain data accuracy across various scenarios.
 
 This functionality is essential for teams in (and many others):
@@ -52,6 +54,7 @@ This functionality is essential for teams in (and many others):
 </ul>
 
 ### Role of Stored Procedures
+
 The inclusion of stored procedures significantly enhances the power and extensibility of this functionality by allowing:
 
 <ul>
@@ -61,6 +64,7 @@ The inclusion of stored procedures significantly enhances the power and extensib
 </ul>
 
 ### Demonstration
+
 In this QuickStart, we demonstrate how to build a data application that displays the current in-stock quantity for items in inventory, sourced from Snowflake sample data.
 
 This application allows teams to update the "In-Stock Quantity" for an item to reflect actual counts during an inventory review. Users can then snapshot the updated data, preserving both the original and revised values for historical tracking and future analysis. These snapshots provide a point-in-time view, enabling the team to evaluate how inventory adjustments impact overall operations and strategy.
@@ -76,7 +80,8 @@ This process offers several key benefits:
 This QuickStart focuses on inventory management, but the same methodology can be applied to other use cases where consistent and reliable data tracking is critical, such as billing adjustments, account reconciliations, or validating data integrity during migration projects.
 
 ### Target Audience
-Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps. 
+
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps.
 
 ### Prerequisites
 
@@ -102,13 +107,16 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 ![Footer](assets/sigma_footer.png)
 
 ## Connect to Snowflake
+
 Duration: 5
 In order to access the Snowflake sample dataset and also have a place to write input table data to and run stored procedures, we need to add and configure a connection in Sigma.
 
 ### Create Write Database in Snowflake
+
 Since we will be using Sigma input tables, we need to create a place in Snowflake to store that data.
 
 In the Snowflake console, run the following script:
+
 ```code
 USE ROLE ACCOUNTADMIN;
 
@@ -141,6 +149,7 @@ We can see our new database and two schema in Snowflake:
 <img src="assets/da_swh_3b.png" width="800"/>
 
 ### Add Snowflake connection in Sigma
+
 In Sigma, navigate to `Connections` and click `Create Connection` (Administrative rights in Sigma is required):
 
 <img src="assets/da_swh_4.png" width="800"/>
@@ -160,13 +169,14 @@ The won't be any data in the `SIGMA_QUICKSTARTS` database yet. We will be using 
 <img src="assets/da_swh_7.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
-
 ## Demonstration Use Case
+
 Duration: 5
 
-For demonstration we will use an `Inventory Actuals` use case to build a data application that empowers teams to track and update inventory data. 
+For demonstration we will use an `Inventory Actuals` use case to build a data application that empowers teams to track and update inventory data.
 
 Using Snowflake sample data, users can view the current in-stock quantities for items, make adjustments to reflect actual counts, and preserve the updated records for future analysis.
 
@@ -181,11 +191,11 @@ The workflow includes:
 
 This use case highlights the power of Sigma’s seamless integration with Snowflake, demonstrating how snapshots and stored procedures can be leveraged to streamline workflows and maintain data accuracy. By freezing historical records, teams gain transparency and a reliable foundation for decision-making, ensuring efficient and effective inventory management.
 
-The first step is to build a table that has the column of interest to our data application. 
+The first step is to build a table that has the column of interest to our data application.
 
-If the Snowflake instance you are using does not contain the sample data, it can be manually loaded. For more information, see [Using the Sample Database.(https://docs.snowflake.com/en/user-guide/sample-data-using)
+If the Snowflake instance you are using does not contain the sample data, it can be manually loaded. For more information, see [Using the Sample Database.](https://docs.snowflake.com/en/user-guide/sample-data-using)
 
-Create a new workbook in Sigma, rename the `Page 1` page to `Inventory Master`. Save the workbook as `Inventory Actuals` in a location of your choice. 
+Create a new workbook in Sigma, rename the `Page 1` page to `Inventory Master`. Save the workbook as `Inventory Actuals` in a location of your choice.
 
 <img src="assets/da_swh_1.png" width="800"/>
 
@@ -196,6 +206,7 @@ Create a new workbook in Sigma, rename the `Page 1` page to `Inventory Master`. 
 <img src="assets/da_swh_2.png" width="400"/>
 
 ### Add PARTSUPP table
+
 From the `Add element bar`, drag a table element onto the page and click `Select source`:
 
 <img src="assets/da_swh_3.png" width="800"/>
@@ -223,6 +234,7 @@ After hiding some columns and grouping on three others, our table looks like thi
 Click `Publish`.
 
 ### Add Filter Control
+
 Add a `List value` control to the page and configure it to use the `P Name` column as it's source. Be sure to enable the `Allow multiple selections` option:
 
 <img src="assets/da_swh_13.png" width="600"/>
@@ -233,19 +245,22 @@ Verify the new control filters the `Reported Inventory` table.
 
 Make note of the fact that some products come from different suppliers and carry different costs too.
 
-For example, the product named `aquamarine frosted tomato medium navy` is available from four different suppliers, each with a different brand and  each having different costs and retail prices:
+For example, the product named `aquamarine frosted tomato medium navy` is available from four different suppliers, each with a different brand and each having different costs and retail prices:
 
 <img src="assets/da_swh_14.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Configuring Actions
+
 Duration: 5
 
-Here is where we start to go beyond the typical capabilites of a anaytics product to add rich interactivity.
+Here is where we start to go beyond the typical capabilities of a analytics product to add rich interactivity.
 
 ### Add select column
+
 We want the users to be able to select one row of data from the table to edit.
 
 Add a new column, rename it to `Select` and set it's formula to `"EDIT"`.
@@ -255,6 +270,7 @@ We can make the column standout a bit more using a conditional formula:
 <img src="assets/da_swh_15.png" width="500"/>
 
 ### Adding actions
+
 With the table selected, click `Actions` in the `Editor panel` and configure the first action as shown:
 
 <img src="assets/da_swh_16.png" width="500"/>
@@ -276,7 +292,8 @@ When we click on `Edit` in a single row, we can see the new modal (which is stil
 <img src="assets/da_swh_19.png" width="800"/>
 
 ## Modal configuration
-Duration: 5 
+
+Duration: 5
 
 While it may not be immediately obvious, we’ve already made a few design and workflow decisions. This is a common part of building any application (not just data apps). Often, it’s only after you start designing that the implications of small decisions become clear.
 
@@ -292,7 +309,7 @@ Once the values are updated in the input table, we will take a snapshot of its c
 
 Before we proceed with snapshotting, let’s set up the input table in Sigma to ensure it’s ready for use.
 
-Click the `Edit modal` button. We are taken to the `Modal 1` page, where we can work with all the functionality Sigma has to offer. 
+Click the `Edit modal` button. We are taken to the `Modal 1` page, where we can work with all the functionality Sigma has to offer.
 
 Two buttons are provided for us in the modals "footer". The buttons have preset actions available (but not configured to do anything yet) so that you can configure them to do whatever is needed. These can also be hidden if they are not required (in the `format` options section).
 
@@ -308,13 +325,13 @@ Using the `Element bar`, drag a `Linked Input Table` to the modal cavas.
 
 Click the `Select source` button. The source we choose will act as the "starting point" for the stock adjustments.
 
-Sigma will suggest we use `Reported Inventory`; select that. 
+Sigma will suggest we use `Reported Inventory`; select that.
 
 <img src="assets/da_swh_21.png" width="600"/>
 
-Since the same part can come from different suppliers, we need to make sure we present all those items so that the correct inventory quality can be adjusted. 
+Since the same part can come from different suppliers, we need to make sure we present all those items so that the correct inventory quality can be adjusted.
 
-To do this, we simply add multiple columns to be user as unique identifiers. 
+To do this, we simply add multiple columns to be user as unique identifiers.
 
 <img src="assets/da_swh_22.png" width="500"/>
 
@@ -326,7 +343,7 @@ Click `Create input table`.
 <strong>NOTE:</strong><br> None of the source data columns are editable by the users. We will add another column that is editable so they can make adjustments and we can do additional analysis against later. 
 </aside>
 
-To keep this demonstration "Quick", we will add one column called "Adjusted_Qty". This will be the only place a manager can make edits, but will demonstrate the workflow simply. 
+To keep this demonstration "Quick", we will add one column called "Adjusted_Qty". This will be the only place a manager can make edits, but will demonstrate the workflow simply.
 
 Add an additional column and rename it to `Adjusted_Qty`. Be sure to change it's "type" to `number`:
 
@@ -358,9 +375,10 @@ As a validation test, update one row's `Adjusted_Qty` value, hit `enter` and cli
 
 <img src="assets/da_swh_28.png" width="800"/>
 
-`Close` the modal. 
+`Close` the modal.
 
 ### Add tracking columns
+
 Input tables come with two column that indicate who and when the last edit was made, each time a row is edited. Lets add them.
 
 <img src="assets/da_swh_28b.png" width="600"/>
@@ -372,14 +390,18 @@ Lets also set an action `ON CLOSE` so that when the modal is closed, the control
 Next we will setup snapshotting, but first lets check in Snowflake to see where the input table stored this data.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Warehouse view
+
 Duration: 5
 
-By design, input table data is not made directly available in Sigma via the warehouse connection. This is by design. This allows Sigma to apply sophisticated operations when working with input table data that has significant benefits to the user. Performance, multi-user access and reliability when editing data are just a few of the things driving this design decision. It would not be unreasonable to characterize an input table as a `Data API` than a conventional table. 
+Input table data is not made directly available in Sigma via the warehouse connection. This is by design.
 
-That said, we still need an easy way to leverage input table data for use as a "typical" table would be in the warehouse and in Sigma's UI. 
+This allows Sigma to apply sophisticated operations when working with input table data that has significant benefits to the user. Performance, multi-user access and reliability when editing data are just a few of the things driving this design decision. It would not be unreasonable to characterize an input table as a `Data API` than a conventional table.
+
+That said, we still need an easy way to leverage input table data for use as a "typical" table would be in the warehouse and in Sigma's UI.
 
 To simplify this Sigma provides support for [Warehouse Views](https://help.sigmacomputing.com/docs/create-and-manage-workbook-warehouse-views).
 
@@ -391,13 +413,13 @@ We can now use the results returned from the warehouse view when we create snaps
 
 Sigma has made creating a warehouse view simple; no SQL skills are required. It is done directly in Sigma's UI.
 
-We will need to be in `edit` mode in Sigma and return to the modal page. The `Inventory Master` tables should not be filtered as we want all the rows included in our view. 
+We will need to be in `edit` mode in Sigma and return to the modal page. The `Inventory Master` tables should not be filtered as we want all the rows included in our view.
 
 Using the input table's menu, click to create the warehouse view:
 
 <img src="assets/da_swh_29.png" width="800"/>
 
-Make the name `SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_VIEW` anc click `Create`:
+Make the name `SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_VIEW` and click `Create`:
 
 <img src="assets/da_swh_30.png" width="600"/>
 
@@ -406,6 +428,7 @@ Sigma will start the process, and when finished we will see this information her
 <img src="assets/da_swh_31.png" width="600"/>
 
 We can copy the path of the view for later use. Our path is:
+
 ```code
 SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_VIEW
 ```
@@ -415,20 +438,23 @@ There is also a page in Sigma to show the status of all warehouse views:
 <img src="assets/da_swh_32.png" width="800"/>
 
 ### Use case design decision time
-It took a long minute to realize that several users might be using the input table to adjust inventory levels and we need to account for that. They ***might*** be doing it in real-time and collide but they input table itself can help with that. 
 
-The more likely senario is that they entering data whenever and we want to snapshot those changes by user and date/time on demand. 
+It is possible that several users might be using the input table to adjust inventory levels; we need to account for that. They **_might_** be doing it in real-time and collide but the input table itself can help with that.
+
+The more likely scenario is that they are entering data whenever, and we want to snapshot those changes by user and date/time on demand.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Design decision: Users decide when they are ready to take a snapshot of thier work.
+<strong>IMPORTANT:</strong><br> Design decision: Users decide when they are ready to take a snapshot of their work.
 </aside>
 
-To account for that, we **DO NOT** want to try to update any data in the input table in Snowflake directly. This is always a bad idea and may have unexpected results. Instead we will create a metadata table that will store information on who made what changes, and when, plus some other related details. This removes the need to try and interact with the input table data directly in Snowflake. 
+To account for that, we **DO NOT** want to try to update any data in the input table in Snowflake directly. This is always a bad idea and may have unexpected results. Instead we will create a metadata table that will store information on who made what changes, and when, plus some other related details. This removes the need to try and interact with the input table data directly in Snowflake.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Metadata table
+
 Duration: 5
 
 The Metadata Table acts as an index for managing and tracking the snapshots created by the Snapshot Procedure. It provides a centralized summary of all snapshots, ensuring clear visibility and efficient historical tracking of inventory adjustments.
@@ -442,7 +468,7 @@ The Metadata Table acts as an index for managing and tracking the snapshots crea
 Each time the Snapshot Procedure runs, it writes a summary of the snapshot into the SNAPSHOT_METADATA table.
 
 **2: Duplicate Prevention:**<br>
-Before creating a new snapshot, the procedure compares the input table data to the metadata table. 
+Before creating a new snapshot, the procedure compares the input table data to the metadata table.
 
 Rows already captured in previous snapshots are excluded, ensuring only newly adjusted rows are added to the current snapshot.
 
@@ -457,6 +483,7 @@ Supports incremental updates by storing unique identifiers (e.g., SUPPLIER_KEY, 
 This table plays a crucial role in enabling incremental snapshots, ensuring that each snapshot reflects only new edits while preserving historical accuracy.
 
 Run the following command in Snowflake to create the schema, table and permissions:
+
 ```code
 -- Create the Snapshot Metadata schema, table and permissions
 -- This table will store information about each snapshot, enabling the filtering logic.
@@ -520,14 +547,15 @@ GRANT CREATE TABLE, CREATE VIEW, CREATE STAGE ON SCHEMA SIGMA_QUICKSTARTS.SNAPSH
     </tbody>
 </table>
 
-
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Creating the stored procedure
+
 Duration: 5
 
-Now that we have our view and metadata setup, we can leverage them directly in a Snowflake stored procedure. 
+Now that we have our view and metadata setup, we can leverage them directly in a Snowflake stored procedure.
 
 The Snapshot Procedure automates the creation of inventory adjustment snapshots in Snowflake based on user edits captured through Sigma input tables. Each snapshot reflects the current state of adjusted quantities for specific inventory items and ensures a historical record for tracking changes.
 
@@ -605,7 +633,7 @@ Rows with updated quantities (ADJUSTED_QTY) are extracted from the Sigma input t
 </table>
 
 **3: Metadata Tracking:**<br>
-The procedure writes a summary of the snapshot into a metadata table (SNAPSHOT_METADATA), table details described previously. 
+The procedure writes a summary of the snapshot into a metadata table (SNAPSHOT_METADATA), table details described previously.
 
 **4: Incremental Snapshots:**<br>
 Each execution of the procedure appends new rows reflecting the latest user edits. Previously captured rows are excluded by comparing the current dataset against the metadata.
@@ -614,6 +642,7 @@ Each execution of the procedure appends new rows reflecting the latest user edit
 Snapshots are stored as distinct tables, preserving a historical record of inventory adjustments. The metadata table acts as an index, enabling easy navigation and management of snapshots.
 
 Run the following script in Snowflake to create our stored procedure:
+
 ```code
 USE ROLE ACCOUNTADMIN;
 
@@ -647,8 +676,8 @@ BEGIN
             vw.PS_AVAILQTY AS Original_Qty,
             vw.ADJUSTED_QTY AS Adjusted_Qty,
             COALESCE(vw.ADJUSTED_QTY - vw.PS_AVAILQTY, 0) AS Difference,
-            CASE 
-                WHEN vw.PS_AVAILQTY > 0 THEN 
+            CASE
+                WHEN vw.PS_AVAILQTY > 0 THEN
                     ((COALESCE(vw.ADJUSTED_QTY, vw.PS_AVAILQTY) - vw.PS_AVAILQTY) / vw.PS_AVAILQTY) * 100
                 ELSE NULL
             END AS Percent_Change,
@@ -671,9 +700,9 @@ BEGIN
     EXECUTE IMMEDIATE sql_query;
 
     -- Insert metadata about the snapshot into the metadata table
-    EXECUTE IMMEDIATE ''INSERT INTO SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA 
+    EXECUTE IMMEDIATE ''INSERT INTO SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA
                        (snapshot_id, snapshot_time, snapshot_name, supplier_key, part_name, brand, manufacturer)
-                       SELECT 
+                       SELECT
                            '''''' || snapshot_id || '''''' AS snapshot_id,
                            CURRENT_TIMESTAMP() AS snapshot_time,
                            '''''' || table_name || '''''' AS snapshot_name,
@@ -703,9 +732,11 @@ END;
 This procedure enables versioned tracking of inventory changes and ensures data integrity by avoiding duplicates while maintaining a clear audit trail.
 
 ### Manual test of script
-Before we configure Sigma to run the script on demand, we should make sure it works. Earlier, we did edit one row of data, settings it's `Adjusted_Qty` to `1000`, so we have something to validate against. 
+
+Before we configure Sigma to run the script on demand, we should make sure it works. Earlier, we did edit one row of data, settings it's `Adjusted_Qty` to `1000`, so we have something to validate against.
 
 Execute the following script in the Snowflake console:
+
 ```code
 CALL SIGMA_QUICKSTARTS_SNAPSHOTS.STORED_PROCEDURES.SNAPSHOT_INVENTORY_ADJUSTMENTS();
 ```
@@ -719,39 +750,44 @@ In the snapshot table we can see our one row that was edited:
 <img src="assets/da_swh_38.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Snapshotting
+
 Duration: 5
 
-There are many ways to design an interface for snapshotting; lets explore just one. We will make some assumptions but when we are done, the basics will be clear and you can alter the design any way that suits your requirements.
+There are many ways to design an interface for snapshotting; let's explore just one. We will make some assumptions but when we are done, the basics will be clear and you can alter the design any way that suits your requirements.
 
 ### How to call it with Sigma
-Sigma supports stored procedures thru actions, and we will use an action to call our snapshot script that is stored in Snowflake.
 
-For those may not already know, A stored procedure is a reusable block of SQL code stored in the database that performs specific tasks. It simplifies workflows by allowing complex operations, such as data manipulations and calculations, to be executed as a single command.
+Sigma supports stored procedures through actions, and we will use an action to call our snapshot script that is stored in Snowflake.
+
+For those may not already know, a stored procedure is a reusable block of SQL code stored in the database that performs specific tasks. It simplifies workflows by allowing complex operations, such as data manipulations and calculations, to be executed as a single command.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The ability to perform these complex operations directly within the database opens up endless possibilities. Teams can leverage powerful tools like Snowflake Cortex for advanced analytics or integrate Python scripts for custom logic, all while maintaining efficiency and scalability.
 </aside>
 
-Our stored procedure will create a snapshot of inventory adjustments by leveraging the Warehouse View (WV) to ensure consistent and user-friendly column names. It ensures that only the relevant rows (matching current edits in the input table) are included in the snapshot. 
+Our stored procedure will create a snapshot of inventory adjustments by leveraging the Warehouse View (WV) to ensure consistent and user-friendly column names. It ensures that only the relevant rows (matching current edits in the input table) are included in the snapshot.
 
-We already created our stored procedure in the last section. 
+We already created our stored procedure in the last section.
 
 The stored procedure is located here:
 
 <img src="assets/da_swh_36.png" width="600"/>
 
 ### Update Modal in Sigma
+
 After our manual test, we know that the snapshotting works. Return to Sigma and update the actions on `Modal 1` to allow users to trigger it.
 
-First, open `Mondal 1's` format panel and uncheck the option for `Show close icon`. This removes the `X` icon from the upper right corner of the modal. 
+First, open `Mondal 1's` format panel and uncheck the option for `Show close icon`. This removes the `X` icon from the upper right corner of the modal.
 
-Next we want to change configure our footer buttons for text and action. 
+Next we want to change configure our footer buttons for text and action.
 
 #### Primary button
-Set the text for the `Primary button` to `Take a Snapshot`. 
+
+Set the text for the `Primary button` to `Take a Snapshot`.
 
 Change the `Secondary button` to `Return to Inventory Master` while we are on this screen anyway:
 
@@ -762,36 +798,42 @@ Next, configure an action to trigger our stored procedure in Snowflake:
 <img src="assets/da_swh_34.png" width="600"/>
 
 #### Secondary button
-Configure an action for the button to return the user to `Inventor Master` and clear the control so that the table is not filtered when the user is landed there:
+
+Configure an action for the button to return the user to `Inventory Master` and clear the control so that the table is not filtered when the user is landed there:
 
 <img src="assets/da_swh_35.png" width="600"/>
 
 `Publish` the workbook and return to the `published version`.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Validation testing
+
 Duration: 5
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Be aware that there may be a small amount of lag time (depending on the Snowflake warehouse configuration) between when a users clicks "Save" on an input table and the data being available in Snowflake. If we run our stored procedure before the data has landed, the latest edits will not appear in the the metadata table or snapshot. For the purposes of this QuickStart, we did not include logic to check the the data has landed, but wanted to mention this potential situation so that developers can include scipting to handle it.
+<strong>IMPORTANT:</strong><br> Be aware that there may be a small amount of lag time (depending on the Snowflake warehouse configuration) between when a users clicks "Save" on an input table and the data being available in Snowflake. If we run our stored procedure before the data has landed, the latest edits will not appear in the the metadata table or snapshot. For the purposes of this QuickStart, we did not include logic to check the the data has landed, but wanted to mention this potential situation so that developers can include scripting to handle it.
 </aside>
 
-Lets perform to editing "runs" in Sigma, each time saving the edits and taking a snapshot. The expected outcome will be two additional snapshot tables. 
+Let's perform two editing "runs" in Sigma, each time saving the edits and taking a snapshot. The expected outcome will be two additional snapshot tables.
 
 ### Reset the text environment
+
 While not required, it may be helpful to know how to quickly reset the data so that the test results are more easily seen. Here is how to do that:
 
 **1:** Clear the one cell that was edited (to have the "1000" value). Do this directly in the Sigma UI. Just click on the cell that has the value, press the delete key and then enter. Save the input table data. It will not matter that Sigma will record this action in Snowflake, we are only concerned with rows that have values for `Ajusted_Qty`, so this edit will be ignored when we snapshot.
 
 **2:** Truncate the metadata table to remove all rows.
+
 ```code
 TRUNCATE TABLE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA;
 ```
 
 **3:** Drop all previous snapshots.
 We like to list them out before just deleting table. Run this script to do that:
+
 ```code
 -- List out the snapshot tables. Copy paste and run the output
 SELECT 'DROP TABLE SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS."' || TABLE_NAME || '";'
@@ -836,23 +878,24 @@ Return to Snowflake and check that there are two snapshots and they have only th
 Now that we have verified that the data app is working, we can do something with all this new data.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
-
 ## Viewing Snapshots
+
 Duration: 5
 
-Over time we will collect many snapshots and we may want to look at then individually or in one table so that we can explore the data futher. 
+Over time we will collect many snapshots and we may want to look at then individually or in one table so that we can explore the data further.
 
-Lets just assume that we want to look at all of them as one big table and leave the analytics part to the assumption that is understood. 
+Let's just assume that we want to look at all of them as one big table and leave the analytics part for another time.
 
-We will not immediately know that all the table names, and using the connection browser to join them would required on-going maintence too.  
+We will not immediately know all the table names, and using the connection browser to join them would require on-going maintenance too.
 
-Instead, lets follow a the path we have already taken in this QuickStart and leverage Snowflake stored procedures and a view to create single table that unions (combines) every available snapshot. Users will be able to click a button to refresh the union to account for newly created snapshots.
+Instead, let's follow the path we have already taken in this QuickStart and leverage Snowflake stored procedures and a view to create a single table that unions (combines) all available snapshots. Users will be able to click a button to refresh the union, accounting for newly created snapshots.
 
 ### How it will work
 
-**1 Use a Snowflake view:**<br>
+**1: Use a Snowflake view:**<br>
 A single view that combines (unions) all snapshot tables. This ensures Sigma always reads from a single, consistent source.
 
 **2: Use a stored procedure:**<br>
@@ -864,13 +907,15 @@ Users interact with a Sigma button to trigger the stored procedure.
 The view refreshes to include newly created snapshot tables.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Unioning tables can be done is Sigma or in the warehouse and a few other ways as well. We are showing one example for completeness only.
+<strong>IMPORTANT:</strong><br> Unioning tables can be done in Sigma or in the warehouse and a few other ways as well. We are showing one example for completeness only.
 </aside>
 
 ### Snowflake configuration
+
 Since the number of snapshot tables grows over time, the stored procedure needs to regenerate the` CREATE OR REPLACE VIEW` command to dynamically `Union All` snapshots.
 
 Below is the stored procedure that needs to be run in Snowflake:
+
 ```code
 USE ROLE ACCOUNTADMIN;
 
@@ -912,17 +957,19 @@ $$;
 With our stored procedure and view created, we can return to Sigma.
 
 ### Back in Sigma
-In Sigma, create a new page called `Snapshots`. 
 
-Add a new `Button`, set the label to `Refresh Snapshot List`. Set it's action to call the stored procedure `UPDATE_ALL_SNAPSHOTS_VIEW`:
+In Sigma, create a new page called `Snapshots`.
+
+Add a new `Button`, set the label to `Refresh Snapshot List`. Set its action to call the stored procedure `UPDATE_ALL_SNAPSHOTS_VIEW`:
 
 <img src="assets/da_swh_47.png" width="400"/>
 
-Click the new button to run the stored procedure. 
+Click the new button to run the stored procedure.
 
-Next, add a new `Data` > `Table` element to the page, selecting the `Data Apps for QuickStarts` connection and `SQL` as the source. 
+Next, add a new `Data` > `Table` element to the page, selecting the `Data Apps for QuickStarts` connection and `SQL` as the source.
 
 Paste this SQL query into the editor:
+
 ```code
 SELECT *
 FROM SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.ALL_SNAPSHOTS_VIEW
@@ -930,17 +977,17 @@ FROM SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.ALL_SNAPSHOT
 
 Click `Run`.
 
-We can now see all the snapshots unioned together into one table. 
+We can now see all the snapshots unioned together into one table.
 
 Also notice that we can see two columns that were created programmatically by our snapshotting stored procedure earlier.
 
 <img src="assets/da_swh_48.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The ability to manipulate warehouse data using stored procedures and leverage that in Sigma opens up a vast number of possibilites. 
+<strong>IMPORTANT:</strong><br> The ability to manipulate warehouse data using stored procedures and leverage that in Sigma opens up a vast number of possibilities. 
 </aside>
 
-As a last step (and we leave the details up to you to configure as "extra credit"), create another table that uses the `Custom SQL` table as its source. Then we can join the `PARTSUPP` table to it so we can bring in the `Ps Supplycost` column and use that to calcuate the `Dollars Lost` amount, The percent change and dollars lost numbers are crazy large; we did not worry about using reasonable values when we were editing inventory numbers earlier:
+As a last step (and we leave the details up to you to configure as "extra credit"), create another table that uses the `Custom SQL` table as its source. Then we can join the `PARTSUPP` table to it so we can bring in the `Ps Supplycost` column and use that to calculate the `Dollars Lost` amount. The percent change and dollars lost numbers are crazy large; we did not worry about using reasonable values when we were editing inventory numbers earlier:
 
 <img src="assets/da_swh_48.png" width="800"/>
 
@@ -953,12 +1000,14 @@ We could do so much more to visualize the new data but the point is proven; data
       <li><strong>Detailed Audit Logs:</strong> Allow users to drill into specific snapshots to see details like who made updates, what columns changed, and how they differ from previous records.</li>
 </ul>
 
-Lets take a minute and review some takeaways from this exercise as we covered so much ground and there are some things we can take into future projects. 
+Let's take a minute and review some takeaways from this exercise as we covered so much ground and there are some things we can take into future projects.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## Takeaways
+
 Duration: 5
 
 Here are a few observations from creating this QuickStart that you may not have encountered, but are worth mentioning.
@@ -968,7 +1017,7 @@ Before diving into implementation, take time to map out the overall process, inc
 
 **2: Snapshot Schema Design:**<br>
 Organize your Snowflake objects into schemas that clearly reflect their purpose. For example:
-        
+
 <ul>
       <li><strong>Metadata Tables:</strong> Place tracking and logging tables (e.g., SNAPSHOT_METADATA) in a dedicated schema such as METADATA or SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.</li>
       <li><strong>Snapshot Tables:</strong> Use a dedicated schema for dynamically created snapshot tables (e.g., SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS), keeping them isolated to avoid clutter.</li>
@@ -976,7 +1025,7 @@ Organize your Snowflake objects into schemas that clearly reflect their purpose.
 </ul>
 
 **3: Metadata as a Source of Truth:**<br>
-Incorporating a metadata table was instrumental for tracking snapshots and ensuring unique records were captured in each run. This approach provides a single source of truth for what has been snapshot, when, and by whom.
+Incorporating a metadata table was instrumental for tracking snapshots and ensuring unique records were captured in each run. This approach provides a single source of truth for what has been snapshotted, when, and by whom.
 
 **4: Iterative Development:**<br>
 Implementing a complex workflow like dynamic snapshotting requires an iterative approach. Start with a minimal viable procedure, validate each component (e.g., table creation, unions, metadata insertion), and only then refine for additional features.
@@ -990,12 +1039,14 @@ Instead of dynamically querying tables from Sigma, creating a view in Snowflake 
 **7: Testing and Resetting the Environment:**<br>
 A structured test approach, including a “reset for testing” workflow, allowed for clean, predictable results. Regularly cleaning up snapshot tables and metadata ensures accurate validation during iterative development.
 
-Perhaps you encounted some of your own too. We hope that covering these has been useful and will accellerate your future projects. 
+Perhaps you encountered some of your own too. We hope that covering these has been useful and will accelerate your future projects.
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF SECTION-->
 
 ## What we've covered
+
 Duration: 5
 
 Your trimmed-down version is clear, concise, and effectively captures the key points. Here's a minor tweak for flow and readability:
@@ -1018,5 +1069,6 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
+
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
