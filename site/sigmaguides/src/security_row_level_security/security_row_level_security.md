@@ -89,7 +89,7 @@ Using the sidebar navigation, locate the `Connections` > `Sigma Sample Database`
 
 <img src="assets/nrls3.png" width="800"/>
 
-We now have our source table. Let's assume that we want to limit data based on the `Region` that each transaction was in. This table has a `Store Region` column, so we can use that for each of our tet case.
+We now have our source table. Let's assume that we want to limit data based on the `Region` that each transaction was in. This table has a `Store Region` column, so we can use that for each of our test case.
 
 The table does not have `email` or `Team` columns that we need for our test case, so we will add them using simple Sigma functions.
 
