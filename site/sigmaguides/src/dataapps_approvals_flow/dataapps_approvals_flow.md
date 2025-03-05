@@ -77,7 +77,7 @@ Lets just assume these are the orders in the cloud data warehouse ("warehouse") 
 <strong>NOTE:</strong><br> The methods demonstrated can be applied to any set of data really. For example, if the data is project management oriented, these methods will translate easily to that dataset, or any other too.
 </aside>
 
-Since it is possible that each order can have multiple items (`SKUs`). We need to add a column to ensure that we can easily identify any row uniquely. 
+Since it is possible that each order can have multiple items (`SKUs`), we need to add a column to ensure that we can easily identify any row uniquely. 
 
 Add a new column, rename it to `Key` and set the formula to:
 ```code
