@@ -94,7 +94,7 @@ Create a `Linked Input Table` from the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` tab
 
 Select the `Key` column as the unique row identifier.
 
-To make things cleaner, lets select the columns that are not really needed for this demonstration and leave only the ones shown in the screenshot below. 
+To make things cleaner, lets deselect the columns that are not really needed for this demonstration and leave only the ones shown in the screenshot below. 
 
 <img src="assets/af-5.png" width="400"/>
 
