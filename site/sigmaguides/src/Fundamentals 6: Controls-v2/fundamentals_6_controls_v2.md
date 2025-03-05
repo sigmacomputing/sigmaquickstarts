@@ -44,7 +44,7 @@ Since we have already used a few controls, we will focus on areas of interest th
 We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart [Fundamentals 1: Getting Around.](https://quickstarts.sigmacomputing.com/guide/fundamentals-1-getting-around-v2/index.html?index=..%2F..index#0)
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart Fundamentals 1 and 2, and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
+<strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart Fundamentals 1-5, and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
 </aside>
 
 <aside class="positive">
