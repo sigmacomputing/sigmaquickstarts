@@ -5,7 +5,7 @@ categories: Fundamentals
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2024-06-21
 
 # Fundamentals 7: Administration v2

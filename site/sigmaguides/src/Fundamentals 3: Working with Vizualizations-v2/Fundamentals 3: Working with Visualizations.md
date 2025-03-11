@@ -3,7 +3,7 @@ id: fundamentals-3-working-with-Charts-v2
 categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 authors: pballai
 lastUpdated: 2024-06-31
 

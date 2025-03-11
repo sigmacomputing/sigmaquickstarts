@@ -5,7 +5,7 @@ categories: Fundamentals
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2024-09-24
 
 # Fundamentals 8: Beyond the Basics
