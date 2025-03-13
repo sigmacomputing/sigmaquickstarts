@@ -648,7 +648,7 @@ Duration: 6
 
 In this QuickStart we covered navigating the Sigma user interface, common terminology and some of the most common functionality. 
 
-The next QuickStart in this series covers using [data elements in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data/index.html)
+The next QuickStart in this series covers using [data elements in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html?index=..%2F..index#0)
 
 ### Advanced users
 The select list of links below are provided for those are interested in diving right into Sigma in a deeper way. Of course, there are many QuickStarts to choose from apart from these too. These show the wide variety of functionality available in Sigma.

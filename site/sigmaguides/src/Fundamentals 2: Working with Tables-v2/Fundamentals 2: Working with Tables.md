@@ -659,7 +659,7 @@ Our `Fundamentals` workbook looks something like this:
 
 <img src="assets/finalFun1.png" width="800"/>
 
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-visualizations-v2/index.html?index=..%2F..index#0)
+[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-3-working-with-Charts-v2/index.html?index=..%2F..deprecated#4)
 
 **Additional Resource Links**
 

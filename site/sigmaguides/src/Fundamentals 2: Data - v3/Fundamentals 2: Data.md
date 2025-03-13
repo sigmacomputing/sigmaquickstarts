@@ -726,7 +726,7 @@ Duration: 6
 
 In this QuickStart, we covered how to access sample data to build a table, join other tables, add calculated columns, group and filter data, add table totals and summaries, and apply conditional formatting.
 
-The next QuickStart in this series covers using [pivot tables in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_3_data_pivot_tables/index.html?index=..%2F..index#0)
+The next QuickStart in this series covers using [pivot tables in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_3_data_pivot_tables_v3/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 

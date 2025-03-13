@@ -429,7 +429,9 @@ In this QuickStart, we covered the basics of using Sigma design elements to enha
 
 For more information see [Create and manage workbook themes](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
-The next QuickStart in this series covers [administration in Sigma.](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration/index.html#0)
+The next QuickStart in this series covers [administration in Sigma.](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html?index=..%2F..index#0)
+
+If you are not an administrator, you may be interested in [Fundamentals 9: Beyond the Basics.](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

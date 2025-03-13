@@ -365,14 +365,12 @@ Some really amazing visuals can be created via plugin. For example:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF MAPS -->
 
-
-
 ## What we've covered
 Duration: 5
 
 In this QuickStart we learned how to use Sigma to create beautiful charts, KPIs, maps and more.
 
-The next QuickStart in this series covers using [controls in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls/index.html)
+The next QuickStart in this series covers using [controls in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls_v3/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 
