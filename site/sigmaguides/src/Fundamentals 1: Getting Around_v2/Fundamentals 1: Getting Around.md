@@ -3,7 +3,7 @@ id: fundamentals-1-getting-around-v2
 categories: fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 authors: phil@sigmacomputing.com
 lastUpdated: 2024-06-21
 
