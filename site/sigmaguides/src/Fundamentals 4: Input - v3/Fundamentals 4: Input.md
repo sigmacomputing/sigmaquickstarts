@@ -248,7 +248,7 @@ Duration: 5
 
 In this QuickStart, we covered why you might use a pivot table, how to use Sigma to create one, add conditional formatting, and drill down on table data.
 
-The next QuickStart in this series covers using [charts in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_5_charts/index.html)
+The next QuickStart in this series covers using [charts in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_5_charts_v3/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 

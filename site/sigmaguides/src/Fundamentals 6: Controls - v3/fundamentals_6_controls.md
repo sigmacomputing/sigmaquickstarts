@@ -440,7 +440,7 @@ In this QuickStart, we covered the the variety of the more popular controls prov
 For more information, see [Intro to control elements
 Suggest Edits](https://help.sigmacomputing.com/docs/intro-to-control-elements)
 
-The next QuickStart in this series covers [design elements in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_design/index.html#0)
+The next QuickStart in this series covers [design elements in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_design_v3/index.html?index=..%2F..index#0)
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

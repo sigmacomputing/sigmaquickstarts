@@ -471,7 +471,7 @@ Duration: 5
 
 In this QuickStart we learned how to use Sigma to create beautiful charts, KPIs, maps and more.
 
-[Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/fundamentals-4-working-with-pivot-tables-v2/index.html)
+The next QuickStart in this series covers using [pivot tables in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals-4-working-with-pivot-tables-v2/index.html?index=..%2F..deprecated#2)
 
 **Additional Resource Links**
 

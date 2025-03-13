@@ -280,7 +280,7 @@ Duration: 5
 
 In this QuickStart, we covered why you might use a pivot table, how to use Sigma to create one, add conditional formatting, and drill down on table data and more.
 
-The next QuickStart in this series covers using [input tables in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_4_input/index.html)
+The next QuickStart in this series covers using [input tables in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_4_input_v3/index.html?index=..%2F..index#0)
 
 **Additional Resource Links**
 
