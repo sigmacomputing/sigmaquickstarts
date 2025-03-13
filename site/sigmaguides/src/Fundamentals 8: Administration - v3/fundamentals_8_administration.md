@@ -802,7 +802,7 @@ Duration: 5
 
 In this QuickStart we provided a very high-level overview of all the administrative features of the Sigma platform. Please be sure to check out the additional resources list below.
 
-The next QuickStart in this series covers things that are a little [beyond the basics](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics/index.html#0), but are common across customers.
+The next QuickStart in this series covers things that are a little [beyond the basics](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html?index=..%2F..index#0), but are common across customers.
 
 **Additional Resource Links**
 
