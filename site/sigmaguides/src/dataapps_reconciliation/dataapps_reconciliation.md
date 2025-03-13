@@ -1000,8 +1000,6 @@ Perhaps you encountered some of your own too. We hope that covering these has be
 ## What we've covered
 Duration: 5
 
-Your trimmed-down version is clear, concise, and effectively captures the key points. Here's a minor tweak for flow and readability:
-
 In this QuickStart, we demonstrated how Sigma's intuitive interface simplifies building data applications by combining user interactivity with powerful backend automation.
 
 By leveraging Sigma's front-end flexibility and Snowflake's backend power, this QuickStart bridges the gap between analytics and operational workflows, providing a solid foundation for creating interactive and impactful data apps.
