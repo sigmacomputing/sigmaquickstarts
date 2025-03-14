@@ -208,13 +208,11 @@ The table should now look like this (after collapsing it):
 
 <img src="assets/CDUC14.png" width="800"/>
 
-Go ahead and turn off the filter:
-
-<img src="assets/CDUC14a.png" width="400"/>
+Go ahead and turn off the filter.
 
 Now Marketing has the data they are requesting:
 
-<img src="assets/CDUC14b.png" width="800"/>
+<img src="assets/CDUC14a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
