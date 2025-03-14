@@ -201,7 +201,7 @@ Column:                         Formula:
 Second Order                    Nth([Day of Date], 2)
 Last Order                      Max([Day of Date])
 Days 1st to 2nd Order           DateDiff("day", [First Order], [Second Order])
-Days 1st to Last                DateDiff("day", [First Order], [Last Order])
+Days Since Last Order           DateDiff("day", [Last Order], Today())
 ```
 
 The table should now look like this (after collapsing it):
