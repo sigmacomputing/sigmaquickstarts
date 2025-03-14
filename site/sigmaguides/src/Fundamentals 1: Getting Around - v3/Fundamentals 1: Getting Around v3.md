@@ -486,6 +486,8 @@ Duration: 6
 
 Sigma’s licensing model includes tiers that define the usage terms of your organization members: `View`, `Act`, `Analyze` and `Build`. 
 
+If your organization utilizes older Lite/Essential/Prolicense model, [refer to this document.](https://help.sigmacomputing.com/docs/create-and-manage-account-types-2024)
+
 Each license tier establishes a different set of available permissions that enable access to Sigma’s features and capabilities. 
 
 At a high-level, this is what each tier provides:
