@@ -528,11 +528,13 @@ Duration: 20
 
 ### Description
 
-We will start with a very simple example that calls the `Members` > `Get` endpoint, [found here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members)
+This recipe calls the `Members` > `Get` endpoint, [found here.](https://docs.sigmacomputing.com/api/v2/#get-/v2/members)
 
 This section demonstrates the code that was provided on the `API Code Samples` > `Member`> `list-all` page, [located here.](https://help.sigmacomputing.com/recipes/members-list-all)
 
-This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it logs the fetched members to the console in a readable JSON format. Errors during the process are logged with detailed error messages
+This script retrieves all members from the Sigma API by making GET requests with pagination until all members are fetched. It first obtains a bearer token for authentication, then iterates through each page of member data, concatenating the results into an array. Finally, it writes the fetched members to file in JSON format. The output file is called `members_output.json`.
+
+Errors during the process are logged with detailed error messages
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
