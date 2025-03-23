@@ -377,7 +377,7 @@ Duration: 10
 Download and unzip the project files into the folder on the computer's desktop called `sigma_embedding`.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This folder should already exist if your completed the prerequisites QuickStart. If not, manually create it.
+<strong>NOTE:</strong><br> This folder should already exist, if you completed the prerequisites QuickStart. If not, manually create it.
 </aside>
 
 [Click here to download sigma_secure_embed.zip](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/embedding_2/sigma_secure_embed.zip)
