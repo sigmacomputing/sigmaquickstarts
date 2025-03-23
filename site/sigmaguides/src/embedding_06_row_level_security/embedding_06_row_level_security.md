@@ -189,8 +189,6 @@ You should see the webpage with the title and the embedded workbook below as sho
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-
-
 ## Dataset RLS with UA
 Duration: 20
 
@@ -290,7 +288,7 @@ Also replace the value for `EMBED_PATH` with the new one we just generated.
 Browse to `http://localhost:3000`. You should only see rows from the East Region. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We did not hide the ua_column so that you could see its value but normally you would hide this column since the user does need to see it. Its value can only be True or False so there is no risk of data exposure anyway; users just won’t get any value from seeing it. 
+<strong>NOTE:</strong><br> We did not hide the ua_column so that you could see its value, but normally this column would be hidden since the user doesn't need to see it. Its value is either True or False, so there’s no risk of data exposure; users just don’t gain anything from seeing it.
 </aside>
 
 <aside class="postive">
