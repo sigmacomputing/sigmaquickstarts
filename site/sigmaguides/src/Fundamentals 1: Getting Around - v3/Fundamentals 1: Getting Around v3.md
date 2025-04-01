@@ -156,10 +156,10 @@ Once you open a different page (ie: Administration), you may notice the back arr
 <img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
     <ul>
       <li><strong>Workbook:</strong> our spreadsheet-like UI for analyzing data</li>
-      <li><strong>Datamodel:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
+      <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
        <li><strong>Dataset:</strong> Model your data in Sigma using datasets, or collections of data based on tables in your CDW or DBMS.</li>
       <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
-      <li><strong>Upload CSV:</strong> allows you to upload a csv to the warehouse in order to perform analysis.</li>
+      <li><strong>Upload CSV:</strong> allows you to upload a CSV to the warehouse in order to perform analysis.</li>
     </ul>
      
 <aside class="positive">
@@ -240,7 +240,7 @@ Of course, this is all baseline terminology and pretty easy to understand. Here 
       <li><strong>Controls:</strong> In general, provide filtering to other elements but can do more too.</li>
       <li><strong>Modals:</strong> Hidden workbook pages that behave like "pop-ups" when the user clicks on some trigger.</li>
       <li><strong>Container:</strong> A grouping of elements on a page. Useful for styling and data app actions.</li>
-      <li><strong>Datamodel:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
+      <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
 </ul>
 
 There are lots of other terms used (ie: Charts), but they are mostly self-explanatory. 

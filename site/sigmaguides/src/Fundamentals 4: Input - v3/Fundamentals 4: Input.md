@@ -97,7 +97,7 @@ There are several ways to create this "row uniqueness" in Sigma. The very simple
 
 Add a new column, and set the formula to:
 ```code
-RowNumber(https://help.sigmacomputing.com/docs/rownumber#syntax)
+RowNumber()
 ```
 
 Now we have a value that is unique for every row.
