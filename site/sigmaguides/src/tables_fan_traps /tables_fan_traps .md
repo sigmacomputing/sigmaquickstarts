@@ -3,9 +3,9 @@ id: tables_fan_traps
 summary: tables_fan_traps
 categories: tables
 environments: web
-status: published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2025-04-01
 
 # Resolving The Fan Trap with Sigma and Snowflake UDF
