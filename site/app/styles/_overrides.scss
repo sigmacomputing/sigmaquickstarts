@@ -25,16 +25,16 @@
 /* 
 Sigma specific category classes */
 $color-administration: #000000;
-$color-dataapps: #4BDA84;
-$color-developers: #000000;
-$color-embedding: #000000;
-$color-fundamentals: #000000;
-$color-security: #000000;
-$color-tables: #000000;
-$color-use-cases: #000000;
-$color-functions: #000000;
-$color-partners: #000000;
-$color-templates: #000000;
+$color-dataapps: #4CAF50;
+$color-developers: #3F51B5;
+$color-embedding: #06dbf7;
+$color-fundamentals: #FFA726;
+$color-security: #f70606;
+$color-tables: #FBC02D;
+$color-use-cases: #7E57C2;
+$color-functions: #266963;
+$color-partners: #7a5144;
+$color-templates: #EC407A;
 
 $icon-administration: 'administration.svg';
 $icon-dataapps: 'dataapps.svg';
@@ -48,15 +48,15 @@ $icon-functions: 'functions.svg';
 $icon-partners: 'partners.svg';
 $icon-templates: 'workbook-template.svg';
 
-@include codelab-card(['administration'], $color-fundamentals, $icon-administration);
+@include codelab-card(['administration'], $color-administration, $icon-administration);
 @include codelab-card(['dataapps'], $color-dataapps, $icon-dataapps);
 @include codelab-card(['developers'], $color-developers, $icon-developers);
-@include codelab-card(['embedding'], $color-fundamentals, $icon-embedding);
+@include codelab-card(['embedding'], $color-embedding, $icon-embedding);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
-@include codelab-card(['security'], $color-fundamentals, $icon-security);
-@include codelab-card(['tables'], $color-fundamentals, $icon-tables);
-@include codelab-card(['use-cases'], $color-fundamentals, $icon-use-cases);
-@include codelab-card(['functions'], $color-fundamentals, $icon-functions);
+@include codelab-card(['security'], $color-security, $icon-security);
+@include codelab-card(['tables'], $color-tables, $icon-tables);
+@include codelab-card(['use-cases'], $color-use-cases, $icon-use-cases);
+@include codelab-card(['functions'], $color-functions, $icon-functions);
 @include codelab-card(['partners'], $color-partners, $icon-partners);
 @include codelab-card(['templates'], $color-templates, $icon-templates); 
 
