@@ -3,9 +3,9 @@ id: dataapps_native_sigma_snapshot_workflow
 summary: dataapps_native_sigma_snapshot_workflow
 categories: dataapps
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: 
 lastUpdated: 2024-10-24
 
 # Native Sigma Snapshot Workflow
