@@ -483,6 +483,7 @@ To be complete, the result looks like this:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+<!-- Commenting this section out per Jon A.
 ## Performance optimizations
 Duration: 5
 
@@ -570,8 +571,8 @@ Then we refreshed the browser tab and repeated the pivot refresh / query history
 
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
+-->
 
 ## What we've covered
 Duration: 5
