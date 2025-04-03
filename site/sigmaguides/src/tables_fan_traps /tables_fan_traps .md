@@ -201,7 +201,6 @@ If we filter the `order_details.csv` table for `order_id` = `100` we can see tha
 
 <img src="assets/fantrap_20.png" width="800"/>
 
-
 However, if we filter the `order_header.csv` table for `order_id` = `100` we can see that the `amount` is `10` and that is the source of our fan trap issue:
 
 <img src="assets/fantrap_19.png" width="400"/>
@@ -212,6 +211,10 @@ When we joined `order_header` to `order_details`, we introduced a one-to-many re
 Each order in `order_header` can have multiple related products in `order_details`. 
 
 This causes the amount from `order_header` to be duplicated for every product in the order.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The "Attendance" measure is also being duplicated from the join. We mention this as we will make use of it later (section 8). 
+</aside>
 
 ### How This Affects the Data
 When joined with `order_details`, each product row inherits the same total amount, which makes it appear that the revenue is much higher than it actually is.
