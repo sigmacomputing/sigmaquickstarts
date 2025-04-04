@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2025-03-13
+lastUpdated: 2025-04-01
 
 # Fundamentals 1: Getting Around
 <!-- -->
@@ -399,6 +399,154 @@ After clicking on `Go to published version`, the header now shows options to ret
 Once you make changes in the `Custom view`, you can opt to save them as a new workbook or discard. 
 
 Click the `Close view` button and click the `Edit` text to return to editing mode.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF WORKBOOKS -->
+
+## The Power of Artificial Intelligence (AI)
+Duration: 6
+
+As we move through the Fundamentals series, we’ll learn how to build using all the great features Sigma provides. That said, we’re at a point in time where AI is expected in any modern software product.
+
+Providing AI functionality isn’t especially difficult these days—but making it easy to use and genuinely helpful requires thoughtful design and a deep understanding of how users can benefit from the results.
+
+Incorrect or misleading AI output isn’t just frustrating—it wastes time, and in a business context, it can lead to poor decisions.
+
+Ask Sigma breaks down every step AI took to generate its answer. This lets you double-check results, edit any step of the analysis, and work more confidently with AI.
+
+Here’s a short video for those who don’t yet have an AI API key but want to see the functionality in action.
+
+If the embedded video is tool small on your screen, you can [view the larger version here.](https://www.sigmacomputing.com/product/ask-sigma)
+
+<img src="assets/ai.gif"/>
+
+### Hands on demonstration
+If you already have an AI API Key, you can this for yourself now. Otherwise, just follow along.
+
+<aside class="positive"> <strong>From the author:</strong><br> I don’t usually write in the first person, but I’ll make an exception here. I genuinely believe Ask Sigma will start to change the way users work in Sigma—saving tons of time that’s better spent on refining results, not starting from scratch.
+
+Let’s be clear—Ask Sigma is a tool at your disposal. You’re free to use it or not. But it’s worth understanding what I believe is the start of a fundamental shift: the way you think about starting a new project is changing.
+
+Many software vendors like to say “Start with the end in mind.” That sounds good, but having a whiteboard diagram still means you must build everything from scratch—and also figure out how to use some product to build it.
+
+Sure, Sigma is easy to learn and use—but Ask AI is even better than that.
+
+Instead of starting with the end-state design, Ask AI wants you to start with a problem—framed as a question.
+
+As shown in the video, Ask Sigma will work hard to answer even vague, generic questions like:
+"Where are we doing the best?"
+
+That question lacks context, and you can certainly ask clearer questions to receive results that are more aligned with what you're looking for.
+
+But regardless of the query you submit, Ask Sigma provides additional analysis and breakdowns—so you can explore more data and follow your curiosity. You can always edit the AI-generated analysis to better pinpoint what you're after.
+
+The best way to improve Ask Sigma’s performance—and human analysis, too—is to ensure the underlying data is robust and well-organized.
+
+Ask Sigma leverages AI agents that reference metadata (like column and table descriptions), data models, and defined metrics to answer your query.
+
+The more context you provide about your data, the better AI can work with it. So if you’re not getting the results you expect, don’t just tweak the wording of your question. Instead, collaborate with your data team to continuously refine and optimize your assets to drive better outcomes for everyone.
+
+Let’s try it out in the demo below.
+</aside> 
+
+<aside class="negative"> <strong>IMPORTANT:</strong><br> Sigma is heavily invested in Ask Sigma—new features and improvements are rolling out all the time! </aside>
+
+
+### Enable AI
+To use AI features in Sigma, you’ll need to provide an API key from your selected AI provider.
+
+Navigate to `Administration` > `AI settings`, select the AI provider and provide a valid `API Key`:
+
+<img src="assets/f1_43.png" width="800"/>
+
+For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
+### Select data sources to make available to Ask Sigma
+Now we need to tell Sigma which data sources Ask Sigma can use. Since we are using third-party AI services like OpenAI, we want to be careful about which datasets we allow access to. This process controls that and limits access to data that may be proprietary.
+
+For example, if we want Ask Sigma to have access to the `Sigma Sample Database > RETAIL > PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` we simply search for it, select the source we want and click `Sync`:
+
+<img src="assets/f1_44.png" width="800"/>
+
+Once the sync is complete, you can filter on `Available` to confirm it’s ready for Ask Sigma:
+
+<img src="assets/f1_44.png" width="800"/>
+
+Here’s where things follow the `Ask` workflow, rather than the `Create New Workbook` workflow.
+
+Click the <img src="assets/crane.png" width="45"/> icon, and then select `Ask Sigma`:
+
+<img src="assets/f1_46.png" width="600"/>
+
+### Ask away
+The Ask Sigma interface is simple—but it’s also built to help you target specific data sources.
+
+This time, let’s try a more focused question:
+
+```plaintext
+The CEO wants to know the bottom ten stores in the chain.
+```
+
+<img src="assets/f1_47.png" width="400"/>
+
+Ask Sigma explains what it's doing at each step and why. You can jump off into a workbook at any point to explore further on your own:
+
+<img src="assets/f1_48.png" width="800"/>
+
+Once the response is ready, you’ll see:
+- A full explanation of the result
+- Options to adjust calculations
+- Multiple charts to choose from for your workbook
+
+Some generated charts may not be helpful—for example, `Store Latitude, Store Longitude, and Store Key` aren’t useful in this case. so we won't select them.
+
+<img src="assets/f1_49.png" width="800"/>
+
+If you're happy with the results, you can open the selected items in a workbook—or keep refining in Ask Sigma.
+
+
+Once inside a workbook, you can save it, make any changes you like, or use Sigma’s [Explore Anywhere](https://help.sigmacomputing.com/docs/view-underlying-data) feature for deeper analysis:
+
+<img src="assets/f1_50.png" width="500"/><br><br>
+
+<img src="assets/f1_51.png" width="800"/>
+
+It’s clear that Ask Sigma changes the way people will use Sigma—and it’s only getting better. Stay tuned!
+
+### Bonus: AI Formula Assistant
+Sigma also includes a Formula Assistant powered by AI. It can:
+- Write new formulas
+- Correct formula errors
+- Explain existing formulas used in workbooks and data models
+
+Let’s say someone in Finance provides a formula they want applied at the group level:
+```code
+Revenue Efficiency Score= 
+Quantity×Price+Cost
+(Price−Cost)×Quantity
+```
+
+Instead of writing it manually, let the AI Formula Assistant convert it for you:
+
+<img src="assets/f1_52.png" width="800"/>
+
+Once done, you can review the formula, rename the column, and format it to match your needs:
+
+<img src="assets/f1_54.png" width="800"/>
+
+And if you’re not sure what the formula does, just ask the Formula Assistant to explain it:
+
+<img src="assets/f1_55.png" width="800"/>
+
+Now we know: a low Revenue Efficiency Score is bad—and we should dig deeper into what’s bringing it down.
+
+For more information, here are some documentation links:
+
+[Ask natural language queries with Ask Sigma](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-ask-sigma)
+
+[Embed Ask Sigma (Beta)](https://help.sigmacomputing.com/docs/embed-ask-sigma)
+
+[Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WORKBOOKS -->
