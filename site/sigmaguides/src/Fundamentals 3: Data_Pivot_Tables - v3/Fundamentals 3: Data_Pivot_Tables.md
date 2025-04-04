@@ -79,11 +79,9 @@ While grouping the data in a standard table could technically satisfy this requi
 
 For example, with standard table grouping, the output might look something like this:
 
-(Insert example table here)
+<img src="assets/fpivot_1.png" width="800"/>
 
 This view can be useful, but it may still require additional effort to navigate and interpret effectively.
-
-<img src="assets/fpivot_1.png" width="800"/>
 
 Let's create a pivot table instead.
 
