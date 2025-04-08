@@ -439,7 +439,7 @@ While not required, we applied a little styling to the container and renamed it 
 </aside>
 
 ### Adjustment values selection
-Now lets add a few more controls (outside the `Selected Values` container) to allow the user to enter a value for the adjustment and select a method from three options. 
+Now let's add a few more controls (outside the `Selected Values` container) to allow the user to enter a value for the adjustment and select a method from three options. 
 
 #### 1: Adjustment value desired (p_adjustment):
 Add `Number input` control and set the `Control ID` to `p_adjustment`. Also set the `Data format` to `Number`.
