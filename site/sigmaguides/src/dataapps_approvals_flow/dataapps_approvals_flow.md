@@ -71,7 +71,7 @@ Filter the table down to just `Order Number` and set the range to `131-133`:
 
 <img src="assets/af-1.png" width="800"/>
 
-Lets just assume these are the orders in the cloud data warehouse ("warehouse") that require review, modification and approval. 
+Let's just assume these are the orders in the cloud data warehouse ("warehouse") that require review, modification and approval. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The methods demonstrated can be applied to any set of data really. For example, if the data is project management oriented, these methods will translate easily to that dataset, or any other too.
@@ -94,7 +94,7 @@ Create a `Linked Input Table` from the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` tab
 
 Select the `Key` column as the unique row identifier.
 
-To make things cleaner, lets deselect the columns that are not really needed for this demonstration and leave only the ones shown in the screenshot below. 
+To make things cleaner, let's deselect the columns that are not really needed for this demonstration and leave only the ones shown in the screenshot below. 
 
 <img src="assets/af-5.png" width="400"/>
 
@@ -104,7 +104,7 @@ Rename this page to `Data`.
 
 Add a new workbook page and rename it to `Approvals`. 
 
-Move the new input table to the `Approvals`
+Move the new input table to the `Approvals` page.
 
 Save the workbook as `QuickStart - Approval Flow`.
 
@@ -137,7 +137,7 @@ We can adjust the `Order Number` control as shown to clean things up to our pref
 <img src="assets/af-9.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Pay close attention to the "Control ID" value. It is a good practice to use a common naming convention for control id's. In the demonstration, we will prepend the control id to indicate which page the control is on. In the example above, the "a_" indicates the control is on the "Approvals" page.
+<strong>IMPORTANT:</strong><br> Pay close attention to the "Control ID" value. It is a good practice to use a common naming convention for control IDs. In the demonstration, we will prepend the control id to indicate which page the control is on. In the example above, the "a_" indicates the control is on the "Approvals" page.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -148,7 +148,7 @@ Duration: 5
 
 We want the data app to open a modal window when the user clicks on a single cell in a specific row. 
 
-Lets make it really obvious for the user and add a new `Calculation` column to `Orders to Approve` and rename it to `Edit`. Set the formula to:
+Let's make it really obvious for the user and add a new `Calculation` column to `Orders to Approve` and rename it to `Edit`. Set the formula to:
 ```code
 "EDIT"
 ```
@@ -174,7 +174,7 @@ Rename the `Modal 1` to `Adjuster Modal` and change its tile to `Adjuster Modal`
 
 Now if a cell is clicked in the `EDIT` column, the modal will appear.
 
-This is all very slick, but lets get back to what we need to do here; allow an authorized person to apply an `OverRide` (ie: order discount for example) to a specific order (perhaps as a customer service issue) and submit it for final approval. 
+This is all very slick, but let's get back to what we need to do here; allow an authorized person to apply an `OverRide` (ie: order discount for example) to a specific order (perhaps as a customer service issue) and submit it for final approval. 
 
 To accomplish this, we will need to pass a few other values from the selected row to the `Adjuster Modal` where the user will then modify as desired. 
 
@@ -193,7 +193,7 @@ We will start by adding a `Controls` > `Text input` control to the modal and set
 
 This will hold the key value that allows us to identify the exact row we are targeting. 
 
-Since this process will be somewhat repetitive, lets make this first one work first before we add the rest.
+Since this process will be somewhat repetitive, let's make this first one work first before we add the rest.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We don't really need to show the "Key" value on the modal. This is done for demonstration and learning only.
@@ -216,7 +216,7 @@ Click any cell in the `Edit` column on the `Orders to Approve` table and make su
 
 <img src="assets/af-15a.png" width="800"/>
 
-If all is good, lets move on. 
+If all is good, let's move on. 
 
 ### Add remaining controls
 Now that we have done it once, adding the rest of the controls and corresponding actions is very similar. Remember to select the correct control for the data type and also set the `Control ID` for each using our design pattern.
@@ -281,7 +281,7 @@ Retest the workflow to see the expected value pass:
 <img src="assets/af-17.png" width="500"/>
 
 ### Style the modal
-We can organized the controls a bit and added a `UI` > `Text` to each "block" of controls, just to make it clear what they are. When we are done, the modal should look like this:
+We organized the controls a bit and added a `UI` > `Text` to each "block" of controls, just to make it clear what they are. When we are done, the modal should look like this:
 
 <img src="assets/af-18.png" width="500"/>
 
@@ -387,7 +387,7 @@ We have some more work to do related to this and we will come back to it later.
 ## Override Actions
 Duration: 5
 
-Now that we have a place to store them, lets create the actions required to insert rows into the new `Approval Log`.
+Now that we have a place to store them, let's create the actions required to insert rows into the new `Approval Log`.
 
 Return to the `Adjuster Modal` and open its format menu.
 
@@ -411,7 +411,7 @@ Since we will not be using the `On close` sequence, we can just delete that:
 <img src="assets/af-24.png" width="500"/>
 
 ### Secondary button
-Lets configure the actions for the `Secondary` button first.
+Let's configure the actions for the `Secondary` button first.
 
 We don't want any values entered by the previous user to be retained, and just to be safe, we will clear all values as well when the user clicks `Exit without Saving` button. 
 
@@ -432,7 +432,7 @@ Give that workflow a quick test to make sure it works as expected.
 <img src="assets/af-demo1.gif">
 
 ### Primary button
-Now lets configure the actions for when the user does make change. 
+Now let's configure the actions for when the user does make change. 
 
 Using `On click - primary` configure an `Insert a row` action as shown below:
 
@@ -493,7 +493,7 @@ Back on the `Approvals` page, add some columns to the `Orders to Approve` table 
 
 <img src="assets/af-39.png" width="200"/>
 
-Configure for these columns, matching on the `Key` column in the two elements:
+Configure these columns, matching on the `Key` column in the two elements:
 
 <img src="assets/af-40.png" width="400"/>
 
@@ -501,7 +501,7 @@ While testing it can be useful to hide some columns in the `Orders to Approve` t
 
 <img src="assets/af-41.png" width="800"/>
 
-Lets pause for a moment to add the `Adjuster` modal so that we have all the UI elements we need to make this data app work.
+Let's pause for a moment to add the `Adjuster` modal so that we have all the UI elements we need to make this data app work.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
