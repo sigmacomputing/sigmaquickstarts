@@ -416,7 +416,7 @@ Ask Sigma breaks down every step AI took to generate its answer. This lets you d
 
 Here’s a short video for those who don’t yet have an AI API key but want to see the functionality in action.
 
-If the embedded video is tool small on your screen, you can [view the larger version here.](https://www.sigmacomputing.com/product/ask-sigma)
+If the embedded video is too small on your screen, you can [view the larger version here.](https://www.sigmacomputing.com/product/ask-sigma)
 
 <img src="assets/ai.gif"/>
 
