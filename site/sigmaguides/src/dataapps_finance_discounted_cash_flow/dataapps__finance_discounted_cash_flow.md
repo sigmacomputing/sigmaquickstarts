@@ -77,9 +77,9 @@ We will be using sample data provided by Sigma, which is included with all trial
 <aside class="negative"> <strong>NOTE:</strong><br> In Sigma production accounts, the administrator has the option to disable the sample data connection. If the connection does not appear for you, that is the most likely reason. </aside>
 
 ### Workbook Setup
-Log into Sigma and Create a new workbook.
+Log into Sigma and create a new workbook.
 
-Click the + and select TABLE; search for hands and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table:
+Click the + and select TABLE; search for `hands` and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table:
 
 <img src="assets/dcf_1.png" width="800"/>
 
@@ -292,7 +292,7 @@ This control will allow you to input different discount rates interactively, giv
 #### Configure the Control
 Set the control's configuration as shown.
 
-Enter a percentage value that represents the discount rate (for example: .10). This rate will be applied to your DCF calculations:
+Enter a percentage value that represents the discount rate (for example: 10). This rate will be applied to your DCF calculations:
 
 <img src="assets/dcf_18.png" width="600"/>
 
@@ -318,7 +318,7 @@ The table now looks like this:
 
 The `DCF` values now reflect a properly discounted cash flow analysis over time, with larger discounting applied to years further into the future.
 
-At this point, we should give the table a more appropriate name, so that it is clear to user. 
+At this point, we should give the table a more appropriate name, so that it is clear to the user. 
 
 Rename the table to `Multi-Year DCF Analysis for Store Regions` and `Publish` the workbook.
 
