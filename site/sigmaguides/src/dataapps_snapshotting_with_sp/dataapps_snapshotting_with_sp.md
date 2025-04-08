@@ -215,7 +215,7 @@ Start typing `PARTSUPP` into the search bar and select the `PARTSUPP` table as s
 
 <img src="assets/da_swh_8.png" width="400"/>
 
-Lets enrich the data for the user by joining the `PART` table to this, including all columns:
+Let's enrich the data for the user by joining the `PART` table to this, including all columns:
 
 <img src="assets/da_swh_9.png" width="800"/>
 
@@ -235,7 +235,7 @@ Click `Publish`.
 
 ### Add Filter Control
 
-Add a `List value` control to the page and configure it to use the `P Name` column as it's source. Be sure to enable the `Allow multiple selections` option:
+Add a `List value` control to the page and configure it to use the `P Name` column as its source. Be sure to enable the `Allow multiple selections` option:
 
 <img src="assets/da_swh_13.png" width="600"/>
 
@@ -379,15 +379,15 @@ As a validation test, update one row's `Adjusted_Qty` value, hit `enter` and cli
 
 ### Add tracking columns
 
-Input tables come with two column that indicate who and when the last edit was made, each time a row is edited. Lets add them.
+Input tables come with two columns that indicate who and when the last edit was made, each time a row is edited. Let's add them.
 
 <img src="assets/da_swh_28b.png" width="600"/>
 
-Lets also set an action `ON CLOSE` so that when the modal is closed, the control filter is reset on `Inventory Master`. Little touches like this mean alot to users and save click-time too:
+Let's also set an action `ON CLOSE` so that when the modal is closed, the control filter is reset on `Inventory Master`. Little touches like this mean alot to users and save click-time too:
 
 <img src="assets/da_swh_28a.png" width="800"/>
 
-Next we will setup snapshotting, but first lets check in Snowflake to see where the input table stored this data.
+Next we will set up snapshotting, but first let's check in Snowflake to see where the input table stored this data.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -733,7 +733,7 @@ This procedure enables versioned tracking of inventory changes and ensures data 
 
 ### Manual test of script
 
-Before we configure Sigma to run the script on demand, we should make sure it works. Earlier, we did edit one row of data, settings it's `Adjusted_Qty` to `1000`, so we have something to validate against.
+Before we configure Sigma to run the script on demand, we should make sure it works. Earlier, we did edit one row of data, setting its `Adjusted_Qty` to `1000`, so we have something to validate against.
 
 Execute the following script in the Snowflake console:
 
@@ -1048,8 +1048,6 @@ Perhaps you encountered some of your own too. We hope that covering these has be
 ## What we've covered
 
 Duration: 5
-
-Your trimmed-down version is clear, concise, and effectively captures the key points. Here's a minor tweak for flow and readability:
 
 In this QuickStart, we demonstrated how Sigma's intuitive interface simplifies building data applications by combining user interactivity with powerful backend automation.
 
