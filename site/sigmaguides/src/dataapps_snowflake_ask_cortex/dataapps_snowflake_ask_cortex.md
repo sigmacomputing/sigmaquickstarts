@@ -234,6 +234,12 @@ The query will return about 900,000 rows and 14 columns. We can toggle the SQL s
 
 <img src="assets/ct_1a.png" width="800"/>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Models used by Snowflake Cortex have limitations on size which are given in tokens. Tokens generally represent about four characters of text, so the number of words corresponding to a limit is less than the number of tokens. Inputs that exceed the limit result in an error.
+</aside>
+
+For more information on current restrictions, see Snowflake's documentation on [Model restrictions.](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#model-restrictions)
+
 Rename the table to `SALES_FACT_CURATED`.
 
 Rename the data model to `Cortex QuickStart Data Model`.
@@ -452,7 +458,11 @@ To save time, the structure of the required input table is available as a CSV fi
 
 <button>[Download Prompt Log.csv](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/prompt%2Blog.csv)</button>
 
-On the `Data` page, add a `CSV input table` based on the downloaded CSV file. When prompted, use the same Snowflake connection you’ve already been using.
+On the `Data` page, add a `CSV input table` based on the downloaded CSV file. 
+
+<img src="assets/ct_17a.png" width="400"/>
+
+When prompted, use the same Snowflake connection you’ve already been using.
 
 You’ll need to adjust the `Last updated at` and `Date` columns to the `Date` data type, as the import did not detect the correct type from the CSV:
 
