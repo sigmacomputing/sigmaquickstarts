@@ -120,7 +120,7 @@ Select the `Row Number` column as the unique row identifier.
 
 Then we need to select the other columns that we want to appear in the linked input table.
 
-To make things cleaner, let's select the columns that are not really needed for this demonstration and leave only the ones shown in the screenshot below. (Yes, we reordered the columns in the `Plugs_Store_Sales` table so it was more clear in this step).
+To make things cleaner, let's only select the columns that are needed for this demonstration. (Yes, we reordered the columns in the `Plugs_Store_Sales` table so it was more clear in this step).
 
 <aside class="negative">
 <strong>NOTE:</strong><br> You may notice some column formatting and reordering in the screenshots. We will not specifically cover this, as it is assumed you are familiar with making these adjustments. Additionally, it is not essential for the functionality of this workflow.
