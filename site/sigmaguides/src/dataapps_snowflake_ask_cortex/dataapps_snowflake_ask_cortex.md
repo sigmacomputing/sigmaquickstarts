@@ -42,17 +42,6 @@ In this QuickStart, we’ve chosen Claude Sonnet, a fast, cost-effective LLM fro
 
 For information on the supported regions, see [Region availability.](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)
 
-### Why Use Cortex Instead of Ask Sigma?
-While Ask Sigma is a powerful built-in feature that leverages OpenAI (and other models) to generate insights from your data, some customers prefer not to share data with any external providers.
-
-By using Cortex, you can:
-- Tap into LLM capabilities directly within Snowflake—no data movement required,
-- Choose exactly which model to use (such as Anthropic Claude),
-- Generate structured, secure responses based on data that stays in your warehouse,
-- Seamlessly integrate AI logic into SQL workflows and applications at scale.
-
-In short, Ask Sigma is ideal for guided, user-facing AI exploration, while Cortex offers greater control, transparency, and customization—making it well-suited for enterprise-level use cases.
-
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
