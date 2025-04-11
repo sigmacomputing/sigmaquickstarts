@@ -8,9 +8,9 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2024-04-11
 
-# Ask Snowflake Cortex with Sigma
+# Use Snowflake Cortex with Sigma
 
-## Ask Snowflake Cortex with Sigma
+## Use Snowflake Cortex with Sigma
 Duration: 5 
 
 In this QuickStart, you'll explore how to ask natural language questions about your data using Snowflake Cortex, Snowflake’s built-in large language model (LLM) capability.
