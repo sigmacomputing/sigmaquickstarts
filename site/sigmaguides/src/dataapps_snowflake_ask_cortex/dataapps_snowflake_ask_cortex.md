@@ -3,9 +3,9 @@ id: dataapps_snowflake_ask_cortex
 summary: dataapps_snowflake_ask_cortex
 categories: dataapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2024-04-11
 
 # Ask Snowflake Cortex with Sigma
