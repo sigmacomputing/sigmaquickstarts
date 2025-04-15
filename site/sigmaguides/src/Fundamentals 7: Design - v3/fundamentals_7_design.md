@@ -298,7 +298,7 @@ Add a new `Button` element from the `Element bar` > `UI` group, to the `Dashboar
 
 Notice that even though we have a custom theme in place, we can still override any elements properties too.
 
-Adding a action to make the button go to another page is really simple:
+Adding an action to make the button go to another page is really simple:
 
 <img src="assets/fdesign_34.png" width="800"/>
 
@@ -319,7 +319,7 @@ Duration: 5
 
 The following are additional things to consider when building any user-centric application.
 
-If you are making a dashboard, report or a data app, this hold true:
+If you are making a dashboard, report or a data app, this holds true:
 
 ***Humans see data faster than they read data.***
 
@@ -360,7 +360,7 @@ For example:
 
 [source: Color Psychology: How Strategic Color Choices Enhance Marketing and Brand Impact (2024)](https://www.oberlo.com/blog/color-psychology-color-meanings)
 
-### What bad looks like
+### What a bad design might look like
 This Monthly Scorecard has several problems and is probably not well liked by the users:
 
 <img src="assets/fdesign_32.png" width="800"/>
