@@ -41,7 +41,7 @@ In general, if using the control is obvious to the user, requires the minimum nu
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
 If something is not working as you expect, here is how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
@@ -51,7 +51,7 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStarts Fundamentals 1 and 2</li>
+  <li>Completion of the QuickStarts Fundamentals 1 and 2.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>If have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
@@ -88,7 +88,7 @@ Opening the `Controls` group in the in the `Element bar`, we can see that there 
       <li><strong>Number range:</strong> Enter a minimum number and/or a maximum number for a range to filter the results in targeted data elements. The range is inclusive of the entered numbers.</li>
       <li><strong>Slider:</strong> Select a number from a specific range using a slider. Similar to the number input control, the slider option lets you restrict the available input options.</li>
       <li><strong>Range Slider:</strong> Specify a number range within a designated range using a slider. Similar to the number range control, the range slider lets you restrict the available input options.</li>
-      <li><strong>Switch:</strong> Turn on or turn off a toggle switch to let users choose between True (turned on) or False (turned off) values</li>
+      <li><strong>Switch:</strong> Turn on or turn off a toggle switch to let users choose between True (turned on) or False (turned off) values.</li>
       <li><strong>Checkbox:</strong> Select or deselect a checkbox to represent True (selected) or False (deselected) values.</li>
       <li><strong>Top N:</strong> Limit the available data according to a ranking, such as top 15 or bottom 10%.</li>
       <li><strong>Drill Down:</strong> Let a user drill into a pre-defined layer of data, such as one level higher or lower in data granularity. A drill down control enables double click to drill.</li>
@@ -127,7 +127,7 @@ Slide the control to around 20k. These "big-spender" customers might make a good
 However, big spend does not always mean big profit. We should evaluate for both to refine our marketing target list.
 
 ### Duplicate controls
-Sigma makes it really simple to add copies of existing controls, saving you time
+Sigma makes it really simple to add copies of existing controls, saving you time.
 
 Lets say we want to also get all the rows sold at high margin, amongst the list of "big spenders".
 
