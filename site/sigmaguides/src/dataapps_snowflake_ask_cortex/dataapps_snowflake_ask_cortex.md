@@ -515,7 +515,7 @@ The `Arguments` names (element ID) and data types need to match the elements we 
 
 Here is the function to use:
 ```code
-Max(Text(CallVariant("SNOWFLAKE.CORTEX.COMPLETE", "claude-3-5-sonnet", Array({ role: "system", content: [p_system_prompt] }, { role: "user", content: [p_user_prompt] }), { temperature: 0 }).choices[0].messages))
+Max(Text(CallVariant("SNOWFLAKE.CORTEX.COMPLETE", "claude-3-5-sonnet", Array({ role: "system", content: [p_persona_data] }, { role: "user", content: [p_prompt_data] }), { temperature: 0 }).choices[0].messages))
 ```
 
 The function will return `Text` to Sigma.
@@ -699,7 +699,7 @@ While this was not the most complex dataset or question, we can see just how eas
 ### Chat History
 On the `History` page, you'll see the results of the most recent Insert a row action. 
 
-The data was written to the `Prompt Lo`g on the `Data` page, but the `Chat Log` table on the `History` page is a child of that, so the columns we want to expose to other users are shown automatically here.
+The data was written to the `Prompt Log` on the `Data` page, but the `Chat Log` table on the `History` page is a child of that, so the columns we want to expose to other users are shown automatically here.
 
 <img src="assets/ct_52.png" width="800"/>
 
