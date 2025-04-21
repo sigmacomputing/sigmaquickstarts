@@ -13,7 +13,7 @@ lastUpdated: 2025-03-13
 ## Overview 
 Duration: 5 
 
-This QuickStart covers some of the most common questions we receive from Sigma customers. \
+This QuickStart covers some of the most common questions we receive from Sigma customers.
 
 It is not comprehensive, but is intended to present topics that often arise after users have completed the [QuickStart Fundamentals](https://quickstarts.sigmacomputing.com/?cat=fundamentals) and begin using Sigma with their own data.
 
@@ -91,7 +91,7 @@ Deselect all columns and select only the columns required by the business users.
 
 The numbered items in the screenshot below highlight the important elements on this interface.
 
-- 1: The join is 2 source tables with a combined 26 columns
+- 1: The join is 2 source tables with a combined 26 columns.
 - 2: We are joining `D_CUSTOMER` to `PLUGS_ELEC....` on `Cust Key` using `Left outer join`.
 - 3: For every order in the `PLUGS_ELECTRONICS_HANDS_...` sales table, has a matching customer. There are some customers (105) that have not placed an order.
 
@@ -99,7 +99,7 @@ The numbered items in the screenshot below highlight the important elements on t
 
 We could now click `Preview output`, but our requirement was to also provide store detail. Click the `+` icon to add another table.
 
-In the search bar, enter `D_STORE` and select the `D_STORE` table
+In the search bar, enter `D_STORE` and select the `D_STORE` table.
 
 Ensure you select the `D_STORE` table from the `RETAIL` schema. This time, we will include all columns; click `Select`:
 
@@ -156,7 +156,7 @@ Duration: 5
 A common request we get to our support team is how to handle data that is "dirty" or has problems that are exposed as tables are joined together. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Not all data is "Dirty" and joins that seem to behave normally can still contain data that is "dirty" too. 
+<strong>NOTE:</strong><br> Not all data is "dirty" and joins that seem to behave normally can still contain data that is "dirty" too. 
 
 This demonstration will deal with a simple example and approach, but we understand this can also be confused with solving the problem, which often can go deeper upon closed inspection of the detail data. 
 </aside>
@@ -380,7 +380,7 @@ The second join key is on `Cust Name` and the formula:
 <strong>IMPORTANT:</strong><br> Sigma allows the use of formulas and operators in join keys. This allows joins to perform complex operations similar to that of custom SQL, but using a method that is more familiar to users of Excel or Google Sheets.
 </aside>
 
-For more information about [operators in Sigma, see here.](https://help.sigmacomputing.com/docs/operators-overview)
+For more information about [operators in Sigma, see here](https://help.sigmacomputing.com/docs/operators-overview)
 
 Click `Preview` and `Done`.
 
@@ -407,7 +407,7 @@ Not only was this pretty simple, it underscores some of the power of Sigma.
 ## Union Tables
 Duration: 5 
 
-For this demonstration, lets assume that each month we receive sales data for the previous month in .CSV format. We need to report against the quarter, so we need to first join this data together.
+For this demonstration, let's assume that each month we receive sales data for the previous month in .CSV format. We need to report against the quarter, so we need to first join this data together.
 
 We have previously added table elements based on .CSV file uploads, so we can do this ourselves now.
 
@@ -460,7 +460,7 @@ Rename the new table `Q1 Sales Detail`.
 Click `Publish`.
 
 ### Lineage
-As workbooks become more complex, it can be really useful to see graphically see how the data is sourced. 
+As workbooks become more complex, it can be really useful to see graphically how the data is sourced. 
 
 Sigma provides this `Lineage` automatically and it is accessed by clicking the icon in the lower corner of the workbook:
 

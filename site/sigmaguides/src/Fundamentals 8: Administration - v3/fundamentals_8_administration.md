@@ -150,7 +150,7 @@ Admin users are able to edit `Organization Name` and `Company Login URL` values 
 ### Custom Home Pages
 Sigma Admins can `Enable` this feature, and designate a workbook to use as a custom homepage for an organization or team. The first page of the workbook becomes the custom homepage.
 
-A custom homepage functions as a landing page for its viewers..
+A custom homepage functions as a landing page for its viewers.
 
 For example, embedding specific visualizations along with buttons linking to the fundamental QuickStarts:
 
@@ -267,7 +267,7 @@ Admins can define custom functions to represent frequently used complex calculat
  <ul>
       <li>Use custom functions to encode business logic instead of repeating it. </li>
       <li>Encapsulate complex calculations that are common business use cases, for easier use.</li>
-      <li>Expose your proprietary warehouse functions, making them consumable</li>
+      <li>Expose your proprietary warehouse functions, making them consumable.</li>
 </ul>
 
 For more information, see [Create reusable custom functions](https://help.sigmacomputing.com/docs/custom-functions)
@@ -319,7 +319,7 @@ All Sigma instances require 2-factor authentication.
 
 For more information, see [Mandatory two-factor authentication for accounts](https://help.sigmacomputing.com/docs/two-factor-email-authentication#enable-two-factor-authentication)
 
-[Learn more about 2-Factor authentication with Sigma.](https://help.sigmacomputing.com/docs/two-factor-email-authentication#enable-two-factor-authentication)
+[Learn more about 2-Factor authentication with Sigma](https://help.sigmacomputing.com/docs/two-factor-email-authentication#enable-two-factor-authentication)
 
 <img src="assets/horizonalline.png" width="800"/>
 
@@ -373,7 +373,7 @@ Sigma can be configured to use Single Sign-On (SSO) Authentication with any plat
 
 For more information, see [Use custom account types with your IdP](https://help.sigmacomputing.com/docs/use-custom-account-types-with-your-idp)
 
-Okta also provided the `X509 certificate` as well.
+Okta also provides the `X509 certificate` as well.
 
 There is a QuickStart covering [Single Sign-On with Sigma and Okta](https://quickstarts.sigmacomputing.com/guide/administration_sso_okta/index.html?index=..%2F..index#0)
 
@@ -462,7 +462,7 @@ Sigma provides a set of sample data, at no cost, to all customers. The sample da
 ## Usage
 Duration: 20
 
-Sigma provides all customers with extensive reporting on various aspects of user activity. All the reports are built using Sigma and are provided at no-cost to customers. Admins can use this area to quickly view important KPIs and leverage Sigma's 'drill anywhere' capability for detailed insights
+Sigma provides all customers with extensive reporting on various aspects of user activity. All the reports are built using Sigma and are provided at no-cost to customers. Admins can use this area to quickly view important KPIs and leverage Sigma's 'drill anywhere' capability for detailed insights.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The usage section does not require customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
@@ -483,7 +483,7 @@ Discover your organization’s most commonly used documents and your top documen
 <img src="assets/fa11.png" width="800"/>
 
 **Document Permissions:**<br>
-Discover who has permissions for a document, the origin of the permissions, access type, and who granted permission. These insights can help organizations to improvevsecurity.
+Discover who has permissions for a document, the origin of the permissions, access type, and who granted permission. These insights can help organizations to improve security.
 
 <img src="assets/fa12.png" width="800"/>
 
@@ -523,11 +523,11 @@ Email invitations and welcome emails can be customized if desired.
 
 People can be added automatically the first time they login to Sigma using an IDP, or when using Sigma embedded into another application. 
 
-Sigma's REST API also supports adding new people. The [API Reference is here](https://help.sigmacomputing.com/reference/get-started-sigma-api). 
+Sigma's REST API also supports adding new people. The more information, see[API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-There are also [API code samples ("recipes") here](https://help.sigmacomputing.com/recipes), demonstrating common API operations.
+There are also [API code samples ("recipes")](https://help.sigmacomputing.com/recipes), demonstrating common API operations.
 
-There is a [QuickStart that covers API Recipes here](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?index=..%2F..index#0)
+There is a [QuickStart that covers API Recipes](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?index=..%2F..index#0)
 
 For more information, see [Invite new organization members](https://help.sigmacomputing.com/docs/invite-new-organization-members)
 
@@ -535,7 +535,7 @@ For more information, see [Invite new organization members](https://help.sigmaco
 <strong>IMPORTANT:</strong><br> Sigma uses email address for each person and the email must be unique. 
 </aside>
 
-The `People` page has a filter that is a convienent way to see only the catagories of people you are interested in:
+The `People` page has a filter that is a convenient way to see only the categories of people you are interested in:
 
 <img src="assets/fa17.png" width="800"/>
 
@@ -599,7 +599,7 @@ Sigma provides five default account types, which are directly mapped to the four
 </ul>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The Build license also supports system administrators, who have the additional permission to manage organization settings and users ect.
+<strong>NOTE:</strong><br> The Build license also supports system administrators, who have the additional permission to manage organization settings and users etc.
 </aside>
 
 Sigma also supports custom account types. These provide a way to restrict users to specific Sigma functionality, and can be named anything, but must be assigned a license type.
@@ -670,7 +670,7 @@ Duration: 20
 
 `Version tagging` allows you to employ a software development lifecycle (SDLC) to control workbook versions, using tags. 
 
-For example, Sigma can have a `Development`, `Staging`, and `Production` versions of a workbook, and migrate changes as needed. 
+For example, Sigma can have `Development`, `Staging`, and `Production` versions of a workbook, and migrate changes as needed. 
 
 This allows you to control which workbook versions are available to specific users, during the development lifecycle.
 
@@ -702,7 +702,7 @@ There are QuickStarts that cover tagging:
 ## Scheduled Exports
 Duration: 20
 
-The scheduled exports page shows a summary of all exports that have been set to run a schedule; across all users. 
+The scheduled exports page provides a summary of all exports scheduled to run across all users. 
 
 Admin are able to filter this list and delete scheduled jobs.
 
