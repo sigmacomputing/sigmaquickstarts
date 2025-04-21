@@ -25,9 +25,9 @@ In this QuickStart, we will use elements built in previous Fundamentals lessons 
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
-If something is not working as you expect, here is how to [contact Sigma support.](https://help.sigmacomputing.com/docs/sigma-support)
+If something is not working as you expect, here is how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -39,7 +39,7 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 ### Prerequisites
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStarts Fundamentals 1 and 2</li>
+  <li>Completion of the QuickStarts Fundamentals 1 and 2.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
 </ul>
 
@@ -319,7 +319,7 @@ Duration: 5
 
 The following are additional things to consider when building any user-centric application.
 
-If you are making a dashboard, report or a data app, this holds true:
+If you are making a dashboard, report or a data app, these holds true:
 
 ***Humans see data faster than they read data.***
 
