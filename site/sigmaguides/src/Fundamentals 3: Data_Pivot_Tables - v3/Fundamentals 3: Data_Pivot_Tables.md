@@ -8,7 +8,7 @@ tags: default
 authors: PhilB
 lastUpdated: 2025-03-13
 
-# Fundamentals 3: Data - Pivot Tables
+# Fundamentals 03: Pivot Tables
 <!-- ------------------------ -->
 
 ## Overview 

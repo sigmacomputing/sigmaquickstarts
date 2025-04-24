@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-03-13
 
-# Fundamentals 8: Administration
+# Fundamentals 08: Administration
 
 ## Overview 
 Duration: 5

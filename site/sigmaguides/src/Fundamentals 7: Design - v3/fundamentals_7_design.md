@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-03-13
 
-# Fundamentals 7: Design Elements (UI & Layout)
+# Fundamentals 07: Design Elements (UI & Layout)
 
 ## Overview 
 Duration: 5 
