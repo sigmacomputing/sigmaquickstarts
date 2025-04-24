@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-03-13
 
-# Fundamentals 6: Controls
+# Fundamentals 06: Controls
 
 ## Overview 
 Duration: 5 

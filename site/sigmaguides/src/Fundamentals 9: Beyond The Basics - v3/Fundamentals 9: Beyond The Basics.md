@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-03-13
 
-# Fundamentals 9: Beyond the Basics
+# Fundamentals 09: Beyond the Basics
 
 ## Overview 
 Duration: 5 
@@ -56,6 +56,8 @@ Sigma users who have recently completed the [QuickStart Fundamentals](https://qu
 Duration: 5 
 
 Sigma makes simple data modeling highly user-friendly, as we will demonstrate using sample data.
+
+For those looking for a more comprehensive data modeling solution, see [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
 
 Log into Sigma and create a new workbook.
 

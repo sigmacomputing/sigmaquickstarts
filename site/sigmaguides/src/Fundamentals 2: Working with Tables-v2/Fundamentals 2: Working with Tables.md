@@ -495,6 +495,8 @@ Up until now, we have been using one table, but in practice, it is often necessa
 
 Data modelling is a broad topic, and in order make this section "fundamental", we will join a sample table from our `Sigma Sample Database` connection as before.
 
+For those looking for a more comprehensive data modeling solution, see [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
+
 **We will also move a little faster now that we have been oriented in Sigma.**
 
 We want to add a column to show inventory on-hand, from the `F_INVENTORY_ADJUSTED` table by joining it to the existing `PLUGS_DATA` table, on the `Data` page.

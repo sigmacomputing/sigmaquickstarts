@@ -8,7 +8,7 @@ tags: default
 authors: phil@sigmacomputing.com
 lastUpdated: 2025-03-13
 
-# Fundamentals 2: Data
+# Fundamentals 02: Data
 <!-- ------------------------ -->
 
 ## Overview 
@@ -542,6 +542,8 @@ Duration: 6
 Up until now, we have been using one table, but in practice, it is often necessary to do some “lite” data modeling.
 
 Data modeling is a broad topic, and in order to make this section 'fundamental,' we will join a sample table from our `Sigma Sample Database` connection as before.
+
+For those looking for a more comprehensive data modeling solution, see [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
 
 **We will also move a little faster now that we have been oriented in Sigma.**
 

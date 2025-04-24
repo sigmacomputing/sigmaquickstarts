@@ -2,27 +2,23 @@ author: pballai
 id: fundamentals_10_data_modeling
 summary: fundamentals_10_data_modeling
 categories: Fundamentals
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-10-23
+tags: default
+lastUpdated: 2024-10-24
 
 # Fundamentals 10: Data Modeling
 
 ## Overview 
 Duration: 5 
 
-Many Sigma users are used to creating a new workbook and then adding raw warehouse tables as the foundation for their content. This often requires the user to do extra work joining tables together and adding calculated columns.
+Many Sigma users are used to creating a new workbook and then using warehouse tables as the data source for their content. This often requires the user to do extra data preparation work, like joining tables together, renaming fields or creating aggregations. This modeling logic is bound to a single workbook and is not reusable across your Sigma deployment. This can lead to duplicated effort and inconsistent reporting.
 
-Data models avoid that work and provide business users a curated set of data with all the relevant tables, columns, and calculations pre-configured for them. This accelerates their work and also ensures that the data conforms to corporate standards. 
+With Data Models, you can define your data transformation and semantics in one place, and use them anywhere in Sigma. This avoids duplicating effort, and provides a single source of truth for your Analytics Engineering team to collaborate on key business logic and metric definitions.
 
-Data modeling in Sigma allows you to structure, join, and prepare data for exploration and analysis—without writing SQL.
+In this QuickStart, you'll learn how to:
 
-By creating and defining relationships across your data sources, you empower teams to analyze clean, consistent data and leave data governance concerns to the modelers. 
-
-In this QuickStart, you’ll learn how to:
-
-- Understand Sigma's data modeling philosophy
+- Understand Sigma's data modeling philosophy and features
 - Create a data model using sample data
 - Define relationships across tables
 - Add custom columns and formulas
@@ -30,14 +26,12 @@ In this QuickStart, you’ll learn how to:
 - Use column-level security
 - Use column folders
 - Materialize a data model
-- Publish reusable models for analysis
+- Deploy reusable models for analysis
 
 ### Our Modeling Approach
-A primary design goal for Sigma data modeling is to make it as easy as possible to create a model so your business users spend more time focused on which data to expose, to whom, and what the standard calculations need to be.
+A primary design goal for Sigma data modeling is to make model creation seamless so your data team can move fast, without managing additional complex code, and deliver governed analytics to stakeholders.
 
-Sigma works directly on your cloud data warehouse and models data on top of the source tables, without copying or extracting it. Your data stays in your warehouse.
-
-Sigma models are collaborative and versioned—ideal for both data teams and business users.
+Business users can focus on gaining insights from data without needing to worry about its physical structure, and can also contribute directly to the data model through Sigma’s UI. Sigma models are collaborative and versioned—ideal for both data teams and business users.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -168,7 +162,7 @@ Duration: 5
 
 Since we know that marketing will always need columns from the `D_CUSTOMER` and `F_POINT_OF_SALE` tables, we can join them directly. 
 
-Using the standard method, we will join these two tables. The combination of these three tables will satisfy marketing's initial request.
+Using joins, we’ll connect these two tables. Combined with the base table, this satisfies marketing’s initial request.
 
 From `Plugs Sales`, select `Element source` > `Join` from the table menu:
 
@@ -219,15 +213,6 @@ The results look like this:
 
 <img src="assets/dm_32a.png" width="800"/>
 
-### Column details
-Sometimes it may not be clear if a column has data of interest. For example, for `Transaction type`, we can check the `Column details` and see the distribution of values:
-
-<img src="assets/dm_37.png" width="350"/>
-
-In this manner, we can see that it does have data that may be of interest:
-
-<img src="assets/dm_38.png" width="500"/>
-
 Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
@@ -236,26 +221,14 @@ Click `Publish`.
 ## Relationships
 Duration: 5
 
-Data models can be used as a starting point for builders in Sigma to create new workbooks. Relationships power this starting point and include features to allow the builder to quickly get what they need, instead of accessing raw warehouse content (e.g., tables, views).
+Data models serve as a starting point for builders in Sigma to explore data. Relationships power this experience and make it easy for the builder to quickly get what they need through predefined modeling logic, rather than working directly with raw warehouse content such as tables or views.
 
 Once built, the data model might look like this, allowing the builder to get moving much more quickly than starting a workbook from scratch. 
 
 <img src="assets/dm_55.png" width="800"/>
 
-### Key Concepts in Sigma Data Modeling
-
-- Relationships allow you to specify the join logic between two different tables in a data model. After doing so, all of the fields from the “target” table become available for analysis when viewing the “source” table. **The result is an intelligent query engine that only executes joins when they are needed for analysis.**
-
-- All visible levels in a dataset are flattened when used in worksheets or dashboards. This can lead to duplication if joins are not carefully managed.
-
-- Hidden levels do not appear in downstream worksheets, making them ideal for handling one-to-many joins without overwhelming end users.
-
-- Model grain matters: Joining too many tables—especially those with one-to-many relationships—can inflate row counts and distort metrics.
-
-- You don’t always need to create child datasets. With careful use of hidden joins, a single well-structured model can support both detailed and summary-level use cases.
-
 ### Creating the relationships
-We could just join the other tables to `Plugs Sales` using the typical workbook join workflow. 
+We could just join the other tables to `Plugs Sales` using the join workflow. 
 
 While this will still work, we’d miss out on one of the key benefits of using relationships—join pruning.
 
@@ -280,7 +253,7 @@ Before we can create a relationship, we need to add the two tables we want to ex
 
 Add the `D_PRODUCT` and `D_STORE` tables from the `RETAIL` schema directly to the workbook.
 
-Click the  <img src="assets/eyeicon.png" width="40"/> icon to prevent the tables from appearing in downstream workbooks:
+Click the  <img src="assets/eyeicon.png" width="40"/> icon to prevent the tables from appearing in the published data model:
 
 <img src="assets/dm_10a.png" width="800"/>
 
@@ -383,7 +356,9 @@ Reopen query history and click into the new entry:
 
 <img src="assets/dm_19f.png" width="800"/>
 
-Now we see the `D_PRODUCT` table is being joined but the `D_STORE` table is still not present. 
+Now we see the `D_PRODUCT` table is being joined but the `D_STORE` table is still not present:
+
+<img src="assets/dm_19h.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Be thoughtful when deciding which tables to include as relationships instead of using a standard join to the base table. Consider four key factors: need, performance, security, and cost.

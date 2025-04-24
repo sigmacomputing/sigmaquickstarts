@@ -8,7 +8,7 @@ tags: default
 authors: pballai
 lastUpdated: 2025-03-13
 
-# Fundamentals 5: Charts
+# Fundamentals 05: Charts
 
 ## Overview 
 Duration: 5

@@ -8,7 +8,7 @@ tags: default
 authors: phil@sigmacomputing.com
 lastUpdated: 2025-04-01
 
-# Fundamentals 1: Getting Around
+# Fundamentals 01: Getting Around
 <!-- -->
 
 ## Overview
@@ -25,6 +25,8 @@ If you fall into that category, please review these summaries:
 [Sigma Differences From Other BI Tools Overview For New Sigma Creators.](https://community.sigmacomputing.com/docs?topic=3285)
 
 [I am a Dashboard Builder New to Sigma. How Can I Quickly Get Up To Speed?](https://community.sigmacomputing.com/docs?topic=3650)
+
+[I am interesting in data modeling in Sigma, see Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
 
 Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
 
