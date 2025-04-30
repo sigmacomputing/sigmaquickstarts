@@ -246,7 +246,11 @@ After renaming the input table, we can start working with the data directly just
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we covered why you might use a pivot table, how to use Sigma to create one, add conditional formatting, and drill down on table data.
+In this QuickStart, we covered the basic functionality provided by Sigma input tables. We explored a simple use case and demonstrated how easy it can be to solve business problems without long development cycles or the need for additional software.
+
+<aside class="positive">
+<strong>Imagine the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data locked away in cloud warehouses. With input tables you can now capture information that’s locked in your users’ minds without investing in another application. Imagine the possibilities.
+</aside>
 
 The next QuickStart in this series covers using [charts in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_5_charts_v3/index.html?index=..%2F..index#0)
 
