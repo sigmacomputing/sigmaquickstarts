@@ -54,7 +54,7 @@ Duration: 5
 
 **1:** Navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol):
 
-<img src="assets/sf2025_1a.png" width="800"/>
+<img src="assets/sf2025_1a.png" width="400"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
@@ -66,7 +66,7 @@ Duration: 5
 <strong>IMPORTANT:</strong><br> Be sure to have a personal email ready to go, we’d prefer to avoid accidental sign-ups for new Sigma accounts!
 </aside>
 
-<img src="assets/sf2025_1.png" width="800"/>
+<img src="assets/sf2025_1c.png" width="400"/>
 
 **3:** Check your inbox for a message from `info@send.sigmacomputing.com` and continue the sign-up process by clicking the link.
 
