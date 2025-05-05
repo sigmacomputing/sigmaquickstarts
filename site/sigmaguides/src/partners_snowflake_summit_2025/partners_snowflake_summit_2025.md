@@ -19,6 +19,15 @@ Your new employer Big Buys Electronics ("Big Buys") is a major electronics retai
 
 That's why they hired you, a seasoned category manager to take over a struggling category and right the ship.
 
+### What You Will Build
+In this lab you will be creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
+
+### What You Will Learn
+- How to explore and build a dataset for training a model
+- How to build a machine learning model using Snowpark ML
+- How to register a model in the Snowpark Model Registry
+- How to expose the model to business users in Sigma
+
 ### Target Audience
 Participants of Snowflake Summit 2025 who are interested in getting some hands-on with Sigma.
 
@@ -28,8 +37,6 @@ No SQL or technical data skills are required for this hands-on lab.
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to a Sigma environment, using the Sigma tile in Okta.</li>
-  <li>A Snowflake demo environment.</li>
 </ul>
 
 <aside class="negative">
@@ -45,7 +52,13 @@ No SQL or technical data skills are required for this hands-on lab.
 ## Setup 
 Duration: 5
 
-**1:** Navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol)
+**1:** Navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol):
+
+<img src="assets/sf2025_1a.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
+</aside>
 
 **2:** Sign up for an account using your personal email by selecting `Create an account` and entering your **personal email address**. 
 
