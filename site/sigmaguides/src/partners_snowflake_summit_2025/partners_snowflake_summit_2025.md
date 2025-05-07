@@ -90,9 +90,11 @@ To understand profitability for this year’s product lineup, we need insight in
 
 **2:** In the text box, type: `How are computer products performing across regions?` and click the blue arrow:
 
-<img src="assets/sf2025_4.png" width="500"/>
+<img src="assets/sf2025_4.png" width="450"/>
 
-The response comes from a Cortex LLM, so your output may differ from this guide. 
+<aside class="negative">
+<strong>NOTE:</strong><br> The response comes from a Cortex LLM, so your output may differ from this guide. 
+</aside>
 
 Notice that Cortex is suggesting we use the `BIG_BUYS_POS` table as a source because it has the required data for the requested prompt but also is a `Trusted` source. 
 
@@ -102,7 +104,13 @@ As Cortex works on the prompt, Sigma is showing each decision. For example, Cort
 
 <img src="assets/sf2025_6.png" width="350"/>
 
-AI models are a great tool but we still should be careful about the results they provide too. For example, we asked for `computer products` but the filter the model used was not set correctly. Notice that it is set to `Only Smart Home Video`. This will not get us the dataset we are after:
+AI models are a great tool but we still should be careful about the results they provide too. For example, we asked for `computer products` but the filter the model used was not set correctly. Notice that it is set to `Smart Home, Video`. 
+
+This will not get us the dataset we are after.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Your filter may be different due to the nature of LLMs.
+</aside>
 
 <img src="assets/sf2025_7a.png" width="800"/>
 
@@ -138,7 +146,7 @@ Duration: 5
 
 **5:** Now let's sort the `Profit margin` column descending so that our highest margin brands in the `Southwest` region are at the top and the lowest ones are at the bottom:
 
-<img src="assets/sf2025_11.png" width="450"/>
+<img src="assets/sf2025_11.png" width="550"/>
 
 **5:** We should add in some conditional formatting to make this easier to look at. Let's go ahead and right click `Conditional formatting` on the column and add in data bars from the configuration pane on the right side:
 
@@ -242,9 +250,9 @@ Now we're ready to build our model:
 
 <img src="assets/sf2025_32.png" width="800"/>
 
-**6:** In some cases the AI does something unexpected and we don't catch it right away. In our case we just noticed it did not group the `Total COGS` column as might be expected, but that is easy to correct.
+**5:** In some cases the AI does something unexpected and we don't catch it right away. In our case we just noticed it did not group the `COGS` column to create `Total COGS` as might be expected, but that is easy to correct.
 
-We can drag it into the grouping after the `Total Profit` column and rename it to `Total COGS`:
+We can drag `COGS` into the grouping after the `Total Profit` column and rename it to `Total COGS`:
 
 <img src="assets/sf2025_35.png" width="800"/>
 
@@ -258,7 +266,7 @@ Add a new column to the right of the `Price change` column and rename it `Adjust
 
 Set its formula to:
 ```code
-((1+[Price Change])*([Total Revenue] -[Total COGS])/((1+[Price Change])*[Total Revenue])
+(([Total Revenue]*(1+[Price Change])) -[Total COGS])/((1+[Price Change])*[Total Revenue])
 ```
 
 Change the column format to `Percentage`:
@@ -326,7 +334,11 @@ We are now ready to hop in and apply some of our price adjustments from our scra
 
 <img src="assets/sf2025_39.png" width="500"/>
 
-Go back to the `Big Buys Profit Planning Tool` > `Price Adjustments` table, click `Edit Data`, sort the table ascending on the `Brand` column and paste the values into the `Price Change (%)` column:
+Go back to the `Big Buys Profit Planning Tool` > `Price Adjustments` table, click `Edit Data`, sort the table ascending on the `Brand` column and paste the values into the `Price Change (%)` column.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Click the first cell in the "Price Change" column, then scroll to the bottom of the table. Hold down the Shift key and click the last cell in the same column.
+</aside>
 
 <img src="assets/sf2025_40.png" width="500"/>
 
