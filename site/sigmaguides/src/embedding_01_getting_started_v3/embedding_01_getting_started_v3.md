@@ -275,9 +275,26 @@ Specify the folder you want to clone by adding it to the sparse-checkout configu
 echo "embedding_qs_series_2" >> .git/info/sparse-checkout
 ```
 
-Finally, pull the specified folder from the repository:
+Pull the specified folder from the repository:
 ```code
 git pull origin main
+```
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The next step requires Node.js. If it has never been installed on your machine, install it from the official site:
+
+[Download Node.js](https://nodejs.org/)
+
+We recommend installing the **LTS (Long Term Support)** version.
+
+Once installed, you can verify the installation in Terminal with:
+
+node -v
+npm -v
+</aside>
+
+Finally, load node into the local project:
+```code
+npm install
 ```
 
 After the command runs, click the button to `Open Folder`:
@@ -505,7 +522,7 @@ In the `Create client credentials` modal, select `Embedding`, give it a name, an
 <img src="assets/gs_14.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Client credentials can also be used for access to Sigma's REST API.
+<strong>NOTE:</strong><br> Client credentials can also be used for access to Sigma's REST API if the "REST API" checkbox is also selected.
 </aside>
 
 Click `Create`.
@@ -713,11 +730,7 @@ There are a few ways to see what embed users are doing in Sigma. After a user ac
 <strong>IMPORTANT:</strong><br> Any changes to an embed user’s account type or team assignment in Sigma will be overwritten the next time they access embedded content. This is because the native application is responsible for passing those parameters at runtime. Users marked as "embed" in Sigma cannot log in directly to Sigma.
 </aside>
 
-Sigma also provides extensive usage reporting in `Administration` > `Usage` > `Embedding`:
-
-<img src="assets/gs_29.png" width="800"/>
-
-Customers can also enable audit logging and manually analyze raw event logs if preferred. Logs can be exported for integration with external systems.
+Customers can enable audit logging and manually analyze raw event logs if preferred. Logs can be exported for integration with external systems.
 
 To learn more, see [Access and explore audit logs](https://help.sigmacomputing.com/docs/access-and-explore-audit-logs)
 

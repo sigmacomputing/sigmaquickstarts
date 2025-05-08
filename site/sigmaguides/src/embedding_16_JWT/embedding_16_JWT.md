@@ -225,6 +225,24 @@ Finally, pull the specified folder from the repository:
 git pull origin main
 ```
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The next step requires Node.js. If it has never been installed on your machine, install it from the official site:
+
+[Download Node.js](https://nodejs.org/)
+
+We recommend installing the **LTS (Long Term Support)** version.
+
+Once installed, you can verify the installation in Terminal with:
+
+node -v
+npm -v
+</aside>
+
+Finally, load node into the local project:
+```code
+npm install
+```
+
 After the command runs, click the button to `Open Folder`:
 
 <img src="assets/jwt2.png" width="800"/>
