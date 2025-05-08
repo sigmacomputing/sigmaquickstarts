@@ -327,7 +327,7 @@ We will now create credentials that are specific to our workbook embed.
 
 **4:** Enter a `Name` and `Description` as you see fit.
 
-**5:** Under `Owner`, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself or an `Administrator`.
+**5:** Under `Owner`, select an organization member with the account type you would like to associate with the embed secret. For now, just select yourself or an `Administrator`. It is recommended to always select a user with administrative access to allow adjustments in the future, if needed. 
 
 <img src="assets/ae2.png" width="700">
 
