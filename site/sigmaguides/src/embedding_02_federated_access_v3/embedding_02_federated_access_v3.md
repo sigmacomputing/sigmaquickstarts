@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: embedding
 lastUpdated: 2024-05-07
 
 # Embedding 02: Federated Access
