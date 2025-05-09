@@ -373,6 +373,15 @@ The .env file provides fallback logic for each JWT:
 
 This allows you to maintain a consistent test user by default, and easily override it per QuickStart as needed for different workflows.
 
+Open the `.env` file. We will copy / paste key values as we progress through sections of this QuickStart:
+
+<img src="assets/gs_13a.png" width="600"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Parameters in the "Default Embed User" group of .env will be overridden by parameters in the other groups. It is there for convenience as often the parameters are common, so having a default group is merely a time saver. Nothing more. 
+</aside>
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -445,17 +454,6 @@ Name the team `Sales_People`, check the box to also create a workspace. Click `C
 Create another team called `Sales_Managers`, set the team to `Private` and check the box to also create a workspace. Click `Create`:
 
 <img src="assets/gs_2a.png" width="800"/>
-
-### Text file for temp storage of values
-It’s helpful to store a few values in a text file as we create them. Once comfortable, these can just be added directly to the .env file.
-
-Here are the values we will capture as we progress:
-```code
-Client ID:
-Secret:
-Team(s): Sales_People, Sales_Managers
-Base_URL: 
-```
 
 Exit `Administration` by clicking the Sigma <img src="assets/crane.png" width="50"/> icon.
 
@@ -535,7 +533,7 @@ If you lose the embed secret, or it becomes compromised, you can revoke it and g
 
 <img src="assets/gs_15.png" width="550"/>
 
-Copy and paste the `Client ID` and `Secret` into the text file.
+Copy and paste the `Client ID` and `Secret` into the respective locations in the `.env` file, in the `# Shared by all QuickStarts` grouping.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -623,49 +621,25 @@ Select the `Plugs_Sales_Transactions` table, then copy the URL:
 
 <img src="assets/gs_12.png" width="800"/>
 
-Paste the `Base URL` into the text file.
+Paste the `Base URL` into the `.env` file in the `# QS: getting_started` group.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-## Embed Sandbox
-Duration: 5 
-
-Sigma’s embed sandbox allows you to test your embed before integrating it into the native application. This allows you to view the content from the embed user’s perspective to verify security settings and other configurations.
-
-Open the workbook’s menu and select `Share and export`, then `Embedding...`:
-
-<img src="assets/gs_16a.png" width="400"/>
-
-Select `JWT`, choose `Page 1 - Plugs Sales Transactions` from the list control, and click `Test`:
-
-<img src="assets/gs_16b.png" width="600"/>
-
-This opens the embedding sandbox with the selected element pre-configured.
-
-Select your `Client credentials` and click `Load embed` to see the result:
-
-<img src="assets/gs_16.png" width="800"/>
-
-You can adjust a variety of options to test different scenarios, which can help save time during initial testing.
-
-For more information, see [Test an embed URL in the embed sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
-
-![Footer](assets/sigma_footer.png)
-<!-- END -->
 
 ## Edit Environment File and Test
 Duration: 5
 
 Let’s make the embed work in the Git project set up earlier.
 
-Return to VS Code and open the `.env` file.
+Return to VS Code and open the `.env` file (if not still open).
 
-It will have placeholders for the values we need to provide and also includes some important notes.
+We have a few more parameters to configure.
 
-<img src="assets/gs_17.png" width="800"/>
+For `ACCOUNT_TYPE` use `View`.  
 
-Replace the placeholders with the values you saved earlier, using `View` for the `Account Type` and any email address (a made-up one is fine):
+For `EMAIL` any email address (a made-up one is fine).
+
+For `TEAMS` use `Sales_People`.
 
 For example:
 <img src="assets/gs_20.png" width="800"/>
@@ -715,6 +689,32 @@ The actual token appears lower on the side panel for anyone who wants to validat
 Once the local Express server is running, logging output appears in the console each time a page with an embed is reloaded:
 
 <img src="assets/gs_23.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END -->
+
+## Embed Sandbox
+Duration: 5 
+
+Sigma also provides an "in-product" embed sandbox that allows you to test your embed before integrating it into the native application. This allows you to view the content from the embed user’s perspective to verify security settings and other configurations.
+
+Open the workbook’s menu and select `Share and export`, then `Embedding...`:
+
+<img src="assets/gs_16a.png" width="400"/>
+
+Select `JWT`, choose `Page 1 - Plugs Sales Transactions` from the list control, and click `Test`:
+
+<img src="assets/gs_16b.png" width="600"/>
+
+This opens the embedding sandbox with the selected element pre-configured.
+
+Select your `Client credentials` and click `Load embed` to see the result:
+
+<img src="assets/gs_16.png" width="800"/>
+
+You can adjust a variety of options to test different scenarios, which can help save time during initial testing.
+
+For more information, see [Test an embed URL in the embed sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
