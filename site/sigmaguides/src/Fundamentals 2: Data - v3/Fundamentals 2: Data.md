@@ -244,6 +244,17 @@ This is a really useful feature that quickly uncovers some of the key values of 
 
 Click `Publish`.
 
+### Organize columns into folders
+Many customers have tables that are very wide (many columns). We can make columns easier to find by using [Folders]() to organize them logically.
+
+For example, our table has several columns related to product:
+
+<img src="assets/fdata_70a.png" width="700"/>
+
+We can add a new folder named `Product` and move (drag and drop) all the related columns into the new folder:
+
+<img src="assets/fdata_70b.png" width="300"/>
+
 Now that we know some of the basics, lets look at the common ways tables are used in Sigma.
 
 ![Footer](assets/sigma_footer.png)
