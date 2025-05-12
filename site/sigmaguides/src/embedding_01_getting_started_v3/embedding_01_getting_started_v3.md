@@ -82,7 +82,7 @@ Sigma also allows you to extend or create custom secure embed experiences as wel
 
 These are the high-level use cases of JWT embedding that are most commonly seen:
 
-<img src="assets/usecases2.png" width="800"/>
+<img src="assets/usecases2a.png" width="800"/>
 
 Sigma supports embedding in other third-party applications like Salesforce or Streamlit:
 
