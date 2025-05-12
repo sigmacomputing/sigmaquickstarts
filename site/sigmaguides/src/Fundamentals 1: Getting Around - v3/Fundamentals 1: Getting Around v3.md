@@ -275,7 +275,7 @@ We can see all the different data available, and we are prompted to `Select a ta
 <strong>NOTE:</strong><br> This interface allows you to quickly preview the columns and data that is available, so it is easy to decide which table has the information needed.
 </aside>
 
-Select the `RETAIL` schema and the `Plugs_Electronics` ("Plugs”) database, expand it and select the `F_SALES` table. 
+Select the `Plugs_Electronics` ("Plugs”) schema in the `RETAIL` database, expand it and select the `F_SALES` table. 
 
 We can see all the data that is **live in the cloud data warehouse**, assuming we have permission to view it. 
 
