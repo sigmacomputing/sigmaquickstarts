@@ -94,8 +94,8 @@ Deselect all columns and select only the columns required by the business users.
 The numbered items in the screenshot below highlight the important elements on this interface.
 
 - 1: The join is 2 source tables with a combined 26 columns.
-- 2: We are joining `D_CUSTOMER` to `PLUGS_ELEC....` on `Cust Key` using `Left outer join`.
-- 3: For every order in the `PLUGS_ELECTRONICS_HANDS_...` sales table, has a matching customer. There are some customers (105) that have not placed an order.
+- 2: We are joining `D_CUSTOMER` to `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` on `Cust Key` using `Left outer join`.
+- 3: For every order in the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA.` sales table, `D_CUSTOMER` has a matching customer. There are some customers (105) that have not placed an order.
 
 <img src="assets/fbasics_5.png" width="800"/>
 
@@ -354,7 +354,7 @@ Add the `D_CUSTOMER` table to the page.
 
 Now that we have `D_Customer`, we can add a join directly from it.
 
-In `Elements`, select the `Customers and Addresses` table from the `Dirty Data` page:
+In `Elements`, select the `Customers and Addresses Ungrouped` table from the `Dirty Data` page:
 
 <img src="assets/fbasics_28.png" width="700"/>
 
@@ -362,7 +362,7 @@ Set the `Join type` to `Full outer join`:
 
 <img src="assets/fbasics_29.png" width="800"/>
 
-Our `Customers and Addresses` table will not have `Customer_ID` values that match to our `D_Customers` table, as they are coming from our website promotion, which was unaware of our internal customers data.
+Our `Customers and Addresses Ungrouped` table will not have `Customer_ID` values that match to our `D_Customers` table, as they are coming from our website promotion, which was unaware of our internal customers data.
 
 In our use case, we want to ensure that the person registering is not an existing customer, so perhaps we can check their name and address against our existing customer data to see if there is a match (for example). While this may not be a perfect method, it will get us close enough for this demonstration.
 
@@ -371,7 +371,7 @@ Set the `Join keys` to:
 Cust Address = Street
 ```
 
-To avoid people with the same names, we need to add a second `Join key` and use a custom formula that concatenates the first and last names of the customer in the `Customers and Addresses` table, since they are separate columns.
+To avoid people with the same names, we need to add a second `Join key` and use a custom formula that concatenates the first and last names of the customer in the `Customers and Addresses Ungrouped` table, since they are separate columns.
 
 The second join key is on `Cust Name` and the formula:
 ```code
@@ -582,7 +582,7 @@ Add another `Grouping`, this time using `Month of Date`:
 
 <img src="assets/fbasics_45.png" width="800"/>
 
-Add the `Sales` columns to the `Month of Data` > `CALCULATIONS` and change it's name to `Monthly Sales`:
+Add the `Sales` columns to the `Month of Date` > `CALCULATIONS` and change it's name to `Monthly Sales`:
 
 `Hide` all the other columns.
 
