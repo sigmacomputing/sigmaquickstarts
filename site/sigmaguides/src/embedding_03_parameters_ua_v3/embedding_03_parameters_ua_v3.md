@@ -396,7 +396,7 @@ The following are potential error messages and description to aide in troublesho
 
 <img src="assets/horizonalline.png"/>
 
-**3: Invalid embed mode:**<br><img src="assets/pua10.png" width="500"/>
+**3: Invalid embed mode (legacy configurations only):**<br><img src="assets/pua10.png" width="500"/>
 
 <img src="assets/horizonalline.png"/>
 
@@ -426,6 +426,11 @@ When an invalid session_length is sent (e.g., a value of '25920001', which excee
 For example, if the '/1000' is removed from the formula, the embed page will show this message:
 
 <img src="assets/pua15.png" width="600"/>
+
+**8: Invalid kid parameter:**<br> 
+The signing key reference does not have the "embed" privilege enabled, likely an incorrect Sigma access credentials (Client Id / Secret) are being used or the credentials do not have `Embed` enabled for them.
+
+<img src="assets/pua15a.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
