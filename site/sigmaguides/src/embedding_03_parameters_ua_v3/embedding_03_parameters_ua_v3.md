@@ -430,7 +430,7 @@ For example, if the '/1000' is removed from the formula, the embed page will sho
 **8: Invalid kid parameter:**<br> 
 The signing key reference does not have the "embed" privilege enabled, likely an incorrect Sigma access credentials (Client Id / Secret) are being used or the credentials do not have `Embed` enabled for them.
 
-<img src="assets/pua15a.png" width="600"/>
+<img src="assets/uap_15a.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
