@@ -404,6 +404,7 @@ Configure each text box as follows:
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> After adding a text element, hit the "=" key to bring up the function bar and then paste the formula shown below and press Enter to confirm.
+</aside>
 
 **ROLE TEXTBOX FUNCTION:**
 ```plaintext
