@@ -29,7 +29,7 @@ Inbound events can be passed using either JavaScript or URL.
 **Outbound Events:**<br>
 These are variables sent from Sigma to the native application, which must have a listener coded to receive and respond to the message.
 
-This QuickStart assumes you have already taken the QuickStart [Embedding 1: Prerequisites](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
+This QuickStart assumes you have already taken the QuickStart [Embedding 1: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
 
 **Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
 
