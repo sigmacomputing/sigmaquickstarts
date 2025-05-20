@@ -23,7 +23,7 @@ Many customers will use Snowflake's column masking functionality and also manage
  
 To simplify setup, we’ll use trial accounts and the provided Snowflake `ACCOUNTADMIN` role for the scripts we will run in Snowflake.
 
-In this QuickStart, we will use the local application framework we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -34,24 +34,21 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Semi-technical users who will be aiding in the planning or implementation of Sigma. Limited SQL and technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders, and performing basic edit/copy/paste operations.
+Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to complete this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>A working Node.js-based web server as demonstrated in Embedding 01: Getting Started</li>
-  <li>Some content to embed. You can embed a workbook, table, or visualization..</li>
-  <li>Downloadable project files discussed later in this document.</li>
-  <li>A Snowflake account with administrative and security admin access.</li>
+  <li>Access to your Sigma environment.</li>
+  <li>Embedding 01: Getting Started is required to complete this QuickStart.</li>
 </ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.

@@ -70,7 +70,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-This QuickStart is designed for users familiar with Excel, Business Intelligence tools, or semi-technical users who want to try out or learn Sigma.
+Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to complete this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
 
 ### Prerequisites
 

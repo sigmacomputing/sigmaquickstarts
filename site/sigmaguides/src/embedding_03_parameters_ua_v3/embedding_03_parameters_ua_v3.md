@@ -23,7 +23,7 @@ For a full reference, see Sigma’s [Embed URL Parameters](https://help.sigmacom
 
 This QuickStart provides examples and screenshots of required and optional parameters to help developers understand their use.
 
-Before proceeding, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#1) QuickStart. It covers JWT in detail, so we won’t repeat that here.
+In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -34,15 +34,15 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are required to complete this QuickStart. It assumes some basic computer skills, such as installing software, using Terminal, navigating folders, and performing copy/paste operations.
+Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to complete this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
 
 ### Prerequisites
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
- </ul>
+  <li>Embedding 01: Getting Started is required to complete this QuickStart.</li>
+</ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
