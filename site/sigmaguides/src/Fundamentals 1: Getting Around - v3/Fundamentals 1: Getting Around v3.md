@@ -337,7 +337,7 @@ The `Formula bar` is where we can leverage Sigma's [extensive library of functio
 
 You can collapse the `Element Panel` by clicking on the <img src="assets/element_collapse.png" width="35"/> icon in the upper right corner of the page.
 
-The `Element Bar` is always shown, and provides a simple way to drag and drop elements onto the canvas. They are grouped logically, so it is easy to find what you need. 
+The `Element Bar` is always shown (except when the collapse icon has been selected), and provides a simple way to drag and drop elements onto the canvas. They are grouped logically, so it is easy to find what you need. 
 
 <img src="assets/f1_14.png" width="800"/>
 
