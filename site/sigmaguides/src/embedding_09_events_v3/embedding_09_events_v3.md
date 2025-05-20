@@ -29,34 +29,39 @@ Inbound events can be passed using either JavaScript or URL.
 **Outbound Events:**<br>
 These are variables sent from Sigma to the native application, which must have a listener coded to receive and respond to the message.
 
-This QuickStart assumes you have already taken the QuickStart [Embedding 1: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) so that you have a sample environment to complete the tasks in this QuickStart.
-
-**Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.**
-
-A list of all the [available events is available here.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
+In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
+If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Semi-technical users who will be aiding in the planning or implementation of Sigma. Limited SQL and technical data skills are needed to do this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and edit/copy/paste operations.
+The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
 
 ### Prerequisites
 
 <ul>
-  <li>Any modern browser is acceptable.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>Completion of the Embedding 01: Getting Started QuickStart.</li>
+  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
+  <li>Access to your Sigma environment.</li>
+  <li>Embedding 01: Getting Started is required to complete this QuickStart.</li>
 </ul>
 
-<button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
+</aside>
 
-![Footer](assets/sigma_footer.png)
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
+ 
+![Footer](assets/sigma_footer.png)ooter.png)
 <!-- END -->
-
 
 ## Sigma Workbook
 Duration: 15

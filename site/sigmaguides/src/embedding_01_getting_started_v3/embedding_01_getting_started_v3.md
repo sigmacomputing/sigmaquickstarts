@@ -25,7 +25,7 @@ Sigma also provides an embed sandbox that is built into the product. For more in
 
 The local web application (e.g., native application) refers to the customer-developed application that Sigma is embedded into.
 
-We will use code from a public Git repository, VS Code, and Node.js in this QuickStart series. 
+We will use code from a public Git repository, VS Code, Node.js, Javascript and HTML in this QuickStart series. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> There are many programming languages and libraries you can use to develop a server-side application. Node.js is the one we will be using today. The sample code provided is simplified and commented to assist in your learning.
