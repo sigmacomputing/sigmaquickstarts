@@ -1,5 +1,5 @@
 author: pballai
-id: Qembedding_02_federated_access_v3
+id: embedding_02_federated_access_v3
 summary: embedding_02_federated_access_v3
 categories: Embedding
 environments: web
