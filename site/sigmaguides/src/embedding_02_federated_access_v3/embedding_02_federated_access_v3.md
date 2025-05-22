@@ -24,7 +24,7 @@ Sigma's embedded solution is highly flexible and can accommodate a myriad of use
 
 Sigma employs federated user access to cater to all these needs and beyond. This is often realized through single sign-on (SSO) technologies and the establishment of trust relationships between the systems involved.
 
-With Sigma embedding, users log in to your application (the "native application"), get authenticated (with an optional role assignment), and this information is conveyed to Sigma when a part of your app requires embedding.
+With Sigma embedding, users log in to your application (the "host application"), get authenticated (with an optional role assignment), and this information is conveyed to Sigma when a part of your app requires embedding.
 
 It's crucial to note that Sigma has its own proprietary role-based access control (RBAC) system. While some customers exclusively use this system, many others with an existing identity management provider (IDP) prefer to integrate that with Sigma. 
 
@@ -32,7 +32,7 @@ For more information, see [using SSO with Sigma](https://help.sigmacomputing.com
 
 Additional information is also available: [managing user and teams with SCIM](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
 
-In this QuickStart, we will use the local native application framework we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application framework we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -268,7 +268,7 @@ The page will load the embedded content along with the `.env` parameters that ar
 ## Restrict the Client_A Team To One Element
 Duration: 5
 
-To make this use case work, we only need to pass different `.env` parameters. This simulates the native application passing parameters to Sigma at runtime.
+To make this use case work, we only need to pass different `.env` parameters. This simulates the host application passing parameters to Sigma at runtime.
 
 Put the workbook in `Edit` mode and add a new `Bar Chart` from the `Element Bar`.
 
@@ -310,7 +310,7 @@ Multiple teams must be passed as an array. In our sample application, this is ha
    const teamsArray = rawTeams ? rawTeams.split(",").map((t) => t.trim()) : [];
 ```
 
-Now, when we refresh the native application in the browser, we see the single-element embed:
+Now, when we refresh the host application in the browser, we see the single-element embed:
 
 <img src="assets/fa_17.png" width="800"/>
 

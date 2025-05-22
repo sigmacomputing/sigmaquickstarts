@@ -13,23 +13,23 @@ lastUpdated: 2024-05-20
 ## Overview 
 Duration: 5 
 
-In this QuickStart, we demonstrate how to pass variables between the native application application and Sigma. Sigma is embedded in the native application using HTML iframe. 
+In this QuickStart, we demonstrate how to pass variables between the host application application and Sigma. Sigma is embedded in the host application using HTML iframe. 
 
 **Inbound Events:**<br>
-These are variables sent from the native application to Sigma. **No listener needs to be coded into the iframe**. Sigma can use these messages to update control values. For example, passing a new value to a Sigma control that is used to filter table data.
+These are variables sent from the host application to Sigma. **No listener needs to be coded into the iframe**. Sigma can use these messages to update control values. For example, passing a new value to a Sigma control that is used to filter table data.
 
 Inbound events can be passed using either JavaScript or URL. 
 
 ***In general:***
 <ul>
-      <li>JavaScript is used when you want to pass values from the native application to the embed without causing the embed to refresh.</li>
+      <li>JavaScript is used when you want to pass values from the host application to the embed without causing the embed to refresh.</li>
       <li>The URL method is used at runtime, with variable values appended to the embed URL.</li>
 </ul>
 
 **Outbound Events:**<br>
-These are variables sent from Sigma to the native application, which must have a listener coded to receive and respond to the message.
+These are variables sent from Sigma to the host application, which must have a listener coded to receive and respond to the message.
 
-In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -107,7 +107,7 @@ Copy the URL from the browser. We will use this in the next section.
 For more information on URL formats for JWT embedding, see [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We must also share this workbook with the team used in the native application's JWT for the embed to work.
+<strong>IMPORTANT:</strong><br> We must also share this workbook with the team used in the host application's JWT for the embed to work.
 </aside>
 
 Share the workbook with the `Sales_People` team we created in the `Embedding 01: Getting Started` QuickStart:
@@ -117,7 +117,7 @@ Share the workbook with the `Sales_People` team we created in the `Embedding 01:
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Native Application
+## Host Application
 Duration: 5
 
 In VSCode, open the `embedding_qs_series_2` project and edit the `.env` file.
@@ -145,12 +145,12 @@ We have designed this page to display an `Events Log` using JavaScript for easy 
 <img src="assets/ev_5.png" width="800"/>
 
 Event log types are color-coded:
-- **Blue:** Native Application to iframe (Inbound)
-- **Green:** iframe to Native Application (Outbound)
+- **Blue:** Host application to iframe (Inbound)
+- **Green:** iframe to host application (Outbound)
 
-The orange region buttons are part of the native application. Clicking any of them sends the selected region value to Sigma via the iframe.
+The orange region buttons are part of the host application. Clicking any of them sends the selected region value to Sigma via the iframe.
 
-Changing the list control inside the iframe triggers an event that is logged in the `Events Log` and can be handled by the native application for other operations too.
+Changing the list control inside the iframe triggers an event that is logged in the `Events Log` and can be handled by the host application for other operations too.
 
 We can also confirm that the `Events Log` is working by using the browser's inspector while testing. 
 
@@ -191,14 +191,14 @@ window.addEventListener("message", (event) => {
   if (event.origin !== "https://app.sigmacomputing.com") return;
 
   const { type } = event.data || {};
-  console.log("Native Application to iframe (Inbound)", event.data);
+  console.log("Host Application to iframe (Inbound)", event.data);
 
   const logContainer = document.getElementById("event-output");
   const logItem = document.createElement("li");
   logItem.style.marginBottom = "8px";
   logItem.style.color = "blue";
   logItem.innerHTML = `
-    <strong style="text-decoration: underline;">Native Application to iframe (Inbound)</strong><br/>
+    <strong style="text-decoration: underline;">Host Application to iframe (Inbound)</strong><br/>
     <strong>Timestamp:</strong> ${new Date().toLocaleTimeString()}<br/>
     <strong>Event Type:</strong> ${type || "unknown"}<br/>
     <strong>Payload:</strong> <code>${JSON.stringify(event.data, null, 2)}</code>
@@ -225,14 +225,14 @@ function setStoreRegion(region) {
       message,
       "https://app.sigmacomputing.com"
     );
-    console.log("iframe to Native Application (Outbound)", message);
+    console.log("iframe to Host Application (Outbound)", message);
 
     const logContainer = document.getElementById("event-output");
     const logItem = document.createElement("li");
     logItem.style.marginBottom = "8px";
     logItem.style.color = "green";
     logItem.innerHTML = `
-      <strong style="text-decoration: underline;">iframe to Native Application (Outbound)</strong><br/>
+      <strong style="text-decoration: underline;">iframe to Host Application (Outbound)</strong><br/>
       <strong>Timestamp:</strong> ${new Date().toLocaleTimeString()}<br/>
       <strong>Event Type:</strong> ${message.type}<br/>
       <strong>Payload:</strong> <code>${JSON.stringify(message, null, 2)}</code>
@@ -262,7 +262,7 @@ sigma_iframe.contentWindow.postMessage({type:"workbook:variables:update", variab
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we explored inbound and outbound event handling for Sigma embeds, demonstrating how to exchange messages between the native application and Sigma using HTML and JavaScript.
+In this QuickStart, we explored inbound and outbound event handling for Sigma embeds, demonstrating how to exchange messages between the host application and Sigma using HTML and JavaScript.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
