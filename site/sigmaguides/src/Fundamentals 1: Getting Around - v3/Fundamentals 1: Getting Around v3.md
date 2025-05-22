@@ -31,6 +31,10 @@ If you fall into that category, please review these summaries:
 Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
 
 <aside class="positive">
+<strong>ABOUT THE SAMPLE DATABASE:</strong><br> Sigma provides a connection to sample data to all customers free of charge. Customer administrators may elect to disable this connection in the Administration > General Settings > Features section of the portal. If the sample data is not visible in your instance, check with your administrator. 
+</aside>
+
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
