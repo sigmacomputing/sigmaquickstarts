@@ -68,19 +68,19 @@ Let's start with a review of how Sigma embedded authentication works using this 
 
 <img src="assets/eis_1.png" width="800"/>
 
-**1:** In an embedded scenario, your application (the "native application") handles user authentication—Sigma doesn’t do the login for you.
+**1:** In an embedded scenario, your application (the "host application") handles user authentication—Sigma doesn’t do the login for you.
 
-**2:** Once authenticated, the native application calls the embed-API (server-side) to generate a JWT-signed URL.
+**2:** Once authenticated, the host application calls the embed-API (server-side) to generate a JWT-signed URL.
 
 **3:** The API generates a JWT-signed URL, signing it with a key obtained from your Sigma instance.
 
-**4:** The signed URL is passed back to the native application.
+**4:** The signed URL is passed back to the host application.
 
-**5:** The native application sets this URL as the `src` property of an iframe.
+**5:** The host application sets this URL as the `src` property of an iframe.
 
 **6:** Sigma validates the JWT signature using the same key from step 3.
 
-**7:** On verification, the embedded dashboard is rendered in the native application.
+**7:** On verification, the embedded dashboard is rendered in the host application.
 
 This ensures that only authorized, verified sessions load Sigma embeds in your app.
 

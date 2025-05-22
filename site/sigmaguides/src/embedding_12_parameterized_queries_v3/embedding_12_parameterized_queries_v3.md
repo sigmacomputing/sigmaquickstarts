@@ -34,7 +34,7 @@ Other options include:
 
 [Embedding 07: Dynamic Role Switching with Snowflake]()
 
-In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -260,7 +260,7 @@ No need to assign anyone to these teams now.
 </aside>
 
 ### Create custom user attributes<br>
-We need to create a few attributes that will serve as placeholders for values that will be passed from the native application at runtime.
+We need to create a few attributes that will serve as placeholders for values that will be passed from the host application at runtime.
 
 Navigate to `Administration` > `User Attributes` and click `Create Attribute`.
 
@@ -370,7 +370,7 @@ Copy the URL from the browser and store it in a text file; we will use that late
 ## Configure and Test
 Duration: 5
 
-In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) we deployed a native application locally.
+In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) we deployed a host application locally.
 
 For testing, we’ll use the pre-built page that demonstrates this approach.
 
@@ -414,7 +414,7 @@ The table loads with the Snowflake data for `Client_A` and the user attributes t
 
 This configuration uses Snowflake’s role-based access control to enforce data-level security.
 
-Embed users are authenticated by the native application, which then passes user attributes to Sigma via the embed API. Embed users are automatically added to Sigma and assigned to a team based on instructions from the native application.
+Embed users are authenticated by the host application, which then passes user attributes to Sigma via the embed API. Embed users are automatically added to Sigma and assigned to a team based on instructions from the host application.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Embed users cannot log directly into the Sigma UI.

@@ -39,7 +39,7 @@ In essence, making an iframe dynamic or responsive is about ensuring that the co
 
 Since Sigma uses iframes for embedding, this issue is fairly easy to avoid.
 
-In this QuickStart, we will use the local native application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -75,7 +75,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 ## Content to Embed
 Duration: 5
 
-Before we can dig into this topic, we need to configure an embed for our native application to use. 
+Before we can dig into this topic, we need to configure an embed for our host application to use. 
 
 We’ll use one of the prebuilt templates included in all Sigma instances.
 

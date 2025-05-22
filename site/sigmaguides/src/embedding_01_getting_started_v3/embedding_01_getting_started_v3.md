@@ -23,7 +23,7 @@ Additionally, it will demonstrate how to set up a local web application so that 
 
 Sigma also provides an embed sandbox that is built into the product. For more information, see [Test an embed URL in the embed sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
 
-The local web application (e.g., native application) refers to the customer-developed application that Sigma is embedded into.
+The local web application (e.g., host application) refers to the customer-developed application that Sigma is embedded into.
 
 We will use code from a public Git repository, VS Code, Node.js, Javascript and HTML in this QuickStart series. 
 
@@ -72,7 +72,7 @@ There are two types of embedding in Sigma: **Secure with JWT** and **Public**. W
 ### Secure embedding with JSON Web Tokens (JWT)
 JWT is the preferred method for secure embedding with Sigma. [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token) which is an open, industry-standard [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519) method for representing claims securely between two parties.
 
-JWT is used when a company embeds Sigma content directly into a native application that they want to embed Sigma content directly into while retaining security, tenancy, and a tailored user experience.
+JWT is used when a company embeds Sigma content directly into a host application that they want to embed Sigma content directly into while retaining security, tenancy, and a tailored user experience.
  
 For example, a company may have an internal web site that employees have to log into using single sign-on where they want to provide a dashboard that only shows data filtered for each employee’s region. 
 
@@ -151,7 +151,7 @@ What follows is a more in-depth description of the JWT workflow in Sigma.
 ### Step-by-Step JWT Flow:
 
 **1. Client Request (i.e., end user's web browser):**<br>
-The client (e.g., the end-user's browser in the native application) sends a request to the server to obtain a URL for accessing embedded Sigma content. This request may include user-related information, such as identity or a general request for access to Sigma content.
+The client (e.g., the end-user's browser in the host application) sends a request to the server to obtain a URL for accessing embedded Sigma content. This request may include user-related information, such as identity or a general request for access to Sigma content.
 
 **2. Server-Side JWT Generation (i.e., customer-created embed API):**
 ***Credential Handling:***<br>
@@ -178,7 +178,7 @@ https://app.sigmacomputing.com/<org-slug>?jwt=<jwt>
 This URL includes the signed JWT that will be used to authenticate and authorize the user when they access the embedded Sigma content.
 
 **4. Client Accesses the Signed URL:**<br>
-When the client (e.g., the end-user's browser in the native application) loads the signed URL, Sigma verifies the JWT. Sigma ensures that:
+When the client (e.g., the end-user's browser in the host application) loads the signed URL, Sigma verifies the JWT. Sigma ensures that:
 
 - The JWT signature is valid, confirming that the token has not been tampered with.
 - The claims (like sub, roles, exp) are still valid, checking whether the user is authorized and whether the token is within its allowed time frame.
@@ -337,7 +337,7 @@ The project has almost everything we need, but we will need set up some things i
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Sample Native App
+## Sample Host App
 Duration: 5
 
 The sample app is built with Node.js, HTML, and JavaScript.
@@ -349,7 +349,7 @@ We took some liberties with styling and layout, but there are just a few core fi
 <img src="assets/gs_19.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The primary things required to embed Sigma into any native application are embed-api.js and an iframe. We've added extra functionality to the sample app to make the demonstration of various topics easier for the reader.
+<strong>IMPORTANT:</strong><br> The primary things required to embed Sigma into any host application are embed-api.js and an iframe. We've added extra functionality to the sample app to make the demonstration of various topics easier for the reader.
 </aside>
 
 ### Environment file (.env)
@@ -395,7 +395,7 @@ We need to provision `Account Types`, `Teams`, and `Workspaces` in Sigma. This w
 Sigma has some features that will make this easier for us.
 
 ### Users
-We already have an administrative user, and we will add additional users on-the-fly from our native application. 
+We already have an administrative user, and we will add additional users on-the-fly from our host application. 
 
 Recall that embed users are added at runtime—the first time they access any content embedded in the parent application.
 
@@ -403,7 +403,7 @@ Their permission level is also set automatically by the embed API, via a require
 
 <aside class="positive">
 <strong>Automatic embed user account creation:</strong><br>
-Some customers prefer to only use their own authentication provider to manage users and have authenticated users be automatically created in Sigma upon successful logon to the native application.
+Some customers prefer to only use their own authentication provider to manage users and have authenticated users be automatically created in Sigma upon successful logon to the host application.
 
 When using JWT-signed URLs for your secure embeds, administrators have the option to disable automatic embed user account creation and update for non-Sigma users (e.g. embed users). 
 
@@ -607,7 +607,7 @@ Sigma embedding uses the `Base URL` (the URL shown in the browser's address bar)
 
 This allows any Sigma workbook, page, or element(s) to be embedded.
 
-For example, we can grab the Base URL for the [Ask Sigma](https://help.sigmacomputing.com/docs/embed-ask-sigma) page from the browser and use it to embed Ask Sigma inside the native application.
+For example, we can grab the Base URL for the [Ask Sigma](https://help.sigmacomputing.com/docs/embed-ask-sigma) page from the browser and use it to embed Ask Sigma inside the host application.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> When using the "Base URL", the workbook must be switched to the published version.
@@ -696,7 +696,7 @@ Once the local Express server is running, logging output appears in the console 
 ## Embed Sandbox
 Duration: 5 
 
-Sigma also provides an "in-product" embed sandbox that allows you to test your embed before integrating it into the native application. This allows you to view the content from the embed user’s perspective to verify security settings and other configurations.
+Sigma also provides an "in-product" embed sandbox that allows you to test your embed before integrating it into the host application. This allows you to view the content from the embed user’s perspective to verify security settings and other configurations.
 
 Open the workbook’s menu and select `Share and export`, then `Embedding...`:
 
@@ -722,12 +722,12 @@ For more information, see [Test an embed URL in the embed sandbox](https://help.
 ## Tracking User Activity
 Duration: 5
 
-There are a few ways to see what embed users are doing in Sigma. After a user accesses a page in the native application that contains embedded content, they are automatically added to the `Members` list in `Administration` > `People`:
+There are a few ways to see what embed users are doing in Sigma. After a user accesses a page in the host application that contains embedded content, they are automatically added to the `Members` list in `Administration` > `People`:
 
 <img src="assets/gs_28.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Any changes to an embed user’s account type or team assignment in Sigma will be overwritten the next time they access embedded content. This is because the native application is responsible for passing those parameters at runtime. Users marked as "embed" in Sigma cannot log in directly to Sigma.
+<strong>IMPORTANT:</strong><br> Any changes to an embed user’s account type or team assignment in Sigma will be overwritten the next time they access embedded content. This is because the host application is responsible for passing those parameters at runtime. Users marked as "embed" in Sigma cannot log in directly to Sigma.
 </aside>
 
 Customers can enable audit logging and manually analyze raw event logs if preferred. Logs can be exported for integration with external systems.

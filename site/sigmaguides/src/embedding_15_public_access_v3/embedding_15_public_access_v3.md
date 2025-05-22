@@ -97,7 +97,7 @@ Duration: 5
 
 Since public embeds require no security, we can embed the iframe anywhere — such as on a website or internal page.
 
-To create a public embed, we will need to complete a few steps in Sigma and in your native application.
+To create a public embed, we will need to complete a few steps in Sigma and in your host application.
 
 Log into Sigma and navigate to any workbook you want to embed. 
 
@@ -129,12 +129,12 @@ Select the `Public` tab and `Profit Planning Tool` from the list. Then click `Co
 
 <img src="assets/pa_3.png" width="500"/>
 
-Now that we have the URL, we can use it in our sample native application.
+Now that we have the URL, we can use it in our sample host application.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Native Application Configuration
+## host Application Configuration
 Duration: 10
 
 In VSCode, open the `embedding_qs_series_2` project and edit the `.env `file to configure the public access settings.
