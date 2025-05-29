@@ -416,9 +416,29 @@ As we move through the Fundamentals series, we’ll learn how to build using all
 
 Providing AI functionality isn’t especially difficult these days—but making it easy to use and genuinely helpful requires thoughtful design and a deep understanding of how users can benefit from the results.
 
-Incorrect or misleading AI output isn’t just frustrating—it wastes time, and in a business context, it can lead to poor decisions.
+
+
+Allowing users to ask questions is one thing but how can we tell what the AI is doing? 
+
+- Is it using trusted data sources? 
+- What steps, calculation and workflow did it use to generate results? 
+- What steps, calculations, and workflows did it use to generate results? 
+- Once we have the response, what’s next for the user?
+
+We have addressed all these and more with our unique design, summarized below in three sections:
+
+**1: Discovery**<br>
+Ensure corporate governance by restricting source data used for analysis and preventing exposing data to third-parties.
+
+**2: Trust**<br>
+Ensure that only verified, trusted data sources are used. Decisions made from bad data are time-consuming and potentially costly too.
+
+**3: Exploration**<br>  
+Allow users to launch selected results into a workbook for further analysis or sharing.
 
 Ask Sigma breaks down every step AI took to generate its answer. This lets you double-check results, edit any step of the analysis, and work more confidently with AI.
+
+<img src="./assets/as_10.png" width="800"/>
 
 Here’s a short video for those who don’t yet have an AI API key but want to see the functionality in action.
 
@@ -427,7 +447,7 @@ If the embedded video is too small on your screen, you can [view the larger vers
 <img src="assets/ai.gif"/>
 
 ### Hands on demonstration
-If you already have an AI API Key, you can this for yourself now. Otherwise, just follow along.
+If you already have an AI API Key, you can configure this in your Sigma instance. Otherwise, just follow along.
 
 <aside class="positive"> <strong>From the author:</strong><br> I don’t usually write in the first person, but I’ll make an exception here. I genuinely believe Ask Sigma will start to change the way users work in Sigma—saving tons of time that’s better spent on refining results, not starting from scratch.
 
@@ -457,9 +477,16 @@ Let’s try it out in the demo below.
 
 <aside class="negative"> <strong>IMPORTANT:</strong><br> Sigma is heavily invested in Ask Sigma—new features and improvements are rolling out all the time! </aside>
 
-
 ### Enable AI
 To use AI features in Sigma, you’ll need to provide an API key from your selected AI provider.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
+
+To ensure data stays under your control, Sigma also supports warehouse AI models.
+</aside>
+
+For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
 
 Navigate to `Administration` > `AI settings`, select the AI provider and provide a valid `API Key`:
 
