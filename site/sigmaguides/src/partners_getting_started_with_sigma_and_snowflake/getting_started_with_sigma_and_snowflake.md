@@ -44,7 +44,7 @@ If something isn’t working as expected, here is how to [contact Sigma support]
 
 <button>[Snowflake Free Trial](https://trial.snowflake.com)</button>
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION -->
 
 ## Prepare Your Snowflake Environment
@@ -58,7 +58,7 @@ We suggest you select the cloud provider and region which is physically closest 
 
 After registering, you will receive an email with an activation link and your Snowflake account URL. Bookmark this URL for easy, future access. After activation, you will create a username and password. Write down these credentials.
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION -->
 
 ## The Snowflake User Interface
@@ -102,7 +102,7 @@ View dashboards and logs related to query performance, usage metrics, and system
 **Admin:**<br>
 Manage users, roles, account settings, and security configurations for your Snowflake environment.
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION -->
 
 ## Provisioning Sigma
@@ -148,7 +148,7 @@ When ready, Sigma will display some additional information and we can click `Get
 
 <img src="assets/Provisioning_Sigma_8.png" width="400"/>
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION -->
 
 ## Getting Around In Sigma
@@ -228,7 +228,7 @@ In the top right corner, there is a box with your username initial. Clicking on 
 
 Now that we have our initial orientation done, we can move on to the next section.
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF GETTING AROUND IN THE UI -->
 
 ## Create a Data Model
@@ -391,7 +391,7 @@ Save the data model as `Data Model QuickStart`:
 
 Click `Publish`.
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION-->
 
 ## The Workbook
@@ -479,7 +479,7 @@ There are many more things we can do with pivot tables in Sigma. For more inform
 
 Click `Publish`.
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION-->
 
 ## Filtering Data
@@ -513,7 +513,7 @@ Selecting just a few states from the filter will now filter all the elements on 
 
 Lastly, click `Save As` and give your workbook a name.
 
-![Footer](assets/sigma_footer.png)
+![Footer](assets/sigma_footer2.png)
 <!-- END OF SECTION-->
 
 ## Conclusion
@@ -535,4 +535,4 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 - Sigma Blog: [https://www.sigmacomputing.com/blog/](https://www.sigmacomputing.com/blog/)
 - Resources and Case Studies: [https://www.sigmacomputing.com/resources/](https://www.sigmacomputing.com/resources/)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
