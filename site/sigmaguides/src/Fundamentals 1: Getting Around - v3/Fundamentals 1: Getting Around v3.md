@@ -153,30 +153,17 @@ The main functions are numbered and described below:
 
 <img src="_shared_assets/1.png" width="25"/> **Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
 
-Once you open a different page (ie: Administration), you may notice the back arrow next to the Sigma logo. This allows you to go back one level:
-
-<img src="assets/f1_7.png" width="200"/>
-
 <img src="_shared_assets/2.png" width="25"/> **Search:** You can click in the search bar at any point to search for content within Sigma.
 
 <img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
     <ul>
       <li><strong>Workbook:</strong> our spreadsheet-like UI for analyzing data</li>
       <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
-       <li><strong>Dataset:</strong> Model your data in Sigma using datasets, or collections of data based on tables in your CDW or DBMS.</li>
       <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
       <li><strong>Upload CSV:</strong> allows you to upload a CSV to the warehouse in order to perform analysis.</li>
     </ul>
      
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Data models will eventually replace datasets, which is the older method Sigma provided. Customers using datasets can continue to use them, but data models will offer more functionality and are the preferred method for modeling data in Sigma once they are released from Beta.
-</aside>
-
 If at any time you notice an item labeled **BETA**, it means the feature is mature enough for all customers to evaluate while we finalize its release.
-
-For example, at the time of this QuickStart, data models carry the beta tag:
-
-<img src="assets/f1_40.png" width="400"/>
 
 If you ever need to know what is new in Sigma, there are two resources for that:
 
@@ -184,7 +171,7 @@ If you ever need to know what is new in Sigma, there are two resources for that:
 
 We also provide a summary on the "First Friday" of each month, which includes everything released in the prior month, including bug fixes.
 
-[First Friday Features can be found here.](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+[First Friday Features can be found here](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
  
 <img src="_shared_assets/4.png" width="25"/> **My Content:**
  <ul>
@@ -217,7 +204,7 @@ In the top right corner, there is a box with your username initial. Clicking on 
 <img src="_shared_assets/9.png" width="25"/> **Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it!. Sigma is fanatical about supporting our customers. 
+<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it! Sigma is fanatical about supporting our customers. 
 </aside>
 
 <img src="_shared_assets/10.png" width="25"/> **Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
@@ -648,7 +635,7 @@ Containers not only streamline the design process by enabling you to adjust and 
 
 This powerful feature simplifies complex workbook structures, making it easier to maintain consistency in both functionality and appearance.
 
-In the animation below, we show how containers are dramatically improve the appearance of existing Sigma workbooks.
+In the animation below, we show how containers dramatically improve the appearance of existing Sigma workbooks.
 
 <img src="assets/containers.gif">
 
@@ -676,7 +663,7 @@ At a high-level, this is what each tier provides:
 <ul>
   <li><strong>View:</strong> Suitable for report consumers who need access to prepared data and insights with baseline interactions.</li>
   <li><strong>Act:</strong> Ideal for collaborative data contributors who actively input and update data.</li>
-  <li><strong>Analyze:</strong> Optimized for decision-making data consumers who require more deep-dive capabilities without building workbooks themselves..</li>
+  <li><strong>Analyze:</strong> Optimized for decision-making data consumers who require more deep-dive capabilities without building workbooks themselves.</li>
   <li><strong>Build:</strong> Designed for data architects, BI analysts, and report builders who model, transform, and analyze data.</li>
 </ul>
 

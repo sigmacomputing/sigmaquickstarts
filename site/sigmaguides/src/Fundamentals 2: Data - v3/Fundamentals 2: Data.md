@@ -89,7 +89,7 @@ Click and drag a `Table` onto the `Data` page.
 
 Sigma asks us to `Select source`. Click that button.
 
-We can then are presented some options:
+We then are presented some options:
 
 - Search: by name from connections
 - Suggested: Sigma will present options from most used tables
