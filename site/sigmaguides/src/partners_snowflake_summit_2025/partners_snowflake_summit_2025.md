@@ -64,6 +64,9 @@ Duration: 5
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Be sure to have a personal email ready to go, we’d prefer to avoid accidental sign-ups for new Sigma accounts!
+
+Whitelisted Domains:
+@gmail.com, @yahoo.com, @outlook.com, @hotmail.com, @icloud.com, @aol.com, @comcast.net, @mail.com, @msn.com, or @live.com
 </aside>
 
 <img src="assets/sf2025_1c.png" width="400"/>
