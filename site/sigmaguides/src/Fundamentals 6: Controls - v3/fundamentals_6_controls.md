@@ -144,7 +144,7 @@ We checked and found there are some orders sold at big losses, so we set the min
 Also set the `Control ID` for `Profit` to `profit-slider`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> BBe sure to pay attention to the Control ID used for each control. Each ID must be unique, and Sigma will ensure this if you don’t specify one. We can reference the current value that a control is set to by referring to it's Control ID. This can be useful in a variety of use cases, especially in formulas.
+<strong>IMPORTANT:</strong><br> Be sure to pay attention to the Control ID used for each control. Each ID must be unique, and Sigma will ensure this if you don’t specify one. We can reference the current value that a control is set to by referring to it's Control ID. This can be useful in a variety of use cases, especially in formulas.
 </aside>
 
 Now adjust the `Profit` slider to be around $6500. These are are target high-value customers:

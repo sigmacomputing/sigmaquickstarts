@@ -1,701 +1,531 @@
-author: Sigma Computing -- Shawn Namdar, Partner Engineer
+author: Phil Ballai
 id: getting_started_with_sigma_and_snowflake
-summary: This is a guide to setting up Sigma on top of Snowflake and visualizing some sample data.
+summary: getting_started_with_sigma_and_snowflake
 categories: partners
 environments: web
 status: Published 
 feedback link: https://github.com/sigmacomputing/sigmaguides/issues
 tags: default
-lastUpdated: 2023-03-15
+lastUpdated: 2025-05-29
 
 # Getting Started with Sigma and Snowflake
-<!-- ------------------------ -->
-## Lab Overview 
+
+## Overview 
 Duration: 3
 
-This entry-level lab introduces you to the user interface and basic capabilities of both Snowflake and Sigma, and how to use both solutions to build analytics. It is designed specifically for use with the Snowflake, free 30-day trial at https://trial.snowflake.com and the Sigma, free 14-day trial available within the Snowflake free trial on Snowflake Partner Connect. When done with the lab you should be ready to load your own data into Snowflake, analyze and visualize it with Sigma.
+This entry-level lab introduces you to the core user interface and foundational capabilities of both Snowflake and Sigma. You’ll learn how to use them together to build simple yet powerful analytics solutions.
 
-### What You’ll Learn 
-The exercises in this lab will walk you through the steps to: 
-- Create databases, tables, stages and warehouses
-- Load structured and semi-structured data
-- Use Partner Connect to start up a free Sigma trial account connected to Snowflake
-- Explore and analyze data and turn it into visualizations and dashboards
+The lab is designed to be used with the free Snowflake and Sigma trials, which you can access directly through Snowflake’s Partner Connect.
 
-### What You'll Need 
-- A Snowflake free 30-day trial environment: [https://trial.snowflake.com](https://trial.snowflake.com)
-- Download .SQL file: [https://sigma-snowflake-vhol.s3-us-west-1.amazonaws.com/sql/sigma_vhol.sql](https://sigma-snowflake-vhol.s3-us-west-1.amazonaws.com/sql/sigma_vhol.sql)
-
-### What You'll Build
-By walking through this lab you will:
-- Sign up for a Snowflake free trial and load the instance with some sample data
-- Create a Sigma free trial through Snowflake Partner Connect
-- Build a Sigma Dataset that models the sample data in Snowflake
-- Build a polished Sigma Workbook that analyzes the sample data  
+### In this QuickStart, you’ll:
+- Create Snowflake trial
+- Launch a free Sigma trial using Snowflake Partner Connect
+- Model, explore and analyze sample data, and build visualizations
+- Create a Sigma workbook from a data model
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
-![Footer](assets/Sigma_Footer.png)
+If something isn’t working as expected, here is how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
-<!-- ------------------------ -->
-## Prepare Your Snowflake Lab Environment
+### Prerequisites
+<ul>
+  <li>Any modern browser.</li>
+  <li>A Snowflake free 30-day trial environment.</li>
+  <li>Sigma instance from Snowflake Parter Connect.</li>
+</ul>
+
+<aside class="postive">
+<strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
+</aside>
+
+<button>[Snowflake Free Trial](https://trial.snowflake.com)</button>
+
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION -->
+
+## Prepare Your Snowflake Environment
 Duration: 3
 
-### Steps to Prepare Your Lab Environment
-1. If not yet done, register for a Snowflake free 30-day trial at [https://trial.snowflake.com](https://trial.snowflake.com) 
+If not yet done, register for a [Snowflake free 30-day trial](https://trial.snowflake.com) 
 
-    - You will have different Snowflake editions (Standard, Enterprise, e.g.), cloud providers (GCP, AWS, or Azure), and Regions (US Central, Europe West, e.g.) Available to you. We suggest you select the cloud provider and region which is physically closest to you and your data, and select the Enterprise edition so you can leverage advanced capabilities that are not available in the Standard Edition.
+You will have different Snowflake editions (Standard, Enterprise, e.g.), cloud providers (GCP, AWS, or Azure), and Regions (US Central, Europe West, e.g.) Available to you. 
 
-    - After registering, you will receive an email with an activation link and your Snowflake account URL. Bookmark this URL for easy, future access. After activation, you will create a username and password. Write down these credentials.
+We suggest you select the cloud provider and region which is physically closest to you and your data, and select the Enterprise edition so you can leverage advanced capabilities that are not available in the Standard Edition.
 
-2. Click [here](https://sigma-snowflake-vhol.s3-us-west-1.amazonaws.com/sql/sigma_vhol.sql) and download the “sigma_vhol.sql” file to your local machine. This file contains pre-written SQL commands and we will use this file later in the lab.
+After registering, you will receive an email with an activation link and your Snowflake account URL. Bookmark this URL for easy, future access. After activation, you will create a username and password. Write down these credentials.
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION -->
 
-<!-- ------------------------ -->
 ## The Snowflake User Interface
 Duration: 10
 
-### Logging Into the Snowflake User Interface (UI)
 Open a browser window and enter the URL of your Snowflake 30-day trial environment. You should see the login screen below. Enter your unique credentials to log in.
 
-![Snowflake Login Screen](assets/Snowflake_UI_1.png)
+<img src="assets/Snowflake_UI_1.png" width="300"/>
 
 ### Navigating the Snowflake Snowsight UI
-First let’s get you acquainted with Snowflake! This section covers the basic components of the user interface to help you orient yourself. We will move top to bottom on the left panel of the UI.
+For those not familiar, let’s get you acquainted with Snowflake! 
 
-![Snowsight Navigation](assets/Snowflake_UI_2.png)
+This section covers the basic components of the user interface to help you orient yourself. We will move top to bottom on the left panel of the UI.
 
-- The **Worksheets** tab provides an interface for submitting SQL queries, performing DDL and DML operations and viewing results as your queries/operations complete. 
+<img src="assets/Snowflake_UI_2.png" width="200"/>
 
-- The **Dashboard** tab provides a view of your snowsight dashboards that have been created. These dashboards are a good way to provide quick administrative insights for your snowflake instance.
+**Create:**<br>
+Launches options to create new objects such as databases, tables, warehouses, or worksheets.
 
-- The **Data** tab expands into three sub categories: Databases, Shared Data, and Marketplace.
+**Home:**<br>
+Returns you to the main Snowflake landing page with quick access to recent items and resources.
 
-    - The **Databases** sub-tab shows information about the databases you have created or have privileges to access. You can create, clone, drop, or transfer ownership of databases as well as load data (limited) in the UI. Notice several databases already exist in your environment. However, we will not be using these in this lab. 
+**Search:**<br>
+Allows you to quickly find objects, queries, or metadata across your Snowflake environment.
 
-    - The **Shared Data** sub-tab is where data sharing can be configured to easily and securely share Snowflake table(s) among separate Snowflake accounts or external users, without having to create a second copy of the table data. At the end of this lab is a module on data sharing.
+**Projects:**<br>
+Provides access to Snowflake projects, including worksheets, scripts, and development tools.
 
-    - The **Marketplace** sub-tab loads the Snowflake Data Marketplace, a place where you can access third party datasets.
+**Data:**<br>
+Opens a view to browse and manage databases, schemas, tables, views, and other data objects.
 
-- The **Compute** tab expands into three sub categories: History, Warehouses, and Resource Monitors.
+**Data Products:**<br>
+Central location to discover, manage, and publish data listings and shares (e.g., Snowflake Marketplace).
 
-    - The **History** sub-tab allows you to view the details of all queries executed in the last 14 days in the Snowflake account.
+**AI & ML:**<br>
+Access AI and machine learning capabilities such as Snowpark ML, Cortex functions, and model deployment tools.
 
-    - The **Warehouses** sub-tab is where you set up and manage compute resources (virtual warehouses) to load or query data in Snowflake. Note a warehouse called “COMPUTE_WH (XS)” already exists in your environment. 
+**Monitoring:**<br>
+View dashboards and logs related to query performance, usage metrics, and system health.
 
-    - The **Resource Monitors** sub-tab allows you to build and review resource monitors. These are useful for managing compute costs.
+**Admin:**<br>
+Manage users, roles, account settings, and security configurations for your Snowflake environment.
 
-- From the **Worksheet** tab when you click the “+ Worksheet” button in the top right a new worksheet will be opened.
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION -->
 
-![Worksheets Tab](assets/Snowflake_UI_3.png)
-
-- In the left pane is the database objects browser which enables users to explore all databases, schemas, tables, and views accessible by the role selected for a worksheet. The bottom pane shows results of queries and operations. 
-
-- The various windows on this page can be resized by moving the small sliders on them.  And if during the lab you need more room to work in the worksheet, collapse the database objects browser in the left pane. Many of the screenshots in this guide will have this database object browser closed.
-
-![Worksheet Canvas](assets/Snowflake_UI_4.png)
-
-- At the top left of the page click on the downward facing arrow next to the worksheet name, select “Import SQL from File”, then browse to the “sigma_vhol.sql” file you downloaded in the prior module and select “Open”. All of the SQL commands you need to run for the remainder of this lab will now appear on the new worksheet. **Do not run any of the SQL commands yet**. We will come back to them later in the lab and execute them one at a time.
-
-![Import SQL Menu](assets/Snowflake_UI_5.png)
-
-![Footer](assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
 ## Provisioning Sigma
 Duration: 5
 
-**Note:**<br>
-If you have previously use Snowflake Partner Connect to establish a Sigma instance and you are still using that instance to do additional QuickStarts, you will need to [resync the connection to Snowflake in Sigma.](https://help.sigmacomputing.com/docs/troubleshoot-your-connection#sync-your-data)
-
-### Provisioning Sigma via Partner Connect 
-
-1. In the top ribbon of the Snowflake UI, click on the Partner Connect icon. From here you can automatically connect your Snowflake account with our partner applications available for a free trial. Click on the Sigma tile on the first row to start our new Sigma free trial.
+In the top ribbon of the Snowflake UI, click on the Partner Connect icon. Search for `Sigma` and click on the Sigma tile to start our new Sigma free trial.
 
 ![Partner Connect Menu](assets/partnerconnect.png)
 
-  - Sigma is the only cloud analytics and BI platform purpose-built as software-as-a service for Snowflake. Sigma offers a spreadsheet-like interface anyone can use to explore, analyze, and visualize data at unlimited scale.
+- Sigma is the only cloud analytics and BI platform purpose-built as software-as-a service for Snowflake. Sigma offers a spreadsheet-like interface anyone can use to explore, analyze, and visualize data at unlimited scale.
 
-  - In this section we will provision a Sigma account (called an organization). Sigma is an Elite Snowflake BI Partner and a free trial of Sigma is available via the Snowflake PartnerConnect which is within the Snowflake UI
+- In this section we will provision a Sigma account (called an organization). Sigma is an Elite Snowflake BI Partner and a free trial of Sigma is available via the Snowflake PartnerConnect which is within the Snowflake UI.
 
-  - **Direct Connection to Snowflake**  
-  Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to Snowflake , and pushes all queries to Snowflake for execution. Benefits of this include:
+### Direct Connection to Snowflake
+Sigma is unique versus many other BI products in that Sigma is fully-managed SaaS, offers a direct connection to Snowflake , and pushes all queries to Snowflake for execution. Benefits of this include:
 
-    - Data accessed by Sigma is always live and accurate
+- Data accessed by Sigma is always live and accurate
+- Unlimited query speed and scale as Sigma leverages the compute resources of Snowflake. Queries across up to hundreds of billions of rows are performant.
+- Stronger security and governance as data never leaves Snowflake and it is easy to control permissions via a single point of access. 
+- With many other BI products, data is extracted out of Snowflake to local desktops/servers for analysis which leads to stale data, limited scale and speed, and security issues with extracts scattered across many desktops and file shares.
 
-    - Unlimited query speed and scale as Sigma leverages the compute resources of Snowflake. Queries across up to hundreds of billions of rows are performant.
+- You will see a dialog box that will show you the objects that will be created in your account.  We will be using the `PC_SIGMA_WH` warehouse and the `PC_SIGMA_ROLE` for this lab.  These are automatically created for you as part of the LAUNCH.
 
-    - Stronger security and governance as data never leaves Snowflake and it is easy to control permissions via a single point of access. 
+Click `Connect`:
 
-  - With many other BI products, data is extracted out of Snowflake to local desktops/servers for analysis which leads to stale data, limited scale and speed, and security issues with extracts scattered across many desktops and file shares.
+<img src="assets/Provisioning_Sigma_3.png" width="500"/>
 
-  - You will see a dialog box that will show you the objects that will be created in your account.  We will be using the PC_SIGMA_WH warehouse and the PC_SIGMA_ROLE for this lab.  These are automatically created for you as part of the LAUNCH.
+Now click `Activate` which will open a new tab:
 
-  - Please do not select any databases.  We will be giving the correct permissions later in the lab. 
+<img src="assets/Provisioning_Sigma_4.png" width="600"/>
 
-2. Click “Connect”.
+A new tab for connecting to Sigma will pop-up in your web browser.
 
-![Connect To Sigma](assets/Provisioning_Sigma_3.png)
+Provide a company name and click `Continue`:
 
-3. Now click “Activate” which will open a new tab.
+<img src="assets/Provisioning_Sigma_5.png" width="350"/>
 
-![Partner Account Dialog](assets/Provisioning_Sigma_4.png)
+Create your profile:
 
-4. A new tab for connecting to Sigma will pop-up in your web browser. Please leave the tab in place as we will come back to it later when we begin working with Sigma.
+<img src="assets/Provisioning_Sigma_7.png" width="350"/>
 
-![Sigma Sign-up](assets/Provisioning_Sigma_5.png)
+When ready, Sigma will display some additional information and we can click `Get started using Sigma`:
 
-![tab close-up](assets/Provisioning_Sigma_6.png)
+<img src="assets/Provisioning_Sigma_8.png" width="400"/>
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION -->
 
-<!-- ------------------------ -->
-## Preparing & Loading Data into Snowflake
-Duration: 15
+## Getting Around In Sigma
+Duration: 6
 
+Once on the homepage click the `Hide` link to close the trial guide:
 
-### The Lab Story
-This Snowflake and Sigma lab will be done as part of a theoretical real-world “story” to help you better understand why we are performing the steps in this lab and in the order they appear. 
+<img src="assets/gsnow_5.png" width="800"/>
 
-Throughout this lab we will be working with some common sales data from our fictitious physical retail company ‘Plugs Electronics’. This data includes order and SKU numbers, product name, price, store name and region, and customer data. Some of this data is structured and some is JSON semi-structured.
+The home page is logically organized for quick access to key features.
 
-We will load this data into Snowflake and highlight some Snowflake capabilities. Via Snowflake PartnerConnect, we will then connect Sigma, a business intelligence platform, to Snowflake to then run some analytics on the data and turn it into several charts to form a dashboard.
+<aside class="negative">
+<strong>NOTE:</strong> Other users will only see content/features as configured by their assigned "Account Type". 
+</aside>
 
+The main functions are numbered and described below:
 
-### Create a Database & Table
-1. Go back to the Snowflake UI and click on the Worksheets tab. Per prior step, ensure the SQL text from the “sigma_vhol.sql” file has been loaded into the worksheet.
+<img src="assets/f1_6.png" width="800"/>
 
-![Worksheet with Code](assets/Loading_Data_Into_Snowflake_1.png)
+<img src="_shared_assets/1.png" width="25"/> **Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
 
-2. As you can see from the SQL we loaded into our worksheet, a worksheet can have more than one command in it.  SQL commands are delimited by semicolons.  In order to run a single command, all you have to do is click anywhere on the line/command you would like to execute, then click on the "Play" button.  
+<img src="_shared_assets/2.png" width="25"/> **Search:** You can click in the search bar at any point to search for content within Sigma.
 
-3. At this point, we are ready to click and "Play" on each line in our worksheet in order to get our Snowflake environment setup for our Sigma users.  Some of the steps will repeat things we have already executed in this lab, via the UI.  For the next few steps click on each line in the worksheet and run the command.  Each step in the lab guide has a description of what the command is doing.
+<img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
+    <ul>
+      <li><strong>Workbook:</strong> our spreadsheet-like UI for analyzing data</li>
+      <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
+      <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
+      <li><strong>Upload CSV:</strong> allows you to upload a CSV to the warehouse in order to perform analysis.</li>
+    </ul>
+     
+If at any time you notice an item labeled **BETA**, it means the feature is mature enough for all customers to evaluate while we finalize its release.
 
-**Warning**
-In this lab, never check the “All Queries” box at the top of the worksheet. We want to run SQL queries one at a time in a specific order; not all at once.
+If you ever need to know what is new in Sigma, there are two resources for that:
 
-1. Set the context of the WORKSHEET to use the role of SYSADMIN.
-   ```plaintext 
-   use role sysadmin; 
-   ```
+[Release Notes](https://help.sigmacomputing.com/changelog)
 
-2. Now, set the PC_SIGMA_WH to be used for commands run in the WORKSHEET.  As you can see by the (XS) to the right of the warehouse name, that an extra small warehouse is being used for this lab.  An XS translates to a single node cluster for our virtual warehouse. [Here is a link to Snowflake’s doc](https://docs.snowflake.com/en/user-guide/warehouses-overview.html#warehouse-size) covering warehouses in detail.
-   ```plaintext 
-   use warehouse pc_sigma_wh;
-   ```
+We also provide a summary on the "First Friday" of each month, which includes everything released in the prior month, including bug fixes.
 
-3. Create a database named PLUGS_DB in our account.  This will also automatically sets the context for the worksheet to use.
-   ```plaintext
-   create or replace database plugs_db;
-   ```
-
-4. For extra measure, command the worksheet to use the plugs_db database for the session.
+[First Friday Features can be found here](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
  
-   ```plaintext 
-   use database plugs_db;
-   ```
+<img src="_shared_assets/4.png" width="25"/> **My Content:**
+ <ul>
+      <li><strong>Home:</strong> will bring you back to home screen.</Li>
+      <li><strong>My Documents:</strong> is a personal folder for you to save content you have created.</Li>
+      <li><strong>Workspaces:</strong> are a way to organize and share content with specific members or teams within your organization. Items placed in workspaces can be accessed by anyone who has permission to that workspace.</Li>
+      <li><strong>Templates:</strong> provides a way to standardize and share workbook structures, for quick and consistent reuse.</Li>
+      <li><strong>Shared with Me:</strong> will show a list of items others have shared directly with you.</Li>
+      <li><strong>Recent:</strong> will bring up items you have accessed recently.</Li>
+      <li><strong>Favorites:</strong> will show a list of items that you have marked "favorite", for quicker access.</Li>
+      <li><strong>Trash:</strong> the typical recycle bin functionality.</Li>
+ </ul>
 
-5. Set the context of the WORKSHEET to use the public schema.
-   ```plaintext
-   use schema public;
-   ```
+<img src="_shared_assets/5.png" width="25"/> **Connections Section:**
+Visible to administrators and content creators by default, lists the data warehouses available. 
 
-6. Create an external stage in Snowflake that points to an external S3 bucket that has the data files we would like to use for the lab.
-   ```plaintext
-   CREATE or REPLACE STAGE plugs_db.public.sigma_stage URL = 's3://sigma-snowflake-vhol/data/';
-   ```
+Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the administration section.
 
-7. List all the contents of the stage that was just created.
+<aside class="negative">
+<strong>NOTE:</strong><br> Trials created from the Sigma website show the "Sigma Sample Database", which uses a Sigma provided Snowflake account. Trials created from cloud provider marketplaces may have additional connections.
+</aside>
 
-   ```plaintext
-   ls @sigma_stage;
-   ```
+<img src="_shared_assets/6.png" width="25"/> **Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
 
+<img src="_shared_assets/7.png" width="25"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
 
-### Loading Data Into Snowflake
-The data we will be using is demo data for a fictitious physical retailer called “Plugs Electronics." This data has been exported and pre-staged for you in an AWS s3 bucket in the us-west-1 (N California) region. There are two files.
+<img src="_shared_assets/8.png" width="25"/> **User Profile:**
+In the top right corner, there is a box with your username initial. Clicking on it reveals your profile, where you can make changes to your preferences and sign out. Other UI options may or may not be visible to you depending on your permissions.
 
-The first data file is “Plugs Transactions.csv” includes order and SKU numbers, product name, price, store name and region, and customer data. It is in comma-delimited format with double quote enclosing and a single header line. The data represents 4.7m rows and 1k MB total size. Below is a partial screenshot of the Plugs structured data CSV file:
+<img src="_shared_assets/9.png" width="25"/> **Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
 
-![Result Set View](assets/Loading_Data_Into_Snowflake_2.png)
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it! Sigma is fanatical about supporting our customers. 
+</aside>
 
-1. We have data files in our stage as shown in the previous list (ls).  These files have certain formats that need to be defined in Snowflake in order for the data to be loaded properly.  In this case we are creating a FILE FORMAT named COMMA_DELIMITED that is specifying that the data in the file is delimited by commas, has been compressed, has a record delimiter of newline character ‘\n’, has a first row record that has column names that needs to be skipped, etc.  More information regarding file formats can be found [here](https://docs.snowflake.com/en/sql-reference/sql/create-file-format.html). 
+<img src="_shared_assets/10.png" width="25"/> **Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
 
-   ```plaintext
-   create or replace table transactions  
-   (order_number integer,  
-   date timestamp,  
-   sku_number string,  
-   quantity integer,  
-   cost integer,  
-   price integer,  
-   product_type string, 
-   product_family string,  
-   product_name string,  
-   store_name string,  
-   store_key integer,  
-   store_region string,  
-   store_state string,  
-   store_city string,  
-   store_latitude integer,  
-   store_longitude integer,  
-   customer_name string,  
-   cust_key integer);
-   ```
+Now that we have our initial orientation done, we can move on to the next section.
 
+![Footer](assets/sigma_footer2.png)
+<!-- END OF GETTING AROUND IN THE UI -->
 
-   ```plaintext
-   create file format "PLUGS_DB"."PUBLIC".COMMA_DELIMITED  
-   TYPE = 'CSV'  
-   COMPRESSION = 'AUTO'  
-   FIELD_DELIMITER = ','  
-   RECORD_DELIMITER = '\n'  
-   SKIP_HEADER = 1  
-   FIELD_OPTIONALLY_ENCLOSED_BY = 'NONE'  
-   TRIM_SPACE = FALSE  
-   ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE  
-   ESCAPE = 'NONE'  
-   ESCAPE_UNENCLOSED_FIELD = '\134'  
-   DATE_FORMAT = 'AUTO'  
-   TIMESTAMP_FORMAT = 'AUTO'  
-   NULL_IF = ('\\N');  
-   ```
-
-
-2. This copies the data from our Plugs_Transactions.csv file and loads into our transactions table.  A SELECT COUNT(*) from the table will show we loaded 4,709,568 rows into the table.
-   ```plaintext
-   copy into transactions from @sigma_stage/Plugs_Transactions.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );
-   ```
-
-3. This creates our customer table for the second data file, or “Plugs_Customers.csv” which is composed of structured data and semi-structured data. It consists of Plugs Electronics customer information including age group and age, civil status, address, gender,if they are in the loyalty program, and more. It is also staged on AWS where the data represents 5k rows and 1.9 MB total size. 
-   ```plaintext
-      create or replace table Customer (cust_key integer, cust_json variant);
-   ```
-
-   The cust_json column is defined as VARIANT.  We use the variant data type to store json, parquet, orc, avro, and xml as they are semi-structured data, you can find more information on this [here](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html#variant).  We are able to store the data without applying structure, then use SQL with path notation to immediately start querying our semi-structured data asi-is.  Sigma’s integration with Snowflake generates SQL with path notation so that you do not have to write the SQL yourself.  This will be shown later on in the lab.
-
-   A partial screenshot of the file is:
-
-![JSON Result Set](assets/Loading_Data_Into_Snowflake_3.png)
-
-**SEMI-STRUCTURED DATA**
-
-Snowflake can easily load and query [semi-structured data](https://docs.snowflake.com/en/user-guide/semistructured-intro.html), such as JSON, Parquet, or Avro, without transformation. This is important because an increasing amount of business-relevant data being generated today is semi-structured, and many traditional data warehouses cannot easily load and query this sort of data. With Snowflake it is easy!
-
-1. Load data from our stage into our customer table.  The copy will load 4,972 rows into the table.  We recommend doing a select * from customer; to see how the semi-structured data differs from the structured cust_key column.  In the diagram below, we clicked in the general area on the second row of the cust_json column in the answer set, highlighted by the red box.  The UI then popped open the Details dialog box showing the contents (key value pairs) of the JSON.
-   ```plaintext
-   copy into customer from @sigma_stage/Plugs_Customers.csv FILE_FORMAT = ( FORMAT_NAME = 'COMMA_DELIMITED' );
-   ```
-
-![JSON Record](assets/Loading_Data_Into_Snowflake_4.png)
-
-2. Snowflake access rights are based [upon role based access control (RBAC)](https://docs.snowflake.com/en/user-guide/security-access-control-overview.html).  We now need to allow the PC_SIGMA_ROLE to use the plugs_db database.
-   ```plaintext
-   grant usage on database PLUGS_DB to role PC_SIGMA_ROLE;
-   ```
-
-3. We now allow the PC_SIGMA_ROLE to use the plugs_db.public schema.
-   ```plaintext
-   grant usage on schema PLUGS_DB.PUBLIC to role PC_SIGMA_ROLE;
-   ```
-
-4. Grant SELECT access on the transactions table to the pc_sigma_role.
-
-   ```plaintext
-   grant SELECT on TABLE PLUGS_DB.PUBLIC.TRANSACTIONS to role PC_SIGMA_ROLE;
-   ```
-
-5. Grant SELECT access on the CUSTOMER table to the pc_sigma_role.
-   ```plaintext
-   grant select on TABLE PLUGS_DB.PUBLIC.CUSTOMER to role PC_SIGMA_ROLE;
-   ```
-
-6. We completed granting access to the tables and data to the PC_SIGMA_ROLE, that will allow a user to now start reporting on the data from Sigma using this role.  This command will now set the context of the UI so that we are now using this role so that we can confirm Sigma will be able to access the data.
-   ```plaintext
-   use role PC_SIGMA_ROLE;
-   ```
-
-7. A select count(*) from the customer table should complete successfully.  If not, please go back and re-run the prior steps of this module.  Note, you will have to switch the context of the UI back to SYSADMIN before re-running the steps.
-   ```plaintext
-   select * from customer;
-   ```
-
-8. This will confirm that the PC_SIGMA_ROLE has access to the customer table as well.
-   ```plaintext
-   select count(*) from transactions;
-   ```
-
-![Footer](assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Using Sigma for Analysis & Visualizations
-Duration: 10
-
-
-### Start Working With Sigma
-Your Snowflake account has now been set up with the data that will be used by Sigma to create an workbook. In order to get started with Sigma, please click on the tab that was opened in your browser when we clicked the launch button from Partner Connect.
-
-![Company Name](assets/Using_Sigma_for_Analysis_1.png)
-
-1. Navigating to the Sigma tab in your browser will bring you to the Sigma dialog box to complete your Sigma Partner Connect setup.  Use a company name of your choosing, or something unique like your first initial plus last name for your ‘made up’ company url.  Click on “Continue”.
-
-![Company Name](assets/Using_Sigma_for_Analysis_2.png)
-
-2. Next enter your name and password and click “Create”.
-
-![Create Your Profile](assets/Using_Sigma_for_Analysis_3.png)
-
-3. If you are utilizing IP white listing  in Snowflake (most likely not applicable if you just signed up for a free Snowflake trial) [you can read more about that here](https://docs.snowflake.com/en/user-guide/network-policies.html#creating-network-policies), these are the URLs you would need to add to the white listing .  Click “Get Started Using Sigma”.
-
-![IP Address To Whitelist](assets/Using_Sigma_for_Analysis_4.png)
-
-### Sigma UI Orientation
-
-1. You now should see the home page for Sigma.
-
-![Sigma Home Screen](assets/Using_Sigma_for_Analysis_5.png)
-
-2. At the bottom left of the page are connections to Snowflake databases. There should be two showing. Click on the lower connection called “Snowflake PC_Sigma_WH” which is the virtual warehouse we created in prior steps. Click on the connection.
-
-3. On the resulting page, click one of the two blue “Add Permission” buttons.
-
-![Connection Details](assets/Using_Sigma_for_Analysis_6.png)
-
-4. Click into the bar that says “Search for members or teams” and a drop down appears. Select “All Members (Team)” so all users of Sigma have write access to this database. Then click the blue “Save” button.
-
-![Connection Permissions](assets/Using_Sigma_for_Analysis_7.png)
-
-5. If you expand the Plugs_DB database you will be able to see our two tables that were loaded into Snowflake.
-
-![Completed Connection Details](assets/Using_Sigma_for_Analysis_8.png)
-
-![Footer](assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Modeling The Data
-Duration: 10
-
-
-### Create a Sigma Dataset
-Sigma’s Datasets are a flexible way to build centralized data definitions and guide data exploration. Sigma balances administrative control with the freedom to find, add, and trust new data. Datasets function as sources of data for Workbooks.
-
-Sigma has the ability to join tables, other datasets, csv uploads, or your own SQL inside of datasets. In this section we will go over how to join tables to build a dataset as well as how to work with semi structured json data within the Sigma UI.
-
-1. At the top left of the Sigma UI click on the small crane icon to go to the home page.
-
-![Navigate Home](assets/Modeling_and_Accessing_The_Data_1.png)
-
-2. Let’s create a new Dataset and connect it to the “Sigma Sample Database”. Click on the “Create New” at the top left of the page and then select “Dataset”.
-
-![Create Dataset](assets/Modeling_and_Accessing_The_Data_2.png)
-
-3. On the next page we need to select a data source for the new Dataset. Under the “Table” option, click the blue “Select” button.
-
-![Datasource Options](assets/Modeling_and_Accessing_The_Data_3.png)
-
-4. On the left of the page ensure that “Snowflake PC_Sigma_WH” is selected in the Connection drop-down. Then expand the “Plugs_DB” and select the “Transactions” table.  You will get a preview of the table.  Next click ‘Get Started’ in the upper right hand corner to begin our data modeling.
-
-![Connection Navigation](assets/Modeling_and_Accessing_The_Data_4.png)
-
-5. On the top bar first select “Worksheet”, then navigate to the database symbol in the top right and select it, finally select the “+” symbol below the database symbol.
-
-![Worksheet Tab](assets/Modeling_and_Accessing_The_Data_5.png)
-
-6. On the next page we need to select a data source for us to join the “Transactions” table. Under the “Table” option, click the blue “Select” button.
-
-![Datasource Options](assets/Modeling_and_Accessing_The_Data_6.png)
-
-7. Navigate and select the “Customer” table under the “Plugs_DB database”.  Here you can select which columns you want to bring into the worksheet.  We will leave both columns selected.  Click Next.
-
-![Connection Navigation](assets/Modeling_and_Accessing_The_Data_7.png)
-
-8. Here you now have many options to decide how you would like to bring in the data.  Sigma will do its best to infer the correct join columns based on data type as well as the names of the columns.  You can select the type of join you wish to perform, the columns you wish to join to and optionally you can use formulas or multiple join keys if necessary. In this case we will select a Left Join and the join key will remain “CUST_KEY” for both tables.  Click Done.
-
-![Join Window](assets/Modeling_and_Accessing_The_Data_8.png)
-
-9. Sigma has now joined the tables as defined, and pulls in the fields that we selected.  You will notice that Sigma can natively identify variant data types based on the icon of the column for Cust JSON.  What this allows us to do is quickly pull out the key values pairs in that json very quickly. Select the dropdown from the Cust Json header and select ‘Extract Columns’.
-
-![Extract JSON Drop-down](assets/Modeling_and_Accessing_The_Data_9.png)
-
-10. Next we can select the key value pairs we wish to pull out.  Select the fields ‘AGE_GROUP’, ‘CUST_GENDER’, and ‘LOYALTY_PROGRAM’ and Click Confirm.
-
-![JSON Schema Modal](assets/Modeling_and_Accessing_The_Data_10.png)
-
-11. Now that we have joined the tables and extracted the JSON data we can publish our dataset by clicking the blue “Publish” button in the top right and start our analysis.
-
-![Expanded JSON Result](assets/Modeling_and_Accessing_The_Data_11.png)
-
-![Footer](assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
-## Accessing The Data
+## Create a Data Model
 Duration: 5
 
-### Sigma Workbook
-1. At the top left of the Sigma UI click on the small crane icon to go to the home page.
+### Use case
+For this demonstration, let’s assume we are a data analyst at a retailer called Plugs Electronics. Marketing wants to do some ad-hoc analysis against sales transactions and wants to work from trusted data without making mistakes. 
 
-![Go Home](assets/Modeling_and_Accessing_The_Data_12.png)
+Corporate policy dictates that marketing should not have access to actual customer names and addresses but city/state information is fine. 
 
-2. We are now back on the Sigma home page. Let’s now create a new Workbook and connect it to the Dataset that we just created. Click on the “Create Workbook” at the top left of the page.
+The CFO wants to make sure that any calculations that are performed meet the published standard.
 
-![Create Workbook](assets/Modeling_and_Accessing_The_Data_13.png)
+### Set up the data model
+Let's use Sigma's data modeling tools to create a reusable model to serve as the foundation for a workbook.
 
-3. On the next page we need to select a data source for the new workbook. On the left hand side first select the “Table” option, then select “Tables and Datasets”.
+To create or manage a data model, the following is required:
 
-![Add Table Element](assets/Modeling_and_Accessing_The_Data_14.png)
+- Users must be assigned an account type with the Create, Edit, and Publish datasets permissions enabled.
 
-![Select Source](assets/Modeling_and_Accessing_The_Data_15.png)
+- Users must be the data model owner or be granted Can edit access to the data model.
 
-4. On the resulting page select “My Documents” this is where our Dataset that we just created was saved.
+By default, Sigma account types provide the following data modeling permissions:
 
-![Navigate to Dataset](assets/Modeling_and_Accessing_The_Data_16.png)
+<img src="assets/dm_23.png" width="800"/>
 
-5. On the left of the page expand the select the “Transactions” Dataset.  You will get a preview of the data.  Next click ‘Done’ in the upper right hand corner to begin our analysis.
+Access to individual data models and workbooks are determined by [folder and document permissions](https://help.sigmacomputing.com/docs/folder-and-document-permissions)
 
-![Preview Dataset](assets/Modeling_and_Accessing_The_Data_17.png)
+From the Sigma homepage, click `Create new` > `Datamodel`:
 
-6. Notice how Sigma has a spreadsheet like interface that makes it easy to quickly get a glimpse of what data we have and allows for rapid development of workbooks and datasets.  The average business user can use our workbooks to explore data and self-serve in a governed and secure way.
+<img src="assets/dm_1.png" width="350"/>
 
-![Review Loaded Table](assets/Modeling_and_Accessing_The_Data_18.png)
+The data modeling page looks and behaves a lot like a standard Sigma workbook by design.
 
-**Spreadsheet-like Interface**
-Sigma is unique in empowering users to do analysis in an interface they already know and love: the spreadsheet. It also uses familiar functions found in spreadsheets. No need for SQL knowledge as the Sigma interface automatically, and behind the scenes, converts all user actions into optimized SQL. This interface helps speed up user adoption and success, especially with non-technical business users.
+The more we work with Sigma, the more metadata becomes available, which helps drive Sigma’s suggestions.
 
-![Footer](assets/Sigma_Footer.png)
+We can add elements to the page using the element bar. For example, we want to add a table:
 
-<!-- ------------------------ -->
+<img src="assets/dm_2a.png" width="600"/>
 
-## Analyzing The Data
-Duration: 18
+In our case, we want to use tables from the `Sigma Sample Database` > `Retail` database and `PLUGS_ELECTRONICS` schema:
 
-### Sigma Workbook Analysis
-Today we will be looking at our fictitious company Plugs Electronics data. It contains the retail transactions from our stores across the country as well as some attributes around our customers making the purchase. We will create some calculations, join tables, parse json, and build some visualizations with the ultimate goal of creating and embedding a dashboard for our Regional Sales Managers to get insights into the performance of their stores.
+<img src="assets/dm_2.png" width="400"/>
 
-1. First, if you select the column header above the “Cost” column and select “Add New Column”.
+There are five tables that can provide the requested information for marketing.
 
-![Add Column](assets/Analyzing_The_Data_1.png)
+<img src="assets/dm_3.png" width="300"/>
 
-2. This will take us to the formula bar where we can write formulas.  Lets type the function “[Quantity] * [Cost]” and click enter to get our Cost of Goods Sold. Double click the column header to rename the column to “COGS”.  We can also use the quick select $ left of the formula bar to format the column as a currency.
+### Base table
+To satisfy marketing's main request, we are going to create a "base table" by joining three tables together, culling the column list manually and creating a calculated column.
 
-![Define Column](assets/Analyzing_The_Data_2.png)
+Much of the data model interface follows the familiar Sigma workflow to make things as easy as possible. 
 
-3. This was a simple function, but if you click on the “ƒx” icon to the left of the formula bar, you can see a full list of all [the functions Sigma supports](https://help.sigmacomputing.com/docs/popular-functions).  Sigma also provides helpful tooltips and autocomplete within the formula bar to help guide users how to use the functions.
+From the `Element bar`, select `Data` and drag a `Table` element onto the page:
 
-![Formula Bar](assets/Analyzing_The_Data_3.png)
+<img src="assets/dm_4.png" width="325"/>
 
-4. Every action we take in Sigma produces machine generated ANSI compliant SQL that is pushed down to Snowflake ensuring the data is secure and up to date at all times.  Sigma never extracts from, or modifies data in, the cloud data source. You can see the queries we are generating by clicking the dropdown next to the refresh button on the top right and selecting “Query History”.
+Click `Select source`.
 
-![Query History](assets/Analyzing_The_Data_4.png)
+We could navigate to the table but it is easier to just search for `F_SALES` and select the table from the `RETAIL` schema:
 
-5. Next, if you select the column header above the “Price” column and select “Add New Column”.
+<img src="assets/dm_5.png" width="450"/>
 
-![Add Column](assets/Analyzing_The_Data_5.png)
+The table is added to the page and we can work with it just as we would in a Sigma workbook. 
 
-6. This will take us to the function bar where we can write formulas.  Lets type the function “[Quantity] * [Price]” and click enter to get our Revenue. Double click the column header to rename the column to “Revenue”. We can also use the quick select $ icon at the top to quickly format as a currency.
+Rename the table to `Plugs Sales`.
 
-![Define Column](assets/Analyzing_The_Data_6.png)
+### Join more tables
+Since we know that marketing will always need columns from the `D_CUSTOMER` and `F_POINT_OF_SALE` tables, we can join them directly. 
 
-7. Let's add one more column next to Revenue by selecting the column header and click “Add New Column”.
+Using joins, we’ll connect these two tables. Combined with the base table, this satisfies marketing’s initial request.
 
-![Add Column](assets/Analyzing_The_Data_7.png)
+From `Plugs Sales`, select `Element source` > `Join` from the table menu:
 
-8. This will take us to the function bar where we can write formulas.  Lets type the function “[Revenue] - [COGS]” and click enter to get our Profit. Double click the column header to rename the column to “Profit”.
+<img src="assets/dm_33.png" width="800"/>
 
-![Define Column](assets/Analyzing_The_Data_8.png)
+Search for `D_CUSTOMER` and select the one from the `RETAIL` schema.
 
-**Note:** All workbooks are considered purely exploratory until you, as their creator, actively save their first version. This means you have one central location to start both your ad hoc analysis and reporting. Once you begin exploring your data, you can choose to leave the unsaved workbook behind, or you can save it and continue to build it out as a report.
+Accept all columns and set the `Join keys` to `Cust Key`. There are 105 customers who have never made a purchase:
 
+<img src="assets/dm_34.png" width="800"/>
+
+Click the `+` icon to add another table to the join, this time selecting the `F_POINT_OF_SALE` table (from the RETAIL schema!) and joining on `Order Number`:
+
+<img src="assets/dm_35.png" width="800"/>
+
+Click `Preview output`.
+
+Sigma shows us the lineage of the joins and gives us an opportunity to deselect columns as needed:
+
+<img src="assets/dm_36.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Deselecting a column while in the lineage view does not prevent the column from being reselected in the data model later. If the column is not needed at all, delete the column prior to publishing the data model.
+</aside>
+
+Since this is our "base table" it is a good idea to delete columns that users will never need. For example, columns with duplicate information or key columns that won’t be used to create relationships later.
+
+Click `Done`.
+
+### Calculated columns
+Since our base table does not have columns for `Revenue` or `Profit`, we can add them easily:
+
+<img src="assets/dm_39a.png" width="600"/>
+
+Add a new column ,and rename it to `Revenue`. Set the formula to:
+```code
+[Sales Amount] * [Sales Quantity]
+```
+
+Add another column, and rename it to `Profit`, and set the formula to:
+```code
+[Revenue] - ([Cost Amount] * [Sales Quantity])
+```
+
+The results look like this:
+
+<img src="assets/dm_32a.png" width="800"/>
+
+This are simple functions, but if you click on the "ƒx" icon to the left of the formula bar, you can see a full list of all the [functions Sigma supports](https://help.sigmacomputing.com/docs/function-index?_gl=1*1yvoh6x*_gcl_au*NjE1OTY4MDkwLjE3NDIyMzg4NDA.*_ga*MTAzMjQzMDMwNC4xNzQyMjI4NzA5*_ga_PMMQG4DCHC*czE3NDg2MTM3NTgkbzE2MSRnMSR0MTc0ODYyMjU4NiRqNTckbDAkaDA.). Sigma also provides helpful tooltips and autocomplete within the formula bar to help guide users how to use the functions.
+
+### Machine-generated SQL
+Every action we take in Sigma produces machine generated ANSI compliant SQL that is pushed down to Snowflake ensuring the data is secure and up to date at all times. Sigma never extracts from, or modifies data in, the cloud data source. 
+
+You can see the queries we are generating by clicking the dropdown next to the refresh button on the top right and selecting `Query History`:
+
+<img src="assets/dm_5e.png" width="800"/>
+
+For more information, see [Query history reference](https://help.sigmacomputing.com/docs/examine-workbook-queries#query-history-reference)
+
+There is also a QuickStart on [Sigma's Query Engine](https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html?index=..%2F..index#0)
+
+Click `Publish`.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma may warn you that dependent documents may be impacted by our changes. This is fine as we have not created any content based on this data model yet.
+</aside>
+
+### Corporate policy
+In our use case, marketing is not allow to see customer names and addresses. We need to make sure that is enforced.
+
+It is simple to just delete the `Cust Name` and `Cust Address` from the base table and we are done.
+
+However, closer inspection shows that the `Cust Json Field` column has variant data that includes names and addresses as well. 
+
+Since Sigma makes extracting Json data so simple, we need to be sure to delete that column as well.
+
+For more information on extracting Json data in Sigma, see the QuickStart [Parsing JSON Data in Seconds](https://quickstarts.sigmacomputing.com/guide/tables_json_parsing/index.html?index=..%2F..index#0)
+
+Go ahead and delete these columns:
+
+<img src="assets/dm_5a.png" width="450"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Hiding columns does not prevent downstream workbook builders from accessing them.
+</aside>
+
+Save the data model as `Data Model QuickStart`:
+
+<img src="assets/dm_2b.png" width="500"/>
+
+Click `Publish`.
+
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION-->
+
+## The Workbook
+Duration: 5
+
+We can see the data model as users with permission will see it by clicking `Go to published version`:
+
+<img src="assets/dm_5c.png" width="450"/>
+
+Here we see the very basic information about the data model:
+
+<img src="assets/dm_5d.png" width="800"/>
+
+When a data model is fully built out, they can provide a ton of useful information to workbook builders. For example:
+
+<img src="assets/dm_55.png" width="800"/>
+
+For more information, see [Get started with data modeling](https://help.sigmacomputing.com/docs/get-started-with-data-modeling)
+
+Click `Explore` and we are launched into a workbook with the `Plugs Sales` table loaded for us. Since this data comes from a model, we know that it meets corporate guidelines and the data is trusted.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Spreadsheet-like Interface Sigma is unique in empowering users to do analysis in an interface they already know and love: the spreadsheet. It also uses familiar functions found in spreadsheets. No need for SQL knowledge as the Sigma interface automatically, and behind the scenes, converts all user actions into optimized SQL. This interface helps speed up user adoption and success, especially with non-technical business users.
+</aside>
 
 ### Create Visualizations
-It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization.  Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.  
+It is often easier to spot trends, outliers, or insights which lead to further questions when viewing data in a visualization. Sigma makes it easy to create visualizations of your data while also enabling you to dig into the data that makes up that visualization.
 
-1. Start the creation of a visualization by selecting the table that we just built, then click the “Create child element” icon on its top right corner and select “Visualization” to start creating a new chart.
+Start the creation of a visualization by selecting the `Plugs Sales` table and then click the `Create child element` icon on its top right corner and select `Chart` to start creating a new chart.
 
-![Child Element](assets/Analyzing_The_Data_9.png)
+<img src="assets/dm_5f.png" width="800"/>
 
-2. This will add a Visualization below our table.  In the left-hand bar you will see a dropdown that lists all of the supported visualizations.
+This will add a chart below our table. 
 
-![Viz Type](assets/Analyzing_The_Data_10.png)
+In the right-hand `Element panel` you will see a dropdown that lists all of the supported chart types:
 
-3. Select the bar chart.  On the X-Axis click the plus button and add our “Store State” column.  Notice you can search here for the column you wish to add.
+<img src="assets/dm_5g.png" width="400"/>
 
-![Select Column](assets/Analyzing_The_Data_11.png)
+For more information, see [Chart Types](https://help.sigmacomputing.com/docs/intro-to-visualizations#chart-types)
 
-4. We can also drag values onto the Axes instead of using the add button.  If we look at our columns on the bottom, find the “Profit” column and drag it under the Y-Axis. The value will automatically aggregate and become “Sum of Profit”.
+Select the bar chart. On the X-Axis click the plus button and add our `Cust State` column.
 
-![Y-axis](assets/Analyzing_The_Data_12.png)
+<aside class="negative">
+<strong>NOTE:</strong><br> Notice you can search here for the column you wish to add.
+</aside>
 
-5. Under the X-Axis header, click the dropdown next to “Store State” and go to Sort then “Sum of Profit”. This will put the x-axis in ascending order. Click it one more time to swap to descending order.
+We can also drag values onto the Axes instead of using the add button. 
 
-![Sort Bar Chart](assets/Analyzing_The_Data_13.png)
+If we look at our columns on the bottom, find the `Profit` column and drag it under the `Y-Axis`. 
 
-6. Now let's look at our sales over time to get an understanding of how we are trending.  Another way to create a new chart is by selecting the ‘+’ icon on the top left panel next to the ‘Page Elements’ title.  Click on the ‘+’ icon to get a list of elements that we can add to our canvas and choose ‘Viz’.
+The value will automatically aggregate and become `Sum of Profit`:
 
-![Add Element](assets/Analyzing_The_Data_14.png)
+<img src="assets/dm_5h.png" width="800"/>
 
-![Viz](assets/Analyzing_The_Data_15.png)
+Under the `X-Axis` header, click the dropdown next to `Cust State` and go to `Sort` then `Sum of Profit`. This will put the x-axis in ascending order. 
 
-7. After selecting the ‘Viz’ icon, you will be prompted to select a source to use for that ‘viz’.  You can see tabs for selecting:
-  - **In Use:** sources that are currently being used by other elements in the workbook.
-  - **New:** a new source that could be a table, dataset, SQL, or uploaded CSV.
-  - **Page Elements:** Any data elements already in the workbook, such as the bar chart we created or the table.
-From the In Use tab select the Workbook Element “TRANSACTIONS”
+<img src="assets/dm_5i.png" width="400"/>
 
-![Select Data Source](assets/Analyzing_The_Data_16.png)
+Now let's look at our sales over time to get an understanding of how we are trending. Another way to create a new chart is by using the `Element bar` and selecting the chart type we want:
 
-8. Click the visualization dropdown and select “Line”. Next, drag the “Date” column into the X-Axis. (Optionally, add it using the ‘+’ icon next to the x-axis.)
+<img src="assets/dm_5j.png" width="400"/>
 
-![X-Axis](assets/Analyzing_The_Data_17.png)
+Select a `Line` chart. Sigma prompts for a source. We can reuse the `Plugs Sales` table, or the other chart or something from some other data source too.
 
-9. Notice that Sigma has defaulted to change the aggregation to “Day” as the title now reads “Day of Date”.  We can change this aggregation at any time using the dropdown next to the field name, and selecting a new aggregation level under the “Truncate date” submenu. Let's change the aggregation level to be “Month”.
+Select `Plugs Sales`.
 
-![Set Aggregate](assets/Analyzing_The_Data_18.png)
+Next, drag the `Date` column into the `X-Axis`.
 
-10. Next we can place our “Revenue” column on the Y-Axis to see our revenue over time. Again, Sigma has automatically summed the revenue to the monthly level.
+Notice that Sigma has defaulted to change the aggregation to `Day` as the title now reads `Day of Date`. 
 
-![Y-Axis](assets/Analyzing_The_Data_19.png)
+We can change this aggregation at any time using the dropdown next to the field name, and selecting a new aggregation level under the `Truncate date` submenu. Let's change the aggregation level to be `Month`:
 
-11. We now have a line graph with revenue by month. Let's add some more detail by breaking the series out by store region. To do this add “STORE_REGION” to the color grouping section in the left sidebar.
+<img src="assets/dm_5k.png" width="400"/>
 
-![Line Graph](assets/Analyzing_The_Data_20.png)
+Next we can place our `Revenue` column on the `Y-Axis` to see our revenue over time. Again, Sigma has automatically summed the revenue to the monthly level:
 
-12. Let's create one more visualization around our customer, and regions.  Again, select the “+”  icon on the top left of the screen and then select “Viz”.
+<img src="assets/dm_5l.png" width="800"/>
 
-![Add Element](assets/Analyzing_The_Data_21.png)
+### Pivot Table
+By now the general workflow is pretty clear so adding a pivot table is not much different. Add one from the `Element bar` and configure it as shown:
 
-![Viz](assets/Analyzing_The_Data_22.png)
+<img src="assets/dm_5m.png" width="800"/>
 
+There are many more things we can do with pivot tables in Sigma. For more information, see [Working with pivot tables](https://help.sigmacomputing.com/docs/working-with-pivot-tables)
 
-13. For the data source, go to the In Use tab and select the Workbook Element “TRANSACTIONS”.
+Click `Publish`.
 
-![Select Data Source](assets/Analyzing_The_Data_23.png)
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION-->
 
-14. Next drag “Product Family” to the X-axis, and “Cust Key” to the Y axis. Click the dropdown on the  “Cust Key” value under the Y-axis, go to “Set aggregate”, and change the aggregation to “CountDistinct”.
+## Filtering Data
+Duration: 3
 
-![Change Aggregate](assets/Analyzing_The_Data_24.png)
+Filtering in Sigma is simple and powerful too. We can add a variety of filters using the `Element bar` but let's use a different workflow.
 
-15. Let's break out our customers by region. To do that drag “Store Region” to the color section. Then, unstack the bars by changing the bar chart clustering option right below the chart type drop-down.
+From the `Plugs Sales` table, open the column menu for `Cust State` and select `Filter`:
 
-![Add Color](assets/Analyzing_The_Data_25.png)
+<img src="assets/dm_5n.png" width="400"/>
 
-16. Finally let's create a pivot table around our customer demographics.  Again, select the “+”  icon on the top left of the screen and then select “Viz”.
+Normally, this method can be used to manually filter any page element but instead, let's convert it to page control:
 
-![Add Element](assets/Analyzing_The_Data_26.png)
+<img src="assets/dm_5o.png" width="400"/>
 
-![Pivot Table](assets/Analyzing_The_Data_27.png)
+This places a new list control on the page for us:
 
+<img src="assets/dm_5p.png" width="400"/>
 
-17. For the data source, go to the In Use tab and select the Workbook Element “TRANSACTIONS”.
+We can further configure various options of the control using the `Element panel`:
 
-![Select Data Source](assets/Analyzing_The_Data_28.png)
+<img src="assets/dm_5q.png" width="800"/>
 
-18. Next drag “Product Family” to the Pivot Rows, “CUST_Gender” to the Pivot Columns, and “Profit” to the Values section.
+The last thing we need to do is to configure the control to "target" other page elements:
 
-![Pivot Chart Config](assets/Analyzing_The_Data_29.png)
+<img src="assets/dm_5r.png" width="400"/>
 
-19. We now have a breakdown of our profit by product family and customer gender. Now that we have built out our workbook let’s go ahead and save it. Click the blue “Save As” button in the top right and name your report.
+Selecting just a few states from the filter will now filter all the elements on the target list:
 
-![Save Workbook](assets/Analyzing_The_Data_30.png)
+<img src="assets/dm_5s.png" width="800"/>
 
-![Footer](assets/Sigma_Footer.png)
+Lastly, click `Save As` and give your workbook a name.
 
-<!-- ------------------------ -->
-## Finalizing The Workbook
-Duration: 8
+![Footer](assets/sigma_footer2.png)
+<!-- END OF SECTION-->
 
-### Create Filters
-1. Next, let's add a filter to this data. We will do this by adding a control element to our canvas.  Controls enable interactions with the chart such as filter the charts when in use. Clicking the “+” icon on the upper left hand pane next to “Page Elements”, select “Date Range”.  This will add a Date Range control to the canvas.
-
-![Control Elements](assets/Finalizing_The_Workbook_1.png)
-
-  We will also see options for other Control Elements:
-  - **Number Range:** creating a range of values you wish to look at
-  - **List Values:** create a list of values for users to choose from
-  - **Text Box:** allow users to input free form text
-  - **Switch:** allow users to filter on Boolean (true/false) values
-  - **Drill Down:** specify specific drill paths
-
-2. After adding the “Date Range” control, let’s drag it to the top of the page and update the control_id to say “Date-Range” and update the control label to say “Select a Date Range”
-
-![Set Date Range](assets/Finalizing_The_Workbook_2.png)
-
-3. Next we need to tell the control which elements we want the control to apply to.  Clicking on the filter control, we have some options in the left hand pane.  Select “Targets”.  Then select “Add Target”.
-Next click on “Add Target” and select the “Transactions” data source.
-
-![Set Target](assets/Finalizing_The_Workbook_3.png)
-
-4. One additional way to create a page control is by starting with a filter. Sigma can easily start with a filter and convert the filter to  a page control.
-To try this out, right click on the drop down next to the column “Store State” and select the “Filter” option from the menu
-
-![Add Filter](assets/Finalizing_The_Workbook_4.png)
-
-5. A new filter will be added to the top of the page.
-
-![Filter Drop-down](assets/Finalizing_The_Workbook_5.png)
-
-6. Click on the Kebab menu to the right of the “Store State” Filter and select “Convert to Page Control”
-
-![Convert Filter](assets/Finalizing_The_Workbook_6.png)
-
-7. The filter will be added as a Page Control to the canvas. Move it to the same level as the Date Range control element by clicking and holding on the double kebab menu at the top right, and dragging it to the right of the Date Range filter
-
-8. Since this filter started out with a target, there is no need to add one. However, if there were additional data elements on the page that you want this filter to control, now would be the time to add those elements as targets.
-
-
-### Cleaning Up The Canvas
-1. To start, let's move our base data table to another page. This is done by selecting the options button (the three-dots icon) in the top right of the table and clicking on “Move to page” -> “New page”.
-
-![](assets/Finalizing_The_Workbook_7.png)
-
-2. Lets also rename page 1 to “Visuals” and page 2 to “Data” by double clicking on their existing names.
-
-![](assets/Finalizing_The_Workbook_8.png)
-
-3. Next, let's move our other charts and filters around on the “Visuals” page.  
-Hover over the line chart until you see a hand icon appear.  We can grab this chart and move it to the right hand side of our bar chart.  You can also resize any of the charts to make them fit as you need.
-
-![](assets/Finalizing_The_Workbook_9.png)
-
-4. Next, let’s give this dashboard some context for our users.  Using text elements, we can give the page a title, as well as descriptions to let users know what this dashboard is used for.
-
-Click the “+” icon on the upper left-hand pane below the Sigma logo, then select “Text”. This will add a text box to the canvas.
-
-![](assets/Finalizing_The_Workbook_10.png)
-
-You will also notice other UI elements available to you here:
-- Image: upload images or link to URLs to show an image on the canvas
-- Button: use buttons to navigate to other workbooks, websites, or download the workbook as a PDF
-- Embed: embed other websites or applications into your workbook
-- Spacer: used to add space between elements on the canvas
-- Divider: used to create hard divisions between sections of the canvas
-
-5. Drag the text box to the top of the canvas and enter the text “Sales Performance”.  Set the text style to be “Large Heading.” You can also adjust the font, color, and sizing as you see fit. If you’d like to add  a description as well, you can enter that under the title
-
-![](assets/Finalizing_The_Workbook_11.png)
-
-6. Finally, let’s go ahead and click “Publish” to save our work.
-
-![Footer](assets/Sigma_Footer.png)
-
-<!-- ------------------------ -->
 ## Conclusion
 Duration: 3
 
-In this lab we went through the process of setting up up a Snowflake free trial, and a Sigma free trial through Snowflake partner connect. We leveraged an [external stage](https://docs.snowflake.com/en/user-guide/data-load-overview.html#external-stages) in Snowflake to copy data into tables. Finally we did some light modeling, and an analysis resulting in a “Sales Performance” dashboard.
+In this QuickStart we went through the process of setting up up a Snowflake free trial, and a Sigma free trial through Snowflake partner connect. We did some light modeling, and an analysis resulting in a Sigma workbook.
 
 The seamless transition from Snowflake to Sigma enables data professionals to iterate quickly and with ease. This sets Sigma up uniquely to not only provide a robust client facing tool but also a great sand box for data engineers to profile and experiment with freshly landed data in Snowflake.
 
-### What we've covered
-- Signing up for a Snowflake free trial 
-- Loading sample data into Snowflake
-- Signing up for a Sigma free trial through Snowflake Partner Connect
-- Building a Sigma Dataset that models the sample data in Snowflake
-- Building a polished Sigma Workbook that analyzes the sample data  
+We really only skimmed the surface of Sigma. Be sure to check out the other resources below to get more information.
+
+Another great resource for learning Sigma are the [Fundamentals QuickStart series](https://quickstarts.sigmacomputing.com/?cat=fundamentals) 
 
 ### Helpful Resources
 
@@ -705,4 +535,4 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 - Sigma Blog: [https://www.sigmacomputing.com/blog/](https://www.sigmacomputing.com/blog/)
 - Resources and Case Studies: [https://www.sigmacomputing.com/resources/](https://www.sigmacomputing.com/resources/)
 
-![Footer](assets/Sigma_Footer.png)
+![Footer](assets/sigma_footer2.png)
