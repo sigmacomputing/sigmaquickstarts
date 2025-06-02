@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_1embedding_15_public_access_v35_public_v3
-summary: embedding_15_public_access_v3
+id: embedding_16_public_access_v3
+summary: embedding_16_public_access_v3
 categories: Embedding
 environments: web
 status: published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: embedding
 lastUpdated: 2024-05-19
 
-# Embedding 15 Public Access
+# Embedding 16: Public Access
 
 ## Overview 
 Duration: 5 
