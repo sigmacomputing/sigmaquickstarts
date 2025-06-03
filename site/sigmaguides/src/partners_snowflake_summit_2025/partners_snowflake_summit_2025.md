@@ -20,13 +20,7 @@ Your new employer Big Buys Electronics ("Big Buys") is a major electronics retai
 That's why they hired you, a seasoned category manager to take over a struggling category and right the ship.
 
 ### What You Will Build
-In this lab you will be creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
-
-### What You Will Learn
-- How to explore and build a dataset for training a model
-- How to build a machine learning model using Snowpark ML
-- How to register a model in the Snowpark Model Registry
-- How to expose the model to business users in Sigma
+In this lab you will create an analysis using AI, and leverage a data application and forecast out product performance.
 
 ### Target Audience
 Participants of Snowflake Summit 2025 who are interested in getting some hands-on with Sigma.
