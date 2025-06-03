@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2023-03-15
 
 # Embedding 09: Dynamic Role Switching with Snowflake

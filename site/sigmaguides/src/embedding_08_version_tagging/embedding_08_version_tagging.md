@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2023-03-24
 
 # Embedding 08: Version Tagging

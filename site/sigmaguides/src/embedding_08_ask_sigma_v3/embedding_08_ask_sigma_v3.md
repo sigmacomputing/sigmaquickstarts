@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-29
 
 # Embedding 08: Embedding Ask Sigma

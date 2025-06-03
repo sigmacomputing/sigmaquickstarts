@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-22
 
 # Embedding 13: Link Sharing

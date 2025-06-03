@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: deprecated
 lastUpdated: 2023-08-18
 
 # Embedding 10: Responsive Embeds
