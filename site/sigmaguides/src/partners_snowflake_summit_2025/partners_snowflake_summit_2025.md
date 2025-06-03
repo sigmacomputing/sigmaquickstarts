@@ -5,7 +5,7 @@ categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: partners
+tags: default
 lastUpdated: 2025-06-01
 
 # Snowflake Summit 2025 - Hands on Lab
