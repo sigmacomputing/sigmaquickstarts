@@ -23,7 +23,7 @@ For a full reference, see Sigma’s [Embed URL Parameters](https://help.sigmacom
 
 This QuickStart provides examples and screenshots of required and optional parameters to help developers understand their use.
 
-In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -132,6 +132,7 @@ Some common use-cases for UAs are to set values for:
 3: Dynamic warehouse role switching:<br>
 
 The specific parameter is:
+
 **1 - user_attributes:**<br>
 User attributes for the embed user. Pass multiple attributes in this format: {"attribute1":"value1","attribute2":"value2"}.
 
@@ -261,7 +262,7 @@ For example, if we set `menu_position` to `top` we see it at the top of the embe
 **7 - responsive_height:**<br>
 Setting this to true allows developers to access the `workbook:pageheight:onchange` JavaScript event.
 
-This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
+This is discussed in detail in the QuickStart: [Embedding 11: Responsive Embeds](https://quickstarts.sigmacomputing.com/guide/embedding_11_responsive_embeds_v3/index.html?index=..%2F..embedding#0)
 
 **8 - theme:**<br>
 Use any of the default themes (`Light`, `Dark`, or `Surface`), or any custom themes defined in your organization. 
@@ -431,6 +432,11 @@ For example, if the '/1000' is removed from the formula, the embed page will sho
 The signing key reference does not have the "embed" privilege enabled, likely an incorrect Sigma access credentials (Client Id / Secret) are being used or the credentials do not have `Embed` enabled for them.
 
 <img src="assets/uap_15a.png" width="600"/>
+
+**9: exp cannot be in the past:**<br> 
+The JWT session length has caused the JWT token to expire.
+
+<img src="assets/uap_15b.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

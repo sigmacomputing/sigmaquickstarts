@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: embedding
 lastUpdated: 2024-05-05
 
 # Embedding 01: Getting Started
@@ -86,9 +86,9 @@ These are the high-level use cases of JWT embedding that are most commonly seen:
 
 Sigma supports embedding in other third-party applications like Salesforce or Streamlit:
 
-[QuickStart: Embedding 11: Embed into Salesforce.](https://quickstarts.sigmacomputing.com/guide/embedding_12_secure_embedding_into_streamlit/index.html?index=..%2F..index#0)
+[QuickStart Use Case: Embed into Salesforce](https://quickstarts.sigmacomputing.com/guide/embedding_use_case_embed_into_salesforce_v3/index.html?index=..%2F..embedding#0)
 
-[QuickStart: Embedding 12: Secure Embedding into Streamlit.](https://quickstarts.sigmacomputing.com/guide/embedding_12_secure_embedding_into_streamlit/index.html?index=..%2F..index#0)
+[QuickStart Use Case: Secure Embedding into Streamlit](https://quickstarts.sigmacomputing.com/guide/embedding_use_case_secure_embedding_into_streamlit/index.html?index=..%2F..embedding#0)
 
 ### Benefits of JWT
 Signing your secure embed URLs with JWTs has several advantages:
@@ -126,7 +126,7 @@ Customers use this when security is not required, but there is a need to embed S
 
 For example, embedding some KPIs or charts on a company’s public website that anyone can see. 
 
-We demonstrate Public embedding in a separate [QuickStart: Embedding 02: Public Access.](https://quickstarts.sigmacomputing.com/guide/embedding_02_public_access/index.html?index=..%2F..index#0) 
+We demonstrate Public embedding in a separate QuickStart: [Embedding 16: Public Access](https://quickstarts.sigmacomputing.com/guide/embedding_16_public_access_v3/index.html?index=..%2F..embedding#0) 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

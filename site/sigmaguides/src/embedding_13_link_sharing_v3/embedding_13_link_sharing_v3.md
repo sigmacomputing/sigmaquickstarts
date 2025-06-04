@@ -79,7 +79,7 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 
 ### Prerequisites
 
-In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <ul>
   <li>Any modern browser is acceptable.</li>
@@ -134,7 +134,7 @@ Share the workbook with the `Sales_People` team we created in the `Embedding 01:
 ## Host Application Prep
 Duration: 5 
 
-In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0), we deployed a host application locally.
+In the QuickStart: "Embedding 01: Getting Started", we deployed a host application locally.
 
 For testing, we’ll use the pre-built page that demonstrates this approach.
 
