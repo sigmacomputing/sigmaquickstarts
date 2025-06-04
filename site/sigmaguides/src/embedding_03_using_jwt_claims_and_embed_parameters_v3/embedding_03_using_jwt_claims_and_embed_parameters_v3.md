@@ -1,6 +1,6 @@
 author: pballai
-id: embedding 03_using_jwt_claims_and_embed_parameters_v3
-summary: embedding 03_using_jwt_claims_and_embed_parameters_v3
+id: embedding_03_using_jwt_claims_and_embed_parameters_v3
+summary: embedding_03_using_jwt_claims_and_embed_parameters_v3
 categories: Embedding
 environments: web
 status: published
@@ -120,8 +120,6 @@ Audience claim. Must be `sigmacomputing` when using ver: 1.1, and is ignored wit
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Passing User Attributes via JWT Claims
-Duration: 5
 
 ## Passing User Attributes via JWT Claims
 Duration: 5
@@ -131,7 +129,7 @@ Sigma user attributes (UAs) act like named variables that personalize content an
 To pass values into these attributes at runtime, the parent application includes them in the JWT under a special object called `user_attributes`.
 
 **What does this look like in the JWT?**
-```json
+```code
 {
   "user_attributes": {
      "REGION": "EAST",
@@ -191,11 +189,11 @@ Set a new value for `Store_Region` in the `.env` file:
 
 After reloading the sample application in the browser, we can see the UA enforcing the `West` region:
 
-<img src="assets/uap_18.png" width="500"/>
+<img src="assets/uap_18.png" width="700"/>
 
 If we comment out the UA in `.env` and reload the browser, we see only the `East` region, even though no value was passed:
 
-<img src="assets/uap_19.png" width="500"/>
+<img src="assets/uap_19.png" width="700"/>
 
 This happens because we set a default value of `East` when creating the UA in Sigma.
 
@@ -222,9 +220,6 @@ We now see a mix of store regions (after ungrouping the table for readability) a
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-## Additional URL Query Parameters
-Duration: 5
 
 ## Additional URL Query Parameters
 Duration: 5
@@ -468,7 +463,7 @@ The signing key reference does not have the "embed" privilege enabled, likely an
 **9: exp cannot be in the past:**<br> 
 The JWT session length has caused the JWT token to expire.
 
-<img src="assets/uap_15b.png" width="600"/>
+<img src="assets/uap_15b.png" width="400"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

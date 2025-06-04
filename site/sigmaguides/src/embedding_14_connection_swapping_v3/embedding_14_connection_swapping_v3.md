@@ -3,9 +3,9 @@ id: embedding_14_connection_swapping_v3
 summary: embedding_14_connection_swapping_v3
 categories: Embedding
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-06-04
 
 # Embedding 14: Connection Swapping
@@ -565,7 +565,7 @@ Below is an example of what the custom SQL might look like when using custom use
 
 <img src="assets/dcs39.png" width="800"/>
 
-For more information, see the QuickStart: [Embedding 03: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding 03_using_jwt_claims_and_embed_parameters_v3/index.html?index=..%2F..embedding#0)
+For more information, see the QuickStart: [Embedding 03: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html?index=..%2F..embedding#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

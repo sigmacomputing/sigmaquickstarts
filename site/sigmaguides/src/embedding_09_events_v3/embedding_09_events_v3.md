@@ -158,7 +158,7 @@ For example, if we click the `East` button:
 
 <img src="assets/ev_5a.png" width="800"/>
 
-Conversely, if you select` West` from the list control, we can see the outbound event that matches:
+Conversely, if you select `East and West` from the list control, we can see the outbound event that matches:
 
 <img src="assets/ev_5b.png" width="800"/>
 

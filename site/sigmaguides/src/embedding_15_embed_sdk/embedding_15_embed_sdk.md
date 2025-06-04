@@ -421,15 +421,15 @@ Create a new workbook in Sigma and add any available table to it. It does not ma
 Save the workbook, the name does not matter at this point. 
 
 ### 3: Share the Workbook
-Click the caret to the right of the workbook's name and select `Share...`. Share the workbook with any team, making note of which you selected. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> If no teams exist yet, navigate to "Administration" > "Teams" and create a new public team.
-</aside>
+Click the share icon in the upper right corner. 
 
 <img src="assets/sdk24.png" width="800"/>
 
 We are sharing ours with the `Sales_People` team:
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If no teams exist yet, navigate to "Administration" > "Teams" and create a new public team.
+</aside>
 
 <img src="assets/sdk27.png" width="800"/>
 
@@ -471,7 +471,7 @@ For more information on using parameters and user attributes in Sigma embedding 
 
 Embed URL Parameters documentation, [see here.](https://help.sigmacomputing.com/docs/embed-url-parameters)
 
-[QuickStart on Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+[QuickStart on Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html?index=..%2F..embedding#0)
 
 Implement inbound and outbound events in embeds documentation, [see here.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
 

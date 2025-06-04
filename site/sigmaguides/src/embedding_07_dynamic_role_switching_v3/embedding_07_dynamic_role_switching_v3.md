@@ -155,7 +155,9 @@ We need to create a few roles in Snowflake so that Sigma can reference them for 
 <strong>IMPORTANT:</strong><br> It is best practice to create a role that returns no data for embedded use cases. By doing this we:
 
 **Explicit Deny:** If no role is assigned during embed, the default role ensures no rows are returned—preventing accidental data exposure.
+
 **Safe Default:** Prevents accidental exposure if a required user attribute is omitted during embed.
+2
 **Warehouse-Level Enforcement:** Ensures security policies are enforced directly by Snowflake, beyond Sigma filters or user attributes.
 </aside>
 
