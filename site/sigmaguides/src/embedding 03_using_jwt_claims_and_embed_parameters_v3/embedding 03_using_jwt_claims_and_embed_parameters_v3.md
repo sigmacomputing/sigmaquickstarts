@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_03_parameters_ua_v3
-summary: embedding_03_parameters_ua_v3
+id: embedding 03_using_jwt_claims_and_embed_parameters_v3
+summary: embedding 03_using_jwt_claims_and_embed_parameters_v3
 categories: Embedding
 environments: web
 status: published
@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-05-13
 
-# Embedding 03: Parameters and User-Attributes 
+# Embedding 03: Using JWT Claims and Embed Parameters
 
 ## Overview 
 Duration: 5 
@@ -58,6 +58,10 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 
 ## Required JWT Claims
 Duration: 20
+
+JWT is a secure way to pass user and session information. A claim is just a key-value pair in the token's payload — like "sub": "user@example.com" — that tells Sigma who the user is and what they’re allowed to access.
+
+These claims are part of the token payload, which is digitally signed so Sigma can verify the data hasn’t been tampered with.
 
 To securely embed Sigma content, a few claims are mandatory in every JWT. These ensure Sigma can authenticate the request and render the correct content.
 
@@ -116,14 +120,29 @@ Audience claim. Must be `sigmacomputing` when using ver: 1.1, and is ignored wit
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## User Attributes in JWT Claims
+## Passing User Attributes via JWT Claims
 Duration: 5
 
-Sigma user attributes (UAs) act like variables sent from the parent application at runtime using the embed-API.
+## Passing User Attributes via JWT Claims
+Duration: 5
 
-Administrators create a UA in Sigma, and the API uses it (by name) to update its value for a particular user session.
+Sigma user attributes (UAs) act like named variables that personalize content and control access. These attributes are **defined by administrators in Sigma** and are used across connections, datasets, and dashboards.
 
-UA usage is well documented. Links to documentation and QuickStarts are below:
+To pass values into these attributes at runtime, the parent application includes them in the JWT under a special object called `user_attributes`.
+
+**What does this look like in the JWT?**
+```json
+{
+  "user_attributes": {
+     "REGION": "EAST",
+     "TEAM": "SALES"
+  }
+}
+```
+
+This tells Sigma: “Use the value `EAST` for the user attribute `REGION`, and `SALES` for `TEAM` — just for this session.”
+
+The names must **exactly match** the user attributes created in Sigma.
 
 Some common use-cases for UAs are to set values for:
 
@@ -207,7 +226,20 @@ We now see a mix of store regions (after ungrouping the table for readability) a
 ## Additional URL Query Parameters
 Duration: 5
 
-The following parameters must be appended to the base URL (embed path) in the embed URL query string:
+## Additional URL Query Parameters
+Duration: 5
+
+In addition to the JWT itself, the final Sigma embed URL can include **query parameters** — small key-value pairs added to the end of the URL. These control how the embedded content appears or behaves.
+
+**What is a query parameter?**  
+A query parameter is a part of the URL that comes after a `?` or `&` and looks like `:key=value`. For example:  
+```
+https://app.sigmacomputing.com/embed/abc123?:embed=true&:disable_mobile_view=true
+```
+
+These are passed alongside the JWT and help customize the user experience (e.g., hiding menus or tooltips).
+
+The following parameters must be appended to the base embed URL:
 
 **1 - disable_mobile_view:**<br>
 If you set this boolean parameter to yes, workbooks won't automatically resize to the mobile layout. This can be useful when you do not want the content to be reduced to a mobile layout.

@@ -134,7 +134,7 @@ Now that we have the URL, we can use it in our sample host application.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## host Application Configuration
+## Host Application Configuration
 Duration: 10
 
 In VSCode, open the `embedding_qs_series_2` project and edit the `.env `file to configure the public access settings.
