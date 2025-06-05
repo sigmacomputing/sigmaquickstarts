@@ -6,8 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-10-23
-
+lastUpdated: 2023-06-04
 
 # Snowflake Key-pair Authorization
 
@@ -17,6 +16,10 @@ Duration: 5
 Sigma supports Basic Auth (username + password) and OAuth for new Snowflake connections.
 
 With this feature release, we've added support for the key pair authentication method (public key + private key) for Snowflake connections.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> At the time of this QuickStart Snowflake announce that they will require key pair authentication for service users starting in November 2025. This will be a mandatory requirement, and single-factor password authentication will no longer be supported. This change is part of Snowflake's broader initiative to enhance security and enforce multi-factor authentication (MFA) for all users. 
+</aside>
 
 Snowflake supports key pair authentication using a combination of public and private RSA key pairs. The private key remains with the client (Sigma), while the corresponding public key is stored by the holder of the correct public key (in this case, Snowflake).
 
@@ -313,7 +316,7 @@ Log into Sigma (as administrator) and navigate to `Administration` > `Connection
 
 <img src="assets/rsa10.png" width="800"/>
 
-Give your connection a name and fill out the required fields (as shown numbered 1-7) below:
+Give your connection a name and fill out the required fields:
 
 <img src="assets/rsa11.png" width="800"/>
 
@@ -402,13 +405,13 @@ Duration: 5
 
 As mentioned earlier, it is possible to create and update a Sigma connection via a RESTful API.
 
-We will demonstrate how to do that using the popular program [Postman](https://www.postman.com/).
+We will demonstrate how to do that using the popular program [Postman](https://www.postman.com/)
 
-If you would like to learn how to use Postman with the Sigma API, [reference this QuickStart](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0).
+If you would like to learn how to use Postman with the Sigma API, [reference this QuickStart](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
 
-If you are familiar with APIs and prefer to review [Sigma's swagger reference, that is here](https://docs.sigmacomputing.com/api/v2/).
+If you are familiar with APIs and prefer to review [Sigma's swagger reference, that is here](https://docs.sigmacomputing.com/api/v2/)
 
-[The general API documentation is here](https://docs.sigmacomputing.com/#overview).
+[The general API documentation is here](https://docs.sigmacomputing.com/#overview)
 
 #### Create a new Sigma Connection with Key Pair Auth:
 
@@ -500,14 +503,13 @@ Specifically, these include CSV upload, materialization, input tables, and datas
 
 Once you have your Sigma connection to Snowflake configured for key pair authentication, enabling write access is the same as if the connection was using basic authorization. 
 
-[Information about enabling write access for Snowflake can be found here:](https://help.sigmacomputing.com/docs/set-up-write-access)
+For more information, see [Set up write access](https://help.sigmacomputing.com/docs/set-up-write-access)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
-
 
 In this QuickStart we learned the features and benefits of key pair authentication and some background on the RSA encryption algorithm. Next, we covered how to make key pair authorization work in Sigma and Snowflake and how to rotate the keys manually. 
 

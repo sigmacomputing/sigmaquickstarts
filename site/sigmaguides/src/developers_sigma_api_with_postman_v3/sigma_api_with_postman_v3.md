@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-03-15
+lastUpdated: 2025-06-04
 
 # Sigma API with Postman
 
@@ -20,10 +20,12 @@ Postman is an API platform for developers to design, build, test and iterate the
 Postman offers a tiered pricing model, with a free option that allows for "designing, developing, and testing APIs". We will use the free tier for testing.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
+If something doesn’t work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
  ### Target Audience
 Developers who are interested in using the API methods provided by Sigma to automate operations or use functionality embedded in their own commercial applications. 
@@ -38,17 +40,11 @@ Developers who are interested in using the API methods provided by Sigma to auto
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-  
-### What You’ll Learn
-We will install Postman, add the Sigma API to a new Postman API, configure authorization and test a few API methods.
-
-### What You’ll Build
-When done, we will have a **ready for use** Sigma API in Postman we can use whenever we want to evaluate methods and the returns.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## **Setup Postman**
+## Setup Postman
 Duration: 10
 
 Postman offers a native web experience as well as a Desktop version. Either is fine; we will use the web version for simplicity. For this QuickStart there is not much difference in the web/desktop versions of Postman.
@@ -59,7 +55,7 @@ If you already have a Postman account you can use that or otherwise you will hav
 
 After signing into Postman, click into `Workspaces`:
 
-![Alt text](assets/pm1.png)
+<img src="assets/pm1.png" width="500"/>
 
 There are several workflows available in Postman and we will use this one:
 
@@ -79,9 +75,9 @@ Click the `Collections` icon and click then the `Import` icon:
 
 Next we will need to get the link (URL) to the latest Sigma API. Open another browser tab.
 
-[Browse to the Sigma API Reference.](https://help.sigmacomputing.com/reference/get-started-sigma-api)
+[Browse to the Sigma API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-Click the button `Download the Sigma OpenAPI Definitions`:
+Scroll down the page and click the button `Download the Sigma OpenAPI Definitions`:
 
 <img src="assets/pm6.png" width="800"/>
 
@@ -98,6 +94,10 @@ When done, it API will appear as a new `Collection`. It may be helpful to rename
 <img src="assets/pm32.png" width="500"/>
 
 Expand the `Sigma Public API` to see the available methods as below:
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We renamed our collection "Sigma Public API - TESTING". This is optional.
+</aside>
 
 <img src="assets/pm33.png" width="500"/>
 
@@ -121,7 +121,7 @@ Duration: 10
 
 In preparation for using the API we need to use Sigma to generate a new API Token.
 
-Log onto Sigma (as Administrator). Navigate to `Administration`, `APIs & Embed Secrets`
+Log onto Sigma (as Administrator). Navigate to `Administration`, `Developer access`.
 
 Click the `Create New` button:
 
@@ -129,11 +129,11 @@ Click the `Create New` button:
 
 Select `REST API`, give it a name and description. Some customers create a `Service Account` user for automation purposes; this is a best practice. Since we are just testing, you can choose any `Admin` user you prefer. Click `Create`.
 
-<img src="assets/pm12.png" width="800"/>
+<img src="assets/pm12.png" width="600"/>
 
 Copy the `ClientID` and `Secret` from the popup and save them to a secure location. We will use them later. Close the popup:
 
-<img src="assets/pm13.png" width="800"/>
+<img src="assets/pm13.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -343,7 +343,7 @@ The API provides methods to *add/update/delete* a Sigma instance using `POST` me
 
 We will use the following code to configure a POST message to create a new connection in Sigma. 
 
-[You can get this code and more information here.](https://help.sigmacomputing.com/reference/createconnection)
+For more information, see [Create a connection](https://help.sigmacomputing.com/reference/createconnection)
 
 **The values shown below are for example only:**
 
@@ -372,31 +372,24 @@ Configure the method `"Creates a new connection"` as shown and click `Send` (we 
 
 Logging into the Sigma portal we can see we have a new connection:
 
-<img src="assets/pm27.png" width="400">
+<img src="assets/pm27.png" width="700">
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
-
 
 ## What we've covered
 Duration: 5
 
 We created a Postman account, created API token secrets in Sigma, imported the Sigma API to a new Postman API, configured authorization and tested GET and POST methods.
 
-Sigma also provides sample code for many common API use cases (called "Recipes"). You can read more about using [Sigma Recipes here.](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?index=..%2F..index#0)
-
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
 
+[Blog](https://www.sigmacomputing.com/blog/)<br>
+[Community](https://community.sigmacomputing.com/)<br>
+[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
-
-[Sigma API Documentation](https://docs.sigmacomputing.com/)
-
-[Postman Learning Center](https://learning.postman.com/docs/getting-started/introduction/)<br>
-
-[Help Center Home](https://help.sigmacomputing.com)<br>
-[Sigma Community](https://community.sigmacomputing.com/)<br>
-[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
@@ -404,5 +397,5 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 [<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
+<!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
