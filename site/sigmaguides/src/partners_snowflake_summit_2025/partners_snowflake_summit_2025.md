@@ -3,10 +3,10 @@ id: partners_snowflake_summit_2025
 summary: partners_snowflake_summit_2025
 categories: partners
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2024-01-05
+tags: default
+lastUpdated: 2025-06-01
 
 # Snowflake Summit 2025 - Hands on Lab
 
