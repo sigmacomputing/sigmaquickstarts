@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2023-10-17
 
 # Embedding 12: Secure Embedding into Streamlit

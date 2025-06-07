@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2023-01-12
 
 # Embedding 06: Row Level Security

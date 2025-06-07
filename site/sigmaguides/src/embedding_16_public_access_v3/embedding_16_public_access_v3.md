@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2024-05-19
 
 # Embedding 16: Public Access
@@ -105,7 +105,7 @@ It doesn’t matter which workbook you choose. Once you complete your first embe
 
 We’ll use one of the prebuilt templates included in a Sigma trial, but the steps are the same no matter what content you choose to embed.
 
-	After logging into Sigma, navigate to `Templates` and click the `Plugs Electronics Profit Planning Tool` example to open that template:
+After logging into Sigma, navigate to `Templates` and click the `Plugs Electronics Profit Planning Tool` example to open that template:
 
 <img src="assets/pa_1.png" width="800"/>
 
@@ -134,7 +134,7 @@ Now that we have the URL, we can use it in our sample host application.
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## host Application Configuration
+## Host Application Configuration
 Duration: 10
 
 In VSCode, open the `embedding_qs_series_2` project and edit the `.env `file to configure the public access settings.
@@ -148,7 +148,7 @@ In the VSCode terminal, start the local web server:
 npm start
 ```
 
-	In a browser, go to:
+In a browser, go to:
 ```
 http://localhost:3000/public_access/?mode=public_access
 ```

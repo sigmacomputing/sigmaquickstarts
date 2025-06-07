@@ -3,9 +3,9 @@ id: embedding_14_connection_swapping_v3
 summary: embedding_14_connection_swapping_v3
 categories: Embedding
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-06-04
 
 # Embedding 14: Connection Swapping
@@ -15,7 +15,7 @@ Duration: 5
 
 This QuickStart introduces and demonstrates Sigma embedding using Dynamic Connection Swapping **(DCS)**. 
 
-Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#1)
+Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some steps may not be shown in detail as we assume you have taken these other two QuickStarts or are familiar with Sigma workflows.
@@ -489,7 +489,7 @@ Repeat the process for `Client_B`.
 ## Testing
 Duration: 5
 
-In the QuickStart [Embedding 01: Getting Started]() we deployed a host application locally.
+In the QuickStart: "Embedding 01: Getting Started", we deployed a host application locally.
 
 For testing, we'll use the prebuilt page that demonstrates this approach.
 
@@ -565,7 +565,7 @@ Below is an example of what the custom SQL might look like when using custom use
 
 <img src="assets/dcs39.png" width="800"/>
 
-For more information, see the QuickStart: [Embedding 03: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_03_parameters_ua_v3/index.html?index=..%2F..embedding#0)
+For more information, see the QuickStart: [Embedding 03: Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html?index=..%2F..embedding#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

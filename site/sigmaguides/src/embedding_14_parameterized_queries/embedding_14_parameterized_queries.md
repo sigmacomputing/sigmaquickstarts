@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2024-08-02
 
 # Embedding 14: Parameterized Queries

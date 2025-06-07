@@ -253,7 +253,7 @@ Before we can create a relationship, we need to add the two tables we want to ex
 
 Add the `D_PRODUCT` and `D_STORE` tables from the `RETAIL` schema directly to the workbook.
 
-Click the  <img src="assets/eyeicon.png" width="40"/> icon to prevent the tables from appearing in the published data model:
+We want to prevent the tables from appearing in the published data model, so we can toggle `Visible as source` off for both tables:
 
 <img src="assets/dm_10a.png" width="800"/>
 
@@ -267,11 +267,11 @@ Configure the first relationship for `D_PRODUCT` as:
 
 Repeat the process to add `D_STORE` as another relationship:
 
-<img src="assets/dm_8.png" width="600"/>
+<img src="assets/dm_8.png" width="500"/>
 
 We now have two relationships, which can be edited by clicking on the pencil icon:
 
-<img src="assets/dm_9.png" width="350"/>
+<img src="assets/dm_9.png" width="450"/>
 
 We can access the ERD as shown:
 
