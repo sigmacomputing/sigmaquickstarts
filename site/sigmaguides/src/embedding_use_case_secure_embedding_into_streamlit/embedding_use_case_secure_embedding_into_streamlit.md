@@ -85,7 +85,7 @@ It includes only Conda, Python, the packages they depend on, and a small number 
 
 Packages not included must be installed manually or called at runtime.
 
-[Use the following link to download the Miniconda.](https://docs.conda.io/en/latest/miniconda.html) Download the version that includes **Python 3.8 or above** based on your operating system and processor (e.g., x86 32-bit, 64-bit, or Apple Silicon).
+[Use the following link to download the Miniconda](https://docs.conda.io/en/latest/miniconda.html) Download the version that includes **Python 3.8 or above** based on your operating system and processor (e.g., x86 32-bit, 64-bit, or Apple Silicon).
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Check the Snowflake Snowpark documentation for the latest version information. Related installation steps may have changed since this QuickStart was published. 

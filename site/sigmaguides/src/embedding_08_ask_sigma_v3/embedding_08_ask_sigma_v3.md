@@ -220,7 +220,8 @@ Ensure corporate governance by restricting source data used for analysis and pre
 **2: Trust**<br>
 Ensure that only verified, trusted data sources are used. Decisions made from bad data are time-consuming and potentially costly too.
 
-**3: Exploration**<br>  
+**3: Exploration**
+
 Allow users to launch selected results into a workbook for further analysis or sharing.
 
 <img src="./assets/as_10.png" width="800"/>
