@@ -608,7 +608,7 @@ On the `F_SALES` table, open its menu and select `Move to` > `Dashboard`:
 Click `Publish`.
 
 ### Use a page for instructions or useful information
-Creating a dedicated workbook page to to inform and assist users who are looking at the workbook is a best practice.
+Creating a dedicated workbook page to inform and assist users who are looking at the workbook is a best practice.
 
 As an example, the image below is the `Home` page from the `Financial Services: Portfolio Risk Modeling` workbook. It has informative text along with some navigation buttons along the top:
 
