@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-23
 
 # Use Case: Secure Embedding into Streamlit
@@ -85,7 +85,7 @@ It includes only Conda, Python, the packages they depend on, and a small number 
 
 Packages not included must be installed manually or called at runtime.
 
-[Use the following link to download the Miniconda.](https://docs.conda.io/en/latest/miniconda.html) Download the version that includes **Python 3.8 or above** based on your operating system and processor (e.g., x86 32-bit, 64-bit, or Apple Silicon).
+[Use the following link to download the Miniconda](https://docs.conda.io/en/latest/miniconda.html) Download the version that includes **Python 3.8 or above** based on your operating system and processor (e.g., x86 32-bit, 64-bit, or Apple Silicon).
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Check the Snowflake Snowpark documentation for the latest version information. Related installation steps may have changed since this QuickStart was published. 
@@ -103,7 +103,7 @@ Now that Miniconda and Python (v3.8 or higher) are installed, we can move to the
 ## Setup VSCode
 Duration: 20
 
-[Install VSCode from Microsoft's download site.](https://code.visualstudio.com/download)
+[Install VSCode from Microsoft's download site](https://code.visualstudio.com/download)
 
 Run the installer and accept all default settings.
 
@@ -129,7 +129,7 @@ Search for Python, then select and install the extension shown below.
 <strong>NOTE:</strong><br>Microsoft also offers a Python extension called Pylance, which is optional but recommended to complete this QuickStart. Pylance improves productivity, reduces errors, and enhances the overall experience of writing Python in VSCode.
 </aside>
 
-[Link to Pylance Extension page.](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+[Pylance Extension page](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 
 We now have a development environment ready, but we need to do a few more steps.
 

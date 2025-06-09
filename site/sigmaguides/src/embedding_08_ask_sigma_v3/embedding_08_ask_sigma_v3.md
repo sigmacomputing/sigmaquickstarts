@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-29
 
 # Embedding 08: Embedding Ask Sigma
@@ -17,7 +17,7 @@ This QuickStart guides you through the process of embedding Ask Sigma—Sigma's 
 
 You'll learn how to integrate natural language querying capabilities, enabling users to interact with data seamlessly within your product environment. By the end, you'll have a functional, embedded Ask Sigma instance, ready to enhance user engagement and data accessibility.
 
-Before proceeding, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#1)
+Before proceeding, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 ### What is Ask Sigma?
 Ask Sigma is Sigma's natural language query interface designed to function like a data analyst. It allows users to pose questions in everyday language and receive guided, transparent analyses. 
@@ -220,7 +220,8 @@ Ensure corporate governance by restricting source data used for analysis and pre
 **2: Trust**<br>
 Ensure that only verified, trusted data sources are used. Decisions made from bad data are time-consuming and potentially costly too.
 
-**3: Exploration**<br>  
+**3: Exploration**
+
 Allow users to launch selected results into a workbook for further analysis or sharing.
 
 <img src="./assets/as_10.png" width="800"/>

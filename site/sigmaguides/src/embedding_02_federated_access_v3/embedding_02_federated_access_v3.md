@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2024-05-07
 
 # Embedding 02: Federated Access
@@ -32,7 +32,7 @@ For more information, see [using SSO with Sigma](https://help.sigmacomputing.com
 
 Additional information is also available: [managing user and teams with SCIM](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim)
 
-In this QuickStart, we will use the local host application framework we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application framework we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -110,7 +110,7 @@ Now that you have a high-level understanding of federated access, let's explore 
 ## Team and Workspace 
 Duration: 5
 
-In the QuickStart [Embedding 01: Getting Started](), we discussed and created some teams and workspaces. 
+In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0), we discussed and created some teams and workspaces. 
 
 To recap: 
 
@@ -317,7 +317,7 @@ Now, when we refresh the host application in the browser, we see the single-elem
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Test 2: Restrict Client_B to one workbook page.
+## Restrict Client_B to One Workbook Page
 Duration: 5
 
 Restricting a team to a workbook page follows the same process as element restriction. 

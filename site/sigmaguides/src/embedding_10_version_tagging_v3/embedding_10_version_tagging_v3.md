@@ -5,7 +5,7 @@ categories: embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-30
 
 # Embedding 10: Version Tagging
@@ -33,7 +33,7 @@ In this QuickStart, we will demonstrate using Postman to simulate a CI/CD workfl
 
 **Some steps may not be shown in detail as we assume you have completed any prerequisites and are familiar with Sigma workflows.**
 
-Before proceeding with this QuickStart guide, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#1)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -318,7 +318,7 @@ Finally, copy the URL from your browser and store it in a text file — we’ll 
 ## Host Application Setup
 Duration: 10
 
-In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0), we deployed a native application locally.
+In the QuickStart "Embedding 01: Getting Started", we deployed a native application locally.
 
 For testing, we’ll use the pre-built embed page that demonstrates this approach.
 

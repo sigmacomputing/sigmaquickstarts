@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-27
 
 # Use Case: Embed into Salesforce

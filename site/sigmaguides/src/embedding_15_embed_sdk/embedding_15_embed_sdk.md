@@ -73,7 +73,7 @@ For this QuickStart, we will demonstrate using Visual Studio Code (VSCode), but 
 
 VSCode, is a source-code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git.
 
-[Install VSCode from Microsoft's download site.](https://code.visualstudio.com/download)
+[Install VSCode from Microsoft's download site](https://code.visualstudio.com/download)
 
 Run the installation with all defaults.
 
@@ -87,7 +87,7 @@ Duration: 5
 
 For experienced developers who just want to see how to use the SDK in a React project, we provide the following information.
 
-The pubic embed-sdk git repository is [here.](https://github.com/sigmacomputing/embed-sdk)
+The pubic embed-sdk git repository is [here](https://github.com/sigmacomputing/embed-sdk)
 
 <aside class="negative">
 <strong>NOTE:</strong><br> If you are interested in running a sample application that is included in a git repo, skip to the section "Running the Sample Application".
@@ -133,9 +133,9 @@ To build:
 pnpm run build
 ```
 
-For additional information on Sigma embedding, see the [documentation.](https://help.sigmacomputing.com/docs/intro-to-embedded-analytics)
+For additional information on Sigma embedding, see the [documentation](https://help.sigmacomputing.com/docs/intro-to-embedded-analytics)
 
-There is also a QuickStart series on embedding [here.](https://quickstarts.sigmacomputing.com/?cat=embedding)
+There is also a QuickStart series on embedding [here](https://quickstarts.sigmacomputing.com/?cat=embedding)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -149,7 +149,7 @@ To save you time, we've stored all the necessary project files in a [GitHub](htt
 
 To clone the git repository in VSCode, click the link to `Clone Git Repository`:
 
-We have made the source code available for this QuickStart's demonstration in a [public GitHub repository.](https://github.com/sigmacomputing/quickstarts-public).
+We have made the source code available for this QuickStart's demonstration in a [public GitHub repository](https://github.com/sigmacomputing/quickstarts-public).
 
 While you may clone the entire repository (it is not that large), we want to avoid cloning sections of the repository that are not of immediate interest. 
 
@@ -409,7 +409,7 @@ Check the box on for `Embedding`, provide a name and assign the new credentials 
 
 Copy the `Client Id` and `Secret` and update the `.env` file that is part of the new `basic-example` folder, over-writing the old values. `Save` the `.env` file.
 
-For more information on generating embed client credentials, [see here.](https://help.sigmacomputing.com/docs/generate-embed-client-credentials)
+For more information on generating embed client credentials, [see here](https://help.sigmacomputing.com/docs/generate-embed-client-credentials)
 
 ### 2: Create a new workbook
 Create a new workbook in Sigma and add any available table to it. It does not matter at this point what content is added.
@@ -421,19 +421,19 @@ Create a new workbook in Sigma and add any available table to it. It does not ma
 Save the workbook, the name does not matter at this point. 
 
 ### 3: Share the Workbook
-Click the caret to the right of the workbook's name and select `Share...`. Share the workbook with any team, making note of which you selected. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> If no teams exist yet, navigate to "Administration" > "Teams" and create a new public team.
-</aside>
+Click the share icon in the upper right corner. 
 
 <img src="assets/sdk24.png" width="800"/>
 
 We are sharing ours with the `Sales_People` team:
 
+<aside class="negative">
+<strong>NOTE:</strong><br> If no teams exist yet, navigate to "Administration" > "Teams" and create a new public team.
+</aside>
+
 <img src="assets/sdk27.png" width="800"/>
 
-For more information on teams in Sigma, [see here.](https://help.sigmacomputing.com/docs/manage-teams)
+For more information on teams in Sigma, [see here](https://help.sigmacomputing.com/docs/manage-teams)
 
 ### Generate Embed URL
 Open the workbook's menu again and select `Embedding` this time.
@@ -469,11 +469,11 @@ The workbook we elected to embed is shown on the React application page, in the 
 
 For more information on using parameters and user attributes in Sigma embedding scenarios, the following resources are available:
 
-Embed URL Parameters documentation, [see here.](https://help.sigmacomputing.com/docs/embed-url-parameters)
+Embed URL Parameters documentation, [see here](https://help.sigmacomputing.com/docs/embed-url-parameters)
 
-[QuickStart on Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_05_leverage_parameters_and_ua/index.html?index=..%2F..index#0)
+[QuickStart on Parameters and User-Attributes](https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html?index=..%2F..embedding#0)
 
-Implement inbound and outbound events in embeds documentation, [see here.](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
+Implement inbound and outbound events in embeds documentation, [see here](https://help.sigmacomputing.com/docs/inbound-and-outbound-events-in-embeds)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2024-05-12
 
 # Embedding 04: Isolation Solutions
@@ -19,7 +19,7 @@ This QuickStart focuses on the different isolation strategies available in Sigma
 
 We'll explore how you can leverage Sigma's flexible security model to control who sees what content, which data slices are accessible, and which features are available—all while keeping user management streamlined.
 
-While Sigma's embedding framework uses JWTs (JSON Web Tokens) to securely authenticate and authorize each request, we won’t go deep into JWT mechanics here. That’s covered in detail in [Embedding 01: Getting Started]()
+While Sigma's embedding framework uses JWTs (JSON Web Tokens) to securely authenticate and authorize each request, we won’t go deep into JWT mechanics here. That’s covered in detail in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 Instead, we’ll focus on practical methods for isolating content and data:
 
@@ -156,7 +156,7 @@ Restricts access to specific columns of data using user attributes or filters at
 <strong>IMPORTANT:</strong><br> A best practice is to apply column-level security in a data model.
 </aside>
 
-A detailed example of using CLS in a Sigma data model is available in the QuickStart [Fundamentals 10: Data Modeling
+A detailed example of using CLS in a Sigma data model is available in the QuickStart: [Fundamentals 10: Data Modeling
 ](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#6)
 
 For more information, see [Using CLS-restricted columns in formulas](https://help.sigmacomputing.com/docs/column-level-security)
@@ -205,7 +205,7 @@ The user attribute value can be set using Sigma’s API, manually through Sigma�
 **3 - Dynamic Role Switching:**<br>
 Sigma allows you to dynamically assign a Snowflake role to a user at runtime via user attributes. This ensures the user’s data access adheres to Snowflake’s role-based security policies, including Row Access Policies and Column Masking Policies.
 
-There is also a QuickStart [Embedding 09: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_09_dynamic_role_switching_snowflake/index.html?index=..%2F..index#0) to covers this in detail.
+There is also a QuickStart: [Embedding 09: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_role_switching_v3/index.html?index=..%2F..embedding#0) to covers this in detail.
 
 **4 - Dynamic Connection Switching:**<br>
 In embedded use cases, Sigma can swap the Snowflake connection being used on a per-user basis. This is particularly useful for customers isolating data across multiple Snowflake accounts or warehouses.
@@ -276,7 +276,7 @@ Feature-level authorization is managed through account types.
 
 Account types enable you to manage user access to specific features and capabilities available through each license tier. 
 
-For example, Sigma offers four license types as described [here](). Each default account type (e.g., View, Act, Analyze, Build) has a predefined set of features associated with it:
+For example, Sigma offers four license types as described [here](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_role_switching_v3/index.html?index=..%2F..embedding#0). Each default account type (e.g., View, Act, Analyze, Build) has a predefined set of features associated with it:
 
 <img src="assets/eis_3.png" width="800"/>
 

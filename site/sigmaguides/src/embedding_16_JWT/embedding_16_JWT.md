@@ -5,7 +5,7 @@ categories: Embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: deprecated
 lastUpdated: 2024-10-24
 
 # Embedding 16: Secure Embedding with JWT

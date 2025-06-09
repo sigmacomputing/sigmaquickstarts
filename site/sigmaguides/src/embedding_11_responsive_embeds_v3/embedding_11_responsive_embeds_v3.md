@@ -5,10 +5,10 @@ categories: Embedding
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: embedding
+tags: default
 lastUpdated: 2025-05-20
 
-# Embedding 11 Responsive Embeds
+# Embedding 11: Responsive Embeds
 
 ## Overview 
 Duration: 5 
@@ -39,7 +39,7 @@ In essence, making an iframe dynamic or responsive is about ensuring that the co
 
 Since Sigma uses iframes for embedding, this issue is fairly easy to avoid.
 
-In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -99,7 +99,7 @@ Share the workbook with the `Sales_People` team we created in the Getting Starte
 
 Click on the `Profit Planning Tool` page tab and copy the URL directly from the browser.
 
-Because we selected a page tab, we’ll need to adjust the URL slightly as documented in [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use1)
+Because we selected a page tab, we’ll need to adjust the URL slightly as documented in [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)
 
 The correct URL syntax for a page is:
 
