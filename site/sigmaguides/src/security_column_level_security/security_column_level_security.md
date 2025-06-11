@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-12-07
+lastUpdated: 2025-06-011
 
 # Implementing Column Level Security
 

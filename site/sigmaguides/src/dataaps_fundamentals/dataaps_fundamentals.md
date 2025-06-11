@@ -350,6 +350,9 @@ Select each control (shift+click) and the `Create Project` button.
 
 At the top right, choose the `Create container` option from the selected elements menu:
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure to include the "Create Project" button. We will add a replacement back later.
+</aside>
 <img src="assets/dataaps_fun_1u.png" width="800"/>
 
 <aside class="positive">
@@ -421,6 +424,8 @@ Actions can be added in series to create dynamic behaviors. For more information
 
 ### Step 5: 
 Return to the `Project Tracker` page and add a button titled `Create Project`. 
+
+This button replaces the `Create Project` button we moved to the modal earlier.
 
 Add an action to `Open a Modal` for the `Modal - Create Project`:
 
