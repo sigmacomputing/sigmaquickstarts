@@ -67,7 +67,9 @@ Add a new column, rename it to `Revenue` and set the formula to:
 ```
 Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
 
-Filter the table down to just `Order Number` and set the range to `131-133`:
+Filter the table down to just `Order Number` and set the range to `131-133`.
+
+Group the data on `Order Number`:
 
 <img src="assets/af-1.png" width="800"/>
 
@@ -157,20 +159,25 @@ Make it even more clear to the user with conditional formatting:
 
 <img src="assets/af-10.png" width="800"/>
 
+### Add a modal
+Add a modal from the lower left corner of the page:
+
+<img src="assets/af-10a.png" width="600"/>
+
+Rename the new modal `Adjuster Modal` and change its tile to `Adjuster Modal` too.
+
+<img src="assets/af-13.png" width="800"/>
+
 ### Our first action
 With the `Orders to Approve` table selected, open the `Actions` menu. 
 
 Configure the action as shown, to open a `New modal`:
 
-<img src="assets/af-demo4.gif">
+<img src="assets/af-10b.png" width="600"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Modals are hidden and only shown when called for by another action. Apart from that, they behave like any other Sigma page, apart from styling restrictions that make sense for pop-up style page sizing.
 </aside>
-
-Rename the `Modal 1` to `Adjuster Modal` and change its tile to `Adjuster Modal` too.
-
-<img src="assets/af-13.png" width="600"/>
 
 Now if a cell is clicked in the `EDIT` column, the modal will appear.
 
