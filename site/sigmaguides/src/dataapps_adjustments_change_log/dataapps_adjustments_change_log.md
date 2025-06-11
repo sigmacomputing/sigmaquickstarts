@@ -88,7 +88,7 @@ Filter the table down to just `Mobiles`:
 
 Also filter the table to the `Last 2 quarters`:
 
-<img src="assets/acl-2.png" width="600"/>
+<img src="assets/acl-2.png" width="800"/>
 
 Rename this page to `Data`.
 
@@ -175,11 +175,20 @@ Duration: 5
 
 With the basic framework in place, we can configure some actions and create a modal (page) to allow users to input adjustments and save them.
 
-On the `Home` page, select the `Revenue Planning` table and open the `Actions` menu.
+### Add a modal
+Add a modal from the lower left corner of the page:
+
+<img src="assets/add_modal.png" width="500"/>
+
+Rename the modal page to `Adjustments` and change it's title to `Adjustments` too.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Modals are hidden and only shown when called for by another action. Apart from that, they behave like any other Sigma page, apart from styling restrictions that make sense for pop-up style page sizing.
+</aside>
+
+Once that change is made, return the table, open the `Actions` tab and click the `+` to add another action.
 
 We need to change the value in the `When selecting cells in column` to be `Sum of revenue`, since that is the column in the `Revenue Planning` table that we want users to click. 
-
-Once that change is made, click the `+` to add another action.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Adding actions and action sequences is really simple and gets repetitive so we may not show every step. We will show the configurations when they are not obvious. 
@@ -190,14 +199,6 @@ Once that change is made, click the `+` to add another action.
 Add an new action to the existing `Action sequence` and set the action to `Open modal` and select the `New modal`:
 
 <img src="assets/acl-8.png" width="600"/>
-
-This creates a new modal for us (hidden workbook page). 
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Modals are hidden and only shown when called for by another action. Apart from that, they behave like any other Sigma page, apart from styling restrictions that make sense for pop-up style page sizing.
-</aside>
-
-Rename the modal page to `Adjustments` and change it's title to `Adjustments` too.
 
 ### Adding Controls to the Modal
 To support the required passing of user selected values, we will use a few Sigma controls on the modal. 
