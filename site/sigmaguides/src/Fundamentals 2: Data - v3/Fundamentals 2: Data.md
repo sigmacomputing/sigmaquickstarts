@@ -655,17 +655,9 @@ This functionality is called Browser Query and leads to near-instant results and
 In addition, Sigma Alpha Query can perform operations like queries, filters, and sorts. It is important to note that it is NOT a desktop data extract or summary as is the case with many other BI tools.
 
 Alpha Query uses fresh data from the CDW, and as soon as the browser is closed, the cache is flushed and the data does not persist, eliminating security or governance risks.
-
 </aside>
 
-If you are **really** interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html?index=..%2F..index#0)
-
-### Column details
-There is another cool feature that lets you “peek” behind a column, to see some useful information. 
-
-Click on the `Brand` columns menu, and click `Column Details`. This will display a pop-up to help you see things like `Distinct Values` and if nulls exist, and more:
-
-<img src="assets/fdata_63.png" width="800"/>
+If you are interested in the low-level workings of Sigma's unique approach to data retrieval, read [this QuickStart.](https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF BEHIND THE SCENES -->
