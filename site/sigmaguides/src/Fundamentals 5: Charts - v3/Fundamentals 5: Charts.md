@@ -244,7 +244,7 @@ One way to do this is simply use the `Monthly Sales Trend` KPI menu and select `
 
 `COGS` and `Profit` are done by swapping the `VALUE` column from `Monthly Sales Trend` to `COGS` and `Profit` columns respectively.
 
-`Order Count` is the same as the others but the formula is not `SUM` but rather `COUNT`.
+`Order Count` is the same as the others but the formula is not `SUM` but rather `CountDistinct`.
 
 Select all four KPI at once and drag them about the charts, resizing to suit.
 

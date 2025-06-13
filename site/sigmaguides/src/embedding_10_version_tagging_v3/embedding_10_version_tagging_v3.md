@@ -182,7 +182,7 @@ For `Warehouse` use `COMPUTE_WH`.
 Click `Save`, and Sigma will validate the connection. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> At the time of this QuickStart Snowflake announce that they will require key pair authentication for service users starting in November 2025. This will be a mandatory requirement, and single-factor password authentication will no longer be supported. This change is part of Snowflake's broader initiative to enhance security and enforce multi-factor authentication (MFA) for all users. 
+<strong>IMPORTANT:</strong><br> At the time of this QuickStart Snowflake announced that they will require key pair authentication for service users starting in November 2025. This will be a mandatory requirement, and single-factor password authentication will no longer be supported. This change is part of Snowflake's broader initiative to enhance security and enforce multi-factor authentication (MFA) for all users. 
 </aside>
 
 To learn how to set up key-pair authentication in Sigma, see [Snowflake Key-pair Authorization](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0)
