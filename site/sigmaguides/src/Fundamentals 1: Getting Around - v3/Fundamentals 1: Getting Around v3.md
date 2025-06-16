@@ -533,7 +533,7 @@ Once inside a workbook, you can save it, make any changes you like, or use Sigma
 
 It’s clear that Ask Sigma changes the way people will use Sigma—and it’s only getting better. Stay tuned!
 
-### Ask Sigma Usage Dashboar
+### Ask Sigma Usage Dashboard
 Sigma also provides an optional log of Ask Sigma usage. 
 
 For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
