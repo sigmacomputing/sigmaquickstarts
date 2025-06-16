@@ -18,7 +18,7 @@ Sigma supports Basic Auth (username + password) and OAuth for new Snowflake conn
 With this feature release, we've added support for the key pair authentication method (public key + private key) for Snowflake connections.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> At the time of this QuickStart Snowflake announce that they will require key pair authentication for service users starting in November 2025. This will be a mandatory requirement, and single-factor password authentication will no longer be supported. This change is part of Snowflake's broader initiative to enhance security and enforce multi-factor authentication (MFA) for all users. 
+<strong>IMPORTANT:</strong><br> At the time of this QuickStart Snowflake announced that they will require key pair authentication for service users starting in November 2025. This will be a mandatory requirement, and single-factor password authentication will no longer be supported. This change is part of Snowflake's broader initiative to enhance security and enforce multi-factor authentication (MFA) for all users. 
 </aside>
 
 Snowflake supports key pair authentication using a combination of public and private RSA key pairs. The private key remains with the client (Sigma), while the corresponding public key is stored by the holder of the correct public key (in this case, Snowflake).
@@ -64,8 +64,7 @@ We'll discuss RSA encryption further in the next (optional) section, which is pr
 
 For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
- ### Target Audience
-
+### Target Audience
 Sigma administrators interested in implementing RSA connection encryption via key pair authorization and key rotation.
 
 ### Prerequisites
