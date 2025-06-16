@@ -720,17 +720,25 @@ For more information, see [Manage organization schedules](https://help.sigmacomp
 ## AI Settings
 Duration: 20
 
-The OpenAI integration allows Sigma to leverage OpenAI language models (including GPT-4 and embedding models) for features like AI-generated columns in input tables, visualization explanations, and formula AI capabilities.
+To use AI features in Sigma, you’ll need to select and configure an AI provider.
 
-You can integrate with OpenAI directly or through Azure OpenAI Service.
+For more information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#configure-an-ai-provider)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
+
+To keep data under your control, Sigma also supports warehouse-hosted AI models.
+</aside>
+
+For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Please check the documentation link below for the most recent information on Sigma AI.
 </aside>
 
-<img src="assets/ai1.png" width="800"/>
+Sigma also provides an optional log of Ask Sigma usage. For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
-For more information, see [Manage OpenAI integration](https://help.sigmacomputing.com/docs/manage-openai-integration#edit-the-openai-integration)
+There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

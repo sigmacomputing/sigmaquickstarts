@@ -533,6 +533,13 @@ Once inside a workbook, you can save it, make any changes you like, or use Sigma
 
 It’s clear that Ask Sigma changes the way people will use Sigma—and it’s only getting better. Stay tuned!
 
+### Ask Sigma Usage Dashboar
+Sigma also provides an optional log of Ask Sigma usage. 
+
+For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
+There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
+
 ### Bonus: AI Formula Assistant
 Sigma also includes a Formula Assistant powered by AI. It can:
 - Write new formulas
