@@ -120,7 +120,7 @@ From the `Element bar`, select `Data` and drag a `Table` element onto the page:
 
 <img src="assets/dm_4.png" width="325"/>
 
-Click `Select
+Click `Select`.
 
 We could navigate to the table but it is easier to just search for `F_SALES` and select the table from the `RETAIL` schema:
 
