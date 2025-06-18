@@ -50,13 +50,16 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
+  <li>Microsoft VSCode or other suitable development tool.</li>
  </ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button><br>
+
+<button>[Download Visual Studio Code](https://code.visualstudio.com/download)</button>
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -292,6 +295,11 @@ node -v
 npm -v
 </aside>
 
+Change directory to the new folder:
+```code
+cd embedding_qs_series_2
+```
+
 Finally, load node into the local project:
 ```code
 npm install
@@ -301,20 +309,20 @@ After the command runs, click the button to `Open Folder`:
 
 <img src="assets/jwt2.png" width="800"/>
 
-Navigate to where your folder is and click `Open`.
+Using the folder navigation, locate your folder and click `Open`. 
 
-We can now see the project called `embedding_JWT` with the files stored in the `jwt` folder:
+We can now see the project called `SIGMA_QUICKSTARTS` with a folder called `embedding_qs_series_2`:
 
 <img src="assets/jwt4.png" width="400"/>
 
 ### Additional node.js packages
 We need to install two Node.js packages that provide some additional "convenience functionality". 
 
-**1: nodemon:**<br>
-This package is a development tool that automatically restarts our Node.js application whenever it detects changes in specific code files. This streamlines development by eliminating the need to manually restart the server after each change.
-
-**2: jsonwebtoken**<br>
+**1: jsonwebtoken**<br>
 We use this package to decode a JWT in the VSCode terminal. This allows us to read the payload and header data from the token without verifying its authenticity. This is helpful when you need to inspect the information embedded in the token for non-secure contexts or for inspection/debugging purposes.
+
+**2: nodemon:**<br>
+This package is a development tool that automatically restarts our Node.js application whenever it detects changes in specific code files. This streamlines development by eliminating the need to manually restart the server after each change.
 
 To install these two packages, open a new terminal window in VSCode in the project folder.
 
@@ -325,7 +333,7 @@ npm install jsonwebtoken
 
 and
 ```code
-npm install nodemon
+npm installjsonwebtoken nodemon
 ```
 
 The expected output is:
@@ -467,7 +475,7 @@ Workspaces allow folders and documents to be compartmentalized, categorized, and
 
 They can be shared among users and teams via permission grants.
 
-Workspaces are managed by organization admins, but admins are not automatically granted permission to other team workspaces. However, admins can access to an additional `ALL WORKSPACES` tab. 
+Workspaces are managed by organization admins, but admins are not automatically granted permission to other team workspaces. However, admins can access an additional `ALL WORKSPACES` tab. 
 
 Native Sigma users (those who log in directly to Sigma) will have access to workspaces when they are shared with a team they belong to, or explicitly shared with them.
 
@@ -538,14 +546,14 @@ Copy and paste the `Client ID` and `Secret` into the respective locations in the
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## Select Content to Embed
+## Create Content to Embed
 Duration: 5 
 
 Any Sigma URL can be embedded, assuming the proper permissions are passed along as parameters.
 
 Sigma is flexible and offers different workflows for creating content based on the source data.
 
-For example, we could first create a [data model](https://help.sigmacomputing.com/docs/intro-to-data-models), set permissions on it, and then save it off for later use in a workbook. We would then create a workbook with a table that shows data from the data model we saved earlier.
+For example, we could first create a [data model](https://help.sigmacomputing.com/docs/intro-to-data-models), set permissions on it, and then save it off for later use in a workbook. We would then create a workbook with a table that shows data from the data model we saved earlier. This is a great way to ensure that downstream content is using trusted data that has been properly constructed and secured prior to use. 
 
 If you are interested in data modeling in Sigma, see: [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
 
@@ -580,7 +588,7 @@ This opens the selected table in a new (unsaved) workbook that carries the tempo
 
 We can rename the table by double-clicking on the table name and changing it to `Plugs_Sales_Transactions`.
 
-Click the `Save As` button, navigate to the `Sales_People` workspace and save the workbook with the name `Getting_Started_QuickStart`.
+Click the `Save as` button, navigate to the `Sales_People` workspace and save the workbook with the name `Getting_Started_QuickStart`.
 
 <img src="assets/gs_8.png" width="300"/>
 
@@ -591,7 +599,7 @@ Check the sharing settings:
 
 <img src="assets/gs_9.png" width="800"/>
 
-Our two teams are already listed, as the permissions are inherited from the workspace, which is assigned to the `Sales People` team.
+Our two teams are already listed, as the permissions are inherited from the workspace, which is assigned to the `Sales_People` team.
 
 <img src="assets/gs_10.png" width="800"/>
 
@@ -613,7 +621,7 @@ For example, we can grab the Base URL for the [Ask Sigma](https://help.sigmacomp
 <strong>IMPORTANT:</strong><br> When using the "Base URL", the workbook must be switched to the published version.
 </aside>
 
-Switch the workbook to `Published version`:
+Switch the workbook to the `Published version`:
 
 <img src="assets/gs_18.png" width="600"/>
 
@@ -729,6 +737,15 @@ There are a few ways to see what embed users are doing in Sigma. After a user ac
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Any changes to an embed user’s account type or team assignment in Sigma will be overwritten the next time they access embedded content. This is because the host application is responsible for passing those parameters at runtime. Users marked as "embed" in Sigma cannot log in directly to Sigma.
 </aside>
+
+### Usage Reporting
+Sigma provides administrators canned usage reports for a variety of things including embedding:
+
+<img src="assets/gs_28a.png" width="800"/>
+
+### Audit Logging
+Customers can also enable audit logging and manually analyze raw event logs if preferred. Logs can be exported for integration with external systems.
+To learn more, see Access and explore audit logs
 
 Customers can enable audit logging and manually analyze raw event logs if preferred. Logs can be exported for integration with external systems.
 
