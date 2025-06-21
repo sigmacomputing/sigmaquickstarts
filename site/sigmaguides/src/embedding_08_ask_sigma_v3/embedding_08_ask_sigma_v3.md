@@ -208,7 +208,6 @@ AI is a powerful tool, but how it’s implemented makes a huge difference to use
 Allowing users to ask questions is one thing but how can we tell what the AI is doing? 
 
 - Is it using trusted data sources? 
-- What steps, calculation and workflow did it use to generate results? 
 - What steps, calculations, and workflows did it use to generate results? 
 - Once we have the response, what’s next for the user?
 

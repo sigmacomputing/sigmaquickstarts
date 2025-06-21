@@ -76,9 +76,9 @@ Let’s be clear—Ask Sigma is a tool at your disposal. You’re free to use it
 
 Many software vendors like to say “Start with the end in mind.” That sounds good, but having a whiteboard diagram still means you must build everything from scratch—and also figure out how to use some product to build it.
 
-Sure, Sigma is easy to learn and use—but Ask AI is even better than that.
+Sure, Sigma is easy to learn and use—but Ask Sigma is even better than that.
 
-Instead of starting with the end-state design, Ask AI wants you to start with a problem—framed as a question.
+Instead of starting with the end-state design, Ask Sigma wants you to start with a problem—framed as a question.
 
 As shown in the video, Ask Sigma will work hard to answer even vague, generic questions like:
 "Where are we doing the best?"
