@@ -333,7 +333,7 @@ npm install jsonwebtoken
 
 and
 ```code
-npm installjsonwebtoken nodemon
+npm install jsonwebtoken nodemon
 ```
 
 The expected output is:
