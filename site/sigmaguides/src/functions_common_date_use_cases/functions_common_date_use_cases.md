@@ -6,149 +6,188 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-03-24
+lastUpdated: 2025-06-25
 
 # Common Date Functions and Use Cases
-<!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
 Duration: 5 
 
 This QuickStart presents common challenges when working with dates. Sigma can be used to manipulate dates to get the desired results, quickly and easily.
 
-There are many ways to solution with dates in Sigma. Not every solution is covered and you may even found a better method. Suggestions and feedback is always appreciated.
+There are many ways to work with dates in Sigma. Not every solution is covered and you may even find a better method. Suggestions and feedback are always appreciated.
 
 This QuickStart assumes you have a working instance of Sigma and the connection called Sigma Sample Database.
 
-We will use the Sigma provided `RETAIL`.`PLUGS_ELECTRONICS`.`PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table so that you can recreate each QuickStart Step in your own Sigma environment.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
-</aside>
-
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+We will use the Sigma-provided `RETAIL`.`PLUGS_ELECTRONICS`.`PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table so you can follow along and recreate each step in your own Sigma environment.
 
 ### Target Audience
-Anyone who is looking for solutions to date challenges or just want to learn new date methods.
+Sigma builders looking for solutions to date challenges or who just wants to learn new date methods.
 
 ### Prerequisites
-1: A computer with a current browser. It does not matter which browser you want to use.<br>
-2: A Sigma account.
+
+<ul>
+  <li>Any modern browser is acceptable.</li>
+  <li>Access to your Sigma environment.</li>
+  <li>Some familiarity with Sigma is assumed. Not all steps are shown, as basic Sigma functionality is assumed.</li>
+</ul>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
+</aside>
+
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button><br>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+</aside>
   
-### What You’ll Learn
-How to apply Sigma functions to date challenges.
-
-### What You’ll Build
-
-We will cover a large number of methods for working with dates in Sigma. Date logic can be confusing so we will start with the basics to show how Sigma makes the simple stuff easy and then get more complex to show how Sigma makes the hard stuff possible all through an easy to used interface. 
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
 
-## **Basic Formatting**
+## Basic Formatting
 Duration: 10
 
-Let's start simply by presenting the standard ways to alter/adjust a date column.
+Let's start with the standard ways to adjust a date column.
 
-Create a new Workbook and place the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table on the page. You can just take all the columns. We are mostly interested in the Date column right now but will use the others as we add logic later.
+Log into Sigma, click `Create new` and select `Workbook`.
+
+From the `Element bar`, under the `Data` group, place a new `Table` on the page.
+
+Click `Select source` for the new table.
+
+Search for `Hands` and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` database. 
+
+Save the workbook as `Common Date Functions and Use Cases`.
+
+We’re primarily interested in the `Date` column, which is coming in 'as-is' from the warehouse:
 
 <img src="assets/CDUC1.png" width="800"/>
 
-Click on the `Date` columns down arrow and select `Truncate date`. This is one way to adjust how the Date column will be modified.
+Click on the `Date` column down arrow and select `Truncate date`. This is one way to modify how the `Date` column is displayed.
 
 <img src="assets/CDUC2.png" width="400"/>
 
-If you select the `Day` option, notice that the column name is changed to `Day of Date`
+If you select the `Day` option, you'll see the column name changes to `Day of Date`.
 
-Reset the Date column back the the default (use "Remove date truncate" or the back icon if you are in edit mode).
+Reset the `Date` column back to the default. You can use `Remove date truncate` from the column's menu but the `Undo` icon is faster:
 
-Click on the `Date` columns down arrow and select `Format date`. This is another way to adjust how the Date column will be modified:
+<img src="assets/CDUC2b.png" width="800"/>
 
-<img src="assets/CDUC3.png" width="450"/>
+Click on the `Date` column down arrow and select `Format date`. This is another way to change how the `Date` column is displayed:
+
+<img src="assets/CDUC3.png" width="600"/>
 
 Feel free to experiment with the available options, resetting to the original when done.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Custom Formatting**
+## Custom Formatting
 Duration: 10
 
-Sigma supports applying custom formats to date columns. You can do this by selecting the `Date` columns menu and then `Format` and `Custom`:
+Sigma supports applying custom formats to date columns. You can do this by selecting the `Date` column menu and then `Format` > `Custom`:
 
 <img src="assets/CDUC4.png" width="800"/>
 
-Setting the `Format string` to the code below will cause the popup to show you a sample of the output. This is quite useful to know your string is correct before applying it.
-
-```plaintext
+Entering the format string below will show a sample output in the popup:
+```code
 %a %B %d %Y
 ```
 
-[A full list of custom format strings is available here.](https://help.sigmacomputing.com/docs/define-custom-date-formats)
+<img src="assets/CDUC6.png" width="400"/>
 
-<img src="assets/CDUC5.png" width="400"/>
+This helps confirm your format string is correct before applying it.
 
-Feel free to experiment and then reset the `Date` column back to the default when done.
+Feel free to experiment, then reset the `Date` column back to the default when done.
 
-Another way to use custom date formatting is to apply a Function in the formula bar using one of the many `DateFormat` functions.
+### The formula bar 
+Another way to apply custom date formatting is by using the formula bar and the `DateFormat` function.
 
-For example, you may want to get the full month-name from a date column.
+For example, you may want to get the full month name from a date column.
 
-Create a new column and rename it `Month of Date`.
+Create a new column by using the `Date` columns menu and selecting `Add new column`. Rename the new column `Month of Date`.
 
-Place this code in the formula bar and click the checkmark (or press Enter):
+To make it clear for users, rename the `Date` column to `Original_Date`.
 
-```plaintext
-DateFormat(Date([Original Date]), "%B")
+Click the `Month of Date` column, enter this formula into the formula bar and press enter.
+```code
+DateFormat(Date([Original_Date]), "%B")
 ```
 
-<img src="assets/CDUC6.png" width="450"/>
+This demonstrates how to use the formula bar to apply both a function (DateFormat) and a custom format string:
 
-Here are some others we built using the same method and there are many more possible:
+<img src="assets/CDUC5.png" width="600"/>
+
+Here are a few other examples created using the same method—many more are possible:
 
 <img src="assets/CDUC7.png" width="800"/>
 
+For more information, see [Custom format strings](https://help.sigmacomputing.com/docs/define-custom-datetime-formats#custom-format-strings)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Current / Previous Weekday**
+## Current / Previous Weekday
 Duration: 10
 
-It can be useful to get the current or previous weekday when presenting data to users. For example, in the table below we have one row of data with today's date in the `Today` column.
+Now that we’ve covered the basics, let’s apply what we’ve learned to a new use case.
 
-We use this column in a Function to determine If the input date is a Monday, we show the day in the `Day Name of Today` and then the function returns the calculated `Current Weekday`.
+For example, it’s often useful for users to know the `Effective Business Day` an order was placed. If an order is placed on a Saturday or Sunday, this column will show Friday as the effective day, helping analysts align reporting with standard business operations.
 
-<img src="assets/CDUC8.png" width="500"/>
+Undo any changes we made to our table, and then format the `Date` column to basic `Date` format:
 
-The Function is:
-```plaintext
+<img src="assets/CDUC8a.png" width="500"/>
+
+Rename the `Date` column to `Today` to make its purpose clearer to users.
+
+Next, we want to display the weekday name for each value in the `Today` column.
+
+Add a new column next to `Today`, and set its formula to:
+```code
+DateFormat(Date([Today]), "%A")
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The %A in the formula returns the full weekday name from the date.
+</aside>
+
+<img src="assets/CDUC8b.png" width="500"/>
+
+Now that we have the current weekday name, we can apply it to the use case.
+
+Add another new column next to `Day` and use the following formula:
+```code
 DateFormat(DateAdd("day", (If(Weekday([Today]) = 7, -1, Weekday([Today]) = 1, -2, 0)), [Today]), "%A")
 ```
 
-If the input date is a Saturday, the function returns the date of the Friday immediately previous.
+This formula returns the previous weekday name if today is Saturday (7) or Sunday (1); otherwise, it returns today’s name.
 
-<img src="assets/CDUC9.png" width="500"/>
+Then, hide the `Today` and `Day` columns, and rename the new column to `Effective Business Day`:
 
-[A breakdown of this Function's parts is available here.](https://help.sigmacomputing.com/docs/dateformat)
+<img src="assets/CDUC8.png" width="800"/>
+
+For more information, see [Define custom datetime formats](https://help.sigmacomputing.com/docs/define-custom-datetime-formats)
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Time Between Dates**
+## Time Between Dates
 Duration: 10
 
-It is often useful to know the elapsed time between two dates (and times). Some examples are:
+s often useful to measure the time elapsed between two dates (or timestamps). Some examples are:
 
 **Call Center Support:** Call duration<br>
 **Customer Service:** Order fulfillment time<br>
 **Healthcare:** Time since last blood test<br>
 
-Let's take a look at the Customer Service use case.
+Let's take a look at the customer service use case.
 
 Marketing is interested in targeting customers who purchase frequently but only has a table with all orders to start with.
 
-They want to know a few things:
+They want to answer a few key questions:
 
  <ul>
         <li>When was a customer's first order?</li>
@@ -158,485 +197,541 @@ They want to know a few things:
         <li>Marketing will use this in campaigns targeting active and inactive customers.</li>
 </ul>
 
+We’ll continue using the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table, but this time we’ll create a child table.
 
-Create another Workbook Page.
+<img src="assets/CDUC9a.png" width="800"/>
 
-The data we will use is still the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table. You can create a child of the table we used earlier of just add a new table to the Page based on it as source. We only need the columns `Customer Name` and `Date`.
-
-`Group` the table by `Customer Name`.
-
-Truncate the `Date` column to day:
-
-<img src="assets/CDUC10a.png" width="350"/>
-
-<aside class="postive">
-<strong>IMPORTANT:</strong><br> Our flat dataset has customer orders and a single customer order can have multiple items on it. To account for this, we want to group on the order day so that we can then do some date math against that. Otherwise, our table will have multiple rows for the same day (in most cases) and that is not what Marketing wants.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Child tables let us manipulate source data without modifying the original table. Another major benefit is that data is only fetched from the warehouse once, saving time and warehouse costs too.
 </aside>
 
-`Group` by the `Day of Date`:
+Rename the child table `Time Between Dates` and move it to a new workbook page:
 
-<img src="assets/CDUC10b.png" width="600"/>
+<img src="assets/CDUC9b.png" width="800"/>
 
-Lets filter the data (to keep things simple to see as we work) for `Customer Name` = `Leah Douglas`:
+Rename the new workbook page `Time Between Dates`.
 
-<img src="assets/CDUC10.png" width="350"/>
+We only need a few columns including the `Today` column but that is hidden from our last section. No problem—it’s still available in the child table, and we can make it visible:
+
+<img src="assets/CDUC9c.png" width="800"/>
+
+Since we don’t need most columns in the child table, we can delete them, leaving only the `Customer Name` and `Today` columns.
+
+Using the `Element panel`, move the `Customer Name` and `Today` columns to the top of the list and then select all others and click `Delete 21 columns`:
+
+<img src="assets/CDUC9d.png" width="500"/>
+
+Drag the `Customer Name` column to `GROUP BY`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Our flat dataset contains customer orders, where a single order may include multiple items. To avoid counting the same order multiple times, we want to group by the order day. This allows us to perform accurate date-based calculations. Without this grouping, the table would contain multiple rows per day for the same order—something Marketing specifically wants to avoid.
+</aside>
+
+Drag the `Customer Name` column to `GROUPINGS` to create a new group.
+
+To simplify the view, filter the data where `Customer Name = Leah Douglas`:
+
+<img src="assets/CDUC10.png" width="600"/>
 
 The table should now look like this:
 
-<img src="assets/CDUC10c.png" width="600"/>
+<img src="assets/CDUC10c.png" width="800"/>
 
-Add a new column by clicking the `Customer Name` menu arrow and rename it to `First Order`:
+Add a new column next to `Customer Name` and rename it to `First_Order`.
 
-<img src="assets/CDUC12.png" width="400"/>
-
-For `First Order` set the formula to:
+For `First_Order` set the formula to:
 ```plaintext
-Min([Day of Date])
+Min([Today])
 ```
 
-Now we will add four more columns, rename them as shown below and apply the Functions in the formula bar for each:
+<img src="assets/CDUC12.png" width="600"/>
 
-```plaintext
-Column:                         Formula:
-Second Order                    Nth([Day of Date], 2)
-Last Order                      Max([Day of Date])
-Days 1st to 2nd Order           DateDiff("day", [First Order], [Second Order])
-Days Since Last Order           DateDiff("day", [Last Order], Today())
+Now add four more columns, renaming them and applying the following formulas:
+
+<aside class="negative">
+<strong>PRO TIP:</strong><br> Use keyboard shortcuts to save time. For example, use "Shift +"  to add a new column.
+</aside>
+
+For more information, see [Keyboard shortcuts: Microsoft Windows](https://help.sigmacomputing.com/docs/keyboard-shortcuts-microsoft-windows) or [Keyboard shortcuts: Mac OS](https://help.sigmacomputing.com/docs/keyboard-shortcuts-mac-os)
+
+```code
+Column Name:                    Formula:
+Second_Order                    Nth([Today], 2)
+Last_Order                      Max([Today])
+Days_1st_to_2nd_Order           DateDiff("day", [First_Order], [Second_Order])
+Days_Since_Last_Order           DateDiff("day", [Last_Order], Today())
 ```
 
-The table should now look like this (after collapsing it):
+Hide the `Today` column.
+
+The table should now look like this:
 
 <img src="assets/CDUC14.png" width="800"/>
 
-Go ahead and turn off the filter.
-
-Now Marketing has the data they are requesting:
+Go ahead and disable the filter.
 
 <img src="assets/CDUC14a.png" width="800"/>
 
+Marketing now has the data they requested:
+
+<img src="assets/CDUC14c.png" width="800"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Week over Week**
+## Week over Week
 Duration: 10
 
-Sales Operations wants to know see how weekly sales numbers look compared to the previous week.
+Sales Operations wants to see how weekly sales numbers look compared to the previous week.
 
-Let's use this example to investigate using the Lead and Lag function in Sigma. These functions make this use case surprisingly simple to execute.
+Let’s use this example to explore Sigma’s `Lead` and `Lag` functions. These functions make this type of comparison surprisingly easy.
 
-In this example, we will go about getting data a different way (extra credit!). Create another Workbook Page and rename it `Week Over Week`.
+In this example, we’ll approach the data a bit differently this time. Create another Workbook Page and rename it `Week Over Week`.
 
-Add a table to the Page but this time select the `F_Sales` from the Sample Database, selecting these columns:
+Add a table to the page, and this time select `F_Sales` from the `Sigma Sample Database`.
 
-<img src="assets/CDUC15.png" width="800"/>
+This gives us all the sales transactions.
 
-This gives us all the sales transactions. Now we want to join a table to this for the point of sale data.
+Next, we’ll join another table to bring in point-of-sale data.
 
-Click the menu in the F_Sales table and select `Element Source` and then `Join`:
+Click the `3-dot menu` on the `F_Sales` table and select `Element Source` and then `Join`:
 
-<img src="assets/CDUC16.png" width="400"/>
+<img src="assets/CDUC16.png" width="700"/>
 
-Select the table `F_Point_of_Sale`, selecting only the `Sales Amount` column.
+Search for and select `F_Point_of_Sale` from the `RETAIL` schema and select only the `Sales Amount` column.
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> Bring only the columns you need to save compute costs and performance. You can easily add columns back later if needed.</aside>
+<aside class="positive"><strong>IMPORTANT:</strong><br> Bring only the columns you need to save compute costs and performance. You can easily add columns back later if needed.</aside>
 
 <img src="assets/CDUC17.png" width="800"/>
 
-Now we have to decide what type of join we want and on which columns (Join Keys).
+Now choose the type of join and identify the join keys (matching columns from each table).
 
 <aside class="negative"><strong>NOTE:</strong><br> Sigma's advanced functionality is able to pre-configure the join for you and show you the results, saving you time.</aside>
 
-Based on our joining the two tables against Order Number we have 100% match. Change the join to inner join and see the results. Still 100%, so in this case, either join will work.
+Since we’re joining the two tables on `Order Number`, we have a 100% match. This works because every sale must have an order number, so it exists in both tables.
 
 <aside class="postive"><strong>IMPORTANT:</strong><br> SQL joins can be confusing if you don't work with them often. Sigma makes it easy to see the impact of a join and get it right the first time.</aside>
 
+For more information, see [Join types](https://help.sigmacomputing.com/docs/join-types)
+
 <img src="assets/CDUC18.png" width="800"/>
 
-Preview the data and click `Done`. We now have a table on our Page we can rename to `Week over Week Sales`.
+Click Preview output. Sigma shows the tables lineage. This allows us to see how our table was constructed, which columns are selected and more. We could also join more tables from here:
 
-Drag the `Date` column to `Groupings` and Truncate it to `Week`:
+<img src="assets/CDUC18a.png" width="800"/>
+
+For more information, see [View workbook and data model data lineage](https://help.sigmacomputing.com/docs/workbook-data-lineage)
+
+Click `Done`, and rename the table `Week_over_Week_Sales`.
+
+Drag the `Date` column to `Groupings` and truncate it to `Week`.
+
+Hide the `Order Number`, `Date` and `Sales Amount` columns:
 
 <img src="assets/CDUC19.png" width="800"/>
 
-Hide the `Order Number`, `Date` and `Sales Amount` columns.
+Drag the `Sales Amount` column to `Calculations`, rename it to `Weekly_Sales` and set the format to `currency`:
 
-Drag the `Sales Amount` column to `Calculations`, rename it to `Weekly Sales` and set the format to `currency`:
+<img src="assets/CDUC20a.png" width="800"/>
 
-<img src="assets/CDUC20.png" width="800"/>
-
-Add two calculated columns (in CALCULATIONS). Rename each and set the functions as:
-
-```plaintext
+Add two calculated columns using the `+` icon in the `CALCULATIONS` panel. Rename each and set the formulas to:
+```code
 Column:                         Formula:
-Sales Lag 1 Week      [Weekly Sales] / Lag([Weekly Sales], 1)
-Sales Lead 1 Week     [Weekly Sales] / Lead([Weekly Sales], 1)
+Sales_Lag_1_Week      [Weekly_Sales] / Lag([Weekly_Sales], 1)
+Sales_Lead_1_Week     [Weekly_Sales] / Lead([Weekly_Sales], 1)
 ```
 
-Set the `Lead/Lag` columns to `percentage`:
+Format the `Lead/Lag` columns as percentages and sort the `Week of Date` column in descending order:
 
-<img src="assets/CDUC21.png" width="800"/>
+<img src="assets/CDUC20.png" width="600"/>
 
-<aside class="negative"><strong>NOTE:</strong><br> The most current week should be null for Lag as there is no data for the future week yet.</aside>
+<aside class="negative"><strong>NOTE:</strong><br> The most current week will show null as there is no data for the future week yet.</aside>
 
-[Read more about Lead and Lag funtions.](https://help.sigmacomputing.com/docs/lead)
+For more information, see [Lead](https://help.sigmacomputing.com/docs/lead)
+
+Sales Operations can now compare weekly sales performance at a glance.
+
+This use case could also be solved using Sigma’s `DateLookback` function. The `DateLookback` function returns the value of a variable at a previous point in time (or lookback period) determined by a specified date and offset.
+
+We will use `DateLookback` in the next section.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Year over Year**
+## Year over Year
 Duration: 10
 
-Viewing data organized `Year over year by month` gives users insight on how a business is doing in use cases like seasonality. Observing year over year performance gauges if performance is improving, static, or worsening.
+Viewing data organized `year over year by month` helps users understand business performance in use cases like seasonality. It allows users to see whether performance is improving, flat, or declining year over year.
 
-We are going to move a little faster now that we learned how to work with the Sigma UI.
+Now that we've learned how to navigate Sigma, we’ll move a bit faster.
 
-Create a new Workbook Page and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
+Since we’ll reuse the `Page 1` source, rename the page to `Data`.
 
-Hide all columns to start. Use `Shift` and `Click` to select the first and last in the list and then click `Hide column`.
+Add a new workbook page and add another child of the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
 
-Add a new group (click the `+` to the right of `GROUPINGS` and select `Date`)
+Rename the page `Year over Year` and the table to `Year_Over_Year_by_Month`.
 
-Set the formula for the `Day of Date` column to:
+Add the `Today` column back as we did in the last section.
 
-```plaintext
-DateFormat(Date([Date]), "%m")
+Start by hiding all columns. Use `Shift + Click` to select the first and last, then click `Hide column`.
+
+Now we have lots of columns to work with but none are displayed:
+
+<img src="assets/CDUC22a.png" width="800"/>
+
+Add a new grouping by clicking the `+` next to `GROUPINGS` and selecting the `Today` column.
+
+Set the formula for the `Day of Today` column to:
+```code
+DateFormat(Date([Today]), "%m")
 ```
-Rename this column `Month Number` and set it's sort order to `Ascending`. 
+
+Rename this column `Month_Number` and set its sort order to `Ascending`. 
 
 <img src="assets/CDUC21c.png" width="800"/>
 
-Add a new column: 
+Add another `GROUPING` selecting the `Today` column again. 
 
-Set it's formula to 
-```plaintext
-DateTrunc("year", [Date])
+Set the new column's formula to:
+```code
+DateTrunc("year", [Today])
 ```
 
-Add this new column to a new group (click the `+` to the right of `GROUPINGS` and select `Year of Date`)
+Rename the column `Year`:
 
-<img src="assets/CDUC21d.png" width="500"/>
+<img src="assets/CDUC21d.png" width="800"/>
 
-Click the `-` in the `Month Number` column to collapse the table. We now have 12 months of data:
-
-<img src="assets/CDUC21e.png" width="500"/>
-
-Add a new column (to the right of `Year to Date`) and rename it `Monthly Sales`. Set it's formula to:
-
-```plaintext
+Add a new calculation by clicking the `+` next to `CALCULATIONS` in the `Year` grouping, and select `New column`:
+```code
 Sum([Quantity] * [Price])
 ```
 
+Format the column as currency.
+
 The table should now look similar to this (after collapsing/expanding and formatting):
 
-<img src="assets/CDUC21a.png" width="800"/>
+<img src="assets/CDUC21a.png" width="500"/>
 
-Add a new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
+Add a new `CALCULATION` by clicking the `+` to the right of `CALCULATIONS` in the `Year` grouping and select `New column`.
 
-<img src="assets/CDUC21f.png" width="500"/>
+<img src="assets/CDUC21f.png" width="400"/>
 
 Configure the new column as shown below:
-
-```plaintext
-Column:             Formula:
-Previous Month      Lead([Monthly Sales], -1)
+```code
+Column Name:       Formula:
+Previous_Year      DateLookback([Monthly_Sales], [Year], 1, "year")
 ```
 
-Add another new `CALCULATION` (click the `+` to the right of `CALCULATIONS` in the `Year of Date` grouping and select `New column`)
-```plaintext
-Column:            Formula:
-Year over Year     ([Monthly Sales] - [Previous Month]) / [Previous Month]
+Now we can calculate the year over year percentage difference for each month.
+
+Add another new `CALCULATION` column to the same grouping and configure it using:
+```code
+Column Name:      Formula:
+% Change          ([Monthly_Sales] - [Previous_Year]) / [Previous_Year]
 ```
 
-Set the `Year over Year` columns format to `Percentage`.
+Set the column's format to `Percentage`.
 
 Now we can start to see trends in the data.
 
 <img src="assets/CDUC22.png" width="800"/>
 
+For more information, see [DateLookback](https://help.sigmacomputing.com/docs/datelookback)
+
+Click `Publish`.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **InDate Range**
+## InDate Range
 Duration: 10
 
-The InDateRange function provides a succinct way to write calculations such as Year to Date and Last 3 Month. It also simplifies more complex calculations, making them shorter and easier to read.
+The `InDateRange` function provides a succinct way to write calculations such as `last year` or `this year`. It also simplifies more complex calculations, making them shorter and easier to read. While there are other ways to solve this, let’s explore a different approach using `InDateRange`.
 
-The InDateRange function will return True or False based on its configuration. The table can then be filtered based on a InDateRange column being true or false.
+What's differnt with the `InDateRange` function is that it will return `True` or `False` based on its configuration. The table can then be filtered based on an `InDateRange` column being `True` or `False`.
 
 For example, we may want to see how sales this year compare with last year, side by side.
 
-Create a new Workbook and rename it to InDate Range.
+Create a new page and rename it to `InDate Range`.
 
-Add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
+Add another child of the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table and move it to the new page. 
 
-Truncate the `Date` column to `Day`.
+Rename the table `Sales_Comparison`.
 
-Add a new column as:
-```plaintext
-DatePart("week", [Day of Date])
+Add the `Today` column back to the table. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We’ve had to add this column back a few times. Perhaps we should have included it in the source table on the Data page? That’s easy enough to fix—and probably not the last time we realize we need a column after building downstream!
+</aside>
+
+Add a new column using this configuration:
+```code
+Column Name:      Formula:
+Week              DatePart("week", [Today])
 ```
 
-Rename the new column to `Week`.
-
-Add a new column called `Sales Amount`.
-
-Set it's formula to
-```plaintext
-[Price] * [Quantity]
+Add another new column using this configuration:
+```code
+Column Name:      Formula:
+Sales_Amount     [Price] * [Quantity]
 ```
 
 Hide this column.
 
-We will use the `InDate Range` function in several new columns.
+Next, use the `InDateRange` function to create four new columns.
 
-For each of the following new columns you add, configure them using the following:
-
-```plaintext
-COLUMN NAME          FORMULA TO APPLY TO COLUMN
-                    
-Week #               DatePart("week", [Day of Date])
-isCurrent Year       InDateRange([Day of Date], "current", "year")
-isLast Year          InDateRange([Day of Date], "last", "year")
-isCurrent Quarter    InDateRange([Day of Date], "to_date", "quarter")
-isCurrent Month      InDateRange([Day of Date], "to_date", "month")
-isCurrent Week       InDateRange([Day of Date], "to_date", "week")
-isIN Last 2 Weeks    InDateRange([Day of Date], "last", "week", 2)
-TY Sales Amount      SumIf([Sales Amount], [isCurrent Year])
-LY Sales Amount      SumIf([Sales Amount], [isLast Year])
+For each of the following new columns, use the following configuration:
+```code
+Column Name:              Formula:
+isCurrent_Year            InDateRange([Today], "current", "year")
+isLast_Year               InDateRange([Today], "last", "year")
+This_Year_Sales_Amount    SumIf([Sales_Amount], [isCurrent_Year])
+Last_Year_Sales_Amount    SumIf([Sales_Amount], [isLast_Year])
 ```
 
-The table should now look like this:
+The table should now look like this. Notice that sales amount values only appear for the current and previous years. All others are null:
 
 <img src="assets/CDUC23.png" width="800"/>
 
-Next add a child PivotTable.
+Instead of filtering the table to show only rows for the current and previous years, let’s use a pivot table.
 
-<img src="assets/CDUC24.png" width="400"/>
+Add a child pivot table:
 
-Configure the Pivot Table as shown:
+<img src="assets/CDUC24.png" width="800"/>
 
-<img src="assets/CDUC25.png" width="600"/>
+Configure the pivot table as shown below and rename it `Sales - This Year vs. Last`:
 
-<aside class="negative"><strong>NOTE:</strong><br> There are nulls after week 9 because that is when this Pivot was run there were no sales past week 9 for the current year.</aside>
+<img src="assets/CDUC25.png" width="800"/>
 
-Now that we have all these columns as part of our data there are many ways you may want to leverage them in Sigma to create interesting Period over Period style visualizations.
+From here we can start to dig deeper into the analysis by calculating sales changes or adding visualizations.
+
+For more information, see [InDateRange](https://help.sigmacomputing.com/docs/indaterange)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Lookups - Year over Year**
+## Lookups
 Duration: 10
 
-In this example we will demonstrate using data from one table in another. 
+In this example, we’ll demonstrate how to use data from one table in another using a Lookup.
 
-Let's assume that there are two tables that have columns that do not exist in a third. We can use a Lookup to bring those columns over to the third table. 
+Imagine two tables contain useful columns that are missing from a third table. To enrich the third table, we can use a `Lookup` to bring in those missing columns.
 
-The tables will be are joined by a pair of columns — one from each — that share common values. We call these joining columns join keys.
+Lookups work by matching rows based on shared values between two columns—one from each table. These columns are known as join keys and we will simulate how this works using our existing sample data.
 
-Columns created from a lookup can be added using the Lookup function. However, you can also add a new lookup column without explicitly writing a formula. 
+Add a new workbook page and place another child of the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `Data` page to it.
 
-[Click here for more information on using Lookups](https://help.sigmacomputing.com/docs/add-columns-through-lookup)
+Another way to do this is to add a new `Table` from the `Element bar` and set the source as shown:
 
-Create a new Workbook Page and add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
+<img src="assets/CDUC34a.png" width="400"/>
 
-Rename the Page tab to `Lookups - Year over year`.
+Rename the page `Lookups` and the table to `Regional_Sales_Performance`.
 
-Rename this table `Regional Sales Performance - This vs. Last Year`.
+Add the `Today` column back as we did in the last section.
 
 Duplicate the table using the table menu.
 
-Rename this table `Sales This Year`
+Rename this duplicated table `Sales_This_Year`
 
-On the second table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, and `Date`.
+On the `Sales_This_Year` table, hide all the columns leaving only `Store Name`, `Store Region`, `Store Key`, and `Today`.
 
-Add a new column, rename it `Total Sale` and set its formula to:
-```plaintext
+Add a new column, rename it `Total_Sale` and set its formula to:
+```code
 [Price] * [Quantity]
 ```
-The formula on the `Date` column to:
 
-```plaintext
-DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
-```
-
-Rename the column back to `Date`
-
-Your page should now look link this:
+Your page should now look like this:
 
 <img src="assets/CDUC34.png" width="800"/>
 
-Let's filter this table to display orders from this year only (click on the `Date` column's drop arrow and select `Filter`):
+Filter this table to show only orders from this year (click the drop-down arrow on the `Today` column and select `Filter`):
 
-<img src="assets/CDUC35.png" width="600"/>
+<img src="assets/CDUC35.png" width="500"/>
 
-Back on the `Regional Sales Performance - This vs. Last Year`, we want to group on the `Store Region` column.
+On the `Regional Sales Performance` table, we want to group on the `Store Region` column.
 
-Now add a new column / Column via lookup:
+Now add a new column via lookup:
 
-<img src="assets/CDUC37.png" width="500"/>
+<img src="assets/CDUC37.png" width="800"/>
 
 You will be prompted to set how the two tables will be joined. Use this configuration:
 
 <img src="assets/CDUC38.png" width="400"/>
 
-Now drag the new Lookup column to the `Calculations` sectrion of the `Store Region` grouping:
+Now drag the new lookup column to the `Calculations` section of the `Store Region` grouping:
 
-<img src="assets/CDUC39.png" width="800"/>
+<img src="assets/CDUC39.png" width="600"/>
 
-Now lets get last years sales. Duplicate the table `Sales This Year`. 
+Now let’s get last year’s sales. Duplicate the `Sales_This_Year` table:
 
 <img src="assets/CDUC40.png" width="800"/>
 
-Rename the table to `Sales Last Year`.
+Rename the table to `Sales_Last_Year`.
 
-Change the filter to use last year as the range.
+Change the filter to use last year as the range:
 
-<img src="assets/CDUC41.png" width="600"/>
+<img src="assets/CDUC41.png" width="400"/>
 
-The page should look like this now (after moving thing around to suit):
+The page should now look like this (after rearranging elements as needed):
 
 <img src="assets/CDUC42.png" width="800"/>
 
-Now add another new column via Lookup (into the `Regional Sales Performance - This vs. Last Year` table) as before using the new `Sales Last Year` table.
-
-<img src="assets/CDUC43a.png" width="400"/>
+Now add another lookup column to the `Regional_Sales_Performance` table, using `Sales_Last_Year` as the source.
 
 The only configuration difference is the source table as shown:
 
-<img src="assets/CDUC43.png" width="400"/>
+<img src="assets/CDUC43.png" width="350"/>
 
-Drag this new column to `Calculations` and you are done. We now have last year and this year (by Store Region) with all the detail as well.
+Drag this new column into the `Calculations` section—and we’re done. We now have both last year’s and this year’s sales by store region, with full detail.
 
 <img src="assets/CDUC44.png" width="800"/>
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> Lookups can be very powerful and this was a basic example so that you can see the workflow against sample data you are already used to from other QuickStarts.</aside>
+<aside class="positive"><strong>IMPORTANT:</strong><br> Lookups can be very powerful and this was a basic example so that you can see the workflow against sample data you are already used to from other QuickStarts.</aside>
+
+For more information, see [Add columns through Lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **InPrior Date Range**
+## InPrior Date Range
 Duration: 10
 
-The InPriorDateRange function is used for calculations that look at a date range in a prior period, such as This Week Last Year.
+The `InPriorDateRange` function is used to calculate values from a prior time period such as "This Week Last Year".
 
-The results will appear as `Boolean` (true or false), and we can use that to filter rows to suit.
+It returns a `Boolean` (True or False), which we can use to filter rows.
 
-To make this go faster, open the Workbook `Lookups -  Year over Year` and use `Save As` to make a copy as `InPrior Date Range`.
+To speed things up, duplicate the `Lookups` page and rename the copy `InPrior_Date_Range`.
 
-Please the new Workbook in `Edit` mode.
+Rename the `Sales_This_Year` table to `Sales_In_Current_Quarter`. 
 
-Rename the `Sales This Year` table to `Sales In Current Quarter`. Do the same for the `Sales Last Year` table, to `Sales Last Year - Same Quarter`.
+Also rename the `Sales_Last_Year` table to `Sales_Last_Year_Same_Quarter`.
 
-In the `Sales In Current Quarter` table, we want to filter the data to show only the rows from last quarter. We can do that by simply using the filters control:
+In the `Sales_Last_Year_Same_Quarter` table, we want to filter the data to show only the rows from last quarter. We can do that by simply using the filters control:
 
-<img src="assets/CDUC56.png" width="800"/>
+<img src="assets/CDUC56.png" width="500"/>
 
-In the `Sales Last Year - Same Quarter`, add a new column called `InPriorQuarter` and set is formula to:
+In the `Sales_Last_Year_Same_Quarter`, add a new column named `InPriorQuarter` and set its formula to:
 ```code
-InPriorDateRange([Date], "quarter", "year")
+InPriorDateRange([Today], "quarter", "year")
 ```
 
-This will evaluate the `Date` column and return `true` or `false` if the date is in the quarter, one year prior.
+This will evaluate the `Today` column and return `true` or `false` if the date is in the quarter, one year prior.
 
-Now alter the table's filter, adding a new filter on our new column, `InPriorQuarter` and only select to see the rows where the value is `True`. Delete the filter for `Date`. 
+Next, update the table’s filters by adding a new one on the `InPriorQuarter` column and set it to show only rows where the value is `True`.
 
-<img src="assets/CDUC57.png" width="800"/>
+We can disable the filter for `Today` since our formula is providing the filter now: 
 
-Since the `Regional Sales Performance - This vs. Last Year` table uses `Lookups` to get the `Total Sale` column from each of the other two columns already, we don't have to do anything; the sales are summed and grouped already. 
+<img src="assets/CDUC57.png" width="600"/>
+
+Since the `Regional_Sales_Performance` table already uses lookups to bring in the `Total Sale` column from both source tables, we don't have to do anything; the sales are summed and grouped already. 
 
 We are done:
 
 <img src="assets/CDUC58.png" width="800"/>
 
-<aside class="negative"><strong>NOTE:</strong><br> This not the only way to accomplish this outcome. You could get similar results using the "InDateRange" function, "filters" or other date functions too. Sigma is flexible and want to get you thinking about possible options and how each may effect a use case.</aside>
+Compare these values to those on the `Lookups` page—you’ll see they are significantly lower.
 
-<aside class="positive"><strong>Important:</strong><br> When developing content on any platform, it's essential to consider the perspective of future developers. Strive for simplicity and efficiency in your methods to ensure that your work is easily understandable by others. Additionally, it's crucial to be mindful of the cost implications of your designs, especially in terms of warehouse storage and compute utilization. </aside>
+<aside class="negative"><strong>NOTE:</strong><br> This is not the only way to achieve this outcome. You could get similar results using the "InDateRange" function, "filters" or other date functions too. Sigma is flexible and we want to get you thinking about possible options and how each may affect a use case.</aside>
 
-Sigma provides tools to help you understand warehouse costs, built right into the Sigma platform. 
-
-For more information about that, [click here.](https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html?index=..%2F..index#0) and [here.](https://help.sigmacomputing.com/docs/snowflake-usage-templates)
+<aside class="positive"><strong>BEST PRACTICE:</strong><br> When developing content on any platform, it’s important to consider the needs of future developers. Strive for simplicity and efficiency to ensure your work is easy to understand and maintain. Additionally, be mindful of the cost implications of your design—especially regarding warehouse storage and compute usage.</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## **Date Calendars - The Retail 4-5-4 Calendar**
+## Date Calendars - The Retail 4-5-4 Calendar
 Duration: 10
 
 Companies often use table-based calendars in analytics to help address data consistency, seasonality, and planning.
 
-In this QuickStart Step we will build a pivot table that leverages the `NRF Retail 4-5-4 Calendar` combined with our `Plugs Electronics` sample data to look at same store sales the way most retailers prefer. The same general methods apply to using any table-based calendar you may have.
+In this QuickStart step, we’ll build a pivot table that leverages the `NRF Retail 4-5-4 Calendar` combined with our `Plugs Electronics` sample data to analyze same-store sales the way most retailers prefer. These same general methods apply to any table-based calendar you use.
 
 The NRF Retail 4-5-4 Calendar is a standardized retail calendar developed by the National Retail Federation (NRF) to help retailers track and analyze their sales performance. It is widely used by retailers in the United States, and it is particularly useful for businesses that operate on a fiscal year that does not align with the traditional calendar year. The calendar helps retailers plan their inventory, staffing, and marketing strategies based on historical sales data and seasonal trends.
 
-Create a new Workbook and rename it to `Same Store Sales`.
+<aside class="negative">
+<strong>NOTE:</strong><br> Please refer to the NRF website for the most recent versions of the calendar. This example calendar used here may not represent a current version.
+</aside>
 
-In this exercise we will use some Sigma functionality not yet covered to enhance your learning by creating a joined table for Plugs sales and the 4-5-4 table to that for analysis.
+For more information, see [NRF 4-5-4 Calendar](https://nrf.com/resources/4-5-4-calendar)
 
-Add a new Table to the Workbook.
+Add a new workbook page, and this time, add the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table by selecting it from the sample database instead of the `Data` page:
 
-Navigate to the `Sigma Sample Database` / `Retail` / `Plugs_Electronics` / `Plugs_Electronics_Hands_On_Lab_Data` table:
+<img src="assets/CDUC1b.png" width="400"/>
 
-<img src="assets/CDUC26.png" width="800"/>
+Rename the page `Date_Calendar`.
 
-Rename the table to `Plugs Same Store Sales`.
+Rename the table to `Same_Store_Sales`.
 
-We will need to calculate the value of each row (Order Value) since the data only has quantity and price.
-
-Add a new column, rename it to `Order Value` and use this formula:
-
-```plaintext
+Add a new column, rename it to `Order_Value` and use this formula:
+```code
 [Quantity] * [Price]
 ```
 
-Click the `Tables` menu and select `Element Source` then `Join`:
+Create a new join:
 
-<img src="assets/CDUC27.png" width="400"/>
+<img src="assets/CDUC27.png" width="800"/>
 
-Navigate to the `4_5_4_CALENDAR` and select it:
+Search for the `4_5_4_CALENDAR` in the `RETAIL` schema and select it:
 
-<img src="assets/CDUC25A.png" width="800"/>
+<img src="assets/CDUC25A.png" width="400"/>
 
-We are now presented with a screen that allows us to adjust how the two tables are joined. We will need to adjust how the 4-5-4 table is joined as we want to join on the `Date` column. For this to work, we need to ensure the datatype is the same. To do that, click the 4-5-4 table (on the left) and change the `Join Keys` for **both tables** to use a custom formula. That formula is:
+We are now presented with a screen that allows us to adjust how the two tables are joined. We need to adjust the join to use the `Date` and `Today` columns
 
-```plaintext
-DateTrunc("day", [DATE])
-```
+If we look closely at the join results we can see there is a mismatch; the timestamps are causing a problem:
 
 <img src="assets/CDUC28.png" width="800"/>
 
-<aside class="negative"><strong>NOTE:</strong><br> We need to do this because the 4-5-5 Calendar has DATETIME formatted values for DATE (ie: 01/15/2023:00:00:00) and the Plugs Date column has DATETIME but the time component has varying values, so no match is possible. The time of each sale is not important for our analysis as we only want to 'bucket" dates into the 4-5-4 Calendar ranges.</aside>
+Joining on mismatched data types can cause issues, but Sigma supports formula-based joins to correct the issue.
 
-After making the changes, you should have many matches. It won't be 100% match as there are some values in the Plugs table that are not in the 4-5-4 table. Click `Preview Output`.
+To handle the datatype issue, we will use a formula for each join key:
 
-We are presented with the data and a graphical representation of the data flow (lineage):
+<img src="assets/CDUC28a.png" width="400"/>
 
-<img src="assets/CDUC29.png" width="800"/>
+Apply this formula to both join keys:
+```code
+DateTrunc("day", [DATE])
+```
 
-We can now create a `Child` from this table and use a `Pivot Table`:
+After making the changes, you should have many matches. It won’t be a 100% match, as some values in the Plugs table that are not in the 4-5-4 table.
+
+Click `Preview Output` and `Done`.
+
+Now, create a child of this table and select `Pivot Table` as the type:
 
 <img src="assets/CDUC30.png" width="500"/>
 
-Now we can create our pivot by dragging column name (in the Element Panel to the respective groupings, not the table) as shown below:
+Rename the pivot table to `Same_Store_Sales_454_Calendar`.
+
+Configure the pivot table as shown below:
 
 <img src="assets/CDUC31.png" width="800"/>
 
-Rename the pivot table to `Plugs Same Store Sales - 454 Calendar`.
+Let’s say we want to see same-store sales for Thanksgiving. The `Fiscal Day of the Year` value according to the 4-5-4 Calendar is `299` in week `43`.
 
-Notice that #4 shows no data for the Fiscal Year= 2019. Filter that out:
+We can add a list page control to the page:
 
-<img src="assets/CDUC32.png" width="800"/>
+<img src="assets/CDUC1a.png" width="450"/>
 
-Let's say we want to see the Sale Store Sales for Thanksgiving. Since 2022 is the most recent year we had a Thanksgiving, the `Fiscal Day of the Year` value according to the 4-5-4 Calendar is `299*`. 
+Configure it to filter based on the `Fiscal Week`:
 
-[*The NRF Retail Calendars are located here.](https://nrf.com/resources/4-5-4-calendar)
+<img src="assets/CDUC1c.png" width="250"/>
 
-Now we can see the year-over-year side by side with just a few clicks to expand as show:
+And set its target to `Fiscal Week`:
+
+<img src="assets/CDUC1d.png" width="250"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We used "Fiscal Week" so we can see the days leading up to holidays too.
+</aside>
+
+Use the control to find week 43:
 
 <img src="assets/CDUC33a.png" width="800"/>
 
-Of course we could make this more user-friendly by adding a Page Control to allow filtering that shows major holidays and other improvements but that is outside the scope of this QuickStart.
+Click `Publish`.
 
-[Link to the NRF Calendar Page](https://nrf.com/resources/4-5-4-calendar)
+Of course, we could make this more user-friendly by making a control that shows major holidays by name and other improvements but that is outside the scope of this QuickStart.
+
+[NRF Calendar](https://nrf.com/resources/4-5-4-calendar)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -644,18 +739,18 @@ Of course we could make this more user-friendly by adding a Page Control to allo
 ## What we've covered
 Duration: 5
 
-In this QuickStart we covered many of the commonly used date functions and use cases where they are applied. This was not comprehensive and there are many more ways to leverage dates in Sigma.
+In this QuickStart, we explored many of the most commonly used date functions and the use cases where they’re applied. While not comprehensive, this guide highlights key patterns and techniques for working with dates in Sigma. There are many more ways to leverage dates—so keep exploring!
 
-[To get more information on date functions in Sigma, click here.](https://help.sigmacomputing.com/docs/popular-functions)
+For more information, see [Function index](https://help.sigmacomputing.com/docs/function-index)
 
-<!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
-**Additional Resource Links**
+**Additional Resources:**
 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
-[Help Center Home](https://help.sigmacomputing.com)<br>
-[Sigma Community](https://community.sigmacomputing.com/)<br>
-[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+[Blog](https://www.sigmacomputing.com/blog/)<br>
+[Community](https://community.sigmacomputing.com/)<br>
+[Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
+[QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
 <br>
 
 [<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
