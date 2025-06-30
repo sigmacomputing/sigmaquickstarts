@@ -254,7 +254,7 @@ There are different paths when creating content in Sigma, but we will focus on t
 
 So you can get started quickly, Sigma provides some common data in the `Sigma Sample Database`.
 
-At the lower-left of the home page, click on `Sigma Sample Database` to see what tables are available:
+At the lower-left of the home page, click on `Connections` and then click the `Sigma Sample Database`:
 
 <img src="assets/f1_8.png" width="800"/>
 
@@ -402,8 +402,6 @@ Duration: 6
 As we move through the Fundamentals series, we’ll learn how to build using all the great features Sigma provides. That said, we’re at a point in time where AI is expected in any modern software product.
 
 Providing AI functionality isn’t especially difficult these days—but making it easy to use and genuinely helpful requires thoughtful design and a deep understanding of how users can benefit from the results.
-
-
 
 Allowing users to ask questions is one thing but how can we tell what the AI is doing? 
 
