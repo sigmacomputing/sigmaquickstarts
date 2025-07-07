@@ -410,6 +410,10 @@ The `Connections` page provides configuration information so that Sigma is able 
 
 For new Sigma customers (and trial accounts), only the `Sigma Sample Database` will be available initially.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma provides a set of sample data, at no cost, to all customers. The sample database is a great way to let new users become familiar with Sigma, without having to connect to corporate data. The connection is not editable and it can be hidden if desired.
+</aside>
+
 Administrators can click `Create Connection` to configure additional connections:
 
 <img src="assets/fa7a.png" width="800"/>
@@ -451,11 +455,6 @@ By the way; **Sigma input tables are a game-changer,** and if you have not seen 
 <strong>IMPORTANT:</strong><br> By design, the database destination that you configure for write access is not visible in the Sigma connection explorer pane. We recommend that you configure a separate database or a database and schema combination for write-access purposes.
 </aside>
 
-### Sigma Sample Database
-Sigma provides a set of sample data, at no cost, to all customers. The sample database is a great way to let new users become familiar with Sigma, without having to connect to corporate data. The connection is not editable and it can be hidden if desired.
-
-<img src="assets/fa9.png" width="600"/>
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -463,6 +462,8 @@ Sigma provides a set of sample data, at no cost, to all customers. The sample da
 Duration: 20
 
 Sigma provides all customers with extensive reporting on various aspects of user activity. All the reports are built using Sigma and are provided at no-cost to customers. Admins can use this area to quickly view important KPIs and leverage Sigma's 'drill anywhere' capability for detailed insights.
+
+The standard reports can also be customized to suit unique requirements.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The usage section does not require customers to do anything, it just starts working as soon as users start using Sigma. Sigma also provides access to logs for customers that are interested in creating their own analysis of user activity.
@@ -510,20 +511,18 @@ View application embedding usage for your organization. Private and Public embed
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## People
+## Users
 Duration: 20
 
-In Sigma, users are called `People`. 
+Users can be added manually to Sigma using the `Administration` > `Usser` interface. This interface also supports adding multiple users at a time (bulk loading).
 
-People can be added manually to Sigma using the `Administration` > `People` interface. This interface also supports adding multiple people at a time (bulk loading).
-
-When added manually, people receive an email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `People` page. 
+When added manually, users receive an email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `Users` page. 
 
 Email invitations and welcome emails can be customized if desired.
 
-People can be added automatically the first time they login to Sigma using an IDP, or when using Sigma embedded into another application. 
+Users can be added automatically the first time they login to Sigma using an IDP, or when using Sigma embedded into another application. 
 
-Sigma's REST API also supports adding new people. The more information, see[API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
+Sigma's REST API also supports adding new users ("members in the API). The more information, see[API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
 There are also [API code samples ("recipes")](https://help.sigmacomputing.com/recipes), demonstrating common API operations.
 
@@ -535,11 +534,11 @@ For more information, see [Invite new organization members](https://help.sigmaco
 <strong>IMPORTANT:</strong><br> Sigma uses email address for each person and the email must be unique. 
 </aside>
 
-The `People` page has a filter that is a convenient way to see only the categories of people you are interested in:
+The `Users` page has a filter that is a convenient way to see only the categories of users you are interested in:
 
 <img src="assets/fa17.png" width="800"/>
 
-People in Sigma can be deactivated, but never fully deleted. Deactivated users cannot access Sigma.
+Users in Sigma can be deactivated, but never fully deleted. Deactivated users cannot access Sigma.
 
 After you click `Deactivate`, the user's documents are automatically migrated to the selected persons's `My Documents` folder. The deactivated user's documents will be located in `My Documents` > `Archived Users` > `Folder` (folder title is the deactivated user's name). 
 
@@ -616,7 +615,7 @@ For more information, see [Create and manage account types](https://help.sigmaco
 ## User Attributes
 Duration: 20
 
-`User Attributes` can be used to provide a customized experience for your Sigma teams, people, or embedded users. 
+`User Attributes` can be used to provide a customized experience for your Sigma teams, users, or embedded users. 
 
 For example, they can be assigned as a function in a dataset/data-model to provide row-level security.
 
@@ -656,7 +655,7 @@ It is common when using Sigma to embed content into another application, that ma
 
 This page provides a centralized way to manage them and alerts you to basic configuration issues with an embed.
 
-For example, number three shows the `alert` symbol, indicating that the workbook no longer exists, although the embed configuration still does. We are able to either `Reassign embed` or simply delete it:
+We are able to either `Reassign embed` or simply delete it any embed (non-JWT only):
 
 <img src="assets/fa21.png" width="800"/>
 
@@ -684,7 +683,7 @@ For example, when a workbook is assigned the `Quality_Assurance` tag (in the ima
 
 Once testing is complete, a member of that team might tag the workbook as `Production`, so that end-users can access it.
 
-All documents that are tagged will appear in the corresponding tag page:
+A summary of all workbooks that are tagged will appear in the corresponding tag page. Drilling into any tag will also show the workbooks assigned that tag:
 
 <img src="assets/fa22.png" width="800"/>
 

@@ -116,7 +116,7 @@ To recap:
 
 - Teams let you create user groups in Sigma. When you grant access and permissions to a team, the grants apply to all members assigned to the team. 
 
-- Workspaces allow folders and documents to be compartmentalized, categorized, and easily shared with the correct people. They can be shared among users and teams via permission grants.
+- Workspaces allow folders and documents to be compartmentalized, categorized, and easily shared with the correct users. They can be shared among users and teams via permission grants.
 
 Next, we will create three more teams, each with their own workspace. 
 
