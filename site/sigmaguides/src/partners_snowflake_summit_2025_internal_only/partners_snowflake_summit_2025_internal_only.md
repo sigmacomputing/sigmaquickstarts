@@ -1,14 +1,14 @@
 author: pballai
-id: partners_snowflake_summit_2025
-summary: partners_snowflake_summit_2025
+id: partners_snowflake_summit_2025_internal_only
+summary: partners_snowflake_summit_2025_internal_only
 categories: partners
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: 2025-06-01
+tags: 
+lastUpdated: 2025-07-07
 
-# Snowflake Summit 2025 - Hands on Lab
+# Snowflake Internal Only - Summit 2025 Hands on Lab
 
 ## Overview 
 Duration: 5 
