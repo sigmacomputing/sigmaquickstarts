@@ -23,7 +23,7 @@ That's why they hired you, a seasoned category manager to take over a struggling
 In this lab you will create an analysis using AI, and leverage a data application and forecast out product performance.
 
 ### Target Audience
-Snowflake SEs who are interested in getting some hands-on with Sigma. This is not available to the public. This lab is available to the general public at [this link](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025/index.html?index=..%2F..index#0)
+Participants of Snowflake Summit 2025 who are interested in getting some hands-on with Sigma.
 
 No SQL or technical data skills are required for this hands-on lab.
 
@@ -31,7 +31,6 @@ No SQL or technical data skills are required for this hands-on lab.
 
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>A Snowflake issued laptop and OKTA access to “Sigma SE Demos”.</li>
 </ul>
 
 <aside class="negative">
@@ -47,26 +46,32 @@ No SQL or technical data skills are required for this hands-on lab.
 ## Setup 
 Duration: 5
 
-Navigate to the OKTA home page, and click on the `Sigma SE Demos` tile. This will open up the Sigma account that has been set up as a demo sandbox for Snowflake SEs:
+**1:** Navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol):
 
-<img src="assets/sf2025_2c.png" width="800"/>
+<img src="assets/sf2025_1a.png" width="400"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
 </aside>
 
-From the Sigma home page navigate to the templates section:
+**2:** Sign up for an account using your personal email by selecting `Create an account` and entering your **personal email address**. 
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Be sure to have a personal email ready to go, we’d prefer to avoid accidental sign-ups for new Sigma accounts!
+
+Whitelisted Domains:
+@gmail.com, @yahoo.com, @outlook.com, @hotmail.com, @icloud.com, @aol.com, @comcast.net, @mail.com, @msn.com, or @live.com
+</aside>
+
+<img src="assets/sf2025_1c.png" width="400"/>
+
+**3:** Check your inbox for a message from `info@send.sigmacomputing.com` and continue the sign-up process by clicking the link.
+
+**4:** Enter your information as prompted, and click `Submit`.
+
+**5:** Once you see the homepage, you’re ready to proceed!
 
 <img src="assets/sf2025_2.png" width="800"/>
-
-Under internal templates select `FY26 Summit HOL - Home Page`:
-
-<img src="assets/sf2025_2a.png" width="800"/>
-
-Once you see the homepage, you're ready to proceed:
-
-<img src="assets/sf2025_2b.png" width="800"/>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
