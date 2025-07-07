@@ -472,7 +472,7 @@ The expected response is:
 <img src="assets/apics63.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The new member will receive an automated welcome email with instructions. They will also appear in the portal under Administration > People > Pending Invitations until they confirm their account via the email.
+<strong>IMPORTANT:</strong><br> The new member will receive an automated welcome email with instructions. They will also appear in the portal under Administration > Users > Pending Invitations until they confirm their account via the email.
 </aside>
 
 ![Footer](assets/sigma_footer.png)

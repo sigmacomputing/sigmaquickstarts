@@ -161,7 +161,7 @@ In Sigma, under `Administration` > `User attributes` we created a new UA called 
 <img src="assets/uap_14.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We could also assign this UA to specific teams or people, but that is not required as we will pass that information in the embed anyway.
+<strong>NOTE:</strong><br> We could also assign this UA to specific teams or users, but that is not required as we will pass that information in the embed anyway.
 </aside>
 
 Next, we added a column to a table containing `Store Region` and set a formula to display `True` or `False` if the UA matches the `Store Region` value.

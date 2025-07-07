@@ -421,7 +421,7 @@ By default, automatic user creation is enabled, and Sigma will automatically cre
 </aside>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Users in Sigma can be found under Administration > People.
+<strong>NOTE:</strong><br> Users in Sigma can be found under Administration > Users.
 </aside>
 
 ### Account Types
@@ -471,7 +471,7 @@ Exit `Administration` by clicking the Sigma <img src="assets/crane.png" width="5
 ## Workspaces
 Duration: 5 min
 
-Workspaces allow folders and documents to be compartmentalized, categorized, and easily shared with the correct people. 
+Workspaces allow folders and documents to be compartmentalized, categorized, and easily shared with the correct users. 
 
 They can be shared among users and teams via permission grants.
 
@@ -730,7 +730,7 @@ For more information, see [Test an embed URL in the embed sandbox](https://help.
 ## Tracking User Activity
 Duration: 5
 
-There are a few ways to see what embed users are doing in Sigma. After a user accesses a page in the host application that contains embedded content, they are automatically added to the `Members` list in `Administration` > `People`:
+There are a few ways to see what embed users are doing in Sigma. After a user accesses a page in the host application that contains embedded content, they are automatically added to the `Members` list in `Administration` > `Users`:
 
 <img src="assets/gs_28.png" width="800"/>
 

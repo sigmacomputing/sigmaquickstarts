@@ -106,7 +106,7 @@ Navigate to `Administration` > `Teams` and click `Create Team`.
 Name the new team `Sales_People`, and click `Create`. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We don’t need to manually add people to this team, as they will be added automatically once they are authenticated by the parent application and access any embedded Sigma content.
+<strong>IMPORTANT:</strong><br> We don’t need to manually add users to this team, as they will be added automatically once they are authenticated by the parent application and access any embedded Sigma content.
 </aside>
 
 ### Create a Workbook with Sample Data
@@ -137,7 +137,7 @@ You may have noticed that Sigma provides `folders`, a `My Documents` folder and 
 
 ### Share the Workbook
 
-In order to fully demonstration this functionality, we will need another user. This user will be automatically added to Sigma's `People` page upon first use of the parent application containing a Sigma embed. 
+In order to fully demonstration this functionality, we will need another user. This user will be automatically added to Sigma's `Users` page upon first use of the parent application containing a Sigma embed. 
 
 We will refer to this user as our `test-user` going forward, and use a valid email address so that can check the emails that Sigma sends to the `test-user`.
 
