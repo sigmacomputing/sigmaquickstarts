@@ -130,7 +130,7 @@ Copy / paste and run the following commands:
 // 4: CREATE OR REPLACE SCHEMA FOR EXTERNAL STORAGE OF CSV FILE
 CREATE STAGE IF NOT EXISTS S3_DATA URL='s3://sigma-quickstarts-main/embedding/DRS_Sample_Data.csv';
 
-// 5: COPY INTO SE_INTERNAL_DB.SCHEMA_PHIL_BALLAI.DRS_Sample_Data  FROM  's3://sigma-quickstarts-main/embedding/DRS_Sample_Data.csv';
+// 5: COPY INTO DRS_Sample_Data  FROM  's3://sigma-quickstarts-main/embedding/DRS_Sample_Data.csv';
 COPY INTO SIGMA_DRS.DRS_DATA.DRS_SAMPLE_DATA FROM @S3_DATA;
 
 // 6: CONFIRM DATA IS LANDED IN SNOWFLAKE TABLE:
