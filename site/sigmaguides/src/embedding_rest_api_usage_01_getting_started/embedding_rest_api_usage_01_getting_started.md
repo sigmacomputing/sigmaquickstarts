@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-07-14
+lastUpdated: 2025-07-21
 
 # REST API Usage 01: Getting Started
 
@@ -259,16 +259,16 @@ Ensure you are in the project folder:
 pwd
 ```
 
-<img src="assets/eapi_2.png" width="600"/>
+<img src="assets/eapi_2.png" width="700"/>
 
-Once in the correct folder, we can start the web server with:
+Once in the correct folder, we can start the web server with: debugging enabled:
 ```code
-npm start
+DEBUG=true npm start
 ```
 
-Some debug information is provided and the expected result is:
+Detailed debug information is provided when `DEBUG=true` is enabled and the expected result is:
 
-<img src="assets/eapi_3.png" width="600"/>
+<img src="assets/eapi_3.png" width="700"/>
 
 Once the server is running, we can browse to a preconfigured provisioning page. This page adds our two embed test users and displays the `memberId` for each, along with the admin user specified in .env (based on the provided email address):
 
@@ -359,7 +359,7 @@ We last left the browser open the main landing page. If for some reason it all g
 
 Restart it as shown earlier, ensuring you're in the correct project folder:
 ```code
-npm start
+DEBUG=true npm start
 ```
 
 The server is ready when it displays `Server listening at http://localhost:3000`.
@@ -373,60 +373,46 @@ Browse to the landing page:
 http://localhost:3000
 ```
 
-Select `API Getting Started` QuickStart and click `Go`:
+Select `Getting Started` QuickStart and click `Go`:
 
 <img src="assets/gs_26.png" width="500"/>
 
 The `API Getting Started` page comes with a side-panel that displays embedding and token details.
 
-The actual token appears lower on the side panel for anyone who wants to validate it using a third-party site such as [JWT.io](https://jwt.io/):
+The actual token appears lower on the side panel for anyone who wants to validate it using a third-party site such as [JWT.io](https://jwt.io/).
+
+There is also a `README` button, that provides detailed information about how the `Getting Started` page is constructed, endpoints users and other useful information:
 
 <img src="assets/gs_27.png" width="800"/>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> We will rely on the information in the README for the implementation details and not discuss them in this QuickStart. A button is provided on the webpage for easy access.
+</aside>
+
 You can select to operate as either embed user and also select from our test workbooks:
 
-<img src="assets/eapi_9.png" width="600"/>
+<img src="assets/eapi_9.png" width="800"/>
 
-The terminal console displays logging output each time a page with an embed is reloaded:
+We have now successfully embedded Sigma into our host application and used the API to get information from Sigma (workbooks in the Embed_Users workspace) and passed the selected workbook back to Sigma using the correct format for a workbook embed:
+
+Because we have debugging enabled, the terminal console displays logging output each time a page with an embed is reloaded:
 
 <img src="assets/eapi_10.png" width="800"/>
 
-Note that the token is cached, and the embed URL is also displayed.
+<aside class="negative">
+<strong>NOTE:</strong><br>The JWT is provided along with the embed URL should debugging be required.
+</aside>
 
 Sigma supports different embed URL formats depending on the content type for different embeds in Sigma and this example constructs the correct format for embedding a `workbook` in the code.
 
 For more information, see [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)
-
-We have now successfully embedded Sigma into our host application and used the API to get information from Sigma (workbooks in the Embed_Users workspace) and passed the selected workbook back to Sigma using the correct format for a workbook embed:
-
-<img src="assets/eapi_11.png" width="800"/>
 
 ### Enabling Menus and Folder Navigation for Build Users
 We have designed the project to allow the `Build` user to see the Sigma menu and folder navigation, placing them at the top of the embed:
 
 <img src="assets/eapi_11a.png" width="800"/>
 
-This was done to demonstrate a few of the optional runtime parameters that are available in the JWT embed. The full list is included (at the time of this QuickStart) in the `.env` file:
-```code
-# -----------------------------------------------------------------------------
-# OPTIONAL EMBED PARAMETERS (defaults are shown)
-disable_auto_refresh=false
-disable_mobile_view=false
-hide_folder_navigation=false
-hide_menu=false
-hide_page_controls=false
-hide_reload_button=false
-hide_title=false
-hide_tooltip=false
-hide_view_select=false
-lng=English
-menu_position=none
-page_id=
-responsive_height=false
-theme=Lite
-view_id=
-# -----------------------------------------------------------------------------
-```
+This was done to demonstrate a few of the optional runtime parameters that are available in the JWT embed. All the parameters (at the time of this QuickStart) are included in the `.env` file.
 
 To give the `Build` user access to Sigma’s editing tools during embedding, we configure the JWT to include specific UI flags. These values are only applied when embedding an entire workbook (not a page or element):
 ```code
@@ -442,7 +428,11 @@ These settings ensure that:
 - The menu appears at the top of the screen (instead of a side menu)
 - The user can navigate folders within Sigma if allowed by their role
 
-We apply these settings at runtime only if the selected user is a `Build` user. `View` users receive a more restricted UI by default.
+We apply these settings at runtime only if the selected user is a `Build` user. We intentionally enforce `View` users receiving a more restricted UI by default.
+
+Selecting the `View` user, we can see the menu bar options are not included in the embed:
+
+<img src="assets/eapi_11.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Optional parameters provide fine-grained control over what embedded users can see and do.
@@ -456,7 +446,7 @@ In this example, we chose to give Build users greater access than View users by 
 ## Constructing Embed URLs
 Duration: 5
 
-Return to the landing page and select `API Embed Control` and click `Go`.
+Return to the landing page and select `Embed Controls` and click `Go`.
 
 This page extends the previous functionality to include an `Embed Type` selector. You can choose to select the workbook, page or element for the selected workbook. 
 
@@ -483,251 +473,48 @@ The construction of the Sigma embed URLs happens in the file `helpers/build-embe
 
 It is responsible for constructing the embed URLs based on `embedType`, `workbookUrlId`, and optional `targetId`. 
 
-Here's what it does:
-
-**For workbook:**<br>
-https://{orgSlug}.sigmacomputing.com/embed/workbook/{workbookUrlId}
-
-**For page:**<br>
-https://{orgSlug}.sigmacomputing.com/embed/page/{workbookUrlId}/{pageId}
-
-**For element:**<br>
-https://{orgSlug}.sigmacomputing.com/embed/element/{workbookUrlId}/{pageId}:{elementId}
-
-This file is used by the `/generate-jwt/:mode` route handler, defined in `routes/api/generate-jwt.js`, to construct the final embed URL that gets returned to the frontend.
-
-This allows the user to select any workbook, page or element to embed while dynamically building the embed URL.
-
-Let's look at the rest of the core files in the next section.
-
-![Footer](assets/sigma_footer.png)
-<!-- END -->
-
-## Project Code
-Duration: 5
-
-This project follows a [Separation of Concerns (SoC) design pattern](https://en.wikipedia.org/wiki/Separation_of_concerns) to keep the codebase organized and maintainable.
-
-Routes handle HTTP requests and define API endpoints. They control what happens when a request reaches a specific URL.
-
-Helpers are reusable utility functions that encapsulate logic shared across routes — such as formatting data, building embed URLs, or calling Sigma’s APIs.
-
-By separating these responsibilities, the code becomes easier to read, test, and update — especially as the application grows.
-
-Here’s a summary of key project files and their roles:
-
-### Helpers Folder
-Contains backend utility scripts for interacting with the Sigma API and generating JWTs.
-- **build-embed-url.js:** Constructs a valid Sigma embed URL based on inputs.
-- **create-jwt.js:** Generates a signed JWT based on user input and environment values.
-- **get-access-token.js:** Authenticates against Sigma API to get a bearer token.
-- **get-workbook-metadata.js:** Fetches detailed metadata (e.g., pages/elements) for a workbook.
-- **get-workbooks.js:** Retrieves the list of workbooks the API user can access.
-- **provision.js:** Provisions users into Sigma (e.g., for impersonation or setup).
-
-### Public Folder:
-
-- **index.html:** Main landing page for the project. Lists / links to each QuickStart and provisioning page.
-
-#### api-getting-started Folder
-- index.html: First QuickStart in the series; lets users pick a user/workbook and embed a workbook (only).
-
-#### api-embed-controls Folder
-- **index.html:** Web page with controls for user, workbook, embed type, and page/element.
-
-#### tools Folder
-- **preload-users.html:** Standalone page for provisioning users before embedding.
-
-### Routes Folder
-These files define the Express route handlers that the front end calls. Each route uses a helper to interact with the Sigma API and return filtered results to the client.
-
-**generate-jwt.js:**<br>
-Handles requests to `/generate-jwt/:mode`.
-
-- Receives the selected user type (view or build) and embed type (workbook, page, or element) from the front-end.
-- Calls `build-embed-url.js` to construct the proper Sigma embed URL.
-- Calls `create-jwt.js` to sign the token with your secret.
-
-Returns the final embed URL and JWT to the front end.
-
-**elements.js:**<br>
-Handles requests to `/api/elements?workbookUrlId={id}&pageId={id}`.
-
-- Calls get-workbook-metadata.js to fetch metadata for the workbook.
-- Extracts the specified page.
-- Filters and returns only embeddable elements (e.g., type = visualization or table).
-- Designed for use when embedding a specific element.
-
-**pages.js:**<br>
-Handles requests to `/api/pages?workbookUrlId={id}`.
-
-- Calls `get-workbook-metadata.js` to fetch metadata for the specified workbook.
-- Returns a flat list of pages (pageId, name) for populating the Page dropdown.
-
-**workbooks.js:**<br>
-Handles requests to `/api/workbooks`.
-
-- Calls `get-workbooks.js` (helper) to fetch all accessible workbooks via the Sigma API.
-- Optionally filters by folder path or naming pattern (done client-side).
-- Used to populate the Workbook dropdown.
-
-**provision-users.js:**<br>
-Handles requests to /api/provision-users. Stored in the `routes` folder.
-
-- Receives a request payload with user email, name, and role.
-- Calls functions from `helpers/provision.js`:
--   lookupMemberId() checks if the user exists.
--   provisionEmbedUser() creates a new embed user and assigns them to the "Embed_Users" team.
-- Returns the memberId to the frontend.
-
-### Server Folder
-Contains the Express server setup for the project. It initializes middleware, loads environment variables, and defines the main entry point for running the backend. Acts as the bridge between API routes, helpers, and the front-end interface.
-
-- Loads .env configuration using dotenv.
-- Sets up and configures the Express server.
-- Applies JSON parsing middleware.
-- Mounts all API route handlers from routes/api/.
-- Serves static files from the public/ directory (used for serving the HTML pages).
-- Defines the port and starts the server.
-
-![Footer](assets/sigma_footer.png)
-<!-- END -->
-
-## Endpoints Operations Used
-Duration: 5
-
-The following is information regarding a few of the primary API endpoints used to enable the functionality demonstrated. 
-
-The JWT token process has previously been detailed in the QuickStart: [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..index#0), so we won't cover that here.
-
-### Sigma API Endpoints Used
-
-| Endpoint                         | Purpose                         | Method |
-|----------------------------------|---------------------------------|--------|
-| `/v2/members?search=...`         | Check if user exists (see note) | `GET`  |
-| `/v2/teams?name=...`             | Look up team ID by name         | `GET`  |
-| `/v2/members?sendInvite=false`   | Provision embed user            | `POST` |
-| `/v2/workbooks`                  | List workbooks                  | `GET`  |
-| `/v2/workbooks/{workbookId}`     | Get workbook pages/elements     | `GET`  |
-
-<aside class="negative">
-<strong>NOTE:</strong><br> /v2/members?search= is a supported query parameter for checking if a user exists, even though it may not appear in Swagger documentation.
-</aside>
-
-### User Provisioning
-Provisioning uses a helper script, `helpers/provision.js` that uses the Sigma REST API to provision embed users, assign them to a team, or look them up by email if they already exist.
-
-#### getTeamIdByName(teamName)
-Looks up a team ID by its name (e.g., "Embed_Users"). This is required because Sigma API calls for assigning users to teams require the team's internal teamId, not its display name.
-
-- Endpoint: GET /v2/teams?name=Embed_Users
-- Auth: Bearer token
-- Response: Returns the first matching team and caches it in memory to reduce redundant requests.
-
-#### lookupMemberId(email)
-Checks whether a user already exists before attempting to provision them.
-
-- Endpoint: GET /v2/members?search=email@example.com
-- Response: Returns the memberId if found, or throws an error if none is found.
-
-#### provisionEmbedUser(email, firstName, lastName, memberType)
-Provisions a new Sigma embed user, or returns the existing `memberId` if the user already exists.
-
-- Endpoint: POST /v2/members?sendInvite=false
-- Payload:
-``` json
-json
-Copy
-Edit
-{
-  "userKind": "embed",
-  "memberType": "viewer" | "explorer",
-  "email": "view2.embed.qs@example.com",
-  "firstName": "View",
-  "lastName": "User",
-  "addToTeams": [{ "teamId": "...", "isTeamAdmin": false }],
-  "isGuest": false
-}
-```
-
-- Response: Returns the memberId of the new or existing user.
-
-If the API returns a 409 Conflict because the user already exists, the code extracts and returns the existing memberId from the error message.
-
-### Fetching Workbooks
-The helper file, `helpers/get-workbooks.js`, retrieves the list of workbooks that the authenticated user has access to. It's used to populate the Workbook dropdown in the QuickStart UI. All filtering is performed client-side in your helper logic, based on the path or name field.
-
-- Endpoint: GET /v2/workbooks
-
-- Response Structure
-A successful response returns an array like:
-```json
-{
-  "entries": [
-    {
-      "workbookId": "b4a6...68b",
-      "name": "Embed_API_QuickStart",
-      "path": ["QuickStarts", "Embed", "Embed_API_QuickStart"],
-      "url": "https://.../workbook/b4a6...68b",
-      ...
-    }
-  ]
-}
-```
-
-The route, `/routes/api/workbooks` calls this helper.
-
-The HTML/JS frontend uses the response to:
-- Filter workbooks by folder or name (if needed).
-- Populate the Workbook dropdown.
-- Store the workbookUrlId() (parsed from the URL) for use in other API calls.
-
-### Fetching Workbook Metadata (Pages and Elements)
-The helper file, `helpers/get-workbook-metadata.js` retrieves the full metadata for a specific workbook, including its pages and the elements on each page. It powers the dynamic page and element selectors in the UI after a workbook is selected.
-
-It supports both:
-- Listing pages for the selected workbook
-- Listing elements on a specific page (typically used for "element" embed types)
-
-- Endpoint: GET /v2/workbooks/{workbookId}
-
-**workbookId (string, required):** The short-form ID of the workbook (e.g., b4a6...68b), extracted from the workbook's URL.
-
-- Response Structure
+The customization is done here:
 ```code
-{
-  "workbookId": "...",
-  "name": "...",
-  "pages": [
-    {
-      "pageId": "...",
-      "name": "Page 1",
-      "elements": [
-        {
-          "elementId": "...",
-          "name": "Quantity by Product Type",
-          "type": "visualization"
-        },
-        ...
-      ]
-    },
-    ...
-  ]
-}
+  let path;
+  if (embedType === "workbook") {
+    if (!workbookName) throw new Error("Missing workbookName for workbook embed");
+    path = `/workbook/${workbookName}-${workbookUrlId}`;
+  } else if (embedType === "page") {
+    if (!workbookName || !pageId) throw new Error("Missing workbookName or pageId for page embed");
+    path = `/workbook/${workbookName}-${workbookUrlId}/page/${pageId}`;
+  } else if (embedType === "element") {
+    if (!workbookName || !pageId || !elementId)
+      throw new Error("Missing required info for element embed");
+    path = `/workbook/${workbookName}-${workbookUrlId}/element/${elementId}`;
+  } else {
+    throw new Error(`Unsupported embedType: ${embedType}`);
+  }
 ```
 
-The helper flattens the response into:
-- A list of pages (each with pageId and name)
-- For a specific page, a list of elements (each with elementId, name, and type)
+This code block builds a URL path for embedding a Sigma workbook, page, or element based on the value of `embedType`.
 
-This helper is called via these routes:
-- /api/pages?workbookUrlId={id} → Returns list of pages
-- /api/elements?workbookUrlId={id}&pageId={id} → Returns list of elements on a page
+**let path;**<br>
+Declares the variable that will store the constructed path.
 
-Used by the front end UI to:
-- Populate the Page dropdown (for page or element embedding)
-- Populate the Element dropdown (if the "element" type is selected)
-- Filter elements by supported type (visualization, table)
+**If embedType === "workbook"**<br>
+Requires workbookName.<br>
+Constructs a URL like: `/workbook/{workbookName}-{workbookUrlId}`
+
+**If embedType === "page"**<br>
+Requires workbookName and pageId.<br>
+Constructs a URL like: `/workbook/{workbookName}-{workbookUrlId}/page/{pageId}`
+
+**If embedType === "element"**<br>
+Requires workbookName, pageId, and elementId.<br>
+Constructs a URL like: `/workbook/{workbookName}-{workbookUrlId}/element/{elementId}`
+
+**Else (unsupported embedType)**<br>
+Throws an error indicating the value is not supported.
+
+For additional information about the `Embed Controls` project files, refer to the readme using the button or browse to:
+```code
+http://localhost:3000/api-embed-controls/README.md
+```
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
