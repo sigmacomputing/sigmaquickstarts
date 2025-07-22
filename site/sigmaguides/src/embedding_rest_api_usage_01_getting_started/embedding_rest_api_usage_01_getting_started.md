@@ -1,5 +1,5 @@
 author: pballai
-id: embedding_rest_api_usage_01_getting started_started
+id: embedding_rest_api_usage_01_getting_started
 summary: embedding_rest_api_usage_01_getting_started
 categories: embedding
 environments: web
