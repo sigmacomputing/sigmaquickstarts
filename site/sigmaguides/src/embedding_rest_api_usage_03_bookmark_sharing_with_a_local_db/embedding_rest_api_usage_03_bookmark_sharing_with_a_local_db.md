@@ -306,14 +306,14 @@ Select the `Build` user and a workbook to target.
 The console log will list the bookmarks that were deleted:
 ```code
 Reusing cached bearer token
-✅ Bearer token obtained for clear all operation
+Bearer token obtained for clear all operation
 Fetching bookmarks from Sigma API: https://aws-api.sigmacomputing.com/v2/workbooks/0e51172a-a4c0-4954-8c8c-9d854dcf4434/bookmarks
 Found 3 bookmarks in Sigma to delete
-✅ Deleted Sigma bookmark: Motorola Products (44a6f434-103e-40f7-bbc7-122089b73a38)
-✅ Deleted Sigma bookmark: Apple Products (c9b16a2e-92c6-486c-9029-8b30ca0d1ee7)
-✅ Deleted Sigma bookmark: Mobile Phones (9b8037f4-4900-4c58-adb9-043fd8696a87)
-✅ Deleted 3 bookmarks from local database
-✅ Total bookmarks deleted: 3 from Sigma, 3 from local DB
+Deleted Sigma bookmark: Motorola Products (44a6f434-103e-40f7-bbc7-122089b73a38)
+Deleted Sigma bookmark: Apple Products (c9b16a2e-92c6-486c-9029-8b30ca0d1ee7)
+Deleted Sigma bookmark: Mobile Phones (9b8037f4-4900-4c58-adb9-043fd8696a87)
+Deleted 3 bookmarks from local database
+Total bookmarks deleted: 3 from Sigma, 3 from local DB
 ```
 
 ![Footer](assets/sigma_footer.png)
