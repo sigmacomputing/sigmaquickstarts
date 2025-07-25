@@ -74,7 +74,7 @@ Browse to the landing page:
 http://localhost:3000
 ```
 
-Select the `API Embed Bookmarks` page and click `Go`:
+Select the `Embed Bookmarks` page and click `Go`:
 
 <img src="assets/api_bm_01.png" width="600"/>
 
