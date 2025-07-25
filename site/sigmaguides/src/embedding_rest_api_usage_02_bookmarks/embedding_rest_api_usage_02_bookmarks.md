@@ -74,7 +74,7 @@ Browse to the landing page:
 http://localhost:3000
 ```
 
-Select the `API Embed Bookmarks` page and click `Go`:
+Select the `Embed Bookmarks` page and click `Go`:
 
 <img src="assets/api_bm_01.png" width="600"/>
 
@@ -192,8 +192,8 @@ The console log will list the bookmarks that were deleted:
 ```code
 Fetching bookmarks from Sigma API: https://aws-api.sigmacomputing.com/v2/workbooks/0e51172a-a4c0-4954-8c8c-9d854dcf4434/bookmarks
 Found 1 bookmarks in Sigma to delete
-✅ Deleted Sigma bookmark: Mobile Phones (879c3131-eee6-4263-8df1-4e1a4be7178a)
-✅ Clear all bookmarks completed - deleted 1 bookmarks
+Deleted Sigma bookmark: Mobile Phones (879c3131-eee6-4263-8df1-4e1a4be7178a)
+Clear all bookmarks completed - deleted 1 bookmarks
 ```
 
 ![Footer](assets/sigma_footer.png)
