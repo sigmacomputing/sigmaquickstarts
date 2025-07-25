@@ -43,28 +43,6 @@ No SQL or technical data skills are required for this hands-on lab.
  
 ![Footer](assets/sigma_footer.png)
 
-## Setup 
-Duration: 5
-
-**1:** Navigate to your dedicated Sigma Sandbox, if you have not been provisioned access please notify the instructor.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
-</aside>
-
-**2:** Sign up for an account using your personal email by selecting `Create an account` and entering your **personal email address**. 
-
-**3:** Check your inbox for a message from `info@send.sigmacomputing.com` and continue the sign-up process by clicking the link.
-
-**4:** Enter your information as prompted, and click `Submit`.
-
-**5:** Once you see the homepage, you’re ready to proceed!
-
-<img src="assets/sf2025_2.png" width="800"/>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Ask Sigma
 Duration: 5
 
@@ -79,14 +57,14 @@ To understand profitability for this year’s product lineup, we need insight in
 <img src="assets/sf2025_4.png" width="450"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The response comes from a Databricks AI-Query LLM, so your output may differ from this guide. 
+<strong>NOTE:</strong><br> The response comes from an LLM in Databricks, so your output may differ from this guide.
 </aside>
 
-Notice that Databricks AI-Query is suggesting we use the `BIG_BUYS_POS` table as a source because it has the required data for the requested prompt but also is a `Trusted` source. 
+Notice the LLM is suggesting we use the `BIG_BUYS_POS` table as a source because it has the required data for the requested prompt but also is a `Trusted` source. 
 
 <img src="assets/sf2025_5.png" width="800"/>
 
-As Databricks AI-Query works on the prompt, Sigma is showing each decision. For example, Databricks AI-Query has decided to group the data and add some calculations too:
+As Databricks works on the prompt, Sigma is showing each decision. For example, the LLM has decided to group the data and add some calculations too:
 
 <img src="assets/sf2025_6.png" width="350"/>
 
