@@ -144,8 +144,6 @@ Sigma reads the file so we can review it and then click `Save`:
 
 **8:** With these 5000+ product reviews, we have a rating score for each review that we can leverage in our analysis to get a sense of customer perspective on these products.
 
-Right click the `Review` column and select `Add column`:
-
 <img src="assets/sf2025_19.png" width="800"/>
 
 **9:** Now we need to tie this to our `BIG_BUYS_POS` table. In Excel, you can do this with a Vlookup. Luckily Sigma has the same paradigm. On the `BIG_BUYS_POS` table right click `Brand` and select `Add column via lookup`:
