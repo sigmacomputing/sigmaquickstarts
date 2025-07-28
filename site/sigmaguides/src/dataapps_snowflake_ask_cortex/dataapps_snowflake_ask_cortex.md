@@ -639,9 +639,9 @@ Add another action, and set the control value of the `Persona` control on the `D
 Lookup([System Prompts/Prompt], [Persona], [System Prompts/Persona])
 ```
 
-<img src="assets/ct_46.png" width="600"/>
+<img src="assets/ct_46a.png" width="600"/>
 
-If we enter a simple prompt (ie: "What to you think?"), select a `Persona` and click the `Submit...` button, we can see the data that will be sent to Cortex is showing in the `User Prompt` control on the `Data` page:
+If we enter a simple prompt (ie: "What do you think?"), select a `Persona` and click the `Submit...` button, we can see the data that will be sent to Cortex is showing in the `User Prompt` control on the `Data` page:
 
 <img src="assets/ct_47.png" width="800"/>
 
