@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_rest_api_05_wb_descriptions
-summary: embedding_rest_api_05_wb_descriptions
+id: embedding_rest_api_usage_05_wb_descriptions
+summary: embedding_rest_api_usage_05_wb_descriptions
 categories: embedding
 environments: web
 status: published
