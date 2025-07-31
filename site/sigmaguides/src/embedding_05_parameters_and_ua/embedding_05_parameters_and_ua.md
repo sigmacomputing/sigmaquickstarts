@@ -550,7 +550,7 @@ Examples:
 **16: responsive_height:**<br>
 Setting this to true this allows developers access to workbook:pageheight:onchange JavaScript event.
 
-This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_dynamic_iframes/index.html?index=..%2F..index#0)
+This is discussed in detail in the [QuickStart: How to: Responsive iframes with Sigma](https://quickstarts.sigmacomputing.com/guide/embedding_11_responsive_embeds_v3/index.html?index=..%2F..index#0)
 
 Sample Code:
 ```code
