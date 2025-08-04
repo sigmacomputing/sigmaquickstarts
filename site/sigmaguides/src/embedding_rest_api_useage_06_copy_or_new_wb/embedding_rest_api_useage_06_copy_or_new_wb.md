@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-07-25
+lastUpdated: 2025-08-04
 
 # REST API Usage 06: Copy or Create a New Workbook 
 
