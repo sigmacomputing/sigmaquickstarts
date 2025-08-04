@@ -158,6 +158,10 @@ The embed loads but there are no bookmarks in the `Saved Bookmark` list yet. The
 
 <img src="assets/api_bm_02.png" width="800"/>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Click the `README` button to review the implementation details for this project.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
