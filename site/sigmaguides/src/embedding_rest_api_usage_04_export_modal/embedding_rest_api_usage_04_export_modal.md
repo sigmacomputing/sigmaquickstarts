@@ -99,6 +99,10 @@ Select the `Embed_API_QuickStart` workbook:
 
 The embed loads but there are no exports set up yet, and we can only see the `Schedule Export` button.
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Click the `README` button to review the implementation details for this project.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 

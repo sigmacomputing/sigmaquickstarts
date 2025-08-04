@@ -85,6 +85,10 @@ The embed loads but there are no bookmarks in the `Saved Bookmark` list yet. The
 
 <img src="assets/api_bm_02.png" width="800"/>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Click the `README` button to review the implementation details for this project.
+</aside>
+
 ### Create a bookmark
 Let's say the `View` user has requested that the workbook only show data for mobile phones. With this embed configuration, the `Build` user can provide that by creating a bookmark.
 
