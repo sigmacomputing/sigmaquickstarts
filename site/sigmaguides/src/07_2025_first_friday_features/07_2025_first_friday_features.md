@@ -178,11 +178,6 @@ For information, see [Configure warehouse AI model integration](https://help.sig
 ## API
 Duration: 20
 
-### Data models included in the response for Get workbook sources endpoint
-The Get workbook source [GET /v2/workbooks/{workbookId}/sources](https://help.sigmacomputing.com/reference/getworkbooksources) endpoint now includes data models in the response, in addition to the previously returned tables and datasets.
-
-The response returns the `dataModelId` for the entire data model document, the specific element IDs of tables from the data model used by the workbook, and other data.
-
 ### New API endpoints to list account types and account type permissions
 The following endpoints to list account types and account type permissions are now available:
 

@@ -133,7 +133,7 @@ Select the `Embed_API_QuickStart` workbook:
 <img src="assets/api_desc_01.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We are using the "View" user in this workflow for simplicity only. 
+<strong>NOTE:</strong><br> We are using the "Build" user in this workflow for simplicity only. 
 </aside>
 
 The embed loads and there is a `Workbook Description` button provided.
