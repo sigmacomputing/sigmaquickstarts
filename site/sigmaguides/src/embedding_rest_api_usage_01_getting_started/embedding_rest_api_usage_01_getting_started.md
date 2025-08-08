@@ -373,7 +373,7 @@ Browse to the landing page:
 http://localhost:3000
 ```
 
-Select `Getting Started` QuickStart and click `Go`:
+Select `Getting Started` and click `Go`:
 
 <img src="assets/gs_26.png" width="500"/>
 

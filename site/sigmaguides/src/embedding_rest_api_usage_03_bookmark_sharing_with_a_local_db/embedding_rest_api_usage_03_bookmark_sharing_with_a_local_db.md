@@ -148,7 +148,7 @@ Browse to the landing page:
 http://localhost:3000
 ```
 
-Select the `Embed Bookmarks with Local DB` page and click `Go`:
+Select the `Bookmark Sharing with Local DB` page and click `Go`:
 
 <img src="assets/api_bm_01.png" width="600"/>
 
