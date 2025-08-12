@@ -472,11 +472,13 @@ To ensure data stays under your control, Sigma also supports warehouse AI models
 
 For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
 
-Navigate to `Administration` > `AI settings`, select the AI provider and provide a valid `API Key`:
+Navigate to `Administration` > `AI settings`, select the AI provider and provide a valid `API Key`.
+
+Sigma supports using warehouse models in order to limit exposing your data to a third party. There is also support for external models like `OpenAI` and `Azure OpenAI`:
 
 <img src="assets/f1_43.png" width="800"/>
 
-For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+For more information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization?_gl=1*ob89g0*_gcl_au*MTI4MzM4NjQwLjE3NTAwMzc3NzI.*_ga*MTAzMjQzMDMwNC4xNzQyMjI4NzA5*_ga_PMMQG4DCHC*czE3NTQ5MjM0MDUkbzM5NyRnMSR0MTc1NDkyMzUyNSRqMjkkbDAkaDA.#configure-an-ai-provider)
 
 ### Select data sources to make available to Ask Sigma
 Now we need to tell Sigma which data sources Ask Sigma can use. Since we are using third-party AI services like OpenAI, we want to be careful about which datasets we allow access to. This process controls that and limits access to data that may be proprietary.
@@ -515,23 +517,30 @@ Once the response is ready, you’ll see:
 - Options to adjust calculations
 - Multiple charts to choose from for your workbook
 
-Some generated charts may not be helpful—for example, `Store Latitude, Store Longitude, and Store Key` aren’t useful in this case. so we won't select them.
+Some generated charts may not be helpful—for example, so we won't select them.
 
 <img src="assets/f1_49.png" width="800"/>
 
-If you're happy with the results, you can open the selected items in a workbook—or keep refining in Ask Sigma.
+If you're happy with the results, you can open the selected items in a workbook—or keep refining in Ask Sigma:
 
+<img src="assets/f1_49a.png" width="800"/>
 
 Once inside a workbook, you can save it, make any changes you like, or use Sigma’s [Explore Anywhere](https://help.sigmacomputing.com/docs/view-underlying-data) feature for deeper analysis:
 
 <img src="assets/f1_50.png" width="500"/><br><br>
+
+We can make any adjustments we want like changing the chart title to be more clear:
 
 <img src="assets/f1_51.png" width="800"/>
 
 It’s clear that Ask Sigma changes the way people will use Sigma—and it’s only getting better. Stay tuned!
 
 ### Ask Sigma Usage Dashboard
-Sigma also provides an optional log of Ask Sigma usage. 
+Sigma also provides an optional log of Ask Sigma usage. Before Ask can capture historic data, we have to configure a storage location for the data. This is done in `Administration` > `AI Settings' > `Ask Sigma usage`:
+
+<img src="assets/f1_56.png" width="800"/>
+
+Once configured, administrators can access the usage dashboard which provides a variety of metrics and useful information.
 
 For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
