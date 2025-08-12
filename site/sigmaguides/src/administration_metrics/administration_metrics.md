@@ -122,7 +122,7 @@ Marketing has requested details on how well the various Salesforce campaigns are
       <li>The total cost (spend) per campaign.</li>
       <li>How much pipeline was generated.</li>
       <li>Value of closed pipeline.</li>
-      <li>Which campaigns of over on their budget.</li>
+      <li>Which campaigns are over on their budget.</li>
     </ol>
   </li>
 
