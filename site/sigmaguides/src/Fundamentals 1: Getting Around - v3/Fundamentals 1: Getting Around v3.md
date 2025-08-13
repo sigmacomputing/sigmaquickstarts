@@ -542,6 +542,7 @@ Sigma also provides an optional log of Ask Sigma usage. Before Ask can capture h
 
 Once configured, administrators can access the usage dashboard which provides a variety of metrics and useful information.
 
+
 For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
 There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
@@ -637,9 +638,16 @@ You can even create templates from your own workbooks too:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
 
-## Containers
+## Layout Elements
 Duration: 6
 
+Sigma offers several layout elements that help you structure workbook pages, improve navigation, and create interactive user experiences. Each element is designed to make your content more organized, visually appealing, and easier to use. 
+
+Having all these options allows you to get creative with workbook functionality and design—encouraging your users to engage with and return to your workbooks.
+
+<img src="assets/f1_57.png" width="550"/>
+
+### Containers
 Sigma's container feature allows you to organize workbook pages by grouping elements within a customizable container. 
 
 This provides an intuitive way to manage layouts, ensuring that related elements remain visually cohesive. 
@@ -654,9 +662,39 @@ In the animation below, we show how containers dramatically improve the appearan
 
 To learn more about using containers, see [Organize workbook layouts with containers](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers)
 
+### Tabbed Container
+Tabbed containers let you organize related content into separate tabs within the same space. This saves screen real estate, reduces scrolling, and allows users to easily switch between different views or datasets without leaving the page.
+
+An example can be seen on the `Administration` > `Usage` page where the content actually uses nested tabbed containers:
+
+<img src="assets/f1_58.png" width="800"/>
+
+### Modal
+A modal is a pop-up window that overlays the workbook. Modals are ideal for highlighting important content, collecting input, or guiding users through a focused interaction without navigating away from the main page.
+
+Modals can be used for simple things like confirming a change or complex as shown in the [Approvals QuickStart](https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html?index=..%2F..index#0)
+
+<img src="assets/modals.gif">
+
+### Popover
+Popovers display additional information or interactive controls in a small floating panel triggered by a click or hover.
+They’re perfect for providing contextual help, quick filters, or small forms without cluttering the main layout.
+
+An example can be seen on the `Administration` > `Usage` page where a popover is used for filters, freeing up space:
+
+<img src="assets/f1_59.png" width="800"/>
+
+### Form
+Forms enable users to input and submit data directly within a workbook. They can be used to capture user feedback, send parameters to queries, or write data back to your warehouse—bringing interactivity and data collection directly into your Sigma dashboards.
+
+There is a QuickStart, [Forms: Quick Capture and Analysis with Sigma](https://quickstarts.sigmacomputing.com/guide/dataapps_create_a_form_simple/index.html?index=..%2F..index#0) that walks through the process of using forms to capture trade show leads.
+
+Here is an example of a form for capturing trade show leads:
+
+<img src="assets/f1_60.png" width="600"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
-
 
 ## Account Types
 Duration: 6
