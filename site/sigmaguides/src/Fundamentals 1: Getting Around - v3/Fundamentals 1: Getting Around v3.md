@@ -283,7 +283,7 @@ We are looking at the data (in the **Overview** tab), but we can also look at co
 To begin our analysis, we want to begin exploring this data. Click the `Explore` button in the upper right corner (**click the button, not the drop arrow**).
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The "Explore" drop menu also provides a means to use this table as a starting for for data modeling. 
+<strong>IMPORTANT:</strong><br> The "Explore" drop menu also provides a means to use this table as a starting for data modeling. 
 </aside>
 
 The explore button has opened a new workbook for us, and placed the `F_SALES` table on it too:
