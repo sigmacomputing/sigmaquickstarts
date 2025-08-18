@@ -84,16 +84,16 @@ In short, these spreadsheets bring clarity and control to the uncertainty of bus
 ### About the Financial Data
 This QuickStart uses two core datasets commonly found in FP&A workflows:
 
-**Journal Entries**<br>
-The journal entries table forms the transactional backbone of your financials. It contains individual line items with key fields such as Transaction Date, Amount, Account, Department, and Region. It represents the raw, timestamped flow of financial activity across your business.
+**Financial Transaction**<br>
+The financial transaction entries table forms the transactional backbone of your financials. It contains individual line items with key fields such as Transaction Date, Amount, Account, Department, and Region. It represents the raw, timestamped flow of financial activity across your business.
 
 **Account Hierarchy**<br>
 This dataset defines how financial accounts roll up into broader reporting categories (e.g., Revenue → Operating Income → Net Income). It enables you to group, categorize, and report on financials at multiple levels of granularity.
 
 Together, these datasets allow you to model and visualize financial performance across departments, time periods, and account categories.
 
-### Understanding the Journal Entries Table
-The Journal Entries table typically includes three types of columns. (Note: Column order may vary depending on your data source.)
+### Understanding the Financial Transaction Table
+The Financial Transaction table typically includes three types of columns. (Note: Column order may vary depending on your data source.)
 
 **1. Account Hierarchy Values:**<br>
 Used to group data and create rollups in your FP&A report:
@@ -104,11 +104,11 @@ Used to group data and create rollups in your FP&A report:
 Each line item includes transactional detail for analysis:
 - Transaction Date
 - Journal Entry ID
-- Cust Key
 - Amount
 
 **3. Transaction Dimensional Attributes:**<br>
 Used to slice and filter financial data by business segments:
+- Cust Key
 - Product Area
 - Region
 - Department
