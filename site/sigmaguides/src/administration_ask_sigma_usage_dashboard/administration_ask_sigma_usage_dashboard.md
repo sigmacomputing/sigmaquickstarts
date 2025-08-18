@@ -33,7 +33,7 @@ When you enable Ask Sigma history logging in the admin panel, Sigma automaticall
 **1. Write-Back Table**<br>
 Sigma logs every Ask Sigma query to a Snowflake table.
 
-This table is created in a schema you specify as the write-back destination (e.g., ASK.HISTORY).
+This table is created in a schema you specify as the write-back destination. In section 3 we will created a Sigma connection and use the Snowflake configuration to store the historic data.
 
 Sigma will not expose this schema in the UI.
 
