@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-07-14
+lastUpdated: 2026-08-22
 
 # Parsing JSON Data in Seconds
 <!-- The above name is what appears on the website and is searchable. -->
@@ -14,28 +14,26 @@ lastUpdated: 2023-07-14
 ## Overview 
 Duration: 5 
 
-This QuickStart discusses and demonstrates how a business user can easily handle columns of data that are stored in the JSON format.  
+This QuickStart demonstrates how a business user can easily work with columns of data stored in JSON format.
 
-JSON, which stands for JavaScript Object Notation, has become a universally accepted standard for data interchange on the web due to its simplicity, readability, and language-independent nature. 
+JSON (JavaScript Object Notation) has become a universal standard for data interchange on the web due to its simplicity, readability, and language-independent design.
 
-Whether you're receiving data from a web API, reading from a file, or working with local data, knowing how to parse JSON is crucial in modern software development
+Whether the data comes from a web API, a file, or a local source, knowing how to parse JSON is essential in modern data applications. Parsing refers to converting a JSON string into a format your analytics tool can understand and manipulate. This allows you to extract values, iterate through arrays, and read key-value pairs from objects.
 
-Parsing JSON data refers to the process of taking a piece of data (typically a string) in JSON format and converting it into a format that your programming language can understand and manipulate. 
+For many business users, JSON can be frustrating because it typically requires a developer or ETL tool to flatten it into a more familiar columnar format. This adds time and requires technical expertise.
 
-This allows programs to extract values, iterate through arrays, and read key-value pairs from objects. 
-
-Parsing JSON is not something the typical business user tackles and can be a source of frustration when they are presented data in this way. This results in requests to the development team to parse the data into a more comfortable, columnar format prior to making it available to users. This takes some time and must be done using code or other ETL (extract, transform, load) tool the developers have available. 
-
-There is a much better way; using Sigma to directly (and easily) parse the data.
+Sigma provides a much better way: you can directly and easily parse JSON inside Sigma, without waiting for developer intervention.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
+If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
  ### Target Audience
-Anyone who is trying to parse JSON data in the fastest way possible, to enable analytics applications.
+Anyone who wants to parse JSON data quickly and easily to enable analytics.
 
 ### Prerequisites
 
@@ -50,72 +48,43 @@ Anyone who is trying to parse JSON data in the fastest way possible, to enable a
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-  
-### What You’ll Learn
-How to use Sigma to parse simple and nested JSON data.
 
-## Map of US State Capitals from JSON
+## Simple JSON Extraction
 Duration: 20
 
-Let's assume that we got a sample database that provides a list of all the US States, but the data came to us in a single JSON column. 
+Let’s assume we have a sample database that provides a list of all U.S. states, but the data is stored in a single JSON column.
 
-Login to Sigma and create a new `Workbook` and `Page`. 
+Log in to Sigma and create a new `Workbook` and `Page`.
 
-Rename the Workbook to `Working with JSON Data` and rename the page to `US Capitals`.
+Rename the workbook `Parsing_JSON_QuickStart` and rename the page `US_Capitals`.
 
-We will use a table from the Sigma Sample Database.
+We’ll use a table from the `Sigma Sample Database`.
 
-Click to add a new table:
+From the `Element ba`r, add a new `Data` > `Table` to the page:
 
-<img src="assets/json1.png" width="800"/>
+<img src="assets/json1.png" width="500"/>
 
-Select `TABLES AND DATASETS`.
+In the `Source selector`, search for `State_inf` and select `STATE_INFO_JSON` from `FUN` > `USA_NAMES`:
 
- Select the `Sigma Sample Database`.
+<img src="assets/json2.png" width="500"/>
 
- Expand the `FUN` schema and then `USA_NAMES`.
+Open the menu for `State Json` column and select `Extract columns...`:
 
-<img src="assets/json2.png" width="800"/>
+<img src="assets/json3.png" width="450"/>
 
-Select `STATE_INFO_JSON`.
+Select all the columns except `STATE_ID` (since that already exists in the data). Click `Confirm`:
 
-Only select the `State Json Field` and click the `Select` button:
+<img src="assets/json3a.png" width="800"/>
 
-<img src="assets/json3.png" width="800"/>
+Next, open the menu for the `State Json` column and select `Hide column`.
 
-We now have a table with the single column of Json data. 
+You now have a clean table that can be used to power a map or support any of the other visualizations Sigma offers.
 
-**Now comes the awesome part!**
+<img src="assets/json3b.png" width="800"/> <aside class="positive"> <strong>IMPORTANT:</strong><br> Business users will LOVE being able to do this themselves—and developers will love not having to create extra ETL pipelines for it. </aside>
 
-Click the `State Json Field` column's drop arrow and select `Extract Columns`:
+This exercise was simple, but it shows how easily business users can parse JSON data directly in Sigma—without relying on developers or additional tooling.
 
-<img src="assets/json4.png" width="800"/>
-
-We are presented with a list of the column data that Sigma was able to automatically parse from the JSON data. 
-
-Click to select the fields `STATE NAME, CAPITAL, LAT, LONG` and click the `Confirm` button:
-
-<img src="assets/json5.png" width="800"/>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Business users will LOVE that they can do this themselves and developers will love that they don't have to add ETL pipelines to handle it either.
-</aside>
-
-We don't really need to see the JSON column anymore so hide that.
-
-We now have a clean table that we can use for our map:
-
-<img src="assets/json6.png" width="800"/>
-
-Click to add a `Child Element` / `Visualization`:
-
-<img src="assets/json7.png" width="800"/>
-
-Configure the new visualization as shown below:
-
-<img src="assets/json8.png" width="800"/>
-
-Granted, this exercise was pretty simple, but it should be clear now that parsing JSON data is something any business user of Sigma can confidently do on their own.
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -123,61 +92,139 @@ Granted, this exercise was pretty simple, but it should be clear now that parsin
 ## Nested JSON
 Duration: 5
 
-JSON data is not always "flat" as we saw in the previous example. In fact, it is very common to "nest" data elements inside a JSON file. In this case, the data is structured in a hierarchical manner, with "data inside data".
+JSON isn’t always flat. It often contains nested objects (data inside data). That can be intimidating—until you use Sigma’s `Extract columns` wizard.
 
-This can make extraction that much more problematic for a business user.
+In this example, we want to identify customers tagged "at_risk" and send them a birthday promotion. But there’s a challenge: an ETL job merged customer details into the sales table as a JSON object—and the birthday is nested inside that object too.
 
-For example, a non-nested JSON object make look like this:
-```JSON
-{
-  "name": "John",
-  "age": 30,
-  "city": "New York"
-}
+Create a new `Page` in the same workbook and rename it `Nested_JSON`.
+
+Add a new `Table` using the `Sigma Sample Database `and choose `RETAIL` > `PLUGS ELECTRONICS` > `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA:`
+
+<img src="assets/json9a.png" width="500"/>
+
+In the `Element panel` on the right side of the page, use `Shift+click` to select all 21 columns, `Hide` them, and leave only the `Cust Json` column visible:
+
+<img src="assets/json9b.png" width="400"/>
+
+This just makes the page less busy for us.
+
+Following the same workflow as before, open the menu on `Cust Json` and select `Extract columns...`.
+
+In the `Extract fields from Cust Json` modal, choose the top-level fields you want, then expand `LOYALTY_EXTRA` and `BIRTHDAY` to select the nested fields:
+
+<img src="assets/json9c.png" width="800"/>
+
+Hide the `Cust Json` column and click `Confirm`.
+
+We can now see the "at_risk" flag in the data—but notice we can’t filter on these extracted columns or use column details. Why not?
+
+<img src="assets/json9d.png" width="500"/> <aside class="positive"> <strong>IMPORTANT:</strong><br> Fields extracted from JSON are still treated as *semi-structured* (Variant). Variants don’t always appear in the filter builder, so you can’t simply select `"= at_risk"` from the UI. </aside>
+
+You can confirm this in the `Element panel` > `Properties` pane, where the datatype is shown:
+
+<img src="assets/json9e.png" width="500"/>
+
+Fortunately, adjusting this is simple in Sigma.
+
+Select the `LOYALTY_TIER` column and set its formula to:
+```code
+Text([Cust Json].LOYALTY_EXTRA.LOYALTY_TIER) = "at_risk"
 ```
 
-Where a nested JSON object is presented in a hierarchical format:
+Now the datatype is converted, and the "at_risk" cells display as True:
 
-<img src="assets/json9.png" width="800"/>
+<img src="assets/json9f.png" width="800"/>
 
-In this example, we want to send customers an offer on their birthday, but an ETL job merged their personal information into the sales table as a JSON object, and on top of that, the birthday detail is nested in the JSON object too!
+From here, it’s easy to add a filter on `LOYALTY_TIER` to show only `True` cells:
 
-Let's take a look at how Sigma handles this JSON nesting challenge.
+<img src="assets/json9g.png" width="800"/>
 
-Create a new `Page` in the same Workbook and rename it `Nested JSON`.
+This gives us the list of customers to include in our promotion.
 
-Create a new `Table` using the `Sigma Sample Database` and choose the `RETAIL` `PLUGS ELECTRONICS` / `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
+The key takeaway: nested JSON doesn’t block analysis. With Sigma, you can parse it, flatten it, and apply business logic directly—without waiting for an ETL job.
 
-We will only need the columns `Customer Name` and `Cust Json`. Click `Select` when done:
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
-<img src="assets/json10.png" width="800"/>
+## JSON Arrays
+Duration: 5
 
-As before, click the drop arrow on the `Cust Json` column and select `Extract columns`.
+JSON can also contain arrays—lists of values or objects inside the JSON. In our next sample dataset, each customer record may include a children array with one or more child objects, each containing a name and age.
 
-We want to select the following columns to support our use case:
+While Sigma’s `Extract columns` wizard makes nested objects simple, arrays require one extra step: formulas that use indexing. Sigma supports zero-based indexing ([0] for the first item, [1] for the second, etc.), allowing you to pull values out of arrays directly.
 
-<img src="assets/json11.png" width="800"/>
+<button>[Download the Sample Array Data](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/json_array.csv)</button>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Sigma made it simple to work with nested JSON objects in the extraction workflow so that the user was not exposed to any real complexity.
-</aside>
+### Import the Sample CSV
+Create a new `Page` in the same workbook and rename it `Array_JSON`.
 
-Hide the `Cust Json` column as we don't need to see that anymore.
+Add a new `Table` to the page, this time selecting the `CSV` option:
 
-A point to understand is that the parsed columns can be filtered except for the nested columns. If we want to filter those (BIRTHDAY_MONTH and BIRTHDAY_DAY), we need to cast them as text so that we can then filter out the rows with no record of the customer's birthday (null values).
+<img src="assets/json10a.png" width="500"/>
 
-For the `BIRTHDAY_MONTH` column, set the formula to:
-```plaintext
-Text([Cust Json].LOYALTY_EXTRA.BIRTHDAY.BIRTHDAY_MONTH)
+Select the `Sigma Sample Database`.
+
+Browse to the location or drag and drop the `json_array.cs`v file into the `Upload CSV` box:
+
+<img src="assets/json10b.png" width="400"/>
+
+Sigma parses CSV data automatically, but you can review and adjust if needed; click `Save`:
+
+<img src="assets/json10c.png" width="800"/>
+
+Once loaded, you’ll see a `cust_json` column. Try extracting it—you can’t.
+
+<aside class="positive"> <strong>IMPORTANT:</strong><br> During CSV import, the parser identified the "cust_json" column as text. Extract is only available for columns stored as JSON. We could have fixed this during import but skipped that step.</aside>
+
+No problem: from the `cust_jso`n column menu, select `Transform` > `Convert to JSON`:
+
+<img src="assets/json10d.png" width="500"/>
+
+Now the `Extract columns` feature is available.
+
+Expand `cust_json` and select the `name` field, (notice the array data under `children` but don't select them) then click `Confirm:`
+
+<img src="assets/json10e.png" width="500"/>
+
+Next, hide a few unnecessary columns to reduce noise:
+
+<img src="assets/json10f.png" width="700"/>
+
+### Create calculated columns for array values
+
+Now let’s use calculated columns to handle the children array.
+
+<aside class="negative"> <strong>NOTE:</strong><br> Use hotkeys to save clicks. <img src="assets/addcol.png" width="70"/> quickly adds a new column. </aside>
+
+Add calculated columns as follows:
+
+Number of Children:
+```code
+ArrayLength([cust_json].children)
 ```
 
-Now we are able to filter out the null rows, using a filter on this column:
+**First Child Name:**<br>
+```code
+Coalesce(Text([cust_json].children[0].name), "")
+```
 
-<img src="assets/json12.png" width="800"/>
+We use Coalesce to replace null values with empty cells when no children exist.
 
-We could keep going on the use case, focusing on how we can add more value to it and not being blocked by nested JSON. 
+**First Child Age:**<br>
+```code
+If(ArrayLength([cust_json].children) > 0, Text([cust_json].children[0].age), "")
+```
 
-If you are interested in reading more about how Sigma handles JSON, [please click here.](https://help.sigmacomputing.com/docs/extract-semi-structured-json-or-variant-data)
+We check if the array has at least one child; otherwise, return an empty cell.
+
+**Second Child Name (optional):**<br>
+```code
+Coalesce(Text([cust_json].children[1].name), "")
+```
+
+The result looks like this:
+
+<img src="assets/json10g.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -185,7 +232,9 @@ If you are interested in reading more about how Sigma handles JSON, [please clic
 ## What we've covered
 Duration: 5
 
-In this lab we learned how to leverage flat and nested JSON using Sigma's unique user interface. Business users are able to extract columns from JSON objects directly, without having to ask or wait for development resources.
+In this lab, we explored how to work with flat, nested, and array-based JSON using Sigma's intuitive interface. Business users can now extract columns directly from JSON objects, navigate nested fields, and even pull values from arrays—all without needing to rely on or wait for development resources.
+
+This enables faster insights, reduces the dependency on ETL pipelines, and makes previously complex JSON data immediately usable for analytics.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**
