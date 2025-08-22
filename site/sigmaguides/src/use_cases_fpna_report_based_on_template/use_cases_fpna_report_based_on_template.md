@@ -1,12 +1,12 @@
-author: pballai
+\author: pballai
 id: use_cases_fpna_report_based_on_template
 summary: use_cases_fpna_report_based_on_template
 categories: use cases
 environments: web
-status: Hidden
+status: Use Cases
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2025-07-31
+tags: default
+lastUpdated: 2025-08-22
 
 # Build a Custom FP&A Report based on a Template
 
@@ -118,13 +118,13 @@ Used to slice and filter financial data by business segments:
 ### Understanding the Account Hierarchy Table
 The Account Hierarchy table typically contains three types of columns:
 
-**1. Section/Grouping for Totals:**<br>
+**1. Base-Level Hierarchy Information:**<br>
+Used to define the relationship between accounts and categories. This enables the join to the journal entry table.
+
+**2. Section/Grouping for Totals:**<br>
 Defines high-level rollup categories that appear in reports:
 
 Example values: Operating Expenses, Revenue, COGS
-
-**2. Base-Level Hierarchy Information (Level 1):**<br>
-Used to define the relationship between accounts and categories. This enables the join to the journal entry table.
 
 **3. Full Hierarchy Path (Level 1 to N):**<br>
 Optional fields that represent the full drill path across levels. These allow display and aggregation at various levels of detail.
