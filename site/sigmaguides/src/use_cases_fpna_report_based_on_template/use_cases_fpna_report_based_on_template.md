@@ -1,7 +1,7 @@
 \author: pballai
 id: use_cases_fpna_report_based_on_template
 summary: use_cases_fpna_report_based_on_template
-categories: use cases
+categories: use-cases
 environments: web
 status: Use Cases
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
