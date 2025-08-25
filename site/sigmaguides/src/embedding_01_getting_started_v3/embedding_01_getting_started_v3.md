@@ -645,7 +645,12 @@ We have a few more parameters to configure.
 
 For `ACCOUNT_TYPE` use `View`.  
 
-For `EMAIL` any email address (a made-up one is fine).
+For EMAIL, use any address that is not already associated with a native Sigma account.
+
+<aside class="positive"> <strong>IMPORTANT:</strong><br> "Native Sigma users" are those provisioned directly in the Sigma UI (not identified in Sigma as "EMBED"). If such a user tries to access securely embedded content, they may see this error message: "You don't have permission to access this page. Automatic updating of users is disabled."</aside>
+
+
+For more information, see [Turn off automatic embed user creation](https://help.sigmacomputing.com/docs/manage-access-to-a-secure-embed#turn-off-automatic-embed-user-creation)
 
 For `TEAMS` use `Sales_People`.
 
