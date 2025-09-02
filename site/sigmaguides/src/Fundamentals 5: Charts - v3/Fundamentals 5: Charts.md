@@ -101,7 +101,7 @@ Through this QuickStart, we will walk through how to use Sigma to create beautif
 ## Chart Basics
 Duration: 30
 
-Our starting point is the workbook created in the QuickStart, [Fundamentals 2: Working with Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals-2-working-with-tables-v2/index.html?index=..%2F..index#0)
+Our starting point is the workbook created in the QuickStart, [Fundamentals 2: Working with Data](https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html?index=..%2F..index#0)
 
 It is often easier to spot trends, outliers, or insights that lead to further questions when viewing data in a chart.
 
