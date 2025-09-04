@@ -22,7 +22,7 @@ We understand that many users have experience with BI platforms. Since Sigma is 
 
 If you fall into that category, please review these summaries:
 
-[Sigma Differences From Other BI Tools Overview For New Sigma Creators.](https://community.sigmacomputing.com/docs?topic=3285)
+[Sigma Differences From Other BI Tools Overview For New Sigma Creators](https://community.sigmacomputing.com/docs?topic=3285)
 
 [I am a Dashboard Builder New to Sigma. How Can I Quickly Get Up To Speed?](https://community.sigmacomputing.com/docs?topic=3650)
 
@@ -35,12 +35,12 @@ Each QuickStart in the series will use sample data Sigma provides to all custome
 </aside>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
-If something isn’t working as expected, here is how to [contact Sigma support.](https://help.sigmacomputing.com/docs/sigma-support)
+If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -87,9 +87,7 @@ If you don’t have a Sigma account yet, sign up for a free trial to follow alon
  
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
-**Fill out the form on Sigma's Trial page:**
-
-When ready, click the `START TRIAL` button.
+Once on the trial setup page fill out the form and click `Start Trial`:
 
 <img src="assets/trial-landing-page.png" width="600"/>
 
@@ -99,7 +97,7 @@ You will receive notice that Sigma is sending an email invitation:
 
 <img src="assets/trial-landing-page1.png" width="500"/>
 
-In your email application, open the email from Sigma and click `Verify Email Address`.  
+In your email application, open the email from Sigma and click `Verify Email Address`:
 
 <img src="assets/f1_1.png" width="500"/>
 
@@ -107,23 +105,35 @@ In your email application, open the email from Sigma and click `Verify Email Add
 <strong>NOTE:</strong><br> If you have not received this email within 10 minutes, please check your spam folder, and if not there, ask for assistance from support. The email will be "from" Sigma Computing using the address: info@send.sigmacomputing.com.
 </aside>
 
-Feel free to contact Sigma support at any time using the [methods listed here.](https://help.sigmacomputing.com/docs/sigma-support)
-
-When the page loads in your default browsers, enter in your `Company Name` and `Company Login URL` (if you prefer something different) and click the `Continue` button:
+When the page loads in your default browsers, enter in your `Company Name` and `Company Login URL` (if you prefer something different).
 
 <img src="assets/f1_2.png" width="400"/>
 
-Create your user profile and click the `Create` button:
+Sigma will pre-select a cloud location where the trial will be created. If location matters for your testing, click the pencil icon to select a different location. 
+
+For example, if you are in Europe you may want to select Frankfurt:
+
+<img src="assets/f1_2a.png" width="400"/>
+
+For more information, see [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
+
+Click the `Update` and then the `Continue` button:
+
+Next create your user profile and click the `Create` button:
 
 <img src="assets/f1_3.png"  width="400"/>
 
-You should now see the Welcome Message for your `Sigma Trial`. There is a video tutorial you can watch if you like, but for this QuickStart, just click `Go to home page`:
+You are placed in Sigma and there is a `Trial Guide` to explore too.
+
+Click `Hide` to close the trial guide:
 
 <img src="assets/f1_4.png"  width="800"/>
 
 You should also receive a welcome email from Sigma:
 
 <img src="assets/f1_5.png"  width="600"/>
+
+If something is not working as you expect, here is how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Trial instances are setup with administrative rights for the user who established the account. This provides access to all Sigma's default functionality, so you can explore everything. 
