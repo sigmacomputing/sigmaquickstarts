@@ -514,7 +514,7 @@ View application embedding usage for your organization. Private and Public embed
 ## Users
 Duration: 20
 
-Users can be added manually to Sigma using the `Administration` > `Usser` interface. This interface also supports adding multiple users at a time (bulk loading).
+Users can be added manually to Sigma using the `Administration` > `User` interface. This interface also supports adding multiple users at a time (bulk loading).
 
 When added manually, users receive an email invitation. Once invited, their Sigma account is listed on the `Pending Invitations` section of the `Users` page. 
 
