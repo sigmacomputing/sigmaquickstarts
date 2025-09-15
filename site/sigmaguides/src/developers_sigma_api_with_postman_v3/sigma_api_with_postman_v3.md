@@ -217,7 +217,7 @@ Duration: 10
 
 Sigma's API requires that we authenticate prior to use. 
 
-We will be using variables that we setup in the last step to request a `access_token`. This access_token is also know as a Bearer or JSON web token (JWT).
+We will be using variables that we setup in the last step to request a `access_token`. This access_token is also known as a Bearer or JSON web token (JWT).
 
 We are going to add a `POST` method to automate authenticating, retrieving an access_token, and persisting it in a variable. 
 
