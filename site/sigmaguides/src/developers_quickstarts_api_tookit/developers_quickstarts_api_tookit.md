@@ -3,10 +3,10 @@ id: developers_quickstarts_api_tookit
 summary: developers_quickstarts_api_tookit
 categories: Developers
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2025-08-29
+tags: Default
+lastUpdated: 2025-09-16
 
 # QuickStarts API Toolkit
 
