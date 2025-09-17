@@ -1,6 +1,6 @@
 author: pballai
-id: dataapps_crowed_sourcing
-summary: dataapps_crowed_sourcing
+id: dataapps_crowd_sourcing
+summary: dataapps_crowd_sourcing
 categories: dataapps
 environments: web
 status: published
