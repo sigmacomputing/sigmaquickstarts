@@ -344,7 +344,7 @@ When users upvote a suggestion, we need to store that information somewhere. We 
 
 Add a new `Empty` input table under the `Suggestions` table on the `Suggestion box` page and use the `Sigma Sample Database` connection.
 
-Configure two text columns: "Idea" and "Upvoted by". Use the `Created by` option to capture who made the upvote:
+Configure two text columns: `Idea` and `Upvoted by`. Use the `Created by` option to capture who made the upvote:
 
 <img src="assets/sugg_box_33.png" width="450"/>
 
@@ -380,7 +380,7 @@ Add a new column via lookup to the `Upvoted Ideas` table:
 
 <img src="assets/sugg_box_38.png" width="800"/>
 
-Configure the lookup to return a distinct count of email addresses, matched on `idea`:
+Configure the lookup to return a distinct count of the `Create by` column, matched on `idea`:
 
 <img src="assets/sugg_box_39.png" width="400"/>
 
@@ -388,11 +388,7 @@ Configure the lookup to return a distinct count of email addresses, matched on `
 <strong>NOTE:</strong><br> We are doing a distinct count so that each person can only upvote each idea one time. This will stay at either `0` or `1` until we have other users submitting ideas. 
 </aside>
 
-Rename the new column `Rank`, and drag it to the first position in the table.
-
-Let’s also sort the table by this column so that the most upvoted ideas appear first:
-
-<img src="assets/sugg_box_40.png" width="800"/>
+Rename the new column `Upvotes`, and drag it to the first position in the table.
 
 In this setup, users can see which idea ranks highest, but not how many votes were cast or who voted. Of course, that is possible along with many other things like adding charts or other visualizations that Sigma provides. 
 
@@ -429,18 +425,20 @@ The `Workbook settings` button exposes many additional options you can customize
 
 For more information, see [Create and manage workbook themes](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
-Changing the theme revealed a display issue with null values in the `Rank` column. We did not see this earlier but we can fix it easily now. The issue is that the lookup used to create the `Rank` column made a distinct count based on two text columns and the resulting new column (Rank) is numeric. Since two of the rows have no value, their rank is null. 
+Changing the theme revealed a display issue with null values in the `Rank` column. We did not see this earlier but we can fix it easily now. The issue is that the lookup used to create the `Rank` column made a distinct count based on two text columns and the resulting new column (Rank) is numeric. Since two of the rows have no value, their rank is null:
+
+<img src="assets/sugg_box_42a.png" width="800"/>
 
 You can fix this easily by adjusting the formula in the rank column to avoid this. 
 
 Select the `Rank` column and adjust the formula to handle nulls:
 ```code
-Coalesce(Lookup(CountDistinct([Upvoted Ideas/Idea]), [Idea], [Upvoted Ideas/Idea]), 0)
+Coalesce(Lookup(CountDistinct([Upvoted Ideas/Created by]), [Idea], [Upvoted Ideas/Idea]), 0)
 ```
 
 For more information, see [Coalesce](https://help.sigmacomputing.com/docs/coalesce)
 
-The `Rank` column displays correctly, as the formula uses coalesce to replace `nulls` with `0`.
+The `Upvotes` column displays correctly, as the formula uses coalesce to replace `nulls` with `0`.
 
 <img src="assets/sugg_box_47.png" width="800"/>
 
@@ -472,6 +470,10 @@ Change it to `Everyone`, and you’ll see all ideas and can upvote them too:
 If a new suggestion is submitted, it will appear in the table with the impersonated user listed under `Submitted by`:
 
 <img src="assets/sugg_box_48.png" width="800"/>
+
+After making a few upvotes, let’s also sort the table by this column so that the most upvoted ideas appear first:
+
+<img src="assets/sugg_box_49a.png" width="800"/>
 
 Congratulations! You just built a feature-rich Suggestion Box application in record time.
 
