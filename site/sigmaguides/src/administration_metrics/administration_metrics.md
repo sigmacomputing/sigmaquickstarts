@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2023-03-24
 
-# Working with Metrics
+# Working with Metrics in Datasets
 <!-- The above name is what appears on the website and is searchable. -->
 
 ## Overview 
