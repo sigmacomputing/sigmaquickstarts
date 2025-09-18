@@ -342,7 +342,7 @@ The `Element Bar` is always shown (except when the collapse icon has been select
 
 <img src="assets/f1_14.png" width="800"/>
 
-Let’s save this workbook for now. Click the `Save As` button in the upper right corner. 
+Let’s save this workbook for now. Click the `Save As` button in the upper left corner. 
 
 It is best practice to name workbooks something that makes sense to you and others you might share this workbook with later.
 
