@@ -219,7 +219,7 @@ For more information, see [Manage annotated image ability and storage period](ht
 ### Integrations
 Sigma supports integrations with Slack and dbt.
 
-For more information, see [Manage Slack integrationn](https://help.sigmacomputing.com/docs/integration-for-slack) <img src="assets/slack.png" width="100"/>
+For more information, see [Manage Slack integration](https://help.sigmacomputing.com/docs/integration-for-slack) <img src="assets/slack.png" width="100"/>
 
 For more information, see [Manage dbt Integration](https://help.sigmacomputing.com/docs/configure-dbt-integration)  <img src="assets/dbt.png" width="100"/> 
 
