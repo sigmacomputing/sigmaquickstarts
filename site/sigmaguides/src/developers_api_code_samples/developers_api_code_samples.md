@@ -200,7 +200,6 @@ It also exports a Javascript function to request a bearer token (token) each tim
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> The token is valid for 3599 seconds (just under one hour) and needs to be refreshed. Our Javascript function will handle that.
 </aside>
-`
 In the project root directory, open the file `get-access-token.js` and review it's contents. Each section is commented so it can be understood. 
 
 Start the VSCode debugger against this code by pressing `F5` on your keyboard.
@@ -1166,7 +1165,7 @@ Duration: 20
 
 A common use case is to programmatically initiate an existing materialization job in Sigma, via API.
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Initiate Materialization Job` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-initiate-materialization-job)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
@@ -1345,6 +1344,51 @@ The expected response is:
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
+## Workbook: Reassign Ownership by Email
+Duration: 20
+
+A common use case is to programmatically reassign workbook ownership based on email addresses in Sigma, via API.
+
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Reassign Ownership by Email` page, [located here.](https://help.sigmacomputing.com/recipes/Reassign-Ownership-by-Email)
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
+</aside>
+
+### Description
+This recipe will change the owner of all workbooks owned by the email address in the `OLD_OWNER_EMAIL` parameter in the .env file. 
+
+The new owner will be the email based on the `NEW_OWNER_EMAIL` parameter. 
+
+### Running the Script
+Open the file `transfer-all-workbooks.js` in the `workbooks` folder:
+
+Each code block is commented to explain what operations are being performed. 
+
+In the `.env` file there are two additional required parameters, one for the current owner and one for the new:
+```code
+OLD_OWNER_EMAIL=
+NEW_OWNER_EMAIL=
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Take care running this script as ALL WORKBOOKS assigned to the OLD_OWNER_EMAIL will be reassigned!
+
+Both emails need to exist in Sigma.
+</aside>
+
+Press `F5` to run the script with VSCode's debugger. 
+
+The expected response is:
+
+<img src="assets/apics74.png" width="800"/>
+
+Verify the workbooks are assigned to the new owner by looking at the Sigma portal and locating a few of the workbooks listed in Sigma.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 
 ## Workbook: Shared with Me
 Duration: 20
