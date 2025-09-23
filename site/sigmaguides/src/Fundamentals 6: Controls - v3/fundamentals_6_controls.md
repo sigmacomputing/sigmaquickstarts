@@ -27,7 +27,7 @@ To read more about [creating flexible reports with parameters, see here.](https:
 
 If you already completed QuickStart fundamentals 1-5, you have already used controls. 
 
-In [Fundamentals 2 - Data](http://localhost:8000/guide/fundamentals-2-data/index.html?index=..%2F..index#2), we created a filter directly from a table column (Store Region), and converted that filter into a page control. This control is an example of a `List control`.
+In [Fundamentals 2 - Data](https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html?index=..%2F..index#2), we created a filter directly from a table column (Store Region), and converted that filter into a page control. This control is an example of a `List control`.
 
 Selecting the correct control is often more art than science, as there are many controls to choose from.
 
@@ -294,7 +294,7 @@ Also notice that the `DATA SOURCE` indicates `+ 1` to let us know that there is 
 <img src="assets/fcontrols_19.png" width="800"/>
 
 ### Add the switch control
-Add a `Switch` control to the page, rename it `Transaction Type` and set it's `Control ID` to `f6-c-switch-transaction-type`.
+Add a `Switch` control to the page, rename it `Transaction Type` and set it's `Control ID` to `f6-c-switch-transaction-type` and the `Filter Type` to `True/False`.
 
 We can now toggle the switch control on and off, but the table is "aware" of it yet.
 
@@ -303,8 +303,10 @@ We need to make the table respond to this controls value, as it is changed.
 Add a new column next to `Transaction Type`, rename it to `Switch`, and set its formula to:
 
 ```code
-If([f6-c-switch-transaction-type], If([Transaction Type] = "Purchase", True, False), [Transaction Type] = "Return", True, False)
+Switch([Transaction Type], "Purchase", True, "Return", False)
 ```
+
+You can also change the control labels under `Format` > `LABEL` to replace On/Off with Purchase/Return.
 
 <img src="assets/fcontrols_20.png" width="650"/>
 
@@ -312,34 +314,9 @@ If([f6-c-switch-transaction-type], If([Transaction Type] = "Purchase", True, Fal
 <strong>NOTE:</strong><br> This function allows for dynamic filtering based on the state of a switch control and the type of transaction. When the switch is TRUE, it filters for “Purchase” transactions. When the switch is FALSE, it filters for “Return” transactions. 
 </aside>
 
-#### How It Works in Detail:
-  <li><strong>When [f6-c-switch-transaction-type] is TRUE:</strong> 
-    <ul>
-        <li>The function checks if Transaction Type is “Purchase”.</li>
-        <li>If Transaction Type is “Purchase”, the function returns TRUE.</li>
-        <li>If Transaction Type is not “Purchase”, the function returns FALSE.</li>
-        </ul>
-    </li>
-    <li><strong>When [switch-example] is FALSE:</strong> 
-        <ul>
-        <li>The function checks if Transaction Type is “Return”.</li>
-        <li>If Transaction Type is “Return”, the function returns TRUE.</li>
-        <li>If Transaction Type is not “Return”, the function returns FALSE.</li>
-        </ul>
-    </li>
-</ul>
-
 <img src="assets/horizonalline.png" width="800"/>
 
-The last step is to add a table filter on the `Switch` column so that it responds to changes from the control.
-
-Be sure to select only the True value, as that is what the control should be set to while we create this filter.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> We made sure all the other controls we set to allow all 4.5M rows appear in the table. You may have to refresh your browser if they count is not as expected, once the controls are set.
-</aside>
-
-<img src="assets/fcontrols_21.png" width="650"/>
+In the switch controls configuration, add the `PLUGS_SALES` table as a `TARGET` and select the `Switch` column under that.
 
 Now we can toggle between `Purchase` and `Return` transactions:
 
