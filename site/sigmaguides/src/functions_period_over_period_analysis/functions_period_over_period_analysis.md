@@ -134,7 +134,7 @@ So interpreting the intent and advising them on the most robust business logic i
 
 OK, so now that we know what to build, how to do it in Sigma?
 
-Rolling periods are the most robust Period-over-Period comparisons and Sigma supports them, but they require some additional work, This is detailed in  section [PoP Without The Wizard.](https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html?index=..%2F..index#4)
+Rolling periods are the most robust Period-over-Period comparisons and Sigma supports them, but they require some additional work, This is detailed in  section [PoP Without The Wizard](https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html?index=..%2F..index#5)
 
 Feel free to jump directly to that section or continue reading for even more information, along with an example using Sigma's PoP Wizard which will fit simplified use cases too. 
 
