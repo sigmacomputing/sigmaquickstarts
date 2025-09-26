@@ -378,7 +378,7 @@ We can manually test our function in a browser using the function URL captured e
 
 For example, our url is:
 ```code
-https://sigma-quickstart2-dxg6cmgshzb9ccec.centralus-01.azurewebsites.net/api/sigma-jwt?code=jwAJIx7YTA9jmhOBo3u5VbgpefO0avE-Nr48sTjCYK1RAzFuXWPBIg==
+https://sigma-quickstart2-dxg6cmgshzb9ccec.centralus-01.azurewebsites.net/api/sigma-jwt?code=jwAJIx7YTA9jmhOBo3u5VbgpefO0avE-Nr48sTjCYK1RAPBIg==
 ```
 
 To include a user as a URL parameter we simple append:
