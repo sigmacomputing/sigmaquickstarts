@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-09-26
 
-# Embedding Sigma into Microsoft Sharepoint
+# Use Case: Embed into Microsoft Sharepoint
 
 ## Overview 
 Duration: 5 
