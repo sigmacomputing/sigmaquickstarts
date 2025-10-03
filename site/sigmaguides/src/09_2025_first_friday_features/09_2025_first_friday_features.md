@@ -1,5 +1,5 @@
 author: pballai
-id: XX_2025_09_2025_first_friday_featuresfirst_friday_features
+id: 09_2025_first_friday_featuresfirst_friday_features
 summary: 09_2025_first_friday_features
 categories: Administration
 environments: web
@@ -333,6 +333,33 @@ Percentage-formatted input table columns with data validation have been updated 
 
 ## New QuickStarts in September
 Duration: 20
+
+### QuickStarts API Toolkit
+This new QuickStart introduces the `QuickStarts API Toolkit` — a lightweight, self-contained portal for experimenting with Sigma API recipes and common operations on your local machine.
+
+**What it can do:**
+
+- Save authentication settings to encrypted local storage, making it simple to test across multiple Sigma instances
+
+- Run API recipes directly, view/copy responses, and even copy the script itself
+
+- Run “Quick API” operations, a small set of the most common operations to GET information fast
+
+- Supports “smart parameters”; select users, teams, or workbooks from a list when Sigma makes them available, instead of hunting for IDs manually
+
+**NOTE:** The API Toolkit is not intended to replace or provide all the operations available in our API Reference and never will.
+
+**How it fits with existing tools (with links):**
+
+**Swagger / API Reference:** this is the full list of endpoints & parameters. THE SOURCE OF TRUTH
+
+**QuickStarts API Recipes:** reusable JS samples in your IDE
+
+**Postman:** team-friendly 3rd-party API tool that is very popular with developers
+
+**QuickStarts API Toolkit:** quick experiments with a web UI & smart parameter pickers
+
+For more information, see [QuickStarts API Toolkit](https://quickstarts.sigmacomputing.com/guide/developers_quickstarts_api_tookit/index.html?index=..%2F..index#0)
 
 ### Embed Sigma into Microsoft SharePoint
 Bring Sigma right into SharePoint Online—securely and seamlessly—with this [QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_use_case_sharepoint/index.html?index=..%2F..index#0)
