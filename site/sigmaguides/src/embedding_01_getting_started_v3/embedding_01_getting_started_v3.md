@@ -75,7 +75,7 @@ There are two types of embedding in Sigma: **Secure with JWT** and **Public**. W
 ### Secure embedding with JSON Web Tokens (JWT)
 JWT is the preferred method for secure embedding with Sigma. [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token) which is an open, industry-standard [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519) method for representing claims securely between two parties.
 
-JWT is used when a company embeds Sigma content directly into a host application that they want to embed Sigma content directly into while retaining security, tenancy, and a tailored user experience.
+JWT is used when a company embeds Sigma content within its own application, ensuring secure, tenant-aware access and a personalized user experience.
  
 For example, a company may have an internal web site that employees have to log into using single sign-on where they want to provide a dashboard that only shows data filtered for each employee’s region. 
 
