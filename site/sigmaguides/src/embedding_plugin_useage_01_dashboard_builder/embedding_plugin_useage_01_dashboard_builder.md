@@ -260,10 +260,6 @@ Click `Save as`, name the workbook `Custom_Dashboard` and save to the `Embed_Use
 <strong>NOTE:</strong><br> The Embed_Users workspace will exist if you completed the REST API Usage 01: Getting Started QuickStart. If that workspace does not exist, create it and save the workbook there.
 </aside>
 
-On the `Dashboard Builder` page, set the toggle to `View Mode` and go to the `Published version`.
-
-Copy the full URL from the browser and save it to a text file for later use.
-
 ### Share the workbook
 Since we are using this workbook in an embed context, we only need to share it with a team and pass the team name to Sigma when identifying the embed user as a member of that team.
 
