@@ -121,7 +121,7 @@ Remove the `Count` aggregation from `Key`.
 Drag the `Key` column to the `VALUES` grouping and the result will be that for each `Sum of Revenue` value, there is a corresponding unique key.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We know the key will be unique as it is created using an MD5 hashing function or Product Type, Line and Month. 
+<strong>IMPORTANT:</strong><br> We know the key will be unique as it is created using an MD5 hashing function on Product Type, Line and Month. 
 </aside>
 
 <img src="assets/acl-22.png" width="800"/>
