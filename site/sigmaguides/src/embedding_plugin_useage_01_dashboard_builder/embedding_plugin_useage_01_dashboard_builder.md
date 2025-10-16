@@ -25,6 +25,12 @@ You’ll learn how to:
 - Host a parent application that tracks user selections and synchronizes them with Sigma bookmarks
 
 <aside class="positive">
+<strong>IMPORTANT:</strong><br> We’ll rely on the information in the README for implementation details, rather than cover them in this QuickStart.
+</aside>
+
+[Review Project Readme in Git](https://github.com/sigmacomputing/quickstarts-public/blob/main/plugin_use_cases/public/dashboard-builder/README.md)
+
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart builds on the setup from "REST API Usage 01: Getting Started". 
 </aside>
 
