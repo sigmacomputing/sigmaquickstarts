@@ -76,12 +76,16 @@ Login into Okta as Administrator and navigate to `Applications` > `Applications`
 
 <img src="assets/ok1.png" width="800"/>
 
-Type `Sigma` into the search bar and select either "Sigma on AWS" or "Sigma on GCP" depending on where your Sigma instance is hosted:
+Depending on your cloud provider and region, type `Sigma` into the Okta search bar and select either `Sigma on AWS` or `Sigma on GCP`, based on where your Sigma instance is hosted.
+
+Currently, the prebuilt Okta apps are only compatible with `Sigma on AWS (US West 2)` and `Sigma on GCP`.
+
+For all other Sigma regions or clouds, follow the steps below to create a custom Okta app.
 
 <img src="assets/ok2.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> To see where your Sigma instance is hosted, login to Sigma (as Administrator) and navigate to Administration > Account. The cloud provider is listed near the top in the "Site" grouping.
+<strong>NOTE:</strong><br> To confirm where your Sigma instance is hosted, sign in to Sigma as an Administrator, then navigate to "Administration" > "Account". Your cloud provider and region are listed near the top under the "Site" section.
 </aside>
 
 On the next page we see that Sigma is "Okta Verified". Click `Add Integration`:
