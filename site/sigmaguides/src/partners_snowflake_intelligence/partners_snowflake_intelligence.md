@@ -496,11 +496,17 @@ Duration: 5
 
 There is a Sigma template we can use to save you the time of building the Sigma workbook yourself, although that is not hard to do either. 
 
-Open the template......
+In Sigma, select `Templates`, search for `quickstarts` and select the `Snowflake Intelligence Quickstart` template:
 
-We also want to store all the questions/responses in the warehouse, but the template needs a place to do that. We will use an input table to make that really simple.
+<img src="assets/cortex_25.png" width="800"/>
+
+This will open a pre-configured workbook for us where we can make a few additions and adjustments. Templates can save a lot of time!
+
+<img src="assets/cortex_26.png" width="800"/>
 
 ### Add an input table
+We want to store all the questions/responses in the warehouse, but the template needs a place to do that. We will use an input table to make that really simple.
+
 Select the `Data` tab and add an `Empty` input table using the `Element bar`.
 
 <img src="assets/cortex_10.png" width="800"/>
@@ -517,7 +523,7 @@ Rename the input table to `Chat Log` and delete any empty rows:
 
 Now click on the `Chat Log Modal` tab and add the `Chat Log` table from `Data` > `Elements` > `Data`:
 
-<img src="assets/cortex_12.png" width="800"/>
+<img src="assets/cortex_12.png" width="600"/>
 
 In this way, users can see the log but do not have access to the input table.
 
@@ -530,19 +536,26 @@ We need to let the workbook actions know about our new input table and stored pr
 
 Click on the `Cortex Demo` tab and select the `Submit Prompt` button to access the `Actions` options on the `Element panel`.
 
-Notice that the `Insert row...` action has a warning icon next to it? This is because it doesn't know about the new input table yet.
-
-<img src="assets/cortex_14.png" width="800"/>
+Notice that the `Insert row...` action doesn't know about the new input table yet.
 
 Select that action, point it at the `Chat Log` input table on the `Data` page. Then make sure the `With values` are assigned correctly:
 
-<img src="assets/cortex_15.png" width="800"/>
+<img src="assets/cortex_14.png" width="800"/>
 
 Check the configuration of the `CALL_CORTEX_AGENT_API` action to make sure it can access the Snowflake stored procedure we created earlier:
 
-<img src="assets/cortex_16.png" width="800"/>
+<img src="assets/cortex_16.png" width="600"/>
 
-Click `Publish`.
+We made a mistake when we published the template; the action assigned to the `Read the QuickStart` button is incorrect--no problem!
+
+Select the `Read the QuickStart` button, then change it's action as shown below, using this for the link value:
+```code
+https://quickstarts.sigmacomputing.com/guide/partners_snowflake_intelligence/index.html?index=..%2F..index#0
+```
+
+<img src="assets/cortex_16a.png" width="800"/>
+
+Click `Save as` and name the workbook `Snowflake Intelligence QuickStart`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -587,7 +600,7 @@ Locate the `Product_Reviews_Big_Buys` CSV file and select it.
 
 To keep this simple, we will store the data in `QUICKSTARTS.AGENTS` and create a new table called `Big_Buys`:
 
-<img src="assets/cortex_20.png" width="800"/>
+<img src="assets/cortex_20.png" width="600"/>
 
 Click `Next` and then select `Autofix column names` under the red `6 errors` button. 
 
@@ -598,7 +611,7 @@ Click `Load`. Snowflake will inform us when done:
 We can look at the sample data, which is retail sales information that also has a `REVIEW` column that we are interested in as it contains customer sentiment about each transaction.
 
 ### Agent tools
-The Cortex tool requires either a semantic view, procedure, or function to access the underlying data. It cannot access tables directly so we need to adjust for that.
+The Cortex tool requires either a semantic view, procedure or function to access the underlying data. It cannot access tables directly so we need to adjust for that.
 
 In Snowflake, run the following command to create a simple function:
 ```code
@@ -653,11 +666,11 @@ Asking the question in Sigma:
 <aside class="negative">
 <strong>NOTE:</strong><br> Performance of the agent will be affected by the warehouse size and how the data is accessed.
 
-We could also revise the procedure to format the response better so that it reads more easily in Sigma.
+We could also revise the procedure to format the response better, so that it reads more easily in Sigma.
 </aside>
 
 ### Where to go next
-With this built, we can consider adding more agents and allowing users to select specific, named agent tools to focus questions on specific datasets using tailored agents to optimize responses. 
+With this foundation in place, we can expand by adding additional agents and allowing users to select specific, named tools—enabling them to focus questions on targeted datasets using tailored agents that deliver more optimized, relevant responses.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
