@@ -546,15 +546,6 @@ Check the configuration of the `CALL_CORTEX_AGENT_API` action to make sure it ca
 
 <img src="assets/cortex_16.png" width="600"/>
 
-We made a mistake when we published the template; the action assigned to the `Read the QuickStart` button is incorrect--no problem!
-
-Select the `Read the QuickStart` button, then change it's action as shown below, using this for the link value:
-```code
-https://quickstarts.sigmacomputing.com/guide/partners_snowflake_intelligence/index.html?index=..%2F..index#0
-```
-
-<img src="assets/cortex_16a.png" width="800"/>
-
 Click `Save as` and name the workbook `Snowflake Intelligence QuickStart`.
 
 ![Footer](assets/sigma_footer.png)
