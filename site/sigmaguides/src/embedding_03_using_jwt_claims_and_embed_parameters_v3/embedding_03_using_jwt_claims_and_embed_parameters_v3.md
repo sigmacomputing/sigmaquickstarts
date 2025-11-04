@@ -183,7 +183,7 @@ By setting a filter on the `Region Mix` column to show only `True` values, only 
 
 After publishing the sample workbook, we tested passing the custom UA for `Store_Region` using the sample embedding app.
 
-Set a new value for `Store_Region` in the `.env` file:
+Remove the `#` to uncomment the line for `PARAMETERS_USERATTRIBUTES_ua_Store_Region` in the `.env` file:
 
 <img src="assets/uap_17.png" width="500"/>
 
