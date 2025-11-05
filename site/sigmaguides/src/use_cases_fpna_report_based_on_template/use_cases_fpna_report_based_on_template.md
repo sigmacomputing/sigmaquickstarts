@@ -141,51 +141,21 @@ The combined dataset—ACTUALS with Hierarchy—is a standard join of the two ta
 ## Setting Up the Template
 Duration: 5
 
-To begin working with the FP&A template, follow these four main steps:
-- Request the Sigma team to share the template with your organization
-- Receive the email and accept the shared template
-- Save the template to your organization
+To make this process easier, we have created a [template](https://help.sigmacomputing.com/docs/create-and-edit-workbook-templates) that is mostly configured.
 
-### Step 1: Request Access
-After your request is confirmed, the Sigma team will share the template from one of our internal organizations. All Admins in your org will receive an email like this:
+Return to the Sigma homepage and click `Templates`. Click to select the `Financial Reporting Template Quickstart` template:
 
-<img src="assets/fpna_02.png" width="600"/>
+<img src="assets/fpna_36.png" width="800"/>
 
-Click Accept in the email. This will open Sigma in your browser. After logging in, you’ll be redirected to the template page, where you’ll be prompted to swap data sources:
+This creates a new (unsaved) workbook for us:
 
-<img src="assets/fpna_03.png" width="800"/>
+<img src="assets/fpna_37.png" width="800"/>
 
 The template is initially configured with the `Sample Sigma Database`, which should allow for a clean mapping to your own instance.
 
-<aside class="positive"> <strong>IMPORTANT:</strong><br> Map the template directly to your instance’s sample connection to ensure functionality works as expected. </aside> 
+Click `Save As` and give your new workbook a meaningful name—e.g., `FP&A QuickStart`.
 
-<aside class="negative"> <strong>NOTE:</strong><br> The Sigma sample database is available to all customers, but your administrator may have disabled it. If it’s not visible, ask an admin to enable it by navigating to <strong>Administration > Account > General Settings > Features > Sample connection</strong>. 
-</aside>
-
-After selecting the appropriate data source, click `Choose`.
-
-### Step 2: Accept and Save the Template
-The template will now load. When ready, click `Accept`:
-
-<img src="assets/fpna_03a.png" width="800"/>
-
-This saves the template as an `External Template`, which you can now explore:
-
-<img src="assets/fpna_05.png" width="800"/>
-
-
-To confirm, click the <img src="assets/crane.png" width="35"/> icon, then choose Templates → External:
-
-<img src="assets/fpna_06.png" width="800"/>
-
-<aside class="negative"> <strong>NOTE:</strong><br> External templates cannot be shared across organizations. If you want to share this with another org, first save it as a workbook, then save it as an "Internal Template". 
-</aside>
-
-Click on the `Financial Reporting Template - 12Jun25` template to return to the workbook. 
-
-Then click `Save As` and give your new workbook a meaningful name—e.g., `FP&A QuickStart`.
-
-This will then load all of the data from the Sigma sample database, however if you follow the tab at the bottom of the workbook named `Trending Report` there is `No data`:
+If we open the page tab, `Trending Report` there is `No data`:
 
 <img src="assets/fpna_07.png" width="800"/>
 
