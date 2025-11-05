@@ -36,10 +36,34 @@ Alternatively, developers can use these links to enhance their application's fun
 
 ### Benefits of Embedded Link Sharing
 **Enhanced Collaboration:**
-- Users can share specific views, explorations, or bookmarks with their teams, ensuring that the exact context and state of the data are maintained.
+- Users can share specific views, explorations, or bookmarks within their embedded application environment, ensuring that the exact context and state of the data are maintained.
 
 **Consistency Across Platforms:**
-- Shared links return recipients to the same embedded content within the customer’s application, whether it’s a full workbook, an exploration, or a bookmark.
+- Shared links return recipients to the same embedded content within the customer's application, whether it's a full workbook, an exploration, or a bookmark.
+
+### Sharing Limitations in Embedded Scenarios
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Embedded link sharing works within the context of your application's user management and authentication. Recipients of shared links must have appropriate access permissions through your application's security model. Unlike native Sigma sharing, embedded users cannot directly share links with colleagues outside of your application's user framework.
+</aside>
+
+### Appropriate Use Cases for Bookmarks
+
+**Bookmarks are ideal for:**
+- Saving personal analysis states for later reference
+- Sharing specific data views or filtered states with colleagues
+- Preserving temporary or ad-hoc analysis configurations
+- Creating quick access to frequently-used data views
+
+**Bookmarks are NOT intended for:**
+- Rolling out new workbooks or dashboards to customers at scale
+- Managing production content distribution or deployment
+- Replacing proper workbook sharing and permission management
+- Serving as a content management system for customer-facing analytics
+
+<aside class="positive">
+<strong>RECOMMENDATION:</strong><br> For rolling out workbooks to customers, use Sigma's standard workbook sharing, team permissions, and content management features rather than relying on bookmarks. Bookmarks work best for personal or small-team ad-hoc analysis sharing.
+</aside>
 
 ### How It Works
 Developers can trigger an iframe event in Sigma to set a `sharingLink` or `sharingExplorationLink`, and optionally include bookmarks.
@@ -173,7 +197,7 @@ The page should render like this, with both a `Share` menu option and a share ic
 <img src="assets/ls_5.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Note: our sample code includes logging, viewable in the browser’s developer console:
+<strong>NOTE:</strong><br> Our sample code includes logging, viewable in the browser's developer console:
 </aside>
 
 <img src="assets/ls_6.png" width="800"/>
@@ -230,10 +254,28 @@ The exploration sharing link is also shown in the browser’s developer console:
 ## Bookmark Sharing
 Duration: 5 
 
-The link sharing workflow with bookmarks is very similar. Since not all customers use bookmarks, you can skip this section if your organization doesn’t use them.
+The link sharing workflow with bookmarks is very similar. Since not all customers use bookmarks, you can skip this section if your organization doesn't use them.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Bookmarks allow you to save the state of a published workbook in Explore or View mode. In a published workbook, you can make changes to the filters, controls, and other elements, and save the changes as a personal bookmark.
+</aside>
+
+### User Permissions for Bookmarks in Embeds
+
+In embedded scenarios, bookmark capabilities differ based on user account type:
+
+**Build Users:**
+- Can create and save new bookmarks
+- Can view and access existing bookmarks
+- Can share bookmark links with others
+
+**View Users:**
+- Can view and access bookmarks created by Build users
+- **Cannot create or save new bookmarks** (this differs from non-embedded Sigma where View users can save personal bookmarks)
+- Can share links to existing bookmarks they have access to
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> If your embedded application needs View users to save bookmarks, consider upgrading their account type to Build or implementing alternative approaches for saving user preferences.
 </aside>
 
 To learn more about personal bookmarks, [see here.](https://help.sigmacomputing.com/docs/create-and-manage-bookmarks)
@@ -246,7 +288,7 @@ Click the `bookmark` icon and select `Save as new view`:
 
 Name the new view `Plugs_Electronics_Sales_Mobiles_Only` and click `Save`.
 
-In the developer console, you’ll see the new bookmarkId and an updated sharing link:k:
+In the developer console, you'll see the new bookmarkId and an updated sharing link:
 
 <img src="assets/ls_15.png" width="800"/>
 
