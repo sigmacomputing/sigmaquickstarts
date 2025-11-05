@@ -20,3 +20,7 @@ app/js/bundle
 
 /sigmaguides/dist/*
 temp/
+
+# Claude Code configuration
+claude.md
+CLAUDE.md
