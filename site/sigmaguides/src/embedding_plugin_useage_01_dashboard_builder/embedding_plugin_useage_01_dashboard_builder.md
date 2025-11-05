@@ -3,10 +3,10 @@ id: embedding_plugin_useage_01_dashboard_builder
 summary: embedding_plugin_useage_01_dashboard_builder
 categories: embedding
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2025-10-15
+tags: default
+lastUpdated: 2025-11-05
 
 # Plugin Use Case 01: Dashboard Builder
 
