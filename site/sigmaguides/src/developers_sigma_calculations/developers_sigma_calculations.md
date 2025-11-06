@@ -137,7 +137,8 @@ The following decision tree is very high-level, and does not include lower-level
 Suppose there is a Sigma workbook that contains one table. The user may (or may not) have added a few calculated columns, and they have published the workbook.
 
 With that example in mind, please take a few minutes to review the decision tree, and consider what is likely to happen at each junction.
-<img src="assets/calcengine.svg" width="800"/>
+
+<img src="assets/calcengine.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
