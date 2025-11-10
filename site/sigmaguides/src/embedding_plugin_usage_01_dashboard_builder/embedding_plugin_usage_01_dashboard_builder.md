@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_plugin_useage_01_dashboard_builder
-summary: embedding_plugin_useage_01_dashboard_builder
+id: embedding_plugin_usage_01_dashboard_builder
+summary: embedding_plugin_usage_01_dashboard_builder
 categories: embedding
 environments: web
 status: published
@@ -13,13 +13,12 @@ lastUpdated: 2025-11-05
 ## Overview 
 Duration: 5 
 
-In this QuickStart, you’ll build a customizable dashboard experience using Sigma’s embedded plugin framework, enhanced by a locally hosted Angular plugin and a lightweight JavaScript host application. 
+In this QuickStart, you’ll build a customizable dashboard experience using Sigma’s embedded plugin framework, enhanced by a hosted Angular plugin and a lightweight JavaScript host application. 
 
 Users will be able to dynamically configure dashboards by selecting KPIs and layout areas, and save those configurations using Sigma bookmarks and a local JSON database for extended metadata.
 
 You’ll learn how to:
-- Set up an Angular-based plugin using Sigma’s development tools
-- Register the plugin in Sigma for local testing
+- Register a plugin in Sigma
 - Use a prebuilt Sigma workbook template to define dashboard areas and curated KPI elements
 - Configure control logic to drive KPI selection and display behavior
 - Host a parent application that tracks user selections and synchronizes them with Sigma bookmarks
@@ -69,142 +68,6 @@ This project is ideal for developers and data teams looking to offer flexible, s
 </aside>
  
 ![Footer](assets/sigma_footer.png)
-
-
-
-
-## Angular Live Development Server
-Duration: 5
-
-We have made the plugin code for this project available in a public GitHub repository to save time. Once cloned locally and configured, it provides an Angular Live Development Server which acts as the hosting provider for the included dashboard builder plugin.
-
-### Clone the Git Repository Project Folder
-While you can clone the entire repository, we recommend avoiding parts that aren’t immediately relevant.
-
-Instead, we’ll use VS Code and the terminal to perform a `sparse checkout` of the specific project folder we are interested in. This adds a few extra steps but results in a cleaner local project folder.
-
-### Project Setup
-Open `VS Code` and start a new `Terminal` session.
-
-Create a new directory in your preferred location:
-```code
-mkdir sigma_quickstarts
-```
-
-Change to the new directory:
-```code
-cd sigma_quickstarts
-```
-
-Execute the terminal command:
-```code
-git init
-```
-
-Add the remote repository as the origin:
-```code
-git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
-```
-
-Enable sparse checkout:
-```code
-git config core.sparseCheckout true
-```
-
-Specify the folder you want to clone:
-```code
-echo "plugin_dashboard_builder" >> .git/info/sparse-checkout
-```
-
-Pull the specified folder from the repository:
-```code
-git pull origin main
-```
-
-Change directory to the new folder:
-```bash
-cd plugin_dashboard_builder
-```
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The next step requires Node.js. If it has never been installed on your machine, install it from the official site:
-
-[Download Node.js](https://nodejs.org/)
-
-We recommend installing the 22.12.0 version or higher.
-
-Once installed, you can verify the installation in Terminal with:
-
-node -v <br>
-npm -v
-</aside>
-
-### Node Version Management (optional but recommended for those having multiple versions of Node.js installed)
-This reads the Node.js version (22.12.0) from the `.nvmrc` file.
-```code
-nvm use
-```
-
-### Install Yarn package manager:
-```code
-npm install yarn
-```
-
-### Start the Angular Live Development Server
-```code
-yarn start
-```
-
-If prompted with `Would you like to share pseudonymous usage data about this project with the Angular Team...` enter `N` and press `Enter`.
-
-The expected terminal output (ignoring warnings) is:
-```code
-
-Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/
-
-
-✔ Compiled successfully.
-```
-
-Open a browser and navigate to `http://localhost:4200` (the default Angular port).
-
-The page will render with a placeholder bar chart:
-
-<img src="assets/dbb_01.png" width="600"/>
-
-This indicates the plugin is working locally and can be used for our development work.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma plugins support both development and production URLs if configured to do so in the administration panel in Sigma. 
-
-**For production use, the plugin must be hosted by your organization**
-</aside>
-
-### Key plugin files
-This QuickStart does not require any changes or additional configuration for the plugin, so we won't cover i further than to point out the key files.
-
-- src/app/main/main.component.ts:68-80 - Plugin configuration
-- src/app/main/main.component.ts:118-136 - URL parsing logic
-- src/app/main/main.component.ts:160-187 - Event registration
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Register Plugin in Sigma
-Duration: 5
-
-Log into Sigma as an administrator and navigate to `Administration` > `Account` > `General Settings` > `Custom Plugins` and click `Add`:
-
-<img src="assets/dbb_02.png" width="800"/>
-
-Name the plugin `Dashboard Builder` and set both the development and production URLs to `http://localhost:4200`. Click `Create Plugin`:
-
-<img src="assets/dbb_03.png" width="600"/>
-
-The plugin is now registered with Sigma.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## Sigma Workbook Prep
 Duration: 5
@@ -276,10 +139,39 @@ We will share with the `Embed_Users` team created in the `REST API Usage 01: Get
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Register Plugin in Sigma
+Duration: 5
+
+To keep this simple. we will use a compiled version of the Dashboard Builder plugin code in a hosted environment. This means all we have to do is configure a plugin in Sigma and provide the URL's for production and development.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The source code for the plugin is included in a public GitHub repository, so that you can explore it at a later time. 
+</aside>
+
+Log into Sigma as an administrator and navigate to `Administration` > `Account` > `General Settings` > `Custom Plugins` and click `Add`:
+
+<img src="assets/dbb_02.png" width="800"/>
+
+Name the plugin `Dashboard Builder` and set both the development and production URLs to:
+```code
+https://plugins.sigmacomputing.com/dashboard-builder
+```
+
+<img src="assets/dbb_03.png" width="600"/>
+
+Click `Create Plugin`:
+
+The plugin is now registered with Sigma.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Host Application
 Duration: 5
 
-We’ve also created a simple JavaScript application that acts as the host or parent application. This simulates a custom application into which Sigma is embedded.
+We'll use a simple JavaScript application that acts as the host or parent application. This simulates a custom application into which Sigma is embedded.
+
+The source code for the hosted plugin we are using is also provided in this repository.
 
 ### Clone the git project
 Open the `VS Code` window that's running the plugin server.
@@ -349,7 +241,7 @@ Lowdb installs very quickly:
 
 <img src="assets/bmdb_01.png" width="800"/>
 
-### Local Database schema
+### Local database schema
 The system maintains the local lowdb database in the `multi-area-bookmarks.json` file. Initially, it contains only header data:
 
 ```code
@@ -557,15 +449,120 @@ Click `Delete Bookmark` to remove the selected bookmark from both Sigma and the 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Plugin Source Code
+Duration: 5
+
+The plugin source code for this project is available in a public GitHub repository, should you want to exlore it. 
+
+### Project Setup
+Open `VS Code` and start a new `Terminal` session.
+
+Create a new directory in your preferred location (or use an existing one):
+```code
+md dashboard_builder_plugin
+cd dashboard_builder_plugin
+```
+
+Execute the terminal command:
+```code
+git init
+```
+
+Add the remote repository as the origin:
+```code
+git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
+```
+
+Enable sparse checkout:
+```code
+git config core.sparseCheckout true
+```
+
+Specify the folder you want to clone:
+```code
+echo "plugin_dashboard_builder" >> .git/info/sparse-checkout
+```
+
+Pull the specified folder from the repository:
+```code
+git pull origin main
+```
+
+Change directory to the new folder:
+```bash
+cd plugin_dashboard_builder
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The next step requires Node.js. If it has never been installed on your machine, install it from the official site:
+
+[Download Node.js](https://nodejs.org/)
+
+We recommend installing the 22.12.0 version or higher.
+
+Once installed, you can verify the installation in Terminal with:
+
+node -v <br>
+npm -v
+</aside>
+
+### Node Version Management (optional but recommended for those having multiple versions of Node.js installed)
+This reads the Node.js version (22.12.0) from the `.nvmrc` file.
+```code
+nvm use
+```
+
+### Install Yarn package manager:
+```code
+npm install yarn
+```
+
+### Start the Angular Live Development Server
+```code
+yarn start
+```
+
+If prompted with `Would you like to share pseudonymous usage data about this project with the Angular Team...` enter `N` and press `Enter`.
+
+The expected terminal output (ignoring warnings) is:
+```code
+
+Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/
+
+
+✔ Compiled successfully.
+```
+
+Open a browser and navigate to `http://localhost:4200` (the default Angular port).
+
+The page will render with a placeholder bar chart:
+
+<img src="assets/dbb_01.png" width="600"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> This indicates the plugin is working locally, however, most browsers will object (" Content Security Policy; fail to load") if we try to use it as Sigma is using HTTPS and the local server is HTTP. This is why we provided a hosted version using HTTPS, to avoid unnecessary complexity.
+</aside>
+ 
+### Key plugin files
+This QuickStart does not require any changes or additional configuration for the plugin, so we won't cover it further than to point out the key files.
+
+- src/app/main/main.component.ts:68-80 - Plugin configuration
+- src/app/main/main.component.ts:118-136 - URL parsing logic
+- src/app/main/main.component.ts:160-187 - Event registration
+
+For a deeper dive in the plugin code and architecture, see the [project readme](https://github.com/sigmacomputing/quickstarts-public/blob/main/plugin_use_cases/public/dashboard-builder/README.md)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 
 In this QuickStart, we walked through the complete setup of a Sigma plugin-powered dashboard builder, including:
 
-- Cloning and launching the Angular plugin development server
 - Registering and testing the plugin within Sigma
 - Using a Sigma workbook template to define editable dashboard zones
-- Hosting a JavaScript application to simulate an embedded environment
+- A local JavaScript application to simulate an embedded environment
 - Persisting user-generated dashboards using Sigma bookmarks and a local JSON database
 - Testing the full configuration across multiple user-generated bookmark scenarios
 
