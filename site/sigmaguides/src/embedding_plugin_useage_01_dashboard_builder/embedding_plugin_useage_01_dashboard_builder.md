@@ -1,6 +1,6 @@
 author: pballai
-id: embedding_plugin_usage_01_dashboard_builder
-summary: embedding_plugin_usage_01_dashboard_builder
+id: embedding_plugin_useage_01_dashboard_builder
+summary: embedding_plugin_useage_01_dashboard_builder
 categories: embedding
 environments: web
 status: published
