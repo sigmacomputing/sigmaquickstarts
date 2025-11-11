@@ -10,10 +10,8 @@ lastUpdated: 2025-11-1
 
 # Hosted Icon Set
 
-## Overview 
-Duration: 5 
-
-
+## Overview
+Duration: 5
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
