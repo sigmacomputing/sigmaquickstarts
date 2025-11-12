@@ -25,7 +25,7 @@ Azure Private Link provides enhanced security, reduced network latency, simplifi
 
 Sigma currently supports creating private links to three kinds of data warehouse that runs in Azure; Snowflake, Databricks and Postgesql. 
 
-[Please check here for the latest information on supported connections](hhttps://help.sigmacomputing.com/docs/aws-privatelink-connections)
+[Please check here for the latest information on supported connections](https://help.sigmacomputing.com/docs/aws-privatelink-connections)
 
 Standing up a Private Link requires a customer's cloud administrator (or similar role) to provide specific configuration detail to Sigma so that the Private Link connection can be established. This is covered in each section later and depends on data warehouse type. 
 
