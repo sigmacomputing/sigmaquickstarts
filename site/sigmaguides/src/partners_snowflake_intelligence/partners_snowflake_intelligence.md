@@ -460,6 +460,10 @@ GRANT USAGE ON SCHEMA  SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
 GRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
+<aside class="negative">
+<strong>NOTE:</strong><br> If your Cortex Agent is configured with orchestration rules, omit "tool_choice" from the payload and let the agent plan tool use. Use tool_choice only for single-tool agents or when you explicitly need to force a specific tool; otherwise the request may fail or the setting may be ignored.
+</aside>
+
 ### Quick test
 We can check that everything is configured correctly in Snowflake by calling the agent:
 ```code
