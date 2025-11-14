@@ -3,9 +3,9 @@ id: partners_snowflake_intelligence
 summary: partners_snowflake_intelligence
 categories: dataapps
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2025-10-30
 
 # Connect Snowflake Intelligence to Sigma Workbook
@@ -13,16 +13,16 @@ lastUpdated: 2025-10-30
 ## Overview 
 Duration: 5 
 
-In this QuickStart, you’ll learn how to integrate Snowflake Cortex Agents directly into Sigma, allowing users to interact with their AI agents and perform structured analytics in one unified interface.
+In this QuickStart, you’ll learn how to integrate Snowflake Intelligence with Sigma, allowing users to interact with their AI agents and perform structured analytics in one unified interface.
 
 You'll build a Sigma workbook that lets users:
-- Select and chat with a Cortex Agent hosted in Snowflake
+- Select and chat with Snowflake Intelligence, hosted in Snowflake
 - Submit natural-language questions
 - Display the agent's response inside Sigma
 - Log all interactions for audit and analysis
 - Analyze related data using Sigma's spreadsheet and visualization features
 
-This is the first step in Sigma’s planned native integration with Cortex Agents—giving you early access to a powerful new AI-driven workflow.
+This is the first step in Sigma’s planned native integration with Snowflake Intelligence—giving you early access to a powerful new AI-driven workflow.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -33,13 +33,13 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn’t work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Participants of Snowflake Developer BUILD conference who are interested in getting some hands-on with Sigma or any Snowflake user interested in how Cortex and Sigma can make them more productive. 
+Any Sigma or Snowflake user interested in how Snowflake Intelligence and Sigma can make them more productive. 
 
 ### What You'll Learn
-- How to set up Snowflake Intelligence and create Cortex Agents
+- How to set up Snowflake Intelligence and create Snowflake Intelligence Agents
 - How to configure service users, roles, and Programmatic Access Tokens (PAT) for secure API access
-- How to create external access integrations and secrets for Cortex API calls
-- How to build a stored procedure that invokes Cortex Agents via REST API
+- How to create external access integrations and secrets for Snowflake Intelligence API calls
+- How to build a stored procedure that invokes Snowflake Intelligence Agents via REST API
 - How to configure a Sigma workbook with input tables and actions to interact with agents
 - How to connect agents to your data using custom tools and functions
 
@@ -49,7 +49,7 @@ Participants of Snowflake Developer BUILD conference who are interested in getti
   <li>Any modern browser is acceptable.</li> 
   <li>Access to your Sigma environment.</li>
   <li>Basic familiarity with stored procedures and Sigma Actions. Not all setup steps are shown in full, as these basics are assumed to be understood.</li>
-  <li>A working Snowflake account with Cortex Agent API access.</li> 
+  <li>A working Snowflake account with Snowflake Intelligence access.</li> 
   <li>A Snowflake service user and service role used for the Sigma connection.</li>
   <li>A Sigma connection to Snowflake with write-back enabled.</li>
 </ul> 
@@ -283,7 +283,7 @@ Duration: 5
 With your Programmatic Access Token (PAT) created, the next step is to let Snowflake securely call the Cortex API using that token. We’ll:
 
 - Store the PAT in a Snowflake Secret
-- Allow outbound HTTPS to your Snowflake Cortex endpoint via a Network Rule
+- Allow outbound HTTPS to your Snowflake Intelligenceendpoint via a Network Rule
 - Bind both into an External Access Integration used by the stored procedure
 
 <aside class="negative">
@@ -294,7 +294,7 @@ Run the following command in Snowflake, replacing **<paste_your_token_secret_her
 
 ```code
 -- ------------------------------------------------------------
--- Setup for Sigma + Snowflake Cortex Agent Integration (Account Objects)
+-- Setup for Sigma + Snowflake Snowflake Intelligence Integration (Account Objects)
 -- ------------------------------------------------------------
 -- This script:
 -- 1) Uses ACCOUNTADMIN for account-level objects
@@ -320,7 +320,7 @@ CREATE OR REPLACE SECRET SIGMA_CORTEX_QUICKSTARTS_PAT
   TYPE = GENERIC_STRING
   SECRET_STRING = '<paste_your_token_secret_here>';
 
--- (2) Allow outbound HTTPS to your account's Cortex API host
+-- (2) Allow outbound HTTPS to your account's Snowflake Intelligence API host
 CREATE OR REPLACE NETWORK RULE SNOWFLAKE_API_EGRESS_NETWORK_RULE
   MODE = EGRESS
   TYPE = HOST_PORT
@@ -341,7 +341,7 @@ After running, Snowflake will return `Integration CORTEX_AGENT_EXTERNAL_ACCESS_I
 ## Create the Cortex Agent Stored Procedure in Snowflake
 Duration: 5
 
-Next we create a stored procedure that when called from Sigma, invokes the Cortex Agent via Snowflake’s REST API. 
+Next we create a stored procedure that when called from Sigma, invokes the Snowflake Intelligence Agent via Snowflake’s REST API. 
 
 It takes two arguments, an `agent name` and a `user message`, and returns the agent’s text response.
 
