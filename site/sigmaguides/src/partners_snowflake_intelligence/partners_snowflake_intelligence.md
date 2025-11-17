@@ -550,6 +550,10 @@ Check the configuration of the `CALL_CORTEX_AGENT_API` action to make sure it ca
 
 <img src="assets/cortex_16.png" width="600"/>
 
+Ensure the fourth action sets the `action variable` as:
+
+<img src="assets/cortex_16b.png" width="600"/>
+
 Click `Save as` and name the workbook `Snowflake Intelligence QuickStart`.
 
 ![Footer](assets/sigma_footer.png)
