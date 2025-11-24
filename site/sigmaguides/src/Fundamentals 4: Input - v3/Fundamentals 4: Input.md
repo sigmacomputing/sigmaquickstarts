@@ -6,15 +6,14 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: PhilB
-lastUpdated: 2025-03-13
+lastUpdated: 2025-11-24
 
 # Fundamentals 04: Input
-<!-- ------------------------ -->
 
 ## Overview 
 Duration: 5
 
-This QuickStart is part of a series of QuickStarts designed to instruct new users how to use Sigma.
+This QuickStart is part of a series of QuickStarts designed to teach new users how to use Sigma.
 
 The main goal of this QuickStart is to introduce input tables, explore some of the key features, and get you thinking about how you may use them in your business.
 
@@ -30,9 +29,9 @@ To get the latest information on input tables, see [Intro to input tables](https
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
-If something is not working as you expect, here is how to [contact Sigma support.](https://help.sigmacomputing.com/docs/sigma-support)
+If something is not working as you expect, here is how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -60,7 +59,7 @@ Typical audience for this QuickStart are users of Excel, common Business Intelli
 <!-- END OF OVERVIEW -->
 
 ## What is an Input Table?
-At first glance, an input table can look a lot like a standard table, but they are so much more than that.
+At first glance, an input table can look a lot like a standard table, but it is so much more than that.
 
 Input tables are dynamic workbook elements that support structured data entry. 
 
@@ -93,12 +92,14 @@ Open the `Data` page where our `Plugs_Store_Sales` source data is located.
 ### Unique Key
 It is often useful to create a key that uniquely identifies any single row of data in a table. In the case of our `Plugs_Store_Sales` table, we can't use `Order Number` because there are many orders that have more than one `SKU` on them. 
 
-There are several ways to create this "row uniqueness" in Sigma. The very simplest way is to use the [Row Number]() function.
+There are several ways to create this "row uniqueness" in Sigma. Since one order may include multiple items (SKUs), we can easily combine both values to generate a stable unique key, using the [MD5 function](https://help.sigmacomputing.com/docs/md5) which uses the MD5 algorithm to automatically calculate a hash value from a given string.
 
 Add a new column, and set the formula to:
 ```code
-RowNumber()
+MD5(Text([Order Number]) & "_" & [Sku Number])
 ```
+
+Rename this column to `Row Number`.
 
 Now we have a value that is unique for every row.
 
@@ -110,7 +111,7 @@ In our case, it is faster to create it directly from the `Plugs_Store_Sales` tab
 
 Create a `Linked Input Table` from the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
 
-<img src="assets/finput_2.png" width="700"/>
+<img src="assets/finput_2.png" width="800"/>
 
 We must select a column to be the unique "connection" between the two tables.
 
@@ -130,9 +131,9 @@ To make things cleaner, let's only select the columns that are needed for this d
 
 Click `Create input table`.
 
-Rename the input table to `Orders to Approve`.
+Rename the input table to `Orders_to_Approve`.
 
-Move the new input table to the `Fundamentals 4`
+Move the new input table to the `Fundamentals 4` page
 
 The `Fundamentals 4` page now looks like this:
 
@@ -158,7 +159,7 @@ With our sample data in place, we want to give the user a way to target a specif
 
 We just realized that the `Order Number` column was one we needed. 
 
-Click on the icon (#1 in the screenshot), and add the `Order Number` column:
+In the element panel click `Available columns`, and add the `Order Number` column:
 
 <img src="assets/finput_17.png" width="500"/>
 
@@ -174,7 +175,7 @@ We can adjust the `Order Number` control as shown to clean things up to our pref
 
 <img src="assets/finput_8.png" width="800"/>
 
-Selecting `Order number` > `15758` filters the input table just like it would a standard table or pivot table too. It also demonstrates that one order can have many `Sku Numbers`.
+Selecting `Order Number` > `15758` filters the input table just like it would a standard table or pivot table. It also shows that one order can have many `Sku Numbers`:
 
 <img src="assets/finput_18.png" width="800"/>
 
@@ -202,7 +203,7 @@ As each comment is added to a row, Sigma has saved that information automaticall
 
 At the same time, the tracking fields were updated.
 
-Input table data is maintained separately from the "original source data"--Plugs_Store_Sales, so that the integrity of your data in the warehouse is maintained.
+Input table data is maintained separately from the "original source data" -- Plugs_Store_Sales, so that the integrity of your data in the warehouse is maintained.
 
 No data was stored in Sigma; your data stays in your warehouse.
 
@@ -214,10 +215,10 @@ No data was stored in Sigma; your data stays in your warehouse.
 ## CSV Import
 Duration: 5
 
-It is really simple to create an input table from a CSV file. Once imported, the input table can be edited directly, joined to other tables, used as source for other Sigma elements and participate in complex workflows using actions. 
+It is simple to create an input table from a CSV file. Once imported, the input table can be edited directly, joined to other tables, used as source for other Sigma elements and participate in complex workflows using actions. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br>At the time of this QuickStart, CSV import data supports a maximum of 200 MB and UTF-8 file format only.
+<strong>IMPORTANT:</strong><br>At the time of this QuickStart, CSV import supports a maximum file size of 200 MB and UTF-8 format only.
 </aside>
 
 To demonstrate, we can download some sample data using this button:
@@ -228,7 +229,7 @@ The file is named `sample_tradeshow_leads.csv`.
 
 On the `Fundamentals 4` page, add a new `Input` element > `CSV` from the `Element bar`.
 
-Set the `Connection` to the `Sigma Sample Database` and browse to locate the sample csv we downloaded (likely in the `Downloads` folder...). 
+Set the `Connection` to the `Sigma Sample Database` and browse to locate the sample CSV we downloaded (likely in the `Downloads` folder). 
 
 Sigma will import that data, parse it, and display it:
 
