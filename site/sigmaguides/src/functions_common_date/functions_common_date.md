@@ -1,6 +1,6 @@
 author: pballai
 id: common_date_functions
-summary: Common Date Functions
+summary: common_date_functions
 categories: functions
 environments: web
 status: Published
