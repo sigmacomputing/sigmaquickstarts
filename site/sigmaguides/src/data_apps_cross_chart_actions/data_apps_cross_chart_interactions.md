@@ -61,6 +61,14 @@ Add a new `Table` using the `Sigma Sample Database` and choose `RETAIL` > `PLUGS
 
 <img src="assets/cci_01.png" width="500"/>
 
+Add a new list control from `Element bar` > `Controls` :
+
+<img src="assets/cci_01a.png" width="600"/>
+
+Configure the `Value source` to the table and the `Source column` to `Store Region`:
+
+<img src="assets/cci_01b.png" width="500"/>
+
 Configure the `Target` of the control to be the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table > `Store Region` column:
 
 <img src="assets/cci_06.png" width="800"/>
