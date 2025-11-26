@@ -21,6 +21,12 @@ This QuickStart assumes you have a working instance of Sigma and the connection 
 
 We will use the Sigma-provided `RETAIL`.`PLUGS_ELECTRONICS`.`PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table so you can follow along and recreate each step in your own Sigma environment.
 
+### Template
+We have also made the final workbook that is created during this QuickStart available as a Sigma Template. This option. allows you to read along while having the workbook built for you. The template is not required and the end result is the same if you build it yourself. 
+
+<img src="assets/cdf_01c.png" width="800"/>
+
+
 ### Target Audience
 Sigma builders looking for solutions to date challenges or who just want to learn new date methods.
 
