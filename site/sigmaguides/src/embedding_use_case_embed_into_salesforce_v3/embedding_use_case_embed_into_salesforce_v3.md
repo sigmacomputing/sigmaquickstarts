@@ -204,7 +204,7 @@ Once installed, we can test it by running:
 In VSCode, open a new terminal session.
 
 ```code
-sfdx --version
+sf --version
 ```
 
 The terminal should return a version message, similar to: (OS dependent):
@@ -216,7 +216,7 @@ The terminal should return a version message, similar to: (OS dependent):
 Run this in the VSCode terminal:
 
 ```code
-sfdx auth:web:login --alias myOrg --instance-url https://login.salesforce.com --set-default
+sf auth:web:login --alias myOrg --instance-url https://login.salesforce.com --set-default
 ```
 
 A browser will open requesting that you log into your Salesforce org. Provide your credentials and login.
