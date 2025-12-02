@@ -19,6 +19,11 @@ This QuickStart focuses on some of the most frequently used functions, demonstra
 
 You'll learn how to categorize values, handle null data, filter and search text, enrich datasets with lookups, calculate percentages, parse patterns, analyze hierarchies, and implement conditional logic—all essential skills for building powerful analytics in Sigma.
 
+### Template
+We have also made the final workbook that is created during this QuickStart available as a Sigma Template. This option. allows you to read along while having the workbook built for you. The template is not required and the end result is the same if you build it yourself. 
+
+<img src="assets/cdf_01a.png" width="500"/>
+
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
