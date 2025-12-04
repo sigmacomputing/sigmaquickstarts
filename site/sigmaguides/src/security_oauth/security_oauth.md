@@ -241,7 +241,17 @@ Click on the `Refresh Token` checkbox.
 
 Enter the `Sign-in redirect URIs` for Sigma. Remove the default one by clicking on the `x` button and then click `+ Add URI`
 
-If running Sigma on AWS, use: 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The redirect URI depends on both your cloud platform AND region. The format is:<br>
+<br>
+https://{{baseUrl}}/v2/oauth/1/authcode<br>
+<br>
+where {{baseUrl}} must be replaced with your specific region's API endpoint from the <a href="https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support#supported-cloud-platforms-and-regions">Supported cloud platforms and regions table</a>. 
+
+Using an incorrect redirect URI will prevent OAuth authentication from working.
+</aside>
+
+If running Sigma on AWS, use:
 ```code
 https://aws-api.sigmacomputing.com/api/v2/oauth/1/authcode
 ```
