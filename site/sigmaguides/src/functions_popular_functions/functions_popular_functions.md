@@ -3,10 +3,10 @@ id: functions_popular_functions
 summary: functions_popular_functions
 categories: Functions
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2025-12-02
+tags: default
+lastUpdated: 2025-12-05
 
 # Popular Functions
 
