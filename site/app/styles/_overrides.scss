@@ -38,7 +38,7 @@ $color-partners: #7a5144;
 $color-templates: #EC407A;
 
 $icon-administration: 'administration.svg';
-$icon-aiapps: 'dataapps.svg';
+$icon-aiapps: 'aiapps.svg';
 $icon-dataapps: 'dataapps.svg';
 $icon-developers: 'developers.svg';
 $icon-embedding: 'embedding.svg';
@@ -61,7 +61,7 @@ $icon-templates: 'workbook-template.svg';
 @include codelab-card(['use-cases'], $color-use-cases, $icon-use-cases);
 @include codelab-card(['functions'], $color-functions, $icon-functions);
 @include codelab-card(['partners'], $color-partners, $icon-partners);
-@include codelab-card(['templates'], $color-templates, $icon-templates); 
+@include codelab-card(['templates'], $color-templates, $icon-templates);
 
 /** Categories in Use (so far):
 Administration
