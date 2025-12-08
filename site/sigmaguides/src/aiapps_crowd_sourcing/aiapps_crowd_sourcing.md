@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_crowd_sourcing
 summary: dataapps_crowd_sourcing
-categories: dataapps
+categories: aiapps
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

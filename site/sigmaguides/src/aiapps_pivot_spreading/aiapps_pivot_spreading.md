@@ -1,7 +1,7 @@
 7author: pballai
 id: dataapps_pivot_spreading
 summary: dataapps_pivot_spreading
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

@@ -1,7 +1,7 @@
 author: pballai
 id: data_apps_cross_chart_actions
 summary: data_apps_cross_chart_actions
-categories: dataapps
+categories: aiapps
 environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

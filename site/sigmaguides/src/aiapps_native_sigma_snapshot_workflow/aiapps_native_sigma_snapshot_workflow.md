@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_native_sigma_snapshot_workflow
 summary: dataapps_native_sigma_snapshot_workflow
-categories: dataapps
+categories: aiapps
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

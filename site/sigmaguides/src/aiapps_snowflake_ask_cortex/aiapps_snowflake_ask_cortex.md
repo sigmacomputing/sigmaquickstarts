@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_snowflake_ask_cortex
 summary: dataapps_snowflake_ask_cortex
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

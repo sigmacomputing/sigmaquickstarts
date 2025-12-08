@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_finance_discounted_cash_flow
 summary: dataapps_finance_discounted_cash_flow
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
