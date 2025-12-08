@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_adjustments_change_log
 summary: dataapps_adjustments_change_log
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

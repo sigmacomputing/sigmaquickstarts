@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_api_actions_getting_started
 summary: dataapps_api_actions_getting_started
-categories: dataapps
+categories: aiapps
 environments: web
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_calling_external_api_procedure
 summary: dataapps_calling_external_api_procedure
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

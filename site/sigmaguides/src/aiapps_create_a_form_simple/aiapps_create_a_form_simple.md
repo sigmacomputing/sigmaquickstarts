@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_create_a_form_simple
 summary: dataapps_create_a_form_simple
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

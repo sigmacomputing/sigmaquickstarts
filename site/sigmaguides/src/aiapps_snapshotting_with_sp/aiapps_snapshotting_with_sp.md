@@ -1,7 +1,7 @@
 author: pballai
 id: dataapps_snapshotting_with_sp
 summary: dataapps_snapshotting_with_sp
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
