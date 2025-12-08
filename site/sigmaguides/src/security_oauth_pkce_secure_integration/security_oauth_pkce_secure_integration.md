@@ -85,6 +85,30 @@ Here's how OAuth 2.0 works when a user accesses embedded Sigma content:
 <strong>KEY BENEFIT:</strong><br> OAuth 2.0 separates authentication from authorization, allowing fine-grained access control without sharing credentials.
 </aside>
 
+### Connection-Level vs Organization-Level OAuth
+
+When implementing OAuth with Sigma, you have two primary approaches for managing authentication:
+
+**Connection-Level OAuth:**
+- Each user authenticates individually with the data platform (Databricks, Snowflake, etc.)
+- Tokens are scoped to specific connections
+- **Supports PKCE for enhanced security** (this is the key advantage)
+- Ideal for embedded scenarios where user identity and individual permissions matter
+- Each query runs with the authenticated user's credentials
+- Provides the strongest audit trail and access control
+
+**Organization-Level OAuth:**
+- Uses a single service account or shared credentials for all users
+- All users query through the same organizational identity
+- Does not support PKCE
+- Simpler initial setup but less granular access control
+- Better for scenarios where all users have identical data permissions
+- Requires implementing Row-Level Security (RLS) separately if user-specific data access is needed
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma supports PKCE exclusively for connection-level OAuth. This is a key reason to choose connection-level authentication when implementing embedded analytics with user-specific data access requirements and enhanced security needs.
+</aside>
+
 ### Why OAuth 2.0 for Sigma Deployments?
 
 **Security:**<br>
@@ -186,12 +210,14 @@ Consider an enterprise scenario where you want to embed Sigma dashboards into yo
 - Used for API requests
 - Included in request headers
 - Should never be logged or stored long-term
+- **Sigma Storage:** Access tokens are stored in buffer and encrypted using envelope encryption with AES256
 
 **Refresh Tokens**
-- Longer-lived (days to months)
+- Longer-lived (up to 90 days)
 - Used to obtain new access tokens
 - Must be stored securely
 - Can be revoked by authorization server
+- **Sigma Storage:** Refresh tokens are stored in MySQL, encrypted using unique keys per customer. Encryption keys are housed in a separate key store for enhanced security
 
 **Token Expiration Flow in Sigma**
 1. User views embedded Sigma dashboard, Sigma queries data with access token
@@ -256,28 +282,34 @@ OAuth 2.0 uses "scopes" to define what access a token grants. When Sigma integra
 ## Integration Architecture Patterns
 Duration: 10
 
-### Pattern 1: Direct User Authentication
+### Pattern 1: Connection-Level OAuth with PKCE (Direct User Authentication)
 
-**Scenario:** Users authenticate directly with data platform before accessing Sigma
+**Scenario:** Users authenticate directly with data platform before accessing Sigma using connection-level OAuth with PKCE
 
 **Flow:**
 1. User accesses embedded Sigma dashboard in your application
-2. Application redirects to Databricks OAuth login page
-3. User logs in with their Databricks credentials
-4. Databricks issues access token to your application
-5. Application passes token to Sigma via embed API
-6. Sigma queries Databricks using user's individual token and permissions
+2. Application generates PKCE code challenge and redirects to data platform OAuth login (e.g., Databricks)
+3. User logs in with their data platform credentials
+4. Data platform issues access token to your application after validating PKCE verifier
+5. Application passes encrypted token to Sigma via embed API
+6. Sigma queries data platform using user's individual token and permissions
 
 **Pros:**
+- **Supports PKCE for enhanced security** - protects against authorization code interception
 - True user-level access control in Sigma - each user sees only their authorized data
 - Complete audit trail showing exactly which user ran which Sigma queries
 - No credential management in your application or Sigma connections
-- Leverages Databricks Unity Catalog row-level security automatically
+- Leverages platform-native security (e.g., Databricks Unity Catalog row-level security)
+- Strongest security posture for embedded analytics
 
 **Cons:**
-- Requires all users to have individual Databricks accounts (licensing cost)
+- Requires all users to have individual data platform accounts (licensing cost)
 - Additional login step interrupts embedded Sigma user experience
 - More complex token management logic in your application
+
+<aside class="positive">
+<strong>RECOMMENDED FOR:</strong><br> Connection-level OAuth with PKCE is the preferred approach when security, auditability, and user-specific data access are primary requirements. This is the only pattern that supports PKCE in Sigma.
+</aside>
 
 ### Pattern 2: Service Account with Row-Level Security
 
@@ -326,12 +358,13 @@ Duration: 10
 
 ### Choosing the Right Pattern for Sigma
 
-**Use Direct Authentication when:**
-- You need strongest security and auditability for Sigma usage
-- Users already have individual data platform accounts
+**Use Connection-Level OAuth with PKCE (Pattern 1) when:**
+- You need the strongest security posture with PKCE protection
 - Regulatory compliance requires tracking which user ran which Sigma query
+- Users already have individual data platform accounts
 - Data sensitivity is very high (healthcare, financial)
 - You want to leverage platform-native permissions in Sigma dashboards
+- Enhanced security against authorization code interception is required
 
 **Use Service Account with RLS when:**
 - Embedding Sigma for external customers who don't have platform accounts
