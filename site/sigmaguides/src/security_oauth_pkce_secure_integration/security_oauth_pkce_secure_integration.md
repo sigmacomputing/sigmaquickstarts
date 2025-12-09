@@ -65,21 +65,25 @@ The person who owns the data and grants access to it. In Sigma deployments, this
 The application requesting access to protected resources on behalf of the user. When using Sigma Embedding, this is your custom application hosting embedded Sigma content (dashboards, workbooks, or visualizations).
 
 **Authorization Server:**<br>
-The server that authenticates the user and issues access tokens after successful authorization. For Sigma integrations, this could be Databricks OAuth, Snowflake OAuth, or your corporate identity provider (Okta, Azure AD, etc.).
+The server that authenticates the user and issues access tokens after successful authorization. For Sigma integrations, this is typically your cloud data warehouse's OAuth service (Snowflake, BigQuery, Redshift, etc.) or your corporate identity provider (Okta, Azure AD, etc.).
 
 **Resource Server:**<br>
-The server hosting the protected resources (data). For Sigma users, this is your cloud data warehouse (Databricks, Snowflake, BigQuery, etc.) that Sigma queries on the user's behalf.
+The server hosting the protected resources (data). For Sigma users, this is your cloud data warehouse (Snowflake, BigQuery, Redshift, Azure Synapse, etc.) that Sigma queries on the user's behalf.
 
 ### The Authorization Flow
 
 Here's how OAuth 2.0 works when a user accesses embedded Sigma content:
 
 1. **User initiates action**: User clicks on embedded Sigma dashboard in your application
-2. **Authorization request**: Your application redirects user to data platform's OAuth endpoint (e.g., Databricks login)
-3. **User authentication**: User logs in with their data platform credentials
+2. **Authorization request**: Your application redirects user to the authorization server (this could be your corporate SSO provider like Okta/Azure AD for federated identity, or directly to the data warehouse OAuth endpoint)
+3. **User authentication**: User logs in with their credentials
 4. **Authorization grant**: User approves Sigma's access request to query data on their behalf
-5. **Token exchange**: Your application receives an access token from the authorization server
-6. **Sigma queries data**: Sigma uses the token to query your data warehouse with the user's permissions
+5. **Token exchange**: Your application receives an access token from the authorization server (if using federated identity, your application exchanges the SSO token for a data warehouse token)
+6. **Sigma queries data**: Sigma uses the data warehouse token to query with the user's permissions
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The authorization flow varies by implementation pattern. With federated identity (most common for embedded analytics), users authenticate via corporate SSO. With connection-level OAuth, users authenticate directly with the data warehouse.
+</aside>
 
 <aside class="positive">
 <strong>KEY BENEFIT:</strong><br> OAuth 2.0 separates authentication from authorization, allowing fine-grained access control without sharing credentials.
@@ -90,7 +94,7 @@ Here's how OAuth 2.0 works when a user accesses embedded Sigma content:
 When implementing OAuth with Sigma, you have two primary approaches for managing authentication:
 
 **Connection-Level OAuth:**
-- Each user authenticates individually with the data platform (Databricks, Snowflake, etc.)
+- Each user authenticates individually with the data platform (Snowflake, BigQuery, Redshift, etc.)
 - Tokens are scoped to specific connections
 - **Supports PKCE for enhanced security** (this is the key advantage)
 - Ideal for embedded scenarios where user identity and individual permissions matter
@@ -186,23 +190,23 @@ A transformed version of the code verifier, created using SHA-256 hashing. This 
 Duration: 10
 
 ### Real-World Use Case: Embedded Sigma Analytics
-Consider an enterprise scenario where you want to embed Sigma dashboards into your customer portal, with data stored in Databricks:
+Consider an enterprise scenario where you want to embed Sigma dashboards into your customer portal:
 
 **Without OAuth/PKCE:**
-- Requires storing Databricks credentials in your application or Sigma connection
+- Requires storing data warehouse credentials in your application or Sigma connection
 - All Sigma users share the same database connection and permissions
 - No per-user access control - everyone sees all data
 - Difficult to audit which individual user ran which Sigma query
 - Security risk if application is compromised - credentials exposed
-- Cannot leverage Databricks Unity Catalog row-level security
+- Cannot leverage warehouse-native row-level security features
 
 **With OAuth/PKCE:**
 - No credentials stored in your application or Sigma
-- Each Sigma user authenticates with their own Databricks identity
-- Sigma queries respect each user's Databricks permissions automatically
+- Each Sigma user authenticates with their own data warehouse identity
+- Sigma queries respect each user's warehouse permissions automatically
 - Complete audit trail showing which user accessed what data through Sigma
 - Tokens expire automatically (typically 1 hour), limiting exposure window
-- Leverages Databricks Unity Catalog for fine-grained access control
+- Leverages warehouse-native security (e.g., Snowflake row access policies, BigQuery row-level security)
 
 ### Token Lifecycle Management
 **Access Tokens**
@@ -217,7 +221,7 @@ Consider an enterprise scenario where you want to embed Sigma dashboards into yo
 - Used to obtain new access tokens
 - Must be stored securely
 - Can be revoked by authorization server
-- **Sigma Storage:** Refresh tokens are stored in MySQL, encrypted using unique keys per customer. Encryption keys are housed in a separate key store for enhanced security
+- **Sigma Storage:** Refresh tokens are encrypted using unique keys per customer. Encryption keys are housed in a separate key store for enhanced security
 
 **Token Expiration Flow in Sigma**
 1. User views embedded Sigma dashboard, Sigma queries data with access token
@@ -235,19 +239,30 @@ OAuth 2.0 uses "scopes" to define what access a token grants. When Sigma integra
 
 **Common Scope Examples for Sigma Integration:**
 
-**Databricks:**
-- `sql` - Permission for Sigma to execute SQL queries against the data warehouse
-- `all-apis` - Full API access
-- `offline_access` - Allows Sigma to request refresh tokens for long-running sessions
-- `cluster:read` - Read access to compute cluster information
-- `catalog:read` - Permission to access Unity Catalog metadata
+OAuth scopes vary by data warehouse platform. Here are examples from commonly used platforms:
 
 **Snowflake:**
 - `session:role-any` - Allows Sigma to use any role the user has access to
 - `refresh_token` - Enables refresh token generation for long-running sessions
 - `session:scope:warehouse` - Permission to use warehouse resources for query execution
 
-**Note:** While scope names vary by platform, most cloud data warehouses support similar concepts: SQL execution permissions, refresh token capabilities, and resource access controls. Consult your data platform's OAuth documentation for specific scope names and definitions.
+**Databricks:**
+- `sql` - Permission for Sigma to execute SQL queries against the data warehouse
+- `offline_access` - Allows Sigma to request refresh tokens for long-running sessions
+- `all-apis` - Full API access (use with caution, grant only necessary permissions)
+
+**BigQuery:**
+- `https://www.googleapis.com/auth/bigquery` - Access to BigQuery API for running queries
+- `https://www.googleapis.com/auth/bigquery.readonly` - Read-only access to BigQuery data
+- `offline_access` - Allows Sigma to request refresh tokens
+
+**General Concepts Across Platforms:**
+- SQL execution permissions - Core access to run queries
+- Refresh token capabilities - For long-running Sigma sessions
+- Resource access controls - Permission to use compute/warehouse resources
+- Metadata access - Ability to read schema and table information
+
+**Note:** Consult your data platform's OAuth documentation for specific scope names and definitions. Most cloud data warehouses support similar security concepts with platform-specific naming conventions.
 
 **Scope Request Flow:**
 1. Your application requests specific scopes when initiating OAuth flow
@@ -288,18 +303,18 @@ Duration: 10
 
 **Flow:**
 1. User accesses embedded Sigma dashboard in your application
-2. Application generates PKCE code challenge and redirects to data platform OAuth login (e.g., Databricks)
-3. User logs in with their data platform credentials
-4. Data platform issues access token to your application after validating PKCE verifier
+2. Application generates PKCE code challenge and redirects to data warehouse OAuth login
+3. User logs in with their data warehouse credentials
+4. Data warehouse issues access token to your application after validating PKCE verifier
 5. Application passes encrypted token to Sigma via embed API
-6. Sigma queries data platform using user's individual token and permissions
+6. Sigma queries data warehouse using user's individual token and permissions
 
 **Pros:**
 - **Supports PKCE for enhanced security** - protects against authorization code interception
 - True user-level access control in Sigma - each user sees only their authorized data
 - Complete audit trail showing exactly which user ran which Sigma queries
 - No credential management in your application or Sigma connections
-- Leverages platform-native security (e.g., Databricks Unity Catalog row-level security)
+- Leverages platform-native security (e.g., Snowflake row access policies, BigQuery row-level security)
 - Strongest security posture for embedded analytics
 
 **Cons:**
@@ -316,23 +331,23 @@ Duration: 10
 **Scenario:** Sigma connects using shared service account, data filtered by user attributes
 
 **Flow:**
-1. Your application authenticates with shared Databricks service account
+1. Your application authenticates with shared warehouse service account
 2. User identity passed via Sigma embed parameters (user attributes)
 3. Sigma includes user attributes in SQL queries (e.g., WHERE user_id = ?)
-4. Databricks Unity Catalog or custom SQL enforces RLS based on user context
+4. Data warehouse row-level security or custom SQL enforces RLS based on user context
 5. Query results automatically filtered per user permissions
 
 **Pros:**
 - Simplified authentication flow - no OAuth redirect for Sigma users
-- Users don't need individual Databricks accounts (cost savings)
+- Users don't need individual data warehouse accounts (cost savings)
 - Centralized permission management in Sigma user attributes
 - Smoother embedded Sigma user experience
 
 **Cons:**
 - Less granular audit trail - queries run as service account
-- Requires implementing RLS logic in Unity Catalog or Sigma SQL
+- Requires implementing RLS logic in warehouse or Sigma SQL
 - Service account credentials must be secured in Sigma connection
-- Cannot leverage some Databricks user-level features
+- Cannot leverage some warehouse user-level features
 
 ### Pattern 3: Federated Identity
 
@@ -340,8 +355,8 @@ Duration: 10
 
 **Flow:**
 1. User logs into your application via corporate SSO (Okta, Azure AD, etc.)
-2. Your application exchanges SSO token for Databricks OAuth token
-3. Databricks OAuth token passed to Sigma for embedded content
+2. Your application exchanges SSO token for data warehouse OAuth token
+3. Data warehouse OAuth token passed to Sigma for embedded content
 4. Sigma uses token to query data - single identity across all systems
 5. User never sees additional login prompts
 
@@ -353,7 +368,7 @@ Duration: 10
 - Best for enterprise deployments with existing SSO infrastructure
 
 **Cons:**
-- Most complex initial setup - requires SSO integration with Databricks and Sigma
+- Most complex initial setup - requires SSO integration with data warehouse and Sigma
 - Dependency on identity provider availability
 
 ### Choosing the Right Pattern for Sigma
@@ -367,10 +382,10 @@ Duration: 10
 - Enhanced security against authorization code interception is required
 
 **Use Service Account with RLS when:**
-- Embedding Sigma for external customers who don't have platform accounts
+- Embedding Sigma for external customers who don't have data warehouse accounts
 - You control user permissions at the application layer
-- Cost of per-user data platform licenses is prohibitive
-- You already have RLS implemented in Unity Catalog or your warehouse
+- Cost of per-user data warehouse licenses is prohibitive
+- You already have RLS implemented in your data warehouse
 - Sigma user experience is more important than granular audit trail
 
 **Use Federated Identity when:**
@@ -390,109 +405,398 @@ Duration: 10
 ## Implementation Considerations
 Duration: 10
 
-### Platform Support Requirements
+Before implementing OAuth 2.0 with PKCE for your Sigma deployment, ensure your environment meets the necessary requirements and understand common challenges you'll encounter.
 
-**Authorization Server Requirements:**
-- OAuth 2.0 compliance
-- PKCE extension support
-- Token refresh capability
-- Configurable token expiration
-- Scope management
-- Token revocation endpoint
+### Platform Requirements
 
-**Application Requirements:**
-- HTTPS/TLS support
-- Secure token storage
-- Token refresh logic
-- Error handling for expired tokens
-- Redirect URI handling
-- State parameter management (CSRF protection)
+Your OAuth implementation requires support from both the authorization server (your data platform) and your application.
 
-### Common Implementation Challenges
-
-**Challenge 1: Token Refresh Timing**
-
-**Problem:** Access tokens expire mid-session, interrupting user workflows
-
-**Solution:**
-- Implement proactive token refresh (refresh before expiration)
-- Set up background refresh process
-- Queue API requests during refresh
-- Add retry logic with exponential backoff
-
-**Challenge 2: Redirect URI Management**
-
-**Problem:** OAuth requires exact redirect URI matching, complex with multiple environments
-
-**Solution:**
-- Register separate OAuth apps per environment
-- Use environment variables for redirect URIs
-- Implement wildcard subdomain support if available
-- Document all registered URIs
-
-**Challenge 3: Mobile Deep Linking**
-
-**Problem:** OAuth redirects to browser, must return to app
-
-**Solution:**
-- Implement custom URL schemes
-- Use universal links (iOS) or app links (Android)
-- Handle app resumption gracefully
-- Preserve application state across redirect
-
-**Challenge 4: Token Storage on Web**
-
-**Problem:** XSS vulnerabilities in browser-based apps
-
-**Solution:**
-- Use httpOnly, secure cookies
-- Implement Content Security Policy
-- Use SameSite cookie attribute
-- Consider backend-for-frontend pattern
-
-### Testing OAuth Flows
-
-**Local Development:**
-- Use localhost redirect URIs
-- Mock authorization server for unit tests
-- Implement token generation utilities
-- Test token expiration scenarios
-
-**Staging Environment:**
-- Register separate OAuth application
-- Test with production-like data
-- Verify all redirect flows
-- Test error conditions
-
-**Production Monitoring:**
-- Log OAuth errors (without logging tokens!)
-- Monitor token refresh success rates
-- Track authorization success/failure
-- Alert on unusual patterns
-
-<aside class="negative">
-<strong>SECURITY WARNING:</strong><br> Never log access tokens, refresh tokens, or authorization codes. Log only token metadata (expiration, scopes, user ID).
+<aside class="positive">
+<strong>GOOD NEWS:</strong><br> Major cloud data warehouses like Snowflake, BigQuery, Redshift, and Azure Synapse all support OAuth 2.0 with PKCE out of the box.
 </aside>
 
-### Compliance and Governance
+**Authorization Server Must Support:**
+- OAuth 2.0 authorization code flow
+- PKCE extension (code challenge/verifier)
+- Token refresh capability
+- Configurable token expiration times
+- Scope-based permission management
+- Token revocation endpoints
 
-**Audit Requirements:**
-- Log all token issuance events
-- Track which users accessed what data
-- Retain audit logs per compliance requirements
-- Implement log analysis for anomaly detection
+**Your Application Must Support:**
+- HTTPS/TLS for all OAuth communications
+- Secure token storage (never in localStorage)
+- Automatic token refresh before expiration
+- Error handling for expired/invalid tokens
+- OAuth redirect URI handling
+- State parameter for CSRF protection
 
-**Data Privacy:**
-- Document what data each scope accesses
-- Implement data access agreements
-- Allow users to review granted permissions
-- Provide permission revocation capability
+![Footer](assets/sigma_footer.png)
+<!-- END OF SUBSECTION-->
 
-**Security Policies:**
-- Define token lifetime policies
-- Establish refresh token rotation
-- Implement rate limiting
-- Regular security audits
+## Common Implementation Challenges
+Duration: 10
+
+Let's walk through the four most common challenges teams face when implementing OAuth with Sigma, with practical solutions you can apply.
+
+### Challenge 1: Token Refresh Timing
+
+**The Problem:**
+
+Your embedded Sigma dashboard is working perfectly. A user is exploring data, building visualizations, when suddenly: "Authentication Error - Token Expired." The access token expired mid-session, breaking their workflow.
+
+**Why This Happens:**
+
+Access tokens typically expire after 60 minutes. If you wait for the token to expire before refreshing, users will see errors when Sigma tries to query data.
+
+**The Solution:**
+
+Implement proactive token refresh that runs before expiration.
+
+**Practical Example:**
+
+```code
+// Check token expiration every 5 minutes
+setInterval(async () => {
+  const tokenExpiry = getTokenExpiration();
+  const now = Date.now();
+  const timeUntilExpiry = tokenExpiry - now;
+
+  // Refresh if less than 10 minutes remaining
+  if (timeUntilExpiry < 10 * 60 * 1000) {
+    await refreshAccessToken();
+  }
+}, 5 * 60 * 1000);
+```
+
+**Best Practices:**
+- Refresh tokens when 5-10 minutes remain on the access token
+- Queue Sigma API requests during the refresh process
+- Implement retry logic with exponential backoff for failed refreshes
+- Monitor refresh token success rates to catch issues early
+
+<aside class="positive">
+<strong>SIGMA TIP:</strong><br> Most Sigma customers refresh tokens proactively at the 10-minute mark to ensure users never experience query interruptions.
+</aside>
+
+### Challenge 2: Redirect URI Management
+
+**The Problem:**
+
+OAuth requires exact redirect URI matching. You register `https://app.example.com/callback` with your data warehouse, but your staging environment uses `https://staging.example.com/callback`. Result? OAuth fails in staging with "redirect_uri_mismatch" error.
+
+**Why This Happens:**
+
+For security, authorization servers require exact matches between registered redirect URIs and the URI in your OAuth request. Different environments (dev/staging/prod) need different URIs.
+
+**The Solution:**
+
+Register separate OAuth applications for each environment and use environment variables.
+
+**Practical Example:**
+
+```code
+// config/oauth.js
+const oauthConfig = {
+  development: {
+    clientId: process.env.DEV_OAUTH_CLIENT_ID,
+    redirectUri: 'http://localhost:3000/oauth/callback'
+  },
+  staging: {
+    clientId: process.env.STAGING_OAUTH_CLIENT_ID,
+    redirectUri: 'https://staging.example.com/oauth/callback'
+  },
+  production: {
+    clientId: process.env.PROD_OAUTH_CLIENT_ID,
+    redirectUri: 'https://app.example.com/oauth/callback'
+  }
+};
+
+const config = oauthConfig[process.env.NODE_ENV];
+```
+
+**Best Practices:**
+- Create separate OAuth apps in your data warehouse for each environment
+- Store client IDs and redirect URIs in environment variables
+- Document all registered redirect URIs in your team wiki
+- Use wildcard subdomains if your authorization server supports them
+- Test OAuth flow in each environment before deploying
+
+### Challenge 3: Secure Token Storage
+
+**The Problem:**
+
+A developer stores OAuth tokens in browser localStorage for convenience. Later, a security audit flags this as a critical XSS vulnerability - any malicious script can steal tokens and access your data warehouse.
+
+**Why This Happens:**
+
+localStorage is accessible to any JavaScript running on your page. If an attacker injects malicious code (XSS attack), they can steal tokens and impersonate users in Sigma.
+
+**The Solution:**
+
+Use httpOnly, secure cookies that JavaScript cannot access.
+
+**Practical Example:**
+
+```code
+// Backend: Set token as httpOnly cookie (Node.js/Express)
+app.post('/oauth/callback', async (req, res) => {
+  const tokens = await exchangeCodeForTokens(req.query.code);
+
+  // Store access token in httpOnly cookie
+  res.cookie('sigma_access_token', tokens.access_token, {
+    httpOnly: true,    // JavaScript cannot access
+    secure: true,      // HTTPS only
+    sameSite: 'strict', // CSRF protection
+    maxAge: 3600000    // 1 hour
+  });
+
+  // Store refresh token separately with longer expiry
+  res.cookie('sigma_refresh_token', tokens.refresh_token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'strict',
+    maxAge: 90 * 24 * 3600000  // 90 days
+  });
+
+  res.redirect('/dashboard');
+});
+```
+
+**Best Practices:**
+- Always use httpOnly, secure cookies for tokens
+- Implement Content Security Policy headers
+- Use SameSite cookie attribute to prevent CSRF attacks
+- For mobile apps, use platform-native secure storage (Keychain/KeyStore)
+- Consider backend-for-frontend pattern for maximum security
+- Never store tokens in localStorage, sessionStorage, or URL parameters
+
+<aside class="negative">
+<strong>SECURITY CRITICAL:</strong><br> Storing OAuth tokens in localStorage is a common but dangerous practice. Always use httpOnly cookies or secure backend storage.
+</aside>
+
+### Challenge 4: Mobile Deep Linking
+
+**The Problem:**
+
+A user clicks your embedded Sigma dashboard in your mobile app. OAuth redirects them to Safari/Chrome for data warehouse login. After authenticating, they're stuck in the browser - the app doesn't resume, and the user is confused.
+
+**Why This Happens:**
+
+OAuth redirects users to the authorization server's web login. Mobile apps need special URL schemes to redirect users back from the browser to the app.
+
+**The Solution:**
+
+Implement universal links (iOS) or app links (Android) to seamlessly return users to your app.
+
+**Practical Example:**
+
+```code
+// iOS Universal Link Configuration (apple-app-site-association)
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.example.app",
+        "paths": ["/oauth/callback"]
+      }
+    ]
+  }
+}
+
+// Handle OAuth callback in your app
+func application(_ app: UIApplication,
+                 continue userActivity: NSUserActivity,
+                 restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+
+  guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+        let url = userActivity.webpageURL,
+        url.path == "/oauth/callback" else {
+    return false
+  }
+
+  // Extract authorization code from URL
+  let code = extractAuthCode(from: url)
+
+  // Exchange for tokens and load Sigma embed
+  exchangeCodeForTokens(code) { tokens in
+    loadSigmaEmbed(with: tokens.accessToken)
+  }
+
+  return true
+}
+```
+
+**Best Practices:**
+- Configure universal links (iOS) or app links (Android)
+- Test deep linking across different iOS/Android versions
+- Preserve user's place in the app during OAuth redirect
+- Implement custom URL schemes as fallback
+- Handle cases where universal links aren't configured
+- Provide clear visual feedback during OAuth redirect flow
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SUBSECTION-->
+
+## Testing and Monitoring
+Duration: 5
+
+### Testing Your OAuth Implementation
+
+**Local Development:**
+
+Start by testing OAuth flows on your development machine:
+
+```code
+// Use localhost for development
+const devRedirectUri = 'http://localhost:3000/oauth/callback';
+
+// Mock authorization server for unit tests
+const mockAuthServer = {
+  generateTokens: () => ({
+    access_token: 'mock_access_token',
+    refresh_token: 'mock_refresh_token',
+    expires_in: 3600
+  })
+};
+```
+
+**Key Tests to Run:**
+- Successful OAuth authorization flow end-to-end
+- Token expiration and automatic refresh
+- Error handling when tokens are invalid
+- PKCE code challenge/verifier validation
+- Redirect URI mismatch scenarios
+
+**Staging Environment:**
+
+Register a separate OAuth application for staging and test with production-like data:
+
+- Verify all redirect flows work correctly
+- Test token refresh before expiration
+- Simulate token expiration mid-session
+- Test error conditions (network failures, invalid tokens)
+- Verify Sigma embeds load with staging OAuth tokens
+
+**Production Monitoring:**
+
+Once deployed, monitor your OAuth implementation continuously:
+
+```code
+// Log OAuth events (but never log tokens!)
+logger.info('OAuth authorization started', {
+  userId: user.id,
+  timestamp: Date.now()
+});
+
+logger.info('Token refresh succeeded', {
+  userId: user.id,
+  expiresIn: 3600,
+  scopes: ['sql', 'offline_access']
+});
+
+logger.error('Token refresh failed', {
+  userId: user.id,
+  errorType: 'invalid_grant',
+  // DO NOT log the actual token or refresh token
+});
+```
+
+**Metrics to Monitor:**
+- Token refresh success rate (target: >99%)
+- Authorization flow success rate
+- Average time for OAuth redirect flow
+- Token expiration errors
+- Unusual token usage patterns
+
+<aside class="negative">
+<strong>SECURITY WARNING:</strong><br> Never log access tokens, refresh tokens, or authorization codes. Log only token metadata like expiration time, scopes, and user ID.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SUBSECTION-->
+
+## Compliance and Governance
+Duration: 5
+
+OAuth implementations must meet audit, privacy, and security requirements.
+
+### Audit Requirements
+
+**What to Log:**
+- Token issuance events (who, when, which scopes)
+- Data access through Sigma (which user queried what data)
+- Token refresh and revocation events
+- Failed authorization attempts
+- Scope changes or permission grants
+
+**Practical Example:**
+
+```code
+// Audit log entry for Sigma query
+{
+  "timestamp": "2025-12-08T14:30:00Z",
+  "event_type": "sigma_query_executed",
+  "user_id": "john.doe@example.com",
+  "data_platform": "snowflake",
+  "query_type": "dashboard_load",
+  "dashboard_id": "sales_metrics_q4",
+  "scopes_used": ["session:role-any", "refresh_token"],
+  "rows_returned": 1523
+}
+```
+
+**Retention:** Retain audit logs according to your compliance requirements (typically 1-7 years).
+
+### Data Privacy
+
+**User Consent:**
+
+Users must understand what access they're granting when they authorize Sigma:
+
+- Clearly document what data each OAuth scope accesses
+- Show users which permissions Sigma is requesting
+- Allow users to review granted permissions in account settings
+- Provide easy permission revocation capability
+
+**Privacy Controls:**
+- Implement data access agreements for sensitive data
+- Log data access for GDPR/CCPA compliance
+- Allow users to export their access history
+- Provide user data deletion capability
+
+### Security Policies
+
+**Token Lifetime Policies:**
+- Access tokens: 60 minutes (standard for most platforms)
+- Refresh tokens: 90 days maximum
+- Implement token rotation on each refresh
+- Revoke tokens immediately on user logout
+
+**Rate Limiting:**
+
+Prevent abuse by limiting OAuth requests:
+
+```code
+// Example rate limit: 10 token refresh requests per hour per user
+const rateLimiter = {
+  maxRequests: 10,
+  windowMs: 3600000,  // 1 hour
+  message: 'Too many token refresh requests'
+};
+```
+
+**Regular Security Audits:**
+- Review OAuth logs quarterly for suspicious patterns
+- Test token revocation workflows
+- Verify token encryption at rest
+- Scan for exposed tokens in logs or error messages
+- Update OAuth libraries to patch security vulnerabilities
+
+<aside class="positive">
+<strong>COMPLIANCE TIP:</strong><br> Most Sigma customers conduct OAuth security audits quarterly and review token access patterns monthly to catch issues early.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
