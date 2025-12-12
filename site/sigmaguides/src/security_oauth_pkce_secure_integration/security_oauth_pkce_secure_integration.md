@@ -3,10 +3,10 @@ id: security_oauth_pkce_secure_integration
 summary: security_oauth_pkce_secure_integration
 categories: Security
 environments: web
-status: hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2025-12-03
+tags: default
+lastUpdated: 2025-12-12
 
 # OAuth 2.0 & PKCE for Secure Data Integration
 
