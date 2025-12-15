@@ -2970,7 +2970,9 @@ figure {
 }
 
 .section-hero {
-  background-image: linear-gradient(140deg, rgba(192, 149, 177, 0.15), rgba(47, 178, 175, 0.15));
+  /* background-image: linear-gradient(140deg, rgba(192, 149, 177, 0.15), rgba(47, 178, 175, 0.15)); */
+  background-color: #f0f0f0;
+  background-image: url(https://cdn.prod.website-files.com/666bbba4ff7240a20f4ccccf/685106838d461923ec10fc64_0ae8ba725281d3ce0757318ef80f6942_grid-fade.svg);
 }
 
 .section-hero.g-section-padding-medium.is-snowflake-page {
@@ -3417,11 +3419,11 @@ figure {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  max-width: 1248px;
+  /* max-width: 1248px; commented out by PB */
   margin-right: auto;
   margin-left: auto;
-  padding-right: 16px;
-  padding-left: 16px;
+  padding-right: 25px;
+  padding-left: 25px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;

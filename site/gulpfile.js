@@ -229,6 +229,16 @@ gulp.task('build:fonts', () => {
     .pipe(gulp.dest('build'));
 });
 
+// build:data builds all the data files into the build directory.
+gulp.task('build:data', () => {
+  const srcs = [
+    'app/data/**/*'
+  ];
+
+  return gulp.src(srcs, { base: 'app/' })
+    .pipe(gulp.dest('build'));
+});
+
 // build:js builds all the javascript into the dest dir
 gulp.task('build:js', (callback) => {
   let streams = [];
@@ -299,6 +309,7 @@ gulp.task('build', gulp.series(
   'build:html',
   'build:images',
   'build:fonts',
+  'build:data',
   'build:js',
   'build:elements_js',
   'build:vulcanize',
@@ -395,6 +406,10 @@ gulp.task('watch:fonts', () => {
   gulp.watch('app/fonts/**/*', gulp.series('build:fonts'));
 });
 
+gulp.task('watch:data', () => {
+  gulp.watch('app/data/**/*', gulp.series('build:data'));
+});
+
 // watch:images watches js files for changes and re-builds them
 gulp.task('watch:js', () => {
   const srcs = [
@@ -413,6 +428,7 @@ gulp.task('watch', gulp.parallel(
     'watch:html',
     'watch:images',
     'watch:fonts',
+    'watch:data',
     'watch:js',
   ));
 

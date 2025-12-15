@@ -96,6 +96,43 @@
             #displayText {
             display: none;
             }
+            body {
+            background-color: #f5f5f5 !important;
+            }
+            /* Remove navbar border */
+            .navbar {
+            border-bottom: none !important;
+            box-shadow: none !important;
+            }
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited {
+            background-color: transparent !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            }
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .nav-button-wrapper a.button-primary:hover,
+            .nav-button-wrapper a.button-primary:active {
+            background-color: #d4ff00 !important;
+            background-image: none !important;
+            border: 1px solid #d4ff00 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            }
          </style>
          <!-- End of PB add -->
       </head>
@@ -385,6 +422,14 @@
          </div>
          <paper-header-panel id="main" mode="standard" main>
             {% raw %}
+            <!-- Event Announcement Bar - Comment out when event is over -->
+            <div style="background-color: #000; color: #fff; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 500; position: relative; z-index: 1000;">
+               DEC. 11 PRODUCT LAUNCH
+               <a href="PLACEHOLDER_LINK" style="color: #fff; text-decoration: none; margin-left: 8px;">
+                  SIGN UP →
+               </a>
+            </div>
+            <!-- End Event Announcement Bar -->
             <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
                <div class="nav-container">
                   <nav class="nav-left-wrapper">
@@ -753,8 +798,8 @@
                      </div>
                   </nav>
                   <div class="nav-button-wrapper">
-                     <a href="https://app.sigmacomputing.com/login" class="button-secondary w-button">sign in</a>
-                     <a href="https://sigmacomputing.com/free-trial" class="button-primary w-button">free trial</a>
+                     <a href="https://app.sigmacomputing.com/login" class="button-secondary w-button" style="background-color: transparent !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important;">Login</a>
+                     <a href="https://sigmacomputing.com/free-trial" class="button-primary w-button" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important;">Try Sigma free</a>
                   </div>
                   <div data-w-id="6e060741-16f2-279a-eb04-81a89169fde5" class="nav-hamburger-button w-nav-button">
                      <div class="nav-hamburger_line cc-1"></div>
@@ -766,46 +811,97 @@
          </div>
          <header id="" class="section-hero g-section-padding-medium wf-section">
             <div class="site-width">
-               <div class="grid-wrapper">
+               <div class="grid-wrapper" style="max-width: 100%; width: 100%;">
                   <div class="header-4 g-mg-bottom-small">Welcome to Sigma QuickStarts</div>
                   <p class="paragraph-hero g-mg-bottom-large">
-                     Maximize your investment in Sigma with easy-to-follow, step-by-step tutorials.<br>
-                     
-                     <div class="kpi-container" style="display: flex; align-items: center; justify-content: center; width: 100%; overflow: hidden; margin: 10px; padding: 0;">
-                        <iframe src="https://app.sigmacomputing.com/embed/5t3nQDpTq3wNb0kV3mNNkX" style="width: 100%; height: 175px; border: none; display: block;"></iframe>
-                    </div>
-                                         </div>                  
-                                         
-                  </p>       
-                  <br>
-                  <div class="">
-                     <div class="g-mg-bottom-large">
-                        <div class="w-embed">
-                           <img src="https://assets-global.website-files.com/62a3d35f74b3a546c309e010/63406002ed9b57daff3fcfb2_ico-close.svg" loading="lazy" alt="" class="input-close">
-                           <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="search g-shadow-100 w-input" placeholder="Search" id="search">
-                        
-                           <div class="buttons-wrapper">
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="administration">Administration</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="aiapps">AI Apps</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="developers">Developers</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="embedding">Embedding</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="functions">Functions</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="fundamentals">Fundamentals for New Users</a>
-                            </div>
-                            
-                            <div class="buttons-wrapper">
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="partners">Partners</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="security">Security</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="tables">Tables</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="templates">Templates</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="use-cases">Use Cases</a>
-                              <a href="#" target="_self" class="button-primary w-button" onclick="reloadBasePage(event, this)" data-cat="show-all">Show All</a>
-                              <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures" target="_self" class="button-primary w-button">First Friday Features</a>
-                            </div>
-                       </div>                                                                          
+                     Maximize your investment in Sigma with easy-to-follow, step-by-step tutorials<br>
+                  </p>
+
+                  <!-- Search and Category Filter -->
+                  <div style="display: flex; gap: 16px; align-items: stretch; margin-bottom: 20px;">
+                     <select id="category-filter" class="w-input" style="width: 250px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; background: white;">
+                        <option value="">All Categories</option>
+                        <option value="administration">Administration</option>
+                        <option value="aiapps">AI Apps</option>
+                        <option value="developers">Developers</option>
+                        <option value="embedding">Embedding</option>
+                        <option value="functions">Functions</option>
+                        <option value="fundamentals">Fundamentals for New Users</option>
+                        <option value="partners">Partners</option>
+                        <option value="security">Security</option>
+                        <option value="tables">Tables</option>
+                        <option value="templates">Templates</option>
+                        <option value="use-cases">Use Cases</option>
+                     </select>
+                     <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="w-input" placeholder="Search QuickStarts" id="search" style="flex: 1; max-width: 400px; padding: 12px 16px; border-radius: 4px; border: 1px solid #ccc; font-size: medium;">
                   </div>
+
+                  <div class="featured-container" style="margin: 0 0 20px 0;">
+                     <h4 style="margin: 0 0 10px 0; color: #333; font-size: 1.30 em; color: #274bef;">Recently Added QuickStarts:</h3>
+                     <div id="recent-quickstarts" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <!-- Populated by JavaScript -->
+                        <div style="color: #999;">Loading recent QuickStarts...</div>
+                     </div>
+                  </div>
+
+                     <script>
+                        // Category filter handler
+                        document.getElementById('category-filter').addEventListener('change', function(e) {
+                           const category = e.target.value;
+                           if (category) {
+                              // Create a fake element that mimics the button structure
+                              const fakeButton = {
+                                 getAttribute: function(attr) {
+                                    if (attr === 'data-cat') return category;
+                                    return null;
+                                 }
+                              };
+                              handleButtonClick(e, fakeButton);
+                           } else {
+                              reloadBasePage(e, this);
+                           }
+                        });
+                     </script>
+                     <script>
+                        // Load featured QuickStarts from JSON
+                        fetch('/data/featured-quickstarts.json')
+                           .then(response => response.json())
+                           .then(data => {
+                              // Populate recent QuickStarts
+                              const container = document.getElementById('recent-quickstarts');
+                              container.innerHTML = ''; // Clear loading message
+                              data.recentQuickStarts.forEach(qs => {
+                                 const card = document.createElement('div');
+                                 const categoryLower = qs.category.toLowerCase().replace(/\s+/g, '');
+                                 card.className = `retailers-card codelab-card category-${categoryLower}`;
+                                 card.setAttribute('data-category', categoryLower);
+                                 card.style.cssText = `
+                                    flex: 0 0 auto;
+                                    width: 280px;
+                                    margin: 0 16px 0 0;
+                                 `;
+
+                                 card.innerHTML = `
+                                    <div class="header-7 description">${qs.title}</div>
+                                    <div class="card-footer">
+                                       <div class="category-icon ${categoryLower}-icon"></div>
+                                       <a href="/guide/${qs.id}/index.html?index=..%2F..index" class="button-secondary w-button ${categoryLower}-bg">Start</a>
+                                    </div>
+                                    <div class="card-duration"></div>
+                                 `;
+                                 container.appendChild(card);
+                              });
+                           })
+                           .catch(error => {
+                              console.error('Error loading featured QuickStarts:', error);
+                              document.getElementById('recent-quickstarts').innerHTML = '<li style="color: #999;">Unable to load recent QuickStarts</li>';
+                           });
+                     </script>
+                     </div>
+                  </p>
+
+                  <h4 style="margin: 20px 0 10px 0; color: #274bef; font-size: 1.30em;">Library:</h4>
                </div>
-               
             </header>
             {% endraw %}
             <main>
@@ -814,18 +910,18 @@
             <!-- End of PB add -->
             <br>
 
-            <card-sorter id="cards" class="site-width">
+               <card-sorter id="cards" class="site-width">
                {% for codelab in codelabs -%}
                    <!-- Ensure all codelabs are loaded, filter only hidden ones if needed -->
                    {% if codelab.status.indexOf('hidden') === -1 || view.id !== 'default' %}
                        <!-- Card element with data attributes for filtering -->
-                       <div 
+                       <div
                           data-category="{{codelab.category}}"
                           data-title="{{codelab.title}}"
                           data-duration="{{codelab.duration}}"
                           data-updated="{{codelab.updated}}"
                           data-tags="{{codelab.tags}}"
-                          data-pin="{{codelabPin(view, codelab)}}" 
+                          data-pin="{{codelabPin(view, codelab)}}"
                           class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}">
                            {%- if codelabPin(view, codelab) -%}
                                <div class="card-pin"></div>
@@ -858,7 +954,7 @@
                    {% endif %}
                {% endfor %}
            </card-sorter>
-           
+
             <div id="loading-placeholder" class="site-width">
             Loading guides, please wait...
             </div>
