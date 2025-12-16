@@ -1260,4 +1260,31 @@
          <!-- Deprecated by PB
           <script src="scripts/defaultviewscript.js" type="text/javascript"></script>
          -->
+         <script>
+         // Fix category display names
+         document.addEventListener('DOMContentLoaded', function() {
+            const categoryMap = {
+               'aiapps': 'AI Apps',
+               'dataapps': 'Data Apps'
+            };
+
+            // Function to fix category names
+            function fixCategoryNames() {
+               document.querySelectorAll('.category-bar').forEach(function(el) {
+                  const currentText = el.textContent.trim().toLowerCase();
+                  if (categoryMap[currentText]) {
+                     el.textContent = categoryMap[currentText];
+                     el.style.textTransform = 'none';
+                  }
+               });
+            }
+
+            // Run immediately
+            fixCategoryNames();
+
+            // Also run after a short delay to catch dynamically loaded content
+            setTimeout(fixCategoryNames, 500);
+            setTimeout(fixCategoryNames, 1000);
+         });
+         </script>
    </html>

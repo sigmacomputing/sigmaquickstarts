@@ -1,14 +1,14 @@
 author: pballai
 id: dataaps_fundamentals
 summary: dataaps_fundamentals
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
 lastUpdated: 2024-10-24
 
-# Data Apps Fundamentals
+# AI Apps Fundamentals
 
 ## Overview 
 Duration: 5 
@@ -23,10 +23,10 @@ This transformation has occurred in stages, and we are now in stage three, as sh
 
 This QuickStart demonstrates how to use Sigma to build a data application (app) entirely within the Sigma UI. The data used will come from, and be stored in, Snowflake. During this demonstration, we will build a fully functional project tracking data app that, in the past, may have taken significant time to get up and running.
 
-This QuickStart is a bit longer than usual, and we understand that people can be pressed for time. While it is well worth the investment, if you can’t spare the time, you can instead [watch this 5-minute video](https://sigmacomputing.wistia.com/medias/6lneuw4062?__hstc=191098485.ee45354cafd3cb03900ca8358c6cba7c.1713989091503.1733934938183.1734711950588.87&__hssc=191098485.2.1734711950588&__hsfp=336580338) to see how impactful Sigma data apps can be for your organization.
+This QuickStart is a bit longer than usual, and we understand that people can be pressed for time. While it is well worth the investment, if you can’t spare the time, you can instead [watch this 5-minute video](https://sigmacomputing.wistia.com/medias/6lneuw4062?__hstc=191098485.ee45354cafd3cb03900ca8358c6cba7c.1713989091503.1733934938183.1734711950588.87&__hssc=191098485.2.1734711950588&__hsfp=336580338) to see how impactful Sigma AI apps can be for your organization.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
@@ -110,7 +110,7 @@ The finished product can look something like this (depending on your styling cho
 For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
  
 ### Target Audience
-Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps.
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning AI Apps.
 
 ### Prerequisites
 
@@ -258,7 +258,7 @@ Add the following row of data to the `Project Tracker Input Table`.
 </aside>
 
 #### Step 8: 
-Click the `Save as` button and name workbook as `Data Apps Fundamentals`.
+Click the `Save as` button and name workbook as `AI Apps Fundamentals`.
 
 #### Step 9: 
 Using the element bar, in the `Controls` group, add a `Text Input` control above the input table: 
@@ -794,7 +794,7 @@ Move the the `Task Tracking Input Table` to the `Control Panel` page. Now that w
 Add an additional task record for the same project and sort by `Project Name`. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> This demonstrates the "multiple tasks to one project" relationship. This is a very important concept in building data apps in Sigma. 
+<strong>IMPORTANT:</strong><br> This demonstrates the "multiple tasks to one project" relationship. This is a very important concept in building AI apps in Sigma. 
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -1291,7 +1291,7 @@ It is a good practice to package elements in containers in a manner that will be
 We have also demonstrated the other cool benefit of using containers; they can be targeted by an action!
 
 ### Step 3: 
-With Sigma, your data apps can support whatever branding may be required. 
+With Sigma, your AI apps can support whatever branding may be required. 
 
 You can customize to match your own branding and style considerations while maintaining accessibility and visual design best practices. 
 
@@ -1299,7 +1299,7 @@ Images and icons can be added for additional personalization:
 
 <img src="assets/dataaps_fun_done.png" width="800"/>
 
-Here are some example of styled data apps in Sigma:
+Here are some example of styled AI apps in Sigma:
 
 <img src="assets/containers.gif" />
 
@@ -1309,7 +1309,7 @@ Here are some example of styled data apps in Sigma:
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we built a fully functional project tracking application using Sigma and sample data. Hopefully, this was a smooth and eye-opening process that showed just how easy building data apps can be with Sigma. Additional resources are provided below.
+In this QuickStart, we built a fully functional project tracking application using Sigma and sample data. Hopefully, this was a smooth and eye-opening process that showed just how easy building AI apps can be with Sigma. Additional resources are provided below.
 
 **Additional Resource Links**
 
