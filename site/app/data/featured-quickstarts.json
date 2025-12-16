@@ -24,10 +24,10 @@
       "category": "Security",
       "date": "Dec 3, 2025"
     },
-    {
-      "title": "Snowflake Ask Cortex Integration",
-      "id": "dataapps_snowflake_ask_cortex",
-      "category": "AI Apps",
+        {
+      "title": "QuickStarts API Toolkit",
+      "id": "developers_quickstarts_api_tookit",
+      "category": "Developers",
       "date": "Sep 17, 2025"
     }
   ]

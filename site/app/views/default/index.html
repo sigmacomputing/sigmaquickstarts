@@ -96,13 +96,168 @@
             #displayText {
             display: none;
             }
+
+            /* Improved Color Scheme with Visual Hierarchy */
             body {
-            background-color: #f5f5f5 !important;
+            background-color: #F3F4F6 !important;
+            color: #111827 !important;
             }
+
             /* Remove navbar border */
             .navbar {
             border-bottom: none !important;
             box-shadow: none !important;
+            }
+
+            /* Header section - light background for contrast */
+            .section-hero {
+            background-color: #FFFFFF !important;
+            border-bottom: 1px solid #E5E7EB !important;
+            }
+
+            /* Primary headers */
+            h1, h2, h3, h4, .header-4, .banner-title {
+            color: #1F2937 !important;
+            }
+
+            /* Secondary text */
+            p, .paragraph-hero {
+            color: #6B7280 !important;
+            }
+
+            /* Search and category filter - make them stand out */
+            #search, #category-filter {
+            background-color: #FFFFFF !important;
+            border: 2px solid #D1D5DB !important;
+            color: #111827 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+            transition: border-color 0.15s ease-in-out !important;
+            }
+
+            #search:focus, #category-filter:focus {
+            border-color: #3B82F6 !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+            }
+
+            /* Card backgrounds */
+            .retailers-card.codelab-card,
+            .codelab-card {
+            background-color: #FFFFFF !important;
+            border: 1px solid #4D4344 !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            }
+
+            .codelab-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+            }
+
+            .codelab-card .description {
+            color: #4D4344 !important;
+            }
+
+            /* Recently Added section - subtle background */
+            .featured-container {
+            /* background-color: #F9FAFB !important; */
+            padding: 24px !important;
+            border-radius: 8px !important;
+            border: 1px solid #E5E7EB !important;
+            }
+
+            /* Style Recently Added QuickStarts cards */
+            #recent-quickstarts .codelab-card {
+            max-width: 260px !important;
+            flex: 1 0 260px !important;
+            }
+
+            #recent-quickstarts .codelab-card .description {
+            color: #2563EB !important;
+            font-size: 15px !important;
+            }
+
+            /* Accent for links and interactive elements */
+            a:not(.button-primary):not(.button-secondary) {
+            color: #2563EB !important;
+            }
+
+            a:hover:not(.button-primary):not(.button-secondary) {
+            color: #1D4ED8 !important;
+            }
+
+            /* Category bar styling - full width, no rounded corners */
+            .card-footer .category-bar,
+            .codelab-card .card-footer .category-bar,
+            .category-bar {
+            width: 100% !important;
+            padding: 1px 1px !important;
+            text-align: center !important;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            border-radius: 0 !important;
+            -webkit-border-radius: 0 !important;
+            -moz-border-radius: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+            border: none !important;
+            box-shadow: none !important;
+            }
+
+            .codelab-card .card-footer,
+            .card-footer {
+            padding: 0 !important;
+            margin: 0 !important;
+            margin-top: auto !important;
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            border-radius: 0 !important;
+            }
+
+            .codelab-card .card-duration,
+            .card-duration {
+            display: none !important;
+            }
+
+            /* Library heading */
+            #library-heading {
+            color: #1F2937 !important;
+            }
+
+            /* Footer styling - improve readability */
+            .footer {
+            background-color: #1a1a1a !important;
+            }
+
+            .footer h3,
+            .footer .paragraph-2 {
+            color: #FFFFFF !important;
+            }
+
+            .footer .footer-link,
+            .footer .footer-list a,
+            .footer .footer-bottom a,
+            .footer a,
+            .footer a:link,
+            .footer a:visited {
+            color: #9CA3AF !important;
+            text-decoration: none !important;
+            }
+
+            .footer .footer-link:hover,
+            .footer .footer-list a:hover,
+            .footer .footer-bottom a:hover,
+            .footer a:hover {
+            color: #FFFFFF !important;
             }
             /* Update header buttons to match Sigma homepage */
             .nav-button-wrapper a.button-secondary,
@@ -125,7 +280,7 @@
             .nav-button-wrapper a.button-primary:active {
             background-color: #d4ff00 !important;
             background-image: none !important;
-            border: 1px solid #d4ff00 !important;
+            border: 1px solid #000 !important;
             color: #000 !important;
             padding: 10px 24px !important;
             border-radius: 50px !important;
@@ -422,14 +577,16 @@
          </div>
          <paper-header-panel id="main" mode="standard" main>
             {% raw %}
-            <!-- Event Announcement Bar - Comment out when event is over -->
+
+            <!-- Event Announcement Bar - Comment out when event is over 
             <div style="background-color: #000; color: #fff; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 500; position: relative; z-index: 1000;">
                DEC. 11 PRODUCT LAUNCH
                <a href="PLACEHOLDER_LINK" style="color: #fff; text-decoration: none; margin-left: 8px;">
                   SIGN UP →
                </a>
             </div>
-            <!-- End Event Announcement Bar -->
+            End Event Announcement Bar -->
+
             <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
                <div class="nav-container">
                   <nav class="nav-left-wrapper">
@@ -817,51 +974,14 @@
                      Maximize your investment in Sigma with easy-to-follow, step-by-step tutorials<br>
                   </p>
 
-                  <!-- Search and Category Filter -->
-                  <div style="display: flex; gap: 16px; align-items: stretch; margin-bottom: 20px;">
-                     <select id="category-filter" class="w-input" style="width: 250px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; background: white;">
-                        <option value="">All Categories</option>
-                        <option value="administration">Administration</option>
-                        <option value="aiapps">AI Apps</option>
-                        <option value="developers">Developers</option>
-                        <option value="embedding">Embedding</option>
-                        <option value="functions">Functions</option>
-                        <option value="fundamentals">Fundamentals for New Users</option>
-                        <option value="partners">Partners</option>
-                        <option value="security">Security</option>
-                        <option value="tables">Tables</option>
-                        <option value="templates">Templates</option>
-                        <option value="use-cases">Use Cases</option>
-                     </select>
-                     <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="w-input" placeholder="Search QuickStarts" id="search" style="flex: 1; max-width: 400px; padding: 12px 16px; border-radius: 4px; border: 1px solid #ccc; font-size: medium;">
-                  </div>
-
                   <div class="featured-container" style="margin: 0 0 20px 0;">
-                     <h4 style="margin: 0 0 10px 0; color: #333; font-size: 1.30 em; color: #274bef;">Recently Added QuickStarts:</h3>
+                     <h4 style="margin: 0 0 10px 0; color: black !important; font-size: 1.50em; font-weight: 600;">Recently Added QuickStarts:</h4>
                      <div id="recent-quickstarts" style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <!-- Populated by JavaScript -->
                         <div style="color: #999;">Loading recent QuickStarts...</div>
                      </div>
                   </div>
 
-                     <script>
-                        // Category filter handler
-                        document.getElementById('category-filter').addEventListener('change', function(e) {
-                           const category = e.target.value;
-                           if (category) {
-                              // Create a fake element that mimics the button structure
-                              const fakeButton = {
-                                 getAttribute: function(attr) {
-                                    if (attr === 'data-cat') return category;
-                                    return null;
-                                 }
-                              };
-                              handleButtonClick(e, fakeButton);
-                           } else {
-                              reloadBasePage(e, this);
-                           }
-                        });
-                     </script>
                      <script>
                         // Load featured QuickStarts from JSON
                         fetch('/data/featured-quickstarts.json')
@@ -882,10 +1002,12 @@
                                  `;
 
                                  card.innerHTML = `
-                                    <div class="header-7 description">${qs.title}</div>
+                                    <a href="/guide/${qs.id}/index.html?index=..%2F..index" style="text-decoration: none; color: inherit;">
+                                       <div class="header-7 description">${qs.title}</div>
+                                    </a>
                                     <div class="card-footer">
-                                       <div class="category-icon ${categoryLower}-icon"></div>
-                                       <a href="/guide/${qs.id}/index.html?index=..%2F..index" class="button-secondary w-button ${categoryLower}-bg">Start</a>
+                                       <!-- <div class="category-icon ${categoryLower}-icon"></div> -->
+                                       <div class="category-bar ${categoryLower}-bar">${qs.category}</div>
                                     </div>
                                     <div class="card-duration"></div>
                                  `;
@@ -900,7 +1022,7 @@
                      </div>
                   </p>
 
-                  <h4 style="margin: 20px 0 10px 0; color: #274bef; font-size: 1.30em;">Library:</h4>
+
                </div>
             </header>
             {% endraw %}
@@ -909,7 +1031,28 @@
             <p id="displayText"></p>
             <!-- End of PB add -->
             <br>
-
+            <div class="site-width">
+                  <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 20px;">
+                     <h4 id="library-heading" style="margin: 0; color: #1F2937; font-size: 1.8em; font-weight: 700;">Library:</h4>
+                     <!-- Search and Category Filter -->
+                     <select id="category-filter" class="w-input" style="width: 250px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; background: white;">
+                        <option value="">All Categories</option>
+                        <option value="administration">Administration</option>
+                        <option value="aiapps">AI Apps</option>
+                        <option value="developers">Developers</option>
+                        <option value="embedding">Embedding</option>
+                        <option value="functions">Functions</option>
+                        <option value="fundamentals">Fundamentals for New Users</option>
+                        <option value="partners">Partners</option>
+                        <option value="security">Security</option>
+                        <option value="tables">Tables</option>
+                        <option value="templates">Templates</option>
+                        <option value="use-cases">Use Cases</option>
+                     </select>
+                     <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="w-input" placeholder="Search QuickStarts" id="search" style="flex: 1; max-width: 400px; padding: 12px 16px; border-radius: 4px; border: 1px solid #ccc; font-size: medium;">
+                     <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures/" class="button-primary" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important; text-decoration: none !important; white-space: nowrap !important;">First Feature Fridays</a>
+                  </div>
+            </div>
                <card-sorter id="cards" class="site-width">
                {% for codelab in codelabs -%}
                    <!-- Ensure all codelabs are loaded, filter only hidden ones if needed -->
@@ -926,12 +1069,12 @@
                            {%- if codelabPin(view, codelab) -%}
                                <div class="card-pin"></div>
                            {%- endif -%}
-                           <div class="header-7 description">{{codelab.title}}</div>
+                           <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                               <div class="header-7 description">{{codelab.title}}</div>
+                           </a>
                            <div class="card-footer">
-                               <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
-                               <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                                  class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
-                               </a>
+                               <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                               <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">{{codelab.category}}</div>
                            </div>
                            <div class="card-duration">
                                <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
@@ -954,6 +1097,47 @@
                    {% endif %}
                {% endfor %}
            </card-sorter>
+
+          <script>
+             // Category filter handler
+             document.getElementById('category-filter').addEventListener('change', function(e) {
+                const category = e.target.value;
+                if (category) {
+                   // Create a fake element that mimics the button structure
+                   const fakeButton = {
+                      getAttribute: function(attr) {
+                         if (attr === 'data-cat') return category;
+                         return null;
+                      }
+                   };
+                   handleButtonClick(e, fakeButton);
+                } else {
+                   reloadBasePage(e, this);
+                }
+             });
+
+             // Search input handler
+             document.getElementById('search').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.codelab-card');
+
+                cards.forEach(function(card) {
+                   const titleAttr = card.getAttribute('data-title');
+                   const tagsAttr = card.getAttribute('data-tags');
+
+                   if (!titleAttr) return; // Skip if attributes not loaded yet
+
+                   const title = titleAttr.toLowerCase();
+                   const tags = tagsAttr ? tagsAttr.toLowerCase() : '';
+
+                   if (title.includes(searchTerm) || tags.includes(searchTerm)) {
+                      card.style.display = '';
+                   } else {
+                      card.style.display = 'none';
+                   }
+                });
+             });
+          </script>
 
             <div id="loading-placeholder" class="site-width">
             Loading guides, please wait...
@@ -1036,8 +1220,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>

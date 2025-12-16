@@ -63,6 +63,17 @@ $icon-templates: 'workbook-template.svg';
 @include codelab-card(['partners'], $color-partners, $icon-partners);
 @include codelab-card(['templates'], $color-templates, $icon-templates);
 
+// Special override for dark category bars - white text
+.administration-bar,
+.functions-bar,
+.partners-bar,
+.use-cases-bar,
+.security-bar,
+.aiapps-bar,
+.developers-bar {
+  color: #fff !important;
+}
+
 /** Categories in Use (so far):
 Administration
 AI Apps

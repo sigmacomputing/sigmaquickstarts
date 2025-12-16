@@ -96,6 +96,173 @@
             #displayText {
             display: none;
             }
+
+            /* Improved Color Scheme with Visual Hierarchy */
+            body {
+            background-color: #F3F4F6 !important;
+            color: #111827 !important;
+            }
+
+            /* Remove navbar border */
+            .navbar {
+            border-bottom: none !important;
+            box-shadow: none !important;
+            }
+
+            /* Header section - light background with grid pattern */
+            .section-hero {
+            background-color: #FFFFFF !important;
+            background-image: url('https://cdn.prod.website-files.com/666bbba4ff7240a20f4ccccf/685106838d461923ec10fc64_0ae8ba725281d3ce0757318ef80f6942_grid-fade.svg') !important;
+            border-bottom: 1px solid #E5E7EB !important;
+            }
+
+            /* Primary headers */
+            h1, h2, h3, h4, .header-4, .banner-title {
+            color: #1F2937 !important;
+            }
+
+            /* Secondary text */
+            p, .paragraph-hero {
+            color: #6B7280 !important;
+            }
+
+            /* Search and category filter - make them stand out */
+            #search, #category-filter {
+            background-color: #FFFFFF !important;
+            border: 2px solid #D1D5DB !important;
+            color: #111827 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+            transition: border-color 0.15s ease-in-out !important;
+            }
+
+            #search:focus, #category-filter:focus {
+            border-color: #3B82F6 !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+            }
+
+            /* Card backgrounds */
+            .retailers-card.codelab-card,
+            .codelab-card {
+            background-color: #FFFFFF !important;
+            border: 1px solid #4D4344 !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            }
+
+            .codelab-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+            }
+
+            .codelab-card .description {
+            color: #4D4344 !important;
+            }
+
+            /* Category bar styling - full width, no rounded corners */
+            .card-footer .category-bar,
+            .codelab-card .card-footer .category-bar,
+            .category-bar {
+            width: 100% !important;
+            padding: 1px 1px !important;
+            text-align: center !important;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            border-radius: 0 !important;
+            -webkit-border-radius: 0 !important;
+            -moz-border-radius: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+            border: none !important;
+            box-shadow: none !important;
+            }
+
+            .codelab-card .card-footer,
+            .card-footer {
+            padding: 0 !important;
+            margin: 0 !important;
+            margin-top: auto !important;
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            border-radius: 0 !important;
+            }
+
+            .codelab-card .card-duration,
+            .card-duration {
+            display: none !important;
+            }
+
+            /* Footer styling - improve readability */
+            .footer {
+            background-color: #1a1a1a !important;
+            }
+
+            .footer h3,
+            .footer .paragraph-2 {
+            color: #FFFFFF !important;
+            }
+
+            .footer-link,
+            .footer a {
+            color: #9CA3AF !important;
+            }
+
+            .footer-link:hover,
+            .footer a:hover {
+            color: #FFFFFF !important;
+            }
+
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited,
+            .buttons-wrapper a.button-secondary,
+            .buttons-wrapper a.button-secondary:link,
+            .buttons-wrapper a.button-secondary:visited,
+            .section-hero a.button-secondary,
+            a.button-secondary.w-button {
+            background-color: transparent !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .buttons-wrapper a.button-primary,
+            .buttons-wrapper a.button-primary:link,
+            .buttons-wrapper a.button-primary:visited,
+            .section-hero a.button-primary,
+            a.button-primary.w-button {
+            background-color: #d4ff00 !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            }
          </style>
          <!-- End of PB add -->
       </head>
@@ -796,12 +963,12 @@
                      {%- if codelabPin(view, codelab) -%}
                      <div class="card-pin"></div>
                      {%- endif -%}
-                     <div class="header-7 description">{{codelab.title}}</div>
+                     <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                        <div class="header-7 description">{{codelab.title}}</div>
+                     </a>
                      <div class="card-footer">
-                        <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
-                        <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
-                        </a>
+                        <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                        <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">First Friday Feature</div>
                      </div>
                      <div class="card-duration">
                         <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
@@ -892,8 +1059,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>

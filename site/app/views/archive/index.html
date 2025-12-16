@@ -96,6 +96,159 @@
             #displayText {
             display: none;
             }
+
+            /* Card grid layout */
+            #cards {
+               display: flex !important;
+               flex-wrap: wrap !important;
+               gap: 24px !important;
+               justify-content: flex-start !important;
+            }
+
+            /* Header section - light background with grid pattern */
+            .section-hero {
+               background-color: #FFFFFF !important;
+               background-image: url('https://cdn.prod.website-files.com/666bbba4ff7240a20f4ccccf/685106838d461923ec10fc64_0ae8ba725281d3ce0757318ef80f6942_grid-fade.svg') !important;
+               border-bottom: 1px solid #E5E7EB !important;
+            }
+
+            /* Card styling updates */
+            .codelab-card {
+               border-radius: 6px !important;
+               border: 1px solid #4D4344 !important;
+               /* display: flex !important; */
+               flex-direction: column !important;
+               /* height: 200px !important;
+               width: 300px !important; */
+               max-width: 300px !important;
+               flex: 0 0 300px !important;
+            }
+
+            /* Make card title a clickable link */
+            .codelab-card .description {
+               cursor: pointer !important;
+               transition: opacity 0.2s ease !important;
+               padding: 16px 16px 12px 16px !important;
+               text-align: left !important;
+               line-height: 1.3 !important;
+               font-size: 15px !important;
+               overflow: hidden !important;
+               display: -webkit-box !important;
+               -webkit-line-clamp: 4 !important;
+               -webkit-box-orient: vertical !important;
+            }
+
+            .codelab-card:hover .description {
+               opacity: 0.7 !important;
+            }
+
+            /* Hide the old Start button */
+            .codelab-card .card-footer a.button-secondary {
+               display: none !important;
+            }
+
+            /* Category bar at bottom */
+            .card-footer {
+               margin-top: auto !important;
+               padding: 0 !important;
+            }
+
+            .card-footer .category-icon {
+               display: none !important;
+            }
+
+            /* Category bars with proper padding */
+            .administration-bg,
+            .aiapps-bg,
+            .dataapps-bg,
+            .developers-bg,
+            .embedding-bg,
+            .fundamentals-bg,
+            .functions-bg,
+            .partners-bg,
+            .security-bg,
+            .tables-bg,
+            .templates-bg,
+            .use-cases-bg {
+               width: 100% !important;
+               padding: 1px 1px !important;
+               text-align: center !important;
+               font-family: 'Lato', sans-serif !important;
+               font-weight: 700 !important;
+               font-size: 13px !important;
+               text-transform: uppercase !important;
+               letter-spacing: 0.5px !important;
+               border-radius: 0 !important;
+               margin: 0 !important;
+               display: block !important;
+               cursor: pointer !important;
+            }
+
+            /* Footer link styling for better readability */
+            .footer-link,
+            .footer-link:link,
+            .footer-link:visited {
+               color: #9CA3AF !important;
+            }
+
+            .footer-link:hover {
+               color: #D1D5DB !important;
+            }
+
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited,
+            .buttons-wrapper a.button-secondary,
+            .buttons-wrapper a.button-secondary:link,
+            .buttons-wrapper a.button-secondary:visited,
+            .section-hero a.button-secondary,
+            a.button-secondary.w-button {
+               background-color: transparent !important;
+               background-image: none !important;
+               border: 1px solid #000 !important;
+               color: #000 !important;
+               padding: 10px 24px !important;
+               border-radius: 50px !important;
+               font-size: 14px !important;
+               font-weight: 500 !important;
+               text-transform: none !important;
+               text-decoration: none !important;
+               display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .buttons-wrapper a.button-primary,
+            .buttons-wrapper a.button-primary:link,
+            .buttons-wrapper a.button-primary:visited,
+            .section-hero a.button-primary,
+            a.button-primary.w-button {
+               background-color: #d4ff00 !important;
+               background-image: none !important;
+               border: 1px solid #000 !important;
+               color: #000 !important;
+               padding: 10px 24px !important;
+               border-radius: 50px !important;
+               font-size: 14px !important;
+               font-weight: 500 !important;
+               text-transform: none !important;
+               text-decoration: none !important;
+               display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-secondary:hover,
+            .buttons-wrapper a.button-secondary:hover,
+            .section-hero a.button-secondary:hover {
+               background-color: rgba(0, 0, 0, 0.05) !important;
+            }
+
+            .nav-button-wrapper a.button-primary:hover,
+            .buttons-wrapper a.button-primary:hover,
+            .section-hero a.button-primary:hover {
+               background-color: #c4ef00 !important;
+            }
          </style>
          <!-- End of PB add -->
       </head>
@@ -767,7 +920,7 @@
                <div class="site-width">
                   <div class="grid-wrapper">
                      <div class="header-4 g-mg-bottom-small">Sigma QuickStarts - Annual Archive</div>
-                     <div class="nav-dropdown_toggle">New features, public betas and bug fixes for each previous month</div>
+                     <div class="nav-dropdown_toggle">These are full year compilations of all the new features, public betas and bug fixes.</div>
                      <div class="buttons-wrapper">
                         <a href="https://quickstarts.sigmacomputing.com/" target="_self" class="button-secondary w-button">Back to QuickStarts Main Site</a>         
                         <br> <br>                      
@@ -784,14 +937,15 @@
                   All other views are explicitly opt-in via metadata. #}
                   {% if codelab.status.indexOf('hidden') === -1 || view.id !== 'default' %}
                   {% set cat = levelledCategory(codelab, view.catLevel) %}
-                  <div 
+                  <div
                      data-category="{{codelab.category}}"
                      data-title="{{codelab.title}}"
                      data-duration="{{codelab.duration}}"
                      data-updated="{{codelab.updated}}"
                      data-tags="{{codelab.tags}}"
-                     data-pin="{{codelabPin(view, codelab)}}" 
-                     class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}">
+                     data-pin="{{codelabPin(view, codelab)}}"
+                     class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}"
+                     onclick="window.location.href='{{codelabUrl(view, codelab)}}'">
                      {%- if codelabPin(view, codelab) -%}
                      <div class="card-pin"></div>
                      {%- endif -%}
@@ -799,7 +953,7 @@
                      <div class="card-footer">
                         <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
                         <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
+                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">{{cat.name}}
                         </a>
                      </div>
                      <div class="card-duration">
@@ -891,8 +1045,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>
