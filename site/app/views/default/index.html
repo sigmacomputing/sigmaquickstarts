@@ -45,7 +45,7 @@
          <link href="/css/normalize.css" rel="stylesheet" type="text/css">
          <link href="/css/components.css" rel="stylesheet" type="text/css">
          <link href="/css/sigma-dev-8020.css" rel="stylesheet" type="text/css">
-         <link href="/css/sigma-pb.css" rel="stylesheet" type="text/css"> 
+         <!-- <link href="/css/sigma-pb.css" rel="stylesheet" type="text/css"> -->
          <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
          <style is="custom-style">
             :root {
@@ -109,10 +109,12 @@
             box-shadow: none !important;
             }
 
-            /* Header section - light background for contrast */
+            /* Header section - gradient background */
             .section-hero {
-            background-color: #FFFFFF !important;
+            background: linear-gradient(to bottom, rgba(243, 234, 252, 0.5), #FFFFFF) !important;
             border-bottom: 1px solid #E5E7EB !important;
+            /* padding-top: 6rem !important; */
+            /* padding-bottom: 2rem !important; */
             }
 
             /* Primary headers */
@@ -125,13 +127,45 @@
             color: #6B7280 !important;
             }
 
-            /* Search and category filter - make them stand out */
+            /* Filter container responsive layout */
+            .filter-container {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 1rem !important;
+            align-items: center !important;
+            margin-bottom: 2rem !important;
+            }
+
+            /* Search and category filter - enhanced styling */
             #search, #category-filter {
             background-color: #FFFFFF !important;
-            border: 2px solid #D1D5DB !important;
+            border: 1px solid #D1D5DB !important;
             color: #111827 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-            transition: border-color 0.15s ease-in-out !important;
+            transition: all 0.2s ease !important;
+            padding: 0.75rem 1rem !important;
+            border-radius: 0.5rem !important;
+            font-size: 0.875rem !important;
+            height: 50px;
+            }
+
+            #category-filter {
+            width: 220px !important;
+            max-width: 220px !important;
+            min-width: 220px !important;
+            flex: 0 0 220px !important;
+            appearance: none !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+            background-position: right 0.75rem center !important;
+            background-repeat: no-repeat !important;
+            background-size: 1.2em 1.2em !important; */
+            padding-right: 2.5rem !important;
+            }
+
+            #search {
+            flex: 1 1 auto !important;
+            min-width: 250px !important;
+            max-width: 400px !important;
             }
 
             #search:focus, #category-filter:focus {
@@ -140,46 +174,118 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
             }
 
+            /* Responsive Grid System */
+            #cards {
+            display: grid !important;
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            gap: 1rem !important;
+            }
+
+            @media (min-width: 640px) {
+            #cards {
+               grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 768px) {
+            #cards {
+               grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1024px) {
+            #cards {
+               grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1280px) {
+            #cards {
+               grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1536px) {
+            #cards {
+               grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }
+            }
+
             /* Card backgrounds */
             .retailers-card.codelab-card,
             .codelab-card {
             background-color: #FFFFFF !important;
-            border: 1px solid #4D4344 !important;
+            border: 1px solid #D1D5DB !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
-            transition: transform 0.2s, box-shadow 0.2s !important;
+            transition: all 0.2s ease !important;
             border-radius: 6px !important;
             overflow: hidden !important;
             padding: 0 !important;
             display: flex !important;
             flex-direction: column !important;
+            /* height: 100% !important; */
+            cursor: pointer !important;
             }
 
             .codelab-card:hover {
             transform: translateY(-2px) !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            border-color: #2563EB !important;
             }
 
             .codelab-card .description {
-            color: #4D4344 !important;
+            color: #374151 !important;
+            font-size: 1rem !important;
+            line-height: 1.25rem !important;
+            /* padding: 1rem 1rem 0.5rem 1rem !important; */
+            /* flex-grow: 1 !important; */
+            transition: color 0.2s ease !important;
+            min-height: 3.5rem !important;
             }
 
-            /* Recently Added section - subtle background */
+            .codelab-card:hover .description {
+            color: #2563EB !important;
+            }
+
+            /* Recently Added section */
             .featured-container {
-            /* background-color: #F9FAFB !important; */
-            padding: 24px !important;
-            border-radius: 8px !important;
-            border: 1px solid #E5E7EB !important;
+            padding: 0 !important;
+            margin-top: 1.5rem !important;
+            border-radius: 0 !important;
+            border: none !important;
+            /* margin-bottom: 1.5rem !important; */
+            }
+
+            /* Recently Added QuickStarts container */
+            #recent-quickstarts {
+            display: flex !important;
+            gap: 1rem !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 1rem !important;
+            }
+
+            /* Hide scrollbar but keep functionality */
+            #recent-quickstarts::-webkit-scrollbar {
+            display: none !important;
+            }
+
+            #recent-quickstarts {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
             }
 
             /* Style Recently Added QuickStarts cards */
             #recent-quickstarts .codelab-card {
-            max-width: 260px !important;
-            flex: 1 0 260px !important;
+            min-width: 280px !important;
+            max-width: 280px !important;
+            flex-shrink: 0 !important;
+            scroll-snap-align: start !important;
             }
 
             #recent-quickstarts .codelab-card .description {
-            color: #2563EB !important;
-            font-size: 15px !important;
+            font-size: 1rem !important;
             }
 
             /* Accent for links and interactive elements */
@@ -191,35 +297,48 @@
             color: #1D4ED8 !important;
             }
 
-            /* Category bar styling - full width, no rounded corners */
+            /* Category pill styling - rounded pill shape */
             .card-footer .category-bar,
             .codelab-card .card-footer .category-bar,
-            .category-bar {
-            width: 100% !important;
-            padding: 1px 1px !important;
+            .category-bar,
+            .administration-bar,
+            .aiapps-bar,
+            .dataapps-bar,
+            .developers-bar,
+            .embedding-bar,
+            .fundamentals-bar,
+            .functions-bar,
+            .partners-bar,
+            .security-bar,
+            .tables-bar,
+            .templates-bar,
+            .use-cases-bar {
+            display: inline-block !important;
+            width: auto !important;
+            padding: 0.25rem 0.75rem !important;
             text-align: center !important;
             font-family: 'Lato', sans-serif !important;
-            font-weight: 700 !important;
-            font-size: 13px !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
             text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-            border-radius: 0 !important;
-            -webkit-border-radius: 0 !important;
-            -moz-border-radius: 0 !important;
+            letter-spacing: 0.025em !important;
+            border-radius: 9999px !important;
+            -webkit-border-radius: 9999px !important;
+            -moz-border-radius: 9999px !important;
             margin: 0 !important;
-            display: block !important;
+            color: #FFFFFF !important;
             border: none !important;
             box-shadow: none !important;
             }
 
             .codelab-card .card-footer,
             .card-footer {
-            padding: 0 !important;
-            margin: 0 !important;
+            padding: 1rem !important;
             margin-top: auto !important;
             width: 100% !important;
             display: flex !important;
-            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
             border-radius: 0 !important;
             }
 
@@ -971,7 +1090,7 @@
                <div class="grid-wrapper" style="max-width: 100%; width: 100%;">
                   <div class="header-4 g-mg-bottom-small">Welcome to Sigma QuickStarts</div>
                   <p class="paragraph-hero g-mg-bottom-large">
-                     Maximize your investment in Sigma with easy-to-follow, step-by-step tutorials<br>
+                     Maximize your investment in Sigma with easy-to-follow, step-by-step guides<br>
                   </p>
 
                   <div class="featured-container" style="margin: 0 0 20px 0;">
@@ -1035,7 +1154,7 @@
                   <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 20px;">
                      <h4 id="library-heading" style="margin: 0; color: #1F2937; font-size: 1.8em; font-weight: 700;">Library:</h4>
                      <!-- Search and Category Filter -->
-                     <select id="category-filter" class="w-input" style="width: 250px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; background: white;">
+                     <select id="category-filter" class="w-input">
                         <option value="">All Categories</option>
                         <option value="administration">Administration</option>
                         <option value="aiapps">AI Apps</option>
@@ -1049,7 +1168,7 @@
                         <option value="templates">Templates</option>
                         <option value="use-cases">Use Cases</option>
                      </select>
-                     <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="w-input" placeholder="Search QuickStarts" id="search" style="flex: 1; max-width: 400px; padding: 12px 16px; border-radius: 4px; border: 1px solid #ccc; font-size: medium;">
+                     <input type="text" class="w-input" placeholder="Search QuickStarts" id="search">
                      <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures/" class="button-primary" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important; text-decoration: none !important; white-space: nowrap !important;">First Feature Fridays</a>
                   </div>
             </div>
@@ -1116,27 +1235,16 @@
                 }
              });
 
-             // Search input handler
-             document.getElementById('search').addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const cards = document.querySelectorAll('.codelab-card');
+             // Search input handler using card-sorter API
+             const searchInput = document.getElementById('search');
+             const cardSorter = document.querySelector('card-sorter');
 
-                cards.forEach(function(card) {
-                   const titleAttr = card.getAttribute('data-title');
-                   const tagsAttr = card.getAttribute('data-tags');
-
-                   if (!titleAttr) return; // Skip if attributes not loaded yet
-
-                   const title = titleAttr.toLowerCase();
-                   const tags = tagsAttr ? tagsAttr.toLowerCase() : '';
-
-                   if (title.includes(searchTerm) || tags.includes(searchTerm)) {
-                      card.style.display = '';
-                   } else {
-                      card.style.display = 'none';
-                   }
+             if (searchInput && cardSorter) {
+                searchInput.addEventListener('input', function(e) {
+                   const searchTerm = e.target.value;
+                   cardSorter.filterByText(searchTerm);
                 });
-             });
+             }
           </script>
 
             <div id="loading-placeholder" class="site-width">
