@@ -1,7 +1,7 @@
 author: pballai
 id: partners_snowflake_intelligence
 summary: partners_snowflake_intelligence
-categories: dataapps
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
