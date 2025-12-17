@@ -228,7 +228,7 @@
 }
 
 body {
-  font-family: 'Lato 2', sans-serif;
+  /* font-family: 'Lato 2', sans-serif; */
   color: #333;
   font-size: 14px;
   line-height: 20px;
@@ -71859,6 +71859,7 @@ figure {
   }
 }
 
+/* Commented out for DM Sans replacement
 @font-face {
   font-family: 'Lato 2';
   src: url('../fonts/Lato-Regular.ttf') format('truetype');
@@ -71894,6 +71895,7 @@ figure {
   font-style: normal;
   font-display: swap;
 }
+*/
 
 /* Added by PB */
 a.buttons-wrapper .w-button {

@@ -10,6 +10,20 @@
    <!doctype html>
    <html lang="en">
       <head>
+         <!-- CRITICAL: DM Sans must load first -->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" as="style">
+         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+         <style>
+            /* CRITICAL CSS - Force DM Sans on everything */
+            * {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+            html, body {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+         </style>
          <!-- Google Tag Manager -->
          <script>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -91,16 +105,27 @@
          <meta name="twitter:description" property="twitter:description" content="{{view.description}}" />
          <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
          <meta name="twitter:url" property="twitter:url" content="{{canonicalViewUrl(view)}}" />
-         <!-- Added by PB -->
+
          <style>
             #displayText {
             display: none;
+            }
+
+            /* Global font override - DM Sans for everything */
+            *, *::before, *::after {
+            font-family: 'DM Sans', sans-serif !important;
             }
 
             /* Improved Color Scheme with Visual Hierarchy */
             body {
             background-color: #F3F4F6 !important;
             color: #111827 !important;
+            font-family: 'DM Sans', sans-serif !important;
+            }
+
+            /* Override specific elements to ensure DM Sans */
+            body *, h1, h2, h3, h4, h5, h6, p, div, span, a, button, input, textarea, select, label {
+            font-family: 'DM Sans', sans-serif !important;
             }
 
             /* Remove navbar border */
@@ -317,7 +342,13 @@
          <!-- Google Tag Manager (noscript) -->
          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DNFBHR"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-         <!-- End Google Tag Manager (noscript) -->      
+         <!-- End Google Tag Manager (noscript) -->
+         <!-- DM Sans Font Override - must be in body to load last -->
+         <style>
+            html, body, body * {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+         </style>
          <div class="w-embed">
             <style>
                body {
@@ -1169,6 +1200,63 @@
             setTimeout(fixCategoryNames, 500);
             setTimeout(fixCategoryNames, 1000);
          });
+         </script>
+
+         <!-- Final DM Sans override - load absolutely last to win CSS cascade -->
+         <style>
+            /* Nuclear option: override ALL font-family declarations */
+            * {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+            html {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+            body {
+               font-family: 'DM Sans', sans-serif !important;
+            }
+         </style>
+
+         <!-- JavaScript font override - force DM Sans after page load -->
+         <script>
+            function forceDMSans() {
+               document.documentElement.style.setProperty('font-family', "'DM Sans', sans-serif", 'important');
+               document.body.style.setProperty('font-family', "'DM Sans', sans-serif", 'important');
+               const allElements = document.querySelectorAll('*');
+               allElements.forEach(el => {
+                  el.style.setProperty('font-family', "'DM Sans', sans-serif", 'important');
+               });
+            }
+            if (document.readyState === 'loading') {
+               document.addEventListener('DOMContentLoaded', forceDMSans);
+            } else {
+               forceDMSans();
+            }
+            window.addEventListener('load', forceDMSans);
+            setTimeout(forceDMSans, 100);
+            setTimeout(forceDMSans, 500);
+            setTimeout(forceDMSans, 1000);
+            setTimeout(forceDMSans, 2000);
+
+            // MutationObserver to watch for any style changes and revert to DM Sans
+            const observer = new MutationObserver(function(mutations) {
+               mutations.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                     const target = mutation.target;
+                     const currentFont = window.getComputedStyle(target).fontFamily;
+                     if (currentFont && currentFont.includes('Lato')) {
+                        target.style.setProperty('font-family', "'DM Sans', sans-serif", 'important');
+                     }
+                  }
+               });
+            });
+
+            setTimeout(function() {
+               observer.observe(document.body, {
+                  attributes: true,
+                  attributeFilter: ['style'],
+                  subtree: true
+               });
+            }, 0);
          </script>
       </body>
    </html>
