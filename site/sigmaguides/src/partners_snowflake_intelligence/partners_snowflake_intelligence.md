@@ -37,8 +37,6 @@ Any Sigma or Snowflake user interested in how Snowflake Intelligence and Sigma c
 
 ### What You'll Learn
 - How to set up Snowflake Intelligence and create Snowflake Intelligence Agents
-- How to configure service users, roles, and Programmatic Access Tokens (PAT) for secure API access
-- How to create external access integrations and secrets for Snowflake Intelligence API calls
 - How to build a stored procedure that invokes Snowflake Intelligence Agents via REST API
 - How to configure a Sigma workbook with input tables and actions to interact with agents
 - How to connect agents to your data using custom tools and functions
@@ -87,10 +85,10 @@ For example, we ran:
 USE ROLE ACCOUNTADMIN;
 
 CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
-GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
+GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE ACCOUNTADMIN;
 
 CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
-GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
+GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 
 GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 ```
@@ -98,6 +96,8 @@ GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 Now running this script again works, but returns no results (we need to create an agent still):
 ```code
 USE ROLE ACCOUNTADMIN;
+USE DATABASE snowflake_intelligence;
+USE SCHEMA agents;
 SHOW AGENTS IN SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS;
 ```
 
@@ -112,13 +112,15 @@ Click the `Create agent` button.
 <strong>NOTE:</strong><br> Make sure you are using the ACCOUNTADMIN role.
 </aside>
 
-Set the `name` and `display name` to `quickstarts` and click `Create agent`:
+Set the database and schema as shown. the `name` and `display name` to `QUICKSTARTS`:
 
 <img src="assets/cortex_05.png" width="600"/>
 
-Once the agent is created, we can `edit` it and add a description to help tailor the responses to our sample retail dataset.
+ Click `Create agent`.
 
-Set the `Description` to:
+Once the agent is created, we instruct the agent adopt a persona to help tailor the responses to our sample retail dataset.
+
+Use the prompt:
 ```code
 You are a Product Insights Analyst.
   
@@ -127,11 +129,12 @@ An AI retail analyst specializing in customer feedback analysis for a large e-co
 It can summarize reviews by category, detect emerging issues, and highlight products that delight or frustrate customers.
 ```
 
-Click `Save`.
+<img src="assets/cortex_05a.png" width="800"/>
 
-Now we can verify it works by asking a question like `what agent are you?`:
 
-<img src="assets/cortex_06.png" width="800"/>
+Submit it and the reponse will be similar to:
+
+<img src="assets/cortex_06.png" width="600"/>
 
 Now this script returns the `quickstart` agent:
 ```code
@@ -156,23 +159,21 @@ Run the following command in Snowflake:
 -- Use a privileged role for account-level and global grants
 USE ROLE ACCOUNTADMIN;
 
--- Create the database + schema if they don't exist yet
-CREATE DATABASE IF NOT EXISTS QUICKSTARTS
-  COMMENT = 'QS sandboxes and examples';
-CREATE SCHEMA IF NOT EXISTS QUICKSTARTS.AGENTS
-  COMMENT = 'Agent QuickStart assets (procs, logs, etc.)';
+-- Use the database + schema created earlier
+use database snowflake_intelligence;
+use schema agents;
 
 -- Create a dedicated service role for Sigma
 CREATE ROLE IF NOT EXISTS SIGMA_SERVICE_ROLE;
 
 -- Grant role basic access to the namespace where the proc will live
-GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON SCHEMA QUICKSTARTS.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
+GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE SIGMA_SERVICE_ROLE;
+GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE SIGMA_SERVICE_ROLE;
 
 -- Allow the role to create/execute procs in this schema (proc will be added later)
-GRANT CREATE PROCEDURE ON SCHEMA QUICKSTARTS.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
+GRANT CREATE PROCEDURE ON SCHEMA snowflake_intelligence.agents TO ROLE SIGMA_SERVICE_ROLE;
 -- we plan to log chats to a table in this schema, pre-grant table privileges:
-GRANT CREATE TABLE ON SCHEMA QUICKSTARTS.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
+GRANT CREATE TABLE ON SCHEMA snowflake_intelligence.agents TO ROLE SIGMA_SERVICE_ROLE;
 
 -- Create the service user that Sigma will use to connect
 CREATE USER IF NOT EXISTS SIGMA_SERVICE_USER
@@ -187,292 +188,178 @@ GRANT ROLE SIGMA_SERVICE_ROLE TO USER SIGMA_SERVICE_USER;
 GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-After selecting `Run All` the script will run to success:
-
-<img src="assets/cortex_07.png" width="800"/>
+After selecting `Run All` the script will run to success (at can take a minute or two to run to completion).
 
 Now would be a good time to configure the connection to Snowflake in Sigma. The connection will require key-pair authentication and write-back enabled.
 
 For more information, see: [Snowflake Key-pair Authorization](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0) and [Set up write access](https://help.sigmacomputing.com/docs/set-up-write-access)
 
-## Create a Programmatic Access Token (PAT) 
-Duration: 5 
-
-Now that we have a service account, we need to create a `Programmatic Access Token` ("PAT) for the service user.
-
-Before Snowflake can call the Cortex API on behalf of your Sigma service user, you’ll need to create a Programmatic Access Token (PAT).
-
-This token authorizes Snowflake to make REST API calls (to the Cortex Agent endpoint) on behalf of that user—without requiring interactive login.
-
-To create a PAT, we also need a service account user and role.
-
-Service users must have a network policy restricting the IPs allowed to use the token. 
-
-### Create a network policy
-For this QuickStart demonstration, we will relax that rule by applying an authentication policy that does not enforce a network policy for PAT creation, but expires the PAT after one day.
-
-<aside class="negative">
-<strong>BEST PRACTICE:</strong><br> In production, replace this with a real NETWORK POLICY listing your organization’s trusted egress IPs or CIDR ranges.
-
-This ensures only approved systems (like Sigma’s outbound IPs) can use the service user’s token.
-</aside>
-
-Run the following command in Snowflake:
-```code
-USE ROLE ACCOUNTADMIN;
-
--- Demo-only network policy (allows all IPv4)
-CREATE OR REPLACE NETWORK POLICY quickstarts
-  ALLOWED_IP_LIST = ('0.0.0.0/0')
-  COMMENT = 'Demo-only: permits PAT use from any IPv4 address';
-
--- Attach the policy to the service user
-ALTER USER SIGMA_SERVICE_USER SET NETWORK_POLICY = quickstarts;
-
--- Create a short-lived PAT (1-day expiry)
-ALTER USER SIGMA_SERVICE_USER
-ADD PROGRAMMATIC ACCESS TOKEN SIGMA_CORTEX_QUICKSTARTS_PAT
-  ROLE_RESTRICTION = 'SIGMA_SERVICE_ROLE'
-  DAYS_TO_EXPIRY = 1
-  COMMENT = 'Token for Sigma–Cortex QuickStart demo (expires in 1 day)';
-```
-
-<aside class="positive">
-<strong>BEST PRACTICE:</strong><br> This token is intentionally short-lived because the demo network policy (0.0.0.0/0) is fully open.
-
-For production:
-- Use a restricted network policy listing your trusted egress IPv4 addresses or CIDR ranges.
-- Increase DAYS_TO_EXPIRY only once network restrictions are in place.
-- Store and rotate tokens securely using Snowflake’s CREATE SECRET integration.
-</aside>
-
-Once the script is run, copy the `token secret` to a text file as we will use it next:
-
-<img src="assets/cortex_02.png" width="800"/>
-
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> If you want to recreate a network policy after it is already created, a quick way to do that is to run this script:
-
-ALTER USER SIGMA_SERVICE_USER UNSET NETWORK_POLICY;<br>
-DROP NETWORK POLICY IF EXISTS quickstarts;<br>
-ALTER USER SIGMA_SERVICE_USER<br>
-REMOVE PROGRAMMATIC ACCESS TOKEN SIGMA_CORTEX_QUICKSTARTS_PAT;
-
-Then just rerun the network policy creation script.
-</aside>
-
-### Generate the PAT
-Run the following command in Snowflake:
-```code
-USE ROLE ACCOUNTADMIN;
-
-ALTER USER SIGMA_SERVICE_USER
-ADD PROGRAMMATIC ACCESS TOKEN SIGMA_CORTEX_PAT
-  ROLE_RESTRICTION = SIGMA_SERVICE_ROLE
-  DAYS_TO_EXPIRY = 30
-  COMMENT = 'Token for Sigma–Cortex integration';
-```
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Snowflake Objects
-Duration: 5
 
-With your Programmatic Access Token (PAT) created, the next step is to let Snowflake securely call the Cortex API using that token. We’ll:
-
-- Store the PAT in a Snowflake Secret
-- Allow outbound HTTPS to your Snowflake Intelligenceendpoint via a Network Rule
-- Bind both into an External Access Integration used by the stored procedure
-
-<aside class="negative">
-<strong>BEST PRACTICE:</strong><br> For production, pair this with a restricted network policy on the service user and use a sensible PAT expiry/rotation strategy.
-</aside>
-
-Run the following command in Snowflake, replacing **<paste_your_token_secret_here>** and **<your_account_identifier>** and with your values:
-
-```code
--- ------------------------------------------------------------
--- Setup for Sigma + Snowflake Snowflake Intelligence Integration (Account Objects)
--- ------------------------------------------------------------
--- This script:
--- 1) Uses ACCOUNTADMIN for account-level objects
--- 2) Creates a SECRET holding your already-created PAT (token_secret)
--- 3) Creates a NETWORK RULE allowing egress to your Snowflake API host
--- 4) Creates an EXTERNAL ACCESS INTEGRATION binding the rule + secret
--- 5) Switches context to QUICKSTARTS.CORTEX_QS (proc will be created later)
--- ------------------------------------------------------------
-
--- Use a role with privileges to create account-level objects
-USE ROLE ACCOUNTADMIN;
-
--- Switch to the db/schema
-USE DATABASE QUICKSTARTS;
-USE SCHEMA AGENTS;
-
--- Replace with your real host from Snowsight
--- Replace <your_account_identifier> with your org/acc locator, e.g. xy12345.us-east-1
-SET ACCOUNT_HOST = '<your_account_identifier>.snowflakecomputing.com';
-
--- (1) Store your existing PAT (paste the token_secret from Step 1)
-CREATE OR REPLACE SECRET SIGMA_CORTEX_QUICKSTARTS_PAT
-  TYPE = GENERIC_STRING
-  SECRET_STRING = '<paste_your_token_secret_here>';
-
--- (2) Allow outbound HTTPS to your account's Snowflake Intelligence API host
-CREATE OR REPLACE NETWORK RULE SNOWFLAKE_API_EGRESS_NETWORK_RULE
-  MODE = EGRESS
-  TYPE = HOST_PORT
-  VALUE_LIST = ($ACCOUNT_HOST);
-
--- (3) Bind the secret + network rule into an external access integration
-CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION CORTEX_AGENT_EXTERNAL_ACCESS_INTEGRATION
-  ALLOWED_NETWORK_RULES = (SNOWFLAKE_API_EGRESS_NETWORK_RULE)
-  ALLOWED_AUTHENTICATION_SECRETS = (SIGMA_CORTEX_QUICKSTARTS_PAT)
-  ENABLED = TRUE;
-```
-
-After running, Snowflake will return `Integration CORTEX_AGENT_EXTERNAL_ACCESS_INTEGRATION successfully created.`.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## Create the Cortex Agent Stored Procedure in Snowflake
 Duration: 5
 
 Next we create a stored procedure that when called from Sigma, invokes the Snowflake Intelligence Agent via Snowflake’s REST API. 
 
-It takes two arguments, an `agent name` and a `user message`, and returns the agent’s text response.
+This stored procedure takes an `agent name` and a `user prompt`, but for this QuickStart it always routes requests to the `QUICKSTARTS agent` in `SNOWFLAKE_INTELLIGENCE.AGENTS`. It calls the agent’s REST endpoint and returns the final text response as a string.
 
-Run the following command in Snowflake, replacing the values for **<your-snowflake-account-identifier>** with your Snowflake account identifier: 
+Run the following command in Snowflake (it will take a minute or two to complete):
 ```code
--- Create the API caller procedure
-CREATE OR REPLACE PROCEDURE QUICKSTARTS.AGENTS.CALL_CORTEX_AGENT_API(
-  CORTEX_AGENT VARCHAR, 
-  USER_MESSAGE VARCHAR
-)
-RETURNS VARCHAR
-LANGUAGE PYTHON
-RUNTIME_VERSION = '3.9'
-PACKAGES = ('requests','snowflake-snowpark-python')
-HANDLER = 'call_agent_api'
-EXTERNAL_ACCESS_INTEGRATIONS = (CORTEX_AGENT_EXTERNAL_ACCESS_INTEGRATION)
-SECRETS = ('SIGMA_CORTEX_QUICKSTARTS_PAT' = SIGMA_CORTEX_QUICKSTARTS_PAT)
-EXECUTE AS OWNER
-AS
-$$
-import _snowflake, requests, json
+use database snowflake_intelligence;
+use schema agents;
+use role SIGMA_SERVICE_ROLE;
 
-def call_agent_api(session, cortex_agent, user_message):
+create or replace procedure call_cortex_agent_api(
+    cortex_agent varchar,
+    user_message varchar
+)
+copy grants
+returns string
+language python
+runtime_version = '3.10'
+packages = ('snowflake-snowpark-python==1.9.0')
+handler = 'main'
+execute as owner
+as
+$$
+import _snowflake
+import json
+from datetime import datetime
+
+# Force a single agent for this QuickStart
+AGENT_NAME = "QUICKSTARTS"
+
+def make_api_request(path, body):
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    TIMEOUT_MS = 180_000
+
+    return _snowflake.send_snow_api_request(
+        "POST",
+        path,
+        headers,
+        {},      # query params
+        body,
+        {},      # cookies
+        TIMEOUT_MS
+    )
+
+def parse_streaming_response(response):
+    raw_content = response.get("content", "")
+
+    if isinstance(raw_content, str):
+        try:
+            parsed = json.loads(raw_content)
+        except Exception as e:
+            return f"JSON parse error: {str(e)}"
+    else:
+        parsed = raw_content
+
+    # Streaming format (list of events)
+    if isinstance(parsed, list):
+        for event in reversed(parsed):
+            if not isinstance(event, dict):
+                continue
+
+            event_type = event.get("event", "")
+            data = event.get("data", {})
+
+            if event_type == "response" and isinstance(data, dict):
+                message = data.get("message", {})
+                if isinstance(message, dict):
+                    content = message.get("content", [])
+                    if isinstance(content, list):
+                        for item in reversed(content):
+                            if isinstance(item, dict) and item.get("type") == "text":
+                                text = item.get("text", "")
+                                if text:
+                                    return text
+
+            if event_type == "response.text" and isinstance(data, dict):
+                text = data.get("text", "")
+                if text:
+                    return text
+
+        return f"No text found in {len(parsed)} events."
+
+    # Non-streaming format (dict)
+    if isinstance(parsed, dict):
+        message = parsed.get("message", {})
+        if isinstance(message, dict):
+            content = message.get("content", [])
+            if isinstance(content, list):
+                for item in reversed(content):
+                    if isinstance(item, dict) and item.get("type") == "text":
+                        return item.get("text", "")
+        return f"No text in dict response. Keys: {list(parsed.keys())}"
+
+    return f"Unexpected parsed type: {type(parsed).__name__}"
+
+def main(session, cortex_agent, user_message):
     try:
-        ALLOWLIST = {"QUICKSTARTS": []}
-        
-        if cortex_agent not in ALLOWLIST:
-            return f"Invalid agent '{cortex_agent}'. Valid options: {', '.join(sorted(ALLOWLIST.keys()))}"
-        
-        account_host = "<your_account_identifier>.snowflakecomputing.com"
-        url = f"https://{account_host}/api/v2/databases/snowflake_intelligence/schemas/agents/agents/{cortex_agent}:run"
-        
-        token = _snowflake.get_generic_secret_string('SIGMA_CORTEX_QUICKSTARTS_PAT')
-        headers = {
-            "Content-Type": "application/json",
-            "Accept": "text/event-stream",
-            "Authorization": f"Bearer {token}",
-            "X-Snowflake-Authorization-Token-Type": "PROGRAMMATIC_ACCESS_TOKEN",
-            "X-Snowflake-Role": "SIGMA_SERVICE_ROLE",
-        }
-        
+        # Ignore cortex_agent parameter; always call the QuickStart agent
+        url = f"/api/v2/databases/snowflake_intelligence/schemas/agents/agents/{AGENT_NAME}:run"
+
+        # Omit tool_choice so orchestration rules can plan tool usage
         payload = {
             "messages": [
-                {"role": "user", "content": [{"type": "text", "text": user_message}]}
-            ],
-            "tool_choice": {"type": "auto"}
+                {
+                    "role": "user",
+                    "content": [{"type": "text", "text": user_message}]
+                }
+            ]
         }
-        
-        text_chunks, current_event = [], None
-        
-        with requests.post(url, json=payload, headers=headers, stream=True, timeout=60) as r:
-            r.raise_for_status()
-            for raw in r.iter_lines(decode_unicode=True):
-                if not raw: 
-                    continue
-                line = raw.strip()
-                
-                if line.startswith("event: "):
-                    current_event = line[7:]
-                elif line.startswith("data: "):
-                    data_str = line[6:]
-                    if current_event in ("response.text", "response.text.delta"):
-                        try:
-                            t = json.loads(data_str).get("text")
-                            if isinstance(t, str): 
-                                text_chunks.append(t)
-                        except Exception: 
-                            pass
-                    elif current_event == "response.error":
-                        try:
-                            msg = json.loads(data_str).get("message") or data_str
-                            return f"Agent error: {msg}"
-                        except Exception:
-                            return f"Agent error: {data_str}"
-                    elif current_event == "response.completed":
-                        break
-        
-        if text_chunks:
-            return "".join(text_chunks)
-        
-        # Fallback: try non-streaming
-        r2 = requests.post(url, json=payload, headers={**headers, "Accept":"application/json"}, timeout=60)
-        r2.raise_for_status()
-        try:
-            body = r2.json()
-            for k in ("output_text","text","message","content"):
-                if isinstance(body.get(k), str) and body[k]:
-                    return body[k]
-        except Exception:
-            pass
-        
-        return r2.text or "No text content returned by agent."
-        
-    except requests.exceptions.RequestException as e:
-        return f"HTTP error: {e}"
+
+        response = make_api_request(url, payload)
+        return parse_streaming_response(response)
+
     except Exception as e:
-        return f"Error: {e}"
-$$;
+        return json.dumps({
+            "status": "error",
+            "error_message": str(e),
+            "error_type": "GENERAL_ERROR",
+            "timestamp": datetime.now().isoformat(),
+            "agent_name": AGENT_NAME
+        })
+
+$$
+;
 ```
+
+Once the procedure is added, create the grants.
 
 Grants:
 ```
-GRANT USAGE ON PROCEDURE QUICKSTARTS.AGENTS.CALL_CORTEX_AGENT_API(VARCHAR, VARCHAR)
-  TO ROLE SIGMA_SERVICE_ROLE;
+-- The sigma service role needs the ability to use cortex features
+grant database role snowflake.cortex_user to role SIGMA_SERVICE_ROLE;
 
--- Grant visibility & execute rights to Sigma’s role
-GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON SCHEMA QUICKSTARTS.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON PROCEDURE QUICKSTARTS.AGENTS.CALL_CORTEX_AGENT_API(VARCHAR, VARCHAR)
-  TO ROLE SIGMA_SERVICE_ROLE;
-GRANT DATABASE ROLE snowflake.cortex_user TO ROLE SIGMA_SERVICE_ROLE;
+-- Grant usage on the procedure, the agent, semantic views / search services exposed to the agent and tables referenced by the semantic view
+grant usage on database snowflake_intelligence to role SIGMA_SERVICE_ROLE;
+grant usage on schema agents to role SIGMA_SERVICE_ROLE;
+grant usage on procedure call_cortex_agent_api(varchar, varchar) to role SIGMA_SERVICE_ROLE;
 
--- Ensure the PAT's role can see/execute agents
-GRANT USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON SCHEMA  SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
+grant usage on agent snowflake_intelligence.agents.quickstarts to role SIGMA_SERVICE_ROLE; -- repeat this for all agents exposed to Sigma
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If your Cortex Agent is configured with orchestration rules, omit "tool_choice" from the payload and let the agent plan tool use. Use tool_choice only for single-tool agents or when you explicitly need to force a specific tool; otherwise the request may fail or the setting may be ignored.
+<strong>NOTE:</strong><br> This procedure omits tool_choice so the agent’s orchestration rules can plan tool usage. Only add tool_choice if you are forcing a specific tool in a single-tool design.
 </aside>
 
 ### Quick test
-We can check that everything is configured correctly in Snowflake by calling the agent:
+We can check that everything is configured correctly in Snowflake by calling the agent, using the `SIGMA_SERVICE_ROLE`:
 ```code
-CALL QUICKSTARTS.AGENTS.CALL_CORTEX_AGENT_API('QUICKSTARTS', 'What agent are you?');
+USE ROLE SIGMA_SERVICE_ROLE;
+CALL SNOWFLAKE_INTELLIGENCE.AGENTS.CALL_CORTEX_AGENT_API('QUICKSTARTS', 'What agent are you?');
 ```
 
 The response will be something like this:
 ```text
-I am an AI assistant created by Anthropic. I aim to be direct and honest in my interactions. I engage in conversation while being truthful about my identity and capabilities.
+I am Claude, an AI assistant created by Anthropic. I aim to be direct and honest in my communication.
 ```
 
 ### Multiple Agents
@@ -525,15 +412,11 @@ Rename the input table to `Chat Log` and delete any empty rows:
 
 <img src="assets/cortex_11.png" width="800"/>
 
-Now click on the `Chat Log Modal` tab and add the `Chat Log` table from `Data` > `Elements` > `Data`:
+Now click on the `Chat Log Modal` tab and add the `Chat Log` table from `Data` > `Table` > `Elements`:
 
 <img src="assets/cortex_12.png" width="600"/>
 
-In this way, users can see the log but do not have access to the input table.
-
-It is really easy to customize elements using the `Element panel`:
-
-<img src="assets/cortex_13.png" width="800"/>
+Hide the `Data` page.In this way, users can see the chat log but do not have access to the input table.
 
 ### Action adjustments
 We need to let the workbook actions know about our new input table and stored procedure.
@@ -546,13 +429,31 @@ Select that action, point it at the `Chat Log` input table on the `Data` page. T
 
 <img src="assets/cortex_14.png" width="800"/>
 
-Check the configuration of the `CALL_CORTEX_AGENT_API` action to make sure it can access the Snowflake stored procedure we created earlier:
+Check the configuration of the `Call stored procedure` action to make sure it can access the Snowflake stored procedure we created earlier:<br>
 
 <img src="assets/cortex_16.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If the stored procedure does not appear on the list, you may need to navigate to the connection browser and click the circular refresh button:<br>
+
+<img src="assets/cortex_14a.png" width="400"/>
+</aside>
+
+Set `CORTEX_AGENT` to `Control` and `Select an Agent (Cortex Demo)` 
+
+and
+
+`USER_MESSAGE` to `Control` and `Chat with Cortex`:
+
+<img src="assets/cortex_16c.png" width="600"/>
 
 Ensure the fourth action sets the `action variable` as:
 
 <img src="assets/cortex_16b.png" width="600"/>
+
+In the fifth action sequence, target the `Chat Log (Data)` input table with the following value assignments (check carefully!):
+
+<img src="assets/cortex_16d.png" width="800"/>
 
 Click `Save as` and name the workbook `Snowflake Intelligence QuickStart`.
 
@@ -591,13 +492,13 @@ Now that Sigma can call our Snowflake agent, we want to give the agent access to
 
 <button>[Download the Sample Dataset](https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/csv/Product_Reviews_Big_Buys.csv)</button>
 
-In Snowflake (as `ACCOUNTADMIN`), open the `Add data` page and select `Load data into a Table`:
+In Snowflake (as `ACCOUNTADMIN`), open `Ingestion` and the `Add data` page and select `Load data into a Table`:
 
 <img src="assets/cortex_19.png" width="800"/>
 
 Locate the `Product_Reviews_Big_Buys` CSV file and select it. 
 
-To keep this simple, we will store the data in `QUICKSTARTS.AGENTS` and create a new table called `Big_Buys`:
+To keep this simple, we will store the data in `SNOWFLAKE_INTELLIGENCE.AGENTS` and create a new table called `Big_Buys`:
 
 <img src="assets/cortex_20.png" width="600"/>
 
@@ -615,7 +516,7 @@ The Cortex tool requires either a semantic view, procedure or function to access
 In Snowflake, run the following command to create a simple function:
 ```code
 USE ROLE ACCOUNTADMIN;
-USE DATABASE QUICKSTARTS;
+USE DATABASE SNOWFLAKE_INTELLIGENCE;
 USE SCHEMA AGENTS;
 
 CREATE OR REPLACE FUNCTION BIG_BUYS_FUNC()
@@ -634,31 +535,34 @@ SELECT ARRAY_AGG(
            'review',       REVIEW
          )
        )
-FROM QUICKSTARTS.AGENTS.BIG_BUYS
+FROM SNOWFLAKE_INTELLIGENCE.AGENTS.BIG_BUYS
 $$;
 
 -- Grants
-GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON SCHEMA QUICKSTARTS.AGENTS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON FUNCTION QUICKSTARTS.AGENTS.BIG_BUYS_FUNC() TO ROLE SIGMA_SERVICE_ROLE;
-GRANT SELECT ON TABLE QUICKSTARTS.AGENTS.BIG_BUYS TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE SIGMA_SERVICE_ROLE;
-GRANT USAGE ON FUNCTION QUICKSTARTS.AGENTS.BIG_BUYS_FUNC() TO ROLE ACCOUNTADMIN;
+GRANT USAGE ON FUNCTION SNOWFLAKE_INTELLIGENCE.AGENTS.BIG_BUYS_FUNC() TO ROLE SIGMA_SERVICE_ROLE;
+GRANT SELECT ON TABLE SNOWFLAKE_INTELLIGENCE.AGENTS.BIG_BUYS TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
 ### Add custom tool to Agent
-On the `QuickStart` agent, select the `Tools` menu and `Add custom tool`. 
+On the `QuickStart` agent (in `EDIT`), select the `Tools` menu and `Add custom tool`. 
 
-Configure a the tool to use the new function as:
+Configure a the tool to use the new function and click the `Generate with Cortex` button to let AI populate the `Description`:
 
 <img src="assets/cortex_22.png" width="800"/>
 
+Click `Add`.
+
+`Save` the changes.
+
 ### Test it out
 With our data connected, we can ask a question in Snowflake to verify it works:
+```code
+What products have the worst ratings?
+```
 
 <img src="assets/cortex_23.png" width="800"/>
 
-Asking the question in Sigma:
+Asking the same question in Sigma:
 
 <img src="assets/cortex_24.png" width="800"/>
 
@@ -677,25 +581,31 @@ With this foundation in place, we can expand by adding additional agents and all
 ## What we've covered
 Duration: 5
 
-You've successfully built a complete integration between Snowflake Cortex Agents and Sigma, including:
+You've successfully built a complete integration between Snowflake Intelligence Agents and Sigma, including:
 
-**Infrastructure Setup:**
-- Configured Snowflake Intelligence with custom agents
-- Created secure service users and roles with proper permissions
-- Set up Programmatic Access Tokens with network policies
-- Built external access integrations for API connectivity
+**Infrastructure & Security**
+- Configured Snowflake Intelligence with a custom agent
+- Created a dedicated service user and service role for Sigma
+- Applied least-privilege grants and database roles to securely execute Cortex features
+- Used EXECUTE AS OWNER stored procedures to provide stable, auditable access from Sigma
 
-**Data Integration:**
-- Created a stored procedure for Cortex Agent API calls
-- Connected agents to your data using custom tools and functions
-- Implemented secure, auditable AI interactions
+**Secure Data Access for Agents**
+- Loaded sample customer review data into Snowflake
+- Exposed warehouse data to the agent through a controlled SQL function
+- Granted explicit usage and select privileges to restrict agent access to only approved data
+- Ensured the agent cannot access tables directly, enforcing governed data access patterns
 
-**User Experience:**
-- Built a Sigma workbook with intuitive chat interface
-- Added conversation logging with input tables
-- Created seamless workflows between AI questions and data analysis
+**Agent Integration**
+- Built a stored procedure that invokes a Snowflake Intelligence Agent via the REST API
+- Parsed streaming agent responses and returned clean text output for Sigma
+- Allowed the agent to plan tool usage automatically using orchestration rules
 
-This integration enables AI-powered analytics directly within your data warehouse, allowing users to ask natural-language questions and immediately continue their analysis using Sigma's full visualization and computation capabilities.
+**Sigma User Experience**
+- Built a Sigma workbook with a chat-style interface
+- Logged all questions and responses using input tables
+- Enabled users to ask natural-language questions and immediately continue structured analysis in Sigma
+
+This integration demonstrates how Snowflake Intelligence and Sigma work together to deliver AI-powered analytics that remain fully governed, auditable, and warehouse-native.
 
 <img src="assets/horizonalline.png" width="800"/>
 

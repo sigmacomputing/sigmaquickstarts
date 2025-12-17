@@ -26,7 +26,6 @@
 Sigma specific category classes */
 $color-administration: #000000;
 $color-aiapps: #4CAF50;
-$color-dataapps: #4CAF50;
 $color-developers: #3F51B5;
 $color-embedding: #06dbf7;
 $color-fundamentals: #FFA726;
@@ -39,7 +38,6 @@ $color-templates: #EC407A;
 
 $icon-administration: 'administration.svg';
 $icon-aiapps: 'aiapps.svg';
-$icon-dataapps: 'dataapps.svg';
 $icon-developers: 'developers.svg';
 $icon-embedding: 'embedding.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
@@ -52,7 +50,6 @@ $icon-templates: 'workbook-template.svg';
 
 @include codelab-card(['administration'], $color-administration, $icon-administration);
 @include codelab-card(['aiapps'], $color-aiapps, $icon-aiapps);
-@include codelab-card(['dataapps'], $color-dataapps, $icon-dataapps);
 @include codelab-card(['developers'], $color-developers, $icon-developers);
 @include codelab-card(['embedding'], $color-embedding, $icon-embedding);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
@@ -62,6 +59,17 @@ $icon-templates: 'workbook-template.svg';
 @include codelab-card(['functions'], $color-functions, $icon-functions);
 @include codelab-card(['partners'], $color-partners, $icon-partners);
 @include codelab-card(['templates'], $color-templates, $icon-templates);
+
+// Special override for dark category bars - white text
+.administration-bar,
+.functions-bar,
+.partners-bar,
+.use-cases-bar,
+.security-bar,
+.aiapps-bar,
+.developers-bar {
+  color: #fff !important;
+}
 
 /** Categories in Use (so far):
 Administration

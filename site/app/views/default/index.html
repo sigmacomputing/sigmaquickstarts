@@ -45,7 +45,7 @@
          <link href="/css/normalize.css" rel="stylesheet" type="text/css">
          <link href="/css/components.css" rel="stylesheet" type="text/css">
          <link href="/css/sigma-dev-8020.css" rel="stylesheet" type="text/css">
-         <link href="/css/sigma-pb.css" rel="stylesheet" type="text/css"> 
+         <!-- <link href="/css/sigma-pb.css" rel="stylesheet" type="text/css"> -->
          <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
          <style is="custom-style">
             :root {
@@ -95,6 +95,317 @@
          <style>
             #displayText {
             display: none;
+            }
+
+            /* Improved Color Scheme with Visual Hierarchy */
+            body {
+            background-color: #F3F4F6 !important;
+            color: #111827 !important;
+            }
+
+            /* Remove navbar border */
+            .navbar {
+            border-bottom: none !important;
+            box-shadow: none !important;
+            }
+
+            /* Header section - gradient background */
+            .section-hero {
+            background: linear-gradient(to bottom, rgba(243, 234, 252, 0.5), #FFFFFF) !important;
+            border-bottom: 1px solid #E5E7EB !important;
+            /* padding-top: 6rem !important; */
+            /* padding-bottom: 2rem !important; */
+            }
+
+            /* Primary headers */
+            h1, h2, h3, h4, .header-4, .banner-title {
+            color: #1F2937 !important;
+            }
+
+            /* Secondary text */
+            p, .paragraph-hero {
+            color: #6B7280 !important;
+            }
+
+            /* Filter container responsive layout */
+            .filter-container {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 1rem !important;
+            align-items: center !important;
+            margin-bottom: 2rem !important;
+            }
+
+            /* Search and category filter - enhanced styling */
+            #search, #category-filter {
+            background-color: #FFFFFF !important;
+            border: 1px solid #D1D5DB !important;
+            color: #111827 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+            transition: all 0.2s ease !important;
+            padding: 0.75rem 1rem !important;
+            border-radius: 0.5rem !important;
+            font-size: 0.875rem !important;
+            height: 50px;
+            }
+
+            #category-filter {
+            width: 220px !important;
+            max-width: 220px !important;
+            min-width: 220px !important;
+            flex: 0 0 220px !important;
+            appearance: none !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+            background-position: right 0.75rem center !important;
+            background-repeat: no-repeat !important;
+            background-size: 1.2em 1.2em !important; */
+            padding-right: 2.5rem !important;
+            }
+
+            #search {
+            flex: 1 1 auto !important;
+            min-width: 250px !important;
+            max-width: 400px !important;
+            }
+
+            #search:focus, #category-filter:focus {
+            border-color: #3B82F6 !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+            }
+
+            /* Responsive Grid System */
+            #cards {
+            display: grid !important;
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            gap: 1rem !important;
+            }
+
+            @media (min-width: 640px) {
+            #cards {
+               grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 768px) {
+            #cards {
+               grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1024px) {
+            #cards {
+               grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1280px) {
+            #cards {
+               grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1536px) {
+            #cards {
+               grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }
+            }
+
+            /* Card backgrounds */
+            .retailers-card.codelab-card,
+            .codelab-card {
+            background-color: #FFFFFF !important;
+            border: 1px solid #D1D5DB !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            transition: all 0.2s ease !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            /* height: 100% !important; */
+            cursor: pointer !important;
+            }
+
+            .codelab-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            border-color: #2563EB !important;
+            }
+
+            .codelab-card .description {
+            color: #374151 !important;
+            font-size: 1rem !important;
+            line-height: 1.25rem !important;
+            /* padding: 1rem 1rem 0.5rem 1rem !important; */
+            /* flex-grow: 1 !important; */
+            transition: color 0.2s ease !important;
+            min-height: 3.5rem !important;
+            }
+
+            .codelab-card:hover .description {
+            color: #2563EB !important;
+            }
+
+            /* Recently Added section */
+            .featured-container {
+            padding: 0 !important;
+            margin-top: 1.5rem !important;
+            border-radius: 0 !important;
+            border: none !important;
+            /* margin-bottom: 1.5rem !important; */
+            }
+
+            /* Recently Added QuickStarts container */
+            #recent-quickstarts {
+            display: flex !important;
+            gap: 1rem !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 1rem !important;
+            }
+
+            /* Hide scrollbar but keep functionality */
+            #recent-quickstarts::-webkit-scrollbar {
+            display: none !important;
+            }
+
+            #recent-quickstarts {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+            }
+
+            /* Style Recently Added QuickStarts cards */
+            #recent-quickstarts .codelab-card {
+            min-width: 280px !important;
+            max-width: 280px !important;
+            flex-shrink: 0 !important;
+            scroll-snap-align: start !important;
+            }
+
+            #recent-quickstarts .codelab-card .description {
+            font-size: 1rem !important;
+            }
+
+            /* Accent for links and interactive elements */
+            a:not(.button-primary):not(.button-secondary) {
+            color: #2563EB !important;
+            }
+
+            a:hover:not(.button-primary):not(.button-secondary) {
+            color: #1D4ED8 !important;
+            }
+
+            /* Category pill styling - rounded pill shape */
+            .card-footer .category-bar,
+            .codelab-card .card-footer .category-bar,
+            .category-bar,
+            .administration-bar,
+            .aiapps-bar,
+            .dataapps-bar,
+            .developers-bar,
+            .embedding-bar,
+            .fundamentals-bar,
+            .functions-bar,
+            .partners-bar,
+            .security-bar,
+            .tables-bar,
+            .templates-bar,
+            .use-cases-bar {
+            display: inline-block !important;
+            width: auto !important;
+            padding: 0.25rem 0.75rem !important;
+            text-align: center !important;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.025em !important;
+            border-radius: 9999px !important;
+            -webkit-border-radius: 9999px !important;
+            -moz-border-radius: 9999px !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            box-shadow: none !important;
+            }
+
+            .codelab-card .card-footer,
+            .card-footer {
+            padding: 1rem !important;
+            margin-top: auto !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            border-radius: 0 !important;
+            }
+
+            .codelab-card .card-duration,
+            .card-duration {
+            display: none !important;
+            }
+
+            /* Library heading */
+            #library-heading {
+            color: #1F2937 !important;
+            }
+
+            /* Footer styling - improve readability */
+            .footer {
+            background-color: #1a1a1a !important;
+            }
+
+            .footer h3,
+            .footer .paragraph-2 {
+            color: #FFFFFF !important;
+            }
+
+            .footer .footer-link,
+            .footer .footer-list a,
+            .footer .footer-bottom a,
+            .footer a,
+            .footer a:link,
+            .footer a:visited {
+            color: #9CA3AF !important;
+            text-decoration: none !important;
+            }
+
+            .footer .footer-link:hover,
+            .footer .footer-list a:hover,
+            .footer .footer-bottom a:hover,
+            .footer a:hover {
+            color: #FFFFFF !important;
+            }
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited {
+            background-color: transparent !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            }
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .nav-button-wrapper a.button-primary:hover,
+            .nav-button-wrapper a.button-primary:active {
+            background-color: #d4ff00 !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
             }
          </style>
          <!-- End of PB add -->
@@ -385,6 +696,16 @@
          </div>
          <paper-header-panel id="main" mode="standard" main>
             {% raw %}
+
+            <!-- Event Announcement Bar - Comment out when event is over 
+            <div style="background-color: #000; color: #fff; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 500; position: relative; z-index: 1000;">
+               DEC. 11 PRODUCT LAUNCH
+               <a href="PLACEHOLDER_LINK" style="color: #fff; text-decoration: none; margin-left: 8px;">
+                  SIGN UP →
+               </a>
+            </div>
+            End Event Announcement Bar -->
+
             <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
                <div class="nav-container">
                   <nav class="nav-left-wrapper">
@@ -753,8 +1074,8 @@
                      </div>
                   </nav>
                   <div class="nav-button-wrapper">
-                     <a href="https://app.sigmacomputing.com/login" class="button-secondary w-button">sign in</a>
-                     <a href="https://sigmacomputing.com/free-trial" class="button-primary w-button">free trial</a>
+                     <a href="https://app.sigmacomputing.com/login" class="button-secondary w-button" style="background-color: transparent !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important;">Login</a>
+                     <a href="https://sigmacomputing.com/free-trial" class="button-primary w-button" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important;">Try Sigma free</a>
                   </div>
                   <div data-w-id="6e060741-16f2-279a-eb04-81a89169fde5" class="nav-hamburger-button w-nav-button">
                      <div class="nav-hamburger_line cc-1"></div>
@@ -766,46 +1087,62 @@
          </div>
          <header id="" class="section-hero g-section-padding-medium wf-section">
             <div class="site-width">
-               <div class="grid-wrapper">
+               <div class="grid-wrapper" style="max-width: 100%; width: 100%;">
                   <div class="header-4 g-mg-bottom-small">Welcome to Sigma QuickStarts</div>
                   <p class="paragraph-hero g-mg-bottom-large">
-                     Maximize your investment in Sigma with easy-to-follow, step-by-step tutorials.<br>
-                     
-                     <div class="kpi-container" style="display: flex; align-items: center; justify-content: center; width: 100%; overflow: hidden; margin: 10px; padding: 0;">
-                        <iframe src="https://app.sigmacomputing.com/embed/5t3nQDpTq3wNb0kV3mNNkX" style="width: 100%; height: 175px; border: none; display: block;"></iframe>
-                    </div>
-                                         </div>                  
-                                         
-                  </p>       
-                  <br>
-                  <div class="">
-                     <div class="g-mg-bottom-large">
-                        <div class="w-embed">
-                           <img src="https://assets-global.website-files.com/62a3d35f74b3a546c309e010/63406002ed9b57daff3fcfb2_ico-close.svg" loading="lazy" alt="" class="input-close">
-                           <input type="text" is="iron-input" bind-value="{{searchVal}}" on-keydown="onSearchKeyDown" class="search g-shadow-100 w-input" placeholder="Search" id="search">
-                        
-                           <div class="buttons-wrapper">
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="administration">Administration</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="aiapps">AI Apps</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="developers">Developers</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="embedding">Embedding</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="functions">Functions</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="fundamentals">Fundamentals for New Users</a>
-                            </div>
-                            
-                            <div class="buttons-wrapper">
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="partners">Partners</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="security">Security</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="tables">Tables</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="templates">Templates</a>
-                              <a href="#" target="_self" class="button-secondary w-button" onclick="handleButtonClick(event, this)" data-cat="use-cases">Use Cases</a>
-                              <a href="#" target="_self" class="button-primary w-button" onclick="reloadBasePage(event, this)" data-cat="show-all">Show All</a>
-                              <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures" target="_self" class="button-primary w-button">First Friday Features</a>
-                            </div>
-                       </div>                                                                          
+                     Maximize your investment in Sigma with easy-to-follow, step-by-step guides<br>
+                  </p>
+
+                  <div class="featured-container" style="margin: 0 0 20px 0;">
+                     <h4 style="margin: 0 0 10px 0; color: black !important; font-size: 1.50em; font-weight: 600;">Recently Added QuickStarts:</h4>
+                     <div id="recent-quickstarts" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <!-- Populated by JavaScript -->
+                        <div style="color: #999;">Loading recent QuickStarts...</div>
+                     </div>
                   </div>
+
+                     <script>
+                        // Load featured QuickStarts from JSON
+                        fetch('/data/featured-quickstarts.json')
+                           .then(response => response.json())
+                           .then(data => {
+                              // Populate recent QuickStarts
+                              const container = document.getElementById('recent-quickstarts');
+                              container.innerHTML = ''; // Clear loading message
+                              data.recentQuickStarts.forEach(qs => {
+                                 const card = document.createElement('div');
+                                 const categoryLower = qs.category.toLowerCase().replace(/\s+/g, '');
+                                 card.className = `retailers-card codelab-card category-${categoryLower}`;
+                                 card.setAttribute('data-category', categoryLower);
+                                 card.style.cssText = `
+                                    flex: 0 0 auto;
+                                    width: 280px;
+                                    margin: 0 16px 0 0;
+                                 `;
+
+                                 card.innerHTML = `
+                                    <a href="/guide/${qs.id}/index.html?index=..%2F..index" style="text-decoration: none; color: inherit;">
+                                       <div class="header-7 description">${qs.title}</div>
+                                    </a>
+                                    <div class="card-footer">
+                                       <!-- <div class="category-icon ${categoryLower}-icon"></div> -->
+                                       <div class="category-bar ${categoryLower}-bar">${qs.category}</div>
+                                    </div>
+                                    <div class="card-duration"></div>
+                                 `;
+                                 container.appendChild(card);
+                              });
+                           })
+                           .catch(error => {
+                              console.error('Error loading featured QuickStarts:', error);
+                              document.getElementById('recent-quickstarts').innerHTML = '<li style="color: #999;">Unable to load recent QuickStarts</li>';
+                           });
+                     </script>
+                     </div>
+                  </p>
+
+
                </div>
-               
             </header>
             {% endraw %}
             <main>
@@ -813,29 +1150,50 @@
             <p id="displayText"></p>
             <!-- End of PB add -->
             <br>
-
-            <card-sorter id="cards" class="site-width">
+            <div class="site-width">
+                  <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 20px;">
+                     <h4 id="library-heading" style="margin: 0; color: #1F2937; font-size: 1.8em; font-weight: 700;">Library:</h4>
+                     <!-- Search and Category Filter -->
+                     <select id="category-filter" class="w-input">
+                        <option value="">All Categories</option>
+                        <option value="administration">Administration</option>
+                        <option value="aiapps">AI Apps</option>
+                        <option value="developers">Developers</option>
+                        <option value="embedding">Embedding</option>
+                        <option value="functions">Functions</option>
+                        <option value="fundamentals">Fundamentals for New Users</option>
+                        <option value="partners">Partners</option>
+                        <option value="security">Security</option>
+                        <option value="tables">Tables</option>
+                        <option value="templates">Templates</option>
+                        <option value="use-cases">Use Cases</option>
+                     </select>
+                     <input type="text" class="w-input" placeholder="Search QuickStarts" id="search">
+                     <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures/" class="button-primary" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important; text-decoration: none !important; white-space: nowrap !important;">First Feature Fridays</a>
+                  </div>
+            </div>
+               <card-sorter id="cards" class="site-width">
                {% for codelab in codelabs -%}
                    <!-- Ensure all codelabs are loaded, filter only hidden ones if needed -->
                    {% if codelab.status.indexOf('hidden') === -1 || view.id !== 'default' %}
                        <!-- Card element with data attributes for filtering -->
-                       <div 
+                       <div
                           data-category="{{codelab.category}}"
                           data-title="{{codelab.title}}"
                           data-duration="{{codelab.duration}}"
                           data-updated="{{codelab.updated}}"
                           data-tags="{{codelab.tags}}"
-                          data-pin="{{codelabPin(view, codelab)}}" 
+                          data-pin="{{codelabPin(view, codelab)}}"
                           class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}">
                            {%- if codelabPin(view, codelab) -%}
                                <div class="card-pin"></div>
                            {%- endif -%}
-                           <div class="header-7 description">{{codelab.title}}</div>
+                           <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                               <div class="header-7 description">{{codelab.title}}</div>
+                           </a>
                            <div class="card-footer">
-                               <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
-                               <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                                  class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
-                               </a>
+                               <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                               <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">{{codelab.category}}</div>
                            </div>
                            <div class="card-duration">
                                <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
@@ -858,7 +1216,37 @@
                    {% endif %}
                {% endfor %}
            </card-sorter>
-           
+
+          <script>
+             // Category filter handler
+             document.getElementById('category-filter').addEventListener('change', function(e) {
+                const category = e.target.value;
+                if (category) {
+                   // Create a fake element that mimics the button structure
+                   const fakeButton = {
+                      getAttribute: function(attr) {
+                         if (attr === 'data-cat') return category;
+                         return null;
+                      }
+                   };
+                   handleButtonClick(e, fakeButton);
+                } else {
+                   reloadBasePage(e, this);
+                }
+             });
+
+             // Search input handler using card-sorter API
+             const searchInput = document.getElementById('search');
+             const cardSorter = document.querySelector('card-sorter');
+
+             if (searchInput && cardSorter) {
+                searchInput.addEventListener('input', function(e) {
+                   const searchTerm = e.target.value;
+                   cardSorter.filterByText(searchTerm);
+                });
+             }
+          </script>
+
             <div id="loading-placeholder" class="site-width">
             Loading guides, please wait...
             </div>
@@ -940,8 +1328,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>
@@ -980,4 +1368,31 @@
          <!-- Deprecated by PB
           <script src="scripts/defaultviewscript.js" type="text/javascript"></script>
          -->
+         <script>
+         // Fix category display names
+         document.addEventListener('DOMContentLoaded', function() {
+            const categoryMap = {
+               'aiapps': 'AI Apps',
+               'dataapps': 'Data Apps'
+            };
+
+            // Function to fix category names
+            function fixCategoryNames() {
+               document.querySelectorAll('.category-bar').forEach(function(el) {
+                  const currentText = el.textContent.trim().toLowerCase();
+                  if (categoryMap[currentText]) {
+                     el.textContent = categoryMap[currentText];
+                     el.style.textTransform = 'none';
+                  }
+               });
+            }
+
+            // Run immediately
+            fixCategoryNames();
+
+            // Also run after a short delay to catch dynamically loaded content
+            setTimeout(fixCategoryNames, 500);
+            setTimeout(fixCategoryNames, 1000);
+         });
+         </script>
    </html>

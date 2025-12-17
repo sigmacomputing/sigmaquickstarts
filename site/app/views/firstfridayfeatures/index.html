@@ -96,6 +96,220 @@
             #displayText {
             display: none;
             }
+
+            /* Improved Color Scheme with Visual Hierarchy */
+            body {
+            background-color: #F3F4F6 !important;
+            color: #111827 !important;
+            }
+
+            /* Remove navbar border */
+            .navbar {
+            border-bottom: none !important;
+            box-shadow: none !important;
+            }
+
+            /* Header section - gradient background */
+            .section-hero {
+            background: linear-gradient(to bottom, rgba(243, 234, 252, 0.5), #FFFFFF) !important;
+            border-bottom: 1px solid #E5E7EB !important;
+            padding-top: 6rem !important;
+            padding-bottom: 2rem !important;
+            }
+
+            /* Primary headers */
+            h1, h2, h3, h4, .header-4, .banner-title {
+            color: #1F2937 !important;
+            }
+
+            /* Secondary text */
+            p, .paragraph-hero {
+            color: #6B7280 !important;
+            }
+
+            /* Responsive Grid System */
+            #cards {
+            display: grid !important;
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+            gap: 1rem !important;
+            }
+
+            @media (min-width: 640px) {
+            #cards {
+               grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 768px) {
+            #cards {
+               grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1024px) {
+            #cards {
+               grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1280px) {
+            #cards {
+               grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1536px) {
+            #cards {
+               grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }
+            }
+
+            /* Card backgrounds */
+            .retailers-card.codelab-card,
+            .codelab-card {
+            background-color: #FFFFFF !important;
+            border: 1px solid #D1D5DB !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+            transition: all 0.2s ease !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            cursor: pointer !important;
+            }
+
+            .codelab-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            border-color: #2563EB !important;
+            }
+
+            .codelab-card .description {
+            color: #374151 !important;
+            font-size: 1rem !important;
+            line-height: 1.25rem !important;
+            padding: 1rem 1rem 0.5rem 1rem !important;
+            transition: color 0.2s ease !important;
+            min-height: 3.5rem !important;
+            }
+
+            .codelab-card:hover .description {
+            color: #2563EB !important;
+            }
+
+            /* Category pill styling - rounded pill shape */
+            .card-footer .category-bar,
+            .codelab-card .card-footer .category-bar,
+            .category-bar,
+            .administration-bar,
+            .aiapps-bar,
+            .dataapps-bar,
+            .developers-bar,
+            .embedding-bar,
+            .fundamentals-bar,
+            .functions-bar,
+            .partners-bar,
+            .security-bar,
+            .tables-bar,
+            .templates-bar,
+            .use-cases-bar {
+            display: inline-block !important;
+            width: auto !important;
+            padding: 0.25rem 0.75rem !important;
+            text-align: center !important;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.025em !important;
+            border-radius: 9999px !important;
+            -webkit-border-radius: 9999px !important;
+            -moz-border-radius: 9999px !important;
+            margin: 0 !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            box-shadow: none !important;
+            }
+
+            .codelab-card .card-footer,
+            .card-footer {
+            padding: 1rem !important;
+            margin-top: auto !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            border-radius: 0 !important;
+            }
+
+            .codelab-card .card-duration,
+            .card-duration {
+            display: none !important;
+            }
+
+            /* Footer styling - improve readability */
+            .footer {
+            background-color: #1a1a1a !important;
+            }
+
+            .footer h3,
+            .footer .paragraph-2 {
+            color: #FFFFFF !important;
+            }
+
+            .footer-link,
+            .footer a {
+            color: #9CA3AF !important;
+            }
+
+            .footer-link:hover,
+            .footer a:hover {
+            color: #FFFFFF !important;
+            }
+
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited,
+            .buttons-wrapper a.button-secondary,
+            .buttons-wrapper a.button-secondary:link,
+            .buttons-wrapper a.button-secondary:visited,
+            .section-hero a.button-secondary,
+            a.button-secondary.w-button {
+            background-color: #d4ff00 !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .buttons-wrapper a.button-primary,
+            .buttons-wrapper a.button-primary:link,
+            .buttons-wrapper a.button-primary:visited,
+            .section-hero a.button-primary,
+            a.button-primary.w-button {
+            background-color: #d4ff00 !important;
+            background-image: none !important;
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            }
          </style>
          <!-- End of PB add -->
       </head>
@@ -796,12 +1010,12 @@
                      {%- if codelabPin(view, codelab) -%}
                      <div class="card-pin"></div>
                      {%- endif -%}
-                     <div class="header-7 description">{{codelab.title}}</div>
+                     <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                        <div class="header-7 description">{{codelab.title}}</div>
+                     </a>
                      <div class="card-footer">
-                        <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
-                        <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
-                        </a>
+                        <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                        <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">First Friday Feature</div>
                      </div>
                      <div class="card-duration">
                         <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
@@ -892,8 +1106,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>
@@ -927,7 +1141,34 @@
          <script src="bower_components/url-search-params-polyfill/build/url-search-params.js"></script>
          <script src="scripts/app.js"></script>
          <!-- endbuild-->
-         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62a3d35f74b3a546c309e010" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
+         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62a3d35f74b3a546c309e010" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
          <script src="../scripts/sigma-dev-8020.js" type="text/javascript"></script>
+         <script>
+         // Fix category display names
+         document.addEventListener('DOMContentLoaded', function() {
+            const categoryMap = {
+               'aiapps': 'AI Apps',
+               'dataapps': 'Data Apps'
+            };
+
+            // Function to fix category names
+            function fixCategoryNames() {
+               document.querySelectorAll('.category-bar').forEach(function(el) {
+                  const currentText = el.textContent.trim().toLowerCase();
+                  if (categoryMap[currentText]) {
+                     el.textContent = categoryMap[currentText];
+                     el.style.textTransform = 'none';
+                  }
+               });
+            }
+
+            // Run immediately
+            fixCategoryNames();
+
+            // Also run after a short delay to catch dynamically loaded content
+            setTimeout(fixCategoryNames, 500);
+            setTimeout(fixCategoryNames, 1000);
+         });
+         </script>
       </body>
    </html>

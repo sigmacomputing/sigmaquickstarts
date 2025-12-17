@@ -96,6 +96,205 @@
             #displayText {
             display: none;
             }
+
+            /* Header section - gradient background */
+            .section-hero {
+               background: linear-gradient(to bottom, rgba(243, 234, 252, 0.5), #FFFFFF) !important;
+               border-bottom: 1px solid #E5E7EB !important;
+               padding-top: 6rem !important;
+               padding-bottom: 2rem !important;
+            }
+
+            /* Responsive Grid System */
+            #cards {
+               display: grid !important;
+               grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+               gap: 1rem !important;
+            }
+
+            @media (min-width: 640px) {
+            #cards {
+               grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 768px) {
+            #cards {
+               grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1024px) {
+            #cards {
+               grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1280px) {
+            #cards {
+               grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+            }
+            }
+
+            @media (min-width: 1536px) {
+            #cards {
+               grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+            }
+            }
+
+            /* Card styling updates */
+            .codelab-card {
+               background-color: #FFFFFF !important;
+               border-radius: 6px !important;
+               border: 1px solid #D1D5DB !important;
+               box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+               transition: all 0.2s ease !important;
+               overflow: hidden !important;
+               padding: 0 !important;
+               display: flex !important;
+               flex-direction: column !important;
+               cursor: pointer !important;
+            }
+
+            .codelab-card:hover {
+               transform: translateY(-2px) !important;
+               box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+               border-color: #2563EB !important;
+            }
+
+            /* Make card title a clickable link */
+            .codelab-card .description {
+               color: #374151 !important;
+               font-size: 1rem !important;
+               line-height: 1.25rem !important;
+               padding: 1rem 1rem 0.5rem 1rem !important;
+               transition: color 0.2s ease !important;
+               min-height: 3.5rem !important;
+               cursor: pointer !important;
+            }
+
+            .codelab-card:hover .description {
+               color: #2563EB !important;
+            }
+
+            /* Hide the old Start button */
+            .codelab-card .card-footer a.button-secondary {
+               display: none !important;
+            }
+
+            /* Category bar at bottom */
+            .card-footer {
+               margin-top: auto !important;
+               padding: 1rem !important;
+               display: flex !important;
+               align-items: flex-start !important;
+               justify-content: flex-start !important;
+            }
+
+            .card-footer .category-icon {
+               display: none !important;
+            }
+
+            /* Category pills with proper styling */
+            .card-footer .category-bar,
+            .codelab-card .card-footer .category-bar,
+            .category-bar,
+            .administration-bg,
+            .aiapps-bg,
+            .dataapps-bg,
+            .developers-bg,
+            .embedding-bg,
+            .fundamentals-bg,
+            .functions-bg,
+            .partners-bg,
+            .security-bg,
+            .tables-bg,
+            .templates-bg,
+            .use-cases-bg {
+               display: inline-block !important;
+               width: auto !important;
+               padding: 0.25rem 0.75rem !important;
+               text-align: center !important;
+               font-family: 'Lato', sans-serif !important;
+               font-weight: 600 !important;
+               font-size: 0.75rem !important;
+               text-transform: uppercase !important;
+               letter-spacing: 0.025em !important;
+               border-radius: 9999px !important;
+               -webkit-border-radius: 9999px !important;
+               -moz-border-radius: 9999px !important;
+               margin: 0 !important;
+               color: #FFFFFF !important;
+               border: none !important;
+               box-shadow: none !important;
+               cursor: pointer !important;
+            }
+
+            /* Footer link styling for better readability */
+            .footer-link,
+            .footer-link:link,
+            .footer-link:visited {
+               color: #9CA3AF !important;
+            }
+
+            .footer-link:hover {
+               color: #D1D5DB !important;
+            }
+
+            /* Update header buttons to match Sigma homepage */
+            .nav-button-wrapper a.button-secondary,
+            .nav-button-wrapper a.button-secondary:link,
+            .nav-button-wrapper a.button-secondary:visited,
+            .buttons-wrapper a.button-secondary,
+            .buttons-wrapper a.button-secondary:link,
+            .buttons-wrapper a.button-secondary:visited,
+            .section-hero a.button-secondary,
+            a.button-secondary.w-button {
+               background-color: #d4ff00 !important;
+               background-image: none !important;
+               border: 1px solid #000 !important;
+               color: #000 !important;
+               padding: 10px 24px !important;
+               border-radius: 50px !important;
+               font-size: 14px !important;
+               font-weight: 500 !important;
+               text-transform: none !important;
+               text-decoration: none !important;
+               display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-primary,
+            .nav-button-wrapper a.button-primary:link,
+            .nav-button-wrapper a.button-primary:visited,
+            .buttons-wrapper a.button-primary,
+            .buttons-wrapper a.button-primary:link,
+            .buttons-wrapper a.button-primary:visited,
+            .section-hero a.button-primary,
+            a.button-primary.w-button {
+               background-color: #d4ff00 !important;
+               background-image: none !important;
+               border: 1px solid #000 !important;
+               color: #000 !important;
+               padding: 10px 24px !important;
+               border-radius: 50px !important;
+               font-size: 14px !important;
+               font-weight: 500 !important;
+               text-transform: none !important;
+               text-decoration: none !important;
+               display: inline-block !important;
+            }
+
+            .nav-button-wrapper a.button-secondary:hover,
+            .buttons-wrapper a.button-secondary:hover,
+            .section-hero a.button-secondary:hover {
+               background-color: rgba(0, 0, 0, 0.05) !important;
+            }
+
+            .nav-button-wrapper a.button-primary:hover,
+            .buttons-wrapper a.button-primary:hover,
+            .section-hero a.button-primary:hover {
+               background-color: #c4ef00 !important;
+            }
          </style>
          <!-- End of PB add -->
       </head>
@@ -767,7 +966,7 @@
                <div class="site-width">
                   <div class="grid-wrapper">
                      <div class="header-4 g-mg-bottom-small">Sigma QuickStarts - Annual Archive</div>
-                     <div class="nav-dropdown_toggle">New features, public betas and bug fixes for each previous month</div>
+                     <div class="nav-dropdown_toggle">These are full year compilations of all the new features, public betas and bug fixes.</div>
                      <div class="buttons-wrapper">
                         <a href="https://quickstarts.sigmacomputing.com/" target="_self" class="button-secondary w-button">Back to QuickStarts Main Site</a>         
                         <br> <br>                      
@@ -784,14 +983,15 @@
                   All other views are explicitly opt-in via metadata. #}
                   {% if codelab.status.indexOf('hidden') === -1 || view.id !== 'default' %}
                   {% set cat = levelledCategory(codelab, view.catLevel) %}
-                  <div 
+                  <div
                      data-category="{{codelab.category}}"
                      data-title="{{codelab.title}}"
                      data-duration="{{codelab.duration}}"
                      data-updated="{{codelab.updated}}"
                      data-tags="{{codelab.tags}}"
-                     data-pin="{{codelabPin(view, codelab)}}" 
-                     class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}">
+                     data-pin="{{codelabPin(view, codelab)}}"
+                     class="retailers-card codelab-card category-{{categoryClass(codelab, cat.level)}}"
+                     onclick="window.location.href='{{codelabUrl(view, codelab)}}'">
                      {%- if codelabPin(view, codelab) -%}
                      <div class="card-pin"></div>
                      {%- endif -%}
@@ -799,7 +999,7 @@
                      <div class="card-footer">
                         <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
                         <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">Start
+                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">{% if cat.name == 'aiapps' %}AI Apps{% elif cat.name == 'dataapps' %}Data Apps{% else %}{{cat.name}}{% endif %}
                         </a>
                      </div>
                      <div class="card-duration">
@@ -891,8 +1091,8 @@
                      </nav>
                      <div id="w-node-_35691ef6-8a0b-1f2a-08de-23a461e1dcad-61e1dc7a" class="footer-form-wrapper">
                         <div class="grid-wrapper">
-                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts Are Community Made</h3>
-                           <p class="paragraph-1 g-text-color-neutral-9">Sigma Employees, Partners and Power Users please reach out if you have an idea that should be a Quickstart!</p>
+                           <h3 class="header-6 g-text-color-neutral-6 g-mg-bottom-small">Sigma Quickstarts</h3>
+                           <p class="paragraph-1 g-text-color-neutral-9">Sigma employees, partners and power users please reach out if you have an idea that should be a Quickstart!</p>
                         </div>
                         <div class="footer-form-embed ">
                            <div class>

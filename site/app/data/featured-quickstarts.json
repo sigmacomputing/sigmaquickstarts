@@ -1,0 +1,35 @@
+{
+  "recentQuickStarts": [
+    {
+      "title": "First Friday Features - November 2025",
+      "id": "11_2025_first_friday_features",
+      "category": "Administration",
+      "date": "Dec 9, 2025"
+    },
+    {
+      "title": "Popular Functions",
+      "id": "functions_popular_functions",
+      "category": "Functions",
+      "date": "Dec 3, 2025"
+    },
+    {
+      "title": "Connect Snowflake Intelligence to Sigma Workbook",
+      "id": "partners_snowflake_intelligence",
+      "category": "Functions",
+      "date": "Dec 3, 2025"
+    },
+    {
+      "title": "Plugin Use Case 01: Dashboard Builder (Embedding Series)",
+      "id": "embedding_plugin_useage_01_dashboard_builder",
+      "category": "Security",
+      "date": "Dec 3, 2025"
+    },
+        {
+      "title": "QuickStarts API Toolkit",
+      "id": "developers_quickstarts_api_tookit",
+      "category": "Developers",
+      "date": "Sep 17, 2025"
+    }
+  ]
+}
+

@@ -103,6 +103,14 @@ $catagory-colors: (
      .#{$category}-icon {
       background-image: url('/images/#{$icon}');
      }
+
+     .#{$category}-bar {
+      background-color: $color;
+      color: #000;
+      border-radius: 0 !important;
+      -webkit-border-radius: 0 !important;
+      -moz-border-radius: 0 !important;
+     }
   }
 }
 
