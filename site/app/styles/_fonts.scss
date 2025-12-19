@@ -306,6 +306,7 @@ $texta-bold: 'Texta-Bold', sans-serif;
 $texta-black: 'Texta-Black', sans-serif;
 
 
+/* Commented out for DM Sans replacement
 @font-face {
   font-family: 'Lato-Regular';
   src: url('../fonts/Lato-Regular.eot');
@@ -317,8 +318,10 @@ $texta-black: 'Texta-Black', sans-serif;
   font-style: normal;
   font-display: swap;
 }
-$lato: 'Lato-Regular', sans-serif;
+*/
+$lato: 'DM Sans', sans-serif;
 
+/* Commented out for DM Sans replacement
 @font-face {
   font-family: 'Lato-Medium';
   src: url('../fonts/Lato-Medium.eot');
@@ -330,8 +333,10 @@ $lato: 'Lato-Regular', sans-serif;
   font-style: normal;
   font-display: swap;
 }
-$lato-medium: 'Lato-Medium', sans-serif;
+*/
+$lato-medium: 'DM Sans', sans-serif;
 
+/* Commented out for DM Sans replacement
 @font-face {
   font-family: 'Lato-Bold';
   src: url('../fonts/Lato-Bold.eot');
@@ -343,7 +348,8 @@ $lato-medium: 'Lato-Medium', sans-serif;
   font-style: normal;
   font-display: swap;
 }
-$lato-bold: 'Lato-Bold', sans-serif;
+*/
+$lato-bold: 'DM Sans', sans-serif;
 
 // @font-face {
 //   font-family: 'Lato-Heavy';
