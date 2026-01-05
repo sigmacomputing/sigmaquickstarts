@@ -331,6 +331,7 @@
             .dataapps-bar,
             .developers-bar,
             .embedding-bar,
+            .firstfridayfeatures-bar,
             .fundamentals-bar,
             .functions-bar,
             .partners-bar,
@@ -1153,13 +1154,13 @@
                                  `;
 
                                  card.innerHTML = `
-                                    <a href="/guide/${qs.id}/index.html?index=..%2F..index" style="text-decoration: none; color: inherit;">
+                                    <a href="/guide/${qs.id}/index.html?index=..%2F..index" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
                                        <div class="header-7 description">${qs.title}</div>
+                                       <div class="card-footer">
+                                          <!-- <div class="category-icon ${categoryLower}-icon"></div> -->
+                                          <div class="category-bar ${categoryLower}-bar">${qs.category}</div>
+                                       </div>
                                     </a>
-                                    <div class="card-footer">
-                                       <!-- <div class="category-icon ${categoryLower}-icon"></div> -->
-                                       <div class="category-bar ${categoryLower}-bar">${qs.category}</div>
-                                    </div>
                                     <div class="card-duration"></div>
                                  `;
                                  container.appendChild(card);
@@ -1201,7 +1202,7 @@
                         <option value="use-cases">Use Cases</option>
                      </select>
                      <input type="text" class="w-input" placeholder="Search QuickStarts" id="search">
-                     <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures/" class="button-primary" style="background-color: #d4ff00 !important; background-image: none !important; border: 1px solid #000 !important; color: #000 !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important; text-decoration: none !important; white-space: nowrap !important;">First Feature Fridays</a>
+                     <a href="https://quickstarts.sigmacomputing.com/firstfridayfeatures/" class="button-primary" style="background-color: #1F91F2 !important; background-image: none !important; border: 1px solid #000 !important; color: #fff !important; padding: 10px 24px !important; border-radius: 50px !important; font-size: 14px !important; font-weight: 500 !important; text-transform: none !important; text-decoration: none !important; white-space: nowrap !important;">First Feature Fridays</a>
                   </div>
             </div>
                <card-sorter id="cards" class="site-width">
@@ -1220,13 +1221,13 @@
                            {%- if codelabPin(view, codelab) -%}
                                <div class="card-pin"></div>
                            {%- endif -%}
-                           <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                           <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
                                <div class="header-7 description">{{codelab.title}}</div>
+                               <div class="card-footer">
+                                   <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                                   <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">{{codelab.category}}</div>
+                               </div>
                            </a>
-                           <div class="card-footer">
-                               <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
-                               <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">{{codelab.category}}</div>
-                           </div>
                            <div class="card-duration">
                                <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
                                <!--<div class="paragraph-2 ">{%- if codelab.updated -%}Updated {{codePrettyDate(codelab.updated)}}{%- endif -%}</div>-->

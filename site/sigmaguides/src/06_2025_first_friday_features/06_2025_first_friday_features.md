@@ -1,7 +1,7 @@
 author: pballai
 id: 06_2025_first_friday_features
 summary: 06_2025_first_friday_features
-categories: Administration
+categories: firstfridayfeatures
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
