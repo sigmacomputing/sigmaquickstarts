@@ -232,6 +232,7 @@
             .dataapps-bar,
             .developers-bar,
             .embedding-bar,
+            .firstfridayfeatures-bar,
             .fundamentals-bar,
             .functions-bar,
             .partners-bar,
@@ -1041,13 +1042,13 @@
                      {%- if codelabPin(view, codelab) -%}
                      <div class="card-pin"></div>
                      {%- endif -%}
-                     <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit;">
+                     <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
                         <div class="header-7 description">{{codelab.title}}</div>
+                        <div class="card-footer">
+                           <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
+                           <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">First Friday Feature</div>
+                        </div>
                      </a>
-                     <div class="card-footer">
-                        <!-- <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div> -->
-                        <div class="category-bar {{categoryClass(codelab, cat.level)}}-bar">First Friday Feature</div>
-                     </div>
                      <div class="card-duration">
                         <!--<div class="paragraph-2 ">{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</div>-->
                         <!--<div class="paragraph-2 ">{%- if codelab.updated -%}Updated {{codePrettyDate(codelab.updated)}}{%- endif -%}</div>-->

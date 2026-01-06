@@ -28,6 +28,7 @@ $color-administration: #000000;
 $color-aiapps: #4CAF50;
 $color-developers: #3F51B5;
 $color-embedding: #06dbf7;
+$color-firstfridayfeatures: #1F91F2;
 $color-fundamentals: #FFA726;
 $color-security: #f70606;
 $color-tables: #FBC02D;
@@ -40,6 +41,7 @@ $icon-administration: 'administration.svg';
 $icon-aiapps: 'aiapps.svg';
 $icon-developers: 'developers.svg';
 $icon-embedding: 'embedding.svg';
+$icon-firstfridayfeatures: 'administration.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
 $icon-security: 'security.svg';
 $icon-tables: 'tables.svg';
@@ -52,6 +54,7 @@ $icon-templates: 'workbook-template.svg';
 @include codelab-card(['aiapps'], $color-aiapps, $icon-aiapps);
 @include codelab-card(['developers'], $color-developers, $icon-developers);
 @include codelab-card(['embedding'], $color-embedding, $icon-embedding);
+@include codelab-card(['firstfridayfeatures'], $color-firstfridayfeatures, $icon-firstfridayfeatures);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
 @include codelab-card(['security'], $color-security, $icon-security);
 @include codelab-card(['tables'], $color-tables, $icon-tables);
@@ -67,7 +70,8 @@ $icon-templates: 'workbook-template.svg';
 .use-cases-bar,
 .security-bar,
 .aiapps-bar,
-.developers-bar {
+.developers-bar,
+.firstfridayfeatures-bar {
   color: #fff !important;
 }
 
@@ -76,6 +80,7 @@ Administration
 AI Apps
 Developers
 Embedding
+First Friday Features
 Functions
 Fundamentals
 Partners

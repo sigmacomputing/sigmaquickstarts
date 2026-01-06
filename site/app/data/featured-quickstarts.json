@@ -1,9 +1,15 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Fundamentals 11: Pixel Perfect Reporting",
+      "id": "fundamentals_11_pixel_perfect_reporting",
+      "category": "Fundamentals",
+      "date": "Jan 6, 2026"
+    },
+    {
       "title": "First Friday Features - December 2025",
       "id": "12_2025_first_friday_features",
-      "category": "Administration",
+      "category": "First Friday Features",
       "date": "Jan 2, 2026"
     },
     {
@@ -23,12 +29,6 @@
       "id": "embedding_plugin_useage_01_dashboard_builder",
       "category": "Security",
       "date": "Dec 3, 2025"
-    },
-        {
-      "title": "QuickStarts API Toolkit",
-      "id": "developers_quickstarts_api_tookit",
-      "category": "Developers",
-      "date": "Sep 17, 2025"
     }
   ]
 }

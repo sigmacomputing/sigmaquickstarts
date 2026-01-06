@@ -233,6 +233,7 @@
             .dataapps-bg,
             .developers-bg,
             .embedding-bg,
+            .firstfridayfeatures-bg,
             .fundamentals-bg,
             .functions-bg,
             .partners-bg,
@@ -1034,7 +1035,7 @@
                      <div class="card-footer">
                         <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
                         <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
-                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">{% if cat.name == 'aiapps' %}AI Apps{% elif cat.name == 'dataapps' %}Data Apps{% else %}{{cat.name}}{% endif %}
+                           class="button-secondary w-button {{categoryClass(codelab, cat.level)}}-bg">{% if cat.name == 'aiapps' %}AI Apps{% elif cat.name == 'dataapps' %}Data Apps{% elif cat.name == 'firstfridayfeatures' %}First Friday Features{% else %}{{cat.name}}{% endif %}
                         </a>
                      </div>
                      <div class="card-duration">
