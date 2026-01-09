@@ -20,7 +20,7 @@ With just a few clicks, you can create an empty input table, configure its colum
 This allows teams to gather information efficiently while ensuring consistency and accuracy.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
@@ -39,7 +39,7 @@ In this QuickStart, we will:
 By the end, we will have demonstrated  a seamless way to collect, manage, and analyze event leads—ensuring no valuable contact is lost.
 
 ### Target Audience
-Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps. 
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning AI Apps. 
 
 ### Prerequisites
 

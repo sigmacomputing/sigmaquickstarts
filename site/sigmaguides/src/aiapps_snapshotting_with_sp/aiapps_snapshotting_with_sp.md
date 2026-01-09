@@ -14,23 +14,23 @@ lastUpdated: 2024-01-24
 
 Duration: 5
 
-The ability to take snapshots and run stored procedures directly from a Sigma data app empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes.
+The ability to take snapshots and run stored procedures directly from a Sigma AI App empowers teams to automate workflows, enhance data accuracy, and streamline decision-making processes.
 
-Using a Sigma data app, users can capture snapshots of live data stored in a cloud data warehouse (CDW), such as Snowflake, preserving frozen records of data at specific points in time for reliable retrieval and analysis.
+Using a Sigma AI App, users can capture snapshots of live data stored in a cloud data warehouse (CDW), such as Snowflake, preserving frozen records of data at specific points in time for reliable retrieval and analysis.
 
 Snapshots are invaluable for tracking changes in data over time, a crucial requirement for teams managing dynamic datasets. They ensure data accuracy and consistency by allowing comparisons between live data and historical snapshots.
 
 The flexibility to execute stored procedures from the Sigma UI further enhances these workflows, enabling teams to integrate complex data operations seamlessly into their applications, reducing manual effort, and driving greater efficiency.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Common Use Cases
 
-The ability to take snapshots and run stored procedures directly from a Sigma data app offers unparalleled flexibility for teams working in diverse domains. These capabilities enable teams to automate workflows, track progress over time, and maintain data accuracy across various scenarios.
+The ability to take snapshots and run stored procedures directly from a Sigma AI App offers unparalleled flexibility for teams working in diverse domains. These capabilities enable teams to automate workflows, track progress over time, and maintain data accuracy across various scenarios.
 
 This functionality is essential for teams in (and many others):
 
@@ -81,7 +81,7 @@ This QuickStart focuses on inventory management, but the same methodology can be
 
 ### Target Audience
 
-Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps.
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning AI Apps.
 
 ### Prerequisites
 

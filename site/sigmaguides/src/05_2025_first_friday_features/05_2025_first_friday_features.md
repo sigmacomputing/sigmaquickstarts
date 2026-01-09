@@ -192,7 +192,7 @@ documents in the Share Folder modal.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### Column order enforced when dynamically moving columns
@@ -236,7 +236,7 @@ You can now update and delete input table rows using actions.
 
 `Update row` allows user interaction to update values in an existing row, while `Delete row` removes an entire row. 
 
-These actions are designed to support form functionality, but can be used in other ways to accommodate different data app use cases.
+These actions are designed to support form functionality, but can be used in other ways to accommodate different AI App use cases.
 
 For more information, see [Create actions that modify input table data](https://help.sigmacomputing.com/changelog/create-actions-that-modify-input-table-data)
 

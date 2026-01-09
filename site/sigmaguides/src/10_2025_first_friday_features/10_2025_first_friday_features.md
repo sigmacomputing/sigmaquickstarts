@@ -164,7 +164,7 @@ For more information, see [Configure chart axis marks](https://help.sigmacomputi
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### App notifications (GA) <img src="assets/heart_icon.png" width="25"/>

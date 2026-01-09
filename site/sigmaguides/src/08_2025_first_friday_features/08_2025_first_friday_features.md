@@ -192,7 +192,7 @@ For more information, see [Create sparklines in a table (Beta)](https://help.sig
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### App notification actions (Beta) <img src="assets/heart_icon.png" width="25"/>
@@ -209,7 +209,7 @@ Call stored procedures defined in a Snowflake, BigQuery, or Amazon Redshift conn
 
 If the stored procedure returns non-tabular results like a string, number, or Boolean value, you can work with the output as an action variable and display the values in dynamic text or a control element.
 
-For example, if you have an existing stored procedure to calculate project timelines based on several variables, you can set up a data app with input control elements to collect the variables, pass them as arguments to a stored procedure action that calls the stored procedure, then display the results in a control element and store them in an input table in Sigma.
+For example, if you have an existing stored procedure to calculate project timelines based on several variables, you can set up an AI App with input control elements to collect the variables, pass them as arguments to a stored procedure action that calls the stored procedure, then display the results in a control element and store them in an input table in Sigma.
 
 For more information, see [Create actions that call stored procedures](https://help.sigmacomputing.com/docs/create-actions-that-call-stored-procedures)
 
