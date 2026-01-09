@@ -235,7 +235,7 @@ Previously, only bar marks had these options. You can also now show or hide labe
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### Option to remove control selections with actions

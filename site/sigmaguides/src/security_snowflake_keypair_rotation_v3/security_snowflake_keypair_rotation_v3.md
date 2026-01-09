@@ -319,6 +319,16 @@ Give your connection a name and fill out the required fields:
 
 <img src="assets/rsa11.png" width="800"/>
 
+<aside class="negative">
+<strong>Why Sigma asks for both a private key and a public key fingerprint:</strong><br> When configuring a Snowflake connection using key-pair authentication, Sigma requires both the private key and the corresponding public key fingerprint.
+
+The private key is used by Sigma to authenticate as the Snowflake service user.
+
+The public key fingerprint is used by Sigma to verify that the uploaded private key matches the public key registered on the Snowflake user.
+
+Snowflake itself never receives or stores the private key. Only the public key is registered on the Snowflake user. Supplying the public key fingerprint in Sigma helps prevent configuration errors (for example, pasting the wrong private key or targeting the wrong Snowflake user) and ensures the key pair is correctly aligned.
+</aside>
+
 Sigma will establish the connection if after a few seconds you should receive a <img src="assets/rsa12.png" width="200"/> message at the bottom of the page.
 
 You may now click the `Browse Connection` button:

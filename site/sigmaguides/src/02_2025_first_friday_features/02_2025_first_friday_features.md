@@ -193,11 +193,11 @@ For more information, see [Implement inbound and outbound events in embeds.](htt
 ## New QuickStarts in February
 Duration: 20
 
-### Data App QuickStarts are Here! <img src="assets/heart_icon.png" width="25"/>
+### AI App QuickStarts are Here! <img src="assets/heart_icon.png" width="25"/>
 
 In fact, there are **ten** to choose from right now!
 
-[Data App Fundamentals](https://quickstarts.sigmacomputing.com/guide/dataaps_fundamentals/index.html?index=..%2F..index#0)
+[AI App Fundamentals](https://quickstarts.sigmacomputing.com/guide/dataaps_fundamentals/index.html?index=..%2F..index#0)
 
 [Adjustment Change Log](https://quickstarts.sigmacomputing.com/guide/dataapps_adjustments_change_log/index.html?index=..%2F..index#0)
 

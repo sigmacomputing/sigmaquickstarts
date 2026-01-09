@@ -204,7 +204,7 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### If/else control flow in action sequences (Beta) <img src="assets/heart_icon.png" width="25"/>

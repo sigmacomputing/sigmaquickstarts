@@ -21,7 +21,7 @@ This transformation has occurred in stages, and we are now in stage three, as sh
 
 <img src="assets/dataaps_fun_0c.png" width="800"/>
 
-This QuickStart demonstrates how to use Sigma to build a data application (app) entirely within the Sigma UI. The data used will come from, and be stored in, Snowflake. During this demonstration, we will build a fully functional project tracking data app that, in the past, may have taken significant time to get up and running.
+This QuickStart demonstrates how to use Sigma to build an AI Application (app) entirely within the Sigma UI. The data used will come from, and be stored in, Snowflake. During this demonstration, we will build a fully functional project tracking AI App that, in the past, may have taken significant time to get up and running.
 
 This QuickStart is a bit longer than usual, and we understand that people can be pressed for time. While it is well worth the investment, if you can’t spare the time, you can instead [watch this 5-minute video](https://sigmacomputing.wistia.com/medias/6lneuw4062?__hstc=191098485.ee45354cafd3cb03900ca8358c6cba7c.1713989091503.1733934938183.1734711950588.87&__hssc=191098485.2.1734711950588&__hsfp=336580338) to see how impactful Sigma AI apps can be for your organization.
 
@@ -97,7 +97,7 @@ The `Project Tracker` will support the following:
 </aside>
 
 ### What we will build
-After completing this QuickStart we will have built a fully functional data app based on a project management use case. 
+After completing this QuickStart we will have built a fully functional AI App based on a project management use case. 
 
 The finished product can look something like this (depending on your styling choices!):
 
@@ -254,7 +254,7 @@ Add the following row of data to the `Project Tracker Input Table`.
 <img src="assets/dataaps_fun_1m.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Make sure to always set the "Project Due Date" value to a date that is in the future when using the data app.
+<strong>NOTE:</strong><br> Make sure to always set the "Project Due Date" value to a date that is in the future when using the AI App.
 </aside>
 
 #### Step 8: 
@@ -507,7 +507,7 @@ Test that the new buttons work as expected.
 <strong>NOTE:</strong><br> Putting the filters into an overlay saves real estate on the application. Adding dynamic text to the button helps give users insight into if any filters are applied.
 </aside>
 
-Our Data App is beginning to take form by mixing and matching Sigma building blocks.
+Our AI App is beginning to take form by mixing and matching Sigma building blocks.
 
 ### Step 11: 
 Customize the title for the `Project Filters` button by adding a `(` followed by the `=` sign, which will open a pop up for use to use a custom formula:
@@ -542,7 +542,7 @@ Duration: 5
 ### Step 1: Add page
 Add a new page named `Control Panel`. 
 
-This will be the central hub and spine for the Data App which ensures governance over the circular flow of data.
+This will be the central hub and spine for the AI App which ensures governance over the circular flow of data.
 
 ### Step 2: 
 On the `Project Tracker` page, add three new columns using any of the drop downs for `Last Updated At`, `Last Updated By`, and `ID`. 

@@ -16,7 +16,7 @@ Duration: 5
 This QuickStart is designed to show how Sigma simplifies the process of creating an intuitive interface for managing data. Users can input, edit, and review changes in real-time, with the adjustments automatically recorded in a centralized log. The change log serves as a historical record, providing transparency and accountability for all modifications.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)

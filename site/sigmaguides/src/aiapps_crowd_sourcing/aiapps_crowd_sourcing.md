@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2025-09-17
 
-# Crowdsource Ideas with a Sigma Data App
+# Crowdsource Ideas with a Sigma AI App
 
 ## Overview 
 Duration: 5 
@@ -19,7 +19,7 @@ You’ll learn how to capture user input with input tables, personalize the expe
 
 We’ll also show you how to track submissions, prevent duplicate upvotes, and apply basic styling to polish the final experience.
 
-This is a great introduction to Sigma Data Apps—and a simple yet powerful example of how to go beyond dashboards and build collaborative, warehouse-native applications.
+This is a great introduction to Sigma AI Apps—and a simple yet powerful example of how to go beyond dashboards and build collaborative, warehouse-native applications.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -188,7 +188,7 @@ A row of data should be added with data in the correct columns:
 ## Add a Modal
 Duration: 5
 
-Let's improve the data app by adding a pop-up (modal) to capture suggestions, instead of having a flat page.
+Let's improve the AI App by adding a pop-up (modal) to capture suggestions, instead of having a flat page.
 
 Select the container, the click `Move` > `New modal`:
 

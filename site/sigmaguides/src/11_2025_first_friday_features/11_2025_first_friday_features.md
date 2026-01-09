@@ -154,7 +154,7 @@ For more information, see [Create sparklines in a table](https://help.sigmacompu
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Apps
+## AI Apps
 Duration: 20
 
 ### If/else control flow in action sequences (GA) <img src="assets/heart_icon.png" width="25"/>

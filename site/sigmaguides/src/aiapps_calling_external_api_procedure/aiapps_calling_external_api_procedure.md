@@ -18,7 +18,7 @@ This QuickStart demonstrates how to use Sigma to clean and validate business add
 There are many address correction services available today. For this QuickStart, we will use [The Geocodio API](https://www.geocod.io) because it provides a free-tier, and provides straightforward and easy-to-use geocoding, reverse geocoding, and data matching for US and Canadian addresses.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
@@ -292,7 +292,7 @@ The trailing `SELECT` statement should return one row of data from the `REQUEST_
 <img src="assets/dasp-5.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> We also enriched the data by calling an API endpoint that also returns geo-coordinates for this address. This is a simple demonstration of how any data can be made even more useful using this workflow. With a Sigma data app, we will be able to trigger and visualize the results easily.
+<strong>IMPORTANT:</strong><br> We also enriched the data by calling an API endpoint that also returns geo-coordinates for this address. This is a simple demonstration of how any data can be made even more useful using this workflow. With a Sigma AI App, we will be able to trigger and visualize the results easily.
 </aside>
 
 Before moving off this script, comment out the lines that tests and check the log. We don't want the UDF to run these every time we run it:

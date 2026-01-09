@@ -20,7 +20,7 @@ Your new employer Big Buys Electronics ("Big Buys") is a major electronics retai
 That's why they hired you, a seasoned category manager to take over a struggling category and right the ship.
 
 ### What You Will Build
-In this lab you will create an analysis using AI, and leverage a data application and forecast out product performance.
+In this lab you will create an analysis using AI, and leverage an AI Application and forecast out product performance.
 
 ### Target Audience
 Databricks Solution Architects and Field Engineers interested in getting some hands-on experience with Sigma.
@@ -259,7 +259,7 @@ Duration: 5
 
 **1:** Lets navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
 
-**2:** This application was built by Big Buys’ central IT team as a Sigma data app. It allows team members to submit and approve distinct pricing scenarios collaboratively.
+**2:** This application was built by Big Buys' central IT team as a Sigma AI App. It allows team members to submit and approve distinct pricing scenarios collaboratively.
 
 We’re going to create our own pricing scenario based on what we just learned. Let's click the `Create New Scenario` button in the top left:
 
@@ -302,7 +302,7 @@ Click `Save` on the input table.
 
 <img src="assets/sf2025_41.png" width="800"/>
 
-**8:** With our scenario now loaded in, we are ready to go ahead submit it for approval because Sigma data apps allow for multi step workflows. 
+**8:** With our scenario now loaded in, we are ready to go ahead submit it for approval because Sigma AI Apps allow for multi step workflows. 
 
 Once we click approve, this can go into a queue that our manager or compliance officers could go through and review but for the purpose of this lab, we can just approve our own data. 
 
@@ -339,7 +339,7 @@ The email will be from `info@send.sigmacomputing.com` and include the report att
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we used Sigma to explore an ad-hoc pricing scenario, model price changes, and submit a finalized plan using a collaborative data app. 
+In this QuickStart, we used Sigma to explore an ad-hoc pricing scenario, model price changes, and submit a finalized plan using a collaborative AI App. 
 
 Along the way, we joined data from multiple sources, incorporated manual inputs, and leveraged Databricks for predictive forecasting. We also tapped into Databricks AI-Query to apply machine learning directly within Sigma—no SQL required.
 

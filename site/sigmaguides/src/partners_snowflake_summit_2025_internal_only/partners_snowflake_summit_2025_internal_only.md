@@ -299,7 +299,7 @@ Duration: 5
 
 **1:** Lets navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
 
-**2:** This application was built by Big Buys’ central IT team as a Sigma data app. It allows team members to submit and approve distinct pricing scenarios collaboratively.
+**2:** This application was built by Big Buys' central IT team as a Sigma AI App. It allows team members to submit and approve distinct pricing scenarios collaboratively.
 
 We’re going to create our own pricing scenario based on what we just learned. Let's click the `Create New Scenario` button in the top left:
 
@@ -344,7 +344,7 @@ Click `Save` on the input table.
 
 <img src="assets/sf2025_41.png" width="800"/>
 
-**8:** With our scenario now loaded in, we are ready to go ahead submit it for approval because Sigma data apps allow for multi step workflows. 
+**8:** With our scenario now loaded in, we are ready to go ahead submit it for approval because Sigma AI Apps allow for multi step workflows. 
 
 Once we click approve, this can go into a queue that our manager or compliance officers could go through and review but for the purpose of this lab, we can just approve our own data. 
 

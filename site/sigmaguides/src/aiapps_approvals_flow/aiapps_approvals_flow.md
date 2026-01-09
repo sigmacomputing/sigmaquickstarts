@@ -22,7 +22,7 @@ Adjusters can propose changes to the revenue column, while Approvers review, rej
 This interactive example showcases Sigma's ability to build workflows that are both flexible and intuitive, allowing users to efficiently manage and track revenue adjustments in real time.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
@@ -65,7 +65,7 @@ Add a new column, rename it to `Revenue` and set the formula to:
 ```code
 [Price] * [Quantity]
 ```
-Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our data app, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
+Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our AI App, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
 
 Filter the table down to just `Order Number` and set the range to `131-133`.
 
@@ -148,7 +148,7 @@ We can adjust the `Order Number` control as shown to clean things up to our pref
 ## Adjuster Modal
 Duration: 5
 
-We want the data app to open a modal window when the user clicks on a single cell in a specific row. 
+We want the AI App to open a modal window when the user clicks on a single cell in a specific row. 
 
 Let's make it really obvious for the user and add a new `Calculation` column to `Orders to Approve` and rename it to `Edit`. Set the formula to:
 ```code
@@ -686,7 +686,7 @@ Now that the data app is working, we can easily use the power of Sigma to build 
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we build a fully functioning Approval data app using Sigma only. Data is automatically stored in the cloud data warehouse of your choice and under your control only. This is the power of Sigma!
+In this QuickStart, we build a fully functioning Approval AI App using Sigma only. Data is automatically stored in the cloud data warehouse of your choice and under your control only. This is the power of Sigma!
 
 **Additional Resource Links**
 

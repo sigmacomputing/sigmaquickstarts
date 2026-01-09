@@ -16,7 +16,7 @@ Duration: 5
 Pivot table spreading refers to the ability to adjust aggregate values in a pivot table and redistribute those changes dynamically across the underlying dataset. This enables users to make targeted adjustments directly in the pivot table interface and have those changes reflected in the source data.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)

@@ -18,7 +18,7 @@ This QuickStart demonstrates how to use Sigma's native capabilities to build a B
 The focus is on enabling snapshotting functionality entirely within Sigma, contrasting with previous approaches that relied on cloud data warehouse procedures.
 
 <aside class="positive">
-<strong>PLEASE READ:</strong><br> Sigma data apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
+<strong>PLEASE READ:</strong><br> Sigma AI Apps are rapidly evolving, with new features being added regularly. If your Sigma instance does not have the specific feature shown (or if the UI has changed), please contact Sigma support for assistance in accessing the feature.
 </aside>
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
@@ -64,7 +64,7 @@ The focus is on enabling snapshotting functionality entirely within Sigma, contr
 </aside>
 
 ### Target Audience
-Sigma builders interested in leveraging the advanced capabilities to create fully functioning Data Apps.
+Sigma builders interested in leveraging the advanced capabilities to create fully functioning AI Apps.
 
 ### Prerequisites
 
@@ -631,7 +631,7 @@ Clicking the `x` to clear the control will revert the `Budget` table to its orig
 
 This is possible because we have a column in the source data called `Batch Placeholder`, with the value `0` assigned to all rows.
 
-Given how flexible Sigma data apps are, there are likely many other ways to accomplish what your specific use case requires.
+Given how flexible Sigma AI Apps are, there are likely many other ways to accomplish what your specific use case requires.
 
 Snapshotting to the cloud data warehouse, **built entirely with Sigma—how awesome is that!**
 
