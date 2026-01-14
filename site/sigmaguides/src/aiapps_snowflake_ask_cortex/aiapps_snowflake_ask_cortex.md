@@ -291,7 +291,7 @@ Then change the `Order Date` column to show the first purchase date by changing 
 Min([Order Date])
 ```
 
-Rename the `Min of Date` column to `First Purchase Date`.
+Rename the `Min of Order Date` column to `First Purchase Date`.
 
 <img src="assets/ct_2.png" width="800"/>
 
@@ -351,7 +351,7 @@ Add another new column to the `Y-AXIS` (click the `+` icon) using this formula:
 ```
 
 **Group by color and category column**<br>
-Group the chart by `Color`, using the `Store Region` column:
+Group the chart by `Category`, using the `Store Region` column:
 
 <img src="assets/ct_7.png" width="600"/>
 
@@ -361,7 +361,7 @@ Set the `legend` to `bottom` and renamed the chart to `Sales Chart`.
 <strong>IMPORTANT:</strong><br> Take care with the chart name; we will reference the chart by name in a formula later.
 </aside>
 
-We also set the min/max range on the `Y-AXIS` to `MIN=520000000` and `MAX=620000000` to zoom in on the data more.
+We also set the min/max range on the `Y-AXIS` > `Axis range`> `Min-max` to `520000000` and `620000000` to zoom in on the data more.
 
 Lastly, set the `Format` > `LINE STYLE` to `Interpolation=Smooth`. This step is optional—we just like the effect.
 
@@ -574,7 +574,7 @@ IsNull([p_prompt])
 
 <img src="assets/ct_24.png" width="600"/>
 
-Add a action by clicking the `+` icon and configure it to set the `Response` control and the `Ask a Question` page to have a static value:
+Add a action by clicking the `+` icon and configure it to set the `P Response (Ask a Question)` page to have a static value:
 
 <img src="assets/ct_25.png" width="600"/>
 
@@ -583,7 +583,6 @@ The static value will appear in the `Response` text control if the user fails to
 <img src="assets/ct_26.png" width="400"/>
 
 ### Add another action sequence - User asked a question
-
 Now we can configure a new `Action sequence` to trigger when the user does provide a prompt.
 
 Click the `+` icon next to `ACTION SEQUENCES`:
@@ -617,11 +616,15 @@ We also placed the control elements on the `Ask a question` page in a container 
 
 <img src="assets/ct_43.png" width="800"/>
 
-Add an action to clear the controls on the `Data` page, by container name:
+With our containers created and named, we can add an action to clear the controls on the `Data` page, by container name. If Sigma pre-created an action in the `User asked a question` sequence, just use that one and alter it's configuration to:
 
 <img src="assets/ct_43a.png" width="600"/>
 
-It may take a little time for Cortex to answer a question so we want to show the user it is "Thinking". At least this way, they can see that something is happening when they click the button:
+Create another action the same as the last, but target the `Ask a Question container (Ask a Question)` instead.
+
+It may take a little time for Cortex to answer a question so we want to show the user it is "Thinking". At least this way, they can see that something is happening when they click the button.
+
+Add another action and configure it as:
 
 <img src="assets/ct_30.png" width="600"/>
 
@@ -640,6 +643,16 @@ Lookup([System Prompts/Prompt], [Persona], [System Prompts/Persona])
 ```
 
 <img src="assets/ct_46a.png" width="600"/>
+
+We next need to insert the data into the `Persona` and `Prompt` controls on the `Data` page:
+
+<img src="assets/ct_54.png" width="800"/>
+
+The last action is simply to clear the `Data page contaner` for the next request:
+
+<img src="assets/ct_55.png" width="800"/>
+
+Click `Publish`.
 
 If we enter a simple prompt (ie: "What do you think?"), select a `Persona` and click the `Submit...` button, we can see the data that will be sent to Cortex is showing in the `User Prompt` control on the `Data` page:
 
