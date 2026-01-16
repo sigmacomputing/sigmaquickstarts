@@ -1350,7 +1350,7 @@ Duration: 20
 
 A common use case is to programmatically reassign workbook ownership based on email addresses in Sigma, via API.
 
-This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Reassign Ownership by Email` page, [located here.](https://help.sigmacomputing.com/recipes/Reassign-Ownership-by-Email)
+This section demonstrates the code that was provided on the `API Code Samples` > `Workbook: Reassign Ownership by Email` page, [located here.](https://help.sigmacomputing.com/recipes/workbook-reassign-ownership-by-email)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This script will call the get-access-token > getBearerToken function to get a new/refreshed token automatically so there is no need to do anything else, assuming you have completed the section of this QuickStart "Authentication - REQUIRED" and ensured your .env file is configured correctly.
