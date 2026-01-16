@@ -5,32 +5,32 @@ categories: Administration
 environments: web
 status: hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-01-14
+tags:
+lastUpdated: 2026-01-16
 
-# Multi-tenancy Administration: Managing Isolated Organizations
+# Sigma Tenants: Managing Isolated Organizations
 
 ## Overview
 Duration: 5
 
-Multi-tenancy in Sigma allows organizations to create and manage multiple isolated Sigma environments (called "tenants") within a single parent organization. This powerful feature solves two opposing challenges that organizations face when managing analytics at scale:
+Sigma Tenants allows organizations to create and manage multiple isolated Sigma environments (called "tenants") within a single parent organization. This powerful feature solves two opposing challenges that organizations face when managing analytics at scale:
 
 **Administration Challenge**: Share documents across multiple customers or business units without creating duplicate workbooks or manually sharing each document individually.
 
 **Collaboration Challenge**: Enable secure collaboration and sharing within each customer or business unit without exposing sensitive data to other groups.
 
-### Why Multi-tenancy?
+### Why Sigma Tenants?
 
-Multi-tenancy enables you to organize and isolate workbooks, data, users, and permissions—all within one platform. This approach is ideal when you need to:
+Sigma Tenants enables you to organize and isolate workbooks, data, users, and permissions—all within one platform. This approach is ideal when you need to:
 - **Segregate environments, deployments, or data access** (e.g., dev/test/prod, regional teams, external customers)
 - **Provide delegated administration** where each business unit or customer needs self-service admin capabilities without full Sigma root access
 - **Maintain fully isolated data and environments** to meet security, compliance, or contractual requirements
-- **Release different versions of workbooks** to different customers or business units
+- **Release different versions of Sigma assets** to different customers or business units
 - **Support multi-region deployments** for GDPR or other data residency requirements
 
 ### Four Core Use Cases
 
-Multi-tenancy enables four distinct organizational patterns:
+Sigma Tenants enables four distinct organizational patterns:
 
 <img src="assets/mt_usecases.png" width="800"/>
 
@@ -55,7 +55,7 @@ Provide each customer of your embedded analytics with their own isolated Sigma e
 - Delegated administration (local admins manage tenant-level permissions)
 - Its own configuration (email domains, Slack/Teams integrations, etc.)
 
-**Deployments**: Share workbooks and data models from the parent organization to selected tenants. When you share content with a tenant, it automatically appears in a workspace within that tenant, available to all members based on the permissions you specify.
+**Deployments**: Share Sigma assets from the parent organization to selected tenants. When you share content with a tenant, it automatically appears in a workspace within that tenant, available to all members based on the permissions you specify.
 
 **Connection Swap Policies**: Automatically route each tenant to their appropriate data connection. When a workbook is deployed, the connection swaps from the parent's template connection to each tenant's specific data source.
 
@@ -87,8 +87,7 @@ Product Managers and semi-technical users who will be aiding in the planning or 
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
 </aside>
 
-<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button><br>
-<button>[Snowflake Free Trial](https://trial.snowflake.com)</button>
+<button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://trial.snowflake.com)</button>
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
@@ -100,7 +99,7 @@ Product Managers and semi-technical users who will be aiding in the planning or 
 Duration: 5
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Multitenancy is a premium feature and is only available to customers in the Enterprise platform tier. If the feature is not available in your Sigma instance, please contact your Sigma account manager or open a support ticket.
+<strong>IMPORTANT:</strong><br> Sigma Tenants is a premium feature and is only available to customers in the Enterprise platform tier. If the feature is not available in your Sigma instance, please contact your Sigma account manager.
 </aside>
 
 Once enabled by Sigma, the `Tenants` option will appear in the left sidebar.
@@ -610,7 +609,7 @@ User attributes enable dynamic connection swapping when workbooks are deployed t
 The user attribute maps the `Connection ID` we captured earlier to each tenant, allowing workbooks to automatically use the correct data source based on which regional sales team is accessing the content.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> User attributes support assignment to users, teams, or tenants. For multi-tenancy, tenant-level assignment is most efficient.
+<strong>NOTE:</strong><br> User attributes support assignment to users, teams, or tenants. For multitenancy, tenant-level assignment is most efficient.
 <br><br>
 <strong>Embedding Use Case:</strong> When embedding Sigma content in external applications, user attributes can be passed dynamically via JWT (JSON Web Token) from your host application. This enables the same connection swap mechanism to work for embedded scenarios - each customer sees only their data based on attributes passed at runtime. For example, a host application can pass a <code>customer_connection</code> attribute that automatically routes each embedded user to their organization's data connection.
 <br><br>
@@ -693,7 +692,7 @@ Duration: 5
 
 A connection's source swap policy dynamically replaces a table source based on predefined rules when users evaluate a workbook.
 
-This is particularly useful in multi-tenant configurations. When you deploy a workbook from the parent organization to tenant organizations, the swap policy automatically routes each tenant to their appropriate data connection using the user attributes we configured earlier.
+This is particularly useful in multitenant configurations. When you deploy a workbook from the parent organization to tenant organizations, the swap policy automatically routes each tenant to their appropriate data connection using the user attributes we configured earlier.
 
 But what about the users who are building content at the parent level on behalf of tenants?
 
@@ -848,7 +847,7 @@ When deployed, the swap policy will dynamically route each tenant to their respe
 ## Deployment
 Duration: 5
 
-Deployment policies enable **automatic distribution** of workbooks from the parent organization to selected tenant organizations. Once you add a workbook to a deployment policy and share it with tenants, Sigma automatically creates copies in each tenant's workspace—no manual deployment action required.
+Deployment policies enable **automatic distribution** of content from the parent organization to selected tenant organizations. Once you add content to a deployment policy and share it with tenants, Sigma automatically creates copies in each tenant's workspace—no manual deployment action required.
 
 When deployed, the connection swap policy **automatically** routes each tenant to their appropriate data connection.
 
@@ -874,7 +873,7 @@ Select the `regional_connection` policy we created earlier:
 Click `Create` to create the deployment policy.
 
 ### Add Workbook and Share with Tenants
-Once the deployment policy is created, you'll add workbooks to the policy and share them with tenants:
+Once the deployment policy is created, you'll add content to the policy and share them with tenants:
 
 Click `Add document`:
 
@@ -936,7 +935,7 @@ It will show the expected Sales_West data:
 <img src="assets/mt_32.png" width="800"/>
 
 <aside class="positive">
-<strong>SUCCESS!</strong><br> If both tenants see only their respective regional data, your multi-tenancy configuration is working correctly. The connection swap policy is automatically routing each tenant to their appropriate database.
+<strong>SUCCESS!</strong><br> If both tenants see only their respective regional data, your Sigma Tenants configuration is working correctly. The connection swap policy is automatically routing each tenant to their appropriate database.
 </aside>
 
 ### What Just Happened?
@@ -951,10 +950,10 @@ This demonstrates **warehouse-level data security** - each tenant is restricted 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Applying to Other Use Cases
+## Applying Sigma Tenants to Other Use Cases
 Duration: 5
 
-The features you've learned in this QuickStart—tenant creation, user attributes, connection swap policies, and deployments—apply to all four multi-tenancy use cases. Here's how to adapt what you've built:
+The features you've learned in this QuickStart—tenant creation, user attributes, connection swap policies, and deployments—apply to all four Sigma Tenants use cases. Here's how to adapt what you've built:
 
 ### SDLC (Software Development Lifecycle)
 
@@ -1049,11 +1048,11 @@ The same features enable different organizational patterns—what changes is the
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we demonstrated **Business Unit Isolation** using Sigma's multi-tenancy features with a regional sales team scenario.
+In this QuickStart, we demonstrated **Business Unit Isolation** using Sigma Tenants with a regional sales team scenario.
 
 **Key Concepts Covered:**
 
-- **Multi-tenancy Architecture**: Creating and managing isolated tenant organizations (Sales-East and Sales-West) within a single Sigma instance
+- **Sigma Tenants Architecture**: Creating and managing isolated tenant organizations (Sales-East and Sales-West) within a single Sigma instance
 - **Tenant Impersonation**: Accessing tenant environments as an administrator without separate credentials
 - **Warehouse-Level Security**: Using separate Snowflake databases to enforce data isolation at the database level, ensuring each region only queries their permitted data
 - **Connection Swap Policies**: Automatically routing tenants to their specific data connections using user attributes
@@ -1081,7 +1080,7 @@ This architecture enables organizations to:
 
 **Next Steps:**
 
-- Explore other multi-tenancy use cases (SDLC, Data Residency, Embed)
+- Explore other Sigma Tenants use cases (SDLC, Data Residency, Embed)
 - Configure auto-sync for deployments to keep tenants updated automatically
 - Add more complex connection swap policies with conditional logic
 - Integrate with your organization's SSO for tenant user management 
