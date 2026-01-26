@@ -1,6 +1,11 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Enbedding Sigma with Databricks OAuth",
+      "id": "embedding_use_cases_databricks_oauth",
+      "category": "Embedding",
+      "date": "Jan 26, 2026"
+    },    {
       "title": "Fundamentals 11: Pixel Perfect Reporting",
       "id": "fundamentals_11_pixel_perfect_reporting",
       "category": "Fundamentals",
@@ -22,12 +27,6 @@
       "title": "Connect Snowflake Intelligence to Sigma Workbook",
       "id": "partners_snowflake_intelligence",
       "category": "Functions",
-      "date": "Dec 3, 2025"
-    },
-    {
-      "title": "Plugin Use Case 01: Dashboard Builder (Embedding Series)",
-      "id": "embedding_plugin_useage_01_dashboard_builder",
-      "category": "Security",
       "date": "Dec 3, 2025"
     }
   ]
