@@ -1,11 +1,18 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Data Models as Code",
+      "id": "developers_data_models_as_code",
+      "category": "Developers",
+      "date": "Jan 27, 2026"
+    },
+    {
       "title": "Enbedding Sigma with Databricks OAuth",
       "id": "embedding_use_cases_databricks_oauth",
       "category": "Embedding",
       "date": "Jan 26, 2026"
-    },    {
+    },    
+    {
       "title": "Fundamentals 11: Pixel Perfect Reporting",
       "id": "fundamentals_11_pixel_perfect_reporting",
       "category": "Fundamentals",
