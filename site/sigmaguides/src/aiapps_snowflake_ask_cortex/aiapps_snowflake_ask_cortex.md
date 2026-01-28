@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-04-11
+lastUpdated: 2026-01-28
 
 # Build an AI prompt box with Cortex in Sigma
 
@@ -15,18 +15,17 @@ Duration: 5
 
 In this QuickStart, you'll explore how to ask natural language questions about your data using Snowflake Cortex, Snowflake’s built-in large language model (LLM) capability.
 
-You'll submit a question like:
+You'll submit questions like:
 
-“Which region is underperforming?”<br>
-“Where are we problematic?”
+"Which region is underperforming?"<br>
+"Where are we seeing problems?"
 
 Cortex interprets your question, combines it with business context, and returns a narrative answer powered by an LLM—no code or SQL required.
 
 ### What is Cortex?
 Cortex is Snowflake’s serverless AI platform for building and deploying LLM-powered experiences directly inside your Snowflake environment. It enables teams to ask questions in plain English and get rich answers—without needing to move or export data.
 
-For more information about Snowflake Cortex, see [Snowflake
-Cortex AI.](https://www.snowflake.com/en/product/features/cortex/)
+For more information about Snowflake Cortex, see [Snowflake Cortex AI](https://www.snowflake.com/en/product/features/cortex/)
 
 ### LLMs vs ML
 Traditional machine learning (ML) models are trained to solve very specific tasks (e.g., churn prediction or price forecasting). In contrast, LLMs (Large Language Models) like [Anthropic Claude](https://docs.anthropic.com/en/docs/about-claude/models/all-models) can understand and generate natural language across a wide range of use cases — including summarizing, explaining, and reasoning over structured data.
@@ -276,7 +275,7 @@ Click `Create New` > `Workbook`.
 
 Add a new `Data` > `Table` from the `Element bar` and select `Tables and Datasets` as the source.
 
-In the `Recent` group, we can find the `Cortex QuickStart Datamodel` we just created:
+In the `Suggested` group, we can find the `Cortex QuickStart Datamodel` we just created:
 
 <img src="assets/ct_1.png" width="400"/>
 
@@ -336,14 +335,14 @@ DateTrunc("month", [Order Date])
 ```
 
 **Y-Axis Columns**<br>
-Drag the `Revenue` column to the `Y-AXIS`.
+Drag the `Revenue` metric to the `Y-AXIS`.
 
-Drag the `Order Date` to the `Y-AXIS` and change the formula to:
+Add a new column to the `Y-AXIS` (click the `+` icon) and use this formula:
 ```code
 DateFormat([Order Date], "%Y-%m")
 ```
 
-Rename the altered date column from `Calc` to `MonthText`.
+Rename this calculated column from `Calc` to `MonthText`.
 
 Add another new column to the `Y-AXIS` (click the `+` icon) using this formula:
 ```code
@@ -393,9 +392,9 @@ Sigma is flexible enough that we can allow users to select from preconfigured pe
 The CTO persona might use a system prompt that tells Cortex what a CTO would be interested in, in terms of a Cortex response:
 
 <aside class="negative">
-<strong>CTO Persona Prompt:</strong><br> You are an ever so slightly quirky, expert data analyst that works for a supplier of an electronics super store called Plugs Electronics. 
+<strong>CTO Persona Prompt:</strong><br> You are an ever so slightly quirky, expert data analyst that works for a supplier of an electronics super store called Big Buys Electronics.
 
-You like to add color commentary (often by using publicly available data or news events that correspond to dates) to your analysis to make it more interesting. You would only do so if it actually adds value to the answer. You wouldn't do it just to make small talk. 
+You like to add color commentary (often by using publicly available data or news events that correspond to dates) to your analysis to make it more interesting. You would only do so if it actually adds value to the answer. You wouldn't do it just to make small talk.
 
 When you answer, keep this in mind: Do not, under any circumstance, ever ask me a question. I mean that—do not ask me a question. Never. Only I ask you questions!
 </aside>
@@ -410,12 +409,12 @@ For the three personas, here is the text to be copied and pasted into each row f
 
 ```code
 CEO:
-You are a data analyst for a company called Big Buys Electronics, or just "Big Buys" for short. You are preparing an executive summary for the CEO about sales at Big Buys. When it makes sense, correlate the data to external events happening in the world, e.g. trends in the economy and news events. Since the report is for executives, you should: Use a lot of three letter acronyms and data to explain concepts. Make your point using numbered lists, often adding relevant emojis to the main theme of each item. The executives are really impressed with emojis. Back up your statements with factual data for added credibility. Do not make up data.Forecast into the future.
+You are a data analyst for a company called Big Buys Electronics, or just "Big Buys" for short. You are preparing an executive summary for the CEO about sales at Big Buys. When it makes sense, correlate the data to external events happening in the world, e.g. trends in the economy and news events. Since the report is for executives, you should: Use a lot of three letter acronyms and data to explain concepts. Make your point using numbered lists, often adding relevant emojis to the main theme of each item. The executives are really impressed with emojis. Back up your statements with factual data for added credibility. Do not make up data. Forecast into the future.
 ```
 
 ```code
 CTO:
-You are an ever so slightly quirky, expert data analyst that works for a supplier of an electronics super store called Big Buys.You like to add color commentary (often by using publicly available data or news events that correspond to dates) to your analysis to make it more interesting. But, you would only do so if it actually adds value to the answer. You wouldn't do it just to make small talk. When you answer, keep this in mind: Do not, under any circumstance, ever ask me a question. I mean that, do not ask me a question. Never. Only I ask you questions!
+You are an ever so slightly quirky, expert data analyst that works for a supplier of an electronics super store called Big Buys. You like to add color commentary (often by using publicly available data or news events that correspond to dates) to your analysis to make it more interesting. But, you would only do so if it actually adds value to the answer. You wouldn't do it just to make small talk. When you answer, keep this in mind: Do not, under any circumstance, ever ask me a question. I mean that, do not ask me a question. Never. Only I ask you questions!
 ```
 
 ```code
@@ -535,9 +534,9 @@ Invokes the Snowflake Cortex function SNOWFLAKE.CORTEX.COMPLETE to perform a cha
 
 **The Array(...) defines the conversation history:**
 
-- { role: "system", content: [p_system_prompt] } → system prompt (e.g., persona)
+- { role: "system", content: [p_persona_data] } → system prompt (e.g., persona)
 
-- { role: "user", content: [p_user_prompt] } → user's actual prompt (question)
+- { role: "user", content: [p_prompt_data] } → user's actual prompt (question)
 
 - { temperature: 0 } = deterministic output (less creative, more repeatable)
 
@@ -574,7 +573,7 @@ IsNull([p_prompt])
 
 <img src="assets/ct_24.png" width="600"/>
 
-Add a action by clicking the `+` icon and configure it to set the `P Response (Ask a Question)` page to have a static value:
+Add an action by clicking the `+` icon and configure it to set the `P Response (Ask a Question)` page to have a static value:
 
 <img src="assets/ct_25.png" width="600"/>
 
@@ -596,94 +595,117 @@ IsNotNull([p_prompt])
 
 <img src="assets/ct_28.png" width="600"/>
 
-It can useful to rename the action sequences to make it clear what they are for. Just double-click the name to rename them:
+It can be useful to rename the action sequences to make it clear what they are for. Just double-click the name to rename them:
 
 <img src="assets/ct_29.png" width="350"/>
 
-We should probably clear out the two related controls on the `Data` page; `User Prompt` and `Persona`.
+### Prepare containers for clearing
+Before we configure the actions, we need to organize our controls into containers. This will allow us to clear multiple controls at once when the workflow completes.
 
 <aside class="negative">
-<strong>Pro Tip:</strong><br> Place related control elements in a named container whenever possible. We can then clear all the elements in a container, by name. This saves action steps and time too.
+<strong>Pro Tip:</strong><br> Place related control elements in a named container whenever possible. We can then clear all the elements in a container by name. This saves action steps and time, especially when there are many controls to clear at once.
 </aside>
 
-For more information containers, see [Organize workbook layouts with containers](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers)
+For more information on containers, see [Organize workbook layouts with containers](https://help.sigmacomputing.com/docs/organize-workbook-layouts-with-containers)
 
-We selected the two control elements on the `Data` page, and placed them in a container, changing the container name to `Data page container`:
+Select the two control elements (`User Prompt` and `Persona`) on the `Data` page, and place them in a container. Change the container name to `Data page container`:
 
 <img src="assets/ct_42.png" width="800"/>
 
-We also placed the control elements on the `Ask a question` page in a container named `Ask a Question container`. Set the container background color to suit:
+Also place the control elements on the `Ask a question` page in a container named `Ask a Question container`. Set the container background color to suit:
 
 <img src="assets/ct_43.png" width="800"/>
 
-With our containers created and named, we can add an action to clear the controls on the `Data` page, by container name. If Sigma pre-created an action in the `User asked a question` sequence, just use that one and alter it's configuration to:
+Now we're ready to configure the action sequence.
+
+### Action 1: Clear the Data page container
+Before processing the new request, we need to clear any residual values from the previous request on the Data page.
+
+Add an action (or use a pre-created one if Sigma created it) and configure it to clear the `Data page container (Data)`:
 
 <img src="assets/ct_43a.png" width="600"/>
 
-Create another action the same as the last, but target the `Ask a Question container (Ask a Question)` instead.
+This ensures each request starts with a clean slate and old values don't interfere with the new request.
 
-It may take a little time for Cortex to answer a question so we want to show the user it is "Thinking". At least this way, they can see that something is happening when they click the button.
+### Action 2: Show "Thinking..." message
+It may take a little time for Cortex to answer a question, so we want to show the user it is "Thinking". At least this way, they can see that something is happening when they click the button.
 
 Add another action and configure it as:
 
 <img src="assets/ct_30.png" width="600"/>
 
-We want to store the data values that will be passed to Cortex temporarily so that we can observe them and also simplify the formula we use to call Cortex. 
+### Action 3: Store the user prompt into data page control
+We want to store the data values that will be passed to Cortex temporarily so that we can observe them and also simplify the formula we use to call Cortex.
 
-Add another action, and set the control value of the `User Prompt` control on the `Data` page to:
+Add another action, and set the control value of the `User Prompt` control (with Control ID `p_prompt_data`) on the `Data` page to:
 ```code
 [p_prompt] & " ; Use this table:\n" & "Store Region, Month, Revenue\n" & ListAggDistinct(CallText("CONCAT", [Sales Chart/Store Region], ", ", [Sales Chart/MonthText], ", ", [Sales Chart/Revenue]), "\n")
 ```
 
-<img src="assets/ct_45.png" width="600"/>
+<img src="assets/ct_45.png" width="800"/>
 
-Add another action, and set the control value of the `Persona` control on the `Data` page to:
+This formula combines the user's question with the chart data in a format Cortex can understand.
+
+### Action 4: Store the persona into data page control
+Add another action, and set the control value of the `Persona` control (with Control ID `p_persona_data`) on the `Data` page to:
 ```code
 Lookup([System Prompts/Prompt], [Persona], [System Prompts/Persona])
 ```
 
 <img src="assets/ct_46a.png" width="600"/>
 
-We next need to insert the data into the `Persona` and `Prompt` controls on the `Data` page:
+This looks up the full system prompt text based on the persona selected by the user.
 
-<img src="assets/ct_54.png" width="800"/>
+<aside class="positive">
+<strong>NOTE:</strong><br> At this point, you can test by entering a simple prompt (e.g., "What do you think?"), selecting a Persona, and clicking Submit. Check the <code>User Prompt</code> and <code>Persona</code> controls on the Data page to verify the formulas are working correctly before proceeding.
+</aside>
 
-The last action is simply to clear the `Data page contaner` for the next request:
+### Action 5: Clear the Ask a Question container
+Now that we've captured the user's input into the Data page controls, we can clear the Ask a Question container. This removes the old prompt, persona selection, and previous response from view.
 
-<img src="assets/ct_55.png" width="800"/>
+Add another action and configure it to clear the `Ask a Question container (Ask a Question)`:
 
-Click `Publish`.
+<img src="assets/ct_30a.png" width="600"/>
 
-If we enter a simple prompt (ie: "What do you think?"), select a `Persona` and click the `Submit...` button, we can see the data that will be sent to Cortex is showing in the `User Prompt` control on the `Data` page:
+<aside class="negative">
+<strong>NOTE:</strong><br> We clear this container after storing the values (Actions 3 & 4) but before calling Cortex. This ensures the user sees a clean interface while Cortex is processing, and the old response doesn't linger on screen.
+</aside>
 
-<img src="assets/ct_47.png" width="800"/>
-
-This confirms our formulas are working as expected.
-
-We can now call Cortex, using our custom function and actions:
-
+### Action 6: Call Cortex and update the Response
 Add another action, and set the control value to update the `Response` control on the `Ask a Question` page, using this formula:
 ```code
-CompleteClaude([Persona], [p_prompt_data])
+CompleteClaude([p_persona_data], [p_prompt_data])
 ```
-
-This will pass the value for the selected persona on the `Ask a Question` page along with the values (data) from the `User Prompt` control on the `Data` page.
 
 <img src="assets/ct_34.png" width="600"/>
 
-Actions can also be renamed for easier viewing:
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Make sure to use <code>[p_persona_data]</code> (the text area control on the Data page), NOT <code>[Persona]</code> (the list control on the Ask a Question page). The custom function expects the full system prompt text, not the persona name.
+</aside>
 
-<img src="assets/ct_48.png" width="300"/>
+This calls the custom Cortex function we created earlier, passing both the persona configuration and the user's prompt with chart data.
 
-Add another action, this time selecting to `Insert a row` into the `Prompt Log` input table on the `Data` page. 
+### Action 7: Log the prompt and response
+Add another action, this time selecting to `Insert a row` into the `Prompt Log` input table on the `Data` page.
 
-Sigma will try to auto-select matching columns. We had to make some adjustments, using formulas as shown:
+Sigma will try to auto-select matching columns. You may need to make some adjustments, using formulas as shown:
 
-<img src="assets/ct_49.png" width="600"/>
+<img src="assets/ct_49.png" width="800"/>
 
-Lastly, we do some clean up by clearing out the `Data page container` on the `Data` page:
+This creates a permanent record of each question and response for tracking and analysis.
+
+### Action 8: Clear the Data page container
+Lastly, add an action to clear out the `Data page container` on the `Data` page one final time:
 
 <img src="assets/ct_50.png" width="600"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> We clear the Data page container twice (Action 1 and Action 8). The first clear ensures old values don't interfere with the new request. The second clear leaves the app in a clean, predictable state. The Ask a Question container only gets cleared once (Action 5) after we've read the user's input but before Cortex responds.
+</aside>
+
+<aside class="positive">
+<strong>TIP:</strong><br> You can rename action sequences and individual actions for easier viewing. Just double-click the name to rename them.
+</aside>
 
 Click `Publish`.
 
@@ -700,7 +722,7 @@ Explain the dip in 02-1998
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> It may a minute or so to generate a response depending on the Snowflake warehouse configuration.
+<strong>NOTE:</strong><br> It may take a minute or so to generate a response depending on the Snowflake warehouse configuration.
 </aside>
 
 Cortex responds according to the data and persona configuration we sent it:
@@ -710,9 +732,9 @@ Cortex responds according to the data and persona configuration we sent it:
 While this was not the most complex dataset or question, we can see just how easy it can be to harness the power of Cortex AI using Sigma.
 
 ### Chat History
-On the `History` page, you'll see the results of the most recent Insert a row action. 
+On the `History` page, you'll see the results of the most recent Insert a row action.
 
-The data was written to the `Prompt Log` on the `Data` page, but the `Chat Log` table on the `History` page is a child of that, so the columns we want to expose to other users are shown automatically here.
+The data was written to the `Prompt Log` on the `Data` page, but the `Chat History` table on the `History` page is a child of that, so the columns we want to expose to other users are shown automatically here.
 
 <img src="assets/ct_52.png" width="800"/>
 
