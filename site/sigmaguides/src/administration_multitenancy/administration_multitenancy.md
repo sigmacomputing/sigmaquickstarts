@@ -3,10 +3,10 @@ id: administration_multitenancy
 summary: administration_multitenancy
 categories: Administration
 environments: web
-status: hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-01-16
+tags: default
+lastUpdated: 2026-01-29
 
 # Sigma Tenants: Managing Isolated Organizations
 
