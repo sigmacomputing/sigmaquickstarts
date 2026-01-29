@@ -2,14 +2,14 @@
   "recentQuickStarts": [
     {
       "title": "Data Models as Code",
-      "id": "administration_multitenancy",
-      "category": "Administration",
+      "id": "evelopers_data_models_as_code",
+      "category": "Developers",
       "date": "Jan 29, 2026"
     },
     {
       "title": "Sigma Tenants: Managing Isolated Organizations",
-      "id": "embedding_use_cases_databricks_oauth",
-      "category": "Embedding",
+      "id": "administration_multitenancy",
+      "category": "Administration",
       "date": "Jan 26, 2026"
     },   
     {
