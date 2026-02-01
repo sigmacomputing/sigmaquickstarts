@@ -487,6 +487,7 @@ GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE sigma_user;
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+<!-- commented out, This section was not used but was part of another example that did more detailed processing
 ## Create Custom Functions
 Duration: 10
 
@@ -586,7 +587,7 @@ CallVariant("AI_EXTRACT", CallText("TO_FILE", "@QUICKSTARTS.FILE_UPLOADS.FILE_UP
 Click `Save`.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+-->
 
 ## Build the AI App in Sigma
 Duration: 20
@@ -730,7 +731,6 @@ In the `Stage` control, type your stage path: `@QUICKSTARTS.FILE_UPLOADS.FILE_UP
 <img src="assets/fupl_27.png" width="450"/>
 
 ### Create Processing Modal
-
 Click `More options` in the lower left corner and select `Add modal`.
 
 Click the `Format` tab in the properties panel:
