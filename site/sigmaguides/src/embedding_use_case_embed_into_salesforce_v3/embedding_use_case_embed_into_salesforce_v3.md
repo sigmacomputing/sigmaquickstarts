@@ -301,10 +301,22 @@ In the VSCode terminal, run this command, making sure that you are in the `embed
 ```code
 sf deploy metadata --source-dir force-app/main/default/classes/SigmaJWTController.cls \
                    --source-dir force-app/main/default/classes/SigmaJWTController.cls-meta.xml \
+                   --source-dir force-app/main/default/classes/SigmaJWTControllerTest.cls \
+                   --source-dir force-app/main/default/classes/SigmaJWTControllerTest.cls-meta.xml \
                    --source-dir force-app/main/default/lwc/sigmaEmbed
 ```
 
-This deploys: the Apex controller, the Lightning Web Component, and its metadata.
+This deploys: the Apex controller, the test class (required for Salesforce code coverage), the Lightning Web Component, and their metadata.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Salesforce requires at least 75% test coverage for Apex code deployments. The included <code>SigmaJWTControllerTest.cls</code> provides comprehensive test coverage for the JWT controller.
+</aside>
+
+<aside class="negative">
+<strong>TROUBLESHOOTING:</strong><br> If you encounter authorization errors during deployment, you may need to explicitly specify your target org:<br><br>
+<code>sf deploy metadata --target-org myOrg --source-dir force-app/main/default/classes/...</code><br><br>
+Replace <code>myOrg</code> with the alias you used during the <code>sf auth:web:login</code> step.
+</aside>
 
 <img src="assets/sf_30.png" width="800">
 
@@ -430,6 +442,11 @@ We can deploy this set of files using the terminal command:
 ```code
 sf deploy metadata --source-dir force-app/main/default/lwc/accountPickerEmbed
 ```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you need to specify your target org, add the <code>--target-org</code> flag:<br>
+<code>sf deploy metadata --target-org myOrg --source-dir force-app/main/default/lwc/accountPickerEmbed</code>
+</aside>
 
 <img src="assets/sf_38c.png" width="800">
 
