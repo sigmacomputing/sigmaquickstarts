@@ -299,8 +299,7 @@ Different Snowflake regions have different models available. Test which models w
 
 ```code
 -- Test Claude models (vision-capable, best for multi-modal)
-SELECT SNOWFLAKE.CORTEX.COMPLETE('claude-3-7-sonnet', 'Say hello') AS response;
-SELECT SNOWFLAKE.CORTEX.COMPLETE('claude-3-5-sonnet', 'Say hello') AS response;
+SELECT SNOWFLAKE.CORTEX.COMPLETE('claude-sonnet-4-5', 'Say hello') AS response;
 
 -- Test Reka (vision-capable)
 SELECT SNOWFLAKE.CORTEX.COMPLETE('reka-flash', 'Say hello') AS response;
@@ -314,7 +313,7 @@ SELECT SNOWFLAKE.CORTEX.COMPLETE('llama3-70b', 'Say hello') AS response;
 Run each query to see which models are available in your region.
 
 **Choose a vision-capable model** that works:
-- `claude-3-7-sonnet` or `claude-3-5-sonnet` (recommended for best quality)
+- `claude-sonnet-4-5` (recommended for best quality)
 - `reka-flash` (alternative vision model)
 
 You'll use this model name in the application's `LLM` control later.
@@ -616,7 +615,7 @@ From the element bar, click `Input` > `Empty` and select your Snowflake connecti
 Configure the input table columns:
 1. Double-click the existing `Text` column header and rename it to `AI Detailed Description`
 2. Click the `+` next to this column and select `Text` as the column type
-3. Rename the new column to `Name` and right-click to hide it
+3. Rename the new column to `Name`
 4. Click the `+` next to this column and select `Text` as the column type
 5. Rename the new column to `File ID` and right-click to hide it
 6. Click the `+` next to this column and select `File` **as the column type** (leave the column name as `File`)
@@ -720,12 +719,12 @@ Click the 3-dot menu again and select `Duplicate`.
 
 Change the `Control ID` of the duplicate to `Stage`.
 
-In the `LLM` control, type: `claude-3-7-sonnet`
+In the `LLM` control, type: `claude-sonnet-4-5`
 
 In the `Stage` control, type your stage path: `@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS`
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> If you used different database, schema, or stage names when creating your Snowflake stage, update this path to match. This must be the same path you used in the custom functions. Remember that Snowflake converts unquoted identifiers to uppercase.
+<strong>IMPORTANT:</strong><br> If you used different database, schema, or stage names when creating your Snowflake stage, update this path to match. Remember that Snowflake converts unquoted identifiers to uppercase.
 </aside>
 
 <img src="assets/fupl_27.png" width="450"/>
@@ -735,13 +734,12 @@ Click `More options` in the lower left corner and select `Add modal`.
 
 Click the `Format` tab in the properties panel:
 - In the `Footer` section, deselect both button options
-- In the `Header` section, deselect both options for title and close icon
 
 Minimize the modal height:
 
 <img src="assets/fupl_28.png" width="700"/>
 
-Change the header test to `Please wait...` 
+Change the header text to `Please wait...` 
 
 Select `UI` from the bottom toolbar and click `Text` object.
 
@@ -769,8 +767,6 @@ Click the `+` (Add action) button next to Action sequence:
 
 <img src="assets/fupl_30.png" width="800"/>
 
-Close the `Insert row` action.
-
 Click the `+` button again to create another action.
 
 **Action 2**: Select `Insert row`.
@@ -792,7 +788,7 @@ Text(Json(Text([Files])).id)
 ```
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> Make sure to set File ID to <strong>Formula</strong> (not Static value). This column must capture the S3 filename with Sigma's UUID prefix for the delete functionality to work later.
+<strong>IMPORTANT:</strong><br> Make sure to set File ID to <strong>Formula</strong> (not Static value).
 </aside>
 
 - **AI Detailed Description**: Click `Formula` and enter:
@@ -965,10 +961,6 @@ The application should:
 1. Show the "Please wait..." modal briefly
 2. Automatically generate an AI description of the image
 3. Display the file and description in the `Your files` table
-
-<aside class="positive">
-<strong>NOTE:</strong><br> AI processing can take 10-30 seconds depending on your Snowflake warehouse size, file size, and whether cross-region inference is being used. Larger warehouses (Medium, Large) will process faster than X-Small warehouses. The modal will remain visible until processing completes.
-</aside>
 
 <img src="assets/uploadfile.gif">
 
@@ -1211,7 +1203,6 @@ Explore additional AI capabilities:
 
 For more information, see:
 - [Snowflake Cortex AI Functions](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions)
-- [Sigma Custom Functions](https://help.sigmacomputing.com/docs/custom-functions)
 
 **Additional Resource Links**
 
