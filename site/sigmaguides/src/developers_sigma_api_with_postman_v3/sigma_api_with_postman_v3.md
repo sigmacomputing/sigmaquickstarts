@@ -291,7 +291,7 @@ Let's use the API to `Get` a list of available Connections.
 
 Expand the API to show the method under `V2`, `connections`, `Returns a list of available connections` and click to select open it in a new tab.
 
-We need to uncheck the two checkboxes (item #4 in the screenshot) for `Params` as we just want to return all the connections. These two optional parameters allow us to filter the return but we won't do that at this point. 
+We need to uncheck the two checkboxes (item #2 in the screenshot) for `Params` as we just want to return all the connections. These two optional parameters allow us to filter the return but we won't do that at this point. 
 
 Click `Save`:
 
