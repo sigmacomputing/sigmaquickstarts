@@ -787,12 +787,6 @@ CLIENT_ID=your-sigma-client-id-here
 SECRET=your-sigma-secret-here
 ```
 
-For example:
-```plaintext
-CLIENT_ID=34818770a97bc60baae7a5f88fe59f4452bc26c76ab79c831da6bd658e5ab8768
-SECRET=d460d9bb8b3b385e0e4e5f9041782227c02add14a14aaea7bc0556b3375519b7...
-```
-
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Use the actual Client ID and Secret from the Sigma client credentials you created earlier (in the "Client credentials" section).
 </aside>
@@ -847,7 +841,7 @@ DATABRICKS_ACCOUNT_ID=12345678-1234-1234-1234-123456789012
 Set the OAuth app credentials from the Databricks app connection you created:
 ```plaintext
 DATABRICKS_OAUTH_CLIENT_ID=12345678-1234-1234-1234-123456789abc
-DATABRICKS_OAUTH_CLIENT_SECRET=dose1234567890abcdef1234567890abcdef
+DATABRICKS_OAUTH_CLIENT_SECRET=your-secret
 ```
 
 <aside class="negative">
@@ -1035,7 +1029,7 @@ The application generates a JWT (JSON Web Token) that contains the encrypted Dat
   "account_type": "View",                 // Sigma account type
   "teams": ["Sales_People"],              // Team membership
   "connection_oauth_tokens": {            // Encrypted OAuth tokens
-    "<connection-id>": "<encrypted-token>"
+  "<connection-id>": "<encrypted-token>"
   }
 }
 ```
