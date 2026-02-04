@@ -482,16 +482,6 @@ If the the detail information is enough, you can choose to `APPROVE`, `REJECT` o
 
 For example, approving a transaction updates the `REVIEW STATUS` column and `NOTES` as well. 
 
-If not, we can request the AI `Investigate the cashier more`:
-
-<img src="assets/rlp_42.png" width="600"/>
-
-We can also "jump out" (number 3 in the above image) to an `AI Chat` interface to dig deeper:
-
-<img src="assets/rlp_44.png" width="800"/>
-
-AI Chat allows us to continue the investigation and also select a different AI Agent from a list of permitted agents
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
