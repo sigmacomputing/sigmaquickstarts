@@ -29,7 +29,7 @@ You will modernize the Big Buys security stack by integrating Sigma, Snowflake, 
 
 ### Target Audience
 
-Participants of Snowflake Sales Kickoff 2026 who are interested in getting hands-on with Sigma and Snowflake. No SQL or technical data skills are required for this hands-on lab.
+Participants of Snowflake Sales Kickoff 2027 who are interested in getting hands-on with Sigma and Snowflake. No SQL or technical data skills are required for this hands-on lab.
 
 ### Prerequisites
 
@@ -55,7 +55,7 @@ This section covers the initial setup required for the hands-on lab.
 <strong>NOTE:</strong><br> The setup process is the same as the Snowflake Summit 2025 lab. If you have already completed that setup, you can skip to Module 1.
 </aside>
 
-For detailed setup instructions, see the [Snowflake Summit 2025 QuickStart Setup](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025/index.html?index=..%2F..index#1)
+For detailed setup instructions, see the [Snowflake Internal Only - Summit 2025 Hands on Lab](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025_internal_only/index.html#1)
 
 The setup includes:
 - Access to a pre-configured Sigma environment
@@ -392,6 +392,10 @@ The static flags often miss suspicious transactions or incorrectly flag legitima
 
 <img src="assets/rlp_33.png" width="700"/>
 
+**Step 10** - Because running Python on massive datasets can be time-consuming, the model has already been run on the full POS dataset. A pipeline is now active, refreshing the data nightly.
+
+- Table Name: BIG_BUYS_ENRICHED_POS_PYTHON_MODEL
+
 ### Access the Full Production Model
 
 <!-- <aside class="positive">
@@ -436,6 +440,10 @@ d. `Sort` the table by the `PERCENT FLAGGED` column in descending order to prior
 
 <img src="assets/rlp_37.png" width="350"/>
 
+e. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Color Scale` > `Format` > `Type`: 
+
+<img src="assets/rlp_37a.png" width="350"/>
+
 ### Update Data Sources
 
 **Step 2**: Select the `DATA EXPLORE` tab and update the data sources for the `TOTAL TRANSACTIONS KPI` chart
@@ -447,7 +455,7 @@ d. `Sort` the table by the `PERCENT FLAGGED` column in descending order to prior
 
 <img src="assets/rlp_39.png" width="400"/>
 
-Repeat the process for the other elements:
+Repeat the process for the other elements, but the source will instead be `ONLY_FLAGGED_SCANS_V2`:
 
 - `FLAGGED TRANSACTIONS KPI` chart<br>
 - `FLAGGED TRANSACTIONS BY HOUR AND WEEKDAY` pivot table<br>
@@ -482,16 +490,6 @@ If the the detail information is enough, you can choose to `APPROVE`, `REJECT` o
 
 For example, approving a transaction updates the `REVIEW STATUS` column and `NOTES` as well. 
 
-If not, we can request the AI `Investigate the cashier more`:
-
-<img src="assets/rlp_42.png" width="600"/>
-
-We can also "jump out" (number 3 in the above image) to an `AI Chat` interface to dig deeper:
-
-<img src="assets/rlp_44.png" width="800"/>
-
-AI Chat allows us to continue the investigation and also select a different AI Agent from a list of permitted agents
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -510,7 +508,7 @@ A pre-configured Chat Agent has been integrated into the workbook to facilitate 
 
 <img src="assets/rlp_45.png" width="800"/>
 
-1. Enter the following prompt to identify high-volume risk areas:
+1. Enter the following prompt to identify the high risk orders:
    ```
    Show me the list of top 5 order numbers that have the most anomalous scans.
    ```
