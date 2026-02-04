@@ -473,7 +473,7 @@ Repeat the process for the other elements, but the source will instead be `ONLY_
 Use `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` as the source.
 
 2. **X-axis**: Add `SCAN_TIMESTAMP`
-3. **Y-axis**: Add `ISL_MS` (Ensure this field is **not aggregated**)
+3. **Y-axis**: Add `ISL` (Ensure this field is **not aggregated**)
 4. **Color**: Add `STATUS` (Set to "By Category")
 5. **Tooltip**: Add `ORDER_NUMBER`, `SKU_NUMBER`, and `PRODUCT_KEY` (Ensure no aggregation)
 6. **Trellis Column**: Add `PRODUCT_FAMILY`:
