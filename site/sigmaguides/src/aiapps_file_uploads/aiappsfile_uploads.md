@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-01-30
+lastUpdated: 2026-02-05
 
 # Multi-Modal File Analysis with AI
 
@@ -473,10 +473,26 @@ GRANT USAGE, READ, WRITE ON STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS TO ROLE 
 
 -- Grant access to Snowflake Cortex AI functions
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE sigma_user;
+
+-- Grant access to Sigma's input table schema
+-- Note: Database and schema names may vary based on your Sigma configuration
+-- Check Administration > Connections > [Your Connection] > Write access settings
+GRANT INSERT, UPDATE, DELETE ON FUTURE TABLES IN SCHEMA SIGMA_INTERNAL.INPUT_TABLES_WRITE TO ROLE sigma_user;
 ```
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Replace <code>sigma_user</code> with the same Snowflake role from the previous step (the role your Sigma connection uses). The <code>CORTEX_USER</code> database role is required to use Snowflake's AI functions.
+</aside>
+
+<aside class="negative">
+<strong>IMPORTANT - Input Table Schema:</strong><br> The database and schema names for input tables (<code>SIGMA_INTERNAL.INPUT_TABLES_WRITE</code> in this example) may be different in your Sigma environment. To find the correct names:
+<ol>
+<li>Go to <strong>Administration</strong> > <strong>Connections</strong> in Sigma</li>
+<li>Select your Snowflake connection</li>
+<li>Look in the <strong>Write access</strong> section for the database and schema names</li>
+<li>Update the GRANT statements above with your actual names</li>
+</ol>
+If you see an error like "Insufficient privileges to operate on schema 'INPUT_TABLES_WRITE'" when using input tables, this is the grant you're missing.
 </aside>
 
 <aside class="positive">
@@ -486,108 +502,6 @@ GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE sigma_user;
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-<!-- commented out, This section was not used but was part of another example that did more detailed processing
-## Create Custom Functions
-Duration: 10
-
-Sigma's custom functions allow you to encapsulate complex Snowflake operations into reusable formulas. You'll create three custom functions for file processing.
-
-### Function 1: FileGetURL
-This function generates a pre-signed URL for rendering files in the browser.
-
-In Sigma, navigate to `Administration` > `Account` > `Custom Functions` and click `Add`:
-
-<img src="assets/fupl_16.png" width="800"/>
-
-Configure the function:
-
-**Name**: `FileGetURL`
-
-**Description**: `Retrieve a pre-signed URL for rendering a file in the browser`
-
-**Arguments**:
-- Name: `File`, Type: `Variant`, Description: `The Sigma file upload column`
-
-**Formula**:
-```code
-CallText("GET_PRESIGNED_URL", "@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS", Text([File][0].id))
-```
-
-**Return type**: `Text`
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> If you used a different database, schema, or stage name in the previous section, update <code>@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS</code> to match your actual stage path. The @ symbol indicates it's a stage reference in Snowflake.
-</aside>
-
-<img src="assets/fupl_17.png" width="700"/>
-
-Click `Save`.
-
-### Function 2: FileAskAI
-This function uses Snowflake's `AI_COMPLETE` function to analyze file content and answer questions.
-
-Create a new custom function with:
-
-**Name**: `FileAskAI`
-
-**Description**: `Run AI Complete against a file uploaded in a Sigma File column`
-
-**Add 3 Arguments**:
-- Name: `File`, Type: `Variant`, Description: `A Sigma file input field`
-- Name: `Prompt`, Type: `Text`, Description: `Instruction prompt for the LLM`
-- Name: `Model`, Type: `Text`, Description: `The LLM you would like to use (e.g. claude-3-7-sonnet)`
-
-**Formula**:
-```code
-Text(CallVariant("AI_COMPLETE", [Model], [Prompt], CallText("TO_FILE", "@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS", Text([File][0].id))))
-```
-
-**Return type**: `Text`
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> Use the same stage path as in FileGetURL. If you used different names, update accordingly.
-</aside>
-
-<img src="assets/fupl_18.png" width="700"/>
-
-Click `Save`.
-
-### Function 3: FileExtractDetail
-This function uses AI_EXTRACT to pull structured information from documents.
-
-Create a new custom function with:
-
-**Name**: `FileExtractDetail`
-
-**Description**: `Extract information from a Sigma file upload`
-
-**Arguments**:
-- Name: `File`, Type: `Variant`, Description: `A Sigma file column`
-- Name: `Results`, Type: `Variant`, Description: `An array of arrays containing labels and prompts for extracting data`
-
-**Formula**:
-```code
-CallVariant("AI_EXTRACT", CallText("TO_FILE", "@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS", Text([File][0].id)), [Results])
-```
-
-**Return type**: `Variant`
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> Use the same stage path as in the previous functions. Consistency across all three functions is critical.
-</aside>
-
-<aside class="positive">
-<strong>NOTE:</strong><br> Unlike the previous two functions which return Text, this function returns <strong>Variant</strong> because AI_EXTRACT returns structured JSON data containing the extracted fields and values. Returning Variant preserves this structure so you can access individual fields in your workbook formulas.
-</aside>
-
-
-<img src="assets/fupl_19.png" width="700"/>
-
-Click `Save`.
-
-![Footer](assets/sigma_footer.png)
--->
-
 ## Build the AI App in Sigma
 Duration: 20
 
@@ -596,16 +510,20 @@ Now you'll build the application interface that allows users to upload files and
 ### Create Initial Workbook Structure
 Create a new workbook in Sigma.
 
+Rename the default page to `Main`.
+
 From the element bar at the bottom of the page, click `Controls` and select `File upload`.
 
 Configure the file upload control:
-- Change `Control ID` in the properties panel to `Files`
+- Change `Control ID` in the properties panel to `Load-file`
 - Deselect `Allow multiple files`
-- Click the `Format` tab and change `Label position` to `Left`
+- Click the `Format` tab and disable `Show label`
 
 <img src="assets/fupl_21.png" width="800"/>
 
 ### Add Input Table for Files
+Add a new workbook page and rename it `Admin`.
+
 From the element bar, click `Input` > `Empty` and select your Snowflake connection.
 
 <aside class="negative">
@@ -613,36 +531,85 @@ From the element bar, click `Input` > `Empty` and select your Snowflake connecti
 </aside>
 
 Configure the input table columns:
-1. Double-click the existing `Text` column header and rename it to `AI Detailed Description`
-2. Click the `+` next to this column and select `Text` as the column type
-3. Rename the new column to `Name`
-4. Click the `+` next to this column and select `Text` as the column type
-5. Rename the new column to `File ID` and right-click to hide it
-6. Click the `+` next to this column and select `File` **as the column type** (leave the column name as `File`)
-7. Drag the File column to the first position (before the other columns)
+1. Double-click the existing `Text` column header and rename it to `Name`
+2. Click the `+` next to this column and add columns with these names and types:
+   - `FileID` (Text)
+   - `Type` (Text)
+   - `AI Summary` (Text)
+   - `AI Detailed Description` (Text)
+ 
+3. Click the `+` next to the last column and select `File` as the column type (leave the column name as `File`)
+4. Drag the `File` column to the first position (before all other columns)
 
-Rename the table to `Your files` by double-clicking the table name.
+Your column order should be: File, Name, FileID, Type, AI Summary, AI Detailed Description
+
+Rename the table to `My files` by double-clicking the table name.
 
 Delete the pre-populated rows:
 - Highlight rows 1-3, right-click and select `Delete 3 rows`:
 
-<img src="assets/fupl_22.png" width="550"/>
-
-### Add Row ID Column
-Add a Row ID column to uniquely identify each row.
-
-Click the `+` next to the `AI Detailed Description` column, choose the Sigma provided `Row ID` column type.
-
-Right-click the `Row ID` column header and select `Hide column`.
+<img src="assets/fupl_22.png" width="800"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The File ID column will be populated automatically when files are uploaded via the action sequence you'll configure in the next section. It stores the actual filename in S3 (with Sigma's prefix and UUID).
+<strong>NOTE:</strong><br> Keep the table in "Editable in draft" mode during development so you can test the file upload actions without having to publish the workbook. You can change it to "Editable in published version (all users)" later when you're ready to deploy.
 </aside>
 
-### Add Delete Button Column
-Add a calculated column with a delete icon that users can click to remove entries.
+### Add Row ID Column
+Add a Row ID column to uniquely identify each row in the `My files` table.
 
-Click the `+` next to the `AI Detailed Description` column and select `New column`.
+Click the `+` next to the last column, choose the Sigma provided `Row ID` column type.
+
+Rename the column to `RowID`
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The FileID column will be populated automatically when files are uploaded via the action sequence you'll configure in a later section. It stores the actual filename in S3 (with Sigma's prefix and UUID).
+</aside>
+
+### Create Child Table on Main Page
+Now create a child table that will be displayed to users on the Main page.
+
+In the upper right corner of the `My files` table, click `Create Child Element` > `Table`.
+
+<img src="assets/fupl_22.png" width="800"/>
+
+Click the 3-dot menu on this **new child table** and select `Move to` > `Main`.
+
+Rename the child table to `Your files with insight`.
+
+This child table will display all the same data as the parent table on the `Admin` page, but users will interact with it on the `Main` page.
+
+### Create Admin Page Controls
+
+Now add the control variables that will be used in formulas throughout the application.
+
+Navigate to the `Admin` page.
+
+Add two text input controls and configure them:
+
+From the element bar, click `Controls` > `Text input`.
+
+Configure the first control:
+- Change `Control ID` to `Llm`
+- Enter value: `claude-sonnet-4-5`
+
+Add one more text input control to the Admin page:
+
+1. **Add another text input control**
+   - Change `Control ID` to `Stage`
+   - Enter value: `@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS`
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> If you used different database, schema, or stage names when creating your Snowflake stage, update the Stage value to match your actual stage path. Remember that Snowflake converts unquoted identifiers to uppercase.
+</aside>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The Llm and Stage controls hold configuration values used in your AI processing formulas throughout the application.
+</aside>
+
+<img src="assets/fupl_27.png" width="600"/>
+
+### Add Delete Button Column
+On the `Main` page, in the `Your files with insight` child table, click the `+` next to the last column to add a new column.
 
 Configure the delete column:
 1. Rename the column to `Delete` by double-clicking the column header
@@ -652,25 +619,29 @@ Configure the delete column:
 ```
 3. Transform the column type to `set image`:
 
-<img src="assets/fupl_23.png" width="500"/>
+<img src="assets/fupl_23.png" width="400"/>
 
-Set the image to `20 x 15`:
+Set the image size to `25 x 48` and enable `Preserve aspect ratio`:
 
 <img src="assets/fupl_24.png" width="350"/>
 
-Press Enter - you should see a trash icon appear (you may need to add one empty row to see it)
+Press Enter - you should see a trash icon appear
 
 4. Click the **Actions** tab in the properties panel
 5. Click `Add action` and select `Delete row(s)`
 6. Configure the action:
-   - **In**: `Your files (User)`
+   - **In**: `Your files with insight (Main)`
    - **Delete row(s) by**: `Single row`
-   - **Column**: Select `ID` (the Row ID column)
-   - **ID**: Select `ID` (the Row ID column)
+   - **Column**: Select `RowID`
+   - **ID**: Select `RowID`
 
 <img src="assets/fupl_25.png" width="700"/>
 
+Add one more action to `Refresh` the `Your files with insight (Main)` table after the row is deleted.
+
 The trash icon will now act as a clickable delete button for each row.
+
+Hide the `RowID` column.
 
 <aside class="positive">
 <strong>TIP:</strong><br> You can use any image URL for the delete icon. The formula creates a calculated column that displays the image in every row.
@@ -678,6 +649,44 @@ The trash icon will now act as a clickable delete button for each row.
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> The delete button removes the row from the Sigma input table, but does <strong>not</strong> delete the actual file from S3. Files remain in your S3 bucket even after being removed from the table. To clean up unused files in S3, you can manually delete them from the AWS Console or configure S3 lifecycle policies to automatically remove old files.
+</aside>
+
+### Add Calculated Columns for Preview and Results
+
+**1. Add Preview Column**
+
+In the `Your files with insight` table click the `+` button after the `File` column and select `Add a new column`.
+
+Rename the column to `Preview`.
+
+Enter this formula:
+```code
+If(IsNull([FileID]), "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], "/", 1) = "image", CallText("get_presigned_url", [Stage], [FileID]), SplitPart([Type], "/", 2) = "plain", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], ".", -1) = "document", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], "/", 2) = "pdf", "https://static.vecteezy.com/system/resources/thumbnails/023/234/824/small/pdf-icon-red-and-white-color-for-free-png.png", SplitPart([Type], ".", -1) = "presentation", "https://cdn-icons-png.flaticon.com/512/9034/9034417.png", SplitPart([Type], "/", 1) = "audio", "https://image.similarpng.com/file/similarpng/original-picture/2021/07/Sound-wave-pattern.-Equalizer-graf-design.png", SplitPart([Type], "/", 1) = "video", "https://image.similarpng.com/file/similarpng/original-picture/2021/07/Sound-wave-pattern.-Equalizer-graf-design.png", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png")
+```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> This formula references the <code>[Stage]</code> control you created earlier. The <code>IsNull([FileID])</code> check at the beginning prevents errors when the table is empty by returning a default placeholder image.
+</aside>
+
+Transform the column to `set image`.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> This formula generates presigned URLs for images (so they can be displayed directly) and uses placeholder icons for other file types.
+</aside>
+
+**2. Add AI Results Column**
+
+Click the `+` button after the `Type` column and select `Add a new column` > `Calculation`.
+
+Rename the column to `AI Results`.
+
+Enter this formula:
+```code
+[AI Detailed Description]
+```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> For now, this column simply displays the detailed description. If you want to add the ability to switch between detailed description and summary, you would add a segment control on the Main page and update this formula to: <code>Switch([SegmentSelection], "AI Summary", [AI Summary], [AI Detailed Description])</code>
 </aside>
 
 ### Add Visual Separation
@@ -691,8 +700,6 @@ Click `Create container` to group them together.
 
 Your workbook should now show a clean file upload interface with a table to display results.
 
-Rename the page `Your Files`.
-
 Click `Save as` and name the workbook `File Uploads QuickStart`:
 
 <img src="assets/fupl_26.png" width="700"/>
@@ -701,36 +708,18 @@ Click `Save as` and name the workbook `File Uploads QuickStart`:
 <!-- END OF SECTION-->
 
 ## Configure AI Processing Actions
-Duration: 15
+Duration: 20
 
 Next we will configure actions that automatically process files when they're uploaded, using different AI functions based on file type.
 
-### Create Admin Page for Variables
-
-From the element bar, click `Controls` > `Text input`.
-
-Change `Control ID` in the properties panel to `LLM`.
-
-Click the 3-dot menu on this control and select `Move to` > `New page`.
-
-Rename the new page to `Admin`.
-
-Click the 3-dot menu again and select `Duplicate`.
-
-Change the `Control ID` of the duplicate to `Stage`.
-
-In the `LLM` control, type: `claude-sonnet-4-5`
-
-In the `Stage` control, type your stage path: `@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS`
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> If you used different database, schema, or stage names when creating your Snowflake stage, update this path to match. Remember that Snowflake converts unquoted identifiers to uppercase.
+<aside class="positive">
+<strong>NOTE:</strong><br> The Admin page controls (Llm, Stage) that you created earlier will be used in the action sequences you're about to configure.
 </aside>
 
-<img src="assets/fupl_27.png" width="450"/>
-
 ### Create Processing Modal
-Click `More options` in the lower left corner and select `Add modal`.
+Click `+` in the lower left corner and select `Add modal`:
+
+<img src="assets/fupl_28a.png" width="400"/>
 
 Click the `Format` tab in the properties panel:
 - In the `Footer` section, deselect both button options
@@ -741,14 +730,14 @@ Minimize the modal height:
 
 Change the header text to `Please wait...` 
 
-Select `UI` from the bottom toolbar and click `Text` object.
+Select `UI` from the bottom toolbar and click `Image` object.
 
-Set the text to `processing your AI request...` and center it, applying any other styling you prefer:
+Any image will do, but we used an animated gif:
 
-<img src="assets/fupl_29.png" width="800"/>
+<img src="assets/processing.gif" width="300"/>
 
 ### Add Action 1: Process Images
-Return to the `Your Files` and click the `Files` upload control (with the `Browse` button).
+Return to the `Main` page and select the `Load file` upload control (with the `Browse` button).
 
 Click `Actions` in the right-hand properties panel.
 
@@ -756,78 +745,59 @@ Click the 3-dot menu next to `Action sequence` and select `Add condition`.
 
 In the box under `Custom formula`, enter:
 ```code
-SplitPart(Text(Json(Text([Files])).type), "/", 1) = "image"
+SplitPart(Text(Json(Text([Load-file])).type), "/", 1) = "image"
 ```
 
 This condition checks if the uploaded file is an image.
 
-Click the `+` (Add action) button next to Action sequence:
+Now add the 5-step action sequence by clicking the `+` button repeatedly:
 
-**Action 1**: Select `Open modal` and choose the modal page you created.
+**Action 1**: Select `Open modal` and choose the `Modal Wait` modal you created.
 
-<img src="assets/fupl_30.png" width="800"/>
+**Action 2**: Select `Insert row`
+- **Into**: `My files (Admin)`
+- Configure the column mappings for all columns:
+  - **File**: Control → `Load file (Main)`
+  - **Name**: Formula → `Text(Json(Text([Load-file])).name)`
+  - **FileID**: Formula → `Text(Json(Text([Load-file])).id)`
+  - **Type**: Formula → `Text(Json(Text([Load-file])).type)`
+  - **AI Summary**: Formula → `Text(CallVariant("ai_complete", [Llm], "give a brief 2-3 sentence summary of the following: ", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id))))`
+  - **AI Detailed Description**: Formula → `Text(CallVariant("ai_complete", [Llm], "give a detailed description of the following: ", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id))))`
 
-Click the `+` button again to create another action.
-
-**Action 2**: Select `Insert row`.
-
-For the insert row target, select the `Your files` input table.
-
-Configure the column mappings for all four columns:
-
-- **File**: Click `Control` and verify it defaults to `Files`
-
-- **Name**: Click `Formula` and enter:
-```code
-Text(Json(Text([Files])).name)
-```
-
-- **File ID**: Click `Formula` and enter:
-```code
-Text(Json(Text([Files])).id)
-```
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> Make sure to set File ID to <strong>Formula</strong> (not Static value).
+<aside class="positive">
+<strong>NOTE:</strong><br> Both AI calls (Summary and Detailed Description) run when the file is uploaded. The AI Summary provides a quick 2-3 sentence overview, while the AI Detailed Description provides comprehensive analysis. Processing can take time depending on file size and complexity.
 </aside>
 
-- **AI Detailed Description**: Click `Formula` and enter:
-```code
-Text(CallVariant("ai_complete", [LLM], "give a detailed description of the following: ", CallText("to_file", [Stage], Text(Json(Text([Files])).id))))
-```
+**Action 3**: Select `Clear control`
+- **Apply to**: `Specific control`
+- **Control**: `Load file (Main)`
 
-<img src="assets/fupl_31.png" width="800"/>
+**Action 4**: Select `Refresh element`
+- **Element**: `Your files with insight (Main)`
 
-Click the `+` button again:
+**Action 5**: Select `Close modal`
 
-**Action 3**: Select `Clear control` and choose `Files` from `Your Files`:
-
-<img src="assets/fupl_32.png" width="700"/>
-
-Click the `+` button again:
-
-**Action 4**: Select `Close modal`.
-
-### Add Action 2: Process Audio/Video (Optional)
+### Add Action Sequence 2: Process Audio/Video (Optional)
 <aside class="positive">
 <strong>OPTIONAL:</strong><br> This section is optional. You can test the application with just image processing. Add audio/video and document processing later if needed for your use case.
 </aside>
 
-Click the 3-dot menu next to the action sequence you just created and select `Duplicate`.
+Click the 3-dot menu next to the first action sequence you just created and select `Duplicate`.
 
 Change the condition formula to:
 ```code
-In(SplitPart(Text(Json(Text([Files])).type), "/", 1), "audio", "video")
+In(SplitPart(Text(Json(Text([Load-file])).type), "/", 1), "audio", "video")
 ```
 
-In the Insert row action, change the `AI Detailed Description` formula to:
-```code
-Text(CallVariant("ai_complete", [LLM], Concat("give a detailed description of the following: ", CallText("to_varchar", CallText("ai_transcribe", CallText("to_file", [Stage], Text(Json(Text([Files])).id)))))))
-```
+In **Action 2** (Insert row), update the AI formulas to use transcription:
+- **AI Summary**: Formula → `Text(CallVariant("ai_complete", [Llm], Concat("give a brief 2-3 sentence summary of the following: ", CallText("to_varchar", CallText("ai_transcribe", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id)))))))`
+- **AI Detailed Description**: Formula → `Text(CallVariant("ai_complete", [Llm], Concat("give a detailed description of the following: ", CallText("to_varchar", CallText("ai_transcribe", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id)))))))`
 
 This uses AI_TRANSCRIBE to convert audio/video to text before analyzing.
 
-### Add Action 3: Process Documents (Optional)
+Leave all other column mappings and actions in the sequence unchanged.
+
+### Add Action Sequence 3: Process Documents (Optional)
 
 <aside class="positive">
 <strong>OPTIONAL:</strong><br> This section is also optional. The core application works with just image processing configured above.
@@ -837,23 +807,22 @@ Click the 3-dot menu next to the action sequence and select `Duplicate` again.
 
 Change the condition formula to:
 ```code
-Not(In(SplitPart(Text(Json(Text([Files])).type), "/", 1), "image", "audio", "video"))
+Not(In(SplitPart(Text(Json(Text([Load-file])).type), "/", 1), "image", "audio", "video"))
 ```
 
 This catches all other file types (PDFs, Office docs, etc.).
 
-In the Insert row action, change the `AI Detailed Description` formula to:
-```code
-Text(CallVariant("ai_complete", [LLM], Concat("give a detailed description of the following: ", CallText("get", CallText("ai_parse_document", CallText("to_file", [Stage], Text(Json(Text([Files])).id))), "content"))))
-```
+In **Action 2** (Insert row), update the AI formulas to use document parsing:
+- **AI Summary**: Formula → `Text(CallVariant("ai_complete", [Llm], Concat("give a brief 2-3 sentence summary of the following: ", CallText("get", CallText("ai_parse_document", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id))), "content"))))`
+- **AI Detailed Description**: Formula → `Text(CallVariant("ai_complete", [Llm], Concat("give a detailed description of the following: ", CallText("get", CallText("ai_parse_document", CallText("to_file", [Stage], Text(Json(Text([Load-file])).id))), "content"))))`
 
 This uses AI_PARSE_DOCUMENT to extract text from documents before analyzing.
+
+Leave all other column mappings and actions in the sequence unchanged.
 
 <aside class="positive">
 <strong>TIP:</strong><br> You can rename action sequences by double-clicking their names. Use descriptive names like "Process Image Files", "Process Audio/Video Files", and "Process Document Files" to make them easier to manage.
 </aside>
-
-<!-- <img src="assets/all_action_sequences.png" width="800"/> -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -867,81 +836,78 @@ Now you'll add the ability to ask questions across all uploaded files simultaneo
 
 From the element bar, click `Controls` > `Text input`.
 
-Change `Control ID` to `Multimodal-Inquiry`.
+Change `Control ID` to `CollectiveInquiry`.
 
 Drag it to the right side of your existing container.
 
-From the element bar, click `UI` > `Divider` and place it under the text input.
-
-From the element bar, click `Controls` > `Text area`.
-
-Change `Control ID` to `AI Results`.
-
-Drag it underneath the divider.
-
 From the element bar, click `UI` > `Button`.
 
-Change the button `Text` to `Ask`.
+Change the button `Text` to `Clear`.
 
-Drag it to the right of the `Multimodal Inquiry` text input.
+Drag it to the right of the `CollectiveInquiry` text input.
 
-Select all four new objects (text input, divider, text area, button) and click `Create container`:
+Select both new objects (text input and button) and click `Create container`:
 
 <img src="assets/fupl_33.png" width="800"/>
 
-### Create Multi-Modal Processing Table
-In the upper right corner of the `Your files` table, click `Create Child Element` > `Table`.
+### Create Multi-Modal Custom SQL
 
-Click the 3-dot menu on this new table and select `Move to` > `Admin`.
+Now you'll create a SQL table that allows users to ask questions across ALL uploaded files simultaneously. This is the "multi-modal inquiry" feature.
 
-Select the arrow on the `Admin` page tab and select `Hide page`.
+**How it works:**
+1. **Aggregates all file data**: Uses `listagg()` to combine all file names and AI descriptions into a single text string
+2. **Checks for user question**: Uses the `{{CollectiveInquiry}}` control parameter - if the user typed a question, it proceeds; if empty, shows "Ask optional question above"
+3. **Passes to AI**: Sends the user's question + all aggregated file data to `ai_complete()` for analysis
+4. **Returns comprehensive answer**: AI analyzes all files together and answers the question based on the combined context
 
-Rename the child table to `Multimodal`.
+Click `Data` from the element bar, then select `Table` > `SQL`.
 
-Click `+` next to `Groupings` and select `Add new column`.
+Select your Snowflake connection.
 
-Enter `1` as the formula for this new field `calc` (the actual name and value don't matter).
+Click `SQL` and paste in the following:
 
-Click `+` next to `calculations` in the Groupings section.
-
-Select `Add new column` and enter the following formula:
 ```code
-Text(CallVariant("ai_complete", [LLM], "answer inquiry '" & [Multimodal-Inquiry] & "' from following data:" & ListAgg(Concat([Name], ": ", [AI Detailed Description], "\n"), "\n")))
+with mycte as
+(select
+listagg( concat('File name: ', "Name", ', Detail Description: ', "AI Detailed Description", ' ; \n' )) all_results
+from sigma_element('Your files with insight'))
+select iff({{CollectiveInquiry}} is not null,
+ai_complete({{LLM}}, concat('Answer the following inquiry', {{CollectiveInquiry}}, ' from the following: ', all_results)), 'Ask optional question above') multimodal_results from mycte
 ```
 
-Rename this column to `Multimodal Results`.
+<aside class="positive">
+<strong>SQL Breakdown:</strong><br>
+• <code>sigma_element('Your files with insight')</code> - References your child table containing all uploaded files<br>
+• <code>listagg(concat(...))</code> - Concatenates all rows into one long string with file names and descriptions<br>
+• <code>{{CollectiveInquiry}}</code> - Parameter from the text input control (the user's question)<br>
+• <code>{{LLM}}</code> - Parameter from the Llm control (which AI model to use)<br>
+• <code>ai_complete()</code> - Snowflake Cortex function that sends the prompt to the AI and returns the answer
+</aside>
 
-Since we had one row (when working on the delete column) there is one row with no information but the results show that the app is already working:
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> If your input table has a different name than 'Your files with insight', update the <code>sigma_element()</code> reference in the SQL to match your table name.
+</aside>
+
+Click `Run` to execute the query.
+
+<img src="assets/fupl_33a.png" width="800"/>
+
+In the element panel, click the `Format` tab and turn off both the `Title` and `Show summary bar`.
+
+Change the table to `Presentation mode`.
+
+Drag the table to position it next to the `Your files` table:
 
 <img src="assets/fupl_34.png" width="800"/>
 
-### Configure Ask Button Actions
-Return to the `User` page and click the `Ask` button.
+### Configure Clear Button Action
+Select the `Clear` button.
 
 Click `Actions` in the properties panel.
 
-Click the `+` button to add actions:
+Click the `+` button to add an action:
 
-**Action 1**: Select `Open modal` and choose your processing modal.
-
-**Action 2**: Select `Set control value`.
-- **Update control**: Select `AI Results (Your Files)`
-- **Set value as**: Select `Formula`
-- Enter formula: `[Multimodal/Multimodal results]`
-
-**Action 3**: Select `Close modal`.
-
-<img src="assets/fupl_35.png" width="600"/>
-
-### Configure Table Editing
-
-Return to `Your Files` and click on the `Your files` table.
-
-Change the table mode to `Editable in published version (all users)`.
-
-<aside class="positive">
-<strong>NOTE:</strong><br> Users can remove entries by clicking the <strong>Delete</strong> button in each row. The file preview modal's delete functionality has known beta limitations in published mode, so the Delete button column provides the best user experience.
-</aside>
+**Action**: Select `Clear control` and choose `CollectiveInquiry`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -953,41 +919,41 @@ Now you're ready to test your multi-modal file processing application.
 
 ### Test Basic File Upload
 
-To make the example really simple, we created two screenshots, one of Sigma's homepage and another of the QuickStarts homepage. We will upload them both and then as the AI to compare them, just to see what happens.
+To make the example really simple, we created two screenshots, one of Sigma's homepage and another of the QuickStarts homepage. We will upload them both and then ask the AI to compare them, just to see what happens.
 
-Upload any test image by clicking the `Browse` button in the `Files` control.
+Upload any test image by clicking the `Browse` button in the `Load file` control.
 
-The application should:
-1. Show the "Please wait..." modal briefly
-2. Automatically generate an AI description of the image
-3. Display the file and description in the `Your files` table
+The application will:
+1. Show the "Processing..." modal while the files are uploaded and the AI evaluates the content
+2. Automatically generate an AI Detailed Description and AI Summary
+3. Display the file and descriptions in the `Your files with insight` table
 
 <img src="assets/uploadfile.gif">
 
 ### Test Multi-Modal Inquiry
+After uploading multiple files:
 
-After uploading another file:
+1. Type a question in the `CollectiveInquiry` field and press `Enter`.
 
-1. Enter a question in the `Multimodal Inquiry` field, such as:
+Examples questions:
+   - "What is the common theme in my files?"
    - "Compare and contrast my files"
-   - "What common themes appear in these files?"
    - "Summarize the key information across all documents"
 
-2. Click the `Ask` button
+2. The multimodal results table will automatically update with the AI-generated response
 
-3. Review the AI-generated response in the `AI Results` text area
+The AI will analyze all uploaded files collectively and provide an integrated answer based on their combined content. Use the `Clear` button to reset the inquiry field when needed:
 
-The AI will analyze all uploaded files collectively and provide an integrated answer based on their combined content.
-
-<img src="assets/fupl_36.png" width="500"/>
+<img src="assets/fupl_36.png" width="800"/>
 
 ### Expected Results
-
 You should now have a working multi-modal AI application that:
-- Processes images, documents, and audio/video files automatically
+- Processes images (and documents, and audio/video files if you configured those) automatically
 - Generates intelligent descriptions of file content
 - Answers natural language questions across multiple files
 - Provides a clean, user-friendly interface for unstructured data analysis
+- Ready for final clean-up and other usability enhancements to suit
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -999,7 +965,7 @@ This section covers common issues you may encounter and how to resolve them.
 
 ### Error: "Edits can only be made in draft mode"
 
-**Symptom**: When uploading a file, you see: `Error in Insert row into 'Your files' - Edits can only be made in draft mode`
+**Symptom**: When uploading a file, you see: `Error in Insert row into 'My files' - Edits can only be made in draft mode`
 
 **Solution**: Click the `Edit` button in the top-right of the workbook to enter draft/edit mode. Input table actions only work in draft mode during development. Once you publish the workbook with the table set to "Editable in published version", end users will be able to insert rows.
 
@@ -1095,15 +1061,15 @@ ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'AWS_US';
 **Solution**:
 1. Make sure you're in Edit mode (not published/view mode)
 2. Check the browser console for JavaScript errors
-3. Verify all four column mappings in the Insert row action are configured (File, Name, File ID, AI Detailed Description)
-4. Simplify the Insert row to just File and a static value for AI Detailed Description to isolate if the issue is with the AI formula
+3. Verify all column mappings in the Insert row action (Action 2) are configured correctly
+4. Simplify the AI Detailed Description formula to a static value to isolate if the issue is with the AI processing
 
-### Admin page controls (LLM, Stage) are empty
+### Admin page controls (Llm, Stage) are empty
 
-**Symptom**: The LLM or Stage controls on the Admin page don't have values.
+**Symptom**: The Llm or Stage controls on the Admin page don't have values.
 
 **Solution**: Navigate to the Admin page and manually enter:
-- **LLM**: `claude-3-7-sonnet` (or your preferred vision-capable model)
+- **Llm**: `claude-sonnet-4-5` (or your preferred vision-capable model)
 - **Stage**: `@QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS` (or your actual stage path)
 
 Save the workbook after setting these values.
@@ -1116,7 +1082,7 @@ Duration: 5
 
 ### Understanding File Deletion Behavior
 
-The delete button in the application removes rows from the Sigma input table, but **does not delete the actual files from S3**.
+The Action column's delete button removes rows from the Sigma input table, but **does not delete the actual files from S3**.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> It is possible to configure the delete button to also remove files from S3 using Snowflake stored procedures with External Access Integrations and the boto3 Python package. However, this requires additional AWS credential configuration and is beyond the scope of this QuickStart. For most use cases, the options below provide simpler file management approaches.
@@ -1169,10 +1135,10 @@ In this QuickStart, you learned how to extend Sigma's file uploads feature with 
 
 - **Configured external storage integration** to persist files in your cloud storage
 - **Created Snowflake storage integration and stage** to access uploaded files
-- **Built custom functions** for file processing (FileGetURL, FileAskAI, FileExtractDetail)
+- **Built action sequences** for automatic AI processing based on file type
 - **Developed a multi-modal AI application** that handles images, documents, and audio/video
 - **Implemented conditional processing** based on file type
-- **Enabled multi-modal inquiry** to ask questions across multiple files
+- **Enabled multi-modal inquiry** to ask questions across multiple files using custom SQL
 
 ### Advanced Use Cases
 
@@ -1196,7 +1162,7 @@ The techniques in this QuickStart enable many business applications:
 ### Next Steps
 
 Explore additional AI capabilities:
-- **FileExtractDetail**: Use the extraction function to pull specific fields from documents (vendor name, date, amount, etc.)
+- **Structured Extraction**: Use AI_EXTRACT to pull specific fields from documents (vendor name, date, amount, etc.)
 - **Classification**: Add automatic content classification using AI_COMPLETE
 - **Translation**: Implement multi-language support using AI_TRANSLATE
 - **Batch Processing**: Process multiple files in bulk with input tables
