@@ -3,9 +3,9 @@ id: aiapps_file_uploads_multimodal_ai
 summary: aiapps_file_uploads_multimodal_ai
 categories: aiapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2026-02-05
 
 # Multi-Modal File Analysis with AI
@@ -625,9 +625,9 @@ Set the image size to `25 x 48` and enable `Preserve aspect ratio`:
 
 <img src="assets/fupl_24.png" width="350"/>
 
-Press Enter - you should see a trash icon appear
+We can test that the trash icon appears by hitting `Enter` on the `Admin` > `My files` input table.
 
-4. Click the **Actions** tab in the properties panel
+4. With the `Delete` column selected. click the **Actions** tab in the properties panel
 5. Click `Add action` and select `Delete row(s)`
 6. Configure the action:
    - **In**: `Your files with insight (Main)`
@@ -736,7 +736,7 @@ Any image will do, but we used an animated gif:
 
 <img src="assets/processing.gif" width="300"/>
 
-### Add Action 1: Process Images
+### Add Action Sequence 1: Process Images
 Return to the `Main` page and select the `Load file` upload control (with the `Browse` button).
 
 Click `Actions` in the right-hand properties panel.
