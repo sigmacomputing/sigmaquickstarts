@@ -3,9 +3,9 @@ id: aiapps_file_uploads_multimodal_ai
 summary: aiapps_file_uploads_multimodal_ai
 categories: aiapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2026-02-05
 
 # Multi-Modal File Analysis with AI
