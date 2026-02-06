@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Multi-Modal File Analysis with AI",
+      "id": "aiapps_file_uploads_multimodal_ai",
+      "category": "aiapps",
+      "date": "Feb 6, 2026"
+    },
+    {
       "title": "Data Models as Code",
       "id": "developers_data_models_as_code",
       "category": "Developers",
@@ -33,12 +39,6 @@
     {
       "title": "Popular Functions",
       "id": "functions_popular_functions",
-      "category": "Functions",
-      "date": "Dec 3, 2025"
-    },
-    {
-      "title": "Connect Snowflake Intelligence to Sigma Workbook",
-      "id": "partners_snowflake_intelligence",
       "category": "Functions",
       "date": "Dec 3, 2025"
     }
