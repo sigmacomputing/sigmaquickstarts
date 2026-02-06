@@ -363,7 +363,7 @@ Rename the new column `ANOMALY_FLAG`:
 <strong>NOTE:</strong><br> Click the `x` to close the chart warning about more than 25K values. We could filter the data down further to avoid that but not needed right now.
 </aside>
 
-4. **Tooltip**: Add `ORDER_NUMBER`, `SKU_NUMBER`, and `PRODUCT_KEY` (Ensure that these fields are `not aggregated`)
+4. **Tooltip**: Add `ORDER_NUMBER`, `SKU_NUMBER`, `PRODUCT_LINE` and `PRODUCT_KEY` (Ensure that these fields are `not aggregated`)
 5. **Trellis Column**: Add `PRODUCT_FAMILY`:
 
 <img src="assets/rlp_30.png" width="800"/>
@@ -480,6 +480,8 @@ Use `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` as the source.
 
 <img src="assets/rlp_41.png" width="800"/>
 
+**Publish the workbook before proceeding to the next step**
+
 ### Configure Case Management
 
 **Step 4:** Clicking on any `SCAN_ID` triggers a modal containing an approval workflow. 
@@ -578,7 +580,7 @@ Following your analysis, the user may instruct you to Approve, Reject, or Escala
 
 <img src="assets/rlp_49.png" width="600"/>
 
-6. Under `Data Source`, select the `CASE MANAGEMENT` input table
+6. Navigate to `Data + Integrations` tab. Under` Data Source`, navigate to the `App v2.0` page and select the `CASE MANAGEMENT` input table.
 
 7. Under `Integrations`, click the checkmark next to the `Cortex Agent`:
 
