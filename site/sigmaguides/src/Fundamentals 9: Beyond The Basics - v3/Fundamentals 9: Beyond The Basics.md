@@ -534,7 +534,7 @@ If you need more information on functions in Sigma, we have included a link for 
 
 <img src="assets/fbasics_43.png" width="800"/>
 
-There is also a QuickStart on [Common Date Functions and Use Cases.](https://quickstarts.sigmacomputing.com/guide/common_date_functions_and_use_cases/index.html?index=..%2F..index#0)
+There is also a QuickStart on [Common Date Functions](https://quickstarts.sigmacomputing.com/guide/common_date_functions/index.html?index=..%2F..index#0)
 
 `Publish` the workbook.
 
