@@ -480,7 +480,7 @@ Use `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` as the source.
 
 <img src="assets/rlp_41.png" width="800"/>
 
-**Publish the workbook before proceeding to the next step**
+**Publish the workbook and "Go to published version" before proceeding to this step**
 
 ### Configure Case Management
 
