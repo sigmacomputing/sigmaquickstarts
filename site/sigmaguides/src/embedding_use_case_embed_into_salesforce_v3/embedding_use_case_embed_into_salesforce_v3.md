@@ -284,7 +284,11 @@ Open this file and replace the placeholders for `{YOUR_CLIENT_ID}` and `{YOUR_SE
     String secret = '{YOUR_SECRET}';  // Your Sigma secret key
 ```
 
-Save the file after editing.
+`Save` the file after editing.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The "teams", and "account_type" lines in the JWT payload may need to be commented out of the JWT if your use-case is to support internal users only.
+</aside>
 
 **3: sigmaEmbed.html**<br>
 - Renders the Sigma embed using an iframe element. Once the iframeUrl is available, the workbook appears inside Salesforce.
