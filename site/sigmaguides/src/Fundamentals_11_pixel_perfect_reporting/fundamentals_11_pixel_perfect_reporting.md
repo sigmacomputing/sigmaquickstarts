@@ -151,7 +151,7 @@ Using the `Element bar` select `Data` > `Table` search for `Hands` and select th
 Working with the table is no different than in a workbook. 
 
 Add a new column and set its formula to:
-```code
+```copy-code
 ([Price] * [Quantity]) - [Cost]
 ```
 
@@ -175,14 +175,14 @@ Convert the filter to a `page control` and note that its `Control ID` is `Store-
 We also need some additional metrics from the table so that we can expose them in the report. We will use the table's `SUMMARY` feature for that.
 
 At the base of the table, click the `^` icon and then the `+` icon to the right of `SUMMARY`, click `+ New Summary` from the menu and set the formula to:
-```code
+```copy-code
 Round(SumIf([Profit], Year([Date]) = 2024), -3)
 ```
 
 Rename the new summary to `2024 Profit`.
 
 Add three more summaries using the following formulas and names:
-```code
+```copy-code
 Formula                                                    Name
 Round(SumIf([Profit], Year([Date]) = 2023), -3)            2023 Profit
 CountDistinctIf([Order Number], Year([Date]) = 2024)       2024 Orders
@@ -211,7 +211,7 @@ We do have to be really careful to design our layout exactly as we want it to ap
 Fortunately, that is easy enough in Sigma, so we can drag the control and table under the text and get the design we prefer. 
 
 Use this text for the new element:
-```code
+```copy-code
 This is the source data page and should be hidden at all times.
 ```
 
@@ -240,7 +240,7 @@ Add a second page:
 Enable the page header and place the `Plugs logo` in the upper left corner using an `UI` >`Image` element from the element bar.
 
 Configure the image to use this `URL`:
-```code
+```copy-code
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/plugs_logo.png
 ```
 
@@ -257,7 +257,7 @@ Resize the text elemenmty to cover the page top to bottom.
 <img src="assets/ppf_16.png" width="800"/>
 
 Now let's add a `UI` > `Image` and use this URL:
-```code
+```copy-code
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/artificial-intelligence-3382507_1280.jpg
 ```
 
@@ -271,7 +271,7 @@ Resize the image to cover the page top to bottom, but only the left portion of t
 When we created the data page, we set a filter on the table, targeted at the Southwest region. That's cool but reports are usually distributed automatically (using email typically) and we want the report title to reflect the region that it is delivered to. We can leverage that region filter to accomplish this dynamically. 
 
 For example, we add a `UI` > `Text` element to the cover page and for its value, press `=` and use the following formula:
-```code
+```copy-code
 Upper(Coalesce([PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region], "Group"))
 ```
 
@@ -329,7 +329,7 @@ Duration: 15
 Add another new page after `Page 2` to use for the `Strategy` data. 
 
 Style it like this, using this image if you prefer:
-```code
+```copy-code
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/beach_entrance.png
 ```
 
@@ -362,7 +362,7 @@ We also should style the KPI better:
 We can add some visual interest using an icon with a heading. 
 
 Add an image and set the URL to:
-```code
+```copy-code
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/units_sold.png
 ```
 
@@ -424,7 +424,7 @@ Here are the titles, formulas and image URLs needed to create the full page:
 
 ### First row KPI
 **Customer Count:**<br>
-```code
+```copy-code
 CountDistinct([Cust Key])
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/customer_count.png
@@ -432,7 +432,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/customer
 <img src="assets/horizonalline.png" width="800"/>
 
 **Avg Store Sales:**<br>
-```code
+```copy-code
 Round(SumIf([Price] * [Quantity], Year([Date]) = 2024) / CountDistinctIf([Store Key], Year([Date]) = 2024), -3)
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/avg_store_sales.png
@@ -441,7 +441,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/avg_stor
 
 ### Second row KPI<br>
 **Profit Margin:**<br>
-```code
+```copy-code
 Sum([Profit]) / Sum([Price] * [Quantity])
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/profit_margin.png
@@ -450,7 +450,7 @@ Format value as `Percentage`.
 <img src="assets/horizonalline.png" width="800"/>
 
 **Loyalty Members:**<br>
-```code
+```copy-code
 Count([LOYALTY_PROGRAM] = "1")
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/loyalty_members.png
@@ -458,7 +458,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/loyalty_
 <img src="assets/horizonalline.png" width="800"/>
 
 **Orders per Store:**<br>
-```code
+```copy-code
 CountDistinct([Order Number]) / CountDistinct([Store Key])
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/order_per_store.png
@@ -467,7 +467,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/order_pe
 
 ### Third row KPI
 **Average Order Value:**<br>
-```code
+```copy-code
 Sum([Price] * [Quantity]) / CountDistinct([Order Number])
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/avg_order_value.png
@@ -475,7 +475,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/avg_orde
 <img src="assets/horizonalline.png" width="800"/>
 
 **Average Age:**<br>
-```code
+```copy-code
 Avg(Number([CUST_AGE]))
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/average_age.png
@@ -483,7 +483,7 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/average_
 <img src="assets/horizonalline.png" width="800"/>
 
 **Top Store:**<br>
-```code
+```copy-code
 Replace(If(Max([PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Profit]) = [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Profit], [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]), " Store", "")
 ```
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/top_store.png
@@ -507,7 +507,7 @@ Add another page and make it look like this:
 <img src="assets/ppf_36.png" width="800"/>
 
 Image url:
-```code
+```copy-code
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/beach_entrance.png
 ```
 

@@ -177,12 +177,12 @@ For example, if we select gold for `Text`, the change is reflected (#3), and Sig
 Set the `Text` color to standard black.
 
 Set the `Highlight` color to the hex value, and press enter:
-```code
+```copy-code
 F59A23
 ```
 
 Set the `Surface` color to the hex value, and press enter:
-```code
+```copy-code
 3D293D
 ```
 

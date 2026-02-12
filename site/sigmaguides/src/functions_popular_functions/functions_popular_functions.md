@@ -92,7 +92,7 @@ A common use case is analyzing order values by size to understand purchasing pat
 Before we start analyzing bins, let's add a calculated column to our source table on the `Data` page so it's available to all child tables.
 
 Navigate back to the `Data` page and add a new column to the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table:
-```code
+```copy-code
 Column Name:     Formula:
 Order_Value      [Price] * [Quantity]
 ```
@@ -117,7 +117,7 @@ Notice that the `Order_Value` column is now available in this child table.
 `BinFixed` creates equal-width bins by dividing a range into a specified number of bins. This is useful when you want consistent bin sizes.
 
 Let's group orders from $0 to $1000 into 10 equal bins. Add a new column:
-```code
+```copy-code
 Column Name:     Formula:
 Order_Size_Fixed BinFixed([Order_Value], 0, 5000, 10)
 ```
@@ -132,7 +132,7 @@ Format the column as `Number` and remove the decimal places.
 `BinRange` allows you to define custom ranges that make business sense. This is useful when bin sizes should vary based on your analysis needs.
 
 Add another new column:
-```code
+```copy-code
 Column Name:     Formula:
 Order_Size_Range BinRange([Order_Value], 0, 100, 250, 500, 1000)
 ```
@@ -185,7 +185,7 @@ Notice that the `Order_Value` column is now available in this child table withou
 `Zn` (Zero if Null) replaces null values with 0. This is the most common use case for handling nulls in numeric calculations.
 
 Let's simulate a discount column that might have nulls. Add a new column:
-```code
+```copy-code
 Column Name:     Formula:
 Discount_Rate    If([Order_Value] > 500, 0.10, null)
 ```
@@ -193,7 +193,7 @@ Discount_Rate    If([Order_Value] > 500, 0.10, null)
 This gives a 10% discount only for orders over $500, otherwise null.
 
 Now create a column that handles the null values:
-```code
+```copy-code
 Column Name:           Formula:
 Discount_Rate_Clean    Zn([Discount_Rate])
 ```
@@ -201,7 +201,7 @@ Discount_Rate_Clean    Zn([Discount_Rate])
 <img src="assets/cdf_06.png" width="500"/>
 
 Now you can safely calculate discounted prices without worrying about null errors:
-```code
+```copy-code
 Column Name:         Formula:
 Discounted_Price     [Order_Value] * (1 - [Discount_Rate_Clean])
 ```
@@ -212,7 +212,7 @@ Discounted_Price     [Order_Value] * (1 - [Discount_Rate_Clean])
 `Coalesce` returns the first non-null value from a list of arguments. This is useful when you have multiple potential sources for a value.
 
 For example, let's create a commission structure with fallback values. Add a new column:
-```code
+```copy-code
 Column Name:     Formula:
 Commission_Rate  Coalesce([Discount_Rate], 0.05)
 ```
@@ -224,7 +224,7 @@ This will:
 <img src="assets/cdf_08.png" width="600"/>
 
 You can also use Coalesce with multiple fallback values. For example:
-```code
+```copy-code
 Coalesce([PrimaryRate], [SecondaryRate], [DefaultRate], 0)
 ```
 
@@ -253,7 +253,7 @@ Add a child table from the `Data` page's `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` t
 Rename the table to `Product_Categories`.
 
 Let's create columns that identify different product types. Add a new column:
-```code
+```copy-code
 Column Name:     Formula:
 Is_Cable         Contains([Product Name], "Cable")
 ```
@@ -261,7 +261,7 @@ Is_Cable         Contains([Product Name], "Cable")
 This returns `True` if the product name contains "Cable", otherwise `False`.
 
 Now add a few more category columns:
-```code
+```copy-code
 Column Name:     Formula:
 Is_Charger       Contains([Product Name], "Charger")
 Is_Adapter       Contains([Product Name], "Adapter")
@@ -273,7 +273,7 @@ Is_USB           Contains([Product Name], "USB")
 </aside>
 
 Now we can create a more readable product category column using these flags. Add a new column:
-```code
+```copy-code
 Column Name:      Formula:
 Product_Category  If([Is_Cable], "Cables", [Is_Charger], "Chargers", [Is_Adapter], "Adapters", "Other")
 ```
@@ -293,13 +293,13 @@ To make that visible in the table, we can group by `Product_Category` and add ca
 Drag the `Product_Category` column to the `GROUPINGS` section.
 
 Add a new calculation column:
-```code
+```copy-code
 Column Name:     Formula:
 Order_Count      CountDistinct([Order Number])
 ```
 
 You can also add other useful metrics:
-```code
+```copy-code
 Column Name:        Formula:
 Total_Revenue       Sum([Order_Value])
 Avg_Order_Value     Avg([Order_Value])
@@ -339,7 +339,7 @@ Rename the table to `Regional_Analysis`.
 Let's say leadership wants to focus on three key regions: West, South, and East. We can create a flag to identify orders from these regions.
 
 Add a new column:
-```code
+```copy-code
 Column Name:      Formula:
 Is_Key_Region     In([Store Region], "West", "South", "East")
 ```
@@ -347,20 +347,20 @@ Is_Key_Region     In([Store Region], "West", "South", "East")
 This returns `True` for orders from these three regions, `False` for all others.
 
 Without the `In` function, you would need to write:
-```code
+```copy-code
 [Store Region] = "West" Or [Store Region] = "South" Or [Store Region] = "East"
 ```
 
 The `In` function is much cleaner and easier to maintain.
 
 Now let's create a more readable column using this flag:
-```code
+```copy-code
 Column Name:          Formula:
 Regional_Priority     If([Is_Key_Region], "Key Region", "Other Region")
 ```
 
 Group by `Regional_Priority` and add calculations to compare performance:
-```code
+```copy-code
 Column Name:        Formula:
 Order_Count         CountDistinct([Order Number])
 Total_Revenue       Sum([Order_Value])
@@ -399,7 +399,7 @@ Add a child table from the `Data` page's `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` t
 Rename the table to `Data_Quality_Check`.
 
 Let's create a simulated scenario where some discount values might be missing. Add a new column:
-```code
+```copy-code
 Column Name:       Formula:
 Sample_Discount    If([Order_Value] > 1000, 0.15, If([Order_Value] > 500, 0.10, null))
 ```
@@ -407,7 +407,7 @@ Sample_Discount    If([Order_Value] > 1000, 0.15, If([Order_Value] > 500, 0.10, 
 This creates discounts only for orders over $500, leaving smaller orders with null values.
 
 Now let's use `IsNull` to identify records without discounts:
-```code
+```copy-code
 Column Name:         Formula:
 Missing_Discount     IsNull([Sample_Discount])
 ```
@@ -415,19 +415,19 @@ Missing_Discount     IsNull([Sample_Discount])
 This returns `True` for records where the discount is null.
 
 We can also use `IsNotNull` to identify complete records:
-```code
+```copy-code
 Column Name:         Formula:
 Has_Discount         IsNotNull([Sample_Discount])
 ```
 
 These functions are commonly used in conditional logic. For example, create a status column:
-```code
+```copy-code
 Column Name:        Formula:
 Discount_Status     If(IsNull([Sample_Discount]), "No Discount", "Discounted")
 ```
 
 Group by `Discount_Status` to see the distribution:
-```code
+```copy-code
 Column Name:        Formula:
 Order_Count         CountDistinct([Order Number])
 Total_Revenue       Sum([Order_Value])
@@ -479,7 +479,7 @@ Add another child table from the `Data` page and rename it `Sales_Last_Year`.
 Group by `Store Region` as well.
 
 On the `Sales_This_Year` table, add a new column:
-```code
+```copy-code
 Column Name:     Formula:
 Total_Sale       [Order_Value]
 ```
@@ -515,7 +515,7 @@ Rename the lookup column to `This_Year_Sales` and drag it to the `CALCULATIONS` 
 Repeat the process to add a lookup from `Sales_Last_Year`, rename it to `Last_Year_Sales`, and drag it to `CALCULATIONS`.
 
 Now add a new column to see the year-over-year change:
-```code
+```copy-code
 Column Name:     Formula:
 YoY_Change       ([This_Year_Sales] - [Last_Year_Sales]) / [Last_Year_Sales]
 ```
@@ -553,7 +553,7 @@ Rename the table to `Store_Performance`.
 Group by `Store Region`, then add a nested grouping by `Store Name`.
 
 Add a calculation for total sales by store:
-```code
+```copy-code
 Column Name:        Formula:
 Store_Sales         Sum([Order_Value])
 ```
@@ -561,7 +561,7 @@ Store_Sales         Sum([Order_Value])
 Format as currency.
 
 Now add another calculation using `PercentOfTotal`:
-```code
+```copy-code
 Column Name:                    Formula:
 Percent_of_Regional_Sales       PercentOfTotal(Sum([Store_Sales]))
 ```
@@ -612,7 +612,7 @@ Looking at the `Sku Number` column, we can see patterns like "SP5720923942", "MP
 Let's say the pattern is: First 2 letters = Product Type, Next 4 digits = Model Number, Remaining digits = Serial Number.
 
 Extract the product type (first 2 characters):
-```code
+```copy-code
 Column Name:     Formula:
 Product_Type     RegexpExtract([Sku Number], "^([A-Z]{2})")
 ```
@@ -623,7 +623,7 @@ The pattern `^([A-Z]{2})` means:
 - Parentheses capture the match for extraction
 
 Extract the model number (characters 3-6):
-```code
+```copy-code
 Column Name:     Formula:
 Model_Number     RegexpExtract([Sku Number], "^[A-Z]{2}([0-9]{4})")
 ```
@@ -633,7 +633,7 @@ The pattern `^[A-Z]{2}([0-9]{4})` means:
 - `([0-9]{4})` = Capture exactly 4 digits
 
 Extract the serial number (remaining digits):
-```code
+```copy-code
 Column Name:       Formula:
 Serial_Number      RegexpExtract([Sku Number], "([0-9]{6,})$")
 ```
@@ -643,7 +643,7 @@ The pattern `([0-9]{6,})$` means:
 - `$` = End of string
 
 Now group by `Product_Type` to analyze sales by product category:
-```code
+```copy-code
 Column Name:        Formula:
 Order_Count         CountDistinct([Order Number])
 Total_Revenue       Sum([Order_Value])
@@ -688,7 +688,7 @@ Rename the table to `Regional_Analysis`.
 ### Add Regional Grouping
 In the **Regional_Analysis** table, click the **Grouping** icon and add two levels:
 
-```code
+```copy-code
 Store Region
 Store Name
 ```
@@ -698,7 +698,7 @@ This creates a hierarchical view showing stores grouped by their region.
 ### Calculate Store Sales
 Click the **+** icon in the table header to add a new column:
 
-```code
+```copy-code
 Column Name:     Formula:
 Store_Sales      Sum([Order_Value])
 ```
@@ -708,7 +708,7 @@ This shows total sales for each store.
 ### Add Regional Subtotal
 Click the **+** icon to add another calculated column:
 
-```code
+```copy-code
 Column Name:       Formula:
 Regional_Total     Subtotal(Sum([Order_Value]), "parent_grouping", 0)
 ```
@@ -722,7 +722,7 @@ Notice that each store in the East region shows the same Regional_Total value (f
 ### Calculate Store Contribution
 Click the **+** icon in the groups calculations to add one more column:
 
-```code
+```copy-code
 Column Name:           Formula:
 Percent_of_Region      [Store_Sales] / [Regional_Total]
 ```
@@ -766,7 +766,7 @@ Rename the table to `Store_Performance`.
 ### Group by Store
 In the **Store_Performance** table, click the **Grouping** icon and add:
 
-```code
+```copy-code
 Store Name
 ```
 
@@ -775,7 +775,7 @@ This groups all orders by store.
 ### Calculate Store Revenue
 Click the **+** icon in the table header to add a new column:
 
-```code
+```copy-code
 Column Name:       Formula:
 Store_Revenue      Sum([Order_Value])
 ```
@@ -785,7 +785,7 @@ This calculates total revenue for each store.
 ### Add Performance Tier
 Click the **+** icon to add another calculated column:
 
-```code
+```copy-code
 Column Name:         Formula:
 Performance_Tier     Switch(True, [Store_Revenue] >= 20000000, "High Performer", [Store_Revenue] >= 15000000, "Medium Performer", [Store_Revenue] >= 10000000, "Low Performer", "Underperforming")
 ```
