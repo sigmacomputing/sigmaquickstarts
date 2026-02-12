@@ -66,7 +66,7 @@ A data model's JSON specification defines its complete structure in a standardiz
 
 When **creating** a data model, the minimal spec requires:
 
-```code
+```copy-code
 {
   "name": "My Data Model",
   "schemaVersion": 1,
@@ -83,7 +83,7 @@ When **creating** a data model, the minimal spec requires:
 
 When the API **returns** a data model spec (via GET or after POST/PUT), it includes additional metadata:
 
-```code
+```copy-code
 {
   "dataModelId": "0983d911-16f1-481e-901e-0e7d86016754",
   "name": "Bike Stations Data Model",
@@ -112,7 +112,7 @@ When the API **returns** a data model spec (via GET or after POST/PUT), it inclu
 
 Each page contains elements (tables, charts, etc.):
 
-```code
+```copy-code
 "pages": [
   {
     "id": "page1",
@@ -126,7 +126,7 @@ Each page contains elements (tables, charts, etc.):
 
 A table element defines the data source and columns:
 
-```code
+```copy-code
 {
   "id": "mytable",
   "kind": "table",
@@ -229,47 +229,47 @@ Open a `Terminal` session.
 
 Create a new directory in a location of your choice:
 
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Initialize a new git repository:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "data-models-as-code" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
 Change directory to the new folder:
-```code
+```copy-code
 cd data-models-as-code
 ```
 
 You should now see the project structure:
-```code
+```copy-code
 data-models-as-code/
 ├── README.md
 ├── .env.example
@@ -300,19 +300,19 @@ To make working with the API easier, we'll use environment variables to store yo
 
 In your terminal session, make sure you're in the `data-models-as-code` directory:
 
-```code
+```copy-code
 cd sigma_quickstarts/data-models-as-code
 ```
 
 The repository you cloned includes a `.env.example` template file. Copy it to create your own `.env` file:
 
-```code
+```copy-code
 cp .env.example .env
 ```
 
 Open `.env` in your text editor. The file contains placeholders for all values we'll gather:
 
-```code
+```copy-code
 # Your Sigma API credentials (from previous section)
 CLIENT_ID=your_client_id_here
 CLIENT_SECRET=your_client_secret_here
@@ -353,7 +353,7 @@ To create a data model via the API, you need an `access token`, a `folder ID`, a
 ### Load Environment Variables
 First, load the CLIENT_ID, CLIENT_SECRET, and API_BASE_URL you configured into your shell session:
 
-```code
+```copy-code
 export $(grep -v '^#' .env | xargs)
 ```
 
@@ -366,7 +366,7 @@ This loads the credentials you configured earlier so we can use them in the API 
 ### Authenticate with the API
 Now use the OAuth token endpoint to get your access token:
 
-```code
+```copy-code
 curl --request POST \
   --url ${API_BASE_URL}/v2/auth/token \
   --header 'accept: application/json' \
@@ -379,7 +379,7 @@ The `--user` flag sends your credentials as Basic Authentication in the Authoriz
 
 The response contains your access token:
 
-```code
+```copy-code
 {
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "token_type": "bearer",
@@ -392,7 +392,7 @@ The response contains your access token:
 
 Copy **ONLY** the `access_token` value (the JWT token, **not the refresh_token portion of the value**) and add it to your `.env` file:
 
-```code
+```copy-code
 ACCESS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
@@ -402,7 +402,7 @@ ACCESS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 Then reload your environment variables:
 
-```code
+```copy-code
 export $(grep -v '^#' .env | xargs)
 ```
 
@@ -415,7 +415,7 @@ For more information, see [Generate API client credentials](https://help.sigmaco
 ### Create a folder
 Create a new folder where your data models will be stored called `Data Models as Code`:
 
-```code
+```copy-code
 curl --request POST \
   --url ${API_BASE_URL}/v2/files \
   --header 'Accept: application/json' \
@@ -429,7 +429,7 @@ curl --request POST \
 
 The response contains the new folder's details:
 
-```code
+```copy-code
 {
   "id": "fe99c419-6855-4860-9437-5e507a021ac3",
   "urlId": "7KqjYZB8yOjpItmbP4wojF",
@@ -445,13 +445,13 @@ Copy the `id` value and add it to your `.env` file:
 
 <img src="assets/dmc_03.png" width="800"/>
 
-```code
+```copy-code
 FOLDER_ID=fe99c419-6855-4860-9437-5e507a021ac3
 ```
 
 Then reload your environment variables:
 
-```code
+```copy-code
 export $(grep -v '^#' .env | xargs)
 ```
 
@@ -462,7 +462,7 @@ You can verify the folder was created by logging into Sigma and checking `My Doc
 ### Get Your Connection ID
 Search for the Sigma Sample Database connection:
 
-```code
+```copy-code
 curl --request GET \
   --url "${API_BASE_URL}/v2/connections?search=Sigma%20Sample%20Database" \
   --header 'Accept: application/json' \
@@ -471,7 +471,7 @@ curl --request GET \
 
 The response returns the Sigma Sample Database connection (it will have `"isSample": true`):
 
-```code
+```copy-code
 {
   "organizationId": "6b306b21-8b0c-4dc0-9d59-1facd04621ac",
   "connectionId": "6036a5a7-3fc2-4e50-9122-1ffb132ac24c",
@@ -483,7 +483,7 @@ The response returns the Sigma Sample Database connection (it will have `"isSamp
 
 Copy the `connectionId` value and add it to your `.env` file:
 
-```code
+```copy-code
 CONNECTION_ID=6036a5a7-3fc2-4e50-9122-1ffb132ac24c
 ```
 
@@ -509,7 +509,7 @@ Now you're ready to create a data model programmatically using the sample JSON s
 
 First, reload your environment variables to ensure all IDs are available:
 
-```code
+```copy-code
 export $(grep -v '^#' .env | xargs)
 ```
 
@@ -518,7 +518,7 @@ This loads your ACCESS_TOKEN, FOLDER_ID, and CONNECTION_ID for use in the follow
 ### Update the Spec with Your IDs
 The `specs/bikes-stations-basic.json` file from your cloned repository contains placeholder values. Replace them with your actual IDs using environment variables:
 
-```code
+```copy-code
 sed -e "s/YOUR_FOLDER_ID_HERE/${FOLDER_ID}/g" \
     -e "s/YOUR_CONNECTION_ID_HERE/${CONNECTION_ID}/g" \
     specs/bikes-stations-basic.json > bikes-stations-configured.json
@@ -531,7 +531,7 @@ This reads from `specs/bikes-stations-basic.json` and creates a new file `bikes-
 ### Create the Data Model
 Use the `POST /v2/dataModels/spec` endpoint to create your data model:
 
-```code
+```copy-code
 curl --request POST \
   --url ${API_BASE_URL}/v2/dataModels/spec \
   --header 'Accept: application/json' \
@@ -550,13 +550,13 @@ The API returns the newly created data model with its `dataModelId`:
 
 Copy this `dataModelId` and add it to your `.env` file:
 
-```code
+```copy-code
 DATA_MODEL_ID=abc123-def456-ghi789
 ```
 
 Then reload your environment variables:
 
-```code
+```copy-code
 export $(grep -v '^#' .env | xargs)
 ```
 
@@ -596,7 +596,7 @@ The repository includes an updated spec at `specs/bikes-stations-updated.json` t
 
 This expands the model from 2 columns to 4 columns, adding geographic coordinates that could be used for mapping visualizations. The updated spec maintains the same simple table structure while adding more data from the STATIONS table:
 
-```code
+```copy-code
 "columns": [
   {
     "id": "station_id",
@@ -620,7 +620,7 @@ This expands the model from 2 columns to 4 columns, adding geographic coordinate
 ### Update the IDs
 Replace the placeholder values in the updated JSON file with your actual IDs:
 
-```code
+```copy-code
 sed -e "s/YOUR_FOLDER_ID_HERE/${FOLDER_ID}/g" \
     -e "s/YOUR_CONNECTION_ID_HERE/${CONNECTION_ID}/g" \
     specs/bikes-stations-updated.json > bikes-stations-updated-configured.json
@@ -633,7 +633,7 @@ This reads from `specs/bikes-stations-updated.json` and creates `bikes-stations-
 ### Apply the Update
 Use the `PUT /v2/dataModels/{dataModelId}/spec` endpoint:
 
-```code
+```copy-code
 curl --request PUT \
   --url ${API_BASE_URL}/v2/dataModels/${DATA_MODEL_ID}/spec \
   --header 'Accept: application/json' \
