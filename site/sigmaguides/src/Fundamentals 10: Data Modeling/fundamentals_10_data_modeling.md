@@ -200,12 +200,12 @@ Since our base table does not have columns for `Revenue` or `Profit`, we can add
 <img src="assets/dm_39a.png" width="600"/>
 
 Add a new column ,and rename it to `Revenue`. Set the formula to:
-```code
+```copy-code
 [Sales Amount] * [Sales Quantity]
 ```
 
 Add another column, and rename it to `Profit`, and set the formula to:
-```code
+```copy-code
 [Revenue] - ([Cost Amount] * [Sales Quantity])
 ```
 
@@ -382,7 +382,7 @@ For example, if we want to add a metric for `Total Revenue`, we click the `+` fo
 
 Configure the new metric as shown, using this formula:
 
-```code
+```copy-code
 Sum([Revenue])
 ```
 
@@ -408,7 +408,7 @@ Formulas in Sigma are flexible and powerful. For example, we can use a formula i
 Click `Edit` on the data model and select the `Plugs Sales` table.
 
 Add another metric to the data model and configure it using this formula:
-```code
+```copy-code
 SumIf([Revenue], [Cust Region] = "East")
 ```
 

@@ -95,7 +95,7 @@ It is often useful to create a key that uniquely identifies any single row of da
 There are several ways to create this "row uniqueness" in Sigma. Since one order may include multiple items (SKUs), we can easily combine both values to generate a stable unique key, using the [MD5 function](https://help.sigmacomputing.com/docs/md5) which uses the MD5 algorithm to automatically calculate a hash value from a given string.
 
 Add a new column, and set the formula to:
-```code
+```copy-code
 MD5(Text([Order Number]) & "_" & [Sku Number])
 ```
 

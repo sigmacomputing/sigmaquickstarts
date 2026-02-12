@@ -141,7 +141,7 @@ In the function bar, start typing `Sum`. Sigma tries to provide all the possible
 <img src="assets/fdata_6.png" width="600"/>
 
 With the `Sales` column selected, enter the formula:
-```code
+```copy-code
 [Price] * [Quant] 
 ```
 		
@@ -160,19 +160,19 @@ Easy to fix, just adjust the column name to `Quantity` and `click the checkmark 
 Now that we have our `Sales`, we should be able to calculate our `COGs`. 
 
 You can do this one yourself now:
-```code
+```copy-code
 [Quantity] * [Cost]
 ```
 
 Do the same to add the `Profit` column:
-```code
+```copy-code
 [Sales] - [COGs]
 ```
 
 We know the profit made for each transaction, but we also are interested to know the `Profit Margin` percentage on each item. 
 
 Add a new column (next to `Profit`), and use the formula:
-```code
+```copy-code
 [Profit] / [Sales]
 ```
 
@@ -513,7 +513,7 @@ Let's create one more summary value by clicking on the caret `^`, and selecting 
 This will give us a blank summary which we can write a function for.
 
 In the function bar, enter the formula bar enter:
-```code
+```copy-code
 [YTD Profit] / [YTD Sales]
 ```
 
@@ -528,7 +528,7 @@ Also rename this summary to `YTD Profit Margin`.
 It may also be helpful to have the total number of orders represented in the data. Sigma has a function for that. 
 
 Add another `New summary` and set the formula to:
-```code
+```copy-code
 GrandTotal(CountDistinct([Order Number]))
 ```
 

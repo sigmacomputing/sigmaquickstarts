@@ -564,7 +564,7 @@ Sigma also includes a Formula Assistant powered by AI. It can:
 - Explain existing formulas used in workbooks and data models
 
 Let’s say someone in Finance provides a formula they want applied at the group level:
-```code
+```copy-code
 Revenue Efficiency Score= 
 Quantity×Price+Cost
 (Price−Cost)×Quantity

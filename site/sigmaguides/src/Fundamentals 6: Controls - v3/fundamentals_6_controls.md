@@ -302,7 +302,7 @@ We need to make the table respond to this controls value, as it is changed.
 
 Add a new column next to `Transaction Type`, rename it to `Switch`, and set its formula to:
 
-```code
+```copy-code
 Switch([Transaction Type], "Purchase", True, "Return", False)
 ```
 
@@ -393,7 +393,7 @@ Next, we will add a column to the table that will reference the current value of
 This is how the table "targets" the control, as opposed to the control managing the target.
 
 Add a new column to the table, in the first position. Rename it to `Stack By` and set it's formula to:
-```code
+```copy-code
 Switch([f6-c-stack-by], "State", [Store State], "Store Region", [Store Region], "Brand", [Brand])
 ```
 

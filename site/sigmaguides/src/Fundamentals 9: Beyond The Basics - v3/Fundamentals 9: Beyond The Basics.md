@@ -132,7 +132,7 @@ Our joined tables have a generic name; change the name of the new table to somet
 </aside>
 
 Add a new column, rename it to `Sales` and set its formula to:
-```code
+```copy-code
 Sum([Quantity] * [Price])
 ```
 
@@ -281,7 +281,7 @@ How can we address the extra registrations and report the "dirty data" back to t
 There is a simple way to handle the extra registrations that resulted from the join, using the [RowNumber() function](https://help.sigmacomputing.com/docs/rownumber).
 
 Add a new column outside of the grouping set its formula to:
-```code
+```copy-code
 RowNumber([Customer_ID])
 ```
 
@@ -367,14 +367,14 @@ Our `Customers and Addresses Ungrouped` table will not have `Customer_ID` values
 In our use case, we want to ensure that the person registering is not an existing customer, so perhaps we can check their name and address against our existing customer data to see if there is a match (for example). While this may not be a perfect method, it will get us close enough for this demonstration.
 
 Set the `Join keys` to:
-```code
+```copy-code
 Cust Address = Street
 ```
 
 To avoid people with the same names, we need to add a second `Join key` and use a custom formula that concatenates the first and last names of the customer in the `Customers and Addresses Ungrouped` table, since they are separate columns.
 
 The second join key is on `Cust Name` and the formula:
-```code
+```copy-code
 [First_Name] & " " & [Last_Name]
 ```
 
@@ -387,7 +387,7 @@ For more information about [operators in Sigma, see here](https://help.sigmacomp
 Click `Preview` and `Done`.
 
 Add a `New column`, rename it to `Exists In` and set its formula to:
-```code
+```copy-code
 If(IsNull([Street]), "Exists ONLY in D_CUSTOMER", IsNull([Cust Address]), "Exists ONLY in CSV", "Exists in BOTH")
 ```
 
@@ -448,7 +448,7 @@ Click `Done`.
 <img src="assets/fbasics_34.png" width="700"/>
 
 Instead of reporting the issue, we can simply change the `Profit` column's formula to calculate the correct profit:
-```code
+```copy-code
 ([Price] * [Quantity]) - [Cost]
 ```
 <aside class="negative">
@@ -522,7 +522,7 @@ Click the `+` icon (number 4) to collapse the table's detail data:
 <img src="assets/fbasics_41.png" width="800"/>
 
 Click on the column `Sum of Sales (1 year ago)` to see its formula, which is:
-```code
+```copy-code
 DateLookback(Sum([Sales]), [Quarter of Date], 1, "year")
 ```
 
@@ -563,14 +563,14 @@ Create a new page in workbook, and rename it to `Cumulative Sum`.
 Add a new `Table` element to the page, reusing the `Sales Detail | Customer and Store Demographics` table on the `Common Join` page.
 
 Add a new column and set it's formula to:
-```code
+```copy-code
 DatePart("year", [Date])
 ```
 
 This will give us just the `year` from the `Date` column.
 
 Repeat this for another new column and set the formula to get the `month` this time:
-```code
+```copy-code
 DatePart("month", [Date])
 ```
 
@@ -593,7 +593,7 @@ Our table now shows each `year` and `month`, grouped together:
 <img src="assets/fbasics_46.png" width="800"/>
 
 Add another column under next to `Monthly Sales`, setting the it's formula to:
-```code
+```copy-code
 CumulativeSum([Monthly Sales])
 ```
 Our table now matches the screenshot below. Notice how the values in `CumulativeSum of Monthly Sales` build upon the previous cell's value?
@@ -690,7 +690,7 @@ Lets assume we also want to know what each region and states contribution is to 
 We can do that easily by leveraging one of the background calculations that we just reviewed.
 
 Add a new column in the `VALUES` section of `PIVOT COLUMNS` and set it's formula to:
-```code
+```copy-code
 Sum([Sales]) / [Sum of Sales (Grand Total)]
 ```
 

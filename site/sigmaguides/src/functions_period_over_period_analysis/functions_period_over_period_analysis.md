@@ -209,7 +209,7 @@ Columns can be added by clicking the `+` in the `Element Panel` / `Columns` side
 <img src="assets/pop2.png" width="800"/>
 
 Rename this columne to `Revenue` and set it's formula to:
-```code
+```copy-code
 [Price] * [Quantity]
 ```
 
@@ -250,7 +250,7 @@ Three calculations are created for us by the wizard (number 1 in the screenshot)
 This gets us close to what we wanted but we are showing all the months for each year and we only really wanted `December` sales.
 
 A simple way to achieve this is to add a column for `MonthName` (anywhere in the table really), and set the formula to:
-```code
+```copy-code
 MonthName([Date])
 ```
 
@@ -333,7 +333,7 @@ Now that we have our "framework", let’s figure out the start and end dates for
 For the `Period Start` date of the current period, which is 30 days before the end date.
 
 Select the `Period Start` summary and set it's formula to:
-```code
+```copy-code
 DateAdd("day", -30, [Period End])
 ``` 
 
@@ -342,7 +342,7 @@ This will evaluate to `null` at first because we have not set a formula for `Per
 <img src="assets/pop15.png" width="800"/>
 
 Next, select the `End Period` summary and set it's formula to:
-```code
+```copy-code
 DateAdd("day", -1, Today())
 ``` 
 
@@ -353,31 +353,31 @@ Now we have values for `Period Start` and `Period End`:
 We just need to repeat this process to add calculations for the `Previous Period Start` and `Previous Period End` summaries. For those two, use these calculations:
 
 For `Previous Period Start`, the previous period is one year before the current period's start date. You can find it by subtracting one year:
-```code
+```copy-code
 DateAdd("year", -1, [Period Start])
 ```
 
 For `Previous Period End`, the previous period is the same as the current period's end date, but one year earlier. You can find it by subtracting one year:
-```code
+```copy-code
 DateAdd("year", -1, [Period End])
 ```
 
 To find `Current Sales` for the current time frame, we need to add up the sales that happened between the start and end dates, for the current period:
-```code
+```copy-code
 SumIf([Revenue], Between([Date], [Period Start], [Period End]))
 ```
 
 To get more [information on `SumIF`, click here.](https://help.sigmacomputing.com/docs/sumif)
 
 To find the sales for the previous time frame, add up the sales that happened between the start and end dates for the previous period, using this formula:
-```code
+```copy-code
 SumIf([Revenue], Between([Date], [Previous Period Start], [Previous Period End]))
 ```
 
 For the last summary, we need to calculate the percent of sales growth. To do this, we subtract `Previous Sales` from `Current Sales`, then divide that by sales from `Previous Sales`.
 
 Here is that formula:
-```code
+```copy-code
 (([Current Sales] - [Previous Sales] ) / [Previous Sales])
 ```
 

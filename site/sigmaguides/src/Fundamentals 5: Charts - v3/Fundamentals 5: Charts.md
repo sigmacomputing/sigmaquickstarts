@@ -225,7 +225,7 @@ The `Custom Format` modal lets us adjust how the data is displayed using standar
 [D3 is a free, open-source JavaScript library.](https://d3js.org/what-is-d3)
 
 Set the `Format string` to:
-```code
+```copy-code
 $,.4s
 ```
 

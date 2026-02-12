@@ -117,7 +117,7 @@ Sigma supports applying custom formats to date columns. You can do this by selec
 <img src="assets/CDUC4.png" width="600"/>
 
 Entering the format string below will show a sample output in the popup:
-```code
+```copy-code
 %a %B %d %Y
 ```
 
@@ -139,7 +139,7 @@ Create a new column by using the `Date` column's menu and selecting `Add new col
 Rename the new column `Month_of_Date`.
 
 Click the `Month_of_Date` column, copy/paste this formula into the formula bar and press enter.
-```code
+```copy-code
 DateFormat(Date([Original_Date]), "%B")
 ```
 
@@ -170,7 +170,7 @@ We'll continue working with the `Custom_Date_Formats` table from the previous se
 First, let's see what day of the week each order was placed. Add a new column and rename it to `Order_Day_of_Week`.
 
 Set the formula to:
-```code
+```copy-code
 DateFormat([Original_Date], "%A")
 ```
 
@@ -185,7 +185,7 @@ Now we can see which orders were placed on weekends. Let's create a column that 
 Add another new column and rename it to `Effective_Business_Day`.
 
 Use the following formula:
-```code
+```copy-code
 DateFormat(DateAdd("day", If(Weekday([Original_Date]) = 7, -1, Weekday([Original_Date]) = 1, -2, 0), [Original_Date]), "%A")
 ```
 
@@ -271,7 +271,7 @@ Now add four more columns, renaming them and applying the following formulas:
 
 For more information, see [Keyboard shortcuts: Microsoft Windows](https://help.sigmacomputing.com/docs/keyboard-shortcuts-microsoft-windows) or [Keyboard shortcuts: Mac OS](https://help.sigmacomputing.com/docs/keyboard-shortcuts-mac-os)
 
-```code
+```copy-code
 Column Name:                    Formula:
 Second_Order                    Nth([Date], 2)
 Last_Order                      Max([Date])
@@ -354,7 +354,7 @@ Drag the `Sales Amount` column to `Calculations`, rename it to `Weekly_Sales` an
 <img src="assets/CDUC20a.png" width="800"/>
 
 Add two calculated columns using the `+` icon in the `CALCULATIONS` panel. Rename each and set the formulas to:
-```code
+```copy-code
 Column:                         Formula:
 Sales_Lag_1_Week      [Weekly_Sales] / Lag([Weekly_Sales], 1)
 Sales_Lead_1_Week     [Weekly_Sales] / Lead([Weekly_Sales], 1)
@@ -403,7 +403,7 @@ Add a new grouping by clicking the `+` next to `GROUPINGS` and selecting `Add ne
 <img src="assets/CDUC22b.png" width="400"/>
 
 Set the formula to:
-```code
+```copy-code
 DateFormat(Date([Today]), "%m")
 ```
 
@@ -414,7 +414,7 @@ Rename this column `Month_Number` and set its sort order to `Ascending`.
 Add the `Today` column to a second grouping.
 
 Set the new column's formula to:
-```code
+```copy-code
 DateTrunc("year", [Today])
 ```
 
@@ -423,7 +423,7 @@ Rename the column `Year`:
 <img src="assets/CDUC21d.png" width="800"/>
 
 Add a new calculation by clicking the `+` next to `CALCULATIONS` in the `Year` grouping, and select `New column`:
-```code
+```copy-code
 Sum([Quantity] * [Price])
 ```
 
@@ -438,7 +438,7 @@ Add a new `CALCULATION` by clicking the `+` to the right of `CALCULATIONS` in th
 <img src="assets/CDUC21f.png" width="400"/>
 
 Configure the new column as shown below:
-```code
+```copy-code
 Column Name:       Formula:
 Previous_Year      DateLookback([Monthly_Sales], [Year], 1, "year")
 ```
@@ -446,7 +446,7 @@ Previous_Year      DateLookback([Monthly_Sales], [Year], 1, "year")
 Now we can calculate the year over year percentage difference for each month.
 
 Add another new `CALCULATION` column to the same grouping and configure it using:
-```code
+```copy-code
 Column Name:      Formula:
 % Change          ([Monthly_Sales] - [Previous_Year]) / [Previous_Year]
 ```
@@ -486,13 +486,13 @@ Rename the `Date` column to `Today`.
 Hide all other columns.
 
 Add a new column using this configuration:
-```code
+```copy-code
 Column Name:      Formula:
 Week              DatePart("week", [Today])
 ```
 
 Add another new column using this configuration:
-```code
+```copy-code
 Column Name:      Formula:
 Sales_Amount     [Price] * [Quantity]
 ```
@@ -502,7 +502,7 @@ Hide this column.
 Next, use the `InDateRange` function to create four new columns.
 
 For each of the following new columns, use the following configuration:
-```code
+```copy-code
 Column Name:              Formula:
 isCurrent_Year            InDateRange([Today], "current", "year")
 isLast_Year               InDateRange([Today], "last", "year")
@@ -549,7 +549,7 @@ Add another child of the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table to it.
 Rename the table `Quarterly_Sales_Comparison`.
 
 First, let's create a column to calculate sales amount. Add a new column and configure it:
-```code
+```copy-code
 Column Name:     Formula:
 Sales_Amount     [Price] * [Quantity]
 ```
@@ -561,7 +561,7 @@ Now group the data by `Store Region`.
 Next, we'll create Boolean columns to identify which rows belong to the current quarter and the same quarter last year.
 
 Add two new columns with these configurations:
-```code
+```copy-code
 Column Name:              Formula:
 isCurrent_Quarter         InDateRange([Date], "current", "quarter")
 isPrior_Quarter           InPriorDateRange([Date], "quarter", "year")
@@ -570,7 +570,7 @@ isPrior_Quarter           InPriorDateRange([Date], "quarter", "year")
 The `InPriorDateRange` function evaluates each row's date and returns `true` if it falls in the same quarter one year ago.
 
 Now we can use these Boolean columns to calculate sales for each period. Add three more calculated columns:
-```code
+```copy-code
 Column Name:                    Formula:
 Current_Quarter_Sales           SumIf([Sales_Amount], [isCurrent_Quarter])
 Prior_Quarter_Sales             SumIf([Sales_Amount], [isPrior_Quarter])
@@ -626,7 +626,7 @@ Rename the page `Date_Calendar`.
 Rename the table to `Same_Store_Sales`.
 
 Add a new column, rename it to `Order_Value` and use this formula:
-```code
+```copy-code
 [Quantity] * [Price]
 ```
 
@@ -651,7 +651,7 @@ To handle the datatype issue, we will use a formula for each join key:
 <img src="assets/CDUC28a.png" width="400"/>
 
 Apply this formula to both join keys:
-```code
+```copy-code
 DateTrunc("day", [Date])
 ```
 
