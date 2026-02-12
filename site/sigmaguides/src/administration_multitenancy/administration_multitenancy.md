@@ -250,7 +250,7 @@ This script performs the following operations:
 <strong>NOTE:</strong><br> The script grants access to ACCOUNTADMIN for Snowflake trial accounts. If you're using a production Snowflake account with a dedicated service account (e.g., SIGMA_SERVICE_USER with SIGMA_SERVICE_ROLE), uncomment and modify the production grant examples in the script to use your actual role name instead of ACCOUNTADMIN.
 </aside>
 
-```code
+```copy-code
 // SALES-EAST REGIONAL DATABASE
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 1: DATA CONFIGURATION
@@ -383,7 +383,7 @@ This script mirrors the Sales-East setup but for the West region:
 - Grants access to `ACCOUNTADMIN` role (or your service account role) for parent org workbook development
 - Tests to verify only West region records were loaded
 
-```code
+```copy-code
 // SALES-WEST REGIONAL DATABASE
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 1: DATA CONFIGURATION
@@ -548,7 +548,7 @@ Once impersonating Sales-East, go to `Administration` > `Connections` and click 
 
 Add a new Snowflake connection using the Sales-East credentials:
 
-```code
+```copy-code
 Name:        SALES_EAST
 User:        SALES_EAST
 Password:    SALES_EAST
@@ -583,7 +583,7 @@ Return to the parent organization (stop impersonation), then impersonate the `Sa
 
 Repeat the process to create a Snowflake connection for Sales-West:
 
-```code
+```copy-code
 Name:        SALES_WEST
 User:        SALES_WEST
 Password:    SALES_WEST
@@ -721,7 +721,7 @@ Navigate to `Administration` > `Connections` in the parent organization (ensure 
 
 Click `Create Connection` and add a Snowflake connection with the following configuration:
 
-```code
+```copy-code
 Name:        Regional Sales Data
 User:        [Your Snowflake admin or service account username]
 Password:    [Your password] OR use Key-Pair Authentication
