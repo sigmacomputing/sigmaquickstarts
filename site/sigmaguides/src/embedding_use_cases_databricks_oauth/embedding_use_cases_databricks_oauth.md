@@ -605,22 +605,22 @@ Open `VSCode` and a new `Terminal` session.
 Create a new directory in a location of your choice, using the command:
 
 For example:
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
@@ -629,17 +629,17 @@ No errors should show:
 <img src="assets/jwt7.png" width="800"/>
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "embedding_qs_series_2" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 <aside class="positive">
@@ -656,12 +656,12 @@ npm -v
 </aside>
 
 Change directory to the new folder:
-```code
+```copy-code
 cd embedding_qs_series_2
 ```
 
 Finally, load node into the local project:
-```code
+```copy-code
 npm install
 ```
 
@@ -680,12 +680,12 @@ We can now see the project called `SIGMA_QUICKSTARTS` with a folder called `embe
 The Databricks OAuth application requires several Node.js packages for OAuth authentication, session management, and Sigma embedding.
 
 Navigate to the `databricks_oauth` folder:
-```code
+```copy-code
 cd public/databricks_oauth
 ```
 
 Install the application dependencies:
-```code
+```copy-code
 npm install
 ```
 
@@ -887,12 +887,12 @@ Save the `.env` file.
 
 ### Start the Application
 Navigate to the databricks_oauth directory:
-```code
+```copy-code
 cd public/databricks_oauth
 ```
 
 Start the server:
-```code
+```copy-code
 node server.js
 ```
 

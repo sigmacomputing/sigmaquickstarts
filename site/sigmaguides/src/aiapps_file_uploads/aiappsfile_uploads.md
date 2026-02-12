@@ -85,7 +85,7 @@ Navigate to `IAM` > `Policies` and click `Create policy`:
 
 Switch to the `JSON` tab and replace the existing code with the following policy document:
 
-```code
+```copy-code
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -164,7 +164,7 @@ Click the `Permissions` tab, then scroll to `Cross-origin resource sharing (CORS
 
 Click `Edit` and enter the following CORS configuration:
 
-```code
+```copy-code
 [
   {
     "AllowedHeaders": ["*"],
@@ -229,7 +229,7 @@ Click the `Trust relationships` tab, then click `Edit trust policy`:
 
 Replace the entire trust policy document with:
 
-```code
+```copy-code
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -284,7 +284,7 @@ Multi-modal AI models (like Claude) that can analyze images may not be available
 
 In Snowflake, run as ACCOUNTADMIN:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'AWS_US';
 ```
@@ -297,7 +297,7 @@ ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'AWS_US';
 
 Different Snowflake regions have different models available. Test which models work in your region:
 
-```code
+```copy-code
 -- Test Claude models (vision-capable, best for multi-modal)
 SELECT SNOWFLAKE.CORTEX.COMPLETE('claude-sonnet-4-5', 'Say hello') AS response;
 
@@ -335,7 +335,7 @@ First, create a database and schema to store your file upload stage, or use exis
 
 In Snowflake, run the following SQL:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
 USE DATABASE QUICKSTARTS;
@@ -352,7 +352,7 @@ USE SCHEMA FILE_UPLOADS;
 
 Run the following SQL to create a storage integration mapped to your AWS S3 bucket:
 
-```code
+```copy-code
 CREATE OR REPLACE STORAGE INTEGRATION my_file_uploads_storage_integration
   TYPE = EXTERNAL_STAGE
   STORAGE_PROVIDER = 'S3'
@@ -379,7 +379,7 @@ Now you need to update your AWS IAM role to trust both Sigma AND Snowflake.
 
 First, get Snowflake's IAM credentials:
 
-```code
+```copy-code
 DESC STORAGE INTEGRATION my_file_uploads_storage_integration;
 ```
 
@@ -391,7 +391,7 @@ In AWS Console, navigate to IAM > Roles > `sigma-file-uploads-role` > Trust rela
 
 Replace the trust policy with the following, adding BOTH Sigma and Snowflake credentials:
 
-```code
+```copy-code
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -429,7 +429,7 @@ Click `Update policy` in AWS.
 
 Grant usage on the storage integration to the role that Sigma uses to connect to Snowflake:
 
-```code
+```copy-code
 GRANT USAGE ON INTEGRATION my_file_uploads_storage_integration TO ROLE sigma_user;
 ```
 
@@ -441,7 +441,7 @@ GRANT USAGE ON INTEGRATION my_file_uploads_storage_integration TO ROLE sigma_use
 
 Create an external stage in Snowflake that maps to your storage integration:
 
-```code
+```copy-code
 CREATE OR REPLACE STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS
   STORAGE_INTEGRATION = my_file_uploads_storage_integration
   URL = 's3://file-uploads-quickstart/';
@@ -457,13 +457,13 @@ CREATE OR REPLACE STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS
 
 Enable directory listing on the stage:
 
-```code
+```copy-code
 ALTER STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS SET DIRECTORY = (ENABLE = TRUE);
 ```
 
 Grant permissions to your Sigma user role:
 
-```code
+```copy-code
 -- Grant access to database and schema
 GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE sigma_user;
 GRANT USAGE ON SCHEMA QUICKSTARTS.FILE_UPLOADS TO ROLE sigma_user;
@@ -614,7 +614,7 @@ On the `Main` page, in the `Your files with insight` child table, click the `+` 
 Configure the delete column:
 1. Rename the column to `Delete` by double-clicking the column header
 2. In the formula bar, enter:
-```code
+```copy-code
 "https://cdn-icons-png.flaticon.com/128/6861/6861362.png"
 ```
 3. Transform the column type to `set image`:
@@ -660,7 +660,7 @@ In the `Your files with insight` table click the `+` button after the `File` col
 Rename the column to `Preview`.
 
 Enter this formula:
-```code
+```copy-code
 If(IsNull([FileID]), "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], "/", 1) = "image", CallText("get_presigned_url", [Stage], [FileID]), SplitPart([Type], "/", 2) = "plain", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], ".", -1) = "document", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png", SplitPart([Type], "/", 2) = "pdf", "https://static.vecteezy.com/system/resources/thumbnails/023/234/824/small/pdf-icon-red-and-white-color-for-free-png.png", SplitPart([Type], ".", -1) = "presentation", "https://cdn-icons-png.flaticon.com/512/9034/9034417.png", SplitPart([Type], "/", 1) = "audio", "https://image.similarpng.com/file/similarpng/original-picture/2021/07/Sound-wave-pattern.-Equalizer-graf-design.png", SplitPart([Type], "/", 1) = "video", "https://image.similarpng.com/file/similarpng/original-picture/2021/07/Sound-wave-pattern.-Equalizer-graf-design.png", "https://cdn.pixabay.com/photo/2017/03/08/21/19/file-2127825_640.png")
 ```
 
@@ -681,7 +681,7 @@ Click the `+` button after the `Type` column and select `Add a new column` > `Ca
 Rename the column to `AI Results`.
 
 Enter this formula:
-```code
+```copy-code
 [AI Detailed Description]
 ```
 
@@ -744,7 +744,7 @@ Click `Actions` in the right-hand properties panel.
 Click the 3-dot menu next to `Action sequence` and select `Add condition`.
 
 In the box under `Custom formula`, enter:
-```code
+```copy-code
 SplitPart(Text(Json(Text([Load-file])).type), "/", 1) = "image"
 ```
 
@@ -785,7 +785,7 @@ Now add the 5-step action sequence by clicking the `+` button repeatedly:
 Click the 3-dot menu next to the first action sequence you just created and select `Duplicate`.
 
 Change the condition formula to:
-```code
+```copy-code
 In(SplitPart(Text(Json(Text([Load-file])).type), "/", 1), "audio", "video")
 ```
 
@@ -806,7 +806,7 @@ Leave all other column mappings and actions in the sequence unchanged.
 Click the 3-dot menu next to the action sequence and select `Duplicate` again.
 
 Change the condition formula to:
-```code
+```copy-code
 Not(In(SplitPart(Text(Json(Text([Load-file])).type), "/", 1), "image", "audio", "video"))
 ```
 
@@ -866,7 +866,7 @@ Select your Snowflake connection.
 
 Click `SQL` and paste in the following:
 
-```code
+```copy-code
 with mycte as
 (select
 listagg( concat('File name: ', "Name", ', Detail Description: ', "AI Detailed Description", ' ; \n' )) all_results
@@ -979,7 +979,7 @@ This section covers common issues you may encounter and how to resolve them.
 
 **1. Verify Snowflake can access the stage**
 
-```code
+```copy-code
 USE ROLE your_sigma_role;
 LIST @QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS;
 ```
@@ -994,7 +994,7 @@ In AWS Console > IAM > Roles > sigma-file-uploads-role > Trust relationships, ve
 
 The trust policy should have arrays with both values:
 
-```code
+```copy-code
 "AWS": [
   "arn:aws:iam::XXXX:user/sigma-user",
   "arn:aws:iam::XXXX:user/snowflake-user"
@@ -1007,33 +1007,33 @@ The trust policy should have arrays with both values:
 
 **3. Verify Cortex permissions**
 
-```code
+```copy-code
 SHOW GRANTS TO ROLE your_sigma_role;
 ```
 
 Look for `DATABASE ROLE SNOWFLAKE.CORTEX_USER`. If missing:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE your_sigma_role;
 ```
 
 **4. Verify stage permissions**
 
-```code
+```copy-code
 SHOW GRANTS TO ROLE your_sigma_role;
 ```
 
 Look for `USAGE, READ, WRITE ON STAGE`. If missing:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 GRANT USAGE, READ, WRITE ON STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS TO ROLE your_sigma_role;
 ```
 
 **5. Test the AI function directly in Snowflake**
 
-```code
+```copy-code
 USE ROLE your_sigma_role;
 SELECT SNOWFLAKE.CORTEX.AI_COMPLETE(
   'claude-3-7-sonnet',
@@ -1043,7 +1043,7 @@ SELECT SNOWFLAKE.CORTEX.AI_COMPLETE(
 
 If this fails, check cross-region inference is enabled:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'AWS_US';
 ```

@@ -59,7 +59,8 @@ const DEFAULT_CATEGORY = 'Default';
 const BASE_URL = args.baseUrl || 'https://quickstarts.sigmacomputing.com';
 
 // [Dash] TEMP WORKAROUND to fix codelabs issue -- https://groups.google.com/g/codelab-authors/c/WwSdRF4bjBE/m/tA96pyWOEAAJ
-const CODELABS_ELEMENTS_PREFIX = BASE_URL + '/elements'
+// Use relative path if baseUrl not explicitly set (local development), otherwise use full URL
+const CODELABS_ELEMENTS_PREFIX = args.baseUrl ? BASE_URL + '/elements' : '/elements'
 
 // CODELABS_BUILD_DIR is the directory where the actual codelabs exist on disk.
 // Despite being a constant, this can be overridden with the --codelabs-dir
