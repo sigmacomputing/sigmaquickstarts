@@ -118,14 +118,13 @@ Use the **State** filter to drill down specifically to `Oregon`:
 
 <img src="assets/rlp_06.png" width="800"/>
 
-### Use Ask Sigma to Investigate
 We will use Ask Sigma to investigate Noreen Swift's performance, starting with broad metrics and narrowing our focus. 
 
 Remember we are using the existing version of the Loss Prevention App v1.0 to see the results that store managers currently rely. 
 
 **Step 6**: Click the <img src="assets/crane.png" width="45"/> to return to the homepage and navigate to `Ask Sigma` and enter the following prompt.
 
-```
+```copy-code
 Provide a comprehensive summary of Noreen Swift's performance history.
 ```
 <img src="assets/rlp_07.png" width="800"/>
@@ -136,7 +135,7 @@ We can see a large number of flagged transaction:
 
 **Step 7**: Ask a follow-up question to see the flags in action:
 
-```
+```copy-code
 List all transactions handled by Noreen along with the static flags.
 ```
 
@@ -232,7 +231,7 @@ Rename this new table: `BIG_BUYS_POS_PYTHON_TEST`
 
 The Python script for anomaly detection is provided below. The code is commented so that you can understand how it works:
 
-```python
+```copy-code
 import pandas as pd
 
 import numpy as np
@@ -421,14 +420,14 @@ In this module, we will start with a WIP version of the `Loss Prevention App V2.
 <img src="assets/rlp_34.png" width="800"/>
 
 a. In the `Element panel` add a new column in the `GROUP BY` > `CALCULATIONS` section named `Transactions`, using the formula:
-```
+```copy-code
 COUNT([SCAN_ID])
 ```
 
 <img src="assets/rlp_35.png" width="800"/>
 
 b. Add a third column calculation named `PERCENT FLAGGED` using the formula:
-```
+```copy-code
 [FLAGGED TRANSACTIONS] / [TRANSACTIONS]
 ```
 
@@ -511,9 +510,10 @@ A pre-configured Chat Agent has been integrated into the workbook to facilitate 
 <img src="assets/rlp_45.png" width="800"/>
 
 1. Enter the following prompt to identify the high risk orders:
-   ```
-   Show me the list of top 5 order numbers that have the most anomalous scans.
-   ```
+
+```copy-code
+Show me the list of top 5 order numbers that have the most anomalous scans.
+```
 
 <img src="assets/rlp_46.png" width="600"/>
 
@@ -541,7 +541,7 @@ To further enhance the decision-making process within the review modal, we will 
 
 4. Paste the provided instructions into the `Instructions` field:
 
-```
+```copy-code
 Role: You are a specialized Fraud & Operations Analyst Assistant. Your primary function is to provide immediate, automated interpretation of flagged transactions when a user initiates a review for a specific SCAN_ID.
 
 1. Trigger & Initial Response (Auto-Execution)
@@ -574,9 +574,9 @@ Following your analysis, the user may instruct you to Approve, Reject, or Escala
 
 5. Use Sigma's dynamic text feature to ensure the agent understands the specific record being viewed:
    - Under `Context`, insert the `SCAN_ID` using the formula:
-     ```
-     [CASE MANAGEMENT single row container/SCAN_ID]
-     ```
+```copy-code
+[CASE MANAGEMENT single row container/SCAN_ID]
+```
 
 <img src="assets/rlp_49.png" width="600"/>
 
