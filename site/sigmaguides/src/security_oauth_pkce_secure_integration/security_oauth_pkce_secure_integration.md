@@ -455,7 +455,7 @@ Implement proactive token refresh that runs before expiration.
 
 **Practical Example:**
 
-```code
+```copy-code
 // Check token expiration every 5 minutes
 setInterval(async () => {
   const tokenExpiry = getTokenExpiration();
@@ -495,7 +495,7 @@ Register separate OAuth applications for each environment and use environment va
 
 **Practical Example:**
 
-```code
+```copy-code
 // config/oauth.js
 const oauthConfig = {
   development: {
@@ -538,7 +538,7 @@ Use httpOnly, secure cookies that JavaScript cannot access.
 
 **Practical Example:**
 
-```code
+```copy-code
 // Backend: Set token as httpOnly cookie (Node.js/Express)
 app.post('/oauth/callback', async (req, res) => {
   const tokens = await exchangeCodeForTokens(req.query.code);
@@ -591,7 +591,7 @@ Implement universal links (iOS) or app links (Android) to seamlessly return user
 
 **Practical Example:**
 
-```code
+```copy-code
 // iOS Universal Link Configuration (apple-app-site-association)
 {
   "applinks": {
@@ -648,7 +648,7 @@ Duration: 5
 
 Start by testing OAuth flows on your development machine:
 
-```code
+```copy-code
 // Use localhost for development
 const devRedirectUri = 'http://localhost:3000/oauth/callback';
 
@@ -683,7 +683,7 @@ Register a separate OAuth application for staging and test with production-like 
 
 Once deployed, monitor your OAuth implementation continuously:
 
-```code
+```copy-code
 // Log OAuth events (but never log tokens!)
 logger.info('OAuth authorization started', {
   userId: user.id,
@@ -733,7 +733,7 @@ OAuth implementations must meet audit, privacy, and security requirements.
 
 **Practical Example:**
 
-```code
+```copy-code
 // Audit log entry for Sigma query
 {
   "timestamp": "2025-12-08T14:30:00Z",
@@ -778,7 +778,7 @@ Users must understand what access they're granting when they authorize Sigma:
 
 Prevent abuse by limiting OAuth requests:
 
-```code
+```copy-code
 // Example rate limit: 10 token refresh requests per hour per user
 const rateLimiter = {
   maxRequests: 10,

@@ -153,7 +153,7 @@ Log into Sigma as an administrator and navigate to `Administration` > `Account` 
 <img src="assets/dbb_02.png" width="800"/>
 
 Name the plugin `Dashboard Builder` and set both the development and production URLs to:
-```code
+```copy-code
 https://plugins.sigmacomputing.com/dashboard-builder
 ```
 
@@ -182,35 +182,35 @@ Open a second terminal session, leaving the first one running (it's hosting the 
 
 In the second terminal, ensure you're in the `QuickStarts` folder, then run the following commands:
 
-```code
+```copy-code
 mkdir dashboard_builder
 ```
 
-```code
+```copy-code
 cd dashboard_builder
 ```
 
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone:
-```code
+```copy-code
 echo "plugin_use_cases" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -233,7 +233,7 @@ The only extra setup we need is installing a local database to store extended bo
 
 Run the following command in terminal:
 
-```code
+```copy-code
 npm install lowdb@1.0.0
 ```
 
@@ -244,7 +244,7 @@ Lowdb installs very quickly:
 ### Local database schema
 The system maintains the local lowdb database in the `multi-area-bookmarks.json` file. Initially, it contains only header data:
 
-```code
+```copy-code
 {
   "_comment": "Default empty database for multi-area bookmarks. User bookmarks will be added here at runtime.",
   "bookmarks": {},
@@ -257,7 +257,7 @@ The system maintains the local lowdb database in the `multi-area-bookmarks.json`
 
 Sigma is the source of truth for bookmarks, using the following structure: For example, if we query via API we can see how a bookmark is structured in Sigma:
 
-```code
+```copy-code
 {
     "entries": [
         {
@@ -282,7 +282,7 @@ Sigma is the source of truth for bookmarks, using the following structure: For e
 ### Configure environment settings
 In VSCode, open the `.env` file and add the required values for:
 
-```code
+```copy-code
 ORG_SLUG=
 CLIENT_ID=
 SECRET=
@@ -305,7 +305,7 @@ When we saved the workbook earlier we used this name. In production, this value 
 ### Start the host application server
 Run the following command in terminal:
 
-```code
+```copy-code
 cd plugin_use_cases
 npm start
 ```
@@ -313,7 +313,7 @@ npm start
 <img src="assets/dbb_16.png" width="600"/>
 
 Browse to:
-```code
+```copy-code
 http://localhost:3000/dashboard-builder/
 ```
 
@@ -360,7 +360,7 @@ The rest of the tests are really similar so screenshots are not provided as the 
 <img src="assets/dbb_20.png" width="800"/>
 
 After completing the last test, the local database file will look similar to this:
-```code
+```copy-code
 {
   "_comment": "Default empty database for multi-area bookmarks. User bookmarks will be added here at runtime.",
   "bookmarks": {
@@ -412,7 +412,7 @@ After completing the last test, the local database file will look similar to thi
 ```
 
 The corresponding bookmarks in Sigma, queried using the [List bookmarks in a workbook](https://help.sigmacomputing.com/reference/getworkbookbookmarks) API call look like this:
-```code
+```copy-code
 {
     "entries": [
         {
@@ -458,33 +458,33 @@ The plugin source code for this project is available in a public GitHub reposito
 Open `VS Code` and start a new `Terminal` session.
 
 Create a new directory in your preferred location (or use an existing one):
-```code
+```copy-code
 md dashboard_builder_plugin
 cd dashboard_builder_plugin
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone:
-```code
+```copy-code
 echo "plugin_dashboard_builder" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -508,24 +508,24 @@ npm -v
 
 ### Node Version Management (optional but recommended for those having multiple versions of Node.js installed)
 This reads the Node.js version (22.12.0) from the `.nvmrc` file.
-```code
+```copy-code
 nvm use
 ```
 
 ### Install Yarn package manager:
-```code
+```copy-code
 npm install yarn
 ```
 
 ### Start the Angular Live Development Server
-```code
+```copy-code
 yarn start
 ```
 
 If prompted with `Would you like to share pseudonymous usage data about this project with the Angular Team...` enter `N` and press `Enter`.
 
 The expected terminal output (ignoring warnings) is:
-```code
+```copy-code
 
 Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/
 

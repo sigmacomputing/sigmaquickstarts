@@ -102,7 +102,7 @@ For simplicity, we'll use the `ACCOUNTADMIN` role.
 ### Example script
 The following script will create a database, schema and permissions (at a minimum level) and can be used as a reference when setting up write access.
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 -- Create and use Sigma Writeback DB
@@ -131,7 +131,7 @@ In the `Write access` section, be sure to select the database and schema created
 ### Snowflake sample database
 If the `SNOWFLAKE_SAMPLE_DATA` is not present in your Snowflake instance, it can be added manually.
 
-```code
+```copy-code
 -- Create a database from the share.
 CREATE DATABASE SNOWFLAKE_SAMPLE_DATA FROM SHARE SFC_SAMPLES.SAMPLE_DATA;
 
@@ -170,7 +170,7 @@ If the Snowflake instance you are using does not contain the sample data, it can
 </aside>
 
 Use the following SQL script:
-```code
+```copy-code
 SELECT
     o.o_orderkey                            AS order_number,
     o.o_orderdate                           AS order_date,
@@ -242,7 +242,7 @@ Click the `+` to add a new metric for `Profit`:
 <img src="assets/ct_0a.png" width="550"/>
 
 Configure the metric as shown, using this formula:
-```code
+```copy-code
 Sum([Revenue]) - Sum([Cogs])
 ```
 
@@ -253,7 +253,7 @@ Click Save—the metric will now appear in the list of available metrics.
 Repeat the process to add metrics for the following:
 
 **Revenue (formatted as currency)**
-```code
+```copy-code
 Sum([Revenue])
 ```
 
@@ -286,7 +286,7 @@ Once the table is loaded, we can start to leverage its data in our workbook, inc
 Group the table by `Customer Name`, and  add `Order Date` as a `CALCULATION` under the group.
 
 Then change the `Order Date` column to show the first purchase date by changing its formula to:
-```code
+```copy-code
 Min([Order Date])
 ```
 
@@ -330,7 +330,7 @@ Use the instructions below the image to configure the chart as shown:
 
 **X-Axis Columns**<br>
 Drag `Order Date` to the `X-AXIS`, rename it to `Month` and change the formula to:
-```code
+```copy-code
 DateTrunc("month", [Order Date])
 ```
 
@@ -338,14 +338,14 @@ DateTrunc("month", [Order Date])
 Drag the `Revenue` metric to the `Y-AXIS`.
 
 Add a new column to the `Y-AXIS` (click the `+` icon) and use this formula:
-```code
+```copy-code
 DateFormat([Order Date], "%Y-%m")
 ```
 
 Rename this calculated column from `Calc` to `MonthText`.
 
 Add another new column to the `Y-AXIS` (click the `+` icon) using this formula:
-```code
+```copy-code
 [Metrics/Gross Margin]
 ```
 
@@ -407,17 +407,17 @@ On the `Data` page, add a new `Empty` input table, use the Snowflake connection 
 
 For the three personas, here is the text to be copied and pasted into each row for the matching persona:
 
-```code
+```copy-code
 CEO:
 You are a data analyst for a company called Big Buys Electronics, or just "Big Buys" for short. You are preparing an executive summary for the CEO about sales at Big Buys. When it makes sense, correlate the data to external events happening in the world, e.g. trends in the economy and news events. Since the report is for executives, you should: Use a lot of three letter acronyms and data to explain concepts. Make your point using numbered lists, often adding relevant emojis to the main theme of each item. The executives are really impressed with emojis. Back up your statements with factual data for added credibility. Do not make up data. Forecast into the future.
 ```
 
-```code
+```copy-code
 CTO:
 You are an ever so slightly quirky, expert data analyst that works for a supplier of an electronics super store called Big Buys. You like to add color commentary (often by using publicly available data or news events that correspond to dates) to your analysis to make it more interesting. But, you would only do so if it actually adds value to the answer. You wouldn't do it just to make small talk. When you answer, keep this in mind: Do not, under any circumstance, ever ask me a question. I mean that, do not ask me a question. Never. Only I ask you questions!
 ```
 
-```code
+```copy-code
 Architect:
 You are a highly technical expert data analyst and chief data architect that works for a supplier of an electronics super store called Big Buys. You are straight and to the point and like to add very detailed, technical analysis to your responses. You like to apply data science whenever possible to find mathematically interesting patterns in the data, even beyond what was asked. You don't like small talk and won't embellish your answer with speculative information or unnecessary adjectives. When you answer, keep this in mind: Do not, under any circumstance, ever ask me a question. I mean that, do not ask me a question. Never. Only I ask you questions!
 ```
@@ -513,7 +513,7 @@ Configure the new function as:
 The `Arguments` names (element ID) and data types need to match the elements we configured earlier.
 
 Here is the function to use:
-```code
+```copy-code
 Max(Text(CallVariant("SNOWFLAKE.CORTEX.COMPLETE", "claude-3-5-sonnet", Array({ role: "system", content: [p_persona_data] }, { role: "user", content: [p_prompt_data] }), { temperature: 0 }).choices[0].messages))
 ```
 
@@ -567,7 +567,7 @@ Actions support conditional logic. Click the `3-dot` menu and select `Add condit
 <img src="assets/ct_23.png" width="500"/>
 
 We want to check if the `p_prompt` element is empty, using:
-```code
+```copy-code
 IsNull([p_prompt])
 ```
 
@@ -589,7 +589,7 @@ Click the `+` icon next to `ACTION SEQUENCES`:
 <img src="assets/ct_27.png" width="400"/>
 
 We need to change the condition:
-```code
+```copy-code
 IsNotNull([p_prompt])
 ```
 
@@ -638,7 +638,7 @@ Add another action and configure it as:
 We want to store the data values that will be passed to Cortex temporarily so that we can observe them and also simplify the formula we use to call Cortex.
 
 Add another action, and set the control value of the `User Prompt` control (with Control ID `p_prompt_data`) on the `Data` page to:
-```code
+```copy-code
 [p_prompt] & " ; Use this table:\n" & "Store Region, Month, Revenue\n" & ListAggDistinct(CallText("CONCAT", [Sales Chart/Store Region], ", ", [Sales Chart/MonthText], ", ", [Sales Chart/Revenue]), "\n")
 ```
 
@@ -648,7 +648,7 @@ This formula combines the user's question with the chart data in a format Cortex
 
 ### Action 4: Store the persona into data page control
 Add another action, and set the control value of the `Persona` control (with Control ID `p_persona_data`) on the `Data` page to:
-```code
+```copy-code
 Lookup([System Prompts/Prompt], [Persona], [System Prompts/Persona])
 ```
 
@@ -673,7 +673,7 @@ Add another action and configure it to clear the `Ask a Question container (Ask 
 
 ### Action 6: Call Cortex and update the Response
 Add another action, and set the control value to update the `Response` control on the `Ask a Question` page, using this formula:
-```code
+```copy-code
 CompleteClaude([p_persona_data], [p_prompt_data])
 ```
 

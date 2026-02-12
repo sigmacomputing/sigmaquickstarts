@@ -73,12 +73,12 @@ Add a new `Data` > `Table` to the page and set the source to `Sigma Sample Datab
 <img src="assets/acl-1.png" width="600"/>
 
 Add a new column, rename it to `Revenue` and set the formula to:
-```code
+```copy-code
 [Price] * [Quantity]
 ```
 
 Add another new column, rename it to `Month` and set the formula to:
-```code
+```copy-code
 DateTrunc("month", [Date])
 ```
 
@@ -112,7 +112,7 @@ Rename the pivot table to `Revenue Planning`.
 
 ### Create a Key Column
 In order to uniquely identify which cell a user has clicked, we will add a column renamed to `Key`, and set its formula to:
-```code
+```copy-code
 MD5([Product Type] & [Product Line] & Text([Month]))
 ```
 
@@ -140,7 +140,7 @@ Add a `Input` > `Empty` input table under the `Revenue Planning` table.
 Set the source connection to the `Sigma Sample Database`.
 
 Add and name the following columns:
-```code
+```copy-code
 Name                Type
 Product_Line        Text
 Original_Value      Number
@@ -151,7 +151,7 @@ Key                 Text
 ```
 
 Set the formula for `Delta` to:
-```code
+```copy-code
 [Adjusted_Value] - [Original_Value]
 ```
 
@@ -242,7 +242,7 @@ Add a `Controls` > `Text input` control and set the `Control ID` to `a_key`.
 
 #### Method
 Add a `Controls` > `Segmented` control and set the `Control ID` to `Method`. Set the `Value source` to `Create manual list` with these values:
-```code
+```copy-code
 Absolute
 Percent
 Relative
@@ -252,7 +252,7 @@ Relative
 
 #### Calculated Adjustment
 Add a `UI` > `Text` element and set its formula to:
-```code
+```copy-code
 Coalesce(
     Switch(
         [Method],
@@ -364,7 +364,7 @@ Click as shown in the screenshot below and select `Add condition`:
 <img src="assets/acl-27.png" width="500"/>
 
 Select `Custom formula` and use this formula:
-```code
+```copy-code
 IsNull([a_adjustment])
 ```
 
@@ -384,7 +384,7 @@ There are few things we could do here to provide feedback to the user. For examp
 With that out of the way, lets setup recording the adjustment into our `Adjustment Log` input table.
 
 `Create` (or duplicate the existing) action sequence (as shown in the screenshot below) and set its condition to execute if there is a value in 
-```code
+```copy-code
 IsNotNull([a_adjustment])
 ```
 
@@ -399,7 +399,7 @@ Add an `Insert a row` action and configure it as shown:
 We need to make one change from the defaults for the `Adjusted_Value` control. For that, we need to pass the value of the final calculation but since that is not in a control for us to just "grab", we have to set a formula instead. 
 
 We can just reuse the same formula as the modal already uses to do the adjustment calculation:
-```code
+```copy-code
 Switch([Method], "Percent", [a_current] * (1 + [a_adjustment] / 100), "Absolute", [a_adjustment], "Relative", [a_current] + [a_adjustment])
 ```
 
@@ -460,7 +460,7 @@ Drag `Last updated at` to the `CALCULATIONS` grouping and set its aggregation to
 Rename the column to `Most Recent Adjustment`.
 
 Add another new column and rename it to `IsLatest` and set its formula to:
-```code
+```copy-code
 If([Last updated at] = [Most Recent Adjustment], True)
 ```
 
@@ -473,7 +473,7 @@ Lets do some test adjustments so that we have some data. Make sure to adjust the
 With that configured, we now want the latest adjustment to appear in the `Revenue Planning` table, in the correct cell.
 
 In the `Revenue Planning` table, add a new column, rename it to the `Latest Adjustment` and set the formula to:
-```code
+```copy-code
 Coalesce(Lookup([Most Recent Adjustments/Adjusted_Value], [Key], [Most Recent Adjustments/Key]), [Sum of Revenue])
 ```
 

@@ -181,7 +181,7 @@ You can also review the setup that [Snowflake recommends here](https://docs.snow
 </aside>
 
 Run the following command:
-```code 
+```copy-code 
 openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_2048_private_key.p8
 ```
 
@@ -211,7 +211,7 @@ The command generates the public key in PEM format.
 
 The following command assumes the private key is encrypted and contained in the file named: `rsa_2048_private_key.p8`.
 
-```code
+```copy-code
 openssl rsa -in rsa_2048_private_key.p8 -pubout -out rsa_2048_public_key.pub
 ```
 
@@ -258,7 +258,7 @@ For example, copying the value of the public key, without headers/footers:
 
 <img src="assets/rsa22.png" width="500"/>
 
-```code
+```copy-code
 -- 1: Change Role to ACCOUNTADMIN
 USE ROLE ACCOUNTADMIN;
 
@@ -358,14 +358,14 @@ The manual steps are as follows:
 1: Generate a new public and private key pair:
 
 **Private Key**
-```code
+```copy-code
 openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_2048_private_key2.p8
 ```
 
 Set the password to `1234` for testing purposes.
 
 **Public Key**
-```code
+```copy-code
 openssl rsa -in rsa_2048_private_key2.p8 -pubout -out rsa_2048_public_key2.pub
 ```
 
@@ -374,7 +374,7 @@ We now have the original keys and the new keys, the new keys have a `2` appended
 <img src="assets/rsa16.png" width="800"/>
 
 2: Set second public key for their snowflake user by running the snowflake command on Snowflake (use your key, replacing "YOUR PUBLIC KEY 2 HERE"):
-```code
+```copy-code
 alter user sigma_service_account set rsa_public_key_2='YOUR PUBLIC KEY 2 HERE';
 ```
 
@@ -393,12 +393,12 @@ Click `Save`.
 Sigma will update the connection and if successful, will display <img src="assets/rsa19.png" width="200"/>.
 
 4: Remove the old public key from the user profile by running the snowflake command on Snowflake:
-```code
+```copy-code
 ALTER USER sigma_service_account UNSET rsa_public_key;
 ```
 
 Running the following command in Snowflake allows us to see if the old public key has been removed:
-```code
+```copy-code
 DESC USER sigma_service_account;
 ```
 
@@ -439,7 +439,7 @@ If you are familiar with APIs and prefer to review [Sigma's swagger reference, t
 **4:** Open the method `v2` > `connections` > `POST Creates a new connection`.
 
 **5:** Paste the following code in the `Body` of the POST method. Replace values as required:
-```code
+```copy-code
 {
   "details": {
     "type": "snowflake",

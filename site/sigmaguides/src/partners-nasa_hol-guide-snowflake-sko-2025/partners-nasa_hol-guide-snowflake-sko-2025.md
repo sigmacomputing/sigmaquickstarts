@@ -311,7 +311,7 @@ Select the drop down next to the first grouping on `Day`, and select `Add New Co
 <img src="assets/nasa-3-37.png" width="400"/>
 
 4.38 In the formula bar, type:
-```code
+```copy-code
 CountDistinct([Hourly Fe Event Key])
 ``` 
 
@@ -358,7 +358,7 @@ Finally, map the columns on `Day = Day of Start Time` and click `Done`:
 4.46 At the next grouping on `Inode Name`, click the down arrow by `Workbook Events` and click `Add new Column`. 
 
 In the formula bar, enter 
-```code
+```copy-code
 [Workbook Events]/[Daily Events]
 ```
 
@@ -371,7 +371,7 @@ Rename this new column `Portion of Daily Usage`:
 4.47 Finally, add one more column off of `Portion of Daily Usage`. 
 
 In the formula bar, type:
-```code
+```copy-code
 [Portion of Daily Usage] * [Daily Credits] 
 ```
 
@@ -384,7 +384,7 @@ Rename this column `Workbook Daily Credits`:
 <img src="assets/nasa-3-50a.png" width="800"/>
 
 In the formula bar enter:
-```code
+```copy-code
 [WB Events by License Type]/[Workbook Events] 
 ```
 
@@ -393,7 +393,7 @@ Rename this new column `Portion of WB Usage`:
 <img src="assets/nasa-3-50b.png" width="800"/>
 
 4.49 Next, add a new column off of `Portion of WB Usage` and set the formula to:
-```code
+```copy-code
 CountDistinct([Event Fe User Uuid]).
 ```
 
@@ -408,7 +408,7 @@ Rename this column `Active Licensed Users`:
 4.50 Finally, add one last column to the right of `Active Licensed Users`. 
 
 Set the formula bar to:
-```code 
+```copy-code 
 ([WorkBook Daily Credits]*[Portion of WB Usage]) / [Active Licensed Users] 
 ```
 

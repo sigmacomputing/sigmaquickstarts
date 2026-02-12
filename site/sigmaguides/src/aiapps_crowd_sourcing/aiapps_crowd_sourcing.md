@@ -127,7 +127,7 @@ Use the following values for the duplicates:
 <strong>NOTE:</strong><br> We used `ta-` for two of the controls because we will change the control type to `text area`.
 </aside>
 
-```code
+```copy-code
 Name            Control ID
 Idea            it-idea
 Description     ta-description
@@ -282,7 +282,7 @@ Rename the child table `Suggestions`.
 In the table itself, rename `Last updated at` to `Submitted at`.  
 
 Create a new column named `Submitted by` and set its formula to just show the person’s name and not the email address:
-```code
+```copy-code
 Proper(SplitPart([Suggestion Box Data/Last updated by], "@", 1))
 ```
 
@@ -301,7 +301,7 @@ Move the formatted `Suggestions` table to the `Suggestion box` tab and place it 
 Next, let’s add a toggle to filter the table to only show your own suggestions.
 
 Create a new column named `Current user idea?` and set the formula to:
-```code
+```copy-code
 [Last updated by]=CurrentUserEmail()
 ```
 
@@ -432,7 +432,7 @@ Changing the theme revealed a display issue with null values in the `Rank` colum
 You can fix this easily by adjusting the formula in the rank column to avoid this. 
 
 Select the `Rank` column and adjust the formula to handle nulls:
-```code
+```copy-code
 Coalesce(Lookup(CountDistinct([Upvoted Ideas/Created by]), [Idea], [Upvoted Ideas/Idea]), 0)
 ```
 

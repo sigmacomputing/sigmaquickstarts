@@ -171,7 +171,7 @@ We need to add some variables. The `Current Value` will populate automatically a
 <strong>IMPORTANT:</strong><br> Environment variables in Postman allow values to be referenced dynamically. For example, {{access_token}} will retrieve the most recent value stored in that variable, for the current selected environment.
 </aside>
 
-```code
+```copy-code
 Variable       /   Initial Value
 baseUrl        /   https://aws-api.sigmacomputing.com
 tokenBaseURL   /   https://aws-api.sigmacomputing.com/v2/auth/token
@@ -252,7 +252,7 @@ Provide the request url using the curly-brace format to leverage our environment
 We want to persist this new `access_token` in our environment variable under the same name.
 
 To do that, we need to add this script to the authenticate method, under the `Scripts` > `Post-response` tab:
-```code
+```copy-code
 let responseData = pm.response.json(); // Extract the JSON response
 pm.environment.set("access_token", responseData.access_token); // Store the access token as an environment variable
 ```
@@ -309,7 +309,7 @@ Click `Save` and the `Send`.
 
 In the `Body` section (shown in the previous screenshot), is the return from the API in JSON. For example, our first connection is described this way:
 
-```code
+```copy-code
           "organizationId": "adbfe832-733a-4c83-b64d-bdbf6ae8d2cb",
             "connectionId": "10eed7b7-4a10-4c40-802b-4ba91287d5fe",
             "isSample": true,

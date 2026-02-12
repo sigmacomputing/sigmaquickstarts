@@ -144,7 +144,7 @@ Open a new terminal session in VSCode:
 <img src="assets/plugins8.png" width="800"/>
 
 If not sure what folder terminal has opened in, run this command to see the "present working directory":
-```code
+```copy-code
 pwd
 ```
 
@@ -154,7 +154,7 @@ pwd
 Now we will create our first React application. 
 
 In Terminal, run the following command to initialize:
-```code
+```copy-code
 npx create-react-app hello-world
 ```
 
@@ -184,12 +184,12 @@ When npx is done (`Happy Hacking`), a new folder with many files will be added f
 
 ### Start React
 In Terminal, change to the new `hello-world` folder:
-```code
+```copy-code
 cd hello-world
 ```
 
 Run the following command to start the React server:
-```code
+```copy-code
 npm start
 ```
 
@@ -223,7 +223,7 @@ This file defines the javascript that will drive our page content.
 
 
 Delete the existing code and replace it with this:
-```code
+```copy-code
 import './App.css';
 
 function App() {
@@ -342,7 +342,7 @@ First, lets look at what the `plugin_highchart_candlestick_simple` application d
 </aside>
 
 Open a Terminal session, cd to `plugin_highchart_candlestick_simple` and run:
-```code
+```copy-code
 npm install
 ```
 
@@ -357,18 +357,18 @@ In the screenshot, we can see that there are two required libraries for Highchar
 <img src="assets/plugins22.png" width="800"/>
 
 We can easily install the Highcharts.js dependencies:
-```code
+```copy-code
 npm install highcharts
 ```
 and then...
-```code
+```copy-code
 npm install highcharts-react-official
 ```
 
 <img src="assets/plugins23.png" width="800"/>
 
 Start React:
-```code
+```copy-code
 npm start
 ```
 
@@ -387,7 +387,7 @@ We can look at that code to see what it is doing by opening `App.js` and reviewi
 ### Breaking down App.js
 Here is the code, with in-line comments to explain their purpose for your review. 
 
-```code
+```copy-code
 // Importing necessary modules and components
 import React from 'react'; // Importing React to use its features in this component
 import Highcharts from 'highcharts/highstock'; // Importing Highcharts for stock charts
@@ -467,15 +467,15 @@ The folder is "plugin_highchart_candlestick_sigma_data".
 
 Here they are for convenience:
 
-```code
+```copy-code
 npm install
 ```
 
-```code
+```copy-code
 npm install highcharts
 ```
 
-```code
+```copy-code
 npm install highcharts-react-official
 ```
 
@@ -483,12 +483,12 @@ There is an additional dependency that was not required by the hard-coded data e
 
 This module enables the plugin to use the Sigma Element panel and more. 
 
-```code
+```copy-code
 npm install @sigmacomputing/plugin
 ```
 
 Now we can use Terminal to start the server for this project:
-```code
+```copy-code
 npm start
 ```
 
@@ -575,7 +575,7 @@ We will demonstrate with `Hello World`
 Open a Terminal session and change to the folder `Hello-world`.
 
 Run this command, which will create our `build` package for us automatically:
-```code
+```copy-code
 npm run build
 ```
 
@@ -643,19 +643,19 @@ Once pulled into VSCode from Git, don't forget to install the dependencies.
 <strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
 </aside>
 
-```code
+```copy-code
 npm install
 ```
 
-```code
+```copy-code
 npm install highcharts
 ```
 
-```code
+```copy-code
 npm install highcharts-react-official
 ```
 
-```code
+```copy-code
 npm install @sigmacomputing/plugin
 ```
 
@@ -707,28 +707,28 @@ Once pulled into VSCode from Git, don't forget to install the dependencies.
 <strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
 </aside>
 
-```code
+```copy-code
 npm install
 ```
 
-```code
+```copy-code
 npm install highcharts
 ```
 
-```code
+```copy-code
 npm install highcharts-react-official
 ```
 
-```code
+```copy-code
 npm install @sigmacomputing/plugin
 ```
 This project has two new dependencies that need to be installed in addition to the ones we have done in the past.
 
-```code
+```copy-code
 npm install react-dom
 ```
 
-```code
+```copy-code
 npm install react-scripts
 ```
 
@@ -765,31 +765,31 @@ Once pulled into VSCode from Git, don't forget to install the dependencies.
 <strong>IMPORTANT:</strong><br> It is a good practice to check the file "package.json" to determine what other modules may be required. 
 </aside>
 
-```code
+```copy-code
 npm install
 ```
 
-```code
+```copy-code
 npm install D3
 ```
 
-```code
+```copy-code
 npm install lodash
 ```
 
-```code
+```copy-code
 npm install date-fns
 ```
 
-```code
+```copy-code
 npm install react-dom
 ```
 
-```code
+```copy-code
 npm install react-scripts
 ```
 
-```code
+```copy-code
 npm install @sigmacomputing/plugin
 ```
 

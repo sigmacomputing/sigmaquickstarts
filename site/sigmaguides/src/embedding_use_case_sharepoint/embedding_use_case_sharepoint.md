@@ -204,7 +204,7 @@ Once created, Azure will leave us on the `Code + Test` page.
 <img src="assets/sp_07.png" width="800"/>
 
 Replace the default code with this JWT implementation for Sigma:
-```code
+```copy-code
 const crypto = require("crypto");
 
 function b64url(input) {
@@ -315,7 +315,7 @@ Update these specific values:
    - `YOUR_SIGMA_SECRET`: Secret from earlier Sigma setup
    - `YOUR_TEAM_NAME`: `Embed_Users` is provided for you but if you shared to a different team, adjust accordingly.
 
-```code
+```copy-code
 ,  
 {
     "name": "ACCOUNT_TYPE",
@@ -367,7 +367,7 @@ Search for `CORS` in the function app and select it:
 <img src="assets/sp_09.png" width="600"/>
 
 Add your SharePoint tenant origin (replace `yourtenant` with your actual tenant name).
-```code
+```copy-code
 https://yourtenant.sharepoint.com
 ```
 
@@ -377,12 +377,12 @@ Click `Save` and wait for the save confirmation.
 We can manually test our function in a browser using the function URL captured earlier but we need to add a user to it since that is required.
 
 For example, our url is:
-```code
+```copy-code
 https://sigma-quickstart2-dxg6cmgshzb9ccec.centralus-01.azurewebsites.net/api/sigma-jwt?code=jwAJIx7YTA9jmhOBo3u5VbgpefO0avE-Nr48sTjCYK1RAPBIg==
 ```
 
 To include a user as a URL parameter we simple append:
-```code
+```copy-code
 &user=test@example.com
 ```
 
@@ -412,22 +412,22 @@ Open `VSCode` and a new `Terminal` session.
 Create a new directory in a location of your choice, using the command:
 
 For example:
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
@@ -436,17 +436,17 @@ No errors should show:
 
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "sigma-embed-sharepoint" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -466,12 +466,12 @@ Replace:
 Open a terminal session in the `sigma-embed-sharepoint` folder.
 
 Install project dependencies:
-```code
+```copy-code
 npm install
 ```
 
 Build for deploy:
-```code
+```copy-code
 gulp build --ship
 gulp bundle --ship  
 gulp package-solution --ship
@@ -481,7 +481,7 @@ gulp package-solution --ship
 We need to add our SPFx webpart to Sharepoint.
 
 Navigate the the `Apps` page in Sharepoint:
-```code
+```copy-code
 https://[yourtenant].sharepoint.com/sites/appcatalog
 ```
 

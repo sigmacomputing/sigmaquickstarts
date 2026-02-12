@@ -79,7 +79,7 @@ For that level of detail, please see [External Functions.](https://docs.snowflak
 Log into your Snowflake instance as `ACCOUNTADMIN` and create a new SQL worksheet.
 
 ### Load the "Dirty" Dataset in Snowflake, by running this script:
-```code
+```copy-code
 -- Step 1: Create a database and schema for logging requests and responses
 CREATE DATABASE IF NOT EXISTS SIGMA_QUICKSTARTS;
 USE DATABASE SIGMA_QUICKSTARTS;
@@ -131,7 +131,7 @@ This is a simple process that takes only a few minutes.
 Once you have the API key, replace the text on line 42 (search for **"YOUR_API_KEY_HERE"**) of the script with your key.
 
 Run the following script in a Snowflake SQL worksheet:
-```code
+```copy-code
 -- Step 1: Set correct database
 USE DATABASE SIGMA_QUICKSTARTS;
 USE SCHEMA GEOCODIO_API;
@@ -204,7 +204,7 @@ Before moving off this script, comment out the last line that tests the UDF. We 
 `Run All` again to update the UDF.
 
 ### Create a PROCEDURE, by running this script:
-```code
+```copy-code
 -- Step 1: Set correct database
 USE DATABASE SIGMA_QUICKSTARTS;
 USE SCHEMA GEOCODIO_API;
@@ -347,7 +347,7 @@ Add another table to the page, this time selecting `REQUEST_RESPONSE_LOG` from t
 Rename the second table to `Clean Addresses`.
 
 Add a new column to the `Dirty Data` table, rename it to `Cleaned ?` and set the formula to:
-```code
+```copy-code
 If(IsNotNull(Lookup([Clean Addresses/Business Id], [Business Id], [Clean Addresses/Business Id])), "YES", "NO")
 ```
 
@@ -365,7 +365,7 @@ The Geocodio API endpoint we are using is expecting a single comma-separated str
 The `Dirty Data` that was provided to us has each part of the address in individual columns, so we need to combine them, before sending the API request. This is simple to do.
 
 Add a new column to the `Dirty Data` table, rename it to `Request_Address` and set the formula to:
-```code
+```copy-code
 Text([Business Id]) & " || " & [Address] & ", " & [City] & ", " & [State] & ", " & [Dirty Zip]
 ```
 
@@ -446,22 +446,22 @@ The `Response Data` column in the `Clean Addresses` table is storing the address
 Add columns for `Street`, `City`, `State` and `Zip`. Here are the formulas for each, using the [SplitPart function.](https://help.sigmacomputing.com/docs/splitpart)
 
 **Street:**
-```code
+```copy-code
 SplitPart([Response Data], ",", 1)
 ```
 
 **City:**
-```code
+```copy-code
 SplitPart([Response Data], ",", 2)
 ```
 
 **State:**
-```code
+```copy-code
 SplitPart(Trim(SplitPart([Response Data], ",", 3)), " ", 1)
 ```
 
 **Zip:**
-```code
+```copy-code
 SplitPart(Trim(SplitPart([Response Data], ",", 3)), " ", 2)
 ```
 

@@ -186,7 +186,7 @@ Each message is logged to the panel with a timestamp, type, payload, and directi
 ### Inbound events to the iframe
 The specific code block for inbound events is:
 
-```code
+```copy-code
 window.addEventListener("message", (event) => {
   if (event.origin !== "https://app.sigmacomputing.com") return;
 
@@ -212,7 +212,7 @@ This block listens for messages from Sigma and logs them using the message event
 ### Outbound events from the iframe
 This function sends variable updates to Sigma and logs the outbound message.
 
-```code
+```copy-code
 function setStoreRegion(region) {
   const sigma_iframe = document.getElementById("sigma-embed");
   const message = {

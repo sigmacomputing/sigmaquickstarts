@@ -316,7 +316,7 @@ We will now use this table to visualize the output to compare the Python model a
 <img src="assets/rlp_24.png" width="400"/>
 
 Use the formula:
-```code
+```copy-code
 CountIf([STATUS] = "Anomaly") 
 ```
 
@@ -351,7 +351,7 @@ Next we configure the scatter chart and add another for a comparison.
 3. **Color** (Set to "By Category"): Create a new column (use the `+`).
 
 Set the column's formula to:
-```code
+```copy-code
 If([MODEL_COMPARISON/COMPOSITE_FLAG], "Anomaly", "Normal")
 ```
 
@@ -379,7 +379,7 @@ We create another scatter chart from scratch but it is faster to just duplicate 
 Click the `x` to close the 25K data points warning.
 
 The only value requiring a change is to set `Color` > `By Category` to `STATUS` with a formula:
-```code
+```copy-code
 [MODEL_COMPARISON/STATUS]
 ```
 

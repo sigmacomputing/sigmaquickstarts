@@ -115,7 +115,7 @@ Before we provision a new Sigma instance, we need to create a database in Snowfl
 Log into your Snowflake trial account. 
 
 Using the sidebar, open a new `SQL Worksheet` and paste the following code into it:
-```code
+```copy-code
 -- Use the appropriate warehouse
 USE WAREHOUSE COMPUTE_WH;
 
@@ -343,7 +343,7 @@ Click the `Price` column's down-arrow and select `Add new column`:
 <img src="assets/hack21.png" width="800"/>
 
 In the `Function bar`, type the formula:
-```code
+```copy-code
 Price-Cost
 ```
 
@@ -372,7 +372,7 @@ Maybe we want to group the data by `Region`. Simply drag the `Store Region` colu
 <img src="assets/grouping.gif">
 
 Add a new column as before, but this time, click on the `Store Region` column and use the formula:
-```code
+```copy-code
 sum(Profit)
 ```
 

@@ -174,7 +174,7 @@ This process ensures each JWT is unique, secure, and reflects the user's specifi
 
 **3. Response with Signed URL:**<br>
 The server responds to the client with a signed URL, which includes the JWT as a query parameter. For example, the URL might look like:
-```code
+```copy-code
 https://app.sigmacomputing.com/<org-slug>?jwt=<jwt>
 ```
 
@@ -245,22 +245,22 @@ Open `VSCode` and a new `Terminal` session.
 Create a new directory in a location of your choice, using the command:
 
 For example:
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
@@ -269,17 +269,17 @@ No errors should show:
 <img src="assets/jwt7.png" width="800"/>
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "embedding_qs_series_2" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 <aside class="positive">
@@ -296,12 +296,12 @@ npm -v
 </aside>
 
 Change directory to the new folder:
-```code
+```copy-code
 cd embedding_qs_series_2
 ```
 
 Finally, load node into the local project:
-```code
+```copy-code
 npm install
 ```
 
@@ -327,12 +327,12 @@ This package is a development tool that automatically restarts our Node.js appli
 To install these two packages, open a new terminal window in VSCode in the project folder.
 
 Run the command:
-```code
+```copy-code
 npm install jsonwebtoken
 ```
 
 and
-```code
+```copy-code
 npm install jsonwebtoken nodemon
 ```
 
@@ -676,12 +676,12 @@ Open Terminal inside VSCode:
 <img src="assets/gs_24.png" width="600"/>
 
 Change the directory using the following command:
-```code
+```copy-code
 cd embedding_qs_series_2
 ```
 
 Start the Express server:
-```code
+```copy-code
 npm start
 ```
 

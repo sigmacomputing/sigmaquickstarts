@@ -96,7 +96,7 @@ The pubic embed-sdk git repository is [here](https://github.com/sigmacomputing/e
 ### For react-embed-sdk:
 Use the following command, depending on your package manager:
 
-```code
+```copy-code
 npm:
 npm install @sigmacomputing/react-embed-sdk
 
@@ -110,7 +110,7 @@ pnpm add @sigmacomputing/react-embed-sdk
 ### For embed-sdk:
 Use the following command, depending on your package manager:
 
-```code
+```copy-code
 npm:
 npm install @sigmacomputing/embed-sdk
 
@@ -129,7 +129,7 @@ The repo uses turbo for its build system. It currently has 3 packages:
 - docs: A bare-bone documentation / examples
 
 To build:
-```code
+```copy-code
 pnpm run build
 ```
 
@@ -160,27 +160,27 @@ Open `VSCode` and a new `terminal` session.
 In terminal, navigate to the desired directory where we want to clone the repo folder into.
 
 For example:
-```code
+```copy-code
 cd {/path/to/your/directory}
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "embed-sdk-react" > .git/info/sparse-checkout
 ```
 
@@ -189,7 +189,7 @@ At this point, we have run each command and not seen any errors:
 <img src="assets/ae16.png" width="800"/>
 
 Finally, pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -217,7 +217,7 @@ Using VSCode, open a terminal session (or use the old session):
 
 Paste the following command into terminal and press Enter. This command will download and install Homebrew:
 
-```code
+```copy-code
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -230,7 +230,7 @@ Homebrew will be downloaded and setup. Once completed, a success message will be
 <img src="assets/sdk2.png" width="800"/>
 
 To verify the installation, run the command:
-```code
+```copy-code
 brew --version
 ```
 
@@ -240,12 +240,12 @@ A version number should be returned. If not, review the next section.
 This error generally indicates that brew cannot be found by the terminal session. This can be resolved by manually adding Homebrew to the path.
 
 In terminal, open your .zshrc file with this command (still in terminal):
-```code
+```copy-code
 nano ~/.zshrc
 ```
 
 Add the following line at the end of the file to include Homebrew’s path:
-```code
+```copy-code
 export PATH="/opt/homebrew/bin:$PATH"
 ```
 <img src="assets/sdk3.png" width="800"/>
@@ -261,14 +261,14 @@ Save the changes, overwriting the existing file (the commands are shown on the e
 Close the editor after saving.
 
 Reload your shell configuration by running this command:
-```code
+```copy-code
 source ~/.zshrc
 ```
 
 The terminal prompt will reappear with no reply.
 
 Retry brew verification:
-```code
+```copy-code
 brew --version
 ```
 
@@ -284,7 +284,7 @@ We will install Node by using a terminal session in VSCode and leverage Homebrew
 
 In VSCode, open a new terminal session and run the following command to check if Node is already installed:
 
-```code
+```copy-code
 node -v
 ```
 
@@ -294,7 +294,7 @@ In our case, we see a recent version number, so no need to install again:
 
 If Node.js is not already installed, install it by running the following command:
 
-```code
+```copy-code
 brew install node
 ```
 
@@ -311,7 +311,7 @@ This command will download and install the latest stable version of Node along w
 
 Run the following command to enable `Corepack`:
 
-```code
+```copy-code
 corepack enable
 ```
 
@@ -328,12 +328,12 @@ Running `pnpm i` installs the dependencies listed in your project’s package.js
 
 Run the following command to install  `pnpm`:
 
-```code
+```copy-code
 pnpm i
 ```
 
 If terminal throws an error "This project is configured to use yarn", make sure you are in the correct directory, which should be:
-```code
+```copy-code
 {your path}/embed-sdk-react
 ```
 
@@ -347,7 +347,7 @@ The results look like this:
 ## Start Development Server
 We are ready to test the `Embed-SDK` application. Run the following command in terminal:
 
-```code
+```copy-code
 pnpm run dev
 ```
 
@@ -358,7 +358,7 @@ This starts the development server and when ready will appear like this.
 <img src="assets/sdk14.png" width="800"/>
 
 Open a browser and navigate to:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -459,7 +459,7 @@ Make sure the terminal session does not throw unexpected errors after saving bot
 ### Test the application
 
 Refresh the browser using the url:
-```code
+```copy-code
 http://localhost:3000/examples/basic-example
 ```
 

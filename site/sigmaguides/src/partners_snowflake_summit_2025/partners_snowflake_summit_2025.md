@@ -182,7 +182,7 @@ Right click the `Review` column and select `Add column`:
 <img src="assets/sf2025_19.png" width="800"/>
 
 **9:** With the new column selected go to the formula bar and type in:
-```code
+```copy-code
 sentiment(Review)
 ```
 
@@ -262,7 +262,7 @@ We can drag `COGS` into the grouping after the `Total Profit` column and rename 
 Add a new column to the right of the `Price change` column and rename it `Adjusted profit margin`.
 
 Set its formula to:
-```code
+```copy-code
 (([Total Revenue]*(1+[Price Change])) -[Total COGS])/((1+[Price Change])*[Total Revenue])
 ```
 

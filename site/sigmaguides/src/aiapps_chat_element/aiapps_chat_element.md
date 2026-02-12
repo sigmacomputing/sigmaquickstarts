@@ -161,7 +161,7 @@ In Snowflake, navigate to `Projects` and create a new SQL worksheet.
 
 Run the following SQL to create the **base data view**:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
 
@@ -302,7 +302,7 @@ Click `Add`.
 
 On the `Orchestration` tab, enter these instructions:
 
-```code
+```copy-code
 You are a helpful retail data analyst.
 
 Always use the retail_data_analysis tool for any questions about:
@@ -330,7 +330,7 @@ Grant access to your Sigma service role so Sigma can use the Cortex Agent and ac
 
 The underlying SQL view must be accessible to your Sigma role. Run this in a Snowflake SQL worksheet:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 -- Grant access to the underlying SQL view (data layer)
@@ -513,7 +513,7 @@ In the top left click `Save as` and name the workbook `Retail Assistant - QuickS
 
 From the element bar at the bottom, you can add a `Text` element with a title like:
 
-```code
+```copy-code
 Retail Data Assistant
 Ask questions about orders, revenue, customers, and sales patterns.
 ```
@@ -572,7 +572,7 @@ Click on the `Instructions` tab.
 
 In the instructions editor, copy/paste the following to guide the agent's behavior:
 
-```code
+```copy-code
 You are a friendly retail data analyst assistant. Your role is to help users understand their retail order data by answering questions about orders, revenue, customer patterns, and order priorities.
 
 When responding:
@@ -663,7 +663,7 @@ Click `Publish` in the top right corner to publish the workbook.
 
 In the published view, use the Chat Element to ask:
 
-```code
+```copy-code
 What is the total revenue from all orders in the most recent full year?
 ```
 
@@ -775,7 +775,7 @@ Focus your time here rather than tinkering with tool names and descriptions.
 </aside>
 
 Click on the `Instructions` tab and replace the entire instruction content with (the formatting will not matter but adjust for readability if preferred):
-```code
+```copy-code
 You are a friendly retail data analyst assistant helping users analyze TPCH retail order data.
 
 ## Insight Logging Workflow
@@ -810,7 +810,7 @@ Click `Save` and `Publish`
 Switch the workbook to published view.
 
 **Step 1 - Request analysis:**
-```code
+```copy-code
 Analyze customer 3451
 ```
 
@@ -822,7 +822,7 @@ The agent will:
 <img src="assets/chat_38.png" width="800"/>
 
 **Step 2 - Confirm you want to save (good manners never hurt!):**
-```code
+```copy-code
 Yes please
 ```
 
@@ -832,7 +832,7 @@ The agent will:
 - Ask for final confirmation: "Should I proceed?"
 
 **Step 3 - Final confirmation:**
-```code
+```copy-code
 Yes
 ```
 

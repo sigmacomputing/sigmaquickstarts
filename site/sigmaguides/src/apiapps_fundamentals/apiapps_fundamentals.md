@@ -513,7 +513,7 @@ Our AI App is beginning to take form by mixing and matching Sigma building block
 Customize the title for the `Project Filters` button by adding a `(` followed by the `=` sign, which will open a pop up for use to use a custom formula:
 
 Use the following formula:
-```code
+```copy-code
 Sum(If(ArrayLength([filter-Project-Name]) > 0, 1, 0) + 
 If(ArrayLength([filter-Project-Type]) > 0, 1, 0) + 
 If(ArrayLength([filter-Project-Owner]) > 0, 1, 0))
@@ -959,7 +959,7 @@ Set the `Status Date` to `Truncate date` > `Second`:
 
 ### Step 15: 
 Add a new column to the table, set the calculation to be:
-```code
+```copy-code
 lookup(max([Second of Status Date]), [Project ID], [Project ID]
 ```
 
@@ -973,7 +973,7 @@ For more information about functions in Sigma, see [Function index](https://help
 
 ### Step 16: 
 Add a new column of `Latest Update` with calculation:
-```code 
+```copy-code 
 [Max of Second of Status Date] = [Second of Status Date] 
 ```
 
@@ -1046,7 +1046,7 @@ The list will then show all the columns from the selected table. Now we can choo
 Click the green check mark to accept the entry of `[Project Tracker Stable Table/Project Owner]`.
 
 Repeat the process by adding two more line beneath the first one for:
-```code
+```copy-code
 [Project Tracker Stable Table/Project Status]
 [Project Tracker Stable Table/Project Due Date]
 ```

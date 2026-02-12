@@ -241,37 +241,37 @@ Open VSCode and start a new Terminal session.
 Navigate to the directory where you want to clone the repo folder:
 
 For example:
-```code
+```copy-code
 cd {/path/to/your/directory}
 ```
 
 Create a new directory for the project:
-```code
+```copy-code
 mkdir embedding_streamlit
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd embedding_streamlit
 ```
 
 Initialize a new Git repository:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder to include in the sparse checkout:
-```code
+```copy-code
 echo "embedding_signed_URL/streamlit/" >> .git/info/sparse-checkout
 ```
 
@@ -280,7 +280,7 @@ At this point, we’ve run each command and haven’t seen any errors:
 <img src="assets/sl_21.png" width="800"/>
 
 Pull only the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -362,7 +362,7 @@ Open the `embedding_streamlit` folder in VSCode and locate the `.env` file.
 
 Replace the placeholder values with your own `CLIENT_ID`, `SECRET` and `BASE_URL`:
 
-```code
+```copy-code
 SESSION_LENGTH=3600
 PORT=3000
 
@@ -379,7 +379,7 @@ After updating `.env` with your values, `save` it.
 
 Use a VSCode terminal session (or your terminal of choice) to navigate to your project folder and activate the Conda environment:
 
-```code
+```copy-code
 conda activate streamlit
 ```
 
@@ -392,7 +392,7 @@ To load values from the `.env` file, we use the `python-dotenv` package.
 
 If you haven’t already installed it, run this command in your terminal:
 
-```code
+```copy-code
 pip install python-dotenv
 ```
 
@@ -400,7 +400,7 @@ pip install python-dotenv
 Once the environment is activated and dependencies are installed, launch the app:
 
 Start the Streamlit app:
-```code
+```copy-code
 streamlit run app.py
 ```
 

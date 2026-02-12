@@ -65,14 +65,14 @@ Developers who want to use Sigma's REST API to programmatically control Sigma in
 Duration: 5
 
 Start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder and enable debugging:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 

@@ -184,7 +184,7 @@ Before we start configuring things, lets create a text file (any text editor is 
 Temporarily holding these values will make things a little easier for us as we go, especially since we want to use incognito/private browser sessions. 
 
 Create the following placeholders in the text file:
-```code
+```copy-code
 TEST USER CREDENTIALS:
 EMAIL = 
 PASSWORD = 
@@ -252,24 +252,24 @@ Using an incorrect redirect URI will prevent OAuth authentication from working.
 </aside>
 
 If running Sigma on AWS, use:
-```code
+```copy-code
 https://aws-api.sigmacomputing.com/api/v2/oauth/1/authcode
 ```
 
 If running Sigma on Azure use:
-```code
+```copy-code
 https://api.us.azure.sigmacomputing.com/
 ```
 
 If running Sigma on GCP use:
-```code
+```copy-code
 https://api.sigmacomputing.com/api/v2/oauth/1/authcode
 ```
 
 Configuring a `Sign-out redirect URI` is optional. This is the page the users will see upon logout from Sigma.
 
 We will use (replacing `{YOUR-SIGMA-ORGANIZATION-NAME}` with our Sigma trials organization name):
-```code
+```copy-code
 https://app.sigmacomputing.com/{YOUR-SIGMA-ORGANIZATION-NAME}/login
 ```
 
@@ -320,7 +320,7 @@ Provide a description for the authorization server if desired.
 For `Audience`, we must provide the URL of the Snowflake account we intend to use later, when we create a Sigma connection to Snowflake.
 
 For example: 
-```code
+```copy-code
 https://<your-snowflake-account>.snowflakecomputing.com
 ```
 
@@ -432,7 +432,7 @@ If you don't know how, see [Invite new organization members.](https://help.sigma
 ### Add users in Snowflake
 Run the following sql script in the Snowflake trial account, editing for your values:
 
-```code
+```copy-code
 -- 1: Set account admin role for script:
 USE ROLE ACCOUNTADMIN;
 
@@ -500,7 +500,7 @@ Bottom line; we need to also add the Sigma administrators email (IF IT DOES NOT 
 If it already exists in Snowflake, skip this part of this section.
 
 Go ahead and add the Sigma administrator to Snowflake, taking care to adjust the script for the new values:
-```code
+```copy-code
 -- 1: Set account admin role for script:
 USE ROLE ACCOUNTADMIN;
 
@@ -535,7 +535,7 @@ There are many possible places where incorrect configuration can throw an error.
 If you never have seen this error, GREAT!. If you do get it when attempting to add the OAuth-enabled Snowflake connection in Sigma, we just need to update the Snowflake admin user to have a default role. 
 
 For example, our Snowflake admin user is named "QUICKSTARTS" so the script to run in Snowflake to provision the a default role is this:
-```code
+```copy-code
 -- Update the user default role
 ALTER USER QUICKSTARTS SET
     DEFAULT_ROLE = SIGMA_OAUTH_ROLE;
@@ -644,7 +644,7 @@ We will use the previously copied `EXTERNAL_OAUTH_ISSUER` and `EXTERNAL_OAUTH_JW
 
 Run the following script in a Snowflake SQL Worksheet, changing the values for `EXTERNAL_OAUTH_ISSUER`
 and `EXTERNAL_OAUTH_JWS_KEYS_URL` for your values:
-```code
+```copy-code
 CREATE OR REPLACE SECURITY INTEGRATION Sigma_Okta_security_integration
 TYPE = EXTERNAL_OAUTH
 ENABLED = TRUE
@@ -952,7 +952,7 @@ In the Snowflake portal, create a new SQL worksheet and copy/paste the following
 
 #### Create a service account
 
-```code
+```copy-code
 -- Switch to admin role:
 USE ROLE ACCOUNTADMIN;
 
@@ -984,7 +984,7 @@ Run the script to create the account, making sure Snowflake responds with `State
 
 #### Create Write-back database and schema
 
-```code
+```copy-code
 -- Switch to admin role:
 USE ROLE ACCOUNTADMIN;
 
@@ -1004,7 +1004,7 @@ CREATE SCHEMA IF NOT EXISTS INPUT_TABLES_LOG;
 
 #### Grants
 
-```code
+```copy-code
 -- Switch to admin role:
 USE ROLE ACCOUNTADMIN;
 
@@ -1088,7 +1088,7 @@ However, if we want to have other users access them too, we need to create a gra
 
 This Snowflake example (and incomplete) script shows the general idea of what needs to be executed as part of a configuration.
 
-```code
+```copy-code
 GRANT ALL ON ALL FUTURE TABLES TO <> ON SCHEMA <>
 ```
 

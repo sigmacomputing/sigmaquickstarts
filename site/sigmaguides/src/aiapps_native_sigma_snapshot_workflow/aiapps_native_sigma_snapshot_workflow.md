@@ -113,7 +113,7 @@ In the `Parsing Options`, change the column `Batch Placeholder` to a type of `Te
 <img src="assets/es-1a.png" width="800"/>
 
 Add a new `Calculation` column to the table and set the formula to:
-```code
+```copy-code
 DateTrunc("year", [Date])
 ```
 
@@ -132,7 +132,7 @@ Also update the `Value` column to `Type` = `Number` and the `Last updated at` to
 Click `Save`.
 
 Add a new `Calculation` column to the table, rename it to `Year` and set the formula to:
-```code
+```copy-code
 DateTrunc("year", [Date])
 ```
 
@@ -201,7 +201,7 @@ Add a new `Text input` control, rename it to `Batch ID` and set the `Control ID`
 Now we can add a new column to the `Annual Budget + Batch Edits Storage` table.
 
 Add a new column and rename it to `InOriginalTable?`. Set the formula to:
-```code
+```copy-code
 [Batch Placeholder] = "0"
 ```
 <img src="assets/es-21.png" width="600"/>
@@ -209,7 +209,7 @@ Add a new column and rename it to `InOriginalTable?`. Set the formula to:
 This formula checks if a row belongs to the original dataset by comparing the value in the Batch Placeholder column to `0`. Rows where this condition is `TRUE` represent the initial state of the data before any edits or snapshots were made. It ensures the original data can be identified and displayed when needed. Later, we will show another way to capture the original state of the data.
 
 Add another new column and rename it to `InCurrentBatch?`. Set the formula to:
-```code
+```copy-code
 [Batch Placeholder] = [batch_id]
 ```
 
@@ -233,7 +233,7 @@ Add a new `Multi-select` column and save with the default settings:
 Rename the column to `Batches`.
 
 Add a new `Calculation` column, rename it to `Batches Contain` and set the formula to:
-```code
+```copy-code
 ArrayContains([Batches], [batch_id])
 ```
 
@@ -266,7 +266,7 @@ Set the `Value source` to `Data - Snapshots` and `Source column` to `Snapshot Na
 Now we can add the last two columns to the `Annual Budget + Batch Edits Storage` table.
 
 Add a new column, rename it to `InCurrentSnapshot?` and set the formula to:
-```code
+```copy-code
 ArrayContains(Lookup([Snapshots/Batches], [snapshot_list], [Snapshots/Snapshot Name]), [Batch Placeholder])
 ```
 
@@ -277,7 +277,7 @@ It works by first using `Lookup` to retrieve the `Batches` list from the `Snapsh
 Then, `ArrayContains` determines if the `Batch Placeholder` is part of that batch list. This ensures the display reflects rows that belong to the snapshot selected by the user.
 
 For the last new column, and and rename it to `IncludeMe?` and set the formula to:
-```code
+```copy-code
 [InOriginalTable?] or [InCurrentBatch?] or [InCurrentSnapshot?]
 ```
 
@@ -318,7 +318,7 @@ Group the table as shown below, truncating `Date` to `Quarter`:
 Duplicate the `Value` column and drag `Value(1)` up to the same group as the other columns.
 
 Once grouped, the `Value(1)` name changes to `Value`. Rename that to `Current Value` and set the formula to:
-```code
+```copy-code
 First([Value])
 ```
 
@@ -525,7 +525,7 @@ The next action inserts a row into the `Snapshot Input` table with the control v
 <img src="assets/es-37.png" width="650"/>
 
 After that, we add another action to update the `Batch ID` control on the `Data` page, using this formula to derive the correct value:
-```code
+```copy-code
 Text(Max(Int(Number([Batch Edits Storage/Batch]))) + Int(1))
 ```
 
