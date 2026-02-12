@@ -23,7 +23,7 @@ Before proceeding with this QuickStart guide, ensure you've completed the [Embed
 
 DCS with Sigma can be efficiently managed by using the JWT claim:
 
-```code
+```copy-code
 :eval_connection_id=<connection_id> 
 ```
 
@@ -161,7 +161,7 @@ We have created the following Snowflake script to automate the process of creati
 Open a new worksheet in Snowflake.
 
 Copy and paste this code into the worksheet:
-```code
+```copy-code
 //// This is account 1
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 1: DATA CONFIGURATION
@@ -277,7 +277,7 @@ Execute the script. When it completes, you should see data for `Client_A`:
 Repeat the same operations in a second Snowflake account, adjusting the Snowflake script to load a different dataset into the same schema.
 
 Log into a **second** Snowflake account as `ACCOUNTADMIN` and paste this script into a new Worksheet:
-```code
+```copy-code
 // This is account 2
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 1: DATA CONFIGURATION
@@ -475,7 +475,7 @@ The connection ID for `Client_A` is shown in the URL:
 <img src="assets/dcs17.png" width="800"/>
 
 For example, the id for this example is (yours will be different):
-```code
+```copy-code
 e90e75f0-f79b-4be3-a9e1-45bc681bbbc4
 ```
 
@@ -495,7 +495,7 @@ For testing, we'll use the prebuilt page that demonstrates this approach.
 
 In VSCode, open a new Terminal session inside the `embedding_qs_series` project and run the following command:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -522,7 +522,7 @@ All other values can remain the same.
 Save the changes.
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/connection_swapping/?mode=connection_swapping
 ```
 

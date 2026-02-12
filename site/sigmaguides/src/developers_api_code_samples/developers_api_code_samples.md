@@ -90,7 +90,7 @@ You can verify your installation using VSCode's built-in Terminal:
 <img src="assets/apics3.png" width="800"/>
 
 **Run the command:**
-```code
+```copy-code
 node -v
 ```
 
@@ -111,27 +111,27 @@ To save you time, we've stored all the necessary project files in Git. Simply do
 In terminal, navigate to the desired directory where we want to clone the repo folder into.
 
 For example:
-```code
+```copy-code
 cd {/path/to/your/directory}
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "sigma-api-recipes" > .git/info/sparse-checkout
 ```
 
@@ -140,7 +140,7 @@ At this point, we have run each command and not seen any errors:
 <img src="assets/apics4d.png" width="800"/>
 
 Finally, pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -149,14 +149,14 @@ We can now see the cloned project folder:
 <img src="assets/apics4e.png" width="800"/>
 
 Run the command:
-```code
+```copy-code
 npm install
 ```
 
 This will automatically install the project dependencies we use in the recipes. 
 
 You can verify that the dependencies (at the time of this QuickStart) were installed by running:
-```code
+```copy-code
 npm list
 ```
 
@@ -580,7 +580,7 @@ In each section, we export the script to a Javascript function so that when we a
 
 ### Required Body Parameters
 Open the `.env` file and add the required parameters. You will need to provide different values as shown below:
-```code
+```copy-code
 EMAIL={your example email}
 NEW_MEMBER_FIRST_NAME=API
 NEW_MEMBER_LAST_NAME=Generated
@@ -608,7 +608,7 @@ Open the file `create-new.js` in the `members` folder:
 Each code block is commented to explain what operations are being performed. 
 
 Note the line of code that uses the [Javascript split function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) to ensure that the members's email address is unique:
-```code
+```copy-code
 const newMemberEmail = `${baseEmail.split('@')[0]}+${new Date().getTime()}@${baseEmail.split('@')[1]}`;
 ```
 
@@ -663,7 +663,7 @@ Each code block is commented to explain what operations are being performed.
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
-```code
+```copy-code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
 New workspace permission added successfully: {}
 ```
@@ -691,7 +691,7 @@ Each code block is commented to explain what operations are being performed.
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
-```code
+```copy-code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/teams/25d48b2e-b36b-4db2-98a9-2c474f4144da/members
 Member successfully added to team: {}
 ```
@@ -725,7 +725,7 @@ Each code block is commented to explain what operations are being performed.
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
-```code
+```copy-code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
 New workspace permission added successfully: {}
 ```
@@ -763,7 +763,7 @@ Each code block is commented to explain what operations are being performed.
 Press `F5` to run the script with VSCode's debugger. 
 
 The expected response is:
-```code
+```copy-code
 URL sent to Sigma: https://aws-api.sigmacomputing.com/v2/workspaces/678ba3ea-00c8-4702-871e-6418279e9796/grants
 New workspace permission added successfully: {}
 Connection permissions granted successfully.
@@ -840,7 +840,7 @@ Make a note of the test user's memberId. Again, we could get this using the API,
 In this case, the memberId is `KteJXJQfHuei5GxxY9hQOnFZHP91A`. Yours will be different.
 
 Add these values to the .env file we created and save the change.
-```code
+```copy-code
 MEMBER_ID=KteJXJQfHuei5GxxY9hQOnFZHP91A
 NEW_MEMBER_TYPE=Creator
 ```
@@ -1367,7 +1367,7 @@ Open the file `transfer-all-workbooks.js` in the `workbooks` folder:
 Each code block is commented to explain what operations are being performed. 
 
 In the `.env` file there are two additional required parameters, one for the current owner and one for the new:
-```code
+```copy-code
 OLD_OWNER_EMAIL=
 NEW_OWNER_EMAIL=
 ```

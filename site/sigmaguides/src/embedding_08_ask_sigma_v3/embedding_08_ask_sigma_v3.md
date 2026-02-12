@@ -169,12 +169,12 @@ Duration: 5
 We’ll move through this quickly, assuming you’ve done similar configurations before in the `Getting Started QuickStart`.
 
 In VSCode > Terminal, start the local web server in the `embedding_qs_series_2` project folder:
-```code
+```copy-code
 npm start
 ```
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/ask_sigma/?mode=ask_sigma
 ```
 

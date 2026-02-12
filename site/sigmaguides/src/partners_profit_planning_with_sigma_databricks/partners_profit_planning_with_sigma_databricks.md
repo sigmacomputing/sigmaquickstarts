@@ -217,7 +217,7 @@ We can drag `COGS` into the grouping after the `Total Profit` column and rename 
 Add a new column to the right of the `Price change` column and rename it `Adjusted profit margin`.
 
 Set its formula to:
-```code
+```copy-code
 (([Total Revenue]*(1+[Price Change])) -[Total COGS])/((1+[Price Change])*[Total Revenue])
 ```
 

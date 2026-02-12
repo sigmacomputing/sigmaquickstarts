@@ -230,7 +230,7 @@ Scroll down to the `# QS: federated_access` sectionL
 <img src="assets/fa_11.png" width="600"/>
 
 Here we need to configure the four items. For this test case we used:
-```code
+```copy-code
 FEDERATED_ACCESS_EMAIL=all_clients_user@example.com
 FEDERATED_ACCESS_ACCOUNT_TYPE=View
 FEDERATED_ACCESS_TEAMS=All_Clients_Team
@@ -246,7 +246,7 @@ Save the `.env` file changes.
 
 Open a new Terminal in VSCode, navigate to the `embedding_qs_series_2` directory, and start the Express web server by running:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -283,7 +283,7 @@ Then click to select the bar chart and copy the URL from the browser.
 For single elements and workbook pages, we need to adjust the URL as described in [p](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens). Scroll down to the section `What URL to use`.
 
 The URL syntax for a single element is as follows:
-```code
+```copy-code
 https://app.sigmacomputing.com/{organization-name}/workbook/{workbookname}-{workbookUrlId}/element/{elementId}
 ```
 
@@ -305,7 +305,7 @@ Simply pass the extra team as shown:
 
 **PROGRAMMING NOTE:**
 Multiple teams must be passed as an array. In our sample application, this is handled in the `embed-api.js` code so that .env can just use a comma-delimited string. This logic appears on lines 43–44 of that file:
-```code
+```copy-code
 // Convert comma-separated teams string into array
    const teamsArray = rawTeams ? rawTeams.split(",").map((t) => t.trim()) : [];
 ```
@@ -339,12 +339,12 @@ With nothing selected on the `Client_B` page, copy the URL from the browser.
 As with the single element, we need to adjust the URL to follow the page-specific syntax.
 
 The URL syntax for a workbook page is as follows:
-```code
+```copy-code
 https://app.sigmacomputing.com/{organization-name}/workbook/{workbookname}-{workbookUrlId}/page/{pageId}
 ```
 
 For example, we adjusted the URL to this:
-```code
+```copy-code
 https://app.sigmacomputing.com/quick-starts-fundamentals/workbook/Federated_Access_QuickStart-4DuhJmjSblmwvyRsCAXLvc/page/3UcHBoVD3j
 ```
 

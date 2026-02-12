@@ -21,6 +21,9 @@
         return;
       }
 
+      // Add class to pre element for styling
+      preElement.classList.add('has-copy-button');
+
       // Create the copy button
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-button';

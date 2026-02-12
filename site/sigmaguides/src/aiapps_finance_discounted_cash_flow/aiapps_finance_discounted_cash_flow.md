@@ -91,7 +91,7 @@ We want to create part of a DCF for each year, for each of the store regions.
 First, we will group by `Store Region` and then create a second grouping on `Date`:
 
 Set the formula for `Date` to:
-```code
+```copy-code
 DateTrunc("year", [Date])
 ```
 
@@ -104,7 +104,7 @@ Filter on `Year of Date` for the last three years only:
 <img src="assets/dcf_1a.png" width="800"/>
 
 Add one more column as a `CALCULATION` in the `Year of Date`, setting its formula to:
-```code
+```copy-code
 Rank([Year of Date], "desc")
 ```
 
@@ -129,7 +129,7 @@ Add three new `CALCULATION` columns in the `Year of Date` group called ``CV 0``,
 Since we're starting with the first year, there won't be any `CV 0` initially. Therefore, there will only be an `ECV 0`, and no `Reduction` at this stage.
 
 In the `ECV 0` column, insert the following formula:
-```code
+```copy-code
 Subtotal(Sum([Price] * [Quantity]), "row_parent")
 ```
 
@@ -154,7 +154,7 @@ We will use helper columns to simulate this recursive logic.
 Let’s first adjust `ECV 0` to ensure it is correctly calculated only for the first year.
 
 Change the formula in `ECV 0` to:
-```code
+```copy-code
 If([Rank of Year of Date] = 1, Subtotal(Sum([Price] * [Quantity]), "row_parent"))
 ```
 
@@ -166,7 +166,7 @@ This gives us:
 Now, let’s transfer this calculation as our carrying value for year two. 
 
 In the `CV 0` column, insert:
-```code
+```copy-code
 If([Rank of Year of Date] > 1, Lag([ECV 0], 1, Null))
 ```
 
@@ -176,7 +176,7 @@ This gives us (after sorting the `Year of Date` column to show the most recent d
 
 ### Creating the Reduction Column
 Next, define the `Reduction` column with the following formula:
-```code
+```copy-code
 If([Rank of Year of Date] = 1, Null, Sum([Quantity] * [Price]))
 ```
 
@@ -188,23 +188,23 @@ This gives us:
 Now, we'll create additional helper columns to handle the recursive logic.
 
 Add a new column in `CALCULATIONS` named `CV 1`; set its formula to:
-```code
+```copy-code
 If([Rank of Year of Date] = 2, Lag([ECV 0], 1, Null) - [Reduction], Null)
 ```
 
 Add a new column named `ECV 1`; set its formula to:
-```code
+```copy-code
 If([Rank of Year of Date] = 2, [CV 1] - [Reduction], Null)
 ```
 
 #### Repeat This Process for Last Year in the Table
 Add a new column named `CV 2`; set its formula to:
-```code
+```copy-code
 If([Rank of Year of Date] = 3, Lag([ECV 1], 1, Null) - [Reduction], Null)
 ```
 
 Add a new column named `ECV 2`; set its formula to:
-```code
+```copy-code
 If([Rank of Year of Date] = 3, [CV 2] - [Reduction], Null)
 ```
 
@@ -226,14 +226,14 @@ Create two new columns in `CALCULATIONS` and rename them to `Final CV` and `Fina
 Use the the following formulas for each:
 
 **For Final CV:**
-```code
+```copy-code
 Coalesce([CV 0], [CV 1], [CV 2])
 ```
 
 This formula will select the first non-null carrying value from the available years. It effectively gathers the carrying value for each row across all years in one column.
 
 **For Final ECV:**
-```code
+```copy-code
 If(IsNotNull(Coalesce([CV 0], [CV 1], [CV 2])), Coalesce([ECV 0], [ECV 1], [ECV 2]), Null)
 ```
 
@@ -302,7 +302,7 @@ The `Discount Rate` is used to adjust future cash flows back to their present va
 Add a new column in `CALCULATIONS` and rename this column to `DCF`.
 
 Enter the following formula into the DCF column:
-```code
+```copy-code
 [Final ECV] / Power((1 + [Discount]), Number([Rank of Year of Date]))
 ```
 

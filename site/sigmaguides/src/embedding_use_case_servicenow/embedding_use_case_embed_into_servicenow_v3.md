@@ -153,7 +153,7 @@ Navigating in ServiceNow can be challenging for those unfamiliar with its many f
 **<your_instance>:** Replace this with the portion of the URL that identifies your ServiceNow developer instance. 
 
 For example, if the page URL is:
-```code
+```copy-code
 https://dev274798.service-now.com/sys_properties_list.do
 ```
 
@@ -167,7 +167,7 @@ We will use ServiceNow `System Properties` to configure required parameters (JWT
 For more information, see [JSON web token claims reference](https://help.sigmacomputing.com/docs/json-web-token-claims-reference)
 
 Log in to your ServiceNow developer instance. Once the instance is running (this can take a few minutes), navigate to:
-```code
+```copy-code
 <your_instance>.service-now.com/sys_properties_list.do
 ```
 
@@ -216,7 +216,7 @@ We need to create a **Script Include** that will handle the server-side generati
 </aside>
 
 Navigate to:
-```code
+```copy-code
 <your_instance>.service-now.com/sys_script_include_list.do
 ```
 
@@ -227,7 +227,7 @@ Click `New`
 - Set `Active` to checked.
 
 Paste the following script into the script section (#4):
-```code
+```copy-code
 /**
  * Script Include: Sigma_Embed_API
  * Purpose: Generate a Sigma embed URL signed with HS256 (no platform crypto).
@@ -521,7 +521,7 @@ Because the JWT is generated and applied in ServiceNow’s server context, the f
 
 
 Navigate to:
-```code
+```copy-code
 <your_instance>.service-now.com/sys_ws_definition_list.do
 ```
 
@@ -547,7 +547,7 @@ Click the `New` button in the lower right corner to create a new resource inside
 - Relative path should be `/sigma-embed-url`.
 
 Paste the following script in the `* Script` box:
-```code
+```copy-code
 (function process(request, response) {
   var email = (request.queryParams.email || gs.getProperty('x_sigma.email') || '').trim();
 
@@ -575,7 +575,7 @@ We need to create a **Service Portal Widget** that will request the Sigma embed 
 This widget will be placed on a page in the Service Portal.
 
 Navigate to:
-```code
+```copy-code
 <your_instance>.service-now.com/sp_widget_list.do
 ```
 
@@ -586,7 +586,7 @@ Set the Name to `Sigma iFrame`.
 In each of the following sections we apply code to operations and styling to the Iframe.
 
 In `Body HTML template` copy/paste the following code:
-```code
+```copy-code
 <div>
   <iframe ng-src="{{c.sigmaUrl}}" style="width:100%; height:90vh; border:0;" allowfullscreen></iframe>
 </div>
@@ -605,7 +605,7 @@ These steps ensure the iframe loads correctly without being blocked by either br
 
 
 In the `CSS` section:
-```code
+```copy-code
 #sigma_embed {
   width: 100%;
   height: 90vh;
@@ -614,7 +614,7 @@ In the `CSS` section:
 ```
 
 In the `Client controller` section:
-```code
+```copy-code
 api.controller = function($scope, $http, $sce) {
   var c = this;
   c.sigmaUrl = '';
@@ -637,7 +637,7 @@ api.controller = function($scope, $http, $sce) {
 ```
 
 In `controllerAS` set the first box to `c` and the `Link` box to:
-```code
+```copy-code
 function link(scope, element, attrs, controller) {
 }
 ```
@@ -653,7 +653,7 @@ Duration: 5
 We need to create a Service Portal Page that will host our Sigma iFrame widget. This page will be accessible through the Service Portal and is where the embedded Sigma content will actually appear.
 
 Navigate to:
-```code
+```copy-code
 <your_instance>.service-now.com/$sp.do
 ```
 

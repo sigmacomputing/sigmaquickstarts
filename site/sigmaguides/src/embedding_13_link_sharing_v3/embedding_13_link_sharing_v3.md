@@ -164,7 +164,7 @@ For testing, we’ll use the pre-built page that demonstrates this approach.
 
 In VSCode, open a new Terminal session inside the `embedding_qs_series` project and run the following command:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -176,7 +176,7 @@ The `CLIENT_ID` and `SECRET` from the Getting Started QuickStart should still be
 
 In the `# QS: link_sharing` section, we need to configure the values below, using the URL you saved earlier for the `LINK_SHARING_BASE_URL` value:
 
-```code
+```copy-code
 LINK_SHARING_BASE_URL={YOUR WORKBOOK EMBED URL SAVED FROM EARLIER}
 LINK_SHARING_EMAIL=sales_person@example.com
 LINK_SHARING_ACCOUNT_TYPE=Build
@@ -188,7 +188,7 @@ Save the `.env` file.
 <img src="assets/ls_4.png" width="800"/>
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/link_sharing/?mode=link_sharing
 ```
 
@@ -240,7 +240,7 @@ If we copy this link and open it again in Safari, the embed will still be filter
 <img src="assets/ls_12.png" width="600"/>
 
 In looking at the link that Sigma generates, we can see there is a value for `exploreKey`. This is the reference to the shared exploration:
-```code
+```copy-code
 http://localhost:3000/link_sharing/?exploreKey=0d71ae85-5405-44e6-88ca-f9549d0433b5
 ```
 
@@ -303,7 +303,7 @@ Continuing with the bookmarked workbook, we can add another filter to create a n
 <img src="assets/ls_17.png" width="400"/>
 
 If we copy the exploration sharing link now, it also includes a reference to the new bookmark:
-```code
+```copy-code
 http://localhost:3000/link_sharing/?exploreKey=7f4e31c0-d22d-4a25-bbc2-7a2cbc8bf054&bookmarkId=8ff2e5c0-425c-43dc-b29a-2a1f9900dd6a
 ```
 

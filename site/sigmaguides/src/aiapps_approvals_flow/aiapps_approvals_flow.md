@@ -62,7 +62,7 @@ Add a new `Data` > `Table` to the page and set the source to `Sigma Sample Datab
 <img src="assets/acl-1.png" width="600"/>
 
 Add a new column, rename it to `Revenue` and set the formula to:
-```code
+```copy-code
 [Price] * [Quantity]
 ```
 Let's cull the data down for this demonstration. We don't need 4.5 million rows to build our AI App, although Sigma handles it fine anyway. There is no reason to use more data than is required and efficiency matters. 
@@ -82,7 +82,7 @@ Let's just assume these are the orders in the cloud data warehouse ("warehouse")
 Since it is possible that each order can have multiple items (`SKUs`), we need to add a column to ensure that we can easily identify any row uniquely. 
 
 Add a new column, rename it to `Key` and set the formula to:
-```code
+```copy-code
 MD5(Text([Order Number]) & [Sku Number] & Text([Cust Key]))
 ```
 
@@ -151,7 +151,7 @@ Duration: 5
 We want the AI App to open a modal window when the user clicks on a single cell in a specific row. 
 
 Let's make it really obvious for the user and add a new `Calculation` column to `Orders to Approve` and rename it to `Edit`. Set the formula to:
-```code
+```copy-code
 "EDIT"
 ```
 
@@ -307,7 +307,7 @@ Repeat to create a second container for the `Order Details` controls:
 <img src="assets/af-20a.png" width="600"/>
 
 Here is the text for `Instructions`:
-```code
+```copy-code
 An adjustment is requested on this order and line item.  
 
 Make sure to include some information with your update.
@@ -334,7 +334,7 @@ Set the connection to the `Sigma sample database`.
 We will need to add and configure a few columns. These columns will be populated by data sent by the `Approvals Modal` when the user saves an override.
 
 Add and configure the following columns:
-```code
+```copy-code
 Column Name:      Type:
 Order Number      Number
 Previous Revenue  Number
@@ -378,7 +378,7 @@ Group the table on `Key` and drag `Last Updated at` to `CALCULATIONS`, changing 
 <img src="assets/af-36.png" width="500"/>
 
 Add an new column and rename it to `IsLatest`. Set the formula to:
-```code
+```copy-code
 If([Last updated at] = [Max of Last updated at], True)
 ```
 
@@ -543,7 +543,7 @@ Rename the copy to `Approver Modal` and change its title to match.
 <img src="assets/af-45.png" width="500"/>
 
 Next we will update the `Instructions` to:
-```code
+```copy-code
 An adjustment is requested on this order and line item.  
 
 Rm Override shows the latest requested adjustment.
@@ -644,14 +644,14 @@ Now when the adjusted clicks on a `Rejected` row, they use the same `Adjuster Mo
 Duration: 5
 
 On the `Orders to Approve` table, add a new `Calculation` column to the `Orders to Approve` table, setting the formula to:
-```code
+```copy-code
 Switch([a_persona], "Adjuster", [Latest Status (Most Recent Adjustments)] = "Rejected" or IsNull([Latest Status (Most Recent Adjustments)]), "Approver", [Latest Status (Most Recent Adjustments)] = "Adjusted" or [Latest Status (Most Recent Adjustments)] = "Approved", False)
 ```
 
 Rename it to `Persona Access`.
 
 Create another `Calculation` column, renamed to `Persona` with this formula:
-```code
+```copy-code
 If(Lookup([Latest Status (Most Recent Adjustments)], [Key], [Latest Status (Most Recent Adjustments)]) = "Adjusted", "Adjuster", "Approver")
 ```
 

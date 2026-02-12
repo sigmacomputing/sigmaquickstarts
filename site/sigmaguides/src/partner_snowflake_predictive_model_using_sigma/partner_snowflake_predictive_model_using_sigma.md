@@ -26,7 +26,7 @@ Thanks for signing up for Snowflake & Sigma’s Virtual Hands-On Lab, “Develop
 
 Once you are done configuring partner connect, or if you already have a Sigma account (or [created a Sigma trial manually](https://www.sigmacomputing.com/free-trial)), and did not use Partner Connect to create these Snowflake objects, you can run the following commands in a [Snowsight Worksheet](https://docs.snowflake.com/en/user-guide/ui-snowsight-worksheets-gs#create-worksheets-in-sf-web-interface) to configure your HOL environment:
 
-```code
+```copy-code
 USE ROLE SYSADMIN;
 CREATE DATABASE IF NOT EXISTS PC_SIGMA_DB;
 CREATE WAREHOUSE IF NOT EXISTS PC_SIGMA_WH
@@ -344,7 +344,7 @@ We’ll now show how we can apply that trained model in sigma, and look at an ex
 1: Create a child table from our `Test` table, and call it `Deploy Model.` We’ll be calling our model here. 
 
 2: Create a new column, and use the following syntax and your own model location to define a function like this:
-```code 
+```copy-code 
 CallVariant(“SE_DEMO_DB.ML_REGISTRY.SHIFT_SALES_MODEL!Predict”) 
 ```
 You should see an error about argument types, as we haven’t provided any input yet. If you get an error about the UDF not existing, there is likely a permissions error. 
@@ -375,7 +375,7 @@ Confirm your selection, and we have our final prediction that directly runs the 
 <img src="assets/ml28.png" width="800"/>
 
 5: Now, if we combine the steps of the prediction above, we end up with a final syntax that looks something like this:
-```code
+```copy-code
 Number(CallVariant("SE_DEMO_DB.ML_REGISTRY.SHIFT_SALES_MODEL!PREDICT", [Month of Date], [Weekday of Date], [Encoded Shift]).PRED_SHIFT_SALES)
 ```
 

@@ -191,7 +191,7 @@ To make this easier to spot, we can filter the `events.csv + 2` table to show on
 <img src="assets/fantrap_18.png" width="800"/>
 
 The `amount` column containing `10` for all rows, is clearly suspicious, especially given that it does not make sense if the calculation should be...
-```code
+```copy-code
 qty * price 
 ```
 
@@ -220,12 +220,12 @@ This causes the amount from `order_header` to be duplicated for every product in
 When joined with `order_details`, each product row inherits the same total amount, which makes it appear that the revenue is much higher than it actually is.
 
 For example, if an order’s total amount is $10.00, and that order has three products, the amount appears three times in the joined data. So when we sum the amount column, we incorrectly get:
-```code
+```copy-code
 $10 + $10 + $10 = $30
 ```
 
 But the correct total revenue should be calculated as:
-```code
+```copy-code
 SUM(qty * price) per order
 ```
 
@@ -284,7 +284,7 @@ We could just resolve this in our data model or workbook, but instead, let's use
 Log into a Snowflake instance with ACCOUNTADMIN permission.
 
 Open a new `SQL worksheet` and run the following commented script:
-```code
+```copy-code
 -- This will work in Snowflake trials. Adjust for your environment as required.
 USE DATABASE SNOWFLAKE_SAMPLE_DATA;
 USE SCHEMA TPCH_SF1;
@@ -368,7 +368,7 @@ Configure the new custom function as:
 <img src="assets/fantrap_28.png" width="800"/>
 
 Here are the values to save typing:
-```code
+```copy-code
 Name:        SumDistinctAgg
 key          key that makes group unique, often a dim primary key
 measure      column to sum
@@ -398,7 +398,7 @@ Click `Metrics` in the `Element panel` and click `+` to add a new metric:
 Configure the metric as shown.
 
 Here are the values to save typing:
-```code
+```copy-code
 Name:        Order Amount
 Formula:     SumDistinctAgg([order_id], [amount])
 ```
@@ -421,7 +421,7 @@ Open the `order_id` column menu and select `Transform` > `Convert to Text`:
 
 Sigma applies a text function to the `order_id` column. To make the values cleaner, we can also trim any trailing zeros:
 
-```code
+```copy-code
 Trim(Text([order_header.csv/order_id]))
 ```
 
@@ -469,7 +469,7 @@ For example, suppose we want to calculate revenue per attendee?
 
 We can create another metric, reusing our existing custom function and simply adjusting for different key/measure values, columns and calculation:
 
-```code
+```copy-code
 SumDistinctAgg(Text([order_id]), [amount]) / SumDistinctAgg(Text([event_id]), [attendance])
 ```
 
@@ -505,7 +505,7 @@ This alternative version is provided as-is, with no guarantees, but may help in 
 
 <aside class="positive"> <strong>NOTE:</strong><br> The optimized version changes behavior slightly: it keeps the <em>first</em> value per unique key instead of the last. This usually makes no difference for sum-based calculations, but may matter in other use cases. </aside>
 
-```code
+```copy-code
 CREATE OR REPLACE AGGREGATE FUNCTION CUSTOM_FUNCTIONS.SumDistinctAgg(
   id STRING, val FLOAT
 )

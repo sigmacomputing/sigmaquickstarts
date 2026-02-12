@@ -138,22 +138,22 @@ Open `VSCode` and a new `Terminal` session.
 Create a new directory in a location of your choice, using the command:
 
 For example:
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
@@ -162,18 +162,18 @@ No errors should show:
 <img src="assets/jwt7.png" width="800"/>
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration and also clone to project configuration file:
-```code
+```copy-code
 echo "embedding_salesforce" >> .git/info/sparse-checkout
 echo "embedding_salesforce/sfdx-project.json" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -203,19 +203,19 @@ Once installed, we can test it by running:
 
 In VSCode, open a new terminal session.
 
-```code
+```copy-code
 sf --version
 ```
 
 The terminal should return a version message, similar to: (OS dependent):
-```code
+```copy-code
 @salesforce/cli/2.89.8 darwin-arm64 node-v22.15.0
 ```
 
 ### Authorize the Salesforce org
 Run this in the VSCode terminal:
 
-```code
+```copy-code
 sf auth:web:login --alias myOrg --instance-url https://login.salesforce.com --set-default
 ```
 
@@ -250,7 +250,7 @@ The project has four files to support the static embed, two of which require edi
 
 Open this file and replace the placeholders for `{YOUR_ORG_SLUG}` and `{YOUR_WORKBOOK_ID}` in the code-block below:
 
-```code
+```copy-code
 // This method is called when the component is inserted into the DOM
 connectedCallback() {
     getSignedJWT()
@@ -278,7 +278,7 @@ The Apex class functions as your embed API — it signs a JWT server-side and pr
 
 Open this file and replace the placeholders for `{YOUR_CLIENT_ID}` and `{YOUR_SECRET}` in this code-block:
 
-```code
+```copy-code
 // Replace these with your actual Sigma credentials
     String clientId = '{YOUR_CLIENT_ID}';  // Your Sigma client ID
     String secret = '{YOUR_SECRET}';  // Your Sigma secret key
@@ -302,7 +302,7 @@ Open this file and replace the placeholders for `{YOUR_CLIENT_ID}` and `{YOUR_SE
 ### Deploy to Org
 In the VSCode terminal, run this command, making sure that you are in the `embedding_salesforce` folder:
 
-```code
+```copy-code
 sf deploy metadata --source-dir force-app/main/default/classes/SigmaJWTController.cls \
                    --source-dir force-app/main/default/classes/SigmaJWTController.cls-meta.xml \
                    --source-dir force-app/main/default/classes/SigmaJWTControllerTest.cls \
@@ -433,7 +433,7 @@ The project has three additional files to support this use case.We’ll reuse th
 
 Open this file and replace the placeholders for `{YOUR_ORG_SLUG}` and `{YOUR_WORKBOOK_ID}` in the code-block below:
 
-```code
+```copy-code
     const baseUrl = 'https://app.sigmacomputing.com/{YOUR_ORG_SLUG}/workbook';
     const workbookSlug = 'Use-Case-Embed-into-Salesforce-QuickStart-{YOUR_WORKBOOK_ID}';
 ```
@@ -443,7 +443,7 @@ Open this file and replace the placeholders for `{YOUR_ORG_SLUG}` and `{YOUR_WOR
 - Specifies that this component can be added to AppPage or RecordPage.
 
 We can deploy this set of files using the terminal command:
-```code
+```copy-code
 sf deploy metadata --source-dir force-app/main/default/lwc/accountPickerEmbed
 ```
 

@@ -65,22 +65,22 @@ Instead, we’ll use VS Code and the terminal to perform a `sparse-checkout` of 
 Open `VSCode` and start a new `Terminal` session.
 
 Create a new directory in your preferred location using:
-```code
+```copy-code
 mkdir sigma_quickstarts
 ```
 
 Change to the new directory:
-```code
+```copy-code
 cd sigma_quickstarts
 ```
 
 Execute the terminal command:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository as the origin:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
@@ -89,17 +89,17 @@ You shouldn’t see any errors:
 <img src="assets/jwt7.png" width="800"/>
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder you want to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "embedding_qs_series_2_api_use_cases" >> .git/info/sparse-checkout
 ```
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 <aside class="positive">
@@ -116,12 +116,12 @@ npm -v
 </aside>
 
 Change directory to the new folder:
-```code
+```copy-code
 cd embedding_qs_series_2_api_use_cases
 ```
 
 Finally, install project dependencies using npm:
-```code
+```copy-code
 npm install
 ```
 
@@ -147,7 +147,7 @@ This package is a development tool that automatically restarts our Node.js appli
 To install these two packages, open a new terminal window in VSCode in the project folder.
 
 Run the command:
-```code
+```copy-code
 npm install jsonwebtoken nodemon
 ```
 
@@ -224,7 +224,7 @@ Here are the details for our test users:
 TThis setup demonstrates the most common functionality.
 
 The initial .env file from the git repo should already have two users preconfigured for you:
-```code
+```copy-code
 # -----------------------------------------------------------------------------
 # Provisioning Feature
 # -----------------------------------------------------------------------------
@@ -255,14 +255,14 @@ Return to VSCode and make sure the .env file has all the required values.
 Open a new terminal session (or use the one still open).
 
 Ensure you are in the project folder:
-```code
+```copy-code
 pwd
 ```
 
 <img src="assets/eapi_2.png" width="700"/>
 
 Once in the correct folder, we can start the web server with: debugging enabled:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
@@ -273,7 +273,7 @@ Detailed debug information is provided when `DEBUG=true` is enabled and the expe
 Once the server is running, we can browse to a preconfigured provisioning page. This page adds our two embed test users and displays the `memberId` for each, along with the admin user specified in .env (based on the provided email address):
 
 Browse to:
-```code
+```copy-code
 http://localhost:3000/tools/preload-users.html
 ```
 
@@ -358,7 +358,7 @@ Duration: 5
 We last left the browser open the main landing page. If for some reason it all got closed, simply restart it.
 
 Restart it as shown earlier, ensuring you're in the correct project folder:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
@@ -369,7 +369,7 @@ The server is ready when it displays `Server listening at http://localhost:3000`
 </aside>
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -415,7 +415,7 @@ We have designed the project to allow the `Build` user to see the Sigma menu and
 This was done to demonstrate a few of the optional runtime parameters that are available in the JWT embed. All the parameters (at the time of this QuickStart) are included in the `.env` file.
 
 To give the `Build` user access to Sigma’s editing tools during embedding, we configure the JWT to include specific UI flags. These values are only applied when embedding an entire workbook (not a page or element):
-```code
+```copy-code
 {
   "hide_menu": "false",
   "menu_position": "top",
@@ -474,7 +474,7 @@ The construction of the Sigma embed URLs happens in the file `helpers/build-embe
 It is responsible for constructing the embed URLs based on `embedType`, `workbookUrlId`, and optional `targetId`. 
 
 The customization is done here:
-```code
+```copy-code
   let path;
   if (embedType === "workbook") {
     if (!workbookName) throw new Error("Missing workbookName for workbook embed");
@@ -512,7 +512,7 @@ Constructs a URL like: `/workbook/{workbookName}-{workbookUrlId}/element/{elemen
 Throws an error indicating the value is not supported.
 
 For additional information about the `Embed Controls` project files, refer to the readme using the button or browse to:
-```code
+```copy-code
 http://localhost:3000/api-embed-controls/README.md
 ```
 

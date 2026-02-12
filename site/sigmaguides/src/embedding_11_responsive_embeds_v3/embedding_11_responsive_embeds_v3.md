@@ -119,7 +119,7 @@ We also set the other parameters to the same values used in Getting Started and 
 
 Open a new Terminal in VSCode, navigate to the `embedding_qs_series_2` directory, and start the Express web server by running:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -162,7 +162,7 @@ The parent page, however, should still avoid having a scroll bar.
 For this example, we will simply allow the iframe to scroll, but ensure the parent page does not. 
 
 Open this page in the browser:
-```code
+```copy-code
 http://localhost:3000/responsive_embeds/1bar.html
 ```
 
@@ -174,7 +174,7 @@ The is because we replaced two css styles and adjusted the iframe too.
 
 The CSS adjustments made are:
 
-```code
+```copy-code
 body {
   display: flex;                     /* Uses Flexbox for vertical layout */
   flex-direction: column;           /* Stacks children vertically (top to bottom) */
@@ -193,7 +193,7 @@ iframe {
 
 The iframe adjustment made is:
 
-```code
+```copy-code
 <iframe id="sigma-embed" src=""></iframe>
 ```
 
@@ -213,7 +213,7 @@ For example, if we want the iframe to take up the full viewport height minus som
 
 Here's how we might style the iframe using `calc()`:
 
-```code
+```copy-code
 iframe {
   width: 100%;
   height: calc(100vh - 4rem); /* Adjusts for fixed header height */
@@ -230,7 +230,7 @@ When we use `height: calc(100vh - 4rem)` on the iframe, we’re telling it to ta
 To save time, we’ve pre-built a page that demonstrates this method.
 
 Browse to this URL:
-```code
+```copy-code
 http://localhost:3000/responsive_embeds/1bar.html
 ```
 
@@ -265,7 +265,7 @@ The event we’ll use is `workbook:pageheight:onchange`, which is emitted by Sig
 We can use this event to adjust the iframe's height in real-time, ensuring that the iframe always matches the height of its content.
 
 We pre-built a page for you to save time. Browse to this URL:
-```code
+```copy-code
 http://localhost:3000/responsive_embeds/res_event.html
 ```
 
@@ -282,7 +282,7 @@ Here are the steps required to integrate the `workbook:pageheight:onchange` even
 **1: Listen for the Event:**<br>
 We added a global event listener to the window object to capture message events sent by the Sigma iframe using the postMessage API. This is because cross-document communication (like between a parent page and an iframe) uses the postMessage method and message event.
 
-```code
+```copy-code
 // Global message event listener to capture messages from the Sigma iframe
 window.addEventListener("message", (event) => {
 ```
@@ -290,7 +290,7 @@ window.addEventListener("message", (event) => {
 **2: Adjust the iframe Height:**<br>
 When the event is received, we check if its type matches 'workbook:pageheight:onchange' and then adjust the iframe height based on the pageHeight value provided.
 
-```code
+```copy-code
  // Respond to the Sigma event indicating the iframe content height has changed
   if (event.data?.type === "workbook:pageheight:onchange") {
     const newHeight = event.data.pageHeight;

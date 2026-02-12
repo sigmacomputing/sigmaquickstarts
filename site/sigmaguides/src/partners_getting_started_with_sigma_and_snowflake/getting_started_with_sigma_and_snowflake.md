@@ -334,12 +334,12 @@ Since our base table does not have columns for `Revenue` or `Profit`, we can add
 <img src="assets/dm_39a.png" width="600"/>
 
 Add a new column ,and rename it to `Revenue`. Set the formula to:
-```code
+```copy-code
 [Sales Amount] * [Sales Quantity]
 ```
 
 Add another column, and rename it to `Profit`, and set the formula to:
-```code
+```copy-code
 [Revenue] - ([Cost Amount] * [Sales Quantity])
 ```
 

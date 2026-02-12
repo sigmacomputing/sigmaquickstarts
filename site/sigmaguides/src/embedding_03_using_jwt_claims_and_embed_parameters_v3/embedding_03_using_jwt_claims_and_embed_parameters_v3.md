@@ -129,7 +129,7 @@ Sigma user attributes (UAs) act like named variables that personalize content an
 To pass values into these attributes at runtime, the parent application includes them in the JWT under a special object called `user_attributes`.
 
 **What does this look like in the JWT?**
-```code
+```copy-code
 {
   "user_attributes": {
      "REGION": "EAST",
@@ -169,7 +169,7 @@ Next, we added a column to a table containing `Store Region` and set a formula t
 We grouped on the `Region Mix` column just to make it easy to see the result.
 
 The formula we used was:
-```code
+```copy-code
 Contains(CurrentUserAttributeText("Store_Region"), [Store Region])
 ```
 
@@ -204,7 +204,7 @@ This behavior may or may not be desirable.
 For example, we might choose to show all rows when no value is passed.
 
 In that case, we can adjust the Sigma formula on the `Region Mix` column to:
-```code
+```copy-code
 IsNotNull(CurrentUserAttributeText("Store_Region")) or Contains(CurrentUserAttributeText("Store_Region"), [Store Region])
 ```
 
@@ -339,14 +339,14 @@ The `CLIENT_ID` and `SECRET` are also present, so we know those work:
 <img src="assets/uap_5.png" width="800"/>
 
 In VSCode, open a new Terminal session inside the `embedding_qs_series` project and run the following command:
-```code
+```copy-code
 npm start
 ```
 
 <img src="assets/uap_4.png" width="800"/>
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/
 ```
 

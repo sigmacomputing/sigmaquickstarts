@@ -69,7 +69,7 @@ The only extra thing we need to do is install a local database that will be used
 </aside>
 
 Run the following command in terminal:
-```code
+```copy-code
 npm install lowdb@1.0.0
 ```
 
@@ -78,7 +78,7 @@ Lowdb installs really quickly:
 <img src="assets/bmdb_01.png" width="800"/>
 
 The git repository already contains a `Data` folder with the required `wb-descriptions.json` file. The data file is initially empty except for:
-```code
+```copy-code
 {
   "workbookDescriptions": []
 }
@@ -115,14 +115,14 @@ The system maintains the local lowdb database in the `wb-descriptions.json` file
 Duration: 5
 
 Start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder and enable debugging:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 

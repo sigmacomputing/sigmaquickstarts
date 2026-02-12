@@ -78,7 +78,7 @@ We’ve provided a Snowflake script to help you set this up.
 
 <aside class="negative"><strong>NOTE:</strong><br> The remainder of this QuickStart will reference these tables as our workbook is promoted from development to to production.</aside>
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
 
@@ -144,7 +144,7 @@ Once the script completes Snowflake will return `Statement executed successfully
 
 We verified that the data exists by running the following query for each schema:
 
-```code
+```copy-code
 select * from vt_dev.company_country;
 select * from vt_prod.company_country;
 ```
@@ -324,7 +324,7 @@ For testing, we’ll use the pre-built embed page that demonstrates this approac
 
 In VSCode, open a new Terminal session inside the `embedding_qs_series` project and run the following command:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -339,12 +339,12 @@ In the `# QS: version_tagging` section, we need to configure the values below, u
 Use only the required portion of the URL, as explained in the documentation, [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)
 
 For example, in our URL we removed the trailing section composed of this:
-```code 
+```copy-code 
 ?:nodeId=RWw-kr3_UG
 ```
 
 This is the section that needs the URL:
-```code
+```copy-code
 VERSION_TAGGING_BASE_URL=
 VERSION_TAGGING_BASE_EMAIL=sales_person@example.com
 VERSION_TAGGING_BASE_ACCOUNT_TYPE=View
@@ -354,7 +354,7 @@ VERSION_TAGGING_BASE_TEAMS=Production
 Save the `.env` file.
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/version_tagging/?mode=version_tagging
 ```
 
@@ -414,7 +414,7 @@ We will use these values to update the Sigma workbook (in json format) using a R
 Using a text editor (to temporarily hold the JSON) update each value that you obtain from the Postman calls. 
 
 **Sample POST body for workbook tag update:**
-```code
+```copy-code
 {
     "workbookId": "6DceMEz0RArq6F82wa02ha", 
     "workbookVersion": 2, 
@@ -458,7 +458,7 @@ For example, for development, we searched for and found:
 <img src="assets/vtag_4.png" width="800"/>
 
 Use the values to update the sample POST body workbook tag update values. For example:
-```code
+```copy-code
 {
     "workbookId": "5P9Mtgt6Mq10NE6p599BeM", 
     "workbookVersion": 2, 

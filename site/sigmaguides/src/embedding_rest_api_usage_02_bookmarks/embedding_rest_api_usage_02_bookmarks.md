@@ -63,14 +63,14 @@ Developers who want to use Sigma's REST API to programmatically control Sigma in
 Duration: 5
 
 If you haven't already, open the project in VSCode and start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -107,7 +107,7 @@ In the console log, we can see that each time a different `exploreKey` event was
 <img src="assets/api_bm_05.png" width="800"/>
 
 In `api-embed-bookmarks/index.html`, we added an event listener to store the most recent `exploreKey`:
-```code
+```copy-code
 if (
   data.type === "exploreCreated" ||
   data.type === "workbook:exploreKey:onchange"
@@ -151,7 +151,7 @@ We can also select the `Mobile Phones` bookmark when using the `View` user:
 We have designed the project so that the `View` user can access saved workbooks but cannot alter them or create new explorations or bookmarks.
 
 We do this by first disabling the workbook menus in the `.env` file when the `View` user is selected:
-```code
+```copy-code
 HIDE_FOLDER_NAVIGATION=false
 HIDE_MENU=false
 MENU_POSITION=none
@@ -193,7 +193,7 @@ Select the `Build` user and a workbook to target.
 <img src="assets/api_bm_11.png" width="800"/>
 
 The console log will list the bookmarks that were deleted:
-```code
+```copy-code
 Fetching bookmarks from Sigma API: https://aws-api.sigmacomputing.com/v2/workbooks/0e51172a-a4c0-4954-8c8c-9d854dcf4434/bookmarks
 Found 1 bookmarks in Sigma to delete
 Deleted Sigma bookmark: Mobile Phones (879c3131-eee6-4263-8df1-4e1a4be7178a)

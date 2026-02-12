@@ -82,7 +82,7 @@ We will configure a simple example to request weather data with the location and
 
 **Name:** The name of the connector as it appears to users in a workbook.<br>
 Use this name:
-```code
+```copy-code
 Current Temp - Hard Coded
 ```
 
@@ -90,7 +90,7 @@ Current Temp - Hard Coded
 
 **Base URL:** Select an HTTP method and the URL for the request.<br>
 Use this URL:
-```code
+```copy-code
 https://api.open-meteo.com/v1/forecast?latitude=20.7702&longitude=-156.2682&timezone=auto&temperature_unit=fahrenheit
 ```
 
@@ -165,14 +165,14 @@ On the `Parse Temperature` page we have the same `Click Me` button and a pre-con
 If we look at the KPI properties panel, we see that it is bound to the `Cities` table on the `Data` page.
 
 Before this will work, we need to convert the raw response to JSON by adding a column to the KPI using the [Json](https://help.sigmacomputing.com/docs/json) conversion function:
-```code
+```copy-code
 Json([Raw-Response])
 ```
 
 <img src="assets/api_actions_gs_07.png" width="800"/>
 
 Once converted, we can parse the temperature from the JSON
-```code
+```copy-code
 Number([Raw-Response].current_weather.temperature)
 ```
 
@@ -195,7 +195,7 @@ Return to `Administration` > `API Connectors` and add a new one.
 
 **Base URL:** Select an HTTP method and the URL for the request.<br>
 Use this URL:
-```code
+```copy-code
 https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitude}}&current_weather=true&temperature_unit=fahrenheit
 ```
 
@@ -204,7 +204,7 @@ https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitu
 </aside>
 
 **Params:** Add four query parameters:
-```code
+```copy-code
 KEY                 TYPE          VALUE
 latitude            Dynamic
 longitude           Dynamic

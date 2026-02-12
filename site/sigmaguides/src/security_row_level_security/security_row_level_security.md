@@ -120,7 +120,7 @@ Let's assume that our email will be evaluated and we are only allowed to see the
 </aside>
 
 In the formula bar for `Email` enter the following formula:
-```code
+```copy-code
 Switch([Store Region], "East", "phil@sigmacomputing.com", "bob@company.com")
 ```
 
@@ -138,7 +138,7 @@ The `magic wand` icon is Sigma's AI formula assistant. For more information, see
 
 #### Add Team Column:
 We will now just repeat the same exercise only this time, our new column should be named `Team` and the function for the column modified to match a Sigma team name (that we have yet to create, we will do that later).
-```code
+```copy-code
 Switch([Store Region], "East", "Team_East", "Team_Everyone")
 ```
 
@@ -161,7 +161,7 @@ Adding RLS based on email is now pretty simple. We will add another column for a
 Add a new column and name it `Current_User`.
 
 Set the new column's formula to:
-```code
+```copy-code
 CurrentUserEmail() = [Email]
 ```
 
@@ -236,7 +236,7 @@ The table's row count should then return to approximately 4.5M rows.
 
 ### Add team column
 Now we can do the same steps, this time adding a new column called `Current Team`, setting its formula to:
-```code
+```copy-code
 CurrentUserInTeam([Team])
 ```
 
@@ -330,7 +330,7 @@ Return to the data model, put it in `Edit` mode.
 Disable the filter for `Current Team`.
 
 Add a new column next to `Store Region`, rename it `ua_Region` and set it's formula to:
-```code
+```copy-code
 CurrentUserAttributeText("Region") = [Store Region]
 ```
 

@@ -442,7 +442,7 @@ Create a new column within the pivot table called `Profit` by selecting the plus
 <img src="assets/bq37.png" width="800"/>
 
 Use the formula bar to set the formula for the new column to:
-```code
+```copy-code
 Sum([Sale Price]) - Sum([Cost])
 ```
 

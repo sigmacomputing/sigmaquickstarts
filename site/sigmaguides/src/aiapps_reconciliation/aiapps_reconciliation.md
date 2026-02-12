@@ -110,7 +110,7 @@ In order to access the Snowflake sample dataset and also have a place to write i
 Since we will be using Sigma input tables, we need to create a place in Snowflake to store that data.
 
 In the Snowflake console, run the following script:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 -- Create Sigma Writeback DB
@@ -397,7 +397,7 @@ Sigma will start the process, and when finished we will see this information her
 <img src="assets/da_swh_31.png" width="600"/>
 
 We can copy the path of the view for later use. Our path is:
-```code
+```copy-code
 SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_VIEW
 ```
 
@@ -448,7 +448,7 @@ Supports incremental updates by storing unique identifiers (e.g., SUPPLIER_KEY, 
 This table plays a crucial role in enabling incremental snapshots, ensuring that each snapshot reflects only new edits while preserving historical accuracy.
 
 Run the following command in Snowflake to create the schema, table and permissions:
-```code
+```copy-code
 -- Create the Snapshot Metadata schema, table, and permissions
 -- This table will store information about each snapshot, enabling the filtering logic.
 
@@ -614,7 +614,7 @@ Each execution of the procedure appends new rows reflecting the latest user edit
 Snapshots are stored as distinct tables, preserving a historical record of inventory adjustments. The metadata table acts as an index, enabling easy navigation and management of snapshots.
 
 Run the following script in Snowflake to create our stored procedure:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 CREATE OR REPLACE PROCEDURE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT()
@@ -706,7 +706,7 @@ This procedure enables versioned tracking of inventory changes and ensures data 
 Before we configure Sigma to run the script on demand, we should make sure it works. Earlier, we did edit one row of data, setting its `Adjusted_Qty` to `1000`, so we have something to validate against. 
 
 Execute the following script in the Snowflake console:
-```code
+```copy-code
 ALL SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT();
 ```
 
@@ -788,13 +788,13 @@ While not required, it may be helpful to know how to quickly reset the data so t
 **1:** Clear the one cell that was edited (to have the "1000" value). Do this directly in the Sigma UI. Just click on the cell that has the value, press the delete key and then enter. Save the input table data. It will not matter that Sigma will record this action in Snowflake, we are only concerned with rows that have values for `Ajusted_Qty`, so this edit will be ignored when we snapshot.
 
 **2:** Truncate the metadata table to remove all rows.
-```code
+```copy-code
 TRUNCATE TABLE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA;
 ```
 
 **3:** Drop all previous snapshots.
 We like to list them out before just deleting table. Run this script to do that:
-```code
+```copy-code
 -- List out the snapshot tables. Copy paste and run the output
 SELECT 'DROP TABLE SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS."' || TABLE_NAME || '";'
 FROM INFORMATION_SCHEMA.TABLES
@@ -873,7 +873,7 @@ The view refreshes to include newly created snapshot tables.
 Since the number of snapshot tables grows over time, the stored procedure needs to regenerate the` CREATE OR REPLACE VIEW` command to dynamically `Union All` snapshots.
 
 Below is the stored procedure that needs to be run in Snowflake:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 CREATE OR REPLACE PROCEDURE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.UPDATE_ALL_SNAPSHOTS_VIEW()
@@ -925,7 +925,7 @@ Click the new button to run the stored procedure.
 Next, add a new `Data` > `Table` element to the page, selecting the `Data Apps for QuickStarts` connection and `SQL` as the source. 
 
 Paste this SQL query into the editor:
-```code
+```copy-code
 SELECT *
 FROM SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.ALL_SNAPSHOTS_VIEW
 ```

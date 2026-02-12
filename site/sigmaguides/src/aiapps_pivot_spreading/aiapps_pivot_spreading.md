@@ -128,7 +128,7 @@ We have provided this data in **AWS S3** so that loading it into Snowflake is st
 
 ### Loading Base_Table in Snowflake
 Log into Snowflake as `ACCOUNTADMIN` and run the following script. There are inline comments so to explain the operations.
-```code
+```copy-code
 -- Creates the database `SIGMA_QUICKSTARTS` if it does not already exist.
 CREATE DATABASE IF NOT EXISTS SIGMA_QUICKSTARTS;
 
@@ -223,21 +223,21 @@ Group the table as shown in the screenshot below:
 Set the `Price` and `Revenue` columns to currency
 
 Add a new column and set it's formula to:
-```code
+```copy-code
 DateTrunc("year", [Date])
 ```
 
 Rename the column to `Year`.
 
 Add a new column and set it's formula to:
-```code
+```copy-code
 RowNumber()
 ```
 
 <img src="assets/pts_3.png" width="800"/>
 
 Add three more columns after the `RowNumber` column, rename and apply the following formuala to each one:
-```code
+```copy-code
 Column Name:    Formula:
 l1_key	        MD5([Product Type] & Text([Year]))
 l2_key	        MD5([Product Type] & [Product Family] & Text([Year]))
@@ -298,14 +298,14 @@ With this table added to the workbook, we can now reference it's columns in the 
 <img src="assets/pts_8a.png" width="500"/>
 
 Add a new column set the formula to:
-```code
+```copy-code
 Lookup([SPREAD_UPDATE/Revenue], [Order Number], [SPREAD_UPDATE/Order Number], [Date], [SPREAD_UPDATE/Date], [Sku Number], [SPREAD_UPDATE/Sku Number])
 ```
 
 This formula performs a lookup operation, retrieving the value of `SPREAD_UPDATE > Revenue` from the `SPREAD_UPDATE` table based on a match between the specified columns in the current table and the corresponding columns in the `SPREAD_UPDATE` table.
 
 Add another new column and rename it to `Coalesced Revenue`. Set the formula to:
-```code
+```copy-code
 Coalesce([Revenue (SPREAD_UPDATE)], [Revenue])
 ```
 
@@ -451,7 +451,7 @@ Add `Segmented` control and set the `Control ID` to `Method`. Configure the `Cre
 
 #### 3: Value of the adjustment:
 Add `UI` > `Text` element and set its formula to:
-```code
+```copy-code
 If(IsNull([Method]) OR IsNull([p_current]) OR IsNull([p_adjustment]), 
    0, 
    Switch([Method], 
@@ -502,7 +502,7 @@ Configure three `Set control value` actions for product `type`, `family` and `li
 In this next `Set control value` action, we will use a formula to determine the value of the product level selected:
 
 Here is the formula to be used, as shown in the screenshot below:
-```code
+```copy-code
 If(IsNotNull([p_line]), 3, IsNotNull([p_family]), 2, IsNotNull([p_type]), 1)
 ```
 
@@ -515,7 +515,7 @@ You know what to do now...
 
 ### Set the key value selected
 Configure another `Set control value` action to update the `P Key` control, using this formula:
-```code
+```copy-code
 Switch([p_level], 3, MD5([p_type] & [p_family] & [p_line] & Text([p_year])), 2, MD5([p_type] & [p_family] & Text([p_year])), 1, MD5([p_type] & Text([p_year])))
 ```
 
@@ -523,7 +523,7 @@ Switch([p_level], 3, MD5([p_type] & [p_family] & [p_line] & Text([p_year])), 2, 
 
 ### Set the current value selected
 Configure another `Set control value` action to update the `P Current` control, using this formula:
-```code
+```copy-code
 Lookup(Sum([Revenue Planning/Coalesced Revenue (1)]), [p_key], Switch([p_level], 3, [Revenue Planning/l3_key], 2, [Revenue Planning/l2_key], 1, [Revenue Planning/l1_key]))
 ```
 
@@ -589,19 +589,19 @@ For those interested, here are the formula applied for each method:
             
 **Adjust:**<br>
 Adds or subtracts a fixed amount, distributed proportionally across rows
-```code
+```copy-code
 set revenue = revenue + {ADJUSTMENT} * revenue / {sum_revenue}
 ```
 
 **Change:**<br>
 Sets a new total value, redistributing it proportionally across rows.
-```code
+```copy-code
 set revenue = {ADJUSTMENT} * revenue / {sum_revenue}
 ```
 
 **Scale:**<br>
 Adjusts revenue by a percentage.
-```code
+```copy-code
 set revenue = revenue + {ADJUSTMENT}/100 * revenue
 ```
 
@@ -610,7 +610,7 @@ Updates are applied to rows in SPREAD_UPDATE matching the KEY at the specified L
 ### Creating the procedure in Snowflake
 Run the following code in Snowflake to both create the stored procedure in our database/schema.
 
-```code
+```copy-code
 CREATE OR REPLACE PROCEDURE SIGMA_QUICKSTARTS.PIVOT_SPREADING.SPREAD(
     "LEVEL" FLOAT,
     "KEY" VARCHAR(16777216),

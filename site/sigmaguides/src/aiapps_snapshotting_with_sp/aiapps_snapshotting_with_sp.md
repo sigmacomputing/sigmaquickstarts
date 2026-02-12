@@ -117,7 +117,7 @@ Since we will be using Sigma input tables, we need to create a place in Snowflak
 
 In the Snowflake console, run the following script:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 -- Create Sigma Writeback DB
@@ -429,7 +429,7 @@ Sigma will start the process, and when finished we will see this information her
 
 We can copy the path of the view for later use. Our path is:
 
-```code
+```copy-code
 SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_VIEW
 ```
 
@@ -484,7 +484,7 @@ This table plays a crucial role in enabling incremental snapshots, ensuring that
 
 Run the following command in Snowflake to create the schema, table and permissions:
 
-```code
+```copy-code
 -- Create the Snapshot Metadata schema, table and permissions
 -- This table will store information about each snapshot, enabling the filtering logic.
 USE DATABASE SIGMA_QUICKSTARTS;
@@ -643,7 +643,7 @@ Snapshots are stored as distinct tables, preserving a historical record of inven
 
 Run the following script in Snowflake to create our stored procedure:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 CREATE OR REPLACE PROCEDURE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT()
@@ -737,7 +737,7 @@ Before we configure Sigma to run the script on demand, we should make sure it wo
 
 Execute the following script in the Snowflake console:
 
-```code
+```copy-code
 CALL SIGMA_QUICKSTARTS_SNAPSHOTS.STORED_PROCEDURES.SNAPSHOT_INVENTORY_ADJUSTMENTS();
 ```
 
@@ -827,14 +827,14 @@ While not required, it may be helpful to know how to quickly reset the data so t
 
 **2:** Truncate the metadata table to remove all rows.
 
-```code
+```copy-code
 TRUNCATE TABLE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_METADATA.SNAPSHOT_METADATA;
 ```
 
 **3:** Drop all previous snapshots.
 We like to list them out before just deleting table. Run this script to do that:
 
-```code
+```copy-code
 -- List out the snapshot tables. Copy paste and run the output
 SELECT 'DROP TABLE SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS."' || TABLE_NAME || '";'
 FROM INFORMATION_SCHEMA.TABLES
@@ -916,7 +916,7 @@ Since the number of snapshot tables grows over time, the stored procedure needs 
 
 Below is the stored procedure that needs to be run in Snowflake:
 
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 CREATE OR REPLACE PROCEDURE SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.UPDATE_ALL_SNAPSHOTS_VIEW()
@@ -970,7 +970,7 @@ Next, add a new `Data` > `Table` element to the page, selecting the `Data Apps f
 
 Paste this SQL query into the editor:
 
-```code
+```copy-code
 SELECT *
 FROM SIGMA_QUICKSTARTS.SNAPSHOT_AND_INVENTORY_ADJUSTMENTS_SNAPSHOTS.ALL_SNAPSHOTS_VIEW
 ```

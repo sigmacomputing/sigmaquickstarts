@@ -31,14 +31,16 @@ iframe {
 }
 /*# sourceMappingURL=google_codelab_scss_bin.css.map */
 /* Copy button styling */
-google-codelab-step pre {
+google-codelab-step pre.has-copy-button {
   position: relative;
+  padding-top: 40px !important;
+  padding-left: 14px !important;
 }
 
 google-codelab-step .copy-button {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 4px;
+  left: 8px;
   padding: 4px 12px;
   background: #1A73E8;
   color: white;

@@ -71,7 +71,7 @@ Duration: 5
 Before we do anything, we need to make sure that a database, schema and at least one agent exists for Snowflake Intelligence.
 
 Run the following command in a Snowflake worksheet:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 SHOW AGENTS IN SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS;
 ```
@@ -81,7 +81,7 @@ If the return is `Object does not exist, or operation cannot be performed.` then
 For detailed instruction, see [Set Up Snowflake Intelligence](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence#set-up-sf-intelligence)
 
 For example, we ran:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 
 CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
@@ -94,7 +94,7 @@ GRANT CREATE AGENT ON SCHEMA snowflake_intelligence.agents TO ROLE ACCOUNTADMIN;
 ```
 
 Now running this script again works, but returns no results (we need to create an agent still):
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 USE DATABASE snowflake_intelligence;
 USE SCHEMA agents;
@@ -121,7 +121,7 @@ Set the database and schema as shown. the `name` and `display name` to `QUICKSTA
 Once the agent is created, we instruct the agent adopt a persona to help tailor the responses to our sample retail dataset.
 
 Use the prompt:
-```code
+```copy-code
 You are a Product Insights Analyst.
   
 An AI retail analyst specializing in customer feedback analysis for a large e-commerce brand. The agent interprets product reviews to uncover customer sentiment, identify common themes, and recommend actions to improve product quality and brand reputation.
@@ -137,7 +137,7 @@ Submit it and the reponse will be similar to:
 <img src="assets/cortex_06.png" width="600"/>
 
 Now this script returns the `quickstart` agent:
-```code
+```copy-code
 SHOW AGENTS IN SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS;
 ```
 
@@ -150,7 +150,7 @@ Duration: 5
 This account isolates Sigma’s access and keeps your Cortex integration secure and auditable.
 
 Run the following command in Snowflake:
-```code
+```copy-code
 -- ------------------------------------------------------------
 -- Bootstrap namespace + security for Sigma/Agents
 -- Creates DB/Schema (if missing), service role, service user, and grants
@@ -207,7 +207,7 @@ Next we create a stored procedure that when called from Sigma, invokes the Snowf
 This stored procedure takes an `agent name` and a `user prompt`, but for this QuickStart it always routes requests to the `QUICKSTARTS agent` in `SNOWFLAKE_INTELLIGENCE.AGENTS`. It calls the agent’s REST endpoint and returns the final text response as a string.
 
 Run the following command in Snowflake (it will take a minute or two to complete):
-```code
+```copy-code
 use database snowflake_intelligence;
 use schema agents;
 use role SIGMA_SERVICE_ROLE;
@@ -352,7 +352,7 @@ grant usage on agent snowflake_intelligence.agents.quickstarts to role SIGMA_SER
 
 ### Quick test
 We can check that everything is configured correctly in Snowflake by calling the agent, using the `SIGMA_SERVICE_ROLE`:
-```code
+```copy-code
 USE ROLE SIGMA_SERVICE_ROLE;
 CALL SNOWFLAKE_INTELLIGENCE.AGENTS.CALL_CORTEX_AGENT_API('QUICKSTARTS', 'What agent are you?');
 ```
@@ -364,14 +364,14 @@ I am Claude, an AI assistant created by Anthropic. I aim to be direct and honest
 
 ### Multiple Agents
 For simplicity, we are using one agent called `QUICKSTARTS`. It is possible to add more agents by modifying the stored procedure where the agents are defined:
-```code
+```copy-code
 ALLOWLIST = {
     "QUICKSTARTS": []
 }
 ```
 
 To determine which agents are available in Snowflake, run:
-```code
+```copy-code
 SHOW AGENTS;
 ```
 
@@ -466,7 +466,7 @@ Duration: 5
 We don't have any data for the agent to evaluate yet, but we can still make sure everything is working just like we did in the Snowflake Agent UI. 
 
 Submit the prompt:
-```code
+```copy-code
 What agent are you?
 ```
 
@@ -514,7 +514,7 @@ We can look at the sample data, which is retail sales information that also has 
 The Cortex tool requires either a semantic view, procedure or function to access the underlying data. It cannot access tables directly so we need to adjust for that.
 
 In Snowflake, run the following command to create a simple function:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 USE DATABASE SNOWFLAKE_INTELLIGENCE;
 USE SCHEMA AGENTS;
@@ -556,7 +556,7 @@ Click `Add`.
 
 ### Test it out
 With our data connected, we can ask a question in Snowflake to verify it works:
-```code
+```copy-code
 What products have the worst ratings?
 ```
 

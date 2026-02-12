@@ -87,7 +87,7 @@ The only extra thing we need to do is install a local database that will be used
 </aside>
 
 Run the following command in terminal:
-```code
+```copy-code
 npm install lowdb@1.0.0
 ```
 
@@ -96,7 +96,7 @@ Lowdb installs really quickly:
 <img src="assets/bmdb_01.png" width="800"/>
 
 The git repository already contains a `Data` folder with the required `bookmarks.json` file. The data file is initially empty except for:
-```code
+```copy-code
 {
   "bookmarks": []
 }
@@ -119,7 +119,7 @@ The system maintains the local lowdb database in the `bookmarks.json` file stori
 ```
 
 Sigma acts as the source of truth for bookmarks using the following parameters:
-```code
+```copy-code
 bookmarkId 
 name 
 exploreKey 
@@ -137,14 +137,14 @@ isDefault
 
 ### Start the server
 Start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder and enable debugging:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -181,7 +181,7 @@ In web browser inspection we can see that each time, a different `exploreKey` ev
 <img src="assets/api_bm_05.png" width="800"/>
 
 In `api-embed-bookmarks/index.html`, we added an event listener to store the most recent `exploreKey`:
-```code
+```copy-code
 window.addEventListener("message", (event) => {
   if (event.data?.type === "workbook:exploreKey:available") {
     latestExploreKey = event.data.exploreKey;
@@ -193,7 +193,7 @@ window.addEventListener("message", (event) => {
 This ensures that the latest exploreKey is always stored in the global `latestExploreKey` variable.
 
 Later, when the `Build` user clicks a `Save Bookmark` button, the value of `latestExploreKey` is passed into the API call:
-```code
+```copy-code
 const response = await fetch("/api/bookmarks/create", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -308,7 +308,7 @@ Select the `Build` user and a workbook to target.
 `Clear All Bookmarks` calls the script for you. The fetch called is `api\route\bookmarks\clear-all`.
 
 The console log will list the bookmarks that were deleted:
-```code
+```copy-code
 Reusing cached bearer token
 Bearer token obtained for clear all operation
 Fetching bookmarks from Sigma API: https://aws-api.sigmacomputing.com/v2/workbooks/0e51172a-a4c0-4954-8c8c-9d854dcf4434/bookmarks

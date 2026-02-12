@@ -65,14 +65,14 @@ Developers who want to use Sigma's REST API to programmatically control Sigma in
 Duration: 5
 
 Start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder and enable debugging:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -101,7 +101,7 @@ Clicking the `Hide Sigma Menus` button sends optional user interface parameters 
 <img src="assets/api_hidemenu_02.png" width="800"/>
 
 The specific parameters we adjusted are:
-```code
+```copy-code
 HIDE_FOLDER_NAVIGATION     # Show folder navigation (default=false)
 HIDE_MENU                  # Show main menu bar (default=false)
 HIDE_PAGE_CONTROLS         # Show page controls (default=false)

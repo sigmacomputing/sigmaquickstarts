@@ -156,7 +156,7 @@ You can verify your installation using VS Code’s built-in terminal:
 <img src="assets/apics2.png" width="800"/>
 
 **Run the command:**
-```code
+```copy-code
 node -v
 ```
 
@@ -176,34 +176,34 @@ To save time, all the necessary project files are stored in GitHub. You can clon
 In terminal, ensure you’re in the `Sigma_QuickStart_Public_Repo` directory. If not, switch to it:
 
 For example:
-```code
+```copy-code
 cd {/path/to/your/directory}
 ```
 
 Initialize git:
-```code
+```copy-code
 git init
 ```
 
 Add the remote repository:
-```code
+```copy-code
 git remote add -f origin https://github.com/sigmacomputing/quickstarts-public.git
 ```
 
 Enable sparse checkout:
-```code
+```copy-code
 git config core.sparseCheckout true
 ```
 
 Specify the folder to clone by adding it to the sparse-checkout configuration:
-```code
+```copy-code
 echo "recipe-portal" > .git/info/sparse-checkout
 ```
 
 At this point, each command should run without errors.
 
 Pull the specified folder from the repository:
-```code
+```copy-code
 git pull origin main
 ```
 
@@ -212,12 +212,12 @@ You should now see the cloned project folder:
 <img src="assets/apics4e.png" width="800"/>
 
 Change directories:
-```code
+```copy-code
 cd recipe-portal
 ```
 
 Install the required Node modules:
-```code
+```copy-code
 npm install
 ```
 
@@ -225,7 +225,7 @@ This automatically installs the project dependencies used in the recipes
 
 ### Start the local webserve
 Run the command to start the server:
-```code
+```copy-code
 npm run dev
 ```
 

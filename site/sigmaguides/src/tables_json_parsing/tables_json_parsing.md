@@ -127,7 +127,7 @@ You can confirm this in the `Element panel` > `Properties` pane, where the datat
 Fortunately, adjusting this is simple in Sigma.
 
 Select the `LOYALTY_TIER` column and set its formula to:
-```code
+```copy-code
 Text([Cust Json].LOYALTY_EXTRA.LOYALTY_TIER) = "at_risk"
 ```
 
@@ -199,26 +199,26 @@ Now let’s use calculated columns to handle the children array.
 Add calculated columns as follows:
 
 Number of Children:
-```code
+```copy-code
 ArrayLength([cust_json].children)
 ```
 
 **First Child Name:**<br>
-```code
+```copy-code
 Coalesce(Text([cust_json].children[0].name), "")
 ```
 
 We use Coalesce to replace null values with empty cells when no children exist.
 
 **First Child Age:**<br>
-```code
+```copy-code
 If(ArrayLength([cust_json].children) > 0, Text([cust_json].children[0].age), "")
 ```
 
 We check if the array has at least one child; otherwise, return an empty cell.
 
 **Second Child Name (optional):**<br>
-```code
+```copy-code
 Coalesce(Text([cust_json].children[1].name), "")
 ```
 

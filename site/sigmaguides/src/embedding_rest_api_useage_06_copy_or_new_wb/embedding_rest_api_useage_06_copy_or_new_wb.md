@@ -71,14 +71,14 @@ Developers who want to use Sigma's REST API to programmatically control Sigma in
 Duration: 5
 
 Start the Express server in terminal from the `embedding_qs_series_2_api_use_cases` folder and enable debugging:
-```code
+```copy-code
 DEBUG=true npm start
 ```
 
 The server is ready when it displays: `Server listening at http://localhost:3000`.
 
 Browse to the landing page:
-```code
+```copy-code
 http://localhost:3000
 ```
 
@@ -169,7 +169,7 @@ When impersonating the build user in Sigma, we can confirm that:
 In this example, we hardcoded the team permission to `View` for simplicity. 
 
 This logic is found in the file: `routes/api/workbook-copy-create.js`, in the following block:
-```code
+```copy-code
     // If this was a team workspace copy, share the workbook with the team
     if (teamIdForSharing) {
       if (DEBUG) console.log(`Sharing copied workbook with team: ${teamIdForSharing}`);

@@ -100,7 +100,7 @@ Let's also assume that we want to completely isolate this information from other
 Log into Snowflake as `ACCOUNTADMIN`.
 
 Copy and paste the following SQL script into a new Snowflake SQL worksheet:
-```code
+```copy-code
 -- Use full privileges to create and configure objects
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;

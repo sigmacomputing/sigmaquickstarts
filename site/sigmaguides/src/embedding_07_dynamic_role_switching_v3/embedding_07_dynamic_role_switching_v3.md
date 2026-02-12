@@ -70,7 +70,7 @@ Click the three vertical dots (shown below) and rename the worksheet to `Sigma_D
 <img src="assets/drs3.png" width="400"/>
 
 Run the following commands to confirm or switch your active role and warehouse to `ACCOUNTADMIN` and `COMPUTE_WH`:
-```code
+```copy-code
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
 ```
@@ -79,7 +79,7 @@ USE WAREHOUSE COMPUTE_WH;
 
 The following commands will create a database, schema and table we will use. Copy, paste, and run the following group of commands by highlighting them and clicking the run button:
 
-```code
+```copy-code
 // 1: CREATE QUICKSTARTS DATABASE
 CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
 USE DATABASE QUICKSTARTS;
@@ -126,7 +126,7 @@ We’ll copy the data into a Snowflake stage and then load it into our table.
 
 Copy / paste and run the following commands:
 
-```code
+```copy-code
 // 4: CREATE OR REPLACE SCHEMA FOR EXTERNAL STORAGE OF CSV FILE
 CREATE STAGE IF NOT EXISTS S3_DATA URL='s3://sigma-quickstarts-main/embedding/DRS_Sample_Data.csv';
 
@@ -163,7 +163,7 @@ We need to create a few roles in Snowflake so that Sigma can reference them for 
 
 Copy, paste, and run the following commands together. Ensure you see a success message:
 
-```code
+```copy-code
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 2: ROLE CONFIGURATION
 // ----------------------------------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ Duration: 10
 
 We are now ready to define our Snowflake Row Access Policy. Follow the same process as before using these new commands:
 
-```code
+```copy-code
 GRANT SELECT ON ALL TABLES IN SCHEMA QUICKSTARTS.DRS TO ROLE DRS_East;
 
 // ----------------------------------------------------------------------------------------------------------
@@ -247,7 +247,7 @@ In the next section, we will test each role individually to observe how many row
 <strong>IMPORTANT:</strong><br> Replace the YOUR_SNOWFLAKE_USERNAME_HERE (remove the brackets too) with your Snowflake username.
 </aside>
 
-```code
+```copy-code
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 4:  TEST OUT ROLES AND SEE DIFFERENT RESULTS. *** RUN ONE ROLE AT A TIME ***
 // ----------------------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ As `DRS_EXECUTIVE`, we expect to see all 35 rows:
 <img src="assets/drs13a.png" width="800"/>
 
 As `DRS_EAST`, we expect to see 20 rows:
-```code
+```copy-code
 // 3: EAST = 20 ROWS
 USE ROLE DRS_EAST;
 SELECT * FROM SAMPLE_DATA;
@@ -277,7 +277,7 @@ SELECT * FROM SAMPLE_DATA;
 <img src="assets/drs13b.png" width="800"/>
 
 10 rows for `DRS_WEST`:
-```code
+```copy-code
 // 4: WEST = 10 ROWS
 USE ROLE DRS_WEST;
 SELECT * FROM SAMPLE_DATA;
@@ -448,12 +448,12 @@ In VSCode, open the `embedding_qs_series_2` project and edit the `.env` file, ad
 <img src="assets/drs35.png" width="800"/>
 
 In VSCode > Terminal, start the local web server:
-```code
+```copy-code
 npm start
 ```
 
 In a browser, open:
-```code
+```copy-code
 http://localhost:3000/dynamic_role_switching/?mode=dynamic_role_switching
 ```
 
@@ -494,7 +494,7 @@ This is the code block in `embed-api.js`:
 Let's configure the `DRS_REGION` user attribute in the `.env` file.
 
 In the `# QS: dynamic_role_switching` section, set the UA parameter:
-```code
+```copy-code
 # dynamic_role_switching USER ATTRIBUTES
 DYNAMIC_ROLE_SWITCHING_ua_DRS_REGION=DRS_EAST
 ```
@@ -532,7 +532,7 @@ We already created a user attribute for warehouse in Sigma. Next, we’ll create
 ### Create Warehouse
 In Snowflake, run the following script:
 
-```code
+```copy-code
 // ----------------------------------------------------------------------------------------------------------
 // SECTION 4: CREATE A SECOND WAREHOUSE AND GRANT USAGE PERMISSION ON THE WAREHOUSES TO NEW ROLES:
 // ----------------------------------------------------------------------------------------------------------
@@ -547,7 +547,7 @@ USE WAREHOUSE COMPUTE_WH2;
 Once the query is completed, Snowflake will return `Statement executed successfully.`
 
 Now, update the `.env` file to add the required user attribute:
-```code
+```copy-code
 DYNAMIC_ROLE_SWITCHING_ua_DRS_WAREHOUSE=COMPUTE_WH2
 ```
 
