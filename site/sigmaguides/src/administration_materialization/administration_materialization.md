@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-08-21
+lastUpdated: 2026-02-13
 
 # Materialization with Sigma
 
@@ -28,7 +28,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Sigma administrators who are interested in improving performance when working with complex datasets or just generally interest in learning more about materialization.
+Sigma administrators who are interested in improving performance when working with large amounts of data or just generally interested in learning more about materialization.
 
 ### Prerequisites
 
@@ -101,14 +101,14 @@ For data that changes infrequently or on a predictable schedule, materialization
 Materialization can optimize compute usage by offloading expensive calculations to precomputed tables, freeing live system resources for other workloads.
 
 **Matching Grain to Need**<br>
-If source data contains millions of transactions but reports only need daily, weekly, or monthly summaries, materialization can reduce the dataset to a smaller, aggregated table. This is often referred to as reducing the grain or reducing cardinality.
+If source data contains millions of transactions but reports only need daily, weekly, or monthly summaries, materialization can reduce the data to a smaller, aggregated table. This is often referred to as reducing the grain or reducing cardinality.
 
 **Frequently Accessed Data**<br>
-Datasets or views accessed repeatedly by many users are good candidates for materialization. By serving queries from precomputed tables, the load on source systems is reduced.
+Data or views accessed repeatedly by many users are good candidates for materialization. By serving queries from precomputed tables, the load on source systems is reduced.
 
 <aside class="positive"> <strong>IMPORTANT:</strong><br> Materializing data involves trade-offs. The process requires additional storage and ongoing maintenance to keep the materialized tables synchronized with source data. Carefully weigh costs and benefits, considering factors such as query patterns, data volatility, available resources, and performance needs. </aside> 
 
-<aside class="negative"> <strong>NOTE:</strong><br> When materializing in Sigma, regular (non-OAuth) authentication must be used, where all Sigma users access the cloud data warehouse (CDW) with a single, shared logon. OAuth connections to the CDW are not supported for materialization.<br><br> <strong>Other limitations:</strong><br> - Elements that use parameters or system functions (e.g., <code>CurrentTimeZone()</code>, <code>CurrentUser*()</code>) cannot be materialized.
+<aside class="negative"> <strong>NOTE:</strong><br> When using OAuth authentication, materializations run as the scheduling user. For organizational consistency, Sigma recommends using service account credentials for materialization.<br><br> <strong>Other limitations:</strong><br> - Elements that use parameters or system functions (e.g., <code>CurrentTimeZone()</code>, <code>CurrentUser*()</code>) cannot be materialized.
 
 It can be helpful to include a column that records the materialization run date. Use the <code>Today()</code> function to add this automatically. </aside>
 
@@ -178,23 +178,23 @@ Sigma’s RBAC system provides the flexibility to strike the right balance betwe
 ## Initial Setup
 Duration: 20
 
-Materialization allows you to write datasets and workbook elements back to your warehouse as tables, reducing compute costs and improving query performance. By materializing, your data warehouse avoids recomputing the dataset every time it is used in a Sigma element or descendant analysis.
+Materialization allows you to write workbook elements back to your warehouse as tables, reducing compute costs and improving query performance. By materializing, your data warehouse avoids recomputing the element every time it is used in a Sigma workbook or descendant analysis.
 
 Materializations are stored directly in your warehouse, inside a scratch workspace schema automatically managed by Sigma.
 
-**Sigma’s query compiler automatically and transparently uses the latest materialization.**
+**Sigma's query compiler automatically and transparently uses the latest materialization.**
 
-All data displayed in Sigma is always queried directly from the warehouse (Snowflake in this case). However, the complexity of the base query carries through to all subsequent queries, including sorting, filtering, and pagination. To solve this, Sigma datasets can be materialized back to Snowflake.
+All data displayed in Sigma is always queried directly from the warehouse (Snowflake in this case). However, the complexity of the base query carries through to all subsequent queries, including sorting, filtering, and pagination. To solve this, Sigma workbook elements can be materialized back to Snowflake.
 
-**This is different from a dataset view object in Snowflake.**
+**This is different from a view object in Snowflake.**
 
-In Sigma’s implementation, a `CREATE TABLE AS` statement is used to store the result set of the SQL query generated by the dataset. You can also materialize a Sigma table that contains multiple grouping levels by selecting a specific grouping level to materialize.
+In Sigma's implementation, a `CREATE TABLE AS` statement is used to store the result set of the SQL query generated by the workbook element. You can also materialize a Sigma table that contains multiple grouping levels by selecting a specific grouping level to materialize.
 
 Materializations can be refreshed on a schedule or triggered programmatically via the Sigma API.
 
-By materializing a dataset, even extremely complex queries can be flattened into a simple SELECT, meaning all downstream queries run with far less strain.
+By materializing a workbook element, even extremely complex queries can be flattened into a simple SELECT, meaning all downstream queries run with far less strain.
 
-<aside class="positive"> <strong>IMPORTANT:</strong><br> To use Sigma materialization, write access must be enabled on your dataset’s connection. In addition, you must either be an **Organization Admin** or be assigned a **custom account type** with materialization permissions. </aside>
+<aside class="positive"> <strong>IMPORTANT:</strong><br> To use Sigma materialization, write access must be enabled on your connection. In addition, you must either be an **Organization Admin** or be assigned a **custom account type** with materialization permissions. </aside>
 
 ### Prepare Snowflake
 First, we need to create a database and schema in Snowflake to store our materialized data.
@@ -204,7 +204,7 @@ Log in to your Snowflake trial account as `ACCOUNTADMIN`.
 Open a new `SQL Worksheet`.
 
 Copy/paste the following code:
-```code
+```copy-code
 -- OPERATE AS ADMIN
 USE ROLE ACCOUNTADMIN;
 
@@ -236,13 +236,14 @@ Click `Create Connection`.
 
 <img src="assets/am1.png" width="800"/>
 
-<img src="assets/am1.png" width="800"/> <aside class="positive"> <strong>IMPORTANT:</strong><br> Snowflake announced that, starting in **November 2025**, service users will be required to use **key pair authentication**. Password-based authentication will no longer be supported. This is part of Snowflake’s broader initiative to strengthen security and enforce MFA across all users. </aside>
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Snowflake announced that, starting in **November 2025**, service users will be required to use **key pair authentication**. Password-based authentication will no longer be supported. This is part of Snowflake’s broader initiative to strengthen security and enforce MFA across all users. </aside>
 
 For more information, see the QuickStart [Snowflake Key-pair Authorization](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0)
 
 Scroll down to the `Write Access` section and enter the required information:
 
 <img src="assets/am3.png" width="600"/>
+**[NOTE: This screenshot may need updating to show the "Enable dynamic tables" option that is now available in connection settings]**
 
 ### Notes on Snowflake Permissions Required for Dynamic Tables
 To use dynamic tables in Snowflake, the Snowflake user (or role) connected via Sigma must have the following privileges:
@@ -263,7 +264,10 @@ For more information, see [Set up write access](https://help.sigmacomputing.com/
 ## Materialization in Sigma
 Duration: 20
 
-Previously, we discussed materialization in general. Now, let’s look at how it is implemented in Sigma at a high level.
+Previously, we discussed materialization in general. Now, let's look at how it is implemented in Sigma at a high level.
+
+### What Can Be Materialized
+In Sigma, you can materialize any **workbook element** (table, visualization, pivot) or **data model** that can be used as a data source for another element.
 
 A materialization is created by scheduling a materialization job. The schedule you choose directly impacts data freshness. Even long-running queries that cannot display in Sigma can still be materialized.
 
@@ -273,11 +277,25 @@ Materializations can be paused (either manually or automatically after a user-sp
 
 <aside class="negative"> <strong>NOTE:</strong><br> Deleting a materialization schedule also deletes the corresponding warehouse tables within 24 hours. </aside>
 
+### Advantages of Workbook and Data Model Materialization
+
+<ul>
+<li>It allows you to materialize any workbook element (table, visualization, pivot) that can be used as a data source for another element.</li>
+<li>Workbook materialization offers a smarter refresh when published. Publishing a document only refreshes the materialization if necessary. For example, if the materialized element hasn't changed, materialization doesn't run. This matters when dealing with very large data, in terms of warehouse cost.</li>
+<li>It offers support for different levels of reference. Grouping levels can be independently materialized.</li>
+<li>Materializations are used when viewing and editing a workbook.</li>
+<li>The workbook viewer is notified of materialization activity in a new "alerts" center (to be integrated with in-app notifications) and toasts.</li>
+</ul>
+
+**Data models** can also be materialized using the same process. Simply access the materialization option from the data model element menu as you would with a standard workbook table:
+
+<img src="assets/am34.png" width="600"/>
+
 ### Limitations
 **Parameters and system functions:**<br>
 Materialization is not available for data that use parameters or most system functions, with a few exceptions. For example, the system function `Today()` does work.
 
-Data is expected to return different values when parameters change. Materialized tables, however, always return the same fixed output generated at the time the materialization ran. Using them with parameterized datasets could produce unexpected results.
+Data is expected to return different values when parameters change. Materialized tables, however, always return the same fixed output generated at the time the materialization ran. Using them with parameterized elements could produce unexpected results.
 
 **Row-level security:**<br>
 Materialization is incompatible with row-level security. If user-attribute functions are referenced, the materialization will error.
@@ -285,13 +303,21 @@ Materialization is incompatible with row-level security. If user-attribute funct
 **Data referencing other data:**<br>
 Data that duplicates or joins other data can usually be materialized. However, if any underlying data cannot be materialized, the dependent data cannot be either.
 
+### Dependent Materializations
+
+When one materialized element references another (for example, a workbook table built on top of another materialized workbook element), Sigma automatically manages the refresh order to ensure data consistency.
+
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Sigma automatically detects and refreshes dependent materializations in the correct order. When a parent materialization completes, any child materializations that reference it are automatically refreshed on their next scheduled run. No manual orchestration is required. </aside>
+
+This makes it simple to build multi-layered data pipelines where aggregated tables build on detailed materializations, while maintaining data consistency across all layers.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Simple Materialization
 Duration: 20
 
-For this exercise, we’ll use the Snowflake sample database TPCH_SF10, which contains an ORDERS table with 9 columns and ~15M rows.
+For this exercise, we’ll use the Snowflake sample database `TPCH_SF10`, which contains an `ORDERS` table with 9 columns and ~15M rows.
 
 Typically, materialization in Sigma is applied after joining tables, adding groupings, and creating calculated columns. As discussed earlier, flat tables by themselves won’t benefit much from materialization.
 
@@ -299,11 +325,9 @@ For simplicity, we’ll assume that some joins and calculated columns already ex
 
 In Sigma, click the <img src="assets/crane.png" width="45"/> icon to return home.
 
-Go to `Connections` and select `Materialization QuickStart` from the list:
+Select `Materialization QuickStart` from the left side-bar:
 
-<img src="assets/am4.png" width="800"/>
-
-Expand the database `SNOWFLAKE_SAMPLE_DATA` and select the `ORDERS` table. Click `Explore`:
+Expand the database `SNOWFLAKE_SAMPLE_DATA` > `TPCH_SF10` and select the `ORDERS` table. Click `Explore`:
 
 <img src="assets/am5.png" width="800"/>
 
@@ -327,9 +351,9 @@ Set the schedule to run once daily at `3:00 AM` in your local timezone.
 
 Click `Save Schedules`.
 
-The materialization will run immediately.
+The materialization will run immediately, with a status of `Pending` > `In progress` and finally `Success`:
 
-Once complete, the status will show `Success` and the UI will display the next scheduled run time:
+The UI will display the next scheduled run time:
 
 <img src="assets/am9.png" width="800"/>
 
@@ -344,6 +368,8 @@ Navigate back to `Administration` > `Materializations` where we can see the list
 <img src="assets/am10.png" width="800"/>
 
 Here you can check the last run status, duration, and row count. In this example, the job processed `15M rows in 16 seconds` using a `Snowflake X-Small` warehouse.
+
+<aside class="positive"> <strong>NOTE:</strong><br> When using dynamic tables (see the Dynamic Tables section below), you may see a status of <strong>"Skipped"</strong> for materialization runs. This indicates that Sigma detected no changes in the source data and automatically skipped the refresh, saving compute costs. </aside>
 
 <aside class="positive"> <strong>IMPORTANT:</strong><br> The size and configuration of your cloud data warehouse (e.g., warehouse size, clustering) directly impact materialization performance. Sigma makes it easy to experiment with different settings so you can balance performance, cost, and freshness. Remember, performance is just one of the reasons to materialize. </aside>
 
@@ -368,7 +394,7 @@ The table is stored in a scratch schema that Sigma manages automatically. While 
 
 <img src="assets/am12.png" width="800"/>
 
-Materialization improves query performance by allowing your data warehouse to reuse precomputed results instead of recomputing the dataset each time it is used in a Sigma element or descendant analysis.
+Materialization improves query performance by allowing your data warehouse to reuse precomputed results instead of recomputing the element each time it is used in a Sigma workbook or descendant analysis.
 
 If you need to access this data from other applications, see [Review warehouse view details](https://help.sigmacomputing.com/docs/review-warehouse-view-details)
 
@@ -377,30 +403,67 @@ If you need to access this data from other applications, see [Review warehouse v
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Workbook Materialization
-Duration: 20
 
-Workbook materialization is similar to datasets, but has some major advantages depending on the use case.
+## Dynamic Tables and Incremental Refresh
+Duration: 15
 
-<ul> <li>It allows you to materialize any workbook element (table, visualization, pivot) that can be used as a data source for another element.</li> <li>Workbook materialization offers a smarter refresh when published. Publishing a document only refreshes the materialization if necessary. For example, if the materialized element hasn’t changed, materialization doesn’t run. Datasets always refresh the materialization on publish. This matters when the dataset is very large, in terms of warehouse cost.</li> <li>It offers support for different levels of reference. Grouping levels can be independently materialized. Datasets only materialize at one grouping level.</li> <li>Materializations are used when viewing and editing a workbook. Datasets don’t use the materialization in edit mode.</li> <li>The workbook viewer is notified of materialization activity in a new “alerts” center (to be integrated with in-app notifications) and toasts.</li> </ul>
+Dynamic tables in Snowflake enable **incremental refresh** for materializations. Instead of rebuilding the entire materialized table on each refresh, Sigma only updates the rows that have changed since the last run.
 
-The easiest way to demonstrate this is to use a `Sigma Template` as our workbook.
+This represents a significant enhancement to materialization capabilities.
 
-<aside class="negative"> <strong>NOTE:</strong><br> Workbook templates allow users to templatize and share workbook structures for quick and consistent reuse. This includes a set of Sigma-created examples and usage templates. </aside>
+**Key Benefits:**
+- **Reduced compute costs** - Only changed data is processed
+- **Faster refresh times** - Smaller updates complete quicker
+- **Automatic optimization** - Sigma skips scheduled runs when no data has changed
+- **Same user experience** - Works transparently in the background
 
-Return to the Sigma homepage and click `Templates` > `External,` then search for `Plugs`. Click the `Plugs Electronics Sales Performance` template:
+### How It Works
 
-<img src="assets/am24.png" width="800"/>
+When you configure a Snowflake connection to use dynamic tables:
 
-Click `Save As` in the upper-right corner and give the workbook any name.
+1. Sigma creates a **Snowflake dynamic table** instead of a regular table
+2. Snowflake's **change tracking** monitors the source data
+3. On each scheduled run, only **modified rows** are updated
+4. If no changes occurred, the **run is automatically skipped**
 
-If we click to drop the menu on the `Historical Profit and Margin` bar chart, we see that the underlying data driving the gauge can be materialized.
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Dynamic tables are now the <strong>default for new Snowflake connections</strong>. Existing connections can be updated to use dynamic tables through connection settings. </aside>
 
-Charts tend to have grouped data underlying them, so this is our first example of materializing grouped data. In this case, Sigma just handles the complexity for you.
+### Requirements for Dynamic Tables
 
-It is possible to design the dashboard first, get it just right, and then decide what portions to materialize on a schedule later.
+To use dynamic tables with materialization:
 
-<img src="assets/am25.png" width="800"/>
+**Connection Configuration:**
+- Your Snowflake connection must be configured to use dynamic tables
+- This is enabled in `Administration` > `Connections` > `Edit your connection`:
+
+<img src="assets/am35.png" width="600"/>
+
+**Source Table Requirements:**
+- Change tracking must be enabled on source tables in Snowflake
+- Tables must have non-zero time travel retention
+- You need `OWNERSHIP` privileges to enable change tracking
+
+**Supported Elements:**
+- Workbook elements (tables, visualizations, pivots)
+- Data model elements
+
+### When to Use Dynamic Tables
+
+Dynamic tables are ideal when:
+- Source data changes incrementally (new rows added, updates to existing rows)
+- Materialized tables are large (millions of rows)
+- Refresh frequency is high (hourly or more frequent)
+- Compute cost optimization is a priority
+
+**Example scenarios:**
+- Order tables with new transactions added daily
+- Customer tables with periodic attribute updates
+- Event logs with streaming data ingestion
+- Sales data with regular incremental loads
+
+<aside class="negative"> <strong>NOTE:</strong><br> If your source data requires a full refresh each time (e.g., complete table replacement), standard materialization may be more appropriate. Dynamic tables perform a full refresh when incremental refresh is not available. </aside>
+
+For more information, see [Incremental materialization with dynamic tables](https://help.sigmacomputing.com/docs/materialization#incremental-materialization-with-dynamic-tables)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -416,9 +479,9 @@ By contrast, **aggregate navigation in Sigma is straightforward.**
 
 Aggregation functions or operators are applied to groups of data to calculate consolidated values. Some common functions include sum, count, average, minimum, maximum, and median. These can be applied to numerical data (e.g., sales figures, temperature readings) as well as categorical data (e.g., the number of occurrences by category).
 
-Aggregations are widely used to generate reports, analyze trends, or derive meaningful statistics from datasets. For example, in a sales database, you might calculate total sales by product category, average revenue per customer, or the highest-selling region.
+Aggregations are widely used to generate reports, analyze trends, or derive meaningful statistics from data. For example, in a sales database, you might calculate total sales by product category, average revenue per customer, or the highest-selling region.
 
-Aggregations can be applied at different levels — entire datasets, specific groups or categories, or across multiple dimensions. The choice depends on analysis goals and data structure.
+Aggregations can be applied at different levels — entire data collections, specific groups or categories, or across multiple dimensions. The choice depends on analysis goals and data structure.
 
 **Tables that leverage aggregate navigation are excellent candidates for materialization.**
 
@@ -435,7 +498,7 @@ If we have five grouping levels in a table element and materialize at the third 
 
 This trade-off matters: performance vs. storage cost. If levels four and five contain hundreds of millions of records, Sigma still allows materialization of levels one through three — delivering strong performance with the option to drill deeper when needed (though more slowly).
 
-<aside class="positive"> <strong>IMPORTANT:</strong><br> Sigma’s materialization solution provides flexibility to design a highly performant workflow against very large datasets while being prudent with storage and compute costs. This enables seamless tabular exploration at scale. </aside>
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Sigma's materialization solution provides flexibility to design a highly performant workflow against very large amounts of data while being prudent with storage and compute costs. This enables seamless tabular exploration at scale. </aside>
 
 We’ll build on the existing workbook but extend the data.
 
@@ -454,11 +517,11 @@ Click `Orders` to return to the workbook and then click `Edit`.
 
 Now, make a duplicate of the `Orders` table:
 
-<img src="assets/am13.png" width="800"/>
+<img src="assets/am13.png" width="600"/>
 
 Move the duplicate to a new page:
 
-<img src="assets/am13a.png" width="800"/>
+<img src="assets/am13a.png" width="600"/>
 
 You can also copy/paste the table instead.
 
@@ -469,7 +532,7 @@ Next, we’ll join the `CUSTOMER` table (from the database) to `ORDERS`.
 
 Click `Join`:
 
-<img src="assets/am15.png" width="800"/>
+<img src="assets/am15.png" width="600"/>
 
 Navigate the UI to locate the` Materialization QuickStart` connection, expand the tree, and select `TPCH_SF10` > `CUSTOMER`. Click `Select`.
 
@@ -485,19 +548,19 @@ The result will show some customers with no orders and some with multiple.
 
 Click the `+` icon to add another join:
 
-<img src="assets/am17b.png" width="800"/>
+<img src="assets/am17b.png" width="600"/>
 
 Repeat the process to join the Nation table to the `Customer` table (not Orders):
 
-<img src="assets/am19a.png" width="800"/>
+<img src="assets/am19a.png" width="600"/>
 
 Join the `Region` table to the `Nation` table:
 
-<img src="assets/am19b.png" width="800"/>
+<img src="assets/am19b.png" width="600"/>
 
 Join the `Line Item` table to `Orders`:
 
-<img src="assets/am19c.png" width="800"/>
+<img src="assets/am19c.png" width="600"/>
 
 Click `Preview Output`.
 
@@ -511,11 +574,11 @@ Click `Done`.
 
 We now have about `60M rows` of order detail by customer:
 
-<img src="assets/am30.png" width="800"/>
+<img src="assets/am30.png" width="600"/>
 
 ### Add calculated columns
 Add new columns, naming and setting each formula as shown below:
-```code
+```copy-code
 NAME:                   FORMULA: (note: they are all the same, using the groupings)
 Region_Sales            Sum([O Totalprice])
 Region_Order_Count      CountDistinct([O Orderkey])
@@ -527,7 +590,7 @@ Customer_Sales          Sum([O Totalprice])
 Customer_Order_Count    CountDistinct([O Orderkey])
 ```
 
-<aside class="positive"> <strong>IMPORTANT:</strong><br> Once materialized, calculated columns are automatically persisted in the dataset, saving query time on later requests and reducing compute cost. While our example is simple, in large datasets with many calculations this can have a real impact. </aside>
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Once materialized, calculated columns are automatically persisted in the materialized table, saving query time on later requests and reducing compute cost. While our example is simple, in large data volumes with many calculations this can have a real impact. </aside>
 
 ### Data grouping
 Create the following three groups in Sigma:
@@ -545,9 +608,9 @@ Open the `Schedule materialization` UI:
 
 Create a schedule (once per day) based on the `Customer` grouping level:
 
-<img src="assets/am27.png" width="800"/>
+<img src="assets/am27.png" width="700"/>
 
-<img src="assets/am27.png" width="800"/> <aside class="positive"> <strong>IMPORTANT:</strong><br> Sigma automatically creates a table in the warehouse for the selected grouping level as well as each grouping level above it. </aside>
+<aside class="positive"> <strong>IMPORTANT:</strong><br> Sigma automatically creates a table in the warehouse for the selected grouping level as well as each grouping level above it. </aside>
 
 Once complete, three new tables will appear in Snowflake.
 
@@ -555,8 +618,7 @@ Looking at the Sigma WriteDB, the three tables are organized with the lowest lev
 
 <img src="assets/am32.png" width="800"/> <aside class="positive"> <strong>IMPORTANT:</strong><br> These tables are visible in your cloud data warehouse but are not intended as source tables for other applications. They are recreated with each new materialization run, and old tables are deleted. Do not modify materialized tables directly in your database — doing so can cause unexpected results or query failures. </aside>
 
-It is possible to access this data from other applications using Sigma’s Dataset Warehouse Views
-.
+It is possible to access this data from other applications using Sigma's Warehouse Views feature.
 
 Once materialized tables are accessed, they also exist in the warehouse cache (subject to Snowflake caching rules), further improving performance.
 
@@ -593,3 +655,4 @@ Be sure to check out all the latest developments at [Sigma's First Friday Featur
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
 <!-- END OF QUICKSTART -->
+
