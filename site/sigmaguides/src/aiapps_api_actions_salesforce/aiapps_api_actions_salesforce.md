@@ -1,7 +1,7 @@
 author: pballai
-id: dataapps_api_actions_salesforce
-summary: dataapps_api_actions_salesforce
-categories: dataapps
+id: aiapps_api_actions_salesforce
+summary: aiapps_api_actions_salesforce
+categories: aiapps
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
