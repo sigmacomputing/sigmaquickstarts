@@ -15,10 +15,6 @@ Duration: 5
 
 This QuickStart introduces Sigma API Actions by connecting to the Open-Meteo Weather API, a free weather data service that requires no authentication.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This feature is undergoing beta testing and may not be available in your Sigma instance. If you are interested in testing it, contact your Sigma account team and request access to API Actions.
-</aside>
-
 You'll use a preconfigured Sigma template to select a city from a dropdown list and fetch current weather details in real-time.
 
 Along the way you'll learn how to:
@@ -120,7 +116,7 @@ For example, a quick test in Postman to check the response:
 
 Click `Save`.
 
-### Sigma template - PENDING!
+### Sigma template
 To make this process easier, we have created a [template](https://help.sigmacomputing.com/docs/create-and-edit-workbook-templates) that is preconfigured.
 
 Return to the Sigma homepage and click `Templates`. Click to select the `API Actions Getting Started QuickStart` template:
