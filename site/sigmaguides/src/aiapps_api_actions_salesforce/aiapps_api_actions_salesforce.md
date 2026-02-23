@@ -3,10 +3,10 @@ id: aiapps_api_actions_salesforce
 summary: aiapps_api_actions_salesforce
 categories: aiapps
 environments: web
-status: Hidden
+status: Publish
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-02-19
+tags: Default
+lastUpdated: 2026-02-23
 
 # Integrate Salesforce using API Actions
 
@@ -14,8 +14,6 @@ lastUpdated: 2026-02-19
 Duration: 5 
 
 This QuickStart walks you through using Sigma API Actions to connect to Salesforce’s REST API, retrieve live Salesforce data, and surface it directly inside a Sigma workbook. Unlike the [API Actions - Getting Started](https://quickstarts.sigmacomputing.com/guide/dataapps_api_actions_getting_started/index.html?index=..%2F..index#0) QuickStart, this workflow uses authenticated requests, dynamic parameters, and a more realistic enterprise-grade API pattern.
-
-<aside class="positive"> <strong>IMPORTANT:</strong><br> This feature is currently in beta and may not be available in your Sigma instance. If you want access to API Actions or Salesforce credential types, contact your Sigma account team. </aside>
 
 You’ll use a preconfigured Sigma template that lets you select a Salesforce object (such as Account, Contact, or Opportunity), execute a SOQL query, and view the returned results in real time.
 
