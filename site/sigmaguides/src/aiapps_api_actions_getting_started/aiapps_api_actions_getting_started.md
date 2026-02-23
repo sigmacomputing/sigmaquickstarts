@@ -3,9 +3,9 @@ id: dataapps_api_actions_getting_started
 summary: dataapps_api_actions_getting_started
 categories: aiapps
 environments: web
-status: Publish
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: 
 lastUpdated: 2026-02-23
 
 # API Actions - Getting Started

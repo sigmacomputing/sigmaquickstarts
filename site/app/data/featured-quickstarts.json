@@ -1,18 +1,6 @@
 {
   "recentQuickStarts": [
     {
-      "title": "Integrate Salesforce using API Actions",
-      "id": "aiapps_api_actions_salesforce",
-      "category": "aiapps",
-      "date": "Feb 20, 2026"
-    },
-    {
-      "title": "API Actions - Getting Started",
-      "id": "aiapps_file_uploads_multimodal_ai",
-      "category": "aiapps",
-      "date": "Feb 20, 2026"
-    },
-    {
       "title": "Multi-Modal File Analysis with AI",
       "id": "aiapps_file_uploads_multimodal_ai",
       "category": "aiapps",
@@ -41,6 +29,18 @@
       "id": "fundamentals_11_pixel_perfect_reporting",
       "category": "Fundamentals",
       "date": "Jan 6, 2026"
+    },
+    {
+      "title": "First Friday Features - January 2026",
+      "id": "01_2026_first_friday_features",
+      "category": "First Friday Features",
+      "date": "Jan 2, 2026"
+    },
+    {
+      "title": "Popular Functions",
+      "id": "functions_popular_functions",
+      "category": "Functions",
+      "date": "Dec 3, 2025"
     }
   ]
 }
