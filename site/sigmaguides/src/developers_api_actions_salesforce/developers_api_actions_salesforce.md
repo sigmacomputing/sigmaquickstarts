@@ -3,9 +3,9 @@ id: aiapps_api_actions_salesforce
 summary: aiapps_api_actions_salesforce
 categories: developers
 environments: web
-status: Publish
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags: 
 lastUpdated: 2026-02-23
 
 # Integrate Salesforce using API Actions
