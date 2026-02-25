@@ -19,6 +19,6 @@
     "@bazel/bazel": "^0.18.1"
   },
   "dependencies": {
-    "firebase-tools": "^11.19.0"
+    "firebase-tools": "^15.7.0"
   }
 }
