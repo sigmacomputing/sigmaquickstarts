@@ -1,11 +1,11 @@
 author: pballai
-id: dataapps_api_actions_getting_started
-summary: dataapps_api_actions_getting_started
+id: developers_api_actions_getting_started
+summary: developers_api_actions_getting_started
 categories: developers
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2026-02-23
 
 # API Actions - Getting Started

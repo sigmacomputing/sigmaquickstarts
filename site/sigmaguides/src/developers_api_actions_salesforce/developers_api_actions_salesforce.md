@@ -1,11 +1,11 @@
 author: pballai
-id: aiapps_api_actions_salesforce
-summary: aiapps_api_actions_salesforce
+id: developers_api_actions_salesforce
+summary: developers_api_actions_salesforce
 categories: developers
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: Default
 lastUpdated: 2026-02-23
 
 # Integrate Salesforce using API Actions
