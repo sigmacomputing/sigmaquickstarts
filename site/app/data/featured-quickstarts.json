@@ -1,5 +1,17 @@
 {
   "recentQuickStarts": [
+  {
+      "title": "API Actions - Getting Started",
+      "id": "developers_api_actions_getting_started",
+      "category": "Developers",
+      "date": "Feb 25, 2026"
+    },
+    {
+      "title": "Integrate Salesforce using API Actions",
+      "id": "developers_api_actions_salesforce",
+      "category": "Developers",
+      "date": "Feb 25, 2026"
+    },
     {
       "title": "Multi-Modal File Analysis with AI",
       "id": "aiapps_file_uploads_multimodal_ai",
