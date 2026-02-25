@@ -623,8 +623,6 @@ There are QuickStarts that cover row level security:
 
 [Implementing Row Level Security](https://quickstarts.sigmacomputing.com/guide/security_row_level_security/index.html?index=..%2F..index#0)
 
-[Embedding 06: Row Level Security](https://quickstarts.sigmacomputing.com/guide/embedding_06_row_level_security/index.html?index=..%2F..index#0)
-
 Once you create and assign a user attribute to teams, you can use this functionality in a dataset to enforce row-level security using the function [CurrentUserAttributeText](https://help.sigmacomputing.com/docs/currentuserattributetext) in a formula.  
 
 For example, if we want to restrict a user `QuickStarts View` to only the rows that are in the `East` region, we create a user attribute like this:
