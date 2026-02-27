@@ -64,6 +64,10 @@ Duration: 15
 
 Before configuring Sigma's storage integration, you need to set up the AWS infrastructure that will store your uploaded files. This involves creating an S3 bucket, IAM policies, and roles with proper permissions.
 
+<aside class="positive">
+<strong>NOTE:</strong><br> This QuickStart demonstrates creating a new S3 bucket with new IAM roles and policies. If you're using an existing customer-owned bucket with existing IAM roles, refer to <a href="https://help.sigmacomputing.com/docs/configure-storage-integration-using-customer-owned-bucket">Configure storage integration using customer-owned bucket</a> for the specific steps to update your existing IAM configuration.
+</aside>
+
 ### Create S3 Bucket
 
 Log into your AWS Console and navigate to S3.
@@ -125,6 +129,11 @@ Click `Create policy`.
 <img src="assets/fupl_04.png" width="800"/>
 
 ### Create IAM Role
+
+<aside class="positive">
+<strong>NOTE:</strong><br> If you're using an existing customer-owned bucket with pre-existing IAM roles, you'll need to update those roles instead of creating new ones. See <a href="https://help.sigmacomputing.com/docs/configure-storage-integration-using-customer-owned-bucket#update-the-custom-iam-role-in-aws">Update the custom IAM role in AWS</a> for instructions.
+</aside>
+
 Navigate to IAM > Roles and click `Create role`.
 
 Configure the role:
