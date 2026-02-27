@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
   {
+      "title": "Integrate JIRA using API Actions",
+      "id": "developers_api_actions_jira",
+      "category": "Developers",
+      "date": "Feb 27, 2026"
+    },
+    {
       "title": "API Actions - Getting Started",
       "id": "developers_api_actions_getting_started",
       "category": "Developers",
