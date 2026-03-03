@@ -19,7 +19,7 @@ In this hands-on lab, you will act as a newly hired **Retail Security SME** at *
 
 You will modernize the Big Buys security stack by integrating Sigma, Snowflake, and Python to create a comprehensive **"Shrink App V2.0"**. Specifically, you will:
 
-- **Employ a Cortex Agent** through Ask Sigma to investigate shrink trends and uncover "false positives" in your data
+- **Use a Cortex Agent** through Ask Sigma to investigate shrink trends and uncover "false positives" in your data
 - **Implement an Anomaly Detection Engine** using Python to flag complex "Inter-Scan Latency" fraud patterns
 - **Build an AI Investigator** using a Sigma Custom Agent (powered by a Cortex Agent) that translates complex model outputs into plain English for store managers
 
@@ -51,13 +51,8 @@ Duration: 10
 
 This section covers the initial setup required for the hands-on lab.
 
-<aside class="positive">
-<strong>NOTE:</strong><br> The setup process is the same as the Snowflake Summit 2025 lab. If you have already completed that setup, you can skip to Module 1.
-</aside>
-
-For detailed setup instructions, see the [Snowflake Internal Only - Summit 2025 Hands on Lab](https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025_internal_only/index.html#1)
-
 The setup includes:
+
 - Access to a pre-configured Sigma environment
 - Connection to a Snowflake instance with sample retail POS data
 - Required permissions for Python execution and Cortex AI
@@ -66,6 +61,20 @@ Once setup is complete, you should have access to:
 - **Template Workbook**: Snowflake SKO FY27 - Loss Prevention App Template
 - **Sample Data**: Big Buys POS transaction data with pre-calculated flags
 - **Snowflake Connection**: Configured for Python and Cortex AI
+
+Navigate to the OKTA home page, and click on the `Sigma SE Demos` tile. This will open up the Sigma account that has been set up as a demo sandbox for Snowflake SEs:
+
+<img src="assets/sf2025_2c.png" width="800"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
+</aside>
+
+From the Sigma home page navigate to the templates section:
+
+<img src="assets/sf2025_2.png" width="800"/>
+
+Under internal templates select `Snowflake SKO FY27 - Loss Prevention App Template`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -209,7 +218,7 @@ You will see the POS table (`BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS`) which includes
 <strong>NOTE:</strong><br> If you removed the filter already, just reapply it for `100650 - Big Buys Salem`.
 </aside>
 
-**Step 3 (if required)**: Add a filter on the `Store` column. Select `Store 100650 - Big Buys Salem`:
+**Step 3 (if required)**: Add a filter on the `STORE_IDENTIFIER` column. Select `Store 100650 - Big Buys Salem`:
 
 <img src="assets/rlp_17.png" width="800"/>
 
@@ -277,11 +286,12 @@ df['RISK_SCORE'] = 100 * (1 - (df['RAW_SCORE'] - min_raw) / (max_raw - min_raw))
 
 # Final Status Assignment
 df['STATUS'] = np.where(df['STATUS_CODE'] == -1, 'Anomaly', 'Normal')
+df['ML_ANOMALY_FLAG'] = np.where(df['STATUS_CODE'] == -1, True, False)
 
 sigma.output('python_output', df)
 ```
 
-**Step 6**: Copy and paste the code into the Python element:
+**Step 6**: Copy and paste the code into the Python element, replacing the sample code:
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Ensure your naming conventions match the script. If your table names differ from the instructions, you must update the script accordingly to avoid execution errors.
@@ -306,22 +316,11 @@ We will now use this table to visualize the output to compare the Python model a
 
 - **Chart Type**: Combo
 - **X-axis**: Add `DATE` and Truncate it to `month`
+
 - **Y-axis**: Add `COMPOSITE_FLAG` and name it `Static Rules`
+- **Y-axis**: Add `ML_ANOMALY_FLAG` and name it `PYTHON ML`
 
 <img src="assets/rlp_23.png" width="800"/>
-
-- **Y-axis** (add new column): 
-
-<img src="assets/rlp_24.png" width="400"/>
-
-Use the formula:
-```copy-code
-CountIf([STATUS] = "Anomaly") 
-```
-
-Rename the new column `Python ML`:
-
-<img src="assets/rlp_25.png" width="800"/>
 
 You may want to adjust the bar and line colors to better differentiate them:
 
@@ -346,15 +345,10 @@ Next we configure the scatter chart and add another for a comparison.
 #### Plot A: Static Rules Visualization
 
 1. **X-axis**: Add `SCAN_TIMESTAMP`. The column is automatically truncated to `Day`
-2. **Y-axis**: Add `ISL_MS` (Uncheck `Aggregate values`)
-3. **Color** (Set to "By Category"): Create a new column (use the `+`).
 
-Set the column's formula to:
-```copy-code
-If([MODEL_COMPARISON/COMPOSITE_FLAG], "Anomaly", "Normal")
-```
+2. **Y-axis**: Add `ISL_MS` (Uncheck `Aggregate values`)<br>
 
-Rename the new column `ANOMALY_FLAG`:
+3. **Color** (Set to "By Category"): Select the column `STATIC_RULES_ANOMALY_FLAG`.
 
 <img src="assets/rlp_29.png" width="800"/>
 
@@ -395,14 +389,6 @@ The static flags often miss suspicious transactions or incorrectly flag legitima
 
 - Table Name: BIG_BUYS_ENRICHED_POS_PYTHON_MODEL
 
-### Access the Full Production Model
-
-<!-- <aside class="positive">
-<strong>IMPORTANT:</strong><br> Because running Python on massive datasets can be time-consuming, the model has already been run on the full POS dataset. A pipeline is now active, refreshing the data nightly.
-</aside>
-
-**Table Name**: `BIG_BUYS_ENRICHED_POS_PYTHON_MODEL` -->
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -410,8 +396,6 @@ The static flags often miss suspicious transactions or incorrectly flag legitima
 Duration: 20
 
 In this module, we will start with a WIP version of the `Loss Prevention App V2.0` which will allow store managers to **act on these insights immediately,** closing the loop between detection and resolution.
-
-<!-- We will begin by migrating existing visualizations to the production-ready Python model output: `BIG_BUYS_ENRICHED_POS_PYTHON_MODEL`. -->
 
 ### Update High Risk Locations Table
 
@@ -439,9 +423,9 @@ d. `Sort` the table by the `PERCENT FLAGGED` column in descending order to prior
 
 <img src="assets/rlp_37.png" width="350"/>
 
-e. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Color Scale` > `Format` > `Type`: 
+e. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Format type` > `Color Scale`: 
 
-<img src="assets/rlp_37a.png" width="350"/>
+<img src="assets/rlp_37a.png" width="500"/>
 
 ### Update Data Sources
 
@@ -450,16 +434,23 @@ e. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Color Scal
 
 <img src="assets/rlp_38.png" width="800"/>
    
-   - Select the `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` from `Elements` > `Data for App v2` as the new data source:
+- Select the `BASE_TABLE_APP_V2` from `Elements` > `Data for App v2` as the new data source:
 
 <img src="assets/rlp_39.png" width="400"/>
 
-Repeat the process for the other elements, but the source will instead be `ONLY_FLAGGED_SCANS_V2`:
+Instead of updating the data source for the other charts, we’ll replace the source of the same source element that’s feeding the charts.
 
-- `FLAGGED TRANSACTIONS KPI` chart<br>
-- `FLAGGED TRANSACTIONS BY HOUR AND WEEKDAY` pivot table<br>
-- `FLAGGED TRANSACTIONS BY PRODUCT CATEGORY` donut chart
-- `FLAGGED TRANSACTIONS BY CASHIER` chart:<br>
+The data source for these charts is currently the `FLAGGED_SCANS` table. In this step, we will use `Go to source element`:
+
+<img src="assets/rlp_39a.png" width="600"/>
+
+Change source for the `FLAGGED_SCANS` table from `ONLY_FLAGGED_SCANS_V1`:
+
+<img src="assets/rlp_39b.png" width="800"/>
+
+...to `ONLY_FLAGGED_SCANS_V2`.
+
+Now all the charts on the `App v2.0` page are using the `FLAGGED_SCANS` table which has been set to get it's data from `ONLY_FLAGGED_SCANS_V2`:
 
 <img src="assets/rlp_40.png" width="800"/>
 
@@ -467,15 +458,15 @@ Repeat the process for the other elements, but the source will instead be `ONLY_
 
 **Step 3**: Navigate to the `ANOMALY DETECTION` tab and construct a new visualization from the ground up:
 
-1. Add a `Scatter Chart` from the `Element Bar` in the `Charts` group
+1. Navigate to the `Anomaly_Detection` page that we used in `Module 2` and duplicate the `Python ML` scatter plot. 
 
-Use `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` as the source.
+2. Rename the chart `ML Anomaly Detection Model Output`. 
 
-2. **X-axis**: Add `SCAN_TIMESTAMP`
-3. **Y-axis**: Add `ISL` (Ensure this field is **not aggregated**)
-4. **Color**: Add `STATUS` (Set to "By Category")
-5. **Tooltip**: Add `ORDER_NUMBER`, `SKU_NUMBER`, and `PRODUCT_KEY` (Ensure no aggregation)
-6. **Trellis Column**: Add `PRODUCT_FAMILY`:
+3. Change the data source from `MODEL_COMPARISON to BASE_TABLE_APP_V2`.
+
+4. `Move` the chart to the `ANOMALY DETECTION` tab in the page `App v2.0`:
+
+5. **Add a Trellis Column**: Use the `PRODUCT_FAMILY` column:
 
 <img src="assets/rlp_41.png" width="800"/>
 
@@ -483,9 +474,13 @@ Use `BIG_BUYS_POS_ENRICHED_PYTHON_MODEL_BASE_TABLE` as the source.
 
 ### Configure Case Management
 
-**Step 4:** Clicking on any `SCAN_ID` triggers a modal containing an approval workflow. 
+Select the `CASE MANAGEMENT` tab:
 
-If the the detail information is enough, you can choose to `APPROVE`, `REJECT` or `ESCALATE` a transaction:
+<img src="assets/rlp_43a.png" width="800"/>
+
+**Step 4:** Clicking on any cell in the `SCAN_ID` column triggers a modal containing an approval workflow.
+
+If the detail information is enough, you can choose to `APPROVE`, `REJECT` or `ESCALATE` a transaction:
 
 <img src="assets/rlp_43.png" width="600"/>
 
@@ -505,6 +500,10 @@ A pre-configured Chat Agent has been integrated into the workbook to facilitate 
 
 #### Querying Flagged Transactions
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure you are using the published version (ie: not in edit mode) for this next section.
+</aside>
+
 **Step 1**: Invoke the Chat Agent from the top right corner (next to your name):
 
 <img src="assets/rlp_45.png" width="800"/>
@@ -512,12 +511,41 @@ A pre-configured Chat Agent has been integrated into the workbook to facilitate 
 1. Enter the following prompt to identify the high risk orders:
 
 ```copy-code
-Show me the list of top 5 order numbers that have the most anomalous scans.
+Show me the list of top 5 transactions that have the highest risk scores.
 ```
 
-<img src="assets/rlp_46.png" width="600"/>
+<img src="assets/rlp_46.png" width="800"/>
 
-2. Upon reviewing the results, you may execute workflow commands directly within the chat interface, such as  `APPROVE`, `REJECT` or `ESCALATE` for any specific transaction.
+2. In the response, Cortex provides some information about the transactions with the highest risk, so lets ask a follow-up question:
+
+<img src="assets/rlp_46a.png" width="800"/>
+
+```copy-code
+Yes, provide detailed information on the order with the highest risk score.
+```                                                
+
+3. Now we get a break-down of order `1001194048` with suspicious patterns called out:
+
+<img src="assets/rlp_46b.png" width="800"/>
+
+4. This order looks suspicious.  In final follow-up, ask:
+```copy-code
+This order looks suspicious. Escalate this order.
+```
+
+5. Upon reviewing the results, you may execute workflow commands directly within the chat interface, such as  `APPROVE`, `REJECT` or `ESCALATE` for any specific transaction.
+
+Since we asked for escalation, we get asked to `Approve` it:
+
+<img src="assets/rlp_46c.png" width="800"/>
+
+6. Click `Approve` and close the modal once processing is done. Check if this order status has indeed been updated. You may want to `Filter` the order number column to `1001194048`.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Make sure you apply the filter to the table on the App v2.0 > Case Management table, if necessary.
+</aside>
+
+<img src="assets/rlp_46d.png" width="800"/>
 
 ### Part 2: Configuration of Custom Sigma Agents
 
@@ -525,11 +553,9 @@ To further enhance the decision-making process within the review modal, we will 
 
 #### Deployment of the Review Assistant
 
-**Step 2**: Navigate to the `REVIEW_MODAL` page in the Sigma workbook and follow these configuration steps
+Place the workbook back into `Edit` mode.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Place the workbook in `Edit` mode if not already.
-</aside>
+Navigate to the `REVIEW_MODAL` page in the Sigma workbook and follow these configuration steps
 
 1. Create a `chat element` from the `Element Bar`: select `UI`, and choose `Chat`
 
@@ -537,7 +563,7 @@ To further enhance the decision-making process within the review modal, we will 
 
 <img src="assets/rlp_47.png" width="700"/>
 
-3. Name the agent `APP_HELPER_2`
+3. Rename the agent `APP_HELPER_2`
 
 4. Paste the provided instructions into the `Instructions` field:
 
@@ -572,7 +598,7 @@ Following your analysis, the user may instruct you to Approve, Reject, or Escala
 
 <img src="assets/rlp_48.png" width="600"/>
 
-5. Use Sigma's dynamic text feature to ensure the agent understands the specific record being viewed:
+5. Use Sigma's dynamic text feature (use `=` to bring up the dynamic text popup) to ensure the agent understands the specific record being viewed:
    - Under `Context`, insert the `SCAN_ID` using the formula:
 ```copy-code
 [CASE MANAGEMENT single row container/SCAN_ID]
@@ -580,16 +606,49 @@ Following your analysis, the user may instruct you to Approve, Reject, or Escala
 
 <img src="assets/rlp_49.png" width="600"/>
 
-6. Navigate to `Data + Integrations` tab. Under` Data Source`, navigate to the `App v2.0` page and select the `CASE MANAGEMENT` input table.
+6. Click the `+` to add a `Data element`. 
 
-7. Under `Integrations`, click the checkmark next to the `Cortex Agent`:
+Navigate to the `App v2.0` page and select the `CASE MANAGEMENT` input table:
 
-<img src="assets/rlp_50.png" width="600"/>
+<img src="assets/rlp_50a.png" width="600"/>
 
-`Save` and `Publish` the changes.
+7. Under `Warehouse agents`, select the `APP_V1_CORTEX_AGENT`:
+
+<img src="assets/rlp_50b.png" width="400"/>
+
+Click `Save`.
+
+8. We will now show another way to review transactions. 
+
+Once the custom Sigma agent has been added to the review assistant, let us now test it out with the second riskiest transaction in the `CASE MANAGEMENT` table.
+
+We see that SCAN_ID `1000363387_3` is the second riskiest transaction:
+
+<img src="assets/rlp_46e.png" width="700"/>
+
+Let us see what the agent tells us about why this scan was flagged. 
+
+We see that this scan is clearly suspicious so let us go ahead and reject this transaction.
+
+This time, click the cell for SCAN_ID `1000363387_3` directly:
+
+<img src="assets/rlp_50c.png" width="600"/>
+
+Now we can set the status to `Reject` ourselves and click `Submit` or scroll down to where we added an AI Agent and just ask the `AI agent` to do it for us:
+```copy-code
+Reject the transaction SCAN_ID  due to the clear risk patterns.
+```
+
+<img src="assets/rlp_50e.png" width="500"/>
+
+Once you click out of the modal, we can confirm that the transaction has indeed been rejected:
+
+<img src="assets/rlp_50f.png" width="800"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> This enables the Sigma custom agent to utilize the Snowflake Cortex Agent for advanced data interpretation and analytical tasks.
+<strong>NOTE:</strong><br> This enables the Sigma custom agent to utilize the Snowflake Cortex Agent for advanced data interpretation and analytical tasks. 
+
+Sigma is very flexible and this design pattern is just one of many possible ways to bring the power of Cortex to business users.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -621,6 +680,16 @@ Select `Export as email burst`:
 <img src="assets/rlp_53.png" width="500"/>
 
 The export gives you a list of `flagged transactions` with the relevant `Review Status`.
+
+<aside class="positive">
+<strong>CUSTOMIZED COMMUNICATIONS:</strong><br> Beyond basic email bursts, Sigma's Report Builder enables you to send highly customized, structured reports to individual store managers. 
+
+Using Reports, you can create formatted, interactive PDFs with specific filters pre-applied per recipient—ensuring each manager receives only their store's flagged transactions with relevant context, visualizations, and actionable insights. 
+
+This transforms raw data exports into professional, role-specific communications that drive immediate action at the store level.
+</aside>
+
+For more information, see [Create and manage reports](https://help.sigmacomputing.com/docs/create-and-manage-reports)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
