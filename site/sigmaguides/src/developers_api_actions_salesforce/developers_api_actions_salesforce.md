@@ -33,16 +33,21 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn’t work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
+This QuickStart is ideal for:
+
+- Sigma developers integrating external APIs with authenticated endpoints
+- Technical users managing JIRA projects who want to create custom dashboards
+- Teams building operational workflows that span Sigma and Salesforce
 
 ### Prerequisites
 
 <ul>
-  <li>Any modern browser is acceptable.</li>
-  <li>Access to your Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
-  <li>Admin access to a Salesforce environment.</li>
- </ul>
+  <li>A Sigma account with workbook creation and API Action permissions.</li>
+  <li>Intermediate familiarity with Sigma workbooks, controls, and elements</li>
+  <li>Access to Snowflake for Python element execution (included with Sigma Sample Database).</li>
+  <li>Admin access to a Salesforce environment</li>
+  <li>  Basic understanding of REST APIs and JSON (helpful but not required)</li>
+</ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
