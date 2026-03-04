@@ -13,9 +13,9 @@ lastUpdated: 2026-02-23
 ## Overview 
 Duration: 5 
 
-This QuickStart walks you through using Sigma API Actions to connect to Salesforce’s REST API, retrieve live Salesforce data, and surface it directly inside a Sigma workbook. Unlike the [API Actions - Getting Started](https://quickstarts.sigmacomputing.com/guide/dataapps_api_actions_getting_started/index.html?index=..%2F..index#0) QuickStart, this workflow uses authenticated requests, dynamic parameters, and a more realistic enterprise-grade API pattern.
+This QuickStart walks you through using Sigma API Actions to connect to Salesforce's REST API, retrieve live Salesforce data, and surface it directly inside a Sigma workbook. Unlike the [API Actions - Getting Started](https://quickstarts.sigmacomputing.com/guide/dataapps_api_actions_getting_started/index.html?index=..%2F..index#0) QuickStart, this workflow uses authenticated requests, dynamic parameters, and a more realistic enterprise-grade API pattern.
 
-You’ll use a preconfigured Sigma template that lets you select a Salesforce object (such as Account, Contact, or Opportunity), execute a SOQL query, and view the returned results in real time.
+You'll build a Sigma workbook from scratch that lets you select a Salesforce object (such as Account, Contact, or Opportunity), execute a SOQL query, and view the returned results in real time.
 
 Along the way you'll learn how to:
 - configure Salesforce API connectors using OAuth or token-based credentials
@@ -373,9 +373,17 @@ Python is now ready to use in Sigma workbooks.
 ## Build the Workbook
 Duration: 10
 
-With the API connectors configured, we can continue to build the workbook to surface Salesforce data. 
+With the API connectors configured, we can now build the workbook to surface Salesforce data.
 
-The first part of the architecture uses four elements working together to get the current account list into a list control.
+### Create New Workbook
+
+In Sigma, click the `+` Create New button and select `Workbook`.
+
+Click `Save As` and name the workbook `Salesforce Account Explore QuickStart`.
+
+### Add Initial Elements
+
+The first part of the architecture uses four elements working together to get the current account list into a list control:
 - A button that calls the Salesforce API
 - A text area that holds the raw JSON response
 - Python element that parses that response into a table
