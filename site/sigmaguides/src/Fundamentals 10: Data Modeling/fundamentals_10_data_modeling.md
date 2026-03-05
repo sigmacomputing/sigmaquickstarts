@@ -5,7 +5,7 @@ categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-10-24
+lastUpdated: 2026-03-05
 
 # Fundamentals 10: Data Modeling
 
@@ -24,6 +24,7 @@ In this QuickStart, you'll learn how to:
 - Add custom columns and formulas
 - Create metrics
 - Use column-level security
+- Validate downstream content with content validation
 - Use column folders
 - Materialize a data model
 - Deploy reusable models for analysis
@@ -32,6 +33,8 @@ In this QuickStart, you'll learn how to:
 A primary design goal for Sigma data modeling is to make model creation seamless so your data team can move fast, without managing additional complex code, and deliver governed analytics to stakeholders.
 
 Business users can focus on gaining insights from data without needing to worry about its physical structure, and can also contribute directly to the data model through Sigma’s UI. Sigma models are collaborative and versioned—ideal for both data teams and business users.
+
+For teams that prefer a code-driven workflow, Sigma also supports managing data models programmatically via the REST API, enabling version control and CI/CD automation. For more information, see [Data Models as Code](https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html?index=..%2F..index#0).
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -44,7 +47,7 @@ If something is not working as you expect, here is how to [contact Sigma support
 ### Target Audience
 This QuickStart is intended for data analysts, analytics engineers, and data-savvy business users who are responsible for modeling, curating, or transforming data within Sigma. It is especially useful for those who:
 
-- Want to create reusable, governed datasets for analysis.
+- Want to create reusable, governed data models for analysis.
 - Need to join and enrich warehouse tables visually without writing SQL.
 - Are tasked with delivering consistent metrics to business stakeholders.
 
@@ -85,7 +88,7 @@ Let's use Sigma's data modeling tools to create a reusable model to serve as the
 
 To create or manage a data model, the following is required:
 
-- Users must be assigned an account type with the Create, Edit, and Publish datasets permissions enabled.
+- Users must be assigned an account type with the Create, Edit, and Publish data models permissions enabled.
 
 - Users must be the data model owner or be granted Can edit access to the data model.
 
@@ -97,34 +100,26 @@ Access to individual datasets, data models, and workbooks are determined by [fol
 
 From the Sigma homepage, click `Create new` > `Datamodel`:
 
-<img src="assets/dm_1.png" width="350"/>
+<img src="assets/dm_1.png" width="300"/>
 
-The data modeling page looks and behaves a lot like a standard Sigma workbook by design.
+The data modeling page looks and behaves a lot like a standard Sigma workbook by design to make things as easy as possible. 
 
-The more we work with Sigma, the more metadata becomes available, which helps drive Sigma’s suggestions
+To satisfy marketing's request we will use five tables that are provided to all Sigma customers in the `Sigma Sample Database` > `PLUGS_ELECTRONICS` schema.
 
-For example, it’s suggesting that `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` is popular:
-
-<img src="assets/dm_2.png" width="600"/>
-
-There are five tables that can provide the requested information for marketing. These are provided to all Sigma customers in the `Sigma Sample Database` > `PLUGS_ELECTRONICS` schema:
-
-<img src="assets/dm_3.png" width="300"/>
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma administrators may elect to disable access to the Sigma Sample Database for their instance. It is enabled by default in all trials.
+</aside>
 
 ### Base table
 To satisfy marketing's main request, we are going to create a "base table" by joining three tables together, culling the column list manually and creating a calculated column.
 
-Much of the data model interface follows the familiar Sigma workflow to make things as easy as possible. 
+Add a new table from the `Element bar` > `Data` group:
 
-From the `Element bar`, select `Data` and drag a `Table` element onto the page:
-
-<img src="assets/dm_4.png" width="325"/>
-
-Click `Select`.
+<img src="assets/dm_4.png" width="300"/>
 
 We could navigate to the table but it is easier to just search for `F_SALES` and select the table from the `RETAIL` schema:
 
-<img src="assets/dm_5.png" width="450"/>
+<img src="assets/dm_3.png" width="450"/>
 
 The table is added to the page and we can work with it just as we would in a Sigma workbook. 
 
@@ -136,7 +131,7 @@ Hide the four columns as shown below:
 
 Notice that in the `Source columns` list the four columns are still selected:
 
-<img src="assets/dm_31.png" width="800"/>
+<img src="assets/dm_31.png" width="500"/>
 
 What this means is that downstream (i.e., when the data model is used in a workbook) the four hidden columns do not appear initially, but are available for the user to un-hide:
 
@@ -152,7 +147,7 @@ Use the `Undo` icon to unhide these columns:
 
 <img src="assets/dm_30a.png" width="500"/>
 
-Save the data model as `Data Model QuickStart`. 
+Rename the data model as `Data Model QuickStart`. 
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -174,7 +169,7 @@ Accept all columns and set the `Join keys` to `Cust Key`. There are 105 customer
 
 <img src="assets/dm_34.png" width="800"/>
 
-Click the `+` icon to add another table to the join, this time selecting the `F_POINT_OF_SALE` table and joining on `Order Number`:
+Click the `+` icon to add another table to the join, this time selecting the `F_POINT_OF_SALE` from the `RETAIL` schema and joining on `Order Number`:
 
 <img src="assets/dm_35.png" width="800"/>
 
@@ -188,18 +183,24 @@ Sigma shows us the lineage of the joins and gives us an opportunity to deselect 
 <strong>NOTE:</strong><br> Deselecting a column while in the lineage view does not prevent the column from being reselected in the data model later. If the column is not needed at all, delete the column prior to publishing the data model.
 </aside>
 
-Since this is our "base table" it is a good idea to delete columns that users will never need. For example, columns with duplicate information or key columns that won’t be used to create relationships later.
+Click `Done`.
 
-For example, we can delete `Cust Key` and `Cust Key (D_Customer)` but we need to keep `Store Key` and `Product Key`, as we’ll use those to create a relationship later. For now, we can just hide the last two columns:
+Since this is our "base table" (renamed to `F_SALES + 2`) it is a good idea to delete columns that users will never need. 
 
-<img src="assets/dm_39.png" width="350"/>
+For example, columns with duplicate information or key columns that won’t be used to create relationships later.
+
+For example, we can delete `Cust Key (D_Customer)` since we have no plans to use it.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Which columns you plan to use is use case dependent, but deleted columns can be added back to the data model later by the builder if plans change.
+</aside>
 
 ### Calculated columns
 Since our base table does not have columns for `Revenue` or `Profit`, we can add them easily:
 
 <img src="assets/dm_39a.png" width="600"/>
 
-Add a new column ,and rename it to `Revenue`. Set the formula to:
+Add a new column, and rename it to `Revenue`. Set the formula to:
 ```copy-code
 [Sales Amount] * [Sales Quantity]
 ```
@@ -209,7 +210,10 @@ Add another column, and rename it to `Profit`, and set the formula to:
 [Revenue] - ([Cost Amount] * [Sales Quantity])
 ```
 
-The results look like this:
+Rename the table back to `Plugs Sales` and set the description to:
+```copy-code
+From the RETAIL schema in the Sigma Sample Database
+```
 
 <img src="assets/dm_32a.png" width="800"/>
 
@@ -238,7 +242,7 @@ Join pruning offers several benefits:
 
 - It can reduce query cost, complexity, and runtime.
 
-By keeping `Plugs Sales` as the base dataset and using relationships for tables less often used, we gain:
+By keeping `Plugs Sales` as the base data and using relationships for tables less often used, we gain:
 
 - Clear lineage: we always know the grain and logic origin.
 
@@ -301,13 +305,13 @@ Now that we have a published data model, we can test to make sure join pruning i
 <strong>NOTE:</strong><br> For this test, it may be helpful to just make a duplicate browser tab so the data model remains open too. This is just for demonstration purposes, using the same Sigma user.
 </aside>
 
-We duplicated the browser tab and then clicked the <img src="assets/crane.png" width="50"/> icon to return home.
+Duplicate the browser tab and click the <img src="assets/crane.png" width="50"/> icon to return home.
 
 Create a new workbook and add a new table to it.
 
 Select the `Data Model QuickStart` from the `Suggested` list, and then select the `Plugs Sales` table. 
 
-If it is not on your list, use `Table and Datasets` to navigate to where it's saved:
+If it is not on your list, use `Table and data models` to navigate to where it's saved:
 
 <img src="assets/dm_16.png" width="400"/>
 
@@ -325,18 +329,18 @@ At this point, the data model page looks like this, but we’re not done buildin
 
 <img src="assets/dm_19.png" width="550"/>
 
-- 3: The `Cust Name` and `Cust Address` columns are present in our table. This is against the use case policy described earlier and we’ll need to fix that. Hiding the columns is not sufficient and we will correct this shortly:
+- 3: The `Cust Name` and `Cust Address` columns are present in our table. **This is against the use case policy described earlier and we’ll need to fix it.** Hiding the columns is not sufficient and we will correct this shortly:
 
 <img src="assets/dm_19a.png" width="800"/>
 
 ### Query history
 Sigma automatically generates SQL to retrieve data from the warehouse. We can access that by clicking on the `Query History` icon as shown:
 
-<img src="assets/dm_19b.png" width="800"/>
+<img src="assets/dm_19b.png" width="500"/>
 
 In our case, the page was just loaded so there are only two entries on the list. The second one is the table data being fetched from the warehouse cache. It came from the cache because we had accessed it recently, so it was still stored.
 
-Our 4.5-million-record table loaded in just 1.5 seconds!
+Our 4.5-million-record table loaded in just 1.5 seconds! Additionally, there were two more requests that did not require a call back to the warehouse so those were handled in the browser:
 
 <img src="assets/dm_19d.png" width="800"/>
 
@@ -388,6 +392,10 @@ Sum([Revenue])
 
 <img src="assets/dm_26.png" width="800"/>
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Revenue values shown may vary based on when you are working with the sample data.
+</aside>
+
 `Save` the new metric and click `Publish`.
 
 The `Timeline` option enables a KPI-style chart in the `Preview` section of the data model landing page.
@@ -405,7 +413,7 @@ Click `Edit` to return to editing the data model.
 ### Metrics with a formula-based filter
 Formulas in Sigma are flexible and powerful. For example, we can use a formula in a metric that will return data for the `East` region only.
 
-Click `Edit` on the data model and select the `Plugs Sales` table.
+Select the `Plugs Sales` table again.
 
 Add another metric to the data model and configure it using this formula:
 ```copy-code
@@ -435,12 +443,11 @@ One way to do that quickly is:
 
 <img src="assets/dm_46a.png" width="500"/>
 
-
 Builders only need to click the explore button to open a new workbook using the full data model:
 
 <img src="assets/dm_27.png" width="500"/>
 
-We can now group by `Cust Region` and use the `Total Revenue` metric that is supplied for us as a `CALCULATION`:
+We can now group by `Cust Region` and use the `Total Revenue` **metric** that is supplied for us as a `CALCULATION`:
 
 <img src="assets/dm_47.png" width="800"/>
 
@@ -472,7 +479,9 @@ Configuring CLS in data models enforces consistent security policies across all 
 
 When CLS rules are updated in a data model, they automatically propagate to all downstream references.
 
-With the data model in `Edit` mode, we can select the `+` for column security:
+Return to the `Data Model QuickStart`, place it in `Edit` mode and select the `Plugs Sales` table.
+
+Select the `+` for column security:
 
 <img src="assets/dm_48.png" width="800"/>
 
@@ -484,7 +493,7 @@ When set to `No one can view`, the columns will not appear—even if the data mo
 
 Click `Publish`.
 
-If we view the data model in the `Publised version` and `Explore` it, we see that the restricted columns do not appear in the column list and are not available via `Source columns`:
+If we view the data model in the `Published version` and `Explore` it, we see that the restricted columns do not appear in the column list and are not available via `Source columns`:
 
 <img src="assets/dm_50.png" width="500"/>
 
@@ -502,6 +511,118 @@ Regularly audit and update CLS settings to stay aligned with organizational chan
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Content Validation
+Duration: 5
+
+When changes are made to a published data model, those changes can impact downstream workbooks and other documents that reference it. Sigma's content validation feature prevents these breaking changes from cascading silently.
+
+When you delete elements, columns, metrics, or relationships that are referenced in downstream documents, Sigma detects the impact and provides a workflow to map replacements before publishing.
+
+### What triggers content validation
+
+Content validation is triggered when you publish a data model that contains any of these breaking changes:
+
+- Deleting an element
+- Removing a column (including calculated columns)
+- Deleting a metric
+- Modifying or removing a relationship
+
+### Set up a downstream reference
+
+For content validation to trigger, at least one downstream workbook must reference a column from the data model.
+
+Open a new workbook and add a table using `Data Model QuickStart` as the source, selecting the `Plugs Sales` table. 
+
+The `Revenue` column is already included. 
+
+`Save` the workbook `Fundamentals 10 QuickStart`.
+
+### Simulate a breaking change
+
+Return to the `Data Model QuickStart` in `Edit` mode.
+
+In the `Plugs Sales` table, right-click the `Revenue` column and select `Delete column`:
+
+<img src="assets/dm_56.png" width="800"/>
+
+Notice the `Publish` button now displays a warning icon, indicating that breaking changes have been detected:
+
+<img src="assets/dm_56a.png" width="600"/>
+
+### The validation modal
+
+Clicking `Publish` opens the content validation modal, which lists all affected downstream elements, columns, and metrics.
+
+We have the option to `Publish without validation` but let's not do that as we have broken columns. 
+
+From here you have two options:
+
+**Auto fix:** Click `Auto fix` to have Sigma attempt automatic replacement mapping using name matching. This works well when a column has been renamed but is structurally equivalent:
+
+<img src="assets/dm_58.png" width="800"/>
+
+**Manual mapping:** For each broken item, use the dropdown to select a replacement from the available options. Choosing `None` removes the item from affected downstream documents.
+
+Scroll the column list to see that the `Revenue` and `Profit` columns are "broken":
+
+<img src="assets/dm_59.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> "Profit" is also broken because it is a calculated column and depended on Revenue to work.
+</aside>
+
+You can also click `Downstream lineage` to review exactly which documents will be affected before committing.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Viewing the downstream lineage is really useful to see which documents are affected by broken column(s).
+</aside>
+
+Since we physically deleted the `Revenue` column, autofix or manual mapping will not resolve it but all hope is not lost!
+
+Close the `Content validation` modal.
+
+Data models and workbooks maintain a detailed version history that allows us to revert the column delete (in this case):
+
+<img src="assets/dm_59a.png" width="500"/>
+
+We can see where we deleted the Revenue column so we want to revert to the version that came just before that (yours may be a little different based on the order of operations performed): 
+
+<img src="assets/dm_60.png" width="500"/>
+
+If we click on the text `Move columns`, the data model reverts and gives us the option to `Restore version as draft`:
+
+<img src="assets/dm_61.png" width="800"/>
+
+Once reverted, the `Revenue` column is back and `Profit` also is working:
+
+<img src="assets/dm_62.png" width="800"/>
+
+Sigma sequentially updates the published versions of all affected downstream documents. Users with open drafts are prompted to sync with the latest published version.
+
+In more complex data models where many downstream documents are affected, it can be useful to see the job log.
+
+This is available by clicking `Publish` > `Content validation job history`:
+
+<img src="assets/dm_63.png" width="500"/>
+
+### What content validation cannot fix
+
+Content validation operates only at the document level. It cannot repair:
+
+- Changes made directly in your data platform (such as `CREATE OR REPLACE` operations on warehouse tables)
+- Broken configurations within the data model itself
+- Explorations — these must be updated manually
+- Unpublished embedded workbooks whose published versions don't reference the data model
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Content validation jobs can take time to complete, especially during periods of high organizational activity. Monitor progress in the job history.
+</aside>
+
+For more information, see [Validate content in a data model](https://help.sigmacomputing.com/docs/validate-content-data-model)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Materialization
 Duration: 5
 
@@ -509,7 +630,7 @@ Sigma data models support built-in materialization.
 
 Data models that use expensive or long-running queries, such as a complex join between data elements, or data with high cardinality, multiple grouping levels, and calculated columns, setting up materialization can enhance query performance and can help reduce compute costs.
 
-In the data model, click the `+` icon next to `MATERIALIZATION` to create a new job:
+Back in the data model again and in `Edit` mode, click the `+` icon next to `MATERIALIZATION` to create a new job:
 
 <img src="assets/dm_53.png" width="350"/>
 
@@ -551,7 +672,7 @@ It’s impressive how such a small feature can improve the user experience. At S
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we explored how to build a Sigma data model, join and organize tables, create calculated fields and metrics, apply column-level security, and improve usability through folders and materialization. With these tools, you're ready to deliver clean, consistent, and secure data to your users—all without writing SQL.
+In this QuickStart, we explored how to build a Sigma data model, join and organize tables, create calculated fields and metrics, apply column-level security, use content validation to protect downstream workbooks, and improve usability through folders and materialization. With these tools, you're ready to deliver clean, consistent, and secure data to your users—all without writing SQL.
 
 **Additional Resource Links**
 
