@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
-  {
+    {
+      "title": "Integrate ServiceNow using API Actions",
+      "id": "developers_api_actions_servicenow",
+      "category": "Developers",
+      "date": "Feb 27, 2026"
+    },
+    {
       "title": "Integrate JIRA using API Actions",
       "id": "developers_api_actions_jira",
       "category": "Developers",
@@ -19,6 +25,12 @@
       "date": "Feb 25, 2026"
     },
     {
+      "title": "First Friday Features - February 2026",
+      "id": "02_2026_first_friday_features",
+      "category": "First Friday Features",
+      "date": "Jan 2, 2026"
+    },
+    {
       "title": "Multi-Modal File Analysis with AI",
       "id": "aiapps_file_uploads_multimodal_ai",
       "category": "aiapps",
@@ -35,30 +47,12 @@
       "id": "administration_multitenancy",
       "category": "Administration",
       "date": "Jan 26, 2026"
-    },   
-    {
-      "title": "Embedding Sigma with Databricks OAuth",
-      "id": "embedding_use_cases_databricks_oauth",
-      "category": "Embedding",
-      "date": "Jan 26, 2026"
     },    
     {
       "title": "Fundamentals 11: Pixel Perfect Reporting",
       "id": "fundamentals_11_pixel_perfect_reporting",
       "category": "Fundamentals",
       "date": "Jan 6, 2026"
-    },
-    {
-      "title": "First Friday Features - January 2026",
-      "id": "01_2026_first_friday_features",
-      "category": "First Friday Features",
-      "date": "Jan 2, 2026"
-    },
-    {
-      "title": "Popular Functions",
-      "id": "functions_popular_functions",
-      "category": "Functions",
-      "date": "Dec 3, 2025"
     }
   ]
 }
