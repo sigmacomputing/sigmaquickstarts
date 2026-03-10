@@ -38,7 +38,7 @@ Developers interested in using Sigma to build interactive data applications.
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
  </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -89,6 +89,16 @@ MD5(Text([Order Number]) & [Sku Number] & Text([Cust Key]))
 The [MD5](https://help.sigmacomputing.com/docs/md5) function is a nice way to create unique identifiers, in this case by combining the `Order Number`, `SKU` and `Cust Key`. For the purposes of this QuickStart, that should be sufficient.
 
 <img src="assets/af-2.png" width="700"/>
+
+Before creating the linked input table, make sure the `Order Number` group is **fully expanded** so that all child rows are visible. Click the `+` to the left of the column header text `Order Number` to fully expand all rows.
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> The Order Number grouping must be fully expanded before creating a linked input table. If the group is collapsed, Sigma will only offer `Order Number` as a primary key option — child-level columns like `Key` will not be selectable.
+</aside>
+
+<!--
+<img src="assets/af-3.png" width="800"/>
+-->
 
 Create a `Linked Input Table` from the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table.
 
@@ -164,7 +174,7 @@ Add a modal from the lower left corner of the page:
 
 <img src="assets/af-10a.png" width="600"/>
 
-Rename the new modal `Adjuster Modal` and change its tile to `Adjuster Modal` too.
+Rename the new modal `Adjuster Modal` and change its title to `Adjuster Modal` too.
 
 <img src="assets/af-13.png" width="800"/>
 
@@ -213,7 +223,7 @@ Back on the `Approvals` page > `Orders to Approve` table > `Actions`, we add ano
 <img src="assets/af-15.png" width="600"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> A mistake we have made more than once is to not pay attention to the data type of the column we are passing in the action. When this mistake is made, Sigma will not allow you to pick the intended column in the list of available in the actions menu when using "Set control value". Instead it will show the column in the list, but greyed out. Watch out for this one!
+<strong>IMPORTANT:</strong><br> A mistake we have made more than once is to not pay attention to the data type of the column we are passing in the action. When this mistake is made, Sigma will not allow you to pick the intended column in the list of available columns in the actions menu when using "Set control value". Instead it will show the column in the list, but greyed out. Watch out for this one!
 
 Also make sure you are passing the correct value to the correct control. This is why Control ID naming is something to carefully consider. Use that to make it easy, obvious and make debugging later faster too.
 </aside>
@@ -258,7 +268,7 @@ Add a `Controls` > `Text area` control and set the `Control ID` to `am_Reason.`
 #### OverRide Revenue - am_Over_Ride
 Add a `Controls` > `Number input` control and set the `Control ID` to `am_Over_Ride.` Also set the `Data format` to `Currency.`
 
-The `OverRide` values represents whatever value the user decides is an appropriate adjustment. When we store this value, **we will not alter the source data value for revenue in any way.** 
+The `OverRide` value represents whatever value the user decides is an appropriate adjustment. When we store this value, **we will not alter the source data value for revenue in any way.** 
 
 Instead, we will store it in a log table, and later we will also show it in a reporting table along with the original value for `Revenue` for easy comparison.
 
@@ -324,7 +334,7 @@ Before we create actions to save an "adjustment", we need to create a place for 
 We will use another Sigma input table for this. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> One of the wonderful things about input tables is that we can create and configure them only using the Sigma UI. Data is automatically stored in your (not Sigmas) warehouse, based on the connection selected when the input table is created. This is ensures the data is controlled by you and not a third party.
+<strong>IMPORTANT:</strong><br> One of the wonderful things about input tables is that we can create and configure them only using the Sigma UI. Data is automatically stored in your (not Sigmas) warehouse, based on the connection selected when the input table is created. This ensures the data is controlled by you and not a third party.
 </aside>
 
 On the `Approvals` page, create a new `Input` > `Empty` input table below the existing table. 
@@ -344,9 +354,9 @@ Reason            Text
 Key               Text
 ```
 
-The `Key` column can be hidden after done testing operations.
+The `Key` column can be hidden once testing is done.
 
-Also add the Sigma supplied columns for `Last updated at`and `Last updated by`:
+Also add the Sigma supplied columns for `Last updated at` and `Last updated by`:
 
 <img src="assets/acl-5.png" width="400"/>
 
@@ -357,7 +367,7 @@ Rename the new input table to `Approval Log`:
 <img src="assets/af-16b.png" width="800"/>
 
 ### Most recent records
-Now that our `Approval Log` is capturing all the changes, we can use that to provide more functionality to user. 
+Now that our `Approval Log` is capturing all the changes, we can use that to provide more functionality to the user. 
 
 To make this useful, we need to implement a method to list the most recent status for each unique item in any order. Remember, each order can include multiple items, and we need to be able to adjust the revenue at the line-item level.
 
@@ -377,7 +387,7 @@ Group the table on `Key` and drag `Last Updated at` to `CALCULATIONS`, changing 
 
 <img src="assets/af-36.png" width="500"/>
 
-Add an new column and rename it to `IsLatest`. Set the formula to:
+Add a new column and rename it to `IsLatest`. Set the formula to:
 ```copy-code
 If([Last updated at] = [Max of Last updated at], True)
 ```
@@ -439,7 +449,7 @@ Give that workflow a quick test to make sure it works as expected.
 <img src="assets/af-demo1.gif">
 
 ### Primary button
-Now let's configure the actions for when the user does make change. 
+Now let's configure the actions for when the user does make a change.
 
 Using `On click - primary` configure an `Insert a row` action as shown below:
 
@@ -453,7 +463,7 @@ Also configure the actions to clear the containers and close the modal after the
 
 <img src="assets/af-28.png" width="300"/>
 
-Click `Publish`, go the the `Published version` of the workbook and give it a test.
+Click `Publish`, go to the `Published version` of the workbook and give it a test.
 
 Sigma notifies us that something is wrong:
 
@@ -508,7 +518,7 @@ While testing it can be useful to hide some columns in the `Orders to Approve` t
 
 <img src="assets/af-41.png" width="800"/>
 
-Let's pause for a moment to add the `Adjuster` modal so that we have all the UI elements we need to make this data app work.
+Let's pause for a moment to add the `Approver` modal so that we have all the UI elements we need to make this data app work.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -561,7 +571,7 @@ Disable the standard two footer buttons:
 
 The actual arrangement and styling you decide on is up to you. Spend time if you prefer, but it will work as expected without it too. 
 
-When we duplicated the `Adjuster Modal` the controls came over too but their `Control IDs` will just have `2` appended to each if their names; not ideal. 
+When we duplicated the `Adjuster Modal` the controls came over too but their `Control IDs` will just have `2` appended to each of their names; not ideal. 
 
 Adjust each controls ID to follow our arbitrary pattern rule mentioned earlier. For example, for the `Over Ride` control we set the ID to `ap_Over_Ride`, the `ap_` indicating the control is on the `Approval Modal` modal. 
 
@@ -606,7 +616,7 @@ Change the condition on the `Adjusted` sequence to only trigger when the `Latest
 
 <img src="assets/af-51.png" width="500"/>
 
-Adjust the `Open a modal` to target the `Approver Modal` for each `Set contol value` action. For example:
+Adjust the `Open a modal` to target the `Approver Modal` for each `Set control value` action. For example:
 
 <img src="assets/af-52.png" width="500"/>
 
@@ -631,11 +641,11 @@ From the `Orders to Approve` table, `Actions`, we want to duplicate the `New Ord
 
 Rename the new duplicate to `Rejected`. 
 
-In the `Condition`, revise the `Text contains` to check to `Rejected`, using `Lastest Status`.
+In the `Condition`, revise the `Text contains` to check to `Rejected`, using `Latest Status`.
 
-In the `Set Am Status` action, revise the `Static value` to send `Resumbmission`.
+In the `Set Am Status` action, revise the `Static value` to send `Resubmission`.
 
-Now when the adjusted clicks on a `Rejected` row, they use the same `Adjuster Modal` to work as before, with only a few minor differences.
+Now when the adjuster clicks on a `Rejected` row, they use the same `Adjuster Modal` to work as before, with only a few minor differences.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -670,7 +680,7 @@ After shortening a few column names and hiding others, we are ready for some tes
 Click `Publish`. 
 
 ### Testing
-Pick an order and take it through an entire cycle from request, rejection and approval. After working through all the details, it is pretty easy to troubleshoot is something unexpected happens.
+Pick an order and take it through an entire cycle from request, rejection and approval. After working through all the details, it is pretty easy to troubleshoot if something unexpected happens.
 
 Here is what is expected:
 
@@ -686,7 +696,7 @@ Now that the data app is working, we can easily use the power of Sigma to build 
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we build a fully functioning Approval AI App using Sigma only. Data is automatically stored in the cloud data warehouse of your choice and under your control only. This is the power of Sigma!
+In this QuickStart, we built a fully functioning Approval AI App using Sigma only. Data is automatically stored in the cloud data warehouse of your choice and under your control only. This is the power of Sigma!
 
 **Additional Resource Links**
 
