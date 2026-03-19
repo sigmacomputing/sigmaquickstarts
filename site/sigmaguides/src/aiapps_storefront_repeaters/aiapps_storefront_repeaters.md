@@ -91,13 +91,13 @@ From your Sigma home page:
 3. Search for `INVENTORY_LEDGER_DAILY`.
 4. Click to select the table from `EXAMPLES > COLD_PROVISIONS`:
 
-<img src="assets/CP_01.png" width="600"/>
+<img src="assets/cp_01.png" width="600"/>
 
 ### About the Daily Ledger Table
 
 `INVENTORY_LEDGER_DAILY` is the fact table at the center of this data model. Each row represents one product at one store on one date, recording daily inventory activity: units sold, delivered, wasted, adjusted, and closing stock. We'll manually join it to `PRODUCTS` and `STORES` as dimension tables, making their columns available throughout the workbook:
 
-<img src="assets/CP_02.png" width="800"/>
+<img src="assets/cp_02.png" width="800"/>
 
 ### Join Products and Stores to the Ledger
 
@@ -109,11 +109,11 @@ With `INVENTORY_LEDGER_DAILY` on the canvas, add relationships to the two dimens
 2. Click the `3-dot` menu to opens the tables menu.
 3. Select `Element source` > `Join`
 
-<img src="assets/CP_03.png" width="800"/>
+<img src="assets/cp_03.png" width="800"/>
 
 4. Search for `PRODUCT`, taking care to select the table from `EXAMPLES > COLD_PROVISIONS`:
 
-<img src="assets/CP_04.png" width="400"/>
+<img src="assets/cp_04.png" width="400"/>
 
 5. Click `Select`, leaving all columns selected.
 
@@ -121,23 +121,23 @@ With `INVENTORY_LEDGER_DAILY` on the canvas, add relationships to the two dimens
 5. Leave the join type as `Left outer join`.
 6. Click the `+` to add another table.
 
-<img src="assets/CP_05.png" width="800"/>
+<img src="assets/cp_05.png" width="800"/>
 
 **Join to STORES:**
 
 1. Search for `STORES`, taking care to select the table from `EXAMPLES > COLD_PROVISIONS`:
 2. Select `STORES` from `COLD_PROVISIONS`.
 
-<img src="assets/CP_06.png" width="400"/>
+<img src="assets/cp_06.png" width="400"/>
 
 3. Set the join key: `Store Id` (INVENTORY_LEDGER_DAILY) = `Store Id` (STORES).
 4. Leave the join type as `Left out join` and click `Preview output`:
 
-<img src="assets/CP_07.png" width="800"/>
+<img src="assets/cp_07.png" width="800"/>
 
 5. Sigma shows the [Lineage](https://help.sigmacomputing.com/docs/workbook-data-lineage) for the data model visually:
 
-<img src="assets/CP_08.png" width="800"/>
+<img src="assets/cp_08.png" width="800"/>
 
 6. Click `Done`.
 
@@ -174,14 +174,14 @@ The `NOTIFICATIONS` table has a `Priority` column with text values like `critica
 
 Sigma evaluates this as a boolean — rows where `Priority` equals `critical` return `true`; all others return `false`.
 
-<img src="assets/CP_49.png" width="600"/>
+<img src="assets/cp_49.png" width="600"/>
 
 ### Rename the Data Model
 
 1. Rename the data model `COLD_PROVISIONS_DATA_MODEL`.
 2. Click `Publish`.
 
-<img src="assets/CP_09.png" width="800"/>
+<img src="assets/cp_09.png" width="800"/>
 
 3. Return to the Sigma home page. The data model is now ready to use as the data source for the storefront workbook.
 
@@ -206,7 +206,7 @@ This page will hold the source table elements from the data model, making them a
 4. From the `Element bar`, add a `Table` element and search for `COLD_PROVISIONS_DATA_MODEL`. Select `INVENTORY_LEDGER_DAILY + 2`.
 5. Add a second `Table` element and select `NOTIFICATIONS` from the same data model:
 
-<img src="assets/CP_10.png" width="800"/>
+<img src="assets/cp_10.png" width="800"/>
 
 <aside class="positive">
 <strong>WHY USE A DATA MODEL?</strong><br> It may feel like we just configured these tables in the data model and are now adding them again here—but there's an important distinction. The data model is where the joins to <code>PRODUCTS</code> and <code>STORES</code> live. By sourcing these tables through the data model, every page in this workbook automatically inherits those relationships.
@@ -226,11 +226,11 @@ Sigma supports a common header, which is useful when we want to reuse it across 
 
 1. Click the `Workbook settings` button:
 
-<img src="assets/CP_11.png" width="800"/>
+<img src="assets/cp_11.png" width="800"/>
 
 2. Check the box to enable `Page header`:
 
-<img src="assets/CP_12.png" width="350"/>
+<img src="assets/cp_12.png" width="350"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> We can use the same page header on all pages or have different headers on each page. 
@@ -250,11 +250,11 @@ https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/cold-pro
 ```
 3. Adjust the image width so the logo sits comfortably in the header without dominating the layout:
 
-<img src="assets/CP_13.png" width="800"/>
+<img src="assets/cp_13.png" width="800"/>
 
 The logo background is white but the headers is not quite that so we can adjust it to match:
 
-<img src="assets/CP_14.png" width="800"/>
+<img src="assets/cp_14.png" width="800"/>
 
 ### Add Navigation Text Elements
 
@@ -264,7 +264,7 @@ The navigation labels (Storefront, Finance, R&D) are text elements styled to loo
 
 `Storefront` and `Data` pages are shown automatically. We could `Hide` the `Data` page tab, which would remove it from the control but let's just leave it since we won't have other pages in this demonstration:
 
-<img src="assets/CP_15.png" width="800"/>
+<img src="assets/cp_15.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> In a full multi-page workbook, each nav label could also have an action to navigate to its corresponding page and other automations. For now, the labels serve as visual anchors that orient the user.
@@ -308,13 +308,13 @@ Sigma automatically creates a new page called `Popover 1` to hold the popover's 
    - Control ID: `Store-Id`
 8. Sort the list `Ascending by alphanumeric`
 
-<img src="assets/CP_16.png" width="800"/>
+<img src="assets/cp_16.png" width="800"/>
 
 Now that we have the list we need a way to enforce a selection. Normally, a data model would have a `Stores` table but since we only have that data joined to the `INVENTORY_LEDGER_DAILY` table, we can use the flexibility of Sigma to get what we need, without the need for custom SQL (although we could do that too).
 
 9. On the `Data` page, create a `Child table` from `INVENTORY_LEDGER_DAILY + 2`:
 
-<img src="assets/CP_17.png" width="800"/>
+<img src="assets/cp_17.png" width="800"/>
 
 10. Delete all the columns except `Store Name` and `Store ID` from the child table. 
 
@@ -322,11 +322,11 @@ Now that we have the list we need a way to enforce a selection. Normally, a data
 
 This gives us the one store and id for each location:
 
-<img src="assets/CP_18.png" width="800"/>
+<img src="assets/cp_18.png" width="800"/>
 
 Now we need to set the `Target` for the list control on the `Store Selector` page:
 
-<img src="assets/CP_19.png" width="800"/>
+<img src="assets/cp_19.png" width="800"/>
 
 Lastly, we need to set the store select `Navigation` control to use a formula so that when the user selects a store from the list, the table is automatically filtered. 
 
@@ -337,7 +337,7 @@ Use this formula:
 [Store List with IDs/Store Name]
 ```
 
-<img src="assets/CP_20.png" width="700"/>
+<img src="assets/cp_20.png" width="700"/>
 
 When a different store is selected, the control automtically filters the table on the `Store Selector` page and the navigation element shows the selected store name:
 
@@ -353,7 +353,7 @@ The date control filters the storefront to a single day's inventory data. Defaul
 2. Set the default to `Current` > `Day`.
 3. Set the `Control ID` to `Local-Date`.
 
-<img src="assets/CP_21.png" width="600"/>
+<img src="assets/cp_21.png" width="600"/>
 
 ### Set Control Targets
 
@@ -366,7 +366,7 @@ Controls don't filter anything until they have targets — the specific table co
 3. Click `+` to add a filter target.
 4. Select `INVENTORY_LEDGER_DAILY + 2` and set the column to `Store Id`.
 
-<img src="assets/CP_22.png" width="800"/>
+<img src="assets/cp_22.png" width="800"/>
 
 **Date control target:**
 
@@ -375,7 +375,7 @@ Controls don't filter anything until they have targets — the specific table co
 7. Click `+` to add a filter target.
 8. Select `INVENTORY_LEDGER_DAILY + 2` and set the column to `Local Date`.
 
-<img src="assets/CP_23.png" width="600"/>
+<img src="assets/cp_23.png" width="600"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> We'll add <code>NOTIFICATIONS</code> as a target for both controls when we build the notification center. For now, targeting <code>INVENTORY_LEDGER_DAILY + 2</code> is enough to make the product repeater respond correctly.
@@ -412,7 +412,7 @@ Sigma renders a default card for each row in the filtered dataset. The canvas sh
 
 Expand the container to show two columns:
 
-<img src="assets/CP_24.png" width="800"/>
+<img src="assets/cp_24.png" width="800"/>
 
 ### Structure the Card Layout
 
@@ -420,13 +420,13 @@ Each product card uses a container to control spacing and separate the image are
 
 1. Inside the repeated container template, add a `Container` element from the `Layout` group:
 
-<img src="assets/CP_25.png" width="800"/>
+<img src="assets/cp_25.png" width="800"/>
 
 The container is automatically repeated to each area of the repeater.
 
 2. In the right panel under `Format`, set the padding and gap values to give the card content comfortable spacing:
 
-<img src="assets/CP_26.png" width="800"/>
+<img src="assets/cp_26.png" width="800"/>
 
 3. Set the `Background color` to `#FFFFFF`create the card surface.
 
@@ -438,7 +438,7 @@ Product images are rendered as the **background image** of a dedicated container
 2. Rename the container to `Main Image`.
 3. Configure the image element as:
 
-<img src="assets/CP_27.png" width="800"/>
+<img src="assets/cp_27.png" width="800"/>
 
 ### Add Product Details
 
@@ -447,11 +447,11 @@ Each card displays the product line and product name as text elements, styled fo
 1. Below the image, add a `Text` element for the product line.
 2. Bind it to `Product Line` (from the `PRODUCTS` relationship).
 
-<img src="assets/CP_28.png" width="400"/>
+<img src="assets/cp_28.png" width="400"/>
 
 3. Format the text to use a lighter color — this acts as a category label above the product name.
 
-<img src="assets/CP_29.png" width="350"/>
+<img src="assets/cp_29.png" width="350"/>
 
 4. Add a second `Text` element for the product name.
 5. This time use a `Formula`:
@@ -459,7 +459,7 @@ Each card displays the product line and product name as text elements, styled fo
 Upper([INVENTORY_LEDGER_DAILY + 2 repeated container/Product Name])
 ```
 
-<img src="assets/CP_30.png" width="450"/>
+<img src="assets/cp_30.png" width="450"/>
 
 ### Create the Value List
 
@@ -471,7 +471,7 @@ Each card shows two inventory metrics — units sold and units available — usi
    - Value: `Sold Units`
    - Label: `Sold:`
 
-<img src="assets/CP_32.png" width="800"/>
+<img src="assets/cp_32.png" width="800"/>
 
 3. Click `+` again to add the second field and configure it:
    - Value source type: `Source column`
@@ -480,11 +480,11 @@ Each card shows two inventory metrics — units sold and units available — usi
 
 4. Adjust the properties of the field list element to suit:
 
-<img src="assets/CP_33.png" width="300"/>
+<img src="assets/cp_33.png" width="300"/>
 
 With all card elements in place, the repeated container renders a full grid of product cards filtered to the selected store and date.
 
-<img src="assets/CP_34.png" width="800"/>
+<img src="assets/cp_34.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -504,7 +504,7 @@ The item type filter is a list control that lets Alex switch between product cat
    - Source column: `Product Line` 
 3. Click the `Targets` tab and add `INVENTORY_LEDGER_DAILY + 2` as a filter target, mapping to the same `Product Line` column.
 
-<img src="assets/CP_35.png" width="800"/>
+<img src="assets/cp_35.png" width="800"/>
 
 ### Product Search Control
 
@@ -513,7 +513,7 @@ The product search lets Alex type a few letters to quickly find a specific produ
 1. Add a `Text input` control from the `Controls` group.
 2. In the right panel, set the Control ID to `Product-Search`.
 
-<img src="assets/CP_36.png" width="800"/>
+<img src="assets/cp_36.png" width="800"/>
 
 4. Click the `Targets` tab and add `INVENTORY_LEDGER_DAILY + 2` as a filter target.
 5. Set the target column to `Product Name`.
@@ -525,7 +525,7 @@ The product search lets Alex type a few letters to quickly find a specific produ
 It might also be a good idea to add a button that resets the filters to make that easy for the user.
 </aside>
 
-<img src="assets/CP_37.png" width="800"/>
+<img src="assets/cp_37.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -550,7 +550,7 @@ The notification center sits in a panel to the right of the product grid and giv
 4. When prompted for a data source, select `NOTIFICATIONS` from the `Data` page.
 5. In the `Format` tab, add a border to the card template to visually separate each notification.
 
-<img src="assets/CP_39.png" width="500"/>
+<img src="assets/cp_39.png" width="500"/>
 
 ### Add Notification Content
 
@@ -560,7 +560,7 @@ Each notification card displays a category icon, title, category label, and date
 ```copy-code
 https://cdn-icons-png.flaticon.com/128/1827/1827370.png
 ```
-<img src="assets/CP_40.png" width="500"/>
+<img src="assets/cp_40.png" width="500"/>
 
 2. Add a `Text` element and bind it to the `Title` column from `NOTIFICATIONS`. 
 3. Add a `Text` element and bind it to the `Body` column from `NOTIFICATIONS`. 
@@ -570,7 +570,7 @@ DateFormat([NOTIFICATIONS repeated container/Notification Date],"%m-%d-%Y")
 ```
 5. Adjust the text formatting to suit:
 
-<img src="assets/CP_41.png" width="500"/>
+<img src="assets/cp_41.png" width="500"/>
 
 ### Add a Details Button
 
@@ -582,7 +582,7 @@ For more information, see [Reports overview](https://help.sigmacomputing.com/doc
 
 There is also this QuickStart: [Fundamentals 11: Pixel Perfect Reporting](https://quickstarts.sigmacomputing.com/guide/fundamentals_11_pixel_perfect_reporting/index.html?index=..%2F..index#0)
 
-<img src="assets/CP_42.png" width="500"/>
+<img src="assets/cp_42.png" width="500"/>
 
 ### Wire Controls to Notifications
 
@@ -591,19 +591,19 @@ Back in Section 4 we promised to add `NOTIFICATIONS` as a target for the store a
 1. Select the `Store Name (Stores)` list control on the `Store Selector` page.
 2. Click `Targets` and add `NOTIFICATIONS`, mapping to `Store Id`.
 
-<img src="assets/CP_43.png" width="700"/>
+<img src="assets/cp_43.png" width="700"/>
 
 3. Select the `Local Date` date range control in the header.
 4. Click `Targets` and add `NOTIFICATIONS`, mapping to `Notification Date`.
 
-<img src="assets/CP_44.png" width="500"/>
+<img src="assets/cp_44.png" width="500"/>
 
 **Urgent Only switch target:**
 
 5. Select the `Urgent Only` switch control in the notification panel.
 6. Click `Targets` and add `NOTIFICATIONS`, mapping to `Is Urgent`.
 
-<img src="assets/CP_50.png" width="400"/>
+<img src="assets/cp_50.png" width="400"/>
 
 When the switch is on, the notification list filters to only critical-priority items — rows where `Is Urgent` is `true`.
 
@@ -633,7 +633,7 @@ Segmented controls with actions provide user-controlled navigation between tabs�
 
 4. In the `Format` tab of the tabbed container, disable `Show tab bar` — navigation will be handled by the segmented control instead.
 
-<img src="assets/CP_45.png" width="800"/>
+<img src="assets/cp_45.png" width="800"/>
 
 ### Add the Segmented Control
 
@@ -643,7 +643,7 @@ Segmented controls with actions provide user-controlled navigation between tabs�
    - Values: `Storefront`, `Manager`
    - Control ID: `View-Selector`
 
-<img src="assets/CP_46.png" width="500"/>
+<img src="assets/cp_46.png" width="500"/>
 
 ### Configure View Switching Actions
 
@@ -651,18 +651,18 @@ Segmented controls with actions provide user-controlled navigation between tabs�
 8. In the first action sequence, open the `3-dot` menu and select `Add condition`.
 Add an action for when the value equals `Storefront`:
 
-<img src="assets/CP_47a.png" width="500"/>
+<img src="assets/cp_47a.png" width="500"/>
 
 9. Configure the action to:
    - Action type: `Select container tab`
    - Target: `Tabbed container 1 (Storefront)`
    - Tab: `Storefront`
 
-<img src="assets/CP_47b.png" width="500"/>
+<img src="assets/cp_47b.png" width="500"/>
 
 9. The the `+` to the right of `ACTION SEQUENECES` and add a second action for when the value equals `Manager`, adding a condition and action as before but targeting `Manager` instead.
    
-<img src="assets/CP_47c.png" width="500"/>
+<img src="assets/cp_47c.png" width="500"/>
 
 ### Manager View Placeholder
 
@@ -670,7 +670,7 @@ The `Manager` tab is intentionally empty for this QuickStart. In a full implemen
 
 For example, the managers tab might look something like this, taking advantage of a more complete set of data:
 
-<img src="assets/CP_48.png" width="800"/>
+<img src="assets/cp_48.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The COLD_PROVISIONS database in the Sigma Sample connection actually contains a comprehensive set of tables should you want to explore and experiment more.
