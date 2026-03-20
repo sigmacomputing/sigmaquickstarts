@@ -24,7 +24,7 @@ You will modernize the Big Buys security stack by integrating Sigma, Snowflake, 
 - **Build an AI Investigator** using a Sigma Custom Agent (powered by a Cortex Agent) that translates complex model outputs into plain English for store managers
 
 <aside class="positive">
-<strong>What is Inter-Scan Latency?</strong><br> Inter-Scan Latency (ISL) is the time gap between consecutive item scans at a checkout register. Normal scanning has predictable timing patterns, but fraudulent behavior (like "Sweethearting" where cashiers help friends steal) creates unusual pauses or rapid sequences. Unlike dollar amounts or voids, ISL timing patterns are behavioral signatures that are statistically impossible to fake, making them ideal for ML-based fraud detection.
+<strong>What is Inter-Scan Latency?</strong><br> Inter-Scan Latency (ISL) is the time gap between consecutive item scans at a checkout register. Normal scanning has predictable timing patterns, but fraudulent behavior (like "Sweethearting," where cashiers help friends steal) creates unusual pauses or rapid sequences. Unlike dollar amounts or voids, ISL timing patterns are behavioral signatures that are statistically impossible to fake, making them ideal for ML-based fraud detection.
 </aside>
 
 ### Target Audience
@@ -70,7 +70,7 @@ Navigate to the OKTA home page, and click on the `Sigma SE Demos` tile. This wil
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab!
 </aside>
 
-From the Sigma home page navigate to the templates section:
+From the Sigma home page, navigate to the templates section:
 
 <img src="assets/sf2025_2.png" width="800"/>
 
@@ -82,7 +82,7 @@ Under internal templates select `Snowflake SKO FY27 - Loss Prevention App Templa
 ## Module 1: Analytical Audit of Legacy Exception-Based Reporting
 Duration: 20
 
-Welcome to the Team! As a newly hired Shrink Expert, your first week is focused on getting "the lay of the land." Big Buys has been overwhelmed with security alerts, and you have been brought in to build a superior detection system from the ground up.
+Welcome to the team! As a newly hired Shrink Expert, your first week is focused on getting "the lay of the land." Big Buys has been overwhelmed with security alerts, and you have been brought in to build a superior detection system from the ground up.
 
 Before rolling out new solutions, we must evaluate the legacy tools. 
 
@@ -129,7 +129,7 @@ Use the **State** filter to drill down specifically to `Oregon`:
 
 We will use Ask Sigma to investigate Noreen Swift's performance, starting with broad metrics and narrowing our focus. 
 
-Remember we are using the existing version of the Loss Prevention App v1.0 to see the results that store managers currently rely. 
+Remember we are using the existing version of the Loss Prevention App v1.0 to see the results that store managers currently rely on.
 
 **Step 6**: Click the <img src="assets/crane.png" width="45"/> to return to the homepage and navigate to `Ask Sigma` and enter the following prompt.
 
@@ -138,7 +138,7 @@ Provide a comprehensive summary of Noreen Swift's performance history.
 ```
 <img src="assets/rlp_07.png" width="800"/>
 
-We can see a large number of flagged transaction:
+We can see a large number of flagged transactions:
 
 <img src="assets/rlp_08.png" width="600"/>
 
@@ -148,7 +148,7 @@ We can see a large number of flagged transaction:
 List all transactions handled by Noreen along with the static flags.
 ```
 
-Again, we get lots of information back but we will want to dig deeper.
+Again, we get lots of information back, but we will want to dig deeper.
 
 **Step 8**: Click the `Open in Workbook` icon in the Ask Sigma view to move into a full Sigma workbook for a deeper technical investigation:
 
@@ -160,11 +160,11 @@ Again, we get lots of information back but we will want to dig deeper.
 
 <img src="assets/rlp_10.png" width="650"/>
 
-Sort the data by `Price` in descending order to focus on the high value alerts:
+Sort the data by `Price` in descending order to focus on the high-value alerts:
 
 <img src="assets/rlp_11.png" width="250"/>
 
-**Step 10**: `Order Number 100284237` stands out. It contains a high priced item that was voided. Click on the order number and select `Keep only 100284237`. 
+**Step 10**: `Order Number 100284237` stands out. It contains a high-priced item that was voided. Click on the order number and select `Keep only 100284237`. 
 
 This creates a specific filter for this transaction:
 
@@ -177,7 +177,7 @@ This creates a specific filter for this transaction:
 ### Key Findings
 
 - **The Alert**: Two HP Omen Gaming Laptops ($4,192.28) were voided
-- **The Context**: Also two Corsair Gaming PC ($1,450.48) were scanned and paid for:
+- **The Context**: Also, two Corsair Gaming PCs ($1,450.48) were scanned and paid for:
 
 <img src="assets/rlp_14.png" width="800"/>
 
@@ -340,7 +340,7 @@ Change the chart type from `Bar` to `Scatter`:
 
 <img src="assets/rlp_28.png" width="800"/>
 
-Next we configure the scatter chart and add another for a comparison.
+Next, we configure the scatter chart and add another for a comparison.
 
 #### Plot A: Static Rules Visualization
 
@@ -365,7 +365,7 @@ Rename the chart `Static Rules Visualization`.
 
 #### Plot B: Python ML Visualization
 
-We create another scatter chart from scratch but it is faster to just duplicate the existing one and adjust it:
+We create another scatter chart from scratch, but it is faster to just duplicate the existing one and adjust it:
 
 <img src="assets/rlp_31.png" width="500"/>
 
@@ -410,22 +410,30 @@ COUNT([SCAN_ID])
 
 <img src="assets/rlp_35.png" width="800"/>
 
-b. Add a third column calculation named `PERCENT FLAGGED` using the formula:
+b. Set `Transactions` to use a whole number format:
+
+<img src="assets/rlp_35a.png" width="800"/>
+
+c. Add a third column calculation named `PERCENT FLAGGED` using the formula:
 ```copy-code
 [FLAGGED TRANSACTIONS] / [TRANSACTIONS]
 ```
 
-c. Change the `PERCENT FLAGGED` column to use `%`:
+d. Change the `PERCENT FLAGGED` column to use `%`:
 
 <img src="assets/rlp_36.png" width="800"/>
 
-d. `Sort` the table by the `PERCENT FLAGGED` column in descending order to prioritize high-risk stores:
+e. `Sort` the table by the `PERCENT FLAGGED` column in descending order to prioritize high-risk stores:
 
 <img src="assets/rlp_37.png" width="350"/>
 
-e. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Format type` > `Color Scale`: 
+f. Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Format type` > `Color Scale` > `Custom` > `Sequential`. 
 
-<img src="assets/rlp_37a.png" width="500"/>
+Sigma presents two square boxes that when clicked, allow you to set a custom color.
+
+For the left box, use `#FFFFFF` and for the right, `#761A10`:
+
+<img src="assets/rlp_37b.png" width="700"/>
 
 ### Update Data Sources
 
@@ -450,23 +458,26 @@ Change source for the `FLAGGED_SCANS` table from `ONLY_FLAGGED_SCANS_V1`:
 
 ...to `ONLY_FLAGGED_SCANS_V2`.
 
-Now all the charts on the `App v2.0` page are using the `FLAGGED_SCANS` table which has been set to get it's data from `ONLY_FLAGGED_SCANS_V2`:
+Now all the charts on the `App v2.0` page are using the `FLAGGED_SCANS` table which has been set to get its data from `ONLY_FLAGGED_SCANS_V2`:
 
 <img src="assets/rlp_40.png" width="800"/>
 
 ### Create Anomaly Detection Visualization
 
-**Step 3**: Navigate to the `ANOMALY DETECTION` tab and construct a new visualization from the ground up:
+**Step 3**: Navigate to the `ANOMALY DETECTION` tab and add a scatter plot visual. Instead of constructing a new chart from the ground up, we’ll reuse the chart we built in Module 2.
 
-1. Navigate to the `Anomaly_Detection` page that we used in `Module 2` and duplicate the `Python ML` scatter plot. 
+1. Navigate to the `Anomaly_Detection` page that we used in `Module 2` and duplicate the `Python ML visualization` scatter plot.
+- Click on the three dots on the top right corner of the chart and select Duplicate
 
-2. Rename the chart `ML Anomaly Detection Model Output`. 
+2. Rename the chart ML `Anomaly Detection Model Output`.
 
-3. Change the data source from `MODEL_COMPARISON to BASE_TABLE_APP_V2`.
+3. Change the data source from `MODEL_COMPARISON` to `BASE_TABLE_APP_V2`.
 
-4. `Move` the chart to the `ANOMALY DETECTION` tab in the page `App v2.0`:
+4. Move the chart to the `ANOMALY DETECTION` tab in the page `App v2.0`.
+- Click on the `three dots` on the top right corner of the chart and select `Move to` and choose `App v2.0`.
 
-5. **Add a Trellis Column**: Use the `PRODUCT_FAMILY` column:
+5. The chart will now have been moved to the `ANOMALY DETECTION` tab in `App v2.0`. 
+- Drag and drop the chart into the container above:
 
 <img src="assets/rlp_41.png" width="800"/>
 
@@ -501,7 +512,7 @@ A pre-configured Chat Agent has been integrated into the workbook to facilitate 
 #### Querying Flagged Transactions
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Make sure you are using the published version (ie: not in edit mode) for this next section.
+<strong>IMPORTANT:</strong><br> Make sure you are using the published version (i.e., not in edit mode) for this next section.
 </aside>
 
 **Step 1**: Invoke the Chat Agent from the top right corner (next to your name):
@@ -516,7 +527,7 @@ Show me the list of top 5 transactions that have the highest risk scores.
 
 <img src="assets/rlp_46.png" width="800"/>
 
-2. In the response, Cortex provides some information about the transactions with the highest risk, so lets ask a follow-up question:
+2. In the response, Cortex provides some information about the transactions with the highest risk, so let's ask a follow-up question:
 
 <img src="assets/rlp_46a.png" width="800"/>
 
@@ -528,12 +539,12 @@ Yes, provide detailed information on the order with the highest risk score.
 
 <img src="assets/rlp_46b.png" width="800"/>
 
-4. This order looks suspicious.  In final follow-up, ask:
+4. This order looks suspicious. In a final follow-up, ask:
 ```copy-code
 This order looks suspicious. Escalate this order.
 ```
 
-5. Upon reviewing the results, you may execute workflow commands directly within the chat interface, such as  `APPROVE`, `REJECT` or `ESCALATE` for any specific transaction.
+5. Upon reviewing the results, you may execute workflow commands directly within the chat interface, such as `APPROVE`, `REJECT` or `ESCALATE` for any specific transaction.
 
 Since we asked for escalation, we get asked to `Approve` it:
 
@@ -555,7 +566,7 @@ To further enhance the decision-making process within the review modal, we will 
 
 Place the workbook back into `Edit` mode.
 
-Navigate to the `REVIEW_MODAL` page in the Sigma workbook and follow these configuration steps
+Navigate to the `REVIEW_MODAL` page in the Sigma workbook and follow these configuration steps:
 
 1. Create a `chat element` from the `Element Bar`: select `UI`, and choose `Chat`
 
@@ -616,7 +627,7 @@ Navigate to the `App v2.0` page and select the `CASE MANAGEMENT` input table:
 
 <img src="assets/rlp_50b.png" width="400"/>
 
-Click `Save`.
+Click `Save` and then make sure to `Publish` the workbook. Go to the published version of the workbook.
 
 8. We will now show another way to review transactions. 
 
@@ -628,15 +639,17 @@ We see that SCAN_ID `1000363387_3` is the second riskiest transaction:
 
 Let us see what the agent tells us about why this scan was flagged. 
 
-We see that this scan is clearly suspicious so let us go ahead and reject this transaction.
+Navigate to the `App v2.0` page.
+
+We see that this scan is clearly suspicious, so let us go ahead and reject this transaction.
 
 This time, click the cell for SCAN_ID `1000363387_3` directly:
 
 <img src="assets/rlp_50c.png" width="600"/>
 
-Now we can set the status to `Reject` ourselves and click `Submit` or scroll down to where we added an AI Agent and just ask the `AI agent` to do it for us:
+Let's `Reject` this transaction by simply asking the AI agent to do it for us:
 ```copy-code
-Reject the transaction SCAN_ID  due to the clear risk patterns.
+Reject the transaction due to the clear risk patterns.
 ```
 
 <img src="assets/rlp_50e.png" width="500"/>
@@ -689,7 +702,9 @@ Using Reports, you can create formatted, interactive PDFs with specific filters 
 This transforms raw data exports into professional, role-specific communications that drive immediate action at the store level.
 </aside>
 
-For more information, see [Create and manage reports](https://help.sigmacomputing.com/docs/create-and-manage-reports)
+For more information, see [Reports overview](https://help.sigmacomputing.com/docs/reports-overview)
+
+There is also a QuickStart, [Fundamentals 11: Pixel Perfect Reporting](https://quickstarts.sigmacomputing.com/guide/fundamentals_11_pixel_perfect_reporting/index.html?index=..%2F..index#5)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
