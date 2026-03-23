@@ -84,7 +84,7 @@ Current Temp - Hard Coded
 
 **Description:** [optional] A custom description that helps users identify the connector and verify its contents.
 
-**Base URL:** Select an HTTP method and the URL for the request.<br>
+**Base URL:** Select the HTTP method `GET` and use this URL for the request:<br>
 Use this URL:
 ```copy-code
 https://api.open-meteo.com/v1/forecast?latitude=20.7702&longitude=-156.2682&timezone=auto&temperature_unit=fahrenheit
@@ -295,10 +295,10 @@ Return to `Administration` > `API Connectors` and add a new one.
 
 **Name:** Current Temp - City Select
 
-**Base URL:** Select an HTTP method and the URL for the request.<br>
+**Base URL:** Select the HTTP method `GET` and use this URL for the request:<br>
 Use this URL:
 ```copy-code
-https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitude}}&current_weather=true&temperature_unit=fahrenheit
+https://api.open-meteo.com/v1/forecast
 ```
 
 <aside class="positive">
