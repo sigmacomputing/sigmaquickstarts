@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
-      {
+    {
+      "title": "Automate Inventory Alerts with Scheduled Actions",
+      "id": "aiapps_scheduled_actions",
+      "category": "aiapps",
+      "date": "Mar 23, 2026"
+    },
+    {
       "title": "Build an Interactive Storefront with Repeaters and Actions",
       "id": "aiapps_storefront_repeaters",
       "category": "aiapps",
@@ -29,12 +35,6 @@
       "id": "developers_api_actions_salesforce",
       "category": "Developers",
       "date": "Feb 25, 2026"
-    },
-    {
-      "title": "First Friday Features - February 2026",
-      "id": "02_2026_first_friday_features",
-      "category": "First Friday Features",
-      "date": "Jan 2, 2026"
     },
     {
       "title": "Multi-Modal File Analysis with AI",
