@@ -3,9 +3,9 @@ id: aiapps_gong_call_analysis
 summary: Learn how to use Sigma AI Chat to extract actionable insights from unstructured Gong call transcript data stored in Snowflake.
 categories: aiapps
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
+tags:
 lastUpdated: 2026-03-26
 
 # Unlocking Insights from Unstructured Text with Sigma AI Chat
