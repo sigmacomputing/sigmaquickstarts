@@ -656,7 +656,7 @@ These geographic columns can be used to create map visualizations in Sigma workb
 <strong>TIP:</strong><br> This update workflow enables code reviews through pull requests. Store your specs in version control so changes to data models can be reviewed and approved by your team before being applied to production.
 </aside>
 
-For more information, see [Update a data model from a JSON specification](https://help.sigmacomputing.com/reference/updatedatamodelfromspec)
+For more information, see [Update a data model from a JSON specification](https://help.sigmacomputing.com/reference/create-and-manage-data-models-from-code)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
