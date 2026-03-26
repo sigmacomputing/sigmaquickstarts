@@ -64,11 +64,11 @@ The workbook setup for this use case is intentionally minimal. There are only **
 
 ### 1: The Data Table
 
-The data source is a Snowflake table called `GONG_TRANSCRIPTS_ENRICHED`, surfaced in Sigma as a workbook data element. This table is populated via a dbt pipeline that pulls transcript data from Gong.
+The data source is a Snowflake table called `GONG_TRANSCRIPTS_ENRICHED`, surfaced in Sigma as a workbook data element. This table is populated via a dbt pipeline that pulls transcript data from Gong. We selected a portion of the entire table based on a timeframe of interest.
 
 For more information on setting up dbt with Sigma, see [Manage dbt Integration](https://help.sigmacomputing.com/docs/manage-dbt-integration).
 
-Even the subset of the Gong table has **144,396 rows** and 15 columns — one row per Gong call, but we're only concerned with `Full Transcript`, which holds the complete text of each call as a single unstructured string.
+Even the smaller subset of the table has **144,396 rows** and 15 columns — one row per call, but we're only concerned with `Full Transcript`, which holds the complete text of each call as a single unstructured string.
 
 The diverse call types in this data range from brief touchpoints to extensive workshops.
 
