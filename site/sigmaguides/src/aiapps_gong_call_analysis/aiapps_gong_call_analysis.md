@@ -15,14 +15,14 @@ Duration: 5
 
 Many organizations store rich conversational data — call transcripts, support tickets, interview notes — as a single blob of text in a database column. That data holds valuable signal: customer sentiment, recurring topics, product feedback. But extracting it traditionally requires custom NLP pipelines, manual review, or complex string parsing.
 
-This QuickStart shows a simpler path. Using Sigma AI Chat, you can ask plain-language questions directly against unstructured transcript data in Snowflake and get meaningful, contextual answers in seconds — no formulas, no code, no data transformation required.
+This QuickStart shows a simpler path. Using Sigma's `Chat element` ("Chat") and a `Sigma Agent` ("Agent"), you can ask plain-language questions directly against unstructured transcript data in Snowflake and get meaningful, contextual answers in seconds — no formulas, no code, no data transformation required.
 
 The use case: Sigma's own team uses Gong to record customer calls. Those transcripts flow from Gong into Snowflake via a dbt pipeline, where each row contains a full call transcript in a single column.
 
 The (somewhat selfish, I'll admit) goal is to understand how customers are responding to Sigma QuickStarts — which ones come up, and whether customers feel positively or negatively about them.
 
 Along the way you'll see how to:
-- Ask AI Chat to extract specific details from a column of unstructured transcript text
+- Extract specific details from a column of unstructured transcript text
 - Identify which product or content item was referenced in each call
 - Assess customer sentiment specifically around those mentions
 - Drill into individual responses — both positive and negative — for qualitative context
@@ -72,10 +72,10 @@ Even the smaller subset of the table has **144,396 rows** and 15 columns — one
 
 The diverse call types in this data range from brief touchpoints to extensive workshops.
 
-These transcripts average around 5,850 words, with a maximum reaching 58,554 words — substantial enough that manual review at scale is not practical without significant time and resources.
+These transcripts average around **5,850** words, with a maximum reaching **58,554** words — substantial enough that manual review at scale is not practical without significant time and resources.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> AI Chat works against whatever data it is permitted to access is in the workbook — in this case, the transcript text is all that matters.
+<strong>NOTE:</strong><br> The Agent works against whatever data is in the workbook — in this case, the transcript text is all that matters.
 </aside>
 
 ### 2: The Column Filter
@@ -84,17 +84,17 @@ This is a standard Sigma workbook filter — no formulas or custom logic require
 
 To focus the analysis on calls where QuickStarts were actually mentioned, a simple column filter is applied to the `Full Transcript` column: `Contains` > `quickstart`.
 
-Now this is not technically required but it is a really simple way to "cull" the data down a bit for the AI so that it does not search data that does not contain the search term, which in this case will be `quickstart`. Searching rows that do not even have the term is not useful (in this use case) and it adds time and cost.
+Now this is not technically required, but it is a really simple way to "cull" the data down a bit for the Agent so that it does not search data that does not contain the search term, which in this case will be `quickstart`. Searching rows that do not even have the term is not useful (in this use case) and it adds time and cost.
 
-In our case, the table was reduced from 144,396 rows to only 279. That will save the AI a lot of effort evaluating transcripts that don't mention QuickStarts. 
+In our case, the table was reduced from **144,396** rows to only **279**. That will save the Agent a lot of effort evaluating transcripts that don't mention QuickStarts.
 
-### 3: AI Chat
+### 3: The Chat element and Agent configuration
 
-Before asking questions, AI Chat needs to know which data it should work with and we want to restrict it too. 
+Before asking questions, `Chat` needs to know which data it should work with and we also want to restrict data access via `Agent` configuration.
 
-It is really simple to create a custom chat agent in Sigma.
+It is really simple to set this up in Sigma.
 
-In this case there is only one table in the workbook, but this step matters when a workbook contains multiple data elements — it gives you precise control over what AI Chat has access to.
+In this case there is only one table in the workbook, but this step matters when a workbook contains multiple data elements — it gives you precise control over what `Chat` has access to.
 
 We also want to be explicit in our instructions so that we get the best results, while also asking the minimum number of questions. More questions can have a cost impact that is not immediately apparent to you:
 
@@ -113,19 +113,19 @@ When surfacing quotes or excerpts, extract only the relevant passage from the tr
 Do not reference or repeat any customer names or other identifying information in your responses.
 </aside>
 
-With the agent configured, the panel is ready. From here, you can ask plain-language questions about the data — including questions that require reading and interpreting full transcript text.
+With the Agent configured, the panel is ready. From here, you can ask plain-language questions about the data — including questions that require reading and interpreting full transcript text.
 
 **That's the entire setup.** The next section shows what's possible once you start asking questions.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Analyzing Transcripts with AI Chat
+## Analyzing Transcripts
 Duration: 10
 
 The following examples walk through a natural progression of questions — from identifying what was mentioned, to understanding how customers felt about it, to examining the specifics.
 
-With the workbook open and the filter applied, the AI Chat panel is ready to answer questions about the transcript data.
+With the workbook open and the filter applied, the `Chat` panel is ready to answer questions about the transcript data.
 
 <img src="assets/gong_03.png" width="800"/>
 
@@ -140,7 +140,7 @@ The first question is a straightforward extraction: given a column of full call 
 What QuickStarts were discussed in the filtered data?
 ```
 
-AI Chat reads through each transcript and returns a structured breakdown identifying the QuickStart referenced in each call. This would otherwise require manually reading hundreds of transcripts — a task that simply doesn't get done at scale.
+The `Agent` reads through each transcript and returns a structured breakdown identifying the QuickStart referenced in each call. This would otherwise require manually reading hundreds of transcripts — a task that simply doesn't get done at scale.
 
 The information returned is really useful to help understand both what is resonating with customers as well as what the Sigma team is recommending. 
 
@@ -157,12 +157,12 @@ We know that the sentiment for Sigma will be positive. What is the customer's se
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> It is important (and will save you time) to carefully construct prompts so that the AI does not do things we don't want. 
+<strong>NOTE:</strong><br> It is important (and will save you time) to carefully construct prompts so that Chat does not do things we don't want.
 
-For example, the Agent instructions were not told that the data was going to be filtered, so we told it that in the prompt. If we had not, the AI may have pushed back and ask if it should search the entire table.
+For example, the Agent was not told that the data was going to be filtered, so we told it that in the prompt. If we had not, the Agent may have pushed back and asked if it should search the entire table.
 </aside>
 
-AI Chat analyzes the context around each QuickStart mention and returns a sentiment breakdown across the dataset. The response surfaces not just a label (positive/negative/neutral) but the reasoning behind each classification — drawn directly from the transcript text.
+The `Agent` analyzes the context around each QuickStart mention and returns a sentiment breakdown across the dataset. The response surfaces not just a label (positive/negative/neutral) but the reasoning behind each classification — drawn directly from the transcript text.
 
 ### Drilling into the negatives
 
@@ -172,7 +172,7 @@ A sentiment count is only useful if you can understand what's behind it. With a 
 What did the negative responses say specifically?
 ```
 
-AI Chat returns the relevant excerpts from the transcript text, giving direct visibility into what the customer said. No pivot table, no regex, no manual search — just the answer.
+`Chat` returns the relevant excerpts from the transcript text, giving direct visibility into what the customer said. No pivot table, no regex, no manual search — just the answer.
 
 ### Reviewing the positives
 
@@ -182,17 +182,17 @@ The same approach works for positive sentiment. Seeing what customers say when t
 Show me the positive sentiment and comments.
 ```
 
-AI Chat surfaces the positive mentions with supporting context from the transcripts, making it easy to identify patterns in what resonates with customers.
+`Chat` surfaces the positive mentions with supporting context from the transcripts, making it easy to identify patterns in what resonates with customers.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> AI Chat maintains context across questions in a session. Each follow-up question builds on what was asked before, so you can progressively narrow your analysis without re-explaining the dataset.
+<strong>NOTE:</strong><br> Context is maintained across questions in a session. Each follow-up question builds on what was asked before, so you can progressively narrow your analysis without re-explaining the dataset.
 </aside>
 
 From these responses (no, we did not share them all...) we can see what is working and where we might want to focus our attention and improve content.
 
 ### Brainstorming for improvements
 
-The AI can be really useful when considering how to improve areas of concern by providing creative suggestions now that we have the previous insights. For example:
+The combination of `Chat` and `Agent` can be really useful when considering how to improve areas of concern by providing creative suggestions now that we have the previous insights. For example:
 ```copy-code
 Suggest some things we might do to improve QuickStarts utilization.
 ```
@@ -203,7 +203,7 @@ In our case, it made many suggestions for our team to consider:
 
 ### Beyond Gong: Other Teams, Same Pattern
 
-The workflow here — filter a text column, configure an agent, ask plain-language questions — is not specific to sales calls or QuickStarts. Any team sitting on a column of unstructured text can apply the same approach. A few examples:
+The workflow here — filter a text column, configure an Agent, ask plain-language questions — is not specific to sales calls or QuickStarts. Any team sitting on a column of unstructured text can apply the same approach. A few examples:
 
 - **Marketing:** Analyze customer interview transcripts or NPS verbatims to identify which messaging themes resonate, which fall flat, and what language customers actually use when describing your product.
 - **Customer Success:** Scan account check-in call transcripts for early churn signals — customers expressing frustration, flagging unresolved issues, or deprioritizing the product — before those signals surface in usage data.
@@ -220,7 +220,7 @@ The only thing needed is a workbook, a filter, and a well-constructed agent prom
 ## What We've Covered
 Duration: 2
 
-The core pattern demonstrated here — a filtered data table plus AI Chat — is deceptively simple for what it enables. Unstructured text data has historically been expensive to analyze: it requires NLP expertise, custom pipelines, or hours of manual review. Sigma AI Chat changes that equation by letting anyone ask plain-language questions directly against the data they already have in Snowflake.
+The core pattern demonstrated here — a filtered data table, `Chat` and `Agent` — is deceptively simple for what it enables. Unstructured text data has historically been expensive to analyze: it requires NLP expertise, custom pipelines, or hours of manual review. Sigma changes that equation by letting anyone ask plain-language questions directly against the data they already have in Snowflake.
 
 The Gong transcript use case is one instance of a broadly reusable pattern. The same approach applies to support ticket analysis, interview notes, survey responses, or any dataset where the signal lives in a text column rather than a structured field.
 
