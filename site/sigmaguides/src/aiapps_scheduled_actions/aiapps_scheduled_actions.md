@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-03-23
+lastUpdated: 2026-03-27
 
 # Automate Inventory Alerts with Scheduled Actions
 
@@ -235,15 +235,15 @@ Today()
 ```
   - Status / Formula:
 ```copy-code
-If([Low Stock Count/Low Stock Count] > 0, "Low Stock Alert", "All Clear")
+If([Low Stock Count/Stock Level] > 0, "Low Stock Alert", "All Clear")
 ```
   - Items Flagged / Formula:
 ```copy-code
-[Low Stock Count/Low Stock Count]
+[Low Stock Count/Stock Level]
 ```
   - Notes / Formula:
 ```copy-code
-If([Low Stock Count/Low Stock Count] > 0, "Nightly check detected products below threshold.", "Nightly check completed. All stock levels within acceptable range.")
+If([Low Stock Count/Stock Level] > 0, "Nightly check detected products below threshold.", "Nightly check completed. All stock levels within acceptable range.")
 ```
 
 <img src="assets/asa_12.png" width="800"/>
@@ -262,7 +262,7 @@ Add a `Condition`:
 
 Use the `Custom formula`:
 ```copy-code
-[Low Stock Count/Low Stock Count] > 0
+[Low Stock Count/Stock Level] > 0
 ```
 
 <img src="assets/asa_14.png" width="600"/>
