@@ -126,7 +126,7 @@ Change the `CHART TYPE` to `KPI` and in the `VALUE` group click the `+` to `Add 
 CountIf([Status] = "Low Stock")
 ```
 
-Rename the KPI element `Low Stock Count`.
+Rename the KPI element to `Low Stock Count`.
 
 <aside class="positive">
 <strong>Note:</strong><br> With the sample data and a threshold of <code><= 1</code>, the KPI should display approximately 554 — the number of SKUs with only 1 unit on hand. This is the value the Scheduled Action will evaluate to determine whether to send an alert.
@@ -154,7 +154,10 @@ Set the `Control ID` to `Status-Filter`:
 <strong>Note:</strong><br> When the alert email is sent, the notification will pass <code>Low Stock</code> as the control value. The recipient's workbook link will open directly to a view filtered to low-stock SKUs only.
 </aside>
 
-Click `Save` to save your changes.
+Click `Save`.
+
+**WHY IT MATTERS:**
+Flagging stock status with a formula column rather than a manual export means the inventory view always reflects live data. The KPI gives the Scheduled Action a single, reliable value to evaluate — no queries, no external scripts, just a formula Sigma already knows how to compute.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -168,7 +171,7 @@ The `Scheduled Action` will append a row to an input table every time it runs �
 
 Click the `+` button next to the `Inventory Dashboard` tab to add a new page.
 
-Rename the new page `Audit Log`.
+Rename the new page to `Audit Log`.
 
 ### Create the Input Table
 
@@ -186,13 +189,16 @@ Add the following columns to the input table, moving the `Run Date` column to th
 | `Items Flagged` | Number |
 | `Notes` | Text |
 
-Rename the input table element `Inventory Check Log`.
+Rename the input table element to `Inventory Check Log`.
 
 <img src="assets/asa_07.png" width="800"/>
 
 <aside class="positive">
 <strong>Note:</strong><br> Input tables in Sigma allow data to be written back directly from within the platform — including from Scheduled Actions. For more information, see <a href="https://help.sigmacomputing.com/docs/intro-to-input-tables">Intro to input tables</a>.
 </aside>
+
+**WHY IT MATTERS:**
+Storing execution history inside Sigma eliminates the need for an external database or logging service. Every nightly run — whether it triggered an alert or not — is captured and queryable alongside the same data that drove the decision.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -307,11 +313,11 @@ Click the `...` menu on the second sequence (the email alert) and select `Rename
 
 Click `Publish` in the top toolbar. Both sequences are now active and will run nightly.
 
-After publishing, the sequences ran for several days to confirm alerts were triggering as expected:
+After publishing, sequences run on the configured schedule. The following shows the run history after several days:
 
 <img src="assets/asa_20.png" width="600"/>
 
-Alert emails were confirmed in the recipient inbox:
+Alert emails will appear in the recipient's inbox:
 
 <img src="assets/asa_21.png" width="600"/>
 
@@ -322,6 +328,9 @@ Alert emails were confirmed in the recipient inbox:
 For example:
 
 <img src="assets/asa_22.png" width="800"/>
+
+**WHY IT MATTERS:**
+Formula-based conditions let you coordinate multiple automated workflows on a single schedule without any external orchestration. Operations teams get notified only when action is required, and the audit log gives them a complete history to reference — all configured entirely within Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
