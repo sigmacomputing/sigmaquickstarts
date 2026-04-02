@@ -1126,15 +1126,39 @@
                      Maximize your investment in Sigma with easy-to-follow, step-by-step guides<br>
                   </p>
 
-                  <div class="featured-container" style="margin: 0 0 20px 0;">
-                     <h4 style="margin: 0 0 10px 0; color: black !important; font-size: 1.50em; font-weight: 600;">Recently Added QuickStarts:</h4>
+                  <div id="qs-announcement" style="display:none; margin: 0 0 20px 0; padding: 14px 18px; background-color: #e0e4ff; border: 1px solid #4245ff; border-left: 4px solid #4245ff; border-radius: 4px; color: #171717; font-size: 0.95em; line-height: 1.5;">
+                     <span id="qs-announcement-title" style="font-weight: 600;"></span>
+                     <span id="qs-announcement-message"></span>
+                  </div>
+                  <script>
+                     fetch('/data/announcement.json')
+                        .then(response => response.json())
+                        .then(data => {
+                           if (data.visible) {
+                              document.getElementById('qs-announcement-title').innerHTML = data.title ? data.title + ' ' : '';
+                              document.getElementById('qs-announcement-message').innerHTML = data.message;
+                              document.getElementById('qs-announcement').style.display = 'block';
+                           }
+                        })
+                        .catch(() => {});
+                  </script>
+
+                  <details id="recent-qs-details" class="featured-container" style="margin: 0 0 8px 0;">
+                     <summary style="margin: 0 0 10px 0; color: black !important; font-size: 1.50em; font-weight: 600; cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px;">
+                        Recently Added QuickStarts: <span id="recent-qs-hint" style="color: #4245ff; font-size: 0.65em; font-weight: 400;">&#9654; click to expand</span>
+                     </summary>
                      <div id="recent-quickstarts" style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <!-- Populated by JavaScript -->
                         <div style="color: #999;">Loading recent QuickStarts...</div>
                      </div>
-                  </div>
+                  </details>
 
                      <script>
+                        document.getElementById('recent-qs-details').addEventListener('toggle', function() {
+                           var hint = document.getElementById('recent-qs-hint');
+                           hint.innerHTML = this.open ? '&#9660; click to collapse' : '&#9654; click to expand';
+                        });
+
                         // Load featured QuickStarts from JSON
                         fetch('/data/featured-quickstarts.json')
                            .then(response => response.json())
@@ -1171,8 +1195,6 @@
                               document.getElementById('recent-quickstarts').innerHTML = '<li style="color: #999;">Unable to load recent QuickStarts</li>';
                            });
                      </script>
-                     </div>
-                  </p>
 
 
                </div>
