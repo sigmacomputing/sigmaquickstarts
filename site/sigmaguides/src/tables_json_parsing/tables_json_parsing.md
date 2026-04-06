@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-22
+lastUpdated: 2025-08-22
 
 # Parsing JSON Data in Seconds
 <!-- The above name is what appears on the website and is searchable. -->

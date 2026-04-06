@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-06
+lastUpdated: 2025-06-06
 
 # Embedding 06: Creating a Premium Service
 
