@@ -1,0 +1,493 @@
+Word / phrase,Status,Definition,Guidelines,"""Do this"" example","""Don’t do this"" example",Notes & Qs,Don't translate,Product area(s),Screenshot(s),Last updated at,Created at,Last updated by
+Act (license tier),Approved,"License tiers are used for billing purposes and are assigned to account types based on the enabled permissions. The Act tier is for contributors who input data, update data, and export information.","Different than “account type”, do not use interchangeably
+If you have to use a noun, use “license tier”, not “license type” (to avoid confusion with “account type”. Ideally, write around having to use a noun.
+Do not say “user account level” or “user roles”",✅ The Act license tier is for collaborative data contributors who actively input and update data.,❌ “Act is a license type.”,"Do not translate ""Act"" when referring to a license tier",true,,,2026-03-09 14:12:40,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Action modal ,Approved,The modal that contains the action configurations. This is displayed when a user adds a new action or selects an existing one. The word “Action” appears in the modal header.,"
+Bold, uppercase “Action”","✅ “In the Action modal, configure the required fields to define the response.”", ,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Actions panel ,Approved,"The side panel when the Actions tab is selected. 
+When no element is selected, the Modify > Actions panel lists all actions configured on the current page.
+When a specific element is selected, the [element name] > Actions panel shows existing action sequences configured for the element and allows the user to add new ones. ","
+Bold, uppercase “Actions” ","✅ “In the Actions panel, click  Add action sequence.”", ,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Actions tab ,Approved,"The tab in the side panel that, when selected, opens the Actions panel.","
+Bold, uppercase “Actions”","✅ “In the side panel, select the Actions tab.”", ,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Admin account type,Approved,The account type that gives users access to features in the Administration portal.,"
+Do not use “Admin role”, “Sigma Admin”, “Administrators”. ",✅ “You must be assigned the Admin account type.” ,❌ “This is only accessible to users in an Admin role.”,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Administration,Approved,The product area containing all administrator features (accessible only to users assigned the Admin account type),"• Bold, uppercase.
+• Use this when referring to the UI (e.g., navigation)
+• Use “Administration portal” when referencing the general product area (see Administration portal)",✅ “Go to Administration > Connections > Create Connections.”,❌ “Go to Connections in the administration portal.”,,,,,2025-12-11 15:46:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Administration portal,Approved,The product area containing all administrator features (accessible only to users assigned the Admin account type),"• Write the full word Administration
+• Portal should be in lowercase, nothing bolded
+• Use when referring to the area of the product, but not when referencing the UI ",✅ “Access data platform connections from the Administration portal.”,"❌ “In the side panel of the admin portal, select Connections.”",,,,,2025-12-11 15:46:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Analyze (license tier),Approved,"License tiers are used for billing purposes and are assigned to account types based on the enabled permissions. The Analyze tier is for ""power users"" who need deep-dive capabilities and ad hoc analysis without building new workbooks.","Different than “account type”, do not use interchangeably
+If you have to use a noun, use “license tier”, not “license type” (to avoid confusion with “account type”. Ideally, write around having to use a noun.
+Do not say “user account level” or “user roles”",✅ The Analyze license tier is for decision-making data consumers who require more deep-dive capabilities without building workbooks themselves.,❌ “Analyze is a license type.”,"Do not translate ""Analyze"" when referring to a license tier",true,,,2026-03-09 14:12:40,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Ask Sigma,Do not use,"Note: Updating all AI-related terminology to ""Sigma Assistant"" in 2026. The conversational chat functionality that uses AI in Sigma. ","Use when referring to the product functionality. Write the full phrase, do not shorten.  ",✅  Ask natural language queries with Ask Sigma.,❌  Use Ask to query with natural language.,Added 12/11 to match terms list in Sigma,true,,,2026-03-24 16:26:36,2025-12-11 13:46:57,margot.merrill@sigmacomputing.com
+Build (license tier),Approved,"License tiers are used for billing purposes and are assigned to account types based on the enabled permissions. The Build tier allows users to model, transform, and build, as well as manage system administration.","Different than “account type”, do not use interchangeably
+If you have to use a noun, use “license tier”, not “license type” (to avoid confusion with “account type”. Ideally, write around having to use a noun.
+Do not say “user account level” or “user roles”","✅ Build is a license tier for data architects, BI analysts, and report builders who model, transform, and analyze data.","❌ “""Build is the highest license type.”","Do not translate ""Build"" when referring to a license tier",true,,,2026-03-09 14:12:40,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Condition modal,Approved,The modal that contains the action condition configurations. This is displayed when a user adds a condition to an action sequence or selects an existing one. The word “Condition” appears in the modal header. ,"
+Bold, uppercase “Condition”","✅ “In the Condition modal, select Custom formula, then enter a formula.”", ,Question about the bold throughout guidelines since in our UI content guidelines we say not to use bold. To be discussed.,,,,2025-12-17 12:27:02,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Drill Anywhere,Do not use,Do not use. See “drill down”., , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Dropdown (actions vs. navigations vs. field),Approved,To come, , , ,,,,,2025-12-05 14:25:51,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Essential,Limited use,"Middle license tier suitable for users who need to dive into workbooks but not build them themselves
+
+(We are transitioning away from this license starting March/April 2025, this page will be updated with new license details soon)", , , ,,,,,2026-03-09 14:07:42,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Home,Approved,The Sigma home page accessible by the crane icon,"
+Capitalized and bolded when referring to Sigma home
+If referring to custom home pages, do not use this styling (see “home page”)",✅ “Go to Home”.,❌ “Go to your Sigma home page.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+ID,Approved,Abbreviated version of identifier,"
+Capitalize fully (ID) unless matching a code block, then camel case is acceptable. Should never be fully lowercase (id). ","✅ ""You can identify a connection ID from the individual connection’s page in Sigma.""","❌ ""The endpoints in the Sigma API require a unique identifier (id) for a target object.”",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Inserted-Row-Id variable ,Approved,"An action variable that represents the system-generated row ID for a new row added during the execution of an Insert row action.
+The Inserted-Row-Id variable is only available when configuring an action that meets the following criteria:
+The action sets a value (e.g., Set control value, Insert row, Update row, or Set dynamic value).
+The action follows an Insert row action in the same sequence.
+Formula syntax: [Inserted-Row-Id]","
+Use Inserted-Row-Id with code formatting when referencing the variable by name.
+Use [Inserted-Row-Id] with square brackets when referencing the syntax.",✅ “Sigma stores the added row’s system-generated ID in the Inserted-Row-Id variable.”, ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Lite,Limited use,"Lowest license tier suitable for report consumers that only need to access already prepared documents
+
+(We are transitioning away from this license starting March/April 2025, this page will be updated with new license details soon)", , , ,,,,,2026-03-09 14:07:42,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+OK,Approved,"Use instead of “Ok”, “Okay”, and other variations.", , , ,,,,,2025-12-05 14:23:45,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Pro,Approved,"Highest license tier offering full range of Sigma features
+
+(We are transitioning away from this license starting March/April 2025, this page will be updated with new license details soon)", , , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Repeated container,Approved,The layout element that generates one card per row in a data source.,"Use ""repeated container"" to describe the element. Use ""repeated container card"" to describe the individual layouts in the repeated container.","""Use repeated containers to define a layout that repeats for each row in a data source.""","""Use a repeater to define a layout that repeats for each row in a data source.""","The repeated container is the formal term for the layout element sometimes called a ""Repeater"". We should not use the term ""Repeater""",false,"[
+  ""Data apps""
+]",,2026-03-24 16:26:36,2026-03-23 10:24:14,margot.merrill@sigmacomputing.com
+Selection variable  ,Approved,"An action variable that represents the tabular value at the intersection of the row a user selects and a specified column. 
+The Selection variable, available when configuring action or action condition, retrieves the values from user-selected rows in a table, pivot table, or input table. It can also retrieve the row values represented by user-selected data points in a chart.
+Formula syntax: [Selection/]","
+Use Selection with code formatting when referencing the variable by name.
+Use [Selection/] with square brackets when referencing the syntax.","✅ “When user interaction with a table triggers an action, you can use the Selection variable to represent the value in the user-selected row for a specified column.”
+ ", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Sigma,Approved,"The product that Sigma Computing offers, used in all non-legal contexts in the documentation.","
+Use Sigma by itself to refer to the product, with the exception of documentation that legal specifies needs formal treatment in a legal review. Use “the Sigma service” for formal legal statements.
+Can be used to modify other nouns: the Sigma UI, your Sigma organization, the Sigma team, Sigma users, etc. ","✅ ""Sigma lists your selection under Person or team with access.""
+✅ “The identifier should be identical to its corresponding account type in Sigma.”
+✅ “Grant other Sigma users access to a Sigma document.""", ,"12/17 added ""do not translate"" checkbok",true,,,2025-12-17 12:29:24,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Sigma Account Executive,Approved,The Sigma account manager assigned to a customer ,"
+Use “Sigma Account Executive” on first mention, then can be shortened to “Account Executive”
+Use “Sales team” only when a customer hasn’t been assigned an AE",✅ “Contact your Sigma Account Executive”. ,❌ “Request access to this feature through your Account Representative/account manager.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Sigma Assistant,Approved,"Sigma Assistant refers to all of our AI features. It replaces ""Ask Sigma"" and ""AI Builder."" ",Refer to Sigma Assistant (capitalized as a proper noun) when first introducing our AI features. Note that assistant isn't capitalized unless we're referring to the full branded feature name.,✅ Sigma Assistant is an AI assistant that helps you turn your data into apps and insights.,❌ “Sigma Assistant is an Assistant that's powered by AI.”,New approved name for Sigma's AI features,true,"[
+  ""AI Builder""
+]",,2026-03-24 16:26:36,2026-03-02 15:49:42,margot.merrill@sigmacomputing.com
+Sigma Computing,Approved,The company,"
+When referring to the company, always use “Sigma Computing” and never “Sigma” on its own. ",✅ “Sigma Computing makes some features available in Beta releases.”,❌ “Sigma makes some features available in Beta releases.”,"12/17 added ""do not translate"" checkbok",true,,,2025-12-17 12:29:24,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Sigma REST API,Approved,The public API that allows developers to programmatically interact with Sigma analytics,"
+Use “Sigma REST API” the first time it is referred to on a page, then you can shorten to “the Sigma API” or “the API”","✅ ""The Sigma REST API lets you programmatically administer and interact with the powerful analytics in Sigma.""",❌ “The Sigma Rest Api provides developer access to resources.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Sigma organization,Approved,A specific instance of Sigma ,"
+Do not use “deployment”, “instance” or “account” in place of this.","✅ “A Sigma organization running on Azure.”
+✅ “Use the email address you use to sign in to Sigma/your Sigma organization.”","❌ “A Sigma deployment connected to Snowflake.”
+❌ “Use the email address associated with your Sigma account.”",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+Stored-Procedure-Result variable ,Approved,"An action variable that represents the scalar value returned during the execution of a Call stored procedure action. 
+The Stored-Procedure-Result variable is only available when configuring an action that meets the following criteria:
+The action sets a value (e.g., Set control value, Insert row, and Update row).
+The action follows a Call stored procedure action in the same sequence. If the stored procedure doesn’t return a value, the variable is not available.
+Formula syntax: [Stored-Procedure-Result]","
+Use Stored-Procedure-Result with code formatting when referencing the variable by name.
+Use [Stored-Procedure-Result] with square brackets when referencing the syntax.",✅ “Actions use the Stored-Procedure-Result variable to reference scalar data returned by a stored procedure.”, ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+View (license tier),Approved,License tiers are used for billing purposes and are assigned to account types based on the enabled permissions. View license tier is designed for report consumers needing access to prepared data and baseline interactions.,"Different than “account type”, do not use interchangeably
+If you have to use a noun, use “license tier”, not “license type” (to avoid confusion with “account type”. Ideally, write around having to use a noun.
+Do not say “user account level” or “user roles”",The View license tier is suitable for report consumers who need access to prepared data and insights with baseline interactions.,❌ “View is the lowest license type.”,"Do not translate ""View"" when referring to a license tier",true,,,2026-03-09 14:07:42,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"WRITE privileges, WRITE permissions (or variations of these)",In discussion,A data platform’s access control that enables an account or a role to write data into that platform. ,"Use when referring to the specific permission, capability, privilege defined by the data platform.
+Always match the style and phrasing used by the data platform. ", , ,Need to define when to use permissions vs priviledges,,,,2025-12-17 11:49:46,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+access,Approved,"Used for document/folder access and for data permissions (e.g. “connection access”, “data access”, “connection-level access”). 
+Not to be used for account type permissions (see “permission”) or data entry permissions. ","
+Besides in the API documentation, try and use “access” in place of grant (e.g. say “user with access” instead of ”grantee” 
+Don’t use “privileges” unless referring to a third-party platform (e.g. Snowflake uses “privileges”)",✅ “You need Can view access to the workbook to …”,❌ “Only users with Can edit permission to a workbook can…”,,false,,,2025-12-05 14:22:07,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+account type,Approved,Account types determine the actual permissions and access users are granted ,"
+License and account type are not interchangeable, do not treat as such (Permissions enabled for an account type determine which license tier is assigned to it)
+Avoid conflating with “user type” ", , ,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+action ,Approved,"User-defined interactivity, configured within or across workbook elements, that automates responses to specific user interactions. 
+An individual action consists of the following:
+A trigger configured on the trigger element.
+An effect, which can be applied to a target element. (Effects don’t always impact workbook elements.)","Use when referring collectively to a specific trigger and its corresponding effect. 
+Don’t use “action” to describe specifically the response (action effect) to the trigger.
+If possible, avoid using “action” in a general sense that’s not in the context of the action feature. 
+
+Sigma ""runs"" sequences. Sequences ""execute"" actions. Don't use ""run"" with actions.","✅ “Actions support dynamic cross-element filtering, which enables user interactions with one element to filter the data of other elements in the same workbook.”
+
+✅ ""The sequence will execute the actions in the order listed""","❌ “Update the control to trigger an action on a chart.”
+
+❌ ""You can control whether keyboard navigation can trigger sequences to run actions.""",,,,,2026-03-02 15:38:10,2025-12-04 16:35:55,alyssa.tsuno@sigmacomputing.com
+action variable  ,Approved,"A variable that is available to use in formulas when configuring an action or (in some cases) action condition. 
+An action variable represents a transient value that’s 1) generated during the execution of an action sequence, and 2) only available during that particular sequence. Two sequences cannot share the same action variable.
+See Selection variable, Stored-Procedure-Result variable, and Inserted-Row-Id variable.","
+Use to describe the type of transient data or to collectively refer to the available action variables.",✅ “Action variables represent values generated during the execution of an action sequence.”, ,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+admin portal,Do not use,Do not use. See “Administration portal” or “Administration”., , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+admins,Approved,Can be used for a shorter way of referring to people who are assigned the Admin account type. ,"
+Do not use “administrator” or “non-admin”.
+Use in generic sense, not use to replace the account type. ",✅ “If you want admins to be able to configure…”,❌ Saying “You must be an admin.” instead of “You must be assigned assigned the Admin account type”. ,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+badge,Approved,"A label that can be added to a workbook, dataset, or data model to indicate status or quality.","
+Do not use as a verb or adjective.
+Can be qualified to provide more context.
+Do not refer to a badge type."," “Set certification badges (endorsed, warning, and deprecated) on workbooks and data models…”
+“The ability to set or delete a badge requires the following”", “Badge a dataset or workbook”,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+bookmark,Do not use,A saved version of a customized/explored workbook,Do not use. This term has been replaced by “saved view”., ," “Save the explored state of your workbook as a bookmark.”
+“Share a bookmarked version of the workbook with others.”",,,,,2026-01-31 17:05:58,2025-12-04 16:35:55,estella@sigmacomputing.com
+calculated column,Approved,Column of data that has been generated from a user-defined formula or lookup,"
+Don’t use “computed column” instead of this",✅ “You can add a calculated column to a table using any of the Sigma functions.”, “You can add a computed column to a table…”,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+chart,Approved,"Categorical term for graphical data elements available in Sigma (e.g. bar chart, pie chart). ","
+This was formerly known as “visualization”, do not use this term going forward in most instances (see “visualization”). The product may not be fully caught up with this change yet and instances of “visualization” may still appear. ",✅ “Add a chart to your workbook.”,❌ “Add a bar visualization to your workbook.”,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+child element,Approved,"An element in a workbook that references another element (parent element) as its data source. 
+The parent-child relationship occurs when a new element is created directly from an existing element (via the Create child element feature), or when an element is manually selected as another element’s data source.","
+Do not use “dependent element” in place of this
+To be paired with “parent element”, not “source element”",✅ “Refreshing a parent element also refreshes all child elements in the workbook.”,❌ “Dependent elements are created from source elements.”,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+cloud data warehouse,Do not use,Do not use. See “data platform.”, , , ,,,,,2025-12-05 14:22:44,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+column,Approved,"Table column, list of values displayed vertically in the table. Data is managed at the column, not cell, level in Sigma. ","
+See also: source column, calculated column, data entry column, row edit history column, system column. ",✅ “Managing data at the column level ensures consistency and accuracy.”, ,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+columns list,Approved,List of columns shown in the editor panel for a data element in a workbook or data model.,"
+Can also use “list of columns”.
+ "," “Select the table, then locate the columns list in the editor panel.”", “In the column shelf…”,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"condition 
+(also “action condition”)",Approved,A rule that must be met for an action sequence to execute.,"
+If possible, avoid using “condition” in a general sense that’s not in the context of the action feature
+Use “action condition” for the initial use of the term in a paragraph. For subsequent use, use “action condition” or “condition” (whichever works best for clarity and brevity). ","✅ “The condition can be a custom formula or, if you are configuring an action for a control, the condition can be the value of the control.”", ,,,,,2025-12-05 14:22:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+connection,Approved,The configuration that allows Sigma to get and (optionally) write data to the customer’s data platform. ,"
+Use by itself whenever possible, rather than adding unnecessary adjectives like “data connection”, “warehouse connection”, or “platform connection”.
+When speaking of user access to connections, use the word access and not permission.","✅ “You must have access to at least one connection in your organization.""
+✅ “A single Sigma organization can have many connections, each configured with different levels of access, to be shared with members or teams.""
+✅ ""Set up a connection to swap to for a specific version of the workbook.""","❌ “You must have connection-level permissions on a connection with write access.”
+❌ ""Select your new warehouse connection from the left hand navigation panel.""",,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+connection path,Approved,"The connection path is a list of strings that represents the path to the table in the data platform. For example, [""database"", ""schema"", ""table""].",Use only when referring to the fully-qualified path to a table. ,✅ “The connection path to a Snowflake table uses the format DATABASE.SCHEMA.TABLE.”, ,,,,,2025-12-05 14:24:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+connection type,Do not use,Do not use. See “data platform”., , , ,,,,,2025-12-05 14:22:02,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+connector,Approved,"A line connecting two items in a visualization, such as a waterfall chart. ","Use only when referring to the visual line that connects two items. 
+Do not use in the sense that Marketing uses this term, to refer to connections to data platforms.","✅ “Select the Show connector line checkbox to show a line connecting the values on the waterfall chart.""","❌ “Instantly connect to leading cloud data platforms with built-in, code-free connectors for streamlined workflows.” (This is acceptable for Marketing only, not for documentation.)",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+container,Approved,The element you can use to organize other elements,Do not use in the generic sense to avoid confusion,✅ “Add containers to your workbook pages to organize elements on the canvas and visually group elements together.”,❌ “A single data model serves as a container for a collection of reusable elements.”,,,,,2025-12-11 15:47:52,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+control,Limited use,Shorthand for a control element.,"• Use sparingly
+• Often pluralized"," “You can add controls to your workbook to filter data.”
+ “Add a list values control to your workbook page.”", ,,,,,2025-12-11 15:47:52,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+control ID,Approved,The unique identifier for a control element.,Do not lowercase ID.," ""You can find the control ID in the Settings panel for a control.”", “Update the control id.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+control element,Approved,An element type that can be used for filtering data or to support various data app workflows with inputs and outputs., , “Add a text input control element to provide a dynamic input for the argument of a stored procedure action.”, ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+custom view,Approved,"A customized or personalized view created on top of the published version or a tagged version of a workbook. 
+A custom view is automatically created and stored when a user user with permission (and access) to do so interacts with the workbook version or clicks Customize this view. 
+Formerly known as the explored state of a workbook, or a workbook explore.",Avoid terminology that uses the verb customize with the phrase “custom view”.," “Create and interact with custom views”
+“Make more changes while in a custom view”", Customize with a custom view,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+data connection,Do not use,Do not use. See “connection” or “data source” depending on meaning. , , , ,,,,,2025-12-05 14:22:51,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+data entry column,Approved,Column in an input table that allows you to enter data at the cell level,"
+Only use when talking about input tables", Data entry column: Supports direct user input at the individual cell level., “Add a data entry column to your pivot table.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+data model,Approved,The feature that provides the framework for creating and managing a collection of reusable data source elements,"
+Lowercase unless referring to product UI","✅ “To create a data model, do the following…”","❌ “To create a Data Model, do the following…”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+data platform,Approved,The service or solution that customers use to store data and make it available to products like Sigma. ,"
+Use this instead of “cloud data warehouse” because it is a more universal way of referring to the data storage services we support with our connections. ","✅ ""You must have the necessary permissions in your data platform.”
+✅ “Each data platform has a unique database structure and permissions model.”","Do not use these alternatives:
+❌ cloud data warehouse (CDW)
+❌ CDW
+❌ connection type
+❌ data warehouse
+❌ data store
+❌ database management system (DBMS)",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+data source,Approved,The source of the data used to drive analysis. Data sources can be tables from a data platform or other elements in a workbook (called parent elements).,"
+Use when referring to the upstream source of an element’s data.
+Do not use when you mean data platform. ","✅ ""You can use an element in a workbook as a data source for another element. "" 
+✅ ""You can reuse metrics across data elements that share a data source (dataset or database table).""",❌ “Set up a connection to your data source.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+database object,Approved,Object in database used to store or reference data,"
+Only use “object” when referring to database objects"," In Snowflake, you might need to grant usage privileges to the relevant database objects.", ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+database table,Approved,"A table from a connected data platform, usable as a data source and can be selected in the UI from Data > Table > Tables and Datasets.","
+Can be written around (e.g. “Table in your data platform), but use “database table” when referring to it appearing in the Sigma data catalog or connection explorer","✅ “Model data from your database tables”
+ “…when viewing the lineage of a data model using the database table as a data source.”", “Using the database table in your workbook…”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+dataset,Approved,The document type (will be deprecated once data models reach feature parity),"
+One word, lowercase (unless referring to specific UI)
+When referring to a generic collection of data (not the feature), write around it (e.g. “set of data”)",✅ “Create a new dataset.”,"❌ “Create a new Data Set”.
+❌ “This dataset of 25,000 points is about birds”.",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+dataset parameter,Approved,The way to filter a dataset. Can be a target from a control element in a workbook.,"
+Always refer to “dataset parameter”, do not shorten to just “parameter”.", “Add a dataset parameter as a target of the control.”, “Target a parameter in a dataset from your workbook.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+dataset warehouse view,Approved,A warehouse view of a dataset. ,"
+Specify dataset warehouse view when making a distinction from workbook warehouse views. Otherwise, drop the word dataset. ","✅ “To reference a dataset warehouse view in a SQL query, use the view path.”", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+deployment,Approved,"For multitenancy, the jobs that are run to deploy documents and other changes to a tenant organization.","
+Do not refer to a deployment job."," “Check the status of the deployment”
+ “Review deployment history”"," “Check the status of the deployment job.”
+ “Manage deployment jobs”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+deployment policy,Approved,"For multitenancy, the specification for who, what, and how to send documents to a tenant organization. ","
+Always use as “deployment policy”."," “Define a deployment policy…”
+ “After publishing, the document or its changes are deployed to tenant organizations according to the deployment policy.”"," “Define a deployment…”
+ “Set up a policy to define what to deploy…”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+directive,Submitted,The flag used alongside dynamic content in a custom SQL query to inform the compiler how to read the query content.,"Refer to the directive as ""the ____ directive"", not by its full syntax, e.g. ""You can set a dynamic alias for a column in a custom SQL query using the #identifier directive.""",,,"In a Custom SQL query, inserting dynamic content via {{[content]}} syntax sometimes requires a directive, for example {{#formula CurrentUserEmail()}} uses the formula directive.",false,"[
+  ""Connections + Data sources""
+]",,2026-04-01 10:50:38,2026-04-01 10:50:38,ben.harris@sigmacomputing.com
+document,Approved,"A Sigma data model, workbook, or dataset (does not include warehouse views) ","
+Lowercase unless indicated otherwise in the UI",✅ “A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.”,❌ “Warehouse views are a type of Sigma Document.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+document toolbar,Submitted,The row of icon buttons displayed between the document header and canvas. Can also contain the formula bar.,,,,none,false,,,2026-03-02 15:20:03,2026-03-02 15:20:03,alyssa.tsuno@sigmacomputing.com
+draft,Approved,"The editable state of a document like a workbook or a data model.
+When a user is editing, they are interacting with the draft.",Avoid modifying draft whenever possible. ," “Restore a draft to a previous change or version”
+“Open the workbook for editing and make changes to the draft.”"," “When the workbook is in a draft state…”
+“Publish the draft version of the workbook.”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+draft state,Do not use,Do not use. See draft., , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+draft version,Do not use,Do not use. See draft and version., , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+drill down,Approved,"Refers to the ""drill down""… feature in workbooks for specific columns of data ","
+Say “drill down” or “drill down into”
+Don’t create new names, e.g. “Drill Anywhere feature”",✅ “You can drill down into a column for more information.”,❌ “Use the Drill Anywhere feature to explore visualizations.”,,,,,2025-12-18 09:41:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+edit history,Approved,"The specific edits made to the draft or a version, visible in the version history. A more granular view within the version history.",Use only to refer to the list of edits for a specific version or the draft in the version history. , “You can restore your workbook draft to a specific change in the edit history for a version or draft”, “Review the edit history for the workbook.” ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"effect 
+(also “action effect”)",Approved,"The defined response to a user interaction in a configured action.
+Effects can be applied to target elements, but they can also have no impact on elements. For example, actions that open links, navigate a workbook, or export data.","
+Use specifically when referencing the outcome of an action relative to the target element, modal, destination, plugin, etc.
+Use “action effect” for the initial use of the term in a paragraph. For subsequent use, use “action effect” or “effect” (whichever works best for clarity and brevity). ",✅ “An individual action consists of a trigger and an effect.”, ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+element,Approved,"Data elements, UI elements and control elements that are created in a workbook","
+These used to be “cards” - do not use this terminology. 
+Lowercase unless matching UI (e.g. “Element style”)","✅ “There are three element types: data elements, UI elements, and control elements.”",N/A,,,,,2025-12-05 14:25:09,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+element menu,Submitted,The dropdown that opens when you click More (three dot icon) in the element toolbar.,"Don't use More menu, kebab, three dot menu, etc.",,,none,false,,,2026-03-02 15:14:14,2026-03-02 15:14:14,alyssa.tsuno@sigmacomputing.com
+element toolbar,Submitted,The row of icon buttons floating in the upper-right corner of an element.,"Don't use element menu, crumb, bar, etc.",,,none,false,,,2026-03-02 15:12:18,2026-03-02 15:12:18,alyssa.tsuno@sigmacomputing.com
+embed,Approved,"Noun: Asset in Sigma that has been configured to appear inside a host application. 
+Verb: The act of causing the Sigma asset to display inside a host application. ","
+Use as a noun or a verb. The noun form is a more informal way of referring to “embedded analytics”, a more formal term used primarily by marketing. We should avoid “embedded analytics” because it presupposes that it is an analytics dashboard
+An embed can be either a secure embed or a public embed. There is no such thing as a “JWT embed”. ","✅ As a noun: “Apply dynamic connection and role switching to embeds.""
+✅ As a verb: “Before you can embed Sigma content into a host application…”",❌ “Convert your secure embed to a JWT embed.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embed API,Approved,The server-side API the customer developers create to enable their host application to embed Sigma content. ,"
+Do not hyphenate or capitalize.","✅ “Create a server-side API (embed API), then add it to the host application to generate a secure embed URL at runtime.""",❌ “Create an embed-API.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embed element,Approved,The Sigma element that you can add in a workbook to embed content from outside Sigma into a workbook. ,"
+Use only when referring to the workbook element, never when referring to embedding content from Sigma in a host application. ","✅ “An embed element adds a webpage, video, or other Sigma workbook to a page.”",❌ “Your end users access your embed element in your host application.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embed sandbox,Approved,The page in Sigma where you can test an embed,"
+Lowercase. ","✅ “Sigma's embed sandbox environment allows you to test your embed URL before integrating the content into the host application.""", ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embed users,Approved,"One of three types of Sigma users (internal, guest, embed) referring to users who do not have a Sigma account but who are granted access to the embedded content via the host application. ","
+Avoid constructions that refer to the people who access embedded content as “embed users” unless you are specifically referring to the embed user type. ",✅ “Sigma automatically creates embed users and assigns them to the team you specify in the teams claim.”,"❌ “Sigma automatically creates Embed users.”
+❌ “Sigma automatically creates embedded users.”
+❌ “Sigma automatically creates embedding users.”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embedded,Approved,Adjective. “Embedded content” or “embedded workbook” is another way of referring to “an embed”.,"
+Do not use as an adjective for users. Use “embed users” instead.",✅ “A JavaScript inbound event can enable the embedded Sigma content to display different information.”,❌ “Sigma automatically creates embedded users.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+embedding,Approved,"Gerund, noun, noun modifier. Refers to the functionality that Sigma offers that allows customers to embed Sigma content into their own applications. ","
+There are two supported types of embedding: secure embedding and public embedding. 
+JWT is NOT a distinct type of embedding. You can sign URLs for secure embeds with JWTs. ","✅ ""Sigma supports two embedding methods: public and secure.""
+✅ “Secure embedding using JSON web tokens (JWTs) offers more flexibility.”
+✅ “Secure embedding must be enabled for your organization.”",❌ “Migrate to JWT embedding”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+exploration,Approved,An unsaved or unpublished workbook.,"
+Do not use to refer to a custom view or exploring happening on a published workbook.", “Reopen an exploration to continue your ad hoc data analysis.”, “Click (icon) to open an exploration on your workbook.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"explore state (also exploration state, explored state)",Do not use,"Do not use. Instead, refer to a custom view. ""Explore(d)"" can be used as a verb for actions taken by users, but not to define the state pf a workbook. ", ," “In the custom view of the workbook…”
+“Save a custom view”", “Save the explored state of a workbook as a bookmark”,"Updated 12/17/25 to remove the reference to ""explored workbook"" as an example to avoid confusion.",,,,2025-12-17 12:02:37,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+external users,Approved,Generic way to refer to embed and guest users collectively. ,"
+Not interchangeable with “guest user”. Only use when referring to guest and embed collectively. ", , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+file,Approved,"Category that can include most Sigma “things” - folders, documents, datasets, shortcuts and more.","
+In the API reference documentation, use “file” instead of “inode”. 
+Use “files” instead of “items” ","✅ “List member files: List all documents and folders accessible to a specific user.""",❌ “Use search to locate items in Sigma.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+filter,Approved,"A filter on a data element, and the verb to filter something.","
+Lowercase unless indicated otherwise in the UI.", “Add a filter to show only data matching the conditions.”, “Add a Boolean Filter to exclude True data values.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+folder,Approved,Contains documents and can be shared with other users,"
+Lowercase unless indicated otherwise in the UI","✅ ""You can categorize and share documents with people using folders.",N/A,,,,,2025-12-05 14:25:09,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+fully qualified path,Approved,"An absolute, exact path that is not relative (to the current directory). ","
+Include the database, schema and table, not just part of this path (e.g. not just schema.table). 
+Don’t use the term “less-specific path” to refer to a path that isn’t fully qualified (only applicable for Redshift). Write around the term.","✅ ""This endpoint returns details about the fully qualified path to an object in a specific connection by connection ID.""","❌ ""For Amazon Redshift, you can specify SCHEMA.TABLE or a less-specific path.”",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+grant,Approved,"In the context of the API, refers to the access that has been granted on a specific document or connection. Grants have an ID and need to be referred to with a noun (e.g. “grant object”).","
+Only use in API docs, not elsewhere in our documentation
+Update in the UI when possible to something else (e.g. “Grantee” to “User with access”)", , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+group,Approved,"The generic sense of group (noun, as things classed together, or verb, to classify in a group). ","
+Do not confuse with column groupings (see grouping).","✅ ""Teams allow you to create user groups in Sigma.""",❌ “Create column groups to aggregate calculations.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+grouped,Approved,"Can be used as the past tense of the generic “group”, or when describing columns that have been placed in groupings. ", ,"✅ “This action cannot be applied to grouped columns.""", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+grouping,Approved,"The data table structure that groups column rows that share a distinct column value that you specify, and allowing you to aggregate calculations based on those groups. ","
+Do not confuse with group in the generic sense (see group). ",✅ “You can use any column in a table to define a grouping and you can define multiple groupings.”,❌ “Sigma table groups give you access to a wide library of calculations.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+grouping level,Approved,Column groupings can be hierarchical - this refers to one level in such a hierarchy.,"
+Do not use “group level”.","✅ “To materialize multiple grouping levels, select Add Element and add the element for each additional grouping level.”", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+guest user,Approved,"Optional account type that admins can set up and provides limited permissions (e.g. cannot request document access, cannot access developer API, can only access content in admin-specified teams), recommended when working with external vendors.","
+Not interchangeable with “external user”.", , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+hierarchy,Approved,The feature that allows you to structure or organize columns categorically and define the order of data granularity.,"
+Lowercase unless in UI or referring to the function.",✅ “You can rename a hierarchy or delete it altogether”.,❌ “Sigma allows you to create Hierarchies.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+home page,Approved,Workbooks that have been designated as custom home pages for an organization,"
+Lowercase, two words.",✅ “Enable a custom home page.”,❌ “The first page of the workbook becomes the custom homepage.”,,,,,2025-12-05 14:23:17,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+host application,Approved,The application owned by a customer in which Sigma is embedded., , “when a user clicks an object in the host application”," “Embed Sigma in the parent application”
+ “When a user clicks something in the native application, an event is emitted.” ",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+iframe,Approved,The inline frame used to embed content in a host application.,"
+Use the all lowercase form.","✅ ""Use CSS to set a fixed iframe height that displays most or all of the embedded content, regardless of screen size.""","❌ ""Any iFrame-enabled URL can be embedded. """,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+inode,Do not use,Use “file” instead for API documentation., , , ,,,,,2025-12-05 14:23:40,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+input table,Approved,"Workbook element that supports data entry. Sigma supports 3 types: empty input tables, CSV input tables, and linked input tables.", , , ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+integration,Approved,Something that facilitates interoperability between two distinct systems or services. ,"Use in the generic sense, or when referring to named integrations such as the Slack integration or dbt integration. 
+Do not use when referring to methods of combining two sources of data in Sigma.","✅ ""To configure and manage a dbt integration, you must be assigned the Admin account type.”","❌ “Sigma creates default element titles that reflect the data source (database table name, CSV filename, or parent element) or type of data integration (custom SQL, join, or union).”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+internal user,Approved,Refers to non-guest and non-embed users.,"
+The opposite of this is not necessarily “external users”. See “external users” and “guest users”. ", , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+license,Approved,"License tiers are used for billing purposes and are assigned to account types based on the enabled permissions.
+Tiers prior to March/April '25: Lite, Pro, Viewer
+Tiers beginning March/April '25: View, Act, Analyze, Build","
+Different to “account type”, do not use interchangeably
+If you have to use a noun, use “license tier”, not “license type” (to avoid confusion with “account type”. Ideally, write around having to use a noun.
+Do not say “user account level” or “user roles”
+Even older license types include “Creator, Viewer, Explorer” ", ,❌ “Lite-licensed member are the lowest license type.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+lifecycle state,Approved,"The state of a workbook in a lifecycle from draft, explore, published.","Do not use. Instead, refer to explorations, drafts, and published versions directly.", ," “Workbooks have three lifecycle states: explore, draft, and publish”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+live data,Approved,"Data that is not materialized.
+Do not use. Instead say “query the latest data” or similar.", , ," “If the materialization fails, the workbook uses live data.”",,,,,2025-12-05 14:25:03,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+materialization,Approved,A Sigma feature that uses write-back to create a table that is referenced instead of running a query to retrieve the latest data every time.,"
+Use as a noun (a materialization)
+Or as a modifier (materialized data).
+Or sparingly as a verb (materialize a grouping level)
+Do not use as a gerund (materializing)"," “You can set up materialization for data models, workbooks, and datasets.”
+“Schedule materialization for a table.”", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+materialization job,Approved,"When a scheduled materialization runs, the task that is run to perform materialization is referred to as a materialization job.", ," “To check the status of a materialization job, open the Admin portal.”", ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+materialization run,Do not use,Do not use. Use materialization job., , , “Each materialization run is shown in the Admin panel.”,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+materialization schedule,Approved,The schedule that manages when a data element or dataset will be materialized., , “Delete a materialization schedule.”, ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+member,Approved,User that is part of a Sigma team.,"
+Do not use interchangeably with “user”, only use when referring to someone as part of a team.
+Do not use other variants like “organization member” (say “user”), “inactive member” (say “inactive user”), etc.",✅ “Assign a user as a member of team A…”,❌ “Sigma members are able to…”,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+multitenancy,Approved,"In the industry, this refers to deploying multiple services on one host.
+In the context of Sigma, multitenancy applies to embedded analytics and allows a single customer to manage multiple Sigma organizations (tenants) through a parent organization. Tenants can be associated hierarchically or non-hierarchically and can share documents and other settings with each other.","
+Do not refer to as a feature."," “Sigma offers multitenancy support for companies with multiple business units or that require separate organizations.”
+ "," “The Sigma multitenancy feature links organizations together.”
+ “Enable multitenancy to support multiple organizations.”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+navigation menu,Approved,The left side panel on the homepage, , , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+organization,Approved,"An instance of Sigma, usually associated with a specific customer. What someone logs in to. ","
+Do not use “org”.
+Do not use “organization” and “tenant” interchangeably. ", Log in to your Sigma organization., Log in to your Sigma deployment.,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+organization slug,Approved,A portion of the URL that uniquely identifies an organization.,"
+Do not use “org”
+Do not refer to a “slug” independently.
+Do not use “organization name”"," “In the URL, locate the organization slug.”", “Identify your org slug by…”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+owner,Approved,"User who owns a document/dataset.
+A document owner has the same access as an editor, but their access cannot be revoked.
+Usually the document creator, unless the creator has been deactivated or ownership has been transferred.","
+Don’t use “author” when referring to workbook owners.",✅ “Only the workbook owner can…”,❌ “You need to be the workbook author to…”,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+parameter,Approved,"A control ID referenced in a custom SQL statement, Python code, or formula to use the inputted value of the control.
+Also used to refer to “dataset parameters” (see entry).","
+Use sparingly
+Use with control values and references to control IDs whenever possible."," “Reference control values as parameters”
+“To reference a control value as a parameter, use the control ID.”"," “Add a parameter to your workbook.”
+“Use a control element as a parameter.”",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+parent element ,Approved,"An element in a workbook or data model that is the data source for one or more other elements (child elements). 
+The parent-child relationship occurs when a new element is created directly from an existing element (via the Create child element feature), or when an element is manually selected as another element’s data source.","
+To be paired with “child element” 
+Do not use in place of or in conjunction with “source element” (which is for linked input tables)",✅ “Child elements inherit all hierarchies defined in a parent element.”,"❌ “We call the source element the parent, and the element using the data the child.”",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+permission,Approved,"Permissions are the line items that are enabled in account types, or data entry permissions (for input tables). 
+Do not use interchangeably with “access” (to be used for document/folders or data/connections). ","
+Don’t use “privileges” unless referring to a third-party platform (e.g. Snowflake uses “privileges”)","✅ ""You must be assigned an account type with the Can create, edit, and publish workbooks permission enabled."" 
+✅ ""This document explains how to edit input table data in existing columns based on the element’s data entry permission."" ",❌ “If you only have permission to write to one connection or one write-back schema…”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+protected tag,Approved,A type of version tag that an admin can create that requires approval to be set on a workbook.,Use only when referring to the type of tag.," “To use a protected tag, the user must…”", “To protect a version tag…”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+public tag,Approved,A version tag type that an admin can create that anyone can set on a workbook.,Use only when referring to the type of tag.," “To use a public tag, the user must have Can edit…”", “To make a public version tag…”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+published state,Do not use,Do not use. Use published version., , , “Open the workbook in a published state”,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+published version,Approved,The version of a workbook created after clicking “Publish” is the published version. ,Can be modified with latest when referring to version history or multiple published versions.," “Open the published version of a workbook…”
+“Sigma exports the latest published version of a workbook.”
+“Restore a draft to a previously published version”", ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+role,Approved,The generic sense of role,"
+Do not invent new Sigma term with role, such as “user role”, “account role”, etc. ", , ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+row edit history column,In discussion,"Type of input table column that displays system-generated metadata about row edits (e.g. last updated at, last updated by)", , Row edit history column: Displays system-generated metadata related to row edits, ,,,,,2025-12-05 14:23:51,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+saved view,Approved,A saved (and named) custom view of a workbook. Formerly known as bookmarks.,"
+Avoid awkward phrases like “Save a saved view”.", Save a custom view of a workbook as a saved view.," Save a bookmark
+ Save a saved view of your workbook.",,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"sequence 
+(also “action sequence”)",Approved,A set of actions that execute in a specific order. ,"
+Clarify and differentiate between individual actions and a sequence of actions when settings, concepts, etc. apply to one or the other.
+Use “action sequence” for the initial use of the term in a paragraph. For subsequent use, use “action sequence” or “sequence” (whichever works best for clarity and brevity). 
+
+Sigma ""runs"" sequences. Sequences ""execute"" actions. Don't use ""execute"" with sequences.","✅ “Configure a condition to determine whether or not a sequence executes.”
+
+✅ ""Define the criteria that must be met for the sequence to run."""," ❌ ""Add a custom success alert that displays after a sequence executes.""",,,,,2026-03-02 15:38:10,2025-12-04 16:35:55,alyssa.tsuno@sigmacomputing.com
+shared view,Approved,A saved view that has been shared with other users in a Sigma organization.,Relevant when referring to the UI section.," Share a saved view with others.
+Access shared views of the workbook in the…", Share a shared view.,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+single row container,Submitted,The layout element that displays details from one row of data and can be updated dynamically to change which row is on display.,,,,"Do not use ""single row view"" or ""detail view"".",false,"[
+  ""Data apps""
+]",,2026-03-23 10:28:57,2026-03-23 10:28:57,ben.harris@sigmacomputing.com
+source column,Approved,A data column that is available to be added to a table but is not included by default. ,"
+Don’t use “data source column” in place of this",✅ “Add a source column to your table.”, “Add a data source column to your table.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+source element,Approved,The element acting as a data source for a linked input table ,"
+Only use in the context of linked input tables, do not use for dependent elements (use parent and child element instead)","✅ “Linked input table values are inherited from the source element.""",❌ “Refreshing the data in a source element also refreshes the data in the child element.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+system column,Approved,Type of CSV/empty input table column that displays system-generated metadata related to table components (e.g. row ID), , System column: Displays system-generated metadata related to table components, ,,,,,2025-12-05 14:23:55,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+table element ,Approved,"The workbook element, e.g. input table, table, pivot table","
+Can be used interchangeably with “table”"," “…if a bar chart element depends on a table element as a data source, deleting a column from the table element makes the column inaccessible to the bar chart element.”", If a bar chart depends on a Sigma table…,,,,,2025-12-05 14:24:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+tag,Approved,Shorthand for version tag. ,"Use when the term “version tag” has already been used in a topic.
+Use as a verb for applying a version tag."," “Set a tag on a workbook version.”
+“Tag a data model version.”", “Create a tag”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+target element ,Approved,A workbook element that’s modified or otherwise impacted in response to an action trigger. This response is referred to as the action effect.,"
+Use when describing an element that’s selected (in the Action modal) to be modified as the action effect. For example, the control element updated by a “set control value” action, or the modal opened by the “open modal” action.","✅ “…when a user clicks a data point in the trigger element, Sigma automatically applies a filter to the target element using the dimension value of the clicked data point.”", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+team,Approved,"User groups in Sigma, can be assigned by admins on the Teams page.", , , ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+team admins,Approved,Users in a team who can manage team members and edit team details.,"
+Lowercase unless referring to it in the UI", , ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+tenant,Approved,An organization that is linked to or associated with a parent/admin/management organization as part of multitenancy support.,"
+Shortened form of tenant organization.
+Use when it isn’t necessary to refer to the organization.", “Publish the workbook to deploy changes to tenants.”, “Configure a theme for a tenant.” (because that’s an organization setting),,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+tenant ID,Approved,"In the API, a unique identifier for a tenant organization.
+Different from an organization slug.","
+Do not use interchangeably with organization slug.", “Retrieve the tenant ID by calling the…”, “Locate the tenant ID in the URL…”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+tenant admin,Approved,An admin for a tenant organization that can only administer that particular tenant.,"
+Use only when referring to an admin of a tenant organization.
+Use admin when the fact that it’s a tenant is irrelevant.", , “Log in as a tenant admin…”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+tenant organization,Approved,See “tenant”,"
+Use when it’s necessary to clarify that a tenant is a tenant organization."," “Configure settings for your tenant organization.”
+ “Share documents with a tenant organization.”", “Share documents with a child organization”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+the Sigma service,Approved,"The product that Sigma Computing offers, used in formal contexts such as legal statements. ","
+Use in documentation that legal specifies needs formal treatment in a legal review.
+Use with “the” 
+Use in the singular
+Do not capitalize “service”
+Always capitalize “Sigma”",✅ “The latest experience in the Sigma service might differ from the contents of this document.”, ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+time zone,Submitted,,"Use ""time zone"" (two words). Don't use ""timezone""",,,"Product uses ""timezone"" in multiple locations (admin portal, scheduled actions, materializations, etc.)",false,,,2026-02-11 03:03:22,2026-02-11 03:02:42,alyssa.tsuno@sigmacomputing.com
+"trigger 
+(also “action trigger”)",Approved,"Noun: A user interaction with a specific element (the trigger element) that initiates the effect of one or more actions or sequences of actions.
+Verb: The act of initiating the effects of an action or sequence of actions.","
+Use the noun form when referring to a user interaction, like selecting a table cell, submitting a form, changing a control value, etc. The trigger is configured at the individual action sequence level but is not explicitly labeled as “trigger” in the UI. 
+Use the verb form to describe a user interaction that initiates the effect of an action or sequence of actions.
+Use “action trigger” for the initial use of the term in a paragraph. For subsequent use, use “action trigger” or “trigger” (whichever works best for clarity and brevity). 
+Don’t refer to the trigger element as the action trigger. The trigger is the specific user interaction with the trigger element.","✅ “Action triggers can be configured on most element types.”
+✅ “To trigger the action sequence when a user selects a cell in any column...”", ,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+trigger element,Approved,A workbook element on which an action is configured. User interaction with a trigger element initiates the effect of an action or action sequence.,"
+Use when describing the workbook element that a user interacts with to initiate the effect of an action or sequence of actions. This is the element that contains the configured action in the Actions panel.","✅ ""The following table lists the types of actions you can configure on a trigger element and describes the corresponding effect.""", ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+underlying data,Approved,The data table that is used for a chart/pivot table/etc. Can also be viewed when you select Maximize element.,"
+Do not say “underlying data table”",✅ “Select Maximize element to view the underlying data for your element.”,❌ “The underlying data table for your visualization…”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+user,Approved,Users are individuals with accounts in Sigma.,"
+Do not say “member” (unless referring to someone as part of a Sigma team) or “people”.
+Do not fabricate third-person titles (e.g. “editor”, “searcher”, “creator”, “deleter”)", ,❌ “Each Sigma member has different permissions based on account type.”,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+user attribute,Approved,"User metadata that can be set by admins, can be assigned as a function in a dataset for row/column level security.","
+Lowercase unless indicated otherwise in the UI", , ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+user type,Approved,"There are three user types: internal users, embed users, and guest users.","
+Do not call this “member type” instead
+Do not conflate with “account type”", , ,,,,,2025-12-05 14:24:00,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+version,Approved,A published or tagged instance of a workbook. Can refer to the latest published version or a previously published version. The version history lists all versions.,The workbook draft is not a version because it cannot be tagged or treated like other versions. ," “Sigma exports the latest published version of the workbook.”
+“Publish the workbook to make the draft available.”
+“In the version history, locate the workbook version that you want to tag.”", “In the draft version of the workbook”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+version entry,Approved,A specific version in the version history. ,Do not use. Use “version” instead., , “Locate the version entry in the version history”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+version history,Approved,The record of published versions in a workbook or data model.,"Use as a discrete term, don’t separate them."," “Open the version history for the workbook.”
+“Review the version history for the data model.”"," “In the changelog for the workbook”
+“In the workbook edit history”
+“In the history of versions…”",,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+version tag,Approved,A label that can be created that can then be added to a workbook or data model version. ,"
+Do not use “version tag” as a verb phrase. Instead, say “tag a version”."," “Create a version tag.”
+“Tag a workbook version.”", “Version tag a data model.”,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+visualization,Limited use,Do not use for most instances of graphical representation (see “chart”). ,"There may still be remaining instances of “visualization” in the UI as this is in the process of being changed. In those instances, assume it will be changed in the near future and use “chart”.", ,"❌ “Using the Explain visualization feature…”
+“To add a visualization…”",,,,,2025-12-05 14:24:57,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+warehouse table,Do not use,"Do not use. Instead, say “the table in the data platform.” ", , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+warehouse view,Approved,Warehouse views are virtual tables that Sigma saves to the customer’s data platform.,"
+Use warehouse view when not explicitly making a distinction between dataset warehouse views and workbook warehouse views. ","✅ “When you create a warehouse view for a materialized element, the view queries the element’s materialized underlying data table.”", ,,,,,2025-12-05 14:23:25,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+workbook warehouse view,Approved,A warehouse view of a workbook.,"
+Specify workbook warehouse view when making a distinction from dataset warehouse views. Otherwise, drop the word workbook. ",✅ “This document explains how to create and manage workbook warehouse views in Sigma.”, ,,,,,2025-12-05 14:25:23,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+write access,Approved,The ability to write back to the customer’s data platform. ,"
+Don’t hyphenate or use as an adjective. ",✅ “You can enable write access on your connection.”,❌ “Sigma offers several write-access features.”,,,,,2025-12-05 14:24:35,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+write schema,Do not use,Do not use. Use “write-back schema” instead., , , ,,,,,2025-12-05 14:24:45,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+"write-back, write back",Approved, ,"Use “write-back” as a noun or adjective.
+Use “write back” as a verb.
+Do not use “writeback” in any context.","✅ “Select a write-back schema.”
+✅ “Write access allows you to write back to the cloud.”","❌ “Select a writeback schema.”
+❌ “Write access allows you to writeback to the cloud.”",Let's seperate these as 2 related terms,,,,2025-12-17 12:52:30,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+write-to location,Do not use,Do not use. Use “write-back schema” instead., , , ,,,,,2025-12-05 14:24:54,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+writeback,Do not use,,"Use “write-back” as a noun or adjective.
+Use “write back” as a verb.
+Do not use “writeback” in any context.",,,,,,,2025-12-05 14:30:03,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:56,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:59,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-18 09:39:48,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-18 09:39:48,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:36,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:40,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:42,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:45,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:50,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:59,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:04,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 16:50:57,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:10,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:42:52,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:13,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:15,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:18,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:21,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:24,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:26,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:30,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:39,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:42,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:45,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-18 09:39:48,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:51,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:43:53,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:44:03,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-18 09:39:48,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:44:01,2025-12-04 16:35:55,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:27:29,2025-12-05 10:03:52,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 14:27:24,2025-12-05 14:27:24,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-05 16:50:57,2025-12-05 16:14:34,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-17 11:53:53,2025-12-17 11:53:53,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-17 12:02:37,2025-12-17 12:02:37,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2025-12-18 09:41:25,2025-12-18 09:41:25,margot.merrill@sigmacomputing.com
+,,,,,,,,,,2026-03-23 10:27:03,2026-03-23 10:27:03,ben.harris@sigmacomputing.com

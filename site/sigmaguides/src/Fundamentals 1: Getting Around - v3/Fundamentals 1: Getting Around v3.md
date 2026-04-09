@@ -6,52 +6,50 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2025-04-01
+lastUpdated: 2026-04-15
 
-# Fundamentals 01: Getting Around
+# Fundamentals 01: Overview
 <!-- -->
 
 ## Overview
 Duration: 6
 
-This QuickStart is part of a series designed to give new users an overview of Sigma, helping them quickly get up to speed and start leveraging its powerful capabilities.
+This QuickStart is part of a series designed to help new Sigma users get oriented and start working with the platform.
 
-The Fundamentals series of QuickStarts is tailored for a diverse audience with varying skill levels. To support this, we’ve included numerous links to additional resources. While you don’t need to read everything, feel free to explore topics that interest you.
+The Fundamentals series covers a broad range of topics at an introductory level. Each QuickStart includes links to deeper resources — follow what’s relevant to you.
 
-We understand that many users have experience with BI platforms. Since Sigma is designed for ease of use, these users may prefer to focus on learning its key differences.
-
-If you fall into that category, please review these summaries:
+If you’re coming from another BI platform, these community resources may help you get up to speed faster:
 
 [Sigma Differences From Other BI Tools Overview For New Sigma Creators](https://community.sigmacomputing.com/docs?topic=3285)
 
 [I am a Dashboard Builder New to Sigma. How Can I Quickly Get Up To Speed?](https://community.sigmacomputing.com/docs?topic=3650)
 
-[I am interested in data modeling in Sigma, see Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
+If you’re primarily interested in data modeling, start with [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0).
 
-Each QuickStart in the series will use sample data Sigma provides to all customers. We will be using sales data from our fictitious company **Plugs Electronics.** 
+Each QuickStart in the series uses sample data Sigma provides to all customers — sales data from our fictitious company **Plugs Electronics.**
 
 <aside class="positive">
-<strong>ABOUT THE SAMPLE DATABASE:</strong><br> Sigma provides a connection to sample data to all customers free of charge. Customer administrators may elect to disable this connection in the Administration > General Settings > Features section of the portal. If the sample data is not visible in your instance, check with your administrator. 
+<strong>ABOUT THE SAMPLE DATABASE:</strong><br> Sigma provides a connection to sample data to all customers free of charge. Administrators may disable this in Administration > General Settings > Features. If the sample data is not visible in your instance, check with your administrator.
 </aside>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. Sigma continuously adds and enhances functionality, but these differences won’t prevent you from completing the steps.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma’s product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases).
 
-If something is not working as you expect, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+If something isn’t working as expected, here’s how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support).
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+<strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes, so the latest product version may differ from what’s shown here.
 </aside>
 
 ### About Sigma
-Sigma is a front-end for your cloud data warehouse—an analytics platform for spreadsheets, interactive data apps, and more. It centralizes your data, eliminates silos, and replaces fragmented tools for various use cases within a governed environment. Additionally, Sigma enables businesses to monetize their data through embedding.
+Sigma is a front-end for your cloud data warehouse—an analytics platform for spreadsheets, interactive AI-enabled apps, and more. It centralizes your data, eliminates silos, and replaces fragmented tools for various use cases within a governed environment. Additionally, Sigma enables businesses to monetize their data through embedding Sigma in bespoke Saas applications.
 
-Many BI solutions exist, but Sigma stands out. Here’s why:
+Many solutions exist, but Sigma stands out. Here's why:
 
-Sigma is multi-modal, designed for users of all skill levels. Data engineers can write SQL, data scientists can use Python, and business users can work with spreadsheet functions. Want to build a data app? Sigma makes it easy.
+Sigma is multi-modal, designed for users of all skill levels. Data engineers can write SQL, data scientists can use Python, and business users can work with spreadsheet functions. Want to build a complex app workflow? Sigma makes it easy.
 
 It's also the only platform that lets users securely write back data—updating rows or columns without overwriting the warehouse.
 
@@ -61,13 +59,54 @@ For developers embedding Sigma in a larger platform, every feature is available�
 
 With full feature parity and no coding required, Sigma is the fastest, most flexible, and most powerful embedding tool on the market.
 
- ### Target Audience
-The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
+Many customers are already using Sigma to replace existing, purpose built SaaS applications.
+
+### Target Audience
+This QuickStart is designed for new Sigma users across three roles:
+
+- **Users** — analysts or report consumers who want to query and explore data, with or without AI
+- **Builders** — developers or analysts creating workbooks, dashboards, and apps
+- **Admins** — administrators evaluating Sigma’s governance, licensing, and operational capabilities
+
+### How QuickStarts are organized
+
+The [Sigma QuickStarts library](https://quickstarts.sigmacomputing.com/) contains over 100 guides organized into categories — Fundamentals, AI Apps, Administration, Embedding, and more. You don't need to complete them all. Use the categories to find what's relevant to your role and goals.
+
+The **Fundamentals series** (this one included) is the recommended starting point for anyone new to Sigma. It covers the core concepts and capabilities at an introductory level, with links to deeper resources along the way.
+
+After completing this QuickStart, here are suggested paths based on your role:
+
+**Users** — analysts, report consumers, and anyone exploring data:
+- [Fundamentals 2: Working with Data](https://quickstarts.sigmacomputing.com/guide/fundamentals_2_working_with_data/index.html)
+- [Fundamentals 3: Pivot Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals_3_pivot-tables/index.html)
+- [Fundamentals 5: Charts](https://quickstarts.sigmacomputing.com/guide/fundamentals_5_charts/index.html)
+- [Fundamentals 6: Controls](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls/index.html)
+
+**Builders** — developers and analysts creating workbooks, apps, and models:
+- All of the above, plus:
+- [Fundamentals 4: Input Tables](https://quickstarts.sigmacomputing.com/guide/fundamentals_4_input-tables/index.html)
+- [Fundamentals 7: Design Elements](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_design-elements/index.html)
+- [Fundamentals 9: Beyond the Basics](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond-the-basics/index.html)
+- [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html)
+- [AI Apps QuickStarts](https://quickstarts.sigmacomputing.com/?cat=dataapps)
+
+**Admins** — administrators managing users, connections, and governance:
+- [Fundamentals 8: Administration](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration/index.html)
+- [Administration QuickStarts](https://quickstarts.sigmacomputing.com/?cat=administration)
+
+**Developers** — engineers building embedded analytics or integrating Sigma via API:
+- [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html)
+- [Embedding QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding)
+- [Developer QuickStarts](https://quickstarts.sigmacomputing.com/?cat=developer)
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Not sure where to start? Complete this QuickStart first — it gives you enough context to know which path fits your role.
+</aside>
 
 ### Prerequisites
 <ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
+  <li>A computer with a current browser.</li>
+  <li>Access to a Sigma environment. A Sigma trial is acceptable and preferred for this series.</li>
 </ul>
 
 <aside class="positive">
@@ -75,7 +114,12 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 </aside>
 
 ### What You’ll Learn
-Through this QuickStart we will walk through how to access a Sigma trial environment, navigate the user interface, and so much more. 
+- How to set up a Sigma trial and navigate the user interface
+- Key Sigma terminology and how workbooks, pages, and elements relate to each other
+- How to create, save, and share a workbook
+- How to use Sigma Assistant for AI-powered analysis
+- How to organize content with pages, containers, modals, and other layout elements
+- How account types and scheduled exports work
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF OVERVIEW -->
@@ -85,17 +129,17 @@ Duration: 6
 
 If you don’t have a Sigma account yet, sign up for a free trial to follow along with QuickStarts.
  
-<button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+<button>[Try Sigma Free](https://www.sigmacomputing.com/go/free-trial)</button>
 
 Once on the trial setup page fill out the form and click `Start Trial`:
 
-<img src="assets/trial-landing-page.png" width="600"/>
+<img src="assets/trial-landing-page.png" width="700"/>
 
-Fill out the form and click `Start Trial`.
+Fill out the form, click `Start Trial` and confirm the CAPTCHA.
 
 You will receive notice that Sigma is sending an email invitation:
 
-<img src="assets/trial-landing-page1.png" width="500"/>
+<img src="assets/trial-landing-page1.png" width="700"/>
 
 In your email application, open the email from Sigma and click `Verify Email Address`:
 
@@ -123,7 +167,7 @@ Next create your user profile and click the `Create` button:
 
 <img src="assets/f1_3.png"  width="400"/>
 
-You are placed in Sigma and there is a `Trial Guide` to explore too.
+You are placed in Sigma and there is a `Trial guide` to explore too.
 
 Click `Hide` to close the trial guide:
 
@@ -145,81 +189,78 @@ If something is not working as you expect, here is how to [contact Sigma support
 ## Getting Around the UI
 Duration: 6
 
-On the homepage, click `Hide` to remove the trial guide.
+The Sigma homepage provides quick access to everything you need to get started.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Click the `Show guide` link anytime to display the trial guide later.
+<strong>NOTE:</strong> What you see on the homepage depends on your assigned account type. Users with fewer permissions will see a more limited set of options.
 </aside>
 
-The home page is logically organized for quick access to key features.
-
-<aside class="negative">
-<strong>NOTE:</strong> Other users will only see content/features as configured by their assigned "Account Type". 
-</aside>
-
-The main functions are numbered and described below:
+The main areas are numbered and described below:
 
 <img src="assets/f1_6.png" width="800"/>
 
-<img src="_shared_assets/1.png" width="25"/> **Papercrane:** If you want to get back to the home page from anywhere in the portal, just click the Sigma `Papercrane` logo in the upper left corner.
+**Top bar**
 
-<img src="_shared_assets/2.png" width="25"/> **Search:** You can click in the search bar at any point to search for content within Sigma.
+<img src="_shared_assets/1.png" width="25"/> **Sigma Logo:** Click the Sigma logo in the upper left to return to the homepage from anywhere in the portal.
 
-<img src="_shared_assets/3.png" width="25"/> **Create New:** Use this anytime you want to create new content.
-    <ul>
-      <li><strong>Workbook:</strong> our spreadsheet-like UI for analyzing data</li>
-      <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
-      <li><strong>Write SQL:</strong> allows you to write SQL to run against the data warehouse.</li>
-      <li><strong>Upload CSV:</strong> allows you to upload a CSV to the warehouse in order to perform analysis.</li>
-    </ul>
-     
-If at any time you notice an item labeled **BETA**, it means the feature is mature enough for all customers to evaluate while we finalize its release.
+<img src="_shared_assets/2.png" width="25"/> **Search:** Click the search icon to find content across your Sigma environment.
 
-If you ever need to know what is new in Sigma, there are two resources for that:
+<img src="_shared_assets/3.png" width="25"/> **Notifications:** The bell icon shows alerts and activity relevant to your account.
+
+<img src="_shared_assets/4.png" width="25"/> **User Profile:** Click your initials in the upper right to access your profile, preferences, and sign-out and other options.
+
+**Left sidebar**
+
+<img src="_shared_assets/5.png" width="25"/> **Create New:** The blue button at the top of the sidebar is your starting point for any new content:
+<ul>
+  <li><strong>Workbook:</strong> The primary inteface for users and builders to view and interact with data and apps.</li>
+  <li><strong>Report:</strong> A document type designed to help you create predictable, pixel-perfect PDF exports.</li>
+  <li><strong>Data Model:</strong> A reusable data layer shared across workbooks and reports.</li>
+  <li><strong>SQL Query:</strong> Write and run SQL directly against your connected warehouse.</li>
+  <li><strong>CSV Upload:</strong> Upload a CSV file to the warehouse for analysis.</li>
+</ul>
+
+<img src="_shared_assets/6.png" width="25"/> **Navigation:**
+<ul>
+  <li><strong>Home:</strong> Returns to the homepage.</li>
+  <li><strong>Documents:</strong> Your personal folder for content you've created.</li>
+  <li><strong>Workspaces:</strong> Shared folders for organizing and sharing content with specific teams or members.</li>
+  <li><strong>Templates:</strong> Pre-built workbook structures available for quick reuse.</li>
+  <li><strong>Shared with you:</strong> Content others have shared with you directly.</li>
+  <li><strong>Recent:</strong> Content you've accessed recently.</li>
+  <li><strong>Favorites:</strong> Content you've marked as a favorite for quick access.</li>
+  <li><strong>Trash:</strong> Deleted content, recoverable before permanent removal.</li>
+</ul>
+
+<img src="_shared_assets/7.png" width="25"/> **Connections:** Lists available data warehouse connections. Clicking one shows the tables and schemas you have access to. Connections are configured by administrators in the Administration section. Initially, only the `Sigma Sample Database` will be shown. This is hosted by Sigma and can be disabled by an administrator if preferred.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Trial accounts created from the Sigma website include the "Sigma Sample Database", which connects to a Sigma-managed Snowflake account. Trials created from cloud provider marketplaces may include additional connections.
+</aside>
+
+<img src="_shared_assets/8.png" width="25"/> **Administration:** Available to administrators only. Provides access to user management, connections, account settings, and more.
+
+**Main content area**
+
+<img src="_shared_assets/9.png" width="25"/> **Get Started:** When you first log in, this section shows trial status and recommended help documents (these are not QuickStarts but rather help docs) to help you orient quickly. Use the `Show guide` link in the upper right of this area to toggle it on or off.
+
+<img src="_shared_assets/10.png" width="30"/> **Top Viewed:** As your team creates and uses content, the most-accessed workbooks will appear here. It will be empty at the start as there has been no activity yet.
+
+<img src="_shared_assets/11.png" width="37"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
+
+<img src="_shared_assets/12.png" width="37"/> **Help:** The help button in the lower right corner provides access to documentation, release notes, and live chat support.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it! Sigma is fanatical about supporting our customers.
+</aside>
+
+If you ever need to know what is new in Sigma, there are two resources:
 
 [Release Notes](https://help.sigmacomputing.com/changelog)
 
-We also provide a summary on the "First Friday" of each month, which includes everything released in the prior month, including bug fixes.
+We also publish a monthly summary on the "First Friday" of each month, covering everything released in the prior month, including bug fixes.
 
-[First Friday Features can be found here](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
- 
-<img src="_shared_assets/4.png" width="25"/> **My Content:**
- <ul>
-      <li><strong>Home:</strong> will bring you back to home screen.</Li>
-      <li><strong>My Documents:</strong> is a personal folder for you to save content you have created.</Li>
-      <li><strong>Workspaces:</strong> are a way to organize and share content with specific members or teams within your organization. Items placed in workspaces can be accessed by anyone who has permission to that workspace.</Li>
-      <li><strong>Templates:</strong> provides a way to standardize and share workbook structures, for quick and consistent reuse.</Li>
-      <li><strong>Shared with Me:</strong> will show a list of items others have shared directly with you.</Li>
-      <li><strong>Recent:</strong> will bring up items you have accessed recently.</Li>
-      <li><strong>Favorites:</strong> will show a list of items that you have marked "favorite", for quicker access.</Li>
-      <li><strong>Trash:</strong> the typical recycle bin functionality.</Li>
- </ul>
-
-<img src="_shared_assets/5.png" width="25"/> **Connections Section:**
-Visible to administrators and content creators by default, lists the data warehouses available. 
-
-Clicking on one of them shows the tables in that warehouse you can access. There can be many connections for a single Sigma account, each configured with different levels of access to the warehouse, to be shared with members or teams. The actual connection configuration is done in the administration section.
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Trials created from the Sigma website show the "Sigma Sample Database", which uses a Sigma provided Snowflake account. Trials created from cloud provider marketplaces may have additional connections.
-</aside>
-
-<img src="_shared_assets/6.png" width="25"/> **Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
-
-<img src="_shared_assets/7.png" width="25"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
-
-<img src="_shared_assets/8.png" width="25"/> **User Profile:**
-In the top right corner, there is a box with your username initial. Clicking on it reveals your profile, where you can make changes to your preferences and sign out. Other UI options may or may not be visible to you depending on your permissions.
-
-<img src="_shared_assets/9.png" width="25"/> **Help:** has lots of useful information for you to explore, to help you get the most out of Sigma.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> There is a link to "Live Chat" in this menu. Use it! Sigma is fanatical about supporting our customers. 
-</aside>
-
-<img src="_shared_assets/10.png" width="25"/> **Administration:** Dedicated area for user management and other common configuration settings. Only shown to users in the Admin role.</li>
-
-Now that we have our initial orientation done, we can move on to the next section.
+[First Friday Features](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF GETTING AROUND IN THE UI -->
@@ -227,32 +268,216 @@ Now that we have our initial orientation done, we can move on to the next sectio
 ## Some Terminology
 Duration: 6
 
-Let’s begin by establishing some basic terminology Sigma uses.
+Before diving in, it helps to understand some of the core terms Sigma uses. 
 
-In Sigma, analysis and presentation are seamlessly integrated into a spreadsheet-like experience.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Don't worry about memorizing all of these upfront — Sigma's terminology is designed to be intuitive, and most terms describe what they do. The list below covers the most common ones you'll encounter. The rest will become familiar as you explore.
+</aside>
 
-This is useful to know because if you want to build something in Sigma (e.g., a dashboard, report, etc.), you’ll need a workbook, at least one page, and some data. Data can come from a cloud data warehouse or end-user input, but we’ll talk more about that later.
+The diagram below shows how the key concepts relate to each other at a high level.
 
-Of course, this is all baseline terminology and pretty easy to understand. Here are some basic terms Sigma uses.
+<img src="assets/key_concepts.png" width="800"/>
 
- <ul>
-      <li><strong>Workbook:</strong> A workbook in Sigma is akin to an Excel file or Google Sheet.</li>
-      <li><strong>Pages:</strong> Each workbook can contain multiple pages, similar to Excel worksheets.</li>
-      <li><strong>Tables:</strong> Spreadsheet-like representation of your data.</li>
-      <li><strong>Input Tables:</strong> Spreadsheet-like interface that allows data capture/editing.</li>
-      <li><strong>Controls:</strong> In general, provide filtering to other elements but can do more too.</li>
-      <li><strong>Modals:</strong> Hidden workbook pages that behave like "pop-ups" when the user clicks on some trigger.</li>
-      <li><strong>Container:</strong> A grouping of elements on a page. Useful for styling and data app actions.</li>
-      <li><strong>Data Model:</strong> A data model is a type of Sigma document that provides the framework for creating and managing a collection of reusable elements.</li>
+Sigma connects to your data through **Connections**, organizes content in **Workspaces**, and everything you build lives in a **Document** — a workbook, report, or data model. Workbooks contain **Pages**, and pages are built from **Elements** — tables, charts, controls, and more. **Actions** wire those elements together, turning a static workbook into an interactive app.
+
+The following sections describe each of these core terms in more detail.
+
+**Document Types**
+<ul>
+  <li><strong>Document:</strong> The general term for any content item in Sigma — workbooks, reports, and data models are all documents.</li>
+  <li><strong>Workbook:</strong> Sigma’s primary document type. A workbook can contain data tables, charts, controls, and apps — all on one or more pages.</li>
+  <li><strong>Report:</strong> A fixed-layout document optimized for pixel-perfect PDF exports.</li>
+  <li><strong>Data Model:</strong> A reusable data layer that defines shared tables, columns, and calculations for use across workbooks and reports.</li>
 </ul>
 
-There are lots of other terms used (ie: Charts), but they are mostly self-explanatory. 
+**Workbook Lifecycle**
+<ul>
+  <li><strong>Exploration:</strong> An unsaved, ad hoc workbook. Explorations let you query and analyze data without cluttering your folders. Save only when the work is worth keeping.</li>
+  <li><strong>Draft / Published:</strong> Once saved, a workbook exists in two states — a draft (work in progress, visible only to editors) and a published version (the stable version visible to viewers).</li>
+</ul>
 
-There are different icons for different objects in Sigma.
+**Workbook Structure**
+<ul>
+  <li><strong>Page:</strong> Each workbook contains one or more pages, similar to tabs in a spreadsheet.</li>
+  <li><strong>Element:</strong> The building block of any workbook page. Every table, chart, control, input table, image, or text block is an element.</li>
+</ul>
 
-It can be handy to know what some of these these icons represent:
+**Element Types**
+<ul>
+  <li><strong>Table:</strong> A spreadsheet-like data element displaying rows and columns from your connected data source.</li>
+  <li><strong>Chart:</strong> A visual data element such as a bar chart, line chart, scatter plot, or map.</li>
+  <li><strong>Input Table:</strong> A data entry element that allows users to add or edit data directly in Sigma.</li>
+  <li><strong>Control:</strong> An interactive element — such as a date picker, dropdown, or text input — used to filter or drive other elements on the page.</li>
+  <li><strong>Container:</strong> A layout element that groups other elements together on a page. Useful for visual organization and building app interactions.</li>
+  <li><strong>Modal:</strong> A hidden workbook page that appears as an overlay when triggered by a user action.</li>
+</ul>
 
-<img src="assets/f1_23.png" width="250"/>
+**Actions**
+<ul>
+  <li><strong>Actions:</strong> Interactions configured on elements that trigger a response elsewhere in the workbook — such as filtering a chart, opening a modal, or writing data back to the warehouse. Actions are what transform a workbook from a static report into an app.</li>
+</ul>
+
+**Data & Connections**
+<ul>
+  <li><strong>Connection:</strong> A configured link between Sigma and a cloud data warehouse. Connections are set up by administrators and determine what data is available.</li>
+</ul>
+
+**Organization & Access**
+<ul>
+  <li><strong>Workspace:</strong> A shared folder for organizing and collaborating on documents with specific teams or members.</li>
+  <li><strong>Account Type:</strong> Determines what a user can see and do in Sigma — such as whether they can create workbooks, edit data, or access administration features.</li>
+</ul>
+
+**AI**
+<ul>
+  <li><strong>Sigma Assistant:</strong> Sigma’s built-in AI assistant. Ask questions in plain language, generate formulas, summarize data, and more — directly inside a workbook.</li>
+</ul>
+
+There are different icons used throughout Sigma to distinguish document types and objects at a glance.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Assistant and AI
+Duration: 8
+
+AI is built into Sigma throughout — not as a separate product or add-on, but as a native capability available where you already work. Whether you're writing formulas, exploring data, or building apps, AI is there to help.
+
+### AI provider setup
+
+Before any AI feature can be used, an administrator must configure an AI provider. Sigma supports two approaches:
+
+- **Warehouse-hosted models** — AI runs entirely within your data platform (for example, Snowflake Cortex or BigQuery ML), so your data never leaves your environment.
+- **External AI providers** — OpenAI ChatGPT, Azure OpenAI, Google Gemini and others.
+
+For example, we configured OpenAI as our external provider in `Administration` > `AI Settings`:
+
+<img src="assets/fun_2026_01.png" width="800"/>
+
+For setup instructions, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#set-up-an-ai-provider)
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Don't have an AI provider configured yet? No problem — follow along in this section to understand what's available. You can set up a provider later when you're ready.
+</aside>
+
+Once configured, `Assistant` becomes available on the homepage:
+
+<img src="assets/fun_2026_02.png" width="800"/>
+
+### AI features in Sigma
+
+Once a provider is configured, AI is available in several places across the product:
+
+<ul>
+  <li><strong>Sigma Assistant:</strong> A conversational AI panel in the workbook. Ask questions in plain language, get AI-generated charts and tables, and explore your data interactively. Results open directly in a workbook for further analysis. <a href="https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-ask-sigma">Learn more</a></li>
+  <li><strong>Formula Assistant:</strong> Write new formulas by describing what you want, correct formula errors, or ask AI to explain what an existing formula does — all from the formula bar. <a href="https://help.sigmacomputing.com/docs/use-ai-with-formulas">Learn more</a></li>
+  <li><strong>Explain this Chart:</strong> Generate an AI-powered description of any chart, including key insights and trends. The result can be copied directly into a text element alongside the chart. <a href="https://help.sigmacomputing.com/docs/explain-visualizations-with-ai">Learn more</a></li>
+  <li><strong>AI Queries:</strong> Run AI-powered analysis on text data as part of your workbook calculations — sentiment analysis, classification, summarization, and more. <a href="https://help.sigmacomputing.com/docs/perform-ai-queries">Learn more</a></li>
+  <li><strong>Chat Element:</strong> Embed a conversational AI interface directly on a workbook page, so end users can ask questions about the data without leaving the app.</li>
+</ul>
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> These aren't isolated AI features — they're integrated into the same governed, live-data environment your team already uses. Users get AI assistance without exposing sensitive data to uncontrolled external systems, and admins retain full control over which data sources AI can access.
+
+</aside>
+
+### Select data sources for Sigma Assistant
+
+Before Sigma Assistant can answer questions, you need to tell it which data sources it can use. This keeps AI grounded in trusted, approved data and prevents accidental exposure of sensitive information to third-party providers.
+
+Navigate to `Administration` > `AI` > `Assistant`.
+
+Search for the data source you want to enable — for example, searching for `Hands` and checking the box for `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` in the `Sigma Sample Database` > `RETAIL` schema, and clicking `Sync`:
+
+<img src="assets/fun_2026_03.png" width="800"/>
+
+Once the sync is complete, filter on `Available` to confirm the source is ready.
+
+<aside class="positive">
+<strong>BEST PRACTICE:</strong><br> Connecting raw warehouse tables to Sigma Assistant works, but data models produce significantly better results. A data model lets your data team pre-define column names, descriptions, and metrics that AI uses to interpret your questions accurately. Instead of guessing what a column called <code>QTY_NET</code> means, Sigma Assistant can reference a model where it's already labeled "Net Quantity Sold" with a clear description. The more context your data model provides, the more accurate and useful the AI responses will be.
+
+For more information, see <a href="https://help.sigmacomputing.com/docs/get-started-with-data-modeling">Get started with data modeling</a>.
+</aside>
+
+After clearing the search filter, we see the table is `HIGHLIGHTED`. In our case there is a `CUSTOMERS` table on the list but `NOT HIGHLIGHTED`. This is listed because it was recently used, so Sigma listed it as a convienence but since it is not  `HIGHLIGHTED`, it is not available to the Assistant:
+
+<img src="assets/fun_2026_04.png" width="800"/>
+
+### Hands-on: Sigma Assistant
+
+Sigma Assistant changes how you start an analysis. Instead of deciding what to build first, you start with a question.
+
+From the homepage, click the Sigma logo icon and select `Sigma Assistant`:
+
+<img src="assets/fun_2026_05.png" width="800"/>
+
+The Sigma Assistant interface is straightforward — type a question, and it will work to answer it using the data sources you've made available. 
+
+Let's confirm the `CUSTOMERS` table is not available and see what Assistant does have access to:
+```copy-code
+What data sources do you have access to?
+```
+<img src="assets/fun_2026_06.png" width="800"/>
+
+Now let's ask a focused business question:
+```copy-code
+The CEO wants to know the bottom ten stores in the chain.
+```
+
+Sigma Assistant explains what it's doing at each step and why. For those who need to see it, the SQL query used is shown:
+
+<img src="assets/fun_2026_07.png" width="800"/>
+
+You can see the logic behind the result, adjust any step, and follow your curiosity into the data:
+
+<img src="assets/fun_2026_08.png" width="800"/>
+
+Once the response is ready, you'll see a full explanation, chart options, and the ability to open selected results directly in a workbook for further analysis by clicking the `Explore` icon.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Before launching into a workbook, you can continue asking Sigma Assistant follow-up questions to refine the results. Ask for a different breakdown, narrow the date range, filter by product type, or explore a different angle entirely. Only open the workbook when you're ready to save and build on the results.
+</aside>
+
+<img src="assets/fun_2026_09.png" width="800"/>
+
+Once in the workbook, we see that two tables and the chart are included (after moving them around a bit) and Assistant handled the grouping and calculation required to answer the question:
+
+<img src="assets/fun_2026_10.png" width="800"/>
+
+Now we can save it, refine it, or use Sigma's [drill-down](https://help.sigmacomputing.com/docs/view-underlying-data) capabilities for deeper analysis. We'll continue building on this workbook in the next section.
+
+We can still access `Assistant` in the workbook by clicking the <img src="assets/assistant.png" width="35"/>
+ icon:
+
+<img src="assets/fun_2026_11.png" width="800"/>
+
+### Formula Assistant
+
+The Formula Assistant is available directly in the formula bar of any workbook or data model. It can:
+
+- **Write a formula** — describe what you want to calculate, and AI suggests the formula
+- **Correct a formula** — if Sigma detects an error, AI interprets your intent and suggests a fix
+- **Explain a formula** — AI describes what an existing formula does in plain language
+
+It becomes available when a table is selected:
+
+<img src="assets/fun_2026_12.png" width="800"/>
+
+Notice that Sigma Assistant generated a column called `performance_metric`. It's not immediately obvious what that column is calculating. This is a perfect use case for the Formula Assistant's `Explain this formula` capability.
+
+Click the `performance_metric` column to select it. In the formula bar, click the AI wand icon and select `Explain this formula`:
+
+<img src="assets/fun_2026_13.png" width="800"/>
+
+The Formula Assistant will return a plain-language explanation of exactly what the formula calculates — what columns it references, how the calculation works, and what the result represents:
+
+<img src="assets/fun_2026_14.png" width="800"/>
+
+While this is a very basic example, this is an important pattern: Sigma Assistant generates analysis quickly, and the Formula Assistant lets you verify what was built. You stay in control of the results, even when AI does the initial work.
+
+For more information, see [Use AI with formulas](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
+
+For more information on all AI features, see [Get started with AI in Sigma](https://help.sigmacomputing.com/docs/getting-started-with-ai)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -406,194 +631,7 @@ Click the `Close view` button and click the `Edit` text to return to editing mod
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WORKBOOKS -->
 
-## The Power of Artificial Intelligence (AI)
-Duration: 6
 
-As we move through the Fundamentals series, we’ll learn how to build using all the great features Sigma provides. That said, we’re at a point in time where AI is expected in any modern software product.
-
-Providing AI functionality isn’t especially difficult these days—but making it easy to use and genuinely helpful requires thoughtful design and a deep understanding of how users can benefit from the results.
-
-Allowing users to ask questions is one thing but how can we tell what the AI is doing? 
-
-- Is it using trusted data sources? 
-- What steps, calculations, and workflows did it use to generate results? 
-- Once we have the response, what’s next for the user?
-
-We have addressed all these and more with our unique design, summarized below in three sections:
-
-**1: Discovery**<br>
-Ensure corporate governance by restricting source data used for analysis and preventing exposing data to third-parties.
-
-**2: Trust**<br>
-Ensure that only verified, trusted data sources are used. Decisions made from bad data are time-consuming and potentially costly too.
-
-**3: Exploration**<br>  
-Allow users to launch selected results into a workbook for further analysis or sharing.
-
-Ask Sigma breaks down every step AI took to generate its answer. This lets you double-check results, edit any step of the analysis, and work more confidently with AI.
-
-<img src="./assets/as_10.png" width="800"/>
-
-Here’s a short video for those who don’t yet have an AI API key but want to see the functionality in action.
-
-If the embedded video is too small on your screen, you can [view the larger version here.](https://www.sigmacomputing.com/product/ask-sigma)
-
-<img src="assets/ai.gif"/>
-
-### Hands on demonstration
-If you already have an AI API Key, you can configure this in your Sigma instance. Otherwise, just follow along.
-
-<aside class="positive"> <strong>From the author:</strong><br> I don’t usually write in the first person, but I’ll make an exception here. I genuinely believe Ask Sigma will start to change the way users work in Sigma—saving tons of time that’s better spent on refining results, not starting from scratch.
-
-Let’s be clear—Ask Sigma is a tool at your disposal. You’re free to use it or not. But it’s worth understanding what I believe is the start of a fundamental shift: the way you think about starting a new project is changing.
-
-Many software vendors like to say “Start with the end in mind.” That sounds good, but having a whiteboard diagram still means you must build everything from scratch—and also figure out how to use some product to build it.
-
-Sure, Sigma is easy to learn and use—but Ask Sigma is even better than that.
-
-Instead of starting with the end-state design, Ask Sigma wants you to start with a problem—framed as a question.
-
-As shown in the video, Ask Sigma will work hard to answer even vague, generic questions like:
-"Where are we doing the best?"
-
-That question lacks context, and you can certainly ask clearer questions to receive results that are more aligned with what you're looking for.
-
-But regardless of the query you submit, Ask Sigma provides additional analysis and breakdowns—so you can explore more data and follow your curiosity. You can always edit the AI-generated analysis to better pinpoint what you're after.
-
-The best way to improve Ask Sigma’s performance—and human analysis, too—is to ensure the underlying data is robust and well-organized.
-
-Ask Sigma leverages AI agents that reference metadata (like column and table descriptions), data models, and defined metrics to answer your query.
-
-The more context you provide about your data, the better AI can work with it. So if you’re not getting the results you expect, don’t just tweak the wording of your question. Instead, collaborate with your data team to continuously refine and optimize your assets to drive better outcomes for everyone.
-
-Let’s try it out in the demo below.
-</aside> 
-
-<aside class="negative"> <strong>IMPORTANT:</strong><br> Sigma is heavily invested in Ask Sigma—new features and improvements are rolling out all the time! </aside>
-
-### Enable AI
-To use AI features in Sigma, you’ll need to provide an API key from your selected AI provider.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
-
-To ensure data stays under your control, Sigma also supports warehouse AI models.
-</aside>
-
-For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
-
-Navigate to `Administration` > `AI settings`, select the AI provider and provide a valid `API Key`.
-
-Sigma supports using warehouse models in order to limit exposing your data to a third party. There is also support for external models like `OpenAI` and `Azure OpenAI`:
-
-<img src="assets/f1_43.png" width="800"/>
-
-For more information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization?_gl=1*ob89g0*_gcl_au*MTI4MzM4NjQwLjE3NTAwMzc3NzI.*_ga*MTAzMjQzMDMwNC4xNzQyMjI4NzA5*_ga_PMMQG4DCHC*czE3NTQ5MjM0MDUkbzM5NyRnMSR0MTc1NDkyMzUyNSRqMjkkbDAkaDA.#configure-an-ai-provider)
-
-### Select data sources to make available to Ask Sigma
-Now we need to tell Sigma which data sources Ask Sigma can use. Since we are using third-party AI services like OpenAI, we want to be careful about which datasets we allow access to. This process controls that and limits access to data that may be proprietary.
-
-For example, if we want Ask Sigma to have access to the `Sigma Sample Database > RETAIL > PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` we simply search for it, select the source we want and click `Sync`:
-
-<img src="assets/f1_44.png" width="800"/>
-
-Once the sync is complete, you can filter on `Available` to confirm it’s ready for Ask Sigma:
-
-<img src="assets/f1_44.png" width="800"/>
-
-Here’s where things follow the `Ask` workflow, rather than the `Create New Workbook` workflow.
-
-Click the <img src="assets/crane.png" width="45"/> icon, and then select `Ask Sigma`:
-
-<img src="assets/f1_46.png" width="600"/>
-
-### Ask away
-The Ask Sigma interface is simple—but it’s also built to help you target specific data sources.
-
-This time, let’s try a more focused question:
-
-```plaintext
-The CEO wants to know the bottom ten stores in the chain.
-```
-
-<img src="assets/f1_47.png" width="400"/>
-
-Ask Sigma explains what it's doing at each step and why. You can jump off into a workbook at any point to explore further on your own:
-
-<img src="assets/f1_48.png" width="800"/>
-
-Once the response is ready, you’ll see:
-- A full explanation of the result
-- Options to adjust calculations
-- Multiple charts to choose from for your workbook
-
-Some generated charts may not be helpful—for example, so we won't select them.
-
-<img src="assets/f1_49.png" width="800"/>
-
-If you're happy with the results, you can open the selected items in a workbook—or keep refining in Ask Sigma:
-
-<img src="assets/f1_49a.png" width="800"/>
-
-Once inside a workbook, you can save it, make any changes you like, or use Sigma’s [Explore Anywhere](https://help.sigmacomputing.com/docs/view-underlying-data) feature for deeper analysis:
-
-<img src="assets/f1_50.png" width="500"/><br><br>
-
-We can make any adjustments we want like changing the chart title to be more clear:
-
-<img src="assets/f1_51.png" width="800"/>
-
-It’s clear that Ask Sigma changes the way people will use Sigma—and it’s only getting better. Stay tuned!
-
-### Ask Sigma Usage Dashboard
-Sigma also provides an optional log of Ask Sigma usage. Before Ask can capture historic data, we have to configure a storage location for the data. This is done in `Administration` > `AI Settings' > `Ask Sigma usage`:
-
-<img src="assets/f1_56.png" width="800"/>
-
-Once configured, administrators can access the usage dashboard which provides a variety of metrics and useful information.
-
-
-For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
-
-There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
-
-### Bonus: AI Formula Assistant
-Sigma also includes a Formula Assistant powered by AI. It can:
-- Write new formulas
-- Correct formula errors
-- Explain existing formulas used in workbooks and data models
-
-Let’s say someone in Finance provides a formula they want applied at the group level:
-```copy-code
-Revenue Efficiency Score= 
-Quantity×Price+Cost
-(Price−Cost)×Quantity
-```
-
-Instead of writing it manually, let the AI Formula Assistant convert it for you:
-
-<img src="assets/f1_52.png" width="800"/>
-
-Once done, you can review the formula, rename the column, and format it to match your needs:
-
-<img src="assets/f1_54.png" width="800"/>
-
-And if you’re not sure what the formula does, just ask the Formula Assistant to explain it:
-
-<img src="assets/f1_55.png" width="800"/>
-
-Now we know: a low Revenue Efficiency Score is bad—and we should dig deeper into what’s bringing it down.
-
-For more information, here are some documentation links:
-
-[Ask natural language queries with Ask Sigma](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-ask-sigma)
-
-[Embed Ask Sigma (Beta)](https://help.sigmacomputing.com/docs/embed-ask-sigma)
-
-[Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF WORKBOOKS -->
 
 ## Pages
 Duration: 6
