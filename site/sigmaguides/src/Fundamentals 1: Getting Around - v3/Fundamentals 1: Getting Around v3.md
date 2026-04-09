@@ -479,154 +479,163 @@ For more information, see [Use AI with formulas](https://help.sigmacomputing.com
 
 For more information on all AI features, see [Get started with AI in Sigma](https://help.sigmacomputing.com/docs/getting-started-with-ai)
 
+### Two paths, one platform
+
+Sigma Assistant and the Formula Assistant are genuinely useful — and they're only getting more capable. But powerful AI doesn't eliminate the value of understanding how things work.
+
+Some users want to start with a question and get an answer in seconds. Others want to build from scratch, understand the data structure, and control every step. Some want both — starting with AI to explore quickly, then refining manually to get exactly what they need.
+
+Sigma is designed to support both workflows without forcing a choice. You can let AI handle the initial analysis and then edit the results directly in a workbook. Or you can skip AI entirely and build everything by hand. The platform is the same either way — the same data, the same elements, the same publish and share workflow.
+
+The sections that follow cover the manual build path in detail. If you've already used Sigma Assistant to land in a workbook, these sections will deepen your understanding of what's there and how to work with it. If you haven't used Sigma Assistant yet, these sections give you everything you need to build from the ground up.
+
+<!-- NOTE: When AI Build features ship (~1 month), a new section covering the build workflow will be inserted here, between the AI section and the Workbooks section. -->
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Workbooks
 Duration: 6
 
-There are different paths when creating content in Sigma, but we will focus on the most common methods in this QuickStart. 
+A workbook is where analysis happens in Sigma. It can hold tables, charts, controls, text, and apps — all organized across one or more pages, all connected to live data.
 
-So you can get started quickly, Sigma provides some common data in the `Sigma Sample Database`.
+In this section, you’ll create a workbook from scratch, add data from the Sigma Sample Database, and walk through the key concepts: the exploration state, saving, the workbook interface, and the publish workflow.
 
-At the lower-left of the home page, click on `Connections` and then click the `Sigma Sample Database`:
+### Create a new workbook
 
-<img src="assets/f1_8.png" width="800"/>
+From the Sigma home page, click `Create New` in the left sidebar, then select `Workbook`.
 
-We can see all the different data available, and we are prompted to `Select a table to preview`. 
+<img src="assets/fun_2026_16.png" width="600"/>
 
-<img src="assets/f1_9.png" width="800"/>
+Sigma opens a blank workbook in the exploration state. You’ll notice there’s no name yet — the workbook doesn’t exist in your files until you choose to save it.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> This interface allows you to quickly preview the columns and data that is available, so it is easy to decide which table has the information needed.
+<aside class=”positive”>
+<strong>NOTE:</strong><br> In Sigma, all workbooks start as unsaved explorations. If the analysis isn’t worth keeping, you can close it without saving and nothing is created. If it is worth keeping, you save it — and then it enters a draft/publish workflow.
 </aside>
 
-Select the `Plugs_Electronics` ("Plugs”) schema in the `RETAIL` database, expand it and select the `F_SALES` table. 
+### Workbook settings
 
-We can see all the data that is **live in the cloud data warehouse**, assuming we have permission to view it. 
+Before adding any data, it's worth knowing that workbooks have their own settings that control how they look and behave. Click the `Workbok Settings` buttonm in `Element panel`:
 
-In item #5, we can see the total row count is about **717k+ rows in 6 columns**.
+<img src="assets/fun_2026_17.png" width="600"/>
 
-We are looking at the data (in the **Overview** tab), but we can also look at column details, metrics, links, lineage and permissions too.
+The settings panel is organized into expandable sections:
 
-<img src="assets/f1_10.png" width="800"/>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> There is a lot more we can do with this table in this interface such as "pre-assign" friendly column names, create metrics (pre-defined calculations), assign permissions and more.
-</aside>
-
-To begin our analysis, we want to begin exploring this data. Click the `Explore` button in the upper right corner (**click the button, not the drop arrow**).
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> The "Explore" drop menu also provides a means to use this table as a starting for data modeling. 
-</aside>
-
-The explore button has opened a new workbook for us, and placed the `F_SALES` table on it too:
-
-<img src="assets/f1_11.png" width="800"/>
-
-**Now this is important to understand:**
-
-In Sigma, all workbooks remain purely exploratory until you actively save the first version.
-
-Often, ad hoc analysis is only needed in the moment—why clutter folders with one-off documents that will never be used again?
-
-If you create something valuable, you can save it, and continue building on it later. Otherwise, you can simply abandon the unsaved workbook.
-
-<aside class="negative">
-<strong>NOTE:</strong> Workbooks support data from multiple sources. This data can come either from tables in your cloud data warehouse (CDW), from your organizations datasets/datamodels in Sigma or from CSV files upload into Sigma.
-</aside>
-
-Now that we have our first unsaved workbook, let's take a moment to review some of the features.
-
-<img src="assets/f1_12.png" width="800"/>
-
-Each `workbook` can have one or more `Pages`, and each page has its own canvas or working area. For example, `Page 1` has the `F_SALES` table on its canvas. 
-
-Objects on a page's canvas are called `Elements`. Examples are tables, charts, controls, buttons, text and so on. 
-
-The `Element Panel` is active when one element on the canvas is selected and allows configuration for the selected element.
-
-Click on the `F_SALES` table. When an element on the canvas is selected, it will have a blue border and the `Element Panel` will show the related configuration:
-
-<img src="assets/f1_13.png" width="800"/>
-
-When the `F_Sales` table is selected, we can access the toolbar, formula bar and table features. We will explore these more later, but note that icons for undo and redo are present. These are really handy, and will be used often.
-
-<img src="assets/f1_15.png" width="800"/>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Use the Undo and Redo arrows in the toolbar instead of the browser's back button.
-</aside>
-
-The `Formula bar` is where we can leverage Sigma's [extensive library of functions. ](https://help.sigmacomputing.com/docs/popular-functions)
-
-You can collapse the `Element Panel` by clicking on the <img src="assets/element_collapse.png" width="35"/> icon in the upper right corner of the page.
-
-The `Element Bar` is always shown (except when the collapse icon has been selected), and provides a simple way to drag and drop elements onto the canvas. They are grouped logically, so it is easy to find what you need. 
-
-<img src="assets/f1_14.png" width="800"/>
-
-Let’s save this workbook for now. Click the `Save As` button in the upper left corner. 
-
-It is best practice to name workbooks something that makes sense to you and others you might share this workbook with later.
-
-Notice that we are given options on where to save it, using a familiar folder structure. 
-
-Click `Create Folder` and name it `QuickStarts`. Then click into the `QuickStarts` folder, and name the workbook `Fundamentals`:
-
-<img src="assets/f1_16.png" width="400"/>
-
-Workbooks have a menu that is accessed by clicking the down-arrow to the right of the name.
-
-Open that and select `About this workbook`:
-
-<img src="assets/f1_17.png" width="400"/>
-
-Clicking the star icon adds the workbook to your favorites list, which appears on the homepage.
-
-<img src="assets/f1_18.png" width="400"/>
-
-You can also set a `Badge` on a workbook, to inform other users about the current state of the work. For example, `Endorsed` or `In Development`, and also leave a text comment to provide more context. 
-
-<img src="assets/f1_19.png" width="400"/>
-
-Once set, the workbook will show both the endorsement and the text:
-
-<img src="assets/f1_20.png" width="400"/>
-
-Now that you have saved the workbook, we are in `Draft` mode and the  `Publish` button is grey, indicating that we have no unpublished changes pending. We are still in `Editing` mode. 
-
-The `Publish` button is not active until we make some other change.
-
-Opening the `Publish` menu provides additional options:
-
-<img src="assets/f1_21.png" width="400"/>
-
-**These options allow you to:**
 <ul>
-      <li>View the workbook as all users will see it in production.</li>
-      <li>Throw away and changes that were made in an unpublished draft.</li>
-      <li>View as if using a smaller screen device.</li>
-      <li>Preview with different access rights applied.</li>
+  <li><strong>Theme:</strong> Set a Light or Dark theme for the workbook.</li>
+  <li><strong>Color:</strong> Configure the color palette used across charts and visualizations.</li>
+  <li><strong>Font:</strong> Set the default font family and size for text elements.</li>
+  <li><strong>Layout Style:</strong> Control padding, spacing, and canvas behavior.</li>
+  <li><strong>Table Style:</strong> Set default styling for table elements — borders, row height, header appearance.</li>
+  <li><strong>Layout Settings:</strong> Configure how the workbook scales and responds across screen sizes.</li>
+  <li><strong>Workbook Navigation:</strong> Enable and configure in-workbook navigation menus for viewers.</li>
 </ul>
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma has many more features to help address the need for version control.
+At the bottom of the panel, `Manage locales` allows you to configure number and date formatting for different regional audiences.
+
+These settings apply to the entire workbook and can be adjusted at any time. 
+
+Another "nice-to-have" feature allows you to hide the `Element panel` to provide more working surface. There are times when this can be useful:
+
+<img src="assets/collapse_ep.gif">
+
+For more information, see [Workbook settings overview](https://help.sigmacomputing.com/docs/workbook-settings-overview)
+
+### Add data
+
+Let's add a table to the workbook. Open the `Data` group on the `Element bar` and drag/drop (or just click) a `Table` onto the canvas:
+
+<img src="assets/add_table.gif">
+
+Resizing and arranging element is really simple as is selecting the source of the data from the warehouse. 
+
+Data can be sourced from suggestions made by Sigma (based on recent activity), other elements in the workbook or from any available connection.
+
+As shown in the gif, you want to for `Hands` and choose  > the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` schema.
+
+Sigma adds the table to the canvas and pulls the data live from the cloud data warehouse. You’re not working with a copy or a snapshot — the data reflects whatever is in the warehouse at query time.
+
+Notice that this table is over **4.5 million rows** and 22 columns:
+
+<img src="assets/fun_2026_19.png" width="800"/>
+
+<aside class=”negative”>
+<strong>NOTE:</strong><br> Workbooks can connect to data from multiple sources — tables in your cloud data warehouse, data models created in Sigma, or CSV files uploaded directly.
 </aside>
 
-[For more information on workbook version history, click here.](https://help.sigmacomputing.com/docs/workbook-versions-and-version-history)
+### The workbook interface
 
-[For more information on version tagging (control) in Sigma, click here.](https://help.sigmacomputing.com/docs/version-tagging)
+With the table on the canvas, take a moment to get oriented.
 
-### Viewing the published version
-After clicking on `Go to published version`, the header now shows options to return to `Edit` mode and an icon that allows you to customize the workbook with changes only visible to you. This is a great way to repurpose an existing workbook to suit your specific needs. 
+<!-- f1_wb_interface.png -->
 
-<img src="assets/f1_22.png" width="800"/>
+Each workbook can have one or more **pages**. Each page has its own canvas. The table you just added is on `Page 1`.
 
-Once you make changes in the `Custom view`, you can opt to save them as a new workbook or discard. 
+Objects on the canvas are called **elements** — tables, charts, controls, text, buttons, and so on. Click on the table to select it. A selected element shows a blue border, and the **element panel** opens on the right to show its configuration options.
 
-Click the `Close view` button and click the `Edit` text to return to editing mode.
+<!-- f1_wb_selected.png -->
+
+At the top of the canvas, the **element bar** is always visible. Use it to add new elements by clicking `+` or by dragging an element type directly onto the canvas.
+
+The **formula bar** runs below the element bar when a column is selected. It gives you access to [Sigma’s full library of functions](https://help.sigmacomputing.com/docs/popular-functions) and is where custom calculations are written and edited.
+
+<aside class=”positive”>
+<strong>IMPORTANT:</strong><br> Use the `Undo` and `Redo` arrows in the toolbar — not the browser’s back button. The browser back button will navigate away from the workbook.
+</aside>
+
+### Save the workbook
+
+When you’re ready to keep this workbook, click `Save As` in the upper left corner.
+
+Give the workbook a name that would make sense to you and to anyone you might share it with later. For this QuickStart, create a folder called `QuickStarts` and name the workbook `Fundamentals`.
+
+<!-- f1_wb_saveas.png -->
+
+Once saved, the workbook is now in **Draft** mode. The `Publish` button is visible in the header, but it remains inactive until you make a change worth publishing.
+
+### About this workbook
+
+Click the down-arrow next to the workbook name and select `About this workbook`.
+
+<!-- f1_wb_about.png -->
+
+From here you can:
+<ul>
+  <li>Star the workbook to add it to your favorites on the home page.</li>
+  <li>Set a <strong>Badge</strong> — for example, <code>Endorsed</code> or <code>In Development</code> — to communicate the workbook’s status to other users.</li>
+  <li>Leave a text comment to provide additional context.</li>
+</ul>
+
+<!-- f1_wb_badge.png -->
+
+### Publish and view
+
+When you’re ready to share the workbook with others, click `Publish`. This promotes the current draft to the published version — the version all users with access will see.
+
+Opening the `Publish` drop-down before clicking provides additional options:
+
+<!-- f1_wb_publish_menu.png -->
+
+<ul>
+  <li>Go to the published version to see what viewers see.</li>
+  <li>Discard unpublished draft changes.</li>
+  <li>Preview the workbook at a smaller screen size.</li>
+  <li>Preview with different access rights applied.</li>
+</ul>
+
+<aside class=”positive”>
+<strong>NOTE:</strong><br> Sigma also supports workbook version history and version tagging for more controlled release workflows. For more information, see <a href=”https://help.sigmacomputing.com/docs/workbook-versions-and-version-history”>Workbook version history</a> and <a href=”https://help.sigmacomputing.com/docs/version-tagging”>Version tagging</a>.
+</aside>
+
+### The published view
+
+After publishing, click `Go to published version` from the `Publish` menu.
+
+In the published view, the header shows an option to return to `Edit` mode, plus a `Custom view` icon. Custom views let you make changes visible only to you — useful for adapting a shared workbook to your own needs without affecting what others see.
+
+<!-- f1_wb_published.png -->
+
+Once you’re done reviewing, click `Edit` in the header to return to editing mode.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WORKBOOKS -->
