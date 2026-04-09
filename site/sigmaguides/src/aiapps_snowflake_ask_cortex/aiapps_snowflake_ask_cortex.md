@@ -514,7 +514,7 @@ The `Arguments` names (element ID) and data types need to match the elements we 
 
 Here is the function to use:
 ```copy-code
-Max(Text(CallVariant("SNOWFLAKE.CORTEX.COMPLETE", "claude-3-5-sonnet", Array({ role: "system", content: [p_persona_data] }, { role: "user", content: [p_prompt_data] }), { temperature: 0 }).choices[0].messages))
+Max(Text(CallVariant("SNOWFLAKE.CORTEX.COMPLETE", "claude-4-5-sonnet", Array({ role: "system", content: [p_persona_data] }, { role: "user", content: [p_prompt_data] }), { temperature: 0 }).choices[0].messages))
 ```
 
 The function will return `Text` to Sigma.
@@ -522,15 +522,15 @@ The function will return `Text` to Sigma.
 Click `Save`.
 
 ### What the formula does
-This formula sends a prompt to Claude 3.5 Sonnet using Snowflake Cortex and returns the AI’s text response as a string.
+This formula sends a prompt to Claude 4.5 Sonnet using Snowflake Cortex and returns the AI’s text response as a string.
 
 Let's review it in chunks.
 
 **CallVariant(...)**
-Invokes the Snowflake Cortex function SNOWFLAKE.CORTEX.COMPLETE to perform a chat-style completion using Claude 3.5 Sonnet.
+Invokes the Snowflake Cortex function SNOWFLAKE.CORTEX.COMPLETE to perform a chat-style completion using Claude 4.5 Sonnet.
 
 **Model Parameters:**
-- "Claude-3-5-sonnet" = the AI model being used
+- "Claude-4-5-sonnet" = the AI model being used
 
 **The Array(...) defines the conversation history:**
 
