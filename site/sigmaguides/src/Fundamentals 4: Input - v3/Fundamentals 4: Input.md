@@ -38,7 +38,7 @@ If something is not working as you expect, here is how to [contact Sigma support
 </aside>
 
  ### Target Audience
-Typical audience for this QuickStart are users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
+The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools and semi-technical users who want to try out or learn Sigma. Everything is done in a browser so you already know how to use that. No SQL or technical skills are needed to do this QuickStart.
 
 ### Prerequisites
 <ul>
@@ -71,7 +71,7 @@ Sigma supports three types of input tables today:
 - Linked: Based on another workbook table, selecting only columns of interest.
 - CSV: Import data from a standard comma-delimited file. Columns are named manually or created from the CSV header.
 
-Input tables can be used as sources for tables, pivot tables, and visualizations, or incorporate data using lookups and joins. 
+Input tables can be used as sources for tables, pivot tables, and visualizations, or to incorporate data using lookups and joins. 
 
 When you create warehouse views for input tables, you can reuse the manually entered data across your broader data ecosystem.
 
@@ -133,7 +133,7 @@ Click `Create input table`.
 
 Rename the input table to `Orders_to_Approve`.
 
-Move the new input table to the `Fundamentals 4` page
+Move the new input table to the `Fundamentals 4` page.
 
 The `Fundamentals 4` page now looks like this:
 
@@ -180,7 +180,7 @@ Selecting `Order Number` > `15758` filters the input table just like it would a 
 <img src="assets/finput_18.png" width="800"/>
 
 ### Tracking who made changes
-All input tables include two optional row history columns. Add these by clicking on the + icon and selecting `Last updated at` and `Last updated by`. 
+All input tables include two optional row history columns. Add these by clicking the + icon and selecting `Last updated at` and `Last updated by`. 
 
 <img src="assets/finput_12.png" width="350"/>
 
@@ -203,7 +203,7 @@ As each comment is added to a row, Sigma has saved that information automaticall
 
 At the same time, the tracking fields were updated.
 
-Input table data is maintained separately from the "original source data" -- Plugs_Store_Sales, so that the integrity of your data in the warehouse is maintained.
+Input table data is maintained separately from the "original source data" — `Plugs_Store_Sales`, so that the integrity of your data in the warehouse is maintained.
 
 No data was stored in Sigma; your data stays in your warehouse.
 
@@ -215,10 +215,10 @@ No data was stored in Sigma; your data stays in your warehouse.
 ## CSV Import
 Duration: 5
 
-It is simple to create an input table from a CSV file. Once imported, the input table can be edited directly, joined to other tables, used as source for other Sigma elements and participate in complex workflows using actions. 
+It is simple to create an input table from a CSV file. Once imported, the input table can be edited directly, joined to other tables, used as a source for other Sigma elements and participate in complex workflows using actions. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br>At the time of this QuickStart, CSV import supports a maximum file size of 200 MB and UTF-8 format only.
+<strong>IMPORTANT:</strong><br> At the time of this QuickStart, CSV import supports a maximum file size of 200 MB and UTF-8 format only.
 </aside>
 
 To demonstrate, we can download some sample data using this button:
