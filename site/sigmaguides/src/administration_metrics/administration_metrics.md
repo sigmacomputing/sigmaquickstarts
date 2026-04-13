@@ -16,7 +16,7 @@ Duration: 5
 
 This QuickStart **(QS)** discusses and demonstrates how to use Sigma Metrics against a use case we will detail later on.
 
-Metrics in bi (business intelligence) refer to the quantitative measurements used to evaluate and analyze the performance of a business. These metrics are calculation that are used to support a variety of use cases including financial performance, customer behavior, operational efficiency, and more.
+Metrics in bi (business intelligence) refer to the quantitative measurements used to evaluate and analyze the performance of a business. These metrics are calculations that are used to support a variety of use cases including financial performance, customer behavior, operational efficiency, and more.
 
 Examples of common metrics used in business intelligence include:
 
@@ -77,7 +77,7 @@ How to apply Metrics in Sigma using Sigma's sample database to build out informa
 
 ### What You’ll Build
 
-We will be a simple solution that meets requirements provided by Marketing for active campaign status.
+We will build a simple solution that meets requirements provided by Marketing for active campaign status.
 
 <img src="assets/m20.png" width="800"/>
 
@@ -98,7 +98,7 @@ There are some basic rules for creating Metrics:
 **For Datasets:**
  <ul>
       <li><strong></strong> You must be assigned an account type with the Edit Dataset permission enabled.</li>
-      <li><strong></strong> You must be the dataset owner or be granted Can Edit dataset permission..</li>
+      <li><strong></strong> You must be the dataset owner or be granted Can Edit dataset permission.</li>
 </ul>
 
 **For Connection Tables:**
@@ -126,7 +126,7 @@ Marketing has requested details on how well the various Salesforce campaigns are
     </ol>
   </li>
 
-They also want the the ability to drill down into the data to get to the lowest level available. They also want to create some visuals (TBD), using the same data on their own. 
+They also want the ability to drill down into the data to get to the lowest level available. They also want to create some visuals (TBD), using the same data on their own. 
 
 Now that we know what the requirements are, let's create a reusable set of data that leverages metrics so that any future use of the data includes the approved (governed) calculations.
 
@@ -152,7 +152,7 @@ Click `Get Started`.
 
 Click the `Worksheet` tab.
 
-Select the column `Is Active` and click it's menu. Select `Filter`:
+Select the column `Is Active` and click its menu. Select `Filter`:
 
 <img src="assets/m17.png" width="800"/>
 
@@ -230,7 +230,7 @@ From the `Sales Campaign Dataset`, click the `Explore` button in the upper right
 
 Group the table by `Type`.
 
-Now lets add some columns but instead of having to do it manually and sort out the correct calculations, we will just use the bre-built ones provided by Metrics.
+Now let's add some columns but instead of having to do it manually and sort out the correct calculations, we will just use the bre-built ones provided by Metrics.
 
 In the `Element Panel`, click the `Metrics` tab.
 
@@ -238,7 +238,7 @@ Drag each Metric to the `Calculations` under the `Grouping` for `Type` in the or
 
 <img src="assets/m11.png" width="800"/>
 
-Lets also make the campaigns that are over budget stand out while we are here:
+Let's also make the campaigns that are over budget stand out while we are here:
 
 For the column `Under-Over Budget` click the menu icon and select `Conditional formatting`:
 
@@ -252,9 +252,9 @@ Configure it so that cells with "Over Budget" will appear red in the column cell
 <strong>NOTE:</strong><br> We just added seven new calculated columns in seconds, knowing that the formulas were from a pre-approved source. A huge time saver for the business user and will also prevent possible issues down the road if someone were to create their own calculation that was incorrect. 
 </aside>
 
-Now that we have a table using trusted calculations, we can leverage it into a Vizualization to make easy to see campaign spend to date:
+Now that we have a table using trusted calculations, we can leverage it into a Visualization to make easy to see campaign spend to date:
 
-We simply create a `Child Element` / `Vizualization` from the table:
+We simply create a `Child Element` / `Visualization` from the table:
 
 <img src="assets/m15.png" width="700"/>
 

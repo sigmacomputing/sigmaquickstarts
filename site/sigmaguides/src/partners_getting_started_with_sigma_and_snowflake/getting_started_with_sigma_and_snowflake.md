@@ -35,10 +35,10 @@ If something isn’t working as expected, here is how to [contact Sigma support]
 <ul>
   <li>Any modern browser.</li>
   <li>A Snowflake free 30-day trial environment.</li>
-  <li>Sigma instance from Snowflake Parter Connect.</li>
+  <li>Sigma instance from Snowflake Partner Connect.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -213,7 +213,7 @@ Clicking on one of them shows the tables in that warehouse you can access. There
 
 <img src="_shared_assets/6.png" width="25"/> **Top viewed:** Empty at the start, as teams start to create and use content, the most popular will float to the top of this listing.
 
-<img src="_shared_assets/7.png" width="25"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (ie: Okta, Auth0 ect...).
+<img src="_shared_assets/7.png" width="25"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (i.e., Okta, Auth0 etc.).
 
 <img src="_shared_assets/8.png" width="25"/> **User Profile:**
 In the top right corner, there is a box with your username initial. Clicking on it reveals your profile, where you can make changes to your preferences and sign out. Other UI options may or may not be visible to you depending on your permissions.
@@ -367,7 +367,7 @@ Click `Publish`.
 </aside>
 
 ### Corporate policy
-In our use case, marketing is not allow to see customer names and addresses. We need to make sure that is enforced.
+In our use case, marketing is not allowed to see customer names and addresses. We need to make sure that is enforced.
 
 It is simple to just delete the `Cust Name` and `Cust Address` from the base table and we are done.
 
@@ -519,7 +519,7 @@ Lastly, click `Save As` and give your workbook a name.
 ## Conclusion
 Duration: 3
 
-In this QuickStart we went through the process of setting up up a Snowflake free trial, and a Sigma free trial through Snowflake partner connect. We did some light modeling, and an analysis resulting in a Sigma workbook.
+In this QuickStart we went through the process of setting up a Snowflake free trial, and a Sigma free trial through Snowflake partner connect. We did some light modeling, and an analysis resulting in a Sigma workbook.
 
 The seamless transition from Snowflake to Sigma enables data professionals to iterate quickly and with ease. This sets Sigma up uniquely to not only provide a robust client facing tool but also a great sand box for data engineers to profile and experiment with freshly landed data in Snowflake.
 

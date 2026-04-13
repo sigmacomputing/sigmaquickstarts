@@ -69,7 +69,7 @@ Developers who are evaluating or working with Sigma's REST API.
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -223,7 +223,7 @@ npm install
 
 This automatically installs the project dependencies used in the recipes
 
-### Start the local webserve
+### Start the local webserver
 Run the command to start the server:
 ```copy-code
 npm run dev

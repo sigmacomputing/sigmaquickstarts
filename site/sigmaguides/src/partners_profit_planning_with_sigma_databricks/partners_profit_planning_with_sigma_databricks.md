@@ -257,7 +257,7 @@ Before leaving, click `Save As` and save the workbook with the name `Big Buys - 
 ## Use Big Buy’s corporate profit planning application
 Duration: 5
 
-**1:** Lets navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
+**1:** Let's navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
 
 **2:** This application was built by Big Buys' central IT team as a Sigma AI App. It allows team members to submit and approve distinct pricing scenarios collaboratively.
 

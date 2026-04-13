@@ -399,7 +399,7 @@ The following parameter has been replaced by the `menu_position` parameter:
 ## Common Error Messages
 Duration: 5
 
-The following are potential error messages and description to aide in troubleshooting embeds:
+The following are potential error messages and description to aid in troubleshooting embeds:
 
  <ul>
       <li><strong>EEXIST:</strong> Indicates duplicates exist. Duplicate team, duplicate user, etc. This is unlikely to occur in embeds but possible if a bug is introduced.</li>

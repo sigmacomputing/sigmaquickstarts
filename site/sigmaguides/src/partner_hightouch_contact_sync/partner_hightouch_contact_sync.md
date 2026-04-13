@@ -34,7 +34,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 
 Businesses who need to move data from one place to another while allowing end-users to directly work with the data and make decisions about which data is selected, how it is organized and even provide additional data to enrich it prior to it landing in the target system. 
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
 </aside>
 
@@ -48,13 +48,13 @@ Businesses who need to move data from one place to another while allowing end-us
   <li>A HubSpot account. A trial environment is acceptable.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Snowflake Free Trial](https://signup.snowflake.com/)</button><button>[Hightouch Free Trial](https://app.hightouch.com/signup)</button><button>[Hubspot Free Trial](https://app.hubspot.com/signup-hubspot/marketing?utm_id=430314580470&utm_content=&utm_source=google&utm_medium=paid&utm_term=crm_%252Bhubspot%2520%252Bfree_EN&utm_campaign=AllProducts_Portals_EN_NAM_NAM_Brand-Free_p_c_campaignid9817582458_agid103055913794_google&hsa_acc=9694350438&hsa_cam=9817582458&hsa_grp=103055913794&hsa_ad=430314580470&hsa_src=g&hsa_tgt=kwd-2008352218505&hsa_kw=%252Bhubspot%2520%252Bfree&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gad=1&gclid=CjwKCAjwov6hBhBsEiwAvrvN6J1A3OxMCh9oGiuuy5jYNQgb00hXztG9vf_XyPjAx650K5sTZ3leThoCU8UQAvD_BwE&hubs_signup-url=www.hubspot.com%2Fproducts%2Fget-started-f047&hubs_signup-cta=getstarted-marketingfree&_ga=2.165617663.1534244571.1681925664-821138832.1680805072&_gac=1.254944122.1681925664.CjwKCAjwov6hBhBsEiwAvrvN6J1A3OxMCh9oGiuuy5jYNQgb00hXztG9vf_XyPjAx650K5sTZ3leThoCU8UQAvD_BwE&_gl=1*efo704*_ga*ODIxMTM4ODMyLjE2ODA4MDUwNzI.*_ga_LXTM6CQ0XK*MTY4MTkyNTY2My4xLjAuMTY4MTkyNTY2NC4wLjAuMA..&step=email_only_landing_page)</button>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> We will assume you have access to (or setup trials) as outlined above before starting this QuickStart. We will not cover the steps to access the base sites as the vendors have made the process very straight-forward.
 </aside>
 
@@ -301,7 +301,7 @@ Navigate to `Administration` > `APIs & Embed Secrets` and click `Create New`:
 
 <img src="assets/ht43.png" width="700"/>
 
-Select `API Token`, give it a friendly name, description and assign an `Owner`. For this demonstration, we need to use our own Sigma account. If we used a different account (ie: a Service Account), we would need to also share the Workbook with that Service Account. 
+Select `API Token`, give it a friendly name, description and assign an `Owner`. For this demonstration, we need to use our own Sigma account. If we used a different account (i.e., a Service Account), we would need to also share the Workbook with that Service Account. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This Workbook is explicitly shared with the Sigma user who created it by default. It is best practice to have a Service Account for integration and security automations. 

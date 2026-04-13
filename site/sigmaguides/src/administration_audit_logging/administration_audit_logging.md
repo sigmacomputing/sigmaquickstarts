@@ -21,7 +21,7 @@ For example, a user may report they never received the invitation email that the
 
 Since the data is available as a Sigma connection, we can explore it in a Sigma workbook to analyze how users across your organization utilize Sigma.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> No customer data is stored in the Audit Log. Only events/actions and context is logged. 
 </aside>
 
@@ -93,7 +93,7 @@ Your table will have different row information as Sigma is logging events for yo
 Sliding right on the table to see more columns we see some columns have data and some do not (nulls). This is normal and expected as each event will have different characteristics and therefore record different details. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Audit Logs are 30 days in duration. In order to retain entries for an extended period of time, we recommend enable storage integration to export audit log data
+<strong>IMPORTANT:</strong><br> Audit Logs are 30 days in duration. In order to retain entries for an extended period of time, we recommend enabling a storage integration to export audit log data
 </aside>
 
 [How to Export audit log data to cloud storage.](https://help.sigmacomputing.com/docs/export-audit-log-data-to-cloud-storage)
@@ -144,11 +144,11 @@ Back in Sigma, click the `Explore` button to open the `AUDIT_LOG` table in a Sig
 
 Let's see what is going on with user logins, both success and failures.
 
-Create a new `Child Vizualization` from the AUDIT_LOGS table:
+Create a new `Child Visualization` from the AUDIT_LOGS table:
 
 <img src="assets/al15.png" width="500"/>
 
-Drag the `Request Time` column up the the X-AXIS (on the Element Panel, left sidebar). It will automatically truncate to `Day of Request Time` and this is what we want.
+Drag the `Request Time` column up to the X-AXIS (on the Element Panel, left sidebar). It will automatically truncate to `Day of Request Time` and this is what we want.
 
 Create two new columns from the Y-AXIS and rename them as:
 
@@ -174,11 +174,11 @@ Save the Workbook as `Daily Login Activity`:
 
 <img src="assets/al19.png" width="800"/>
 
-Let's explore the results. Click the `expand` icon to work with the chart and it's underlying data directly:
+Let's explore the results. Click the `expand` icon to work with the chart and its underlying data directly:
 
 <img src="assets/al20.png" width="800"/>
 
-03-16-2023 has the most login failures so right-click on that bar and select to `keep only` it's data:
+03-16-2023 has the most login failures so right-click on that bar and select to `keep only` its data:
 
 <img src="assets/al21.png" width="800"/>
 
@@ -203,7 +203,7 @@ There may be reasons to store Audit Log data outside of Sigma. A few examples ar
  <ul>
       <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 30 days.</li>
       <li><strong>Provide access to third party tool:</strong> Many organizations have central anomaly detection tools they prefer to use.</li>
-      <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.<li>
+      <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.</li>
 </ul>
 
 Let's assume that we are required to retain a rolling history of daily logins (success and failure) for 5 years. Sigma retains 90 days worth of information so we will need to export log data to meet this requirement.
@@ -226,7 +226,7 @@ Provide values for each numbered item as shown:
 
 For `Storage Integration` we will be using a method that provides a secure connection between Snowflake (where the Audit Log export is stored) to AWS S3.
 
-This requires some configuration in Sigma, Snowflake and AWS in order for the scheduled job to securely delivery data to S3, from Snowflake (where the Audit Log is stored).
+This requires some configuration in Sigma, Snowflake and AWS in order for the scheduled job to securely deliver data to S3, from Snowflake (where the Audit Log is stored).
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> When using the Sigma export option "Cloud Storage" it is required to request Sigma support to assist in the Snowflake configuration as Audit Logs are held inside Sigma's Snowflake account. 
@@ -264,7 +264,7 @@ If everything is configured correctly, the file lands in S3 for extended retenti
 ## What we've covered
 Duration: 5
 
-In this QuickStart we learned how Sigma Audit Logs are structured and can be used to provide detailed information about events as users interact with Sigma including scheduled jobs.
+In this QuickStart, we learned how Sigma Audit Logs are structured and can be used to provide detailed information about events as users interact with Sigma including scheduled jobs.
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

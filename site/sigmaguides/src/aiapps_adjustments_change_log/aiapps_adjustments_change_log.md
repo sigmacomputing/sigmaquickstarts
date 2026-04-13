@@ -49,7 +49,7 @@ Developers interested in using Sigma to build interactive data applications.
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
  </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -161,7 +161,7 @@ Also add the Sigma supplied columns for `Last updated at`and `Last updated by`:
 
 <img src="assets/acl-5.png" width="500"/>
 
-If you happend to create some blank rows, it is simple to delete them:
+If you happen to create some blank rows, it is simple to delete them:
 
 <img src="assets/acl-6.png" width="400"/>
 
@@ -381,7 +381,7 @@ There are few things we could do here to provide feedback to the user. For examp
 </aside>
 
 ### Add second action sequence
-With that out of the way, lets setup recording the adjustment into our `Adjustment Log` input table.
+With that out of the way, let's set up recording the adjustment into our `Adjustment Log` input table.
 
 `Create` (or duplicate the existing) action sequence (as shown in the screenshot below) and set its condition to execute if there is a value in 
 ```copy-code
@@ -417,7 +417,7 @@ In data apps, testing can and will expose problems and areas where users might g
 
 For example, in testing the first time, it worked fine but on the second pass we noticed that the value for `A Adjustment` was held over from the first test. 
 
-This is easy enough to correct. Lets keep it simple for demonstration.
+This is easy enough to correct. Let's keep it simple for demonstration.
 
 On the `Save Adjustment` action, we just need to add two actions to clear the values from each container on the `Adjustments` modal. That will solve it!
 
@@ -466,7 +466,7 @@ If([Last updated at] = [Most Recent Adjustment], True)
 
 Filter `IsLatest` to only show `True` values.
 
-Lets do some test adjustments so that we have some data. Make sure to adjust the same cell a few times so we are sure only the most recent one appears. For example, we did six adjustments on two cells, in two `Product Lines`. The `Most Recent Adjustments` table only shows the two most recent adjustments as expected:
+Let's do some test adjustments so that we have some data. Make sure to adjust the same cell a few times so we are sure only the most recent one appears. For example, we did six adjustments on two cells, in two `Product Lines`. The `Most Recent Adjustments` table only shows the two most recent adjustments as expected:
 
 <img src="assets/acl-37.png" width="800"/>
 
@@ -481,7 +481,7 @@ Drag the new column to the `CALCULATIONS` grouping and set its `Aggregation` to 
 
 <img src="assets/acl-38.png" width="300"/>
 
-Now when there is a matching record in the `Most Recent Adjustments` table, the value is shown in `Revenue Planning` in the `Lastest Adjustment` column. When there is no match, the current value is shown instead. 
+Now when there is a matching record in the `Most Recent Adjustments` table, the value is shown in `Revenue Planning` in the `Latest Adjustment` column. When there is no match, the current value is shown instead. 
 
 Here is a demo of a using the data app to make some adjustments from scratch (using the `Published version`):
 

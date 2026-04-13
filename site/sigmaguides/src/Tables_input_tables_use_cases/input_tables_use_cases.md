@@ -17,7 +17,7 @@ This QuickStart **QS** provides an overview and the steps required to recreate t
 
 input tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
 
-<aside class="postive">
+<aside class="positive">
 <strong>Why use input tables?</strong><br> With input tables, what you build in Sigma changes from one-way transformations of raw data (traditional BI) into a bi-directional data analysis platform. input tables give users the power to augment, adjust, interact and create "what-if" scenarios in real-time, without changing the source data.
 </aside>
 
@@ -136,7 +136,7 @@ The manager in `Austria` tells you she's cutting her forecast `down to $10k` bec
 
 Update the input table and see the map change. 
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Changes to input table data requires the workbook be in edit mode
 </aside>
 
@@ -174,7 +174,7 @@ She reverts the `FY23 forecast` back to `$74655` and also adjusts the growth to 
 
 <img src="assets/fa-gif.gif" width="800"/>
 
-<aside class="postive">
+<aside class="positive">
 <strong>The VP Loves it!</strong><br> input tables allows the VP to not only review the current and next year forecast for her territory, it also allows her to update it for real changes as well as do some "what-if-analysis" to help her make critical decisions in real time. 
 
 Corporate governance is maintained since the source data does not change and everything stays in the corporate cloud data warehouse, even the input table and its values.
@@ -301,7 +301,7 @@ What the chart shows is the relative strength of in-store sales vs. online for e
 
 Lucy (our merchandiser) can begin to see which catagories are not selling well online or where to invest more marketing dollars.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Lucy loves how she can leverage input tables and the power of Sigma to let move at the speed of the online world making business decisions based on live data at scale.
 </aside>
 
@@ -446,7 +446,7 @@ Also change the `New Sub Region` for `Iowa` to be in `TOLA`.
 
 The gap is much better now, Mike is happy.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> input tables allow end users to quickly iterate over "what-if-scenarios` with violating corporate governance rules; making better decisions based on actual data.
 </aside>
 
@@ -462,7 +462,7 @@ This QuickStart assumes familiarity with how to embed in Sigma.
 
 <aside class="negative"><strong>NOTE:</strong><br> We will not review the steps to setup Embedding here, but rather show the relevant screens. To learn more about Sigma Embedding, visit the Embedding Series QuickStarts which cover the topic extensively.</aside>
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> Embed users with the appropriate role can make edits to allow cells on an input table. Users who lack the appropriate role can't edit data, but can view the input table and latest edits.</aside></aside>
+<aside class="positive"><strong>IMPORTANT:</strong><br> Embed users with the appropriate role can make edits to allow cells on an input table. Users who lack the appropriate role can't edit data, but can view the input table and latest edits.</aside></aside>
 
 Create a new workbook and add a new empty input table table to the page. You will be prompted to provide a location to save the input table date. We will use the `Sigma Sample Database`. 
 
@@ -484,7 +484,7 @@ Make sure that the workbook is Shared to the Creator team with `Explore` or `Cre
 
 Using the methods outlined in the Quickstart `Embedding 3: Application Embedding`, configure this workbook page into an embed.
 
-<aside class="postive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the input table itself.</aside></aside>
+<aside class="positive"><strong>IMPORTANT:</strong><br> When using the Sigma UI to create the Embed path, be sure to select the Page and not the input table itself.</aside></aside>
 
 <img src="assets/it13.png" width="700"/>
 
@@ -538,7 +538,7 @@ Since users are already using Sigma (**or spreadsheets and should be using Sigma
 Why not just create a Sigma workbook and augment it with the ability for the user to enter small amounts of data in real time?
 Sigma will do the heavy lifting of UI and data operations to store the data in your warehouse. 
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma does not store data and with input tables, data is stored in your warehouse but adjacent to your existing data. Existing data is NEVER changed in any way.
 </aside>
 
@@ -642,7 +642,7 @@ Lets test by updating the first four records as shown for each Status:
 
 Click the `Save` button.
 
-<aside class="postive">
+<aside class="positive">
 <strong>Image the Possibilities:</strong><br> The ability to capture and save data to the warehouse breaks the traditional BI model of providing static pages. Sigma unlocks the power of data trapped in cloud warehouses. With input tables you can now capture information that is trapped in the end user's minds without investing in another application. Think of the possibilities.
 </aside>
 

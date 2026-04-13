@@ -60,7 +60,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
  
-![Footer](assets/sigma_footer.png)ooter.png)
+![Footer](assets/sigma_footer.png)
 <!-- END -->
 
 ## Sigma Workbook

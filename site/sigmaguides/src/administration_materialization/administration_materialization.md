@@ -13,7 +13,7 @@ lastUpdated: 2026-02-13
 ## Overview 
 Duration: 5 
 
-This QuickStart is designed as primer to materialization and the questions and issues that surround it. 
+This QuickStart is designed as a primer on materialization and the questions and issues that surround it. 
 
 We will define it, provide some guidance on the why/when to use it and who sets it up. 
 
@@ -40,7 +40,7 @@ Sigma administrators who are interested in improving performance when working wi
   <li>Write access must be enabled on the Sigma connection to the warehouse.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -507,7 +507,7 @@ Users viewing Sigma content often want to see sales data rolled up from the `Reg
 
 First, pause the existing materialization schedule so it no longer runs.
 
-You can do this either in the workbook or in `Administration` > `Materialization:
+You can do this either in the workbook or in `Administration` > `Materialization`:
 
 <img src="assets/am11.png" width="800"/>
 

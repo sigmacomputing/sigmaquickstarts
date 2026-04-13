@@ -121,7 +121,7 @@ We're starting from scratch with a blank Sigma workbook. I'll first load our sal
 ## Sigma Data Exploration
 Duration: 20
 
-1: Shift sales will be of primary importance for this QuickStart, so let’s adjust adjust its format to `currency` at the start of our analysis. Select the `Shift Sales` column, and use the buttons next to the formula bar to adjust the format:
+1: Shift sales will be of primary importance for this QuickStart, so let’s adjust its format to `currency` at the start of our analysis. Select the `Shift Sales` column, and use the buttons next to the formula bar to adjust the format:
 
 <img src="assets/ml6.png" width="800"/>
 
@@ -211,7 +211,7 @@ Define it as `DatePart(“month”, [Date])`, so that we get the month number.
 
 We can easily do this with Sigma using a formula definition. 
 
-Add a new column, define it's function as `If([Shift] = "AM", 1, 0)`, and then rename it to `Encoded Shift`.: 
+Add a new column, define its function as `If([Shift] = "AM", 1, 0)`, and then rename it to `Encoded Shift`.: 
 
 <img src="assets/ml20.png" width="800"/>
 

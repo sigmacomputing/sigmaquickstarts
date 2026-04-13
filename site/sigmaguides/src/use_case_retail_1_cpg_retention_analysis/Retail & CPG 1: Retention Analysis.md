@@ -54,7 +54,7 @@ Duration: 10
 
 ![image2](assets/settinguptheworkbook_2.png)
 
-3. Now that the workbook is saved lets rename the page the by double clicking the page name in the bottom left corner and changing it to “Data”.
+3. Now that the workbook is saved let's rename the page the by double clicking the page name in the bottom left corner and changing it to “Data”.
 
 ![image3](assets/settinguptheworkbook_3.png)
 
@@ -135,7 +135,7 @@ Bins+1.
 - Bins (required): The number of bins to split the value into
 In our example, for the min and max we used 300 and 1,000,000 respectively and split the values into 10 bins. We have effectively split the customers into deciles which we will leverage later on in our analysis. 
 
-19. Finally lets collapse the “Cust Key” column to review the grouped calculations that we have created.
+19. Finally let's collapse the “Cust Key” column to review the grouped calculations that we have created.
 
 ![image20](assets/settinguptheworkbook_20.png)
 
@@ -252,7 +252,7 @@ Even with pivot tables Sigma allows you to surface the underlying records with e
 
 ![image39](assets/visualizinginapivottable_9.png)
 
-10. Finally lets remove the “Retention % - Grouped Table” and add conditional formatting to the remaining retention column. On the left side select the paint brush and click “Conditional formatting”. Change the style to “Color Scale” and Apply to “Retention % - Pivot Table”.
+10. Finally let's remove the “Retention % - Grouped Table” and add conditional formatting to the remaining retention column. On the left side select the paint brush and click “Conditional formatting”. Change the style to “Color Scale” and Apply to “Retention % - Pivot Table”.
 
 ![image310](assets/visualizinginapivottable_10.png)
 

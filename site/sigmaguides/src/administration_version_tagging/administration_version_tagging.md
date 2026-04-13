@@ -33,7 +33,7 @@ For example, administrators can create `Production` and `Quality Assurance` tags
 
 The `Quality Assurance` version is used for testing and approval purposes. Once reviewed, the workbook can be tagged `Production` for users to consume.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma’s version tagging facilitates collaboration and assures control, especially in team environments where multiple users are working on the same workbook.
 </aside> 
 
@@ -44,7 +44,7 @@ The `Quality Assurance` version is used for testing and approval purposes. Once 
 For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
  ### Target Audience
-Semi-technical users who are interested in a more controlled (ie: SDLC) methodology for developing, testing and deploying Sigma content.
+Semi-technical users who are interested in a more controlled (i.e., SDLC) methodology for developing, testing and deploying Sigma content.
 
 ### Prerequisites
 
@@ -54,14 +54,14 @@ Semi-technical users who are interested in a more controlled (ie: SDLC) methodol
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
 ### What You’ll Learn
-How to Sigma version tagging can be used (inside Sigma itself) to provide a controlled release experience which should result in less reported issues and happier end-users.
+How Sigma version tagging can be used (inside Sigma itself) to provide a controlled release experience which should result in less reported issues and happier end-users.
 
 ![Footer](assets/sigma_footer.png)
 
@@ -113,7 +113,7 @@ First, we will create two teams; `Quality Assurance Team` and `Sales_Team_All`.
 
 ### Assign users to teams
 
-We need to create at least one user (for each team) in order to demonstration version tagging. 
+We need to create at least one user (for each team) in order to demonstrate version tagging. 
 
 For the `Quality Assurance` team, we will assign one user, who will be responsible for testing workbooks, prior to promotion to production use.
 
@@ -255,7 +255,7 @@ For example, you may wish to "untag" or remove a tag from a workbook. Workbooks 
 
 <img src="assets/vt36.png" width="800"/>
 
-<li><strong></strong>Some reasons for deletion may be:</strong>
+<li>Some reasons for deletion may be:
     <ol type="n"> 
       <li>Content was tagged (migrated) with a material misstatement or error.  Remove the tag and resolve issues in the "Draft" or previous version.</li>
       <li>Any security testing that exposes more data than expected.</li>
@@ -278,7 +278,7 @@ Before the Quality Assurance team can see this workbook, we will need to share i
 
 <img src="assets/vt18.png" width="600"/>
 
-In our use case, we are restricting the Quality Assurance Team members to only explore the workbook that is tagged `Quality_Assurance`, so they can either find issues set the tag to production. We are also sending them an email (which is optional).
+In our use case, we are restricting the Quality Assurance Team members to only explore the workbook that is tagged `Quality_Assurance`, so they can either find issues or set the tag to production. We are also sending them an email (which is optional).
 
 <img src="assets/vt19.png" width="600"/>
 
@@ -340,7 +340,7 @@ To stay organized, the team can use a Sigma workspace or simply create a folder 
 <strong>IMPORTANT:</strong><br> For large multi-user workbooks, best practice is to store in a workspace and tag that workspace, when sharing the workspace with teams or users.
 </aside>
 
-Since this is single workbook example, we will just save the workbook in a folder:
+Since this is a single workbook example, we will just save the workbook in a folder:
 
 <img src="assets/vt29.png" width="600"/>
 
@@ -376,7 +376,7 @@ Duration: 5
 
 While Sigma has worked hard to make versioning simple, the tagging system is also very flexible. 
 
-It is recommended that customers thoughtfully plan how to best use all the options, so that SDLC workflows are simple and effective as possible. **Upfront planning is the key in this regard.**
+It is recommended that customers thoughtfully plan how to best use all the options, so that SDLC workflows are as simple and effective as possible. **Upfront planning is the key in this regard.**
 
 Some additional detail on [version tagging can be found in our documentation](https://help.sigmacomputing.com/docs/version-tagging), and we encourage you to review that as well. 
 
@@ -397,7 +397,7 @@ This was one example of version tagging, covering the basics, so that readers co
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-=======
+
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 

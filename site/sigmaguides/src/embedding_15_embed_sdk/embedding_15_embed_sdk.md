@@ -58,7 +58,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -366,7 +366,7 @@ Sigma has provided a sample application page, with useful links.
 
 <img src="assets/sdk15.png" width="800"/>
 
-In the next section will will look at how the embed is configured in code.
+In the next section we will look at how the embed is configured in code.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -374,7 +374,7 @@ In the next section will will look at how the embed is configured in code.
 ## Sample Application
 Duration: 5 
 
-Before we load the `Sample Application`, lets review which files are involved in this sample application. 
+Before we load the `Sample Application`, let's review which files are involved in this sample application. 
 
 ### Primary source files
 There are five files involved in this example embed:

@@ -53,7 +53,7 @@ Eliminates manual recalculations by automating data redistribution.
 Logs and tracks changes for auditing or collaboration.
 
 ### Challenges to Consider
-As will all technology implementations, there are a few considerations, some of which are listed below:
+As with all technology implementations, there are a few considerations, some of which are listed below:
 
 - **Complex Data Models:**<br>
 Spreading requires a clear definition of the relationships between aggregate values and underlying rows.
@@ -101,7 +101,7 @@ Developers interested in using Sigma to build interactive data applications.
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
  </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -236,7 +236,7 @@ RowNumber()
 
 <img src="assets/pts_3.png" width="800"/>
 
-Add three more columns after the `RowNumber` column, rename and apply the following formuala to each one:
+Add three more columns after the `RowNumber` column, rename and apply the following formula to each one:
 ```copy-code
 Column Name:    Formula:
 l1_key	        MD5([Product Type] & Text([Year]))
@@ -393,7 +393,7 @@ Rename the page to `Adjustments` and the title from `New Modal` to `Adjustments`
 For the purposes of this demonstration, this modal will allow the user to adjust the selected `Coalesced Revenue` from the pivot table, choosing from three different methods. It will also display information about which selections have been made.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Im production, it may not be desirable to show the additional details we will configure for display. We do so now for clarity only.
+<strong>IMPORTANT:</strong><br> In production, it may not be desirable to show the additional details we will configure for display. We do so now for clarity only.
 </aside>
 
 ### Adding the Controls
@@ -536,7 +536,7 @@ Now drag the `Open a modal` action to the last position:
 Click `Publish`.
 
 ### Give it a quick test
-Click on any `Coalesed Revenue` value, noting the product details, value and year. These values should appear in the modal as expected. For example, if the value selected below is clicked:
+Click on any `Coalesced Revenue` value, noting the product details, value and year. These values should appear in the modal as expected. For example, if the value selected below is clicked:
 
 <img src="assets/pts_22.png" width="800"/>
 
@@ -720,7 +720,7 @@ Execute the procedure and confirm a success response from Snowflake.
 ## Calling the Procedure from Sigma
 Duration: 5
 
-We will use the existing `Primary` button on the `Adjustments` modal page (for convienence).
+We will use the existing `Primary` button on the `Adjustments` modal page (for convenience).
 
 <img src="assets/pts_25.png" width="400"/>
 

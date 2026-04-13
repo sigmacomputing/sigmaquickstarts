@@ -191,7 +191,7 @@ Configure the action as shown, to open a `New modal`:
 
 Now if a cell is clicked in the `EDIT` column, the modal will appear.
 
-This is all very slick, but let's get back to what we need to do here; allow an authorized person to apply an `OverRide` (ie: order discount for example) to a specific order (perhaps as a customer service issue) and submit it for final approval. 
+This is all very slick, but let's get back to what we need to do here; allow an authorized person to apply an `OverRide` (i.e., order discount for example) to a specific order (perhaps as a customer service issue) and submit it for final approval. 
 
 To accomplish this, we will need to pass a few other values from the selected row to the `Adjuster Modal` where the user will then modify as desired. 
 

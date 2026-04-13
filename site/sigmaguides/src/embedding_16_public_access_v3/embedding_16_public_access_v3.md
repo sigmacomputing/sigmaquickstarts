@@ -176,7 +176,7 @@ Here are a few things to consider when working with public embeds.
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we learned how to how to embed Sigma into a Public facing website. 
+In this QuickStart, we learned how to embed Sigma into a Public facing website. 
 
 **Additional Resource Links**
 

@@ -29,7 +29,7 @@ No SQL or technical data skills are required for using Sigma.
   <li>A Snowflake free 30-day trial environment.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -217,7 +217,7 @@ Each page can have anything from a simple table to a complete dashboard or data 
 
 Analysis and presentation are now seamlessly integrated in a spreadsheet-like experience. 
 
-This is useful to know because if you want to build something in Sigma (ie: dashboard, report etc...) you need a workbook, at least one page and some data. Data can come from the cloud data warehouse or end user input, but will talk more about that later.
+This is useful to know because if you want to build something in Sigma (i.e., dashboard, report etc.) you need a workbook, at least one page and some data. Data can come from the cloud data warehouse or end user input, but will talk more about that later.
 
 One particular may be new to users of traditional BI products. This feature, called `Input Tables` allow data to be captured from the user, and stored in the warehouse. In addition, data in an Input Table can be joined (via a [lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)) to other warehouse tables. This enables many powerful use cases, a few are covered in this ]QuickStart.](https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html?index=..%2F..index#0)
 
@@ -275,7 +275,7 @@ Sigma lets you filter, drill-down, sort and access the underlying data in a sing
 
 <img src="assets/hack14.png" width="800"/>
 
-This is built-in and automatic so that you you don't have to waste time configuring things over and over again.
+This is built-in and automatic so that you don't have to waste time configuring things over and over again.
 
 Want to see all the data?, click the `expand` arrows in the corner of any page element:
 
@@ -511,7 +511,7 @@ The manager in France tells you she's cutting her forecast down to $200k because
 
 Update the input table and see the map change. Wait, we are not able to enter new values into the Input Table?
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Changes to Input Table data requires the Workbook be in Edit mode
 </aside>
 Edit the Workbook.

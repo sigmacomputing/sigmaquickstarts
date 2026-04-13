@@ -34,9 +34,9 @@ For more information on Sigma's product release strategy, see [Sigma product rel
  ### Target Audience
 Anyone interested in learning about Snowpark and how to leverage UDFs in Sigma.
 
-Developers who are interesting in creating Snowpark UDFs in Python (and other supported languages) and leverage them within Sigma to provide advanced functionality to Sigma users.
+Developers who are interested in creating Snowpark UDFs in Python (and other supported languages) and leverage them within Sigma to provide advanced functionality to Sigma users.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes users are familiar with basic software installation and configuration. Not all steps will be shown as they are commonly used methods. 
 </aside>
 
@@ -50,7 +50,7 @@ Developers who are interesting in creating Snowpark UDFs in Python (and other su
   <li>Miniconda for required Python packages</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -60,7 +60,7 @@ Developers who are interesting in creating Snowpark UDFs in Python (and other su
 
 We will learn how to setup a local development environment, configure it for Python, connect to Snowflake, create and test a Snowpark UDF and call it from Sigma.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> We will demonstrate using a MAC computer, but the steps are very similar for Windows and Linux. 
 </aside>
 
@@ -363,7 +363,7 @@ We have a blank Jupyter notebook. There are really three main features we will u
 
 <img src="assets/sp15.png" width="800"/>
 
-With that out of the way, lets do a quick test to make sure all of this is working.
+With that out of the way, let's do a quick test to make sure all of this is working.
 
 Type `1+1` in only codeblock and click the run (arrow) button on the left side of the codeblock. 
 
@@ -438,7 +438,7 @@ For our first UDF, we will create a simple (think "Hello World-like") UDF in Sno
 
 Our UDF will calculate the greatest common denominator (GCD) between two input values, using the NumpPy package.
 
-A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desireable.
+A UDF that is shared and can be called by any Sigma user, using the Sigma user interface directly, is highly desirable.
 
 Now that VSCode is connected to Snowflake, we want to create another Codeblock. This code defines our UDF which calculates the greatest common denominator (GCD) of two input numbers, in a Pandas DataFrame. 
 

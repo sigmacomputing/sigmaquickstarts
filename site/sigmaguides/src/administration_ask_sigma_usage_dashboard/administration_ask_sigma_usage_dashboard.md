@@ -95,7 +95,7 @@ Before configuring Ask Sigma, we need a location to store the prompts (questions
 
 We will use Snowflake in this QuickStart, but instructions for other warehouses are available [here.](https://help.sigmacomputing.com/docs/configure-a-usage-dashboard-for-ask-sigma#configure-a-destination-in-your-warehouse-to-store-ask-sigma-usage-data)
 
-Let's also assume that we want to completely isolate this information from other users in Snowflake and in Sigma. Do accomplish that we will create dedicated Snowflake role and Sigma connection.
+Let's also assume that we want to completely isolate this information from other users in Snowflake and in Sigma. To accomplish that, we will create a dedicated Snowflake role and Sigma connection.
 
 Log into Snowflake as `ACCOUNTADMIN`.
 
