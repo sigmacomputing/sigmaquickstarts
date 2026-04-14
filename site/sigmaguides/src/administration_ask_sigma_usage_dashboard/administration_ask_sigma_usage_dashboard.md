@@ -6,45 +6,43 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-06-16
+lastUpdated: 2026-06-16
 
-# Create an Ask Sigma Usage Dashboard
+# Create an Sigma Assistant Usage Dashboard
 
 ## Overview 
 Duration: 5 
 
 If you've used it before, you know that Sigma's approach to AI is unique, allowing users to launch selected AI results into a workbook for further analysis or sharing immediately after asking a question.
 
-Ask Sigma breaks down every step AI took to generate its answer. This lets you double-check results, edit any step of the analysis, and work more confidently with AI.
-
-<img src="assets/ask_sigma.png" width="800"/>
+Sigma Assistant breaks down every step AI took to generate its answer. This lets you double-check results, edit any step of the analysis, and work more confidently with AI.
 
 ### Usage dashboards
 Like any other data, user questions can be mined for patterns that may allow improvements in the way content is designed. For example, what are the users asking about most often? That insight could justify a pre-built asset, saving users the need to search.
 
 ### Security
-Ask Sigma usage data is not visible in any of the standard Sigma usage dashboards or audit logs, and requires separate configuration to ensure data security.
+Sigma Assistant usage data is not visible in any of the standard Sigma usage dashboards or audit logs, and requires separate configuration to ensure data security.
 
 This is because the data includes user names as well as the full text of their questions. Sigma recommends configuring a dedicated schema in your warehouse to store this data and granting view privileges to that schema to only the admins who should be able to see this data.
 
-### How Ask Sigma Logs Are Stored and Accessed
-When you enable Ask Sigma history logging in the admin panel, Sigma automatically creates two components in Snowflake:
+### How Sigma Assistant Logs Are Stored and Accessed
+When you enable Sigma Assistant history logging in the admin panel, Sigma automatically creates two components in Snowflake:
 
 **1. Write-Back Table**<br>
-Sigma logs every Ask Sigma query to a Snowflake table.
+Sigma logs every Sigma Assistant query to a Snowflake table.
 
 This table is created in a schema you specify as the write-back destination. In Section 2, we will create dedicated Snowflake resources (database, user, role, etc.), and in Section 3 we will create a Sigma connection to store the historical data—ensuring proper data isolation.
 
 Sigma will not expose this schema in the UI.
 
-The schema must have CREATE TABLE privileges.
+The schema must have `CREATE TABLE` privileges.
 
 **2. Auto-Generated View**<br>
 Sigma automatically creates a view over the log table so it can be used in dashboards and workbooks.
 
 This view is created in a separate schema of your choosing — typically a schema where Sigma Input Tables and views already live (e.g., QUICKSTARTS.WRITE).
 
-The schema must allow CREATE VIEW, and must not be the write-back schema, or Sigma will ignore it.
+The schema must allow `CREATE VIEW`, and must not be the write-back schema, or Sigma will ignore it.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> You do not need to create the view manually. Sigma handles it as long as the permissions and schema locations are valid.
@@ -61,7 +59,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn’t work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Administrators, data analysts, or others looking to monitor Ask Sigma activities and details related to Sigma.
+Administrators, data analysts, or others looking to monitor Sigma Assistant activities and details related to Sigma.
 
 ### Prerequisites
 
@@ -87,13 +85,13 @@ Administrators, data analysts, or others looking to monitor Ask Sigma activities
 ## Snowflake Setup
 Duration: 5
 
-Before configuring Ask Sigma, we need a location to store the prompts (questions) that users are asking. We want to ensure this information is isolated in the cloud data warehouse as it contains sensitive information like usernames.
+Before configuring Sigma Assistant, we need a location to store the prompts (questions) that users are asking. We want to ensure this information is isolated in the cloud data warehouse as it contains sensitive information like usernames.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma does not store this data outside the customer warehouse.
 </aside>
 
-We will use Snowflake in this QuickStart, but instructions for other warehouses are available [here.](https://help.sigmacomputing.com/docs/configure-a-usage-dashboard-for-ask-sigma#configure-a-destination-in-your-warehouse-to-store-ask-sigma-usage-data)
+We will use Snowflake in this QuickStart, but instructions for other warehouses are available [here](https://help.sigmacomputing.com/docs/configure-a-usage-dashboard-for-ask-sigma#configure-a-destination-in-your-warehouse-to-store-ask-sigma-usage-data)
 
 Let's also assume that we want to completely isolate this information from other users in Snowflake and in Sigma. To accomplish that, we will create a dedicated Snowflake role and Sigma connection.
 
@@ -106,27 +104,32 @@ USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
 
 -- Step 1: Create a dedicated role for Sigma access
-CREATE ROLE IF NOT EXISTS ASK_ADMIN_ROLE;
+CREATE ROLE IF NOT EXISTS ASSISTANT_ADMIN_ROLE;
 
--- STEP 2: SETUP FOR SIGMA WRITE-BACK CONNECTION
--- Create database and schema for Sigma Input Tables
-CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
-CREATE SCHEMA IF NOT EXISTS QUICKSTARTS.WRITE;
+-- Step 1a: Create user and assign to role
+CREATE USER IF NOT EXISTS SIGMA_ASSISTANT_USER
+    PASSWORD = 'changeme!'
+    DEFAULT_ROLE = ASSISTANT_ADMIN_ROLE
+    DEFAULT_WAREHOUSE = COMPUTE_WH
+    MUST_CHANGE_PASSWORD = FALSE;
 
--- Grant write-back permissions to the role
-GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE ASK_ADMIN_ROLE;
-GRANT USAGE ON SCHEMA QUICKSTARTS.WRITE TO ROLE ASK_ADMIN_ROLE;
-GRANT CREATE TABLE, CREATE VIEW, CREATE STAGE ON SCHEMA QUICKSTARTS.WRITE TO ROLE ASK_ADMIN_ROLE;
+GRANT ROLE ASSISTANT_ADMIN_ROLE TO USER SIGMA_ASSISTANT_USER;
+GRANT ROLE ASSISTANT_ADMIN_ROLE TO ROLE SYSADMIN;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE ASSISTANT_ADMIN_ROLE;
 
--- STEP 3: SETUP FOR ASK SIGMA DASHBOARD LOGGING
--- Create database and schema for Ask Sigma history
-CREATE DATABASE IF NOT EXISTS ASK;
-CREATE SCHEMA IF NOT EXISTS ASK.HISTORY;
+-- STEP 2: SETUP FOR ASSISTANT SIGMA DASHBOARD LOGGING
+-- Create database and schemas for Assistant logging
+-- NOTE: Sigma requires separate schemas for write-back and Ask Sigma logging
+CREATE DATABASE IF NOT EXISTS ASSISTANT;
+CREATE SCHEMA IF NOT EXISTS ASSISTANT.HISTORY;  -- Write-back schema
+CREATE SCHEMA IF NOT EXISTS ASSISTANT.LOGS;     -- Ask Sigma / AI usage logging schema
 
--- Grant privileges to access Ask Sigma logs
-GRANT USAGE ON DATABASE ASK TO ROLE ASK_ADMIN_ROLE;
-GRANT USAGE ON SCHEMA ASK.HISTORY TO ROLE ASK_ADMIN_ROLE;
-GRANT CREATE TABLE, CREATE VIEW ON SCHEMA ASK.HISTORY TO ROLE ASK_ADMIN_ROLE;
+-- Grant privileges to both schemas
+GRANT USAGE ON DATABASE ASSISTANT TO ROLE ASSISTANT_ADMIN_ROLE;
+GRANT USAGE ON SCHEMA ASSISTANT.HISTORY TO ROLE ASSISTANT_ADMIN_ROLE;
+GRANT CREATE TABLE, CREATE VIEW ON SCHEMA ASSISTANT.HISTORY TO ROLE ASSISTANT_ADMIN_ROLE;
+GRANT USAGE ON SCHEMA ASSISTANT.LOGS TO ROLE ASSISTANT_ADMIN_ROLE;
+GRANT CREATE TABLE, CREATE VIEW ON SCHEMA ASSISTANT.LOGS TO ROLE ASSISTANT_ADMIN_ROLE;
 ```
 
 Click the `Run All` option:
@@ -147,19 +150,21 @@ Log into Sigma as an administrator and navigate to `Administration` > `Connectio
 
 In light of the security changes above, we’ll use key pair authentication for this demonstration. There is a QuickStart: [Snowflake Key-pair Authorization](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0) if you need assistance setting it up.
 
-Configure the connection as shown, replacing the example values with your own:
+Configure the connection as shown, replacing the example values with your own. Be sure to enable write access:
 
 <img src="assets/ask_2.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In the screenshot above, we used a service account user created during the key pair authentication setup.
+<strong>NOTE:</strong><br> In the screenshot above, we used a service account user created during the key pair authentication setup. 
+
+If you encounter the error, "Could not connect to database - JWT token is invalid", the key-pair also needs to be associated with the new user:
+
+ALTER USER SIGMA_ASSISTANT_USER SET RSA_PUBLIC_KEY='<your_public_key>';
 </aside>
 
-Be sure to enable write access:
-
-<img src="assets/ask_3.png" width="800"/>
-
 Click `Create connection`. Sigma will validate the connection. Once complete, we can move on to the next step.
+
+For more information, see [Connect to data sources](https://help.sigmacomputing.com/docs/connect-to-data-sources)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -183,60 +188,59 @@ Navigate to `Administration` > `AI settings`, select an AI provider and enter a 
 
 <img src="assets/ask_4.png" width="800"/>
 
-Also configure `Ask Sigma usage` logging. Once done, a message will appear; click `Close`:
+Also configure `AI usage configuration` logging by giving it a place to store the log data:
 
-<img src="assets/ask_4a.png" width="800"/>
+<img src="assets/ask_4c.png" width="800"/>
 
 For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
-### Select data sources to make available to Ask Sigma
-Now we need to tell Sigma which data sources Ask Sigma can use. Since we are using third-party AI services like OpenAI, we want to carefully control which data is accessible. This step ensures access is limited to approved or non-sensitive data.
+### Select data sources to make available to Sigma Assistant
+Now we need to tell Sigma which data sources Sigma Assistant can use. Since we are using third-party AI services like OpenAI, we want to carefully control which data is accessible. This step ensures access is limited to approved or non-sensitive data.
 
-For example, if we want Ask Sigma to have access to the `Sigma Sample Database > RETAIL > PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` just search for it, select the source, and click `Sync`:
+For example, if we want Sigma Assistant to have access to the `Sigma Sample Database > RETAIL > PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` click `Add source` and add it from under the `Connections` option:
 
 <img src="assets/ask_5.png" width="800"/>
-
-Once the sync is complete, you can filter by `Available` to confirm it’s ready for Ask Sigma.
-
-<img src="assets/ask_6.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Ask Sigma
+## Sigma Assistant
 Duration: 5
 
-At this point, we follow the `Ask` workflow rather than the typical Sigma `Create New Workbook` process.
+At this point, we follow the `Assistant` workflow rather than the typical Sigma `Create New Workbook` process.
 
-Click the <img src="assets/crane.png" width="45"/> icon, and then select `Ask Sigma`:
+Click the <img src="assets/crane.png" width="45"/> icon, and then select `Assistant`:
 
-We’ll ask a simple question — "How many unique customers do we have?" and direct the AI to use the `CUSTOMER` table. 
+We’ll ask a simple question — "How many unique customers do we have?" and direct the AI to use the `CUSTOMER` table:
+```copy-code
+How many unique customers do we have?
+```
 
-<img src="assets/ask_7.png" width="500"/>
+<img src="assets/ask_7.png" width="700"/>
 
 <aside class="positive">
 <strong>PRO TIP:</strong><br> Directing the AI to specific data sources will result in faster and more accurate responses.
 </aside>
 
-Once Sigma generates results, the user can choose which visualizations to include in a workbook:
-
-For example, select a few checkboxes and click `Open in workbook`:
+Sigma Assistant processes the question and displays an analysis breakdown — including the steps it took, the SQL it generated, and the result. It also offers a follow-up suggestion to continue exploring the data:
 
 <img src="assets/ask_8.png" width="800"/>
 
-Once it's in an exploration, we can rearrange, style, or use any of Sigma’s many powerful features and then save it as a new workbook:
+Once it's in an exploration, we can rearrange, style, or use any of Sigma’s many powerful features and then save it as a new workbook.
 
-<img src="assets/ask_9.png" width="800"/>
+For this simple KPI, a table with just a summary was created to provide the data and the KPI:
+
+<img src="assets/ask_9.png" width="700"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Ask Sigma Dashboard
+## Sigma Assistant Dashboard
 Duration: 5
 
-Now that we have a question, we can see the results on the Ask Sigma usage page.
+Now that we have a question, we can see the results on the Sigma Assistant usage page.
 
-Navigate to `Administration` > `AI settings` > `Ask Sigma usage`.
+Navigate to `Administration` > `Usage` > `Assistant`.
 
 While we currently have only one record, we can see that Sigma provides a wealth of useful information about questions users are asking, who is asking them (Users), which sources are most used, and overall performance:
 
@@ -250,7 +254,7 @@ With all of this information, customers can deliver a more tailored Sigma experi
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we explored how to securely enable and monitor Ask Sigma usage in your organization. You now have the foundation to deploy Ask Sigma securely, monitor its usage, and tailor your content strategy based on real user questions.
+In this QuickStart, we explored how to securely enable and monitor Sigma Assistant usage in your organization. You now have the foundation to deploy Sigma Assistant securely, monitor its usage, and tailor your content strategy based on real user questions.
 
 **Additional Resource Links**
 

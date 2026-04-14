@@ -374,7 +374,7 @@ Once a provider is configured, AI is available in several places across the prod
   <li><strong>Formula Assistant:</strong> Write new formulas by describing what you want, correct formula errors, or ask AI to explain what an existing formula does — all from the formula bar. <a href="https://help.sigmacomputing.com/docs/use-ai-with-formulas">Learn more</a></li>
   <li><strong>Explain this Chart:</strong> Generate an AI-powered description of any chart, including key insights and trends. The result can be copied directly into a text element alongside the chart. <a href="https://help.sigmacomputing.com/docs/explain-visualizations-with-ai">Learn more</a></li>
   <li><strong>AI Queries:</strong> Run AI-powered analysis on text data as part of your workbook calculations — sentiment analysis, classification, summarization, and more. <a href="https://help.sigmacomputing.com/docs/perform-ai-queries">Learn more</a></li>
-  <li><strong>Chat Element:</strong> Embed a conversational AI interface directly on a workbook page, so end users can ask questions about the data without leaving the app.</li>
+  <!-- <li><strong>Chat Element:</strong> Embed a conversational AI interface directly on a workbook page, so end users can ask questions about the data without leaving the app.</li> -->
 </ul>
 
 <aside class="positive">
@@ -447,10 +447,10 @@ Once in the workbook, we see that two tables and the chart are included (after m
 
 Now we can save it, refine it, or use Sigma's [drill-down](https://help.sigmacomputing.com/docs/view-underlying-data) capabilities for deeper analysis. We'll continue building on this workbook in the next section.
 
-We can still access `Assistant` in the workbook by clicking the <img src="assets/assistant.png" width="35"/>
+<!-- We can still access `Assistant` in the workbook by clicking the <img src="assets/assistant.png" width="35"/>
  icon:
 
-<img src="assets/fun_2026_11.png" width="800"/>
+<img src="assets/fun_2026_11.png" width="800"/> -->
 
 ### Formula Assistant
 

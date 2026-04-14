@@ -101,7 +101,7 @@ Click `Publish`, then open the published version:
 Copy the URL from the browser. We will use this in the next section.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Ask Sigma interface.
+<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Sigma Assistant interface.
 </aside>
 
 For more information on URL formats for JWT embedding, see [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)

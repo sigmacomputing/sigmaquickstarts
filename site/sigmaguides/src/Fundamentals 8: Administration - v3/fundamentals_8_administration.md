@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-03-13
+lastUpdated: 2026-06-13
 
 # Fundamentals 08: Administration
 
@@ -644,6 +644,40 @@ The user would not be aware of the restriction and the data would be limited to 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## AI Settings
+Duration: 5
+
+The `AI settings` page is where administrators configure Sigma's AI capabilities for the organization.
+
+<img src="assets/fa_aisettings_01.png" width="800"/>
+
+Configuration is organized into several areas:
+
+**AI Provider**<br>
+Select the AI provider Sigma will use to power features like Sigma Assistant. Options include third-party providers such as OpenAI, as well as warehouse-hosted AI models for organizations that need to keep data within their own environment.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Customers with sensitive data may prefer warehouse-hosted AI models to avoid exposing data to third-party providers.
+</aside>
+
+For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
+
+**Sigma Assistant**<br>
+Controls whether Sigma Assistant is enabled for the organization and which data sources users can query through it. Administrators can also enable usage logging, which records the questions users ask along with metadata useful for governance and optimization.
+
+<img src="assets/fa_aisettings_02.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma Assistant usage data — including usernames and the full text of questions — is stored directly in your cloud data warehouse, not in Sigma. Treat this data accordingly and restrict schema access to authorized administrators.
+</aside>
+
+For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
+There is also a QuickStart: [Create a Sigma Assistant Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Embeds
 Duration: 20
 
@@ -658,6 +692,27 @@ We are able to either `Reassign embed` or simply delete any embed (non-JWT only)
 <img src="assets/fa21.png" width="800"/>
 
 For those interested in embedding, there is an entire [series of QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding) dedicated to getting you going.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## API Connectors
+Duration: 5
+
+`API Connectors` allow Sigma to call external REST APIs directly from a workbook, enabling real-time integration with third-party systems without requiring a data pipeline or custom backend.
+
+<!-- <img src="assets/fa_apiconnectors_01.png" width="800"/> -->
+
+Once configured, an API connector can be used to send or retrieve data from external systems — for example, creating a Jira ticket, looking up a Salesforce record, or triggering a ServiceNow workflow — all from within a Sigma workbook.
+
+For more information, see [API connectors overview](https://help.sigmacomputing.com/docs/api-connectors)
+
+There are QuickStarts that demonstrate API connectors with common platforms:
+
+[API Actions: Getting Started](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_getting_started/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate Jira](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_jira/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate Salesforce](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_salesforce/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate ServiceNow](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_servicenow/index.html?index=..%2F..index#0)<br>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -714,32 +769,6 @@ For more information, see [Manage organization schedules](https://help.sigmacomp
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## AI Settings
-Duration: 20
-
-To use AI features in Sigma, you’ll need to select and configure an AI provider.
-
-For more information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#configure-an-ai-provider)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
-
-To keep data under your control, Sigma also supports warehouse-hosted AI models.
-</aside>
-
-For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Please check the documentation link below for the most recent information on Sigma AI.
-</aside>
-
-Sigma also provides an optional log of Sigma Assistant usage. For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
-
-There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Materializations
 Duration: 20
 
@@ -783,19 +812,15 @@ Duration: 20
 
 It supports the generation of client credentials for Sigma's REST API and/or embedded applications. 
 
-The choice is made after clicking `Create New`:
-
-<img src="assets/da2.png" width="600"/>
-
 The page lists all client credentials and provides a way to revoke them:
 
 <img src="assets/da1.png" width="800"/>
 
-To learn how to access Sigma via API, there is a [QuickStart](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
+To learn how to access Sigma via Postman, there is [Sigma API with Postman](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
 
 There is also an [API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-There are [API code samples](https://help.sigmacomputing.com/recipes) with a corresponding [QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?_gl=1*wgqu3c*_gcl_aw*R0NMLjE3MTgzOTg3MDAuQ2p3S0NBancxSy16QmhCSUVpd0FXZUNPRjVqNkh1N2dNcHhtTm1HYWluZlhOY2lRd0VLTkJtZnd5TURCOG1Pa1hDQjd0ODhSaEpUbjlCb0NGXzBRQXZEX0J3RQ..*_gcl_au*MTU3OTYwODI3NC4xNzEzNTc1NDQ4LjEzMjQ1MTQxMTUuMTcxNzE3MTI2Ni4xNzE3MTcxMjY1*_ga*MjAyNzIyMDcwLjE3MTcxODQ4Nzk.*_ga_PMMQG4DCHC*MTcxODczNDU2MS40Ny4xLjE3MTg3MzczOTguNjAuMC4w#0)
+There are [API code samples](https://help.sigmacomputing.com/recipes) with a corresponding [QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_api_code_samples/index.html?index=..%2F..index#0)
 
 To learn how to access Sigma via embedding, there is a [QuickStart series](https://quickstarts.sigmacomputing.com/?cat=embedding)
 

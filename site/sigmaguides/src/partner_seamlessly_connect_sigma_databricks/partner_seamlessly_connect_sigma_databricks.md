@@ -6,6 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
+lastUpdated: 2025-06-13
 
 # Unlock the Power of Your Data: Seamlessly Connect Sigma to Databricks via Partner Connect
 

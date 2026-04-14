@@ -1,14 +1,14 @@
 author: pballai
-id: template_quickstart_id
-summary: template_quickstart_summary
-categories: TBD
+id: aiapps_natural_language_with_claude
+summary: aiapps_natural_language_with_claude
+categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-01-20
+lastUpdated: 2026-06-20
 
-# QUICKSTART NAME HERE
+# Natural Language Analytics with Claude and Sigma
 
 ## Overview
 Duration: 5
