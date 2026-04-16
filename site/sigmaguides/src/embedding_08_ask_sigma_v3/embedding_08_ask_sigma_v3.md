@@ -3,9 +3,9 @@ id: embedding_08_ask_sigma_v3
 summary: embedding_08_ask_sigma_v3
 categories: embedding
 environments: web
-status: Hidden
+status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-05-29
 
 # Embedding 08: Embedding Sigma Assistant
@@ -139,9 +139,9 @@ On the `AI settings` page, select the `Assistant` tab. Locate the `Sigma Assista
 <strong>NOTE:</strong><br> Embed users must also have permission in Sigma to access any sources enabled here. Grant connection-level access through `Administration` > `Connections`.
 </aside>
 
-Once sources are added, click `Sync`. Sigma Assistant will confirm when the sync is complete and the sources are ready.
+For example, we need to share the `CUSTOMER` table with the `Sales_People` team:
 
-<!-- <img src="./assets/as_3.png" width="800"/> -->
+<img src="./assets/as_2a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -210,23 +210,21 @@ Let's ask a simple question, since we have one table to work with: `CUSTOMERS`:
 How many customers are there per market segment?
 ```
 
-As the processing starts, we can see the first thing the AI decided was to use the `CUSTOMER` table (obviously!) but Sigma also displays the decision logic in `Why CUSTOMER?`, shedding light on the choices the AI is making:
+As the processing starts, we can see the first thing the AI decided was to use the `CUSTOMER` table (obviously!) but Sigma also displays the decision logic in `Analysis breakdown?`, shedding light on the choices the AI is making.
+
+It also lets us peak at the SQL used to obtain the data:
 
 <img src="./assets/as_12.png" width="800"/>
 
-Further down, we can see that it made a new column with a calculation. While this is a simple example, it is really important to know exactly what the formula is to prevent unexpected results later:
+Then it provides a bar chart and some detail on the findings. We can `Explore` the response in a Sigma workbook:
 
-<img src="./assets/as_13.png" width="800"/>
+<img src="./assets/as_12a.png" width="700"/>
 
-Once done, Sigma allows users to select from the different visualizations the AI created. Users can select one or many and immediately open them in a new workbook:
+Becuase we are a `Build` user, we have access to all of the other tools Sigma provides.
 
-<img src="./assets/as_14.png" width="800"/>
+The functionality available to the user is determined by their `Account type` setting. This enables different user experiences and allows embedded customers to offer premium services:
 
-What is really slick about this for embedding is that when we opened in a workbook, we can see the selected charts in the host application right away!
-
-<img src="./assets/as_13.png" width="800"/>
-
-The functionality available to the user is determined by their `Account type` setting. This enables different user experiences and allows embedded customers to offer premium services. 
+<img src="./assets/as_12b.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

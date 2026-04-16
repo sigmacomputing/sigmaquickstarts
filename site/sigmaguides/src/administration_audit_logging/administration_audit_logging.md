@@ -17,7 +17,7 @@ This QuickStart **QS** provides an overview of Audit Logging in Sigma. When Audi
 
 The Audit Log is useful when needing to troubleshoot issues or monitor user activity for security and compliance purposes. 
 
-For example, a user may report they never received the invitation email that the administrator sent to allow access to Sigma. The Audit Log will show that the message was sent to the user and is likely "trapped" elsewhere (is: spam folder).
+For example, a user may report they never received the invitation email that the administrator sent to allow access to Sigma. The Audit Log will show that the message was sent to the user and is likely "trapped" elsewhere (is: spam folder)
 
 Since the data is available as a Sigma connection, we can explore it in a Sigma workbook to analyze how users across your organization utilize Sigma.
 
@@ -229,7 +229,7 @@ For `Storage Integration` we will be using a method that provides a secure conne
 This requires some configuration in Sigma, Snowflake and AWS in order for the scheduled job to securely deliver data to S3, from Snowflake (where the Audit Log is stored).
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> When using the Sigma export option "Cloud Storage" it is required to request Sigma support to assist in the Snowflake configuration as Audit Logs are held inside Sigma's Snowflake account. 
+<strong>IMPORTANT:</strong><br> This is a premium feature. To enable it for your Sigma organization, contact your Sigma Account Executive.
 </aside>
 
 The high-level workflow looks like this:
