@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-04-15
+lastUpdated: 2026-05-15
 
 # Fundamentals 01: Overview
 <!-- -->
@@ -425,6 +425,12 @@ Now let's ask a focused business question:
 The CEO wants to know the bottom ten stores in the chain.
 ```
 
+Before submitting, click the `+` button in the input area to select a specific data source. This scopes the query to a particular table and avoids ambiguity when multiple data sources are available:
+
+<img src="assets/fun_2026_62.png" width="800"/>
+
+Select `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` and submit the question.
+
 Sigma Assistant explains what it's doing at each step and why. For those who need to see it, the SQL query used is shown:
 
 <img src="assets/fun_2026_07.png" width="800"/>
@@ -530,7 +536,7 @@ The Sigma MCP Server is available to all Sigma customers today as a custom conne
 
 To connect it to Claude:
 
-1. In Sigma, click your profile icon and navigate to the section and copy your personal MCP server URL:
+1. In Sigma, click your profile icon and navigate to `Profile` > `MCP` and copy your personal MCP server URL:
 
 <img src="assets/fun_2026_51.png" width="800"/>
 
@@ -590,6 +596,8 @@ For teams that already work in AI-assisted environments, this means Sigma data b
 
 
 For full setup instructions, see [Use the Sigma MCP Server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
+
+For a hands-on walkthrough — including how to configure a Claude Project with org-specific context, search your Sigma environment, and run natural language queries against live data — see [Natural Language Analytics with Claude and Sigma](https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html).
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->

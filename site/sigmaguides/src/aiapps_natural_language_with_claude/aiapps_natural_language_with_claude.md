@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-05-14
+lastUpdated: 2026-06-14
 
 # Natural Language Analytics with Claude and Sigma
 
@@ -325,9 +325,7 @@ With relevant data sources identified and their structure understood, you can as
 Use Sigma to find the top 10 product categories by total revenue in the PLUGS_ELECTRONICS data.
 ```
 
-Claude will locate the relevant table, identify the appropriate columns, generate a query, and return the results — along with an explanation of what it found and how.
-
-If the connector session has expired or you haven't yet allowed Claude to execute SQL, you'll see a prompt to reauthenticate before results are returned:
+Claude will locate the relevant table, identify the appropriate columns, generate a query, and return the results — along with an explanation of what it found and how:
 
 <img src="assets/nlac-26.png" width="600"/>
 
@@ -339,11 +337,7 @@ Claude retains conversation context, so you can ask follow-up questions without 
 Now break that down by month. Which categories grew the most between Q1 and Q2?
 ```
 
-or:
-
-```copy-code
-Which of those top 10 categories had the highest return rate?
-```
+<img src="assets/nlac-27.png" width="600"/>
 
 Each follow-up refines or extends the prior analysis.
 
@@ -353,16 +347,12 @@ Each follow-up refines or extends the prior analysis.
 Use Sigma to compare average order value between online and in-store sales channels.
 ```
 
-or:
-
-```copy-code
-Which customer segment generates the most revenue? Show me the top 5.
-```
+<img src="assets/nlac-28.png" width="600"/>
 
 The value here is in the workflow. Instead of switching between Claude and Sigma to answer a data question, you stay in one place. Claude handles the discovery and query work, and you get answers grounded in your actual, live Sigma data — not a training dataset or a cached snapshot.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Results reflect data accessible to your Sigma account. If you do not have permission to access a specific connection, table, or document, the connector will not be able to query it. The connector also does not currently support queries using custom window frames, ordered window aggregates, or dynamic intervals.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Results reflect data accessible to your Sigma account. If you do not have permission to access a specific connection, table, or document, the connector will not be able to query it.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -377,7 +367,7 @@ The setup involves three things done once: connecting the MCP connector, configu
 
 The Project instructions are what make this durable over time. A well-configured Project turns Claude from a general-purpose assistant into one that already understands your organization — which tables are authoritative, how your team defines key metrics, and how you prefer to see results. That context compounds as you refine it.
 
-The techniques covered here apply to any Sigma environment, not just the PLUGS_ELECTRONICS sample data used in the examples. The prompts are reusable; the only thing that changes is the data source names.
+The techniques covered here apply to any Sigma environment, not just the `PLUGS_ELECTRONICS` sample data used in the examples. The prompts are reusable; the only thing that changes is the data source names.
 
 **Additional Resource Links**
 
