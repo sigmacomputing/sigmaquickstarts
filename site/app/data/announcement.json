@@ -1,5 +1,5 @@
 {
-  "visible": true,
+  "visible": false,
   "title": "Content update:",
   
   "message": "The QuickStart <strong>Forms: Quick Capture and Analysis</strong> has been replaced. See the updated version: <a href='/guide/aiapps_forms/index.html' style='color: #000000 !important;'><strong>Building Forms for Data Capture and Analysis</strong></a>"
