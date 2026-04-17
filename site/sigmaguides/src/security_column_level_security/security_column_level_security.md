@@ -81,7 +81,7 @@ Search for `Hands` and select the `Plugs Electronics Hands On Lab` table from th
 
 <img src="assets/clsu_3.png" width="600"/>
 
-After the table loadeda, use the `Properties` tab and drag the `Customer Name` column to the first position:
+After the table loaded, use the `Properties` tab and drag the `Customer Name` column to the first position:
 
 <img src="assets/clsu_5.png" width="800"/>
 

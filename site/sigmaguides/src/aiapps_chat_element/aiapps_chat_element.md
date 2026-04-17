@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-02-11
+lastUpdated: 2026-06-11
 
 # Build Conversational AI Apps with Chat Elements and Snowflake Cortex
 
@@ -401,11 +401,11 @@ Under `AI provider` section:
 <img src="assets/chat_19.png" width="800"/>
 
 <aside class="positive">
-<strong>AUTOMATIC DISCOVERY:</strong><br> Once you save the AI provider configuration, Sigma will automatically discover all Cortex Agents that your connection has access to. The <code>RETAIL_ASSISTANT</code> agent will appear in the <strong>Ask Sigma</strong> dropdown at the top right of your home page and will be available for use in Chat Elements.
+<strong>AUTOMATIC DISCOVERY:</strong><br> Once you save the AI provider configuration, Sigma will automatically discover all Cortex Agents that your connection has access to. The <code>RETAIL_ASSISTANT</code> agent will appear in the <strong>Sigma Assistant</strong> dropdown at the top right of your home page and will be available for use in Chat Elements.
 </aside>
 
 <aside class="negative">
-<strong>TROUBLESHOOTING:</strong><br> If the <code>RETAIL_ASSISTANT</code> agent doesn't appear in the Ask Sigma dropdown:
+<strong>TROUBLESHOOTING:</strong><br> If the <code>RETAIL_ASSISTANT</code> agent doesn't appear in the Sigma Assistant dropdown:
 <br><br>
 <strong>1. Sync the connection:</strong> <a href="https://help.sigmacomputing.com/docs/troubleshoot-your-connection#syncing-your-data-and-connection-indexing" target="_blank">Sync your Snowflake connection</a> to fetch the latest configuration details, then refresh the page.
 <br><br>
@@ -416,19 +416,19 @@ Your Sigma connection's role should appear with USAGE privilege.
 <strong>3. Check the connection role matches:</strong> In <strong>Administration</strong> > <strong>Connections</strong>, verify the role used by your Snowflake connection matches the role that has USAGE on the Cortex Agent.
 </aside>
 
-Your Sigma environment is now ready to use Snowflake Cortex! The `RETAIL_ASSISTANT` agent is available organization-wide for both Ask Sigma and Chat Elements.
+Your Sigma environment is now ready to use Snowflake Cortex! The `RETAIL_ASSISTANT` agent is available organization-wide for both Sigma Assistant and Chat Elements.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Test Cortex Agent with Ask Sigma
+## Test Cortex Agent with Sigma Assistant
 Duration: 5
 
-Before building a full workbook, let's verify that the Cortex Agent is working correctly by asking it a simple question using Ask Sigma.
+Before building a full workbook, let's verify that the Cortex Agent is working correctly by asking it a simple question using Sigma Assistant.
 
-### Access Ask Sigma
+### Access Sigma Assistant
 
-From your Sigma home page, look at the top right area where you'll see `Ask Sigma` with a dropdown showing `RETAIL_ASSISTANT`.
+From your Sigma home page, look at the top right area where you'll see `Sigma Assistant` with a dropdown showing `RETAIL_ASSISTANT`.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> If you don't see RETAIL_ASSISTANT in the dropdown, refer to the troubleshooting steps in the previous section to sync your connection.
@@ -436,7 +436,7 @@ From your Sigma home page, look at the top right area where you'll see `Ask Sigm
 
 ### Ask a Test Question
 
-Click in the Ask Sigma text box and type a simple question:
+Click in the Sigma Assistant text box and type a simple question:
 
 ```
 What is the total revenue from all orders in the most recent full year?
@@ -495,7 +495,7 @@ The important thing is that the RETAIL_ASSISTANT:
 ## Create Workbook
 Duration: 5
 
-Now that we've verified the Cortex Agent works with Ask Sigma, let's create a workbook where we can add a Chat Element for end users.
+Now that we've verified the Cortex Agent works with Sigma Assistant, let's create a workbook where we can add a Chat Element for end users.
 
 ### Create New Workbook
 
@@ -614,7 +614,7 @@ The agent has direct access to the retail order data in Snowflake through the se
 <strong>TROUBLESHOOTING:</strong><br> If the agent doesn't respond to queries, verify:
 <ul>
 <li>AI settings are configured in Sigma Admin (Data warehouse hosted model)</li>
-<li>RETAIL_ASSISTANT appears in Ask Sigma dropdown</li>
+<li>RETAIL_ASSISTANT appears in Sigma Assistant dropdown</li>
 <li>Your connection has been synced (see <a href="https://help.sigmacomputing.com/docs/troubleshoot-your-connection#syncing-your-data-and-connection-indexing">connection sync docs</a>)</li>
 </ul>
 </aside>

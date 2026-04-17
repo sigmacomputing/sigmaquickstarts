@@ -201,7 +201,7 @@ Click `Stop impersonation` to return to the parent Sigma instance. We can see th
 
 <img src="assets/mt_10.png" width="800"/>
 
-This allows the parent administrator to have visibility into tenant users and provide support if required. Details on user counts, teams, connections and account types are availble for the selected tenant.
+This allows the parent administrator to have visibility into tenant users and provide support if required. Details on user counts, teams, connections and account types are available for the selected tenant.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> This visibility is valuable if you're considering creating a premium service based on user counts or account types in an embedded scenario.
@@ -656,7 +656,7 @@ Click on the `regional_connection` user attribute, then click the `Tenants Assig
 
 A modal appears where you can search and select the tenant to configure.
 
-Select `Sale_East` and paste the `Connection ID` you saved earlier for the Sales-East connection. Repeat for `Sales-West`:
+Select `Sales-East` and paste the `Connection ID` you saved earlier for the Sales-East connection. Repeat for `Sales-West`:
 
 <img src="assets/mt_18.png" width="600"/>
 
@@ -786,7 +786,7 @@ Click `+ Add rule` to define the swap rule:
 These flexible swap rules eliminate the need for custom SQL parameters to handle tenant data segregation. A single swap policy can support all your workbooks regardless of how tenant data is structured in your warehouse.
 </aside>
 
-** Be sure to click `Save`.
+Be sure to click `Save`.
 
 ### How It Works
 

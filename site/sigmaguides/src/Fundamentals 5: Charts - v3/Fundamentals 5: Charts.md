@@ -83,7 +83,7 @@ The typical audience for this QuickStart includes users of Excel, common Busines
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Completion of the QuickStarts Fundamentals 1 and 2</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>If have not already, you can sign up for a Sigma Trial here:</li>
+  <li>If you have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
@@ -180,7 +180,7 @@ This time, open the `Element bar` > `Charts` group and select a `Pie` chart. Dra
 
 Click `Select source`, and choose the `Plugs_Store_Sales` table from the `Data` page.
 
-Configure the pie chart as shown. Since the data has some many brands, lets assume (and filter for) the top 10 only:
+Configure the pie chart as shown. Since the data has so many brands, let's assume (and filter for) the top 10 only:
 
 <img src="assets/fcharts_9.png" width="800"/>
 
@@ -206,7 +206,7 @@ Once you know how to create one, the others will be straightforward.
 
 For example, let's say we want a `KPI` that shows `Revenue`, and compare the current month with the same month from the previous year. 
 
-Using the `Element panel`, add a new `KPI` chart, set its data source to the `Plugs_Store_Sales` table on the `Data` page
+Using the `Element panel`, add a new `KPI` chart, set its data source to the `Plugs_Store_Sales` table on the `Data` page.
 
 Now simply configure the KPI as shown below. Use the `Sales` column for `VALUE` and rename it to `Monthly Sales Trend`. Also, set a `Comparison` period:
 
@@ -246,7 +246,7 @@ One way to do this is simply use the `Monthly Sales Trend` KPI menu and select `
 
 `Order Count` is the same as the others but the formula is not `SUM` but rather `CountDistinct`.
 
-Select all four KPI at once and drag them about the charts, resizing to suit.
+Select all four KPIs at once and drag them about the charts, resizing to suit.
 
 The `Fundamentals 5` should now look similar to this:
 
@@ -275,10 +275,10 @@ Workbooks support three distinct map types: **Region**, **Point** and **Geograph
  <ul>
       <li><strong>Region: </strong>Require a single text column on the map's REGION field. For example, you can use a column “US State” to distinguish between “regions” or states in this example</li>
       <li><strong>Point: </strong>Require a number column on both the map's LATITUDE and LONGITUDE fields. For example, you may want to show store locations on a map.</li>
-      <li><strong>Geography: </strong>Support datasets with geography data (WKT format) or variant data (GeoJSON format) and are typically used to illustrate geospatial objects on a map.<li>
+      <li><strong>Geography: </strong>Support datasets with geography data (WKT format) or variant data (GeoJSON format) and are typically used to illustrate geospatial objects on a map.</li>
 </ul>
 
-Our `Plugs_Store_Sales` table has the columns we an use for `Region` and `Point` map types:
+Our `Plugs_Store_Sales` table has the columns we can use for `Region` and `Point` map types:
 
 <img src="assets/fcharts_15.png" width="800"/>
 
@@ -368,7 +368,7 @@ Some really amazing visuals can be created via plugin. For example:
 ## What we've covered
 Duration: 5
 
-In this QuickStart we learned how to use Sigma to create beautiful charts, KPIs, maps and more.
+In this QuickStart, we learned how to use Sigma to create beautiful charts, KPIs, maps and more.
 
 The next QuickStart in this series covers using [controls in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls_v3/index.html?index=..%2F..index#0)
 

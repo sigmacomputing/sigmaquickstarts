@@ -114,7 +114,7 @@ Click this icon **(#3 in image below)** to display the two columns separately.
 Add `Month of Date` to the `PIVOT COLUMNS` section in the element panel.
 
 Let's adjust the `Month of Date` pivot column to `Year` by using the `DateTrunc` function:
-``` code
+```copy-code
 DateTrunc("year", [Plugs_Store_Sales/Month of Date])
 ```
 
@@ -130,7 +130,7 @@ Set the aggregation method for the `Order Number` column to `CountDistinct`:
 
 Rename these `VALUE` columns to `Total Profit` and `# Orders`.
 
-Rename the pivot table's title to `Region Sales Metrics by Year` and also change name of the `Year of Month of Date` column to `Year`.
+Rename the pivot table's title to `Region Sales Metrics by Year` and also change the name of the `Year of Month of Date` column to `Year`.
 
 Our pivot table now looks like this:
 
@@ -164,7 +164,7 @@ On the `Drill down` modal, select `Brand`:
 
 We might want to see the most recent year first. That is simple enough. 
 
-Click on the `Year` > `Year (ie: 2020)` and select sort and descending (down arrow):
+Click on the `Year` > `Year (e.g., 2020)` and select sort and descending (down arrow):
 
 <img src="assets/fpivot_9.png" width="500"/>
 
@@ -205,7 +205,7 @@ In the `Element panel` > `Format`, we can adjust the various items in the pivot 
 
 In the `TABLES STYLES` section, we can easily make adjustments as shown in the image below. Note that there are separate configurations for `Header` and `Subheader` in this section:
 
-Each section will display an asterisk when the defaults have been changed::
+Each section will display an asterisk when the defaults have been changed:
 
 <img src="assets/fpivot_14.png" width="800"/>
 
@@ -228,9 +228,9 @@ Then click `Conditional formatting`:
 
 <img src="assets/fpivot_15.png" width="500"/>
 
-This opens the conditional formatting panel. We use this to create "rules" that will allow different styling effects to be applied based on the the evaluation of the rule.
+This opens the conditional formatting panel. We use this to create "rules" that will allow different styling effects to be applied based on the evaluation of the rule.
 
-For example; show all transactions where the margin in negative (sold at a loss) with a red cell background and white/bold text.
+For example; show all transactions where the margin is negative (sold at a loss) with a red cell background and white/bold text.
 
 In our case, we will configure a simple rule to drive the cell colors used in the `Total Profit` column.
 
@@ -251,7 +251,7 @@ The fill colors are already set for us; we can just use those.
 
 If we wanted to set min/max values, we would click the `Customize Domain` checkbox.
 
-Now we can see the relative profits of the product types that are making profits but the ones loosing money are still front-and-center in full red.
+Now we can see the relative profits of the product types that are making profits but the ones losing money are still front-and-center in full red.
 
 Our pivot table now looks like this:
 
@@ -261,7 +261,7 @@ Click `Publish`.
 
 There are many more features designed to improve the usability of pivot tables and to meet specific use cases.
 
-Here are just a few example that customers have found useful:
+Here are just a few examples that customers have found useful:
 
 - Empty cell display value (on/off)
 - Repeat row labels

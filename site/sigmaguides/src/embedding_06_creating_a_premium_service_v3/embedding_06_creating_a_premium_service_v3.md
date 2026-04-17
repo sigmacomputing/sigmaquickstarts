@@ -67,7 +67,7 @@ For more capable "power users", a premium tier might include full service capabi
 
 This is a simple example designed to get you thinking about what specific capabilities your customers would be willing to pay for in a tiered service offering. In reality, `Build` might be too much of a leap from `View` and feel overwhelming in some cases. It really depends on the kinds of things the host application—your SaaS product enables and the demand from your customers too. 
 
-With that in mind, we would recommend offering the `Analyze` tier as a as a strong starting point for your first premium service tier. 
+With that in mind, we would recommend offering the `Analyze` tier as a strong starting point for your first premium service tier. 
 
 A tier based on `Analyze` includes all permissions from `View` and `Act` and is recommended for users who require more deep-dive capabilities without building workbooks themselves.
 

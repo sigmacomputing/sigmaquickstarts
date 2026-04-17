@@ -220,7 +220,7 @@ Duration: 20
 
 The workflow for team-based RLS is similar to `CurrentUserEmail` in terms of the table function and table filter. The difference is that the user's data rights are evaluated based on which team(s) they are a member of.
 
-To demonstrate this, we need to create some teams and add our user's to them for RLS to work.
+To demonstrate this, we need to create some teams and add our users to them for RLS to work.
 
 Before we add teams, let's configure the data model to use `CurrentUserTeam`.
 
@@ -329,7 +329,7 @@ Return to the data model, put it in `Edit` mode.
 
 Disable the filter for `Current Team`.
 
-Add a new column next to `Store Region`, rename it `ua_Region` and set it's formula to:
+Add a new column next to `Store Region`, rename it `ua_Region` and set its formula to:
 ```copy-code
 CurrentUserAttributeText("Region") = [Store Region]
 ```

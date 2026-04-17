@@ -40,7 +40,7 @@ This QuickStart is designed for data analysts, business strategists, and marketi
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -208,7 +208,7 @@ Columns can be added by clicking the `+` in the `Element Panel` / `Columns` side
 
 <img src="assets/pop2.png" width="800"/>
 
-Rename this columne to `Revenue` and set it's formula to:
+Rename this column to `Revenue` and set its formula to:
 ```copy-code
 [Price] * [Quantity]
 ```
@@ -303,7 +303,7 @@ Click on the word `Summary` (as shown below) and click the `+` to add a new summ
 
 <img src="assets/pop12.png" width="800"/>
 
-Click on the up arrow on the new `Summary`, which has the default name of `calc`. Select `Rename column` and set it's name as `Period Start`:
+Click on the up arrow on the new `Summary`, which has the default name of `calc`. Select `Rename column` and set its name as `Period Start`:
 
 <img src="assets/pop13.png" width="800"/>
 
@@ -332,7 +332,7 @@ Now that we have our "framework", let’s figure out the start and end dates for
 
 For the `Period Start` date of the current period, which is 30 days before the end date.
 
-Select the `Period Start` summary and set it's formula to:
+Select the `Period Start` summary and set its formula to:
 ```copy-code
 DateAdd("day", -30, [Period End])
 ``` 
@@ -341,7 +341,7 @@ This will evaluate to `null` at first because we have not set a formula for `Per
 
 <img src="assets/pop15.png" width="800"/>
 
-Next, select the `End Period` summary and set it's formula to:
+Next, select the `End Period` summary and set its formula to:
 ```copy-code
 DateAdd("day", -1, Today())
 ``` 
@@ -417,14 +417,14 @@ When aggregate values is unchecked, it tells Sigma to take the source field and 
 <img src="assets/pop20.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> You may have noticed in the screenshots that we moved the KPI to the top of the page and adjusted it's size. Sigma's layout tools are easy to use and allow you to create designs that are optimized for your users.
+<strong>IMPORTANT:</strong><br> You may have noticed in the screenshots that we moved the KPI to the top of the page and adjusted its size. Sigma's layout tools are easy to use and allow you to create designs that are optimized for your users.
 </aside>
 
 Adding more KPIs is simply a matter of repeating this process for any other summary values we would like to use.
 
 For example, if we add `Current Sales` and `Previous Sales` and do a little adjustment to the layout.
 
-A few ways to do this but one quick way is to select the existing KPI, opening it's menu and selecting `Duplicate`:
+A few ways to do this but one quick way is to select the existing KPI, opening its menu and selecting `Duplicate`:
 
 <img src="assets/pop21.png" width="800"/>
 

@@ -53,7 +53,7 @@ Developers interested in using Sigma to build interactive data applications.
   <li>Access to a 3rd party REST API</li>
  </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -330,7 +330,7 @@ The table should look like this:
 
 Rename the table to `Dirty Data`.
 
-In the `GEOCODIO_API` database is not visible in the connection yet click to `sync` it as shown:
+If the `GEOCODIO_API` database is not visible in the connection yet, click to `sync` it as shown:
 
 <img src="assets/dasp-9a.png" width="500"/>
 
@@ -441,7 +441,7 @@ Duration: 5
 
 Since we already proved out the use case, the following is really just for completeness.
 
-The `Response Data` column in the `Clean Addresses` table is storing the address in one string, separated by comma. We could go back and update the procedure to parse the data before writing it to table. Instead, lets use Sigma to break it up into three columns.
+The `Response Data` column in the `Clean Addresses` table is storing the address in one string, separated by comma. We could go back and update the procedure to parse the data before writing it to table. Instead, let's use Sigma to break it up into three columns.
 
 Add columns for `Street`, `City`, `State` and `Zip`. Here are the formulas for each, using the [SplitPart function.](https://help.sigmacomputing.com/docs/splitpart)
 

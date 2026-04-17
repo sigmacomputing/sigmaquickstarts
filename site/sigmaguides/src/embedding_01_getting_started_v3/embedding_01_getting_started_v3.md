@@ -615,7 +615,7 @@ Sigma embedding uses the `Base URL` (the URL shown in the browser's address bar)
 
 This allows any Sigma workbook, page, or element(s) to be embedded.
 
-For example, we can grab the Base URL for the [Ask Sigma](https://help.sigmacomputing.com/docs/embed-ask-sigma) page from the browser and use it to embed Ask Sigma inside the host application.
+For example, we can grab the Base URL for the [Sigma Assistant](https://help.sigmacomputing.com/docs/embed-ask-sigma) page from the browser and use it to embed Sigma Assistant inside the host application.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> When using the "Base URL", the workbook must be switched to the published version.

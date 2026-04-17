@@ -119,7 +119,7 @@ Duration: 5
 
 ![image24](assets/visualizingthedata_4.png)
 
-5. Finally lets modify the bar chart to be horizontally oriented by clicking it then selecting the “Display horizontal” icon on the top left pane.
+5. Finally let's modify the bar chart to be horizontally oriented by clicking it then selecting the “Display horizontal” icon on the top left pane.
 
 ![image25](assets/visualizingthedata_5.png)
 
@@ -163,7 +163,7 @@ Duration: 10
 
 ## Finalizing the Workbook
 Duration: 5
-1. Lets organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
+1. Let's organize and spruce up the workbook to make it a finished product. Exit the underlying data view by clicking the “Minimize element” icon in the top right.
 
 ![image41](assets/finalizingtheworkbook_1.png)
 

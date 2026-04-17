@@ -14,7 +14,7 @@ lastUpdated: 2023-01-12
 ## Overview 
 Duration: 5 
 
-We can configure Sigma to use Single Sign-On (SSO) Authentication with any platform that supports SAML (ie Okta, OneLogin and Google SSO). We can also configure Sigma to use custom implementations that uses SAML.‍ 
+We can configure Sigma to use Single Sign-On (SSO) Authentication with any platform that supports SAML (e.g., Okta, OneLogin and Google SSO). We can also configure Sigma to use custom implementations that uses SAML.‍ 
 
 For this QuickStart, we will focus on Okta.
 
@@ -42,13 +42,13 @@ Sigma administrators or security professionals who are interested in learning ho
   <li>An Okta account as Administrator. A development environment is acceptable.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button> <button>[Okta Developer Account](https://developer.okta.com/signup)</button>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> We will assume you have access to (or setup trials) as outlined above before starting this QuickStart. We will not cover the steps to access the base sites as the vendors have made the process very straight-forward.
 </aside>
 
@@ -384,7 +384,7 @@ Click `Save`.
 
 ## Standard Account Types
 
-Okta supports Sigma "out-of-the-box" account types. It manages this in it's `Profile Editor`. 
+Okta supports Sigma "out-of-the-box" account types. It manages this in its `Profile Editor`. 
 
 Navigate to `Directory` > `Profile Editor` and click on `Sigma on AWS User`:
 
@@ -421,7 +421,7 @@ Groups created in Okta will be pushed to Sigma now that we have the integration 
 <strong>NOTE:</strong><br> Okta Groups are called "Teams" in Sigma. If there were Teams already created in Sigma (if Okta was implemented some time after Sigma), they will be synchronized back to Okta automatically.
 </aside>
 
-Lets add a `Group` for `Viewers`.
+Let's add a `Group` for `Viewers`.
 
 In Okta, navigate to `Directory` > `Groups` and click the `Add Group` button.
 
@@ -451,7 +451,7 @@ Select `Lite` and click `Save` and `Done`.
 
 Anyone who is a member of this group will get view access as defined in Sigma > `Administration` > `Account Types` > `Lite`.
 
-While we are here, lets create another `Group` for Sigma `Essentials` Account Type. The workflow is the same, but in the last step, assign the new group the `Account Type` of `Essentials` (which maps to Sigma Essentials).
+While we are here, let's create another `Group` for Sigma `Essentials` Account Type. The workflow is the same, but in the last step, assign the new group the `Account Type` of `Essentials` (which maps to Sigma Essentials).
 
 We can call this group `OktaCreators`.
 
@@ -527,7 +527,7 @@ After resetting the password and trying to login again we face another problem:
 
 ***What happened?***
 
-In Okta, we created a `Group` and assigned the `Sigma on AWS` application to the group but we did not assign this user to the group. Lets do that now.
+In Okta, we created a `Group` and assigned the `Sigma on AWS` application to the group but we did not assign this user to the group. Let's do that now.
 
 Navigate to `Directory` > `Groups` and click into the `OktaViewers` group we created. Click `Assign people`:
 
@@ -580,7 +580,7 @@ Any users who are assigned to this "download restricted" group/team, will not be
 <strong>IMPORTANT:</strong><br> Customer account types are case sensitive and should the value should match the team name in Sigma exactly.
 </aside>
 
-Lets see how to adjust the user we just created in Okta to grant more rights, but also not allow exports.
+Let's see how to adjust the user we just created in Okta to grant more rights, but also not allow exports.
 
 Since Okta has no record for a new `Account Type` we need to add it so we can then assign it to group(s).
 
@@ -597,7 +597,7 @@ Scroll to the bottom and click `Save Attribute`.
 We will need to create a new `Group` in Okta (which we will push to Sigma as a `Team`) so that we can manage the level of access we want users to have. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma comes with three "out-of-box" teams and they can be customized to suit or you can create as many other teams as needed. We just added a new one, and will restrict it's allowed Sigma functions in a bit.
+<strong>NOTE:</strong><br> Sigma comes with three "out-of-box" teams and they can be customized to suit or you can create as many other teams as needed. We just added a new one, and will restrict its allowed Sigma functions in a bit.
 </aside>
 
 In Okta, `Directory` > `Groups`, click `Add group`:
@@ -642,7 +642,7 @@ Return to Sigma (as Administrator)
 
 Navigate to `Administration` > `Teams`. Our Okta Group is listed here. 
 
-Lets add a new `Account Type`. Click on `Account Types` > and `Create New Account Type` button:
+Let's add a new `Account Type`. Click on `Account Types` > and `Create New Account Type` button:
 
 <img src="assets/ok61.png" width="800"/>
 

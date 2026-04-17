@@ -456,7 +456,7 @@ The user does not see the underlying calculation, but knows that since it is a m
 ### Metric best practices:
 
 **Define Metrics in Your Data Models:**<br>
-Establish Metrics within Data Models to ensure uniform calculations across all analyses.​ When Metrics are created in Data Models (rather than on warehouse tables), users gain significantly more functionality, including a display of metrics at the top of a Data Model, and a centralized browsing UX.
+Establish Metrics within Data Models to ensure uniform calculations across all analyses. When Metrics are created in Data Models (rather than on warehouse tables), users gain significantly more functionality, including a display of metrics at the top of a Data Model, and a centralized browsing UX.
 
 **Apply Time Series to Metric Displays:**<br>
 When creating a Metric, you have the ability to specify a time series field to display the Metric value over time in all Metric previews. This provides users with more context around the KPI. You can also choose to compare metric values to previous periods if desired.
@@ -465,7 +465,7 @@ When creating a Metric, you have the ability to specify a time series field to d
 Name Metrics intuitively and provide clear descriptions to aid user understanding and adoption.​
 
 **Use Aggregations in Metrics:**<br>
-Metrics are meant to serve as aggregations over dimensional columns. They’ll always calculate at the correct level of aggregation, no matter how many groupings you use. Be sure to use aggregations in your Metric Formulas
+Metrics are meant to serve as aggregations over dimensional columns. They’ll always calculate at the correct level of aggregation, no matter how many groupings you use. Be sure to use aggregations in your Metric Formulas.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -628,7 +628,7 @@ Duration: 5
 
 Sigma data models support built-in materialization.
 
-Data models that use expensive or long-running queries, such as a complex join between data elements, or data with high cardinality, multiple grouping levels, and calculated columns, setting up materialization can enhance query performance and can help reduce compute costs.
+For data models that use expensive or long-running queries — such as complex joins between data elements, or data with high cardinality, multiple grouping levels, and calculated columns — setting up materialization can enhance query performance and reduce compute costs.
 
 Back in the data model again and in `Edit` mode, click the `+` icon next to `MATERIALIZATION` to create a new job:
 

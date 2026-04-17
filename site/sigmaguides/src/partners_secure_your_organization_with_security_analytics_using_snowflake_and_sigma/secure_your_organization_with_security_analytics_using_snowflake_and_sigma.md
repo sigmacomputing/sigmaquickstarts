@@ -17,7 +17,7 @@ By centralizing your security data across point products in the Snowflake securi
 While there are a variety of security metrics that Snowflake and Sigma supports, in this hands-on lab, we will cover how you can leverage Snowflake and Sigma to monitor the security posture of your Snowflake data environment. 
 
 ### Prerequisites
-For this lab you will need a Sigma free trial, [which you can access here:] (https://www.sigmacomputing.com/go/free-trial). 
+For this lab you will need a Sigma free trial, [which you can access here](https://www.sigmacomputing.com/go/free-trial). 
 
 **The password is sigma**. For detailed instructions on getting set up, see section 1, Connecting to Sigma. 
   
@@ -123,7 +123,7 @@ The next page of the template is called Identity Management. This page is design
 
 ![image15](assets/exploringthetemplate9.png)
 
-The fourth page is title Configuration Management, and shows you changes made to privileged objects, as well as any network policy changes that have been made, the policy that was changed, and who made the policy change. 
+The fourth page is titled Configuration Management, and shows you changes made to privileged objects, as well as any network policy changes that have been made, the policy that was changed, and who made the policy change. 
 
 ![image16](assets/exploringthetemplate10.png)
 
@@ -407,7 +407,7 @@ For the purpose of this lab, assume we want our users to change their Snowflake 
 
 ![image320](assets/customizingthetemplate20.png) 
 
-4.22 Now that we have alerts set up to let us know about old passwords, lets take a look at our "Stale Users" element. This element shows us all users in our Snowflake environment, and how many days it has been since they last logged in. Users who have not logged in are referred to as "stale users", and may reflect users who are no longer with the company or no longer need access to Snowflake. We want to follow best practices by removing these users from our instance, so lets set up a way to triage these users in Sigma.
+4.22 Now that we have alerts set up to let us know about old passwords, let's take a look at our "Stale Users" element. This element shows us all users in our Snowflake environment, and how many days it has been since they last logged in. Users who have not logged in are referred to as "stale users", and may reflect users who are no longer with the company or no longer need access to Snowflake. We want to follow best practices by removing these users from our instance, so lets set up a way to triage these users in Sigma.
 
 4.23 Click on the Stale Users element, then hover over the top right corner. Click the center icon for "Add a child element" then select "Linked input table" from the dropdown. 
 

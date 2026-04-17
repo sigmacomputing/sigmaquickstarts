@@ -203,7 +203,7 @@ Modify the `tokenBaseURL` and `tokenBaseURL` as needed for the cloud provider.
 
 **Don't miss this step!**
 
-Once we have the new enviroment saved, we need to make it the active one for our API to use it:
+Once we have the new environment saved, we need to make it the active one for our API to use it:
 
 <img src="assets/pmRevised4.png" width="800"/>
 

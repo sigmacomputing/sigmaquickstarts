@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-09-18
+lastUpdated: 2026-09-18
 
 # Embedding 15: Embed-SDK for React
 
@@ -41,13 +41,13 @@ Choosing between an SDK and directly using an API depends on the specific needs 
 SDKs are generally recommended for most standard implementations due to their ease of use, while direct API integration might be better suited for more customized or lower-level integrations.
 
 ### Target Audience
-Developers interested in evaluating Sigma software development kit ("SDK") for [React.](https://react.dev/)
+Developers interested in evaluating Sigma software development kit ("SDK") for [React](https://react.dev/)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
 ### Prerequisites
 
@@ -58,7 +58,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -236,6 +236,10 @@ brew --version
 
 A version number should be returned. If not, review the next section.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> Version numbers shown here reflect when the QuickStart was tested. Yours will likely be more recent.
+</aside>
+
 ### Brew: command not found error
 This error generally indicates that brew cannot be found by the terminal session. This can be resolved by manually adding Homebrew to the path.
 
@@ -326,13 +330,19 @@ The terminal prompt will appear with no other message unless there is an error.
 
 Running `pnpm i` installs the dependencies listed in your project’s package.json file. It creates a node_modules directory where all your project’s dependencies are stored and also updates the pnpm-lock.yaml file, which ensures that the same versions of the dependencies are installed every time you or anyone else runs pnpm install.
 
-Run the following command to install  `pnpm`:
+Before running the install, make sure terminal is in the `embed-sdk-react` directory:
+
+```copy-code
+cd {your path}/embed-sdk-react
+```
+
+Then run the install command:
 
 ```copy-code
 pnpm i
 ```
 
-If terminal throws an error "This project is configured to use yarn", make sure you are in the correct directory, which should be:
+If terminal throws an error "This project is configured to use yarn", confirm you are in the correct directory:
 ```copy-code
 {your path}/embed-sdk-react
 ```
@@ -366,7 +376,7 @@ Sigma has provided a sample application page, with useful links.
 
 <img src="assets/sdk15.png" width="800"/>
 
-In the next section will will look at how the embed is configured in code.
+In the next section we will look at how the embed is configured in code.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -374,21 +384,21 @@ In the next section will will look at how the embed is configured in code.
 ## Sample Application
 Duration: 5 
 
-Before we load the `Sample Application`, lets review which files are involved in this sample application. 
+Before we load the `Sample Application`, let's review which files are involved in this sample application. 
 
 ### Primary source files
 There are five files involved in this example embed:
 
 <ul>
-  <li><strong>utils.ts:</strong> Defines utility functions and constants, including HMAC signing logic and configuration parameters, to generate a secure, signed URL for embedding the Sigma dashboard.</li>
-  <li><strong>route.js:</strong> Generates a securely signed embed URL for the Sigma dashboard by using HMAC signing and serves it via an API endpoint.</li>
+  <li><strong>utils.ts:</strong> Defines utility functions and constants, including JWT generation logic and configuration parameters, to generate a secure embed URL for the Sigma dashboard.</li>
+  <li><strong>route.js:</strong> Generates a secure JWT embed URL for the Sigma dashboard and serves it via an API endpoint.</li>
   <li><strong>basic-example-wrapper.tsx:</strong> Fetches the signed embed URL from the API and conditionally renders the basic-example-embed.tsx component once the URL is retrieved.</li>
   <li><strong>basic-example-embed.tsx:</strong> Embeds the Sigma dashboard iframe into the React application, using the Sigma SDK’s useSigmaIframe hook to manage loading and error states.</li>
   <li><strong>page.mdx:</strong> Renders the webpage, SignedIframe, and logs the signed URL for console log display only.</li>
 </ul>
 
 ### Logging
-When the sample application is running, the server displayed in VSCode’s Terminal will show a one-time-use SignedURL for debugging purposes only. 
+When the sample application is running, the server displayed in VSCode’s Terminal will show a one-time-use JWT embed URL for debugging purposes only.
 
 **While not required**, we’ve included this to demonstrate and assist in debugging any issues you may encounter while customizing embed parameters.
 
@@ -407,7 +417,7 @@ Log into your own Sigma instance as `Administrator` and navigate to `Administrat
 
 Check the box on for `Embedding`, provide a name and assign the new credentials to a Sigma administrator for now.
 
-Copy the `Client Id` and `Secret` and update the `.env` file that is part of the new `basic-example` folder, over-writing the old values. `Save` the `.env` file.
+Copy the `Client Id` and `Secret` values — you will paste them into `utils.ts` in the next step.
 
 For more information on generating embed client credentials, [see here](https://help.sigmacomputing.com/docs/generate-embed-client-credentials)
 
@@ -435,26 +445,35 @@ We are sharing ours with the `Sales_People` team:
 
 For more information on teams in Sigma, [see here](https://help.sigmacomputing.com/docs/manage-teams)
 
-### Generate Embed URL
-Open the workbook's menu again and select `Embedding` this time.
+### Embed Base URL
+Sigma embedding uses the `Base URL` — the URL shown in the browser's address bar — to identify what is embedded.
 
-Select `Secure` and `Entire Workbook`. Copy this url and click `Close`.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> When using the Base URL, the workbook must be switched to the published version.
+</aside>
+
+Switch the workbook to the `Published version`, then copy the URL from the browser's address bar.
+
+<img src="assets/sdk26.png" width="800"/>
 
 Open the project file `/embed-sdk-react/docs/basic-examples/lib/utils.ts`.
 
-Replace the placeholder values for `EMBED_PATH`, `CLIENT_ID`, `EMBED_SECRET`, `EMAIL` and `EXTERNAL_USER_TEAM` to match your values created/used earlier.
+**First**, paste the Base URL you copied into the `EMBED_PATH` value.
 
-For `EMAIL` you can make up any address, formatted appropriately. 
+Then update the remaining placeholder values:
+- `CLIENT_ID`: your embed client ID
+- `SECRET`: your embed secret
+- `EMAIL`: any properly formatted email address not tied to a native Sigma account
+- `ACCOUNT_TYPE`: `Pro`
+- `TEAM`: the name of the team you shared the workbook with
 
-For `ACCOUNT_TYPE` use `Pro`.
-
-<img src="assets/sdk26.png" width="800"/>
+<img src="assets/sdk26b.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We are hard-coding parameter values but these are normally generate programmatically by the parent application at runtime and are based on the requesting user.
 </aside>
 
-Make sure the terminal session does not throw unexpected errors after saving both of the files.
+Make sure the terminal session does not throw unexpected errors after saving the file.
 
 ### Test the application
 

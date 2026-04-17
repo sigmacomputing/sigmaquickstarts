@@ -115,7 +115,7 @@ JIRA Cloud uses **Basic Authentication** with API tokens. This is simpler than O
 Sigma API Actions support many common authentication methods including (at the time of this QuickStart):
 - Bearer token
 - Basic Auth
-- OAuth (client credendtials)
+- OAuth (client credentials)
 - OAuth (authorization code)
 - OAuth (password credentials)
 
@@ -717,7 +717,7 @@ The quotes are already part of the control value, so they're automatically inclu
 
 Try selecting different statuses from the `Status Filter` control.
 
-The the Python will run, raw-response will update and the table will update to show only issues matching the selected status - no need to click the button.
+The Python will run, raw-response will update and the table will update to show only issues matching the selected status - no need to click the button.
 
 <img src="./assets/jira_28.png" width="800"/>
 

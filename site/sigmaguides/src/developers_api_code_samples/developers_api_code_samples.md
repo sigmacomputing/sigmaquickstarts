@@ -19,7 +19,7 @@ The actual code shown is available in Sigma's [quickstart-public git repository]
 
 All code samples provided here are based on JavaScript.
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> The methods presented here are in alphabetical order to align with the recipes webpage. If you don't see what you are looking for right away, scroll down the QuickStart page.
 </aside>
 
@@ -41,7 +41,7 @@ Developers who are evaluating or working with Sigma's REST API.
   <li>A development environment of choice. We will demonstrate with Microsoft VSCode and related extensions</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -99,7 +99,7 @@ This should return the version number as below:
 <img src="assets/apics4.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> You version number will likely vary from what is shown in the screenshot, based on when you installed Node.
+<strong>NOTE:</strong><br> Your version number will likely vary from what is shown in the screenshot, based on when you installed Node.
 </aside>
 
 You can leave the terminal session open for now.
@@ -626,7 +626,7 @@ Checking in the UI, we can see the new member has been added. This member does n
 
 ### Running the "create-workspace.js" script
 
-Update `.env` with the `memmberId` we received in the `create-new` script response:
+Update `.env` with the `memberId` we received in the `create-new` script response:
 
 <img src="assets/apics28.png" width="800"/>
 

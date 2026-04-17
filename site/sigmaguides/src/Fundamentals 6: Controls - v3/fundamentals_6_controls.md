@@ -17,7 +17,7 @@ This QuickStart is part of a series of QuickStarts designed to instruct new user
 
 Control elements (controls) and data elements work hand-in-hand in Sigma. 
 
-Data elements display the data (ie: tables or charts), and controls manipulate the displayed data by filtering and/or using parameters. 
+Data elements display the data (e.g., tables or charts), and controls manipulate the displayed data by filtering and/or using parameters. 
 
 Controls are basically filters, and sometimes the terminology is interchangeable. 
 
@@ -53,7 +53,7 @@ The typical audience for this QuickStart includes users of Excel, common Busines
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Completion of the QuickStarts Fundamentals 1 and 2.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>If have not already, you can sign up for a Sigma Trial here:</li>
+  <li>If you have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
@@ -73,7 +73,7 @@ Add a new page and rename it to `Fundamentals 6`.
 
 Add a new `Table` from the `Element bar` and set the source to the `Plugs_Store_Sales` table on the `Data` page.
 
-Opening the `Controls` group in the in the `Element bar`, we can see that there are many different controls available:
+Opening the `Controls` group in the `Element bar`, we can see that there are many different controls available:
 
 <img src="assets/fcontrols_1.png" width="800"/>
 
@@ -112,7 +112,7 @@ Configure the control:
 
 Pay attention to the setting for `Control ID`. The value used uniquely identifies the control and allows it to be used in formulas, actions and other areas of a workbook. It is a good practice to select a pattern that makes sense to you and others and stick with it.
 
-For example, we used f6-c-slider-sales, which we translate to "the slider control on the Fundamentals 6 page that targets the sales column.
+For example, we used f6-c-slider-sales, which we translate to "the slider control on the Fundamentals 6 page that targets the sales column."
 
 Set the `Target` of the control to the `Fundamentals 6` > `Plugs_Store_Sales` table:
 
@@ -129,7 +129,7 @@ However, big spend does not always mean big profit. We should evaluate for both 
 ### Duplicate controls
 Sigma makes it really simple to add copies of existing controls, saving you time.
 
-Lets say we want to also get all the rows sold at high margin, amongst the list of "big spenders".
+Let's say we want to also get all the rows sold at high margin, amongst the list of "big spenders".
 
 Open the slider control's menu and click `Duplicate`.
 
@@ -144,10 +144,10 @@ We checked and found there are some orders sold at big losses, so we set the min
 Also set the `Control ID` for `Profit` to `profit-slider`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Be sure to pay attention to the Control ID used for each control. Each ID must be unique, and Sigma will ensure this if you don’t specify one. We can reference the current value that a control is set to by referring to it's Control ID. This can be useful in a variety of use cases, especially in formulas.
+<strong>IMPORTANT:</strong><br> Be sure to pay attention to the Control ID used for each control. Each ID must be unique, and Sigma will ensure this if you don’t specify one. We can reference the current value that a control is set to by referring to its Control ID. This can be useful in a variety of use cases, especially in formulas.
 </aside>
 
-Now adjust the `Profit` slider to be around $6500. These are are target high-value customers:
+Now adjust the `Profit` slider to be around $6500. These are our target high-value customers:
 
 <img src="assets/fcontrols_5.png" width="800"/>
 
@@ -244,7 +244,7 @@ The `Switch control` in Sigma allows users to toggle between `True` and `False` 
 
 It is a simple "on/off" toggle that can be used to dynamically adjust the rows within a dashboard, based on a binary choice.
 
-Lets create a simple example, based on filtering our `Plugs_Store_Sales` by transaction type.
+Let's create a simple example, based on filtering our `Plugs_Store_Sales` by transaction type.
 
 ### Scenario:
 Imagine Plugs users want to analyze sales transactions, differentiating between `Purchase` and `Returns`. 
@@ -289,16 +289,16 @@ Click `Done`:
 
 The column is added to the last position on the `PLUGS_DATA` table. We moved it to first column for the screenshot and renamed the table to `Plugs_Store_Sales with Transaction Type`.
 
-Also notice that the `DATA SOURCE` indicates `+ 1` to let us know that there is a joined table
+Also notice that the `DATA SOURCE` indicates `+ 1` to let us know that there is a joined table.
 
 <img src="assets/fcontrols_19.png" width="800"/>
 
 ### Add the switch control
-Add a `Switch` control to the page, rename it `Transaction Type` and set it's `Control ID` to `f6-c-switch-transaction-type` and the `Filter Type` to `True/False`.
+Add a `Switch` control to the page, rename it `Transaction Type` and set its `Control ID` to `f6-c-switch-transaction-type` and the `Filter Type` to `True/False`.
 
-We can now toggle the switch control on and off, but the table is "aware" of it yet.
+We can now toggle the switch control on and off, but the table is not "aware" of it yet.
 
-We need to make the table respond to this controls value, as it is changed.
+We need to make the table respond to this control's value, as it is changed.
 
 Add a new column next to `Transaction Type`, rename it to `Switch`, and set its formula to:
 
@@ -351,7 +351,7 @@ There are a few use cases where this functionality can be useful:
 2: Maintaining context across pages.<br>
 3: Preselecting control values for users.
 
-For more about, see [Synced controls](https://help.sigmacomputing.com/docs/synced-controls)
+For more information, see [Synced controls](https://help.sigmacomputing.com/docs/synced-controls)
 
 ![Footer](assets/sigma_footer.png)
 
@@ -362,7 +362,7 @@ As we saw with the switch control, we know that the current value of a control c
 
 It is also true that the values used by a control can be created based on a formula too. That seems strange and kind of cool too. 
 
-Lets explore that concept.
+Let's explore that concept.
 
 For this exercise, let's reduce the available data shown by `Plugs_Store_Sales with Transaction Type` down, so that refresh is as fast as possible.
 
@@ -380,7 +380,7 @@ Consideration of what data the user requires vs. performance and cost optimizati
 
 Filter the `Date` column to the `current year only` and the `Transaction Type` to `True`, to reduce the data to around 257K records.
 
-<img src="assets/fcontrols_23.png" width="7000"/>
+<img src="assets/fcontrols_23.png" width="800"/>
 
 Add a `List values` control to the page and configure as:
 
@@ -392,7 +392,7 @@ Next, we will add a column to the table that will reference the current value of
 
 This is how the table "targets" the control, as opposed to the control managing the target.
 
-Add a new column to the table, in the first position. Rename it to `Stack By` and set it's formula to:
+Add a new column to the table, in the first position. Rename it to `Stack By` and set its formula to:
 ```copy-code
 Switch([f6-c-stack-by], "State", [Store State], "Store Region", [Store Region], "Brand", [Brand])
 ```
@@ -412,10 +412,9 @@ Click `Publish`.
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we covered the the variety of the more popular controls provided by Sigma. We explored using them to manipulate sample data and demonstrated just how easy it can be to solve business problems.
+In this QuickStart, we covered the variety of the more popular controls provided by Sigma. We explored using them to manipulate sample data and demonstrated just how easy it can be to solve business problems.
 
-For more information, see [Intro to control elements
-Suggest Edits](https://help.sigmacomputing.com/docs/intro-to-control-elements)
+For more information, see [Intro to control elements](https://help.sigmacomputing.com/docs/intro-to-control-elements)
 
 The next QuickStart in this series covers [design elements in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_7_design_v3/index.html?index=..%2F..index#0)
 

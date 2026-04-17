@@ -48,7 +48,7 @@ Sigma administrators interested in implementing single-sign-in using the OAuth s
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -70,7 +70,7 @@ The OAuth 2.0 authorization framework enables a third-party application to obtai
 
 This can be done either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party application to obtain access on its own behalf.
 
-OAuth allows third-party services (ie: Sigma) to exchange tokens (with Snowflake for example) for authentication, enabling secure and streamlined access to user resources.
+OAuth allows third-party services (i.e., Sigma) to exchange tokens (with Snowflake for example) for authentication, enabling secure and streamlined access to user resources.
 
 ### Why Use OAuth?
 
@@ -179,7 +179,7 @@ Other popular IdP providers are Azure AD (Microsoft), Amazon AWS Identity and Ac
 </aside>
 
 ### Create a text file
-Before we start configuring things, lets create a text file (any text editor is fine to use) to hold a few values as we create them. 
+Before we start configuring things, let's create a text file (any text editor is fine to use) to hold a few values as we create them. 
 
 Temporarily holding these values will make things a little easier for us as we go, especially since we want to use incognito/private browser sessions. 
 
