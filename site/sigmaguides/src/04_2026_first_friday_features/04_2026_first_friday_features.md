@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
-lastUpdated: 2026-04-14
+lastUpdated: 2026-06-14
 
 # (04-2026) April
 <!-- The above name is what appears on the website and is searchable. 
@@ -19,8 +19,7 @@ April 30, 2026 changes:
 
 
 Publish on May 1
-
- <img src="assets/heart_icon.png" width="25"/>
+<img src="assets/heart_icon.png" width="25"/>
 -->
 
 ## Overview 
@@ -69,6 +68,31 @@ For more information, see [Configure an external storage integration with Azure 
 ## AI
 Duration: 20
 
+### Ask Sigma is now Sigma Assistant <img src="assets/heart_icon.png" width="25"/>
+Ask Sigma is now Sigma Assistant, and includes the following:
+
+- Improved accuracy and performance when answering questions and performing analysis.
+- Higher quality data source selection, relying on a new semantic search service that indexes configured sources using the AI provider set up for your organization.
+- Improved experience, including the ability to provide feedback on the quality of responses.
+- Highlighted sources are now configured sources, and the steps to add configured data sources for Assistant are updated. Configure sources for Sigma Assistant to answer questions without selecting a data source.
+- Configure data models as data sources to improve accuracy and capabilities. When Sigma Assistant uses data models to answer questions, it can choose which relationships to use.
+
+If you embed Ask Sigma, Sigma Assistant is accessible from the same URL and existing embeds continue to work.
+
+For more information, see [Ask natural language queries with Sigma Assistant](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant)
+
+### Add AI context to data models (Beta)
+You can now add AI context to a data model to help Sigma Assistant better understand how to use your data model as a data source. Adding AI context to a data model can help improve the accuracy and consistency of Sigma Assistant responses when answering questions that use the data model as a source.
+
+For more information, see [Manage AI context for data models](https://help.sigmacomputing.com/docs/manage-ai-context-for-data-models)
+
+### Sigma MCP Server is now available <img src="assets/heart_icon.png" width="25"/>
+Use natural language to interact programmatically with your Sigma organization using the Sigma MCP server. You can now search, describe, and query data within your AI assistant's interface. You can connect to the Sigma MCP server from any AI assistant that supports connection to custom remote MCP servers via HTTP and OAuth.
+
+For more information, see [Use the Sigma MCP Server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
+
+There is also a QuickStart, [Natural Language Analytics with Claude and Sigma](https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html?index=..%2F..index#0)
+
 ### Snowflake AI Provider Model Update
 AWS-hosted Snowflake connections now use `claude-sonnet-4-5` as the language model for Sigma Assistant.
 
@@ -77,13 +101,61 @@ For more information, see [Configure a warehouse-hosted model as AI provider](ht
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## AI Apps
+Duration: 20
+
+### Custom sort action (GA)
+The `Custom sort action` is now generally available.
+
+This action enables you to create an action that sorts one or more columns in a target element.
+
+For more information, see [Create actions that modify or refresh element](https://help.sigmacomputing.com/docs/create-actions-that-modify-or-refresh-elements)
+
+### Forms (GA) <img src="assets/heart_icon.png" width="25"/>
+Forms are now generally available. They provide a structured data entry interface that can be created manually or built on an existing input table or stored procedure. Forms support simultaneous submission to multiple sources and can trigger action workflows.
+
+For more information, see [Use forms to streamline user data entry](https://help.sigmacomputing.com/docs/use-forms-to-streamline-user-data-entry)
+
+For a hands-on walkthrough, see the [Forms QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_forms/index.html)
+
+### Input Table Audit History (Beta) <img src="assets/heart_icon.png" width="25"/>
+Sigma now records versioned snapshots of input table changes, automatically creating warehouse-native views that track row-level history — what changed, who made the change, and when. Schema modifications are also captured.
+
+For more information, see [View input table audit history](https://help.sigmacomputing.com/docs/view-input-table-audit-history)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## API
 Duration: 20
+
+### Create and manage data models as code (GA)
+You can create and manage data models programmatically using the Sigma API. The endpoints use a code representation of the data model to retrieve contents, make updates, and create new data models. For more information, see Manage data models as code.
+
+The following endpoints are generally available to read, create, and update data models programmatically:
+
+[Get the code representation of a data mode](https://help.sigmacomputing.com/reference/getdatamodelspec)
+
+[Create a data model from a code representation](https://help.sigmacomputing.com/reference/createdatamodelspec)
+
+[Update a data model from a code representation](https://help.sigmacomputing.com/reference/updatedatamodelspec)
+
+For example representations of sources and elements, see the [Data model representation example library](https://help.sigmacomputing.com/docs/data-model-representation-example-library)
+
+To provide context to AI agents building data models from code, see [Access Sigma documentation from AI tools](https://help.sigmacomputing.com/docs/use-documentation-mcp-server)
+
+### List scheduled exports for a user
+The following endpoint to list all scheduled workbook and report exports owned by a specific user is now available:
+
+List scheduled exports for a user (GET /v2/members/{memberId}/schedules)
 
 ### List Warehouse Table Columns
 A new endpoint, `GET v2/connections/tables/{tableId}/columns`, enables retrieval of column names, types, and details for data warehouse tables.
 
 For more information, see [listConnectionTableColumns](https://help.sigmacomputing.com/reference/listconnectiontablecolumns)
+
+### New query parameter for List data models endpoint
+The List data models (GET v2/dataModels) endpoint now includes the skipPermissionCheck query parameter. When set to true, this parameter allows the API client to return all data models in a Sigma organization, including those not shared with or owned by the requesting user. The API client must have admin privileges to use this parameter.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -103,6 +175,25 @@ Duration: 20
 
 **6:** `SCHEMA.TABLE` path length errors during deployment policy source swaps are resolved.
 
+**7:** Dataset migration now updates workbook references to point to the new data model in cases where the dataset was used as part of a join or union.
+
+**8:** If you edit a document using the API, such as by swapping a data source or editing a data model using the `Update a data model` from a code representation endpoint, there is now a prompt to discard stale changes and include the updates in the document the next time it is opened in the UI.
+
+**9:** Editing SQL for datasets now completes as expected and no longer runs infinitely.
+
+**10:**
+
+
+**6:** 
+**6:** 
+**6:** 
+
+
+
+
+
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -114,23 +205,8 @@ Cartesian charts — including bar, line, scatter, area, waterfall, box/whisker,
 
 For more information, see [Configure a custom background image for a chart](https://help.sigmacomputing.com/docs/customize-chart-background-and-style#configure-a-custom-background-image-for-a-chart-beta)
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## AI Apps
-Duration: 20
-
-### Forms (GA) <img src="assets/heart_icon.png" width="25"/>
-Forms are now generally available. They provide a structured data entry interface that can be created manually or built on an existing input table or stored procedure. Forms support simultaneous submission to multiple sources and can trigger action workflows.
-
-For more information, see [Use forms to streamline user data entry](https://help.sigmacomputing.com/docs/use-forms-to-streamline-user-data-entry)
-
-For a hands-on walkthrough, see the [Forms QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_forms/index.html)
-
-### Input Table Audit History (Beta) <img src="assets/heart_icon.png" width="25"/>
-Sigma now records versioned snapshots of input table changes, automatically creating warehouse-native views that track row-level history — what changed, who made the change, and when. Schema modifications are also captured.
-
-For more information, see [View input table audit history](https://help.sigmacomputing.com/docs/view-input-table-audit-history)
+### Control pan and zoom for maps
+You can now choose whether to allow pan and zoom for maps. Select the `Allow pan and zoom` checkbox under `Format` > `Map` style to allow users to freely pan and zoom, or clear the checkbox to lock a map chart to a fixed position and zoom level.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -177,8 +253,17 @@ Duration: 20
 ## New QuickStarts in April
 Duration: 20
 
-### [PLACEHOLDER: Sigma Assistant QuickStart title TBD]
-[Description TBD]
+### Natural Language Analytics with Claude and Sigma
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html?index=..%2F..index#0) shows how to connect Claude AI to your Sigma organization using the Sigma MCP server and use that connection to do real analytical work — finding content, understanding data structure, and getting answers from live data through natural language.
+
+It walks through how to:
+* Connect Claude to Sigma via the Sigma MCP Server using OAuth
+* Configure a Claude Project with org-specific context to improve response quality
+* Search your Sigma organization for relevant workbooks and data sources
+* Query live Sigma data and receive answers in plain language — no SQL required
+
+**WHY IT MATTERS:**
+This is the governed external AI pattern — Claude inherits your Sigma permissions via OAuth, so administrators retain full control over what data is reachable. A well-configured Claude Project with org context turns Claude into an analyst that already knows your data landscape before the first question is asked, reducing friction between a business question and a grounded answer.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
