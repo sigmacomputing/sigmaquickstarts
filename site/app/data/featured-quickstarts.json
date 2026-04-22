@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Scheduling Sigma Insights to Slack",
+      "id": "aiapps_scheduling_sigma_insights_to_slack",
+      "category": "aiapps",
+      "date": "April 15, 2026"
+    },
+    {
       "title": "Natural Language Analytics with Claude and Sigma",
       "id": "aiapps_natural_language_with_claude",
       "category": "aiapps",
@@ -71,12 +77,6 @@
       "id": "administration_multitenancy",
       "category": "Administration",
       "date": "Jan 26, 2026"
-    },    
-    {
-      "title": "Fundamentals 11: Pixel Perfect Reporting",
-      "id": "fundamentals_11_pixel_perfect_reporting",
-      "category": "Fundamentals",
-      "date": "Jan 6, 2026"
     }
   ]
 }
