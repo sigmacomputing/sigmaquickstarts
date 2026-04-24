@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Reshaping Data with Transpose Tables",
+      "id": "tables_transpose_tables",
+      "category": "tables",
+      "date": "April 24, 2026"
+    },
+    {
       "title": "Scheduling Sigma Insights to Slack",
       "id": "aiapps_scheduling_sigma_insights_to_slack",
       "category": "aiapps",
@@ -71,12 +77,6 @@
       "id": "developers_data_models_as_code",
       "category": "Developers",
       "date": "Jan 29, 2026"
-    },
-    {
-      "title": "Sigma Tenants: Managing Isolated Organizations",
-      "id": "administration_multitenancy",
-      "category": "Administration",
-      "date": "Jan 26, 2026"
     }
   ]
 }
