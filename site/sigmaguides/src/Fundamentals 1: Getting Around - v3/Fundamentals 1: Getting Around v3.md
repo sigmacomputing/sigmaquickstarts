@@ -526,31 +526,27 @@ The MCP Server flips that around. You stay in your AI tool and bring Sigma to it
 
 This is particularly useful for analysts and developers who already work in AI-assisted environments and want Sigma data available in that same context.
 
-<aside class=positive>
+<aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> The MCP Server doesn't bypass Sigma's permission model — it respects your account type and document-level access. Administrators retain full control over what data is reachable, making this a governed extension of Sigma into AI workflows rather than a workaround.
 </aside>
 
 ### Setup
 
-The Sigma MCP Server is available to all Sigma customers today as a custom connector. 
+The Sigma MCP Server is available to all Sigma customers today via Claude's MCP registry. This provides a pre-configured MCP server that connects Claude to Sigma without manual setup.
 
 To connect it to Claude:
 
-1. In Sigma, click your profile icon and navigate to `Profile` > `MCP` and copy your personal MCP server URL:
+1. In Claude, click `Customize` from the left sidebar:
 
-<img src="assets/fun_2026_51.png" width="800"/>
+<img src="assets/fun_2026_52.png" width="700"/>
 
-2. In Claude, click your profile icon and select `Settings` > `Connectors` > `Add a custom connector`.
+Under `Customize` click `Connectors`, `+` and `Browse connectors`:
 
-<img src="assets/fun_2026_52.png" width="800"/>
+<img src="assets/fun_2026_53.png" width="550"/>
 
-Give it a name and paste the `MCP URL` copied from Sigma and click `Add`:
+2. Search for `Sigma` and click `+`:
 
-<img src="assets/fun_2026_53.png" width="450"/>
-
-3. Click `Connect`:
-
-<img src="assets/fun_2026_54.png" width="500"/>
+<img src="assets/fun_2026_54.png" width="700"/>
 
 3. When prompted, add your Sigma instance name and click `Continue`:
 
@@ -562,23 +558,17 @@ Provide your Sigma credentials and login.
 
 <img src="assets/fun_2026_56.png" width="500"/>
 
-If successful, the `Connect` button will now show `Configure`:
+If successful, we can `Approve` the operations Sigma will permit via Claude:
 
 <img src="assets/fun_2026_57.png" width="800"/>
 
-Authenticate via OAuth when prompted.
-
-Once connected, Claude can interact with your Sigma environment using plain language.
-
-5. Click `Configure`. By default, nothing is authorized:
-
-<img src="assets/fun_2026_58.png" width="800"/>
+Once connected, Claude can interact with your Sigma environment using plain language. By default, nothing is authorized.
 
 For testing we selected `Always allow` at the top level:
 
-<img src="assets/fun_2026_59.png" width="800"/>
+<img src="assets/fun_2026_59.png" width="500"/>
 
-6. We ask a simple question about our Sigma instance, which is a new trial and has only one workbook currently:
+5. We ask a simple question about our Sigma instance, which is a new trial and has only one workbook currently:
 
 <img src="assets/fun_2026_60.png" width="600"/>
 
@@ -586,13 +576,13 @@ Since Claude has access, it is able to find the workbook and describe it to us:
 
 <img src="assets/fun_2026_61.png" width="700"/>
 
-<aside class=negative>
+<aside class="negative">
 <strong>NOTE:</strong><br> You will need appropriate Sigma permissions to use the MCP Server — at minimum, <code>View connections</code> on your account type and <code>Can view</code> or <code>Can use</code> access on the specific documents or connections you want to query.
 </aside>
 
 The value here is in the workflow. Instead of switching between Claude and Sigma to answer a data question, you stay in one place. Claude handles the discovery and query work, and you get answers grounded in your actual, live Sigma data — not a training dataset or a cached snapshot.
 
-For teams that already work in AI-assisted environments, this means Sigma data becomes a natural part of that workflow rather than a separate tool you have to open. And because it respects Sigma's permission model, there's no new governance overhead for administrators to manage.
+For teams that already work in AI-assisted environments, this means Sigma data becomes a natural part of that workflow rather than a separate tool you have to open.
 
 
 For full setup instructions, see [Use the Sigma MCP Server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
