@@ -11,10 +11,10 @@ lastUpdated: 2026-06-14
 # (04-2026) April
 <!-- The above name is what appears on the website and is searchable. 
 
-April 3, 2026 changes:
-April 10th, 2026 changes:
-April 17, 2026 changes:
-April 24, 2026 changes:
+April 3, 2026 changes: k
+April 10th, 2026 changes:k
+April 17, 2026 changes:k
+April 24, 2026 changes:k
 April 30, 2026 changes:
 
 
@@ -57,10 +57,15 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
-### Azure Blob Storage Integration (GA) <img src="assets/heart_icon.png" width="25"/>
+### Azure Blob Storage Integration (GA)
 Organizations can now integrate customer-owned Azure Blob containers with Sigma, supporting CSV uploads, file uploads in input tables, and cloud storage exports. This joins existing AWS and GCP options, giving organizations direct control over file location, access, retention, and encryption.
 
 For more information, see [Configure an external storage integration with Azure Blob Storage](https://help.sigmacomputing.com/docs/configure-an-external-storage-integration-with-azure-blob)
+
+### Set variables on a Snowflake connection (Beta) <img src="assets/heart_icon.png" width="25"/>
+You can now specify session variables on a Sigma connection to Snowflake. After being set up, the session variables are set for each query that Sigma runs in Snowflake.
+
+For more information, see [Specify session variables for a Snowflake connection](https://help.sigmacomputing.com/docs/specify-session-variables-for-a-snowflake-connection)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -129,6 +134,13 @@ For more information, see [View input table audit history](https://help.sigmacom
 ## API
 Duration: 20
 
+### Advanced governance settings for API connectors
+You can configure advanced settings for API connectors to manage rate limits, redirect rules, and retries.
+
+<img src="assets/fff_04_2026.png" width="800"/>
+
+For more information, see [Configure API credentials and connectors in Sigma](https://help.sigmacomputing.com/docs/configure-api-credentials-and-connectors-in-sigma#configure-governance-settings-for-an-api-connector)
+
 ### Create and manage data models as code (GA)
 You can create and manage data models programmatically using the Sigma API. The endpoints use a code representation of the data model to retrieve contents, make updates, and create new data models. For more information, see Manage data models as code.
 
@@ -181,13 +193,14 @@ Duration: 20
 
 **9:** Editing SQL for datasets now completes as expected and no longer runs infinitely.
 
-**10:**
+**10:** When validating content in a data model or migrating a dataset to a data model with `Update references` selected, downstream documents no longer fail to update due to a permission error.
+
+**11:** Workbooks no longer fail to load when a column exists across multiple properties in an element.
 
 
-**6:** 
-**6:** 
-**6:** 
 
+**12:** 
+**13:** 
 
 
 
@@ -204,6 +217,11 @@ Duration: 20
 Cartesian charts — including bar, line, scatter, area, waterfall, box/whisker, and combo charts — now support background image configuration. Images can be set via file upload or a dynamic URL formula reference.
 
 For more information, see [Configure a custom background image for a chart](https://help.sigmacomputing.com/docs/customize-chart-background-and-style#configure-a-custom-background-image-for-a-chart-beta)
+
+### Change legend position in map elements
+You can now choose the location of the legend on a map. 
+
+Navigate to `Format` > `Legend` and, next to `Position`, choose an option from the dropdown.
 
 ### Control pan and zoom for maps
 You can now choose whether to allow pan and zoom for maps. Select the `Allow pan and zoom` checkbox under `Format` > `Map` style to allow users to freely pan and zoom, or clear the checkbox to lock a map chart to a fixed position and zoom level.
@@ -245,7 +263,20 @@ For more information, see [Write custom SQL](https://help.sigmacomputing.com/doc
 ## Input Tables
 Duration: 20
 
+### Copy input table data to tenant organizations (Beta)
+When deploying documents to tenant organizations, you can now choose to include the data from input tables in the deployed document.
 
+For details, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
+
+### Input table audit history (GA) <img src="assets/heart_icon.png" width="25"/>
+Input table audit history is now generally available.
+
+Input table audit history records versioned snapshots of input table row and schema changes over time. For each input table, Sigma automatically creates a warehouse-native view in your data platform that can help you understand the following:
+
+- Row-level history: What changed in a specific row, who made the change, and when the change occurred.
+- Schema history: When a column was created or changed to a different data type, along with who made the change and when the change occurred.
+
+For more information, see [View input table audit history](https://help.sigmacomputing.com/docs/view-input-table-audit-history)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -271,7 +302,14 @@ This is the governed external AI pattern — Claude inherits your Sigma permissi
 ## Security
 Duration: 20
 
+### AWS signature V4 authentication for API connectors
+API connectors now support the AWS signature V4 authentication method.
 
+AWS Signature Version 4 (SigV4) is the protocol used to authenticate API requests to Amazon Web Services. It verifies the identity of the requester and ensures that the request has not been tampered with during transit.
+
+For AWS supplied information, see [Authenticating Requests (AWS Signature Version 4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+
+For more information, see [Configure API credentials and connectors in Sigma](https://help.sigmacomputing.com/docs/configure-api-credentials-and-connectors-in-sigma#add-a-new-api-credential-to-sigma)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
