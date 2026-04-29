@@ -532,41 +532,59 @@ This is particularly useful for analysts and developers who already work in AI-a
 
 ### Setup
 
-The Sigma MCP Server is available to all Sigma customers today via Claude's MCP registry. This provides a pre-configured MCP server that connects Claude to Sigma without manual setup.
+The Sigma MCP Server is available to all Sigma customers today via Claude's MCP registry. This provides a pre-configured MCP server that connects Claude to Sigma.
 
-To connect it to Claude:
+#### Required from Sigma
+We need two pieces of information from Sigma so that we can provide them to Claude.
+
+Copy these two values to a text file for use in Claude later.
+
+1. **MCP URL:**<br>
+Log into Sigma and click the profile icon in the upper left corner and select `MCP`. Click the copy icon and save the value off to a text file.
+
+<img src="assets/fun_2026_54e.png" width="800"/>
+
+2. **Organization name:**<br>
+This is part of the URL Sigma is using in your browser; for example:
+
+<img src="assets/fun_2026_54f.png" width="600"/>
+
+Copy your value off to a text file.
+
+#### Claude setup
+Log into Claude using your browser.
 
 1. In Claude, click `Customize` from the left sidebar:
 
-<img src="assets/fun_2026_52.png" width="700"/>
+<img src="assets/fun_2026_52.png" width="600"/>
 
 Under `Customize` click `Connectors`, `+` and `Browse connectors`:
 
-<img src="assets/fun_2026_53.png" width="550"/>
+<img src="assets/fun_2026_53.png" width="600"/>
 
 2. Search for `Sigma` and click `+`:
 
 <img src="assets/fun_2026_54.png" width="700"/>
 
-3. When prompted, add your Sigma instance name and click `Continue`:
+3. Paste the `MCP URL` copied from Sigma into Claude and click `Continue`:
 
-<img src="assets/fun_2026_55.png" width="800"/>
+<img src="assets/fun_2026_54b.png" width="400"/>
 
-Provide your Sigma credentials and login.
+4. Add your Sigma organization name and click `Continue`:
 
-4. When prompted by Claude, click `Allow`:
+<img src="assets/fun_2026_54c.png" width="400"/>
 
-<img src="assets/fun_2026_56.png" width="500"/>
+Provide your Sigma credentials and log in.
 
-If successful, we can `Approve` the operations Sigma will permit via Claude:
+5. When prompted by Claude, click `Allow`:
 
-<img src="assets/fun_2026_57.png" width="800"/>
+<img src="assets/fun_2026_56.png" width="450"/>
 
-Once connected, Claude can interact with your Sigma environment using plain language. By default, nothing is authorized.
+If successful, we can `Approve` the operations Sigma will permit via Claude. For testing we selected `Always allow` for all tools:
 
-For testing we selected `Always allow` at the top level:
+<img src="assets/fun_2026_57.png" width="500"/>
 
-<img src="assets/fun_2026_59.png" width="500"/>
+Now Claude can interact with your Sigma environment using plain language. We can also decide which tool permissions we want to allow. 
 
 5. We ask a simple question about our Sigma instance, which is a new trial and has only one workbook currently:
 
