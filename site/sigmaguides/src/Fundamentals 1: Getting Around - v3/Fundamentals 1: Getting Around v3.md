@@ -526,59 +526,67 @@ The MCP Server flips that around. You stay in your AI tool and bring Sigma to it
 
 This is particularly useful for analysts and developers who already work in AI-assisted environments and want Sigma data available in that same context.
 
-<aside class=positive>
+<aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> The MCP Server doesn't bypass Sigma's permission model — it respects your account type and document-level access. Administrators retain full control over what data is reachable, making this a governed extension of Sigma into AI workflows rather than a workaround.
 </aside>
 
 ### Setup
 
-The Sigma MCP Server is available to all Sigma customers today as a custom connector. 
+The Sigma MCP Server is available to all Sigma customers today via Claude's MCP registry. This provides a pre-configured MCP server that connects Claude to Sigma.
 
-To connect it to Claude:
+#### Required from Sigma
+We need two pieces of information from Sigma so that we can provide them to Claude.
 
-1. In Sigma, click your profile icon and navigate to `Profile` > `MCP` and copy your personal MCP server URL:
+Copy these two values to a text file for use in Claude later.
 
-<img src="assets/fun_2026_51.png" width="800"/>
+1. **MCP URL:**<br>
+Log into Sigma and click the profile icon in the upper left corner and select `MCP`. Click the copy icon and save the value off to a text file.
 
-2. In Claude, click your profile icon and select `Settings` > `Connectors` > `Add a custom connector`.
+<img src="assets/fun_2026_54e.png" width="800"/>
 
-<img src="assets/fun_2026_52.png" width="800"/>
+2. **Organization name:**<br>
+This is part of the URL Sigma is using in your browser; for example:
 
-Give it a name and paste the `MCP URL` copied from Sigma and click `Add`:
+<img src="assets/fun_2026_54f.png" width="600"/>
 
-<img src="assets/fun_2026_53.png" width="450"/>
+Copy your value off to a text file.
 
-3. Click `Connect`:
+#### Claude setup
+Log into Claude using your browser.
 
-<img src="assets/fun_2026_54.png" width="500"/>
+1. In Claude, click `Customize` from the left sidebar:
 
-3. When prompted, add your Sigma instance name and click `Continue`:
+<img src="assets/fun_2026_52.png" width="600"/>
 
-<img src="assets/fun_2026_55.png" width="800"/>
+Under `Customize` click `Connectors`, `+` and `Browse connectors`:
 
-Provide your Sigma credentials and login.
+<img src="assets/fun_2026_53.png" width="600"/>
 
-4. When prompted by Claude, click `Allow`:
+2. Search for `Sigma` and click `+`:
 
-<img src="assets/fun_2026_56.png" width="500"/>
+<img src="assets/fun_2026_54.png" width="700"/>
 
-If successful, the `Connect` button will now show `Configure`:
+3. Paste the `MCP URL` copied from Sigma into Claude and click `Continue`:
 
-<img src="assets/fun_2026_57.png" width="800"/>
+<img src="assets/fun_2026_54b.png" width="400"/>
 
-Authenticate via OAuth when prompted.
+4. Add your Sigma organization name and click `Continue`:
 
-Once connected, Claude can interact with your Sigma environment using plain language.
+<img src="assets/fun_2026_54c.png" width="400"/>
 
-5. Click `Configure`. By default, nothing is authorized:
+Provide your Sigma credentials and log in.
 
-<img src="assets/fun_2026_58.png" width="800"/>
+5. When prompted by Claude, click `Allow`:
 
-For testing we selected `Always allow` at the top level:
+<img src="assets/fun_2026_56.png" width="450"/>
 
-<img src="assets/fun_2026_59.png" width="800"/>
+If successful, we can `Approve` the operations Sigma will permit via Claude. For testing we selected `Always allow` for all tools:
 
-6. We ask a simple question about our Sigma instance, which is a new trial and has only one workbook currently:
+<img src="assets/fun_2026_57.png" width="500"/>
+
+Now Claude can interact with your Sigma environment using plain language. We can also decide which tool permissions we want to allow. 
+
+5. We ask a simple question about our Sigma instance, which is a new trial and has only one workbook currently:
 
 <img src="assets/fun_2026_60.png" width="600"/>
 
@@ -586,13 +594,13 @@ Since Claude has access, it is able to find the workbook and describe it to us:
 
 <img src="assets/fun_2026_61.png" width="700"/>
 
-<aside class=negative>
+<aside class="negative">
 <strong>NOTE:</strong><br> You will need appropriate Sigma permissions to use the MCP Server — at minimum, <code>View connections</code> on your account type and <code>Can view</code> or <code>Can use</code> access on the specific documents or connections you want to query.
 </aside>
 
 The value here is in the workflow. Instead of switching between Claude and Sigma to answer a data question, you stay in one place. Claude handles the discovery and query work, and you get answers grounded in your actual, live Sigma data — not a training dataset or a cached snapshot.
 
-For teams that already work in AI-assisted environments, this means Sigma data becomes a natural part of that workflow rather than a separate tool you have to open. And because it respects Sigma's permission model, there's no new governance overhead for administrators to manage.
+For teams that already work in AI-assisted environments, this means Sigma data becomes a natural part of that workflow rather than a separate tool you have to open.
 
 
 For full setup instructions, see [Use the Sigma MCP Server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
