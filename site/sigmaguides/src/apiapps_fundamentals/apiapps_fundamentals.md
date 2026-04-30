@@ -1,12 +1,12 @@
 author: pballai
 id: dataaps_fundamentals
-summary: dataaps_fundamentals
+summary: Learn how to build a fully functional project tracking AI app in Sigma using input tables, modals, controls, actions, and approval workflows — without writing code.
 categories: aiapps
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2024-10-24
+lastUpdated: 2026-06-27
 
 # AI Apps Fundamentals
 
@@ -16,10 +16,6 @@ Duration: 5
 Sigma has always been known as a leader in analytics, with its cloud-built platform designed to support today’s massive data scale challenges.
 
 Sigma has been extended to enable customers to build rich, interactive applications, automate workflows, and take action customized to their team’s needs—all without writing any code.
-
-This transformation has occurred in stages, and we are now in stage three, as shown in the image below.
-
-<img src="assets/dataaps_fun_0c.png" width="800"/>
 
 This QuickStart demonstrates how to use Sigma to build an AI Application (app) entirely within the Sigma UI. The data used will come from, and be stored in, Snowflake. During this demonstration, we will build a fully functional project tracking AI App that, in the past, may have taken significant time to get up and running.
 
@@ -97,7 +93,7 @@ The `Project Tracker` will support the following:
 </aside>
 
 ### What we will build
-After completing this QuickStart we will have built a fully functional AI App based on a project management use case. 
+After completing this QuickStart, we will have built a fully functional AI App based on a project management use case. 
 
 The finished product can look something like this (depending on your styling choices!):
 
@@ -127,6 +123,7 @@ Sigma builders interested in leveraging the advanced capabilities to create full
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
  
 ![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Terminology
 Duration: 5
@@ -164,14 +161,6 @@ For more information on this topic, see: [Configure data governance options in i
 Log into Sigma and select the `+ Create New` > `Workbook` from the homepage:
 
 <img src="assets/dataaps_fun_1.png" width="800"/>
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> You may see the "BETA" pills attached to some features. Sigma Computing is continuously evolving the Sigma service, adding new features and capabilities and improving what our customers can do with the product. Releases happen continuously, both for bug fixes and for new functionality.
-</aside>
-
-For more information on Sigma's release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
-
-There is also a QuickStart each month that covers all the release activity for the previous months. For more information, see [First Friday Features](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 
 #### Step 2: Add empty input table:
 Create an empty input table on Sigma Sample Database by clicking on `Input` in the element bar and dragging an `Empty` input table onto the page.
@@ -219,7 +208,7 @@ The download will contain three csv files once extracted:
 
 Now that we have the files, we can add three `CSV` input tables using the element bar as we previously did.
 
-The only different thing in this workflow is we need to `Upload CSV` using the csv input table button:
+The only different thing in this workflow is we will select `Upload CSV` from the `Input table` element bar group:
 
 <img src="assets/dataaps_fun_1g.png" width="600"/>
 
@@ -238,15 +227,25 @@ On the `Project Tracker` page, open the menu for the `Project Owner` column on t
 
 <img src="assets/dataaps_fun_1j.png" width="400"/>
 
-For `Value source`, select the `Data Validation` page and then `Employees`. Click `Save`. 
+For `Option source`, select the `Data Validation` page and then `Employees`. The `Name` column from `Employees` is automatically selected.
+
+Also click the button to convert this column to a `Single-select` to take advantage of more styling options. It makes sense that a project would have one `Project Owner` in our use case:
+
+<img src="assets/dataaps_fun_1j1.png" width="400"/>
+
+Click `Save`. 
 
 Now the `Project Owner` column is restricted to the list of `Employees` from that input table:
 
 <img src="assets/dataaps_fun_1l.png" width="400"/>
 
-Repeat this step for the `Project Type` column, using the `Project Type` input table as the source of validation value.
+Repeat this step for the `Project Type` column, but this time, change the column type to `Single-select` to save a step, since we know we want styling and only allow one `Project Type` to be selected for each project:
 
-Delete any rows that may be present in the `Project Tracker Input Table` while we were building.
+<img src="assets/dataaps_fun_1l1.png" width="400"/>
+
+Use the `Project Type` input table as the source of validation value.
+
+Delete any blank rows that may be present in the `Project Tracker Input Table` while we were building.
 
 #### Step 7: 
 Add the following row of data to the `Project Tracker Input Table`.
@@ -263,11 +262,11 @@ Click the `Save as` button and name workbook as `AI Apps Fundamentals`.
 #### Step 9: 
 Using the element bar, in the `Controls` group, add a `Text Input` control above the input table: 
 
-<img src="assets/dataaps_fun_1n.png" width="400"/>
+<img src="assets/dataaps_fun_1n.png" width="350"/>
 
 Rename it `Project Name`.
 
-With the `Project Name` control selected, change the `Control ID` to `cp-ProjectName` in the properties panel:
+With the `Project Name` control selected, change the `Control ID` to `cp-ProjectName` in the element panel:
 
 <img src="assets/dataaps_fun_1o.png" width="800"/>
 
@@ -276,9 +275,9 @@ With the `Project Name` control selected, change the `Control ID` to `cp-Project
 </aside>
 
 #### Step 10: 
-Add a `List Values` control element titled `Project Owner`. 
+Add a `List Values` control element and name it `Project Owner`. 
 
-In the properties panel under `Value Source`, select `Data Validation` > `Employee` and set the `Source column` to `Name`. 
+In the element panel under `Value Source`, select `Data Validation` > `Employee` and set the `Source column` to `Name`. 
 
 Ensure that only the `Show Clear Button` and `Show Search Box` are selected. 
 
@@ -297,7 +296,7 @@ Rename the `Control ID` to `cp_ProjectOwner`:
 #### Step 11: 
 Repeat step 10 for `Project Type`. 
 
-In the properties panel under `Value Source`, select `Data Validation` > `Project Type` and the `Project Type` column. 
+In the element panel under `Value Source`, select `Data Validation` > `Project Type` and the `Project Type` column. 
 
 Rename the `Control ID` to `cp_ProjectType`.
 
@@ -309,7 +308,7 @@ The page should look like this now:
 <img src="assets/dataaps_fun_1q.png" width="800"/>
 
 #### Step 13: 
-Add a button from the element bar, `UI` group to the page and set its name to `Create Project`:
+Add a `Button` from the element bar, `UI` group to the page and set its name to `Create Project`:
 
 <img src="assets/dataaps_fun_1r.png" width="800"/>
 
@@ -318,7 +317,7 @@ On the `Actions` panel of the `Create Project` button, add a new action and sele
 
 Ensure the values align for each control to the `Project Tracker Input Table`:
 
-<img src="assets/dataaps_fun_1s.png" width="600"/>
+<img src="assets/dataaps_fun_1s.png" width="800"/>
 
 What this action does is add a new row to the input table, containing whatever values are set in the four controls on our page. 
 
@@ -327,8 +326,6 @@ If you click the button with no values provided, an empty row is added to the in
 Click `Publish`.
 
 #### Step 15: 
-Once the action has been set up we may want to adjust the size of each control and the `Create Project` button. 
-
 Now let’s create some projects. It does not really matter what you decide to use for the control, it is test data anyway.
 
 <aside class="positive">
@@ -337,9 +334,13 @@ Now let’s create some projects. It does not really matter what you decide to u
 
 For more information on this topic, see: [Configure data governance options in input tables](https://help.sigmacomputing.com/docs/configure-data-governance-options-in-input-tables)
 
-Click the `Create Project` button to test if everything was set up correctly:
+Adjust the controls for a new project:
 
-<img src="assets/dataaps_fun_1t.png" width="800"/>
+<img src="assets/dataaps_fun_1ta.png" width="800"/>
+
+Click `Create Project` to test if everything was set up correctly:
+
+<img src="assets/dataaps_fun_1tb.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The control values were not cleared after we created the new project. We will handle that in a bit.
@@ -365,20 +366,20 @@ Rename the container `Create Project Container`
 <img src="assets/dataaps_fun_1v.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Naming containers as you create them will make life much easier as the data application grows. 
+<strong>IMPORTANT:</strong><br> Naming containers as you create them will make life much easier as the app grows. 
 </aside>
 
 #### Step 18: 
-Click on your `Create Project` button, and go to `Actions`. 
+Select the `Create Project` button, and go to `Actions`. 
 
 Create a second action set to `Clear control` applied to `Container` with our newly created `Create Project Container`. This will set the action to automatically target all four control elements:
 
-<img src="assets/dataaps_fun_1w.png" width="800"/>
+<img src="assets/dataaps_fun_1w.png" width="600"/>
 
 #### Step 19: 
 Add an additional row of data to test the clear action on each control element within the container. 
 
-The updated `Project Tracker` Input Table should look as follows, with a new row of data and the controls cleared once the `Create Project` button is clicked:
+The updated `Project Tracker` should look as follows, with a new row of data and the controls cleared once the `Create Project` button is clicked:
 
 <img src="assets/dataaps_fun_1x.png" width="800"/>
 
@@ -396,17 +397,17 @@ Select the `Move to` > `New Modal` option.
 <img src="assets/dataaps_fun_2.png" width="400"/>
 
 ### Step 2: 
-Name the modal `Modal - Create Project` by changing the workbook page name.
+Name the modal tab `Modal - Create Project` by changing the workbook page name.
 
 By now, we assume you are familiar with where elements are accessed and configured in Sigma, so we may not show all steps.
 
 Rename the title from `New Modal` to `Create a New Project`. 
 
-Deselect both `Primary` and `Secondary` button options under `Footer` in the selected element panel.
+Deselect both `Primary` and `Secondary` button options under `Footer` in the element panel.
 
 Move the various elements around and resize everything to suit. Trim any unnecessary space:
 
-<img src="assets/dataaps_fun_2a.png" width="300"/>
+<img src="assets/dataaps_fun_2a.png" width="800"/>
 
 ### Step 3:
 Create a new button and rename it to `Clear Form`. 
@@ -418,9 +419,11 @@ In the actions panel, set the action to clear the `Create Project Container.` Th
 ### Step 4: 
 Add an action to the `Create Project` button to `Close Modal`:
 
-<img src="assets/dataaps_fun_2c.png" width="800"/>
+<img src="assets/dataaps_fun_2c.png" width="600"/>
 
-Actions can be added in series to create dynamic behaviors. For more information see [Configure an action sequence](https://help.sigmacomputing.com/docs/configure-actions-in-sequences)
+Actions can be added in series to create dynamic behaviors and enable complex workflows.
+
+For more information see [Configure an action sequence](https://help.sigmacomputing.com/docs/configure-actions-in-sequences)
 
 ### Step 5: 
 Return to the `Project Tracker` page and add a button titled `Create Project`. 
@@ -432,14 +435,14 @@ Add an action to `Open a Modal` for the `Modal - Create Project`:
 <img src="assets/dataaps_fun_2d.png" width="800"/>
 
 ### Step 6: 
-Click the `Create Project` button to test the action. `Modal - Create Project` should opens. Check that adding a record, clear and create project works to add a new row in the `Project Tracker`.
+Click the `Create Project` button to test the action. `Modal - Create Project` should open. Check that adding a record, clear and create project works to add a new row in the `Project Tracker`.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Delete any empty rows that may have been accidentally created during configuration steps.
 </aside>
 
-**Congratulations**
-You have now successfully built a form to do controlled data entry into the Project Table!
+**Congratulations!**<br>
+You have now successfully built a form to do controlled data entry.
 
 Considering how easy that was AND data is being written automatically to the cloud data warehouse, that is pretty slick. Let's go further still.
 
@@ -477,7 +480,7 @@ Select the filters and place them into a container titled `Filters Container`,
 
 Move this container to a new modal titled `Modal - Filters`. 
 
-Add a `Filters` title and this time keep the footer buttons naming the primary `Close Modal` and the secondary `Clear Filters`. Deselect the checkbox for `Show close icon`, since we will have a button to do that. 
+Change the title to `Filters` and this time keep the footer buttons naming the primary `Close Modal` and the secondary `Clear Filters`. Deselect the checkbox for `Show close icon`, since we will have a button to do that. 
 
 <img src="assets/dataaps_fun_2h.png" width="800"/>
 
@@ -510,7 +513,7 @@ Test that the new buttons work as expected.
 Our AI App is beginning to take form by mixing and matching Sigma building blocks.
 
 ### Step 11: 
-Customize the title for the `Project Filters` button by adding a `(` followed by the `=` sign, which will open a pop up for you to use a custom formula:
+Customize the title for the `Project Filters` button by adding a `(` after the Project Filter text, followed by the `=` sign, which will open a pop up for you to use a custom formula:
 
 Use the following formula:
 ```copy-code
@@ -531,7 +534,7 @@ Click the `Project Filters` button and set a few filters.
 
 This results in a count when filters are selected:
 
-<img src="assets/dataaps_fun_2k.png" width="250"/>
+<img src="assets/dataaps_fun_2j1.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -542,12 +545,12 @@ Duration: 5
 ### Step 1: Add page
 Add a new page named `Control Panel`. 
 
-This will be the central hub and spine for the AI App which ensures governance over the circular flow of data.
+This will be the central hub and spine for the AI App, which ensures governance over the circular flow of data.
 
 ### Step 2: 
 On the `Project Tracker` page, add three new columns using any of the drop downs for `Last Updated At`, `Last Updated By`, and `ID`. 
 
-<img src="assets/dataaps_fun_3.png" width="800"/>
+<img src="assets/dataaps_fun_3.png" width="600"/>
 
 Rename `ID` to `Project ID`, click its column header and drag it over so that it is in the first position on the table:
 
@@ -560,7 +563,7 @@ Rename `ID` to `Project ID`, click its column header and drag it over so that it
 ### Step 3: 
 Create a `child table` from the `Project Tracker Input Table` and rename the child `Project Tracker Stable Table`:
 
-<img src="assets/dataaps_fun_3b.png" width="800"/>
+<img src="assets/dataaps_fun_3b.png" width="600"/>
 
 ### Step 4: 
 Move the `Project Tracker Stable Table` to the `Control Panel` page.
@@ -570,13 +573,13 @@ Move the `Project Tracker Stable Table` to the `Control Panel` page.
 ### Step 5: 
 On the `Control Panel` page, from the `Project Tracker Stable Table` filter `Project ID` and convert it to a page control. 
 
-Rename the Control ID to `master-ProjectID`:
-
-<img src="assets/dataaps_fun_3d.png" width="800"/>
+Rename the Control ID to `master-ProjectID`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Be sure to deselect "Allow Multiple Selection".
 </aside>
+
+<img src="assets/dataaps_fun_3d.png" width="800"/>
 
 ### Step 6: 
 Add another page control filter, this time for `Project Name`.
@@ -605,16 +608,18 @@ Duration: 5
 ### Step 1: 
 On the `Project Tracker` page, add a new `Empty` input table, connect it to the `Sigma Sample Database` and rename it to `Task Tracking Input Table`. 
 
-Add two `Text` columns, `Task Name`, `Task Owner` and a `Due Date` column as `Date` data type:
+Configure columns for `Task Name`, `Task Owner` and a `Due Date` column as `Date` data type:
 
-<img src="assets/dataaps_fun_4.png" width="800"/>
+<img src="assets/dataaps_fun_4.png" width="650"/>
 
 ### Step 2: 
-Add an additional text column for `Project ID`:
+Add an additional **text** column for `Project ID`:
 
 <img src="assets/dataaps_fun_4a.png" width="800"/>
 
 This column will be tied to the `Project Tracker Input Table` to link tasks to projects. 
+
+Delete any empty rows.
 
 ### Step 3: 
 Add a `text input` control, `List values` control, and `Date` control above the `Task Tracking Input Table`. 
@@ -637,7 +642,7 @@ Set each `Control Id` as:
         </tr>
          <tr>
             <td>Task Due Date</td>
-            <td>ct-Task-Due- Date</td>
+            <td>ct-Task-Due-Date</td>
         </tr>
     </tbody>
 </table>
@@ -652,14 +657,14 @@ Ensure the `Task Owner` column is sourced to the `Data Validation - Employee` ta
 <img src="assets/dataaps_fun_4b.png" width="800"/>
 
 ### Step 5: 
-Create a container titled “Create Task Container” with the three controls.
+Create a container named `Create Task Container` with the three controls.
 
 <img src="assets/dataaps_fun_4c.png" width="800"/>
 
 ### Step 6: 
-Move this container to a `New modal` and rename the modal page to `Modal - Create Task`. 
+Move this container to a `New modal` and rename the modal tab to `Modal - Create Task`. 
 
-Change the modal title to `Create Task`
+Change the modal title to `Create Task`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This modal will be used to write data back to the "Task Tracking Input Table" on the "Control Panel". We want to ensure the data lands in the right place!
@@ -669,10 +674,10 @@ Using the existing primary and secondary buttons, change the names to `Clear For
 
 Configure the actions for these buttons as follows:
 
-**Create Task (primary button):**
+**Create Task (primary button):**<br>
 Add an `Insert Row` and make sure you’re inserting into the `Task Tracking Table`:
 
-Add two more actions after the `Insert Row` action to clear the controls in the container and then close the modal:
+Add two more actions after the `Insert Row` action to clear the controls in the `Create Task Container` and then close the modal:
 
 <img src="assets/dataaps_fun_4e.png" width="600"/>
 
@@ -680,46 +685,46 @@ Add two more actions after the `Insert Row` action to clear the controls in the 
 <strong>IMPORTANT:</strong><br> Pay attention to number 4 on the screenshot above. We want to set the Project ID to use the value for Project ID from the Control Panel page!
 </aside>
 
-**Clear Form (secondary button):**
+**Clear Form (secondary button):**<br>
 Add a `Clear control` for the `Container` with the action set as:
 
-<img src="assets/dataaps_fun_4d.png" width="500"/>
+<img src="assets/dataaps_fun_4d.png" width="600"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The control for project ID will be set in a future step.
 </aside> 
 
-<img src="assets/dataaps_fun_4d.png" width="500"/>
+We will use the modal's `X` to close the modal.
 
-We will use the modals `X` to close the modal.
+<img src="assets/dataaps_fun_4d1.png" width="600"/>
 
 ### Step 7: 
 On the `Project Tracker Input Table`, select the dropdown and add a calculation. 
 
-<img src="assets/dataaps_fun_4g.png" width="500"/>
+<img src="assets/dataaps_fun_4g.png" width="600"/>
 
 The formula for this calculation will be "Add Task" (with quotation marks included) in the formula bar. 
 
 Rename this column to `Add a Task`:
 
-<img src="assets/dataaps_fun_4h.png" width="600"/>
+<img src="assets/dataaps_fun_4h.png" width="500"/>
 
 ### Step 8: 
-Click to select the `Project Tracker Input Table` and add an action.
+Let's add an action to `Add Task`.
 
-Configure the action to `When selecting cells in column` for the column `Add a Task`.
+Configure the action to `On select` for the column `Add a Task`.
 
-Configure the rest of the action to set the `Project Id`.
+Configure the rest of the action to set the `Project ID` on the `Control Panel`:
 
-<img src="assets/dataaps_fun_4i.png" width="500"/>
+<img src="assets/dataaps_fun_4i.png" width="600"/>
 
 ### Step 9: 
-Add conditional formatting to the `Add a Task` column to make it appear as a hyperlink:
+Add conditional formatting to the `Add a Task` column to make it appear as a formatted hyperlink:
 
-<img src="assets/dataaps_fun_4j.png" width="500"/>
+<img src="assets/dataaps_fun_4j.png" width="700"/>
 
 ### Step 10: 
-Test this action by selecting an `Add Task` cell from `Create New Task`and check the `Control Panel` page 
+Test this action by selecting an `Add Task` cell from `Create New Task` and check the `Control Panel` page 
 for the `Project ID` control element. The value that was clicked will appear in the filter as:
 
 <img src="assets/dataaps_fun_4k.png" width="500"/>
@@ -737,13 +742,13 @@ Add a third action for `Opening a Modal`, and select `Modal - Create Task`:
 <img src="assets/dataaps_fun_4m.png" width="500"/>
 
 ### Step 13: 
-When the modal appears, we want the project name to appear in the title so the user is oriented.
+When the modal appears, we want the `Project Name` to appear in the title so the user is oriented.
 
-On the `Modal - Create Task` page, revise the title to include the project name. 
-
-Select the text `Create Task` and append it with `for ` followed by `=`, which opens the formula bar.
-
-Type `[master_Project-Name]` and click the green checkmark:
+On the `Modal - Create Task` page, select the text `Create Task` and append it with `for ` followed by `=`, which opens the formula bar. Use this formula:
+```copy-code
+[master-Project-Name]
+```
+and click the green checkmark:
 
 <img src="assets/dataaps_fun_4n.png" width="600"/>
 
@@ -763,9 +768,9 @@ The new task should appear in the `Task Tracking Input Table`:
 Try this multiple times to add new tasks to the task tracking table.
 
 ### Step 15: 
-On the `Project Tracker` page, add a new `Column via lookup` to the `Task Tracking Input Table`.
+Add a new `Column via lookup` to the `Task Tracking Input Table`.
 
-This time we used the selected element panel, `COLUMNS` menu to add a new column to demonstrate another way to do it:
+This time we used the element panel, `COLUMNS` menu to add a new column to demonstrate another way to do it:
 
 <img src="assets/dataaps_fun_4q.png" width="800"/>
 
@@ -780,7 +785,7 @@ We need to let Sigma know which column(s) we want to bring in and how to "match"
 ### Step 16: 
 Rename the new lookup column to `Project Name` and move it to the first column:
 
-<img src="assets/dataaps_fun_4s.png" width="600"/>
+<img src="assets/dataaps_fun_4s.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Columns created through a lookup appear as "pills" to make them obvious.
@@ -789,9 +794,13 @@ Rename the new lookup column to `Project Name` and move it to the first column:
 For more information on lookups in Sigma, see [Add columns through Lookup](https://help.sigmacomputing.com/docs/add-columns-through-lookup)
 
 ### Step 17: 
-Move the `Task Tracking Input Table` to the `Control Panel` page. Now that we have the `Project Name` we don't need to show that information to the user. 
+Move the `Task Tracking Input Table` to the `Control Panel` page. 
 
-Add an additional task record for the same project and sort by `Project Name`. 
+Now that we have the `Project Name` we can hide the `Project ID` column.
+
+Add an additional task record for the same project and sort by `Project Name`:
+
+<img src="assets/dataaps_fun_4s1.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This demonstrates the "multiple tasks to one project" relationship. This is a very important concept in building AI apps in Sigma. 
@@ -804,9 +813,9 @@ Add an additional task record for the same project and sort by `Project Name`.
 Duration: 5
 
 ### Step 1: 
-On the `Control Panel` page, create a new blank input table and rename it to `Status Update Input Table`. 
+On the `Control Panel` page create a new blank input table and connect to the `Sigma Sample Database`.
 
-Connect to the `Sigma Sample Database` again.
+Rename it to `Status Update Input Table`. 
 
 Create the following columns:
 <table>
@@ -846,20 +855,20 @@ Add a new modal and change the title to `Update Project Status`.
 
 Add a `List control` and rename it to `Project Status`. 
 
-Set its `Value source` to `Data Validation` and `Source column` to `Status`.
+Set its `Value source` to `Data Validation` and `Source column` to `Status Types`.
 
 Uncheck `Display columns` as shown below.
 
-Set the `Control ID` value `ups_Project-Status`:
+Set the `Control ID` to `ups_project-status`:
 
-<img src="assets/dataaps_fun_5a.png" width="600"/>
+<img src="assets/dataaps_fun_5a.png" width="800"/>
 
 Rename the modal page to `Modal - Update Status`.
 
 ### Step 3: 
 Change the `Label` > `Label position` under `Format` to put the `Project Status` title on the left:
 
-<img src="assets/dataaps_fun_5b.png" width="600"/>
+<img src="assets/dataaps_fun_5b.png" width="800"/>
 
 ### Step 4: 
 Disable the `Primary` and `Secondary` buttons from the input tables `Format` options.
@@ -869,11 +878,14 @@ Add a `Button` and rename it to `Update Project Status`:
 <img src="assets/dataaps_fun_5c.png" width="600"/>
 
 ### Step 5: 
-On the `Project Tracker` page and the `Project Tracker Input Table`, add a new column via `Calculation` after the `Add Task` field and rename it to `Update Project Status` with a formula of “Update Status”.
+On the `Project Tracker` page and the `Project Tracker Input Table`, add a new column via `Calculation` after the `Add Task` field and rename it to `Update Project Status` with a formula:
+```copy-code
+“Update Status”
+```
 
-Let's use conditional formatting to set the new columns appearance to the same as the `Add a Task` column. 
+Use conditional formatting to set the new columns appearance to the same as the `Add a Task` column. 
 
-This is made easy by adding the `Update Project Status` column to the `Apply to` list and changing the `Formatting rule` to `Is not null` as shown in the screenshot below:
+We can do this easily by adjusting the condition formatting on `Add a Task`, `Apply to` list and changing the `Formatting rule` to `Is not null` as shown in the screenshot below:
 
 <img src="assets/dataaps_fun_5d.png" width="800"/>
 
@@ -887,13 +899,13 @@ Set the value as `Column` > `Project ID`:
 <img src="assets/dataaps_fun_5e.png" width="600"/>
 
 ### Step 7: 
-Repeat adding an `Set Control Value` action for `Project Name` and the `Open Modal` action for `Modal - Update Status`:
-
-<img src="assets/dataaps_fun_5f.png" width="500"/>
+Repeat adding an `Set Control Value` action for `Project Name` and the `Open Modal` action for `Modal - Update Status`.
 
 ### Step 8: 
-In the header of the `Modal - Update Status` page, add in the following text: `Project Name:`  followed by an `=` sign and set the formula to [master_ProjectName]:
-
+In the header of the `Modal - Update Status` tab, change the title text to `Project Name:`  followed by an `=` sign and set the formula to:
+```copy-code
+[master-Project-Name]
+```
 <img src="assets/dataaps_fun_5g.png" width="600"/>
 
 ### Step 9: 
@@ -906,7 +918,7 @@ Notice that two columns are mapped to two formulas; `CurrentUserFullName()` and 
 <img src="assets/dataaps_fun_5h.png" width="800"/>
 
 ### Step 10: 
-As we have done before, add an action for `Clearing Project Status` and set the third action to `Navigate` to the `Project Tracker` page > `Top of Page`. 
+As we have done before, add an action for clearing the `Project Status` control and set the third action to `Navigate` to the `Project Tracker` page > `Top of Page`. 
 
 <img src="assets/dataaps_fun_5i.png" width="600"/>
 
@@ -914,39 +926,31 @@ Saving clicks is always appreciated!
 
 ### Step 11: 
 
-<aside class="negative">
-<strong>NOTE:</strong><br> When we were building this, we noticed that a few rows were accidentally (on the "Control Panel" > "Status Update Input Table") created, so before we tested, we just manually deleted them so we could have a clean test.
-</aside>
-
 Back on the `Project Tracker` page, select `Update Status` for any project and test out the functionality of `Modal - Update Status`. 
 
 After setting a status and clicking the `Update Project Status` button we are returned to the `Control Panel` where we can see the row added with the new status:
 
 <img src="assets/dataaps_fun_5j.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> It is not uncommon for null values to find their way into data due to user error, misconfiguration or even "dirty data" being used. Sigma supports a variety of ways to filter out nulls, most commonly using a filter that is configured to not display null values.
-</aside>
-
 ### Step 12: 
-On the Project Tracker page > Project Tracker Input Table, add a new field via lookup on the Status Update Table adding Project Status based on Project ID.
+On the `Project Tracker` page > `Project Tracker Input Table`, add a new field via `lookup` on the `Status Update Table` adding `Project Status` based on `Project ID`.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Projects having no current status set will make the lookup show less than 100% mapping and that is fine.
 </aside>
 
-<img src="assets/dataaps_fun_5k.png" width="600"/>
+<img src="assets/dataaps_fun_5k.png" width="800"/>
 
 Rename the new column `Project Status` and move the column to just after `Update Project Status` column:
 
 <img src="assets/dataaps_fun_5l.png" width="800"/>
 
 ### Step 13: 
-Now update a project with a second status and see the “multiple values” result under `Project Status`. 
+Now update the project with a second status and see the “multiple values” result under `Project Status`. 
 
 <img src="assets/dataaps_fun_5m.png" width="800"/>
 
-This happens when a lookup is `one to many` instead of `one to one` and requires a different approach to enable proper data app functionality. 
+This happens when a lookup is `one to many` instead of `one to one` and requires a different approach to enable proper app functionality. 
 
 ### Step 14: 
 Create a `Child` table off the `Control Panel` > `Status Update Table`.
@@ -955,7 +959,7 @@ Rename this table to `Status Update - Latest Status Table`.
 
 Set the `Status Date` to `Truncate date` > `Second`:
 
-<img src="assets/dataaps_fun_5n.png" width="300"/>
+<img src="assets/dataaps_fun_5n.png" width="800"/>
 
 ### Step 15: 
 Add a new column to the table, set the calculation to be:
@@ -972,7 +976,7 @@ lookup(max([Second of Status Date]), [Project ID], [Project ID]
 For more information about functions in Sigma, see [Function index](https://help.sigmacomputing.com/docs/function-index)
 
 ### Step 16: 
-Add a new column of `Latest Update` with calculation:
+Add a new column named `Latest Update` with calculation:
 ```copy-code 
 [Max of Second of Status Date] = [Second of Status Date] 
 ```
@@ -987,6 +991,8 @@ This will result in a `true` or `false`:
 The `Status Update Input Table` operates as the **transaction log**, while the `Latest Status Table` provides just the latest value:
 
 <img src="assets/dataaps_fun_5q.png" width="350"/><br>
+
+We now have only the most recent status for each row:
 
 <img src="assets/dataaps_fun_5r.png" width="800"/>
 
@@ -1021,33 +1027,49 @@ Duration: 5
 ### Step 1: 
 On the `Project Tracker Input Table`, create a new `Calculation` column and rename it to `Project Details`.
 
-Set the column's formula to “ⓘ”.
+Set the column's formula to:
+```copy-code
+ “ⓘ”
+ ```
 
 This will be used to pop up a modal with project details. 
 
-<img src="assets/dataaps_fun_6.png" width="600"/>
+<img src="assets/dataaps_fun_6.png" width="500"/>
 
 ### Step 2: 
 Create a new `Modal` page and rename it to `Modal - Project Details`. 
 
 Change the modal's title to `Project Details for Project:` and the add the `=` sign.
 
-Using the formula bar, set it to reference `[master-Project-Name]` and click the green checkmark:
+Using the formula bar, set it to reference:
+```copy-code
+[master-Project-Name]
+```
 
-<img src="assets/dataaps_fun_6c.png" width="600"/>
+<img src="assets/dataaps_fun_6c.png" width="500"/>
 
 ### Step 3: 
-From the elements bar, in the `UI` group, add a `Text` control with `Project Owner` and type `=[Pr` into the formula bar. This will return all the matching items. Select `Project Tracker Stable Table`:
+From the elements bar, in the `UI` group, add a `Text` control with `Project Owner` and type `=[Pr` into the formula bar. 
+
+This will return all the matching items. Select `Project Tracker Stable Table`:
 
 The list will then show all the columns from the selected table. Now we can choose the column we want, `Project Owner`:
+```copy-code
+[Project Tracker Stable Table/Project Owner]
+```
 
 <img src="assets/dataaps_fun_6e.png" width="600"/>
 
-Click the green check mark to accept the entry of `[Project Tracker Stable Table/Project Owner]`.
+Click the green check mark to accept the entry of `[cp_ProjectOwner]`.
 
 Repeat the process by adding two more lines beneath the first one for:
 ```copy-code
 [Project Tracker Stable Table/Project Status]
+```
+
+and
+
+```copy-code
 [Project Tracker Stable Table/Project Due Date]
 ```
 
@@ -1056,80 +1078,70 @@ We now have:
 <img src="assets/dataaps_fun_6a.png" width="400"/>
 
 ### Step 4: 
-Create another `Child` table of the `Status Update Input Table` on the `Control Panel` page. Then move it to the modal titled `Modal - Project Details`. 
+Create another `Child` table of the `Status Update - Latest Status Table` on the `Control Panel` page. Then move it to the modal titled `Modal - Project Details`. 
 
-Rename the title of the table to `Details`:
+Rename the title of the table to `Details`.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We used the "Status Update Input Table" on the "Control Panel" as that table has all the status rows listed. We want the "Details" modal table to show every status change made for the project. This way, we can derive how long the project stayed in each status. 
+<strong>NOTE:</strong><br> We used the "Status Update - Latest Status Table" on the "Control Panel" as that table has all the status rows listed. 
+
+We want the "Details" modal table to show every status change made for the project. This way, we can derive how long the project stayed in each status. 
 </aside>
 
 Hide all columns except those shown below:
 
-<img src="assets/dataaps_fun_6d.png" width="800"/>
+<img src="assets/dataaps_fun_6d.png" width="600"/>
 
 ### Step 5:
-On the `Control Panel` page, select the `Project ID` control and select `TARGETS` in the selected element panel. 
+On the `Control Panel` page, select the `Project ID` control and select `TARGETS` in the element panel. 
 
-`Add filter target` to update the `Project ID` on the `Details` table on the `Project Details for Project` modal:
+`Add filter target` to update the `Project ID` on the `Details` table on the `Modal - Project Details` modal:
 
 <img src="assets/dataaps_fun_6j.png" width="800"/>
 
 ### Step 6: 
-On `Format` > `Table components`, **uncheck** the `Show summary bar` option and modify the title to include the project name as we have done previously. 
+On the `Modal - Project Details` tab, under `Format` > `Table components`, **uncheck** the `Show summary bar` option and modify any other options to style the table to suit: 
 
 <img src="assets/dataaps_fun_6h.png" width="800"/>
 
-### Step 8: 
+### Step 7: 
 We also want to include all the related tasks for the selected project.
 
-Repeat the steps used for the `Details` table to add a `Tasks` table.
+Repeat the steps used for the `Details` table to add a `Tasks` table:
 
 On the `Control Panel` page, create a `Child table` on the `Task Tracking Input Table` and move it to the` Modal - Project Details`. 
 
 Open the modal by clicking the `ⓘ` or by directly opening the modal page.
 
-Remove the `summary bar` and add change the table's name to `Tasks`.
+Remove the `summary bar` and change the table's name to `Tasks`.
 
-Set the `Master Project Name` control on the `Control Panel` to target the `Tasks` table and the column `Project Name`:
+Set the `Project Name` control on the `Control Panel` to target the `Tasks` table and the column `Project Name`:
 
 <img src="assets/dataaps_fun_6k.png" width="600"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> Don't forget to turn off the "Tasks" table's summary bar!
-</aside>
+### Step 8: 
+It may be useful to be able to add tasks for this modal as well. First, disable the `Secondary` and `Primary` buttons.
 
-### Step 9: 
-It may be useful to be able to add tasks for this modal as well.
+On the `Modal - Project Details` modal, add a button titled `Add New Task` that uses an action to open the modal for `Modal - Create Task`.
 
-On the `Project Details for Project` modal, add a button titled `Add New Task` that uses an action to open the modal for `Modal - Create Task`.
+<img src="assets/dataaps_fun_6l.png" width="800"/>
 
-<img src="assets/dataaps_fun_6l.png" width="600"/>
-
-Click the `Add another task` and test the workflow, to add another task to the list:
+Click the `Add another task` and test the workflow, to add another task to the list. After moving a few elements around:
 
 <img src="assets/dataaps_fun_6m.png" width="600"/>
 
-For completeness, it may be useful to include an `Update Status` button here as well:
-
-<img src="assets/dataaps_fun_6m1.png" width="600"/>
+For completeness, it may be useful to include an `Update Status` button here as well.
 
 Configure its action to open the modal `Modal - Update Status`.
 
-That was super quick and easy to extend the workflow now that our "base" data app pages and modals are setup!
+That was quick and easy to extend the workflow now that our base app pages and modals are set up.
 
-### Step 10: Adding a Visualization
-Going one step further, let's add a `Charts` > `Bar chart` to the `Project Details for Project` modal.
-
-<img src="assets/dataaps_fun_6n.png" width="600"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Made sure user "James" had two tasks in the screenshot.
-</aside>
-
-We now have:
+### Step 9: Adding a Visualization
+Going one step further, let's add a `Charts` > `Bar chart` to the `Project Details for Project` modal:
 
 <img src="assets/dataaps_fun_6o.png" width="800"/>
+
+Sigma's design significantly reduces the time it takes to create a design that suits your needs.
 
 We can apply some styling but we will touch on that in the last section. Styling in Sigma is really easy so it is best to make sure the functionality all works first, and then make it look pleasing to the eye. 
 
@@ -1148,21 +1160,35 @@ Duration: 5
 ### Step 1: 
 On the `Project Tracker` page, add a `Controls` > `Segmented Control`
 
-Configure the `Values` as `Project Owner View` and `Project Reviewer View`. 
+Configure the `Values` as
+```copy-code
+Project Owner View
+```
+and
+```copy-code
+Project Reviewer View
+```
 
-Remove the label (title) as we have done in the previous steps. The page will look like this:
+Remove the label (title) as we have done in the previous steps, under the `Format` > `LABEL` section. 
+
+The page will look like this:
 
 <img src="assets/dataaps_fun_7.png" width="800"/>
 
 ### Step 2: 
 Add a new `Calculation` column to the `Project Tracker Input Table` called `Reviewer Approval`.
 
-Set the formula to `Click to Review` and add it to the existing conditional formatting we have done before:
+Set the formula to
+```copy-code
+"Click to Review"
+```
 
-<img src="assets/dataaps_fun_7a.png" width="800"/>
+Add it to the existing conditional formatting we have done before:
+
+<img src="assets/dataaps_fun_7a.png" width="700"/>
 
 ### Step 3: 
-Select the segmented control and add an action.
+Select the segmented control and open `Actions`.
 
 Add a `Condition`:
 
@@ -1176,37 +1202,45 @@ Configure the action to:
 
 <img src="assets/dataaps_fun_7d.png" width="600"/>
 
-Repeat this process for the `Project Reviewer View`, this time setting the `What to modify` to `Show columns`:
+Click the `+` to create another `ACTION SEQUENCE` for the `Project Reviewer View` button in the segmented control, this time setting the `What to modify` to `Show columns`:
 
-<img src="assets/dataaps_fun_7e.png" width="500"/>
+<img src="assets/dataaps_fun_7e.png" width="600"/>
 
 ### Step 4: 
-On the `Data Validation` page, create a child table off `Status Type` and call it `Status Type Stable Table`.
+On the `Data Validation` page, create a child table off `Status Type` and rename it `Status Type Stable Table`.
 
 Move this table to the `Control Panel`. 
 
 ### Step 5: 
 On the `Control Panel` page, add a filter for `Status Category` and convert it to a page control. 
 
-Set the page control to only `Show Clear Button` and `Show Search Button`. Update the `Control ID` to use the pattern we established earlier. Configure the `Value source` and `Source column` too:
+Configure the control to only `Show Clear Button` and `Show Search Button`. 
 
-<img src="assets/dataaps_fun_7g.png" width="500"/>
+Update the `Control ID` to use the pattern we established earlier. Configure the `Value source` and `Source column` too:
 
-Set the `TARGETS` to 
+<img src="assets/dataaps_fun_7g.png" width="800"/>
+
+Make sure the `TARGETS` are set to:
 
 <img src="assets/dataaps_fun_7j.png" width="400"/>
 
 ### Step 6: 
 Return to the `Project Tracker` page and select the `Project Tracker Input Table`. 
 
-In `actions`, add an action in the third position, in the sequence shown below. Configure to match:
+We already have an action that allows the user to update project status, but let's add another to account for the reviewer.
+
+In `Actions`, duplicate the existing `Update Project Status` action:
+
+<img src="assets/dataaps_fun_7h1.png" width="350"/>
+
+Reconfigure it to:
 
 <img src="assets/dataaps_fun_7h.png" width="600"/>
 
 ### Step 7: 
 On the `Modal - Update Status` control titled `Project Status`. 
 
-Switch the `Value Source` to the `Status Type` and the column switch to `Status` on the selected element panel:
+Switch the `Value Source` to the `Status Type Stable Table` from `Control Panel` and the column to `Status`:
 
 <img src="assets/dataaps_fun_7i.png" width="800"/>
 
@@ -1215,51 +1249,53 @@ Go back to the `Project Tracker` page and select the `Project Tracker Input Tabl
 
 Click a cell with `Update Status` to test that only 4 options appear on the modal's list control:
 
-<img src="assets/dataaps_fun_7k.png" width="400"/>
+<img src="assets/dataaps_fun_7k.png" width="450"/>
 
 ### Step 9: 
 On the `Project Tracker` page, click the `Project Reviewer View` button in the segmented control. 
 
-Now select the `Project Tracker Input Table` > `Actions` and duplicate the `Update Project Status` action.
+Now select the `Project Tracker Input Table` > `Actions` and duplicate the most recent `Update Project Status` action.
 
 Scroll to the bottom of the actions list to see the duplicate action.
 
-Change the target to `Reviewer Approval`. 
+Change `Set Status Category` to be `Reviewer`:
 
-Change `Set Status Category` to be `Reviewer` too:
-
-<img src="assets/dataaps_fun_7l.png" width="400"/>
+<img src="assets/dataaps_fun_7l.png" width="700"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Note: If the "Reviewer approval" column target is grayed out (or not present in the list), check the segmented control to ensure the "Project reviewer view" button is selected.
+<strong>NOTE:</strong><br> If the "Reviewer approval" column target is grayed out (or not present in the list), check the segmented control to ensure the "Project Reviewer View" button is selected.
 </aside>
 
 ### Step 10:
-Select `Click to Review` in any cell and confirm again that the `Modal - Update Status` only shows the values that corresponding to the category `Project Reviewer View`.
+Select `Click to Review` in any cell and confirm again that the `Modal - Update Status` only shows the values that correspond to the category `Project Reviewer View`.
 
-<img src="assets/dataaps_fun_7m.png" width="400"/>
+<img src="assets/dataaps_fun_7m.png" width="500"/>
 
 Test the view comparing `Project Owner` and `Project Reviewer Views` to test conditional actions and how these scenarios direct access, inputs, and functionality. 
 
 ### Step 11: 
 Hide all pages except the `Project Tracker` page and click `Publish`. 
 
-Switch to the `Published version` and test the entire data app:
+<aside class="negative">
+<strong>NOTE:</strong><br>Modal tabs are hidden automatically when viewing a workbook in `Published version`.
+</aside>
 
-<img src="assets/dataaps_fun_7n.png" width="400"/>
+Switch to the `Published version` and test the entire app:
 
-The data app should look like this now:
+<img src="assets/dataaps_fun_7n.png" width="600"/>
+
+The app should look like this now:
 
 <img src="assets/dataaps_fun_7o.png" width="800"/>
 
 ### Step 12: Data Lineage
 Review the data lineage view to review and confirm all connections and lookups. 
 
-Click the green <img src="assets/closeview.png" width="75"/> button, and then click the `edit` link.
+Click the `edit` link next to the workbook's name.
 
 Open the workbook's lineage:
 
-<img src="assets/dataaps_fun_7p.png" width="600"/>
+<img src="assets/dataaps_fun_7p.png" width="800"/>
 
 When workbooks become large, working with the lineage is a great way to find what you are after, jump right to the desired element and even see the SQL used to create the data for an element too. 
 
@@ -1272,17 +1308,42 @@ To learn more about workbook data lineage in Sigma see [View workbook data linea
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Template Formatting
+<!-- ## Built-in AI
+Duration: 5
+
+AI is built into Sigma throughout — not as a separate product or add-on, but as a native capability available where you already work. Whether you're writing formulas, exploring data, or building apps, AI is there to help.
+
+Before we go further, read this section of [Fundamentals 01: Overview](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html?index=..%2F..index#4) which provides instructions for configuring AI based on your organizations requirements.
+
+### Sigma Assistant
+Once configured, we can simply ask Assistant natural language questions. For example:
+
+<img src="assets/dataaps_fun_8a.png" width="800"/>
+
+Assistant will respond, showing the steps it took, providing charts and details along the way:
+
+<img src="assets/dataaps_fun_8b.png" width="700"/>
+
+We can do much more with Sigma's AI functionality, but that is enough for now. 
+
+For more information, see [Get started with AI in Sigma](https://help.sigmacomputing.com/docs/getting-started-with-ai)
+
+Also see the other [AI related Quickstarts](https://quickstarts.sigmacomputing.com/?cat=aiapps)
+
+![Footer](assets/sigma_footer.png)
+END OF SECTION -->
+
+## Styling
 Duration: 5
 
 ### Step 1: 
-With the bulk of the data app functionality complete, visual design and accessibility is the next step. 
+With the bulk of the app functionality complete, visual design and accessibility is the next step. 
 
 Sigma provides many "out-of-the-box" themes; experiment with them and adjust from there as desired too.
 
 This enables a range of functionality including the ability to toggle between light and dark modes, preset swapping, custom colors that affect elements throughout the workbook (big time saver), fonts, layouts, and additional design settings: 
 
-<img src="assets/dataaps_fun_8.png" width="600"/>
+<img src="assets/dataaps_fun_8.png" width="800"/>
 
 ### Step 2: Containers - Containers - Containers
 It is a good practice to package elements in containers in a manner that will be easy for users to access and understand. 
@@ -1308,7 +1369,13 @@ Here are some examples of styled AI apps in Sigma:
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we built a fully functional project tracking application using Sigma and sample data. Hopefully, this was a smooth and eye-opening process that showed just how easy building AI apps can be with Sigma. Additional resources are provided below.
+This QuickStart walked through building a complete project tracking app in Sigma — one that handles data entry, status tracking, task management, and approval workflows, all without writing code.
+
+The core pattern demonstrated here — input tables as the write layer, controls and actions as the logic layer, and modals as the UI layer — applies broadly to any app built in Sigma. The control panel page, with its master controls and stable tables, is the structural foundation that makes multi-page coordination predictable and maintainable as an app grows.
+
+The approval workflow section showed how a single segmented control, combined with conditional actions, can support distinct user roles within the same workbook — a pattern with wide applicability in operational workflows.
+
+These building blocks are reusable. Once you understand how input tables, lookups, and actions connect, building new workflows in Sigma is largely a matter of composition.
 
 **Additional Resource Links**
 
