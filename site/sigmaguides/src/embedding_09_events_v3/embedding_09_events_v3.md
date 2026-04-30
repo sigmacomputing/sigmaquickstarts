@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-05-20
+lastUpdated: 2026-05-20
 
 # Embedding 09: Events
 
@@ -157,6 +157,14 @@ We can also confirm that the `Events Log` is working by using the browser's insp
 For example, if we click the `East` button:
 
 <img src="assets/ev_5a.png" width="800"/>
+
+Clicking `East` initiates a two-step exchange:
+
+1. The host application calls `setStoreRegion("East")`, which sends a `workbook:variables:update` message to Sigma via `postMessage`. This is the **outbound** event — logged in green in the Events Log and in the browser console.
+
+2. Sigma receives the variable update, applies it to the embedded workbook, and sends back a `workbook:variables:onchange` confirmation. This is the **inbound** event — logged in blue.
+
+Both events are visible in the `Events Log` panel and in the browser console simultaneously. The console is useful for inspecting the full payload structure, while the Events Log provides a human-readable view within the page.
 
 Conversely, if you select `East and West` from the list control, we can see the outbound event that matches:
 
