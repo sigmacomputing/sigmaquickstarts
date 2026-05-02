@@ -76,7 +76,7 @@ Sigma administrators interested in implementing RSA connection encryption via ke
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -472,7 +472,7 @@ Replace actual newlines with the characters "\n". This ensures that the multi-li
 
 For our simple test, we will use this method. You can manually add the "/n" to each line or use your browser's inspection feature to grab the string as a JSON literal. 
 
-In order to copy the key as JSON, open your browser's inspector and then open the key pair auth connection we created earlier in Sigma and edit it. Change the name (add a "1" to the end of it's name for example), reenter your private key and passphrase and click `Save`. 
+In order to copy the key as JSON, open your browser's inspector and then open the key pair auth connection we created earlier in Sigma and edit it. Change the name (add a "1" to the end of its name for example), reenter your private key and passphrase and click `Save`. 
 
 In inspector, copy the private key as a JSON literal. This can be found under `Network` > `check` as shown:
 

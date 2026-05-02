@@ -132,7 +132,7 @@ It can summarize reviews by category, detect emerging issues, and highlight prod
 <img src="assets/cortex_05a.png" width="800"/>
 
 
-Submit it and the reponse will be similar to:
+Submit it and the response will be similar to:
 
 <img src="assets/cortex_06.png" width="600"/>
 

@@ -6,14 +6,14 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-05-20
+lastUpdated: 2026-05-20
 
 # Embedding 09: Events
 
 ## Overview 
 Duration: 5 
 
-In this QuickStart, we demonstrate how to pass variables between the host application application and Sigma. Sigma is embedded in the host application using HTML iframe. 
+In this QuickStart, we demonstrate how to pass variables between the host application and Sigma. Sigma is embedded in the host application using an HTML iframe.
 
 **Inbound Events:**<br>
 These are variables sent from the host application to Sigma. **No listener needs to be coded into the iframe**. Sigma can use these messages to update control values. For example, passing a new value to a Sigma control that is used to filter table data.
@@ -60,7 +60,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
  
-![Footer](assets/sigma_footer.png)ooter.png)
+![Footer](assets/sigma_footer.png)
 <!-- END -->
 
 ## Sigma Workbook
@@ -101,7 +101,7 @@ Click `Publish`, then open the published version:
 Copy the URL from the browser. We will use this in the next section.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Ask Sigma interface.
+<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Sigma Assistant interface.
 </aside>
 
 For more information on URL formats for JWT embedding, see [What URL to use](https://help.sigmacomputing.com/docs/create-an-embed-api-with-json-web-tokens#what-url-to-use)
@@ -145,8 +145,8 @@ We have designed this page to display an `Events Log` using JavaScript for easy 
 <img src="assets/ev_5.png" width="800"/>
 
 Event log types are color-coded:
-- **Blue:** Host application to iframe (Inbound)
-- **Green:** iframe to host application (Outbound)
+- **Blue:** iframe to host application (Outbound)
+- **Green:** Host application to iframe (Inbound)
 
 The orange region buttons are part of the host application. Clicking any of them sends the selected region value to Sigma via the iframe.
 
@@ -158,6 +158,14 @@ For example, if we click the `East` button:
 
 <img src="assets/ev_5a.png" width="800"/>
 
+Clicking `East` initiates a two-step exchange:
+
+1. The host application calls `setStoreRegion("East")`, which sends a `workbook:variables:update` message to Sigma via `postMessage`. This is the **inbound** event (host to Sigma) — logged in green in the Events Log and in the browser console.
+
+2. Sigma receives the variable update, applies it to the embedded workbook, and sends back a `workbook:variables:onchange` confirmation. This is the **outbound** event (Sigma to host) — logged in blue.
+
+Both events are visible in the `Events Log` panel and in the browser console simultaneously. The console is useful for inspecting the full payload structure, while the Events Log provides a human-readable view within the page.
+
 Conversely, if you select `East and West` from the list control, we can see the outbound event that matches:
 
 <img src="assets/ev_5b.png" width="800"/>
@@ -165,6 +173,10 @@ Conversely, if you select `East and West` from the list control, we can see the 
 <aside class="negative">
 <strong>NOTE:</strong><br> We are using Chrome for this QuickStart but any browser with inspection functionality should work.
 </aside>
+
+If we add a simple bar chart, we can see the [workbook:chart:onvalueselect](https://help.sigmacomputing.com/docs/outbound-event-reference#workbookchartonvalueselect) event fire by clicking on a single bar:
+
+<img src="assets/ev_5c.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -178,27 +190,27 @@ These listeners allow us to log and inspect messages to and from the iframe — 
 
 Two key code blocks handle message flow in our HTML file:
 
-1. **Inbound events from Sigma to the iframe** are captured using a `window.addEventListener("message")` listener.
-2. **Outbound events from the iframe to Sigma** are triggered via the `postMessage()` call in `setStoreRegion(region)`.
+1. **Outbound events from Sigma to the host** are captured using a `window.addEventListener("message")` listener.
+2. **Inbound events from the host to Sigma** are triggered via the `postMessage()` call in `setStoreRegion(region)`.
 
 Each message is logged to the panel with a timestamp, type, payload, and directional label for clarity.
 
-### Inbound events to the iframe
-The specific code block for inbound events is:
+### Outbound events from Sigma
+The specific code block for outbound events is:
 
 ```copy-code
 window.addEventListener("message", (event) => {
   if (event.origin !== "https://app.sigmacomputing.com") return;
 
   const { type } = event.data || {};
-  console.log("Host Application to iframe (Inbound)", event.data);
+  console.log("iframe to Host Application (Outbound)", event.data);
 
   const logContainer = document.getElementById("event-output");
   const logItem = document.createElement("li");
   logItem.style.marginBottom = "8px";
   logItem.style.color = "blue";
   logItem.innerHTML = `
-    <strong style="text-decoration: underline;">Host Application to iframe (Inbound)</strong><br/>
+    <strong style="text-decoration: underline;">iframe to Host Application (Outbound)</strong><br/>
     <strong>Timestamp:</strong> ${new Date().toLocaleTimeString()}<br/>
     <strong>Event Type:</strong> ${type || "unknown"}<br/>
     <strong>Payload:</strong> <code>${JSON.stringify(event.data, null, 2)}</code>
@@ -209,8 +221,8 @@ window.addEventListener("message", (event) => {
 
 This block listens for messages from Sigma and logs them using the message event.
 
-### Outbound events from the iframe
-This function sends variable updates to Sigma and logs the outbound message.
+### Inbound events to Sigma
+This function sends variable updates to Sigma and logs the inbound message.
 
 ```copy-code
 function setStoreRegion(region) {
@@ -225,14 +237,14 @@ function setStoreRegion(region) {
       message,
       "https://app.sigmacomputing.com"
     );
-    console.log("iframe to Host Application (Outbound)", message);
+    console.log("Host Application to iframe (Inbound)", message);
 
     const logContainer = document.getElementById("event-output");
     const logItem = document.createElement("li");
     logItem.style.marginBottom = "8px";
     logItem.style.color = "green";
     logItem.innerHTML = `
-      <strong style="text-decoration: underline;">iframe to Host Application (Outbound)</strong><br/>
+      <strong style="text-decoration: underline;">Host Application to iframe (Inbound)</strong><br/>
       <strong>Timestamp:</strong> ${new Date().toLocaleTimeString()}<br/>
       <strong>Event Type:</strong> ${message.type}<br/>
       <strong>Payload:</strong> <code>${JSON.stringify(message, null, 2)}</code>
@@ -242,15 +254,15 @@ function setStoreRegion(region) {
 }
 ```
 
-Here is an explanation of the first command:
+Here is an explanation of the `getElementById` call:
 
-<img src="assets/ev_8.png" width="500"/>
+<img src=”assets/ev_8.png” width=”500”/>
 
-The second command sends a new value for the variable called “StoreRegion” to the Sigma iframe using the JavaScript postmessage method. PostMessage() is a global method that safely enables cross-origin communication. It’s a lot like Ajax, but with cross-domain capability (i.e., communication between two websites).
+The `postMessage()` call sends a new value for the variable `StoreRegion` to the Sigma iframe. `postMessage()` is a global method that safely enables cross-origin communication between a host page and an embedded iframe.
 
-Here is an explanation of the second command:
+Here is an explanation of the `postMessage()` call:
 
-<img src="assets/ae6.png" width="600"/>
+<img src=”assets/ae6.png” width=”600”/>
 
 ```plaintext
 sigma_iframe.contentWindow.postMessage({type:"workbook:variables:update", variables: {StoreRegion: "West"},}, 'https://app.sigmacomputing.com',);

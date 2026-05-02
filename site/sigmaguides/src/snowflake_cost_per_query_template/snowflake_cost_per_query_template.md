@@ -13,7 +13,7 @@ lastUpdated: 2023-11-30
 ## Overview 
 This **QuickStart** provides instructions on how to set up Sigma's **Snowflake Cost per Query** template. 
 
-This template give you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
+This template gives you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
 
 There are two steps to setting up the template:
   1.  Create the `query_history_enriched` table in your Snowflake account
@@ -110,7 +110,7 @@ For example:
 ## What we've covered
 Duration: 0
 
-In this QuickStart we created the `query_history_enriched` table and launched Sigma's `Snowflake Cost per Query` template.
+In this QuickStart, we created the `query_history_enriched` table and launched Sigma's `Snowflake Cost per Query` template.
 
 If you're interested in a Snowflake Optimization tool, check out [Select!](https://select.dev)
 

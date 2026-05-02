@@ -186,7 +186,7 @@ Right click the `Review` column and select `Add column`:
 sentiment(Review)
 ```
 
-You many want to reduce the decimal places shown too:
+You may want to reduce the decimal places shown too:
 
 <img src="assets/sf2025_20.png" width="800"/>
 
@@ -302,7 +302,7 @@ Before leaving, click `Save As` and save the workbook with the name `Big Buys - 
 ## Use Big Buy’s corporate profit planning application
 Duration: 5
 
-**1:** Lets navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
+**1:** Let's navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
 
 **2:** This application was built by Big Buys' central IT team as a Sigma AI App. It allows team members to submit and approve distinct pricing scenarios collaboratively.
 
@@ -353,7 +353,7 @@ Click `Save` on the input table.
 
 Once we click approve, this can go into a queue that our manager or compliance officers could go through and review but for the purpose of this lab, we can just approve our own data. 
 
-I mean, we obviously know it's right, so first we'll click `Submit for Approval in the top right and submit our scenario.
+I mean, we obviously know it's right, so first we'll click `Submit for Approval` in the top right and submit our scenario.
 
 **9:** Finally, click `Review Submission`, select your scenario, and click `Approve`.
 

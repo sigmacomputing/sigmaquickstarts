@@ -207,7 +207,7 @@ embed fails to load or doesn't send the expected `workbook:dataLoaded` event wit
 ## What we've covered
 Duration: 5
 
-In this QuickStart, you learned how to implement a custom loading indicator for Sigma embeds using the `workbook:dataLoaded event from the PostMessage API. We covered:
+In this QuickStart, you learned how to implement a custom loading indicator for Sigma embeds using the `workbook:dataLoaded` event from the PostMessage API. We covered:
 - Displaying a CSS-based loading overlay while the workbook loads
 - Listening for the `workbook:dataLoaded` event to hide the loader at the right time
 - Handling loading errors with a timeout and fallback messaging

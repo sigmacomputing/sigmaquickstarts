@@ -65,7 +65,7 @@ Navigate to the `Projects` tab, click the `+ Worksheet` button, and select` SQL 
 
 <img src="assets/drs2.png" width="800"/>
 
-Click the three vertical dots (shown below) and rename the worksheet to `Sigma_DRS_Configuration_Scripts:
+Click the three vertical dots (shown below) and rename the worksheet to `Sigma_DRS_Configuration_Scripts`:
 
 <img src="assets/drs3.png" width="400"/>
 

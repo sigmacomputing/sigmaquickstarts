@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2025-07_25
+lastUpdated: 2026-05-13
 
 # Profit Planning with Sigma & Databricks
 
@@ -43,12 +43,12 @@ No SQL or technical data skills are required for this hands-on lab.
  
 ![Footer](assets/sigma_footer.png)
 
-## Ask Sigma
+## Sigma Assistant
 Duration: 5
 
 To understand profitability for this year’s product lineup, we need insight into current performance. As new users at Big Buys, we don’t know the data’s location. Let’s use Ask Sigma to get started. 
 
-**1:** Open `Ask Sigma` from the left sidebar to ask a question and get a decent starting point for analysis:
+**1:** Open `Sigma Assistant` from the left sidebar to ask a question and get a decent starting point for analysis:
 
 <img src="assets/sf2025_3.png" width="800"/>
 
@@ -78,7 +78,7 @@ This will not get us the dataset we are after.
 
 <img src="assets/sf2025_7a.png" width="800"/>
 
-In Ask Sigma, we can change that easily, before we start to use the data:
+In Sigma Assistant, we can change that easily, before we start to use the data:
 
 <img src="assets/sf2025_7b.png" width="800"/>
 
@@ -257,7 +257,7 @@ Before leaving, click `Save As` and save the workbook with the name `Big Buys - 
 ## Use Big Buy’s corporate profit planning application
 Duration: 5
 
-**1:** Lets navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
+**1:** Let's navigate to the home page and open up the `Big Buys Profit Planning Tool`, from the home page. 
 
 **2:** This application was built by Big Buys' central IT team as a Sigma AI App. It allows team members to submit and approve distinct pricing scenarios collaboratively.
 

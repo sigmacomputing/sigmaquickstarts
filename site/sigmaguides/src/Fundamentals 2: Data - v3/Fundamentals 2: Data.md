@@ -6,84 +6,78 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2025-03-13
+lastUpdated: 2026-04-15
 
 # Fundamentals 02: Data
 <!-- ------------------------ -->
 
-## Overview 
+## Overview
 Duration: 6
 
-This QuickStart is part of a series designed to instruct new users on how to use Sigma to explore and analyze data using tables.
+This QuickStart is part of a series designed to help new Sigma users get oriented and start working with the platform.
 
-We will be working with some common sales data from our fictitious company `Plugs Electronics`, reusing content we created in the QuickStart “Fundamentals 1: Getting Around”.
+This QuickStart focuses on working with data in Sigma tables — sorting, filtering, grouping, and building calculations. All exercises use the `Fundamentals` workbook and the `Sales Transactions` table created in [Fundamentals 1: Overview](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html).
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the QuickStart “Fundamentals 1: Getting Around” and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
+<aside class=”positive”>
+<strong>IMPORTANT:</strong><br> This QuickStart assumes you have completed Fundamentals 1 and are familiar with the Sigma interface. Some steps are assumed to be known and are not shown in full detail.
 </aside>
 
-If you’re familiar with traditional spreadsheet tools, such as Excel, you are likely to associate data and formulas with individual cells. While Sigma tables are very spreadsheet-like, data is managed at the column level rather than at the individual cell level. This means actions such as calculations and formatting changes are applied to every cell in a column.
+If you’re coming from a spreadsheet tool like Excel, one key difference to understand upfront: Sigma manages data at the column level, not the individual cell level. Calculations and formatting changes apply to every row in a column automatically. This ensures consistency across large datasets and eliminates the risk of cell-level errors that are common in traditional spreadsheets.
 
-Managing data at the column level ensures consistency and accuracy, preventing common errors across large and ever-growing sets of data.
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<aside class=”positive”>
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. Sigma continuously adds and enhances functionality, but these differences won’t prevent you from completing the steps.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma’s product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases).
 
-If something is not working as you expect, here is how to [contact Sigma support.](https://help.sigmacomputing.com/docs/sigma-support)
+If something isn’t working as expected, here’s how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support).
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
+<aside class=”negative”>
+<strong>IMPORTANT:</strong><br> Some features may carry the “Beta” tag. Beta features are subject to quick, iterative changes, so the latest product version may differ from what’s shown here.
 </aside>
 
- ### Target Audience
-The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
+### Target Audience
+This QuickStart is for anyone working with data in Sigma — analysts exploring datasets, builders creating workbooks and reports, or anyone who completed Fundamentals 1 and wants to go deeper with tables and calculations.
 
 ### Prerequisites
 <ul>
-  <li>A computer with a current browser. It does not matter which browser you want to use.</li>
-  <li>Completion of the QuickStart Fundamentals 1: Getting Around</li>
-  <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
-  <li>If have not already, you can sign up for a Sigma Trial here:</li>
+  <li>A computer with a current browser.</li>
+  <li>Completion of <a href=”https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html”>Fundamentals 1: Overview</a>.</li>
+  <li>Access to a Sigma environment. A Sigma trial is acceptable and preferred.</li>
 </ul>
 
-<button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
-
-<aside class="positive">
+<aside class=”positive”>
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
 </aside>
+
+### What You’ll Learn
+- How to sort, filter, and search data in a Sigma table
+- How to group data and create summary calculations
+- How to add custom columns using Sigma’s formula library
+- How to work with dates, text, and conditional logic
+- How to use lookup functions to join data from multiple sources
 
 ## Table Basics
 Duration: 6
 
-Our starting point is the `Plugs Sales` workbook created in the `Fundamentals 1: Getting Around` QuickStart.
+Our starting point is the `Fundamentals` workbook created in [Fundamentals 1: Overview](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html).
 
-In Sigma, open the workbook `Fundamentals` and place it in `edit` mode. 
+Open the `Fundamentals` workbook and click `Edit`. Navigate to the `Data` page — the `Sales Transactions` table from `Fundamentals 1` should already be there.
 
-<img src="assets/fdata_1.png" width="800"/>
+`Delete` that table:
 
-We should still have two pages, `Dashboard` and `Data`. 
+<img src="assets/fun2_2026_1a.png" width="700"/>
 
-Delete the `F_SALES` table from the `Dashboard` page:
-
-<img src="assets/fdata_71.png" width="800"/>
-
-Click on the `Data` page tab to use that.
-
-There are a few ways tables can be added to a page in Sigma. In `Fundamentals 1: Getting Around`, we browsed the available tables from the connection, selected `F_SALES` and clicked the `Explore` button to open it and create a workbook.
+<aside class="negative">
+<strong>NOTE:</strong><br> If you haven't completed Fundamentals 1, just create a new workbook.
+</aside>
 
 ### Add a table with the element bar
-Now that we already have a workbook, we can add "Elements" to the page using the `Element Bar`. Clicking the `Data` group on the bar lets us choose a table or a pivot table:
+We can add "Elements" to the page using the element bar. Click the `Data` group on the element bar and choose a `Table`:
 
 <img src="assets/fdata_2.png" width="500"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> While pivot tables are included in the Data group on the Element bar, we will cover them in another fundamentals since that is a lengthy topic on its own.
-</aside>
-
-Click and drag a `Table` onto the `Data` page.
+Drag a `Table` onto the `Data` page.
 
 <img src="assets/fdata_3.png" width="800"/>
 
@@ -94,7 +88,7 @@ We then are presented some options:
 - Search: by name from connections
 - Suggested: Sigma will present options from most used tables
 - Element: These are tables that already exist in this workbook
-- Tables and Datasets: Tables that exist in other workbooks or connections
+- Data sources: Connections you have access to
 
 At the bottom there are some icons:
 
@@ -102,12 +96,13 @@ At the bottom there are some icons:
 - SQL: Write your own SQL query
 - Join: Create a join from existing tables
 - Union: Create a union from existing tables
+- Transpose: Select a table and switch from rows to columns, or columns to rows
 
-Use the search option to search for `Hands on lab`, and select the one in the retail schema:
+Use the search option to search for `Hands on lab`, and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` > `Retail` schema:
 
 <img src="assets/fdata_4.png" width="400"/>
 
-With the table added to the page, double-click on its name and shorten in to `Plugs_Store_Sales`.
+With the table added to the page, double-click on its name and shorten it to `Plugs_Store_Sales`.
 
 ### Adding columns
 Our source data in Snowflake is missing a few columns that users need.
@@ -118,12 +113,12 @@ Instead of users making calculations themselves, we will do that for them so tha
 <strong>NOTE:</strong><br> Sigma also supports centralizing common calculations. We call these "metrics".
 </aside>
 
-For more information, see [About metrics.](https://help.sigmacomputing.com/docs/about-metrics)
+For more information, see [About metrics](https://help.sigmacomputing.com/docs/about-metrics)
 
 The missing columns are `Sales`, `COGs` (cost of goods sold) and `Profit`.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma is able to enrich the existing data, but not change the underlying data in the warehouse. These new columns are calculated in the users browser and do not exist in the warehouse. This is fast and saves compute costs. 
+<strong>IMPORTANT:</strong><br> Sigma is able to enrich the existing data, but not change the underlying data in the warehouse. These new columns are calculated in the user's browser and do not exist in the warehouse. This is fast and saves compute costs. 
 </aside>
 
 Click the column dropdown from the `Price` column and select `Add new column`:
@@ -136,7 +131,7 @@ Double-click to rename the new column `Sales`.
 <strong>NOTE:</strong><br> Just double-click a column header to rename it.
 </aside>
 
-In the function bar, start typing `Sum`. Sigma tries to provide all the possible functions as you type to save you time:
+In the formula bar, start typing `Sum`. Sigma tries to provide all the possible functions as you type to save you time:
 
 <img src="assets/fdata_6.png" width="600"/>
 
@@ -145,13 +140,13 @@ With the `Sales` column selected, enter the formula:
 [Price] * [Quant] 
 ```
 		
-This is an **intentional mistake** in our formula; `Unknown column "Quant"`; it does not exist anywhere else in the Workbook. What happened?
+This is an **intentional mistake** in our formula; `Unknown column "Quant"`; it does not exist anywhere else in the workbook. What happened?
 
-Sigma makes you immediately aware the function has a problem:
+Sigma makes you immediately aware that the formula has a problem:
 
 <img src="assets/fdata_9.png" width="800"/>
 
-Easy to fix, just adjust the column name to `Quantity` and `click the checkmark at the end of the Function bar`. **Simple!**
+Easy to fix, just adjust the column name to `Quantity` and `click the checkmark at the end of the formula bar`. **Simple!**
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Did you notice the columns being highlighted as you add them to the formula? Lots of little things to make you more efficient:
@@ -176,7 +171,7 @@ Add a new column (next to `Profit`), and use the formula:
 [Profit] / [Sales]
 ```
 
-Rename the column `Profit Margin`  In this case, change the formatting to a `%`.
+Rename the column `Profit Margin`. In this case, change the formatting to a `%`.
 
 Some of these functions have been pretty easy, but Sigma is capable of performing the most commonly used functions available in Excel/Google Sheets or SQL. 
 
@@ -217,18 +212,18 @@ Sigma names the new column `Date (1)`. Open the menu for `Date (1)'s` and select
 
 <img src="assets/fdata_12.png" width="800"/>
 
-We are not really concerned with the original `Date` column, so lets just hide that:
+We are not really concerned with the original `Date` column, so let's just hide that:
 
 <img src="assets/fdata_13.png" width="400"/>
 
-Up to now we have not done anything in the `Element panel` but all the same operations (adding columns, configuring them etc..) can be done there as well. 
+Up to now we have not done anything in the `Element panel` but all the same operations (adding columns, configuring them, etc.) can be done there as well. 
 
 We will use the element panel to reorder a few columns. This can also be done using the table itself; your choice:
 
 <img src="assets/fdata_1.gif"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br>Just drag and drop the columns to reorder them anyway you want. Hold the shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
+<strong>NOTE:</strong><br>Just drag and drop the columns to reorder them any way you want. Hold the shift key and select multiple columns from the element panel. Hide and show columns you are not interested in anytime. Use the undo-redo icons in the menu bar. 
 </aside>
 
 The final column order doesn’t matter since this table serves as the source for other pages. As long as it contains the necessary data, we can use it however we like on any page in the workbook.
@@ -255,7 +250,7 @@ We can add a new folder named `Product` and move (drag and drop) all the related
 
 <img src="assets/fdata_70b.png" width="300"/>
 
-Now that we know some of the basics, lets look at the common ways tables are used in Sigma.
+Now that we know some of the basics, let's look at the common ways tables are used in Sigma.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF TABLE BASICS -->
@@ -312,9 +307,9 @@ You can add more filters by clicking on the `+` button here:
 <strong>IMPORTANT:</strong><br> Sigma automatically selects a filter based on the data type of the chosen column, but you can override this in the filter configuration if needed.
 </aside>
 
-For example, if we select the hidden column `Date` in the element panel, open it's menu and select `Filter`, Sigma knows that is a date column, and provides filtering options based on that.
+For example, if we select the hidden column `Date` in the element panel, open its menu and select `Filter`, Sigma knows that is a date column, and provides filtering options based on that.
 
-Lets set the table to just show year-to-date rows:
+Let's set the table to just show year-to-date rows:
 
 <img src="assets/fdata_24.png" width="400"/>
 
@@ -354,9 +349,9 @@ On the `Data` page, open the `Plugs_Store_Sales` table menu and create a new `Ch
 <strong>IMPORTANT:</strong><br> Child elements are aware of any changes to the "parent" element.
 </aside>
 
-Move the child table and the `Store Region` control to the `Fundamentals 2`.
+Move the child table and the `Store Region` control to the `Fundamentals 2` page.
 
-Now we can make changes to the elements on the `Dashboard` and these will simply reference the table on the `Data` page, which in turn is connected to the warehouse.
+Now we can make changes to the elements on the `Fundamentals 2` page and these will simply reference the table on the `Data` page, which in turn is connected to the warehouse.
 
 There are several ways to sort data in Sigma.
 
@@ -404,7 +399,7 @@ There are a few ways to group data.
 
 - 2: Drag and drop a column using the element panel.
 
-- 3: Click the `+` icon in the `Element pane`l > `GROUPINGS` to add a column.
+- 3: Click the `+` icon in the `Element panel` > `GROUPINGS` to add a column.
 
 ### Group by Store Region
 Group the `Store Region` column using one of these methods, or use one method, undo that and try another. 
@@ -480,9 +475,9 @@ Remove the extra decimals and rename to change it to `YTD Profit`:
 
 <img src="assets/fdata_44.png" width="550"/>
 
-If your value is not same as shown, you probably have some filters set from the earlier steps. That is no problem just disable them.
+If your value is not the same as shown, you probably have some filters set from the earlier steps. That is no problem just disable them.
 
-In the recent summary exercise, we have a filter set for year to date, so the values may be lower that yours. Ignore that and keep going.
+In the recent summary exercise, we have a filter set for year to date, so the values may be lower than yours. Ignore that and keep going.
 
 The new summary should match the `Total` in the table from the previous section. 
 
@@ -498,7 +493,7 @@ Go ahead and add two more summaries based on the `COGs` and `Sales` columns.
 
 ### Accessing summaries in formulas
 
-We can also create a `New summary` (instead of selected a column) that will be based on some formula we write.
+We can also create a `New summary` (instead of selecting a column) that will be based on some formula we write.
 
 Click the `+` > `New summary`:
 
@@ -512,7 +507,7 @@ Let's create one more summary value by clicking on the caret `^`, and selecting 
 
 This will give us a blank summary which we can write a function for.
 
-In the function bar, enter the formula bar enter:
+In the formula bar, enter:
 ```copy-code
 [YTD Profit] / [YTD Sales]
 ```
@@ -615,7 +610,7 @@ There are many ways to join data in Sigma workbooks. To learn more, see [Join da
 For those interested in more sophisticated data modelling, see [Create and manage data models.](https://help.sigmacomputing.com/docs/create-and-manage-data-models)
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF FILTERING -->
+<!-- END OF JOINING DATA -->
 
 ## Behind the Scenes
 Duration: 6
@@ -630,18 +625,18 @@ Click on the dropdown next to the refresh icon and select `Query History` to see
 
 <img src="assets/fdata_59.png" width="600"/>
 
-In my Sigma instance, there are many rows that have an `Execution Path` of `Browser`. This means that Sigma was able to generate the requested element without making a request to the warehouse. This is both efficient and saves warehouse costs too.
+In this Sigma instance, there are many rows that have an `Execution Path` of `Browser`. This means that Sigma was able to generate the requested element without making a request to the warehouse. This is both efficient and saves warehouse costs too.
 
 <img src="assets/fdata_60.png" width="800"/>
 
-Clicking into a row that has and `Execution Path` of  `Warehouse` gives every lots of details including the SQL that Sigma generated on your behalf.
+Clicking into a row that has an `Execution Path` of  `Warehouse` gives every lots of details including the SQL that Sigma generated on your behalf.
 
 If you ever have a deeper issue with Sigma, we provide the specific `Sigma request ID`. This value allows Sigma support to isolate an issue more quickly, so this is important to be aware of:
 
 <img src="assets/fdata_61.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculating and hitting Enter.  In Sigma, every action (that requires a trip to the warehouse) is transformed into machine-optimized SQL, and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
+<strong>NOTE:</strong><br>You may have noticed a blue line moving across the screen after inputting the calculation and hitting Enter.  In Sigma, every action (that requires a trip to the warehouse) is transformed into machine-optimized SQL, and sent to the data warehouse to be executed and to retrieve the results.  This ensures your data in Sigma is always live and up to date with the latest results. 
 </aside>
 
 <img src="assets/fdata_62.png" width="800"/>
@@ -673,7 +668,7 @@ There are two table presets that can be quickly set and then further customized 
 <strong>IMPORTANT:</strong><br> Many Sigma customers have stopped using slides for presentations in favor of just using Sigma to drive their meetings!
 </aside>
 
-On the `Dashboard` page, click the table to select it, and then click `Format` in the `Element panel.` 
+On the `Dashboard` page, click the table to select it, and then click `Format` in the `Element panel`. 
 
 This exposes the many options for styling the various aspects of the table. 
 
@@ -681,7 +676,7 @@ Experiment with them to find a style that pleases.
 
 <img src="assets/fdata_64.png" width="800"/>
 
-There are many possible customizations to enhance tables. It is really easy to experiment and see what the results.
+There are many possible customizations to enhance tables. It is really easy to experiment and see what the results are.
 
 `Revert to default` anytime:
 

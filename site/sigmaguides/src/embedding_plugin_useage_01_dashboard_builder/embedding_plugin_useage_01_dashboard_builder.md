@@ -452,7 +452,7 @@ Click `Delete Bookmark` to remove the selected bookmark from both Sigma and the 
 ## Plugin Source Code
 Duration: 5
 
-The plugin source code for this project is available in a public GitHub repository, should you want to exlore it. 
+The plugin source code for this project is available in a public GitHub repository, should you want to explore it. 
 
 ### Project Setup
 Open `VS Code` and start a new `Terminal` session.

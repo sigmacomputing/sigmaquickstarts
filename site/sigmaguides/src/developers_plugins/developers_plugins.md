@@ -64,7 +64,7 @@ Programmers who want to enhance Sigma's functionality by creating their own plug
   <li>We will make use of the two popular charting libraries; D3.js and Highcharts.js</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when engaging in QuickStarts.
 </aside>
 
@@ -209,7 +209,7 @@ For additional information about React, [visit the website.](https://react.dev/)
 <!-- END OF SECTION -->
 
 ## Hello World
-Now that we have a working React application, lets adjust it to remove the default content, and have it display the text `Hello World`.
+Now that we have a working React application, let's adjust it to remove the default content, and have it display the text `Hello World`.
 
 In `VSCode`, expand the folder `hello-world` and then expand the sub-folder `scr`. Open `App.js`. 
 
@@ -335,7 +335,7 @@ All the projects in the repo will be available to you now in VSCode.
 
 ## Candlestick - Hard Coded Data
 
-First, lets look at what the `plugin_highchart_candlestick_simple` application does in the browser.
+First, let's look at what the `plugin_highchart_candlestick_simple` application does in the browser.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> We did not include all dependencies in our Git repo on purpose to save space not storing multiple copies of files or storing files that may get updated by a vendor. Additionally, understanding some of these details are very useful when debugging issues later on.
@@ -512,7 +512,7 @@ Notice that our new Plugin is available but when we click it, the `Element Panel
 
 This is because we have not added a data source to this Workbook. 
 
-Lets add a table from Sigma's Sample Data. We normally would not include every column to make the chart as efficient as possible but let's just keep moving:
+Let's add a table from Sigma's Sample Data. We normally would not include every column to make the chart as efficient as possible but let's just keep moving:
 
 <img src="assets/plugins27.png" width="800"/>
 
@@ -546,7 +546,7 @@ The next few sections show the output of many other Plugins that are included in
 ## Deploy to Hosting Service (optional read)
 Duration: 20
 
-Sigma makes it easy to develop and test a plugin using a locally hosted server (ie: http://localhost:3000) but for production use, you are going to want to host using an well-established and reliable (and affordable) hosting provider.
+Sigma makes it easy to develop and test a plugin using a locally hosted server (i.e., http://localhost:3000) but for production use, you are going to want to host using an well-established and reliable (and affordable) hosting provider.
 
 There a too many hosting providers to list, nor would be recommend any particular service as best. 
 

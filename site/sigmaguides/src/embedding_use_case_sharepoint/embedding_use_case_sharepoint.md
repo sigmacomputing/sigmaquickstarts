@@ -157,7 +157,7 @@ Log into [Azure](https://portal.azure.com) search for `Function App` and click i
 
 Click `+ Create`.
 
-Chose the `Consuption` plan and click `Select`.
+Choose the `Consumption` plan and click `Select`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Use the regular <b>Consumption (Y1) plan</b> for this QuickStart. Flex Consumption has compatibility issues with environment variables.
@@ -345,13 +345,13 @@ Update these specific values:
 ```
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Azure will warn you if your JSON is not formed correctly. Common errors include missing commas, curly-braces ect...
+<strong>NOTE:</strong><br> Azure will warn you if your JSON is not formed correctly. Common errors include missing commas, curly-braces etc.
 </aside>
 
 Click `OK` to save all settings at once and then click `Apply` and `Confirm`. Once the screen reloads, we can proceed to the next step.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> This JSON includes all the necessary Azure Function settings. The Advanced Edit approach is faster and more reliable than adding variables individually but you can do it one be one in the Azure UI if you are not comfortable editing JSON directly.
+<strong>NOTE:</strong><br> This JSON includes all the necessary Azure Function settings. The Advanced Edit approach is faster and more reliable than adding variables individually but you can do it one by one in the Azure UI if you are not comfortable editing JSON directly.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -381,7 +381,7 @@ For example, our url is:
 https://sigma-quickstart2-dxg6cmgshzb9ccec.centralus-01.azurewebsites.net/api/sigma-jwt?code=jwAJIx7YTA9jmhOBo3u5VbgpefO0avE-Nr48sTjCYK1RAPBIg==
 ```
 
-To include a user as a URL parameter we simple append:
+To include a user as a URL parameter we simply append:
 ```copy-code
 &user=test@example.com
 ```
@@ -480,7 +480,7 @@ gulp package-solution --ship
 ### Deploy to SharePoint:
 We need to add our SPFx webpart to Sharepoint.
 
-Navigate the the `Apps` page in Sharepoint:
+Navigate to the `Apps` page in Sharepoint:
 ```copy-code
 https://[yourtenant].sharepoint.com/sites/appcatalog
 ```

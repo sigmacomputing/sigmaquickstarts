@@ -87,7 +87,7 @@ Select all the control elements and click to place them into a container:
 
 Containers act like a group of elements in that they can be moved together by selecting the container, rather than individual elements.
 
-Containers can also be styled and named too. 
+Containers can also be styled and named. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Naming a container is a best practice. It allows actions to be applied to everything in the container instead of one at a time. For example, clearing all control values via Sigma action.
@@ -111,13 +111,13 @@ Let's add a logo to the page. Drag an `Image` element from the `UI` group on the
 
 <img src="assets/fdesign_5.png" width="800"/>
 
-Right-click on this images and select `Save Image as`, and store it somewhere easy to locate on your computer:
+Right-click on this image and select `Save Image as`, and store it somewhere easy to locate on your computer:
 
 <img src="assets/plugs_logo2.png" width="400"/>
 
 In Sigma, click the `Add image` button and browse to find the file just saved.
 
-After a tweaking the size, the `Dashboard` should look like this:
+After tweaking the size, the `Dashboard` should look like this:
 
 <img src="assets/fdesign_6.png" width="800"/>
 
@@ -126,7 +126,7 @@ After a tweaking the size, the `Dashboard` should look like this:
 ## Dynamic text
 Duration: 5 
 
-We have some controls on the page, and when they are clicked, it would better if we could make the table's title provide some indication of that. 
+We have some controls on the page, and when they are clicked, it would be better if we could make the table's title provide some indication of that. 
 
 Let's just do one for demonstration purposes; the process is the same for others anyway.
 
@@ -140,7 +140,7 @@ Now, changing the `Stack By` control will group by the selection and the header 
 
 <img src="assets/fdesign_8.png" width="800"/>
 
-Adding text anywhere on a page can also be done using the `Text` element in the `UI` group of the `Element bar:
+Adding text anywhere on a page can also be done using the `Text` element in the `UI` group of the `Element bar`:
 
 <img src="assets/fdesign_9.png" width="400"/>
 
@@ -288,7 +288,7 @@ Once we get the look we like, we can update the existing theme (a huge time save
 ## Buttons
 Duration: 5 
 
-Using buttons is an easy way to add basic interactivity to our workbook. It also allows us to introduce Sigma Actions, which take workbooks to a whole new level-Data Apps.
+Using buttons is an easy way to add basic interactivity to our workbook. It also allows us to introduce Sigma Actions, which take workbooks to a whole new level — apps.
 
 Let's do something simple: add a button that users can click to navigate to a different page. 
 
@@ -308,9 +308,9 @@ Of course, we probably want to add a button on the other page to let the user ge
 
 For more information see [Intro to actions](https://help.sigmacomputing.com/docs/intro-to-actions)
 
-There is a whole [series of QuickStarts](https://quickstarts.sigmacomputing.com/?cat=dataapps) dedicated to data apps too.
+There is a whole [series of QuickStarts](https://quickstarts.sigmacomputing.com/?cat=dataapps) dedicated to apps too.
 
-There is a ton of data app resources on our [About Sigma data apps](https://help.sigmacomputing.com/docs/data-apps) help page. Check them out!
+There is a ton of app resources on our [About Sigma apps](https://help.sigmacomputing.com/docs/data-apps) help page. Check them out!
 
 ![Footer](assets/sigma_footer.png)
 
@@ -319,7 +319,7 @@ Duration: 5
 
 The following are additional things to consider when building any user-centric application.
 
-If you are making a dashboard, report or a data app, these holds true:
+If you are making a dashboard, report or a data app, these hold true:
 
 ***Humans see data faster than they read data.***
 
@@ -382,7 +382,7 @@ There are many more things to consider; these should get you thinking about it. 
   - Assume that some user will look at the top line and will never read the rest, so make it count
   - Some other users will look at the top and the second row, but never read the details. 
 
-- Reveal more data as needed and encourge users to explore for deeper insights.
+- Reveal more data as needed and encourage users to explore for deeper insights.
 
 For more on this topic, check out this excellent blog: [8 Best Practices for Dashboard Design with Excellent Examples](https://www.sigmacomputing.com/blog/best-practices-dashboard-design-examples)
 
@@ -429,9 +429,9 @@ In this QuickStart, we covered the basics of using Sigma design elements to enha
 
 For more information see [Create and manage workbook themes](https://help.sigmacomputing.com/docs/create-and-manage-workbook-themes)
 
-The next QuickStart in this series covers [administration in Sigma.](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html?index=..%2F..index#0)
+The next QuickStart in this series covers [administration in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html?index=..%2F..index#0).
 
-If you are not an administrator, you may be interested in [Fundamentals 9: Beyond the Basics.](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html?index=..%2F..index#0)
+If you are not an administrator, you may be interested in [Fundamentals 9: Beyond the Basics](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html?index=..%2F..index#0).
 
 <!-- THE FOLLOWING ADDITIONAL RESOURCES IS REQUIRED AS IS FOR ALL QUICKSTARTS -->
 **Additional Resource Links**

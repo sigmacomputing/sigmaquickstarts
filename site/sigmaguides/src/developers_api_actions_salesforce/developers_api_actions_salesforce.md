@@ -67,7 +67,7 @@ Duration: 5
 ### Salesforce Authentication Overview
 Before calling Salesforce APIs from Sigma, you must configure a secure OAuth 2.0 connection. Salesforce requires an access token for every request, and these tokens expire on a schedule determined by your Salesforce org. API Actions can store and refresh tokens automatically, but the initial setup requires a one-time authorization.
 
-This QuickStart uses Sigam and a connected app in Salesforce configured for OAuth 2.0.
+This QuickStart uses Sigma and a connected app in Salesforce configured for OAuth 2.0.
 
 <aside class="negative"> <strong>SECURITY WARNING:</strong><br> Do not expose client IDs, client secrets, refresh tokens, or access tokens in public dashboards or shared workbooks. These credentials allow access to your Salesforce org and must be treated as sensitive. </aside>
 

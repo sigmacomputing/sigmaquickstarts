@@ -36,7 +36,7 @@ Using these mechanisms, Sigma helps ensure that customers typically gain far mor
 Over time, we have observed that for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In ths QuickStart, we will refer to Snowflake, but many warehouse providers provide a version of results caching. This is mentioned later in section 5 as well.
+<strong>NOTE:</strong><br> In this QuickStart, we will refer to Snowflake, but many warehouse providers provide a version of results caching. This is mentioned later in section 5 as well.
 </aside>
 
 <aside class="positive">
@@ -56,7 +56,7 @@ Tech executives, architects, developers and Sigma administrators looking for a d
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 

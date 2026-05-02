@@ -69,7 +69,7 @@ In the search bar, enter `Hands` and select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_
 
 At this point, we have `1 source` that has about `4.5 million rows` of data in `22 columns`.
 
-This data currently has retail transaction data, but let's assume we want to add additional customer demographic and store data to it. This will allow users to leverage one table to drive a variety of user cases.
+This data currently has retail transaction data, but let's assume we want to add additional customer demographic and store data to it. This will allow users to leverage one table to drive a variety of use cases.
 
 Open the tables menu and select `Element source` > `Join`:
 
@@ -107,7 +107,7 @@ Ensure you select the `D_STORE` table from the `RETAIL` schema. This time, we wi
 
 <img src="assets/fbasics_6.png" width="800"/>
 
-We now have `3 sources - 41 columns`, and should be matching on `Store_Key` (change if not), and every sales has a matching store and customer:
+We now have `3 sources - 41 columns`, and should be matching on `Store_Key` (change if not), and every sale has a matching store and customer:
 
 <img src="assets/fbasics_7.png" width="800"/>
 
@@ -187,7 +187,7 @@ The two files we are interested in are:
 ### Marketing promotion
 Let's assume that this data is coming from a promotion that marketing is running for new customers only. There is a web site that allows registration, and new customers are informed that they can only register one time for the promotion, although the web site does not actually enforce that restriction.
 
-Sounds pretty straight-forward so far, but lets see what happens when we import these into Sigma and join them together.
+Sounds pretty straight-forward so far, but let's see what happens when we import these into Sigma and join them together.
 
 ### Import and Join
 We already joined data in the first section, so the steps in Sigma are mostly the same, except this time we will use the csv files as sources instead of Sigma's sample data.
@@ -214,7 +214,7 @@ Repeat the same process, but this time use the `address.csv` file as the source 
 
 We now have the two files as tables in Sigma. If we take care to observe the row counts for each table, we may notice that there are 100 customers, but 112 addresses. There are cases where that may be fine, however it largely depends on the context in which this data is being used. 
 
-While this is a clue that there may be some problems, lets join them and see what happens in Sigma. 
+While this is a clue that there may be some problems, let's join them and see what happens in Sigma. 
 
 Add another table, but this time select `Join` as the source:
 
@@ -251,7 +251,7 @@ We need to resolve this issue now before it escalates.
 <img src="assets/fbasics_14.png" width="600"/>
 
 ### Identify, Organize and Action
-Lets dig deeper into the data and see what we find.
+Let's dig deeper into the data and see what we find.
 
 Rename the new table to `Customers and Addresses` for clarity.
 
@@ -280,7 +280,7 @@ How can we address the extra registrations and report the "dirty data" back to t
 
 There is a simple way to handle the extra registrations that resulted from the join, using the [RowNumber() function](https://help.sigmacomputing.com/docs/rownumber).
 
-Add a new column outside of the grouping set its formula to:
+Add a new column outside of the grouping and set its formula to:
 ```copy-code
 RowNumber([Customer_ID])
 ```
@@ -312,7 +312,7 @@ These are the 12 registrations we want to alert the data team about.
 `Publish` the workbook.
 
 #### Conditional alerts
-Lets assume this is a workflow that will run for some time, with new records being added as new customers register for the promotion.
+Let's assume this is a workflow that will run for some time, with new records being added as new customers register for the promotion.
 
 We want to both alert the data team and attach the new records that have more than one entry for the same Customer_ID (for example).
 
@@ -562,7 +562,7 @@ Create a new page in workbook, and rename it to `Cumulative Sum`.
 
 Add a new `Table` element to the page, reusing the `Sales Detail | Customer and Store Demographics` table on the `Common Join` page.
 
-Add a new column and set it's formula to:
+Add a new column and set its formula to:
 ```copy-code
 DatePart("year", [Date])
 ```
@@ -582,7 +582,7 @@ Add another `Grouping`, this time using `Month of Date`:
 
 <img src="assets/fbasics_45.png" width="800"/>
 
-Add the `Sales` columns to the `Month of Date` > `CALCULATIONS` and change it's name to `Monthly Sales`:
+Add the `Sales` columns to the `Month of Date` > `CALCULATIONS` and change its name to `Monthly Sales`:
 
 `Hide` all the other columns.
 
@@ -592,15 +592,15 @@ Our table now shows each `year` and `month`, grouped together:
 
 <img src="assets/fbasics_46.png" width="800"/>
 
-Add another column under next to `Monthly Sales`, setting the it's formula to:
+Add another column under next to `Monthly Sales`, setting its formula to:
 ```copy-code
 CumulativeSum([Monthly Sales])
 ```
 Our table now matches the screenshot below. Notice how the values in `CumulativeSum of Monthly Sales` build upon the previous cell's value?
 
-For example, the value for `2024-1` just it repeated for `CumulativeSum of Monthly Sales`.
+For example, the value for `2024-1` is just repeated for `CumulativeSum of Monthly Sales`.
 
-The value for `2021-1` is added to the the previous `CumulativeSum of Monthly Sales` value, and so on, until the year changes to `2022`, when the pattern restarts:
+The value for `2021-1` is added to the previous `CumulativeSum of Monthly Sales` value, and so on, until the year changes to `2022`, when the pattern restarts:
 
 <img src="assets/fbasics_47.png" width="800"/>
 
@@ -638,7 +638,7 @@ When it goes into a new year, a new data point will be made with a different col
 ## Pivot Tables
 Duration: 5 
 
-Lets take a look at a few areas of using pivot tables that customers contacting Sigma support frequently ask about.
+Let's take a look at a few areas of using pivot tables that customers contacting Sigma support frequently ask about.
 
 ### Setup our pivot
 Create a new page in our workbook, and rename it to `Pivot Table`.
@@ -656,7 +656,7 @@ At this point, we have a simple pivot table.
 </aside>
 
 ### Expose background calculations as columns
-Add a another copy of the `Sales` column, in the `VALUES` section:
+Add another copy of the `Sales` column, in the `VALUES` section:
 
 <img src="assets/fbasics_54.png" width="400"/>
 
@@ -681,7 +681,7 @@ Delete the three extra columns in the `VALUES` element panel, leaving `Sum of Sa
 
 Out pivot currently shows sales at both the `Store Region` and `Store State` level.
 
-Lets assume we also want to know what each region and states contribution is to that `Total` of `2,638,400,049.98`. 
+Let's assume we also want to know what each region and states contribution is to that `Total` of `2,638,400,049.98`. 
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Your total may be different. Sigma adjusts our sample data to account for dates moving forward into the future.
@@ -689,7 +689,7 @@ Lets assume we also want to know what each region and states contribution is to 
 
 We can do that easily by leveraging one of the background calculations that we just reviewed.
 
-Add a new column in the `VALUES` section of `PIVOT COLUMNS` and set it's formula to:
+Add a new column in the `VALUES` section of `PIVOT COLUMNS` and set its formula to:
 ```copy-code
 Sum([Sales]) / [Sum of Sales (Grand Total)]
 ```

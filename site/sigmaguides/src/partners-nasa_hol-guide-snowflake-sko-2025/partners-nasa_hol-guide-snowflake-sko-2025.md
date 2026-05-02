@@ -40,7 +40,7 @@ No SQL or technical data skills are required for this hands-on-lab.
   <li>A Snowflake demo environment.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -94,7 +94,7 @@ On this tab, you should see the Snowflake query history and warehouse metering t
 
 <img src="assets/nasa-3-2.png" width="800"/>
 
-Lets narrow this data down to just the new workload.
+Let's narrow this data down to just the new workload.
 
 4.3 Using the `Select POV Date Range` filter, select the dates `9/9/24 - 9/20/2024`:
 
@@ -112,7 +112,7 @@ Click the down arrow to the right of `Day of Start Time` and select `Truncate Da
 
 <img src="assets/nasa-3-5a.png" width="800"/>
 
-4.6 Lets adjust the scale of the X-Axis to be more reflective of timeline. 
+4.6 Let's adjust the scale of the X-Axis to be more reflective of timeline. 
 
 Click the `Paintbrush` on the lefthand side, then select `X-Axis`. 
 

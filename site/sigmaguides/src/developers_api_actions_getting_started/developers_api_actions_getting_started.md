@@ -316,7 +316,7 @@ temperature_unit    Static        fahrenheit
 
 <img src="assets/api_actions_gs_08.png" width="800"/>
 
-Also check the endpont preview (at the bottom of the page) carefully. Small mistakes will cause API call failures:
+Also check the endpoint preview (at the bottom of the page) carefully. Small mistakes will cause API call failures:
 
 <img src="assets/api_actions_gs_09.png" width="800"/>
 

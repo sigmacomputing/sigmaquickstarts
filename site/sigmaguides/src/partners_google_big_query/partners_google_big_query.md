@@ -112,7 +112,7 @@ Log into the [Google Cloud console](https://console.cloud.google.com/bigquery):
 <img src="assets/bq0.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> We will make use of the GCP searchbar to quickly move between GCP configuation pages. We will demonstrate once and assume its use as we go forward.
+<strong>NOTE:</strong><br> We will make use of the GCP searchbar to quickly move between GCP configuration pages. We will demonstrate once and assume its use as we go forward.
 </aside>
 
 Create a new project:
@@ -398,7 +398,7 @@ For the y-axis, add the transformed `Sale Price` field from previous steps. Try 
 <strong>NOTE:</strong><br> Sigma automatically applied aggregation to the Sale Price, saving you time.
 </aside>
 
-The visualization will appear showing the `sum of Sale Price by Created At` for the availble data in the table:
+The visualization will appear showing the `sum of Sale Price by Created At` for the available data in the table:
 
 <img src="assets/bq28.png" width="800"/>
 
@@ -406,7 +406,7 @@ We’ll modify this visualization by changing it to a line chart:
 
 <img src="assets/bq29.png" width="500"/>
 
-To perform data aggregation at a higher order of time (for example, at the month), we have a few methods availble to the user.
+To perform data aggregation at a higher order of time (for example, at the month), we have a few methods available to the user.
 
 We can use the drop menus (as before) to truncate the `Day of Created At` column in the `X-AXIS` to month:
 

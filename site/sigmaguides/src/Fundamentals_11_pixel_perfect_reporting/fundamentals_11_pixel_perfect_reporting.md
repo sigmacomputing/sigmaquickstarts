@@ -200,7 +200,7 @@ While doing this, we see a new section that allows us to control the `POSITION` 
 
 <img src="assets/ppf_06.png" width="800"/>
 
-Let's add a `UI` >`Text` element to the page to let other editors understand what this page is for.
+Let's add a `UI` > `Text` element to the page to let other editors understand what this page is for.
 
 If you have ever built workbooks in Sigma, you will immediately see a difference. The new text control does not automatically try to prevent interfering with other page elements. This is by design as we have ultimate control of elements on the page. 
 
@@ -237,7 +237,7 @@ Add a second page:
 
 <img src="assets/ppf_17.png" width="400"/>
 
-Enable the page header and place the `Plugs logo` in the upper left corner using an `UI` >`Image` element from the element bar.
+Enable the page header and place the `Plugs logo` in the upper left corner using a `UI` > `Image` element from the element bar.
 
 Configure the image to use this `URL`:
 ```copy-code
@@ -252,7 +252,7 @@ We can add more images but we can also use the `Text` element and change its bac
 
 Add a `UI` > `Text` element to the first page, under the header section and change its color (whatever you prefer is fine).
 
-Resize the text elemenmty to cover the page top to bottom.
+Resize the text element to cover the page top to bottom.
 
 <img src="assets/ppf_16.png" width="800"/>
 
@@ -366,13 +366,13 @@ Add an image and set the URL to:
 https://sigma-quickstarts-main.s3.us-west-1.amazonaws.com/shared_images/units_sold.png
 ```
 
-Notice that the image is shown in-front of the KPI? We want the objects really close together but the KPI should be on top of the image since the image has a fair size white border.
+Notice that the image is shown in front of the KPI? We want the objects really close together but the KPI should be on top of the image since the image has a fair size white border.
 
 Right-click on the image and select `Order` > `Send backward`:
 
 <img src="assets/ppf_29.png" width="500"/>
 
-To get the effect we really want, we still need to set the backgroud color (in Element styles) to `None` for the KPI:
+To get the effect we really want, we still need to set the background color (in Element styles) to `None` for the KPI:
 
 <img src="assets/ppf_30.png" width="800"/>
 
@@ -384,7 +384,7 @@ Now we have a nice looking visualization on the page:
 
 The process to add more is exactly the same with different formulas, images and text. That information is supplied below if you want to practice more but the workflow is repetitive so if you feel comfortable, move to the section `More Charts`.
 
-Once all KPI are added, the final result for this section of the page:
+Once all KPIs are added, the final result for this section of the page:
 
 <img src="assets/ppf_35.png" width="600"/>
 
@@ -526,7 +526,7 @@ Configuring a report for delivery in Sigma is just like scheduling for a workboo
 
 For more information on basic export scheduling, see [Send or schedule export](https://help.sigmacomputing.com/docs/send-or-schedule-workbook-exports)
 
-A more likely scenario is that a report is scheduled to be delivered in-mass (aka Bursting).
+A more likely scenario is that a report is scheduled to be delivered en masse (aka bursting).
 
 There are some rules that apply for both the report and the bursting job. 
 
@@ -595,7 +595,7 @@ We left the data page visible (you may have noticed!) so we can check that the c
 
 <img src="assets/ppf_42.png" width="600"/>
 
-Lets assume we have an email distribution list for each region. In that case, we can just rename this job appropriately, duplicate it and adjust the new job for a different region:
+Let's assume we have an email distribution list for each region. In that case, we can just rename this job appropriately, duplicate it and adjust the new job for a different region:
 
 <img src="assets/ppf_43.png" width="600"/>
 
@@ -607,7 +607,7 @@ Now when we test send it, the report is filtered for the `East` region as expect
 
 <img src="assets/ppf_45.png" width="600"/>
 
-A benefit of the the bursting configuration is `Dynamic recipients` which matches the `Store-Region` (in our example) to an email address from a table:
+A benefit of the bursting configuration is `Dynamic recipients` which matches the `Store-Region` (in our example) to an email address from a table:
 
 <img src="assets/ppf_45.png" width="600"/>
 

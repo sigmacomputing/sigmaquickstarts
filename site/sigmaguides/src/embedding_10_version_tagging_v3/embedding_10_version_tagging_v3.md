@@ -60,7 +60,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you do not use production resources when doing QuickStarts.
 </aside>
 
@@ -376,7 +376,7 @@ Do not share the workbook just yet. We need to promote the workbook to `Producti
 ## Promote to Production
 Duration: 20
 
-In this section, we we'll use a combination of REST API calls and one edit to `embed-api.js` simulating a CI/CD workflow promotion to production.
+In this section, we'll use a combination of REST API calls and one edit to `embed-api.js` simulating a CI/CD workflow promotion to production.
 
 We will demonstrate this using Postman, which many developers are already familiar with.
 
@@ -480,7 +480,7 @@ Open the `Tag a workbook` method and revise the `Body` with the adjusted values:
 
 <img src="assets/vtag_5.png" width="800"/>
 
-Click `Send` to submit the API request. A `200 Statu`s should be returned. The API should return with a `200 Status`.
+Click `Send` to submit the API request. A `200 Status` should be returned. The API should return with a `200 Status`.
 
 We have now tagged the workbook to `Production` and a `taggedWorkbookVersion = 1`:
 

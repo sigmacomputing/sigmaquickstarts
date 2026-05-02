@@ -6,21 +6,25 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-05-29
+lastUpdated: 2026-05-29
 
-# Embedding 08: Embedding Ask Sigma
+# Embedding 08: Embedding Sigma Assistant
+
+<!-- NOTE:
+This QS is Hidden until the Assistant works with embedding. I tested and it does not yet.
+ -->
 
 ## Overview 
 Duration: 5 
 
-This QuickStart guides you through the process of embedding Ask Sigma—Sigma's AI analyst—into your application. 
+This QuickStart guides you through the process of embedding Sigma Assistant—Sigma's AI analyst—into your application. 
 
-You'll learn how to integrate natural language querying capabilities, enabling users to interact with data seamlessly within your product environment. By the end, you'll have a functional, embedded Ask Sigma instance, ready to enhance user engagement and data accessibility.
+You'll learn how to integrate natural language querying capabilities, enabling users to interact with data seamlessly within your product environment. By the end, you'll have a functional, embedded Sigma Assistant instance, ready to enhance user engagement and data accessibility.
 
 Before proceeding, ensure you've completed the [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
-### What is Ask Sigma?
-Ask Sigma is Sigma's natural language query interface designed to function like a data analyst. It allows users to pose questions in everyday language and receive guided, transparent analyses. 
+### What is Sigma Assistant?
+Sigma Assistant is Sigma's natural language query interface designed to function like a data analyst. It allows users to pose questions in everyday language and receive guided, transparent analyses. 
 
 Key features include:
 
@@ -39,7 +43,7 @@ Receive suggestions for further exploration, enabling deeper data understanding.
 This approach ensures users not only get answers but also comprehend the methodology behind them, fostering trust and enabling informed decision-making.
 
 ### Embedding Use Cases
-Embedding Ask Sigma into your application can transform user interactions with data. Potential use cases include the following:
+Embedding Sigma Assistant into your application can transform user interactions with data. Potential use cases include the following:
 
 **Customer-Facing Dashboards:**<br> 
 Allow clients to query data directly, enhancing transparency and engagement.
@@ -50,10 +54,10 @@ Equip teams with intuitive data exploration capabilities without requiring SQL k
 **Premium Offerings:**<br>
 Differentiate your product by offering advanced analytics features as part of a premium package.
 
-By integrating Ask Sigma, you provide users with a powerful tool to derive insights, fostering a data-driven culture within your application.
+By integrating Sigma Assistant, you provide users with a powerful tool to derive insights, fostering a data-driven culture within your application.
 
 ### Benefits
-Embedding Ask Sigma offers several advantages:
+Embedding Sigma Assistant offers several advantages:
 
 **Enhanced User Experience:**<br>
 Users interact with data conversationally, helping to reduce the learning curve.
@@ -102,63 +106,42 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
  
 ![Footer](assets/sigma_footer.png)
 
-## Enabling Ask Sigma
+## Enabling Sigma Assistant
 Duration: 5
 
-Before anyone can start using Ask Sigma, we need to configure which AI provider will be used to process requests. 
+Before anyone can use Sigma Assistant, two configuration steps are required: configuring a data warehouse hosted model as the AI provider, and enabling source permissions on the `Assistant` tab.
 
-Sigma currently supports warehouse AI models (on Snowflake and Databricks connections) and external models (OpenAI and Azure OpenAI Foundry) as AI providers.
-
-For the most recent provider information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#configure-an-ai-provider)
+### Step 1: Configure a data warehouse hosted model
 
 Log in to Sigma as `Administrator` and navigate to `Administration` > `AI settings`.
 
-Here, we can select the AI provider we want to use as well as the data sources we want to make available to the provider and embed users.
+Under `Model provider`, select `Data warehouse hosted model` and choose the connection to your Snowflake or Databricks warehouse.
 
-<aside class="negative">
-<strong>NOTE:</strong><br> In order to allow embed users to use Ask Sigma, they will need to be granted permission in Sigma to access the allowed sources.
-
-For demonstration, we will use a Snowflake connection that includes the Snowflake sample data. If you don't have this, you may use any supported warehouse connection and data of your choosing. The only difference with different source data will be the questions you ask of it.
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Using a warehouse hosted model keeps data within your own infrastructure — no data is sent to a third-party AI provider. This is the recommended approach for organizations with sensitive data.
 </aside>
 
 <img src="./assets/as_1.png" width="800"/>
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
-</aside>
+Save the configuration. Sigma will use this connection to process all Sigma Assistant requests.
 
-### Grant access to the data
-We can grant permission to use the data by opening `Connections`, selecting the desired connection and then selecting the database, schema or table we want to allow.
+For the full list of supported providers and configuration options, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#configure-an-ai-provider).
 
-For example, we will grant `Can use` to the `Sales_People` team on the `SNOWFLAKE_SAMPLE_DATA` / `TPCH_SF1` schema. This is one of the smaller sample datasets:
+### Step 2: Enable source permissions on the Assistant tab
 
-<img src="./assets/as_7.png" width="800"/>
+With the model provider configured, you now need to specify which data sources Sigma Assistant is allowed to query.
 
-### Set the data sources
-We need to specify which data sources are available for the AI to use.
-
-Return to the `Administration` > `AI settings` page.
-
-Scroll down to the `Ask Sigma data sources` and search for `PLUGS`. Sigma will search all the available connections configured and return the matching tables. 
-
-Let’s select one of the `CUSTOMERS` tables from the `SNOWFLAKE_SAMPLE_DATA`:
-
-Click `Sync`:
-
-<img src="./assets/as_5.png" width="800"/>
-
-When the sync is done, Sigma will let you know:
-
-<img src="./assets/as_6.png" width="800"/>
-
-Ask Sigma now has data to reference.
-
-### Account type
-We can use Sigma account types to control access to AI features. For example, if we look at the default permissions for the `View` account type we see that they have no permission to use Ask Sigma:
+On the `AI settings` page, select the `Assistant` tab. Locate the `Sigma Assistant data sources` section and add the connections, schemas, or tables you want to make available.
 
 <img src="./assets/as_2.png" width="800"/>
 
-We will use the `Build` account type during this QuickStart, which has the `Use Ask Sigma` permission enabled by default.
+<aside class="negative">
+<strong>NOTE:</strong><br> Embed users must also have permission in Sigma to access any sources enabled here. Grant connection-level access through `Administration` > `Connections`.
+</aside>
+
+For example, we need to share the `CUSTOMER` table with the `Sales_People` team:
+
+<img src="./assets/as_2a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -175,13 +158,13 @@ npm start
 
 In a browser, open:
 ```copy-code
-http://localhost:3000/ask_sigma/?mode=ask_sigma
+http://localhost:3000/assistant/?mode=assistant
 ```
 
 The page loads, but the message `Failed to load Sigma embed. Check console for details` is shown. This happens because we haven’t passed the required values yet.
 
 ### Edit .env file
-In VSCode, open the project’s `.env` file and scroll to the `# QS: ask_sigma section`.
+In VSCode, open the project’s `.env` file and scroll to the `# Embedding 08: Embedding Sigma Assistant`.
 
 We configured a few values for you but you will need to provide your `{org-slug}`, which is the part of the URL directly following `https://app.sigmacomputing.com/` in the browser:
 
@@ -191,9 +174,7 @@ For example, in the URL `https://app.sigmacomputing.com/my_company_name/`, the o
 
 Once .env is updated, save your changes.
 
-Refresh the browser page, and Ask Sigma should appear!
-
-In the `All data sources` dropdown, you’ll see the configured data source. You’ll also see the account type and team parameters in the sidebar:
+Refresh the browser page, and Sigma Assistant should appear:
 
 <img src="./assets/as_9.png" width="800"/>
 
@@ -223,30 +204,27 @@ Ensure that only verified, trusted data sources are used. Decisions made from ba
 
 Allow users to launch selected results into a workbook for further analysis or sharing.
 
-<img src="./assets/as_10.png" width="800"/>
-
 ### A quick test
 Let's ask a simple question, since we have one table to work with: `CUSTOMERS`:
+```copy-code
+How many customers are there per market segment?
+```
 
-<img src="./assets/as_11.png" width="400"/>
+As the processing starts, we can see the first thing the AI decided was to use the `CUSTOMER` table (obviously!) but Sigma also displays the decision logic in `Analysis breakdown?`, shedding light on the choices the AI is making.
 
-As the processing starts, we can see the first thing the AI decided was to use the `CUSTOMER` table (obviously!) but Sigma also displays the decision logic in `Why CUSTOMER?`, shedding light on the choices the AI is making:
+It also lets us peak at the SQL used to obtain the data:
 
 <img src="./assets/as_12.png" width="800"/>
 
-Further down, we can see that it made a new column with a calculation. While this is a simple example, it is really important to know exactly what the formula is to prevent unexpected results later:
+Then it provides a bar chart and some detail on the findings. We can `Explore` the response in a Sigma workbook:
 
-<img src="./assets/as_13.png" width="800"/>
+<img src="./assets/as_12a.png" width="700"/>
 
-Once done, Sigma allows users to select from the different visualizations the AI created. Users can select one or many and immediately open them in a new workbook:
+Becuase we are a `Build` user, we have access to all of the other tools Sigma provides.
 
-<img src="./assets/as_14.png" width="800"/>
+The functionality available to the user is determined by their `Account type` setting. This enables different user experiences and allows embedded customers to offer premium services:
 
-What is really slick about this for embedding is that when we opened in a workbook, we can see the selected charts in the host application right away!
-
-<img src="./assets/as_13.png" width="800"/>
-
-The functionality available to the user is determined by their `Account type` setting. This enables different user experiences and allows embedded customers to offer premium services. 
+<img src="./assets/as_12b.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -254,9 +232,9 @@ The functionality available to the user is determined by their `Account type` se
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we explored how to embed Ask Sigma into an application and configure it for secure, governed use. 
+In this QuickStart, we explored how to embed Sigma Assistant into an application and configure it for secure, governed use. 
 
-Ask Sigma can deliver conversational analytics in a secure, customizable, and highly intuitive way — ready to enhance any embedded experience.
+Sigma Assistant can deliver conversational analytics in a secure, customizable, and highly intuitive way — ready to enhance any embedded experience.
 
 **Additional Resource Links**
 

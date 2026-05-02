@@ -225,7 +225,7 @@ In VSCode, open the `embedding_qs_series_2` folder created in the QuickStart: Em
 
 Open the `.env` file. The `Client_ID` and `Secret` should already be configured from the last QuickStart.
 
-Scroll down to the `# QS: federated_access` sectionL
+Scroll down to the `# QS: federated_access` section
 
 <img src="assets/fa_11.png" width="600"/>
 
@@ -374,7 +374,7 @@ In this QuickStart, we explored how to leverage Sigma’s team and workspace per
 
 Embedding with Sigma is both flexible and straightforward, giving customers the ability to mix and match approaches to meet their security and user experience goals. 
 
-This is just the beginning-other QuickStarts in the embedding series will introduce even more advanced techniques for securing and customizing embedded experiences.
+This is just the beginning — other QuickStarts in the embedding series will introduce even more advanced techniques for securing and customizing embedded experiences.
 
 **Additional Resource Links**
 

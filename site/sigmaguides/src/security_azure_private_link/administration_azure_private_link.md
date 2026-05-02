@@ -15,7 +15,7 @@ lastUpdated: 2023-04-19
 ## Overview 
 Duration: 5 
 
-For Sigma organizations running on Microsoft Azure (Azure), secure connection to your data using Azure Private Link is supported. Azure Private Link is a security feature available for Azure accounts. It will allows connections between your Azure Virtual Network (VNet) and other services, without sending traffic over the public internet. 
+For Sigma organizations running on Microsoft Azure (Azure), secure connection to your data using Azure Private Link is supported. Azure Private Link is a security feature available for Azure accounts. It allows connections between your Azure Virtual Network (VNet) and other services, without sending traffic over the public internet. 
 
 In this case, the Secure Link will be created between Sigma and your data warehouse, all inside Azure.
 
@@ -23,7 +23,7 @@ The Azure private link service enables Sigma, which runs in a isolated private v
 
 Azure Private Link provides enhanced security, reduced network latency, simplified networking, cost-effectiveness, and compliance with regulations.
 
-Sigma currently supports creating private links to three kinds of data warehouse that runs in Azure; Snowflake, Databricks and Postgesql. 
+Sigma currently supports creating private links to three kinds of data warehouse that runs in Azure; Snowflake, Databricks and PostgreSQL. 
 
 [Please check here for the latest information on supported connections](https://help.sigmacomputing.com/docs/aws-privatelink-connections)
 
@@ -67,7 +67,7 @@ Once provisioned, traffic will only occur between Sigma and Snowflake using the 
 
 This keeps access rules private while providing secure and private communication.
 
-[You may also want to review Snowflakes Private Link documentation for related details (ie: Blocking Public Access).](https://docs.snowflake.com/en/user-guide/privatelink-azure)
+[You may also want to review Snowflakes Private Link documentation for related details (i.e., Blocking Public Access).](https://docs.snowflake.com/en/user-guide/privatelink-azure)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Your Snowflake account must be Business Critical tier to use Private Link.

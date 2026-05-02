@@ -118,7 +118,7 @@ Click `Save As` and name the workbook and name the workbook `Embedding 15 - Publ
 We can continue editing the workbook, but changes will not appear in the public embed until the workbook is republished.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Ask Sigma interface.
+<strong>NOTE:</strong><br> Sigma supports embedding workbooks, pages, single elements or even the Sigma Assistant interface.
 </aside>
 
 Open the workbook's menu and select `Share and export` > `Embedding`:
@@ -176,7 +176,7 @@ Here are a few things to consider when working with public embeds.
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we learned how to how to embed Sigma into a Public facing website. 
+In this QuickStart, we learned how to embed Sigma into a Public facing website. 
 
 **Additional Resource Links**
 

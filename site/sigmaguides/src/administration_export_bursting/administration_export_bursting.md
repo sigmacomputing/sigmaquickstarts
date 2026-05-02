@@ -61,7 +61,7 @@ Anyone responsible for regularly distributing tailored reports to specific group
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -118,7 +118,7 @@ While we might consider creating a new account type that mimics an existing one 
 
 For more information on account types see [License and account type overview.](https://help.sigmacomputing.com/docs/license-and-account-type-overview)
 
-Lets enable our `Pro` users to use bursting.
+Let's enable our `Pro` users to use bursting.
 
 <img src="assets/bursting1.png" width="800"/>
 
@@ -143,7 +143,7 @@ The permission is added to the `Pro` list:
 ## Create Something to Burst
 Duration: 5
 
-Lets create a workbook to use for our bursting test. 
+Let's create a workbook to use for our bursting test. 
 
 Click the <img src="_shared_assets/crane.png" width="20"/> icon to return to the homepage and then click `Templates` > `Plugs Electronics Profit Planning Tool`:
 
@@ -157,7 +157,7 @@ Name the workbook `Plugs Profit Planning Tool` and click `Save`.
 ## Key Bursting Properties
 Duration: 5
 
-Lets take a quick look at the important properties of bursting before we go to far.
+Let's take a quick look at the important properties of bursting before we go too far.
 
 Open the workbook menu and select `Schedule exports`:
 
@@ -170,7 +170,7 @@ In the `Schedule exports` modal we see many options.
 To use bursting, we need to first click the icon shown as number 1, in the `Export as email burst` row.
 
 ### Split by
-Lets focus on item `2`, `Split by` for a moment. 
+Let's focus on item `2`, `Split by` for a moment. 
 
 <img src="assets/bursting6.png" width="600"/>
 
@@ -207,12 +207,12 @@ To achieve this, we need a way to associate recipient email addresses with their
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Email Lookup Table2
+## Email Lookup Table
 Duration: 5
 
 Your organization may already have a table that can be used but in our case, we will use a Sigma [Input table](https://help.sigmacomputing.com/docs/intro-to-input-tables) to quickly add the required region-to-email assignments.
 
-With the workbook in edit mode, select the `Data` page and add a `Empty` input table:
+With the workbook in edit mode, select the `Data` page and add an `Empty` input table:
 
 <img src="assets/bursting7.png" width="600"/>
 
@@ -244,7 +244,7 @@ Perform the same steps on the `T Transaction Details - KPIs` table on the `Data`
 ## Create a bursting schedule
 Duration: 5
 
-We are ready to schedule a bursting schedual to our two email addresses. 
+We are ready to schedule a bursting schedule to our two email addresses. 
 
 Open the workbooks menu and click `Schedule exports...`:
 
@@ -288,7 +288,7 @@ However, a less obvious but highly effective approach is to send workbook conten
 
 Sigma supports this via [Conditional Alerts.](https://help.sigmacomputing.com/docs/schedule-a-conditional-export-or-alert)
 
-We could edit the scheduled export directly from the workbook, but lets do it in a different workflow.
+We could edit the scheduled export directly from the workbook, but let's do it in a different workflow.
 
 Reopen the `Scheduled exports` modal, open the menu and click `Edit`:
 

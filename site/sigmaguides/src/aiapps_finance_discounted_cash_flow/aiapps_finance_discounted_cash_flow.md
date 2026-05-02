@@ -56,7 +56,7 @@ Sigma users who are in a finance role or have interest in a discounted cash flow
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
 </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -223,7 +223,7 @@ Now that we’ve created all the necessary columns for carrying values (CV) and 
 ### Step 1: Create the Final Carrying and Ending Value Columns
 Create two new columns in `CALCULATIONS` and rename them to `Final CV` and `Final ECV`.
 
-Use the the following formulas for each:
+Use the following formulas for each:
 
 **For Final CV:**
 ```copy-code

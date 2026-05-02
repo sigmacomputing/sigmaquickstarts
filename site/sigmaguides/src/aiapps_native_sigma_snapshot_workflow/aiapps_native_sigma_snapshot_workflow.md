@@ -74,7 +74,7 @@ Sigma builders interested in leveraging the advanced capabilities to create full
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown as the basics are assumed to be understood.</li>
  </ul>
 
-<aside class="postive">
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends that you use non-production resources when doing QuickStarts.
 </aside>
 
@@ -543,7 +543,7 @@ Click `Publish`.
 ## Testing
 Duration: 5
 
-Before we do some testing, lets rearrange the elements on the `Budget` page so we can observe the changes as the occur.
+Before we do some testing, let's rearrange the elements on the `Budget` page so we can observe the changes as the occur.
 
 Here is what our `Budget` pages is arranged:
 
@@ -595,7 +595,7 @@ A few things have happened now.
 
 <img src="assets/es-45.png" width="800"/>
 
-Now change the `New Snapshoot Name` control value to the text `Snap 1` and click `Take a Snapshot`.
+Now change the `New Snapshot Name` control value to the text `Snap 1` and click `Take a Snapshot`.
 
 The result is a new row in the `Snapshots` table with the new name and `Batches` value of batch numbers 1 and 2:
 
@@ -612,7 +612,7 @@ The final result will look like this.
 ### Looking at old snapshots
 There are many elements that are not required for the end user to see, now that we have some snapshots.
 
-Lets move these elements back to the `Data` page and hide that page too.
+Let's move these elements back to the `Data` page and hide that page too.
 
 <img src="assets/es-48.png" width="800"/>
 

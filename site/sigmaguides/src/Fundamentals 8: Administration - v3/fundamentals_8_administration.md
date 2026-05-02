@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-03-13
+lastUpdated: 2026-06-13
 
 # Fundamentals 08: Administration
 
@@ -137,7 +137,7 @@ Navigate to `Administration` > `Account` > `General Settings`:
 <img src="assets/horizonalline.png" width="800"/>
 
 ### Site
-`Site` identifies your user account name, cloud provider, data of creation, URL and when the product license will expire. 
+`Site` identifies your user account name, cloud provider, date of creation, URL and when the product license will expire. 
 
 Admin users are able to edit `Organization Name` and `Company Login URL` values by clicking the `Edit` button.
 
@@ -278,7 +278,7 @@ For more information, see [Create reusable custom functions](https://help.sigmac
 ## Account - Branding Settings
 Duration: 20
 
-Brand settings are the next tab over, in `Account Settings`, and provides a way to customize Sigma towards your organizations fonts, color themes and email content.
+Brand settings are the next tab over, in `Account Settings`, and provides a way to customize Sigma towards your organization's fonts, color themes and email content.
 
 ### Custom Fonts
 Sigma supports custom fonts for workbooks, worksheet visualizations, and dashboards. 
@@ -298,7 +298,7 @@ For example, we can easily add a new font, "Coffee House" in this case:
 <img src="assets/horizonalline.png">
 
 ### Workbook Themes
-Sigma supports creation of workbook themes. Admin can customize sets of colors, fonts, spacing, and more.
+Sigma supports creation of workbook themes. Admins can customize sets of colors, fonts, spacing, and more.
 
 For example, we can easily add a new theme and set it as the `Organizations Default` so that it is the first choice for all content:
 
@@ -369,7 +369,7 @@ Sigma allows you to configure inactivity timeouts. These timeouts ensure users a
 
 #### Identity provider login URL
 
-Sigma can be configured to use Single Sign-On (SSO) Authentication with any platform that supports SAML (ie Okta, OneLogin and Google SSO).
+Sigma can be configured to use Single Sign-On (SSO) Authentication with any platform that supports SAML (e.g., Okta, OneLogin and Google SSO).
 
 For more information, see [Use custom account types with your IdP](https://help.sigmacomputing.com/docs/use-custom-account-types-with-your-idp)
 
@@ -471,7 +471,7 @@ The standard reports can also be customized to suit unique requirements.
 
 [To learn more about external logging, please review this QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html?index=..%2F..index#0)
 
-At the time of this QuickStart, the following usage catagories are provided. Each category has many KPI, charts, tables and filters, formatted based on the available data.
+At the time of this QuickStart, the following usage categories are provided. Each category has many KPI, charts, tables and filters, formatted based on the available data.
 
 **Users:**<br>
 Explore user status, activity and licensing. Filter by date range and/or query text.
@@ -479,7 +479,7 @@ Explore user status, activity and licensing. Filter by date range and/or query t
 <img src="assets/fa10.png" width="800"/>
 
 **Document Activity:**<br>
-Discover your organization’s most commonly used documents and your top documents users. Filter by date range, Top N, and the number of days since the dashboards were last opened. These insights can assist organizations to audit unused documents and identify documents that drive the most user engagement.
+Discover your organization’s most commonly used documents and your top document users. Filter by date range, Top N, and the number of days since the dashboards were last opened. These insights can assist organizations to audit unused documents and identify documents that drive the most user engagement.
 
 <img src="assets/fa11.png" width="800"/>
 
@@ -522,7 +522,7 @@ Email invitations and welcome emails can be customized if desired.
 
 Users can be added automatically the first time they login to Sigma using an IDP, or when using Sigma embedded into another application. 
 
-Sigma's REST API also supports adding new users ("members in the API). The more information, see[API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
+Sigma's REST API also supports adding new users ("members in the API). For more information, see [API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
 There are also [API code samples ("recipes")](https://help.sigmacomputing.com/recipes), demonstrating common API operations.
 
@@ -540,7 +540,7 @@ The `Users` page has a filter that is a convenient way to see only the categorie
 
 Users in Sigma can be deactivated, but never fully deleted. Deactivated users cannot access Sigma.
 
-After you click `Deactivate`, the user's documents are automatically migrated to the selected persons's `My Documents` folder. The deactivated user's documents will be located in `My Documents` > `Archived Users` > `Folder` (folder title is the deactivated user's name). 
+After you click `Deactivate`, the user's documents are automatically migrated to the selected person's `My Documents` folder. The deactivated user's documents will be located in `My Documents` > `Archived Users` > `Folder` (folder title is the deactivated user's name). 
 
 There is no need to manually transfer all the worksheets/dashboards created by the user; **Sigma does this for you.**
 
@@ -570,7 +570,7 @@ Private teams will only be visible to members of the team.
 
 [Teams Documentation](https://help.sigmacomputing.com/docs/manage-teams)
 
-When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces help organize content, to categorize and share folders and documents. Workspaces can be shared with other users and teams using permission grants.
+When creating a new team, you are prompted to also create a new workspace (optional). You can use workspaces to help organize content, to categorize and share folders and documents. Workspaces can be shared with other users and teams using permission grants.
 
 [Workspaces Documentation](https://help.sigmacomputing.com/docs/manage-workspaces)
 
@@ -593,7 +593,7 @@ Sigma provides five default account types, which are directly mapped to the four
 <ul>
   <li><strong>View:</strong> Suitable for report consumers who need access to prepared data and insights with baseline interactions.</li>
   <li><strong>Act:</strong> Ideal for collaborative data contributors who actively input and update data.</li>
-  <li><strong>Analyze:</strong> Optimized for decision-making data consumers who require more deep-dive capabilities without building workbooks themselves..</li>
+  <li><strong>Analyze:</strong> Optimized for decision-making data consumers who require more deep-dive capabilities without building workbooks themselves.</li>
   <li><strong>Build:</strong> Designed for data architects, BI analysts, and report builders who model, transform, and analyze data.</li>
 </ul>
 
@@ -644,6 +644,40 @@ The user would not be aware of the restriction and the data would be limited to 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## AI Settings
+Duration: 5
+
+The `AI settings` page is where administrators configure Sigma's AI capabilities for the organization.
+
+<img src="assets/fa_aisettings_01.png" width="800"/>
+
+Configuration is organized into several areas:
+
+**AI Provider**<br>
+Select the AI provider Sigma will use to power features like Sigma Assistant. Options include third-party providers such as OpenAI, as well as warehouse-hosted AI models for organizations that need to keep data within their own environment.
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Customers with sensitive data may prefer warehouse-hosted AI models to avoid exposing data to third-party providers.
+</aside>
+
+For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
+
+**Sigma Assistant**<br>
+Controls whether Sigma Assistant is enabled for the organization and which data sources users can query through it. Administrators can also enable usage logging, which records the questions users ask along with metadata useful for governance and optimization.
+
+<img src="assets/fa_aisettings_02.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Sigma Assistant usage data — including usernames and the full text of questions — is stored directly in your cloud data warehouse, not in Sigma. Treat this data accordingly and restrict schema access to authorized administrators.
+</aside>
+
+For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
+There is also a QuickStart: [Create a Sigma Assistant Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Embeds
 Duration: 20
 
@@ -653,11 +687,32 @@ It is common when using Sigma to embed content into another application, that ma
 
 This page provides a centralized way to manage them and alerts you to basic configuration issues with an embed.
 
-We are able to either `Reassign embed` or simply delete it any embed (non-JWT only):
+We are able to either `Reassign embed` or simply delete any embed (non-JWT only):
 
 <img src="assets/fa21.png" width="800"/>
 
 For those interested in embedding, there is an entire [series of QuickStarts](https://quickstarts.sigmacomputing.com/?cat=embedding) dedicated to getting you going.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## API Connectors
+Duration: 5
+
+`API Connectors` allow Sigma to call external REST APIs directly from a workbook, enabling real-time integration with third-party systems without requiring a data pipeline or custom backend.
+
+<!-- <img src="assets/fa_apiconnectors_01.png" width="800"/> -->
+
+Once configured, an API connector can be used to send or retrieve data from external systems — for example, creating a Jira ticket, looking up a Salesforce record, or triggering a ServiceNow workflow — all from within a Sigma workbook.
+
+For more information, see [API connectors overview](https://help.sigmacomputing.com/docs/api-connectors)
+
+There are QuickStarts that demonstrate API connectors with common platforms:
+
+[API Actions: Getting Started](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_getting_started/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate Jira](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_jira/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate Salesforce](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_salesforce/index.html?index=..%2F..index#0)<br>
+[API Actions: Integrate ServiceNow](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_servicenow/index.html?index=..%2F..index#0)<br>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -701,7 +756,7 @@ Duration: 20
 
 The scheduled exports page provides a summary of all exports scheduled to run across all users. 
 
-Admin are able to filter this list and delete scheduled jobs.
+Admins are able to filter this list and delete scheduled jobs.
 
 <img src="assets/fa24.png" width="800"/>
 
@@ -714,44 +769,18 @@ For more information, see [Manage organization schedules](https://help.sigmacomp
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## AI Settings
-Duration: 20
-
-To use AI features in Sigma, you’ll need to select and configure an AI provider.
-
-For more information, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#configure-an-ai-provider)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Customers who have sensitive data may want to use their own warehouse provider in order to prevent exposing data to third party providers.
-
-To keep data under your control, Sigma also supports warehouse-hosted AI models.
-</aside>
-
-For more information, see [Configure warehouse AI model integration](https://help.sigmacomputing.com/docs/configure-warehouse-ai-model-integration)
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Please check the documentation link below for the most recent information on Sigma AI.
-</aside>
-
-Sigma also provides an optional log of Ask Sigma usage. For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
-
-There is also a QuickStart: [Create an Ask Sigma Usage Dashboard](https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html?index=..%2F..index#0)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Materializations
 Duration: 20
 
 The `Materializations` page summarizes all schedule materialization jobs, last run date, next run date, status, running time and when the data was last used. 
 
-This can be very useful to admin wanting to ensure that jobs are not only running properly, but also that the result sets are being used. **There is no value (but is some cost!) in materializing data that is not being used by the business.** 
+This can be very useful to admin wanting to ensure that jobs are not only running properly, but also that the result sets are being used. **There is no value (but there is some cost!) in materializing data that is not being used by the business.** 
 
 Sigma also provides an option to pause jobs that are not being used as shown (number three):
 
 <img src="assets/fa26.png" width="800"/>
 
-Admin are able to jump directly to the object being materialized, simply by clicking the desired item in the `Element / Document` column.
+Admins are able to jump directly to the object being materialized, simply by clicking the desired item in the `Element / Document` column.
 
 For more information, see [About materialization](https://help.sigmacomputing.com/docs/materialization)
 
@@ -783,19 +812,15 @@ Duration: 20
 
 It supports the generation of client credentials for Sigma's REST API and/or embedded applications. 
 
-The choice is made after clicking `Create New`:
-
-<img src="assets/da2.png" width="600"/>
-
 The page lists all client credentials and provides a way to revoke them:
 
 <img src="assets/da1.png" width="800"/>
 
-To learn how to access Sigma via API, there is a [QuickStart](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
+To learn how to access Sigma via Postman, there is [Sigma API with Postman](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0)
 
 There is also an [API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-There are [API code samples](https://help.sigmacomputing.com/recipes) with a corresponding [QuickStart](https://quickstarts.sigmacomputing.com/guide/administration_api_code_samples/index.html?_gl=1*wgqu3c*_gcl_aw*R0NMLjE3MTgzOTg3MDAuQ2p3S0NBancxSy16QmhCSUVpd0FXZUNPRjVqNkh1N2dNcHhtTm1HYWluZlhOY2lRd0VLTkJtZnd5TURCOG1Pa1hDQjd0ODhSaEpUbjlCb0NGXzBRQXZEX0J3RQ..*_gcl_au*MTU3OTYwODI3NC4xNzEzNTc1NDQ4LjEzMjQ1MTQxMTUuMTcxNzE3MTI2Ni4xNzE3MTcxMjY1*_ga*MjAyNzIyMDcwLjE3MTcxODQ4Nzk.*_ga_PMMQG4DCHC*MTcxODczNDU2MS40Ny4xLjE3MTg3MzczOTguNjAuMC4w#0)
+There are [API code samples](https://help.sigmacomputing.com/recipes) with a corresponding [QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_api_code_samples/index.html?index=..%2F..index#0)
 
 To learn how to access Sigma via embedding, there is a [QuickStart series](https://quickstarts.sigmacomputing.com/?cat=embedding)
 
@@ -805,7 +830,7 @@ To learn how to access Sigma via embedding, there is a [QuickStart series](https
 ## What we've covered
 Duration: 5
 
-In this QuickStart we provided a very high-level overview of all the administrative features of the Sigma platform. Please be sure to check out the additional resources list below.
+In this QuickStart, we provided a very high-level overview of all the administrative features of the Sigma platform. Please be sure to check out the additional resources list below.
 
 The next QuickStart in this series covers things that are a little [beyond the basics](https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html?index=..%2F..index#0), but are common across customers.
 

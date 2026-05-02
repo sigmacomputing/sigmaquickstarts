@@ -66,7 +66,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 <ul>
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment.</li>
-  <li>You must complete "Embedding 01: Getting Started" before beginning this QuickStart..</li>
+  <li>You must complete "Embedding 01: Getting Started" before beginning this QuickStart.</li>
   <li>A Snowflake account with the proper administrative and security admin access for our use case data.</li>
 </ul>
 

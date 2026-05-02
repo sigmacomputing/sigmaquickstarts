@@ -35,7 +35,7 @@ Developers who want to use Sigma's REST API to programmatically control Sigma in
   <li>Access to your Sigma environment.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as basic Sigma usage is assumed.</li>
   <li>Microsoft VS Code or another suitable development tool.</li>
-  <li>Node version 18+ and related dependancies.</li>
+  <li>Node version 18+ and related dependencies.</li>
  </ul>
 
 <aside class="positive">
@@ -221,7 +221,7 @@ Here are the details for our test users:
 | View                    | view.embed.qs@example.com   | View      | Read-only — restricted capabilities          |
 | Build                   | build.embed.qs@example.com  | Build     | Can create/edit workbooks etc.               |
 
-TThis setup demonstrates the most common functionality.
+This setup demonstrates the most common functionality.
 
 The initial .env file from the git repo should already have two users preconfigured for you:
 ```copy-code
