@@ -17,9 +17,8 @@ April 17, 2026 changes:k
 April 24, 2026 changes:k
 April 30, 2026 changes:
 
-
 Publish on May 1
-<img src="assets/heart_icon.png" width="25"/>
+ <img src="assets/heart_icon.png" width="25"/>
 -->
 
 ## Overview 
@@ -27,7 +26,7 @@ Duration: 5
 
 This QuickStart lists all the new and public beta features released, as well as bugs fixed in April 2026.
 
-It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
+It is a summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
 **Public beta features will carry the section text "Beta".**
 
@@ -62,10 +61,47 @@ Organizations can now integrate customer-owned Azure Blob containers with Sigma,
 
 For more information, see [Configure an external storage integration with Azure Blob Storage](https://help.sigmacomputing.com/docs/configure-an-external-storage-integration-with-azure-blob)
 
-### Set variables on a Snowflake connection (Beta) <img src="assets/heart_icon.png" width="25"/>
+**WHY IT MATTERS:**<br>
+Organizations can now route file uploads and exports through their own Azure Blob containers, keeping data within their cloud environment. This matters for customers with data residency, compliance, or security requirements that prevent third-party storage.
+
+### Connection-level OAuth for Snowflake and Databricks (GA)
+For Snowflake or Databricks connections, you can configure connection-level OAuth to manage role-based access control and data permissions in your data platform without reusing the OAuth configuration used to authenticate to your Sigma organization.
+
+Connection-level OAuth is also available for Google BigQuery, but is still in beta.
+
+For more information, see [About using OAuth with Sigma](https://help.sigmacomputing.com/docs/configure-oauth)
+
+For setup instructions, see [Connect to Snowflake with OAuth](https://help.sigmacomputing.com/docs/connect-to-snowflake-oauth) or [Connect to Databricks with OAuth](https://help.sigmacomputing.com/docs/connect-to-databricks-oauth)
+
+**WHY IT MATTERS:**<br>
+This decouples authentication for the data platform from authentication to Sigma, giving administrators independent control over data permissions without sharing credentials across systems. It's a foundational security pattern for enterprises that require fine-grained, role-based data access.
+
+### CSV upload limit to 1GB option (GA) <img src="assets/heart_icon.png" width="25"/>
+By default, Sigma limits CSV uploads to 200MB to avoid timeouts and failures that can be common with large files. 
+
+If your organization's users regularly work with larger files, you can increase the file size limit to 1GB. 
+
+When this option is enabled, Sigma generates pre-signed URLs, and the browser uploads the CSV files in multiple parts directly to cloud storage, bypassing Sigma's servers. This flow supports larger file sizes while improving performance and reliability.
+
+For more information, see [Configure CSV upload and storage options](https://help.sigmacomputing.com/docs/configure-csv-upload-and-storage-options)
+
+### Improved search functionality
+If your organization configures an AI provider, Sigma provides enhanced global search performance using semantic search.
+
+For more information, see [Search for content in your organization](https://help.sigmacomputing.com/docs/search-in-sigma)
+
+### Set a tagged workbook as a custom homepage
+You can now specify a tagged version of a workbook when assigning a custom homepage to a user or team. 
+
+For more information, see [Set up custom home pages](https://help.sigmacomputing.com/docs/enable-a-custom-homepage)
+
+### Set variables on a Snowflake connection (Beta)
 You can now specify session variables on a Sigma connection to Snowflake. After being set up, the session variables are set for each query that Sigma runs in Snowflake.
 
 For more information, see [Specify session variables for a Snowflake connection](https://help.sigmacomputing.com/docs/specify-session-variables-for-a-snowflake-connection)
+
+**WHY IT MATTERS:**<br>
+Session variables let administrators enforce query context — such as cost centers, row-level security tags, or audit fields — at the connection level before any query runs. This is particularly useful for multi-tenant deployments or organizations enforcing Snowflake row access policies.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -85,11 +121,6 @@ Ask Sigma is now Sigma Assistant, and includes the following:
 If you embed Ask Sigma, Sigma Assistant is accessible from the same URL and existing embeds continue to work.
 
 For more information, see [Ask natural language queries with Sigma Assistant](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant)
-
-### Add AI context to data models (Beta)
-You can now add AI context to a data model to help Sigma Assistant better understand how to use your data model as a data source. Adding AI context to a data model can help improve the accuracy and consistency of Sigma Assistant responses when answering questions that use the data model as a source.
-
-For more information, see [Manage AI context for data models](https://help.sigmacomputing.com/docs/manage-ai-context-for-data-models)
 
 ### Sigma MCP Server is now available <img src="assets/heart_icon.png" width="25"/>
 Use natural language to interact programmatically with your Sigma organization using the Sigma MCP server. You can now search, describe, and query data within your AI assistant's interface. You can connect to the Sigma MCP server from any AI assistant that supports connection to custom remote MCP servers via HTTP and OAuth.
@@ -142,11 +173,11 @@ You can configure advanced settings for API connectors to manage rate limits, re
 For more information, see [Configure API credentials and connectors in Sigma](https://help.sigmacomputing.com/docs/configure-api-credentials-and-connectors-in-sigma#configure-governance-settings-for-an-api-connector)
 
 ### Create and manage data models as code (GA)
-You can create and manage data models programmatically using the Sigma API. The endpoints use a code representation of the data model to retrieve contents, make updates, and create new data models. For more information, see Manage data models as code.
+You can create and manage data models programmatically using the Sigma API. The endpoints use a code representation of the data model to retrieve contents, make updates, and create new data models.
 
 The following endpoints are generally available to read, create, and update data models programmatically:
 
-[Get the code representation of a data mode](https://help.sigmacomputing.com/reference/getdatamodelspec)
+[Get the code representation of a data model](https://help.sigmacomputing.com/reference/getdatamodelspec)
 
 [Create a data model from a code representation](https://help.sigmacomputing.com/reference/createdatamodelspec)
 
@@ -155,6 +186,9 @@ The following endpoints are generally available to read, create, and update data
 For example representations of sources and elements, see the [Data model representation example library](https://help.sigmacomputing.com/docs/data-model-representation-example-library)
 
 To provide context to AI agents building data models from code, see [Access Sigma documentation from AI tools](https://help.sigmacomputing.com/docs/use-documentation-mcp-server)
+
+**WHY IT MATTERS:**<br>
+Data models can now be created and updated programmatically, enabling version-controlled, repeatable deployment workflows. Teams managing large or multi-environment Sigma deployments can treat data model configuration as infrastructure — consistent, auditable, and automatable.
 
 ### List scheduled exports for a user
 The following endpoint to list all scheduled workbook and report exports owned by a specific user is now available:
@@ -177,7 +211,7 @@ Duration: 20
 
 **1:** Image elements with Circle shape now align properly with Horizontal/Vertical alignment settings.
 
-**2:** Tabbed container exports now render the selected tab instead of the first tab only (excluding scheduled exports)
+**2:** Tabbed container exports now render the selected tab instead of the first tab only (excluding scheduled exports).
 
 **3:** Databricks OAuth connection creation no longer requires a service account.
 
@@ -197,15 +231,9 @@ Duration: 20
 
 **11:** Workbooks no longer fail to load when a column exists across multiple properties in an element.
 
+**12:** For organizations with greater than 15,000 user attributes, it was not possible to specify a user attribute to dynamically set a role or warehouse for a Snowflake connection.
 
-
-**12:** 
-**13:** 
-
-
-
-
-
+**13:** Users in tenant organizations were unable to duplicate or tag versions of deployed documents.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -226,11 +254,31 @@ Navigate to `Format` > `Legend` and, next to `Position`, choose an option from t
 ### Control pan and zoom for maps
 You can now choose whether to allow pan and zoom for maps. Select the `Allow pan and zoom` checkbox under `Format` > `Map` style to allow users to freely pan and zoom, or clear the checkbox to lock a map chart to a fixed position and zoom level.
 
+### Customize data label display for bar charts
+If you add a custom data label to a stacked bar chart, you can now choose to display the label as the value for the entire bar, the value for the individual segment, or both.
+
+### Set chart axis range dynamically
+You can now set a maximum or minimum range for a chart axis dynamically using a formula that references columns or controls in your workbook or report. 
+
+For more information, see [Customize chart axis range](https://help.sigmacomputing.com/docs/customize-chart-axis-range)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Data Modeling
 Duration: 20
+
+### Add AI context to data models (Beta)
+You can now add AI context to a data model to help Sigma Assistant better understand how to use your data model as a data source. Adding AI context to a data model can help improve the accuracy and consistency of Sigma Assistant responses when answering questions that use the data model as a source.
+
+For more information, see [Manage AI context for data models](https://help.sigmacomputing.com/docs/manage-ai-context-for-data-models)
+
+### Swap data model sources when accepting a shared template
+Data models used as sources in a shared template are now available to be swapped when you accept a template shared with your organization. 
+
+You can swap data models to tables in your connection or to other data models in your organization. 
+
+If a template includes multiple data models as sources, you can accept the template and swap the sources.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -278,13 +326,16 @@ Input table audit history records versioned snapshots of input table row and sch
 
 For more information, see [View input table audit history](https://help.sigmacomputing.com/docs/view-input-table-audit-history)
 
+**WHY IT MATTERS:**<br>
+Row-level and schema change history stored as warehouse-native views gives organizations an auditable record of who changed what and when — without relying on Sigma logs. This directly addresses compliance and data governance requirements in regulated industries.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## New QuickStarts in April
 Duration: 20
 
-### Natural Language Analytics with Claude and Sigma
+### Natural Language Analytics with Claude and Sigma <img src="assets/heart_icon.png" width="25"/>
 [This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html?index=..%2F..index#0) shows how to connect Claude AI to your Sigma organization using the Sigma MCP server and use that connection to do real analytical work — finding content, understanding data structure, and getting answers from live data through natural language.
 
 It walks through how to:
@@ -293,8 +344,33 @@ It walks through how to:
 * Search your Sigma organization for relevant workbooks and data sources
 * Query live Sigma data and receive answers in plain language — no SQL required
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 This is the governed external AI pattern — Claude inherits your Sigma permissions via OAuth, so administrators retain full control over what data is reachable. A well-configured Claude Project with org context turns Claude into an analyst that already knows your data landscape before the first question is asked, reducing friction between a business question and a grounded answer.
+
+### Reshaping Data with Transpose Tables
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/tables_transpose_tables/index.html?index=..%2F..index#0) shows how to use Sigma's Transpose table to reshape source data in two directions — converting stacked row values into columns for side-by-side comparison, and collapsing wide metric columns into a single long-format column for grouping and charting.
+
+It walks through how to:
+* Add a Transpose table from any source table using Element source > Transpose
+* Configure Row to Column — selecting a label column, value column, aggregate, and output dimensions
+* Configure Column to Row — collapsing multiple metric columns into a single labeled measure
+* Add grouping and calculations within the Transpose element to complete the analysis
+
+**WHY IT MATTERS:**<br>
+Most warehouse data arrives in a shape that isn't directly analysis-ready — dimension values stacked in rows when you need them as column headers, or related metrics split across separate columns when you need a single measure. Transpose handles both in Sigma, on live data, without SQL or ETL work. The pattern applies broadly: any time your data is too narrow or too wide for the view you need, Transpose is the right tool.
+
+
+### Scheduling Sigma Insights to Slack <img src="assets/heart_icon.png" width="25"/>
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_scheduling_sigma_insights_to_slack/index.html?index=..%2F..index#0) shows how to connect Claude to Sigma using the Sigma MCP server and use the claude.ai Slack connector to deliver a formatted daily sales digest automatically — with fresh data on every run.
+
+It walks through how to:
+* Connect Claude to Sigma via the Sigma MCP server in claude.ai
+* Query live Sigma data and iterate on a Slack-ready format in the browser
+* Confirm end-to-end Slack delivery before committing to a schedule
+* Use Claude Code's /schedule command to turn the workflow into a recurring routine
+
+**WHY IT MATTERS:**<br>
+This is the "no dashboard, no pipeline" automation pattern — Sigma governs the data, Claude reasons over it, and the result lands in Slack on a recurring schedule with fresh data every time. It demonstrates what Sigma and Claude can do together: analytical questions answered automatically, delivered where teams already work. The same approach applies to any recurring data question your team needs answered on a regular cadence.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -322,15 +398,42 @@ Right-clicking a column name now surfaces an `Add control` option, streamlining 
 
 For more information, see [Create and manage a control element](https://help.sigmacomputing.com/docs/create-and-manage-a-control-element)
 
-### Dynamic Column Aliases (Beta)
+### Automatically scale column width to the size of your table element
+You can now configure columns to automatically scale to the size of your table element with the `Autofit columns` option. 
+
+Autofit columns is not supported for pivot tables.
+
+For more information, see [Format and customize a table](https://help.sigmacomputing.com/docs/format-and-customize-a-table#autofit-columns)
+
+### Dynamic Column Aliases (Beta)  <img src="assets/heart_icon.png" width="25"/>
 Control values can now be used to create dynamic column aliases via the `#identifier` directive in SQL, enabling formula-based column naming.
 
 For more information, see [Reference workbook control values in SQL statements](https://help.sigmacomputing.com/docs/reference-workbook-control-values-in-sql-statements)
 
-### Increased CSV Upload Limit
-A configuration option is now available to increase the default 200MB CSV upload limit to 1GB, supported by an improved performance architecture.
+### Repeated container (GA)  <img src="assets/heart_icon.png" width="25"/>
+The repeated container is a layout element that connects to a data source. For each row in the data source, the repeated container generates a layout card, allowing you to quickly generate identical, dynamic layouts from your data.
 
-For more information, see [Configure CSV upload and storage options](https://help.sigmacomputing.com/docs/configure-csv-upload-and-storage-options)
+For more information, see [Use repeated containers to generate layouts from data](https://help.sigmacomputing.com/docs/use-repeated-containers-to-generate-layouts-from-data)
+
+**WHY IT MATTERS:**<br>
+Repeated containers make it straightforward to build card-based layouts — product listings, customer profiles, ticket queues — driven directly from data. The pattern replaces static grid layouts with dynamic, data-bound views that scale with the underlying dataset.
+
+### Single row container (GA)  <img src="assets/heart_icon.png" width="25"/>
+The single row container is a layout element that connects to a data source. By selecting a key column and value, you can choose a row from the data source to display inside the container, allowing for dynamic, focused views at individual rows.
+
+For more information, see [Use single row containers to show records in detail](https://help.sigmacomputing.com/docs/use-single-row-containers-to-show-records-in-detail) and [Create actions that control single row containers](https://help.sigmacomputing.com/docs/create-actions-that-control-single-row-containers)
+
+**WHY IT MATTERS:**<br>
+Combined with actions, the single row container enables record-detail views where selecting a row in a table populates a dedicated layout with that record's full context. This is the core pattern for building operational record browsers without custom code.
+
+### Value list (GA)  <img src="assets/heart_icon.png" width="25"/>
+Add a value list element to create an organized display of details from a data source. 
+
+You can customize the value list to show custom formula results, control values, static values, and more. 
+
+When paired with a single row container, you can create a dynamic list that shows individual records from a data source based on user input.
+
+For more information, see [Value lists](https://help.sigmacomputing.com/docs/value-lists)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
