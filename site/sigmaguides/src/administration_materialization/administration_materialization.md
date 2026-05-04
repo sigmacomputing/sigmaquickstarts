@@ -15,10 +15,6 @@ Duration: 5
 
 Cut query times and reduce warehouse spend by materializing Sigma datasets directly into Snowflake — when to use it, how to configure it, and what to expect from the first run. 
 
-We will define it, provide some guidance on the why/when to use it and who sets it up. 
-
-Lastly, we will step through using Sigma and Snowflake to materialize some data so that the workflow in Sigma is understood.
-
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>

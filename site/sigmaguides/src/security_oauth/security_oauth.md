@@ -13,14 +13,7 @@ lastUpdated: 2024-07-25
 ## Overview 
 Duration: 5 
 
-Eliminate shared credentials between Sigma and Snowflake by configuring OAuth — four scenarios: basic setup, Snowflake integration, Okta auto-provisioning, and writeback. OAuth provides a secure and efficient way to manage access and permissions between Sigma and Snowflake. 
-
-We will present this in sections:
-
-1: Configuring for OAuth with user/password authentication<br>
-2: Enabling OAuth for Snowflake<br>
-3: Enabling user auto-provisioning with Okta and Sigma<br>
-4: Configuring Sigma Write-back with OAuth and Snowflake<br>
+Eliminate shared credentials between Sigma and Snowflake by configuring OAuth — four scenarios: basic setup, Snowflake integration, Okta auto-provisioning, and writeback.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This will provide a basic demonstration of the various processes, although not all are always required. Exactly how to configure this for your organization is highly dependant on your use case and governance needs.

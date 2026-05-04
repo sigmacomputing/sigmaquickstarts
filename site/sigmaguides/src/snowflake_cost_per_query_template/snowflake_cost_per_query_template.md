@@ -13,8 +13,6 @@ lastUpdated: 2023-11-30
 ## Overview 
 Deploy Sigma's Snowflake Cost per Query template to see exactly what each workbook, user, role, and warehouse is spending — two setup steps and you have a live cost dashboard. 
 
-This template gives you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
-
 There are two steps to setting up the template:
   1.  Create the `query_history_enriched` table in your Snowflake account
   2.  Launch the template in Sigma and **Swap Sources** to the table created in step 1

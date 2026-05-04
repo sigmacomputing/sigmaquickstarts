@@ -13,13 +13,12 @@ lastUpdated: 2024-05-05
 ## Overview 
 Duration: 5 
 
-Build a local web application to test Sigma embedding — the prerequisite environment for the entire embedding series. It is part one of a series of Fundamentals QuickStarts focused on embedding and should be completed first.
+Build a local web application to test Sigma embedding — the prerequisite environment for the entire embedding series.
  
 We have broken the different types of embeds into separate documents based on use cases, allowing users to focus on those areas of interest and improve overall readability and supportability of each document.
  
 **This QuickStart is foundational to all the other embedding QuickStarts.** 
-
-Additionally, it will demonstrate how to set up a local web application so that you can simulate using embedding on your local computer. 
+ 
 
 Sigma also provides an embed sandbox that is built into the product. For more information, see [Test an embed URL in the embed sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
 
