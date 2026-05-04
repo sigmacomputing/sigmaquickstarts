@@ -57,7 +57,7 @@ GRANT ALL ON SCHEMA SIGMA_INTERNAL.WRITEBACK TO ROLE PC_SIGMA_ROLE;
 ## Overview 
 Duration: 5 
 
-This QuickStart will guide you through an end-to-end example of utilizing Snowflake's new machine learning features. Our focus will be on creating a machine learning-driven price prediction tool, integrating the perspectives of both a business analyst and a data scientist using Snowflake and Sigma.
+Build a Snowflake ML price prediction model and surface results in Sigma — a complete example covering both the data science setup and the business analyst workflow.
 
 We will demonstrate how Sigma enables the execution of complex commands in Snowflake, and displays results in a format similar to a spreadsheet interface. This approach not only maintains data security within Snowflake, but also broadens accessibility to users without SQL expertise.
 

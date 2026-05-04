@@ -13,13 +13,7 @@ lastUpdated: 2025-05-27
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to embedding Sigma into Salesforce.
-
-We will use a Salesforce developer account and a Sigma trial to demonstrate two simple use cases:
-
-1: Embedding a static table from Sigma's sample database inside Salesforce, Using an Lightning Web Component (LWC) with a select list.
-
-2: Using a LWC (select list value) to pass the selected value to filter the table in the Sigma embed. 
+Embed live Sigma analytics inside Salesforce using Lightning Web Components — a static table embed and a dynamically filtered view driven by Salesforce context.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Sigma’s intuitive interface ensures that any differences won’t prevent you from completing this QuickStart successfully.

@@ -14,7 +14,7 @@ lastUpdated: 2026-05-15
 ## Overview
 Duration: 6
 
-This QuickStart is part of a series designed to help new Sigma users get oriented and start working with the platform.
+Get oriented in Sigma — hands-on practice with the interface, workbooks, and core navigation for users starting from scratch.
 
 The Fundamentals series covers a broad range of topics at an introductory level. Each QuickStart includes links to deeper resources — follow what’s relevant to you.
 

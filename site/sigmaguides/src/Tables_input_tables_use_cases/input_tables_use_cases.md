@@ -13,7 +13,7 @@ lastUpdated: 2024-07-24
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides an overview and the steps required to recreate three unique use cases that leverage Sigma input tables. 
+Skip the ETL pipeline — three production-ready use cases showing how Sigma input tables let users write data directly to the warehouse. 
 
 input tables are Sigma-managed warehouse tables, through which users can add their own data and integrate into their own analysis.
 

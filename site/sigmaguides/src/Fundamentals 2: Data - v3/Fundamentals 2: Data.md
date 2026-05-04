@@ -14,9 +14,9 @@ lastUpdated: 2026-04-15
 ## Overview
 Duration: 6
 
-This QuickStart is part of a series designed to help new Sigma users get oriented and start working with the platform.
+Sort, filter, group, and build calculations on live warehouse data in Sigma — no SQL required.
 
-This QuickStart focuses on working with data in Sigma tables — sorting, filtering, grouping, and building calculations. All exercises use the `Fundamentals` workbook and the `Sales Transactions` table created in [Fundamentals 1: Overview](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html).
+All exercises use the `Fundamentals` workbook and the `Sales Transactions` table created in [Fundamentals 1: Overview](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html).
 
 <aside class=”positive”>
 <strong>IMPORTANT:</strong><br> This QuickStart assumes you have completed Fundamentals 1 and are familiar with the Sigma interface. Some steps are assumed to be known and are not shown in full detail.
