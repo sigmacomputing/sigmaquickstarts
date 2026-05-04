@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2025-10-30
+lastUpdated: 2026-05-10
 
 # Connect Snowflake Intelligence to Sigma Workbook
 

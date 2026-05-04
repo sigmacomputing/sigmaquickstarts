@@ -6,7 +6,7 @@ environments: web
 status: Use Cases
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-08-22
+lastUpdated: 2026-05-10
 
 # Build a Custom FP&A Report based on a Template
 

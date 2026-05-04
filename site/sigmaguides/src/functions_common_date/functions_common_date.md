@@ -6,14 +6,14 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-11-26
+lastUpdated: 2026-05-10
 
 # Common Date Functions
 
 ## Overview 
 Duration: 5 
 
-Solve the most common date challenges in Sigma — truncation, period shifting, fiscal calendars, and date comparison — with step-by-step formula patterns you can adapt immediately.
+This QuickStart presents common challenges when working with dates. Sigma can be used to manipulate dates to get the desired results, quickly and easily.
 
 There are many ways to work with dates in Sigma. Not every solution is covered and you may even find a better method. Suggestions and feedback are always appreciated.
 
@@ -24,14 +24,21 @@ We will use the Sigma-provided `RETAIL`.`PLUGS_ELECTRONICS`.`PLUGS_ELECTRONICS_H
 ### Template
 We have also made the final workbook that is created during this QuickStart available as a Sigma Template. This option allows you to read along while having the workbook built for you. The template is not required and the end result is the same if you build it yourself. 
 
-<img src="assets/cdf_01c.png" width="800"/>
+<aside class="negative">
+<strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
+</aside>
 
+If you prefer to start from the pre-buld template, open this link in a browser, replacing the {org-name} with yours. 
+```copy-code
+https://app.sigmacomputing.com/{org-name}/explore-from-template/1DQJdGQjEFuhjXpzkMGvCr?:showSwapSourceCoachmark
+
+https://app.sigmacomputing.com/quick-starts-fundamentals/explore-from-template/1Z0pUQQciTprZwMStU8M0j?:showSwapSourceCoachmark
+```
 
 ### Target Audience
 Sigma builders looking for solutions to date challenges or who just want to learn new date methods.
 
 ### Prerequisites
-
 <ul>
   <li>Any modern browser is acceptable.</li>
   <li>Access to your Sigma environment.</li>
