@@ -13,7 +13,7 @@ lastUpdated: 2025-06-04
 ## Overview 
 Duration: 5 
 
-This QuickStart will discuss and demonstrate how to leverage the very popular API platform called Postman with Sigma's REST API. 
+Authenticate, explore, and test Sigma's REST API using Postman — step-by-step setup from first request to a working reusable test environment. 
 
 Postman is an API platform for developers to design, build, test and iterate their APIs. Postman reports having more than 20 million registered users and 75,000 open APIs, which it says constitutes the world's largest public API hub.
 

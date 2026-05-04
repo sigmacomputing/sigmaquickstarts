@@ -13,7 +13,7 @@ lastUpdated: 2025-05-27
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to embedding Sigma into Salesforce.
+Embed live Sigma analytics inside Salesforce using Lightning Web Components — a static table embed and a dynamically filtered view driven by Salesforce context.
 
 We will use a Salesforce developer account and a Sigma trial to demonstrate two simple use cases:
 

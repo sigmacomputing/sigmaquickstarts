@@ -13,7 +13,7 @@ lastUpdated: 2025-05-13
 ## Overview 
 Duration: 5 
 
-This QuickStart guide explains how Sigma uses its server-side embed-API ("API") to facilitate embedding Sigma content into external applications.
+Learn how Sigma's embed API uses signed JWTs to authenticate users, enforce row-level security, and pass custom parameters — the mechanics behind every secure Sigma embed.
 
 Its primary function is to generate a secure, signed JWT (JSON Web Token) that authorizes access to Sigma content at runtime, aligning with the parent application's authentication and security context.
 

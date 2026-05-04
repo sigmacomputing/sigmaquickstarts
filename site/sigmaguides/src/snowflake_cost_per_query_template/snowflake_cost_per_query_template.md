@@ -11,7 +11,7 @@ lastUpdated: 2023-11-30
 # Snowflake Cost per Query Template Setup
 
 ## Overview 
-This **QuickStart** provides instructions on how to set up Sigma's **Snowflake Cost per Query** template. 
+Deploy Sigma's Snowflake Cost per Query template to see exactly what each workbook, user, role, and warehouse is spending — two setup steps and you have a live cost dashboard. 
 
 This template gives you a prebuilt analysis of Snowflake costs by Sigma workbook / user and by Snowflake user, role and warehouse.
 

@@ -13,7 +13,7 @@ lastUpdated: 2024-07-25
 ## Overview 
 Duration: 5 
 
-In this QuickStart guide, we will walk through the steps required to set up and use OAuth with Sigma. OAuth provides a secure and efficient way to manage access and permissions between Sigma and Snowflake. 
+Eliminate shared credentials between Sigma and Snowflake by configuring OAuth — four scenarios: basic setup, Snowflake integration, Okta auto-provisioning, and writeback. OAuth provides a secure and efficient way to manage access and permissions between Sigma and Snowflake. 
 
 We will present this in sections:
 

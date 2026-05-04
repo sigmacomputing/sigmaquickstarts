@@ -13,7 +13,7 @@ lastUpdated: 2024-05-05
 ## Overview 
 Duration: 5 
 
-This QuickStart introduces you to the user interface and embedding capabilities of Sigma Workbooks. It is part one of a series of Fundamentals QuickStarts focused on embedding and should be completed first.
+Build a local web application to test Sigma embedding — the prerequisite environment for the entire embedding series. It is part one of a series of Fundamentals QuickStarts focused on embedding and should be completed first.
  
 We have broken the different types of embeds into separate documents based on use cases, allowing users to focus on those areas of interest and improve overall readability and supportability of each document.
  

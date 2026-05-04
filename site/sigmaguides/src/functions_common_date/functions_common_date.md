@@ -13,7 +13,7 @@ lastUpdated: 2025-11-26
 ## Overview 
 Duration: 5 
 
-This QuickStart presents common challenges when working with dates. Sigma can be used to manipulate dates to get the desired results, quickly and easily.
+Solve the most common date challenges in Sigma — truncation, period shifting, fiscal calendars, and date comparison — with step-by-step formula patterns you can adapt immediately. Sigma can be used to manipulate dates to get the desired results, quickly and easily.
 
 There are many ways to work with dates in Sigma. Not every solution is covered and you may even find a better method. Suggestions and feedback are always appreciated.
 

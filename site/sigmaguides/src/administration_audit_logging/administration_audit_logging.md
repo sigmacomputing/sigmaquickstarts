@@ -13,7 +13,7 @@ lastUpdated: 2023-09-12
 ## Overview 
 Duration: 5 
 
-This QuickStart **QS** provides an overview of Audit Logging in Sigma. When Audit Logs are enabled for your organization, an additional Snowflake connection will appear to administrative users. This connection provides read access to data related to user-initiated events that occur within your Sigma organization. 
+Enable Sigma's audit logs to track user activity, troubleshoot access issues, and meet compliance requirements — accessible through a dedicated Snowflake connection for admin users. When Audit Logs are enabled for your organization, an additional Snowflake connection will appear to administrative users. This connection provides read access to data related to user-initiated events that occur within your Sigma organization. 
 
 The Audit Log is useful when needing to troubleshoot issues or monitor user activity for security and compliance purposes. 
 

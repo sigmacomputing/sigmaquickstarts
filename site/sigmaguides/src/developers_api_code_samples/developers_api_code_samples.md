@@ -13,7 +13,7 @@ lastUpdated: 2024-11-20
 ## Overview 
 Duration: 5 
 
-This QuickStart is designed to support Sigma's [API Code Samples](https://help.sigmacomputing.com/recipes) and will demonstrate some common operations that customers may use the REST API for.
+Working JavaScript code samples for Sigma's most-used REST API operations — each recipe covers a real-world task you can drop directly into your own integration.
 
 The actual code shown is available in Sigma's [quickstart-public git repository](https://github.com/sigmacomputing/quickstarts-public)
 
