@@ -26,14 +26,21 @@ We have also made the final workbook that is created during this QuickStart avai
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
+
+In order to use the template you must first log onto your Sigma instance and then browse to the url:
+
+<a href="https://app.sigmacomputing.com/template?provider=7d0fc8a6-bf65-47f4-86e6-39eba581fe15&shareId=55af1852-7e92-4f3b-b817-5d87ffaf239c&namespace=production&templateId=a23e87ed-a961-4450-a450-6293cb1dffd2">Common Functions Template</a>
 </aside>
 
-If you prefer to start from the pre-buld template, open this link in a browser, replacing the {org-name} with yours. 
-```copy-code
-https://app.sigmacomputing.com/{org-name}/explore-from-template/1DQJdGQjEFuhjXpzkMGvCr?:showSwapSourceCoachmark
+The template will prompt to `Swap data sources`. Since it uses Sigma provided sample data, the `% Match` should be `100%`.
 
-https://app.sigmacomputing.com/quick-starts-fundamentals/explore-from-template/1Z0pUQQciTprZwMStU8M0j?:showSwapSourceCoachmark
-```
+Click `Choose`:
+
+<img src="assets/cdf_00.png" width="600"/>
+
+Once done, the fully-built workbook is presented and we can `Accept` the swap and save the workbook normally:
+
+<img src="assets/cdf_00a.png" width="800"/>
 
 ### Target Audience
 Sigma builders looking for solutions to date challenges or who just want to learn new date methods.
@@ -264,7 +271,7 @@ The table should now look like this:
 Add a new column next to `Customer Name` and rename it to `First_Order`.
 
 For `First_Order` set the formula to:
-```plaintext
+```copy-code
 Min([Date])
 ```
 
@@ -272,7 +279,7 @@ Min([Date])
 
 Now add four more columns, renaming them and applying the following formulas:
 
-<aside class="negative">
+<aside class="positive">
 <strong>PRO TIP:</strong><br> Use keyboard shortcuts to save time. For example, use "Shift +"  to add a new column.
 </aside>
 
@@ -342,7 +349,7 @@ For more information, see [Join types](https://help.sigmacomputing.com/docs/join
 
 <img src="assets/CDUC18.png" width="800"/>
 
-Click Preview output. Sigma shows the tables lineage. This allows us to see how our table was constructed, which columns are selected and more. We could also join more tables from here:
+Click `Preview output`. Sigma shows the table lineage. This allows us to see how our table was constructed, which columns are selected and more. We could also join more tables from here:
 
 <img src="assets/CDUC18a.png" width="800"/>
 

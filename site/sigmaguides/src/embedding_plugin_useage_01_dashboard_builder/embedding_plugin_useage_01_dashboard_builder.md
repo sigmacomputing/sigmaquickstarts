@@ -74,32 +74,48 @@ Duration: 5
 
 We need to prepare a workbook that allows users to select from a small set of curated content (charts, KPIs, tables, etc.) to create their own custom dashboard. This workbook will be embedded into a host application later. 
 
+### Template
+
 To make this process easier, we have created a [template](https://help.sigmacomputing.com/docs/create-and-edit-workbook-templates) that has a few KPIs preconfigured already.
 
-Return to the Sigma homepage and click `Templates`. Click to select the `Dashboard Builder QuickStart` template:
+<aside class="negative">
+<strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
 
-<img src="assets/dbb_04.png" width="800"/>
+In order to use the template you must first log onto your Sigma instance and then browse to the url:
 
-This creates a new (unsaved) workbook we can use for our embed. Let's spend a few moments breaking down the structure:
+<a href="https://app.sigmacomputing.com/template?provider=7d0fc8a6-bf65-47f4-86e6-39eba581fe15&shareId=55af1852-7e92-4f3b-b817-5d87ffaf239c&namespace=production&templateId=62aeb36d-ccfc-48ad-8344-1b26d0f0502c">Dashboard Builder Template</a>
+</aside>
 
-<img src="assets/dbb_05.png" width="800"/>
+The template will prompt to `Swap data sources`. Since it uses Sigma provided sample data, the `% Match` should be `100%`.
 
-There are three page tabs (#1 in the screenshot):
+Click `Choose`:
+
+<img src="assets/cdf_00.png" width="600"/>
+
+Once done, the fully-built workbook is presented and we can `Accept` the swap:
+
+<img src="assets/cdf_00a.png" width="800"/>
+
+This creates a new (unsaved) workbook we can use for our embed:
+
+<img src="assets/cdf_00a.png" width="800"/>
+
+Let's spend a few moments breaking down the structure. There are three page tabs.
 
 **Dashboard Builder Page:**<br>
-**#2:** Provides the embedded user three "containers" where elements may be placed. Elements can be selected from any of curated elements provided in the library by clicking an `Edit` button when in `Edit` mode. 
+**1:** Provides the embedded user three "containers" where elements may be placed. Elements can be selected from any of curated elements provided in the library by clicking an `Edit` button when in `Edit` mode. 
 
-Each container has an independent iframe element which is preconfigured for an click action to generate an iframe event when clicked:
+Each container has an independent iframe element which is preconfigured for a click action to generate an iframe event when clicked:
 
 <img src="assets/dbb_13.png" width="800"/>
 
 The action sets the nodeID and URL value (each area has a different static value assigned) once a KPI is selected for the selected area, if the nodeID is not empty. 
 
-**3:** The controls are shown on the Dashboard Builder page only so that we can see the values change as we make changes.
+**2:** The controls are shown on the Dashboard Builder page only so that we can see the values change as we make changes.
 
 In order for the host application to know which control and "viz / container" is configured for which element, it needs to be able to construct the proper combination of URL, NodeID and most recent Explore key for each element the user has selected.
 
-Storing the values in controls allows the dashboard to be changed by the user at any time, without effecting other users. 
+Storing the values in controls allows the dashboard to be changed by the user at any time, without affecting other users. 
 
 Once the user has saved a bookmark, the configuration data is written to a local JSON database. 
 
@@ -109,14 +125,14 @@ Once the user has saved a bookmark, the configuration data is written to a local
 
 **4:** A toggle control to allow the user to place the workbook into edit mode and select from the library. 
 
-If we click `Edit`, the modal appears, and displays the three KPI that are curated for us on the `Library` page:
+If we click `Edit`, the modal appears, and displays the three KPIs that are curated for us on the `Library` page:
 
 <img src="assets/dbb_07.png" width="800"/>
 
 **Library Page:**<br>
-Houses the curated elements that users can select from. We have pre-build three KPI for the QuickStart and included them in the template.
+Houses the curated elements that users can select from. We have pre-built three KPIs for the QuickStart and included them in the template.
 
-Looking at the actions for the `Revenue` KPI, we can see that when it is clicked, the `vizEmbedUrlControl` on the `Dashboard Builder` page is updated. This allow Sigma to know which KPI was selected by the user:
+Looking at the actions for the `Revenue` KPI, we can see that when it is clicked, the `vizEmbedUrlControl` on the `Dashboard Builder` page is updated. This allows Sigma to know which KPI was selected by the user:
 
 <img src="assets/dbb_08.png" width="800"/>
 
@@ -142,7 +158,7 @@ We will share with the `Embed_Users` team created in the `REST API Usage 01: Get
 ## Register Plugin in Sigma
 Duration: 5
 
-To keep this simple. we will use a compiled version of the Dashboard Builder plugin code in a hosted environment. This means all we have to do is configure a plugin in Sigma and provide the URL's for production and development.
+To keep this simple, we will use a compiled version of the Dashboard Builder plugin code in a hosted environment. This means all we have to do is configure a plugin in Sigma and provide the URL's for production and development.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The source code for the plugin is included in a public GitHub repository, so that you can explore it at a later time. 
@@ -341,7 +357,7 @@ Let’s run some quick validation tests to make sure everything works as expecte
 3. The dropdown should stay on `1` and the `Revenue` KPI should be in `Area 1`.
 4. Using the select control, switch between `Original` and `1` - Area 1 should restore correctly.
 
-The rest of the tests are really similar so screenshots are not provided as the workflow and result is really similar to test one.
+The rest of the tests are really similar so screenshots are not provided as the workflow and results are very similar to Test One.
 
 ### Test Two: Dual Area
 1. Starting from the `Original Workbook`, place KPI in `Area 1`
@@ -489,7 +505,7 @@ git pull origin main
 ```
 
 Change directory to the new folder:
-```bash
+```copy-code
 cd plugin_dashboard_builder
 ```
 
