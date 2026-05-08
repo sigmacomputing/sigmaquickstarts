@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2025-10-30
+lastUpdated: 2026-05-10
 
 # Connect Snowflake Intelligence to Sigma Workbook
 
@@ -112,13 +112,13 @@ Click the `Create agent` button.
 <strong>NOTE:</strong><br> Make sure you are using the ACCOUNTADMIN role.
 </aside>
 
-Set the database and schema as shown. the `name` and `display name` to `QUICKSTARTS`:
+Set the database and schema as shown, and set the `name` and `display name` to `QUICKSTARTS`:
 
 <img src="assets/cortex_05.png" width="600"/>
 
  Click `Create agent`.
 
-Once the agent is created, we instruct the agent adopt a persona to help tailor the responses to our sample retail dataset.
+Once the agent is created, we instruct the agent to adopt a persona to help tailor the responses to our sample retail dataset.
 
 Use the prompt:
 ```copy-code
@@ -188,7 +188,7 @@ GRANT ROLE SIGMA_SERVICE_ROLE TO USER SIGMA_SERVICE_USER;
 GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-After selecting `Run All` the script will run to success (at can take a minute or two to run to completion).
+After selecting `Run All` the script will run to success (it can take a minute or two to run to completion).
 
 Now would be a good time to configure the connection to Snowflake in Sigma. The connection will require key-pair authentication and write-back enabled.
 
@@ -385,15 +385,23 @@ For more information on how to create agents in Snowflake, see [Configure and in
 ## Sigma Template
 Duration: 5
 
-There is a Sigma template we can use to save you the time of building the Sigma workbook yourself, although that is not hard to do either. 
+We have made the final workbook that is created during this QuickStart available as a Sigma Template. This option allows you to read along while having the workbook built for you. The template is not required and the end result is the same if you build it yourself. 
 
-In Sigma, select `Templates`, search for `quickstarts` and select the `Snowflake Intelligence Quickstart` template:
+<aside class="negative">
+<strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
 
-<img src="assets/cortex_25.png" width="800"/>
+In order to use the template you must first log onto your Sigma instance and then browse to the url:
 
-This will open a pre-configured workbook for us where we can make a few additions and adjustments. Templates can save a lot of time!
+<a href="https://app.sigmacomputing.com/template?provider=7d0fc8a6-bf65-47f4-86e6-39eba581fe15&shareId=55af1852-7e92-4f3b-b817-5d87ffaf239c&namespace=production&templateId=f2bdaa07-62a5-4c8f-9c9b-95f503ab2374">Snowflake Intelligence Template</a>
+</aside>
 
-<img src="assets/cortex_26.png" width="800"/>
+The template will prompt to `Swap data sources`. In this case, we don't need to match to any existing data so just choose the `Sigma Sample Database` and click `Choose`, ignoring the match values:
+
+<img src="assets/cdf_00.png" width="600"/>
+
+Once done, the fully-built workbook is presented and we can save the workbook normally:
+
+<img src="assets/cdf_00a.png" width="800"/>
 
 ### Add an input table
 We want to store all the questions/responses in the warehouse, but the template needs a place to do that. We will use an input table to make that really simple.
@@ -416,7 +424,7 @@ Now click on the `Chat Log Modal` tab and add the `Chat Log` table from `Data` >
 
 <img src="assets/cortex_12.png" width="600"/>
 
-Hide the `Data` page.In this way, users can see the chat log but do not have access to the input table.
+Hide the `Data` page. In this way, users can see the chat log but do not have access to the input table.
 
 ### Action adjustments
 We need to let the workbook actions know about our new input table and stored procedure.
@@ -546,7 +554,7 @@ GRANT SELECT ON TABLE SNOWFLAKE_INTELLIGENCE.AGENTS.BIG_BUYS TO ROLE SIGMA_SERVI
 ### Add custom tool to Agent
 On the `QuickStart` agent (in `EDIT`), select the `Tools` menu and `Add custom tool`. 
 
-Configure a the tool to use the new function and click the `Generate with Cortex` button to let AI populate the `Description`:
+Configure the tool to use the new function and click the `Generate with Cortex` button to let AI populate the `Description`:
 
 <img src="assets/cortex_22.png" width="800"/>
 
