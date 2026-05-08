@@ -11,12 +11,12 @@ lastUpdated: 2026-06-06
 # (05-2026) May
 <!-- The above name is what appears on the website and is searchable. 
 
- 08 changes:
+ 08 changes: 7 (Administration: 1, AI: 1, API: 1, Workbooks: 4)
  15 changes:
  22 changes:
  29 changes:
 
-Publish on xx
+Publish on June 5
 
  <img src="assets/heart_icon.png" width="25"/>
 -->
@@ -53,8 +53,44 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+
+## Actions
+Duration: 20
+
+### Action Button Column Formatting
+Format table columns that trigger action sequences to display as buttons, making interactivity visually explicit for end users.
+
+For more information, see [Action Button Column Formatting](https://help.sigmacomputing.com/docs/format-and-customize-a-table#format-action-button-columns)
+
+### Call API Action (GA) <img src="assets/heart_icon.png" width="25"/>
+Call API Action is now generally available. Create actions that call API endpoints directly within Sigma workbooks to trigger workflows, enrich data, and integrate external systems. Supports diverse authentication methods, dynamic parameters, and typed request bodies.
+
+**WHY IT MATTERS:**
+GA status means this is production-ready for enterprise use. Teams can reliably trigger external workflows, push data to downstream systems, and orchestrate multi-step processes without leaving Sigma — a meaningful capability for operational analytics at scale.
+
+For more information, see [Call API Action](https://help.sigmacomputing.com/docs/create-actions-that-call-api-endpoints)
+
+There is also a QuickStart, [API Actions - Getting Started](https://quickstarts.sigmacomputing.com/guide/developers_api_actions_getting_started/index.html?index=..%2F..index#0)
+
+### Download Reports as PDF <img src="assets/heart_icon.png" width="25"/>
+Create workbook actions that download entire reports in PDF format for distribution and offline access.
+
+**WHY IT MATTERS:**
+PDF export via workbook actions closes a common gap for stakeholders who need polished, shareable reports outside the browser — useful for scheduled distributions, executive reviews, and compliance documentation.
+
+For more information, see [Download Reports as PDF](https://help.sigmacomputing.com/docs/create-actions-that-send-notifications-and-export-data#download-a-report)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+
 ## Administration
 Duration: 20
+
+### Databricks Sample Connection
+The `Sigma Sample Catalog,` a sample Databricks connection, is now available to all Sigma organizations upon request for testing and development purposes. This gives teams a ready-made environment to explore Sigma's Databricks integration without needing to configure their own connection.
+
+For more information, see [Databricks Sample Connection](https://help.sigmacomputing.com/docs/sigmas-sample-connection)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -62,11 +98,33 @@ Duration: 20
 ## AI
 Duration: 20
 
+### Agent Skills for Sigma <img src="assets/heart_icon.png" width="25"/>
+Install agent skills to enable AI assistants to authenticate to the Sigma REST API and create Sigma documents as code. Skills are available through the public skills repository.
+
+**WHY IT MATTERS:**<br>
+This opens Sigma to AI-driven automation workflows — agents can authenticate and build Sigma content programmatically, extending what's possible for teams embedding AI assistants into their development and analytics pipelines.
+
+For more information, see [Agent Skills for Sigma](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## AI Apps
+Duration: 20
+
+
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## API
 Duration: 20
+
+### New API Endpoints for Managing Credentials and Connectors
+Ten new endpoints provide programmatic management of API credentials and connectors:
+
+- Five endpoints for API credentials (list, retrieve, create, update, delete) via [v2/api-credentials](https://help.sigmacomputing.com/reference/listapicredentials)
+- Five endpoints for API connectors (list, retrieve, create, update, delete) via [v2/api-connectors](https://help.sigmacomputing.com/reference/listapiconnectors)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -86,13 +144,7 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## AI Apps
-Duration: 20
 
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## Data Modeling
 Duration: 20
@@ -124,7 +176,7 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## New QuickStarts in XXXX
+## New QuickStarts in May
 Duration: 20
 
 
@@ -143,7 +195,12 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
+### True Transparency for Element Backgrounds
+Setting an element's background color to `None` now renders as genuine transparency, allowing page and container background images to show through rather than defaulting to the background color.
 
+For example, the image on the left is using a white background while the other is transparent:
+
+<img src="assets/fff_01.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
