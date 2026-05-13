@@ -330,7 +330,6 @@ Under `Configure`, click the `+` next to `Data elements`.
 
 Connecting `PIPELINE_AGENT` here makes it available to your Sigma agent as a callable tool. Without this, all analysis stays inside Sigma — there's no path to Cortex's transcript search, semantic analytics, or scoring rubric.
 
-click the `+` next to `Data elements`.
 1. Click the `+` next to `Warehouse agents`.
 2. Choose `PIPELINE_AGENT` from `HOL_DB.AGENTS`:
 
@@ -409,9 +408,7 @@ Required inputs:
 
 <img src="assets/bga_10.png" width="800"/>
 
-4. Now let's add and configure an action to send an escalation email.
-
-Now click `+` next to `Step` and configure the action:
+4. Click `+` next to `Steps` and configure the action:
 
 | Field | Value |
 |---|---|
@@ -465,9 +462,7 @@ Required inputs:
 - recommended_focus: 1-2 concrete areas for improvement. Be specific.
 ```
 
-8. Click `+` next to `Step` and configure the `Send Coaching Email` action.
-
-Click `Add step` (`+`) and configure:
+8. Click `+` next to `Steps` and configure:
 
 | Field | Value |
 |---|---|
@@ -549,7 +544,7 @@ This tool writes a call qualification record directly to the `Call Qualification
 15. Paste the following as the tool `Instructions`:
 
 ```copy-code
-write call to escalation input table when user requests to write back
+Write call to qualification input table when user requests to write back
 ```
 
 16. Click `+` next to `Steps` and configure:
@@ -621,7 +616,7 @@ This tool writes an escalation record to the `Escalation Log` input table.
 23. Paste the following as the tool `Instructions`:
 
 ```copy-code
-Inserts row into escalation log table
+Insert row into escalation log table
 ```
 
 24. Click `+` next to `Steps` and configure:
@@ -680,7 +675,7 @@ Cortex will respond and we can proceed:
 ## Phase 4: Test the Agent
 Duration: 10
 
-With the agent built and all three tools configured, this phase exercises every layer of the architecture in sequence — from delegating analysis to Cortex, to writing data back to your warehouse, to sending notifications, to controlling the dashboard from a single sentence. 
+With the agent built and all six tools configured, this phase exercises every layer of the architecture in sequence — from delegating analysis to Cortex, to writing data back to your warehouse, to sending notifications, to controlling the dashboard from a single sentence. 
 
 Before testing, make sure to `Publish` the workbook and `Go to published mode`.
 
@@ -717,7 +712,7 @@ Write that analysis to the Call Qualification table.
 - A structured row appears.
 - This is Sigma acting on Cortex's reasoning.
 
-We can see the new row of data Cortex wrote on the `Data` page in the `Call Qualifications` table:
+We can see the new row of data Cortex wrote on the `Data` page in the `Call Qualification` table:
 
 <img src="assets/bga_24.png" width="800"/>
 
@@ -726,7 +721,7 @@ We can see the new row of data Cortex wrote on the `Data` page in the `Call Qual
 </aside>
 
 ### Test 3: Compare Reps and Log Coaching
-Ask Cortex a followup question on the `Build` page:
+Enter the following in the Chat element:
 
 ```copy-code
 Compare Alex Rivera's calls to Sarah Chen's. Who's more effective at identifying decision-makers and building urgency? Log a coaching observation for whichever rep needs more development.
@@ -755,8 +750,6 @@ That coaching pattern is significant. Send a coaching alert to the rep.
 - The email is sent to the email configured in the agent.
 
 Check your inbox for the coaching email addressed to the rep with the observation details.
-
-<img src="assets/bga_25.png" width="800"/>
 
 ### Test 5: Spotlight an Account
 
@@ -828,7 +821,7 @@ Place the workbook in `Edit` mode.
 |---|---|
 | Total Calls | Count of `Call ID` |
 | Avg Trust Score | Average of `Trust_Quadrant_Score` |
-| At-Risk Deals | Formula: `CountIf([Trust Quadrant Score] < 40)` |
+| At-Risk Deals | Formula: `CountIf([Trust_Quadrant_Score] < 40)` |
 | Accounts | Count Distinct of `Customer Name` |
 
 <aside class="positive">
@@ -882,7 +875,7 @@ The division of responsibility between the two layers looks like this:
 
 <img src="assets/bga_32.png" width="800"/>
 
-The sales pipeline context is the scaffold, not the constraint. The three action tools you built — email escalation, coaching alerts, and account spotlight — are reusable patterns. The write-then-notify sequence (agent writes data, tool sends email) applies anywhere decisions need to become actions: support ticket escalation, hiring recommendations, compliance flagging. What changes is the domain and the instructions; what stays the same is the architecture.
+The sales pipeline context is the scaffold, not the constraint. The six tools you built — three writeback tools, two email notifications, and one dashboard control — are reusable patterns. The write-then-notify sequence (agent writes data, tool sends email) applies anywhere decisions need to become actions: support ticket escalation, hiring recommendations, compliance flagging. What changes is the domain and the instructions; what stays the same is the architecture.
 
 That pattern holds across any domain where unstructured data needs to become a governed decision:
 
