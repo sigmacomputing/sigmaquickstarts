@@ -3,9 +3,9 @@ id: partners_snowflake_summit_2026
 summary: Build an AI-powered retail loss prevention application using Sigma, Snowflake, Python ML, and Cortex AI
 categories: partners
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags:
 lastUpdated: 2026-06-13
 
 # Retail Loss Prevention with AI-Powered Anomaly Detection
