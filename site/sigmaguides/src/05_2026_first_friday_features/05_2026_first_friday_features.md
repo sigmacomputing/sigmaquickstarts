@@ -12,7 +12,7 @@ lastUpdated: 2026-06-06
 <!-- The above name is what appears on the website and is searchable. 
 
  08 changes: 7 (Administration: 1, AI: 1, API: 1, Workbooks: 4)
- 15 changes: 
+ 15 changes: 7 (Administration: 3, API: 1, Charts: 1, Bug Fixes: 1, Workbooks: 1)
  22 changes:
  29 changes:
 
@@ -87,10 +87,41 @@ For more information, see [Download Reports as PDF](https://help.sigmacomputing.
 ## Administration
 Duration: 20
 
+### Audit Logs for Tenant Organizations in Other Regions (Beta) <img src="assets/heart_icon.png" width="25"/>
+Parent organization administrators can now view audit logs across tenant organizations deployed in different cloud regions by accessing separate connections for each region.
+
+**WHY IT MATTERS:**<br>
+Multi-region tenant deployments are common in enterprise contexts, and centralized audit visibility is a frequent compliance requirement. This closes a gap for parent org admins managing tenants across regions.
+
+For more information, see [Review audit logs from tenant organizations](https://help.sigmacomputing.com/docs/create-and-manage-tenant-organizations#review-audit-logs-from-tenant-organizations)
+
 ### Databricks Sample Connection
 The `Sigma Sample Catalog,` a sample Databricks connection, is now available to all Sigma organizations upon request for testing and development purposes. This gives teams a ready-made environment to explore Sigma's Databricks integration without needing to configure their own connection.
 
 For more information, see [Databricks Sample Connection](https://help.sigmacomputing.com/docs/sigmas-sample-connection)
+
+### Multiple Identity Providers Support (GA) <img src="assets/heart_icon.png" width="25"/>
+Organizations can now enable multiple identity providers (IdPs) for enhanced authentication flexibility.
+
+**WHY IT MATTERS:**<br>
+Large enterprises often need to authenticate different user populations through separate IdPs — for example, employees through one provider and contractors or partners through another. GA support removes a common blocker in enterprise rollouts and security reviews.
+
+For more information, see [Using multiple identity providers for your Sigma organization](https://help.sigmacomputing.com/docs/using-multiple-identity-providers-for-your-sigma-organization)
+
+### Sigma Templates Refinement
+To ensure that the available Sigma templates shared to every organization are relevant and high quality, some Sigma-provided templates are now hidden from the list. The following templates owned by Sigma Templates remain available:
+
+- Dynamic Profit and Loss Statement
+- Fivetran Usage Template
+- Google Analytics 4
+- Loan Analysis
+- Snowflake Cost Monitoring
+- Snowflake Cost Per Query
+- Snowflake Performance Monitoring
+- Snowflake Security Monitoring
+- Tasty Bytes Fleet Performance
+
+Any workbooks created from the templates are unaffected.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -120,6 +151,13 @@ Duration: 20
 ## API
 Duration: 20
 
+### Custom SQL Elements in List Sources Endpoints
+The `List data model sources`, `List workbook sources`, and `List report sources` endpoints now include custom SQL elements in their responses. 
+
+These elements are identified with a `custom-sql` type and contain a `customSqlId` field.
+
+For more information, see [List data model sources](https://help.sigmacomputing.com/reference/listdatamodelsources), [List workbook sources](https://help.sigmacomputing.com/reference/getworkbooksources), and [List report sources](https://help.sigmacomputing.com/reference/listreportsources)
+
 ### New API Endpoints for Managing Credentials and Connectors
 Ten new endpoints provide programmatic management of API credentials and connectors:
 
@@ -132,7 +170,8 @@ Ten new endpoints provide programmatic management of API credentials and connect
 ## Bug Fixes
 Duration: 20
 
-**1:** x
+### Invalid Image URL Warning
+The editor now displays an `Invalid image URL` alert when background image URLs are malformed.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -140,9 +179,12 @@ Duration: 20
 ## Charts
 Duration: 20
 
+### Data Labels for Geography Maps
+Users can now configure custom data labels on geography maps through the `Properties` tab's `Label` option.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
+
 
 
 
@@ -194,6 +236,9 @@ Duration: 20
 
 ## Workbooks
 Duration: 20
+
+### Terminology Change - Your Documents
+We have revised the UI to consistently reference `Your documents` instead of `Documents` and `My documents` to make ownership more clear.
 
 ### True Transparency for Element Backgrounds
 Setting an element's background color to `None` now renders as genuine transparency, allowing page and container background images to show through rather than defaulting to the background color.
