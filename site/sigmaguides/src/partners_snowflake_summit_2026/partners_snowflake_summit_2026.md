@@ -227,24 +227,25 @@ Duration: 25
 
 ### Prepare the Data
 
-**Step 1**: With the workbook in `Edit` mode, navigate to the `Anomaly Detection` page.
+**Step 1**: Let's return to our saved workbook by clicking on `Your documents` and selecting the `LOSS_PREVENTION_APP_` with your name that we saved earlier:
 
-Let us navigate to the tab that contains the original workbook named LOSS_PREVENTION_APP_{YOUR}_{NAME}. With the workbook in Edit mode, navigate to the Anomaly Detection page.
+<img src="assets/rlp_16a.png" width="800"/>
 
+**Step 2**: Place the workbook in `Edit` mode, navigate to the `Anomaly Detection` page.
 
 You will see the POS table (`BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS`) which includes the store filter from Module 1:
 
 <img src="assets/rlp_16.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you removed the filter already, just reapply it for `100650 - Big Buys Salem`.
+<strong>NOTE:</strong><br> If you removed the filter already, just reapply it for `100650 - Big Buys Salem`, as shown in the optional step 3.
 </aside>
 
-**Step 2 (if required)**: Add a filter on the `STORE_IDENTIFIER` column. Select `Store 100650 - Big Buys Salem`:
+**Step 3 (if required)**: Add a filter on the `STORE_IDENTIFIER` column. Select `Store 100650 - Big Buys Salem`:
 
 <img src="assets/rlp_17.png" width="800"/>
 
-**Step 3**: Create a `Child Table` element from the filtered POS `BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS` table:
+**Step 4**: Create a `Child Table` element from the filtered POS `BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS` table:
 
 <img src="assets/rlp_18.png" width="800"/>
 
@@ -256,7 +257,7 @@ Rename this new table: `BIG_BUYS_POS_PYTHON_TEST`
 
 ### Add the Python Anomaly Detection Script
 
-**Step 4**: Add a `Python` element from the `Element bar` > `Data` group, placing it below the `BIG_BUYS_POS_PYTHON_TEST` child table:
+**Step 5**: Add a `Python` element from the `Element bar` > `Data` group, placing it below the `BIG_BUYS_POS_PYTHON_TEST` child table:
 
 <img src="assets/rlp_19.png" width="800"/>
 
@@ -313,13 +314,13 @@ df['ML_ANOMALY_FLAG'] = np.where(df['STATUS_CODE'] == -1, True, False)
 sigma.output('python_output', df)
 ```
 
-**Step 5**: Copy and paste the code into the Python element, replacing the sample code:
+**Step 6**: Copy and paste the code into the Python element, replacing the sample code:
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Ensure your naming conventions match the script. If your table names differ from the instructions, you must update the script accordingly to avoid execution errors.
 </aside>
 
-**Step 6**: Click `Run` (lower right corner of the element):
+**Step 7**: Click `Run` (lower right corner of the element):
 
 <img src="assets/rlp_20.png" width="800"/>
 
@@ -332,7 +333,7 @@ Rename the table `MODEL_COMPARISON`.
 ### Visualize the Comparison
 We will now use this table to visualize the output to compare the Python model against the original static rules.
 
-**Step 7**: Create a child `Chart` from the `MODEL_COMPARISON` table:
+**Step 8**: Create a child `Chart` from the `MODEL_COMPARISON` table:
 
 <img src="assets/rlp_22.png" width="800"/>
 
