@@ -3,10 +3,10 @@ id: partners_snowflake_summit_2026
 summary: Build an AI-powered retail loss prevention application using Sigma, Snowflake, Python ML, and Cortex AI
 categories: partners
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-05-13
+tags: default
+lastUpdated: 2026-06-13
 
 # Retail Loss Prevention with AI-Powered Anomaly Detection
 
@@ -35,7 +35,6 @@ Participants of Snowflake Summit 2026 who are interested in getting hands-on wit
 
 <ul>
   <li>A computer with a current browser (any browser will work)</li>
-  <li>A personal email address (for account creation)</li>
 </ul>
 
 <aside class="negative">
@@ -52,18 +51,14 @@ Participants of Snowflake Summit 2026 who are interested in getting hands-on wit
 ## Setup
 Duration: 10
 
-**Step 1**: Use this link to navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol)
+**Step 1**: Use this link to navigate to [Sigma](http://app.sigmacomputing.com/snowflake-summit-2026-hol)
 
-**Step 2**: Sign up for an account using your personal email by selecting `create an account` and entering your personal email address.
+**Step 2**: Create an account by selecting `Sign up` and entering your email address:
 
 <img src="assets/sfs_2026_01.png" width="400"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab! Use only the URL and instructions provided by your lab facilitator.
-</aside>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Be sure to have a personal email ready — we'd prefer to avoid accidental sign-ups for new Sigma accounts!
 </aside>
 
 We have whitelisted the following domains for this lab:
@@ -149,11 +144,15 @@ Use the **State** filter to drill down specifically to `Oregon`:
 
 With Sigma, you can click on an element to see the underlying data directly. 
 
-For example, you could click on `Noreen Swift's` bar in the chart and `Drill down` to see all the flagged transactions she handled:
+For example, you could could select the bar chart and `Show underlying data` to see the flagged transaction detail data:
 
 <img src="assets/rlp_06a.png" width="500"/>
 
-You can do further analysis directly there, or use `AI Agents` as shown in the next step.
+You could do further analysis directly there, or use `AI Agents` as shown in the next step.
+
+Click the `X`` to close the modal:
+
+<img src="assets/rlp_06b.png" width="700"/>
 
 We will use `Sigma Assistant` to investigate Noreen Swift's performance, starting with broad metrics and narrowing our focus.
 
@@ -229,6 +228,9 @@ Duration: 25
 ### Prepare the Data
 
 **Step 1**: With the workbook in `Edit` mode, navigate to the `Anomaly Detection` page.
+
+Let us navigate to the tab that contains the original workbook named LOSS_PREVENTION_APP_{YOUR}_{NAME}. With the workbook in Edit mode, navigate to the Anomaly Detection page.
+
 
 You will see the POS table (`BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS`) which includes the store filter from Module 1:
 
@@ -396,7 +398,11 @@ COUNT([SCAN_ID])
 
 <img src="assets/rlp_37.png" width="350"/>
 
-**Step 6**: Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Format type` > `Color Scale` > `Custom` > `Sequential`.
+**Step 6**: Add `Conditional formatting` to the `PERCENT FLAGGED` column:
+
+<img src="assets/rlp_37d.png" width="400"/>
+
+Add `Format type` > `Color Scale` > `Custom` > `Sequential`.
 
 Sigma presents two square boxes that when clicked, allow you to set a custom color.
 
