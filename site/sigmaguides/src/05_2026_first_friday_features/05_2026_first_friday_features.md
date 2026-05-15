@@ -12,13 +12,13 @@ lastUpdated: 2026-06-06
 <!-- The above name is what appears on the website and is searchable. 
 
  08 changes: 7 (Administration: 1, AI: 1, API: 1, Workbooks: 4)
- 15 changes:
+ 15 changes: 
  22 changes:
  29 changes:
 
 Publish on June 5
 
- <img src="assets/heart_icon.png" width="25"/>
+<img src="assets/heart_icon.png" width="25"/>
 -->
 
 ## Overview 

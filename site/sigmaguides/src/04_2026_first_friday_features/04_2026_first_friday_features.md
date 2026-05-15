@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
-lastUpdated: 2026-06-14
+lastUpdated: 2026-05-01
 
 # (04-2026) April
 <!-- The above name is what appears on the website and is searchable. 
