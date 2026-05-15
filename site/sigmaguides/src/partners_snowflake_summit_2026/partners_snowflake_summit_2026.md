@@ -3,10 +3,10 @@ id: partners_snowflake_summit_2026
 summary: Build an AI-powered retail loss prevention application using Sigma, Snowflake, Python ML, and Cortex AI
 categories: partners
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-05-13
+tags: default
+lastUpdated: 2026-06-13
 
 # Retail Loss Prevention with AI-Powered Anomaly Detection
 
@@ -35,7 +35,6 @@ Participants of Snowflake Summit 2026 who are interested in getting hands-on wit
 
 <ul>
   <li>A computer with a current browser (any browser will work)</li>
-  <li>A personal email address (for account creation)</li>
 </ul>
 
 <aside class="negative">
@@ -52,18 +51,14 @@ Participants of Snowflake Summit 2026 who are interested in getting hands-on wit
 ## Setup
 Duration: 10
 
-**Step 1**: Use this link to navigate to [Sigma](https://app.sigmacomputing.com/snowflake-summit-2025-hol)
+**Step 1**: Use this link to navigate to [Sigma](http://app.sigmacomputing.com/snowflake-summit-2026-hol)
 
-**Step 2**: Sign up for an account using your personal email by selecting `create an account` and entering your personal email address.
+**Step 2**: Create an account by selecting `Sign up` and entering your email address:
 
 <img src="assets/sfs_2026_01.png" width="400"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab! Use only the URL and instructions provided by your lab facilitator.
-</aside>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Be sure to have a personal email ready — we'd prefer to avoid accidental sign-ups for new Sigma accounts!
 </aside>
 
 We have whitelisted the following domains for this lab:
@@ -149,11 +144,15 @@ Use the **State** filter to drill down specifically to `Oregon`:
 
 With Sigma, you can click on an element to see the underlying data directly. 
 
-For example, you could click on `Noreen Swift's` bar in the chart and `Drill down` to see all the flagged transactions she handled:
+For example, you could could select the bar chart and `Show underlying data` to see the flagged transaction detail data:
 
 <img src="assets/rlp_06a.png" width="500"/>
 
-You can do further analysis directly there, or use `AI Agents` as shown in the next step.
+You could do further analysis directly there, or use `AI Agents` as shown in the next step.
+
+Click the `X`` to close the modal:
+
+<img src="assets/rlp_06b.png" width="700"/>
 
 We will use `Sigma Assistant` to investigate Noreen Swift's performance, starting with broad metrics and narrowing our focus.
 
@@ -228,21 +227,25 @@ Duration: 25
 
 ### Prepare the Data
 
-**Step 1**: With the workbook in `Edit` mode, navigate to the `Anomaly Detection` page.
+**Step 1**: Let's return to our saved workbook by clicking on `Your documents` and selecting the `LOSS_PREVENTION_APP_` with your name that we saved earlier:
+
+<img src="assets/rlp_16a.png" width="800"/>
+
+**Step 2**: Place the workbook in `Edit` mode, navigate to the `Anomaly Detection` page.
 
 You will see the POS table (`BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS`) which includes the store filter from Module 1:
 
 <img src="assets/rlp_16.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> If you removed the filter already, just reapply it for `100650 - Big Buys Salem`.
+<strong>NOTE:</strong><br> If you removed the filter already, just reapply it for `100650 - Big Buys Salem`, as shown in the optional step 3.
 </aside>
 
-**Step 2 (if required)**: Add a filter on the `STORE_IDENTIFIER` column. Select `Store 100650 - Big Buys Salem`:
+**Step 3 (if required)**: Add a filter on the `STORE_IDENTIFIER` column. Select `Store 100650 - Big Buys Salem`:
 
 <img src="assets/rlp_17.png" width="800"/>
 
-**Step 3**: Create a `Child Table` element from the filtered POS `BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS` table:
+**Step 4**: Create a `Child Table` element from the filtered POS `BIG_BUYS_POS_ENRICHED_SHRINK_FLAGS` table:
 
 <img src="assets/rlp_18.png" width="800"/>
 
@@ -254,7 +257,7 @@ Rename this new table: `BIG_BUYS_POS_PYTHON_TEST`
 
 ### Add the Python Anomaly Detection Script
 
-**Step 4**: Add a `Python` element from the `Element bar` > `Data` group, placing it below the `BIG_BUYS_POS_PYTHON_TEST` child table:
+**Step 5**: Add a `Python` element from the `Element bar` > `Data` group, placing it below the `BIG_BUYS_POS_PYTHON_TEST` child table:
 
 <img src="assets/rlp_19.png" width="800"/>
 
@@ -311,13 +314,13 @@ df['ML_ANOMALY_FLAG'] = np.where(df['STATUS_CODE'] == -1, True, False)
 sigma.output('python_output', df)
 ```
 
-**Step 5**: Copy and paste the code into the Python element, replacing the sample code:
+**Step 6**: Copy and paste the code into the Python element, replacing the sample code:
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Ensure your naming conventions match the script. If your table names differ from the instructions, you must update the script accordingly to avoid execution errors.
 </aside>
 
-**Step 6**: Click `Run` (lower right corner of the element):
+**Step 7**: Click `Run` (lower right corner of the element):
 
 <img src="assets/rlp_20.png" width="800"/>
 
@@ -330,7 +333,7 @@ Rename the table `MODEL_COMPARISON`.
 ### Visualize the Comparison
 We will now use this table to visualize the output to compare the Python model against the original static rules.
 
-**Step 7**: Create a child `Chart` from the `MODEL_COMPARISON` table:
+**Step 8**: Create a child `Chart` from the `MODEL_COMPARISON` table:
 
 <img src="assets/rlp_22.png" width="800"/>
 
@@ -396,7 +399,11 @@ COUNT([SCAN_ID])
 
 <img src="assets/rlp_37.png" width="350"/>
 
-**Step 6**: Add `Conditional formatting` to the `PERCENT FLAGGED` column. Add `Format type` > `Color Scale` > `Custom` > `Sequential`.
+**Step 6**: Add `Conditional formatting` to the `PERCENT FLAGGED` column:
+
+<img src="assets/rlp_37d.png" width="400"/>
+
+Add `Format type` > `Color Scale` > `Custom` > `Sequential`.
 
 Sigma presents two square boxes that when clicked, allow you to set a custom color.
 
