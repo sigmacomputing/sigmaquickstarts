@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-18
+lastUpdated: 2026-05-10
 
 # Embedding 15: Embed-SDK for React
 

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-13
+lastUpdated: 2026-05-10
 
 # Fundamentals 08: Administration
 
