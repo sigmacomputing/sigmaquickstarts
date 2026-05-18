@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-03-27
+lastUpdated: 2026-05-10
 
 # Automate Inventory Alerts with Scheduled Actions
 

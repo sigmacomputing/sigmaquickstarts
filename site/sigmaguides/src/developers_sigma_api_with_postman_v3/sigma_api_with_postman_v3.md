@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-06-04
+lastUpdated: 2026-05-18
 
 # Sigma API with Postman
 
@@ -20,14 +20,14 @@ Postman is an API platform for developers to design, build, test and iterate the
 Postman offers a tiered pricing model, with a free option that allows for "designing, developing, and testing APIs". We will use the free tier for testing.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma's intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
 For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
-If something doesn’t work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
- ### Target Audience
+### Target Audience
 Developers who are interested in using the API methods provided by Sigma to automate operations or use functionality embedded in their own commercial applications. 
 
 ### Prerequisites
@@ -36,7 +36,7 @@ Developers who are interested in using the API methods provided by Sigma to auto
   <li>A computer with a current browser. It does not matter which browser you want to use.</li>
   <li>Access to your Sigma environment. A Sigma trial environment is acceptable and preferred.</li>
   <li>Postman installed. Web or Desktop version will work.</li>
-  <li>If have not already, you can sign up for a Sigma Trial here:</li>
+  <li>If you have not already, you can sign up for a Sigma Trial here:</li>
 </ul>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
@@ -55,63 +55,52 @@ If you already have a Postman account you can use that or otherwise you will hav
 
 After signing into Postman, click into `Workspaces`:
 
-<img src="assets/pm1.png" width="500"/>
+<img src="assets/pm1.png" width="800"/>
 
 There are several workflows available in Postman and we will use this one:
 
 Create a `new Workspace` called `Sigma`:
 
-<img src="assets/pm2.png" width="500"/>
+<img src="assets/pm2.png" width="800"/>
 
-Give it the `name`, `description` and set the `visibility to Personal` for now. Click `Create Workspace`:
+Give it the `name` and `description` and click `Create Workspace`:
 
-<img src="assets/pm3.png" width="400"/>
+<img src="assets/pm3.png" width="600"/>
 
-We want to create a new API and there are several ways to do that. In our case, we will use the `Import` option as we will grab the latest Sigma API release from our public API Reference page.
+We want to create a new "Collection" and there are several ways to do that. In our case, we will use the `Import` option as we will grab the latest Sigma API release from our public API Reference page.
 
-Click the `Collections` icon and click then the `Import` icon:
+Click the `3-dot menu` icon and select `Import`:
 
-<img src="assets/pm29.png" width="500"/>
+<img src="assets/pm29.png" width="800"/>
 
-Next we will need to get the link (URL) to the latest Sigma API. Open another browser tab.
+We need to provide the URL to the latest Sigma API. This is available from the [Sigma API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api) under the button `Download the Sigma OpenAPI Definitions`.
 
-[Browse to the Sigma API Reference](https://help.sigmacomputing.com/reference/get-started-sigma-api)
+Here is that URL:
+```copy-code
+https://help.sigmacomputing.com/openapi/sigma-computing-public-rest-api.json
+```
 
-Scroll down the page and click the button `Download the Sigma OpenAPI Definitions`:
+Paste the URL into Postman. When ready, we are prompted:
 
-<img src="assets/pm6.png" width="800"/>
+<img src="assets/pm32b.png" width="600"/>
 
-Using Postman, click to `import` the downloaded file:
+Click `Import`. 
 
-<img src="assets/pm30.png" width="800"/>
+The import will run and Postman will show a running icon:
 
-Drag and drop the downloaded file into the space provided by Postman and click `Import`:
+<img src="assets/pm32a.png" width="500"/>
 
-<img src="assets/pm31.png" width="500"/>
+When done, the API will appear as a new `Collection`. It may be helpful to rename the collection if you have more than one copy.
 
-When done, it API will appear as a new `Collection`. It may be helpful to rename the collection if you have more than one copy.
+<img src="assets/pm32.png" width="800"/>
 
-<img src="assets/pm32.png" width="500"/>
+Expand the `Sigma Computing Public REST API` > `v2` to see the available methods as below:
 
-Expand the `Sigma Public API` to see the available methods as below:
+<img src="assets/pm33.png" width="700"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> We renamed our collection "Sigma Public API - TESTING". This is optional.
-</aside>
+To use any API in the web version of Postman, you can either use the `Cloud Agent` or install the `Postman Desktop Agent` on your local machine. We will let Postman decide and use the Cloud Agent to keep things simple.
 
-<img src="assets/pm33.png" width="500"/>
-
-In order to be able to use any API in the web version of Postman, you can either use the `Cloud Agent` or install the `Postman Agent` on your local machine. 
-
-To keep things simple we will use the `Cloud Agent` for this QuickStart.
-
-<img src="assets/pmRevised1.png" width="500"/>
-
-So you know the difference, the Postman Desktop Agent is a micro-application that runs locally on your desktop. It enables you to bypass the limitations that exist in the browser by allowing API requests to originate in the browser, but be routed through your local machine and network. The Postman Desktop Agent overcomes the Cross Object Resource Sharing (CORS) limitations of browsers and acts as your agent for making API requests from the Postman web app.
-
-Download and install the Postman Desktop Agent. You will need to unzip to perform the installation. 
-
-<button>[Login or Sign Up to Postman](https://www.postman.com/downloads/postman-agent/)</button>
+<img src="assets/pmRevised1.png" width="700"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -121,7 +110,7 @@ Duration: 10
 
 In preparation for using the API we need to use Sigma to generate a new API Token.
 
-Log onto Sigma (as Administrator). Navigate to `Administration`, `Developer access`.
+Log onto Sigma (as Administrator). Navigate to `Administration` > `Developer access`.
 
 Click the `Create New` button:
 
@@ -129,11 +118,11 @@ Click the `Create New` button:
 
 Select `REST API`, give it a name and description. Some customers create a `Service Account` user for automation purposes; this is a best practice. Since we are just testing, you can choose any `Admin` user you prefer. Click `Create`.
 
-<img src="assets/pm12.png" width="600"/>
+<img src="assets/pm12.png" width="350"/>
 
-Copy the `ClientID` and `Secret` from the popup and save them to a secure location. We will use them later. Close the popup:
+Copy the `ClientID` and `Secret` and save them to a secure location. We will use them later. Then click `Close`:
 
-<img src="assets/pm13.png" width="600"/>
+<img src="assets/pm13.png" width="550"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -147,34 +136,30 @@ Creating a dedicated `environment` in Postman is a great approach for managing v
 
 It not only helps in organizing and isolating your variables based on different stages of development (like testing, staging, and production) but also enhances security by keeping sensitive information such as tokens and secrets scoped to specific environments. 
 
-Since Sigma is a SaaS platform, we will only be using one environment, but this is great functionality to know when using Postman to work with APIs.
+We will only be using one environment, but this is great functionality to know when using Postman to work with APIs.
 
 In any case, we need to manage the Sigma bearer token, so let's do it using Postman environment variables, which is a best-practice.
 
-Here’s how you can set up an environment in Postman:
+Here's how you can set up an environment in Postman:
 
 ### Create a New Environment
 
-Open the `Environments Manager` by clicking on the gear icon in the top right corner of Postman or use the “Manage Environments” option from the environment dropdown.
+Environment variables in Postman allow values to be referenced dynamically. For example, {{access_token}} will retrieve the most recent value stored in that variable, for the current selected environment.
 
-Click on the `Add` button to create a new environment.
+Expand `Environments` in the lower left side of Postman.
+
+Click `+ Create`:
 
 <img src="assets/pmRevised2.png" width="800"/>
 
-In the modal window that Postman display, select `Environment`.
+Give the new environment a meaningful name, such as `Sigma API Testing`.
 
-Give the new environment a meaningful name, such as `Sigma AWS Production`.
-
-We need to add some variables. The `Current Value` will populate automatically and in the case of the blank variables, will populate with we actually authenticate. 
-
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Environment variables in Postman allow values to be referenced dynamically. For example, {{access_token}} will retrieve the most recent value stored in that variable, for the current selected environment.
-</aside>
+Copy and paste the values below into the respective `Variable` and `Value` fields:
 
 ```copy-code
 Variable       /   Initial Value
-baseUrl        /   https://aws-api.sigmacomputing.com
-tokenBaseURL   /   https://aws-api.sigmacomputing.com/v2/auth/token
+baseUrl        /   https://api.us-a.aws.sigmacomputing.com
+tokenBaseURL   /   https://api.us-a.aws.sigmacomputing.com/v2/auth/token
 clientID       /   "Your Client ID"
 secret         /   "Your secret"
 access_token   /   Leave blank
@@ -183,21 +168,19 @@ token_type     /   Leave blank
 expires_in     /   Leave blank
 ```
 
-<img src="assets/pmRevised3.png" width="800"/>
-
-`Save`the changes.
-
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Be sure to replace the initial and current values with the correct URLs based on where the Sigma portal is hosted (ie: AWS, GCP or Azure)
+<strong>IMPORTANT:</strong><br> Be sure to replace the initial and current values with the correct URLs based on where the Sigma portal is hosted (e.g., AWS, GCP, or Azure).
 </aside>
 
-If unsure where Sigma is hosted, this is found in `Sigma` > `Administration` > `Account`:
+<img src="assets/pmRevised3.png" width="800"/>
+
+If unsure where Sigma is hosted, this is found in `Sigma` > `Administration` > `General Settings` > `Site`:
 
 <img src="assets/pm13c.png" width="800"/>
 
-[The baseURL for each cloud is available here](https://docs.sigmacomputing.com/api/v2/#servers)
+For the list of API endpoints by cloud platform and region, see [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
 
-Modify the `tokenBaseURL` and `tokenBaseURL` as needed for the cloud provider.
+Modify the `baseUrl` and `tokenBaseURL` as needed for the cloud provider.
 
 ### Use the new environment
 
@@ -207,8 +190,6 @@ Once we have the new environment saved, we need to make it the active one for ou
 
 <img src="assets/pmRevised4.png" width="800"/>
 
-Save the changes and **CLOSE THIS TAB.**
-
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
@@ -217,23 +198,23 @@ Duration: 10
 
 Sigma's API requires that we authenticate prior to use. 
 
-We will be using variables that we setup in the last step to request a `access_token`. This access_token is also known as a Bearer or JSON web token (JWT).
+We will be using variables that we set up in the last step to request an `access_token`. This access_token is also known as a Bearer or JSON web token (JWT).
 
 We are going to add a `POST` method to automate authenticating, retrieving an access_token, and persisting it in a variable. 
 
 ### New POST Method
 
-Click `v2` > `Add request`:
+Click `3-dot` menu > `Add request`:
 
-<img src="assets/pm35.png" width="500">
+<img src="assets/pm35.png" width="500"/>
 
 This opens a new request which we will rename to `Authenticate`.   
 
 Change the `method` to `POST` and `Authorization` to `No Auth`:
 
-<img src="assets/pm35b.png" width="800">
+<img src="assets/pm35b.png" width="800"/>
 
-Under the `Body` tab, all the following values (two are environment variables and one is static):
+Under the `Body` tab, add the following values (two are environment variables and one is static):
 
 Be sure to select the **x-www-form-urlencoded** message type.
 
@@ -243,39 +224,41 @@ client_id       / {{clientID}}
 client_secret   / {{secret}}
 ```
 
-<img src="assets/pm35c.png" width="=800">
+Provide the request url using the curly-brace format to leverage our environment variable:
+```copy-code
+{{tokenBaseURL}}
+```
 
-Provide the request url using the curly-brace format to leverage our environment variable for `tokenBaseURL`:
-
-<img src="assets/pm35d.png" width="800">
+<img src="assets/pm35d.png" width="600"/>
 
 We want to persist this new `access_token` in our environment variable under the same name.
 
 To do that, we need to add this script to the authenticate method, under the `Scripts` > `Post-response` tab:
 ```copy-code
 let responseData = pm.response.json(); // Extract the JSON response
-pm.environment.set("access_token", responseData.access_token); // Store the access token as an environment variable
+pm.environment.set("access_token", responseData.access_token);   // Bearer token
+pm.environment.set("refresh_token", responseData.refresh_token); // Refresh token
+pm.environment.set("token_type", responseData.token_type);       // Always "bearer"
+pm.environment.set("expires_in", responseData.expires_in);       // Seconds until expiry
 ```
 
 <img src="assets/pmRevised5.png" width="800"/>
 
 Now that we are configured, click `Save` and `Send` to try our request. If all is correct, we will get a `Status 200 OK` and an access token:
 
-<img src="assets/pm35e.png" width="800">
+<img src="assets/pm35e.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The access_token that we must now pass for all requests (withing this expiration period) is the value between the quotation marks.
-
-access_token do expire. If the API later returns one of these (or similar):<br>
+<strong>NOTE:</strong><br> Access tokens are valid for one hour. If the API later returns one of these (or similar):<br>
 
 message="invalid signature"<br>
 code="unauthorized"<br>
 message="jwt expired"<br>
 
-...we just need to resend the Authentication request, copy and paste the new token as we demonstrated earlier in this section.
+...just re-send the Authenticate request. The post-response script updates the <code>access_token</code> environment variable automatically — no copy and paste required.
 </aside>
 
-We can verify that the access_token has been stored by simply going back the `environments` icon, opening it, clicking `edit` and observing that the value has been stored:
+We can verify that the access_token has been stored by going back to the `environments` icon, opening it, clicking `edit`, and observing that the value has been stored:
 
 <img src="assets/pmRevised6.png" width="800"/>
 
@@ -287,45 +270,42 @@ We are now ready to proceed to using other API methods.
 ## Our First API Request
 Duration: 10
 
+### Set Bearer Auth Once at the Collection Level
+
+Rather than configuring `Bearer Token` authorization on every request, we configure it once at the parent Collection and let every child request inherit it. The only exception is the `Authenticate` request, which already overrides this with `No Auth` (since it has no token yet — it's the one fetching it).
+
+Click the parent Collection (e.g., `Sigma Computing Public REST API`) and open the `Authorization` tab. Set:
+
+| Field | Value |
+|---|---|
+| Auth Type | `Bearer Token` |
+| Token | `{{access_token}}` |
+
+`Save` the change.
+
+<img src="assets/pm25b.png" width="800"/>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> All child requests default to <code>Auth Type</code> = <code>Inherit auth from parent</code>, so this single setting now applies to every method in the Collection. When the post-response script on the <code>Authenticate</code> request refreshes <code>access_token</code>, every other request immediately picks up the new value.
+</aside>
+
+### List Connections
+
 Let's use the API to `Get` a list of available Connections.
 
-Expand the API to show the method under `V2`, `connections`, `Returns a list of available connections` and click to select open it in a new tab.
+Expand the API to show the method under `V2`, `connections`, `List connections` and click to select open it in a new tab.
 
-We need to uncheck the two checkboxes (item #2 in the screenshot) for `Params` as we just want to return all the connections. These two optional parameters allow us to filter the return but we won't do that at this point. 
-
-Click `Save`:
+We need to uncheck the checkboxes (item #4 in the screenshot) for `Params` as we just want to return all the connections:
 
 <img src="assets/pm25.png" width="800">
 
-We need to alter the `Authorization` tab to use the bearer token variable:
+Confirm the `Authorization` tab shows `Inherit auth from parent` — no per-request changes needed.
 
-<img src="assets/pm25a.png" width="800">
+Click `Send`. The `Body` panel returns the list of connections as JSON:
 
-Click `Save` and the `Send`.
+<img src="assets/pm25a.png" width="800"/>
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> Each method you wish to use must have it's authentication change this way, in order for them to work as expected. Postman also allows permission inheritance, which is outside the scope of this QuickStart.
-</aside>
-
-In the `Body` section (shown in the previous screenshot), is the return from the API in JSON. For example, our first connection is described this way:
-
-```copy-code
-          "organizationId": "adbfe832-733a-4c83-b64d-bdbf6ae8d2cb",
-            "connectionId": "10eed7b7-4a10-4c40-802b-4ba91287d5fe",
-            "isSample": true,
-            "isAuditLog": false,
-            "lastActiveAt": "2024-02-15T21:01:37.000Z",
-            "name": "Sigma Sample Database",
-            "type": "snowflake",
-            "useOauth": false,
-            "createdBy": "1IDcJykBMeDwcot0MXWaw5R1RUwI7",
-            "updatedBy": "yRn1UFV8ngVWBM1Hgrl51h7MS8uow",
-            "createdAt": "2022-09-22T18:41:47.151Z",
-            "updatedAt": "2024-02-15T21:01:37.140Z",
-            "default": 120....more
-```
-
-Even if you are only using a Sigma Trial, and have not created a connection yourself, there will be one shown. This is Sigma's sample database, and is included on all Sigma instances by default. Your ID values will be different of course.
+Even if you are only using a Sigma Trial, and have not created a connection yourself, there will be one shown. This is Sigma's sample database, and is included on all Sigma instances by default. Your ID values will be different, of course.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -333,40 +313,58 @@ Even if you are only using a Sigma Trial, and have not created a connection your
 ## New Connection using POST
 Duration: 10
 
-The API provides methods to *add/update/delete* a Sigma instance using `POST` messages. We will demonstrate this by creating a new Snowflake connection. 
-
-**This is a demonstration only** as we will show duplicating an existing connection. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> You may use this demonstration to perform the same operation but will have to supply your own Snowflake connection details.
-</aside>
-
-We will use the following code to configure a POST message to create a new connection in Sigma. 
+The API provides methods to *add/update/delete* connections on a Sigma instance using `POST` messages. We will demonstrate this by creating a new Snowflake connection that mirrors an existing working one.
 
 For more information, see [Create a connection](https://help.sigmacomputing.com/reference/createconnection)
 
-**The values shown below are for example only:**
+The easiest way to build a valid payload is to start from an existing, working connection. Use the `List connections` method from the previous section and locate the connection you want to model. A typical response looks like this:
 
-<aside class="negative">
-<strong>NOTE:</strong><br> The code to enable write access has been removed to simplify this example.
-</aside>
-
-```plaintext
-{  
- "name": "Snowflake via API POST",     
-    "details": { 
-                    "type": "snowflake", 
-                    "account": "tester", 
-                    "host": "testing.snowtest.com", 
-                    "password": "<password>", 
-                    "role": "A_ROLE", 
-                    "user": "THE_DEV", 
-                    "warehouse": "TEST_WAREHOUSE", 
-                }
+```copy-code
+{
+    "name": "Snowflake East",
+    "type": "snowflake",
+    "account": "YOURORG-YOURACCOUNT",
+    "host": "YOURORG-YOURACCOUNT.snowflakecomputing.com",
+    "warehouse": "COMPUTE_WH",
+    "user": "SIGMA_SERVICE_USER",
+    "role": "SIGMA_SERVICE_ROLE"
 }
 ```
 
-Configure the method `"Creates a new connection"` as shown and click `Send` (we have masked some values of course). A successful result is similar to what is shown in item #6:
+Take note of the `account`, `host`, `warehouse`, `user`, and `role` values — these are the fields Sigma needs to reach your Snowflake instance.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Both <code>account</code> and <code>host</code> should be provided. If <code>host</code> is omitted, Sigma may fail to resolve the Snowflake endpoint and return <code>"Could not connect to host"</code>.
+</aside>
+
+Use the following payload as the request body for the `Create a connection` method, replacing the placeholder values with your own:
+
+```copy-code
+{
+    "name": "Snowflake via API POST",
+    "details": {
+        "type": "snowflake",
+        "account": "YOURORG-YOURACCOUNT",
+        "host": "YOURORG-YOURACCOUNT.snowflakecomputing.com",
+        "warehouse": "COMPUTE_WH",
+        "user": "SIGMA_SERVICE_USER",
+        "role": "SIGMA_SERVICE_ROLE",
+        "authType": "key-pair",
+        "privateKey": "-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIFHDBO...\n...\n-----END ENCRYPTED PRIVATE KEY-----",
+        "privateKeyPassphrase": "YOUR_PASSPHRASE"
+    }
+}
+```
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> The <code>privateKey</code> must be a valid PEM string with <code>\n</code> escape sequences in place of actual line breaks. Snowflake will reject keys that arrive without the proper line boundaries. The matching public key must already be registered against the <code>user</code> in Snowflake.
+</aside>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The code to enable write access (<code>writeAccess</code> block) has been omitted to keep this example minimal. See the <a href="https://help.sigmacomputing.com/reference/createconnection">API reference</a> for the full schema.
+</aside>
+
+Configure the `Create a connection` method as shown and click `Send`. A successful result returns a `201 Created` response with the new connection's `connectionId`:
 
 <img src="assets/pm26.png" width="800">
 
@@ -377,10 +375,18 @@ Logging into the Sigma portal we can see we have a new connection:
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
-## What we've covered
+## What We've Covered
 Duration: 5
 
-We created a Postman account, created API token secrets in Sigma, imported the Sigma API to a new Postman API, configured authorization and tested GET and POST methods.
+You now have a working Postman environment for the Sigma REST API — one you can keep extending as new endpoints become relevant to your work. The setup is more than a one-off test harness; the patterns used here are the foundation for any automation, embedded workflow, or CI/CD integration built on top of Sigma's API.
+
+A few techniques are worth carrying forward to other API work:
+
+- **Authenticate once, persist automatically.** The post-response script on the `Authenticate` request writes every token field into the active environment, so downstream requests pick up fresh values the moment you re-authenticate. The same pattern applies to any OAuth 2.0 client_credentials flow — not just Sigma's.
+- **Inherit auth at the Collection level.** Configuring `Bearer Token` once on the parent Collection and leaving child requests on `Inherit auth from parent` keeps per-request configuration clean and removes the most common source of "why is this request failing?" friction.
+- **Use `List` responses to model `POST` payloads.** When building a new connection, workbook, or any other resource, the corresponding `List` endpoint is the fastest way to discover the shape of a valid object. Copy a working response, swap in your values, and submit.
+
+From here, the API opens up the broader surface area of Sigma — administration, embedding workflows, content lifecycle, and integration with external systems — all using the same authenticated environment you just built.
 
 **Additional Resource Links**
 

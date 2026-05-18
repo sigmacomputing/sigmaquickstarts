@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-05-20
+lastUpdated: 2026-05-10
 
 # Embedding 09: Events
 
