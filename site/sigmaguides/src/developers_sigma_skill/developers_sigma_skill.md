@@ -19,7 +19,7 @@ Sigma publishes agent skills through the [sigma-agent-skills](https://github.com
 
 In this QuickStart, you'll learn how to:
 - Understand what Sigma agent skills are and what each skill provides
-- Install Sigma agent skills in Claude Code but skills can be used in others such as OpenAI Codex, Snowflake Cortex Code, or Cursor
+- Install Sigma agent skills in Claude Code — the same skills also work in OpenAI Codex, Snowflake Cortex Code, and Cursor
 - Use the `sigma-api` skill to authenticate and make API calls through an AI assistant
 - Use the `sigma-data-models` skill to create and update data models through natural language prompts
 
@@ -44,7 +44,7 @@ This QuickStart is for developers and technical users who work with AI coding as
   <li>A Sigma account with API access enabled</li>
   <li>A Sigma API client ID and client secret — see <a href="https://help.sigmacomputing.com/docs/generate-api-client-credentials">Generate API client credentials</a></li>
   <li>One of the following AI coding assistants installed: Claude Code, OpenAI Codex, Snowflake Cortex Code, or Cursor</li>
-  <li>Git installed locally (required if using Codex and Cursor installations)</li>
+  <li>Git installed locally (required if using Codex or Cursor installations)</li>
   <li>Can Edit or Admin permission on relevant Sigma resources</li>
 </ul>
 
@@ -66,10 +66,10 @@ Instead of relying on the agent's general training data — which may be outdate
 
 Sigma's agent skills are open source and distributed through the [sigma-agent-skills](https://github.com/sigmacomputing/sigma-agent-skills) GitHub repository. When installed, they extend your AI assistant with Sigma-specific knowledge so you can interact with Sigma's APIs using natural language prompts rather than writing raw API calls by hand.
 
-At the time of this QuickStart there are two skills available with many more planned.
+At the time of this QuickStart, there are two skills available, with many more planned.
 
 **sigma-api:**<br>
-Provides the agent with instructions for authenticating to Sigma's REST API using client credentials. This includes how to obtain a bearer token, how to pass it in API requests, and troubleshooting guidance for common authentication errors. With this skill active, you can ask the agent to list workbooks, retrieve document metadata, manage members, or perform any other operation exposed by [Sigma's REST API.](https://help.sigmacomputing.com/docs/get-started-with-sigmas-api)
+Provides the agent with instructions for authenticating to Sigma's REST API using client credentials. This includes how to obtain a bearer token, how to pass it in API requests, and troubleshooting guidance for common authentication errors. With this skill active, you can ask the agent to list workbooks, retrieve document metadata, manage members, or perform any other operation exposed by [Sigma's REST API](https://help.sigmacomputing.com/docs/get-started-with-sigmas-api)
 
 **sigma-data-models:**<br>
 Provides the agent with instructions for creating and managing Sigma data models programmatically. This includes the authentication flow, how to gather metadata about available connections and tables, and how to construct and submit data model specifications. With this skill active, you can ask the agent to build a new data model, update an existing one, or inspect what's already deployed.
@@ -92,9 +92,9 @@ The skills wrap Sigma's APIs but do not replace them. **You still need a valid S
 ## Generate ClientID / Secret
 Duration: 10
 
-In preparation for using the API we need to use Sigma to generate a new API Token.
+In preparation for using the API, we need to use Sigma to generate a new API token.
 
-Log onto Sigma (as Administrator). Navigate to `Administration`, `Developer access`.
+Log onto Sigma (as Administrator). Navigate to `Administration` > `Developer access`.
 
 Click the `Create New` button:
 
@@ -113,7 +113,7 @@ Also copy the `API base URL`:
 <img src="assets/pm14.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
+<!-- END OF SECTION-->
 
 ## Install the Skills
 Duration: 10
@@ -164,15 +164,23 @@ export SIGMA_BASE_URL=https://aws-api.sigmacomputing.com
 <strong>NOTE:</strong><br> The <code>SIGMA_BASE_URL</code> value above is for Sigma environments hosted on AWS. If your organization uses a different cloud provider, use the base URL that matches your Sigma environment. You can confirm this from the API reference in your Sigma admin settings.
 </aside>
 
+If you're unsure where Sigma is hosted, you can find it in `Sigma` > `Administration` > `General Settings` > `Site`:
+
+<img src="assets/dss_05.png" width="800"/>
+
+For the list of API endpoints by cloud platform and region, see [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
+
 **Step 2:** In the VSCode terminal, load the environment variables into your shell session:
 
 ```copy-code
 source .env
 ```
 
-There is no reply in terminal unless there is an error.
+There is no reply in the terminal unless there is an error.
 
-These variables are now available in the current shell session. Starting Claude Code after this step ensures it inherits `SIGMA_CLIENT_ID`, `SIGMA_CLIENT_SECRET`, and `SIGMA_BASE_URL` automatically — no credentials in any prompt.
+These variables are now available in the current shell session. 
+
+Starting Claude Code after this step ensures it inherits `SIGMA_CLIENT_ID`, `SIGMA_CLIENT_SECRET`, and `SIGMA_BASE_URL` automatically — no credentials in any prompt.
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Run <code>source .env</code> each time you open a new terminal session. Environment variables set this way do not persist across sessions.
@@ -215,12 +223,12 @@ Claude Code displays an interactive panel showing the plugin details and a trust
 
 The three scope options are:
 
-- `Install for you (user scope)` — installs the plugin globally for your user account, making it available in any Claude Code session on this machine. **Recommended for most users.**
+- `Install for you (user scope)` — installs the plugin globally for your user account, making it available in any Claude Code session on this machine.
 - `Install for all collaborators on this repository (project scope)` — installs the plugin for the current repository, shared with anyone who works in it.
-- `Install for you, in this repo only (local scope)` — installs only for your account in this specific repository.
+- `Install for you, in this repo only (local scope)` — installs only for your account in this specific repository. **Recommended for this QuickStart**, since it keeps the plugin contained to your test folder and makes cleanup straightforward.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Select <code>Install for you (user scope)</code> if you want the Sigma skills available across all your projects. Select one of the repository-scoped options if you prefer to limit the plugin to a specific project.
+<strong>NOTE:</strong><br> We recommend <code>Install for you, in this repo only (local scope)</code> for this QuickStart so the plugin stays scoped to your test folder. After completing the QuickStart, if you want the Sigma skills available across all your Claude Code sessions, re-install with <code>Install for you (user scope)</code>.
 </aside>
 
 The response will be:
@@ -247,7 +255,7 @@ For reference, see [Claude Code plugin discovery](https://code.claude.com/docs/e
 
 ### Other AI Assistants
 
-For assistants not directly listed in Sigma's documentation, manually reference the skill files located in the `skills/` directory of the cloned repository. Add them to your assistant's context using whatever mechanism that tool provides for injecting reference documents — custom instructions, system prompts, context files, or similar.
+For assistants not directly listed in Sigma's documentation, manually reference the skill files located in the `skills/` directory of the cloned repository. Add them to your assistant's context using whatever mechanism the tool provides for injecting reference documents — custom instructions, system prompts, context files, or similar.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> These tools are released under the Apache 2.0 License.
@@ -267,13 +275,19 @@ If you completed the setup in the previous section, your credentials are already
 
 ### Authenticate and Make an API Call
 
-Let's use the skill's authentication instructions to obtain a bearer token using your environment variables, then passes it in subsequent API requests.
+Let's use the skill's authentication instructions to obtain a bearer token using your environment variables, then pass it in subsequent API requests.
 
 A simple starting prompt:
 
 ```copy-code
-Using my Sigma API credentials from the environment, list all the workbooks I have access to.
+Using the sigma-api skill with my API credentials from the environment, list all the workbooks I have access to.
 ```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The prompt explicitly names the <code>sigma-api</code> skill. If you have other Sigma tooling registered in Claude Code — for example, a Sigma MCP server — the agent may otherwise pick that path instead, since it can satisfy the same request. Naming the skill in the prompt forces the agent to use the <code>sigma-api</code> skill so you can be sure of what's running.
+</aside>
+
+<img src="assets/dss_06.png" width="800"/>
 
 The agent will:
 1. Read `SIGMA_CLIENT_ID` and `SIGMA_CLIENT_SECRET` from the shell environment
@@ -281,11 +295,11 @@ The agent will:
 3. Call the appropriate Sigma REST API endpoint
 4. Return the results in a readable format
 
-<aside class="negative">
-<strong>TROUBLESHOOTING:</strong><br> If you receive an error such as <em>"The script's allowlist doesn't include [your-api-url]"</em>, the plugin's network allowlist does not include your Sigma instance's regional API endpoint. This is a known limitation in early versions of the skill. Check the <a href="https://github.com/sigmacomputing/sigma-agent-skills/issues">sigma-agent-skills issue tracker</a> for updates, or open a new issue with your API base URL so it can be added to the allowlist.
-</aside>
+<img src="assets/dss_07.png" width="800"/>
 
-<!-- dss_07.png -->
+<aside class="positive">
+<strong>NOTE:</strong><br> Claude Code prompts before running tools, reading files, and executing shell commands — this is by design and gives you visibility into what the agent is doing on your machine. To reduce noise during a working session, choose the <code>Always allow</code> option (or equivalent) when a familiar command is approved. You can also manage the allowlist later with the <code>/permissions</code> slash command. Avoid <code>--dangerously-skip-permissions</code> unless you understand the trade-off.
+</aside>
 
 ### Example Prompts
 
@@ -296,7 +310,11 @@ List all members in my Sigma organization.
 ```
 
 ```copy-code
-Get the details for the workbook named "Sales Dashboard".
+Show all workbooks I have access to.
+```
+
+```copy-code
+Get the details for one of the listed workbooks.
 ```
 
 ```copy-code
@@ -309,6 +327,14 @@ Create a new folder called "Analytics Reports" in the shared workspace.
 
 The agent translates these prompts into authenticated API calls using the skill's reference instructions. It also applies the skill's troubleshooting guidance if authentication fails or an API call returns an error.
 
+<aside class="positive">
+<strong>NOTE:</strong><br> The agent may pause to ask for clarification or permission as it works. 
+
+For example, it might ask you to confirm which workspace or folder to target, or request approval to fetch a page from the Sigma Help Center to verify an endpoint or parameter before calling it. 
+
+This is normal — the skill is designed to gather context rather than guess. Answer the prompt and the agent continues.
+</aside>
+
 ### Working with API Results
 
 The agent returns results as structured text or code, depending on how you frame the prompt. To get output you can use downstream, be specific about the format:
@@ -318,16 +344,17 @@ List all workbooks and return the results as a JSON array with workbook ID and n
 ```
 
 ```copy-code
-Get all members and save the results to a file named sigma_members.csv.
+Get all members and save the results to a file named `sigma_members.csv`.
 ```
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Tasks that would normally require reading API documentation, constructing curl commands, and managing token expiration are reduced to a single prompt. This is particularly useful for developers building integrations or automating repetitive Sigma administration tasks.
+<strong>WHY IT MATTERS:</strong><br> Tasks that would normally require reading API documentation, constructing `curl` commands, and managing token expiration are reduced to a single prompt. 
+
+This is particularly useful for developers building integrations or automating repetitive Sigma administration tasks.
 </aside>
 
-For a full reference of available Sigma REST API endpoints, see the [Sigma API documentation](https://help.sigmacomputing.com/reference/get-started-sigma-api).
+For a full reference of available Sigma REST API endpoints, see the [Sigma API documentation](https://help.sigmacomputing.com/reference/get-started-sigma-api)
 
-<!-- dss_08.png -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -335,7 +362,7 @@ For a full reference of available Sigma REST API endpoints, see the [Sigma API d
 ## Using the sigma-data-models Skill
 Duration: 10
 
-The `sigma-data-models` skill gives your AI assistant the instructions it needs to create and manage Sigma data models programmatically. This section walks through how to prompt the agent to build a new data model and update an existing one.
+The `sigma-data-models` skill gives your AI assistant the instructions it needs to create and manage Sigma data models programmatically. This section walks through how to prompt the agent to build a new data model and update an existing one, using Sigma sample data.
 
 ### How the Skill Approaches Data Model Creation
 
@@ -352,75 +379,88 @@ The general flow is:
 Describe what you want to model and where the data lives:
 
 ```copy-code
-Create a new Sigma data model using the PLUGS_ELECTRONICS schema in our Snowflake connection. Include the TRANSACTIONS table.
+Create a new Sigma data model using the RETAIL.PLUGS_ELECTRONICS schema in our Snowflake connection. Include the F_POINT_OF_SALE table.
 ```
 
 The agent authenticates, gathers the necessary metadata from your connection, builds the data model specification, and submits it to Sigma's API.
 
-<!-- dss_09.png -->
+<img src="assets/dss_08.png" width="800"/>
 
-You can be more specific about the columns and relationships you want included:
+We can verify the data model was created in the requested location in Sigma:
 
-```copy-code
-Create a data model from the ORDERS and CUSTOMERS tables in the SALES schema of our Snowflake connection. Join them on CUSTOMER_ID.
-```
+<img src="assets/dss_09.png" width="800"/>
 
 ### Update an Existing Data Model
 
-To modify an existing data model, reference it by name and describe the change:
+With the model in place, you can iterate on it through follow-up prompts — adding related tables, joins, and calculated columns without leaving the conversation.
+
+Add a related table and join:
 
 ```copy-code
-Add the RETURNS table to the existing "Sales Overview" data model. Join it to ORDERS on ORDER_ID.
+Add the D_PRODUCT table from the same schema to the data model we just created. Join it to F_POINT_OF_SALE on PRODUCT_KEY.
 ```
+
+<img src="assets/dss_10.png" width="800"/>
+
+In Sigma, we see the second table has been added to the data model:
+
+<img src="assets/dss_11.png" width="800"/>
+
+Add a calculated column:
 
 ```copy-code
-Update the "Inventory" data model to include a calculated column: DAYS_IN_STOCK as the difference between RECEIPT_DATE and today's date.
+Update the same data model to include a calculated column: GROSS_PROFIT as SALES_AMOUNT minus COST_AMOUNT.
 ```
 
-The agent retrieves the current data model definition, applies the requested changes, and submits the updated specification back to the API.
+The agent retrieves the current data model definition, applies the requested changes, and submits the updated specification back to the API:
+
+<img src="assets/dss_12.png" width="800"/>
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> As part of each update, the agent also writes the data model specification to a local JSON file in your project folder. 
+
+That file is the developer-facing artifact: it can be committed to Git, reviewed in a pull request, diffed across versions, and re-applied to other Sigma environments.
+
+This is what makes the workflow truly programmatic — your data model is no longer just a configuration buried in the UI, it is a versioned spec that lives alongside your code.
+</aside>
+
+We can see our new calculated column in `current-spec.json`:
+
+<img src="assets/dss_13.png" width="800"/>
+
+And also see it in Sigma:
+
+<img src="assets/dss_14.png" width="800"/>
 
 ### Inspect Deployed Data Models
 
-Use the skill to read what's already in your environment:
+Let's use the skill to pull the full definition of the data model we just built:
 
 ```copy-code
-List all data models in my Sigma organization.
+Show me the current definition of the data model we just created from the RETAIL.PLUGS_ELECTRONICS schema.
 ```
 
-```copy-code
-Show me the current definition of the "Revenue" data model.
-```
+The agent returns the tables, joins, and calculated columns currently in the model — useful for confirming a change landed as expected, or for diffing the live spec against the local `current-spec.json` file.
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Treating data models as code — defined in prompts, versioned in Git, deployed through API calls — applies modern software engineering practices to analytics infrastructure. Sigma agent skills make this accessible without requiring deep API knowledge, so more people on a team can contribute to data model management.
+<strong>WHY IT MATTERS:</strong><br> Treating data models as code — defined in prompts, versioned in Git, deployed through API calls — applies modern software engineering practices to analytics infrastructure. 
+
+Sigma agent skills make this accessible without requiring deep API knowledge, so more people on a team can contribute to data model management.
 </aside>
 
-For more on Sigma data models and their structure, see [Data models](https://help.sigmacomputing.com/docs/data-models).
+<img src="assets/dss_15.png" width="800"/>
 
-<!-- dss_10.png -->
+For more on Sigma data models and their structure, see [Data models](https://help.sigmacomputing.com/docs/data-models)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Extending and Customizing Skills
-Duration: 5
+Duration: 10
 
-The published Sigma skills work out of the box for standard API and data model workflows, but many organizations have conventions and context that make a customized version more effective. Because the skills are open source and built from plain text reference files, extending them is straightforward.
+The published Sigma skills work out of the box for standard API and data model workflows, but many organizations have conventions and context that make a customized version more effective.
 
-### Clone the Repository
-
-Start by cloning the sigma-agent-skills repository locally:
-
-```copy-code
-git clone https://github.com/sigmacomputing/sigma-agent-skills.git
-cd sigma-agent-skills
-```
-
-The skill files live in the `skills/` directory. Open the folder in VSCode to inspect them:
-
-```copy-code
-code .
-```
+Because the skills are open source and built from plain text reference files, extending them is straightforward. In this section we'll make a quick local customization to see it in action, then point you to the durable workflow for changes you want to keep.
 
 ### What's in a Skill File
 
@@ -433,30 +473,169 @@ Each skill is a structured text document that gives the agent instructions for a
 
 These are reference documents — not code — so editing them requires no programming. You are adding or modifying natural language instructions that the agent reads and follows.
 
-### What to Customize
+### Browse the Source (Optional)
 
-Common org-specific additions include:
+If you'd like a local copy of the skill files to browse alongside this section, clone the repo. First, exit Claude Code so the terminal is back at the shell prompt:
+
+```copy-code
+/exit
+```
+
+Confirm you're in `sigma-skills-demo`, then clone the repo as a subdirectory:
+
+```copy-code
+git clone https://github.com/sigmacomputing/sigma-agent-skills.git
+```
+
+This creates `sigma-skills-demo/sigma-agent-skills/`. The skill files live under `skills/`:
+
+<img src="assets/dss_16.png" width="800"/>
+
+### Make a Quick Local Customization
+
+We'll add a small change the marketplace version doesn't make — an extra column when listing workbooks and a footer line on every list response. Both are easy to spot in the result, so you'll know immediately when the customization is active.
+
+For quick local iteration, edit the plugin files Claude Code reads at runtime. These live in the local plugin cache:
+
+```code
+/Users/<you>/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.2/skills/
+```
+
+The `0.1.2` directory matches the installed plugin version. If your installed version differs, adjust the path accordingly.
+
+In VSCode, open `sigma-api/SKILL.md` from that path. From a terminal you can also run (substitute your home folder name for `<you>`):
+
+```copy-code
+code /Users/<you>/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.2/skills/sigma-api/SKILL.md
+```
+
+Scroll to the bottom of the file and append:
+
+```copy-code
+## Custom Output Format
+
+When listing workbooks, present the results as a markdown table with these exact columns in order: Name, Workbook ID, Path, Last Updated. The Workbook ID column must appear before Path and must show the full UUID.
+
+When listing members or connections, present as a markdown table with one row per item and concise column headers.
+
+At the end of every list response, append a footer line on its own:
+_Source: local sigma-api skill customization._
+```
+
+<img src="assets/dss_18.png" width="800"/>
+
+`Save` the file. In Claude Code, reload plugins to pick up the change (start Claude Code first with `claude` if you exited it earlier):
+
+```copy-code
+/reload-plugins
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This edit lives only in the plugin cache. Any future <code>/plugin install</code>, <code>/plugin update</code>, or version upgrade overwrites it. Use this approach for experimentation and prototyping — see <em>Making Customizations Permanent</em> below for the durable workflow.
+</aside>
+
+### Validate
+
+Run a prompt that exercises the customization:
+
+```copy-code
+Using the sigma-api skill, list the workbooks in my Sigma organization.
+```
+
+You should see two unmistakable signals that your customization is active:
+
+- A `Workbook ID` column in the table, positioned between Name and Path, showing the full UUID for each workbook
+- A footer line at the end of the response: `_Source: local sigma-api skill customization._`
+
+If both appear, your customization is being read and your edits are working:
+
+<img src="assets/dss_19.png" width="800"/>
+
+If the table still has only Name / Path / Last Updated and no footer, confirm you saved `SKILL.md` after editing, then re-run `/reload-plugins` in Claude Code.
+
+### Making Customizations Permanent
+
+The cache edit above is fine for testing, but it won't survive a reinstall or upgrade. To keep a customization durable, treat the skill repo like any other open-source project — fork it on GitHub, push your edits, and install from your fork instead of the upstream marketplace.
+
+This workflow assumes you have a GitHub account and basic familiarity with Git (clone, commit, push). If forking is new to you, see [GitHub's guide to forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) before continuing.
+
+The high-level flow:
+
+1. Fork [sigma-agent-skills](https://github.com/sigmacomputing/sigma-agent-skills) on GitHub
+2. Clone your fork locally. Recommend using a different folder to prevent collision with the previous steps. For example, in VSCode terminal for a new folder we can run this command, replacing `Git-repo` for yours:
+
+```copy-code
+git clone https://github.com/Git-repo/sigma-agent-skills.git
+```
+
+<img src="assets/dss_22.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> You may want to remove the local cache configuration as well sigma-computing marketplace was not installed as "local scope". 
+
+The easiest way to do that is to run the following command in terminal, replacing the value of "YOU" for your system:
+```copy-code
+rm -rf /Users/YOU/.claude/plugins/cache/sigma-computing
+```
+
+</aside>
+
+3. In your clone, edit `/.claude-plugin/marketplace.json` so the plugin's `source` field points at your fork (or to `"."` so it resolves to the marketplace repo itself), make your skill edits, commit, and push:
+
+<img src="assets/dss_20.png" width="800"/>
+
+4.  Create a new `.env` file and appropriate settings.
+
+5. Load the `.env` file:
+```copy-code
+source .env
+```
+
+5. Start Claude Code and swap the upstream marketplace for your fork:
+
+```copy-code
+/plugin marketplace add <your-fork-url>
+```
+
+```copy-code
+/plugin install sigma-computing@sigma-computing
+```
+
+<img src="assets/dss_21.png" width="800"/>
+
+### Quick Validation
+Customize `SKILL.md` to adjust the output table footer:
+
+```copy-code
+## Custom Output Format
+
+At the end of every list response, append a footer line on its own:
+_Source: local sigma-api skill customization based on fork
+```
+
+`Save` the change and test it:
+```copy-code
+Using the sigma-api skill with my API credentials from the environment, list all the workbooks I have access to.
+```
+
+The result is a versioned, durable copy of the skill your team can iterate on with standard Git workflows — branches, pull requests, and code review.
+
+### What Else to Customize
+
+Once you have a working local fork, common org-specific additions include:
 
 - **Connection names and schema conventions** — if your organization uses consistent naming (e.g., a production connection always named `PROD_SNOWFLAKE`), add that context so the agent doesn't need to ask
 - **Approved tables or schemas** — restrict the skill to specific parts of your data environment to reduce the chance of the agent acting on the wrong data
 - **Standard patterns** — document data model structures or API workflows your team uses repeatedly so the agent follows them by default
 - **Additional API operations** — extend the `sigma-api` skill with instructions for endpoints your team uses that aren't covered in the base skill
 
-### Use a Customized Skill Locally
-
-Once you've edited a skill file, reference it directly in your agent session instead of using the published plugin. In Claude Code, you can supply local files as context at session start. For other agents, use whatever mechanism the tool provides for injecting reference documents — custom instructions, system prompts, or context files.
-
-This approach also works well for version-pinning: by maintaining your own fork, you control when upstream changes are adopted.
-
 ### Contributing Back
 
-If your customization addresses a general gap — a missing endpoint, a broader allowlist, a clearer instruction — consider submitting a pull request to the [sigma-agent-skills repository](https://github.com/sigmacomputing/sigma-agent-skills). The Apache 2.0 license makes contribution straightforward, and improvements benefit the broader community of Sigma users building with AI assistants.
+If your customization addresses a general gap — a missing endpoint, improved error handling, a clearer instruction — consider submitting a pull request to the [sigma-agent-skills repository](https://github.com/sigmacomputing/sigma-agent-skills). The Apache 2.0 license makes contribution straightforward, and improvements benefit the broader community of Sigma users building with AI assistants.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> A skill customized to your organization's data environment, naming conventions, and approved workflows reduces prompt overhead and produces more consistent results. Over time, a well-maintained internal fork becomes a shared asset for every developer on the team who works with Sigma through an AI assistant.
 </aside>
-
-<!-- dss_11.png -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -468,15 +647,10 @@ Sigma agent skills bring your AI coding assistant into Sigma's API ecosystem. Ra
 
 The two skills available today — `sigma-api` and `sigma-data-models` — cover the most common developer entry points: interacting with Sigma programmatically and managing analytics infrastructure as code. As Sigma adds more skills to the repository, the same installation pattern applies.
 
-Because the skills are open source, they can be extended, versioned, and contributed back to — making this a foundation that improves with community use.
+Because the skills are open source, they can be extended, versioned, and improved through community contributions — making this a foundation that grows with use.
 
 **Additional Resource Links**
 
-[sigma-agent-skills Repository](https://github.com/sigmacomputing/sigma-agent-skills)<br>
-[Sigma API Documentation](https://help.sigmacomputing.com/reference/get-started-sigma-api)<br>
-[Generate API Client Credentials](https://help.sigmacomputing.com/docs/generate-api-client-credentials)<br>
-[Data Models](https://help.sigmacomputing.com/docs/data-models)<br>
-[Install Skills for AI Assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)<br>
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
