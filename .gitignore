@@ -12,30 +12,6 @@ Phils_Stuff_No_Git
 site/sigmaguides/src/QS Starter Projects/
 .vscode/
 sigmaquickstarts_local_dev
+# Never commit local Claude tooling, skills, or per-QS notes to this public repo.
 CLAUDE.md
-.claude/SKILLS/sigma-brand-guidelines/SKILL.md
-.claude/SKILLS/sigma-brand-guidelines/assets/Advercase-Bold.otf
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-bold.ttf
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-bold.woff
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-bold.woff2
-.claude/SKILLS/sigma-brand-guidelines/assets/Advercase-Regular.otf
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-regular.ttf
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-regular.woff
-.claude/SKILLS/sigma-brand-guidelines/assets/advercase-regular.woff2
-.claude/SKILLS/sigma-brand-guidelines/assets/Sigma_Primary_Template_2026.pptx
-.claude/SKILLS/sigma-brand-guidelines/assets/logos/Sigma_PrimaryLogo_ShadowBlack.svg
-.claude/SKILLS/sigma-brand-guidelines/assets/logos/Sigma_PrimaryLogo_White.svg
-.claude/SKILLS/sigma-brand-guidelines/assets/logos/Sigma_Symbol_ShadowBlack.svg
-.claude/SKILLS/sigma-brand-guidelines/assets/logos/Sigma_Symbol_White.svg
-.claude/SKILLS/sigma-voice/SKILL.md
-.claude/SKILLS/sigma-voice/agents/sigma-voice-agent.md
-.claude/SKILLS/sigma-voice/evals/evals.json
-.claude/SKILLS/sigma-voice/references/ai-naming.md
-.claude/SKILLS/sigma-voice/references/audiences.md
-.claude/SKILLS/sigma-voice/references/buzzwords.md
-.claude/SKILLS/sigma-voice/references/guidelines.md
-.claude/SKILLS/sigma-voice/references/messaging.md
-.claude/SKILLS/sigma-voice/references/terminology.md
-.gitignore
-.claude/SKILLS/quickstart/SKILL.md
-.claude/SKILLS/quickstart/references/qs-claude-stub.md
+.claude/
