@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-20
+lastUpdated: 2026-06-22
 
 # Sigma Skills for AI Assistants
 
@@ -24,7 +24,11 @@ In this QuickStart, you'll learn how to:
 - Use the `sigma-data-models` skill to create and update data models through natural language prompts
 
 <aside class="negative">
-<strong>NOTE:</strong><br> At the time of this QuickStart, Sigma agent skills were at v0.1.3 and represent Sigma's first open-source release. Available skills and installation steps may change as the project matures. Always refer to the <a href="https://github.com/sigmacomputing/sigma-agent-skills">sigma-agent-skills repository</a> for the latest version.
+<strong>NOTE:</strong><br> At the time of this QuickStart, Sigma agent skills were at v0.1.3 and represent Sigma's first open-source release. 
+
+Available skills and installation steps are likely to change as the project matures. Always refer to the <a href="https://github.com/sigmacomputing/sigma-agent-skills">sigma-agent-skills repository</a> for the latest version.
+
+Claude Code is evolving quickly, so some commands or features may change over time.
 </aside>
 
 <aside class="positive">
@@ -322,7 +326,7 @@ List all connections available in my Sigma environment.
 ```
 
 ```copy-code
-Create a new folder called "Analytics Reports" in "Your documents"
+Create a new folder called "Analytics Reports" in "Your documents".
 ```
 
 The agent translates these prompts into authenticated API calls using the skill's reference instructions. It also applies the skill's troubleshooting guidance if authentication fails or an API call returns an error.
@@ -505,7 +509,7 @@ For quick local iteration, edit the plugin files Claude Code reads at runtime. T
 
 The `0.1.3` directory matches the installed plugin version. If your installed version differs, adjust the path accordingly.
 
-In VSCode, open `sigma-api/SKILL.md` from that path. From a terminal you can also run (substitute your home folder name for "YOU"):
+In VSCode, open `sigma-api/SKILL.md` from that path. From a terminal you can also run (substitute your home folder name for `YOU`):
 
 ```copy-code
 code /Users/YOU/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.3/skills/sigma-api/SKILL.md
@@ -621,21 +625,23 @@ In your clone, open `.claude-plugin/marketplace.json` and set the plugin's `sour
 Open `skills/sigma-api/SKILL.md` and append a customization.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Claude Code reads skills from the `skills/sigma-api` directory of the plugin — **not** `.cortex/skills/`. The `.cortex/` tree is for Cursor and OpenAI Codex.
+<strong>NOTE:</strong><br> Claude Code reads skills from the `skills/sigma-api` directory of the plugin — **not** `.cortex/skills/`. The `.cortex/` tree is for Snowflake Cortex Code.
 </aside>
 
 ```copy-code
 ## Custom Output Format
 
 At the end of every list response, append a footer line on its own:
-_Source: local sigma-api skill customization based on fork
+_Source: local sigma-api skill customization based on fork._
 ```
 
-If you also use Cursor or Codex with this fork, mirror the same change in `.cortex/skills/sigma-api/SKILL.md`.
+If you also use Snowflake Cortex Code with this fork, mirror the same change in `.cortex/skills/sigma-api/SKILL.md`.
 
 **Step 5: Commit and push — before installing**
 
-Push your changes to your fork's default branch. This must happen *before* the marketplace add in step 7, since the installer reads from the remote, not your working copy:
+Push your changes to your fork's default branch. 
+
+***This must happen before the marketplace add in step 7, since the installer reads from the remote, not your working copy:***
 
 ```copy-code
 git add .claude-plugin/marketplace.json skills/sigma-api/SKILL.md
@@ -703,10 +709,12 @@ claude
 Using the sigma-api skill with my API credentials from the environment, list all the workbooks I have access to.
 ```
 
-The response should end with the footer line `_Source: local sigma-api skill customization based on fork`. If it doesn't, return to step 8 and confirm the remote.
+The response should end with the footer line `_Source: local sigma-api skill customization based on fork._`. If it doesn't, return to step 8 and confirm the remote.
 
 <aside class="positive">
-<strong>Iterating after the initial install:</strong><br> The durable loop is: edit <code>skills/sigma-api/SKILL.md</code> in your clone → commit and push → in Claude Code run <code>/plugin uninstall sigma-computing@sigma-computing</code> then <code>/plugin install sigma-computing@sigma-computing</code> → restart Claude Code → <code>/reload-plugins</code>. For faster prototyping you can edit the cached file directly under <code>~/.claude/plugins/cache/sigma-computing/...</code> and just <code>/reload-plugins</code>, but mirror changes back to your clone and push them or the next reinstall will erase them.
+<strong>Iterating after the initial install:</strong><br> The durable loop is: edit <code>skills/sigma-api/SKILL.md</code> in your clone → commit and push → in Claude Code run <code>/plugin uninstall sigma-computing@sigma-computing</code> then <code>/plugin install sigma-computing@sigma-computing</code> → restart Claude Code → <code>/reload-plugins</code>.
+
+For faster prototyping you can edit the cached file directly under <code>~/.claude/plugins/cache/sigma-computing/...</code> and just <code>/reload-plugins</code>, but mirror changes back to your clone and push them or the next reinstall will erase them.
 </aside>
 
 The result is a versioned, durable copy of the skill your team can iterate on with standard Git workflows — branches, pull requests, and code review.
