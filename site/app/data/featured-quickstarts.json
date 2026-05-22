@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Sigma Skills for AI Assistants",
+      "id": "developers_sigma_skill",
+      "category": "developers",
+      "date": "May 22, 2026"
+    },
+    {
       "title": "First Friday Features - April 2026",
       "id": "04_2026_first_friday_features",
       "category": "first_friday_features",
@@ -47,36 +53,6 @@
       "id": "developers_api_actions_servicenow",
       "category": "Developers",
       "date": "Feb 27, 2026"
-    },
-    {
-      "title": "Integrate JIRA using API Actions",
-      "id": "developers_api_actions_jira",
-      "category": "Developers",
-      "date": "Feb 27, 2026"
-    },
-    {
-      "title": "API Actions - Getting Started",
-      "id": "developers_api_actions_getting_started",
-      "category": "Developers",
-      "date": "Feb 25, 2026"
-    },
-    {
-      "title": "Integrate Salesforce using API Actions",
-      "id": "developers_api_actions_salesforce",
-      "category": "Developers",
-      "date": "Feb 25, 2026"
-    },
-    {
-      "title": "Multi-Modal File Analysis with AI",
-      "id": "aiapps_file_uploads_multimodal_ai",
-      "category": "aiapps",
-      "date": "Feb 6, 2026"
-    },
-    {
-      "title": "Data Models as Code",
-      "id": "developers_data_models_as_code",
-      "category": "Developers",
-      "date": "Jan 29, 2026"
     }
   ]
 }
