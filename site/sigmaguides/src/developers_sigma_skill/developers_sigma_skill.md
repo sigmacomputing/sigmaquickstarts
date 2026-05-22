@@ -24,7 +24,7 @@ In this QuickStart, you'll learn how to:
 - Use the `sigma-data-models` skill to create and update data models through natural language prompts
 
 <aside class="negative">
-<strong>NOTE:</strong><br> At the time of this QuickStart, Sigma agent skills were at v0.1.2 and represent Sigma's first open-source release. Available skills and installation steps may change as the project matures. Always refer to the <a href="https://github.com/sigmacomputing/sigma-agent-skills">sigma-agent-skills repository</a> for the latest version.
+<strong>NOTE:</strong><br> At the time of this QuickStart, Sigma agent skills were at v0.1.3 and represent Sigma's first open-source release. Available skills and installation steps may change as the project matures. Always refer to the <a href="https://github.com/sigmacomputing/sigma-agent-skills">sigma-agent-skills repository</a> for the latest version.
 </aside>
 
 <aside class="positive">
@@ -322,7 +322,7 @@ List all connections available in my Sigma environment.
 ```
 
 ```copy-code
-Create a new folder called "Analytics Reports" in the shared workspace.
+Create a new folder called "Analytics Reports" in "Your documents"
 ```
 
 The agent translates these prompts into authenticated API calls using the skill's reference instructions. It also applies the skill's troubleshooting guidance if authentication fails or an API call returns an error.
@@ -334,6 +334,9 @@ For example, it might ask you to confirm which workspace or folder to target, or
 
 This is normal — the skill is designed to gather context rather than guess. Answer the prompt and the agent continues.
 </aside>
+
+Use Sigma to verify the request:
+<img src="assets/dss_06a.png" width="800"/>
 
 ### Working with API Results
 
@@ -354,7 +357,6 @@ This is particularly useful for developers building integrations or automating r
 </aside>
 
 For a full reference of available Sigma REST API endpoints, see the [Sigma API documentation](https://help.sigmacomputing.com/reference/get-started-sigma-api)
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -495,18 +497,18 @@ This creates `sigma-skills-demo/sigma-agent-skills/`. The skill files live under
 
 We'll add a small change the marketplace version doesn't make — an extra column when listing workbooks and a footer line on every list response. Both are easy to spot in the result, so you'll know immediately when the customization is active.
 
-For quick local iteration, edit the plugin files Claude Code reads at runtime. These live in the local plugin cache:
+For quick local iteration, edit the plugin files Claude Code reads at runtime. These live in the local plugin cache. For example, on a Mac:
 
 ```code
-/Users/<you>/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.2/skills/
+/Users/YOU/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.3/skills/
 ```
 
-The `0.1.2` directory matches the installed plugin version. If your installed version differs, adjust the path accordingly.
+The `0.1.3` directory matches the installed plugin version. If your installed version differs, adjust the path accordingly.
 
-In VSCode, open `sigma-api/SKILL.md` from that path. From a terminal you can also run (substitute your home folder name for `<you>`):
+In VSCode, open `sigma-api/SKILL.md` from that path. From a terminal you can also run (substitute your home folder name for "YOU"):
 
 ```copy-code
-code /Users/<you>/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.2/skills/sigma-api/SKILL.md
+code /Users/YOU/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.3/skills/sigma-api/SKILL.md
 ```
 
 Scroll to the bottom of the file and append:
@@ -524,7 +526,7 @@ _Source: local sigma-api skill customization._
 
 <img src="assets/dss_18.png" width="800"/>
 
-`Save` the file. In Claude Code, reload plugins to pick up the change (start Claude Code first with `claude` if you exited it earlier):
+`Save` the file. In Claude Code, reload plugins to pick up the change. **Start Claude Code first with `claude` if you exited it earlier**:
 
 ```copy-code
 /reload-plugins
@@ -559,52 +561,68 @@ The cache edit above is fine for testing, but it won't survive a reinstall or up
 
 This workflow assumes you have a GitHub account and basic familiarity with Git (clone, commit, push). If forking is new to you, see [GitHub's guide to forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) before continuing.
 
-The high-level flow:
+<aside class="negative">
+<strong>Order matters:</strong><br> Claude Code's <code>/plugin install</code> pulls from your fork's <strong>remote default branch on GitHub</strong>, not from your local working copy. Edits to <code>marketplace.json</code> and <code>SKILL.md</code> must be committed and pushed <em>before</em> you add the marketplace, or the install will pull a version that doesn't have them.
+</aside>
 
-1. Fork [sigma-agent-skills](https://github.com/sigmacomputing/sigma-agent-skills) on GitHub
-2. Clone your fork locally. Recommend using a different folder to prevent collision with the previous steps. For example, in VSCode terminal for a new folder we can run this command, replacing `Git-repo` for yours:
+**Step 1: Fork and clone**
+
+Fork [sigma-agent-skills](https://github.com/sigmacomputing/sigma-agent-skills) on GitHub, then clone your fork into a new folder so it doesn't collide with the earlier `sigma-skills-demo` work. Replace `your-github-user` with your GitHub username:
 
 ```copy-code
-git clone https://github.com/Git-repo/sigma-agent-skills.git
+git clone https://github.com/your-github-user/sigma-agent-skills.git
+cd sigma-agent-skills
 ```
 
 <img src="assets/dss_22.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> You may want to remove the local cache configuration as well sigma-computing marketplace was not installed as "local scope". 
+**Step 2: Remove the upstream install**
 
-The easiest way to do that is to run the following command in terminal, replacing the value of "YOU" for your system:
+If you followed earlier sections, Claude Code already has the upstream marketplace and plugin installed. Remove both before pointing at your fork — otherwise Claude Code can reuse the cached upstream plugin even after you add the new marketplace.
+
+In your running Claude Code session, uninstall the plugin and remove the marketplace:
+
+```copy-code
+/plugin uninstall sigma-computing@sigma-computing
+```
+
+```copy-code
+/plugin marketplace remove sigma-computing
+```
+
+Exit Claude Code:
+```copy-code
+/exit
+```
+
+Clear the plugin cache (replace `YOU` with your home folder name):
 ```copy-code
 rm -rf /Users/YOU/.claude/plugins/cache/sigma-computing
 ```
 
-</aside>
+**Step 3: Point the marketplace at your fork**
 
-3. In your clone, edit `/.claude-plugin/marketplace.json` so the plugin's `source` field points at your fork (or to `"."` so it resolves to the marketplace repo itself), make your skill edits, commit, and push:
+In your clone, open `.claude-plugin/marketplace.json` and set the plugin's `source` field to `"."`. The dot tells Claude Code that the plugin lives inside the marketplace repo itself — i.e., your fork:
+
+```code
+"plugins": [
+  {
+    "name": "sigma-computing",
+    "source": { "source": "." },
+    ...
+  }
+]
+```
 
 <img src="assets/dss_20.png" width="800"/>
 
-4.  Create a new `.env` file and appropriate settings.
+**Step 4: Edit SKILL.md**
 
-5. Load the `.env` file:
-```copy-code
-source .env
-```
+Open `skills/sigma-api/SKILL.md` and append a customization.
 
-5. Start Claude Code and swap the upstream marketplace for your fork:
-
-```copy-code
-/plugin marketplace add <your-fork-url>
-```
-
-```copy-code
-/plugin install sigma-computing@sigma-computing
-```
-
-<img src="assets/dss_21.png" width="800"/>
-
-### Quick Validation
-Customize `SKILL.md` to adjust the output table footer:
+<aside class="negative">
+<strong>NOTE:</strong><br> Claude Code reads skills from the `skills/sigma-api` directory of the plugin — **not** `.cortex/skills/`. The `.cortex/` tree is for Cursor and OpenAI Codex.
+</aside>
 
 ```copy-code
 ## Custom Output Format
@@ -613,10 +631,83 @@ At the end of every list response, append a footer line on its own:
 _Source: local sigma-api skill customization based on fork
 ```
 
-`Save` the change and test it:
+If you also use Cursor or Codex with this fork, mirror the same change in `.cortex/skills/sigma-api/SKILL.md`.
+
+**Step 5: Commit and push — before installing**
+
+Push your changes to your fork's default branch. This must happen *before* the marketplace add in step 7, since the installer reads from the remote, not your working copy:
+
+```copy-code
+git add .claude-plugin/marketplace.json skills/sigma-api/SKILL.md
+git commit -m "Add custom output footer for sigma-api"
+git push origin main
+```
+
+(Substitute `master` for `main` if that's your fork's default branch.)
+
+**Step 6: Create an environment file**
+
+Each clone needs its own `.env`. Create one in the root of the new folder with the same contents as in [Store Your API Credentials Securely](#store-your-api-credentials-securely), then source it:
+
+```copy-code
+source .env
+```
+
+**Step 7: Install from your fork**
+
+Start Claude Code:
+
+```copy-code
+claude
+```
+
+Register your fork as the marketplace and install the plugin:
+
+```copy-code
+/plugin marketplace add https://github.com/your-github-user/sigma-agent-skills.git
+```
+
+```copy-code
+/plugin install sigma-computing@sigma-computing
+```
+
+<img src="assets/dss_21.png" width="800"/>
+
+**Step 8: Verify the install came from your fork**
+
+Exit Claude Code and confirm the cached plugin's git remote points at your fork:
+
+```copy-code
+/exit
+```
+
+```copy-code
+git -C /Users/YOU/.claude/plugins/cache/sigma-computing/sigma-computing/0.1.3 remote -v
+```
+
+The `origin` URL must end in `your-github-user/sigma-agent-skills.git`. If you see `sigmacomputing/sigma-agent-skills.git`, the marketplace resolved to upstream — recheck that step 3's `source` field was set to `"."` and that step 5 pushed those changes to the default branch before you ran step 7.
+
+**Step 9: Validate in a fresh session**
+
+Skill descriptions are loaded once at session start, so always validate in a session started *after* the install — not the one you ran the install commands in.
+
+```copy-code
+claude
+```
+
+```copy-code
+/reload-plugins
+```
+
 ```copy-code
 Using the sigma-api skill with my API credentials from the environment, list all the workbooks I have access to.
 ```
+
+The response should end with the footer line `_Source: local sigma-api skill customization based on fork`. If it doesn't, return to step 8 and confirm the remote.
+
+<aside class="positive">
+<strong>Iterating after the initial install:</strong><br> The durable loop is: edit <code>skills/sigma-api/SKILL.md</code> in your clone → commit and push → in Claude Code run <code>/plugin uninstall sigma-computing@sigma-computing</code> then <code>/plugin install sigma-computing@sigma-computing</code> → restart Claude Code → <code>/reload-plugins</code>. For faster prototyping you can edit the cached file directly under <code>~/.claude/plugins/cache/sigma-computing/...</code> and just <code>/reload-plugins</code>, but mirror changes back to your clone and push them or the next reinstall will erase them.
+</aside>
 
 The result is a versioned, durable copy of the skill your team can iterate on with standard Git workflows — branches, pull requests, and code review.
 
