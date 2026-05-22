@@ -61,20 +61,6 @@ Duration: 10
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab! Use only the URL and instructions provided by your lab facilitator.
 </aside>
 
-We have whitelisted the following domains for this lab:
-```code
-@gmail.com
-@yahoo.com
-@outlook.com
-@hotmail.com
-@icloud.com
-@aol.com
-@comcast.net
-@mail.com
-@msn.com
-@live.com
-```
-
 **Step 3**: Check your inbox for a message from `info@send.sigmacomputing.com` and continue the sign-up process by clicking the link in that email.
 
 **Step 4**: Enter your information as prompted and click `Submit`.
