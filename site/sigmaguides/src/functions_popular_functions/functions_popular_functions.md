@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-12-05
+lastUpdated: 2026-05-10
 
 # Popular Functions
 
@@ -22,7 +22,25 @@ You'll learn how to categorize values, handle null data, filter and search text,
 ### Template
 We have also made the final workbook that is created during this QuickStart available as a Sigma Template. This option allows you to read along while having the workbook built for you. The template is not required and the end result is the same if you build it yourself. 
 
-<img src="assets/cdf_01a.png" width="500"/>
+<aside class="negative">
+<strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
+
+In order to use the template you must first log onto your Sigma instance and then browse to the url:
+
+<a href="https://app.sigmacomputing.com/template?provider=7d0fc8a6-bf65-47f4-86e6-39eba581fe15&shareId=55af1852-7e92-4f3b-b817-5d87ffaf239c&namespace=production&templateId=49239f6d-8997-4361-9181-f2c2469f5105">Popular Functions Template</a>
+</aside>
+
+The template will prompt to `Swap data sources`. Since it uses Sigma provided sample data, the `% Match` should be `100%`.
+
+Click `Choose`:
+
+<img src="assets/cdf_00.png" width="600"/>
+
+Once done, the fully-built workbook is presented and we can `Accept` the swap and save the workbook normally:
+
+<img src="assets/cdf_00a.png" width="800"/>
+
+Save the workbook as `Popular Functions QuickStart`.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -58,6 +76,10 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 
 ## Data Page Setup
 Duration: 5
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> If starting from the pre-built template, there is no need to create another workbook. Instead, you can review each function in its final form using the templated workbook.
+</aside>
 
 Log into Sigma, click `Create new` and select `Workbook`.
 
@@ -122,7 +144,7 @@ Column Name:     Formula:
 Order_Size_Fixed BinFixed([Order_Value], 0, 5000, 10)
 ```
 
-This creates 10 equal bins of $100 each: "0-100", "100-200", "200-300", etc.
+This creates 10 equal bins of $500 each: "0-500", "500-1000", "1000-1500", etc.
 
 Format the column as `Number` and remove the decimal places.
 
