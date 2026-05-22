@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-05-14
+lastUpdated: 2026-05-23
 
 # The Builder's Guide to Sigma AI Apps: Workflows, Cortex Agents & AI Functions
 
@@ -50,6 +50,43 @@ This lab is designed for intermediate Sigma users — analytics engineers, BI de
 For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
+![Footer](assets/sigma_footer.png)
+
+## Setup
+Duration: 10
+
+**Step 1**: Use this link to navigate to [Sigma](https://app.sigmacomputing.com/SFSummit26HOL)
+
+**Step 2**: Create an account and then enter your email address:
+
+<img src="assets/sfs_2026_01.png" width="700"/>
+
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab! Use only the URL and instructions provided by your lab facilitator.
+</aside>
+
+We have whitelisted the following domains for this lab:
+```code
+@gmail.com
+@yahoo.com
+@outlook.com
+@hotmail.com
+@icloud.com
+@aol.com
+@comcast.net
+@mail.com
+@msn.com
+@live.com
+```
+
+**Step 3**: Check your inbox for a message from `info@send.sigmacomputing.com` and continue the sign-up process by clicking the link in that email.
+
+**Step 4**: Enter your information as prompted and click `Submit`.
+
+**Step 5**: Once you see the Sigma homepage, you are ready to proceed:
+
+<img src="assets/sfs_2026_02.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 
@@ -374,6 +411,8 @@ Before building the tools, prepare the `Build` page.
 customer_name
 ```
 
+Also uncheck `Allow multiple selection` in the element panel:
+
 <img src="assets/bga_08.png" width="800"/>
 
 <aside class="positive">
@@ -531,7 +570,6 @@ Required inputs:
 | Action | `Set control value` |
 | Update control | `customer_name` on the `Build` page (the control you created in Step 3.1 that is named `Customer Name`) |
 | Set value as | `Agent input` > `customer_name` |
-| Set control selection to | `Replace previous selection` |
 
 <img src="assets/bga_13.png" width="800"/>
 

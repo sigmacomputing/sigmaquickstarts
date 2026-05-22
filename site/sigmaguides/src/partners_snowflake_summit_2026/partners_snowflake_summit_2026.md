@@ -53,9 +53,9 @@ Duration: 10
 
 **Step 1**: Use this link to navigate to [Sigma](http://app.sigmacomputing.com/snowflake-summit-2026-hol)
 
-**Step 2**: Create an account by selecting `Sign up` and entering your email address:
+**Step 2**: Create an account and then enter your email address:
 
-<img src="assets/sfs_2026_01.png" width="400"/>
+<img src="assets/sfs_2026_01.png" width="700"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Do not sign up for a new Sigma trial for this lab! Use only the URL and instructions provided by your lab facilitator.
