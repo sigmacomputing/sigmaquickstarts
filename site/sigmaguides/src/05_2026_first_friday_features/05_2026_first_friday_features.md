@@ -13,7 +13,7 @@ lastUpdated: 2026-06-06
 
  08 changes: 7 (Administration: 1, AI: 1, API: 1, Workbooks: 4)
  15 changes: 7 (Administration: 3, API: 1, Charts: 1, Bug Fixes: 1, Workbooks: 1)
- 22 changes:
+ 22 changes: 5 (Overview: 1, API: 1, Data Modeling: 1, Workbooks: 2)
  29 changes:
 
 Publish on June 5
@@ -35,6 +35,14 @@ All other features are considered released (**GA** or generally available).
 Sigma actually has feature and bug fix releases weekly, and high-priority bug fixes on demand. We felt it was best to keep these QuickStarts to a summary of the previous month for your convenience.
 
 New first Friday features QuickStarts will be published on the first Friday of each month, and will include information for the previous month.
+
+### Sigma Public (GA) <img src="assets/heart_icon.png" width="25"/>
+Free-to-use platform for creating, sharing, and exploring apps. Users can leverage sample data or upload datasets to build workflows in an embedded Sigma experience, plus search community-created apps for inspiration.
+
+For more information, see [Sigma Public](https://help.sigmacomputing.com/docs/sigma-public)
+
+**WHY IT MATTERS:**<br>
+A free, hosted Sigma experience lowers the barrier for anyone exploring app development with Sigma, and creates a community surface where teams can discover and share working app patterns. It serves as both a discovery channel for new users and a showcase for what experienced builders are creating.
 
 ### Subscribe to What's New in Sigma
 For those wanting to see what Sigma is doing on each week, release notes are now also available on the [Sigma Community site](https://community.sigmacomputing.com/). There, you can **opt in to receive notifications about future release notes** in order to stay on top of everything new happening at Sigma. You can also subscribe to automated updates in any Slack channel using the Sigma Community release notes RSS feed. 
@@ -158,6 +166,11 @@ These elements are identified with a `custom-sql` type and contain a `customSqlI
 
 For more information, see [List data model sources](https://help.sigmacomputing.com/reference/listdatamodelsources), [List workbook sources](https://help.sigmacomputing.com/reference/getworkbooksources), and [List report sources](https://help.sigmacomputing.com/reference/listreportsources)
 
+### New API Endpoint for Setting Organization Time Zone (GA)
+The `Update organization settings` endpoint (`PATCH /v2/organizations/settings`) configures the time zone of an organization, including Sigma Tenants — useful for admins managing multi-region deployments programmatically.
+
+For more information, see [Update organization settings](https://help.sigmacomputing.com/reference-link/updateorganizationsettings)
+
 ### New API Endpoints for Managing Credentials and Connectors
 Ten new endpoints provide programmatic management of API credentials and connectors:
 
@@ -191,6 +204,14 @@ Users can now configure custom data labels on geography maps through the `Proper
 ## Data Modeling
 Duration: 20
 
+### dbt Core integration (Beta) <img src="assets/heart_icon.png" width="25"/>
+Add metadata from dbt Core run output to Sigma for visualizing freshness data, monitoring data quality, and displaying table and column descriptions configured in dbt directly within Sigma. Upload dbt artifacts using the dedicated endpoint.
+
+For more information, see [Configure dbt Core integration](https://help.sigmacomputing.com/docs/manage-dbt-integration#configure-dbt-core-integration-beta)
+
+**WHY IT MATTERS:**<br>
+dbt Core is the de facto transformation tool in modern data stacks. Bringing dbt freshness, data quality, and table/column descriptions directly into Sigma closes the gap between the transformation layer and the BI layer — analysts no longer need to context-switch to dbt docs to understand what they're looking at.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -221,7 +242,17 @@ Duration: 20
 ## New QuickStarts in May
 Duration: 20
 
+### Sigma Skills for AI Assistants
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_sigma_skill/index.html?index=..%2F..index#0) shows how to install and use Sigma's open-source agent skills in Claude Code so an AI assistant can authenticate to Sigma, call the REST API, and build data models through natural-language prompts.
 
+It walks through how to:
+* Install the open-source Sigma agent skills as a Claude Code plugin (with notes for Cursor, OpenAI Codex, and Snowflake Cortex Code)
+* Authenticate to Sigma's REST API through the agent — credentials stay in your shell environment, not in prompts
+* Build and iterate on Sigma data models programmatically, with each update saved as a versioned JSON spec
+* Customize the skills locally for quick iteration, or fork the repo on GitHub to make changes durable
+
+**WHY IT MATTERS:**<br>
+This is the "API + agent" pattern in practice — open-source skills give any supported AI assistant the context to handle authentication, call the right endpoints, and follow Sigma's conventions. Developers and technical analysts manage workbooks, members, and data models through plain-language prompts while permissions and audit trails stay with Sigma. Each data model edit becomes a versioned JSON artifact your team can diff, review, and redeploy.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -237,8 +268,18 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
+### Hierarchy column actions and control improvements (Beta)
+Hierarchies now support actions for interactivity, selection of up to 1,000 values from search results, and an `Expand all levels` option that reveals every hierarchy level at once.
+
+For more information, see [Hierarchies](https://help.sigmacomputing.com/docs/hierarchies)
+
 ### Terminology Change - Your Documents
 We have revised the UI to consistently reference `Your documents` instead of `Documents` and `My documents` to make ownership more clear.
+
+### Translate Sigma UI text in workbooks (GA)
+Localize the Sigma UI in a workbook by adding the `:lng=<locale>` query string parameter to its URL — supports global teams that need Sigma in their working language.
+
+For more information, see [Manage workbook localization](https://help.sigmacomputing.com/docs/manage-workbook-localization)
 
 ### True Transparency for Element Backgrounds
 Setting an element's background color to `None` now renders as genuine transparency, allowing page and container background images to show through rather than defaulting to the background color.
