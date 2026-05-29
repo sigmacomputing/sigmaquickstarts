@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-05-29
+lastUpdated: 2026-06-29
 
 # The Builder's Guide to Sigma AI Apps: Workflows, Cortex Agents & AI Functions
 
@@ -450,9 +450,10 @@ Configure the email:
 | Recipient | Your email address |
 | Subject | `Deal Escalation - Review Required` |
 | Message | Use [Dynamic text](https://help.sigmacomputing.com/docs/text-elements#add-dynamic-text-based-on-your-data) — press `=` on the keyboard to open the formula bar and paste the formula below |
-| Link to workbook | `OFF` |
+| Link to workbook | `ON` |
+| Attachment | `OFF` |
 
-Scroll down and `Disable` the `Link to workbook` option or the email will not be sent:
+Be sure to scroll down and `Disable` the `Attachment` option or the email will not be sent:
 
 <img src="assets/bga_34.png" width="800"/>
 
@@ -506,7 +507,10 @@ Configure the email:
 | Recipient | Your email address (simulating the rep) |
 | Subject | Dynamic text |
 | Message | Dynamic text |
-| Link to workbook | `OFF` |
+| Link to workbook | `ON` |
+| Attachment | `OFF` |
+
+Scroll down and `Disable` the `Attachment` option or the email will not be sent.
 
 Subject formula:
 
