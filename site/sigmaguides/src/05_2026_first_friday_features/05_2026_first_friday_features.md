@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
-lastUpdated: 2026-06-06
+lastUpdated: 2026-06-05
 
 # (05-2026) May
 <!-- The above name is what appears on the website and is searchable. 
@@ -14,7 +14,7 @@ lastUpdated: 2026-06-06
  08 changes: 7 (Administration: 1, AI: 1, API: 1, Workbooks: 4)
  15 changes: 7 (Administration: 3, API: 1, Charts: 1, Bug Fixes: 1, Workbooks: 1)
  22 changes: 5 (Overview: 1, API: 1, Data Modeling: 1, Workbooks: 2)
- 29 changes:
+ 29 changes: 8 (Administration: 2, AI: 1, Bug Fixes: 3, New QSes: 1, Additional Info: 1)
 
 Publish on June 5
 
@@ -26,7 +26,7 @@ Duration: 5
 
 This QuickStart lists all the new and public beta features released, as well as bugs fixed in May 2026.
 
-It is summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
+It is a summary in nature, and you should refer to the specific Sigma documentation links provided for more information.
 
 **Public beta features will carry the section text "Beta".**
 
@@ -73,7 +73,7 @@ For more information, see [Action Button Column Formatting](https://help.sigmaco
 ### Call API Action (GA) <img src="assets/heart_icon.png" width="25"/>
 Call API Action is now generally available. Create actions that call API endpoints directly within Sigma workbooks to trigger workflows, enrich data, and integrate external systems. Supports diverse authentication methods, dynamic parameters, and typed request bodies.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 GA status means this is production-ready for enterprise use. Teams can reliably trigger external workflows, push data to downstream systems, and orchestrate multi-step processes without leaving Sigma — a meaningful capability for operational analytics at scale.
 
 For more information, see [Call API Action](https://help.sigmacomputing.com/docs/create-actions-that-call-api-endpoints)
@@ -83,14 +83,13 @@ There is also a QuickStart, [API Actions - Getting Started](https://quickstarts.
 ### Download Reports as PDF <img src="assets/heart_icon.png" width="25"/>
 Create workbook actions that download entire reports in PDF format for distribution and offline access.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 PDF export via workbook actions closes a common gap for stakeholders who need polished, shareable reports outside the browser — useful for scheduled distributions, executive reviews, and compliance documentation.
 
 For more information, see [Download Reports as PDF](https://help.sigmacomputing.com/docs/create-actions-that-send-notifications-and-export-data#download-a-report)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
 
 ## Administration
 Duration: 20
@@ -102,6 +101,11 @@ Parent organization administrators can now view audit logs across tenant organiz
 Multi-region tenant deployments are common in enterprise contexts, and centralized audit visibility is a frequent compliance requirement. This closes a gap for parent org admins managing tenants across regions.
 
 For more information, see [Review audit logs from tenant organizations](https://help.sigmacomputing.com/docs/create-and-manage-tenant-organizations#review-audit-logs-from-tenant-organizations)
+
+### Connect to ClickHouse (Beta)
+Sigma now supports connections to [ClickHouse](https://clickhouse.com/)
+
+For more information, see [Connect to ClickHouse (Beta)](https://help.sigmacomputing.com/docs/connect-to-clickhouse)
 
 ### Databricks Sample Connection
 The `Sigma Sample Catalog,` a sample Databricks connection, is now available to all Sigma organizations upon request for testing and development purposes. This gives teams a ready-made environment to explore Sigma's Databricks integration without needing to configure their own connection.
@@ -131,6 +135,15 @@ To ensure that the available Sigma templates shared to every organization are re
 
 Any workbooks created from the templates are unaffected.
 
+### View materialization schedule owners in workbooks and data models
+You can now see who owns a materialization for an element in a materialization schedule by opening the `Materialization schedules` modal.
+
+By default, the owner is the user who added the element to the schedule, and the materialization job runs using that user's credentials for the connection. 
+
+If another user updates the Grouping configuration, pauses, or unpauses the materialization in the schedule, ownership of the materialization transfers to that user. 
+
+For more information, see [Materialization ownership](https://help.sigmacomputing.com/docs/materialization#materialization-ownership)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -145,13 +158,10 @@ This opens Sigma to AI-driven automation workflows — agents can authenticate a
 
 For more information, see [Agent Skills for Sigma](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+### Support for Amazon Bedrock AI provider (Beta)
+[Amazon Bedrock](https://aws.amazon.com/bedrock/) is now a supported AI provider, letting you use Anthropic foundation models with Sigma AI-powered features.
 
-## AI Apps
-Duration: 20
-
-
+For more information, see [Add Amazon Bedrock as an AI provider](https://help.sigmacomputing.com/docs/manage-external-ai-integrations#add-amazon-bedrock-as-an-ai-provider)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -183,8 +193,13 @@ Ten new endpoints provide programmatic management of API credentials and connect
 ## Bug Fixes
 Duration: 20
 
-### Invalid Image URL Warning
-The editor now displays an `Invalid image URL` alert when background image URLs are malformed.
+**1:** The editor now displays an `Invalid image URL` alert when background image URLs are malformed.
+
+**2:** For organizations with greater than 15,000 user attributes, admins could not specify a user attribute to dynamically set a role or warehouse for a Snowflake connection.
+
+**3:** Users in tenant organizations were unable to duplicate or tag versions of deployed documents.
+
+**4:** When a deployed workbook was version tagged, the `Get deployed workbook in a tenant organization` API endpoint did not successfully return the workbookId.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -197,9 +212,6 @@ Users can now configure custom data labels on geography maps through the `Proper
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
-
-
-
 
 ## Data Modeling
 Duration: 20
@@ -215,34 +227,16 @@ dbt Core is the de facto transformation tool in modern data stacks. Bringing dbt
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Embedding
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Functions / Calculations
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Input Tables
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## New QuickStarts in May
 Duration: 20
 
-### Sigma Skills for AI Assistants
+### Fundamentals 12: Build App-Style Layouts in Sigma
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/Fundamentals_12_repeater_single_row_containers/index.html?index=..%2F..index#0) shows how to turn a structured table into a card-based catalog with a click-through detail view, using Sigma's Repeater and Single Row containers.
+
+**WHY IT MATTERS:**<br>
+This is the master/detail pattern that powers product catalogs, employee directories, project boards, and CRM record pages — designed once and scaled automatically across the dataset. The same building blocks work for any browsable record set, with no front-end code, no separate detail dataset, and no state management.
+
+### Sigma Skills for AI Assistants <img src="assets/heart_icon.png" width="25"/>
 [This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_sigma_skill/index.html?index=..%2F..index#0) shows how to install and use Sigma's open-source agent skills in Claude Code so an AI assistant can authenticate to Sigma, call the REST API, and build data models through natural-language prompts.
 
 It walks through how to:
@@ -253,14 +247,6 @@ It walks through how to:
 
 **WHY IT MATTERS:**<br>
 This is the "API + agent" pattern in practice — open-source skills give any supported AI assistant the context to handle authentication, call the right endpoints, and follow Sigma's conventions. Developers and technical analysts manage workbooks, members, and data models through plain-language prompts while permissions and audit trails stay with Sigma. Each data model edit becomes a versioned JSON artifact your team can diff, review, and redeploy.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Security
-Duration: 20
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -281,12 +267,15 @@ Localize the Sigma UI in a workbook by adding the `:lng=<locale>` query string p
 
 For more information, see [Manage workbook localization](https://help.sigmacomputing.com/docs/manage-workbook-localization)
 
-### True Transparency for Element Backgrounds
+### True Transparency for Element Backgrounds <img src="assets/heart_icon.png" width="25"/>
 Setting an element's background color to `None` now renders as genuine transparency, allowing page and container background images to show through rather than defaulting to the background color.
 
 For example, the image on the left is using a white background while the other is transparent:
 
 <img src="assets/fff_01.png" width="600"/>
+
+**WHY IT MATTERS:**<br>
+Element backgrounds set to `None` finally render as true transparency, unlocking layered designs where page or container background imagery shows through. This matters for branded dashboards, embedded experiences, and any presentation-quality output where visual polish is part of the deliverable.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -294,13 +283,27 @@ For example, the image on the left is using a white background while the other i
 ## Additional Information
 Duration: 20
 
-**Additional Resource Links**
+### New training courses on input tables and app best practices
+Two new virtual training courses are now available to all Sigma users.
 
+**Intro to Input Tables:**<br>
+A hands-on lab designed for business and technical users who want to confidently explore data and create content in Sigma. 
+
+[Register for this event](https://community.sigmacomputing.com/t/intro-to-input-tables/6921) to gain core skills in using input tables, forms, modals, and actions to build an interactive app.
+
+**AI Apps Best Practices:**<br>
+A webinar designed for analysts and business users with a Build license who are ready to move beyond dashboards. 
+
+[Register for this event](https://community.sigmacomputing.com/t/ai-apps-best-practices/6918) to learn a framework to design applications that scale and adapt.
+
+Browse and register for all courses on the [Sigma events calendar](https://community.sigmacomputing.com/c/events/20)
+
+
+**Additional Resource Links**<br>
 [Blog](https://www.sigmacomputing.com/blog/)<br>
 [Community](https://community.sigmacomputing.com/)<br>
 [Help Center](https://help.sigmacomputing.com/hc/en-us)<br>
 [QuickStarts](https://quickstarts.sigmacomputing.com/)<br>
-<br>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
