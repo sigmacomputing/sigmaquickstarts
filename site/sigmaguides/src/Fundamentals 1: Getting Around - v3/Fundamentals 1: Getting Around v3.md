@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-05-15
+lastUpdated: 2026-05-06
 
 # Fundamentals 01: Overview
 <!-- -->
