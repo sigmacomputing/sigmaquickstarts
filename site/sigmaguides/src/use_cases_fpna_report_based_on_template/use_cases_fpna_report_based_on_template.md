@@ -1,4 +1,4 @@
-\author: pballai
+author: pballai
 id: use_cases_fpna_report_based_on_template
 summary: use_cases_fpna_report_based_on_template
 categories: use-cases
@@ -6,7 +6,7 @@ environments: web
 status: Use Cases
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-08-22
+lastUpdated: 2026-05-10
 
 # Build a Custom FP&A Report based on a Template
 
@@ -141,19 +141,31 @@ The combined dataset—ACTUALS with Hierarchy—is a standard join of the two ta
 ## Setting Up the Template
 Duration: 5
 
-To make this process easier, we have created a [template](https://help.sigmacomputing.com/docs/create-and-edit-workbook-templates) that is mostly configured.
+We have made the final workbook that is created during this QuickStart available as a Sigma Template. This option allows you to read along while having the workbook built for you. 
 
-Return to the Sigma homepage and click `Templates`. Click to select the `Financial Reporting Template Quickstart` template:
+<aside class="negative">
+<strong>NOTE:</strong><br> The template is available by direct link only and not listed in the Sigma UI.
 
-<img src="assets/fpna_36.png" width="800"/>
+In order to use the template you must first log onto your Sigma instance and then browse to the url:
 
-This creates a new (unsaved) workbook for us:
+<a href="https://app.sigmacomputing.com/template?provider=7d0fc8a6-bf65-47f4-86e6-39eba581fe15&shareId=55af1852-7e92-4f3b-b817-5d87ffaf239c&namespace=production&templateId=d75e55f2-3ec3-45d2-b8f4-045cf71d76a7">Financial Reporting Template</a>
+</aside>
+
+The template will prompt to `Swap data sources`. Since it uses Sigma provided sample data, the `% Match` should be `100%`.
+
+Click `Choose`:
+
+<img src="assets/cdf_00.png" width="600"/>
+
+Once done, the fully-built workbook is presented and we can `Accept` the swap and save the workbook normally:
+
+<img src="assets/cdf_00a.png" width="800"/>
+
+This creates a new (unsaved) workbook for us. Click `Save As` and give your new workbook a meaningful name—e.g., `FP&A QuickStart`.
 
 <img src="assets/fpna_37.png" width="800"/>
 
 The template is initially configured with the `Sample Sigma Database`, which should allow for a clean mapping to your own instance.
-
-Click `Save As` and give your new workbook a meaningful name—e.g., `FP&A QuickStart`.
 
 If we open the page tab, `Trending Report` there is `No data`:
 
@@ -188,7 +200,7 @@ Repeat the process for `Input Table 2`, pasting the `12 rows` into the `Manual I
 
 <img src="assets/fpna_09.png" width="800"/>
 
-Now return to the` Trending Report`—you should see data populated in the pivot:
+Now return to the `Trending Report`—you should see data populated in the pivot:
 
 <img src="assets/fpna_10.png" width="800"/>
 

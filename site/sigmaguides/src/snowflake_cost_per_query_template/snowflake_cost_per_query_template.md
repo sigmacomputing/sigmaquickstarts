@@ -56,7 +56,13 @@ You will create the `query_history_enriched` table by running the attached SQL s
 
 [Download the SQL script here!](https://github.com/sigmacomputing/quickstarts-public/blob/main/snowflake_cost_per_query_template/query_history_enriched.sql)
 
-This script takes Snowflake's new `query_attribution_history` table, which attributes compute credits to each query, and uses it to enrich the `query_history` table.  The script also sets up incremental materialization of the new `query_history_enriched` table so that it updates nightly.
+This script creates a table called `query_history_enriched` that enriches the Snowflake `query_history` view with query cost information.  It uses the `warehouse_metering_history` view to approximate the cost for every query run in your Snowflake account.
+
+This approach incorporates warehouse idle time into query costs by spreading it proportionally over the queries. As such, the per-query credit and **cost metrics may differ from the values you see in Snowflake's** `query_attribution_history` view, which does not account for warehouse idle time. In aggregate, the cost per query from this model should tie out within a few percent to the values in `warehouse_metering_history`.  
+
+If you wish to use Snowflake's `query_attribution_history` and ignore warehouse idle time, you can make updates to the attached SQL script.
+
+The script also sets up incremental materialization of the new `query_history_enriched` table so that it updates nightly.
 
 **The script requires you to specify a few parameters:**
 <ul>

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-06-14
+lastUpdated: 2026-05-06
 
 # Natural Language Analytics with Claude and Sigma
 
