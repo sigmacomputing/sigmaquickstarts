@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-06-11
+lastUpdated: 2026-06-11
 
 # Implementing Row-Level Security (RLS)
 <!-- The above name is what appears on the website and is searchable. -->
@@ -21,22 +21,22 @@ While there are several options that we will explore, RLS should **always** be a
 There are four methods to apply RLS at the data model level:
 
 **1: CurrentUserEmail()**<br>
-Returns `True` if the email of the logged in user viewing the data matches some column data.
+Returns `True` if the email of the logged-in user viewing the data matches some column data.
 
 [Documentation](https://help.sigmacomputing.com/docs/currentuseremail)
 
 **2: CurrentUserTeam()**<br>
-Returns `True` if the current user is a member of any of the Team(s) who have been granted access to the data.
+Returns `True` if the current user is a member of any of the Team(s) that have been granted access to the data.
 
-[Documentation](https://help.sigmacomputing.com/docs/manage-teams)
+[Documentation](https://help.sigmacomputing.com/docs/currentuserinteam)
 
 **3: User Attributes**<br>
-You can create and assign user attribute(s) to users (members) or Teams. You can use this functionality in a data model to enforce row-level security using the function CurrentUserAttributeText in a formula. User Attributes are custom names that you create.
+You can create and assign user attribute(s) to users (members) or Teams. You can use this functionality in a data model to enforce row-level security using the function `CurrentUserAttributeText` in a formula. User Attributes are custom keys you create and assign values to, per user or team.
 
 [Documentation](https://help.sigmacomputing.com/docs/user-attributes#assign-user-attributes)
 
 **4: Custom SQL**<br>
-If your data model is derived from a custom SQL query, you may use any of the first three methods as criteria in a where clause.
+If your data model is derived from a custom SQL query, you may use any of the first three methods as criteria in a `WHERE` clause.
 
 [Documentation](https://help.sigmacomputing.com/docs/write-custom-sql)
 
@@ -50,7 +50,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 
 If something is not working as you expect, here’s how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
- ### Target Audience
+### Target Audience
 This QuickStart is intended for anyone looking to implement row-level security in Sigma, ensuring that each logged-in user can only access the data they are authorized to see.
 
 ### Prerequisites
@@ -92,7 +92,7 @@ Search for `Hands` and select `Plugs Electronics Hands On Lab` table from the `R
 
 <img src="assets/rlsu_3.png" width="600"/>
 
-Let's assume that we want to limit data based on the `Region` that each transaction was in. This table has a `Store Region` column, so we can use that for each of our test cases.
+Let's assume that we want to limit data based on the `Region` where each transaction occurred. This table has a `Store Region` column, so we can use that for each of our test cases.
 
 Drag the `Store Region` column to the first position:
 
@@ -124,11 +124,11 @@ In the formula bar for `Email` enter the following formula:
 Switch([Store Region], "East", "phil@sigmacomputing.com", "bob@company.com")
 ```
 
-Sigma evaluates the formula for accuracy, provides instructions and an example and everything is correct, a green checkmark will appear.
+Sigma evaluates the formula for accuracy and provides instructions and an example. If everything is correct, a green checkmark appears.
 
 The `magic wand` icon is Sigma's AI formula assistant. For more information, see [Use AI with formulas](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
 
-`Store Region` now shows phil for rows with `East` and bob for all the other rows:
+`Email` now shows phil for rows with `East` and bob for all the other rows:
 
 <img src="assets/rlsu_6.png" width="600"/>
 
@@ -136,7 +136,7 @@ The `magic wand` icon is Sigma's AI formula assistant. For more information, see
 <strong>NOTE:</strong><br> One thing not to take for granted is that our base table is over 4.5 MILLION rows! We are using it trivially while Sigma handles the scale of the data for smooth user experience.
 </aside>
 
-#### Add Team Column:
+#### Add team column:
 We will now just repeat the same exercise only this time, our new column should be named `Team` and the function for the column modified to match a Sigma team name (that we have yet to create, we will do that later).
 ```copy-code
 Switch([Store Region], "East", "Team_East", "Team_Everyone")
@@ -144,7 +144,7 @@ Switch([Store Region], "East", "Team_East", "Team_Everyone")
 
 Our `Switch` function allows any member of `Team_East` to see the `East` Store Region rows. `Team_Everyone` will see everything else.
 
-Save the data model as `RLS_QuickStart`:
+Rename the data model `RLS_QuickStart`:
 
 <img src="assets/rlsu_7.png" width="500"/>
 
@@ -156,7 +156,7 @@ Click `Publish`.
 ## Email-based RLS
 Duration: 20
 
-Adding RLS based on email is now pretty simple. We will add another column for a test email address. This column will evaluate the address of the user who is currently logged onto Sigma, based on the [CurrentUserEmail](https://help.sigmacomputing.com/docs/currentuseremail) function and the `Email` column, returning a boolean (true/false).
+Adding RLS based on email is now pretty simple. We will add another column for a test email address. This column will evaluate the address of the user who is currently logged into Sigma, based on the [CurrentUserEmail](https://help.sigmacomputing.com/docs/currentuseremail) function and the `Email` column, returning a boolean (true/false).
 
 Add a new column and name it `Current_User`.
 
@@ -173,7 +173,7 @@ Now it is just a matter of setting a filter on the `Current_User` column so that
 
 <img src="assets/rlsu_9.png" width="700"/>
 
-A final cleanup step is to hide the `Email`, and `Current_user` columns; users do not need to see them. We moved the `Current_User` column next to `Email` for clarity:
+A final cleanup step is to hide the `Email` and `Current_User` columns; users do not need to see them. We moved the `Current_User` column next to `Email` for clarity:
 
 <img src="assets/rlsu_10.png" width="400"/>
 
@@ -186,7 +186,7 @@ Switch to the `Published view`:
 
 <img src="assets/rlsu_11.png" width="500"/>
 
-This "landing page" for our data model provides lots of useful information although, since we just created it, much of it is not populated:
+This "landing page" for our data model provides lots of useful information, although, since we just created it, much of it is not populated:
 
 <img src="assets/rlsu_12.png" width="800"/>
 
@@ -208,7 +208,7 @@ Now we have a workbook that builders can use to create other content and the reg
 
 That's it! Simple right?
 
-<aside class="negative">
+<aside class="positive">
 <strong>PRO TIP:</strong><br> Keep the workbook open in a second browser tab to reduce clicks when testing. Not required, but we love saving clicks.
 </aside>
 
@@ -265,7 +265,7 @@ Now click `Teams` from the left sidebar and then click `Create Team`:
 
 Name the team `Team_East` and click `Create`
 
-There are a few options on this screen but we will not cover them all here. For more information see, [Manage Teams](https://help.sigmacomputing.com/docs/manage-teams)
+There are a few options on this screen but we will not cover them all here. For more information, see [Manage Teams](https://help.sigmacomputing.com/docs/manage-teams)
 
 It is easy to add new members by clicking the `Add Members` button. 
 
@@ -291,10 +291,10 @@ Now we get the results we want: `Current Team` is all `True`, we only see `East`
 
 You can hide these two columns; you know how to do that now. Just make sure to do it in the data model and not the workbook. 
 
-What happens if we add ourself back into `Team_Everyone`?
+What happens if we add ourselves back into `Team_Everyone`?
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Because my logged-in user is a member of both teams, we are able to see all 4.5M rows. This flexibility allows team membership RLS to support interesting use cases when some users need to be able to see more data than others through multi-team membership.
+<strong>IMPORTANT:</strong><br> Because our logged-in user is a member of both teams, we are able to see all 4.5M rows. This flexibility allows team membership RLS to support interesting use cases when some users need to be able to see more data than others through multi-team membership.
 </aside>
 
 <img src="assets/rlsu_22.png" width="600"/>
@@ -318,7 +318,7 @@ Name the new UA `Region`, and leave the default value blank. Click `Create`.
 
 Sigma allows us to assign this UA to either an existing `Team` or individual users.
 
-We will assign ourself and set the `Assigned Value` to `East` only:
+We will assign ourselves and set the `Assigned Value` to `East` only:
 
 <img src="assets/rlsu_23.png" width="600"/>
 
@@ -344,17 +344,17 @@ With the filter applied, we can see that there is only one `Store Region` shown 
 
 Hide the `ua_Region` column.
 
-You can `Publish` this data model and check the workbook if you like. The results will be the same and no indication to the user that data is being restricted, but there is a notice that the source has been updated:
+You can `Publish` this data model and check the workbook if you like. The results will be the same, with no indication to the user that data is being restricted — but there is a notice that the source has been updated.
 
 Since we made the changes, we know what they are. Click `Select All` and then `Update`:
 
 <img src="assets/rlsu_26.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This warning is very useful when multiple people are working on data models and workbooks. The screenshot above simulates that since the Current Team was added back when in our workflow it had been previously hidden. This extra check works to limit unwanted data exposure.
+<strong>NOTE:</strong><br> This warning is very useful when multiple people are working on data models and workbooks. The screenshot above simulates that scenario: the `Current Team` column appears as an update even though we had previously hidden it. This extra check works to limit unwanted data exposure.
 </aside>
 
-We could add ourselves to `Team_Everyone` and test to see if all approximately 4.5M rows are shown but we will skip that as we already demonstrated that working in the email RLS section and the workflow is the same.
+We could add ourselves to `Team_Everyone` and test that all approximately 4.5M rows are shown, but we will skip that — we already demonstrated this behavior in the team RLS section, and the workflow is the same.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -380,36 +380,41 @@ Use the `Element bar` to add a `Table` to the page but this time, select `SQL` a
 
 Use the `Sigma Sample Database` for the connection.
 
-Our workbook now has an element to allow custom SQL code. It also lets us explore the contents of the `Sigma Sample Database` contents in the right-side `Element panel`:
+Our workbook now has an element to allow custom SQL code. It also lets us explore the contents of the `Sigma Sample Database` in the right-side `Element panel`:
 
 <img src="assets/rlsu_28.png" width="800"/>
 
-
 In the large open whitespace, paste the following code:
 
-```sql
+```copy-code
 SELECT * FROM RETAIL.PLUGS_ELECTRONICS.PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
-WHERE STORE_REGION = '{{#raw system::CurrentUserAttributeText::Region}}'
+WHERE STORE_REGION = {{system::CurrentUserAttributeText::Region}}
 AND Date >= DATEADD(DAY, -90, CURRENT_DATE)
 ```
 
-This SQL code will get the last 90 days of data, and further limit the return based on the UA `Region` and its `Membership`, which was set to ourselves in the last section. Since the default value for the UA is `East`, that is what is enforced.
+<aside class="positive">
+<strong>NOTE:</strong><br> Earlier versions of this pattern used the <code>#raw</code> directive to inject the user attribute value. As of December 1, 2026, Sigma no longer supports <code>#raw</code> in custom SQL. For identifier substitution (database, schema, table, column), use the new <code>#identifier</code> directive. For details and migration guidance, see <a href="https://help.sigmacomputing.com/docs/replace-the-raw-directive-in-custom-sql">Replace the #raw directive in custom SQL</a>.
+</aside>
+
+This SQL code will get the last 90 days of data, and further limit the return based on the UA `Region` and its membership, which was set to ourselves in the last section. Since the default value for the UA is `East`, that is what is enforced.
 
 Click `Run`. You will now only see rows where `Store Region = East`:
 
 <img src="assets/rlsu_29.png" width="800"/>
 
-While this method feels like less steps, not all users are comfortable writing SQL. For those who are, it is a **great option** to have.
+While this method feels like fewer steps, not all users are comfortable writing SQL. For those who are, it is a **great option** to have.
 
 All we need to do is maintain the UA membership, and the query will enforce it.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END -->
+<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we learned how to implement four different methods to enforce row-level security against a set of data, and explored key details for working with RLS in Sigma.
+This QuickStart walked through four ways to enforce row-level security in Sigma — matching the logged-in user's email, evaluating team membership, applying user attributes, and templating user attributes into custom SQL. All four are applied at the data model, so any workbook built on top inherits the restrictions automatically.
+
+The patterns are reusable across business contexts. Any column that maps to who should see what — region, account, business unit, cost center — can drive RLS with the same techniques. Centralizing the rules at the data model keeps them in one place, avoids re-enforcing them per workbook, and gives downstream builders a safe starting point.
 
 To learn more about Sigma Data Models, see the QuickStart: [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html?index=..%2F..index#0)
 
