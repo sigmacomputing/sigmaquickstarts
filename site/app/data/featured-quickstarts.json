@@ -1,5 +1,11 @@
 {
   "recentQuickStarts": [
+        {
+      "title": "First Friday Features - May 2026",
+      "id": "05_2026_first_friday_features",
+      "category": "first_friday_features",
+      "date": "May 5, 2026"
+    },
     {
       "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
       "id": "Fundamentals_12_repeater_single_row_containers",
@@ -12,13 +18,7 @@
       "category": "developers",
       "date": "May 22, 2026"
     },
-    {
-      "title": "First Friday Features - April 2026",
-      "id": "04_2026_first_friday_features",
-      "category": "first_friday_features",
-      "date": "May 1, 2026"
-    },
-    {
+  {
       "title": "Reshaping Data with Transpose Tables",
       "id": "tables_transpose_tables",
       "category": "tables",
@@ -62,4 +62,3 @@
     }
   ]
 }
-
