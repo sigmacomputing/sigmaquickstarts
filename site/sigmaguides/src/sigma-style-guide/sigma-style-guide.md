@@ -345,8 +345,6 @@ Gifs are supported as:
 ```plaintext
 <img src="assets/sample.gif">
 ```
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
