@@ -129,6 +129,8 @@ func (mw *mdWriter) write(nodes ...types.Node) error {
 			mw.header(n)
 		case *types.YouTubeNode:
 			mw.youtube(n)
+		case *types.LocalVideoNode:
+			mw.localVideo(n)
 		}
 		if mw.err != nil {
 			return mw.err
@@ -324,6 +326,13 @@ func (mw *mdWriter) youtube(n *types.YouTubeNode) {
 		mw.newBlock()
 	}
 	mw.writeString(fmt.Sprintf(`<video id="%s"></video>`, n.VideoID))
+}
+
+func (mw *mdWriter) localVideo(n *types.LocalVideoNode) {
+	if !mw.isWritingList {
+		mw.newBlock()
+	}
+	mw.writeString(fmt.Sprintf(`<video src=%q></video>`, n.Src))
 }
 
 func (mw *mdWriter) table(n *types.GridNode) {

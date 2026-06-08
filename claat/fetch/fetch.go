@@ -167,6 +167,11 @@ func (f *Fetcher) SlurpCodelab(src string, output string) (*codelab, error) {
 		if err != nil {
 			return nil, err
 		}
+		// Local video files get the same treatment as images: copied into
+		// img/ with a content-hashed name and the node's Src rewritten.
+		if err := f.SlurpLocalVideos(src, imgDir, nodes, images); err != nil {
+			return nil, err
+		}
 	}
 
 	// fetch imports and parse them as fragments
@@ -187,6 +192,9 @@ func (f *Fetcher) SlurpCodelab(src string, output string) (*codelab, error) {
 				// download or copy codelab assets to disk, and rewrite image URLs
 				err = f.SlurpImages(gdocID(n.URL), imgDir, frag, images)
 				if err != nil {
+					return
+				}
+				if err = f.SlurpLocalVideos(gdocID(n.URL), imgDir, frag, images); err != nil {
 					return
 				}
 			}
@@ -239,6 +247,48 @@ func (f *Fetcher) SlurpImages(src, dir string, nodes []types.Node, images map[st
 	for i := 0; i < count; i++ {
 		r := <-ch
 		images[r.file] = r.url
+		if r.err != nil {
+			errStr += fmt.Sprintf("%s => %s: %v\n", r.url, r.file, r.err)
+		}
+	}
+	if len(errStr) > 0 {
+		return errors.New(errStr)
+	}
+
+	return nil
+}
+
+// SlurpLocalVideos copies locally-referenced video files into dir (the codelab's
+// img/ output directory) and rewrites each node's Src to the hashed location,
+// mirroring SlurpImages so embedded mp4s travel with the published codelab.
+func (f *Fetcher) SlurpLocalVideos(src, dir string, nodes []types.Node, assets map[string]string) error {
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return err
+	}
+
+	type res struct {
+		url, file string
+		err       error
+	}
+
+	ch := make(chan *res, 100)
+	defer close(ch)
+	videoNodes := types.LocalVideoNodes(nodes)
+	count := len(videoNodes)
+	for _, videoNode := range videoNodes {
+		go func(videoNode *types.LocalVideoNode) {
+			url := videoNode.Src
+			file, err := f.slurpBytes(src, dir, url)
+			if err == nil {
+				videoNode.Src = filepath.Join(util.ImgDirname, file)
+			}
+			ch <- &res{url, file, err}
+		}(videoNode)
+	}
+	var errStr string
+	for i := 0; i < count; i++ {
+		r := <-ch
+		assets[r.file] = r.url
 		if r.err != nil {
 			errStr += fmt.Sprintf("%s => %s: %v\n", r.url, r.file, r.err)
 		}

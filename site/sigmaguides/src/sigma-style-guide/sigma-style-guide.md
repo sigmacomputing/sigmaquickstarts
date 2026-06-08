@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: internal
-lastUpdated: 2023-03-15
+lastUpdated: 2026-06-15
 
 # Sigma QuickStart Style Guide
 
@@ -353,14 +353,26 @@ Gifs are supported as:
 ## **Videos**
 Duration: 5
 
-Videos from YouTube can be directly embedded using only the video ID:<br>
+### MP4
+
+Use ffmpeg to convert video into MP4. For example, convert `.mov` to MP4:
+```copy-code
+ffmpeg -i videoname.mov -vcodec libx264 -crf 28 -preset slow -vf "scale=1280:-2" -an output.mp4
+```
+
+```copy-code
+<video src="assets/yourfile.mp4"></video>
+```
+
+### YouTube can be directly embedded using only the video ID:<br>
 <video id="E9G2a4QkLYE"></video>
 
-**Markdown for Video:**
-
-```plaintext
+```copy-code
 <video id="E9G2a4QkLYE"></video>
 ```
+
+
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->

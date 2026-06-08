@@ -850,12 +850,26 @@ func image(ds *docState) types.Node {
 }
 
 func youtube(ds *docState) types.Node {
+	var ytID, src string
 	for _, attr := range ds.cur.Attr {
-		if attr.Key == "id" {
-			n := types.NewYouTubeNode(attr.Val)
-			n.MutateBlock(true)
-			return n
+		switch attr.Key {
+		case "id":
+			ytID = attr.Val
+		case "src":
+			src = attr.Val
 		}
+	}
+	// A src attribute indicates a locally-hosted video file
+	// (e.g. <video src="assets/demo.mp4"></video>) rather than a YouTube embed.
+	if src != "" {
+		n := types.NewLocalVideoNode(src)
+		n.MutateBlock(true)
+		return n
+	}
+	if ytID != "" {
+		n := types.NewYouTubeNode(ytID)
+		n.MutateBlock(true)
+		return n
 	}
 	return nil
 }

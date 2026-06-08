@@ -43,6 +43,7 @@ const (
 	NodeYouTube              // YouTube video
 	NodeIframe               // Embedded iframe
 	NodeImport               // A node which holds content imported from another resource
+	NodeLocalVideo           // Locally-hosted video file (e.g. mp4) referenced by relative src
 )
 
 // Node is an interface common to all node types.
@@ -421,6 +422,40 @@ func ImageNodes(nodes []Node) []*ImageNode {
 	return imgs
 }
 
+// LocalVideoNodes collects every LocalVideoNode reachable from nodes, recursively.
+// Mirrors ImageNodes so callers can apply the same copy-and-rename treatment
+// to locally-hosted video assets.
+func LocalVideoNodes(nodes []Node) []*LocalVideoNode {
+	var vids []*LocalVideoNode
+	for _, n := range nodes {
+		switch n := n.(type) {
+		case *LocalVideoNode:
+			vids = append(vids, n)
+		case *ListNode:
+			vids = append(vids, LocalVideoNodes(n.Nodes)...)
+		case *ItemsListNode:
+			for _, i := range n.Items {
+				vids = append(vids, LocalVideoNodes(i.Nodes)...)
+			}
+		case *HeaderNode:
+			vids = append(vids, LocalVideoNodes(n.Content.Nodes)...)
+		case *URLNode:
+			vids = append(vids, LocalVideoNodes(n.Content.Nodes)...)
+		case *ButtonNode:
+			vids = append(vids, LocalVideoNodes(n.Content.Nodes)...)
+		case *InfoboxNode:
+			vids = append(vids, LocalVideoNodes(n.Content.Nodes)...)
+		case *GridNode:
+			for _, r := range n.Rows {
+				for _, c := range r {
+					vids = append(vids, LocalVideoNodes(c.Content.Nodes)...)
+				}
+			}
+		}
+	}
+	return vids
+}
+
 // NewButtonNode creates a new button with optional content nodes n.
 func NewButtonNode(raised, colored, download bool, n ...Node) *ButtonNode {
 	return &ButtonNode{
@@ -559,4 +594,25 @@ type IframeNode struct {
 // Empty returns true if iframe's URL field is empty.
 func (iframe *IframeNode) Empty() bool {
 	return iframe.URL != ""
+}
+
+// NewLocalVideoNode creates a new local video node referencing a relative src
+// (e.g. assets/demo.mp4) that will be rendered as an HTML5 <video> element.
+func NewLocalVideoNode(src string) *LocalVideoNode {
+	return &LocalVideoNode{
+		node: node{typ: NodeLocalVideo},
+		Src:  src,
+	}
+}
+
+// LocalVideoNode represents a locally-hosted video file embedded via
+// <video src="..."></video> in source markdown.
+type LocalVideoNode struct {
+	node
+	Src string
+}
+
+// Empty returns true if lv's Src field is empty.
+func (lv *LocalVideoNode) Empty() bool {
+	return lv.Src == ""
 }
