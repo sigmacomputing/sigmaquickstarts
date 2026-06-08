@@ -184,6 +184,8 @@ You can enable custom page sidebars to appear on one or more workbook pages. Pag
 **WHY IT MATTERS:**<br>
 Custom page sidebars give builders a clean way to keep filters, navigation, or contextual content visible across multiple pages without rebuilding it each time. The result is faster workbook authoring and a more consistent reading experience for end users.
 
+<video src="assets/sidebar.mp4"></video>
+
 For more information, see [Add custom page panels to a workbook](https://help.sigmacomputing.com/docs/add-custom-page-panels-to-a-workbook)
 
 ### Hierarchy Columns (GA) <img src="assets/heart_icon.png" width="25"/>
