@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-05-21
+lastUpdated: 2026-06-21
 
 # Embedding 12: Parameterized Queries
 
@@ -22,7 +22,7 @@ While there are various ways to store customer data, this pattern is fairly comm
 To accomplish this in Sigma, we’ll use queries that leverage custom user attributes.
 
 ### How it works
-End users are authenticated by the parent application. When the user navigates to a parent page containing embedded Sigma content, the parent sends a request to Sigma via the embed API, containing user attributes that specify the database and schema names. Sigma parses that request, and applies the user attributes to the SQL query. The query is then evaluated by Sigma and, if needed, sent to the cloud data warehouse.
+End users are authenticated by the parent application. When the user navigates to a parent page containing embedded Sigma content, the parent sends a request to Sigma via the embed API, containing a user attribute that specifies the target database and schema. Sigma parses that request, and applies the user attribute to the SQL query. The query is then evaluated by Sigma and, if needed, sent to the cloud data warehouse.
 
 How Sigma performs calculations is beyond the scope of this QuickStart, but covered in-depth in the QuickStart [Sigma's Query Engine.](https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html?index=..%2F..index#0)
 
@@ -30,11 +30,11 @@ This differs from other options Sigma offers for common architectural patterns.
 
 Other options include:
 
-[Embedding 05: Multi-tenancy]()
+[Build and Secure Multi-Tenant Data Applications with Snowflake and Sigma](https://quickstarts.sigmacomputing.com/guide/snowflake_build_secure_multitenant_data_applications_snowflake_sigma/index.html?index=..%2F..index#0)
 
-[Embedding 07: Dynamic Role Switching with Snowflake]()
+[Embedding 07: Dynamic Role Switching with Snowflake](https://quickstarts.sigmacomputing.com/guide/embedding_07_dynamic_role_switching_v3/index.html?index=..%2F..index#0)
 
-In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_03_secure_access/index.html?index=..%2F..index#0)
+In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..index#0)
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -45,7 +45,7 @@ For more information on Sigma's release strategy, see [Sigma product releases](h
 If something is not working as you expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to complete this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders and copy/paste operations.
+Semi-technical users who will be aiding in the planning or implementation of Sigma with embedding. No SQL or technical data skills are needed to complete this QuickStart. It does assume some common computer skills like installing software, using Terminal, navigating folders, and copy/paste operations.
 
 ### Prerequisites
 
@@ -66,6 +66,7 @@ Semi-technical users who will be aiding in the planning or implementation of Sig
 </aside>
  
 ![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Typical use cases
 Duration: 20
@@ -81,7 +82,7 @@ Database names are different, but schema names are the same.
 Database and schema names are different.
 
 **3: Two Snowflake accounts with similarly structured databases and/or schemas, but different names:**<br>
-This requires the previously mentioned connection-swapping user attribute along with custom user attributes for database and schema names.
+This requires a connection-swapping user attribute along with custom user attributes for database and schema names.
 
 The core design pattern, based on custom user attributes, offers flexibility to match a variety of architectural models.
 
@@ -129,14 +130,14 @@ Open a new `SQL Worksheet`.
 
 The script below creates roles for `Client_A` and `Client_B`, sets up their databases and schemas, grants the required permissions, and inserts sample data into their `STORE_SALES` tables.
 
-It also creates a default client (`Client_Default`) with a table containing a single row of dummy data. This will serve as the default in our later Sigma configuration. This ensures that if the parent application fails to send database and/or schema values, Sigma falls back to the default without exposing other client data.
+It also creates a default client (`Client_Default`) with a table containing a single row of dummy data. This will serve as the default in our later Sigma configuration. This ensures that if the parent application fails to send a database/schema value, Sigma falls back to the default without exposing other client data.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> There are other ways to deal with default values, but we want to keep this demonstration focused on the overall setup and concepts for simplicity sake. 
+<strong>IMPORTANT:</strong><br> There are other ways to deal with default values, but we want to keep this demonstration focused on the overall setup and concepts for simplicity's sake. 
 </aside>
 
 Copy and paste this code into the worksheet:
-```code
+```copy-code
 -- Use the ACCOUNTADMIN role and COMPUTE_WH warehouse
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
@@ -216,6 +217,11 @@ GRANT USAGE ON DATABASE Client_Default_DB TO ROLE Client_Default_Role;
 GRANT USAGE ON SCHEMA Client_Default_DB.Client_Default_Schema TO ROLE Client_Default_Role;
 GRANT SELECT ON ALL TABLES IN SCHEMA Client_Default_DB.Client_Default_Schema TO ROLE Client_Default_Role;
 
+-- Warehouse usage for client roles
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE Client_A_Role;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE Client_B_Role;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE Client_Default_Role;
+
 -- Step 5: Grant Permissions to ACCOUNTADMIN
 GRANT SELECT ON ALL TABLES IN SCHEMA Client_A_DB.Client_A_Schema TO ROLE ACCOUNTADMIN;
 GRANT SELECT ON ALL TABLES IN SCHEMA Client_B_DB.Client_B_Schema TO ROLE ACCOUNTADMIN;
@@ -225,6 +231,8 @@ GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE ACCOUNTADMIN;
 
 -- Step 6: Replace "YOUR_SIGMA_USER" with your Snowflake user with ACCOUNTADMIN role
 GRANT ROLE Client_Default_Role TO USER YOUR_SIGMA_USER;
+GRANT ROLE Client_A_Role TO USER YOUR_SIGMA_USER;
+GRANT ROLE Client_B_Role TO USER YOUR_SIGMA_USER;
 ```
 
 <aside class="positive">
@@ -240,71 +248,91 @@ In the `Databases` tab, you’ll see the new tables:
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-
-
-
 ## Sigma Configuration 
 Duration: 20
 
 Log into Sigma as `Administrator`.
 
 ### Create teams
-Navigation to `Administration` > `Teams` and create add the `CLIENT_A` and `CLIENT_B` teams:
+Navigate to `Administration` > `Teams` and create the `CLIENT_A` and `CLIENT_B` teams:
 
 <img src="assets/pq_2.png" width="800"/>
 
 No need to assign anyone to these teams now. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Users are added automatically to Sigma, when coming in via the embedding integration. They will be added to the user ("people") database, assigned to the specified team and permissions by the embed-API. You will not have to manage Sigma embed users separately from your existing user management system, saving you time.
+<strong>IMPORTANT:</strong><br> When users come in via the embedding integration, they are added to Sigma automatically, assigned to the specified team and permissions by the embed API. You don't have to manage Sigma embed users separately from your existing user management system, saving you time.
 </aside>
 
 ### Create custom user attributes<br>
-We need to create a few attributes that will serve as placeholders for values that will be passed from the host application at runtime.
+We need to create two attributes that will serve as placeholders for values passed from the host application at runtime.
 
 Navigate to `Administration` > `User Attributes` and click `Create Attribute`.
 
-Give the attribute the name `Client_DB`, set the default value to `Client_Default_DB` and click `Create`:
+Give the attribute the name:
+```copy-code
+Client_DB_Schema
+```
+Set the default value to 
+```copy-code
+CLIENT_DEFAULT_DB.CLIENT_DEFAULT_SCHEMA
+```
+
+Click `Create`:
 
 <img src="assets/pq_3.png" width="600"/>
 
-Repeat the process, creating new a attribute for `Client_Schema`, taking care to assign the expected default; `Client_Default_Schema`.
+<aside class="positive">
+<strong>NOTE:</strong><br> We combine the database and schema into a single UA value separated by a dot. The custom SQL uses <code>SplitPart</code> to parse the two halves at query time, keeping the host application's payload to one UA instead of two.
+<br><br>
+The value must use uppercase to match how Snowflake stores unquoted identifiers. The <code>#identifier</code> directive quotes the value as-is at query time, so mixed-case will fail with "does not exist or not authorized."
+</aside>
 
-Repeat the process one more time, creating new a attribute for `Client_Role`, taking care to assign the expected default; `Client_Default_Role`.
+Repeat the process, creating a second attribute named:
+
+```copy-code
+Client_Role
+``` 
+
+Set the default value to:
+```copy-code
+Client_Default_Role
+```
 
 ### Create Connection to Snowflake:<br>
-Create a new connection in `Administration` > `Connections` and name it`Parameterized Queries QuickStart`.
+Create a new connection in `Administration` > `Connections` and name it `Parameterized Queries QuickStart`.
 
 Configure the rest of the connection as shown below, adjusting for your Snowflake account and selecting `Client_Role` from the list menu:
 
-<img src="assets/pq_4.png" width="800"/>
+<img src="assets/pq_4.png" width="600"/>
 
-Click `Save.` Sigma will validate the connection, warning if there are any errors.
+For more information, see [Snowflake Key-pair Authorization](https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html?index=..%2F..index#0)
+
+Click `Save`. Sigma will validate the connection, warning if there are any errors.
 
 Click the `Browse connection` button:
 
 <img src="assets/pq_5.png" width="800"/>
 
-Make sure you can see all the client database/schema:
+Make sure you can see all the client databases and schemas:
 
 <img src="assets/pq_6.png" width="800"/>
 
 ### Create the workbook
-Click the `Explore` button to open the `STORE_SALES` table in a new Sigma workbook. It does not matter if you were browsing the `Client_A` or `Client_B` connection.
+Click the `Explore` button to open the `STORE_SALES` table in a new Sigma workbook. It does not matter if you were browsing the `CLIENT_A_DB` or `CLIENT_B_DB` database.
 
-Use the `Save As` button to create the new workbook named `Embedding 12: Parameterized Queries`. 
+Use the `Save As` button to create the new workbook named:
+```copy-code
+Embedding 12: Parameterized Queries
+```
 
 <img src="assets/pq_7.png" width="500"/>
 
 It is really great that Sigma can just launch a connection to data directly into a familiar spreadsheet interface, creating optimized SQL on-the-fly for us in seconds.
 
-<aside class="positive">
-<strong>IMPORTANT:</strong><br> For use cases that require row-level-security it is recommended to base the parameterized query off of a data model instead. The workflow is slightly different but the application of the query is the same.
-</aside>
+However, we want to have a single workbook that provides all clients a common interface, using each client's data only. 
 
-However, we want to have a single workbook that provides all clients a common interface, using each clients data only. 
-
-The table on this page does not do that, so lets delete it:
+The table on this page does not do that, so let's delete it:
 
 <img src="assets/pq_8.png" width="800"/>
 
@@ -321,7 +349,7 @@ Select our new `Embedding 12: Parameterized Queries` connection:
 We are now able to create a custom SQL statement to return data instead of Sigma doing it for us. We will use this to create a parameterized query.
 
 Copy and paste this code and click the `Run` button:
-```code
+```copy-code
 SELECT * FROM CLIENT_A_DB.CLIENT_A_SCHEMA.STORE_SALES
 ```
 
@@ -329,20 +357,26 @@ While our query is not yet parameterized, this verifies that we can retrieve dat
 
 <img src="assets/pq_11.png" width="600"/>
 
-Now replace the code to use our user attributes instead:
-```code
-SELECT * FROM {{#raw system::CurrentUserAttributeText::Client_DB}}.{{#raw system::CurrentUserAttributeText::Client_Schema}}.STORE_SALES
+Now replace the code to use our user attribute instead:
+```copy-code
+SELECT * FROM {{#identifier SplitPart(CurrentUserAttributeText('Client_DB_Schema'), '.', 1)}}.{{#identifier SplitPart(CurrentUserAttributeText('Client_DB_Schema'), '.', 2)}}.STORE_SALES;
 ```
 
-We are present with the single row of data from the `Client_Default_DB` table:
+<aside class="positive">
+<strong>NOTE:</strong><br> Earlier versions of this pattern used the <code>#raw</code> directive. As of December 1, 2026, Sigma no longer supports <code>#raw</code> in custom SQL. The <code>#identifier</code> directive replaces it for identifier substitution (database, schema, table, column) and always produces quoted identifiers, so the underlying object names must match the case stored in your data platform. For details and migration guidance, see <a href="https://help.sigmacomputing.com/docs/replace-the-raw-directive-in-custom-sql">Replace the #raw directive in custom SQL</a>.
+</aside>
 
-<img src="assets/pq_12.png" width="600"/>
+We are presented with the single row of data from the `Client_Default_DB` table:
 
-Recall that when we created the user attributes for `Client_DB` and `Client_Schema` we set default values. This is why we are seeing data still, instead of a SQL error.
+<img src="assets/pq_12.png" width="700"/>
+
+Recall that when we created the `Client_DB_Schema` user attribute we set a default value. This is why we are seeing data still, instead of a SQL error.
 
 It may also be nice to know which user is accessing data when we test the embed later. This is easy enough to do.
 
-Add a new `Text` element from the `UI` element bar group and configure it by typing `=CurrentUserEMail()` and clicking the <img src="assets/greencheckbox.png" width="30"/>:
+Click the `SQL` icon in the upper right corner of the table to collapse the SQL editor.
+
+Add a new `Text` element from the `UI` element bar group and configure it by typing `=CurrentUserEmail()` and clicking the <img src="assets/greencheckbox.png" width="30"/>:
 
 <img src="assets/pq_13.png" width="600"/>
 
@@ -361,7 +395,7 @@ Add the `CLIENT_A` and `CLIENT_B` teams. Set the permission to `Can View` and se
 
 ### Embed URL
 
-Open the workbook's menu and click `Go to published verion`:
+Open the workbook's menu and click `Go to published version`:
 
 <img src="assets/pq_16.png" width="600"/>
 
@@ -370,13 +404,13 @@ Copy the URL from the browser and store it in a text file; we will use that late
 ## Configure and Test
 Duration: 5
 
-In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_prerequisites/index.html?index=..%2F..index#0) we deployed a host application locally.
+In the QuickStart [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..index#0) we deployed a host application locally.
 
 For testing, we’ll use the pre-built page that demonstrates this approach.
 
-In VSCode, open a new Terminal session inside the `embedding_qs_series` project and run the following command:
+In VSCode, open a new Terminal session inside the `embedding_qs_series_2` project and run the following command:
 
-```code
+```copy-code
 npm start
 ```
 
@@ -386,17 +420,16 @@ Now edit the `.env` file to update a few values.
 
 The `CLIENT_ID` and `SECRET` from the Getting Started QuickStart should still be present and working. If they aren’t configured, revisit the Getting Started QuickStart to complete that step.
 
-In the `# QS: parameterized_queries` section, we need to configure the values below, using the URL saved earlier for the `PARAMETERIZED_QUERIES_BASE_URL` value:
+In the `# Embedding 12: Parameterized Queries` section, we need to configure the values below, using the URL saved earlier for the `PARAMETERIZED_QUERIES_BASE_URL` value:
 
-```code
+```copy-code
 PARAMETERIZED_QUERIES_BASE_URL=
 PARAMETERIZED_QUERIES_EMAIL=sales_person@client_a.com
 PARAMETERIZED_QUERIES_ACCOUNT_TYPE=View
 PARAMETERIZED_QUERIES_TEAMS=Client_A
 
-UPARAMETERIZED_QUERIES_ua_Client_Role=Client_A_Role
-PARAMETERIZED_QUERIES_ua_Client_Schema=Client_A_Schema
-PARAMETERIZED_QUERIES_ua_Client_DB=Client_A_DB
+PARAMETERIZED_QUERIES_ua_Client_Role=Client_A_Role
+PARAMETERIZED_QUERIES_ua_Client_DB_Schema=CLIENT_A_DB.CLIENT_A_SCHEMA
 ```
 
 Save the `.env` file.
@@ -404,8 +437,8 @@ Save the `.env` file.
 <img src="assets/pq_18.png" width="800"/>
 
 In a browser, open:
-```code
-http://localhost:3000/parameterize_queries/?mode=parameterize_queries
+```copy-code
+http://localhost:3000/parameterized_queries/?mode=parameterized_queries
 ```
 
 The table loads with the Snowflake data for `Client_A` and the user attributes that were passed are shown in the left sidebar:
@@ -414,7 +447,7 @@ The table loads with the Snowflake data for `Client_A` and the user attributes t
 
 This configuration uses Snowflake’s role-based access control to enforce data-level security.
 
-Embed users are authenticated by the host application, which then passes user attributes to Sigma via the embed API. Embed users are automatically added to Sigma and assigned to a team based on instructions from the host application.
+Embed users are authenticated by the host application, which then passes user attributes to Sigma via the embed API. They are automatically added to Sigma and assigned to a team based on instructions from the host application.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Embed users cannot log directly into the Sigma UI.
@@ -424,14 +457,13 @@ Embed users are authenticated by the host application, which then passes user at
 
 To simulate a different user, update the `.env` values for `Client_B`:
 
-```code
+```copy-code
 PARAMETERIZED_QUERIES_EMAIL=sales_person@client_b.com
 PARAMETERIZED_QUERIES_ACCOUNT_TYPE=View
 PARAMETERIZED_QUERIES_TEAMS=Client_B
 
 PARAMETERIZED_QUERIES_ua_Client_Role=Client_B_Role
-PARAMETERIZED_QUERIES_ua_Client_Schema=Client_B_Schema
-PARAMETERIZED_QUERIES_ua_Client_DB=Client_B_DB
+PARAMETERIZED_QUERIES_ua_Client_DB_Schema=CLIENT_B_DB.CLIENT_B_SCHEMA
 ```
 
 Save the file and refresh the browser.
@@ -440,15 +472,19 @@ You should now see only `Client_B` data:
 
 <img src="assets/pq_20.png" width="800"/>
 
-We can now deploy a Sigma dashboard that is shared across multiple clients, ensuring per-client data isolation through parameterized queries in Sigma.
+We can now deploy a Sigma dashboard that is shared across multiple clients, ensuring per-client data isolation through parameterized queries.
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF WHAT WE COVERED -->
+<!-- END OF SECTION-->
 
 ## What we've covered
 Duration: 5
 
-In this QuickStart, we learned how to set up Sigma embedding using parameterized queries with Snowflake, and explored the use cases where this approach is most useful.
+This QuickStart built the parameterized query pattern for Sigma embedding. A single workbook serves multiple clients, and a user attribute routes each session to the correct Snowflake database and schema at query time. Role selection at the connection, identifier substitution at the SQL layer, and a default-value fallback combine to keep each client's data isolated.
+
+The pattern carries across warehouses. Any platform that separates tenants by identifier — database, schema, table, or column — can be addressed the same way: one user attribute per dimension, parsed with `SplitPart` and `#identifier`. The embed payload stays small, and isolation lives at the warehouse layer.
+
+If your use case requires row-level security on top of parameterized queries, base the query off a data model instead. The workflow is slightly different, but the parameterization mechanics are the same. See [Implementing Row-Level Security (RLS)](https://quickstarts.sigmacomputing.com/guide/security_row_level_security/index.html?index=..%2F..index#0) for the RLS patterns.
 
 **Additional Resource Links**
 
