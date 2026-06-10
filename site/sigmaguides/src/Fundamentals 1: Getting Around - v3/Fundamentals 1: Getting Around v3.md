@@ -507,7 +507,7 @@ End users chat with the agent through a chat element on a workbook page. An agen
 
 For example, we can let users chat with AI directly from any Sigma page by adding a chat element and setting some rules for it. This brings the power of AI to users in a controlled manner, helping maintain security and governance guidelines:
 
-<img src="assets/chatelement.mp4">
+<video src="assets/chatelement.mp4"></video>
 
 When deciding which AI surface fits a task:
 
