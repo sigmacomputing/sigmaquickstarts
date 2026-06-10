@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: internal
-lastUpdated: 2023-03-15
+lastUpdated: 2026-06-15
 
 # Sigma QuickStart Style Guide
 
@@ -59,7 +59,7 @@ There are 3 types of QS Sections:
 
 All Sections **must end with the Sigma Footer.** You can do this by placing this code at the end of your section:
 
-```plaintext
+```copy-code
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 ```
@@ -93,9 +93,11 @@ Duration: 5
 
 `Boxed Text` is created by surrounding the desired text with the ***`*** apostrophe character.<br>
 
-```plaintext
+```copy-code
 &ensp; ...will provide a single space between to items (useful for side by side images)
 ```
+
+ ...will provide a single space between to items (useful for side by side images)
 
 ![Alt text](assets/horizonalline.png)
 
@@ -108,7 +110,7 @@ This is an example of a Codebox, good for showing code samples inline.
 ```
 
 **Markdown for a CODEBOX:**
-```console
+```copy-code
 '''console
 Your text here...
 '''
@@ -122,7 +124,7 @@ Your text here...
 </aside>
 
 **Markdown for IMPORTANT:**
-```plaintext
+```copy-code
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Your text here.
 </aside>
@@ -136,7 +138,7 @@ Your text here...
 </aside>
 
 **Markdown for NOTE:**
-```plaintext
+```copy-code
 <aside class="negative">
 <strong>NOTE:</strong><br> Your text here.
 </aside>
@@ -150,82 +152,95 @@ Your text here...
 ## **Lists**
 Duration: 5
 
-**ORDERED LIST:**
- <li><strong>My Content:</strong> Some text...
-    <ol type="n"> 
+### ORDERED LIST:
+
+<ol>
+  <li><strong>My Content:</strong> Some text...
+    <ol type="a">
       <li><strong>Workbook:</strong> text...</li>
       <li><strong>Dataset:</strong> text...</li>
       <li><strong>Custom SQL:</strong> text...</li>
     </ol>
   </li>
+</ol>
 
-**Markdown for a ORDERED LIST:**
-```console
- <li><strong>My Content:</strong> Some text...
-    <ol type="n"> 
+![Alt text](assets/horizonalline.png)
+
+**Markdown for ORDERED LIST:**
+```copy-code
+<ol>
+  <li><strong>My Content:</strong> Some text...
+    <ol type="a">
       <li><strong>Workbook:</strong> text...</li>
       <li><strong>Dataset:</strong> text...</li>
       <li><strong>Custom SQL:</strong> text...</li>
     </ol>
   </li>
+</ol>
 ```
 
 ![Alt text](assets/horizonalline.png)
 
-**UNORDERED LIST:**
- <ul>
-      <li><strong>Bar charts:</strong> Some text...</li>
-      <li><strong>Line charts:</strong> Some text...</li>
-      <li><strong>Area charts"</strong> Some text...<li>
-</ul>
+### UNORDERED LIST:
 
-**Markdown for a UNORDERED LIST:**
-```console
- <ul>
-      <li><strong>Bar charts:</strong> Some text...</li>
-      <li><strong>Line charts:</strong> Some text...</li>
-      <li><strong>Area charts"</strong> Some text...<li>
-</ul>
-```
-
-**Empty Version for quick copy***
-```console
- <ul>
-      <li><strong></strong> </li>
-      <li><strong></strong> </li>
-      <li><strong></strong> </li>
-</ul>
-```
-
-![Alt text](assets/horizonalline.png)
-
-**NESTED LIST:**
 <ul>
-  <li></li>
-    <li>Sample </li>
-    <li>Sample 2:
-        <ul>
-        <li>Viewer</li>
-        <li>Viewer+</li>
-        <li>Explorer</li>
-        </ul>
-    </li>
+  <li><strong>Bar charts:</strong> Some text...</li>
+  <li><strong>Line charts:</strong> Some text...</li>
+  <li><strong>Area charts:</strong> Some text...</li>
 </ul>
 
-**Markdown for a NESTED LIST:**
-```console
- <ul>
-  <li></li>
-    <li>Sample </li>
-    <li>Sample 2:
-        <ul>
-        <li>Viewer</li>
-        <li>Viewer+</li>
-        <li>Explorer</li>
-        </ul>
-    </li>
+![Alt text](assets/horizonalline.png)
+
+**Markdown for UNORDERED LIST:**
+```copy-code
+<ul>
+  <li><strong>Bar charts:</strong> Some text...</li>
+  <li><strong>Line charts:</strong> Some text...</li>
+  <li><strong>Area charts:</strong> Some text...</li>
 </ul>
-``` 
+```
+
+**Empty Version for quick copy:**
+```copy-code
+<ul>
+  <li><strong></strong> </li>
+  <li><strong></strong> </li>
+  <li><strong></strong> </li>
+</ul>
+```
+
+![Alt text](assets/horizonalline.png)
+
+### NESTED LIST:
+
+<ul>
+  <li>Sample</li>
+  <li>Sample 2:
+    <ul>
+      <li>Viewer</li>
+      <li>Viewer+</li>
+      <li>Explorer</li>
+    </ul>
+  </li>
+</ul>
+
+![Alt text](assets/horizonalline.png)
+
+**Markdown for NESTED LIST:**
+```copy-code
+<ul>
+  <li>Sample</li>
+  <li>Sample 2:
+    <ul>
+      <li>Viewer</li>
+      <li>Viewer+</li>
+      <li>Explorer</li>
+    </ul>
+  </li>
+</ul>
+```
+
+![Alt text](assets/horizonalline.png)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -246,18 +261,22 @@ Images should be screenshot on the highest display you have available, in full s
 ![Alt text](assets/horizonalline.png)
 
 **Markdown for a Images (2 types):**
-```plaintext
+
 When you want the image full size on the page:
+
+```copy-code
 ![Alt text](assets/blurry-image.png)
+```
 
 When you want to control the size of the image better on the page:
+
+```copy-code
 <img src="assets/WelcomeHomePage.png" width="400"/>
 ```
 
 <aside class="postive">
 <strong>IMPORTANT:</strong><br> Image filenames should be lowercase with no special characters.
 </aside>
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
@@ -269,7 +288,7 @@ Buttons are created as shown:.<br>
 
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
-```plaintext
+```copy-code
 <button>[Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 ```
 
@@ -279,7 +298,7 @@ Buttons are created as shown:.<br>
 [Link text Here](https://link-url-here.org)
 
 **Markdown for basic hyperlink:**<br>
-```plaintext
+```copy-code
 [Link text Here](https://link-url-here.org)
 ```
 
@@ -289,7 +308,7 @@ Buttons are created as shown:.<br>
 [<img src="./assets/linkedin.png" width="75"/>](https://twitter.com/sigmacomputing)
 
 **Markdown for hyperlink with image:**<br>
-```plaintext
+```copy-code
 [<img src="./assets/sigma_footer.png" width="75"/>](https://twitter.com/sigmacomputing)
 ```
 
@@ -316,7 +335,7 @@ Tables are created as shown:.<br>
 </table>
 
 **Markdown for Table:**
-```plaintext
+```copy-code
 <table>
     <thead>
         <tr>
@@ -342,7 +361,7 @@ Gifs are supported as:
 
 **Markdown for GIF:**
 
-```plaintext
+```copy-code
 <img src="assets/sample.gif">
 ```
 
@@ -353,12 +372,28 @@ Gifs are supported as:
 ## **Videos**
 Duration: 5
 
-Videos from YouTube can be directly embedded using only the video ID:<br>
+### MP4
+
+Use ffmpeg to convert video into MP4. For example, convert `.mov` to MP4:
+```copy-code
+ffmpeg -i videoname.mov -vcodec libx264 -crf 28 -preset slow -vf "scale=1280:-2" -an output.mp4
+```
+
+Use ffmpeg to crop the video first. For example, to remove a URL bar from the incoming video:
+
+```copy-code
+ffmpeg -i sidebar_demo.mov -vcodec libx264 -crf 28 -preset slow -vf "crop=iw:ih-150:0:150,scale=1280:-2" -an output.mp4
+```
+
+Embed the Video in the QuickStart with:
+```copy-code
+<video src="assets/yourfile.mp4"></video>
+```
+
+### YouTube can be directly embedded using only the video ID:<br>
 <video id="E9G2a4QkLYE"></video>
 
-**Markdown for Video:**
-
-```plaintext
+```copy-code
 <video id="E9G2a4QkLYE"></video>
 ```
 
@@ -381,7 +416,7 @@ The desired look and feel for a Sigma QuickStart and the Markdown options at you
 </aside>
 
 **Markdown for QuickStart Series link:**
-```plaintext
+```copy-code
 [Click here to move to the next QuickStart in this series.](https://quickstarts.sigmacomputing.com/guide/**{your QuickStart guide name here}**/index.html)
 ```
 

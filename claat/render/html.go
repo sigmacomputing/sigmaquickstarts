@@ -107,6 +107,9 @@ func (hw *htmlWriter) write(nodes ...types.Node) error {
 		case *types.YouTubeNode:
 			hw.youtube(n)
 			hw.writeString("\n")
+		case *types.LocalVideoNode:
+			hw.localVideo(n)
+			hw.writeString("\n")
 		case *types.IframeNode:
 			hw.iframe(n)
 			hw.writeString("\n")
@@ -367,4 +370,8 @@ func (hw *htmlWriter) youtube(n *types.YouTubeNode) {
 
 func (hw *htmlWriter) iframe(n *types.IframeNode) {
 	hw.writeFmt(`<iframe class="embedded-iframe" src=%q></iframe>`, n.URL)
+}
+
+func (hw *htmlWriter) localVideo(n *types.LocalVideoNode) {
+	hw.writeFmt(`<video class="local-video" src=%q controls width="720"></video>`, n.Src)
 }

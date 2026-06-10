@@ -102,6 +102,8 @@ func (lw *liteWriter) htmlnode(n types.Node) *html.Node {
 		hn = lw.header(n)
 	case *types.YouTubeNode:
 		hn = lw.youtube(n)
+	case *types.LocalVideoNode:
+		hn = lw.localVideo(n)
 	}
 	return hn
 }
@@ -403,4 +405,17 @@ func (lw *liteWriter) youtube(n *types.YouTubeNode) *html.Node {
 	top.AppendChild(pad)
 	pad.AppendChild(box)
 	return top
+}
+
+func (lw *liteWriter) localVideo(n *types.LocalVideoNode) *html.Node {
+	return &html.Node{
+		Type: html.ElementNode,
+		Data: atom.Video.String(),
+		Attr: []html.Attribute{
+			{Key: "class", Val: "local-video"},
+			{Key: "src", Val: n.Src},
+			{Key: "controls", Val: ""},
+			{Key: "width", Val: "720"},
+		},
+	}
 }
