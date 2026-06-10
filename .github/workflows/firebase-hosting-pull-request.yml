@@ -12,5 +12,5 @@ jobs:
       - run: |
           export GOPATH="$HOME/go/"
           export PATH=$PATH:$GOPATH/bin
-          go install github.com/googlecodelabs/tools/claat@latest
+          (cd claat && go install .)
           cd site && npm install && npm run deploy
