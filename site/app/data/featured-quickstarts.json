@@ -1,5 +1,17 @@
 {
   "recentQuickStarts": [
+    {
+      "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
+      "id": "aiapps_gong_call_analysis",
+      "category": "aiapps",
+      "date": "June 10, 2026"
+    },
+    {
+      "title": "Build Conversational AI Apps with Chat Elements and Snowflake Cortex",
+      "id": "aiapps_chat_element",
+      "category": "aiapps",
+      "date": "June 10, 2026"
+    },
         {
       "title": "First Friday Features - May 2026",
       "id": "05_2026_first_friday_features",
@@ -47,18 +59,6 @@
       "id": "aiapps_scheduled_actions",
       "category": "aiapps",
       "date": "Mar 23, 2026"
-    },
-    {
-      "title": "Build an Interactive Storefront with Repeaters and Actions",
-      "id": "aiapps_storefront_repeaters",
-      "category": "aiapps",
-      "date": "Feb 27, 2026"
-    },  
-    {
-      "title": "Integrate ServiceNow using API Actions",
-      "id": "developers_api_actions_servicenow",
-      "category": "Developers",
-      "date": "Feb 27, 2026"
     }
   ]
 }
