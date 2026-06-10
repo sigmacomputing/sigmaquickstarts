@@ -1,37 +1,36 @@
 author: pballai
 id: aiapps_chat_element
-summary: aiapps_chat_element
+summary: Build a conversational AI app in Sigma using a chat element, a Sigma agent, and a Snowflake Cortex Agent — with optional write-back actions to an input table.
 categories: aiapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-06-11
+tags: default
+lastUpdated: 2026-06-23
 
 # Build Conversational AI Apps with Chat Elements and Snowflake Cortex
 
 ## Overview
 Duration: 5
 
-<aside class="negative">
-<strong>PRIVATE BETA:</strong><br> This QuickStart is for Private Beta customers evaluating Sigma's Chat Element and Custom Agents.
-
-**Important notes:**
-- Functionality may not match the current state of Sigma as customer feedback is incorporated
-- UI differences are expected and should not be reported as bugs to Sigma support
-- Direct all questions to your Sigma account team
-</aside>
-
-This QuickStart demonstrates how to build conversational AI applications using Sigma's Chat Element and Custom Agents, powered by Snowflake Cortex for advanced analytics.
+This QuickStart demonstrates how to build conversational AI applications using Sigma's chat element and Sigma agents, powered by Snowflake Cortex for advanced analytics.
 
 You'll learn how to create an intelligent retail data assistant that can answer natural language questions, perform complex analysis, and take actions based on user interactions.
 
-**A key aspect of AI applications is controlling data access.** Semantic views act as a governance layer, ensuring your AI agents only access approved, curated data—not your entire data warehouse. 
+**A key aspect of AI applications is controlling data access.** Semantic views act as a governance layer, ensuring your AI agents only access approved, curated data—not your entire data warehouse.
+
+But access control is only part of the picture. Sigma is the governed runtime around AI: audit logs, permissions, cost controls, collaboration, and version management all come with the platform — regardless of which AI provider you've configured.
+
+<aside class="positive">
+<strong>MONITORING AI USAGE:</strong><br> AI calls have real cost, and Sigma includes a built-in dashboard that lets administrators track token usage by agent, by user, and by product surface — making it easy to spot heavy users or runaway costs before they become a problem. 
+</aside>
+
+For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
 
 ### Use Case: Retail Data Assistant
 In this QuickStart, we'll build an agent that helps users analyze retail order data from Snowflake's TPCH_SF1 sample dataset. The agent will:
 - Answer questions about orders, customers, and revenue
-- Automatically choose between native Text2SQL (fast) and Cortex (accurate)
+- Call a Snowflake Cortex Agent for accurate, semantic-view-grounded analytical queries
 - Optionally log insights to an input table
 
 <aside class="positive">
@@ -52,10 +51,10 @@ This QuickStart is designed for:
 
 <ul>
   <li>Any modern browser is acceptable.</li>
-  <li>Admin access to a Sigma environment.</li>
-  <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
-  <li>Admin access to a Salesforce environment.</li>
- </ul>
+  <li>Access to a Sigma environment with an AI provider configured. If you don't have one set up yet, the <a href="https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html#4">Fundamentals 1: Overview</a> QuickStart walks through it.</li>
+  <li>Admin access to a Snowflake account where you can create databases, schemas, and grant role privileges.</li>
+  <li>Some familiarity with Sigma is assumed. Not all basic steps will be shown.</li>
+</ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
@@ -66,57 +65,56 @@ This QuickStart is designed for:
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Some features may carry a "Beta" tag. Beta features are subject to quick, iterative changes. As a result, the latest product version may differ from the contents of this document.
 </aside>
- 
-![Footer](assets/sigma_footer.png)
 
-## Understanding Custom Agents and Chat Elements
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Understanding Sigma agents and chat elements
 Duration: 5
 
-Before we start building, it's important to understand the relationship between **Custom Agents** and **Chat Elements**.
+Before we start building, it's important to understand the relationship between **Sigma agents** and **chat elements**.
 
-### What is a Custom Agent?
-A Custom Agent is the "brain" of your conversational AI application. It:
-- Orchestrates multiple tools (Text2SQL, Cortex Analyst, MCP integrations, etc.)
-- Processes user requests and decides which tools to use
-- Contains instructions that guide its behavior
-- Has access to specific data sources and integrations
+### What is a Sigma agent?
+A Sigma agent is the "brain" of your conversational AI application. It:
+- Processes user questions and decides what to do
+- Follows the instructions you give it
+- Reasons over the data sources you've added to it (workbook tables, data models)
+- Calls tools when needed — actions in the workbook, warehouse agents in your data platform, warehouse search services, or MCP servers
 
-Think of the agent as the intelligent orchestrator that decides how to answer questions.
+Think of the agent as the orchestrator that decides how to answer each question.
 
-### What is a Chat Element?
-A Chat Element is the user interface component that displays on your workbook canvas. It:
+### What is a chat element?
+A chat element is the user interface component that displays on a workbook page. It:
 - Provides a conversational interface for users
-- Is powered by a Custom Agent
-- Displays responses (text and visualizations)
-- Handles user input
+- Connects to a single Sigma agent
+- Displays responses (text, tables, and visualizations)
+- Surfaces approval prompts when the agent wants to run an action
 
-Think of the Chat Element as the visible UI, while the Custom Agent is the invisible brain behind it.
+Think of the chat element as the visible UI, while the Sigma agent is the invisible brain behind it.
 
-### Key Distinction
-**Chat Element ≠ Custom Agent**
+### Key distinction
+The chat element and the Sigma agent are two separate things, not interchangeable:
+- One Sigma agent can power multiple chat elements
+- The chat element is just the UI; the Sigma agent is the logic
 
-These are two separate concepts:
-- One Custom Agent can power multiple Chat Elements
-- Chat Element is just the UI; Custom Agent is the logic
+### Architecture overview
 
-### Architecture Overview
+In this QuickStart, the complete flow works like this:
 
-The complete flow works like this:
-
-1. **User** types a question in the Chat Element
-2. **Chat Element** sends the question to the Sigma Custom Agent
-3. **Sigma Custom Agent** routes to appropriate integration
-4. **Snowflake Cortex Agent** (if selected) uses its tools
-5. **Results** flow back through the chain to the Chat Element and Actions (if configured)
-6. **Chat Element** displays the response to the user
+1. **User** types a question in the chat element
+2. **Chat element** sends the question to the Sigma agent
+3. **Sigma agent** decides which tool to use based on its instructions
+4. **Snowflake Cortex Agent** (added as a warehouse tool) runs the analytical query against the semantic view
+5. **Results** flow back through the chain to the chat element, where any configured action tool may run
+6. **Chat element** displays the response to the user
 
 <aside class="positive">
-<strong>TERMINOLOGY:</strong><br>
+<strong>KEY TERMINOLOGY:</strong><br>
 <ul>
-<li><strong>Cortex Analyst</strong> = Tool that generates SQL (not an agent)</li>
-<li><strong>Cortex Agent</strong> = Snowflake orchestrator that uses Cortex Analyst</li>
-<li><strong>Sigma Custom Agent</strong> = Sigma orchestrator that integrates with Cortex Agent</li>
-<li><strong>Chat Element</strong> = UI powered by Sigma Custom Agent</li>
+<li><strong>Cortex Analyst</strong> — Snowflake tool that turns natural language into SQL using a semantic view</li>
+<li><strong>Cortex Agent</strong> — Snowflake orchestrator that uses Cortex Analyst and other Snowflake tools</li>
+<li><strong>Sigma agent</strong> — Workbook-scoped agent in Sigma. You configure it with instructions and guidelines, a curated set of data sources, and the tools it's allowed to use. It takes user questions in chat and can call a Cortex Agent to handle the deep analytical work</li>
+<li><strong>Chat element</strong> — UI in the Sigma workbook that connects to a Sigma agent</li>
 </ul>
 </aside>
 
@@ -137,23 +135,32 @@ A semantic view consists of two components:
 
 We'll create both using Snowflake's UI-based workflow.
 
-**Why Semantic Views Matter:**
+<aside class="positive">
+<strong>WHY SEMANTIC VIEWS MATTER:</strong><br>
+Semantic views provide several critical benefits.
 
-Semantic views provide several critical benefits:
+<strong>Data Governance & Security:</strong>
+<ul>
+<li><strong>Restrict AI access</strong> — The semantic view acts as a controlled gateway, exposing only approved data to AI agents</li>
+<li><strong>Prevent broad access</strong> — AI queries only what's in the semantic view, not your entire data warehouse</li>
+<li><strong>Audit trail</strong> — Track what data AI agents can access in one centralized definition</li>
+</ul>
 
-**Data Governance & Security:**
-- **Restrict AI access** - The semantic view acts as a controlled gateway, exposing only approved data to AI agents
-- **Prevent broad access** - AI queries only what's in the semantic view, not your entire data warehouse
-- **Audit trail** - Track what data AI agents can access in one centralized definition
+<strong>Improved AI Accuracy:</strong>
+<ul>
+<li><strong>Business-friendly definitions</strong> — Map technical column names (O_TOTALPRICE) to business terms (Revenue)</li>
+<li><strong>Semantic relationships</strong> — Define how tables relate, helping AI generate correct JOINs</li>
+<li><strong>Consistent logic</strong> — Standardize metrics calculations across all AI queries</li>
+</ul>
 
-**Improved AI Accuracy:**
-- **Business-friendly definitions** - Map technical column names (O_TOTALPRICE) to business terms (Revenue)
-- **Semantic relationships** - Define how tables relate, helping AI generate correct JOINs
-- **Consistent logic** - Standardize metrics calculations across all AI queries
+<strong>Performance & Optimization:</strong>
+<ul>
+<li><strong>Optimized queries</strong> — Pre-join frequently queried tables for faster AI responses</li>
+<li><strong>Reduced query complexity</strong> — AI works with simplified, curated data structures</li>
+</ul>
 
-**Performance & Optimization:**
-- **Optimized queries** - Pre-join frequently queried tables for faster AI responses
-- **Reduced query complexity** - AI works with simplified, curated data structures
+Semantic views are one layer of the governed runtime Sigma provides around AI. Audit logs, permissions, cost controls, collaboration, and version management come from the Sigma platform itself — the semantic view is the part that controls what data the agent can reach inside Snowflake.
+</aside>
 
 ### Step 1: Create the SQL View (Data Layer)
 
@@ -168,7 +175,7 @@ USE WAREHOUSE COMPUTE_WH;
 CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
 CREATE SCHEMA IF NOT EXISTS QUICKSTARTS.CORTEX_DEMO;
 
-CREATE OR REPLACE VIEW QUICKSTARTS.CORTEX_DEMO.RETAIL_SEMANTIC_VIEW AS
+CREATE OR REPLACE VIEW QUICKSTARTS.CORTEX_DEMO.RETAIL_DATA_VIEW AS
 SELECT
     o.O_ORDERKEY,
     o.O_CUSTKEY,
@@ -198,34 +205,39 @@ In Snowflake, navigate to `AI & ML` > `AI Studio` > `Cortex Analyst` and click `
 
 <img src="assets/chat_05.png" width="600"/>
 
-On the `Semantic views` tab, click `Create semantic view`.
+On the `Semantic views` tab, select the `QUICKSTARTS.CORTEX_DEMO` database and then click `Create with Autopilot`. This opens the `Semantic View Autopilot` wizard.
 
 <img src="assets/chat_05b.png" width="800"/>
 
-**Step 1:**<br> 
-On the `Getting started` tab:<br>
-**Name:** `RETAIL_SEMANTIC_VIEW_CORTEX`<br>
-**Description:** `Retail order data semantic view for Cortex Analyst`<br>
+**Wizard step 1: Provide context (Optional)**
 
-<img src="assets/chat_06.png" width="600"/>
+The wizard can seed the semantic view, but we'll skip this for the QuickStart — click `Skip`.
 
-Click **Next**.
+<!-- <img src="assets/chat_05c.png" width="800"/> -->
 
-**Step 2:**<br>
-Provide context (Optional)
+**Wizard step 2: Name your semantic view**
 
-Click **Skip** to skip this optional step.
+First, change the permission to `ACCOUNTADMIN` using the drop select list in the upper right corner. 
 
-**Step 3:**<br>
-Select tables
+Set the name to:
+```copy-code
+RETAIL_SEMANTIC_VIEW
+```
 
-Navigate to `QUICKSTARTS` > `CORTEX_DEMO` and check the box next to `RETAIL_SEMANTIC_VIEW` (under "1 View").
+<img src="assets/chat_06.png" width="800"/>
+
+Click `Next`.
+
+**Wizard step 3: Select tables**
+
+Navigate to `QUICKSTARTS` > `CORTEX_DEMO` and check the box next to `RETAIL_DATA_VIEW` (under "1 View").
 
 <img src="assets/chat_07.png" width="600"/>
 
-Click **Next**.
+Click `Next`.
 
-**Step 4:**<br>
+**Wizard step 4: Select columns**
+
 Select all columns:
 
 - O_CUSTKEY
@@ -244,28 +256,33 @@ Keep both checkboxes selected:
 
 <img src="assets/chat_08.png" width="600"/>
 
-Click `Create and Save`.
+Click `Create`.
 
-You should now see `RETAIL_SEMANTIC_VIEW_CORTEX` listed under Semantic views, along with a warning about processing time:
+While Snowflake works, you'll see a warning: **This process may take up to 10 minutes. Please don't close the window.**
 
-<img src="assets/chat_09.png" width="600"/>
-
-Once the processing is done, we can use the `Playgound` and ask Cortex to `Explain the dataset` to verify it is working:
+Once the processing is done, we can use the `Playground` and ask Cortex to explain it:
+```copy-code
+Explain the dataset
+```
 
 <img src="assets/chat_09a.png" width="800"/>
 
-If all is configured correctly, Cortex will respond with with a brief explanation:
+If all is configured correctly, Cortex will respond with a brief explanation:
 
 <img src="assets/chat_09b.png" width="500"/>
 
-You've now created the complete semantic view. The semantic view references your SQL view (<code>RETAIL_SEMANTIC_VIEW</code>) as its base table, and Cortex can now understand your data structure with business-friendly terms.
+You've now created the complete semantic view. The semantic view references your SQL view (<code>RETAIL_DATA_VIEW</code>) as its base table, and Cortex can now understand your data structure with business-friendly terms.
+
+<aside class="negative">
+<strong>HEADS UP:</strong><br> If you browse to <code>RETAIL_SEMANTIC_VIEW</code> in Sigma's connection browser, you may see a warning like <em>"Invalid metric expression 'COUNT(1)'"</em>. This is cosmetic — Snowflake semantic views don't allow ad-hoc aggregations, so Sigma's row-count check fails. The semantic view is still fully usable via the Cortex Agent (which we set up next), and the chat element flow won't be affected.
+</aside>
 
 ### Step 3: Create Cortex Agent
 
-Now we'll create a Cortex Agent—the actual **orchestrator** that uses the semantic view we just created.
+Now we'll create a Cortex Agent — the Snowflake component that uses the semantic view to answer analytical questions.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> The <strong>Cortex Agent</strong> IS an agent (orchestrator with instructions). It will use the semantic view as a tool to answer questions. Later, Sigma's Custom Agent will integrate with this Cortex Agent.
+<strong>IMPORTANT:</strong><br> The Cortex Agent runs entirely in Snowflake. It has its own instructions and uses the semantic view as its tool. Later, the Sigma agent will call this Cortex Agent as a warehouse tool — passing it questions and receiving back the analytical results.
 </aside>
 
 Navigate to `AI & ML` > `Agents` (in the left sidebar under AI & ML).
@@ -274,27 +291,43 @@ Click the blue button to `Create agent`:
 
 <img src="assets/chat_10.png" width="800"/>
 
-For `Database and schema` we will restrict Cortex to only `QUICKSTARTS.CORTEX_DEMO`:
+For `Database and schema` we will restrict Cortex to only `QUICKSTARTS.CORTEX_DEMO`.
+
+Set the `Agent object name` to:
+```copy-code
+RETAIL_ASSISTANT
+```
+
+We can override the `Display name` to be more specific if we want. Use:
+```copy-code
+QuickStart Cortex Demo Retail Assistant
+```
 
 <img src="assets/chat_11.png" width="500"/>
 
-Set the `Agent object name` to `RETAIL_ASSISTANT`.
+Click `Create agent`.
 
-We can override the `Display name` to be more specific if we want. Use `QuickStart Cortex Demo Retail Assistant`.
+Open the `Tools` tab. 
 
-Click `Create agent`:
+Snowflake organizes Cortex Agent tools into a few categories: `Web search`, `Query structured data`, `Search documents and unstructured data`, and `Custom tools`. We only need the structured-data path for this QuickStart.
 
-<img src="assets/chat_12.png" width="500"/>
+Under `Query structured data`, click `+ Add semantic view`:
 
-On the `Tools` tab, click `+ Add` to add `Cortex Analyst`:
-
-<img src="assets/chat_13.png" width="800"/>
+<img src="assets/chat_13.png" width="600"/>
 
 Configure the tool:
-- **Semantic view:** Browse and select `QUICKSTARTS.CORTEX_DEMO.RETAIL_SEMANTIC_VIEW_CORTEX`
-- **View:** `RETAIL_SEMANTIC_VIEW_CORTEX`
-- **Tool name:** `retail_data_analysis`
-- **Description:** `Use this tool for all questions about orders, customers, revenue, and sales patterns`
+- **Semantic view:** Browse and select `QUICKSTARTS.CORTEX_DEMO.RETAIL_SEMANTIC_VIEW`
+- **View:** `RETAIL_SEMANTIC_VIEW`
+
+**Tool name:** 
+```copy-code
+retail_data_analysis
+```
+
+**Description:** 
+```copy-code
+Use this tool for all questions about orders, customers, revenue, and sales patterns
+```
 
 <img src="assets/chat_14.png" width="700"/>
 
@@ -322,8 +355,21 @@ Click `Save` to save the agent, but we have a few more permission steps to compl
 
 Grant access to your Sigma service role so Sigma can use the Cortex Agent and access the underlying data.
 
+<aside class="positive">
+<strong>FINDING YOUR SIGMA ROLE:</strong><br> The placeholder <code>SIGMA_SERVICE_ROLE</code> used below is just an example — the actual role name depends on how your Snowflake connection in Sigma was configured. 
+
+To find it, log into Sigma as an administrator, navigate to <code>Administration</code> > <code>Connections</code>, open your Snowflake connection, and look at the role configured there. Use that role name everywhere this QuickStart shows <code>SIGMA_SERVICE_ROLE</code>.
+</aside>
+
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> Three separate grants are required: (1) SELECT on the SQL view, (2) USAGE on the Cortex Agent, and (3) access to the Semantic View. Missing any of these will cause "table doesn't exist or isn't authorized" errors.
+<strong>IMPORTANT:</strong><br> Several grants are needed for Sigma's role to use the Cortex Agent end-to-end: <br>
+(1) the <code>SNOWFLAKE.CORTEX_USER</code> database role<br>
+(2) USAGE on the database and schema<br>
+(3) SELECT on the semantic view (Step 4a)<br>
+(4) USAGE on the Cortex Agent itself (Step 4b)<br>
+(5) Share access on the semantic view from Cortex Analyst (Step 4c). <br>
+
+Missing any of these will cause "doesn't exist or isn't authorized" errors.
 </aside>
 
 #### Step 4a: Grant SQL View Access (Using SQL)
@@ -333,23 +379,28 @@ The underlying SQL view must be accessible to your Sigma role. Run this in a Sno
 ```copy-code
 USE ROLE ACCOUNTADMIN;
 
--- Grant access to the underlying SQL view (data layer)
-GRANT SELECT ON VIEW QUICKSTARTS.CORTEX_DEMO.RETAIL_SEMANTIC_VIEW TO ROLE SIGMA_SERVICE_ROLE;
+-- Grant Cortex database role
+GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE SIGMA_SERVICE_ROLE;
 
--- Also grant USAGE on the schema
-GRANT USAGE ON SCHEMA QUICKSTARTS.CORTEX_DEMO TO ROLE SIGMA_SERVICE_ROLE;
+-- Grant database usage
 GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
+
+-- Grant schema usage
+GRANT USAGE ON SCHEMA QUICKSTARTS.CORTEX_DEMO TO ROLE SIGMA_SERVICE_ROLE;
+
+-- Grant SELECT on semantic view
+GRANT SELECT ON VIEW QUICKSTARTS.CORTEX_DEMO.RETAIL_SEMANTIC_VIEW TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-Replace `SIGMA_SERVICE_ROLE` with the actual role used in your Sigma connection.
+Replace `SIGMA_SERVICE_ROLE` with the actual role used in your Sigma connection (see the note at the top of Step 4 for how to find it).
 
 #### Step 4b: Grant Cortex Agent Access (Using UI)
 
-Now grant access to the Cortex Agent itself:
+Now grant access to the Cortex Agent itself. Return to the `RETAIL_ASSISTANT` agent and click `Edit`.
 
 1. Click the `Access` tab
 2. Click `Add role`
-3. Enter your Sigma role (e.g., `SIGMA_SERVICE_ACCOUNT_ROLE` or whatever role name you configured) and select `USAGE`
+3. Type in your Sigma role (e.g., `SIGMA_SERVICE_ROLE` — or whatever name your connection uses) and select `USAGE`
 
 <aside class="positive">
 <strong>NOTE:</strong><br> If you see a warning message after adding the role, related to missing access, click "Grant all".
@@ -357,22 +408,24 @@ Now grant access to the Cortex Agent itself:
 This will grant "Full access to all tools and data sources" the RETAIL_ASSISTANT wants to use.
 </aside>
 
-<img src="assets/chat_17.png" width="500"/>
+<img src="assets/chat_17.png" width="800"/>
 
 4. Click `Save` or confirm the addition
 
 #### Step 4c: Grant Semantic View Access (Using UI)
 
-1. Navigate to `AI & ML` > `Cortex Analyst`
-2. Click on `RETAIL_SEMANTIC_VIEW_CORTEX` Semantic view
-3. Click the `Share` or `Access` button
-4. Search for and grant access to your Sigma role (e.g., `SIGMA_SERVICE_ROLE`)
+1. Navigate to `AI & ML` > `AI Studio` > `Cortex Analyst`
+2. Select the `QUICKSTARTS.CORTEX_DEMO` database
+3. Click on `RETAIL_SEMANTIC_VIEW` Semantic view
+4. Click the `Share` or `Access` button
+5. Type in your Sigma role (e.g., `SIGMA_SERVICE_ROLE`), as the role is not always listed in the dropdown
+6. Click `Save`
 
 <img src="assets/chat_18.png" width="800"/>
 
 Your Cortex setup is complete! You've created:
-- SQL View (data layer) - `RETAIL_SEMANTIC_VIEW`
-- Semantic View with AI-generated descriptions - `RETAIL_SEMANTIC_VIEW_CORTEX`
+- SQL View (data layer) - `RETAIL_DATA_VIEW`
+- Semantic View with AI-generated descriptions - `RETAIL_SEMANTIC_VIEW`
 - Cortex Agent with orchestration instructions - `RETAIL_ASSISTANT`
 - Proper role permissions for Sigma integration
 
@@ -400,23 +453,34 @@ Under `AI provider` section:
 
 <img src="assets/chat_19.png" width="800"/>
 
+### Add the semantic view as a Sigma Assistant source
+
+Sigma Assistant needs explicit authorization for any data source it queries — even when Snowflake already permits access through a Cortex Agent. Adding the semantic view here is Sigma's governance layer at work: the administrator decides exactly which sources Assistant can reach, independent of whatever the underlying warehouse role allows.
+
+Navigate to `Administration` > `AI` > `Assistant`.
+
+Click `Add source`, drill into your Snowflake connection > `QUICKSTARTS` > `CORTEX_DEMO`, and select `RETAIL_SEMANTIC_VIEW`. Click `Add`.
+
+<img src="assets/chat_19a.png" width="800"/>
+
 <aside class="positive">
-<strong>AUTOMATIC DISCOVERY:</strong><br> Once you save the AI provider configuration, Sigma will automatically discover all Cortex Agents that your connection has access to. The <code>RETAIL_ASSISTANT</code> agent will appear in the <strong>Sigma Assistant</strong> dropdown at the top right of your home page and will be available for use in Chat Elements.
+<strong>WHY THE SEMANTIC VIEW (NOT THE SQL VIEW):</strong><br> Sigma Assistant works best with <code>RETAIL_SEMANTIC_VIEW</code> rather than the underlying SQL view <code>RETAIL_DATA_VIEW</code>. The semantic view carries the business definitions, AI-generated descriptions, and relationships Cortex Analyst added — exactly what Assistant needs to interpret natural-language questions accurately.
 </aside>
 
+Your Sigma environment is now ready to use Snowflake Cortex. The `RETAIL_ASSISTANT` Cortex Agent is discoverable in Sigma's data catalog after connection sync, and the semantic view is authorized for Sigma Assistant. In the next sections we'll build a Sigma agent in a workbook that calls this Cortex Agent as a warehouse tool.
+
 <aside class="negative">
-<strong>TROUBLESHOOTING:</strong><br> If the <code>RETAIL_ASSISTANT</code> agent doesn't appear in the Sigma Assistant dropdown:
+<strong>TROUBLESHOOTING:</strong><br> If the <code>RETAIL_ASSISTANT</code> Cortex Agent doesn't show up in Sigma's data catalog or you can't select it later when building a Sigma agent:
 <br><br>
-<strong>1. Sync the connection:</strong> <a href="https://help.sigmacomputing.com/docs/troubleshoot-your-connection#syncing-your-data-and-connection-indexing" target="_blank">Sync your Snowflake connection</a> to fetch the latest configuration details, then refresh the page.
+<strong>1. Sync the connection:</strong> <a href="https://help.sigmacomputing.com/docs/troubleshoot-your-connection#syncing-your-data-and-connection-indexing" target="_blank">Sync your Snowflake connection</a> to fetch the latest configuration details, including the database and schema that contain the Cortex Agent. Then refresh the page.
 <br><br>
 <strong>2. Verify permissions in Snowflake:</strong>
-<pre><code>SHOW GRANTS ON CORTEX AGENT QUICKSTARTS.CORTEX_DEMO.RETAIL_ASSISTANT;</code></pre>
+<pre><code>SHOW GRANTS ON AGENT QUICKSTARTS.CORTEX_DEMO.RETAIL_ASSISTANT;</code></pre>
 Your Sigma connection's role should appear with USAGE privilege.
 <br><br>
 <strong>3. Check the connection role matches:</strong> In <strong>Administration</strong> > <strong>Connections</strong>, verify the role used by your Snowflake connection matches the role that has USAGE on the Cortex Agent.
 </aside>
 
-Your Sigma environment is now ready to use Snowflake Cortex! The `RETAIL_ASSISTANT` agent is available organization-wide for both Sigma Assistant and Chat Elements.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -424,69 +488,55 @@ Your Sigma environment is now ready to use Snowflake Cortex! The `RETAIL_ASSISTA
 ## Test Cortex Agent with Sigma Assistant
 Duration: 5
 
-Before building a full workbook, let's verify that the Cortex Agent is working correctly by asking it a simple question using Sigma Assistant.
+Before building a full workbook, let's verify the Cortex Agent is working correctly by asking it a simple question through Sigma Assistant.
 
 ### Access Sigma Assistant
 
-From your Sigma home page, look at the top right area where you'll see `Sigma Assistant` with a dropdown showing `RETAIL_ASSISTANT`.
+From your Sigma home page, open `Sigma Assistant`. In the data source selector, choose `RETAIL_SEMANTIC_VIEW` (the semantic view you authorized for Sigma Assistant in the previous section).
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see RETAIL_ASSISTANT in the dropdown, refer to the troubleshooting steps in the previous section to sync your connection.
+<strong>NOTE:</strong><br> If you don't see <code>RETAIL_SEMANTIC_VIEW</code> as an option, refer to the troubleshooting steps in the previous section to sync your connection.
 </aside>
+
+<img src="assets/chat_22a.png" width="800"/>
 
 ### Ask a Test Question
 
-Click in the Sigma Assistant text box and type a simple question:
+In the Sigma Assistant text box, type:
 
-```
-What is the total revenue from all orders in the most recent full year?
+```copy-code
+What is the total revenue from all orders?
 ```
 
-Press `Enter` or click the send button.
+<img src="assets/chat_22b.png" width="600"/>
+
+Press `Enter` to send.
 
 ### Review the Response
 
-The RETAIL_ASSISTANT agent will:
-1. Process your question
-2. Query the semantic view using Cortex Analyst
-3. Return a response with analysis and context
-4. Generate a visualization showing the data
+The agent will:
+1. Process your natural-language question
+2. Route through Cortex Analyst to query the semantic view
+3. Return a response with the calculated total
 
-<img src="assets/chat_21.png" width="800"/>
+Sigma Assistant should return a specific revenue total along with context (the metric it used, currency, etc.) drawn from the semantic view's Facts:
 
-You should see a detailed response that:
-- Identifies 1997 as the most recent complete year (1998 is incomplete)
-- Provides the total revenue: `$171.7 billion`
-- Shows 910,019 total orders from 86,680 unique customers
-- Includes a chart showing "Total Revenue by Year"
+<img src="assets/chat_22c.png" width="600"/>
 
 ### View the Generated SQL
 
-Notice the **Source: Custom SQL** indicator below the response. This shows that Cortex Analyst generated custom SQL to answer your question.
+Sigma shows the SQL Cortex Analyst generated to answer your question. Click the SQL indicator below the response to expand it.
 
-<img src="assets/chat_22.png" width="800"/>
+<img src="assets/chat_22d.png" width="800"/>
 
-Click on **Custom SQL** to view the actual SQL query that Cortex generated. You can:<br>
-- Review the SQL to understand how Cortex interpreted your question<br>
-- Copy the SQL and run it in Snowflake to validate the results<br>
-- Learn how semantic models are translated into SQL queries<br>
+Reviewing the SQL helps you verify Cortex translated the question correctly and lets you copy the query into Snowflake to validate the result.
 
 <aside class="positive">
-<strong>KEY INSIGHT:</strong><br> This demonstrates the power of Cortex Analyst - it understood "most recent full year", determined that 1997 was the last complete year in the dataset, and generated appropriate SQL with date filtering and aggregations. This is more than simple keyword matching - it's true semantic understanding!
+<strong>KEY INSIGHT:</strong><br> This is the value of pairing a semantic view with Cortex Analyst. Cortex turned a plain-language question into a SQL query against the right table, aggregated the revenue Fact, and returned both the answer and the SQL that produced it — without you ever writing SQL by hand.
 </aside>
 
-### Validate the Response
-
-The important thing is that the RETAIL_ASSISTANT:
-
-- Understood the natural language question correctly<br>
-- Identified the most recent complete year (1997)<br>
-- Provided specific revenue numbers and context<br>
-- Generated a visualization to support the answer<br>
-- Created accurate SQL (viewable via "Custom SQL")<br>
-
 <aside class="positive">
-<strong>SUCCESS!</strong><br> If your RETAIL_ASSISTANT provided a detailed response with analysis, numbers, and a chart, your Cortex Agent is working correctly! The semantic view is properly configured and Cortex Analyst is generating accurate SQL queries from natural language. Now we're ready to build a workbook with a Chat Element for a richer interactive experience.
+<strong>SUCCESS!</strong><br> If you got a revenue total back, the Cortex Agent is working end-to-end. Now we're ready to wrap a workbook and chat element around it for a richer interactive experience.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -495,42 +545,55 @@ The important thing is that the RETAIL_ASSISTANT:
 ## Create Workbook
 Duration: 5
 
-Now that we've verified the Cortex Agent works with Sigma Assistant, let's create a workbook where we can add a Chat Element for end users.
+Now that we've verified the Cortex Agent works through Sigma Assistant, let's wrap it in a workbook with a chat element for a richer interactive experience.
 
 ### Create New Workbook
 
 In Sigma, click the `Create New` button and select `Workbook`.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> This workbook will serve as the container for our Chat Element. Users will interact with the Chat Element in this published workbook.
+<strong>NOTE:</strong><br> This workbook will serve as the container for our chat element. Users will interact with the chat element in this published workbook.
 </aside>
 
 ### Save and name the Workbook
 
-In the top left click `Save as` and name the workbook `Retail Assistant - QuickStart`.
+In the top left click `Save as` and name the workbook :
+```copy-code
+Retail Assistant - QuickStart
+```
+
+### Add the data on a Data page
+
+To give the workbook a place to inspect the source data alongside the chat element, add `RETAIL_DATA_VIEW` to a dedicated Data page. This keeps the source table out of the way of the main page where the chat element will live.
+
+- Click `+` next to the existing page tab and add a new page. Set the page type to `Data` and name the page `Data`.
+- On the new `Data` page, add a `Table` from the `Data` group on the element bar. Select your Snowflake connection.
+
+- Navigate to `QUICKSTARTS` > `CORTEX_DEMO` and add `RETAIL_DATA_VIEW`.
+- Hide the `Data` page:
+
+<img src="assets/chat_40.png" width="800"/>
+
+Switch back to the main page — that's where the chat element will live.
 
 ### Add Title (Optional)
 
-From the element bar at the bottom, you can add a `Text` element with a title like:
+From the element bar at the bottom, you can add a `Text` element from the `UI` group, with a title like:
 
 ```copy-code
 Retail Data Assistant
 Ask questions about orders, revenue, customers, and sales patterns.
 ```
 
-This helps users understand what the Chat Element can do.
-
-<!-- <img src="assets/chat_22a.png" width="800"/> -->
-
-Now we're ready to add the Chat Element!
+This helps users understand what the chat element can do.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Create Custom Agent
+## Create the Sigma agent
 Duration: 15
 
-Before adding the Chat Element, we need to create a Custom Agent that will power it.
+Before adding the chat element, we need to create a Sigma agent that will power it.
 
 ### Open Agents Panel
 
@@ -547,28 +610,17 @@ You'll see "No agents have been created yet."
 Click the `+` button to create a new agent.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Agents are created at the workbook level and can be reused across multiple Chat Elements. This allows you to create multiple specialized agents for different use cases.
+<strong>NOTE:</strong><br> Agents are created at the workbook level and can be reused across multiple chat elements. This allows you to create multiple specialized agents for different use cases.
 </aside>
 
-The agent configuration panel opens with several tabs: `About`, `Instructions`, `Data`, and `Actions`.
+The agent configuration panel opens with several options including `Data sources`, `Tools`, and `Instructions`.
 
-### Configure About Tab
-
-Click on the `About` tab and enter:
-
-**Name:** `Retail Data Assistant`
-
-**Description:** `Analyzes TPCH retail order data using natural language queries. Can answer questions about orders, customers, revenue, and sales patterns.`
-
-<aside class="positive">
-<strong>NOTE:</strong><br> The description is displayed to users who select this agent, helping them understand what it can do.
-</aside>
-
-<img src="assets/chat_24.png" width="800"/>
+Double-click on the `Agent 1` name and change it to:
+```copy-code
+Retail Data Assistant
+```
 
 ### Configure Instructions
-
-Click on the `Instructions` tab.
 
 In the instructions editor, copy/paste the following to guide the agent's behavior:
 
@@ -578,10 +630,9 @@ You are a friendly retail data analyst assistant. Your role is to help users und
 When responding:
 - Be concise and actionable
 - Provide specific numbers and trends
-- Use the Analyze Data Models tool for questions about the workbook data
 - Highlight key insights that could drive business decisions
 
-For complex analytical questions requiring joins or aggregations across multiple tables, use the RETAIL_ASSISTANT Cortex Agent that was configured in Sigma's AI settings.
+For analytical questions about orders, customers, revenue, or sales patterns, use the RETAIL_ASSISTANT Cortex Agent — it has direct access to the semantic view in Snowflake.
 
 Always maintain a helpful, professional tone.
 ```
@@ -590,20 +641,18 @@ Always maintain a helpful, professional tone.
 <strong>TIP:</strong><br> The Instructions tab provides a rich text editor with formatting options. You can use bold, italics, bullets, and other formatting to make instructions clear for the agent, but also easier for editing later.
 </aside>
 
-<img src="assets/chat_25.png" width="500"/>
+<img src="assets/chat_25.png" width="700"/>
 
 ### Add Data Sources
 
-Click on the `Data` tab and select the `RETAIL_ASSISTANT` warehouse agent:
+Click on the `+` next to `Data sources` and select the `RETAIL_ASSISTANT` warehouse agent:
 
-<img src="assets/chat_26.png" width="400"/>
+<img src="assets/chat_41.png" width="800"/>
 
-The `RETAIL_ASSISTANT` Cortex Agent is automatically available because you configured it in Sigma's AI settings earlier.
-
-The agent has direct access to the retail order data in Snowflake through the semantic view we created. You don't need to add any additional data sources here.
+The `RETAIL_ASSISTANT` Cortex Agent is available because you configured it in Sigma's AI settings earlier.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The Cortex Agent accesses data through the Snowflake semantic view (RETAIL_SEMANTIC_VIEW_CORTEX), which provides governed, curated access to the ORDERS and LINEITEM tables. This ensures the AI only queries approved data with proper business context.
+<strong>NOTE:</strong><br> The Cortex Agent accesses data through the Snowflake semantic view (RETAIL_SEMANTIC_VIEW), which provides governed, curated access to the ORDERS and LINEITEM tables. This ensures the AI only queries approved data with proper business context.
 </aside>
 
 <aside class="positive">
@@ -614,71 +663,73 @@ The agent has direct access to the retail order data in Snowflake through the se
 <strong>TROUBLESHOOTING:</strong><br> If the agent doesn't respond to queries, verify:
 <ul>
 <li>AI settings are configured in Sigma Admin (Data warehouse hosted model)</li>
-<li>RETAIL_ASSISTANT appears in Sigma Assistant dropdown</li>
+<li>RETAIL_ASSISTANT is selectable as a warehouse agent in the data catalog</li>
 <li>Your connection has been synced (see <a href="https://help.sigmacomputing.com/docs/troubleshoot-your-connection#syncing-your-data-and-connection-indexing">connection sync docs</a>)</li>
 </ul>
 </aside>
 
 ### Save the Agent
 
-Click `Save` to save your Custom Agent configuration.
+Click `Save` to save your Sigma agent configuration.
 
 The `Retail Data Assistant` agent now appears in the Agents panel and is ready to use!
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Add Chat Element to Workbook
+## Add the chat element to the workbook
 Duration: 5
 
-Now that we've created the agent, let's add a Chat Element to the workbook and connect it to our agent.
+Now that we've created the agent, let's add a chat element to the workbook and connect it to our agent.
 
-### Add Chat Element to Canvas
+### Add the chat element to the canvas
 
 From the element bar at the bottom of your workbook, click `UI` > `Chat`.
 
-A Chat Element appears on your canvas.
+A chat element appears on your canvas.
 
-### Select the Agent
+### Select the agent
 
-Click on the Chat Element to select it.
+Click on the chat element to select it.
 
-In the left panel (or configuration area), you'll see an option to select which agent powers this Chat Element.
+In the left panel (or configuration area), you'll see an option to select which agent powers this chat element.
 
 Select: `Retail Data Assistant` (the agent we just created)
 
 <aside class="positive">
-<strong>NOTE:</strong><br> You can add multiple Chat Elements to a workbook, each powered by different agents. This allows you to create specialized assistants for different tasks on different pages.
+<strong>NOTE:</strong><br> You can add multiple chat elements to a workbook, each powered by different agents. This allows you to create specialized assistants for different tasks on different pages.
 </aside>
 
-<img src="assets/chat_28.png" width="800"/>
+<img src="assets/chat_42.png" width="600"/>
 
-The Chat Element is now connected to your agent and ready to use!
+The chat element is now connected to your agent and ready to use!
 
-### Test the Chat Element
+### Test the chat element
 
-Let's test the Chat Element in the workbook to verify it's working correctly.
+Let's test the chat element in the workbook to verify it's working correctly.
 
 Click `Publish` in the top right corner to publish the workbook.
 
-In the published view, use the Chat Element to ask:
+In the published view, use the chat element to ask:
 
 ```copy-code
 What is the total revenue from all orders in the most recent full year?
 ```
+
+<img src="assets/chat_43.png" width="800"/>
 
 You should see:
 1. **"Thinking"** status appears as the agent processes the query
 2. The agent routes to the RETAIL_ASSISTANT Cortex Agent
 3. Cortex analyzes the semantic view and generates appropriate SQL
 4. A detailed response with:
-   - Identification of the most recent complete year (1997)
-   - Total revenue figure (~$171.7 billion)
-   - Additional context (number of orders, customers, etc.)
+   - Identification of the most recent complete year (yes, the dates are old!)
+   - Total revenue figure
+   - Additional context
 
-<img src="assets/chat_29.png" width="600"/>
+<img src="assets/chat_44.png" width="800"/>
 
-If you received a comprehensive response with revenue data, your Chat Element is properly connected to the Cortex Agent and can query the semantic view successfully!
+If you received a comprehensive response with revenue data, your chat element is properly connected to the Cortex Agent and can query the semantic view successfully!
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -694,6 +745,12 @@ Let's add the ability for the agent to write insights to an input table. This de
 
 ### Create Admin Page with Input Table
 
+<aside class="negative">
+<strong>WRITE ACCESS REQUIRED:</strong><br> Make sure write access is enabled on your Snowflake connection. The optional input-table action workflow later in this QuickStart writes rows back to Snowflake and won't work without it. 
+</aside>
+
+For setup details, see [Set up write access](https://help.sigmacomputing.com/docs/set-up-write-access)
+
 From the element bar, click `Input` > `Empty`.
 
 Select your Snowflake connection.
@@ -704,7 +761,10 @@ Configure the input table columns:
 2. **CustomerID** (Number) - The customerID we are asking about
 3. **Last updated at** (Sigma provided column) - When the insight was logged
 
-Rename the table to: `Customer Insights`
+Rename the table to:
+```copy-code
+Customer Insights
+```
 
 Delete the pre-populated rows so the table is empty.
 
@@ -732,16 +792,11 @@ In the right panel, click the `Agents` tab.
 
 Use the `3-dot` menu to edit the `Retail Data Assistant` agent.
 
-In the `Edit Retail Data Assistant` modal, click on the `Actions` tab and then the `+` to add a new `Tool`:
-
-<img src="assets/chat_35.png" width="600"/>
-
-### Create Insert Row Action
-
-Name the new tool `Insert into Customer Insights` and click the `+` to add a `Step`:
+In the `Configure agent` modal, click on the `+` next to `Tools` and select `Action`:
 
 <img src="assets/chat_36.png" width="600"/>
 
+### Create Insert Row Action
 
 Configure the action:
 
@@ -749,13 +804,13 @@ Configure the action:
 **Action:** Insert row<br>
 **Into:** Customer Insights<br>
 **With values:**<br>
-- **Insight** > **Tool input** > **insight_description** (the agent will generate this)<br>
-- **CustomerID** > **Tool input** > **customer_id** (the agent will provide the customer number)
+- **Insight** > **Agent input** > **Insight** (the agent will generate this)<br>
+- **CustomerID** > **Agent input** > **Customer_id** (the agent will provide the customer number)
 
 <img src="assets/chat_37.png" width="800"/>
 
 <aside class="positive">
-<strong>KEY CONCEPT:</strong><br> "Tool input" tells the agent it must provide these values dynamically based on the conversation. The input names help the agent understand what each value represents.
+<strong>KEY CONCEPT:</strong><br> "Agent input" tells the agent it must provide these values dynamically based on the conversation. The input names help the agent understand what each value represents.
 </aside>
 
 <aside class="negative">
@@ -765,7 +820,7 @@ Configure the action:
 ### Update Agent Instructions
 
 <aside class="positive">
-<strong>PROMPT ENGINEERING:</strong><br> Instructions are the most important part of agent configuration. This is where you define workflows, personality, and when to use actions. The instructions should include:
+<strong>PROMPT ENGINEERING:</strong><br> Instructions are an important part of agent configuration. This is where you define workflows, personality, and when to use actions. The instructions should include:
 <ul>
 <li>Clear workflows with step-by-step guidance</li>
 <li>Example interactions showing expected behavior</li>
@@ -805,11 +860,11 @@ Always be concise and actionable. Ask for explicit confirmation before writing d
 
 Click `Save` and `Publish`
 
-### Test the Action Workflow
+### Test the action workflow
 
 Switch the workbook to published view.
 
-**Step 1 - Request analysis:**
+**Step 1 — Ask for an analysis.** Return to the chat element and ask:
 ```copy-code
 Analyze customer 3451
 ```
@@ -821,7 +876,7 @@ The agent will:
 
 <img src="assets/chat_38.png" width="800"/>
 
-**Step 2 - Confirm you want to save (good manners never hurt!):**
+**Step 2 — Confirm you want to save** (good manners never hurt!):
 ```copy-code
 Yes please
 ```
@@ -831,7 +886,7 @@ The agent will:
 - Show the customer ID
 - Ask for final confirmation: "Should I proceed?"
 
-**Step 3 - Final confirmation:**
+**Step 3 — Final confirmation:**
 ```copy-code
 Yes
 ```
@@ -840,12 +895,12 @@ The agent executes the "Insert row into 'Customer Insights'" action, providing:
 - `insight_description`: The generated insight text
 - `customer_id`: 3451
 
-You should see a new row with:
+You'll see a new row with:
 - **Insight**: The description the agent generated
 - **CustomerID**: 3451
 - **Last updated at**: Current timestamp
 
-However, we still can elect to `Cancel` the insert operation if we want, or click `Save`:
+You can still click `Cancel` to back out of the insert, or `Save` to commit it. We didn't instruct the agent to commit automatically:
 
 <img src="assets/chat_39.png" width="800"/>
 
@@ -861,41 +916,44 @@ Duration: 5
 
 In this QuickStart, you learned how to:
 
-### Core Concepts
-- **Understand the architecture** - Custom Agents are the brain, Chat Elements are the UI
-- **Configure Snowflake Cortex** - Set up semantic view, analyst, and agent with minimal configuration
-- **Integrate with Sigma** - Connect Cortex to Sigma's AI settings at the org level
-- **Build Chat Elements** - Add conversational interface powered by Custom Agents
+### Core concepts
+- **Understand the architecture** — the Sigma agent is the brain, the chat element is the UI
+- **Configure Snowflake Cortex** — set up the data view, semantic view, and Cortex Agent
+- **Integrate with Sigma** — configure the AI provider and authorize the semantic view
+- **Build a chat element** — add a conversational interface to a workbook, powered by a Sigma agent
 
-### Advanced Capabilities
-- **Combine tools** - Native Text2SQL for simple queries, Cortex for complex analysis
-- **Intelligent routing** - Agent decides which tool to use based on question complexity
-- **Take actions** - Enable agents to write to input tables with approval workflows
-- **Maintain context** - Ask follow-up questions in natural conversation flow
+### Advanced capabilities
+- **Call a warehouse agent** — the Sigma agent uses the Cortex Agent for analytical work, grounded in the semantic view
+- **Take actions** — the Sigma agent can write to an input table when the user approves
+- **Maintain context** — follow-up questions build on the conversation history naturally
 
-### Key Takeaways
+### Key takeaways
 
-**Custom Agents are powerful orchestrators:**
-- They don't just answer questions—they decide how to answer them
-- Multiple tools can be combined (Text2SQL, Cortex, MCP, stored procedures)
-- Instructions guide behavior and tool selection
+**Sigma agents orchestrate, partner tools execute:**
+- The Sigma agent decides which tool to use based on its instructions
+- Cortex Agents (and other warehouse agents) do the deep data work
+- Together, they keep the conversational entry point in Sigma and the heavy analytics in the data platform
 
-**Cortex integration provides accuracy:**
-- 96-97% accuracy for complex analytical queries
-- Handles joins, aggregations, and time-series analysis
-- Requires semantic view setup but delivers reliable results
+**Semantic views make Cortex accurate:**
+- Business definitions map technical columns to terms the agent understands
+- Pre-defined Facts let Cortex aggregate correctly without ad-hoc SQL
+- The result: reliable answers grounded in governed data
 
-**Chat Elements enable conversational AI:**
-- Familiar chat interface for business users
-- No need to learn SQL or understand data models
-- Natural language queries with visual results
+**Chat elements bring conversational AI to the workbook:**
+- A familiar chat interface for business users
+- No SQL or data modeling required by the reader
+- Natural-language questions, structured responses, optional approval flows for writes
 
-### Next Steps
+### Next steps
 
 Explore more AI capabilities in Sigma:
+- [Build Sigma agents](https://help.sigmacomputing.com/docs/build-agents)
+- [Use warehouse agents with Sigma](https://help.sigmacomputing.com/docs/use-warehouse-agents-sigma)
 - [Custom Functions documentation](https://help.sigmacomputing.com/docs/custom-functions)
 - [Model Context Protocol (MCP)](https://help.sigmacomputing.com/docs/model-context-protocol-mcp)
 - [Action Sequences guide](https://help.sigmacomputing.com/docs/action-sequences)
+
+For another use case that pairs a Sigma agent with unstructured text data, see [Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html)
 
 Learn more about Snowflake Cortex:
 - [Cortex Analyst best practices](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst)

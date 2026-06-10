@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-05-06
+lastUpdated: 2026-06-20
 
 # Fundamentals 01: Overview
 <!-- -->
@@ -332,6 +332,8 @@ The following sections describe each of these core terms in more detail.
 **AI**
 <ul>
   <li><strong>Sigma Assistant:</strong> Sigma’s built-in AI assistant. Ask questions in plain language, generate formulas, summarize data, and more — directly inside a workbook.</li>
+  <li><strong>Sigma agent:</strong> A workbook-scoped AI agent that follows custom instructions, uses selected workbook data sources for context, and can call tools — such as actions, warehouse agents, warehouse search services, or MCP servers — to take action or enrich its answers.</li>
+  <li><strong>Chat element:</strong> The on-canvas UI that connects to a Sigma agent, letting end users chat with the agent in natural language inside a published workbook.</li>
 </ul>
 
 There are different icons used throughout Sigma to distinguish document types and objects at a glance.
@@ -339,8 +341,8 @@ There are different icons used throughout Sigma to distinguish document types an
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Sigma Assistant and AI
-Duration: 8
+## AI in Sigma
+Duration: 4
 
 AI is built into Sigma throughout — not as a separate product or add-on, but as a native capability available where you already work. Whether you're writing formulas, exploring data, or building apps, AI is there to help.
 
@@ -349,16 +351,16 @@ AI is built into Sigma throughout — not as a separate product or add-on, but a
 Before any AI feature can be used, an administrator must configure an AI provider. Sigma supports two approaches:
 
 - **Warehouse-hosted models** — AI runs entirely within your data platform (for example, Snowflake Cortex or BigQuery ML), so your data never leaves your environment.
-- **External AI providers** — OpenAI ChatGPT, Azure OpenAI, Google Gemini and others.
+- **External AI providers** — OpenAI ChatGPT, Azure OpenAI, Google Gemini, Amazon Bedrock and others.
 
-For example, we configured OpenAI as our external provider in `Administration` > `AI Settings`:
+For example, we configured `Snowflake` as our `Data warehouse` provider in `Administration` > `AI Settings`:
 
 <img src="assets/fun_2026_01.png" width="800"/>
 
 For setup instructions, see [Configure an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#set-up-an-ai-provider)
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Don't have an AI provider configured yet? No problem — follow along in this section to understand what's available. You can set up a provider later when you're ready.
+<strong>NOTE:</strong><br> Don't have an AI provider configured yet? No problem — follow along to understand what's available. You can set up a provider later when you're ready.
 </aside>
 
 Once configured, `Assistant` becomes available on the homepage:
@@ -367,20 +369,48 @@ Once configured, `Assistant` becomes available on the homepage:
 
 ### AI features in Sigma
 
-Once a provider is configured, AI is available in several places across the product:
+Once a provider is configured, AI shows up in several places across the product:
 
 <ul>
-  <li><strong>Sigma Assistant:</strong> A conversational AI panel in the workbook. Ask questions in plain language, get AI-generated charts and tables, and explore your data interactively. Results open directly in a workbook for further analysis. <a href="https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-ask-sigma">Learn more</a></li>
+  <li><strong>Sigma Assistant:</strong> A conversational AI panel in the workbook. Ask questions in plain language, get AI-generated charts and tables, and explore your data interactively. Results open directly in a workbook for further analysis. <a href="https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant">Learn more</a></li>
+  <li><strong>Sigma agents:</strong> Build workbook-scoped agents that reason over selected data sources and call tools like actions, warehouse agents, warehouse search services, and MCP servers. Users interact through a chat element, or agents can run automatically on a schedule. <a href="https://help.sigmacomputing.com/docs/sigma-agents">Learn more</a></li>
+  <li><strong>Chat element:</strong> The conversational UI placed on a workbook page that connects to a Sigma agent — letting end users ask questions, get answers, and approve agent actions without leaving the app. <a href="https://help.sigmacomputing.com/docs/chat-with-agent">Learn more</a></li>
   <li><strong>Formula Assistant:</strong> Write new formulas by describing what you want, correct formula errors, or ask AI to explain what an existing formula does — all from the formula bar. <a href="https://help.sigmacomputing.com/docs/use-ai-with-formulas">Learn more</a></li>
   <li><strong>Explain this Chart:</strong> Generate an AI-powered description of any chart, including key insights and trends. The result can be copied directly into a text element alongside the chart. <a href="https://help.sigmacomputing.com/docs/explain-visualizations-with-ai">Learn more</a></li>
   <li><strong>AI Queries:</strong> Run AI-powered analysis on text data as part of your workbook calculations — sentiment analysis, classification, summarization, and more. <a href="https://help.sigmacomputing.com/docs/perform-ai-queries">Learn more</a></li>
-  <!-- <li><strong>Chat Element:</strong> Embed a conversational AI interface directly on a workbook page, so end users can ask questions about the data without leaving the app.</li> -->
 </ul>
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> These aren't isolated AI features — they're integrated into the same governed, live-data environment your team already uses. Users get AI assistance without exposing sensitive data to uncontrolled external systems, and admins retain full control over which data sources AI can access.
-
+<strong>WHY IT MATTERS:</strong><br> These aren't isolated AI features — they're integrated into the same governed, live-data environment your team already uses. Sigma is the governed runtime around AI: audit logs, permissions, cost controls, collaboration, and version management all come with the platform, regardless of which AI provider you've configured.
 </aside>
+
+<aside class="positive">
+<strong>MONITORING AI USAGE:</strong><br> AI calls have real cost, and Sigma includes a built-in dashboard that lets administrators track token usage by agent, by user, and by product surface — making it easy to spot heavy users or runaway costs before they become a problem. 
+</aside>
+
+For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
+
+For more information on all AI features, see [Get started with AI in Sigma](https://help.sigmacomputing.com/docs/getting-started-with-ai)
+
+### Two paths, one platform
+
+Sigma's AI features are genuinely useful — and they're only getting more capable. But powerful AI doesn't eliminate the value of understanding how things work.
+
+Some users want to start with a question and get an answer in seconds. Others want to build from scratch, understand the data structure, and control every step. Some want both — starting with AI to explore quickly, then refining manually to get exactly what they need.
+
+Sigma is designed to support both workflows without forcing a choice. You can let AI handle the initial analysis and then edit the results directly in a workbook. Or you can skip AI entirely and build everything by hand. The platform is the same either way — the same data, the same elements, the same publish and share workflow.
+
+All of the AI features covered in the next few sections work with whichever AI provider your administrator has configured — whether that's a warehouse-hosted model like Snowflake Cortex or an external provider like OpenAI or Anthropic. Your organization chooses the provider; the experience in Sigma remains the same.
+
+There is also an additional layer worth knowing about: the **Sigma MCP Server**. Rather than using AI inside Sigma, the MCP Server brings your Sigma data to your AI tool of choice — so you can query and explore Sigma directly from Anthropic Claude ("Claude"). That is covered later in this QuickStart.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma Assistant
+Duration: 8
+
+Sigma Assistant is the conversational AI panel built into Sigma. From the homepage you can ask a question in plain language, and Assistant works to answer it using the data sources an admin has made available — explaining each step, showing the SQL it ran, and letting you open the result directly in a workbook for further analysis.
 
 ### Select data sources for Sigma Assistant
 
@@ -388,21 +418,15 @@ Before Sigma Assistant can answer questions, you need to tell it which data sour
 
 Navigate to `Administration` > `AI` > `Assistant`.
 
-Search for the data source you want to enable — for example, searching for `Hands` and checking the box for `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` in the `Sigma Sample Database` > `RETAIL` schema, and clicking `Sync`:
+To enable a data source, click the `Add source` button, search for `Hands`, check the box for `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` in the `Sigma Sample Database` > `RETAIL` schema, and click `Add`:
 
 <img src="assets/fun_2026_03.png" width="800"/>
-
-Once the sync is complete, filter on `Available` to confirm the source is ready.
 
 <aside class="positive">
 <strong>BEST PRACTICE:</strong><br> Connecting raw warehouse tables to Sigma Assistant works, but data models produce significantly better results. A data model lets your data team pre-define column names, descriptions, and metrics that AI uses to interpret your questions accurately. Instead of guessing what a column called <code>QTY_NET</code> means, Sigma Assistant can reference a model where it's already labeled "Net Quantity Sold" with a clear description. The more context your data model provides, the more accurate and useful the AI responses will be.
 
 For more information, see <a href="https://help.sigmacomputing.com/docs/get-started-with-data-modeling">Get started with data modeling</a>.
 </aside>
-
-After clearing the search filter, we see the table is `HIGHLIGHTED`. In our case there is a `CUSTOMERS` table on the list but `NOT HIGHLIGHTED`. This is listed because it was recently used, so Sigma listed it as a convenience but since it is not  `HIGHLIGHTED`, it is not available to the Assistant:
-
-<img src="assets/fun_2026_04.png" width="800"/>
 
 ### Hands-on: Sigma Assistant
 
@@ -419,6 +443,10 @@ Let's confirm the `CUSTOMERS` table is not available and see what Assistant does
 What data sources do you have access to?
 ```
 <img src="assets/fun_2026_06.png" width="800"/>
+
+In practice you may have many data sources. It makes sense to focus Assistant on one or more sources instead of having it search all of them when responding to a question. This is made possible by clicking the `+` icon and selecting the desired source (if known):
+
+<img src="assets/fun_2026_06a.png" width="800"/>
 
 Now let's ask a focused business question:
 ```copy-code
@@ -458,7 +486,49 @@ Now we can save it, refine it, or use Sigma's [drill-down](https://help.sigmacom
 
 <img src="assets/fun_2026_11.png" width="800"/> -->
 
-### Formula Assistant
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Sigma agents and chat elements
+Duration: 4
+
+A Sigma agent is the simplest way to put an AI helper inside a specific workbook. You give it a few plain-language instructions ("you help our team understand customer call transcripts"), point it at the data you want it to work with, and add a chat element to the page so people can ask it questions. That's the whole setup — no code, no separate app to build.
+
+What makes an agent powerful is everything it can do beyond answering a question. An agent can:
+
+- Run an action you've already built in the workbook — insert a row, send a notification, update a control.
+- Call a warehouse agent in Snowflake or Databricks for deeper analysis.
+- Search a warehouse search service like Snowflake Cortex Search.
+- Reach out through an MCP server to a system like SharePoint or Slack.
+
+You decide which of those tools the agent is allowed to use, and the agent reaches for them when the conversation calls for it.
+
+End users chat with the agent through a chat element on a workbook page. An agent can also run on its own as part of an automated action sequence — for example, a nightly run that summarizes what changed in the data and posts the summary to Slack.
+
+For example, we can let users chat with AI directly from any Sigma page by adding a chat element and setting some rules for it. This brings the power of AI to users in a controlled manner, helping maintain security and governance guidelines:
+
+<img src="assets/chatelement.mp4">
+
+When deciding which AI surface fits a task:
+
+- **Sigma Assistant** is for general data analysis with minimal setup, across the data sources an admin has enabled.
+- **Sigma agents** are for a specific job in a specific workbook — with custom instructions, a focused set of data, and the tools you've chosen to let the agent use.
+- **Warehouse agents** are for cases where you've already built an agent in your data platform; they can be called from Sigma Assistant or used as a tool inside a Sigma agent.
+
+A Sigma agent runs its queries as the user who's chatting with it, so role-based access control stays in force — an agent can't see data the user couldn't already see.
+
+For more information, see [Build Sigma agents](https://help.sigmacomputing.com/docs/build-agents)
+
+<!-- For hands-on walkthroughs, see:
+
+- [Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html) — using an agent against transcript text in Snowflake.
+- [Build Conversational AI Apps with Chat Elements and Snowflake Cortex](https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html) — pairing a Sigma agent with a Snowflake Cortex Agent and letting it write back to an input table when you approve. -->
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Formula Assistant
+Duration: 4
 
 The Formula Assistant is available directly in the formula bar of any workbook or data model. It can:
 
@@ -483,22 +553,6 @@ The Formula Assistant will return a plain-language explanation of exactly what t
 While this is a very basic example, this is an important pattern: Sigma Assistant generates analysis quickly, and the Formula Assistant lets you verify what was built. You stay in control of the results, even when AI does the initial work.
 
 For more information, see [Use AI with formulas](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
-
-For more information on all AI features, see [Get started with AI in Sigma](https://help.sigmacomputing.com/docs/getting-started-with-ai)
-
-### Two paths, one platform
-
-Sigma Assistant and the Formula Assistant are genuinely useful — and they're only getting more capable. But powerful AI doesn't eliminate the value of understanding how things work.
-
-Some users want to start with a question and get an answer in seconds. Others want to build from scratch, understand the data structure, and control every step. Some want both — starting with AI to explore quickly, then refining manually to get exactly what they need.
-
-Sigma is designed to support both workflows without forcing a choice. You can let AI handle the initial analysis and then edit the results directly in a workbook. Or you can skip AI entirely and build everything by hand. The platform is the same either way — the same data, the same elements, the same publish and share workflow.
-
-All of the AI features covered in this section work with whichever AI provider your administrator has configured — whether that's a warehouse-hosted model like Snowflake Cortex or an external provider like OpenAI or Anthropic. Your organization chooses the provider; the experience in Sigma remains the same.
-
-There is also an additional layer worth knowing about: the **Sigma MCP Server**. 
-
-Rather than using AI inside Sigma, the MCP Server brings your Sigma data to your AI tool of choice — so you can query and explore Sigma directly from Anthropic Claude ("Claude"). That is covered in the next section.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
