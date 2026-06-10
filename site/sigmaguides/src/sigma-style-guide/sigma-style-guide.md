@@ -376,14 +376,18 @@ Duration: 5
 
 Use ffmpeg to convert video into MP4. For example, convert `.mov` to MP4:
 ```copy-code
-ffmpeg -i videoname.mov -vcodec libx264 -crf 28 -preset slow -vf "scale=1280:-2" -an output.mp4
+ffmpeg -i videoname.mov -vcodec libx264 -crf 28 -preset slow -vf "scale=1280:-2" -an -movflags +faststart output.mp4
 ```
 
 Use ffmpeg to crop the video first. For example, to remove a URL bar from the incoming video:
 
 ```copy-code
-ffmpeg -i sidebar_demo.mov -vcodec libx264 -crf 28 -preset slow -vf "crop=iw:ih-150:0:150,scale=1280:-2" -an output.mp4
+ffmpeg -i sidebar_demo.mov -vcodec libx264 -crf 28 -preset slow -vf "crop=iw:ih-150:0:150,scale=1280:-2" -an -movflags +faststart output.mp4
 ```
+
+<aside class="positive">
+<strong>WHY <code>-movflags +faststart</code>?</strong><br> This flag moves the MP4's <code>moov</code> atom (metadata) to the front of the file so browsers can start playback immediately. Without it, the moov atom lives at the end of the file — the video loads fine locally but won't play through Cloudflare/Firebase range-streaming on the deployed site.
+</aside>
 
 Embed the Video in the QuickStart with:
 ```copy-code
