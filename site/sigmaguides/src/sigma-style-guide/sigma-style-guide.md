@@ -389,6 +389,8 @@ Embed the Video in the QuickStart with:
 ```copy-code
 <video src="assets/yourfile.mp4"></video>
 ```
+For example:
+<video src="assets/yourfile.mp4"></video>
 
 ### YouTube can be directly embedded using only the video ID:<br>
 <video id="E9G2a4QkLYE"></video>
