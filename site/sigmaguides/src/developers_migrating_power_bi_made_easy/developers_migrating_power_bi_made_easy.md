@@ -39,6 +39,7 @@ Sigma SEs, technical CSMs, and migration partners running Power BI-to-Sigma conv
 - Sigma API credentials.
 - Power BI / Fabric access with permission to read the target workspace. You do **not** need to register an Entra app — the skill authenticates via device-code flow using the well-known Power BI Desktop public client.
 - `Python 3.10` or newer with the `msal` and `truststore` packages (the skill installs them via `requirements.txt`). macOS's stock system Python is typically 3.9 — older than the skill needs. If `python3 --version` reports anything below 3.10, install a newer interpreter via [Homebrew](https://brew.sh/) (`brew install python@3.12`) or [python.org](https://www.python.org/downloads/).
+- `Node.js` (any recent LTS) for building the converter MCP. The conversion uses a separate MCP server, [`sigma-data-model-mcp`](https://github.com/twells89/sigma-data-model-mcp), cloned + built (`npm install && npm run build`) into `~/Desktop/sigma-data-model-mcp`. The skill prompts you to install it mid-conversion — no upfront work needed — but pre-build it if you'd rather skip the gate.
 - A Power BI report you're authorized to convert. Power BI Desktop alone won't work — the skill reads through Fabric's REST APIs, which require a published report in a Fabric workspace (including `My workspace`).
 - The warehouse tables behind the Power BI model must be reachable from a Sigma connection (Snowflake, BigQuery, Databricks, Redshift, Postgres and others).
 
@@ -448,23 +449,9 @@ At the end of the previous section we left Claude asking `Where is the Power BI 
 
 Choose option `1. Live in Power BI Service / Fabric`.
 
-Claude then asks `Where should the converted data model + workbook land in Sigma?`:
+Claude then asks `What workspace + report should I extract?`:
 
 <img src="assets/mpbi_12.png" width="800"/>
-
-Choose option `1. I have a target folder ID`.
-
-Claude asks that we confirm our answers; select `1. Submit answers`.
-
-Now Claude needs some details:
-
-<img src="assets/mpbi_13.png" width="800"/>
-
-Three values, one line each:
-
-- **Power BI workspace** — the name (`My workspace`) or its GUID. The shortcut `me` also resolves to your personal workspace.
-- **Power BI report** — the report's name as it appears in your workspace.
-- **Sigma folder ID** — the folder ID you grabbed in the previous section.
 
 For this demo:
 
@@ -484,56 +471,64 @@ Duration: 5
 
 Before any extraction runs, the skill examines the source to confirm Sigma will have something it can actually read.
 
+Choose option `1. I have the tables staged — I'll provide connection/db/schema`:
+
 <img src="assets/mpbi_14.png" width="800"/>
 
-<aside class="negative">
-<strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. 
-<br>
-For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming.
+Claude wants to know `Where should I put working files?`
 
-Alternatively, press <code>Shift+Tab</code> once to switch to accept-edits mode for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
-</aside>
+Choose option `1. /tmp/pbi-retail (Recommended)`:
 
-For the Retail Analysis sample, the data is embedded inside the `.pbix` (Import mode, base64 mashup blobs — no warehouse behind it), so the skill pauses to ask how to proceed:
+<img src="assets/mpbi_14a.png" width="800"/>
 
-<img src="assets/mpbi_15.png" width="800"/>
+Select `1. Submit answers` if everything looks good when prompted. 
 
-<aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Rather than silently produce a Sigma data model pointing at a non-existent warehouse, the skill stops and surfaces the gap. Genuine decisions stay with you; mechanical work runs autonomously.
-</aside>
+Claude now asks `Drop the connection ID, database, and schema and I'll start the extract.`
 
-We landed the same data in Snowflake during `Prepare the Demo Data` exactly for this moment.
-
-Pick option `1. I have these tables in a warehouse`.
-
-Claude then asks for your Sigma warehouse connection ID — the UUID of the Snowflake connection that points at the `QUICKSTARTS` database we loaded earlier.
-
-Find it in Sigma under `Administration` > `Connections` (or from the homepage), click your Snowflake connection, and copy the ID and save it off to text for now.
+To find the connection ID in Sigma, navigtate to `Administration` > `Connections` (or from the homepage), click your Snowflake connection, and replace in the code below.
 
 <img src="assets/mpbi_16.png" width="800"/>
 
-Select `1. I'll paste the connection UUID`.
-
-<img src="assets/mpbi_17.png" width="800"/>
-
-Claude also wants the database and schema:
-
-<img src="assets/mpbi_18.png" width="800"/>
-
-We created these earlier:
-
+Copy and paste the values shown, adjusting for your connection ID:
 ```copy-code
+Sigma connection: <YOUR CONNECTION ID>
 Database: QUICKSTARTS
 Schema: POWERBI_RETAIL_ANALYSIS
 ```
 
-Provide these to Claude.
+<aside class="negative">
+<strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. 
+For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming.
+Alternatively, press <code>Shift+Tab</code> once to switch to accept-edits mode for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
+</aside>
 
-Select `1. I'll paste DB and schema`.
+For the Retail Analysis sample, the data is embedded inside a classic `.pbix` file, so the skill may to ask how to proceed if it finds issues along the way:
 
-Claude also wants to know `Are the warehouse table + column names identical to the PBI model`. The tables match (`DISTRICT`, `ITEM`, `SALES`, `STORE`, `TIME` line up case-insensitively with PBI's `District`, `Item`, `Sales`, `Store`, `Time`), but the columns differ — our Snowflake DDL uses snake_case_UPPER (the converter's canonical warehouse naming), while the Power BI model uses CamelCase and a few names with spaces.
+<img src="assets/mpbi_15.png" width="800"/>
 
-<img src="assets/mpbi_19.png" width="800"/>
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Rather than silently produce a broken Sigma data model, the skill stops and surfaces the gap. Genuine decisions stay with you; mechanical work runs autonomously.
+</aside>
+
+Shortly after, the skill pauses again at the **Converter** gate — the `convert_powerbi_to_sigma` tool runs from a separate repo (`sigma-data-model-mcp`) that the skill expects on disk:
+
+<img src="assets/mpbi_30.png" width="800"/>
+
+Pick option to `Chat about this` and tell Claude to handle the clone and build for you:
+
+```copy-code
+Clone twells89/sigma-data-model-mcp into ~/Desktop/sigma-data-model-mcp (or if it already exists, cd in and git pull). Then run `npm install && npm run build` in that directory. Once the build is done, come back to the converter gate and pick option 1, pointing it at ~/Desktop/sigma-data-model-mcp.
+```
+
+Claude runs the clone, the `npm install`, and the `build` (~2–3 minutes), then returns to the gate and resumes the conversion. You may see one or two approval prompts during the `npm install` step — accept them.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> If you've already cloned and built <code>sigma-data-model-mcp</code> from a prior run, this gate doesn't fire — the skill finds the existing build at <code>~/Desktop/sigma-data-model-mcp</code> (or <code>~/sigma-data-model-mcp</code>, or wherever <code>$PBI_MCP_DIR</code> points) and proceeds straight through.
+</aside>
+
+
+asdasdas
+
 
 Select `2. Mostly — a few renames`. When Claude prompts for the rename list, paste this block:
 
