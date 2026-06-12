@@ -12,7 +12,7 @@ lastUpdated: 2026-07-05
 <!-- The above name is what appears on the website and is searchable.
 
 June 5, 2026 changes: done
-June 12, 2026 changes: pending
+June 12, 2026 changes: done
 June 19, 2026 changes: pending
 June 26, 2026 changes: pending
 
@@ -56,6 +56,18 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
+### AI usage dashboard (GA) <img src="assets/heart_icon.png" width="25"/>
+Monitor token consumption, data sources, tool calls, and user feedback for AI features from a single admin dashboard.
+
+**WHY IT MATTERS:**<br>
+Cost visibility and governance are blockers for rolling AI features out broadly. The AI usage dashboard gives admins one place to track token spend, which data sources AI is querying, which tools agents are calling, and where users are flagging quality issues — the inputs you need to manage AI as a budget line, not a black box.
+
+For example, looking at the `Overview` page of the `AI Usage` dashboard for the current week we can see  all the key metrics of interest and drill into anything that interests us:
+
+<img src="assets/fff_06_2026_01.png" width="800"/>
+
+For more information, see [AI usage](https://help.sigmacomputing.com/docs/ai-usage)
+
 ### Assistant Usage Dashboard (Deprecated)
 The Sigma Assistant usage dashboard is deprecated and will be unavailable after September 15, 2026. Configure the AI usage dashboard instead.
 
@@ -66,11 +78,40 @@ For security reasons, if `Run queries as recipient` is enabled, either as an org
 
 For more information, see [Manage export frequency and authentication settings](https://help.sigmacomputing.com/docs/restrict-export-recipients)
 
+### License type column in the Administration > Users table (GA)
+The `Administration` > `Usage` > `Users` > `User Detail` table now includes a dedicated `License type` column that indicates the license tier associated with each user's account type.
+
+<img src="assets/fff_06_2026_02.png" width="800"/>
+
+### Support for OpenAI GPT 5.4 (GA)
+Sigma now uses `GPT 5.4` instead of `GPT 5.1` if your OpenAI or Azure OpenAI account supports it.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## AI
 Duration: 20
+
+### Build and interact with Sigma agents (Beta) <img src="assets/heart_icon.png" width="25"/>
+Build agentic solutions natively in Sigma with Sigma agents. Agents provide AI capabilities to a dashboard or application based on a predefined context of the data elements in a workbook.
+
+**WHY IT MATTERS:**<br>
+Sigma agents bring agent-style AI into the place where the data, governance, and audit trail already live — no separate orchestration layer, no shuttling context between systems. Builders define what an agent can see and do inside the workbook itself, so the agent inherits Sigma's permissions, lineage, and version history by default.
+
+For more information, see [Sigma agents](https://help.sigmacomputing.com/docs/sigma-agents), [Build Sigma agents](https://help.sigmacomputing.com/docs/build-sigma-agents), and [Example agent implementations](https://help.sigmacomputing.com/docs/example-agent-implementations)
+
+There are also two QuickStarts on this topic:<br>
+[Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html?index=..%2F..index#0)
+<br>
+[Build Conversational AI Apps with Chat Elements and Snowflake Cortex](https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html?index=..%2F..index#0)
+
+### Configure MCP tools to use with Sigma agents (Beta) <img src="assets/heart_icon.png" width="25"/>
+Use MCP servers for third-party services with Sigma agents by adding them to Sigma as MCP tools.
+
+**WHY IT MATTERS:**<br>
+MCP tools let Sigma agents reach into the systems your team already uses — ticketing, CRM, custom internal APIs — without writing connector code. Open MCP support keeps Sigma compatible with the broader agent ecosystem rather than locking customers into a single AI stack.
+
+For more information, see [Configure MCP tools](https://help.sigmacomputing.com/docs/configure-mcp-tools)
 
 ### Create AI Columns (Beta) <img src="assets/heart_icon.png" width="25"/>
 You can now create AI columns to enrich your data using natural language prompts. AI columns let you construct dynamic prompts that reference specific table columns, and are useful for tasks like enriching, summarizing, and classifying data.
@@ -80,11 +121,24 @@ AI columns turn enrichment, classification, and summarization into a one-step wo
 
 For more information, see [Create AI columns (Beta)](https://help.sigmacomputing.com/docs/create-ai-columns)
 
+### Use warehouse agents with Assistant and agents (Beta) <img src="assets/heart_icon.png" width="25"/>
+Integrate Snowflake Cortex Agents or Databricks Genie Spaces for use with Sigma Assistant and Sigma agent workflows.
+
+**WHY IT MATTERS:**<br>
+This is the collaborative AI pattern — Sigma calls into Snowflake Cortex and Databricks Genie rather than competing with them. Customers keep their AI investments in the warehouse, while Sigma supplies the governed runtime, audit trail, and collaboration layer on top.
+
+For more information, see [Use warehouse agents with Sigma](https://help.sigmacomputing.com/docs/use-warehouse-agents-sigma)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## API
 Duration: 20
+
+### New API endpoint for updating deployment policies (GA)
+The `Update a deployment policy` endpoint (`PATCH /v2/deploymentPolicies/{deploymentPolicyId}`) is now available to update an existing deployment policy in Sigma.
+
+For more information, see [Update a deployment policy](https://help.sigmacomputing.com/reference-link/updatedeployment)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -95,6 +149,10 @@ Duration: 20
 **1:** Collapsed and expanded row and column groupings now export as they appear in the workbook. Previously, all rows and columns exported fully expanded.
 
 **2:** Tagging a workbook version that contained custom SQL failed with the error `Cannot read properties of null (reading 'connectionId')`.
+
+**3:** License tier usage counts in `Administration` > `Users` now align with the metrics shown on the Usage dashboard.
+
+**4:** The value column position in pivot table exports now always matches how it appears in the workbook.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -153,6 +211,19 @@ Duration: 20
 ## New QuickStarts in June
 Duration: 20
 
+[Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html?index=..%2F..index#0)<br>
+Eight-step build walkthrough using a Sigma agent against Gong call transcripts in Snowflake. No code, no NLP pipeline.
+
+[Build Conversational AI Apps with Chat Elements and Snowflake Cortex](https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html?index=..%2F..index#0)<br>
+End-to-end pattern: a Sigma agent in a workbook calls a Snowflake Cortex Agent as a warehouse tool, with an optional input-table write-back flow.
+
+[Fundamentals 01: Overview (revised content)](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html?index=..%2F..index#4)<br>
+The AI section is now split into dedicated sections (AI in Sigma, Sigma Assistant, Sigma agents,  chat element, Formula Assistant and MCP Server).
+<br>
+
+**WHY IT MATTERS:**<br>
+Customers — especially execs and security reviewers — need to see that AI in Sigma isn't just a feature surface; it's wrapped in the operational and governance maturity of the broader platform.
+
 
 
 ![Footer](assets/sigma_footer.png)
@@ -161,7 +232,7 @@ Duration: 20
 ## Security
 Duration: 20
 
-### Configure Mutual Transport Layer Security (mTLS) for API Connectors (GA) <img src="assets/heart_icon.png" width="25"/>
+### Configure Mutual Transport Layer Security (mTLS) for API Connectors (GA)
 You can add client and server certificates to Sigma, allowing you to configure mutual transport layer security (mTLS) for API connectors.
 
 **WHY IT MATTERS:**<br>
@@ -171,6 +242,11 @@ For more information, see [Configure mutual transport layer security for API con
 
 ### Manually Specify an OAuth Provider for Organization-Level OAuth (GA)
 You can now manually specify an OAuth provider when configuring OAuth as the single sign-on (SSO) method for authenticating to Sigma. This enables the use of custom domain names.
+
+### Select Snowflake role for a connection (GA)
+You can now select which Snowflake role to use when performing tasks in Sigma via OAuth connections.
+
+For more information, see [Choose a Snowflake role](https://help.sigmacomputing.com/docs/choose-snowflake-role)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -192,10 +268,37 @@ For more information, see [Add custom page panels to a workbook](https://help.si
 ### Hierarchy Columns (GA) <img src="assets/heart_icon.png" width="25"/>
 Hierarchy columns are now generally available.
 
+<img src="assets/hierarchy_columns.gif">
+
 **WHY IT MATTERS:**<br>
 Drill paths and parent/child rollups are core to operational reporting — finance hierarchies, org charts, product taxonomies. Bringing hierarchy columns to GA gives every builder a stable, supported way to model these structures directly in Sigma instead of pre-flattening them upstream.
 
 For more information, see [Work with hierarchies](https://help.sigmacomputing.com/docs/hierarchies) and [RaggedHierarchy](https://help.sigmacomputing.com/docs/raggedhierarchy)
+
+### Navigation element text color configuration
+You can now configure text color options on navigation elements for finer styling control.
+
+For more information, see [Use the navigation element to guide user exploration](https://help.sigmacomputing.com/docs/use-the-navigation-element-to-guide-user-exploration)
+
+### Progress bars and progress rings (Beta) <img src="assets/heart_icon.png" width="25"/>
+Build a progress bar or progress ring to display a value as a percentage or proportion of a target value.
+
+<video src="assets/progress_bars.mp4"></video>
+
+**WHY IT MATTERS:**<br>
+Goal and target tracking shows up everywhere — pipeline coverage, OKRs, fundraising, capacity. Progress bars and rings replace the usual "calc a percentage and explain it" pattern with a clear visual that immediately communicates how close you are to a target.
+
+For more information, see [Build a progress bar](https://help.sigmacomputing.com/docs/build-a-progress-bar) and [Build a progress ring](https://help.sigmacomputing.com/docs/build-a-progress-ring)
+
+### Swap MCP tools, warehouse agents, and API connectors (GA)
+When tagging a workbook version, you can swap the API connectors used by `Call API` actions and the MCP tools and warehouse agents used by Sigma agents.
+
+For more information, see [Tag a document version](https://help.sigmacomputing.com/docs/tag-a-document-version)
+
+### Use dynamic text in email exports (GA)
+You can now use dynamic text when formatting the `Subject` and `Message` fields in ad hoc and scheduled email exports.
+
+For more information, see [Export to email](https://help.sigmacomputing.com/docs/export-to-email)
 
 ### Using #raw in SQL Statements (Deprecated)
 The `#raw` directive in custom SQL is deprecated. On December 1, 2026, Sigma will no longer support the `#raw` directive. Update any custom SQL that uses `#raw` to use the `#identifier` directive before that date to avoid query errors.
