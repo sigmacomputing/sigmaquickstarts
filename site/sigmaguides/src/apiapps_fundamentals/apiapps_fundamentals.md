@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-05-06
+lastUpdated: 2026-06-20
 
 # AI Apps Fundamentals
 
@@ -27,71 +27,6 @@ This QuickStart is a bit longer than usual, and we understand that people can be
 
 [How to contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
-### Project Tracker use case
-The `Project Tracker` will support the following:
-
-<table>
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Projects</td>
-            <td>Top Level reporting.</td>
-        </tr>
-        <tr>
-            <td>Tasks</td>
-            <td>Tasks are children of projects. Each project may have 1 or more tasks.</td>
-        </tr>
-        <tr>
-            <td>Status</td>
-            <td>Project status changes over time. Create a flow to track status over time while displaying just the latest status for a project.</td>
-        </tr>
-        <tr>
-            <td>Approvals</td>
-            <td>All projects must be reviewed and approved prior to being marked as complete.</td>
-        </tr>
-        <tr>
-            <td>UI</td>
-            <td>Able to see all project details in one place.</td>
-        </tr>
-    </tbody>
-</table>
-<br>
-
-**Some of the core Sigma functionalities we will touch are:**
-
-<ul>
-    <li><span style="background-color: #90EE90;">Input Tables:</span>
-        <ul>
-            <li>Data Validation</li>
-            <li>Input tables + Actions</li>
-        </ul>
-    </li>
-    <li><span style="background-color: #FFC0CB;">Overlays / Modals:</span>
-        <ul>
-            <li>Forms</li>
-            <li>Filters</li>
-        </ul>
-    </li>
-    <li><span style="background-color: #FFA500;">Controls:</span>
-        <ul>
-            <li>Building a control panel</li>
-            <li>Interaction of controls and actions</li>
-        </ul>
-    </li>
-    <li><span style="background-color: #FFC0CB;">Building the Application Interface</span></li>
-    <li><span style="background-color: #ADD8E6;">Approval Workflow</span></li>
-    <li><span style="background-color: #FFFF00;">Themes</span></li>
-</ul>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Pay attention to naming conventions used in this QuickStart, especially around control IDs. This will make your build far easier as the sections progress.
-</aside>
-
 ### What we will build
 After completing this QuickStart, we will have built a fully functional AI App based on a project management use case. 
 
@@ -100,11 +35,17 @@ The finished product can look something like this (depending on your styling cho
 <img src="assets/dataaps_fun_done.png" width="800"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. Sigma continuously adds and enhances functionality, but these differences won’t prevent you from completing the steps.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
- 
+If something isn’t working as expected, here’s how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Some features may carry the "Beta" tag. Beta features are subject to quick, iterative changes, so the latest product version may differ from what’s shown here.
+</aside>
+
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
+
 ### Target Audience
 Sigma builders interested in leveraging the advanced capabilities to create fully functioning AI Apps.
 
@@ -121,7 +62,46 @@ Sigma builders interested in leveraging the advanced capabilities to create full
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
- 
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Project Tracker use case
+Duration: 5
+
+Teams managing work across initiatives, customer rollouts, and internal programs need a way to see what's in flight, what's blocked, who owns each task, and whether the work has been approved. Spreadsheets get messy; standalone project tools mean another login, another data silo, and integration work to get the numbers back into your analytics.
+
+The Project Tracker built in this QuickStart keeps the entire app inside a Sigma workbook, backed by your warehouse. Project records, task hierarchy, status history, approval state, and the UI to manage all of it land in one place — no separate database, no hand-built forms, no custom approval routing.
+
+The app supports the following capabilities:
+
+| Category | Description |
+| --- | --- |
+| Projects | Top level reporting. |
+| Tasks | Tasks are children of projects. Each project may have one or more tasks. |
+| Status | Project status changes over time. The app tracks status history while displaying only the latest status for each project. |
+| Approvals | All projects must be reviewed and approved before being marked complete. |
+| UI | All project details visible in one place. |
+
+Throughout the build, we'll exercise these core Sigma areas:
+
+- **Input Tables:**
+  - Data validation
+  - Input tables + Actions
+- **Overlays / Modals:**
+  - Forms
+  - Filters
+- **Controls:**
+  - Building a control panel
+  - Interaction of controls and actions
+- **Building the application interface**
+- **Approval workflow**
+- **Themes**
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Pay attention to naming conventions used in this QuickStart, especially around control IDs. This will make your build far easier as the sections progress.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -155,14 +135,12 @@ There are many options to control how users are permitted to use input tables.
 
 For more information on this topic, see: [Configure data governance options in input tables](https://help.sigmacomputing.com/docs/configure-data-governance-options-in-input-tables)
 
-### Create Project Tracker Input Table
-
-#### Step 1: Open a blank workbook in Sigma:
+### Step 1: Open a blank workbook in Sigma:
 Log into Sigma and select the `+ Create New` > `Workbook` from the homepage:
 
 <img src="assets/dataaps_fun_1.png" width="800"/>
 
-#### Step 2: Add empty input table:
+### Step 2: Add empty input table:
 Create an empty input table on Sigma Sample Database by clicking on `Input` in the element bar and dragging an `Empty` input table onto the page.
 
 <img src="assets/dataaps_fun_1a.png" width="400"/>
@@ -173,7 +151,7 @@ Change the title of the new input table (by double-clicking its current title) t
 
 <img src="assets/dataaps_fun_1b.png" width="400"/>
 
-#### Step 3: Add new columns:
+### Step 3: Add new columns:
 In this step, we will create three new columns: two as `text` and one as `date` format.
 
 First, rename the existing `Text` column to `Project Name`.
@@ -186,12 +164,12 @@ Rename the new columns to `Project Owner`, `Project Type`, and `Project Due Date
 
 <img src="assets/dataaps_fun_1d.png" width="800"/>
 
-#### Step 4: Rename the page 
+### Step 4: Rename the page 
 Rename the workbook page to `Project Tracker` and add a new page, by clicking the `+` icon in the footer. Rename it to `Data Validation`:
 
 <img src="assets/dataaps_fun_1e.png" width="400"/>
 
-#### Step 5: Validation input tables
+### Step 5: Validation input tables
 In this step we will create three additional input tables, reloading them with data from csv files. 
 
 <aside class="negative">
@@ -222,7 +200,7 @@ Once all three input tables are added, rename them to match the content:
 
 <img src="assets/dataaps_fun_1i.png" width="800"/>
 
-#### Step 6: 
+### Step 6: 
 On the `Project Tracker` page, open the menu for the `Project Owner` column on the `Project Tracker Input Table` and select `Data validation`:
 
 <img src="assets/dataaps_fun_1j.png" width="400"/>
@@ -247,7 +225,7 @@ Use the `Project Type` input table as the source of validation value.
 
 Delete any blank rows that may be present in the `Project Tracker Input Table` while we were building.
 
-#### Step 7: 
+### Step 7: 
 Add the following row of data to the `Project Tracker Input Table`.
 
 <img src="assets/dataaps_fun_1m.png" width="800"/>
@@ -256,10 +234,10 @@ Add the following row of data to the `Project Tracker Input Table`.
 <strong>NOTE:</strong><br> Make sure to always set the "Project Due Date" value to a date that is in the future when using the AI App.
 </aside>
 
-#### Step 8: 
-Click the `Save as` button and name workbook as `AI Apps Fundamentals`.
+### Step 8: 
+Click the `Save as` button and name the workbook `AI Apps Fundamentals`.
 
-#### Step 9: 
+### Step 9: 
 Using the element bar, in the `Controls` group, add a `Text Input` control above the input table: 
 
 <img src="assets/dataaps_fun_1n.png" width="350"/>
@@ -274,7 +252,7 @@ With the `Project Name` control selected, change the `Control ID` to `cp-Project
 <strong>IMPORTANT:</strong><br> Setting and following a control naming convention at the beginning of your application build will help you maintain order as your application grows. In this case, we use “cp-ControlName” to indicate that the process this control is used for is “Create Project” i.e. cp. 
 </aside>
 
-#### Step 10: 
+### Step 10: 
 Add a `List Values` control element and name it `Project Owner`. 
 
 In the element panel under `Value Source`, select `Data Validation` > `Employee` and set the `Source column` to `Name`. 
@@ -293,26 +271,26 @@ Rename the `Control ID` to `cp_ProjectOwner`:
 <strong>NOTE:</strong><br> Make sure to hit enter when renaming controls to be sure that the name change is confirmed.
 </aside>
 
-#### Step 11: 
+### Step 11: 
 Repeat step 10 for `Project Type`. 
 
 In the element panel under `Value Source`, select `Data Validation` > `Project Type` and the `Project Type` column. 
 
 Rename the `Control ID` to `cp_ProjectType`.
 
-#### Step 12: 
+### Step 12: 
 Add a `Date` control titled `Project Due Date` with a `Control ID` of `cp_ProjectDueDate`.
 
 The page should look like this now:
 
 <img src="assets/dataaps_fun_1q.png" width="800"/>
 
-#### Step 13: 
+### Step 13: 
 Add a `Button` from the element bar, `UI` group to the page and set its name to `Create Project`:
 
 <img src="assets/dataaps_fun_1r.png" width="800"/>
 
-#### Step 14: 
+### Step 14: 
 On the `Actions` panel of the `Create Project` button, add a new action and select `Insert Row`. 
 
 Ensure the values align for each control to the `Project Tracker Input Table`:
@@ -325,7 +303,7 @@ If you click the button with no values provided, an empty row is added to the in
 
 Click `Publish`.
 
-#### Step 15: 
+### Step 15: 
 Now let’s create some projects. It does not really matter what you decide to use for the control, it is test data anyway.
 
 <aside class="positive">
@@ -346,7 +324,7 @@ Click `Create Project` to test if everything was set up correctly:
 <strong>NOTE:</strong><br> The control values were not cleared after we created the new project. We will handle that in a bit.
 </aside>
 
-#### Step 16: 
+### Step 16: 
 Select each control (shift+click) and the `Create Project` button. 
 
 At the top right, choose the `Create container` option from the selected elements menu:
@@ -360,7 +338,7 @@ At the top right, choose the `Create container` option from the selected element
 <strong>PRO TIP:</strong><br> You can also use hot keys! "Command+G" will put all selected items into a container.
 </aside>
 
-#### Step 17: 
+### Step 17: 
 Rename the container `Create Project Container`
 
 <img src="assets/dataaps_fun_1v.png" width="800"/>
@@ -369,14 +347,14 @@ Rename the container `Create Project Container`
 <strong>IMPORTANT:</strong><br> Naming containers as you create them will make life much easier as the app grows. 
 </aside>
 
-#### Step 18: 
+### Step 18: 
 Select the `Create Project` button, and go to `Actions`. 
 
 Create a second action set to `Clear control` applied to `Container` with our newly created `Create Project Container`. This will set the action to automatically target all four control elements:
 
 <img src="assets/dataaps_fun_1w.png" width="600"/>
 
-#### Step 19: 
+### Step 19: 
 Add an additional row of data to test the clear action on each control element within the container. 
 
 The updated `Project Tracker` should look as follows, with a new row of data and the controls cleared once the `Create Project` button is clicked:
@@ -818,28 +796,15 @@ On the `Control Panel` page create a new blank input table and connect to the `S
 Rename it to `Status Update Input Table`. 
 
 Create the following columns:
-<table>
-    <thead>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Project ID</td>
-            <td>type = text</td>
-        </tr>
-        <tr>
-            <td>Project Status</td>
-            <td>type = text</td>
-        </tr>
-         <tr>
-            <td>Status Owner</td>
-            <td>type = text</td>
-        </tr>
-        <tr>
-            <td>Status Date</td>
-            <td>type = date</td>
-        </tr>
-    </tbody>
-</table>
+
+```copy-code
+Project ID
+Project Status
+Status Owner
+Status Date
+```
+
+Set the type for `Project ID`, `Project Status`, and `Status Owner` to `text`; set `Status Date` to `date`.
 
 Add the `Last updated at`, `Last updated by`, and `row ID` columns using the menu options.
 
@@ -970,7 +935,7 @@ lookup(max([Second of Status Date]), [Project ID], [Project ID]
 <img src="assets/dataaps_fun_5o.png" width="600"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This formula is doing a recursive lookup to this table - it is getting the latest "Status Update Date" for each project. This operates similar to a window function in SQL.
+<strong>NOTE:</strong><br> This formula is doing a recursive lookup to this table — it is getting the latest "Status Update Date" for each project. This operates similar to a window function in SQL.
 </aside>
 
 For more information about functions in Sigma, see [Function index](https://help.sigmacomputing.com/docs/function-index)
@@ -1109,7 +1074,7 @@ We also want to include all the related tasks for the selected project.
 
 Repeat the steps used for the `Details` table to add a `Tasks` table:
 
-On the `Control Panel` page, create a `Child table` on the `Task Tracking Input Table` and move it to the` Modal - Project Details`. 
+On the `Control Panel` page, create a `Child table` on the `Task Tracking Input Table` and move it to the `Modal - Project Details`. 
 
 Open the modal by clicking the `ⓘ` or by directly opening the modal page.
 
@@ -1126,7 +1091,7 @@ On the `Modal - Project Details` modal, add a button titled `Add New Task` that 
 
 <img src="assets/dataaps_fun_6l.png" width="800"/>
 
-Click the `Add another task` and test the workflow, to add another task to the list. After moving a few elements around:
+Click `Add another task` and test the workflow to add another task to the list. After moving a few elements around:
 
 <img src="assets/dataaps_fun_6m.png" width="600"/>
 

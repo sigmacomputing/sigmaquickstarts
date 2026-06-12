@@ -40,6 +40,7 @@ Sigma SEs, technical CSMs, and migration partners running Tableau-to-Sigma conve
 - Tableau Cloud / Server access
 - A Tableau dashboard you're authorized to convert, hosted on Tableau Cloud or Server. Tableau Desktop alone won't work — the skill reads through Tableau's REST and VDS APIs, which only Cloud/Server expose.
 - The warehouse tables behind the dashboard must be reachable from a Sigma connection (Snowflake, BigQuery, Databricks, Redshift, Postgres and others).
+- `Node.js` (any recent LTS) for building the converter MCP. The conversion uses a separate MCP server, [`sigma-data-model-mcp`](https://github.com/twells89/sigma-data-model-mcp), cloned + built (`npm install && npm run build`) into `~/Desktop/sigma-data-model-mcp`. The skill prompts you to install it mid-conversion — no upfront work needed — but pre-build it if you'd rather skip the gate.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Use a non-production Sigma org for your first run. The skill creates real workbooks, and error-recovery paths may iterate via PUT to update them.
