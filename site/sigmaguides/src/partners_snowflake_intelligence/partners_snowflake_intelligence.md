@@ -3,10 +3,10 @@ id: partners_snowflake_intelligence
 summary: partners_snowflake_intelligence
 categories: aiapps
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
-lastUpdated: 2026-05-10
+tags:
+lastUpdated: 2026-06-10
 
 # Connect Snowflake Intelligence to Sigma Workbook
 
