@@ -1,0 +1,297 @@
+INCIDENT_ID,EMPLOYEE_ID,DATE,LOCATION,DEPARTMENT,INCIDENT_TYPE,SEVERITY,DESCRIPTION,OVERTIME_ON_DAY,HOURS_WORKED_BEFORE_INCIDENT
+INC-0293,EMP-1186,2026-06-09,Atlanta DC,Warehouse & Logistics,Repetitive Strain,Low,Incident at Atlanta DC involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0294,EMP-1265,2026-06-09,Denver Office,Customer Service,Equipment Malfunction,High,Incident at Denver Office involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0291,EMP-1349,2026-06-08,Atlanta DC,Engineering,Repetitive Strain,Low,Incident at Atlanta DC involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0292,EMP-1343,2026-06-08,Baltimore HQ,Engineering,Equipment Malfunction,High,Incident at Baltimore HQ involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0287,EMP-1346,2026-06-01,Austin Hub,Warehouse & Logistics,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0288,EMP-1031,2026-06-01,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,High,Incident at Chicago Plant involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0285,EMP-1049,2026-05-30,Chicago Plant,Warehouse & Logistics,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0286,EMP-1247,2026-05-30,Austin Hub,Customer Service,Equipment Malfunction,High,Incident at Austin Hub involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0281,EMP-1057,2026-05-26,Atlanta DC,Customer Service,Near Miss,Low,Incident at Atlanta DC involving Near Miss - Low severity,FALSE,4.4
+INC-0282,EMP-1352,2026-05-26,Baltimore HQ,Warehouse & Logistics,Fatigue-Related Error,High,Incident at Baltimore HQ involving Fatigue-Related Error - High severity,FALSE,7.7
+INC-0279,EMP-1179,2026-05-25,Denver Office,Warehouse & Logistics,Repetitive Strain,Low,Incident at Denver Office involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0280,EMP-1101,2026-05-25,Baltimore HQ,Customer Service,Equipment Malfunction,High,Incident at Baltimore HQ involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0277,EMP-1324,2026-05-23,Austin Hub,Customer Service,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0278,EMP-1129,2026-05-23,Atlanta DC,Engineering,Equipment Malfunction,High,Incident at Atlanta DC involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0274,EMP-1222,2026-05-18,Austin Hub,Warehouse & Logistics,Fatigue-Related Error,Medium,Incident at Austin Hub involving Fatigue-Related Error - Medium severity,FALSE,7.7
+INC-0271,EMP-1034,2026-05-16,Chicago Plant,Warehouse & Logistics,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0269,EMP-1320,2026-05-15,Baltimore HQ,Engineering,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0268,EMP-1236,2026-05-12,Atlanta DC,Engineering,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0265,EMP-1246,2026-05-12,Atlanta DC,Warehouse & Logistics,Repetitive Strain,Low,Incident at Atlanta DC involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0263,EMP-1142,2026-05-08,Atlanta DC,Engineering,Repetitive Strain,Low,Incident at Atlanta DC involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0261,EMP-1254,2026-05-07,Chicago Plant,Engineering,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0259,EMP-1294,2026-05-06,Chicago Plant,Warehouse & Logistics,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0243,EMP-1271,2026-04-24,Atlanta DC,Customer Service,Ergonomic Strain,High,Incident at Atlanta DC involving Ergonomic Strain - High severity,FALSE,7.7
+INC-0241,EMP-1069,2026-04-21,Atlanta DC,Customer Service,Equipment Malfunction,High,Incident at Atlanta DC involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0236,EMP-1304,2026-04-16,Denver Office,Sales,Ergonomic Strain,Low,Incident at Denver Office involving Ergonomic Strain - Low severity,FALSE,4.4
+INC-0225,EMP-1172,2025-12-25,Austin Hub,Sales,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,2.2
+INC-0226,EMP-1149,2025-12-28,Chicago Plant,Customer Service,Caught Between Objects,Low,Incident at Chicago Plant involving Caught Between Objects - Low severity,TRUE,8.0
+INC-0227,EMP-1124,2025-12-29,Baltimore HQ,Customer Service,Near Miss,Low,Incident at Baltimore HQ involving Near Miss - Low severity,FALSE,3.4
+INC-0228,EMP-1100,2025-12-31,Denver Office,Sales,Fatigue-Related Error,Medium,Incident at Denver Office involving Fatigue-Related Error - Medium severity,FALSE,4.6
+INC-0229,EMP-1153,2025-12-31,Baltimore HQ,Customer Service,Fatigue-Related Error,Low,Incident at Baltimore HQ involving Fatigue-Related Error - Low severity,TRUE,4.7
+INC-0230,EMP-1217,2025-12-31,Austin Hub,Customer Service,Near Miss,Medium,Incident at Austin Hub involving Near Miss - Medium severity,FALSE,8.8
+INC-0231,EMP-1190,2026-01-04,Denver Office,Human Resources,Fatigue-Related Error,Medium,Incident at Denver Office involving Fatigue-Related Error - Medium severity,FALSE,9.2
+INC-0232,EMP-1239,2026-01-04,Chicago Plant,Sales,Near Miss - Forklift,Low,Incident at Chicago Plant involving Near Miss - Forklift - Low severity,TRUE,6.1
+INC-0233,EMP-1108,2026-01-06,Atlanta DC,Warehouse & Logistics,Ergonomic Strain,Critical,Incident at Atlanta DC involving Ergonomic Strain - Critical severity,TRUE,1.3
+INC-0216,EMP-1146,2025-12-16,Denver Office,Sales,Repetitive Strain,Medium,Incident at Denver Office involving Repetitive Strain - Medium severity,TRUE,1.9
+INC-0217,EMP-1219,2025-12-16,Chicago Plant,Finance,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,5.2
+INC-0218,EMP-1230,2025-12-19,Denver Office,Engineering,Minor Cut/Bruise,Medium,Incident at Denver Office involving Minor Cut/Bruise - Medium severity,FALSE,5.1
+INC-0219,EMP-1202,2025-12-22,Austin Hub,Human Resources,Near Miss - Forklift,Medium,Incident at Austin Hub involving Near Miss - Forklift - Medium severity,TRUE,7.4
+INC-0220,EMP-1232,2025-12-24,Austin Hub,Human Resources,Fatigue-Related Error,Low,Incident at Austin Hub involving Fatigue-Related Error - Low severity,TRUE,2.5
+INC-0221,EMP-1256,2025-12-24,Atlanta DC,Human Resources,Ergonomic Strain,Low,Incident at Atlanta DC involving Ergonomic Strain - Low severity,FALSE,7.8
+INC-0222,EMP-1020,2025-12-25,Austin Hub,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Austin Hub involving Ergonomic Strain - Low severity,FALSE,1.9
+INC-0223,EMP-1024,2025-12-25,Austin Hub,Engineering,Caught Between Objects,Medium,Incident at Austin Hub involving Caught Between Objects - Medium severity,FALSE,9.2
+INC-0224,EMP-1113,2025-12-25,Atlanta DC,Customer Service,Fatigue-Related Error,Low,Incident at Atlanta DC involving Fatigue-Related Error - Low severity,TRUE,5.9
+INC-0173,EMP-1126,2025-10-19,Baltimore HQ,Sales,Near Miss - Forklift,Low,Incident at Baltimore HQ involving Near Miss - Forklift - Low severity,FALSE,6.5
+INC-0174,EMP-1061,2025-10-20,Atlanta DC,Customer Service,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,FALSE,5.1
+INC-0175,EMP-1239,2025-10-20,Chicago Plant,Sales,Ergonomic Strain,Medium,Incident at Chicago Plant involving Ergonomic Strain - Medium severity,FALSE,3.0
+INC-0176,EMP-1172,2025-10-22,Austin Hub,Sales,Caught Between Objects,Low,Incident at Austin Hub involving Caught Between Objects - Low severity,FALSE,9.2
+INC-0177,EMP-1171,2025-10-23,Atlanta DC,Warehouse & Logistics,Heavy Lifting Injury,Critical,Incident at Atlanta DC involving Heavy Lifting Injury - Critical severity,TRUE,1.1
+INC-0178,EMP-1101,2025-10-26,Baltimore HQ,Customer Service,Forklift Collision,Medium,Incident at Baltimore HQ involving Forklift Collision - Medium severity,FALSE,4.2
+INC-0179,EMP-1019,2025-10-28,Austin Hub,Human Resources,Near Miss,Medium,Incident at Austin Hub involving Near Miss - Medium severity,TRUE,9.2
+INC-0180,EMP-1259,2025-10-28,Chicago Plant,Customer Service,Repetitive Strain,High,Incident at Chicago Plant involving Repetitive Strain - High severity,TRUE,4.3
+INC-0181,EMP-1035,2025-10-29,Chicago Plant,Warehouse & Logistics,Heavy Lifting Injury,High,Incident at Chicago Plant involving Heavy Lifting Injury - High severity,FALSE,7.4
+INC-0182,EMP-1008,2025-11-01,Baltimore HQ,Warehouse & Logistics,Near Miss,Low,Incident at Baltimore HQ involving Near Miss - Low severity,TRUE,4.4
+INC-0183,EMP-1037,2025-11-04,Chicago Plant,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Chicago Plant involving Ergonomic Strain - Low severity,TRUE,4.4
+INC-0184,EMP-1109,2025-11-04,Atlanta DC,Human Resources,Ergonomic Strain,Low,Incident at Atlanta DC involving Ergonomic Strain - Low severity,FALSE,7.9
+INC-0185,EMP-1230,2025-11-04,Denver Office,Engineering,Forklift Collision,Low,Incident at Denver Office involving Forklift Collision - Low severity,FALSE,3.1
+INC-0186,EMP-1015,2025-11-05,Austin Hub,Sales,Ergonomic Strain,Medium,Incident at Austin Hub involving Ergonomic Strain - Medium severity,TRUE,4.1
+INC-0187,EMP-1027,2025-11-05,Austin Hub,Engineering,Forklift Collision,Low,Incident at Austin Hub involving Forklift Collision - Low severity,TRUE,1.4
+INC-0188,EMP-1056,2025-11-06,Atlanta DC,Customer Service,Caught Between Objects,Medium,Incident at Atlanta DC involving Caught Between Objects - Medium severity,FALSE,1.2
+INC-0189,EMP-1247,2025-11-11,Austin Hub,Customer Service,Heavy Lifting Injury,Low,Incident at Austin Hub involving Heavy Lifting Injury - Low severity,FALSE,5.9
+INC-0190,EMP-1255,2025-11-13,Denver Office,Finance,Forklift Collision,Low,Incident at Denver Office involving Forklift Collision - Low severity,FALSE,2.2
+INC-0191,EMP-1031,2025-11-16,Chicago Plant,Warehouse & Logistics,Caught Between Objects,Low,Incident at Chicago Plant involving Caught Between Objects - Low severity,TRUE,2.4
+INC-0192,EMP-1115,2025-11-18,Baltimore HQ,Warehouse & Logistics,Slip/Fall,Low,Incident at Baltimore HQ involving Slip/Fall - Low severity,FALSE,8.7
+INC-0193,EMP-1023,2025-11-19,Austin Hub,Engineering,Forklift Collision,Low,Incident at Austin Hub involving Forklift Collision - Low severity,FALSE,6.1
+INC-0194,EMP-1029,2025-11-19,Austin Hub,Human Resources,Heavy Lifting Injury,High,Incident at Austin Hub involving Heavy Lifting Injury - High severity,TRUE,6.3
+INC-0195,EMP-1196,2025-11-21,Atlanta DC,Human Resources,Heavy Lifting Injury,Low,Incident at Atlanta DC involving Heavy Lifting Injury - Low severity,TRUE,4.3
+INC-0196,EMP-1148,2025-11-24,Baltimore HQ,Human Resources,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,7.9
+INC-0197,EMP-1126,2025-11-26,Baltimore HQ,Sales,Fatigue-Related Error,Low,Incident at Baltimore HQ involving Fatigue-Related Error - Low severity,TRUE,9.8
+INC-0198,EMP-1163,2025-11-26,Denver Office,Sales,Forklift Collision,Low,Incident at Denver Office involving Forklift Collision - Low severity,FALSE,9.7
+INC-0207,EMP-1052,2025-12-07,Baltimore HQ,Human Resources,Heavy Lifting Injury,High,Incident at Baltimore HQ involving Heavy Lifting Injury - High severity,FALSE,5.8
+INC-0208,EMP-1042,2025-12-08,Chicago Plant,Warehouse & Logistics,Ergonomic Strain,Medium,Incident at Chicago Plant involving Ergonomic Strain - Medium severity,FALSE,2.9
+INC-0209,EMP-1036,2025-12-11,Chicago Plant,Warehouse & Logistics,Near Miss - Forklift,Low,Incident at Chicago Plant involving Near Miss - Forklift - Low severity,FALSE,5.8
+INC-0210,EMP-1104,2025-12-11,Austin Hub,Engineering,Equipment Malfunction,Low,Incident at Austin Hub involving Equipment Malfunction - Low severity,FALSE,8.8
+INC-0211,EMP-1274,2025-12-11,Chicago Plant,Human Resources,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,2.6
+INC-0212,EMP-1227,2025-12-12,Austin Hub,Sales,Slip/Fall,Low,Incident at Austin Hub involving Slip/Fall - Low severity,TRUE,9.8
+INC-0213,EMP-1153,2025-12-13,Baltimore HQ,Customer Service,Caught Between Objects,High,Incident at Baltimore HQ involving Caught Between Objects - High severity,TRUE,5.5
+INC-0214,EMP-1187,2025-12-13,Austin Hub,Customer Service,Repetitive Strain,Medium,Incident at Austin Hub involving Repetitive Strain - Medium severity,FALSE,4.4
+INC-0215,EMP-1089,2025-12-16,Denver Office,Finance,Caught Between Objects,Medium,Incident at Denver Office involving Caught Between Objects - Medium severity,FALSE,1.4
+INC-0091,EMP-1256,2025-12-25,Atlanta DC,Human Resources,Heavy Lifting Injury,High,Incident at Atlanta DC - High severity - Human Resources,FALSE,9.0
+INC-0092,EMP-1046,2025-12-28,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Medium,Incident at Chicago Plant - Medium severity - Warehouse & Logistics,FALSE,7.0
+INC-0093,EMP-1272,2025-12-30,Austin Hub,Engineering,Minor Cut/Bruise,Low,Incident at Austin Hub - Low severity - Engineering,FALSE,5.6
+INC-0094,EMP-1137,2026-01-03,Denver Office,Warehouse & Logistics,Repetitive Strain,Medium,Incident at Denver Office - Medium severity - Warehouse & Logistics,FALSE,5.7
+INC-0089,EMP-1239,2025-12-17,Chicago Plant,Sales,Ergonomic Strain,High,Incident at Chicago Plant - High severity - Sales,FALSE,6.1
+INC-0090,EMP-1086,2025-12-20,Austin Hub,Human Resources,Heavy Lifting Injury,Medium,Incident at Austin Hub - Medium severity - Human Resources,FALSE,6.6
+INC-0073,EMP-1287,2025-10-25,Austin Hub,Sales,Equipment Malfunction,Low,Incident at Austin Hub - Low severity - Sales,TRUE,3.4
+INC-0074,EMP-1002,2025-10-28,Baltimore HQ,Human Resources,Fatigue-Related Error,High,Incident at Baltimore HQ - High severity - Human Resources,FALSE,9.5
+INC-0075,EMP-1240,2025-10-28,Denver Office,Warehouse & Logistics,Near Miss,Medium,Incident at Denver Office - Medium severity - Warehouse & Logistics,TRUE,7.0
+INC-0079,EMP-1038,2025-11-15,Chicago Plant,Warehouse & Logistics,Near Miss,Low,Incident at Chicago Plant - Low severity - Warehouse & Logistics,TRUE,5.7
+INC-0080,EMP-1245,2025-11-19,Denver Office,Sales,Heavy Lifting Injury,Low,Incident at Denver Office - Low severity - Sales,TRUE,9.7
+INC-0081,EMP-1139,2025-11-21,Baltimore HQ,Finance,Heavy Lifting Injury,Medium,Incident at Baltimore HQ - Medium severity - Finance,FALSE,8.7
+INC-0082,EMP-1232,2025-11-26,Austin Hub,Human Resources,Caught Between Objects,Low,Incident at Austin Hub - Low severity - Human Resources,FALSE,5.7
+INC-0076,EMP-1289,2025-11-06,Chicago Plant,Customer Service,Ergonomic Strain,Low,Incident at Chicago Plant - Low severity - Customer Service,TRUE,5.8
+INC-0077,EMP-1154,2025-11-07,Chicago Plant,Customer Service,Equipment Malfunction,Medium,Incident at Chicago Plant - Medium severity - Customer Service,TRUE,8.9
+INC-0078,EMP-1208,2025-11-11,Baltimore HQ,Human Resources,Equipment Malfunction,Medium,Incident at Baltimore HQ - Medium severity - Human Resources,FALSE,6.9
+INC-0083,EMP-1118,2025-11-29,Austin Hub,Sales,Repetitive Strain,High,Incident at Austin Hub - High severity - Sales,TRUE,3.5
+INC-0084,EMP-1183,2025-12-07,Baltimore HQ,Finance,Fatigue-Related Error,Low,Incident at Baltimore HQ - Low severity - Finance,FALSE,5.4
+INC-0085,EMP-1268,2025-12-07,Baltimore HQ,Human Resources,Ergonomic Strain,Low,Incident at Baltimore HQ - Low severity - Human Resources,FALSE,3.2
+INC-0086,EMP-1019,2025-12-08,Austin Hub,Human Resources,Caught Between Objects,Low,Incident at Austin Hub - Low severity - Human Resources,FALSE,3.0
+INC-0087,EMP-1087,2025-12-11,Denver Office,Finance,Repetitive Strain,High,Incident at Denver Office - High severity - Finance,TRUE,1.9
+INC-0088,EMP-1089,2025-12-12,Denver Office,Finance,Heavy Lifting Injury,Low,Incident at Denver Office - Low severity - Finance,FALSE,9.8
+INC-0069,EMP-1152,2025-10-10,Denver Office,Engineering,Repetitive Strain,Low,Incident at Denver Office - Low severity - Engineering,TRUE,9.6
+INC-0070,EMP-1213,2025-10-19,Baltimore HQ,Finance,Near Miss,Low,Incident at Baltimore HQ - Low severity - Finance,FALSE,7.1
+INC-0071,EMP-1055,2025-10-20,Austin Hub,Sales,Repetitive Strain,Medium,Incident at Austin Hub - Medium severity - Sales,FALSE,9.1
+INC-0072,EMP-1053,2025-10-25,Chicago Plant,Sales,Equipment Malfunction,Medium,Incident at Chicago Plant - Medium severity - Sales,FALSE,7.7
+INC-0199,EMP-1295,2025-11-27,Denver Office,Customer Service,Equipment Malfunction,High,Incident at Denver Office involving Equipment Malfunction - High severity,FALSE,6.9
+INC-0200,EMP-1249,2025-11-29,Chicago Plant,Finance,Equipment Malfunction,Medium,Incident at Chicago Plant involving Equipment Malfunction - Medium severity,FALSE,6.4
+INC-0201,EMP-1042,2025-12-01,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,FALSE,3.8
+INC-0202,EMP-1056,2025-12-03,Atlanta DC,Customer Service,Caught Between Objects,High,Incident at Atlanta DC involving Caught Between Objects - High severity,FALSE,6.8
+INC-0203,EMP-1082,2025-12-04,Denver Office,Warehouse & Logistics,Repetitive Strain,Low,Incident at Denver Office involving Repetitive Strain - Low severity,FALSE,4.5
+INC-0204,EMP-1024,2025-12-06,Austin Hub,Engineering,Minor Cut/Bruise,Medium,Incident at Austin Hub involving Minor Cut/Bruise - Medium severity,FALSE,2.3
+INC-0205,EMP-1206,2025-12-06,Atlanta DC,Engineering,Near Miss - Forklift,Medium,Incident at Atlanta DC involving Near Miss - Forklift - Medium severity,FALSE,4.9
+INC-0206,EMP-1207,2025-12-06,Austin Hub,Finance,Caught Between Objects,High,Incident at Austin Hub involving Caught Between Objects - High severity,TRUE,7.4
+INC-0164,EMP-1144,2025-10-05,Denver Office,Warehouse & Logistics,Caught Between Objects,High,Incident at Denver Office involving Caught Between Objects - High severity,TRUE,6.0
+INC-0165,EMP-1188,2025-10-05,Baltimore HQ,Engineering,Caught Between Objects,Low,Incident at Baltimore HQ involving Caught Between Objects - Low severity,FALSE,1.2
+INC-0166,EMP-1094,2025-10-11,Denver Office,Engineering,Fatigue-Related Error,Low,Incident at Denver Office involving Fatigue-Related Error - Low severity,FALSE,6.0
+INC-0167,EMP-1161,2025-10-14,Baltimore HQ,Finance,Equipment Malfunction,High,Incident at Baltimore HQ involving Equipment Malfunction - High severity,FALSE,5.2
+INC-0168,EMP-1116,2025-10-15,Austin Hub,Human Resources,Near Miss,Low,Incident at Austin Hub involving Near Miss - Low severity,TRUE,8.9
+INC-0169,EMP-1063,2025-10-16,Atlanta DC,Customer Service,Near Miss,Critical,Incident at Atlanta DC involving Near Miss - Critical severity,FALSE,2.2
+INC-0170,EMP-1086,2025-10-16,Austin Hub,Human Resources,Ergonomic Strain,Low,Incident at Austin Hub involving Ergonomic Strain - Low severity,TRUE,3.6
+INC-0171,EMP-1094,2025-10-16,Denver Office,Engineering,Fatigue-Related Error,High,Incident at Denver Office involving Fatigue-Related Error - High severity,FALSE,5.8
+INC-0172,EMP-1261,2025-10-16,Atlanta DC,Finance,Slip/Fall,Low,Incident at Atlanta DC involving Slip/Fall - Low severity,FALSE,2.0
+INC-0234,EMP-1180,2026-04-16,Austin Hub,Finance,Near Miss,Low,Incident at Austin Hub involving Near Miss - Low severity,FALSE,4.4
+INC-0095,EMP-1092,2025-07-02,Atlanta DC,Engineering,Caught Between Objects,Low,Incident at Atlanta DC involving Caught Between Objects - Low severity,FALSE,9.4
+INC-0096,EMP-1250,2025-07-02,Denver Office,Human Resources,Caught Between Objects,Low,Incident at Denver Office involving Caught Between Objects - Low severity,FALSE,8.5
+INC-0097,EMP-1286,2025-07-02,Atlanta DC,Human Resources,Fatigue-Related Error,Medium,Incident at Atlanta DC involving Fatigue-Related Error - Medium severity,FALSE,6.3
+INC-0098,EMP-1274,2025-07-04,Chicago Plant,Human Resources,Minor Cut/Bruise,Low,Incident at Chicago Plant involving Minor Cut/Bruise - Low severity,FALSE,7.1
+INC-0099,EMP-1280,2025-07-04,Denver Office,Human Resources,Equipment Malfunction,Low,Incident at Denver Office involving Equipment Malfunction - Low severity,FALSE,3.3
+INC-0100,EMP-1028,2025-07-05,Austin Hub,Engineering,Equipment Malfunction,Low,Incident at Austin Hub involving Equipment Malfunction - Low severity,FALSE,3.0
+INC-0101,EMP-1251,2025-07-09,Atlanta DC,Sales,Heavy Lifting Injury,Low,Incident at Atlanta DC involving Heavy Lifting Injury - Low severity,TRUE,2.9
+INC-0102,EMP-1069,2025-07-10,Atlanta DC,Customer Service,Forklift Collision,Medium,Incident at Atlanta DC involving Forklift Collision - Medium severity,TRUE,8.1
+INC-0112,EMP-1296,2025-07-26,Atlanta DC,Engineering,Minor Cut/Bruise,Medium,Incident at Atlanta DC involving Minor Cut/Bruise - Medium severity,FALSE,5.5
+INC-0113,EMP-1161,2025-07-28,Baltimore HQ,Finance,Repetitive Strain,High,Incident at Baltimore HQ involving Repetitive Strain - High severity,FALSE,3.9
+INC-0114,EMP-1230,2025-07-28,Denver Office,Engineering,Ergonomic Strain,High,Incident at Denver Office involving Ergonomic Strain - High severity,FALSE,4.0
+INC-0115,EMP-1180,2025-07-30,Austin Hub,Finance,Repetitive Strain,Critical,Incident at Austin Hub involving Repetitive Strain - Critical severity,TRUE,7.0
+INC-0116,EMP-1160,2025-07-31,Chicago Plant,Customer Service,Repetitive Strain,Low,Incident at Chicago Plant involving Repetitive Strain - Low severity,FALSE,7.7
+INC-0117,EMP-1169,2025-08-01,Denver Office,Customer Service,Repetitive Strain,Medium,Incident at Denver Office involving Repetitive Strain - Medium severity,FALSE,4.8
+INC-0118,EMP-1174,2025-08-06,Denver Office,Human Resources,Repetitive Strain,Low,Incident at Denver Office involving Repetitive Strain - Low severity,FALSE,8.6
+INC-0119,EMP-1041,2025-08-11,Chicago Plant,Warehouse & Logistics,Caught Between Objects,Low,Incident at Chicago Plant involving Caught Between Objects - Low severity,TRUE,7.9
+INC-0120,EMP-1259,2025-08-11,Chicago Plant,Customer Service,Caught Between Objects,Low,Incident at Chicago Plant involving Caught Between Objects - Low severity,FALSE,1.6
+INC-0056,EMP-1004,2025-08-08,Atlanta DC,Engineering,Equipment Malfunction,Low,Incident at Atlanta DC - Low severity - Engineering,FALSE,7.6
+INC-0057,EMP-1224,2025-08-10,Chicago Plant,Engineering,Repetitive Strain,Medium,Incident at Chicago Plant - Medium severity - Engineering,FALSE,5.6
+INC-0058,EMP-1015,2025-08-15,Austin Hub,Sales,Near Miss - Forklift,Low,Incident at Austin Hub - Low severity - Sales,TRUE,9.7
+INC-0059,EMP-1038,2025-08-24,Chicago Plant,Warehouse & Logistics,Near Miss - Forklift,Low,Incident at Chicago Plant - Low severity - Warehouse & Logistics,TRUE,7.6
+INC-0060,EMP-1181,2025-08-28,Atlanta DC,Customer Service,Near Miss - Forklift,Low,Incident at Atlanta DC - Low severity - Customer Service,TRUE,4.4
+INC-0061,EMP-1295,2025-08-30,Denver Office,Customer Service,Ergonomic Strain,Low,Incident at Denver Office - Low severity - Customer Service,FALSE,8.5
+INC-0062,EMP-1172,2025-09-09,Austin Hub,Sales,Heavy Lifting Injury,Low,Incident at Austin Hub - Low severity - Sales,TRUE,7.5
+INC-0047,EMP-1017,2025-07-16,Atlanta DC,Sales,Repetitive Strain,Low,Incident at Atlanta DC - Low severity - Sales,FALSE,1.0
+INC-0048,EMP-1153,2025-07-17,Baltimore HQ,Customer Service,Ergonomic Strain,Low,Incident at Baltimore HQ - Low severity - Customer Service,FALSE,1.2
+INC-0049,EMP-1192,2025-07-17,Austin Hub,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Austin Hub - Low severity - Warehouse & Logistics,TRUE,6.2
+INC-0044,EMP-1179,2025-07-07,Denver Office,Warehouse & Logistics,Forklift Collision,Low,Incident at Denver Office - Low severity - Warehouse & Logistics,FALSE,2.0
+INC-0045,EMP-1249,2025-07-11,Chicago Plant,Finance,Forklift Collision,Medium,Incident at Chicago Plant - Medium severity - Finance,FALSE,7.9
+INC-0046,EMP-1164,2025-07-14,Denver Office,Sales,Slip/Fall,Low,Incident at Denver Office - Low severity - Sales,TRUE,7.9
+INC-0063,EMP-1250,2025-09-09,Denver Office,Human Resources,Repetitive Strain,Medium,Incident at Denver Office - Medium severity - Human Resources,FALSE,7.5
+INC-0064,EMP-1257,2025-09-15,Austin Hub,Sales,Slip/Fall,Low,Incident at Austin Hub - Low severity - Sales,TRUE,3.8
+INC-0065,EMP-1007,2025-09-18,Austin Hub,Customer Service,Fatigue-Related Error,Medium,Incident at Austin Hub - Medium severity - Customer Service,FALSE,3.4
+INC-0050,EMP-1023,2025-07-18,Austin Hub,Engineering,Caught Between Objects,Low,Incident at Austin Hub - Low severity - Engineering,FALSE,7.1
+INC-0051,EMP-1240,2025-07-18,Denver Office,Warehouse & Logistics,Forklift Collision,Low,Incident at Denver Office - Low severity - Warehouse & Logistics,FALSE,9.3
+INC-0052,EMP-1126,2025-07-25,Baltimore HQ,Sales,Fatigue-Related Error,Medium,Incident at Baltimore HQ - Medium severity - Sales,FALSE,8.3
+INC-0053,EMP-1133,2025-07-26,Baltimore HQ,Sales,Caught Between Objects,Medium,Incident at Baltimore HQ - Medium severity - Sales,FALSE,8.1
+INC-0054,EMP-1031,2025-08-04,Chicago Plant,Warehouse & Logistics,Heavy Lifting Injury,Low,Incident at Chicago Plant - Low severity - Warehouse & Logistics,FALSE,5.0
+INC-0055,EMP-1098,2025-08-04,Atlanta DC,Sales,Forklift Collision,Low,Incident at Atlanta DC - Low severity - Sales,TRUE,6.0
+INC-0001,EMP-1019,2025-07-11,Austin Hub,Human Resources,Slip/Fall,Low,Incident at Austin Hub - Low severity,FALSE,6.7
+INC-0002,EMP-1054,2025-07-16,Baltimore HQ,Human Resources,Near Miss,Low,Incident at Baltimore HQ - Low severity,FALSE,2.6
+INC-0003,EMP-1054,2025-07-19,Baltimore HQ,Human Resources,Near Miss,Low,Incident at Baltimore HQ - Low severity,FALSE,3.9
+INC-0004,EMP-1020,2025-07-28,Austin Hub,Warehouse & Logistics,Near Miss,Low,Incident at Austin Hub - Low severity,FALSE,4.2
+INC-0005,EMP-1118,2025-07-29,Austin Hub,Sales,Equipment Malfunction,Low,Incident at Austin Hub - Low severity,FALSE,6.2
+INC-0006,EMP-1178,2025-08-01,Baltimore HQ,Customer Service,Ergonomic Strain,Low,Incident at Baltimore HQ - Low severity,FALSE,3.1
+INC-0007,EMP-1119,2025-08-15,Chicago Plant,Sales,Ergonomic Strain,Low,Incident at Chicago Plant - Low severity,FALSE,4.4
+INC-0008,EMP-1004,2025-08-19,Atlanta DC,Engineering,Slip/Fall,Medium,Incident at Atlanta DC - Medium severity,FALSE,5.2
+INC-0009,EMP-1094,2025-09-07,Denver Office,Engineering,Ergonomic Strain,Low,Incident at Denver Office - Low severity,FALSE,2.8
+INC-0010,EMP-1014,2025-09-15,Denver Office,Human Resources,Ergonomic Strain,Medium,Incident at Denver Office - Medium severity,FALSE,2.1
+INC-0011,EMP-1103,2025-10-03,Baltimore HQ,Finance,Minor Cut/Bruise,Low,Incident at Baltimore HQ - Low severity,FALSE,2.5
+INC-0012,EMP-1038,2025-10-08,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Chicago Plant - Low severity,FALSE,3.8
+INC-0013,EMP-1134,2025-10-21,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Medium,Incident at Chicago Plant - Medium severity,FALSE,6.9
+INC-0014,EMP-1109,2025-10-24,Atlanta DC,Human Resources,Minor Cut/Bruise,High,Incident at Atlanta DC - High severity,FALSE,3.7
+INC-0015,EMP-1156,2025-11-03,Baltimore HQ,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Baltimore HQ - Low severity,FALSE,6.7
+INC-0016,EMP-1159,2025-11-13,Austin Hub,Customer Service,Minor Cut/Bruise,Low,Incident at Austin Hub - Low severity,FALSE,3.3
+INC-0017,EMP-1012,2025-11-25,Atlanta DC,Customer Service,Ergonomic Strain,Low,Incident at Atlanta DC - Low severity,FALSE,3.1
+INC-0018,EMP-1029,2025-11-27,Austin Hub,Human Resources,Minor Cut/Bruise,Low,Incident at Austin Hub - Low severity,FALSE,6.6
+INC-0019,EMP-1121,2025-11-29,Chicago Plant,Finance,Near Miss,Medium,Incident at Chicago Plant - Medium severity,FALSE,6.9
+INC-0020,EMP-1169,2025-11-30,Denver Office,Customer Service,Near Miss,Low,Incident at Denver Office - Low severity,FALSE,6.6
+INC-0021,EMP-1132,2025-12-18,Austin Hub,Finance,Equipment Malfunction,Low,Incident at Austin Hub - Low severity,FALSE,4.2
+INC-0022,EMP-1082,2025-12-23,Denver Office,Warehouse & Logistics,Minor Cut/Bruise,Low,Incident at Denver Office - Low severity,FALSE,2.1
+INC-0023,EMP-1031,2026-01-13,Chicago Plant,Warehouse & Logistics,Repetitive Strain,High,Repetitive Strain at Chicago Plant after 9.6 hours on shift,TRUE,9.6
+INC-0024,EMP-1038,2026-01-16,Chicago Plant,Warehouse & Logistics,Repetitive Strain,High,Repetitive Strain at Chicago Plant after 11.8 hours on shift,TRUE,11.8
+INC-0025,EMP-1134,2026-01-19,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Medium,Equipment Malfunction at Chicago Plant after 11.1 hours on shift,TRUE,11.1
+INC-0026,EMP-1051,2026-01-22,Chicago Plant,Warehouse & Logistics,Near Miss - Forklift,Low,Near Miss - Forklift at Chicago Plant after 8.9 hours on shift,TRUE,8.9
+INC-0027,EMP-1151,2026-01-28,Denver Office,Engineering,Near Miss,Low,Incident at Denver Office - Low severity,FALSE,2.8
+INC-0028,EMP-1047,2026-01-29,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Low,Equipment Malfunction at Chicago Plant after 9.1 hours on shift,TRUE,9.1
+INC-0029,EMP-1082,2026-02-01,Denver Office,Warehouse & Logistics,Ergonomic Strain,Medium,Incident at Denver Office - Medium severity,FALSE,3.9
+INC-0030,EMP-1044,2026-02-03,Chicago Plant,Warehouse & Logistics,Slip/Fall,High,Slip/Fall at Chicago Plant after 8.6 hours on shift,TRUE,8.6
+INC-0031,EMP-1134,2026-02-11,Chicago Plant,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Chicago Plant - Low severity,FALSE,2.6
+INC-0032,EMP-1044,2026-02-13,Chicago Plant,Warehouse & Logistics,Caught Between Objects,Medium,Caught Between Objects at Chicago Plant after 10.8 hours on shift,TRUE,10.8
+INC-0033,EMP-1034,2026-02-15,Chicago Plant,Warehouse & Logistics,Slip/Fall,Medium,Slip/Fall at Chicago Plant after 12.8 hours on shift,TRUE,12.8
+INC-0034,EMP-1044,2026-02-17,Chicago Plant,Warehouse & Logistics,Heavy Lifting Injury,High,Heavy Lifting Injury at Chicago Plant after 10.5 hours on shift,TRUE,10.5
+INC-0035,EMP-1177,2026-02-19,Baltimore HQ,Sales,Ergonomic Strain,Medium,Incident at Baltimore HQ - Medium severity,FALSE,4.5
+INC-0036,EMP-1034,2026-02-21,Chicago Plant,Warehouse & Logistics,Caught Between Objects,High,Caught Between Objects at Chicago Plant after 9.9 hours on shift,TRUE,9.9
+INC-0037,EMP-1046,2026-02-22,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Critical,Equipment Malfunction at Chicago Plant after 8.0 hours on shift,TRUE,8.0
+INC-0038,EMP-1031,2026-02-23,Chicago Plant,Warehouse & Logistics,Slip/Fall,High,Slip/Fall at Chicago Plant after 8.2 hours on shift,TRUE,8.2
+INC-0039,EMP-1040,2026-02-24,Chicago Plant,Warehouse & Logistics,Fatigue-Related Error,Medium,Fatigue-Related Error at Chicago Plant after 11.5 hours on shift,TRUE,11.5
+INC-0040,EMP-1040,2026-02-25,Chicago Plant,Warehouse & Logistics,Forklift Collision,High,Forklift Collision at Chicago Plant after 8.5 hours on shift,TRUE,8.5
+INC-0041,EMP-1033,2026-03-03,Chicago Plant,Warehouse & Logistics,Slip/Fall,Medium,Slip/Fall at Chicago Plant after 8.8 hours on shift,TRUE,8.8
+INC-0042,EMP-1042,2026-03-08,Chicago Plant,Warehouse & Logistics,Repetitive Strain,Low,Repetitive Strain at Chicago Plant after 11.3 hours on shift,TRUE,11.3
+INC-0043,EMP-1037,2026-03-13,Chicago Plant,Warehouse & Logistics,Caught Between Objects,High,Caught Between Objects at Chicago Plant after 10.9 hours on shift,TRUE,10.9
+INC-0066,EMP-1107,2025-09-19,Atlanta DC,Warehouse & Logistics,Minor Cut/Bruise,Medium,Incident at Atlanta DC - Medium severity - Warehouse & Logistics,TRUE,7.5
+INC-0067,EMP-1221,2025-09-24,Atlanta DC,Sales,Slip/Fall,Medium,Incident at Atlanta DC - Medium severity - Sales,FALSE,4.7
+INC-0068,EMP-1072,2025-10-01,Austin Hub,Human Resources,Near Miss - Forklift,Low,Incident at Austin Hub - Low severity - Human Resources,TRUE,5.0
+INC-0138,EMP-1296,2025-09-09,Atlanta DC,Engineering,Caught Between Objects,Low,Incident at Atlanta DC involving Caught Between Objects - Low severity,TRUE,3.7
+INC-0139,EMP-1269,2025-09-12,Chicago Plant,Sales,Fatigue-Related Error,Low,Incident at Chicago Plant involving Fatigue-Related Error - Low severity,FALSE,9.9
+INC-0140,EMP-1019,2025-09-13,Austin Hub,Human Resources,Fatigue-Related Error,Low,Incident at Austin Hub involving Fatigue-Related Error - Low severity,FALSE,2.3
+INC-0141,EMP-1208,2025-09-13,Baltimore HQ,Human Resources,Near Miss - Forklift,Medium,Incident at Baltimore HQ involving Near Miss - Forklift - Medium severity,FALSE,1.9
+INC-0142,EMP-1143,2025-09-14,Denver Office,Human Resources,Caught Between Objects,Medium,Incident at Denver Office involving Caught Between Objects - Medium severity,FALSE,7.0
+INC-0143,EMP-1262,2025-09-15,Austin Hub,Human Resources,Minor Cut/Bruise,Medium,Incident at Austin Hub involving Minor Cut/Bruise - Medium severity,TRUE,4.0
+INC-0144,EMP-1056,2025-09-17,Atlanta DC,Customer Service,Fatigue-Related Error,Low,Incident at Atlanta DC involving Fatigue-Related Error - Low severity,FALSE,8.6
+INC-0145,EMP-1121,2025-09-17,Chicago Plant,Finance,Ergonomic Strain,Low,Incident at Chicago Plant involving Ergonomic Strain - Low severity,FALSE,7.0
+INC-0146,EMP-1198,2025-09-18,Baltimore HQ,Warehouse & Logistics,Ergonomic Strain,High,Incident at Baltimore HQ involving Ergonomic Strain - High severity,TRUE,9.0
+INC-0129,EMP-1163,2025-08-25,Denver Office,Sales,Near Miss,Medium,Incident at Denver Office involving Near Miss - Medium severity,FALSE,7.0
+INC-0130,EMP-1031,2025-08-26,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,TRUE,6.2
+INC-0131,EMP-1098,2025-08-28,Atlanta DC,Sales,Ergonomic Strain,Low,Incident at Atlanta DC involving Ergonomic Strain - Low severity,TRUE,2.8
+INC-0132,EMP-1053,2025-08-29,Chicago Plant,Sales,Slip/Fall,Low,Incident at Chicago Plant involving Slip/Fall - Low severity,TRUE,2.5
+INC-0133,EMP-1049,2025-08-31,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,High,Incident at Chicago Plant involving Equipment Malfunction - High severity,FALSE,1.9
+INC-0134,EMP-1196,2025-08-31,Atlanta DC,Human Resources,Forklift Collision,Low,Incident at Atlanta DC involving Forklift Collision - Low severity,FALSE,9.6
+INC-0135,EMP-1197,2025-09-03,Austin Hub,Sales,Ergonomic Strain,High,Incident at Austin Hub involving Ergonomic Strain - High severity,FALSE,1.2
+INC-0136,EMP-1058,2025-09-04,Atlanta DC,Customer Service,Minor Cut/Bruise,Low,Incident at Atlanta DC involving Minor Cut/Bruise - Low severity,FALSE,4.9
+INC-0137,EMP-1272,2025-09-06,Austin Hub,Engineering,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,9.9
+INC-0103,EMP-1012,2025-07-12,Atlanta DC,Customer Service,Near Miss,Low,Incident at Atlanta DC involving Near Miss - Low severity,FALSE,4.7
+INC-0104,EMP-1244,2025-07-15,Chicago Plant,Human Resources,Near Miss - Forklift,Low,Incident at Chicago Plant involving Near Miss - Forklift - Low severity,FALSE,9.4
+INC-0105,EMP-1107,2025-07-17,Atlanta DC,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,TRUE,6.2
+INC-0106,EMP-1097,2025-07-18,Chicago Plant,Human Resources,Near Miss - Forklift,Low,Incident at Chicago Plant involving Near Miss - Forklift - Low severity,TRUE,7.0
+INC-0107,EMP-1137,2025-07-18,Denver Office,Warehouse & Logistics,Near Miss - Forklift,Low,Incident at Denver Office involving Near Miss - Forklift - Low severity,FALSE,9.9
+INC-0108,EMP-1173,2025-07-18,Atlanta DC,Sales,Heavy Lifting Injury,Low,Incident at Atlanta DC involving Heavy Lifting Injury - Low severity,TRUE,6.9
+INC-0109,EMP-1280,2025-07-22,Denver Office,Human Resources,Forklift Collision,Low,Incident at Denver Office involving Forklift Collision - Low severity,FALSE,7.0
+INC-0110,EMP-1067,2025-07-23,Atlanta DC,Customer Service,Heavy Lifting Injury,High,Incident at Atlanta DC involving Heavy Lifting Injury - High severity,FALSE,2.8
+INC-0111,EMP-1260,2025-07-25,Denver Office,Engineering,Ergonomic Strain,Medium,Incident at Denver Office involving Ergonomic Strain - Medium severity,FALSE,4.0
+INC-0147,EMP-1139,2025-09-20,Baltimore HQ,Finance,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,7.3
+INC-0148,EMP-1077,2025-09-21,Austin Hub,Engineering,Fatigue-Related Error,High,Incident at Austin Hub involving Fatigue-Related Error - High severity,TRUE,2.1
+INC-0149,EMP-1067,2025-09-23,Atlanta DC,Customer Service,Ergonomic Strain,High,Incident at Atlanta DC involving Ergonomic Strain - High severity,FALSE,7.9
+INC-0150,EMP-1014,2025-09-24,Denver Office,Human Resources,Fatigue-Related Error,Medium,Incident at Denver Office involving Fatigue-Related Error - Medium severity,TRUE,9.7
+INC-0151,EMP-1045,2025-09-24,Chicago Plant,Warehouse & Logistics,Near Miss,Low,Incident at Chicago Plant involving Near Miss - Low severity,TRUE,2.7
+INC-0152,EMP-1286,2025-09-25,Atlanta DC,Human Resources,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,FALSE,9.7
+INC-0153,EMP-1078,2025-09-26,Denver Office,Human Resources,Heavy Lifting Injury,Medium,Incident at Denver Office involving Heavy Lifting Injury - Medium severity,FALSE,4.0
+INC-0154,EMP-1247,2025-09-26,Austin Hub,Customer Service,Caught Between Objects,Low,Incident at Austin Hub involving Caught Between Objects - Low severity,TRUE,7.1
+INC-0155,EMP-1035,2025-09-27,Chicago Plant,Warehouse & Logistics,Ergonomic Strain,High,Incident at Chicago Plant involving Ergonomic Strain - High severity,FALSE,5.8
+INC-0156,EMP-1054,2025-09-27,Baltimore HQ,Human Resources,Slip/Fall,Low,Incident at Baltimore HQ involving Slip/Fall - Low severity,TRUE,1.4
+INC-0157,EMP-1082,2025-09-27,Denver Office,Warehouse & Logistics,Repetitive Strain,High,Incident at Denver Office involving Repetitive Strain - High severity,FALSE,1.9
+INC-0158,EMP-1280,2025-09-29,Denver Office,Human Resources,Heavy Lifting Injury,Low,Incident at Denver Office involving Heavy Lifting Injury - Low severity,TRUE,4.5
+INC-0159,EMP-1281,2025-09-29,Atlanta DC,Sales,Forklift Collision,Low,Incident at Atlanta DC involving Forklift Collision - Low severity,TRUE,5.0
+INC-0160,EMP-1255,2025-10-02,Denver Office,Finance,Heavy Lifting Injury,Low,Incident at Denver Office involving Heavy Lifting Injury - Low severity,FALSE,5.7
+INC-0161,EMP-1270,2025-10-02,Denver Office,Warehouse & Logistics,Ergonomic Strain,Low,Incident at Denver Office involving Ergonomic Strain - Low severity,FALSE,4.6
+INC-0162,EMP-1185,2025-10-03,Denver Office,Sales,Slip/Fall,Low,Incident at Denver Office involving Slip/Fall - Low severity,FALSE,5.5
+INC-0163,EMP-1241,2025-10-04,Atlanta DC,Customer Service,Ergonomic Strain,Low,Incident at Atlanta DC involving Ergonomic Strain - Low severity,TRUE,2.6
+INC-0121,EMP-1168,2025-08-12,Austin Hub,Warehouse & Logistics,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,6.6
+INC-0122,EMP-1173,2025-08-12,Atlanta DC,Sales,Forklift Collision,Low,Incident at Atlanta DC involving Forklift Collision - Low severity,FALSE,2.3
+INC-0123,EMP-1174,2025-08-12,Denver Office,Human Resources,Caught Between Objects,Medium,Incident at Denver Office involving Caught Between Objects - Medium severity,FALSE,8.8
+INC-0124,EMP-1104,2025-08-13,Austin Hub,Engineering,Heavy Lifting Injury,High,Incident at Austin Hub involving Heavy Lifting Injury - High severity,TRUE,3.8
+INC-0125,EMP-1023,2025-08-14,Austin Hub,Engineering,Equipment Malfunction,Low,Incident at Austin Hub involving Equipment Malfunction - Low severity,TRUE,8.4
+INC-0126,EMP-1240,2025-08-16,Denver Office,Warehouse & Logistics,Repetitive Strain,High,Incident at Denver Office involving Repetitive Strain - High severity,TRUE,4.7
+INC-0127,EMP-1217,2025-08-21,Austin Hub,Customer Service,Caught Between Objects,Low,Incident at Austin Hub involving Caught Between Objects - Low severity,FALSE,8.2
+INC-0128,EMP-1009,2025-08-23,Chicago Plant,Finance,Forklift Collision,High,Incident at Chicago Plant involving Forklift Collision - High severity,FALSE,2.2
+INC-0235,EMP-1039,2026-04-16,Chicago Plant,Warehouse & Logistics,Repetitive Strain,Critical,Incident at Chicago Plant involving Repetitive Strain - Critical severity,FALSE,7.7
+INC-0237,EMP-1103,2026-04-16,Baltimore HQ,Finance,Caught Between Objects,Low,Incident at Baltimore HQ involving Caught Between Objects - Low severity,FALSE,7.7
+INC-0238,EMP-1222,2026-04-17,Austin Hub,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Austin Hub involving Equipment Malfunction - Low severity,FALSE,4.4
+INC-0239,EMP-1185,2026-04-17,Denver Office,Sales,Minor Cut/Bruise,Medium,Incident at Denver Office involving Minor Cut/Bruise - Medium severity,FALSE,7.7
+INC-0240,EMP-1084,2026-04-21,Chicago Plant,Sales,Slip/Fall,Critical,Incident at Chicago Plant involving Slip/Fall - Critical severity,FALSE,4.4
+INC-0242,EMP-1081,2026-04-24,Baltimore HQ,Sales,Equipment Malfunction,Low,Incident at Baltimore HQ involving Equipment Malfunction - Low severity,FALSE,4.4
+INC-0244,EMP-1308,2026-04-25,Denver Office,Finance,Heavy Lifting Injury,Medium,Incident at Denver Office involving Heavy Lifting Injury - Medium severity,FALSE,4.4
+INC-0245,EMP-1094,2026-04-25,Denver Office,Engineering,Forklift Collision,Medium,Incident at Denver Office involving Forklift Collision - Medium severity,FALSE,7.7
+INC-0250,EMP-1039,2026-04-05,Chicago Plant,Warehouse & Logistics,Minor Cut/Bruise,Low,Incident at Chicago Plant involving Minor Cut/Bruise - Low severity,FALSE,7.7
+INC-0249,EMP-1068,2026-04-04,Atlanta DC,Customer Service,Repetitive Strain,Low,Incident at Atlanta DC involving Repetitive Strain - Low severity,TRUE,4.4
+INC-0248,EMP-1125,2026-04-03,Chicago Plant,Engineering,Near Miss - Forklift,Low,Incident at Chicago Plant involving Near Miss - Forklift - Low severity,FALSE,4.4
+INC-0256,EMP-1133,2026-04-11,Baltimore HQ,Sales,Slip/Fall,High,Incident at Baltimore HQ involving Slip/Fall - High severity,TRUE,7.7
+INC-0255,EMP-1148,2026-04-10,Baltimore HQ,Human Resources,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,7.7
+INC-0251,EMP-1158,2026-04-06,Chicago Plant,Human Resources,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,TRUE,7.7
+INC-0254,EMP-1161,2026-04-09,Baltimore HQ,Finance,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,TRUE,7.7
+INC-0253,EMP-1173,2026-04-08,Atlanta DC,Sales,Fatigue-Related Error,Medium,Incident at Atlanta DC involving Fatigue-Related Error - Medium severity,TRUE,7.7
+INC-0246,EMP-1228,2026-04-01,Baltimore HQ,Warehouse & Logistics,Equipment Malfunction,Medium,Incident at Baltimore HQ involving Equipment Malfunction - Medium severity,FALSE,7.7
+INC-0252,EMP-1274,2026-04-07,Chicago Plant,Human Resources,Forklift Collision,Low,Incident at Chicago Plant involving Forklift Collision - Low severity,FALSE,4.4
+INC-0247,EMP-1306,2026-04-02,Baltimore HQ,Human Resources,Repetitive Strain,Critical,Incident at Baltimore HQ involving Repetitive Strain - Critical severity,TRUE,7.7
+INC-0257,EMP-1236,2026-04-29,Atlanta DC,Engineering,Repetitive Strain,High,Incident at Atlanta DC involving Repetitive Strain - High severity,FALSE,4.4
+INC-0258,EMP-1051,2026-04-29,Chicago Plant,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0260,EMP-1106,2026-05-06,Chicago Plant,Engineering,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0262,EMP-1222,2026-05-07,Austin Hub,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Austin Hub involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0264,EMP-1171,2026-05-08,Atlanta DC,Warehouse & Logistics,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0266,EMP-1090,2026-05-12,Chicago Plant,Customer Service,Equipment Malfunction,Low,Incident at Chicago Plant involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0267,EMP-1182,2026-05-12,Austin Hub,Engineering,Repetitive Strain,Low,Incident at Austin Hub involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0270,EMP-1218,2026-05-15,Baltimore HQ,Engineering,Equipment Malfunction,Medium,Incident at Baltimore HQ involving Equipment Malfunction - Medium severity,FALSE,7.7
+INC-0272,EMP-1059,2026-05-16,Atlanta DC,Customer Service,Equipment Malfunction,Low,Incident at Atlanta DC involving Equipment Malfunction - Low severity,FALSE,7.7
+INC-0273,EMP-1056,2026-05-18,Atlanta DC,Customer Service,Near Miss,Low,Incident at Atlanta DC involving Near Miss - Low severity,FALSE,4.4
+INC-0275,EMP-1248,2026-05-21,Baltimore HQ,Engineering,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0276,EMP-1128,2026-05-21,Chicago Plant,Engineering,Equipment Malfunction,High,Incident at Chicago Plant involving Equipment Malfunction - High severity,FALSE,7.7
+INC-0283,EMP-1258,2026-05-29,Baltimore HQ,Warehouse & Logistics,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0284,EMP-1350,2026-05-29,Baltimore HQ,Warehouse & Logistics,Fatigue-Related Error,High,Incident at Baltimore HQ involving Fatigue-Related Error - High severity,FALSE,7.7
+INC-0289,EMP-1236,2026-06-04,Atlanta DC,Engineering,Near Miss,Low,Incident at Atlanta DC involving Near Miss - Low severity,FALSE,4.4
+INC-0290,EMP-1361,2026-06-04,Baltimore HQ,Warehouse & Logistics,Fatigue-Related Error,High,Incident at Baltimore HQ involving Fatigue-Related Error - High severity,FALSE,7.7
+INC-0295,EMP-1368,2026-06-11,Baltimore HQ,Warehouse & Logistics,Repetitive Strain,Low,Incident at Baltimore HQ involving Repetitive Strain - Low severity,FALSE,4.4
+INC-0296,EMP-1130,2026-06-11,Baltimore HQ,Customer Service,Equipment Malfunction,High,Incident at Baltimore HQ involving Equipment Malfunction - High severity,FALSE,7.7

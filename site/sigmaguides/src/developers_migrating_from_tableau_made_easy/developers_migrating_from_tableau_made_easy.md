@@ -1244,10 +1244,6 @@ Duration: 5
 
 - **KPI tile missing from Sigma:**<br> If a Tableau scorecard parsed as something other than `chart_kind: kpi`, the worksheet probably had a hidden dim on a shelf (color encoding, detail). Inspect `rows_shelf` / `cols_shelf` on the zone JSON.
 
-- **Skill pauses at a "converter MCP gate" mid-run:**<br> The conversion delegates the actual model translation to a separate MCP server, `sigma-data-model-mcp`. If it isn't installed locally, the skill stops and asks how to proceed. Pick option `6. Chat about this` and tell Claude:<br>
- <code>Clone twells89/sigma-data-model-mcp into ~/Desktop/sigma-data-model-mcp for me, then come back to the MCP gate and pick option 1.</code><br>
- Claude runs the clone and the conversion resumes. After the clone, the skill may also prompt to pick a "build commit" — choose the `(Recommended)` option, which honors a 3-day-stability rule on the converter's commit age. (This gate doesn't fire for users who already have the MCP repo on disk from a prior run.)
-
 - **Sigma MCP query 401s mid-Phase 6:**<br> The MCP session has staled. Re-call `mcp__sigma-mcp-v2__begin_session` and retry the query. Do not abandon Phase 6 over a recoverable auth error.
 
 - **"Table not found" or "Connection has no access" during data-model build:**<br>
