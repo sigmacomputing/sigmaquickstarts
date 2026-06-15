@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-06-03
+lastUpdated: 2026-06-20
 
 # Migrating From Tableau Made Easy
 
@@ -29,6 +29,14 @@ For the demonstration, we'll run the skill end-to-end against the built-in `Supe
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Tableau is the source, Sigma is the target. Sigma reads the warehouse live; Tableau may be reading a frozen <code>.hyper</code> extract, so live-vs-extract drift is expected. The skill handles it via <code>--extract-mode</code> parity in <code>Verifying Data Parity</code>.
+</aside>
+
+<aside class="positive">
+<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
+</aside>
+
+<aside class="negative">
+<strong>AI MODEL DIFFERENCES:</strong><br> Depending on the AI model and Claude Code version you're running, the exact prompt wording, option ordering, and intermediate messages may differ slightly from what's shown in this QuickStart. The substantive steps and decisions are the same — pick the option that matches the intent described, even if the label varies.
 </aside>
 
 ### Target Audience
