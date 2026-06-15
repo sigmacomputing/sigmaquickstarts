@@ -1,0 +1,5 @@
+# Working files for QS authoring — local-only, not for publish.
+# - .pbix files are source samples (Microsoft + tjwells's; the latter is not redistributable)
+# - .csv files are extracted data tjwells shared for the conversion test
+*.pbix
+*.csv
