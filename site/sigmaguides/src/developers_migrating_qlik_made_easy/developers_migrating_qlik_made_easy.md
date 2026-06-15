@@ -41,12 +41,51 @@ Duration: 10
 
 <!--
 SECTION INTENT
-- Mirror Power BI Install: 10-step ladder.
-- Python 3.10+ requirement carries over (msal, truststore — assuming Qlik skill uses same auth pattern; verify against qlik-to-sigma/scripts/requirements.txt).
-- Repo path: sigmacomputing/quickstarts-public/qlik-migration-skills/ (TBD — needs vendor step).
-- Qlik auth: TBD — Qlik Cloud uses OAuth / API keys, very different from Power BI's device-code. Verify what the skill expects.
-- setup.rb for Sigma credentials — likely shared with the other migration skills.
+- Full Install ladder TBD — will mirror Power BI shape: clone bundle, symlinks, setup.rb for Sigma creds, sigma-data-model-mcp build, qlik-cli setup.
+- Below is the qlik-cli install step (drafted 2026-06-15). Rest of the section gets drafted after the end-to-end run.
 -->
+
+### Install `qlik-cli`
+
+The Qlik skill talks to your Qlik Cloud tenant through `qlik-cli` — the official command-line tool that wraps both Qlik's REST API and the Engine API. The skill needs both: REST to discover apps and read metadata, Engine to read sheet/chart definitions and the load script.
+
+**Step 1: Install via Homebrew (Recommended).**<br>
+On macOS or Linux, tap Qlik's Homebrew repository and install the formula:
+
+```copy-code
+brew tap qlik-oss/taps
+```
+
+After this finishes and the command prompt reappears, trust the tap (recent Homebrew versions require this for non-core taps before they'll install from them):
+
+```copy-code
+brew trust qlik-oss/taps
+```
+
+Then install the formula:
+
+```copy-code
+brew install qlik-cli
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> If you skip the <code>brew trust</code> step, the install will fail with <code>Refusing to load formula qlik-oss/taps/qlik-cli from untrusted tap qlik-oss/taps</code>. That's not a bug — newer Homebrew versions require explicit trust for any tap that isn't <code>homebrew-core</code>. Run the trust command above, then retry the install.
+</aside>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> If you're on Windows or prefer not to use Homebrew, download the binary directly from the <a href="https://github.com/qlik-oss/qlik-cli/releases">qlik-oss/qlik-cli releases page</a>. Chocolatey users can install with <code>choco install qlik-cli</code>.
+</aside>
+
+**Step 2: Verify the install.**<br>
+Confirm `qlik-cli` is on your PATH and reports a version:
+
+```copy-code
+qlik version
+```
+
+You should see output like `version X.Y.Z`.
+
+<!-- Step 3+ TBD: configure a Qlik Cloud context with API key or OAuth client, point at the trial tenant URL, test discovery. -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
