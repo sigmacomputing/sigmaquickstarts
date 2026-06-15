@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-02-23
+lastUpdated: 2026-06-23
 
 # API Actions - Getting Started
 
@@ -87,7 +87,7 @@ Current Temp - Hard Coded
 **Base URL:** Select the HTTP method `GET` and use this URL for the request:<br>
 Use this URL:
 ```copy-code
-https://api.open-meteo.com/v1/forecast?latitude=20.7702&longitude=-156.2682&timezone=auto&temperature_unit=fahrenheit
+https://api.open-meteo.com/v1/forecast?latitude=20.7702&longitude=-156.2682&timezone=auto&temperature_unit=fahrenheit&current_weather=true
 ```
 
 **Headers:** [optional] Set a header for the request.
@@ -99,7 +99,7 @@ None required.
 **Body:** [optional] Enter a request body.<br>
 None required.
 
-Farther down we can see a preview of the endpoint and credentials settings (No authentication is required for this API):
+Farther down we can see a preview of the endpoint and credentials settings (no authentication is required for this API):
 
 <img src="assets/api_actions_gs_01.png" width="800"/>
 
@@ -119,7 +119,7 @@ If the connector is configured correctly we expect a `200` response with the dat
 
 <img src="assets/api_actions_gs_15.png" width="800"/>
 
-If you prefer to use a 3rd party tool like Postman, that is also fine:
+If you prefer to use a third-party tool like Postman, that is also fine:
 
 Copy and paste the preview URL into [Postman](https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html?index=..%2F..index#0) to see if we get the expected response.
 
@@ -155,7 +155,7 @@ Select the `Sigma Sample Database` for the connection to use:
 
 Paste the following SQL:
 
-```code
+```copy-code
 SELECT
     STORE_CITY AS cityname,
     ANY_VALUE(STORE_LATITUDE) AS lat,
@@ -169,7 +169,7 @@ Click `Run` to execute the query:
 
 <img src="assets/api_actions_gs_16.png" width="650"/>
 
-The element will return data. Click `SQL` icon to hide the SQL query:
+The element will return data. Click the `SQL` icon to hide the SQL query:
 
 <img src="assets/api_actions_gs_17.png" width="650"/>
 
@@ -197,7 +197,7 @@ Change the button text to `Call API`.
 
 Now we can configure the button's actions:
 
-Select the `Call API` button and click `+` adjacent to `Action sequence` in the element properties panel.
+Select the `Call API` button and click `+` adjacent to `Action sequence` in the `Element panel`.
 
 ### Action 1: Clear 'Raw Response'
 
@@ -273,10 +273,10 @@ Rename the new column to `Convert Raw Response to Json`.
 
 Once converted, we can parse the temperature from the JSON by adding another new column and setting its formula to:
 ```copy-code
-Number([Raw-Response].current_weather.temperature)
+Number([Convert Raw Response to Json].current_weather.temperature)
 ```
 
-Rename this new column to `Temperature` and move it to the KPI charts `VALUE` group.
+Rename this new column to `Temperature` and move it to the KPI chart's `VALUE` group.
 
 Clicking the button displays the current temperature for our hard-coded location.
 
@@ -291,7 +291,7 @@ Duration: 5
 
 Now we want to allow the user to get the temperature from any city that is in the `Cities` table, via a list select control.
 
-Return to `Administration` > `API Connectors` and add a new one.
+Return to `Administration` > `API connectors` and add a new one.
 
 **Name:** Current Temp - City Select
 
@@ -302,7 +302,7 @@ https://api.open-meteo.com/v1/forecast
 ```
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> In the URL we have parameterized latitude and longitude so that they can be dynamically populated at runtime, when a user selects a city.
+<strong>IMPORTANT:</strong><br> Unlike the first connector, the Base URL no longer contains hard-coded latitude and longitude values. Instead, we'll add them as <code>Dynamic</code> query parameters in the next step, so they can be populated at runtime when a user selects a city.
 </aside>
 
 **Params:** Add four query parameters:
@@ -321,7 +321,7 @@ Also check the endpoint preview (at the bottom of the page) carefully. Small mis
 <img src="assets/api_actions_gs_09.png" width="800"/>
 
 
-### Add list select control
+### Add a List Select Control
 Return to your workbook and the `Raw-Response` page. 
 
 Add a new `List select` control to the page and configure it to get the `Cityname` from the `Cities` page:
@@ -371,7 +371,7 @@ This allows us to target all the elements in the container at once from an actio
 
 Now we'll configure the list control to call the new API connector when a city is selected.
 
-Select the list control and click `+` adjacent to `Action sequence` in the element properties panel.
+Select the list control and click `+` adjacent to `Action sequence` in the `Element panel`.
 
 #### Action 1: Clear controls in 'Container 1'
 
@@ -388,17 +388,17 @@ This action clears the previous API response.
 
 Add another action.
 
-**Action type:** `Clear control`<br>
+**Action type:** `Clear control value`<br>
 **Control:** `Raw Response`<br>
 
-#### Action 3: Call 'Current Weather - City Select'
+#### Action 3: Call 'Current Temp - City Select'
 
 This action calls the new API connector with dynamic latitude and longitude parameters.
 
 Add another action.
 
 **Action type:** `Call API`<br>
-**API Connector:** `Current Weather - City Select`
+**API Connector:** `Current Temp - City Select`
 
 In the `Map with` section, map the API parameters to columns from the Cities table. We need to convert the latitude and longitude values to text format using the TEXT() function.
 
@@ -414,7 +414,7 @@ TEXT([Cities/Lon])
 
 <img src="assets/api_actions_gs_28.png" width="700"/>
 
-#### Action 4: Grab Raw Response
+#### Action 4: Set 'Raw Response'
 
 This action displays the new API response in the text area control.
 
@@ -432,8 +432,6 @@ Select a city from the list control to see it work:
 
 <img src="assets/api_actions_gs_32.png" width="600"/>
 
-Really simple and crazy powerful too!
-
 <aside class="positive">
 <strong>NOTE:</strong><br> When working with APIs, data type matching is critical. In this example, we used the TEXT() function to convert numeric latitude and longitude values to strings because the Open-Meteo API expects text parameters. If data types don't match what the API expects, you'll receive error responses.
 </aside>
@@ -441,7 +439,7 @@ Really simple and crazy powerful too!
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## What we've covered
+## What We've Covered
 Duration: 5
 
 In this QuickStart, we explored the fundamentals of Sigma API Actions by building a simple weather data application. You learned how to:
