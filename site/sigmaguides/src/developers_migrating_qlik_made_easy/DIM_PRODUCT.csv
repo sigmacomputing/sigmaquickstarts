@@ -1,0 +1,853 @@
+Line Desc 1,Product Group Desc,Product Sub Group Desc,Product Type Desc
+Ebony Sweet Peas,Produce,Fresh Vegetables,Vegetables
+Better Large Canned Shrimp,Canned Foods,Shrimp,Canned Shrimp
+Big Time Frozen Cheese Pizza,Frozen Foods,Pizza,Pizza
+Big Time Frozen Pancakes,Frozen Foods,Pancakes,Breakfast Foods
+Nationeel Potato Chips,Snack Foods,Chips,Snack Foods
+Ebony Squash,Produce,Fresh Vegetables,Vegetables
+Nationeel Chocolate Donuts,Snack Foods,Donuts,Snack Foods
+Nationeel Low Fat Chips,Snack Foods,Chips,Snack Foods
+Nationeel Low Fat Chips,-,-,-
+Super Canola Oil,Baking Goods,Cooking Oil,Baking Goods
+Best Oatmeal,Breakfast Foods,Cereal,Breakfast Foods
+Blue Medal Large Eggs,Eggs,Eggs,Eggs
+Landslide Grape Preserves,Baking Goods,Preserves,Jams and Jellies
+Landslide Apple Jelly,Baking Goods,Jelly,Jams and Jellies
+Gorilla Head Cheese,Dairy,Cheese,Dairy
+Atomic Tasty Candy Bar,Snacks,Chocolate Candy,Candy
+Tell Tale Canned Peanuts,Produce,Nuts,Specialty
+Carlson Havarti Cheese,Dairy,Cheese,Dairy
+Monarch Spaghetti,Starchy Foods,Pasta,Starchy Foods
+American Potato Salad,Deli,Deli Salads,Side Dishes
+Landslide Strawberry Jelly,Baking Goods,Jelly,Jams and Jellies
+High Top Oranges,Produce,Fresh Fruit,Fruit
+High Top Dried Mushrooms,Produce,Fresh Vegetables,Vegetables
+High Top Red Delcious Apples,Produce,Fresh Fruit,Fruit
+Moms Sliced Ham,Deli,Deli Meats,Meat
+Ebony Prepared Salad,Produce,Fresh Vegetables,Vegetables
+BBB Best Vegetable Oil,Baking Goods,Cooking Oil,Baking Goods
+Tell Tale Fancy Plums,Produce,Fresh Fruit,Fruit
+Club 1% Milk,Dairy,Milk,Dairy
+Best Choice Graham Crackers,Snack Foods,Cookies,Snack Foods
+Great Blueberry Muffins,Baked Goods,Muffins,Bread
+Moms Sliced Turkey,Deli,Deli Meats,Meat
+Imagine Frozen Broccoli,Frozen Foods,Frozen Vegetables,Vegetables
+Ebony New Potatos,Produce,Fresh Vegetables,Vegetables
+Super Grape Jelly,Baking Goods,Jelly,Jams and Jellies
+Better Fancy Canned Sardines,Canned Foods,Sardines,Canned Sardines
+Choice Tasty Candy Bar,Snacks,Chocolate Candy,Candy
+Blue Label Fancy Canned Oysters,Canned Foods,Oysters,Canned Oysters
+Red Spade Beef Bologna,Deli,Bologna,Meat
+Golden Home Style French Fries,Frozen Foods,French Fries,Vegetables
+High Top Tomatos,Produce,Fresh Vegetables,Vegetables
+High Top Fresh Lima Beans,Produce,Fresh Vegetables,Vegetables
+High Top Firm Tofu,Produce,Tofu,Packaged Vegetables
+High Top Broccoli,Produce,Fresh Vegetables,Vegetables
+Better Canned String Beans,Canned Foods,Canned Vegetables,Vegetables
+Moms Corned Beef,Deli,Deli Meats,Meat
+Big Time Fajita French Fries,Frozen Foods,French Fries,Vegetables
+Big Time Ice Cream,Frozen Foods,Ice Cream,Frozen Desserts
+Tell Tale Firm Tofu,Produce,Tofu,Packaged Vegetables
+Tell Tale Almonds,Produce,Nuts,Specialty
+Fast Dried Apples,Snack Foods,Dried Fruit,Snack Foods
+Colony Wheat Bread,Baked Goods,Sliced Bread,Bread
+Landslide Columbian Coffee,Beverages,Coffee,Hot Beverages
+Landslide Grape Jam,Baking Goods,Jam,Jams and Jellies
+Radius Grits,Breakfast Foods,Cereal,Breakfast Foods
+Bravo Chicken Soup,Canned Foods,Soup,Canned Soup
+Bravo Canned Yams,Canned Foods,Canned Vegetables,Vegetables
+Bravo Large Canned Shrimp,Canned Foods,Shrimp,Canned Shrimp
+Cutting Edge Turkey Hot Dogs,Deli,Hot Dogs,Meat
+Jumbo Small Eggs,Eggs,Eggs,Eggs
+Imagine Frozen Pepperoni Pizza,Frozen Foods,Pizza,Pizza
+Ebony Fuji Apples,Produce,Fresh Fruit,Fruit
+Ebony Oranges,Produce,Fresh Fruit,Fruit
+Ebony Tangerines,Produce,Fresh Fruit,Fruit
+Nationeel Corn Chips,Snack Foods,Chips,Snack Foods
+Nationeel Salsa Dip,Snack Foods,Dips,Snack Foods
+Nationeel Salted Pretzels,Snack Foods,Pretzels,Snack Foods
+Nationeel Mini Donuts,Snack Foods,Donuts,Snack Foods
+Nationeel Beef Jerky,Snack Foods,Dried Meat,Snack Foods
+Thresher Malted Milk Balls,Snacks,Chocolate Candy,Candy
+Monarch Ravioli,Starchy Foods,Pasta,Starchy Foods
+Discover Spaghetti,Starchy Foods,Pasta,Starchy Foods
+Discover Spaghetti,-,-,-
+Pearl Chardonnay,Alcoholic Beverages,Wine,Beer and Wine
+Pearl White Zinfandel Wine,Alcoholic Beverages,Wine,Beer and Wine
+Fantastic Pumpernickel Bread,Baked Goods,Sliced Bread,Bread
+BBB Best Strawberry Jelly,Baking Goods,Jelly,Jams and Jellies
+Just Right Chicken Ramen Soup,Canned Foods,Soup,Canned Soup
+Just Right Fancy Canned Clams,Canned Foods,Clams,Canned Clams
+Just Right Fancy Canned Oysters,Canned Foods,Oysters,Canned Oysters
+Blue Label Canned Beets,Canned Foods,Canned Vegetables,Vegetables
+High Top Cauliflower,Produce,Fresh Vegetables,Vegetables
+High Top Macintosh Apples,Produce,Fresh Fruit,Fruit
+High Top Golden Delcious Apples,Produce,Fresh Fruit,Fruit
+High Top Canned Peanuts,Produce,Nuts,Specialty
+High Top Sweet Onion,Produce,Fresh Vegetables,Vegetables
+High Top Cantelope,Produce,Fresh Fruit,Fruit
+Super Vegetable Oil,Baking Goods,Cooking Oil,Baking Goods
+Carlson Jack Cheese,Dairy,Cheese,Dairy
+Carlson Muenster Cheese,Dairy,Cheese,Dairy
+Carlson String Cheese,Dairy,Cheese,Dairy
+Big Time Orange Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Big Time Apple Cinnamon Waffles,Frozen Foods,Waffles,Breakfast Foods
+Big Time Apple Cinnamon Waffles,-,-,-
+Big Time Frozen Carrots,Frozen Foods,Frozen Vegetables,Vegetables
+Big Time Frozen Cauliflower,Frozen Foods,Frozen Vegetables,Vegetables
+Tell Tale Broccoli,Produce,Fresh Vegetables,Vegetables
+Fast Low Fat BBQ Chips,Snack Foods,Chips,Snack Foods
+Fast Chocolate Chip Cookies,Snack Foods,Cookies,Snack Foods
+Walrus Light Wine,Alcoholic Beverages,Wine,Beer and Wine
+Walrus Light Beer,Alcoholic Beverages,Beer,Beer and Wine
+Landslide Corn Oil,Baking Goods,Cooking Oil,Baking Goods
+Landslide Corn Oil,-,-,-
+Landslide Creamy Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Bravo Canned Beets,Canned Foods,Canned Vegetables,Vegetables
+Gorilla Sour Cream,Dairy,Sour Cream,Dairy
+Gorilla Chocolate Milk,Dairy,Milk,Dairy
+Gorilla Strawberry Yogurt,Dairy,Yogurt,Dairy
+Gorilla Blueberry Yogurt,Dairy,Yogurt,Dairy
+Jumbo Small Brown Eggs,Eggs,Eggs,Eggs
+Ebony Lemons,Produce,Fresh Fruit,Fruit
+Nationeel Chocolate Chip Cookies,Snack Foods,Cookies,Snack Foods
+Nationeel Dried Apricots,Snack Foods,Dried Fruit,Snack Foods
+BBB Best Apple Preserves,Baking Goods,Preserves,Jams and Jellies
+BBB Best Grape Jelly,Baking Goods,Jelly,Jams and Jellies
+Just Right Beef Soup,Canned Foods,Soup,Canned Soup
+Just Right Canned Peas,Canned Foods,Canned Vegetables,Vegetables
+Even Better String Cheese,Dairy,Cheese,Dairy
+Washington Cranberry Juice,Beverages,Juice,Pure Juice Beverages
+Washington Apple Juice,Beverages,Juice,Pure Juice Beverages
+Blue Label Fancy Canned Anchovies,Canned Foods,Anchovies,Canned Anchovies
+Green Ribbon Canned Peaches,Canned Products,Canned Fruit,Fruit
+Club Low Fat Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Club Jack Cheese,Dairy,Cheese,Dairy
+Club Muenster Cheese,Dairy,Cheese,Dairy
+Red Spade Low Fat Bologna,Deli,Bologna,Meat
+Red Spade Foot-Long Hot Dogs,Deli,Hot Dogs,Meat
+High Top Beets,Produce,Fresh Vegetables,Vegetables
+Best Choice Low Fat Cookies,Snack Foods,Cookies,Snack Foods
+Choice Malted Milk Balls,Snacks,Chocolate Candy,Candy
+Good Imported Beer,Alcoholic Beverages,Beer,Beer and Wine
+Good Light Wine,Alcoholic Beverages,Wine,Beer and Wine
+Super Extra Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Excellent Mango Drink,Beverages,Flavored Drinks,Drinks
+Moms Beef Bologna,Deli,Bologna,Meat
+Moms Sliced Chicken,Deli,Deli Meats,Meat
+Urban Small Brown Eggs,Eggs,Eggs,Eggs
+Big Time Home Style French Fries,Frozen Foods,French Fries,Vegetables
+Tell Tale Lettuce,Produce,Fresh Vegetables,Vegetables
+Tell Tale Garlic,Produce,Fresh Vegetables,Vegetables
+Tell Tale Fresh Lima Beans,Produce,Fresh Vegetables,Vegetables
+Atomic Semi-Sweet Chocolate Bar,Snacks,Chocolate Candy,Candy
+Token Diet Soda,Beverages,Soda,Carbonated Beverages
+Discover Manicotti,Starchy Foods,Pasta,Starchy Foods
+Fantastic White Bread,Baked Goods,Sliced Bread,Bread
+BBB Best Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+BBB Best Grape Jam,Baking Goods,Jam,Jams and Jellies
+Fabulous Mango Drink,Beverages,Flavored Drinks,Drinks
+Club Cheese Spread,Dairy,Cheese,Dairy
+Club Sharp Cheddar Cheese,Dairy,Cheese,Dairy
+Golden Frozen Mushroom Pizza,Frozen Foods,Pizza,Pizza
+Washington Diet Cola,Beverages,Soda,Carbonated Beverages
+Blue Label Large Canned Shrimp,Canned Foods,Shrimp,Canned Shrimp
+Green Ribbon Canned Mixed Fruit,Canned Products,Canned Fruit,Fruit
+Golden Waffles,Frozen Foods,Waffles,Breakfast Foods
+Golden Apple Cinnamon Waffles,Frozen Foods,Waffles,Breakfast Foods
+Golden Chicken TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+High Top Garlic,Produce,Fresh Vegetables,Vegetables
+High Top Garlic,-,-,-
+Best Choice Sesame Crackers,Snack Foods,Crackers,Snack Foods
+Best Choice Frosted Cookies,Snack Foods,Cookies,Snack Foods
+Best Choice Grape Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Best Choice Frosted Donuts,Snack Foods,Donuts,Snack Foods
+Super Apple Jelly,Baking Goods,Jelly,Jams and Jellies
+Carlson Cheese Spread,Dairy,Cheese,Dairy
+Moms Low Fat Bologna,Deli,Bologna,Meat
+Moms Turkey Hot Dogs,Deli,Hot Dogs,Meat
+Urban Large Brown Eggs,Eggs,Eggs,Eggs
+Urban Small Eggs,Eggs,Eggs,Eggs
+Urban Egg Substitute,Eggs,Eggs,Eggs
+Big Time Low Fat French Fries,Frozen Foods,French Fries,Vegetables
+Tell Tale Macintosh Apples,Produce,Fresh Fruit,Fruit
+Tell Tale Lemons,Produce,Fresh Fruit,Fruit
+Fast Potato Chips,Snack Foods,Chips,Snack Foods
+Fast Frosted Cookies,Snack Foods,Cookies,Snack Foods
+Fast Frosted Cookies,-,-,-
+Fast Strawberry Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Fast Golden Raisins,Snack Foods,Dried Fruit,Snack Foods
+Fast Frosted Donuts,Snack Foods,Donuts,Snack Foods
+Shady Lake Manicotti,Starchy Foods,Pasta,Starchy Foods
+Colony English Muffins,Baked Goods,Muffins,Bread
+Token Apple Juice,Beverages,Juice,Pure Juice Beverages
+Radius Wheat Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Bravo Canned Tomatos,Canned Foods,Canned Vegetables,Vegetables
+Applause Canned Mixed Fruit,Canned Products,Canned Fruit,Fruit
+Gorilla Large Curd Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Gorilla 1% Milk,Dairy,Milk,Dairy
+Gorilla Whole Milk,Dairy,Milk,Dairy
+Cutting Edge Chicken Hot Dogs,Deli,Hot Dogs,Meat
+Cutting Edge Cole Slaw,Deli,Deli Salads,Side Dishes
+Imagine Low Fat Waffles,Frozen Foods,Waffles,Breakfast Foods
+Imagine Frozen Cheese Pizza,Frozen Foods,Pizza,Pizza
+Imagine Popsicles,Frozen Foods,Ice Cream,Frozen Desserts
+Ebony Mixed Nuts,Produce,Nuts,Specialty
+Ebony Canned Peanuts,Produce,Nuts,Specialty
+Nationeel Raspberry Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Nationeel Frosted Donuts,Snack Foods,Donuts,Snack Foods
+Thresher Mint Chocolate Bar,Snacks,Chocolate Candy,Candy
+Thresher Spicy Mints,Snacks,Hard Candy,Candy
+BBB Best Pepper,Baking Goods,Spices,Baking Goods
+BBB Best Strawberry Jam,Baking Goods,Jam,Jams and Jellies
+BBB Best Creamy Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Fabulous Orange Juice,Beverages,Juice,Pure Juice Beverages
+Fabulous Apple Drink,Beverages,Flavored Drinks,Drinks
+Just Right Noodle Soup,Canned Foods,Soup,Canned Soup
+Even Better Low Fat Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Even Better Low Fat Sour Cream,Dairy,Sour Cream,Dairy
+High Top Mandarin Oranges,Produce,Fresh Fruit,Fruit
+Best Choice Apple Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Good Chardonnay Wine,Alcoholic Beverages,Wine,Beer and Wine
+Super Apple Butter,Baking Goods,Preserves,Jams and Jellies
+Big Time Beef TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+Fast Salsa Dip,Snack Foods,Dips,Snack Foods
+Atomic Mint Chocolate Bar,Snacks,Chocolate Candy,Candy
+Cutting Edge Foot-Long Hot Dogs,Deli,Hot Dogs,Meat
+Ebony Fresh Lima Beans,Produce,Fresh Vegetables,Vegetables
+Ebony Macintosh Apples,Produce,Fresh Fruit,Fruit
+Ebony Plums,Produce,Fresh Fruit,Fruit
+Ebony Party Nuts,Produce,Nuts,Specialty
+Nationeel Sugar Cookies,Snack Foods,Cookies,Snack Foods
+Nationeel Avocado Dip,Snack Foods,Dips,Snack Foods
+Nationeel Grape Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Nationeel Dried Dates,Snack Foods,Dried Fruit,Snack Foods
+Nationeel Raisins,Snack Foods,Dried Fruit,Snack Foods
+Discover Thai Rice,Starchy Foods,Rice,Starchy Foods
+Special Wheat Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Even Better Low Fat String Cheese,Dairy,Cheese,Dairy
+Washington Cola,Beverages,Soda,Carbonated Beverages
+American Cole Slaw,Deli,Deli Salads,Side Dishes
+Red Spade Turkey Hot Dogs,Deli,Hot Dogs,Meat
+Red Spade Sliced Ham,Deli,Deli Meats,Meat
+Golden Lime Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+High Top Corn on the Cob,Produce,Fresh Vegetables,Vegetables
+High Top Party Nuts,Produce,Nuts,Specialty
+Best Choice Fudge Cookies,Snack Foods,Cookies,Snack Foods
+Choice Mint Chocolate Bar,Snacks,Chocolate Candy,Candy
+Choice Spicy Mints,Produce,Fresh Vegetables,Vegetables
+Choice Spicy Mints,Snacks,Hard Candy,Candy
+Super Regular Coffee,Beverages,Coffee,Hot Beverages
+Super Strawberry Preserves,Baking Goods,Preserves,Jams and Jellies
+Super Strawberry Preserves,-,-,-
+Excellent Berry Juice,Beverages,Juice,Pure Juice Beverages
+Moms Potato Salad,Deli,Deli Salads,Side Dishes
+Tell Tale Onions,Produce,Fresh Vegetables,Vegetables
+BBB Best Canola Oil,Baking Goods,Cooking Oil,Baking Goods
+BBB Best Salt,Baking Goods,Spices,Baking Goods
+BBB Best Apple Butter,Baking Goods,Preserves,Jams and Jellies
+Washington Orange Juice,Beverages,Juice,Pure Juice Beverages
+Even Better Muenster Cheese,Dairy,Cheese,Dairy
+Carlson 2% Milk,Dairy,Milk,Dairy
+High Top Summer Squash,Produce,Fresh Vegetables,Vegetables
+Ebony Elephant Garlic,Produce,Fresh Vegetables,Vegetables
+National Small Brown Eggs,Eggs,Eggs,Eggs
+BBB Best Oregano,Baking Goods,Spices,Baking Goods
+Fast Low Fat Cookies,Snack Foods,Cookies,Snack Foods
+Imagine Lemon Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Nationeel Low Fat Popcorn,Snack Foods,Popcorn,Snack Foods
+Even Better Sharp Cheddar Cheese,Dairy,Cheese,Dairy
+Even Better Sharp Cheddar Cheese,-,-,-
+Even Better Mild Cheddar Cheese,Dairy,Cheese,Dairy
+Even Better Chocolate Milk,Dairy,Milk,Dairy
+Red Spade Chicken Hot Dogs,Deli,Hot Dogs,Meat
+Golden Frozen Chicken Thighs,Frozen Foods,Frozen Chicken,Meat
+High Top Asparagus,Produce,Fresh Vegetables,Vegetables
+Better Rice Soup,Canned Foods,Soup,Canned Soup
+Just Right Turkey Noodle Soup,Canned Foods,Soup,Canned Soup
+Golden Grape Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Cutting Edge Sliced Chicken,Deli,Deli Meats,Meat
+Blue Label Creamed Corn,Canned Foods,Canned Vegetables,Vegetables
+Club Blueberry Yogurt,Dairy,Yogurt,Dairy
+Token Cream Soda,Beverages,Soda,Carbonated Beverages
+Nationeel Cheese Dip,Snack Foods,Dips,Snack Foods
+Ebony Peaches,Produce,Fresh Fruit,Fruit
+Tell Tale Mushrooms,Produce,Fresh Vegetables,Vegetables
+Even Better Buttermilk,Dairy,Milk,Dairy
+Imagine Frozen Sausage Pizza,Frozen Foods,Pizza,Pizza
+Ebony Broccoli,Produce,Fresh Vegetables,Vegetables
+Washington Apple Drink,Beverages,Flavored Drinks,Drinks
+Super Low Fat Apple Butter,Baking Goods,Preserves,Jams and Jellies
+Washington Strawberry Drink,Beverages,Flavored Drinks,Drinks
+Best Choice Golden Raisins,Snack Foods,Dried Fruit,Snack Foods
+Big Time Frozen Broccoli,Frozen Foods,Frozen Vegetables,Vegetables
+Ebony Cantelope,Produce,Fresh Fruit,Fruit
+Special Grits,Breakfast Foods,Cereal,Breakfast Foods
+Fast BBQ Potato Chips,Snack Foods,Chips,Snack Foods
+Bravo Regular Ramen Soup,Canned Foods,Soup,Canned Soup
+Tell Tale Potatos,Produce,Fresh Vegetables,Vegetables
+Token Orange Juice,Beverages,Juice,Pure Juice Beverages
+Fabulous Cream Soda,Beverages,Soda,Carbonated Beverages
+Great Muffins,Baked Goods,Muffins,Bread
+Better Noodle Soup,Canned Foods,Soup,Canned Soup
+Better Noodle Soup,-,-,-
+Big Time Frozen Sausage Pizza,Frozen Foods,Pizza,Pizza
+Big Time Blueberry Waffles,Frozen Foods,Waffles,Breakfast Foods
+Big Time Waffles,Frozen Foods,Waffles,Breakfast Foods
+Big Time Frozen Pepperoni Pizza,Frozen Foods,Pizza,Pizza
+Big Time Frozen Mushroom Pizza,Frozen Foods,Pizza,Pizza
+Big Time Turkey TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+Big Time Chicken TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+Big Time Chicken TV Dinner,-,-,-
+Big Time Frozen Peas,Frozen Foods,Frozen Vegetables,Vegetables
+Big Time Frozen Chicken Thighs,Frozen Foods,Frozen Chicken,Meat
+Big Time Frozen Chicken Wings,Frozen Foods,Frozen Chicken,Meat
+Big Time Lemon Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Curlew Scallops,Seafood,Shellfish,Seafood
+Nationeel Low Fat Cookies,Snack Foods,Cookies,Snack Foods
+Nationeel BBQ Potato Chips,Snack Foods,Chips,Snack Foods
+Nationeel Low Fat BBQ Chips,Snack Foods,Chips,Snack Foods
+Thresher White Chocolate Bar,Snacks,Chocolate Candy,Candy
+Monarch Manicotti,Starchy Foods,Pasta,Starchy Foods
+Jeffers Oatmeal,Breakfast Foods,Cereal,Breakfast Foods
+Jeffers Corn Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Excellent Cream Soda,Beverages,Soda,Carbonated Beverages
+Urban Large Eggs,Eggs,Eggs,Eggs
+Big Time Lime Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Fast Buttered Popcorn,Snack Foods,Popcorn,Snack Foods
+Walrus Chablis Wine,Alcoholic Beverages,Wine,Beer and Wine
+Walrus Chablis Wine,-,-,-
+Landslide French Roast Coffee,Beverages,Coffee,Hot Beverages
+Landslide Decaf Coffee,Beverages,Coffee,Hot Beverages
+Landslide Regular Coffee,Beverages,Coffee,Hot Beverages
+Landslide Vegetable Oil,Baking Goods,Cooking Oil,Baking Goods
+Landslide Apple Preserves,Baking Goods,Preserves,Jams and Jellies
+Token Berry Juice,Beverages,Juice,Pure Juice Beverages
+Token Strawberry Drink,Beverages,Flavored Drinks,Drinks
+Token Apple Drink,Beverages,Flavored Drinks,Drinks
+Bravo Creamed Corn,Canned Foods,Canned Vegetables,Vegetables
+Imagine Frozen Pancakes,Frozen Foods,Pancakes,Breakfast Foods
+Monarch Thai Rice,Starchy Foods,Rice,Starchy Foods
+BBB Best Tomato Sauce,Baking Goods,Sauces,Baking Goods
+BBB Best Columbian Coffee,Beverages,Coffee,Hot Beverages
+Special Oatmeal,Breakfast Foods,Cereal,Breakfast Foods
+Special Corn Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Just Right Rice Soup,Canned Foods,Soup,Canned Soup
+Big City Canned Mixed Fruit,Canned Products,Canned Fruit,Fruit
+Club Head Cheese,Dairy,Cheese,Dairy
+Blue Medal Small Brown Eggs,Eggs,Eggs,Eggs
+Golden Pancake Mix,Frozen Foods,Pancake Mix,Breakfast Foods
+Golden Ice Cream,Frozen Foods,Ice Cream,Frozen Desserts
+High Top Walnuts,Produce,Nuts,Specialty
+Best Choice Low Fat BBQ Chips,Snack Foods,Chips,Snack Foods
+Best Choice Sugar Cookies,Snack Foods,Cookies,Snack Foods
+Best Choice Chocolate Chip Cookies,Snack Foods,Cookies,Snack Foods
+Best Choice Buttered Popcorn,Snack Foods,Popcorn,Snack Foods
+Best Choice Salsa Dip,Snack Foods,Dips,Snack Foods
+Best Choice Chocolate Donuts,Snack Foods,Donuts,Snack Foods
+Best Choice Dried Apples,Snack Foods,Dried Fruit,Snack Foods
+Choice White Chocolate Bar,Snacks,Chocolate Candy,Candy
+Great Pumpernickel Bread,Baked Goods,Sliced Bread,Bread
+Super Brown Sugar,Baking Goods,Sugar,Baking Goods
+Super Grape Jam,Baking Goods,Jam,Jams and Jellies
+Super Creamy Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Better Canned Yams,Canned Foods,Canned Vegetables,Vegetables
+Better Vegetable Soup,Canned Foods,Soup,Canned Soup
+Big Time Pancake Mix,Frozen Foods,Pancake Mix,Breakfast Foods
+Big Time Grape Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Big Time Ice Cream Sandwich,Frozen Foods,Ice Cream,Frozen Desserts
+Quick Extra Lean Hamburger,Meat,Hamburger,Meat
+Quick Seasoned Hamburger,Meat,Hamburger,Meat
+Tell Tale Limes,Produce,Fresh Fruit,Fruit
+Tell Tale Mandarin Oranges,Produce,Fresh Fruit,Fruit
+Tell Tale Walnuts,Produce,Nuts,Specialty
+Walrus White Zinfandel Wine,Alcoholic Beverages,Wine,Beer and Wine
+Colony Pumpernickel Bread,Baked Goods,Sliced Bread,Bread
+Landslide Sesame Oil,Baking Goods,Cooking Oil,Baking Goods
+Landslide Extra Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Bravo Vegetable Soup,Canned Foods,Soup,Canned Soup
+Bravo Noodle Soup,Canned Foods,Soup,Canned Soup
+Applause Canned Peaches,Canned Products,Canned Fruit,Fruit
+Gorilla String Cheese,Dairy,Cheese,Dairy
+Gorilla Low Fat String Cheese,Dairy,Cheese,Dairy
+Cutting Edge Potato Salad,Deli,Deli Salads,Side Dishes
+Just Right Chicken Soup,Canned Foods,Soup,Canned Soup
+Even Better Large Curd Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Imagine Fajita French Fries,Frozen Foods,French Fries,Vegetables
+Imagine Apple Cinnamon Waffles,Frozen Foods,Waffles,Breakfast Foods
+Imagine Frozen Carrots,Frozen Foods,Frozen Vegetables,Vegetables
+Tell Tale Summer Squash,Produce,Fresh Vegetables,Vegetables
+Bravo Rice Soup,Canned Foods,Soup,Canned Soup
+Gorilla Jack Cheese,Dairy,Cheese,Dairy
+Ebony Red Pepper,Produce,Fresh Vegetables,Vegetables
+Ebony Firm Tofu,Produce,Tofu,Packaged Vegetables
+Best Choice BBQ Potato Chips,Snack Foods,Chips,Snack Foods
+Fast Fondue Mix,Snack Foods,Dips,Snack Foods
+Fantastic Wheat Bread,Baked Goods,Sliced Bread,Bread
+Fantastic Wheat Bread,-,-,-
+High Top Mixed Nuts,Produce,Nuts,Specialty
+Best Choice Beef Jerky,Snack Foods,Dried Meat,Snack Foods
+Carlson Low Fat String Cheese,Dairy,Cheese,Dairy
+Tell Tale Tomatos,Produce,Fresh Vegetables,Vegetables
+Tell Tale Sweet Onion,Produce,Fresh Vegetables,Vegetables
+Nationeel Golden Raisins,Snack Foods,Dried Fruit,Snack Foods
+Golden Frozen Cauliflower,Frozen Foods,Frozen Vegetables,Vegetables
+Golden Frozen Cauliflower,-,-,-
+Golden Frozen Corn,Frozen Foods,Frozen Vegetables,Vegetables
+Tip Top Lox,Seafood,Fresh Fish,Seafood
+Shady Lake Rice Medly,Starchy Foods,Rice,Starchy Foods
+Pearl Imported Beer,Alcoholic Beverages,Beer,Beer and Wine
+Imagine Grape Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Better Fancy Canned Clams,Canned Foods,Clams,Canned Clams
+Imagine Beef TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+American Corned Beef,Deli,Deli Meats,Meat
+High Top Shitake Mushrooms,Produce,Fresh Vegetables,Vegetables
+Tell Tale Cantelope,Produce,Fresh Fruit,Fruit
+Even Better Strawberry Yogurt,Dairy,Yogurt,Dairy
+Golden Frozen Pepperoni Pizza,Frozen Foods,Pizza,Pizza
+Golden Frozen Cheese Pizza,Frozen Foods,Pizza,Pizza
+Golden Frozen Broccoli,Frozen Foods,Frozen Vegetables,Vegetables
+High Top Baby Onion,Produce,Fresh Vegetables,Vegetables
+High Top Fancy Plums,Produce,Fresh Fruit,Fruit
+Best Choice Corn Chips,Snack Foods,Chips,Snack Foods
+Best Choice Dried Apricots,Snack Foods,Dried Fruit,Snack Foods
+Moms Chicken Hot Dogs,Deli,Hot Dogs,Meat
+Golden Frozen Peas,Frozen Foods,Frozen Vegetables,Vegetables
+Fast Grape Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Atomic Mints,Snacks,Hard Candy,Candy
+Walrus Chardonnay,Alcoholic Beverages,Wine,Beer and Wine
+Landslide Pepper,Baking Goods,Spices,Baking Goods
+Landslide Salt,Baking Goods,Spices,Baking Goods
+Landslide Apple Butter,Baking Goods,Preserves,Jams and Jellies
+Landslide Oregano,Baking Goods,Spices,Baking Goods
+Bravo Beef Soup,Canned Foods,Soup,Canned Soup
+Bravo Fancy Canned Oysters,Canned Foods,Oysters,Canned Oysters
+Gorilla Low Fat Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Cutting Edge Sliced Ham,Deli,Deli Meats,Meat
+Imagine Frozen Peas,Frozen Foods,Frozen Vegetables,Vegetables
+Imagine Frozen Peas,-,-,-
+Ebony Onions,Produce,Fresh Vegetables,Vegetables
+Ebony Cauliflower,Produce,Fresh Vegetables,Vegetables
+Ebony Cauliflower,-,-,-
+Thresher Bubble Gum,Snacks,Gum,Candy
+Thresher Mints,Snacks,Hard Candy,Candy
+Discover Ravioli,Starchy Foods,Pasta,Starchy Foods
+Fabulous Strawberry Drink,Beverages,Flavored Drinks,Drinks
+Fabulous Diet Soda,Beverages,Soda,Carbonated Beverages
+Fabulous Cola,Beverages,Soda,Carbonated Beverages
+Fabulous Diet Cola,Beverages,Soda,Carbonated Beverages
+Just Right Canned Tuna in Water,Canned Foods,Tuna,Canned Tuna
+Blue Label Regular Ramen Soup,Canned Foods,Soup,Canned Soup
+Blue Label Turkey Noodle Soup,Canned Foods,Soup,Canned Soup
+Golden Beef TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+High Top Squash,Produce,Fresh Vegetables,Vegetables
+High Top Limes,Produce,Fresh Fruit,Fruit
+Best Choice Low Fat Popcorn,Snack Foods,Popcorn,Snack Foods
+Good White Zinfandel Wine,Alcoholic Beverages,Wine,Beer and Wine
+Super White Sugar,Baking Goods,Sugar,Baking Goods
+Super Corn Oil,Baking Goods,Cooking Oil,Baking Goods
+Super Apple Preserves,Baking Goods,Preserves,Jams and Jellies
+Better Canned Tuna in Water,Canned Foods,Tuna,Canned Tuna
+Carlson Low Fat Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Big Time Frozen Chicken Breast,Frozen Foods,Frozen Chicken,Meat
+Tell Tale Cauliflower,Produce,Fresh Vegetables,Vegetables
+Tell Tale Dried Mushrooms,Produce,Fresh Vegetables,Vegetables
+Kiwi Lox,Seafood,Fresh Fish,Seafood
+Fast No Salt Popcorn,Snack Foods,Popcorn,Snack Foods
+Fast Avocado Dip,Snack Foods,Dips,Snack Foods
+Fast Cheese Dip,Snack Foods,Dips,Snack Foods
+Imagine Home Style French Fries,Frozen Foods,French Fries,Vegetables
+Thresher Semi-Sweet Chocolate Bar,Snacks,Chocolate Candy,Candy
+Washington Diet Soda,Beverages,Soda,Carbonated Beverages
+Good Light Beer,Alcoholic Beverages,Beer,Beer and Wine
+Super Sesame Oil,Baking Goods,Cooking Oil,Baking Goods
+Best Grits,Breakfast Foods,Cereal,Breakfast Foods
+Better Fancy Canned Oysters,Canned Foods,Oysters,Canned Oysters
+Tell Tale Green Pepper,Produce,Fresh Vegetables,Vegetables
+Landslide Canola Oil,Baking Goods,Cooking Oil,Baking Goods
+BBB Best Strawberry Preserves,Baking Goods,Preserves,Jams and Jellies
+Shady Lake Ravioli,Starchy Foods,Pasta,Starchy Foods
+Jumbo Large Brown Eggs,Eggs,Eggs,Eggs
+Carlson Whole Milk,Dairy,Milk,Dairy
+Excellent Apple Drink,Beverages,Flavored Drinks,Drinks
+Carlson Sharp Cheddar Cheese,Dairy,Cheese,Dairy
+Ebony Garlic,Produce,Fresh Vegetables,Vegetables
+Big Time Frozen Corn,Frozen Foods,Frozen Vegetables,Vegetables
+Carlson Large Curd Cottage Cheese,Dairy,Cottage Cheese,Dairy
+Even Better Blueberry Yogurt,Dairy,Yogurt,Dairy
+Great Wheat Bread,Baked Goods,Sliced Bread,Bread
+Atomic Bubble Gum,Snacks,Gum,Candy
+Radius Oatmeal,Breakfast Foods,Cereal,Breakfast Foods
+Ebony Fancy Plums,Produce,Fresh Fruit,Fruit
+Even Better Cheese Spread,Dairy,Cheese,Dairy
+American Chicken Hot Dogs,Deli,Hot Dogs,Meat
+American Pimento Loaf,Baked Goods,Sliced Bread,Bread
+Blue Label Canned String Beans,Canned Foods,Canned Vegetables,Vegetables
+Blue Label Noodle Soup,Canned Foods,Soup,Canned Soup
+Best Choice Low Fat Chips,Snack Foods,Chips,Snack Foods
+American Beef Bologna,Deli,Bologna,Meat
+Washington Cream Soda,Beverages,Soda,Carbonated Beverages
+Nationeel Fudge Brownies,Snack Foods,Cookies,Snack Foods
+Fabulous Cranberry Juice,Beverages,Juice,Pure Juice Beverages
+Fabulous Apple Juice,Beverages,Juice,Pure Juice Beverages
+Club String Cheese,Dairy,Cheese,Dairy
+Best Choice Salted Pretzels,Snack Foods,Pretzels,Snack Foods
+Best Choice Dried Dates,Snack Foods,Dried Fruit,Snack Foods
+Medalist Rice Medly,Starchy Foods,Rice,Starchy Foods
+Gorilla 2% Milk,Dairy,Milk,Dairy
+Imagine Lime Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Ebony Shitake Mushrooms,Produce,Fresh Vegetables,Vegetables
+Ebony Lettuce,Produce,Fresh Vegetables,Vegetables
+High Top Lemons,Produce,Fresh Fruit,Fruit
+Carlson Blueberry Yogurt,Dairy,Yogurt,Dairy
+Tell Tale Plums,Produce,Fresh Fruit,Fruit
+Golden Ice Cream Sandwich,Frozen Foods,Ice Cream,Frozen Desserts
+Blue Label Fancy Canned Sardines,Canned Foods,Sardines,Canned Sardines
+Red Spade Pimento Loaf,Deli,Bologna,Meat
+Fast Raspberry Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Red Spade Sliced Chicken,Deli,Deli Meats,Meat
+Blue Medal Large Brown Eggs,Eggs,Eggs,Eggs
+Blue Medal Egg Substitute,Eggs,Eggs,Eggs
+Golden Frozen Chicken Breast,Frozen Foods,Frozen Chicken,Meat
+Ebony Asparagus,Produce,Fresh Vegetables,Vegetables
+High Top Almonds,Produce,Nuts,Specialty
+Colony Muffins,Baked Goods,Muffins,Bread
+Landslide Strawberry Jam,Baking Goods,Jam,Jams and Jellies
+Tell Tale Red Pepper,Produce,Fresh Vegetables,Vegetables
+BBB Best Apple Jelly,Baking Goods,Jelly,Jams and Jellies
+Tip Top Scallops,Seafood,Shellfish,Seafood
+Best Choice Strawberry Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Ebony Limes,Produce,Fresh Fruit,Fruit
+Excellent Apple Juice,Beverages,Juice,Pure Juice Beverages
+American Sliced Chicken,Deli,Fresh Chicken,Meat
+Fast Raisins,Snack Foods,Dried Fruit,Snack Foods
+Pearl Chardonnay Wine,Alcoholic Beverages,Wine,Beer and Wine
+Cutting Edge Low Fat Bologna,Deli,Bologna,Meat
+High Top Tangerines,Produce,Fresh Fruit,Fruit
+Even Better Havarti Cheese,Dairy,Cheese,Dairy
+Imagine Orange Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+BBB Best Extra Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Choice Mints,Snacks,Hard Candy,Candy
+Footnote Extra Lean Hamburger,Meat,Hamburger,Meat
+Blue Label Rice Soup,Canned Foods,Soup,Canned Soup
+Club Strawberry Yogurt,Dairy,Yogurt,Dairy
+Best Choice Fudge Brownies,Snack Foods,Cookies,Snack Foods
+Best Choice Fondue Mix,Snack Foods,Dips,Snack Foods
+Better Regular Ramen Soup,Canned Foods,Soup,Canned Soup
+Better Chicken Noodle Soup,Canned Foods,Soup,Canned Soup
+Better Turkey Noodle Soup,Canned Foods,Soup,Canned Soup
+Carlson Chocolate Milk,Dairy,Milk,Dairy
+Carlson Chocolate Milk,-,-,-
+Tell Tale Asparagus,Produce,Fresh Vegetables,Vegetables
+Tell Tale Asparagus,-,-,-
+Fast Corn Chips,Snack Foods,Chips,Snack Foods
+Fast Corn Chips,-,-,-
+Fast Sugar Cookies,Snack Foods,Cookies,Snack Foods
+Atomic Spicy Mints,Snacks,Hard Candy,Candy
+Atomic Spicy Mints,-,-,-
+Atomic White Chocolate Bar,Snacks,Chocolate Candy,Candy
+Shady Lake Spaghetti,Starchy Foods,Pasta,Starchy Foods
+Gorilla Havarti Cheese,Dairy,Cheese,Dairy
+Cutting Edge Roasted Chicken,Deli,Fresh Chicken,Meat
+Nationeel Apple Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Blue Label Chicken Soup,Canned Foods,Soup,Canned Soup
+Blue Label Chicken Soup,-,-,-
+Blue Label Canned Yams,Canned Foods,Canned Vegetables,Vegetables
+Club Havarti Cheese,Dairy,Cheese,Dairy
+Golden Fajita French Fries,Frozen Foods,French Fries,Vegetables
+High Top Fuji Apples,Produce,Fresh Fruit,Fruit
+Best Choice Potato Chips,Snack Foods,Chips,Snack Foods
+Super Pepper,Baking Goods,Spices,Baking Goods
+Excellent Diet Soda,Beverages,Soda,Carbonated Beverages
+Better Fancy Canned Anchovies,Canned Foods,Anchovies,Canned Anchovies
+Big Time Low Fat Waffles,Frozen Foods,Waffles,Breakfast Foods
+Tell Tale Sweet Peas,Produce,Fresh Vegetables,Vegetables
+Cutting Edge Low Fat Cole Slaw,Deli,Deli Salads,Side Dishes
+Ebony Baby Onion,Produce,Fresh Vegetables,Vegetables
+Ebony Dried Mushrooms,Produce,Fresh Vegetables,Vegetables
+Ebony Walnuts,Produce,Nuts,Specialty
+Monarch Rice Medly,Starchy Foods,Rice,Starchy Foods
+Discover Rice Medly,Starchy Foods,Rice,Starchy Foods
+Fantastic Rye Bread,Baked Goods,Sliced Bread,Bread
+Blue Label Beef Soup,Canned Foods,Soup,Canned Soup
+Club Mild Cheddar Cheese,Dairy,Cheese,Dairy
+High Top Onions,Produce,Fresh Vegetables,Vegetables
+Best Choice Cheese Crackers,Snack Foods,Crackers,Snack Foods
+Best Choice Raisins,Snack Foods,Dried Fruit,Snack Foods
+Super Tomato Sauce,Baking Goods,Sauces,Baking Goods
+Super Columbian Coffee,Beverages,Coffee,Hot Beverages
+Excellent Diet Cola,Beverages,Soda,Carbonated Beverages
+Tell Tale Mixed Nuts,Produce,Nuts,Specialty
+Shady Lake Thai Rice,Starchy Foods,Rice,Starchy Foods
+Cutting Edge Sliced Turkey,Deli,Deli Meats,Meat
+Imagine Blueberry Waffles,Frozen Foods,Waffles,Breakfast Foods
+Footnote Seasoned Hamburger,Meat,Hamburger,Meat
+Ebony Green Pepper,Produce,Fresh Vegetables,Vegetables
+Club Sour Cream,Dairy,Sour Cream,Dairy
+Fast Mini Donuts,Snack Foods,Donuts,Snack Foods
+Just Right Canned String Beans,Canned Foods,Canned Vegetables,Vegetables
+Red Spade Cole Slaw,Deli,Deli Salads,Side Dishes
+High Top Honey Dew,Produce,Fresh Fruit,Fruit
+Bravo Chicken Ramen Soup,Canned Foods,Soup,Canned Soup
+American Foot-Long Hot Dogs,Deli,Hot Dogs,Meat
+Fast Dried Apricots,Snack Foods,Dried Fruit,Snack Foods
+Cutting Edge Pimento Loaf,Deli,Bologna,Meat
+Swell Canned Mixed Fruit,Canned Products,Canned Fruit,Fruit
+Best Choice No Salt Popcorn,Snack Foods,Popcorn,Snack Foods
+Best Choice Cheese Dip,Snack Foods,Dips,Snack Foods
+High Top Potatos,Produce,Fresh Vegetables,Vegetables
+Imagine Frozen Chicken Breast,Frozen Foods,Frozen Chicken,Meat
+Bravo Fancy Canned Sardines,Canned Foods,Sardines,Canned Sardines
+Big Time Popsicles,Frozen Foods,Ice Cream,Frozen Desserts
+Carlson Mild Cheddar Cheese,Dairy,Cheese,Dairy
+Blue Label Canned Tomatos,Canned Foods,Canned Vegetables,Vegetables
+Landslide Grape Jelly,Baking Goods,Jelly,Jams and Jellies
+Carlson Head Cheese,Dairy,Cheese,Dairy
+Carlson Head Cheese,-,-,-
+Imagine Pancake Mix,Frozen Foods,Pancake Mix,Breakfast Foods
+Imagine Frozen Cauliflower,Frozen Foods,Frozen Vegetables,Vegetables
+American Roasted Chicken,Deli,Fresh Chicken,Meat
+American Roasted Chicken,-,-,-
+National Large Brown Eggs,Eggs,Eggs,Eggs
+Better Beef Soup,Canned Foods,Soup,Canned Soup
+BBB Best Corn Oil,Baking Goods,Cooking Oil,Baking Goods
+Just Right Fancy Canned Sardines,Canned Foods,Sardines,Canned Sardines
+Better Canned Peas,Canned Foods,Canned Vegetables,Vegetables
+Imagine Low Fat French Fries,Frozen Foods,French Fries,Vegetables
+Just Right Canned Tomatos,Canned Foods,Canned Vegetables,Vegetables
+Imagine Frozen Mushroom Pizza,Frozen Foods,Pizza,Pizza
+Even Better Whole Milk,Dairy,Milk,Dairy
+Blue Label Canned Peas,Canned Foods,Canned Vegetables,Vegetables
+Blue Label Canned Tuna in Oil,Canned Foods,Tuna,Canned Tuna
+Club Buttermilk,Dairy,Milk,Dairy
+Super Decaf Coffee,Beverages,Coffee,Hot Beverages
+Kiwi Scallops,Seafood,Shellfish,Seafood
+Even Better Head Cheese,Dairy,Cheese,Dairy
+Golden Blueberry Waffles,Frozen Foods,Waffles,Breakfast Foods
+Nationeel No Salt Popcorn,Snack Foods,Popcorn,Snack Foods
+BBB Best Brown Sugar,Baking Goods,Sugar,Baking Goods
+Golden Frozen Sausage Pizza,Frozen Foods,Pizza,Pizza
+Imagine Ice Cream,Frozen Foods,Ice Cream,Frozen Desserts
+Fast Sesame Crackers,Snack Foods,Crackers,Snack Foods
+Super Strawberry Jelly,Baking Goods,Jelly,Jams and Jellies
+Landslide Strawberry Preserves,Baking Goods,Preserves,Jams and Jellies
+Bravo Turkey Noodle Soup,Canned Foods,Soup,Canned Soup
+Bravo Canned Peas,Canned Foods,Canned Vegetables,Vegetables
+Ebony Tomatos,Produce,Fresh Vegetables,Vegetables
+Ebony Mushrooms,Produce,Fresh Vegetables,Vegetables
+Ebony Honey Dew,Produce,Fresh Fruit,Fruit
+Tell Tale Oranges,Produce,Fresh Fruit,Fruit
+Best Wheat Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Jeffers Wheat Puffs,Breakfast Foods,Cereal,Breakfast Foods
+BBB Best Grape Preserves,Baking Goods,Preserves,Jams and Jellies
+Blue Medal Small Eggs,Eggs,Eggs,Eggs
+Even Better Jack Cheese,Dairy,Cheese,Dairy
+Just Right Creamed Corn,Canned Foods,Canned Vegetables,Vegetables
+Nationeel Graham Crackers,Snack Foods,Cookies,Snack Foods
+Pearl Light Beer,Alcoholic Beverages,Beer,Beer and Wine
+Bravo Chicken Noodle Soup,Canned Foods,Soup,Canned Soup
+Club Large Curd Cottage Cheese,Dairy,Cottage Cheese,Dairy
+BBB Best White Sugar,Baking Goods,Sugar,Baking Goods
+High Top Lettuce,Produce,Fresh Vegetables,Vegetables
+High Top Elephant Garlic,Produce,Fresh Vegetables,Vegetables
+High Top Green Pepper,Produce,Fresh Vegetables,Vegetables
+Landslide Low Fat Apple Butter,Baking Goods,Preserves,Jams and Jellies
+Token Cola,Beverages,Soda,Carbonated Beverages
+Tell Tale Baby Onion,Produce,Fresh Vegetables,Vegetables
+Blue Label Chicken Noodle Soup,Canned Foods,Soup,Canned Soup
+Landslide Hot Chocolate,Beverages,Chocolate,Hot Beverages
+Medalist Thai Rice,Starchy Foods,Rice,Starchy Foods
+Club Low Fat Sour Cream,Dairy,Sour Cream,Dairy
+Club Low Fat Sour Cream,-,-,-
+Red Spade Low Fat Cole Slaw,Deli,Deli Salads,Side Dishes
+High Top Sweet Peas,Produce,Fresh Vegetables,Vegetables
+Choice Semi-Sweet Chocolate Bar,Snacks,Chocolate Candy,Candy
+Excellent Cranberry Juice,Beverages,Juice,Pure Juice Beverages
+Choice Bubble Gum,Snacks,Gum,Candy
+Even Better Sour Cream,Dairy,Sour Cream,Dairy
+Excellent Cola,Beverages,Soda,Carbonated Beverages
+Nationeel Cheese Crackers,Snack Foods,Crackers,Snack Foods
+Tell Tale Prepared Salad,Produce,Fresh Vegetables,Vegetables
+Colony Blueberry Muffins,Baked Goods,Muffins,Bread
+Golden Low Fat Waffles,Frozen Foods,Waffles,Breakfast Foods
+Golden Turkey TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+High Top New Potatos,Produce,Fresh Vegetables,Vegetables
+Super Salt,Baking Goods,Spices,Baking Goods
+Fast Beef Jerky,Snack Foods,Dried Meat,Snack Foods
+Fast Chocolate Donuts,Snack Foods,Donuts,Snack Foods
+Fast Low Fat Chips,Snack Foods,Chips,Snack Foods
+Landslide Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Landslide White Sugar,Baking Goods,Sugar,Baking Goods
+Token Mango Drink,Beverages,Flavored Drinks,Drinks
+Token Cranberry Juice,Beverages,Juice,Pure Juice Beverages
+Ebony Corn on the Cob,Produce,Fresh Vegetables,Vegetables
+Blue Label Vegetable Soup,Canned Foods,Soup,Canned Soup
+Better Canned Beets,Canned Foods,Canned Vegetables,Vegetables
+Golden Frozen Pancakes,Frozen Foods,Pancakes,Breakfast Foods
+Best Choice Avocado Dip,Snack Foods,Dips,Snack Foods
+Club 2% Milk,Dairy,Milk,Dairy
+Washington Berry Juice,Beverages,Juice,Pure Juice Beverages
+Great Rye Bread,Baked Goods,Sliced Bread,Bread
+Gorilla Cheese Spread,Dairy,Cheese,Dairy
+Imagine Chicken TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+Walrus Merlot Wine,Alcoholic Beverages,Wine,Beer and Wine
+Red Spade Sliced Turkey,Deli,Deli Meats,Meat
+Colony White Bread,Baked Goods,Sliced Bread,Bread
+Jumbo Egg Substitute,Eggs,Eggs,Eggs
+Jeffers Grits,Breakfast Foods,Cereal,Breakfast Foods
+Golden Popsicles,Frozen Foods,Ice Cream,Frozen Desserts
+Super Oregano,Baking Goods,Spices,Baking Goods
+Tell Tale Fuji Apples,Produce,Fresh Fruit,Fruit
+Carlson Buttermilk,Dairy,Milk,Dairy
+Colony Cranberry Muffins,Baked Goods,Muffins,Bread
+Blue Label Canned Tuna in Water,Canned Foods,Tuna,Canned Tuna
+Gorilla Low Fat Sour Cream,Dairy,Sour Cream,Dairy
+Walrus Imported Beer,Alcoholic Beverages,Beer,Beer and Wine
+Golden Frozen Chicken Wings,Frozen Foods,Frozen Chicken,Meat
+High Top Plums,Produce,Fresh Fruit,Fruit
+High Top Peaches,Produce,Fresh Fruit,Fruit
+Excellent Orange Juice,Beverages,Juice,Pure Juice Beverages
+Moms Foot-Long Hot Dogs,Deli,Hot Dogs,Meat
+Landslide Brown Sugar,Baking Goods,Sugar,Baking Goods
+Bravo Fancy Canned Clams,Canned Foods,Clams,Canned Clams
+Imagine Turkey TV Dinner,Frozen Foods,TV Dinner,Frozen Entrees
+Nationeel Strawberry Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Medalist Spaghetti,Starchy Foods,Pasta,Starchy Foods
+Medalist Spaghetti,-,-,-
+Moms Cole Slaw,Deli,Deli Salads,Side Dishes
+Tell Tale Honey Dew,Produce,Fresh Fruit,Fruit
+Tell Tale Tangerines,Produce,Fresh Fruit,Fruit
+Tell Tale Party Nuts,Produce,Nuts,Specialty
+Fast Fudge Cookies,Snack Foods,Cookies,Snack Foods
+Fast Graham Crackers,Snack Foods,Cookies,Snack Foods
+Colony Bagels,Baked Goods,Bagels,Bread
+Bravo Canned Tuna in Water,Canned Foods,Tuna,Canned Tuna
+Gorilla Buttermilk,Dairy,Milk,Dairy
+Cutting Edge Beef Bologna,Deli,Bologna,Meat
+Cutting Edge Corned Beef,Deli,Deli Meats,Meat
+Imagine Waffles,Frozen Foods,Waffles,Breakfast Foods
+Ebony Golden Delcious Apples,Produce,Fresh Fruit,Fruit
+Nationeel Fondue Mix,Snack Foods,Dips,Snack Foods
+Nationeel Frosted Cookies,Snack Foods,Cookies,Snack Foods
+BBB Best French Roast Coffee,Beverages,Coffee,Hot Beverages
+BBB Best Apple Jam,Baking Goods,Jam,Jams and Jellies
+Even Better 1% Milk,Dairy,Milk,Dairy
+Washington Mango Drink,Beverages,Flavored Drinks,Drinks
+Ship Shape Extra Lean Hamburger,Meat,Hamburger,Meat
+High Top Red Pepper,Produce,Fresh Vegetables,Vegetables
+Great Bagels,Baked Goods,Bagels,Bread
+Super Chunky Peanut Butter,Baking Goods,Peanut Butter,Jams and Jellies
+Super French Roast Coffee,Beverages,Coffee,Hot Beverages
+Super Grape Preserves,Baking Goods,Preserves,Jams and Jellies
+Carlson Low Fat Sour Cream,Dairy,Sour Cream,Dairy
+Carlson 1% Milk,Dairy,Milk,Dairy
+Carlson Strawberry Yogurt,Dairy,Yogurt,Dairy
+Just Right Canned Tuna in Oil,Canned Foods,Tuna,Canned Tuna
+Just Right Canned Yams,Canned Foods,Canned Vegetables,Vegetables
+Just Right Vegetable Soup,Canned Foods,Soup,Canned Soup
+Pearl Light Wine,Alcoholic Beverages,Wine,Beer and Wine
+Fantastic Blueberry Muffins,Baked Goods,Muffins,Bread
+BBB Best Decaf Coffee,Beverages,Coffee,Hot Beverages
+BBB Best Decaf Coffee,-,-,-
+BBB Best Low Fat Apple Butter,Baking Goods,Preserves,Jams and Jellies
+BBB Best Sesame Oil,Baking Goods,Cooking Oil,Baking Goods
+Nationeel Buttered Popcorn,Snack Foods,Popcorn,Snack Foods
+Tell Tale Elephant Garlic,Produce,Fresh Vegetables,Vegetables
+Best Choice Mini Donuts,Snack Foods,Donuts,Snack Foods
+Better Chicken Ramen Soup,Canned Foods,Soup,Canned Soup
+Blue Label Fancy Canned Clams,Canned Foods,Clams,Canned Clams
+Moms Roasted Chicken,Deli,Fresh Chicken,Meat
+Fast Cheese Crackers,Snack Foods,Crackers,Snack Foods
+American Low Fat Cole Slaw,Deli,Deli Salads,Side Dishes
+Just Right Regular Ramen Soup,Canned Foods,Soup,Canned Soup
+Fast Salted Pretzels,Snack Foods,Pretzels,Snack Foods
+Moms Pimento Loaf,Deli,Bologna,Meat
+Tell Tale Shitake Mushrooms,Produce,Fresh Vegetables,Vegetables
+Just Right Large Canned Shrimp,Canned Foods,Shrimp,Canned Shrimp
+Just Right Fancy Canned Anchovies,Canned Foods,Anchovies,Canned Anchovies
+American Turkey Hot Dogs,Deli,Hot Dogs,Meat
+Landslide Apple Jam,Baking Goods,Jam,Jams and Jellies
+Fast Dried Dates,Snack Foods,Dried Fruit,Snack Foods
+Golden Low Fat French Fries,Frozen Foods,French Fries,Vegetables
+Great Cranberry Muffins,Baked Goods,Muffins,Bread
+Ebony Red Delcious Apples,Produce,Fresh Fruit,Fruit
+Ebony Red Delcious Apples,-,-,-
+Fast Low Fat Popcorn,Snack Foods,Popcorn,Snack Foods
+Blue Label Chicken Ramen Soup,Canned Foods,Soup,Canned Soup
+American Sliced Ham,Deli,Deli Meats,Meat
+Super Hot Chocolate,Beverages,Chocolate,Hot Beverages
+Bravo Canned String Beans,Canned Foods,Canned Vegetables,Vegetables
+Even Better 2% Milk,Dairy,Milk,Dairy
+Imagine Frozen Corn,Frozen Foods,Frozen Vegetables,Vegetables
+Red Spade Corned Beef,Deli,Deli Meats,Meat
+Radius Corn Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Ebony Almonds,Produce,Nuts,Specialty
+BBB Best Regular Coffee,Beverages,Coffee,Hot Beverages
+Red Spade Roasted Chicken,Deli,Fresh Chicken,Meat
+Nationeel Fudge Cookies,Snack Foods,Cookies,Snack Foods
+Tell Tale New Potatos,Produce,Fresh Vegetables,Vegetables
+Colony Rye Bread,Baked Goods,Sliced Bread,Bread
+Just Right Canned Beets,Canned Foods,Canned Vegetables,Vegetables
+Tell Tale Golden Delcious Apples,Produce,Fresh Fruit,Fruit
+Red Spade Potato Salad,Deli,Deli Salads,Side Dishes
+Carlson Sour Cream,Dairy,Sour Cream,Dairy
+Moms Low Fat Cole Slaw,Deli,Deli Salads,Side Dishes
+Tell Tale Red Delcious Apples,Produce,Fresh Fruit,Fruit
+Club Low Fat String Cheese,Dairy,Cheese,Dairy
+Medalist Manicotti,Starchy Foods,Pasta,Starchy Foods
+Fast Lemon Cookies,Snack Foods,Cookies,Snack Foods
+BBB Best Hot Chocolate,Beverages,Chocolate,Hot Beverages
+Fabulous Berry Juice,Beverages,Juice,Pure Juice Beverages
+Best Corn Puffs,Breakfast Foods,Cereal,Breakfast Foods
+Club Chocolate Milk,Dairy,Milk,Dairy
+Golden Orange Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Best Choice Lemon Cookies,Snack Foods,Cookies,Snack Foods
+Great English Muffins,Baked Goods,Muffins,Bread
+Super Apple Jam,Baking Goods,Jam,Jams and Jellies
+Imagine Ice Cream Sandwich,Frozen Foods,Ice Cream,Frozen Desserts
+Tell Tale Peaches,Produce,Fresh Fruit,Fruit
+Gorilla Sharp Cheddar Cheese,Dairy,Cheese,Dairy
+Gorilla Mild Cheddar Cheese,Dairy,Cheese,Dairy
+Club Whole Milk,Dairy,Milk,Dairy
+Atomic Malted Milk Balls,Snacks,Chocolate Candy,Candy
+Walrus Chardonnay Wine,Alcoholic Beverages,Wine,Beer and Wine
+Golden Frozen Carrots,Frozen Foods,Frozen Vegetables,Vegetables
+Big City Canned Peaches,Canned Products,Canned Fruit,Fruit
+Ebony Mandarin Oranges,Produce,Fresh Fruit,Fruit
+Ebony Potatos,Produce,Fresh Vegetables,Vegetables
+Gorilla Muenster Cheese,Dairy,Cheese,Dairy
+Golden Lemon Popsicles,Frozen Foods,Popsicles,Frozen Desserts
+Tell Tale Beets,Produce,Fresh Vegetables,Vegetables
+Pearl Chablis Wine,Alcoholic Beverages,Wine,Beer and Wine
+Imagine Frozen Chicken Wings,Frozen Foods,Frozen Chicken,Meat
+Good Merlot Wine,Alcoholic Beverages,Wine,Beer and Wine
+Better Canned Tuna in Oil,Canned Foods,Tuna,Canned Tuna
+Nationeel Lemon Cookies,Snack Foods,Cookies,Snack Foods
+Nationeel Sesame Crackers,Snack Foods,Crackers,Snack Foods
+Better Chicken Soup,Canned Foods,Soup,Canned Soup
+Better Chicken Soup,-,-,-
+Swell Canned Peaches,Canned Products,Canned Fruit,Fruit
+Good Chablis Wine,Alcoholic Beverages,Wine,Beer and Wine
+Great White Bread,Baked Goods,Sliced Bread,Bread
+Token Diet Cola,Beverages,Soda,Carbonated Beverages
+Bravo Canned Tuna in Oil,Canned Foods,Tuna,Canned Tuna
+Jumbo Large Eggs,Eggs,Eggs,Eggs
+Thresher Tasty Candy Bar,Snacks,Chocolate Candy,Candy
+Ebony Sweet Onion,Produce,Fresh Vegetables,Vegetables
+High Top Mushrooms,Produce,Fresh Vegetables,Vegetables
+Excellent Strawberry Drink,Beverages,Flavored Drinks,Drinks
+Nationeel Dried Apples,Snack Foods,Dried Fruit,Snack Foods
+Tell Tale Corn on the Cob,Produce,Fresh Vegetables,Vegetables
+Fast Fudge Brownies,Snack Foods,Cookies,Snack Foods
+Pearl Merlot Wine,Alcoholic Beverages,Wine,Beer and Wine
+Better Canned Tomatos,Canned Foods,Canned Vegetables,Vegetables
+Medalist Ravioli,Starchy Foods,Pasta,Starchy Foods
+Better Creamed Corn,Canned Foods,Canned Vegetables,Vegetables
+Fast Apple Fruit Roll,Snack Foods,Dried Fruit,Snack Foods
+Imagine Frozen Chicken Thighs,Frozen Foods,Frozen Chicken,Meat
+Bravo Fancy Canned Anchovies,Canned Foods,Anchovies,Canned Anchovies
+Just Right Chicken Noodle Soup,Canned Foods,Soup,Canned Soup
+High Top Prepared Salad,Produce,Fresh Vegetables,Vegetables
+Landslide Tomato Sauce,Baking Goods,Sauces,Baking Goods
+Curlew Lox,Seafood,Fresh Fish,Seafood
+Super Strawberry Jam,Baking Goods,Jam,Jams and Jellies
