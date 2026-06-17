@@ -266,6 +266,10 @@ Data prep has two halves:
 
 2. **Sigma side (this section)** — the same data needs to live in a Snowflake schema your Sigma connection can read. We'll create one.
 
+<aside class="negative">
+<strong>NOTE:</strong><br> The DDL below grants access to <code>SIGMA_SERVICE_ROLE</code>. Substitute the role your Sigma connection actually uses if it differs — you can confirm it in Sigma under <code>Administration</code> > <code>Connections</code> by clicking your Snowflake connection.
+</aside>
+
 ```copy-code
 USE ROLE ACCOUNTADMIN;
 USE WAREHOUSE COMPUTE_WH;
@@ -416,9 +420,6 @@ COPY INTO DATE_DIM      FROM @ts_retail_stage/DATE_DIM.csv      ON_ERROR = ABORT
 COPY INTO PROMO_DIM     FROM @ts_retail_stage/PROMO_DIM.csv     ON_ERROR = ABORT_STATEMENT;
 
 -- Grant Sigma's service role visibility on the new schema and its tables.
--- Substitute SIGMA_SERVICE_ROLE with the role your Sigma connection actually
--- uses if it differs — you can confirm it in Sigma under Administration >
--- Connections by clicking your Snowflake connection.
 GRANT USAGE  ON DATABASE QUICKSTARTS                                    TO ROLE SIGMA_SERVICE_ROLE;
 GRANT USAGE  ON SCHEMA   QUICKSTARTS.TS_RETAIL_ANALYTICS                TO ROLE SIGMA_SERVICE_ROLE;
 GRANT SELECT ON ALL    TABLES IN SCHEMA QUICKSTARTS.TS_RETAIL_ANALYTICS TO ROLE SIGMA_SERVICE_ROLE;
