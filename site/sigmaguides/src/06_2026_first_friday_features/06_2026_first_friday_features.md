@@ -13,7 +13,7 @@ lastUpdated: 2026-07-05
 
 June 5, 2026 changes: done
 June 12, 2026 changes: done
-June 19, 2026 changes: pending
+June 18, 2026 changes: done
 June 26, 2026 changes: pending
 
 Publish on July 3
@@ -78,6 +78,11 @@ For security reasons, if `Run queries as recipient` is enabled, either as an org
 
 For more information, see [Manage export frequency and authentication settings](https://help.sigmacomputing.com/docs/restrict-export-recipients)
 
+### Deployment policies deploy documents referenced in Open Sigma document actions (GA)
+Deployed documents that include `Open Sigma document` actions now automatically deploy the referenced target documents and update the action references accordingly.
+
+For more information, see [What gets deployed to a tenant](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations#what-gets-deployed-to-a-tenant)
+
 ### License type column in the Administration > Users table (GA)
 The `Administration` > `Usage` > `Users` > `User Detail` table now includes a dedicated `License type` column that indicates the license tier associated with each user's account type.
 
@@ -91,6 +96,11 @@ Sigma now uses `GPT 5.4` instead of `GPT 5.1` if your OpenAI or Azure OpenAI acc
 
 ## AI
 Duration: 20
+
+### AI column support for Databricks connections (Beta)
+You can now create and use AI columns on Databricks connections. AI columns let you construct dynamic prompts that reference specific table columns, useful for tasks like enriching, summarizing, and classifying data.
+
+For more information, see [Create AI columns (Beta)](https://help.sigmacomputing.com/docs/create-ai-columns)
 
 ### Build and interact with Sigma agents (Beta) <img src="assets/heart_icon.png" width="25"/>
 Build agentic solutions natively in Sigma with Sigma agents. Agents provide AI capabilities to a dashboard or application based on a predefined context of the data elements in a workbook.
@@ -140,6 +150,16 @@ The `Update a deployment policy` endpoint (`PATCH /v2/deploymentPolicies/{deploy
 
 For more information, see [Update a deployment policy](https://help.sigmacomputing.com/reference-link/updatedeployment)
 
+### New option for Sync a connection by path endpoint (GA)
+The `Sync a connection by path` endpoint (`POST /v2/connections/{connectionId}/sync`) now supports syncing all connection objects by providing an empty path parameter.
+
+For more information, see [Sync a connection by path](https://help.sigmacomputing.com/reference-link/syncconnectionpath)
+
+### New option included in API endpoint response (GA)
+The `List files` and `List member files` endpoints now include a `parentSourceUrlId` in the response when returning details about documents deployed to a tenant organization.
+
+For more information, see [List files](https://help.sigmacomputing.com/reference-link/fileslist) and [List member files](https://help.sigmacomputing.com/reference-link/listaccessibleinodes)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -153,6 +173,18 @@ Duration: 20
 **3:** License tier usage counts in `Administration` > `Users` now align with the metrics shown on the Usage dashboard.
 
 **4:** The value column position in pivot table exports now always matches how it appears in the workbook.
+
+**5:** After making edits in a securely embedded workbook or a Sigma Public app and leaving the draft without publishing, edits were no longer visible in the draft.
+
+**6:** After releasing warehouse agents for Sigma Assistant, asking questions of data source tables with Sigma Assistant was no longer available.
+
+**7:** Editing a scheduled email or Slack export no longer displays an error that prevented the scheduled export from being edited.
+
+**8:** Swapping sources with the `v2/workbooks/swapSources` endpoint with the `copyInputTableData` option set to `True` did not copy input table data successfully.
+
+**9:** When editing or customizing elements in a container, tabbed container, or repeated container, you can now select the parent container from the context menu.
+
+**10:** When modifying export schedules, only the owner of the schedule or an admin can make changes to the schedule.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -294,6 +326,17 @@ For more information, see [Build a progress bar](https://help.sigmacomputing.com
 When tagging a workbook version, you can swap the API connectors used by `Call API` actions and the MCP tools and warehouse agents used by Sigma agents.
 
 For more information, see [Tag a document version](https://help.sigmacomputing.com/docs/tag-a-document-version)
+
+### Terminology updates: "My" is now "Your"
+Several UI strings have shifted from first-person to second-person to make ownership clearer. 
+
+`My workspaces` is now `Your workspaces`<br>
+
+`My last activity` column in the `Recent` view is now `Your last activity`<br>
+
+The saved-view options `Set as my default view` and `Remove as my default view` are now `Set as your default view` and `Remove as your default view`. 
+
+Embed customers should review any custom UI references to these strings.
 
 ### Use dynamic text in email exports (GA)
 You can now use dynamic text when formatting the `Subject` and `Message` fields in ad hoc and scheduled email exports.
