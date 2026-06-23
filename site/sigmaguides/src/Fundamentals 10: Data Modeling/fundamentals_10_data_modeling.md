@@ -5,7 +5,7 @@ categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-03-05
+lastUpdated: 2026-24-06
 
 # Fundamentals 10: Data Modeling
 
