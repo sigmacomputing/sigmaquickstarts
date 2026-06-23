@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2026-05-06
 
-# Create an Sigma Assistant Usage Dashboard
+# Create a Sigma Assistant Usage Dashboard
 
 ## Overview 
 Duration: 5 
