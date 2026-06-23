@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-07-20
+lastUpdated: 2026-0-23
 
 # Migrating From MicroStrategy Made Easy
 
@@ -208,7 +208,7 @@ source ~/.sigma-migration/env && python3 ~/.claude/skills/microstrategy-to-sigma
 You should see a successful login probe and a list of projects visible to your user.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The Library URL above is the Strategy One Cloud form. For an on-prem MicroStrategy install, append <code>/MicroStrategyLibrary</code> to the host (e.g., <code>https://&lt;host&gt;/MicroStrategyLibrary</code>) — the Web URL won't work for API auth. If your tenant uses a self-signed or trial certificate and Python rejects it, <code>mstr.py</code> handles the common Python 3.13+ <code>VERIFY_X509_STRICT</code> case.
+<strong>NOTE:</strong><br> The <code>/MicroStrategyLibrary</code> suffix is required — the customer-facing MicroStrategy Web URL won't work for API auth. If your tenant uses a self-signed or trial certificate and Python rejects it, <code>mstr.py</code> handles the common Python 3.13+ <code>VERIFY_X509_STRICT</code> case.
 </aside>
 
 ![divider](assets/horizonalline.png)
@@ -384,7 +384,7 @@ For example:
 <img src="assets/mstr_06a.png" width="800"/>
 
 Copy the 32-character dossier ID — the second hex segment after `/app/`. Ignore the project ID (the skill defaults to your user's first project) and the trailing state token.
-- `SIGMA_CONNECTION_ID` — your Snowflake connection ID (the one where the sample data was landed) from Sigma's `Administration` > `Connections`
+- `SIGMA_CONNECTION_ID` — your Snowflake connection ID (the one where you landed the sample data) from Sigma's `Administration` > `Connections`
 - `SIGMA_FOLDER_ID` — the folder ID you copied at the end of the previous section
 - Any additional custom instructions are useful to add here now.
 
@@ -430,7 +430,7 @@ Duration: 10
 
 When the migration completes, Claude prints a final summary covering the whole pipeline — every phase's result, the visual-QA outcome, the hard-gate verdict, and the URLs of the new Sigma data model and workbook:
 
-<!-- <img src="assets/mstr_06.png" width="800"/> -->
+<img src="assets/mstr_06b.png" width="800"/>
 
 The summary walks through six phases plus a visual-QA pass:
 
@@ -442,13 +442,17 @@ The summary walks through six phases plus a visual-QA pass:
 - **Phase 5 — Visual QA.** Renders the workbook's pages as PNGs and lints them — no overlapping tiles, no clipped chart titles, no dead zones, no orphan controls.
 - **Phase 6 — Parity + hard gate.** Pulls each report's expected values directly from MicroStrategy via `POST /api/v2/reports/{id}/instances`, exports each Sigma element via the Sigma export API, and compares row-by-row (money/counts exact; ratio metrics within rel 1e-6). The gate is GREEN only when every report PASSes — never on a 200 POST alone.
 
+<aside class="negative">
+<strong>NOTE — Quick Cube source dossiers:</strong><br> If your dossier is built on a MicroStrategy "Quick Cube" (created by uploading a CSV or Excel file directly into MSTR Cloud), MSTR doesn't expose enough metadata for full semantic-model extraction. The skill switches to a warehouse-rehost path: grid content converts with row-level parity, and complex viz types (microcharts, custom charts) surface as flagged table fallbacks.
+</aside>
+
 Open the new workbook in Sigma to see the migrated dossier:
 
-<!-- <img src="assets/mstr_08.png" width="800"/> -->
+<img src="assets/mstr_08.png" width="800"/>
 
-Open the data model to see how the converter wired up the joins and metrics.
+Open the data model too:
 
-<!-- <img src="assets/mstr_07.png" width="800"/> -->
+<img src="assets/mstr_07.png" width="800"/>
 
 **Hand-polish items the skill flags rather than silently working around:**
 
@@ -527,7 +531,7 @@ The following is a "grab bag" of things that might come up during real conversio
 
 - **Phase 2.5 — AE row-collapse — fires and seems mysterious:**<br> MicroStrategy's Analytical Engine collapses non-unique attribute key groups to a single representative row that **cannot be derived from clean SQL**. When the converter spots an attribute whose DESC form differs from its key, it re-executes the affected reports in MSTR, pins each "winner" empirically, and emits a deterministic SQL element. This is documented in `refs/ae-row-collapse.md` — read it once and the gate stops feeling like magic.
 
-- **Metric flagged as "needs review":**<br> Some MicroStrategy patterns — Liquid-like template variables, certain compound metric shapes, or metrics referencing non-validated functions — don't have a direct Sigma equivalent. The skill surfaces the original MSTR expression alongside its best-guess Sigma translation. Hand-author the Sigma formula on the affected element using the warehouse-resolved column names.
+- **Metric flagged as "needs review":**<br> Some MicroStrategy patterns — non-additive compound metrics, conditional metrics using MSTR's filter qualifications, or metrics referencing functions without a direct Sigma equivalent — surface as flagged for hand-author. The skill prints the original MSTR expression alongside its best-guess Sigma translation. Hand-author the Sigma formula on the affected element using the warehouse-resolved column names.
 
 - **`scout-gate-readback.py` exits 11 with an `UNSCOUTED` error column:**<br> The converter passed a metric function through that has no Sigma equivalent. The mechanical gate stops the pipeline so you don't ship a workbook with broken columns. Spawn a gap-scout per the printed `--gap-id` (see `scripts/gap-scout.md`), translate or escalate, then re-run the gate. The script only exits 0 when no unscouted error columns remain.
 
