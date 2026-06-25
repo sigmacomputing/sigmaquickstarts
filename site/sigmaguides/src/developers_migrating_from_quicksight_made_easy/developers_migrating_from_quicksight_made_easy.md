@@ -8,7 +8,7 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
 lastUpdated: 2026-06-25
 
-# Migrating From QuickSight Made Easy
+# Migrating From AWS QuickSight Made Easy
 
 ## Overview
 Duration: 5
