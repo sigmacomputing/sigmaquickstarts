@@ -3,9 +3,9 @@ id: developers_migrating_looker_made_easy
 summary: developers_migrating_looker_made_easy
 categories: migrations
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: default
 lastUpdated: 2026-07-01
 
 # Migrating From Looker Made Easy
