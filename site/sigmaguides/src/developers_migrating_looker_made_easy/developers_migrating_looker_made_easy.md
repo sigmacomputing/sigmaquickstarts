@@ -1,12 +1,12 @@
 author: pballai
 id: developers_migrating_looker_made_easy
 summary: developers_migrating_looker_made_easy
-categories: developers
+categories: migrations
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-07-20
+lastUpdated: 2026-07-01
 
 # Migrating From Looker Made Easy
 

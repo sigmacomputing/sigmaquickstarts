@@ -1,12 +1,12 @@
 author: pballai
 id: developers_migrating_from_microstrategy_made_easy
 summary: developers_migrating_from_microstrategy_made_easy
-categories: developers
+categories: migrations
 environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-0-23
+lastUpdated: 2026-07-01
 
 # Migrating From MicroStrategy Made Easy
 

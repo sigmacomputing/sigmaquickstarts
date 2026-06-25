@@ -30,6 +30,7 @@ $color-developers: #3F51B5;
 $color-embedding: #06dbf7;
 $color-firstfridayfeatures: #1F91F2;
 $color-fundamentals: #FFA726;
+$color-migrations: #FF6B35;
 $color-security: #f70606;
 $color-tables: #FBC02D;
 $color-use-cases: #7E57C2;
@@ -43,6 +44,7 @@ $icon-developers: 'developers.svg';
 $icon-embedding: 'embedding.svg';
 $icon-firstfridayfeatures: 'administration.svg';
 $icon-fundamentals: 'Solutions_MarkAnal.svg';
+$icon-migrations: 'developers.svg';
 $icon-security: 'security.svg';
 $icon-tables: 'tables.svg';
 $icon-use-cases: 'use-cases.svg';
@@ -56,6 +58,7 @@ $icon-templates: 'workbook-template.svg';
 @include codelab-card(['embedding'], $color-embedding, $icon-embedding);
 @include codelab-card(['firstfridayfeatures'], $color-firstfridayfeatures, $icon-firstfridayfeatures);
 @include codelab-card(['fundamentals'], $color-fundamentals, $icon-fundamentals);
+@include codelab-card(['migrations'], $color-migrations, $icon-migrations);
 @include codelab-card(['security'], $color-security, $icon-security);
 @include codelab-card(['tables'], $color-tables, $icon-tables);
 @include codelab-card(['use-cases'], $color-use-cases, $icon-use-cases);
@@ -66,6 +69,7 @@ $icon-templates: 'workbook-template.svg';
 // Special override for dark category bars - white text
 .administration-bar,
 .functions-bar,
+.migrations-bar,
 .partners-bar,
 .use-cases-bar,
 .security-bar,
@@ -83,6 +87,7 @@ Embedding
 First Friday Features
 Functions
 Fundamentals
+Migrations
 Partners
 Security
 Tables (include pivot and input tables for now)
