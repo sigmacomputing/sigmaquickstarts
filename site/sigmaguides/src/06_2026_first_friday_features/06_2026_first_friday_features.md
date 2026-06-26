@@ -14,7 +14,8 @@ lastUpdated: 2026-07-05
 June 5, 2026 changes: done
 June 12, 2026 changes: done
 June 18, 2026 changes: done
-June 26, 2026 changes: pending
+June 26, 2026 changes: done
+June 29-30, 2026 changes: rolling into July FFF
 
 Publish on July 3
 
@@ -88,6 +89,14 @@ The `Administration` > `Usage` > `Users` > `User Detail` table now includes a de
 
 <img src="assets/fff_06_2026_02.png" width="800"/>
 
+### Manage tenant attributes from the parent organization (Beta)
+Organizations using Sigma Tenants can now manage tenant organization attributes from the parent organization by creating and assigning attributes through the `Tenants` section of the Administration portal.
+
+For more information, see [Create and manage tenant organizations](https://help.sigmacomputing.com/docs/create-and-manage-tenant-organizations)
+
+### Sigma now supports the Azure Australia region (GA)
+Sigma deployment now includes Azure Australia (`australiaeast`) in New South Wales, providing lower latency and improved performance for Australian customers, with a disaster recovery region in `australiasoutheast`.
+
 ### Support for OpenAI GPT 5.4 (GA)
 Sigma now uses `GPT 5.4` instead of `GPT 5.1` if your OpenAI or Azure OpenAI account supports it.
 
@@ -130,6 +139,26 @@ You can now create AI columns to enrich your data using natural language prompts
 AI columns turn enrichment, classification, and summarization into a one-step workflow inside Sigma — no separate pipeline, no Python, no waiting on data engineering. Analysts can attach language model intelligence directly to existing tables, which is the fastest path from raw operational data to ready-to-analyze attributes.
 
 For more information, see [Create AI columns (Beta)](https://help.sigmacomputing.com/docs/create-ai-columns)
+
+### Monitor MCP queries (GA)
+You can now apply the `"kind":"mcp"` tag to monitor queries sent by the Sigma MCP server — useful for tracking costs or usage associated with the MCP server.
+
+For more information, see [Monitor MCP queries](https://help.sigmacomputing.com/docs/use-sigma-mcp-server#monitor-mcp-queries)
+
+### Sigma Assistant in the workbook: plan and build modes (Beta) <img src="assets/heart_icon.png" width="25"/>
+Sigma Assistant can now help design and build workbooks using natural language prompts. While editing a workbook, Assistant can explore any data source you have access to and assemble dashboards with charts, tables, KPIs, and filters, set up structured data entry, and scaffold AI-powered apps.
+
+**WHY IT MATTERS:**<br>
+This shifts Assistant from answering questions to building the workbook with you — charts, tables, KPIs, filters, data-entry flows, and AI apps all generated from natural-language prompts against a permitted data source. For analysts and builders who already know what they want, it removes the click-by-click assembly step that takes the longest in dashboard work.
+
+For more information, see [Use AI to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Available to customers who meet certain conditions. For more information, contact your Account Executive.
+</aside>
+
+### Upcoming changes to documentation MCP server (Beta)
+Starting July 6, 2026, the documentation MCP server will provide only the `searchDocs` tool, which searches Sigma documentation and returns relevant content sections and source URLs. The existing URL continues to function, with availability at both `https://help.sigmacomputing.com/mcp` and `https://help.sigmacomputing.com/_mcp/server`.
 
 ### Use warehouse agents with Assistant and agents (Beta) <img src="assets/heart_icon.png" width="25"/>
 Integrate Snowflake Cortex Agents or Databricks Genie Spaces for use with Sigma Assistant and Sigma agent workflows.
@@ -186,12 +215,11 @@ Duration: 20
 
 **10:** When modifying export schedules, only the owner of the schedule or an admin can make changes to the schedule.
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+**11:** Documents containing custom SQL elements failed to deploy when the source swap policy associated with the deployment policy defined specific paths in the connection to swap to or from.
 
-## Charts
-Duration: 20
+**12:** Improved the loading time for KPI charts when opening a workbook for the first time.
 
+**13:** When using warehouse agents with Sigma Assistant, the name and email address of the user is now shared with the agent.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -200,7 +228,9 @@ Duration: 20
 Duration: 20
 
 ### Disable/Enable Action Sequences (GA)
-Disable a sequence to prevent it from running, then enable it to run again. The disabled state persists across workbook refreshes and user sessions until you manually re-enable the sequence.
+Disable a sequence to prevent it from running, then enable it to run again. The disabled state persists across workbook refreshes and user sessions until you manually re-enable the sequence:
+
+<img src="assets/fff_06_2026_03.png" width="400"/>
 
 For more information, see [Disable and enable sequences](https://help.sigmacomputing.com/docs/create-and-manage-action-sequences#disable-or-enable-sequences)
 
@@ -210,53 +240,17 @@ The pause/resume option for action sequences has been deprecated and replaced by
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Data Modeling
-Duration: 20
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Embedding
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Functions / Calculations
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Input Tables
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## New QuickStarts in June
 Duration: 20
-
-[Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html?index=..%2F..index#0)<br>
-Eight-step build walkthrough using a Sigma agent against Gong call transcripts in Snowflake. No code, no NLP pipeline.
 
 [Build Conversational AI Apps with Chat Elements and Snowflake Cortex](https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html?index=..%2F..index#0)<br>
 End-to-end pattern: a Sigma agent in a workbook calls a Snowflake Cortex Agent as a warehouse tool, with an optional input-table write-back flow.
 
 [Fundamentals 01: Overview (revised content)](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html?index=..%2F..index#4)<br>
 The AI section is now split into dedicated sections (AI in Sigma, Sigma Assistant, Sigma agents,  chat element, Formula Assistant and MCP Server).
-<br>
 
-**WHY IT MATTERS:**<br>
-Customers — especially execs and security reviewers — need to see that AI in Sigma isn't just a feature surface; it's wrapped in the operational and governance maturity of the broader platform.
-
-
+[Unlocking Insights from Unstructured Text with a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html?index=..%2F..index#0)<br>
+Eight-step build walkthrough using a Sigma agent against Gong call transcripts in Snowflake. No code, no NLP pipeline.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -285,6 +279,21 @@ For more information, see [Choose a Snowflake role](https://help.sigmacomputing.
 
 ## Workbooks
 Duration: 20
+
+### Ad hoc calculated column support (GA) <img src="assets/heart_icon.png" width="25"/>
+Adding ad hoc calculated columns in pivot tables is now supported, enabling one-off calculations in a pivot table column without modifying the underlying dataset or restructuring the pivot.
+
+An [example: Calculating the average price of a product category](Example: Calculating the average price of a product category)
+
+**WHY IT MATTERS:**<br>
+Ad hoc calcs are the fastest way to test a "what if I had this column?" idea without touching the underlying dataset or restructuring the pivot. Bringing them to pivot tables unblocks one of the most common asks in operational analytics — derive a metric, see it side-by-side with the existing rollups, and move on if it doesn't pan out.
+
+For more information, see [Create ad hoc calculations](https://help.sigmacomputing.com/docs/create-ad-hoc-calculations)
+
+### Create tables from an array with unnest (Beta)
+The `Unnest` feature lets you create a table from an array of values. After selecting a data source and identifying a column with array data, `Unnest` creates a new table element with one row for each array item.
+
+For more information, see [Create a table from an array](https://help.sigmacomputing.com/docs/create-a-table-from-an-array)
 
 ### Custom Page Sidebar (GA) <img src="assets/heart_icon.png" width="25"/>
 You can enable custom page sidebars to appear on one or more workbook pages. Page sidebars allow you to repeat contents like filters or navigation options across multiple pages.
@@ -321,6 +330,11 @@ Build a progress bar or progress ring to display a value as a percentage or prop
 Goal and target tracking shows up everywhere — pipeline coverage, OKRs, fundraising, capacity. Progress bars and rings replace the usual "calc a percentage and explain it" pattern with a clear visual that immediately communicates how close you are to a target.
 
 For more information, see [Build a progress bar](https://help.sigmacomputing.com/docs/build-a-progress-bar) and [Build a progress ring](https://help.sigmacomputing.com/docs/build-a-progress-ring)
+
+### Responsive segmented controls (GA)
+When segmented control values are too long to display fully when viewing or editing a document, the control converts to a drop-down menu instead of truncating the text.
+
+For more information, see [Segmented control](https://help.sigmacomputing.com/docs/segmented-control)
 
 ### Swap MCP tools, warehouse agents, and API connectors (GA)
 When tagging a workbook version, you can swap the API connectors used by `Call API` actions and the MCP tools and warehouse agents used by Sigma agents.
