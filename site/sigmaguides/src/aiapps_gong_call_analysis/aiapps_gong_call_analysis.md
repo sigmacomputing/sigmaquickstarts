@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-26
+lastUpdated: 2026-05-26
 
 # Unlocking Insights from Unstructured Text with a Sigma Agent
 

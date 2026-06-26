@@ -1,12 +1,12 @@
 author: pballai
 id: developers_migrating_looker_made_easy
 summary: developers_migrating_looker_made_easy
-categories: developers
+categories: migrations
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-07-20
+tags: default
+lastUpdated: 2026-07-01
 
 # Migrating From Looker Made Easy
 
@@ -31,16 +31,22 @@ You'll see the discovery artifacts each phase produces, the converter's breakdow
 <strong>WHY IT MATTERS:</strong><br> The skill runs the whole conversion — discover, translate, build, verify — and finishes with a documented parity check. The result is a working Sigma workbook on the warehouse plus the report that proves it matches the Looker source, instead of a rebuilt-by-hand workbook you have to spot-check yourself.
 </aside>
 
+### What else this enables
+
+A pure lift-and-shift is the floor, not the ceiling. The same skill family supports three follow-on moves that turn a migration into an upgrade:
+
+- **Dedup before you migrate.** Most BI estates carry years of dashboard sprawl — multiple near-identical dashboards built by different teams over time. The assessment skill flags dashboards that are roughly 90% the same and recommends merging them before conversion. You move 200 dashboards instead of 800, and every downstream conversation is simpler. Pair this with the usage data the assessment pulls (who views what, how often) and you can confidently retire cold content rather than carry it forward.
+
+- **Enhance, don't just translate.** Many "dashboards" in legacy tools are really input-driven workflows in disguise — a dashboard whose data is refreshed by uploading a CSV each morning is actually a forecasting app waiting to happen. After the lift-and-shift, the skill can suggest replacing those patterns with native Sigma constructs: input tables for write-back, Sigma Assistant for natural-language analysis, scheduled agents for routine summaries. The result isn't "the old dashboard, in a new tool" — it's "the workflow, finally done right."
+
+- **Audit your source as a side effect.** The parity check that closes the run isn't just a confidence test on the migration — it's a fresh pair of eyes on the source platform's math. Sigma customers have caught multi-year calculation errors during their first migration run because the parity gate flagged a Sigma vs source mismatch and the source turned out to be wrong. Plan the migration as your final audit of the legacy system.
+
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Looker is the source, Sigma is the target. Sigma reads the warehouse live, so the conversion's accuracy depends on the warehouse tables behind your Looker model being reachable from a Sigma connection. The skill reads the LookML project files (model + views) from a local clone of your Looker project's Git repo and reconciles the LookML view names back to the underlying warehouse columns. Parity is checked against Looker's own query results via the API, so any cache or PDT staleness surfaces as an explicit row-level diff rather than getting buried.
 </aside>
 
-<aside class="positive">
-<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
-</aside>
-
 <aside class="negative">
-<strong>AI MODEL DIFFERENCES:</strong><br> Depending on the AI model and Claude Code version you're running, the exact prompt wording, option ordering, and intermediate messages may differ slightly from what's shown in this QuickStart. The substantive steps and decisions are the same — pick the option that matches the intent described, even if the label varies.
+<strong>AI MODEL DIFFERENCES:</strong><br> Depending on which AI, model, and version you're running, the exact prompt wording, option ordering, and intermediate messages may differ slightly from what's shown in this QuickStart. The substantive steps and decisions are the same — pick the option that matches the intent described, even if the label varies.
 </aside>
 
 ### Target Audience
