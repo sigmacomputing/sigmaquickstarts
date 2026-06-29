@@ -179,6 +179,22 @@ For more information, see [Use warehouse agents with Sigma](https://help.sigmaco
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## AI Apps
+Duration: 20
+
+### Disable/Enable Action Sequences (GA)
+Disable a sequence to prevent it from running, then enable it to run again. The disabled state persists across workbook refreshes and user sessions until you manually re-enable the sequence:
+
+<img src="assets/fff_06_2026_03.png" width="400"/>
+
+For more information, see [Disable and enable sequences](https://help.sigmacomputing.com/docs/create-and-manage-action-sequences#disable-or-enable-sequences)
+
+### Pause/Resume Action Sequences (Deprecated)
+The pause/resume option for action sequences has been deprecated and replaced by disable/enable controls. Because the pause state was session-based and not saved, no migration is needed. New and existing sequences automatically reflect the updated controls.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## API
 Duration: 20
 
@@ -228,22 +244,6 @@ Duration: 20
 **12:** Improved the loading time for KPI charts when opening a workbook for the first time.
 
 **13:** When using warehouse agents with Sigma Assistant, the name and email address of the user is now shared with the agent.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## AI Apps
-Duration: 20
-
-### Disable/Enable Action Sequences (GA)
-Disable a sequence to prevent it from running, then enable it to run again. The disabled state persists across workbook refreshes and user sessions until you manually re-enable the sequence:
-
-<img src="assets/fff_06_2026_03.png" width="400"/>
-
-For more information, see [Disable and enable sequences](https://help.sigmacomputing.com/docs/create-and-manage-action-sequences#disable-or-enable-sequences)
-
-### Pause/Resume Action Sequences (Deprecated)
-The pause/resume option for action sequences has been deprecated and replaced by disable/enable controls. Because the pause state was session-based and not saved, no migration is needed. New and existing sequences automatically reflect the updated controls.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
