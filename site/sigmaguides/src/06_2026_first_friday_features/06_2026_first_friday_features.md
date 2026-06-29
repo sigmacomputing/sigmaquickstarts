@@ -3,9 +3,9 @@ id: 06_2026_first_friday_features
 summary: 06_2026_first_friday_features
 categories: firstfridayfeatures
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: first_friday_features
+tags:
 lastUpdated: 2026-07-05
 
 # (06-2026) June
@@ -117,6 +117,8 @@ Build agentic solutions natively in Sigma with Sigma agents. Agents provide AI c
 **WHY IT MATTERS:**<br>
 Sigma agents bring agent-style AI into the place where the data, governance, and audit trail already live — no separate orchestration layer, no shuttling context between systems. Builders define what an agent can see and do inside the workbook itself, so the agent inherits Sigma's permissions, lineage, and version history by default.
 
+<img src="assets/fff_06_2026_07.png" width="800"/>
+
 For more information, see [Sigma agents](https://help.sigmacomputing.com/docs/sigma-agents), [Build Sigma agents](https://help.sigmacomputing.com/docs/build-sigma-agents), and [Example agent implementations](https://help.sigmacomputing.com/docs/example-agent-implementations)
 
 There are also two QuickStarts on this topic:<br>
@@ -130,6 +132,8 @@ Use MCP servers for third-party services with Sigma agents by adding them to Sig
 **WHY IT MATTERS:**<br>
 MCP tools let Sigma agents reach into the systems your team already uses — ticketing, CRM, custom internal APIs — without writing connector code. Open MCP support keeps Sigma compatible with the broader agent ecosystem rather than locking customers into a single AI stack.
 
+<img src="assets/fff_06_2026_06.png" width="800"/>
+
 For more information, see [Configure MCP tools](https://help.sigmacomputing.com/docs/configure-mcp-tools)
 
 ### Create AI Columns (Beta) <img src="assets/heart_icon.png" width="25"/>
@@ -137,6 +141,8 @@ You can now create AI columns to enrich your data using natural language prompts
 
 **WHY IT MATTERS:**<br>
 AI columns turn enrichment, classification, and summarization into a one-step workflow inside Sigma — no separate pipeline, no Python, no waiting on data engineering. Analysts can attach language model intelligence directly to existing tables, which is the fastest path from raw operational data to ready-to-analyze attributes.
+
+<img src="assets/fff_06_2026_08.png" width="800"/>
 
 For more information, see [Create AI columns (Beta)](https://help.sigmacomputing.com/docs/create-ai-columns)
 
@@ -151,14 +157,16 @@ Sigma Assistant can now help design and build workbooks using natural language p
 **WHY IT MATTERS:**<br>
 This shifts Assistant from answering questions to building the workbook with you — charts, tables, KPIs, filters, data-entry flows, and AI apps all generated from natural-language prompts against a permitted data source. For analysts and builders who already know what they want, it removes the click-by-click assembly step that takes the longest in dashboard work.
 
-For more information, see [Use AI to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
+<img src="assets/fff_06_2026_09.png" width="800"/>
 
-<aside class="positive">
-<strong>NOTE:</strong><br> Available to customers who meet certain conditions. For more information, contact your Account Executive.
+<aside class="negative">
+<strong>NOTE:</strong><br> Assistant is only available to customers who meet certain conditions. For more information, contact your Account Executive
 </aside>
 
+For more information, see [Use AI to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
+
 ### Upcoming changes to documentation MCP server (Beta)
-Starting July 6, 2026, the documentation MCP server will provide only the `searchDocs` tool, which searches Sigma documentation and returns relevant content sections and source URLs. The existing URL continues to function, with availability at both `https://help.sigmacomputing.com/mcp` and `https://help.sigmacomputing.com/_mcp/server`.
+Starting July 6, 2026, the documentation MCP server will provide only the `searchDocs` tool, which searches Sigma documentation and returns relevant content sections and source URLs.c
 
 ### Use warehouse agents with Assistant and agents (Beta) <img src="assets/heart_icon.png" width="25"/>
 Integrate Snowflake Cortex Agents or Databricks Genie Spaces for use with Sigma Assistant and Sigma agent workflows.
@@ -289,6 +297,15 @@ An [example: Calculating the average price of a product category](Example: Calcu
 Ad hoc calcs are the fastest way to test a "what if I had this column?" idea without touching the underlying dataset or restructuring the pivot. Bringing them to pivot tables unblocks one of the most common asks in operational analytics — derive a metric, see it side-by-side with the existing rollups, and move on if it doesn't pan out.
 
 For more information, see [Create ad hoc calculations](https://help.sigmacomputing.com/docs/create-ad-hoc-calculations)
+
+
+### Buttons and icon buttons merged into one element (Beta) <img src="assets/heart_icon.png" width="25"/>
+Buttons and icon buttons are now a single button element with a new `Button type` selector for switching between the two styles. Icons remain available for use in navigation elements.
+
+**WHY IT MATTERS:**
+Clickable icons are a core building block for app-style UX — compact action triggers that don't crowd the layout the way text buttons can. Merging buttons and icon buttons into one element gives builders a single, consistent way to add actions and more room to use icons for visual hierarchy.
+
+<img src="assets/button_icon.gif">
 
 ### Create tables from an array with unnest (Beta)
 The `Unnest` feature lets you create a table from an array of values. After selecting a data source and identifying a column with array data, `Unnest` creates a new table element with one row for each array item.
