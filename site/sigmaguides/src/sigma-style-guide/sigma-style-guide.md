@@ -364,8 +364,6 @@ Gifs are supported as:
 ```copy-code
 <img src="assets/sample.gif">
 ```
-
-
 ![Footer](assets/sigma_footer.png)
 <!-- END -->
 
