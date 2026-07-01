@@ -3,10 +3,10 @@ id: 06_2026_first_friday_features
 summary: 06_2026_first_friday_features
 categories: firstfridayfeatures
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-07-05
+tags: first_friday_features
+lastUpdated: 2026-07-01
 
 # (06-2026) June
 <!-- The above name is what appears on the website and is searchable.
