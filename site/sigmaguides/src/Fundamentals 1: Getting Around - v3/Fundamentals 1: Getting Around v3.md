@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-06-20
+lastUpdated: 2026-07-10
 
 # Fundamentals 01: Overview
 <!-- -->
@@ -118,7 +118,7 @@ After completing this QuickStart, here are suggested paths based on your role:
 - How to set up a Sigma trial and navigate the user interface
 - Key Sigma terminology and how workbooks, pages, and elements relate to each other
 - How to create, save, and share a workbook
-- How to use Sigma Assistant for AI-powered analysis
+- How to use Sigma Assistant for AI-powered analysis, and how it can plan and build dashboards and apps for you
 - How to organize content with pages, containers, modals, and other layout elements
 - How account types and scheduled exports work
 
@@ -485,6 +485,37 @@ Now we can save it, refine it, or use Sigma's [drill-down](https://help.sigmacom
  icon:
 
 <img src="assets/fun_2026_11.png" width="800"/> -->
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Building with Assistant
+Duration: 4
+
+The previous section showed Assistant answering a question and returning results you open in a workbook. Inside a workbook draft, Assistant does more than analyze — it can plan and build for you. Using natural language, it designs and constructs dashboards and AI apps: tables, charts, KPIs, controls, filters, input tables, and even the actions that make an app interactive.
+
+When editing a workbook draft, Assistant works in two additional modes:
+
+- **Plan mode** — Assistant gathers context and proposes a structured approach — recommended pages, elements, layout, and the data sources needed — without changing anything yet. Scoping in `Plan` mode first also saves time and AI credits, since you settle the structure before Assistant builds anything.
+- **Build mode** — Assistant creates and modifies workbook content: elements, formatting, layout, navigation, filters, and actions.
+
+You can switch between modes at any time, and Assistant keeps the conversation's context as you move from scoping to building.
+
+Assistant is available from several entry points while editing a workbook draft: the empty-state prompt bar on a new page, the `Assistant panel` in the workbook header, the `⌘ + K` / `Ctrl + K` keyboard shortcut, and the `Ask or edit with prompt` icon on an element's toolbar.
+
+<!-- <img src="assets/fun_2026_63.png" width="800"/> -->
+
+You can also attach context to any prompt — a specific data source, a page or element, or an image — so Assistant builds from exactly the right information. Attach a screenshot of a dashboard from any tool, and Assistant rebuilds it natively in Sigma.
+
+<aside class="negative">
+<strong>PREMIUM FEATURE:</strong><br> When editing a workbook, Assistant is only available to customers who meet certain conditions. For more information, contact your Account Executive.
+</aside>
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Building with Assistant collapses the distance between an idea and a working dashboard or app. Because Assistant inherits your permissions and builds inside Sigma's governed environment, what it creates is live, secure, and ready to publish — not a throwaway mockup.
+</aside>
+
+We take this much further — one-shot dashboard building, editing an existing workbook conversationally, and building from images and plans — in the [Build Dashboards and Apps with Sigma Assistant](https://quickstarts.sigmacomputing.com/guide/aiapps_build_with_assistant/index.html) QuickStart
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
