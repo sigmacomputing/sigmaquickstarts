@@ -111,7 +111,13 @@ Duration: 6
 
 Best practice dictates building on a data model rather than a raw warehouse table. Assistant can read from tables, data models, and semantic views, but the quality of what it builds depends on the source you give it. A data model pre-defines business-friendly column names, descriptions, and metrics, so Assistant interprets your prompts accurately instead of guessing at raw column names. Authoring the model is a separate step your data team does up front — if you're new to it, see [Fundamentals 10: Data Modeling](https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html)
 
-Here's the part that saves you time: you don't have to go hunting for the right source. Assistant's semantic search finds it from a plain description of the data you need. `Open a new workbook`, `open Assistant`, and — instead of naming a table — describe what you're after.
+Here's the part that saves you time: you don't have to go hunting for the right source. Assistant's semantic search finds it from a plain description of the data you need. 
+
+We could start from the `Assistant` on the left sidebar of the homepage, but instead let's create a new workbook first.
+
+Click `Create new` > `Workbook`, `open Assistant`, and — instead of naming a table — describe what you're after:
+
+<img src="assets/bwa_04b.png" width="500"/>
 
 We will use `Build` mode so that Assistant can also add the table to our workbook.
 
@@ -149,7 +155,9 @@ Assistant lets us know when it is done with that task:
 ## Plan, then build the revenue forecast
 Duration: 10
 
-Now the payoff — building a real dashboard. We'll build a revenue forecast: actual revenue over time, a projection for the months ahead, and the KPIs and metric views an executive would expect. Rather than firing a single prompt and hoping, we'll plan first, let Assistant ask us questions, then build. Planning up front is also where you save the most AI credits.
+Now the payoff — building a real dashboard. We'll build a revenue forecast: actual revenue over time, a projection for the months ahead, and the KPIs and metric views an executive would expect. Rather than firing a single prompt and hoping, we'll plan first, let Assistant ask us questions, then build. 
+
+**Planning up front is also where you save the most build time and AI credits.**
 
 ### Attach a design
 
@@ -201,35 +209,32 @@ Answer in plain language to settle every open point:
 Use a linear trend from the trailing 12 months for the forecast. Yes: Revenue = Price × Quantity, COGS = Cost × Quantity, Gross Margin % = (Revenue − COGS) / Revenue. For the current-month KPI, use the most recent complete month and show the change versus the prior month. For year over year, compare the last complete 12 months to the prior 12. Build this on a new page called Revenue Forecast.
 ```
 
-Before it writes anything, Assistant loads a set of pre-configured **Skills** that Sigma provides — best-practice playbooks for one-page dashboard layout, grid layout, styling, chart selection, controls, and more. These skills are why Assistant follows Sigma's design conventions instead of improvising.
+Assistant loads its **Skills** and generates a structured plan for you to review — it doesn't build anything yet. Skills are the pre-configured, best-practice playbooks Sigma provides for things like one-page dashboard layout, grid layout, styling, chart selection, and controls, so Assistant follows Sigma's design conventions instead of improvising.
 
 <aside class="positive">
 <strong>PRE-CONFIGURED SKILLS:</strong><br> Skills are reusable instructions that guide how Assistant works. Sigma ships a set of built-in skills for building dashboards — encoding layout, styling, and charting best practices — so the output reflects how an expert would build in Sigma, not a generic AI guess.
 </aside>
 
-Assistant then writes a structured plan you can read and edit: a `Goal`, the key `Decisions` it locked in (forecast method, current-month and year-over-year definitions, metric formulas, page structure), the `Existing State` it detected in your workbook, and a `Build Outline` of the pages and elements it will create — including a hidden staging page where it aggregates monthly revenue and generates the forecast rows.
+The plan spells out a `Goal`, the key `Decisions` it locked in (forecast method, current-month and year-over-year definitions, metric formulas, page structure), the `Existing State` it detected in your workbook, and a `Build Outline` of the pages and elements it will create — including a hidden staging page where it aggregates monthly revenue and generates the forecast rows.
 
 <img src="assets/bwa_05.png" width="800"/>
 
-We could keep iterating in the prompt bar, or click `Build` to kick off the dashboard creation.
+Read the plan carefully and edit anything that drifts from what you want. In our run it added a few filters and a table that weren't in the original design; we deleted those and adjusted the `Layout` section to stick to the design. Edit the plan directly, or keep refining it in the prompt bar.
+
+<img src="assets/bwa_06.png" width="600"/>
 
 ### Build it
 
-When the plan looks right, click `Build` or prompt Assistant to start:
+When the plan looks right, approve it to start the build. Assistant works through the plan step by step, so expect to confirm its progress a few times along the way. First it builds a hidden staging page that aggregates monthly revenue and generates the forecast rows, then it lays out the visible `Revenue Forecast` page:
 
-```copy-code
-The plan looks good — build it.
-```
+- Two KPIs — current-month revenue and Year Over Year Revenue
+- The Forecast Trend chart
 
-Assistant executes the plan end to end. First it builds a hidden staging page that aggregates monthly revenue and generates the forecast rows. Then it lays out the visible `Revenue Forecast` page:
+The AI also prompts us with additional options, based on what it sees in the data.
 
-- Two KPIs — current-month revenue and trailing-12-month year over year
-- A segmented control to switch between Revenue, COGS, and Gross Margin %
-- The actual-versus-forecast trend chart
+The result is a working forecast on live data, with every element fully editable:
 
-The result is a working forecast on live data, with every element fully editable.
-
-<!-- <img src="assets/bwa_06.png" width="800"/> -->
+<img src="assets/bwa_07.png" width="800"/>
 
 <aside class="positive">
 <strong>YOU STAY IN CONTROL:</strong><br> Assistant builds real, editable Sigma elements — not a black box. Open anything it created to see the formulas and logic behind it, and validate the output before you share it.
@@ -251,7 +256,7 @@ Add a forecast table that breaks revenue down by product type, with a column for
 
 Assistant adds a pivot table — product types down the rows, months across the columns — next to what's already on the page.
 
-<!-- <img src="assets/bwa_07.png" width="800"/> -->
+<img src="assets/bwa_08.png" width="800"/>
 
 Now make it interactive. Add two segmented controls and have Assistant wire them to the chart and table:
 
@@ -261,7 +266,9 @@ Add a segmented control to switch between the chart and the table, and another t
 
 Assistant adds the controls and enables them: the `Chart` / `Table` control swaps which element is visible, and the `Revenue` / `COGS` / `Gross Margin %` control drives both the chart and the table at once.
 
-<!-- <img src="assets/bwa_08.png" width="800"/> -->
+As you might expect, results will vary depending on the [AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization) you have configured. If things need to be adjusted further once the build is complete, just instruct the AI to do it, or you can always manually edit in Sigma since you are in control.
+
+<img src="assets/final.gif" width="800"/>
 
 Because you attach the element as context, Assistant scopes each change to it — you stay in control of the canvas while it handles the mechanical steps. Keep going: restyle it, add a filter, or extend the forecast. Undo or take over manually at any point.
 
