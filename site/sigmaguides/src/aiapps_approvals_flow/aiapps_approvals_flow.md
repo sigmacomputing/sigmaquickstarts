@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2025-01-16
+lastUpdated: 2026-07-16
 
 # Approvals
 
@@ -539,6 +539,10 @@ First, add the condition:
 Configure it as shown:
 
 <img src="assets/af-43.png" width="600"/>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> <code>Selection</code> in the condition refers to the row the action is evaluating — it is not the table name. When you reference a column value in a condition formula, use <code>Selection/{Column Name}</code> in place of the table name. This ensures the condition checks the specific row being acted on, rather than the entire table. Keep this in mind when writing your own custom conditions.
+</aside>
 
 Since there are no rows with any status, the `Adjuster Modal` should still appear when `EDIT` is clicked. That is expected.
 
