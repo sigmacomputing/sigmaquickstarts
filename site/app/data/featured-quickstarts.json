@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "First Friday Features - June 2026",
+      "id": "06_2026_first_friday_features",
+      "category": "first_friday_features",
+      "date": "July 1, 2026"
+    },
+    {
       "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
       "id": "aiapps_gong_call_analysis",
       "category": "aiapps",
@@ -11,12 +17,6 @@
       "id": "aiapps_chat_element",
       "category": "aiapps",
       "date": "June 10, 2026"
-    },
-        {
-      "title": "First Friday Features - May 2026",
-      "id": "05_2026_first_friday_features",
-      "category": "first_friday_features",
-      "date": "May 5, 2026"
     },
     {
       "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
