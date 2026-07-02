@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-11-17
+lastUpdated: 2026-07-17
 
 # Google BigQuery with Sigma
 <!-- The above name is what appears on the website and is searchable. -->
@@ -337,14 +337,13 @@ Duration: 20
 There is a wide range of benefits by opting for a modern data analysis and visualization stack.
 
 These include:
- <ul>
-      <li>Faster time to value for analytics with BigQuery's near-unlimited scaling and processing capabilities, so decisions can be made faster.</li>
-      <li>High user retention and engagement by giving users an interface they intuitively understand, the spreadsheet.</li>
-      <li>Engage users in the modeling and exploratory process of data analysis. In Sigma, users can ask questions of the data just like they would in Google Sheets, but at the scale of your data. Work with millions or even billions of rows of data.</li>
-      <li>Get started with Sigma in a flash! Once you've established a connection from BigQuery to Sigma any user can work with permitted tables immediately. Ask questions, build visualizations, and create reports in a fraction of the time of other tools.</li>
-      <li>Harness the power of BigQuery in Sigma by effectively working with your data at scale. Sigma issues live queries rather than working off extracts. This ensures your data is always live and up-to-date.</li>
-      <li>Access BigQuery user-defined functions directly in Sigma to ensure even the most complex functions are available to your entire organization.</li>
-</ul>
+
+- Faster time to value for analytics with BigQuery's near-unlimited scaling and processing capabilities, so decisions can be made faster.
+- High user retention and engagement by giving users an interface they intuitively understand, the spreadsheet.
+- Engage users in the modeling and exploratory process of data analysis. In Sigma, users can ask questions of the data just like they would in Google Sheets, but at the scale of your data. Work with millions or even billions of rows of data.
+- Get started with Sigma in a flash! Once you've established a connection from BigQuery to Sigma any user can work with permitted tables immediately. Ask questions, build visualizations, and create reports in a fraction of the time of other tools.
+- Harness the power of BigQuery in Sigma by effectively working with your data at scale. Sigma issues live queries rather than working off extracts. This ensures your data is always live and up-to-date.
+- Access BigQuery user-defined functions directly in Sigma to ensure even the most complex functions are available to your entire organization.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
