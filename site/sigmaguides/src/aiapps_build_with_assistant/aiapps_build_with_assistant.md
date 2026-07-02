@@ -169,7 +169,9 @@ Here's a design for a revenue forecast dashboard. Plan a build of this using my 
 
 In `Plan` mode, Assistant proposes a structure — pages, KPIs, the actual-versus-forecast chart, and the Revenue, COGS, and Gross Margin views — without building anything yet. 
 
-Because you asked it to, it pauses and asks clarifying questions before committing. In our run, it asked about the forecast method, how to calculate each metric, what the KPI comparisons mean, and where to build:
+Because you asked it to, it pauses and asks clarifying questions before committing. The response will likely vary depending on your AI.
+
+In our run, it asked about the forecast method, how to calculate each metric, what the KPI comparisons mean, and where to build:
 
 ```code
 Key questions
@@ -239,39 +241,35 @@ The result is a working forecast on live data, with every element fully editable
 ## Refine it
 Duration: 6
 
-A forecast is never one-and-done — assumptions change, and stakeholders always want one more cut. This is where Assistant works as a copilot on what you've already built. Select an element, open `Ask or edit with prompt` from its toolbar, and describe the change.
+A dashboard is never one-and-done — stakeholders always want one more cut. This is where Assistant keeps working alongside you on what you've already built. Select an element or page, open `Ask or edit with prompt`, and describe the change.
 
-Adjust the forecast horizon on the chart:
-
-```copy-code
-Extend the forecast to twelve months.
-```
-
-Add a scenario control so viewers can flex the assumptions:
+The chart shows the overall trend. Add a table that breaks the numbers down by product type, month over month:
 
 ```copy-code
-Add a control to switch between an optimistic and a downturn scenario, and adjust the forecast line based on the selection.
+Add a forecast table that breaks revenue down by product type, with a column for each month.
 ```
 
-Because you attach the element as context, Assistant scopes each change to it — you stay in control of the canvas while it handles the mechanical steps. Undo, refine, or take over manually at any point.
+Assistant adds a pivot table — product types down the rows, months across the columns — next to what's already on the page.
 
 <!-- <img src="assets/bwa_07.png" width="800"/> -->
+
+Now make it interactive. Add two segmented controls and have Assistant wire them to the chart and table:
+
+```copy-code
+Add a segmented control to switch between the chart and the table, and another to switch all views between Revenue, COGS, and Gross Margin %. Connect both controls to the chart and the table.
+```
+
+Assistant adds the controls and enables them: the `Chart` / `Table` control swaps which element is visible, and the `Revenue` / `COGS` / `Gross Margin %` control drives both the chart and the table at once.
+
+<!-- <img src="assets/bwa_08.png" width="800"/> -->
+
+Because you attach the element as context, Assistant scopes each change to it — you stay in control of the canvas while it handles the mechanical steps. Keep going: restyle it, add a filter, or extend the forecast. Undo or take over manually at any point.
+
+And this is more than a prototype. Prototyping is easy anywhere; a production application is not. Everything Assistant just built lands inside Sigma's governed runtime — permissions, audit logs, cost controls, versioning, and collaboration all come with the platform, regardless of which AI provider you've configured — on live data, ready to publish and share.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Conversational editing removes the "how do I do that again?" friction from building. You describe the outcome instead of hunting through menus — and because it's the same governed workbook, every refinement is versioned and ready to reshare.
 </aside>
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## More than a prototype
-Duration: 3
-
-Any AI tool can generate a good-looking mockup. What matters is what happens after the demo — and this is where building in Sigma is different.
-
-Prototyping is useful, but it's a far cry from a production application. Sigma is the governed runtime around AI: audit logs, permissions, cost controls, collaboration, and version management all come with the platform — regardless of which AI provider you've configured. What Assistant builds lands inside that runtime from the first prompt, so it's ready to publish and share, not something you have to re-platform later.
-
-There's a second difference from a typical off-the-shelf SaaS tool. Off-the-shelf applications cover roughly 80% of what most teams need. The other 20% — the approval routing that matches your vendor hierarchy, the exception view that maps to your close process, the aging buckets that reflect your actual payment terms — is where companies differ from each other. Sigma builds the foundation and leaves that 20% open, so what you build reflects how your team actually works rather than how a software vendor assumed it would.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -283,7 +281,7 @@ You used Sigma Assistant to build a revenue forecast end to end — starting fro
 
 The reusable pattern isn't any one prompt — it's the workflow. Start from a governed data model so Assistant reasons over trusted definitions. Plan before you build — let Assistant ask questions and settle the structure while it's cheap, then spend credits building the right thing once. Then refine conversationally while you stay in control of the result. The same workflow applies whether you're building a forecast, a sales dashboard, or a full data entry app.
 
-What makes this more than a party trick is where it all lands. Everything Assistant builds lives inside Sigma's governed runtime — permissions, audit logs, cost controls, versioning, and collaboration — on live data, ready to publish. And because Sigma leaves the last 20% open, what you build reflects how your team actually works. That's the difference between a prototype and an application your business can run on.
+And unlike an off-the-shelf SaaS tool — which covers maybe 80% of what a team needs — Sigma leaves the last 20% open. The approval routing that matches your vendor hierarchy, the exception view that maps to your close process, the aging buckets that reflect your actual payment terms: that's where companies differ from one another, and it's exactly what you can build here. What you ship reflects how your team actually works, not how a software vendor assumed it would.
 
 **Additional Resource Links**
 
