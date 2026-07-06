@@ -1,5 +1,11 @@
 {
   "recentQuickStarts": [
+     {
+      "title": "Build Dashboards and Apps with Sigma Assistant",
+      "id": "aiapps_build_with_assistant",
+      "category": "aiapps",
+      "date": "July 6, 2026"
+    },
     {
       "title": "First Friday Features - June 2026",
       "id": "06_2026_first_friday_features",
@@ -53,12 +59,6 @@
       "id": "aiapps_forms",
       "category": "aiapps",
       "date": "April 2, 2026"
-    },
-    {
-      "title": "Automate Inventory Alerts with Scheduled Actions",
-      "id": "aiapps_scheduled_actions",
-      "category": "aiapps",
-      "date": "Mar 23, 2026"
     }
   ]
 }
