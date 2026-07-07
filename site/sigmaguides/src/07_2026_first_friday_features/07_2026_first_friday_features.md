@@ -155,6 +155,19 @@ It walks through how to:
 **WHY IT MATTERS:**<br>
 This moves Assistant from analysis to construction — describe what you want in plain language and get a governed, publishable workbook rather than a throwaway mockup. Builders design and iterate faster while the result stays live on real data, with Sigma's permissions and version history intact.
 
+### Revenue Forecasting Starter App
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_revenue_forecasting/index.html?index=..%2F..index#0) shows how to use Sigma's Revenue Forecasting Starter App — a fully built finance application for creating named forecast scenarios, entering projected revenue and COGS by product and month, and comparing multiple forecasts side by side against live data.
+
+It walks through how to:
+* Navigate the app's pages and explore four pre-configured sample scenarios
+* Create a new forecast scenario and enter data using the three-step guided workflow
+* Use the Forecast Agent — a domain-specific AI assistant with scoped data access and permission-enforced editing
+* Understand the key design patterns: forecast scaffold, union display layer, and editable AI prompts
+* Connect the app to your own sales data
+
+**WHY IT MATTERS:**<br>
+The Revenue Forecasting app demonstrates what's possible when Sigma's native capabilities — input tables, joins, unions, and AI — are composed into a single planning workflow. The Forecast Agent pattern — a scoped AI assistant that enforces human-in-the-loop approval before modifying data — is directly applicable to any enterprise finance workflow where auditability and control are non-negotiable.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
