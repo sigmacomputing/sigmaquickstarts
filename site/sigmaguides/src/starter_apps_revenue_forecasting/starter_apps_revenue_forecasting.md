@@ -27,6 +27,8 @@ Finance and FP&A teams evaluating or adopting Sigma for planning workflows. Solu
 <ul>
   <li>Access to a Sigma environment.</li>
   <li>The Revenue Forecasting Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li><strong>Write access enabled on a connection</strong> — required for input tables to store forecast data. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
+  <li><strong>AI provider configured for your organization</strong> — required for AI summaries and the Forecast Agent. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
@@ -36,6 +38,7 @@ Finance and FP&A teams evaluating or adopting Sigma for planning workflows. Solu
 
 ### What You'll Learn
 - How the Revenue Forecasting app works from scenario creation through analysis
+- How to use the Forecast Agent — Sigma's scoped AI assistant for forecast validation and scenario building
 - The key design patterns behind the app and why they're built that way
 - How to connect the app to your own sales data
 
@@ -261,11 +264,11 @@ Click the `View Forecast` button:
 
 <img src="assets/rf_21.png" width="800"/>
 
-Here we can set the forecast status to `Mark ready for review`:
+Here you can set the forecast status to `Mark ready for review`:
 
 <img src="assets/rf_22.png" width="800"/>
 
-While `Reviewed` status, we still can make changes. Click on `Senarios` on the left sidebar and here we can see the forecast, edit it or delete it too:
+While in `Reviewed` status, you can still make changes. Click `Scenarios` in the page tabs to see all forecasts — from here you can view, edit, or delete any scenario:
 
 <img src="assets/rf_23.png" width="800"/>
 
@@ -372,7 +375,7 @@ This pattern eliminates the most common failure mode in forecast input tables: u
 
 ### The Union Display Layer
 
-The `Overview `page shows actual and forecast data together in the same chart and pivot table. This is done by unioning two sources at the visualization layer:
+The `Overview` page shows actual and forecast data together in the same chart and pivot table. This is done by unioning two sources at the visualization layer:
 
 - **Big Buys POS Data** — the historical actuals, with Source = `"actual"`
 - **Forecast Input Table** — the user-entered forecast values, with Source = the scenario name
