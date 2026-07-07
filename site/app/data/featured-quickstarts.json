@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
      {
+      "title": "Automate Sigma from the Command Line with the Sigma CLI",
+      "id": "developers_sigma_cli",
+      "category": "developers",
+      "date": "July 7, 2026"
+    }, 
+    {
       "title": "Build Dashboards and Apps with Sigma Assistant",
       "id": "aiapps_build_with_assistant",
       "category": "aiapps",
@@ -53,12 +59,6 @@
       "id": "aiapps_natural_language_with_claude",
       "category": "aiapps",
       "date": "April 15, 2026"
-    },
-    {
-      "title": "Building Forms for Data Capture and Analysis",
-      "id": "aiapps_forms",
-      "category": "aiapps",
-      "date": "April 2, 2026"
     }
   ]
 }
