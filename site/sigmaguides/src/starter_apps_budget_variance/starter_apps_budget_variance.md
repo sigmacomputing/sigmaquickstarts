@@ -53,22 +53,30 @@ Duration: 10
 
 Navigate to `Templates` in the left sidebar. The Budget Variance Analysis app appears in the `Made by Sigma` collection:
 
-<!-- <img src="assets/bva_01.png" width="800"/> -->
+<img src="assets/bva_01.png" width="800"/>
 
 Click the template card to open a preview. Before clicking `Use template`, confirm the two requirements shown on the detail page are met:
 
 - **Write access enabled on a connection** — required for all input tables in the app
 - **AI provider set up in your organization** — required for inline AI recommendations
 
-<!-- <img src="assets/bva_02.png" width="800"/> -->
+Click `Use template`:
 
-Click `Use template`, give the workbook a name, and choose a folder to save it. The app opens to its `READ ME` page.
+<img src="assets/bva_02.png" width="800"/>
+
+Click `Save as`, give the workbook a name, and choose a folder to save it: 
+
+<img src="assets/bva_02a.png" width="800"/>
+
+The app opens to its `READ ME` page:
+
+<img src="assets/bva_02b.png" width="800"/>
 
 ### App Pages
 
 The app is organized across five visible pages, each serving a distinct role in the planning cycle:
 
-<!-- <img src="assets/bva_03.png" width="800"/> -->
+<img src="assets/bva_03.png" width="800"/>
 
 | Page | Purpose |
 |------|---------|
@@ -78,13 +86,11 @@ The app is organized across five visible pages, each serving a distinct role in 
 | **Reforecast Budget** | Editable pivot for adjusting the forecast with AI recommendations |
 | **Executive Signoff** | Final approval workspace — review, sign off, and lock the new baseline |
 
-A sixth page, `Data`, is hidden and contains all source tables. It is covered in the [Under the Hood](#under-the-hood) section.
-
 ### The Kickoff Page
 
 The Kickoff page is where each planning cycle begins. It surfaces the most important context at a glance:
 
-<!-- <img src="assets/bva_04.png" width="800"/> -->
+<img src="assets/bva_04.png" width="800"/>
 
 **Headline metric** — the current period's revenue variance percentage against budget, calculated live from the warehouse. The figure updates automatically as new actuals close.
 
@@ -96,46 +102,118 @@ The Kickoff page is where each planning cycle begins. It surfaces the most impor
 
 **Draft Forecast Overrides** — a live feed of budget adjustments that have been staged but not yet approved, so analysts and managers can see what's in flight.
 
+A sixth page, `Data`, is hidden and contains all source tables. It is covered in the Under the Hood section.
+
+### Planning Scenarios
+
+The app ships with six pre-built planning scenarios, visible as radio buttons in the `SCENARIO` filter on the Variance Commentary page:
+
+| Scenario | Meaning |
+|----------|---------|
+| `1+11` | 1 month of actuals closed, 11 months to forecast |
+| `2+10` | 2 months closed, 10 to forecast |
+| `3+9` | 3 months closed, 9 to forecast |
+| `4+8` | 4 months closed, 8 to forecast |
+| `5+7` | 5 months closed, 7 to forecast |
+| `6+6` | 6 months closed, 6 to forecast |
+| `Original Budget` | The approved baseline — no adjustments |
+
+The X+Y naming is standard FP&A (Financial Planning and Analysis) shorthand for a **rolling monthly reforecast**. 
+
+`X` is the number of months where real results — called *actuals* — have been recorded and locked. 
+
+`Y` is the number of months still open for forecasting. X and Y always add up to 12 because the fiscal year is 12 months long.
+
+In practice, finance teams run this process every month-end: close the prior month's actuals, explain where performance differed from the budget (variance commentary), update the forecast for the remaining open months, and submit it for executive approval. Then the cycle repeats. The scenario name advances by one each month — `1+11` in January, `2+10` in February, and so on.
+
+`Original Budget` is the annual plan approved at the start of the fiscal year. It never changes — it's the fixed baseline that every scenario is measured against. When an executive sees a `6+6` reforecast, they're comparing it to whatever the company agreed the full year should look like back in January.
+
+The sample data in this app covers the first six months, so scenarios run through `6+6`. A deployment connected to a full year of data would typically include scenarios through `11+1`.
+
+<aside class="positive">
+<strong>FOLLOW ALONG:</strong><br> The steps that follow use the <code>6+6</code> scenario and the Travel and Entertainment category to walk through the complete workflow. Select <code>6+6</code> on the Variance Commentary page to follow along with the example.
+</aside>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Documenting Variance Commentary
 Duration: 10
 
-The Variance Commentary page is the first active step in the cycle. Its purpose is to explain *why* actuals diverged from budget before building any reforecast — grounding the numbers in analyst context that flows forward into the executive review.
+The Variance Commentary page is where analysts explain **why actuals diverged from budget** before touching any forecast numbers. 
 
-<!-- <img src="assets/bva_05.png" width="800"/> -->
+Commentary is linked to a specific scenario and flows forward automatically to the Executive Signoff page — so the executive sees the analyst's rationale alongside the variance data, without a separate briefing.
+
+The table has two tabs: `Analyst Commentary` for adding explanations line by line, and `P&L` for a summary income statement view. The `Commentary` column is the only editable column and is editable in published mode — no edit access to the workbook is required:
+
+<img src="assets/bva_05.png" width="800"/>
 
 ### Selecting a Scenario
 
-Use the `SCENARIO` filter to associate your commentary with the current reforecast scenario. This is required — commentary is linked to a specific scenario name, so selecting the wrong one will detach your explanations from the downstream reforecast.
+Before we go further, set the workbook to use `Published` mode:
+
+<img src="assets/bva_04a.png" width="500"/>
+
+The `SCENARIO` radio buttons on the left panel link your commentary to a specific planning cycle. Selecting a scenario here also sets it as the **Active Scenario** on the Reforecast Budget page — so whatever scenario you choose on this page carries forward into the forecast and approval steps automatically.
+
+Select `6+6` to follow the example:
+
+<img src="assets/bva_05a.png" width="600"/>
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> You must select a Scenario before adding commentary. Commentary written without a scenario selected will not link correctly to the Reforecast Budget or Executive Signoff pages.
+<strong>IMPORTANT:</strong><br> Select a scenario before typing any commentary. Commentary entered without a scenario selected will not link correctly to the Reforecast Budget or Executive Signoff pages.
 </aside>
 
-### Filtering the View
+### Filtering to the Biggest Variances
 
-Three filters help narrow focus to the variance lines that need explanation:
+Scrolling down the page we can use `CATEGORY`, `SITE`, and `SORT BY` to narrow the table to the lines that need explanation. 
 
-- `SCENARIO` — links commentary to the current planning cycle
-- `CATEGORY` — filter to specific P&L categories (e.g., Direct Revenue, Compensation and Benefits, Total COGS)
-- `SITE` — filter to a specific location or business unit
+Start with `Largest $ variance` to surface the biggest dollar misses first:
 
-Use `SORT BY` to surface the largest variances first: `Largest $ variance` ranks by absolute dollar impact; `Largest % variance` highlights proportional misses.
+<img src="assets/bva_06.png" width="800"/>
 
-<!-- <img src="assets/bva_06.png" width="800"/> -->
+For this example, check `Travel and Entertainment` in the `CATEGORY` filter.
+
+The table updates to show all account-level rows within `Travel and Entertainment`, sorted by largest dollar variance. 
+
+Airfare shows the largest overage — approximately $1,359,206 actual against a $1,241,450 budget, a difference of roughly $117,756 at 9.49%:
+
+<img src="assets/bva_06a.png" width="800"/>
 
 ### Adding Commentary
 
-The main table displays each account category with its Actual, Budget, Delta $, and Delta % values. The rightmost column, **Commentary**, is editable — click any cell and type your explanation directly into the row.
+Click any cell in the `Commentary` column and type your explanation directly into the row. For the Airfare overage:
 
-<!-- <img src="assets/bva_07.png" width="800"/> -->
+```copy-code
+Airfare spend exceeded budget by approximately 9.5% through the first half of the year, driven by expanded field sales headcount and increased client visit frequency. Elevated spend is expected to continue through year-end as the team reaches full quota capacity.
+```
 
-Commentary entries are stored in an input table and linked to the scenario name and account category. They surface automatically on the Executive Signoff page alongside the variance data, so executives see the analyst's reasoning inline — no separate document required.
+Click `Save`:
 
-**WHY IT MATTERS:**
-Embedding commentary directly in the financial data eliminates the round-trip between spreadsheets, emails, and presentations. Finance teams can document variance rationale, flag anomalies, and prepare context for leadership all in the same workspace — and that context travels with the data through every downstream step.
+<img src="assets/bva_07.png" width="800"/> 
+
+Repeat for any other lines that need explanation — `Hotel and Lodging` shows a favorable variance (under budget) that may also warrant a note.
+
+Once commentary is complete for the period, click the `Mark 6+6 ready for reforecast →` button. This signals to the manager that the commentary step is done and the `6+6` scenario is ready for forecast adjustments:
+
+<img src="assets/bva_07a.png" width="800"/> 
+
+A message appears confirming the update:
+
+<img src="assets/bva_07b.png" width="600"/> 
+
+<aside class="positive">
+<strong>MULTI-USER WORKFLOW:</strong><br> The Budget Variance Analysis app is designed for multiple roles working in sequence:
+<ul>
+  <li><strong>Analyst</strong> — documents variances on the Variance Commentary page and marks the scenario ready for reforecast.</li>
+  <li><strong>Manager</strong> — opens the Reforecast Budget page, sees <code>6+6</code> as the active scenario, and applies forecast adjustments.</li>
+  <li><strong>Executive</strong> — reviews the submitted scenario on the Executive Signoff page and formally approves it.</li>
+</ul>
+Each role works on a different page — no coordination outside the app is required.
+</aside>
+
+**WHY IT MATTERS:**<br>
+Commentary isn't a side document — it's embedded in the data and travels with the scenario through every downstream step. When the executive opens the Signoff page, the Airfare explanation appears inline next to the delta figures. Finance teams replace the email chain and the deck with a single annotated view that all stakeholders read from the same source.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -143,53 +221,56 @@ Embedding commentary directly in the financial data eliminates the round-trip be
 ## Building the Reforecast
 Duration: 10
 
-The Reforecast Budget page is where analysts apply budget adjustments for the remaining forecast months, guided by AI recommendations based on the variance data and commentary entered in the prior step.
+The Reforecast Budget page is where managers revise the forecast for the remaining months of the fiscal year. Because you selected `6+6` on the Variance Commentary page, it is already set as the Active Scenario here — no additional selection is needed.
 
 <!-- <img src="assets/bva_08.png" width="800"/> -->
 
 ### AI Recommendations
 
-At the top of the page, Sigma calls an AI model inline and returns a 1–2 sentence recommendation tailored to the active scenario:
+At the top of the page, an AI recommendation summarizes which accounts are most likely to carry variance forward and which should remain on baseline. For `6+6`, the model has analyzed the six months of closed actuals and the commentary entered in the prior step:
 
 <!-- <img src="assets/bva_09.png" width="800"/> -->
 
-The recommendation is generated from the current scenario's category-level actuals and budgeted amounts. It suggests which accounts are most likely to carry variance forward and should be adjusted — and which should remain on baseline. The recommendation refreshes whenever the scenario changes.
-
 <aside class="positive">
-<strong>NOTE:</strong><br> The AI recommendation is a starting point, not a directive. Use it alongside your commentary and judgment to decide which adjustments to make.
+<strong>NOTE:</strong><br> The AI recommendation is a starting point. Use it alongside your commentary and judgment to decide which accounts need adjustment.
 </aside>
 
 ### Scenario Status Bar
 
-Below the AI recommendation, a status bar shows the current state of the active scenario:
+Below the recommendation, the status bar shows four metrics for the active scenario:
 
-- **Active Scenario** — the scenario name currently being edited
-- **Baseline** — the original approved budget (locked as the comparison point)
-- **Closed Months** — how many actual months are locked (Jan through the current month)
-- **Overrides Executed** — count of budget lines that have been adjusted in this scenario
+- **Active Scenario** — `6+6`, set when you selected it on the Variance Commentary page
+- **Baseline** — the original approved budget, locked as the comparison reference
+- **Closed Months** — the number of actual months locked (Jan through June for `6+6`)
+- **Overrides Executed** — count of budget lines adjusted so far; starts at zero
 
-### The Forecast Pivot Table
+### Adjusting the Forecast
 
-The main pivot table displays categories as rows and months as columns. Two visual cues distinguish different types of cells:
+The pivot table shows P&L categories as rows and months as columns. **Grey cells** are closed actuals — locked, not editable. **White cells** are open forecast months. **Blue cells** have an override applied.
 
-- **Grey cells** — closed months where actuals are locked. These cannot be edited; the value shown is the actual figure, not the budget.
-- **Blue cells** — months where a budget override has been applied. The override value and a bold blue style indicate an active adjustment.
-- **White cells** — open forecast months using the original budget. These are editable.
+Click any white cell to open the **Edit Budget Modal**:
 
 <!-- <img src="assets/bva_10.png" width="800"/> -->
 
-### Making Adjustments
+The modal shows:
+- The **AI recommendation** for the scenario
+- **Baseline KPI** and **New Forecast KPI** — the before and after for that row
+- **Actuals Trend Chart** — the closed-month trend to inform the adjustment
+- **Override Delta** — quick-select buttons (`-25k`, `-10k`, `0`, `+10k`, `+25k`) or type a custom value (signed)
+- **Rationale** — required before `Apply Override` activates
 
-To adjust a forecast month, click an editable cell and enter the new value. Each override requires:
+For the Airfare example: click any open Airfare cell, select `+25k` to reflect the elevated spend trend, and enter a rationale:
 
-- **Adjustment** — the dollar amount of the change (positive or negative)
-- **Adjustment Reason** — a free-text explanation of why the change was made
-- **Override?** — a checkbox that marks the row as intentionally adjusted (this drives the blue cell formatting and the Override count in the status bar)
+```copy-code
+Airfare running 11-12% above budget. Applying +$25K/month for remaining 6 months based on current headcount and planned client visit schedule.
+```
 
-Overrides are stored in an input table linked to the scenario. They persist across sessions and are visible to anyone with access to the workbook.
+Click `Apply Override`. The Airfare cells for the remaining forecast months turn blue in the pivot, and the Overrides Executed count increments. Repeat for any other accounts where the AI recommendation or your analysis suggests adjustment.
+
+When all overrides are in place, click `Submit Forecast`. The `6+6` scenario moves to Executive Signoff with a status of `Pending`.
 
 **WHY IT MATTERS:**
-Every budget adjustment carries a documented rationale — Adjustment Reason is required alongside the number. This creates a complete audit trail of every change made during the reforecast cycle, which is exactly what executives and auditors need when reviewing a submitted scenario.
+Every adjustment requires a rationale before it can be applied — the modal enforces this. The result is a complete, timestamped audit trail of every forecast change, linked to the scenario and visible to anyone who opens the workbook. There is no separate log to maintain.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -197,29 +278,37 @@ Every budget adjustment carries a documented rationale — Adjustment Reason is 
 ## Executive Signoff
 Duration: 5
 
-Once commentary is complete and overrides are submitted, the reforecast moves to Executive Signoff — the final step before the new baseline is locked.
+Once submitted, the `6+6` scenario appears on the Executive Signoff page with a status of `Pending`. This page is intended for authorized reviewers — executives or budget owners who have the authority to approve the reforecast as the official plan.
 
 <!-- <img src="assets/bva_11.png" width="800"/> -->
 
-### Reviewing the Scenario
+### Reviewing the Submission
 
-The page header identifies the active scenario, the analyst who submitted it, and the submission date. Below that, a full-year pivot compares the reforecast scenario against the original budget across all categories, with analyst commentary visible inline for each line.
+The page header identifies the scenario (`6+6`), who submitted it, and the submission timestamp — providing full visibility into the approval pipeline before any decision is made.
 
-The pivot can display multiple scenarios in side-by-side columns if more than one has been submitted, allowing the executive to compare approaches before approving.
-
-### AI Approval Recommendation
-
-Alongside the pivot, Sigma generates an AI recommendation on whether the plan should be approved. The model reviews the scenario's delta $ and delta % figures alongside all analyst commentary, then returns a 1–2 sentence recommendation:
+Below the header, a full-year pivot compares the reforecast against the original budget across all P&L categories on a YTD basis. The Airfare commentary entered on the Variance Commentary page appears inline in the pivot alongside the delta figures:
 
 <!-- <img src="assets/bva_12.png" width="800"/> -->
 
-The recommendation is framed from the executive's perspective — it weighs whether the submitted adjustments are adequately supported by the variance explanations and whether the overall plan is defensible.
+If multiple scenarios have been submitted, they appear as side-by-side columns in the pivot, allowing the executive to compare approaches before committing to one.
+
+### AI Approval Recommendation
+
+Alongside the pivot, Sigma generates a recommendation framed from the executive's perspective. The model reviews the delta $ and delta % figures and the analyst commentary across the full scenario, then returns a 1–2 sentence read on whether the plan is adequately supported:
+
+<!-- <img src="assets/bva_13.png" width="800"/> -->
+
+The recommendation surfaces the key factors worth weighing — it doesn't make the decision.
 
 ### Signing Off
 
-The sign-off panel on the right side of the page shows the current approval status and provides an optional **Executive Note** text area for comments. Clicking `Approve` designates the scenario as the official forecast for the cycle and locks the baseline.
+The sign-off panel on the right shows the current scenario status and an optional `Executive Note` text area. Add a note if warranted:
 
-Once approved, the new budget baseline flows back into the variance calculations for the next period — the cycle resets and begins again.
+```copy-code
+Airfare trend confirmed by field team expansion. Approved with the expectation that H2 travel normalizes as onboarding completes.
+```
+
+Click `Sign Off` to officially approve the `6+6` scenario. It is designated as the current baseline moving forward. The planning cycle closes, and the next period begins.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -331,7 +420,7 @@ After reconnecting the warehouse sources, configure the three supporting input t
 
 **Custom Account Hierarchy Rows Table** — if your chart of accounts includes subtotal rows that aren't in the warehouse (e.g., a custom `"Total Gross Profit"` row), add them here with their Level 1 Code and Section. The app uses these to insert spacing and subtotal rows into the financial statement view.
 
-**Submitted Scenarios Table** — this table starts empty. Scenario names are created by analysts directly in the app as the planning cycle begins. No pre-configuration is needed.
+**Submitted Scenarios Table** — the template ships with six pre-built scenarios (`1+11` through `6+6`) plus `Original Budget`. When connecting to your own data, replace these with scenario names that match your organization's planning cadence. The scenario name selected on the Variance Commentary page becomes the Active Scenario on the Reforecast Budget page, so names should be meaningful to analysts and executives alike.
 
 ### Validating the Connection
 
