@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-08
+lastUpdated: 2026-07-12
 
 # Budget Variance Analysis Starter App
 
@@ -221,15 +221,15 @@ Commentary isn't a side document — it's embedded in the data and travels with 
 ## Building the Reforecast
 Duration: 10
 
-The Reforecast Budget page is where managers revise the forecast for the remaining months of the fiscal year. Because you selected `6+6` on the Variance Commentary page, it is already set as the Active Scenario here — no additional selection is needed.
+The Reforecast Budget page is where managers revise the forecast for the remaining months of the fiscal year. Because you selected `6+6` on the Variance Commentary page, it is already set as the Active Scenario here — no additional selection is needed:
 
-<!-- <img src="assets/bva_08.png" width="800"/> -->
+<img src="assets/bva_08.png" width="800"/>
 
 ### AI Recommendations
 
 At the top of the page, an AI recommendation summarizes which accounts are most likely to carry variance forward and which should remain on baseline. For `6+6`, the model has analyzed the six months of closed actuals and the commentary entered in the prior step:
 
-<!-- <img src="assets/bva_09.png" width="800"/> -->
+<img src="assets/bva_09.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The AI recommendation is a starting point. Use it alongside your commentary and judgment to decide which accounts need adjustment.
@@ -239,10 +239,11 @@ At the top of the page, an AI recommendation summarizes which accounts are most 
 
 Below the recommendation, the status bar shows four metrics for the active scenario:
 
-- **Active Scenario** — `6+6`, set when you selected it on the Variance Commentary page
 - **Baseline** — the original approved budget, locked as the comparison reference
 - **Closed Months** — the number of actual months locked (Jan through June for `6+6`)
 - **Overrides Executed** — count of budget lines adjusted so far; starts at zero
+
+<img src="assets/bva_09a.png" width="800"/>
 
 ### Adjusting the Forecast
 
@@ -250,7 +251,7 @@ The pivot table shows P&L categories as rows and months as columns. **Grey cells
 
 Click any white cell to open the **Edit Budget Modal**:
 
-<!-- <img src="assets/bva_10.png" width="800"/> -->
+<img src="assets/bva_10.png" width="800"/>
 
 The modal shows:
 - The **AI recommendation** for the scenario
@@ -259,17 +260,33 @@ The modal shows:
 - **Override Delta** — quick-select buttons (`-25k`, `-10k`, `0`, `+10k`, `+25k`) or type a custom value (signed)
 - **Rationale** — required before `Apply Override` activates
 
-For the Airfare example: click any open Airfare cell, select `+25k` to reflect the elevated spend trend, and enter a rationale:
+For Travel and Entertainment: click any open `6300 - Travel and Entertainment` cell, select `+25k` to reflect the elevated spend trend, and enter a rationale:
 
 ```copy-code
-Airfare running 11-12% above budget. Applying +$25K/month for remaining 6 months based on current headcount and planned client visit schedule.
+T&E running 11-12% above budget on elevated airfare spend. Applying +$25K/month for remaining 6 months based on current headcount and planned client visit schedule.
 ```
 
-Click `Apply Override`. The Airfare cells for the remaining forecast months turn blue in the pivot, and the Overrides Executed count increments. Repeat for any other accounts where the AI recommendation or your analysis suggests adjustment.
+<img src="assets/bva_10a.png" width="600"/>
 
-When all overrides are in place, click `Submit Forecast`. The `6+6` scenario moves to Executive Signoff with a status of `Pending`.
+Scroll down and click `Apply Override` and close the modal.
 
-**WHY IT MATTERS:**
+The `Travel and Entertainment` cells for the remaining forecast months turn blue in the pivot:
+
+<img src="assets/bva_10b.png" width="800"/>
+
+The `Overrides Executed` count is incremented:
+
+<img src="assets/bva_10c.png" width="800"/>
+
+Repeat for any other accounts where the AI recommendation or your analysis suggests adjustment.
+
+When all overrides are in place, click `Submit Reforecast`.:
+
+<img src="assets/bva_10d.png" width="800"/>
+
+The `6+6` scenario moves to Executive Signoff with a status of `Pending`.
+
+**WHY IT MATTERS:**<br>
 Every adjustment requires a rationale before it can be applied — the modal enforces this. The result is a complete, timestamped audit trail of every forecast change, linked to the scenario and visible to anyone who opens the workbook. There is no separate log to maintain.
 
 ![Footer](assets/sigma_footer.png)
@@ -286,9 +303,11 @@ Once submitted, the `6+6` scenario appears on the Executive Signoff page with a 
 
 The page header identifies the scenario (`6+6`), who submitted it, and the submission timestamp — providing full visibility into the approval pipeline before any decision is made.
 
-Below the header, a full-year pivot compares the reforecast against the original budget across all P&L categories on a YTD basis. The Airfare commentary entered on the Variance Commentary page appears inline in the pivot alongside the delta figures:
+Below the header, a full-year pivot compares the reforecast against the original budget across all P&L categories on a YTD basis:
 
-<!-- <img src="assets/bva_12.png" width="800"/> -->
+<img src="assets/bva_12.png" width="800"/>
+
+The analyst commentary entered on the `Variance Commentary` page appears inline in the pivot alongside the delta figures:
 
 If multiple scenarios have been submitted, they appear as side-by-side columns in the pivot, allowing the executive to compare approaches before committing to one.
 
@@ -305,7 +324,7 @@ The recommendation surfaces the key factors worth weighing — it doesn't make t
 The sign-off panel on the right shows the current scenario status and an optional `Executive Note` text area. Add a note if warranted:
 
 ```copy-code
-Airfare trend confirmed by field team expansion. Approved with the expectation that H2 travel normalizes as onboarding completes.
+T&E trend confirmed by field team expansion. Approved with the expectation that H2 travel normalizes as onboarding completes.
 ```
 
 Click `Sign Off` to officially approve the `6+6` scenario. It is designated as the current baseline moving forward. The planning cycle closes, and the next period begins.
