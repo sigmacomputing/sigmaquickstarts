@@ -221,7 +221,11 @@ Commentary isn't a side document — it's embedded in the data and travels with 
 ## Building the Reforecast
 Duration: 10
 
-The Reforecast Budget page is where managers revise the forecast for the remaining months of the fiscal year. Because you selected `6+6` on the Variance Commentary page, it is already set as the Active Scenario here — no additional selection is needed:
+Click to select the `Reforecast Budget` page:
+
+The `Reforecast Budget` page is where managers revise the forecast for the remaining months of the fiscal year. 
+
+Because you selected `6+6` on the Variance Commentary page, it is already set as the Active Scenario here — no additional selection is needed:
 
 <img src="assets/bva_08.png" width="800"/>
 
@@ -260,15 +264,19 @@ The modal shows:
 - **Override Delta** — quick-select buttons (`-25k`, `-10k`, `0`, `+10k`, `+25k`) or type a custom value (signed)
 - **Rationale** — required before `Apply Override` activates
 
-For Travel and Entertainment: click any open `6300 - Travel and Entertainment` cell, select `+25k` to reflect the elevated spend trend, and enter a rationale:
+For Travel and Entertainment: click open the `754.02K` cell: 
+
+<img src="assets/bva_10a.png" width="800"/>
+
+select `+25k` to reflect the elevated spend trend, and enter a rationale:
 
 ```copy-code
 T&E running 11-12% above budget on elevated airfare spend. Applying +$25K/month for remaining 6 months based on current headcount and planned client visit schedule.
 ```
 
-<img src="assets/bva_10a.png" width="600"/>
+<img src="assets/bva_11a.png" width="600"/>
 
-Scroll down and click `Apply Override` and close the modal.
+Scroll down and click `Apply Override` and the modal will close automatically.
 
 The `Travel and Entertainment` cells for the remaining forecast months turn blue in the pivot:
 
@@ -280,7 +288,7 @@ The `Overrides Executed` count is incremented:
 
 Repeat for any other accounts where the AI recommendation or your analysis suggests adjustment.
 
-When all overrides are in place, click `Submit Reforecast`.:
+When all overrides are in place, click `Submit Reforecast`:
 
 <img src="assets/bva_10d.png" width="800"/>
 
@@ -335,7 +343,7 @@ Click `Sign Off` to officially approve the `6+6` scenario. It is designated as t
 ## Under the Hood
 Duration: 10
 
-Understanding the data architecture helps you adapt the app to your own data or apply its patterns to other workbooks.
+Understanding the data architecture helps you adapt the app to your own data or apply its patterns to other workbooks. All source and input tables are on the hidden `Data` page — switch to edit mode and unhide it to explore the architecture directly.
 
 ### Data Sources
 
@@ -354,13 +362,13 @@ Three additional input tables extend the warehouse data:
 
 The app uses Sigma's transpose feature to calculate financial statement subtotals (Gross Profit, Operating Profit) that don't exist as individual rows in the warehouse:
 
-<!-- <img src="assets/bva_13.png" width="600"/> -->
-
 1. **Group by Section** — transactions are grouped by P&L section (Revenue, Cost of Goods Sold, Operating Expenses) and time period, summing Actual and Budget separately.
 2. **Row-to-column transpose** — the three sections become column values, enabling calculated fields: `Gross Profit = Revenue - COGS`, `Operating Profit = Gross Profit - Operating Expenses`.
 3. **Column-to-row transpose** — the calculated subtotals are converted back to rows and unioned with the detail-level account data to form a single financial statement source.
 
-This pipeline runs for both actuals and budget amounts in parallel, then the two are unioned into `Complete Dataset Table` — the final source for all pivot tables in the app.
+This pipeline runs for both actuals and budget amounts in parallel, then the two are unioned into `Complete Dataset Table` — the final source for all pivot tables in the app:
+
+<img src="assets/bva_13.png" width="800"/>
 
 ### The Scenario and Override Architecture
 
@@ -380,13 +388,13 @@ The effective budget for each cell is `Base Budget + Adjustment` (falling back t
 
 The AI recommendations on the Reforecast Budget and Executive Signoff pages use Sigma's `CallText` function to call an AI model inline — no external service or separate integration required:
 
-```copy-code
+```code
 CallText("ai_complete", "claude-4-sonnet", "[system prompt] + scenario data")
 ```
 
 The function assembles the prompt from live workbook values — category names, actuals, budgeted amounts, and analyst commentary — and returns a recommendation directly into a text element on the page. The AI runs within Sigma's governed environment, subject to your organization's AI configuration and audit logging.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 `CallText` brings AI analysis to the point of decision without requiring a separate tool or export step. The recommendation is generated from the same data the analyst and executive are already looking at — and it's governed by the same permissions, audit logs, and access controls that apply to the rest of the workbook.
 
 ![Footer](assets/sigma_footer.png)
