@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-07-02
+lastUpdated: 2026-07-09
 
 # Fundamentals 01: Overview
 
@@ -225,7 +225,7 @@ The main areas are numbered and described below:
   <li><strong>Home:</strong> Returns to the homepage.</li>
   <li><strong>Documents:</strong> Your personal folder for content you've created.</li>
   <li><strong>Workspaces:</strong> Shared folders for organizing and sharing content with specific teams or members.</li>
-  <li><strong>Templates:</strong> Pre-built workbook structures available for quick reuse.</li>
+  <li><strong>Starter Apps:</strong> Pre-built, ready-to-use apps built on sample data that you can explore, customize, and connect to your own data sources.</li>
   <li><strong>Shared with you:</strong> Content others have shared with you directly.</li>
   <li><strong>Recent:</strong> Content you've accessed recently.</li>
   <li><strong>Favorites:</strong> Content you've marked as a favorite for quick access.</li>
@@ -942,11 +942,9 @@ As an example, this `Financial Services: Portfolio Risk Modeling` workbook has i
 
 <img src="assets/f1_25.png" width="800"/>
 
-Sigma provides many pre-built [templates](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates) that you can explore, see how things are configured, and use for your own projects. 
+Sigma provides a library of [Starter Apps](https://help.sigmacomputing.com/docs/get-started-with-starter-apps) — pre-built, fully working apps built on sample data that cover common business workflows across finance, operations, sales, and more. You can explore them, inspect how they're built in edit mode, and connect them to your own data when you're ready.
 
-You can even create templates from your own workbooks too:
-
-<img src="assets/f1_41.png" width="500"/>
+<!-- <img src="assets/f1_41.png" width="800"/> -->
 
 
 ![Footer](assets/sigma_footer.png)
