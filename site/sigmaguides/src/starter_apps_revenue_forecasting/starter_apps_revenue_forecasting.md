@@ -267,7 +267,7 @@ Here we can set the forecast status to `Mark ready for review`:
 
 <img src="assets/rf_22.png" width="800"/>
 
-While `Reviewed` status, we still can make changes. Click on `Senarios` on the left sidebar and here we can see the forecast, edit it or delete it too:
+While in `Reviewed` status, you can still make changes. Click `Scenarios` in the left sidebar to view, edit, or delete the forecast:
 
 <img src="assets/rf_23.png" width="800"/>
 
@@ -360,21 +360,50 @@ This table is on the `Data` page, under the `Transformation` tab:
 
 <img src="assets/rf_28.png" width="800"/>
 
-When a scenario is created, it defines a `Forecast Start` and `Forecast End` date. The scaffold cross-joins that scenario's configuration with two dimensions:
+Here's how the three source pieces come together to produce it.
 
-- **Date Spine** — a simple input table containing one row per forecast month (in the `Input Tables` tab)
-- **Big Buys POS Data** — referenced here only for its distinct product type values
+**The Date Spine**
 
-The result is exactly one row for every combination of scenario × product type × forecast month. This is the table the Forecast Input Table links to, ensuring the input grid always has the right rows pre-generated.
+The `Date Spine` is a simple input table on the `Data` page under the `Input Tables` tab. It contains a single `Month` column — one row per forecast month — covering the full range of periods the app supports:
 
-<!-- <img src="assets/rf_13.png" width="800"/> -->
+<img src="assets/rf_35.png" width="800"/>
+
+This table is the temporal backbone. When a scenario is created with a `Forecast Start` and `Forecast End` date, the scaffold filters the Date Spine to only those months within that window.
+
+**The Cross Join**
+
+The scaffold is built by joining three sources:
+
+1. **Scenarios input table** — one row per scenario, with `Forecast Start`, `Forecast End`, and configuration values
+2. **Date Spine** — joined on a date range condition so only months within the scenario's window are included
+3. **Big Buys POS Data** — joined without a matching key to fan out across every distinct `Product Type`
+
+That last join — no shared key, one side applied to every row of the other — is what makes it a cross join. Sigma's join editor supports this directly: configure the join between the date spine result and the product dimension with no join condition, and every month gets paired with every product type.
+
+The joined table is on the `Data` page, `Transformation` tab:
+
+<img src="assets/rf_36.png" width="800"/>
+
+The result is exactly one row for every combination of scenario × product type × forecast month — the complete, pre-defined grid of input slots.
+
+**The Linked Input Table**
+
+The `Forecast Input Table` is a linked input table that uses `Scenarios × Month × Product Type` as its row source:
+
+<img src="assets/rf_37.png" width="800"/>
+
+A linked input table can only write values into rows that already exist in its source — it can't create new rows of its own. This means:
+
+- Every scenario × month × product combination has exactly one pre-generated input row
+- Users can't accidentally add duplicate or malformed rows
+- When a scenario is deleted, its scaffold rows disappear and the corresponding input slots are automatically removed
 
 **WHY IT MATTERS:**<br>
 This pattern eliminates the most common failure mode in forecast input tables: users adding rows inconsistently, missing combinations, or creating duplicates. The scaffold generates the complete, valid set of input rows from the scenario configuration, and the linked input table only accepts values into those pre-defined slots. It's a reusable pattern for any planning workflow where structured data entry needs to happen across a defined grid.
 
 ### The Union Display Layer
 
-The `Overview `page shows actual and forecast data together in the same chart and pivot table. This is done by unioning two sources at the visualization layer:
+The `Overview` page shows actual and forecast data together in the same chart and pivot table. This is done by unioning two sources at the visualization layer:
 
 - **Big Buys POS Data** — the historical actuals, with Source = `"actual"`
 - **Forecast Input Table** — the user-entered forecast values, with Source = the scenario name
@@ -386,8 +415,6 @@ The combo chart uses `SumIf()` to split these into separate series — bars for 
 ### AI Prompts as Editable Controls
 
 Both AI summaries in the app — on the `Overview` page and the `Input Forecast` page — are driven by text-area controls stored on the `Data` page, not hardcoded into the workbook elements.
-
-<!-- <img src="assets/rf_15.png" width="800"/> -->
 
 This means anyone with edit access can refine what the AI writes without touching the formulas or elements themselves. The two prompts are:
 
