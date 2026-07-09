@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-07
+lastUpdated: 2026-07-09
 
 # Automate Sigma from the Command Line with the Sigma CLI
 
@@ -73,10 +73,10 @@ You can install `sigma` with the shell installer or with Homebrew. Pick one.
 This works on macOS and Linux and installs the latest release:
 
 ```copy-code
-curl --proto '=https' --tlsv1.2 -LsSf {INSTALLER_URL_TBD} | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://assets.sigmacomputing.com/sigma-cli/releases/latest/sigma-cli-installer.sh | sh
 ```
 
-<img src="assets/scli_01.png" width="800"/>
+<!-- <img src="assets/scli_01.png" width="800"/> -->
 
 The installer places the binary at `~/.sigma-cli/bin/sigma`. For most setups, that directory won't be on your PATH yet, so add it by appending this line to your shell profile (`~/.zshrc` or `~/.bashrc`):
 
@@ -114,16 +114,34 @@ Confirm `sigma` is on your PATH and see which version you're running:
 sigma --version
 ```
 
-<img src="assets/scli_02.png" width="800"/>
+The response will be similar to:
+```code
+/Users/phil/.sigma-cli/bin/sigma
+```
+
+<!-- <img src="assets/scli_02.png" width="800"/> -->
 
 **Install jq**
 
-The examples in this QuickStart use `jq` to reshape the JSON that `sigma` returns, so install it now. On macOS:
+The examples in this QuickStart use `jq` to reshape the JSON that `sigma` returns, so install it now.
+
+On macOS with Homebrew:
 
 ```copy-code
 brew install jq
 ```
-<img src="assets/scli_03.png" width="800"/>
+
+On macOS without Homebrew, download the prebuilt binary directly:
+
+```copy-code
+curl -Lo jq https://github.com/jqlang/jq/releases/latest/download/jq-macos-arm64 && chmod +x jq && sudo mv jq /usr/local/bin/
+```
+
+The `sudo mv` step will prompt for your macOS login password. Nothing is displayed as you type — press Enter when done.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The binary above is for Apple Silicon (M-series). If you're on Intel, replace <code>jq-macos-arm64</code> with <code>jq-macos-amd64</code>.
+</aside>
 
 On Linux, use your package manager of choice (for example, `apt install jq` or `yum install jq`).
 
@@ -153,25 +171,29 @@ Select `OAuth`, enter your Sigma organization URL, and give the profile a name (
 
 First generate API credentials in Sigma from `Administration` > `Developer Access` (an Admin account type is required). Then run `sigma auth login`, select `Create new profile`, choose `API key`, name the profile, select the API base URL for your organization, and paste in your client ID and secret.
 
+After selecting `API key` press `Enter`.
+
+Enter a `Profile name`:
+
 <img src="assets/scli_04.png" width="600"/>
 
-Enter a `Profile name` and select the region where your Sigma instance is hosted:
+Select the region where your Sigma instance is hosted:
 
-<img src="assets/scli_05.png" width="800"/>
+<img src="assets/scli_04a.png" width="600"/>
 
-Enter your `Client ID` and `Secret` and press `Enter`:
+Enter your `Client ID` and `Secret` and press `Enter`. The profile location will be returned:
 
-<img src="assets/scli_06.png" width="800"/>
+<img src="assets/scli_04b.png" width="600"/>
 
 **Select a profile per command**
 
 Once you have a valid profile, check the auth status:
 
 ```copy-code
-sigma -p Sigma_QuickStarts auth status
+sigma -p sigma_quickstarts auth status
 ```
 
-<img src="assets/scli_07.png" width="800"/>
+<img src="assets/scli_07.png" width="500"/>
 
 **Verify your authentication**
 
@@ -285,7 +307,7 @@ Now put the pieces together. A common, high-value task for any Sigma admin is an
 Start by looking at the raw output so you can see the available fields:
 
 ```copy-code
-sigma -p Sigma_QuickStarts api members list | jq '.entries[0]'
+sigma -p sigma_quickstarts api members list | jq '.entries[0]'
 ```
 
 <img src="assets/scli_12.png" width="800"/>
@@ -293,7 +315,7 @@ sigma -p Sigma_QuickStarts api members list | jq '.entries[0]'
 Then reshape the fields you care about into CSV rows. `jq -r` outputs raw strings, and `@csv` quotes and comma-separates them safely:
 
 ```copy-code
-sigma -p Sigma_QuickStarts api members list \
+sigma -p sigma_quickstarts api members list \
   | jq -r '.entries[] | [.email, .firstName, .lastName, .memberType] | @csv' \
   > members.csv
 ```
@@ -310,7 +332,7 @@ cat members.csv
 **List your connections**
 
 ```copy-code
-sigma -p Sigma_QuickStarts api connections list \
+sigma -p sigma_quickstarts api connections list \
   | jq -r '.entries[] | [.connectionId, .name, .type] | @csv' \
   > connections.csv
 ```
@@ -318,7 +340,7 @@ sigma -p Sigma_QuickStarts api connections list \
 **List your workbooks**
 
 ```copy-code
-sigma -p Sigma_QuickStarts api workbooks list \
+sigma -p sigma_quickstarts api workbooks list \
   | jq -r '.entries[] | [.workbookId, .name, .ownerId] | @csv' \
   > workbooks.csv
 ```
@@ -358,7 +380,7 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.sigma-cli/bin:$PATH"
 # Read credentials from the file store so the script works without a logged-in session
 export SIGMA_CLI_KEYRING_BACKEND=file
 
-PROFILE="Sigma_QuickStarts"
+PROFILE="sigma_quickstarts"
 OUTDIR="sigma_inventory_test"
 mkdir -p "$OUTDIR"
 
@@ -401,7 +423,7 @@ sigma auth login
 
 Recreate the profile exactly as you did before, with the same API key:
 ```copy-code
-Sigma_QuickStarts 
+sigma_quickstarts 
 ```
 
 <aside class="negative">
