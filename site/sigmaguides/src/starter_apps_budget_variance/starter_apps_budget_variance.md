@@ -174,7 +174,7 @@ Start with `Largest $ variance` to surface the biggest dollar misses first:
 
 For this example, check `Travel and Entertainment` in the `CATEGORY` filter.
 
-The table updates to show all account-level rows within `Travel and Entertainment`, sorted by largest dollar variance. 
+The table updates to show all account-level rows within `Travel and Entertainment`, sorted by `Actual` column. 
 
 Airfare shows the largest overage — approximately $1,359,206 actual against a $1,241,450 budget, a difference of roughly $117,756 at 9.49%:
 
