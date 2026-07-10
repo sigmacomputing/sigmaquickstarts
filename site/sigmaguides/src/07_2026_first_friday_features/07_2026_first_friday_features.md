@@ -13,7 +13,7 @@ lastUpdated: 2026-08-07
 
 June 29-30, 2026 changes: pending (rolled over from June FFF)
 July 3, 2026 changes:
-July 10, 2026 changes:
+July 10, 2026 changes: done
 July 17, 2026 changes:
 July 24, 2026 changes:
 July 31, 2026 changes:
@@ -41,7 +41,10 @@ New first Friday features QuickStarts will be published on the first Friday of e
 ### Subscribe to What's New in Sigma
 For those wanting to see what Sigma is doing on each week, release notes are now also available on the [Sigma Community site](https://community.sigmacomputing.com/). There, you can **opt in to receive notifications about future release notes** in order to stay on top of everything new happening at Sigma. You can also subscribe to automated updates in any Slack channel using the Sigma Community release notes RSS feed. 
 
-For more information on how to subscribe to release note notifications, see [About the release notes](https://community.sigmacomputing.com/t/about-the-release-notes-category/5517) 
+For more information on how to subscribe to release note notifications, see [About the release notes](https://community.sigmacomputing.com/t/about-the-release-notes-category/5517)
+
+### Sigma help documentation redesign
+Sigma's help documentation site has been updated with a new homepage, a dedicated function reference section, and an enhanced API explorer with code representation views. The site also supports markdown export for any page.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -58,6 +61,12 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
+### Localization settings renamed (GA)
+The **Locale** section in account settings has been renamed to **Localization**, and **Account locale** has been renamed to **Account language**. Functionality is unchanged.
+
+### Universal result cache (Beta)
+Recent queries can now be cached in external storage, reducing warehouse compute consumption and improving response times for repeated or similar queries.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -70,13 +79,28 @@ Duration: 20
 ## API
 Duration: 20
 
+### CSV files in lineage endpoints (GA)
+List lineage endpoints now include uploaded CSV files as data sources. CSV entries display with a `csv-upload` type and include a `csvId` field.
+
+### Export endpoint enhancements (GA)
+The workbook and report send/schedule endpoints now support Cc and Bcc recipients, adding flexibility to automated report distribution.
+
+### List connection paths filtering (GA)
+The connection paths endpoint now supports filtering by `connectionId`, making it easier to scope path queries to a specific connection.
+
+### Revoke user OAuth tokens endpoint (GA)
+A new `POST /v2/members/:memberId/revoke` endpoint allows administrators to revoke a member's OIDC and warehouse connection tokens without interrupting active sessions.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Bug Fixes
 Duration: 20
 
-**1:** x
+**1:** Restored documentation MCP server functionality.
+**2:** Fixed inactive version tag timestamps to show correct dates.
+**3:** Preserved element layout positions when copying/pasting multiple elements.
+**4:** Resolved Snowflake Cortex Agent warehouse selection issues.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -91,13 +115,24 @@ Duration: 20
 ## AI Apps
 Duration: 20
 
+### Customize first agent message (Beta)
+Builders can now set a fixed greeting message for agents rather than relying on an AI-generated response. Configure agents to open every conversation with a specific, controlled message — such as "Welcome to Sigma!"
 
+For more information, see [Build agents](https://help.sigmacomputing.com/docs/build-agents#customize-the-first-agent-message)
+
+### Insert row(s) action (Beta)
+A new action type allows agents and actions to insert one or more rows into an input table. Rows can contain new defined values or data pulled from existing workbook sources.
+
+For more information, see [Create actions that modify input table data](https://help.sigmacomputing.com/docs/create-actions-that-modify-input-table-data)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Data Modeling
 Duration: 20
+
+### Databricks Unity Catalog metric views (Beta)
+Databricks Unity Catalog metric views are now browsable in Sigma's data catalog. Use metric views as sources for tables, pivots, and charts, and write custom SQL queries against them.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -182,7 +217,28 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
+### Button element icons (Beta)
+Button elements now support icons alongside labels, or as a standalone replacement for text, giving buttons a more visual and compact appearance.
 
+### Convert workbooks to reports (Beta)
+Existing workbooks can now be converted to reports, enabling pixel-level formatting control and more reliable export behavior.
+
+For more information, see [Convert workbooks to reports](https://help.sigmacomputing.com/docs/convert-workbooks-to-reports)
+
+### Enhanced export formatting (GA) <img src="assets/heart_icon.png" width="25"/>
+Excel and Google Sheets exports now preserve cell background color, text color, row banding, and font properties from the source workbook.
+
+**WHY IT MATTERS:**
+Export fidelity has long been a gap between what analysts see in Sigma and what stakeholders receive. Preserving formatting in Excel and Sheets exports means reports land polished and ready to share — without manual cleanup.
+
+### Find in table (GA) <img src="assets/heart_icon.png" width="25"/>
+Find in table is now generally available, letting users search for specific values within tables and input tables directly in the workbook.
+
+**WHY IT MATTERS:**
+For analysts working with large datasets, locating a specific row or value without sorting or filtering reduces friction — especially in input tables where pinpointing a record before editing is a common step.
+
+### Manage translations panel (GA)
+The **Manage locales** panel has been renamed to **Manage translations**. Functionality is unchanged.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
