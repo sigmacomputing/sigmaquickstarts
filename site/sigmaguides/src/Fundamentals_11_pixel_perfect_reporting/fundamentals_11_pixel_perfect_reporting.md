@@ -7,7 +7,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-09
+lastUpdated: 2026-07-11
 
 # Fundamentals 11: Pixel Perfect Reporting
 
@@ -629,7 +629,11 @@ Open the workbook you want to convert and select `File` > `Convert to report...`
 
 Sigma displays a modal listing any elements that cannot be carried over — buttons, dividers, page breaks, layout containers, sidebars, action sequences, and existing export schedules are removed during conversion. Review the list and confirm when you're ready to proceed.
 
-<!-- <img src="assets/ppf_50.png" width="800"/> -->
+<img src="assets/ppf_50.png" width="600"/>
+
+Sigma will warn about elements that will not convert:
+
+<img src="assets/ppf_50a.png" width="600"/>
 
 After confirming, configure three settings:
 
@@ -637,9 +641,13 @@ After confirming, configure three settings:
 - Page size: choose a preset (Letter, A4, etc.) or set custom dimensions
 - Orientation: portrait or landscape
 
-<!-- <img src="assets/ppf_51.png" width="600"/> -->
+<img src="assets/ppf_50b.png" width="600"/>
 
-Sigma saves the resulting report to `Your documents` as `[Workbook name] (Report)`. The original workbook is untouched.
+Sigma saves the resulting report to `Your documents` as `[Workbook name] (Report)`. The original workbook is untouched:
+
+<img src="assets/ppf_50c.png" width="700"/>
+
+Now all that may be needed is some final fit and finish work and the report is ready for distribution.
 
 <aside class="positive">
 <strong>BEST PRACTICE:</strong><br> The converter works best for workbooks with static, summary-style content — financial statements, invoices, operational summaries. Workbooks built around heavy interactivity (lots of controls and action sequences) will lose those elements in conversion, so plan accordingly.
