@@ -83,24 +83,21 @@ The app opens on its **README** page, which describes the purpose of each page a
 
 ### Workspace Page
 
-The **Workspace** page is the app's front door for each planning cycle. It shows the active forecast at a glance — current stage, open exception count, forecast unit total, and an AI-generated cycle insight summarizing plan health and next action:
+The **Workspace** page is the app's front door for each planning cycle. The left sidebar doubles as the stage navigator — sections are grouped as **CYCLE** (Workspace, Plan Details), **RESOLVE** (Outliers), and **PUBLISH** (Approve & Publish), each with a live badge showing open item counts. The active plan selector at the top of the page controls which forecast all pages display:
 
 <!-- <img src="assets/dp_04.png" width="800"/> -->
 
-The four-stage progress tracker shows where the active plan stands: **Baseline → Planner inputs → Outliers → Submit**. Each badge updates automatically as the plan moves through the workflow.
+The main content area shows a four-stage progress tracker: **Baseline → Planner inputs → Outliers → Submit**. Each card displays the current status label and a short description of what happens at that stage.
 
-Below the tracker, two KPI tiles show total forecast units:
-
-- **Moving Avg** — the system-generated baseline total across the plan horizon
-- **Plan** — the working total after any planner cell overrides are applied
+The **FORECAST UNITS** block shows the plan total as a single large number with two horizontal comparison bars — **Moving Avg** (blue, the system-generated baseline) and **Plan** (the working total after any planner cell overrides are applied). A contextual **NEXT ACTION** callout sits alongside it, surfacing the recommended immediate step for the plan's current stage with a direct action button:
 
 <!-- <img src="assets/dp_05.png" width="800"/> -->
 
-A line chart plots both series by month, making it easy to see where plan and baseline diverge across the forecast window.
+A **Moving Avg vs Plan** line chart below plots both series across the forecast horizon, making it easy to see where the working plan diverges from the baseline month by month.
 
-The **Cycle Insight** panel generates a two-sentence AI summary of the active plan: how many products it covers, open exceptions out of total, the immediate next action based on current status, and the planning deadline. The prompt driving this summary is editable — covered in the **Under the Hood** section.
+The **Cycle Insight** panel on the right generates a two-sentence AI summary of the active plan: products covered, open exceptions out of total, next action based on current status, and the planning deadline. The prompt driving this summary is editable — covered in the **Under the Hood** section.
 
-At the bottom, a **Top Outliers** list shows the highest-variance exceptions for the active plan, with product name, exception type, and percent deviation from the moving average baseline:
+The **Top Outliers** list shows the highest-variance exceptions for the active plan, with product name, exception type, priority badge, and percent deviation from the moving average baseline:
 
 <!-- <img src="assets/dp_06.png" width="800"/> -->
 
