@@ -3,10 +3,10 @@ id: developers_sigma_cli
 summary: developers_sigma_cli
 categories: developers
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
-lastUpdated: 2026-07-07
+tags: 
+lastUpdated: 2026-07-09
 
 # Automate Sigma from the Command Line with the Sigma CLI
 
@@ -15,12 +15,12 @@ Duration: 5
 
 Some administrative work in Sigma is easy to do once and tedious to do repeatedly. Reviewing who has access, taking stock of your connections, provisioning new members, or capturing an inventory of content all mean clicking through the same screens by hand — work that's slow to repeat, easy to get slightly wrong each time, and hard to hand off to a schedule or a teammate.
 
-The Sigma CLI (`sigcli`) is built for exactly this. It's a typed command-line wrapper over Sigma's REST API that handles authentication, gives you discoverable commands, and returns clean JSON you can pipe into scripts, pipelines, and scheduled jobs — so the tasks you used to do by hand become repeatable and auditable. Because every command runs through the same REST API, permissions, and audit logging as the rest of Sigma, that automation stays governed — the CLI is a new front door to Sigma, not a way around its controls.
+The Sigma CLI (`sigma`) is built for exactly this. It's a typed command-line wrapper over Sigma's REST API that handles authentication, gives you discoverable commands, and returns clean JSON you can pipe into scripts, pipelines, and scheduled jobs — so the tasks you used to do by hand become repeatable and auditable. Because every command runs through the same REST API, permissions, and audit logging as the rest of Sigma, that automation stays governed — the CLI is a new front door to Sigma, not a way around its controls.
 
-In this QuickStart you'll install and configure `sigcli`, learn how its commands map to the REST API, and then build something practical: a governance inventory that exports your members, connections, and workbooks to CSV. You'll finish by wrapping that inventory in a script you can run on a schedule.
+In this QuickStart you'll install and configure `sigma`, learn how its commands map to the REST API, and then build something practical: a governance inventory that exports your members, connections, and workbooks to CSV. You'll finish by wrapping that inventory in a script you can run on a schedule.
 
 Along the way you'll learn how to:
-- Install `sigcli` and add it to your PATH
+- Install `sigma` and add it to your PATH
 - Authenticate using a named profile (OAuth or API key)
 - Discover resources and actions with the CLI's built-in help
 - Read JSON output and reshape it with `jq`
@@ -32,7 +32,7 @@ Along the way you'll learn how to:
 </aside>
 
 <aside class="negative">
-<strong>LEGAL STUFF:</strong><br> The Sigma CLI is a separate tool governed by an external license agreement. Review the Sigma CLI Notice before you use `sigcli` to connect to or access your Sigma organization. See the <a href="https://help.sigmacomputing.com/docs/sigma-cli">Sigma CLI overview</a> for the current notice and links.
+<strong>LEGAL STUFF:</strong><br> The Sigma CLI is a separate tool governed by an external license agreement. Review the Sigma CLI Notice before you use `sigma` to connect to or access your Sigma organization. See the <a href="https://help.sigmacomputing.com/docs/sigma-cli">Sigma CLI overview</a> for the current notice and links.
 </aside>
 
 <aside class="negative">
@@ -66,22 +66,22 @@ This QuickStart is written for developers, technical admins, and automation engi
 ## Install the Sigma CLI
 Duration: 5
 
-You can install `sigcli` with the shell installer or with Homebrew. Pick one.
+You can install `sigma` with the shell installer or with Homebrew. Pick one.
 
 **Option 1: Shell installer**
 
 This works on macOS and Linux and installs the latest release:
 
 ```copy-code
-curl --proto '=https' --tlsv1.2 -LsSf https://assets.sigmacomputing.com/sigcli/releases/latest/sigcli-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://assets.sigmacomputing.com/sigma-cli/releases/latest/sigma-cli-installer.sh | sh
 ```
 
-<img src="assets/scli_01.png" width="800"/>
+<!-- <img src="assets/scli_01.png" width="800"/> -->
 
-The installer places the binary at `~/.sigcli/bin/sigcli`. For most setups, that directory won't be on your PATH yet, so add it by appending this line to your shell profile (`~/.zshrc` or `~/.bashrc`):
+The installer places the binary at `~/.sigma-cli/bin/sigma`. For most setups, that directory won't be on your PATH yet, so add it by appending this line to your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```copy-code
-export PATH="$HOME/.sigcli/bin:$PATH"
+export PATH="$HOME/.sigma-cli/bin:$PATH"
 ```
 
 There is no response, just an empty command line.
@@ -92,38 +92,56 @@ We need to reload terminal so the path change takes effect:
 source ~/.zshrc
 ```
 
-Confirm the shell can now find the binary. This should return the path to `sigcli`:
+Confirm the shell can now find the binary. This should return the path to `sigma`:
 
 ```copy-code
-which sigcli
+which sigma
 ```
 
 **Option 2: Homebrew**
 
-If you use Homebrew, this installs `sigcli` and adds it to your PATH automatically:
+If you use Homebrew, this installs `sigma` and adds it to your PATH automatically:
 
 ```copy-code
-brew install sigmacomputing/tap/sigcli
+brew install sigmacomputing/tap/sigma-computing-cli
 ```
 
 **Verify the installation**
 
-Confirm `sigcli` is on your PATH and see which version you're running:
+Confirm `sigma` is on your PATH and see which version you're running:
 
 ```copy-code
-sigcli --version
+sigma --version
 ```
 
-<img src="assets/scli_02.png" width="800"/>
+The response will be similar to:
+```code
+/Users/phil/.sigma-cli/bin/sigma
+```
+
+<!-- <img src="assets/scli_02.png" width="800"/> -->
 
 **Install jq**
 
-The examples in this QuickStart use `jq` to reshape the JSON that `sigcli` returns, so install it now. On macOS:
+The examples in this QuickStart use `jq` to reshape the JSON that `sigma` returns, so install it now.
+
+On macOS with Homebrew:
 
 ```copy-code
 brew install jq
 ```
-<img src="assets/scli_03.png" width="800"/>
+
+On macOS without Homebrew, download the prebuilt binary directly:
+
+```copy-code
+curl -Lo jq https://github.com/jqlang/jq/releases/latest/download/jq-macos-arm64 && chmod +x jq && sudo mv jq /usr/local/bin/
+```
+
+The `sudo mv` step will prompt for your macOS login password. Nothing is displayed as you type — press Enter when done.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The binary above is for Apple Silicon (M-series). If you're on Intel, replace <code>jq-macos-arm64</code> with <code>jq-macos-amd64</code>.
+</aside>
 
 On Linux, use your package manager of choice (for example, `apt install jq` or `yum install jq`).
 
@@ -133,12 +151,12 @@ On Linux, use your package manager of choice (for example, `apt install jq` or `
 ## Authenticate with a profile
 Duration: 7
 
-`sigcli` stores credentials in named **profiles**, so you can keep separate configurations for different Sigma organizations or environments (for example, `staging` and `prod`) and switch between them per command.
+`sigma` stores credentials in named **profiles**, so you can keep separate configurations for different Sigma organizations or environments (for example, `staging` and `prod`) and switch between them per command.
 
 Start the interactive login:
 
 ```copy-code
-sigcli auth login
+sigma auth login
 ```
 
 Choose `Create new profile`, then pick one of the two authentication methods below. We will demonstrate with API key.
@@ -151,36 +169,40 @@ Select `OAuth`, enter your Sigma organization URL, and give the profile a name (
 
 **Option 2: API key**
 
-First generate API credentials in Sigma from `Administration` > `Developer Access` (an Admin account type is required). Then run `sigcli auth login`, select `Create new profile`, choose `API key`, name the profile, select the API base URL for your organization, and paste in your client ID and secret.
+First generate API credentials in Sigma from `Administration` > `Developer Access` (an Admin account type is required). Then run `sigma auth login`, select `Create new profile`, choose `API key`, name the profile, select the API base URL for your organization, and paste in your client ID and secret.
+
+After selecting `API key` press `Enter`.
+
+Enter a `Profile name`:
 
 <img src="assets/scli_04.png" width="600"/>
 
-Enter a `Profile name` and select the region where your Sigma instance is hosted:
+Select the region where your Sigma instance is hosted:
 
-<img src="assets/scli_05.png" width="800"/>
+<img src="assets/scli_04a.png" width="600"/>
 
-Enter your `Client ID` and `Secret` and press `Enter`:
+Enter your `Client ID` and `Secret` and press `Enter`. The profile location will be returned:
 
-<img src="assets/scli_06.png" width="800"/>
+<img src="assets/scli_04b.png" width="600"/>
 
 **Select a profile per command**
 
 Once you have a valid profile, check the auth status:
 
 ```copy-code
-sigcli -p Sigma_QuickStarts auth status
+sigma -p sigma_quickstarts auth status
 ```
 
-<img src="assets/scli_07.png" width="800"/>
+<img src="assets/scli_07.png" width="500"/>
 
 **Verify your authentication**
 
 These three commands confirm that your profile works and tell you who you're authenticated as:
 
 ```copy-code
-sigcli auth status
-sigcli auth token
-sigcli api whoami get
+sigma auth status
+sigma auth token
+sigma api whoami get
 ```
 
 - `auth status` reports whether your profile is authenticated
@@ -190,7 +212,7 @@ sigcli api whoami get
 <img src="assets/scli_08.png" width="800"/>
 
 <aside class="positive">
-<strong>TIP:</strong><br> If you don't pass <code>-p</code>, <code>sigcli</code> uses your default profile. Naming profiles clearly and always passing <code>-p</code> in scripts prevents a command from accidentally running against the wrong organization.
+<strong>TIP:</strong><br> If you don't pass <code>-p</code>, <code>sigma</code> uses your default profile. Naming profiles clearly and always passing <code>-p</code> in scripts prevents a command from accidentally running against the wrong organization.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -199,16 +221,16 @@ sigcli api whoami get
 ## Understand the command structure
 Duration: 6
 
-Nearly every `sigcli` command follows the same shape, which mirrors the REST API:
+Nearly every `sigma` command follows the same shape, which mirrors the REST API:
 
 ```code
-sigcli api {resource} {action} [--flags]
+sigma api {resource} {action} [--flags]
 ```
 
-For example, `sigcli api workbooks list` lists the workbooks in your organization:
+For example, `sigma api workbooks list` lists the workbooks in your organization:
 
 ```copy-code
-sigcli api workbooks list
+sigma api workbooks list
 ```
 
 <img src="assets/scli_09.png" width="800"/>
@@ -218,21 +240,21 @@ sigcli api workbooks list
 You don't need to memorize resources and actions — the CLI tells you what it supports:
 
 ```copy-code
-sigcli --help
-sigcli api workbooks --help
-sigcli api schema workbooks get
+sigma --help
+sigma api workbooks --help
+sigma api schema workbooks get
 ```
 
 - `--help` at the top level lists the available resources. 
 - Adding `--help` after a resource shows its actions and flags.
-- `sigcli api schema {resource} {action}` describes the parameters an action expects, so you know exactly what to pass.
+- `sigma api schema {resource} {action}` describes the parameters an action expects, so you know exactly what to pass.
 
 **Pass parameters**
 
 Actions that need input take a JSON object via `--params`. For example, to fetch a single workbook, pass its `workbookId` (you'll find this in the `workbooks list` output above):
 
 ```copy-code
-sigcli api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}'
+sigma api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}'
 ```
 
 This returns the details for that workbook:
@@ -244,15 +266,15 @@ This returns the details for that workbook:
 Commands return JSON to standard output, which makes them easy to combine with tools like `jq` or to save to a file:
 
 ```copy-code
-sigcli api workbooks list | jq '.entries[].name'
-sigcli api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}' > workbook.json
+sigma api workbooks list | jq '.entries[].name'
+sigma api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}' > workbook.json
 ```
 
 <img src="assets/scli_11.png" width="800"/>
 
 **Check exit codes**
 
-`sigcli` returns a distinct exit code for each outcome, which is what lets scripts branch on success or failure:
+`sigma` returns a distinct exit code for each outcome, which is what lets scripts branch on success or failure:
 
 - `0` — success
 - `1` — API error
@@ -263,10 +285,10 @@ sigcli api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf57
 If something isn't behaving, turn on debug logging to see the underlying requests:
 
 ```copy-code
-SIGCLI_LOG=debug sigcli api connections list
+SIGMA_CLI_LOG=debug sigma api connections list
 ```
 
-Setting `SIGCLI_LOG` this way only applies to the single command it prefixes, so there's nothing to turn off — the next command you run without it returns to normal output.
+Setting `SIGMA_CLI_LOG` this way only applies to the single command it prefixes, so there's nothing to turn off — the next command you run without it returns to normal output.
 
 <aside class="positive">
 <strong>TIP:</strong><br> Before writing any <code>jq</code> filter, run the command on its own and look at the raw JSON. The field names you'll reference (like <code>email</code> or <code>memberType</code>) come straight from that output, and they mirror the Sigma REST API reference.
@@ -278,14 +300,14 @@ Setting `SIGCLI_LOG` this way only applies to the single command it prefixes, so
 ## Build a governance inventory
 Duration: 8
 
-Now put the pieces together. A common, high-value task for any Sigma admin is answering "who has access, what connections exist, and what content do we have?" With `sigcli` you can pull all three and export them to CSV in a few commands.
+Now put the pieces together. A common, high-value task for any Sigma admin is answering "who has access, what connections exist, and what content do we have?" With `sigma` you can pull all three and export them to CSV in a few commands.
 
 **List your members**
 
 Start by looking at the raw output so you can see the available fields:
 
 ```copy-code
-sigcli -p Sigma_QuickStarts api members list | jq '.entries[0]'
+sigma -p sigma_quickstarts api members list | jq '.entries[0]'
 ```
 
 <img src="assets/scli_12.png" width="800"/>
@@ -293,7 +315,7 @@ sigcli -p Sigma_QuickStarts api members list | jq '.entries[0]'
 Then reshape the fields you care about into CSV rows. `jq -r` outputs raw strings, and `@csv` quotes and comma-separates them safely:
 
 ```copy-code
-sigcli -p Sigma_QuickStarts api members list \
+sigma -p sigma_quickstarts api members list \
   | jq -r '.entries[] | [.email, .firstName, .lastName, .memberType] | @csv' \
   > members.csv
 ```
@@ -310,7 +332,7 @@ cat members.csv
 **List your connections**
 
 ```copy-code
-sigcli -p Sigma_QuickStarts api connections list \
+sigma -p sigma_quickstarts api connections list \
   | jq -r '.entries[] | [.connectionId, .name, .type] | @csv' \
   > connections.csv
 ```
@@ -318,7 +340,7 @@ sigcli -p Sigma_QuickStarts api connections list \
 **List your workbooks**
 
 ```copy-code
-sigcli -p Sigma_QuickStarts api workbooks list \
+sigma -p sigma_quickstarts api workbooks list \
   | jq -r '.entries[] | [.workbookId, .name, .ownerId] | @csv' \
   > workbooks.csv
 ```
@@ -352,28 +374,28 @@ sigma_inventory.sh
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Ensure sigcli and jq are found when run by cron, which uses a minimal PATH
-export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.sigcli/bin:$PATH"
+# Ensure sigma and jq are found when run by cron, which uses a minimal PATH
+export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.sigma-cli/bin:$PATH"
 
 # Read credentials from the file store so the script works without a logged-in session
-export SIGCLI_KEYRING_BACKEND=file
+export SIGMA_CLI_KEYRING_BACKEND=file
 
-PROFILE="Sigma_QuickStarts"
+PROFILE="sigma_quickstarts"
 OUTDIR="sigma_inventory_test"
 mkdir -p "$OUTDIR"
 
 # Fail early if the profile isn't authenticated
-sigcli -p "$PROFILE" auth status
+sigma -p "$PROFILE" auth status
 
-sigcli -p "$PROFILE" api members list \
+sigma -p "$PROFILE" api members list \
   | jq -r '.entries[] | [.email, .firstName, .lastName, .memberType] | @csv' \
   > "$OUTDIR/members.csv"
 
-sigcli -p "$PROFILE" api connections list \
+sigma -p "$PROFILE" api connections list \
   | jq -r '.entries[] | [.connectionId, .name, .type] | @csv' \
   > "$OUTDIR/connections.csv"
 
-sigcli -p "$PROFILE" api workbooks list \
+sigma -p "$PROFILE" api workbooks list \
   | jq -r '.entries[] | [.workbookId, .name, .ownerId] | @csv' \
   > "$OUTDIR/workbooks.csv"
 
@@ -385,8 +407,8 @@ echo "Inventory written to $OUTDIR"
 A few things worth pointing out about this script:
 
 - `set -euo pipefail` stops the script on the first error.
-- The `export PATH=...` line ensures `sigcli` and `jq` are found when the script runs unattended. A scheduler like `cron` uses a minimal environment that doesn't include Homebrew's directory or your shell profile, so without this the script would fail with `command not found`. The line covers Homebrew on Apple Silicon (`/opt/homebrew/bin`), Homebrew on Intel (`/usr/local/bin`), and the shell-installer location (`~/.sigcli/bin`).
-- The `export SIGCLI_KEYRING_BACKEND=file` line tells `sigcli` to read credentials from a file rather than the OS keyring. By default `sigcli` stores credentials in your operating system's keyring (the macOS Keychain, for example), which only unlocks for an interactive, logged-in session. A scheduler like `cron` has no such session, so a keyring lookup fails with `User interaction is not allowed`. File-based storage sidesteps that.
+- The `export PATH=...` line ensures `sigma` and `jq` are found when the script runs unattended. A scheduler like `cron` uses a minimal environment that doesn't include Homebrew's directory or your shell profile, so without this the script would fail with `command not found`. The line covers Homebrew on Apple Silicon (`/opt/homebrew/bin`), Homebrew on Intel (`/usr/local/bin`), and the shell-installer location (`~/.sigma/bin`).
+- The `export SIGMA_CLI_KEYRING_BACKEND=file` line tells `sigma` to read credentials from a file rather than the OS keyring. By default `sigma` stores credentials in your operating system's keyring (the macOS Keychain, for example), which only unlocks for an interactive, logged-in session. A scheduler like `cron` has no such session, so a keyring lookup fails with `User interaction is not allowed`. File-based storage sidesteps that.
 - The `auth status` check up front means it fails clearly if the profile's credentials have expired, rather than producing empty files.
 - `OUTDIR` creates a folder named `sigma_inventory_test`, and the three CSVs are written *inside* that folder, not next to the script. Keeping the output together makes it easy to find and easy to clean up.
 
@@ -395,13 +417,13 @@ A few things worth pointing out about this script:
 Credentials are saved per backend, so the profile you created earlier lives in the OS keyring — not the file store the script now reads from. Authenticate once more with the file backend active so your profile is written where unattended runs can find it:
 
 ```copy-code
-export SIGCLI_KEYRING_BACKEND=file
-sigcli auth login
+export SIGMA_CLI_KEYRING_BACKEND=file
+sigma auth login
 ```
 
 Recreate the profile exactly as you did before, with the same API key:
 ```copy-code
-Sigma_QuickStarts 
+sigma_quickstarts 
 ```
 
 <aside class="negative">
@@ -429,12 +451,12 @@ You'll have a folder named `sigma_inventory_test` containing the three resulting
 
 To capture a weekly snapshot automatically, schedule the script with `cron`, your machine's built-in job scheduler.
 
-The schedule lives on your machine, in your user's crontab — it is not stored in Sigma. Sigma has no knowledge of the schedule; it simply receives normal API calls whenever the script runs. Anything that can run `sigcli` on a timer (cron, a CI/CD scheduler, a cloud function) works the same way.
+The schedule lives on your machine, in your user's crontab — it is not stored in Sigma. Sigma has no knowledge of the schedule; it simply receives normal API calls whenever the script runs. Anything that can run `sigma` on a timer (cron, a CI/CD scheduler, a cloud function) works the same way.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> You might expect to create this job inside Sigma so it appears in the UI. Sigma's own scheduling delivers <em>workbook content</em> (a workbook or element exported to email, Slack, cloud storage, and so on), and the CLI can manage those export schedules too.<br>
 <br>
-Our inventory is different — it pulls organization metadata (members, connections, and workbooks lists) that no single workbook produces, so there's nothing for Sigma's scheduler to run. Scheduling it externally is the right pattern: Sigma stays the system of record, and <code>sigcli</code> is the automation surface that reaches into it from wherever your scheduler lives.
+Our inventory is different — it pulls organization metadata (members, connections, and workbooks lists) that no single workbook produces, so there's nothing for Sigma's scheduler to run. Scheduling it externally is the right pattern: Sigma stays the system of record, and <code>sigma</code> is the automation surface that reaches into it from wherever your scheduler lives.
 </aside>
 
 Since you already have a `sigma_inventory_test` folder from the manual run, delete it first so there's no doubt the scheduled run is what recreates it:
@@ -520,7 +542,7 @@ The same script works unchanged inside a CI/CD pipeline. Store your API credenti
 ## What we've covered
 Duration: 3
 
-You installed the Sigma CLI, authenticated it with a named profile, and learned how its `sigcli api {resource} {action}` structure maps directly onto Sigma's REST API. From there you built a governance inventory — exporting your members, connections, and workbooks to CSV — and wrapped it into a script you can schedule or drop into a pipeline.
+You installed the Sigma CLI, authenticated it with a named profile, and learned how its `sigma api {resource} {action}` structure maps directly onto Sigma's REST API. From there you built a governance inventory — exporting your members, connections, and workbooks to CSV — and wrapped it into a script you can schedule or drop into a pipeline.
 
 The bigger takeaway is the pattern, not just the report. Once Sigma operations are commands that return structured output and meaningful exit codes, they become building blocks: you can compose them, version them, put them under review, and run them the same way every time. 
 
