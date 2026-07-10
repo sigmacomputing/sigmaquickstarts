@@ -98,7 +98,7 @@ The Kickoff page is where each planning cycle begins. It surfaces the most impor
 
 **Next Action prompt** — a dark card that states the outstanding task for the current cycle: completing variance commentary and submitting the reforecast for sign-off.
 
-**Three-step workflow navigator** — links to Variance Commentary (➊), Reforecast Budget (➋), and Executive Approval (➌), keeping the cycle visible at all times.
+**Three-step workflow navigator** — links to Variance Commentary (➊), Reforecast Budget (➋), and Executive Signoff (➌), keeping the cycle visible at all times.
 
 **Draft Forecast Overrides** — a live feed of budget adjustments that have been staged but not yet approved, so analysts and managers can see what's in flight.
 
@@ -140,6 +140,8 @@ The sample data in this app covers the first six months, so scenarios run throug
 ## Documenting Variance Commentary
 Duration: 10
 
+Click `Variance Commentary` on the navigation menu at the top of the page.
+
 The Variance Commentary page is where analysts explain **why actuals diverged from budget** before touching any forecast numbers. 
 
 Commentary is linked to a specific scenario and flows forward automatically to the Executive Signoff page — so the executive sees the analyst's rationale alongside the variance data, without a separate briefing.
@@ -174,7 +176,7 @@ Start with `Largest $ variance` to surface the biggest dollar misses first:
 
 For this example, check `Travel and Entertainment` in the `CATEGORY` filter.
 
-The table updates to show all account-level rows within `Travel and Entertainment`, sorted by `Actual` column. 
+The table updates to show all account-level rows within `Travel and Entertainment`, sorted by the `Actual` column. 
 
 Airfare shows the largest overage — approximately $1,359,206 actual against a $1,241,450 budget, a difference of roughly $117,756 at 9.49%:
 
@@ -182,7 +184,9 @@ Airfare shows the largest overage — approximately $1,359,206 actual against a 
 
 ### Adding Commentary
 
-Click any cell in the `Commentary` column and type your explanation directly into the row. For the Airfare overage:
+Click any cell in the `Commentary` column and type your explanation directly into the row. 
+
+For the Airfare overage use:
 
 ```copy-code
 Airfare spend exceeded budget by approximately 9.5% through the first half of the year, driven by expanded field sales headcount and increased client visit frequency. Elevated spend is expected to continue through year-end as the team reaches full quota capacity.
@@ -241,7 +245,7 @@ At the top of the page, an AI recommendation summarizes which accounts are most 
 
 ### Scenario Status Bar
 
-Below the recommendation, the status bar shows four metrics for the active scenario:
+Below the recommendation, the status bar shows three metrics for the active scenario:
 
 - **Baseline** — the original approved budget, locked as the comparison reference
 - **Closed Months** — the number of actual months locked (Jan through June for `6+6`)
@@ -253,7 +257,7 @@ Below the recommendation, the status bar shows four metrics for the active scena
 
 The pivot table shows P&L categories as rows and months as columns. **Grey cells** are closed actuals — locked, not editable. **White cells** are open forecast months. **Blue cells** have an override applied.
 
-Click any white cell to open the **Edit Budget Modal**:
+Clicking any white cell opens an **Edit Budget Modal**:
 
 <img src="assets/bva_10.png" width="800"/>
 
@@ -264,7 +268,7 @@ The modal shows:
 - **Override Delta** — quick-select buttons (`-25k`, `-10k`, `0`, `+10k`, `+25k`) or type a custom value (signed)
 - **Rationale** — required before `Apply Override` activates
 
-For Travel and Entertainment: click open the `754.02K` cell: 
+For Travel and Entertainment, click the `754.02K` cell:
 
 <img src="assets/bva_10a.png" width="800"/>
 
@@ -285,6 +289,10 @@ The `Travel and Entertainment` cells for the remaining forecast months turn blue
 The `Overrides Executed` count is incremented:
 
 <img src="assets/bva_10c.png" width="800"/>
+
+The edited cell is shown with a colored background:
+
+<img src="assets/bva_10e.png" width="800"/>
 
 Repeat for any other accounts where the AI recommendation or your analysis suggests adjustment.
 
@@ -317,13 +325,13 @@ Below the header, a full-year pivot compares the reforecast against the original
 
 The analyst commentary entered on the `Variance Commentary` page appears inline in the pivot alongside the delta figures:
 
+<img src="assets/bva_12a.png" width="800"/>
+
 If multiple scenarios have been submitted, they appear as side-by-side columns in the pivot, allowing the executive to compare approaches before committing to one.
 
 ### AI Approval Recommendation
 
-Alongside the pivot, Sigma generates a recommendation framed from the executive's perspective. The model reviews the delta $ and delta % figures and the analyst commentary across the full scenario, then returns a 1–2 sentence read on whether the plan is adequately supported:
-
-<!-- <img src="assets/bva_13.png" width="800"/> -->
+Alongside the pivot, Sigma generates a recommendation framed from the executive's perspective. The model reviews the delta $ and delta % figures and the analyst commentary across the full scenario, then returns a 1–2 sentence read on whether the plan is adequately supported.
 
 The recommendation surfaces the key factors worth weighing — it doesn't make the decision.
 
@@ -388,7 +396,7 @@ The effective budget for each cell is `Base Budget + Adjustment` (falling back t
 
 The AI recommendations on the Reforecast Budget and Executive Signoff pages use Sigma's `CallText` function to call an AI model inline — no external service or separate integration required:
 
-```code
+```copy-code
 CallText("ai_complete", "claude-4-sonnet", "[system prompt] + scenario data")
 ```
 
@@ -459,7 +467,28 @@ After reconnecting, open the `Kickoff` page in view mode. If the headline metric
 ## What We've Covered
 Duration: 3
 
-<!-- Write last, after all technical sections are reviewed and finalized -->
+The Budget Variance Analysis app shows what a governed, end-to-end finance planning workflow looks like when built natively in Sigma. The analyst explains variances, the manager adjusts the forecast, and the executive reviews and approves — all in a single connected workbook, with commentary, overrides, and sign-offs linked automatically across pages.
+
+A few patterns from this app are worth carrying into your own builds:
+
+- **Scenario architecture via cross-join** — `Submitted Scenarios Table` cross-joined against the base budget creates a full, independent copy of the forecast for each named cycle. Multiple planning scenarios coexist in the workbook without overwriting each other.
+- **Commentary that travels with the data** — analyst notes entered on the Variance Commentary page appear automatically on the Executive Signoff page alongside the delta figures. No export, no briefing deck, no risk of stale context reaching the executive.
+- **Inline AI with `CallText`** — recommendations on the Reforecast Budget and Executive Signoff pages are generated from live workbook values inside Sigma's governed environment. No external service, no separate API integration to maintain.
+- **Transpose-based P&L pipeline** — the row-to-column and column-to-row transpose pattern calculates subtotals like Gross Profit and Operating Profit that don't exist as rows in the warehouse, then reunites them with account-level detail into a single source for all pivot tables.
+
+These patterns apply well beyond finance — anywhere you need named versions of editable data, linked annotations, or AI analysis tied to a specific data context.
+
+**Additional Resource Links**
+
+Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
+
+[Help Center Home](https://help.sigmacomputing.com)<br>
+[Sigma Community](https://community.sigmacomputing.com/)<br>
+[Sigma Blog](https://www.sigmacomputing.com/blog/)<br>
+<br>
+
+[<img src="assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
+[<img src="assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
