@@ -3,9 +3,9 @@ id: developers_sigma_cli
 summary: developers_sigma_cli
 categories: developers
 environments: web
-status: Published
+status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: default
+tags: 
 lastUpdated: 2026-07-09
 
 # Automate Sigma from the Command Line with the Sigma CLI
