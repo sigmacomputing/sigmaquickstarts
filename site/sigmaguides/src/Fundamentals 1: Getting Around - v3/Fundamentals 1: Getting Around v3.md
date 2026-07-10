@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-07-02
+lastUpdated: 2026-07-11
 
 # Fundamentals 01: Overview
 
@@ -225,7 +225,7 @@ The main areas are numbered and described below:
   <li><strong>Home:</strong> Returns to the homepage.</li>
   <li><strong>Documents:</strong> Your personal folder for content you've created.</li>
   <li><strong>Workspaces:</strong> Shared folders for organizing and sharing content with specific teams or members.</li>
-  <li><strong>Templates:</strong> Pre-built workbook structures available for quick reuse.</li>
+  <li><strong>Templates:</strong> Pre-built, ready-to-use content including Starter Apps — fully working apps built on sample data that cover common business workflows you can explore and connect to your own data.</li>
   <li><strong>Shared with you:</strong> Content others have shared with you directly.</li>
   <li><strong>Recent:</strong> Content you've accessed recently.</li>
   <li><strong>Favorites:</strong> Content you've marked as a favorite for quick access.</li>
@@ -942,12 +942,9 @@ As an example, this `Financial Services: Portfolio Risk Modeling` workbook has i
 
 <img src="assets/f1_25.png" width="800"/>
 
-Sigma provides many pre-built [templates](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates) that you can explore, see how things are configured, and use for your own projects. 
+The `Templates` section in the left sidebar includes Starter Apps — pre-built, fully working apps built on sample data that cover common business workflows across finance, operations, sales, and more. You can explore them, inspect how they're built in edit mode, and connect them to your own data when you're ready.
 
-You can even create templates from your own workbooks too:
-
-<img src="assets/f1_41.png" width="500"/>
-
+<img src="assets/f1_41a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
@@ -984,7 +981,7 @@ Tabbed containers let you organize related content into separate tabs within the
 ### Modal
 A modal feels somewhat similar to a page but behaves differently in that it enables a pop-up window that overlays the workbook. Modals are ideal for highlighting important content, collecting input, or guiding users through a focused interaction without navigating away from the main page.
 
-Modals can be used for simple things like confirming a change or complex as shown in the [Approvals QuickStart](https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html?index=..%2F..index#0)
+Modals can be used for simple things like confirming a change, or as complex as the workflow shown in the [Approvals QuickStart](https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html?index=..%2F..index#0)
 
 <img src="assets/modals.gif">
 
