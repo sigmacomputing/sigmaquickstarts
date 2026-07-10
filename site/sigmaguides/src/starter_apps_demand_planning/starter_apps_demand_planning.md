@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-09
+lastUpdated: 2026-07-11
 
 # Demand Planning Starter App
 
@@ -18,6 +18,10 @@ Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native f
 The **Demand Planning** app gives supply chain and operations teams a single workspace to create demand forecasts, incorporate planner assumptions, resolve statistical outliers, and publish approved plans to stores or downstream systems — all against live data. A moving average baseline is generated automatically, and AI surfaces cycle health, exception rationale, and operational impact at each stage of the workflow.
 
 This QuickStart walks through how the app works as a user, how it's designed under the hood, and how to connect it to your own data.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Starter Apps are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
+</aside>
 
 ### Target Audience
 Supply chain, operations, and planning teams evaluating or adopting Sigma for demand and inventory planning workflows. Solutions Engineers and technical stakeholders exploring the app as a reference design.
@@ -85,21 +89,27 @@ The app opens on its **README** page, which describes the purpose of each page a
 
 The **Workspace** page is the app's front door for each planning cycle. The left sidebar doubles as the stage navigator — sections are grouped as **CYCLE** (Workspace, Plan Details), **RESOLVE** (Outliers), and **PUBLISH** (Approve & Publish), each with a live badge showing open item counts. The active plan selector at the top of the page controls which forecast all pages display:
 
-<!-- <img src="assets/dp_04.png" width="800"/> -->
+<img src="assets/dp_04.png" width="300"/>
 
-The main content area shows a four-stage progress tracker: **Baseline → Planner inputs → Outliers → Submit**. Each card displays the current status label and a short description of what happens at that stage.
+At the top of the main content area, a large `PLANNING CYCLE` headline announces the active plan's current phase: *"[Plan name] is in the Exceptions phase."* Directly below it, a `NEXT` action link names the immediate required step (for example, `NEXT — RESOLVE 10 OUTLIERS BEFORE SUBMISSION`) so the planner's next action is always visible without navigating elsewhere:
 
-The **FORECAST UNITS** block shows the plan total as a single large number with two horizontal comparison bars — **Moving Avg** (blue, the system-generated baseline) and **Plan** (the working total after any planner cell overrides are applied). A contextual **NEXT ACTION** callout sits alongside it, surfacing the recommended immediate step for the plan's current stage with a direct action button:
+<img src="assets/dp_05.png" width="800"/>
 
-<!-- <img src="assets/dp_05.png" width="800"/> -->
+Below the headline, the **WORKING FORECAST** card shows the plan's date range and a four-stage progress tracker. Each stage card has two labels: a status label on top (Draft, Applied, Review, Not submitted) and the stage name below (**Baseline, Planner inputs, Outliers, Submit**), plus a short description of what that stage covers:
 
-A **Moving Avg vs Plan** line chart below plots both series across the forecast horizon, making it easy to see where the working plan diverges from the baseline month by month.
+<img src="assets/dp_06.png" width="700"/>
 
-The **Cycle Insight** panel on the right generates a two-sentence AI summary of the active plan: products covered, open exceptions out of total, next action based on current status, and the planning deadline. The prompt driving this summary is editable — covered in the **Under the Hood** section.
+The **FORECAST UNITS** block shows the plan total as a single large number with two horizontal comparison bars — **Moving Avg** (blue, the system-generated baseline) and **Plan** (the working total after any planner cell overrides are applied). A contextual **NEXT ACTION** callout sits alongside it, surfacing the recommended step with a direct action button. A **Moving Avg vs Plan** line chart below plots both series across the forecast horizon:
 
-The **Top Outliers** list shows the highest-variance exceptions for the active plan, with product name, exception type, priority badge, and percent deviation from the moving average baseline:
+<img src="assets/dp_07.png" width="600"/>
 
-<!-- <img src="assets/dp_06.png" width="800"/> -->
+The **Cycle Insight** panel on the right generates a two-sentence AI summary of the active plan: products covered, open exceptions out of total, next action based on current status, and the planning deadline. The prompt driving this summary is editable — covered in the **Under the Hood** section:
+
+<img src="assets/dp_08.png" width="800"/>
+
+The **Top Outliers** list shows the highest-variance exceptions for the active plan, with product name, exception type, priority badge, and percent deviation from the moving average baseline. An `Open queue` button at the bottom links directly to the Outliers page:
+
+<img src="assets/dp_09.png" width="550"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -107,21 +117,42 @@ The **Top Outliers** list shows the highest-variance exceptions for the active p
 ## The Planning Workflow
 Duration: 15
 
-The app follows a four-stage workflow. The `Workspace` page tracks the active plan's stage at all times; each of the remaining three pages corresponds to one stage. Before creating a new plan, place the workbook in `Published` mode using the toggle in the header.
+The app follows a four-stage workflow. 
+
+The `Workspace` page tracks the active plan's stage at all times; each of the remaining three pages corresponds to one stage. 
+
+Before creating a new plan, place the workbook in `Published` mode using the toggle in the header.
 
 ### Stage 1: Create a Plan
 
-Creating a plan starts on the **Data** page. Navigate to `Data` and locate the **Forecast Scenarios** input table. Add a new row with:
+Creating a plan starts from the **Workspace** page. Click the `New...` button in the active plan selector at the top of the page:
 
-- `Scenario Id` — a unique identifier for this plan (e.g., `SCN-2026-Q3`)
-- `Scenario Name` — a descriptive label for this planning cycle
-- `Owner` — the planner responsible
-- `Start` and `End` — the forecast horizon (month-level dates)
-- `Selected Products` — the product IDs to include in this plan
+<img src="assets/dp_10.png" width="800"/>
 
-<!-- <img src="assets/dp_07.png" width="800"/> -->
+A `CREATE DEMAND PLAN` modal opens. Fill in the fields using the sample values below, or substitute your own:
 
-Once saved, the scenario appears immediately in the active plan selector on the `Workspace` page. Select it to make it the active forecast for all pages.
+- Scenario Name:
+
+```copy-code
+BVB Pint Demand Plan
+```
+
+- Products: `Bourbon Vanilla Bean Pint`
+- Start: `07/01/2026`
+- End: `12/01/2026`
+- Planning Notes:
+
+```copy-code
+Summer and holiday event catering forecast
+```
+
+<img src="assets/dp_11.png" width="500"/>
+
+Click `Create plan`. 
+
+The new plan appears in the active plan selector and we can select it or any other of the pre-built examples:
+
+<img src="assets/dp_12.png" width="700"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The active plan selector drives the entire workspace — switching it changes which scenario's exceptions, pivot data, and AI summaries are displayed across all pages. Multiple planners can work against separate scenarios simultaneously without affecting each other.
@@ -129,70 +160,123 @@ Once saved, the scenario appears immediately in the active plan selector on the 
 
 ### Stage 2: Plan Details
 
-Navigate to the **Plan Details** page. This is where you review the baseline and apply planner assumptions.
+Click `View plan`:
 
-The **Scenario Record and Scope** panel lets you edit the plan's name, owner, start and end dates, and product selection directly from this page:
+The **Plan Details** page opens with the stage indicator `STAGE 02 OF 04 · PLAN DETAILS` at the top. Two header buttons — `Back to Workspace` and `Continue to Outliers` — let you move between stages without using the sidebar:
 
-<!-- <img src="assets/dp_08.png" width="800"/> -->
+<img src="assets/dp_13.png" width="700"/>
 
-The **Pivot Planning Table** shows forecast units by product (rows) and month (columns). Each cell reflects the effective plan value — either the moving average baseline or a planner override if one has been entered. Three totals above the pivot show the current state:
+The page has a two-column layout. The left side shows the **PIVOT PLANNING TABLE** — products on rows, months in `YYYY-MM` format on columns. Three footer KPIs below the table track the running totals: **BASELINE**, **WORKING**, and **Δ VS BASELINE**:
 
-- **Baseline** — total moving average units across all products and months
-- **Working** — total plan units after any overrides
-- **Δ vs Baseline** — percent difference between working and baseline
+<img src="assets/dp_14.png" width="600"/>
 
-<!-- <img src="assets/dp_09.png" width="800"/> -->
+The right side shows the **SCENARIO RECORD AND SCOPE** panel where plan metadata (Scenario Name, Owner, Products, Start/End) is editable without leaving the page. The `Refresh` button next to Products regenerates the forecast scaffold after any product selection change:
 
-To apply a planner assumption, click any cell in the pivot table. Enter a new unit value, add a confidence level and rationale note, then save. Cells with a planner override are highlighted in blue; values more than 10% above the moving average appear in green, more than 10% below in red:
+<img src="assets/dp_15.png" width="400"/>
 
-<!-- <img src="assets/dp_10.png" width="800"/> -->
+To apply a planner assumption, click the `2026-07` cell for Bourbon Vanilla Bean Pint. 
+
+A modal opens showing the moving average baseline (8,061 units) as the reference. 
+
+Enter the following values to record an event-driven uplift:
+
+- **Plan Units:**
+
+```copy-code
+10500
+```
+- **Confidence:**
+
+```copy-code
+90
+```
+- **Reason:** select the value that best describes the demand driver (e.g., seasonal event, promotional)
+- **Comment:**
+
+```copy-code
+Annual summer food festival drives higher catering product volume
+```
+
+The **Δ vs moving average forecast** line at the bottom updates live — at 10,500 units it shows +2,439 units, +30%. Click `Save cell` to apply:
+
+<img src="assets/dp_16.png" width="500"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Once a plan is submitted in Stage 4, the pivot table is locked. Editing a submitted plan reopens it as a draft and resets it to Stage 2.
 </aside>
 
+Click the `Continue to Outliers` button.
+
+<img src="assets/dp_17.png" width="700"/>
+
+We are warned that we need to `Save & Continue`. Go ahead and do that:
+
+<img src="assets/dp_18.png" width="500"/>
+
 ### Stage 3: Resolve Outliers
 
-Navigate to the **Outliers** page. This is where you work through flagged product-month combinations before the plan can be submitted.
+This is where you work through flagged product-month combinations before the plan can be submitted.
 
-The outlier queue on the left lists all exceptions for the active plan, filterable by exception type. Each row shows the product name, exception type, and percent deviation from the moving average. The queue counts open and resolved items at the top:
+The outlier queue on the left lists all exceptions for the active plan, filterable by type. Each row shows the product name, exception type, the comment entered during the plan edit, the working plan value, and the percent deviation from the moving average:
 
-<!-- <img src="assets/dp_11.png" width="800"/> -->
+<img src="assets/dp_19.png" width="800"/>
 
-Select any outlier to open its detail panel. The panel shows product name, exception ID, baseline units vs working units, percent deviation, and an AI-generated **System Rationale** explaining the specific cause:
+Click `Open` on any outlier to load its detail panel. The panel shows the product line and product name as a breadcrumb, a stats line (Baseline, Working, Confidence), and an AI-generated **+SYSTEM RATIONALE** that explains the specific cause. Below the rationale, a **PLAN VS MOVING AVG** chart plots both series for the full plan horizon. The **RESOLUTION** section on the right shows three comparison KPIs (Moving Avg, Plan, Δ vs Moving Avg) and resolution tabs:
 
-<!-- <img src="assets/dp_12.png" width="800"/> -->
+<img src="assets/dp_20.png" width="800"/>
 
-**WHY IT MATTERS:**
-The System Rationale is scoped deliberately — it describes the cause using only the data it's given, without inventing context. Planners get a consistent, data-grounded explanation for every exception without manually cross-referencing the source table.
+**WHY IT MATTERS:**<br>
+The System Rationale is scoped deliberately — it explains the variance using only the data it's given, without inventing context. Planners get a consistent, data-grounded explanation for every exception without manually cross-referencing the source table.
 
-Each outlier offers three resolution options:
+The resolution tabs let you choose how to close each exception:
 
-- **Snap to moving average** — accepts the baseline value and closes the exception
-- **Manual override** — enter a specific unit value with a rationale note
-- **Accept variance** — keeps the current working value and documents the accepted risk
+- **Snap to Moving Avg** — resets the plan cell to the moving average baseline and closes the exception
+- **Manual Override** — enter a specific unit value with a rationale note
+- A third tab covers accepting the current variance with a documented risk rationale
 
-<!-- <img src="assets/dp_13.png" width="800"/> -->
+After review, click `Resolve & Next` to close the exception and advance to the next one in the queue.
 
-All outliers must be resolved before the plan can advance to Stage 4. The Workspace page and Approve & Publish page both display the open exception count as a gate check.
+When all exceptions are resolved, the `Submit resolved plan` button becomes active. Click it to advance the plan to Stage 4:
+
+<img src="assets/dp_21.png" width="800"/>
 
 ### Stage 4: Approve and Publish
 
-Navigate to the **Approve & Publish** page. This is the operations review before the plan is locked and published downstream.
+The **Approve & Publish** page opens with the stage indicator `STAGE 04 OF 04 · APPROVE & PUBLISH` and the heading **"Operations review"**. The page subtitle summarizes what to check: submitted scenario, major assumptions, unresolved exceptions, and generated replenishment or production actions before publishing to stores.
 
-The page shows a **Plan vs Moving Average Summary** with four KPIs: Moving Avg Total, Plan Total, Delta Units, and Delta Percent:
+A **Planner handoff required** card confirms outlier status. When all outliers are resolved it reads: *"All outliers are resolved. Submit the scenario to unlock the operations review."*
 
-<!-- <img src="assets/dp_14.png" width="800"/> -->
+The **PLAN VS MOVING AVERAGE SUMMARY** card shows four KPIs — **MOVING AVG TOTAL**, **PLAN TOTAL**, **Δ UNITS**, and **Δ %**. On the right, the **+OPERATIONAL IMPACT** panel shows an AI-generated assessment: plan volume vs baseline, any outstanding exception context, and a clear approve/reject recommendation. The **Outlier Review** panel confirms all exceptions are resolved.
 
-An AI-generated **Operational Impact** summary appears alongside the KPIs. It delivers a two-sentence assessment: plan name, volume vs baseline, and a clear approve/reject/revise recommendation with the key reason. The prompt is editable from the Data page.
+Fill in the **APPROVAL NOTES** field before submitting:
 
-The **Outlier Review** panel confirms exception status — all items should show as resolved before approving:
+```copy-code
+Gonna be a great summer!
+```
 
-<!-- <img src="assets/dp_15.png" width="800"/> -->
+Then click `Submit plan`:
 
-Add **Approval Notes** in the text field, then publish the plan. Once published, the plan is locked and the action list is available for downstream handoff — store operators receive the replenishment or production actions generated from the approved forecast.
+<img src="assets/dp_22.png" width="800"/>
 
-<!-- <img src="assets/dp_16.png" width="800"/> -->
+Clicking `Submit plan` unlocks the operations review. The **Planner handoff required** card is replaced by the full summary view, and an `Approve & Publish` button appears. Click it:
+
+<img src="assets/dp_23.png" width="800"/>
+
+An **Approve Plan?** confirmation modal opens. It lists three recommended handoff steps to complete after approval:
+
+1. **Send the action list** — Email the store operator with the published production orders and replenishment actions so they can begin execution
+2. **Notify the demand planner** — Let the planner know the scenario has been approved and is no longer editable
+3. **Set a review date** — Schedule a check-in to compare actuals against this plan once the first forecast month closes
+
+<img src="assets/dp_24.png" width="550"/>
+
+Click `Approve`. The plan locks and a **"You've completed the cycle"** confirmation screen appears with three next-step actions:
+
+- **Send the action list** — email the store operator with the published action list so they can begin execution
+- **Start the next plan** — open the `New...` modal to create the next planning horizon
+- **Explore the data** — navigate to the Data page to review the underlying tables or swap in real warehouse data
+
+<img src="assets/dp_25.png" width="500"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -211,7 +295,7 @@ The app draws from two warehouse tables:
   - `Units` — `Sum([Units Consumed])` — total units sold per product per month
   - `MovingAvg of Units` — `MovingAvg([Units], 2, 2)` — a 2-period moving average with a 2-period lag
 
-<!-- <img src="assets/dp_17.png" width="800"/> -->
+<img src="assets/dp_26.png" width="800"/>
 
 The 2-period lag is intentional: it ensures the moving average reflects completed periods rather than the current in-progress month, which would otherwise pull the baseline toward incomplete data.
 
@@ -219,9 +303,9 @@ These are the two tables you replace when connecting to your own data. See the *
 
 ### The Moving Average Fallback Chain
 
-The `Forecasts` linked input table contains a `Units` column that resolves the baseline value for each product-month combination using a cascading `Coalesce` with year-over-year fallbacks:
+The `Forecasts` linked input table (on the `Input Tables` tab) contains a `Units` column that resolves the baseline value for each product-month combination using a cascading `Coalesce` with year-over-year fallbacks:
 
-```copy-code
+```code
 Coalesce(
   [Moving Average Units],
   Lookup([Moving Average Units], [Product Id], [Product Id], DateAdd("year", -1, [Month of Date]), [Month of Date]),
@@ -231,14 +315,16 @@ Coalesce(
 )
 ```
 
+<img src="assets/dp_27.png" width="800"/>
+
 If the current period has a moving average from `ORDER_LINES`, it uses that. If not — for a new product or a future month with no history — it looks back one year, then two, up to five. If no match is found, it defaults to zero.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 This pattern keeps the baseline populated for all product-month combinations regardless of data gaps or product age. A new SKU added to the plan mid-year picks up its year-ago baseline automatically rather than showing zero, giving planners a reasonable starting point without manual intervention.
 
 ### The Forecast Scaffold
 
-The central structural pattern here is the same as in the Revenue Forecasting app: a **forecast scaffold** that generates the complete grid of input rows before any planner data is entered.
+The **forecast scaffold** generates the complete grid of input rows before any planner data is entered.
 
 The scaffold is a derived table called `Date Spine and Forecast Scenarios and Orders Joined`, built from three sources:
 
@@ -248,7 +334,7 @@ The scaffold is a derived table called `Date Spine and Forecast Scenarios and Or
 
 That third join — no shared key, one side applied to every row of the date spine result — is a cross join. The result is exactly one row for every combination of scenario × product × forecast month:
 
-<!-- <img src="assets/dp_18.png" width="800"/> -->
+<img src="assets/dp_28.png" width="800"/>
 
 **The Linked Input Table**
 
@@ -256,13 +342,13 @@ That third join — no shared key, one side applied to every row of the date spi
 
 When a planner enters a unit override for a specific product and month, that value is stored in `Units Override`. The `Overall` column resolves the effective plan value:
 
-```copy-code
+```code
 Coalesce([Units Override], [Units])
 ```
 
 If a planner has entered a value, it wins. If not, the moving average baseline fills in automatically.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 The scaffold eliminates the most common failure mode in demand planning input tables: missing product-month combinations. Every valid slot is pre-generated from the scenario's configuration, and the linked input table only accepts values into those pre-defined rows. Planners cannot accidentally skip a month or add a row for a product outside the plan's scope.
 
 ### Outlier Detection and Resolution
@@ -280,18 +366,16 @@ The `Forecast Scenarios` input table derives its `Open Exceptions` and `Exceptio
 
 ### AI Prompts as Editable Controls
 
-All three AI summaries in the app — Cycle Insight (Workspace), System Rationale (Outliers), and Operational Impact (Approve & Publish) — are driven by text-area controls stored on the Data page, not hardcoded into workbook elements:
+All three AI summaries in the app are stored as editable prompts on the Data page's **AI** tab — not hardcoded into workbook elements. The Data page is organized into tabs (Warehouse Data, Input Tables, Transformations, Helpers, AI, Controls); the `AI` tab shows the three prompts side by side:
 
-<!-- <img src="assets/dp_19.png" width="800"/> -->
+<img src="assets/dp_29.png" width="800"/>
 
-The three prompts are:
-
-- `AI Workspace Prompt` — drives the Workspace cycle insight (plan health, open exceptions, next action, deadline)
-- `AI Exception Rationale Prompt` — drives the Outlier detail panel (two-sentence exception explanation, data-grounded, no invented context)
+- `AI Exception Rationale Prompt` — drives the System Rationale in the Outlier detail panel (two-sentence explanation, data-grounded, no invented context)
 - `AI Operational Impact Prompt` — drives the Approve & Publish assessment (volume vs baseline, approve/reject recommendation)
+- `AI Workspace Prompt` — drives the Cycle Insight on the Workspace page (plan health, open exceptions, next action, deadline)
 
-**WHY IT MATTERS:**
-Storing prompts as controls separates content from structure. Operations leads can tune what each AI summary says — adjusting focus, tone, or level of detail — without touching any formulas or workbook elements. The prompts are visible and auditable from a single page, which matters when AI output is part of an approval workflow.
+**WHY IT MATTERS:**<br>
+Storing prompts on a dedicated tab separates content from structure. Operations leads can tune what each AI summary says — adjusting focus, tone, or level of detail — without touching any formulas or workbook elements. The prompts are visible and auditable in one place, which matters when AI output is part of an approval workflow.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -328,7 +412,7 @@ On the `Data` page, open **PRODUCTS** in edit mode. Use `Change source` to point
 
 Then open **ORDER_LINES** in edit mode. Use `Change source` to point it at your transaction table. Map your product ID, date, and units columns to the existing column references. The `MovingAvg` formula is applied at the workbook level and recalculates automatically once your `Units` column is mapped.
 
-<!-- <img src="assets/dp_20.png" width="800"/> -->
+<!-- <img src="assets/dp_30.png" width="800"/> -->
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The Date Spine, Forecast Scenarios, Forecasts, Outliers, and Store Actions input tables all use the same Snowflake connection as the sample data for write-back storage. If you're connecting to a different warehouse, update those input table sources as well to ensure plan data is written to the correct location.
@@ -352,7 +436,15 @@ The main manual step after swapping sources is populating the Outliers table wit
 ## What We've Covered
 Duration: 5
 
-<!-- [TODO: write after all sections are reviewed and complete] -->
+This QuickStart walked through the Cadence - Demand Planning System from end to end: exploring the workspace, running a full planning cycle across all four stages, and examining the design decisions that make the app work.
+
+The **four-stage planning workflow** — Create, Plan Details, Resolve Outliers, Approve & Publish — is the operational pattern worth carrying forward. Each stage gate is a deliberate checkpoint that structures collaboration between planners, reviewers, and approvers. That structure applies to any planning domain where multiple people need to contribute sequentially before a plan goes live.
+
+The **forecast scaffold with linked input table** is the core technical pattern. The scaffold pre-generates every valid plan row by joining a date spine, scenario definitions, and products before any planner touches it. The linked input table can only write back to those pre-generated slots, which prevents bad row creation and keeps the plan grid clean. This same pattern works for headcount planning, capacity planning, or any scenario where you need structured write-back against a known set of rows.
+
+The **moving average with fallback chain** handles a realistic data problem: not every product has a complete history. By chaining five years of lookbacks and resolving to zero only as a last resort, the baseline remains useful even for new SKUs or products with gaps. You can adapt this fallback logic to any forecasting model that needs to handle sparse data gracefully.
+
+The **AI prompts as editable controls** show how to integrate AI assistance without hardcoding it. Three prompts — exception rationale, operational impact, and workspace summary — live on a dedicated AI tab in the Data page, where they can be tuned to match the business context, the data, or the audience, all without touching the underlying formulas.
 
 **Additional Resource Links**
 
