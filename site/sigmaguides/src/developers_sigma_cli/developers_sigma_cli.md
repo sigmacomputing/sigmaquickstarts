@@ -3,9 +3,9 @@ id: developers_sigma_cli
 summary: developers_sigma_cli
 categories: developers
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-14
 
 # Automate Sigma from the Command Line with the Sigma CLI
@@ -86,7 +86,7 @@ export PATH="$HOME/.sigma-cli/bin:$PATH"
 
 There is no response, just an empty command line.
 
-We need to reload terminal so the path change takes effect:
+Reload the shell to apply the change:
 
 ```copy-code
 source ~/.zshrc
@@ -116,7 +116,7 @@ sigma --version
 
 The response will be similar to:
 ```code
-/Users/phil/.sigma-cli/bin/sigma
+sigma 0.2.1
 ```
 
 <!-- <img src="assets/scli_02.png" width="800"/> -->
@@ -159,7 +159,7 @@ Start the interactive login:
 sigma auth login
 ```
 
-Choose `Create new profile`, then pick one of the two authentication methods below. We will demonstrate with API key.
+Choose `Create new profile`, then pick one of the two authentication methods below. We will demonstrate with an API key.
 
 Information on how to [Generate Sigma API client credentials](https://help.sigmacomputing.com/reference/generate-client-credentials)
 
@@ -171,9 +171,13 @@ Select `OAuth`, enter your Sigma organization URL, and give the profile a name (
 
 First generate API credentials in Sigma from `Administration` > `Developer Access` (an Admin account type is required). Then run `sigma auth login`, select `Create new profile`, choose `API key`, name the profile, select the API base URL for your organization, and paste in your client ID and secret.
 
-After selecting `API key` press `Enter`.
+After selecting `API key`, press `Enter`.
 
 Enter a `Profile name`:
+
+```copy-code
+sigma_quickstarts
+```
 
 <img src="assets/scli_04.png" width="600"/>
 
@@ -254,7 +258,7 @@ sigma api schema workbooks get
 Actions that need input take a JSON object via `--params`. For example, to fetch a single workbook, pass its `workbookId` (you'll find this in the `workbooks list` output above):
 
 ```copy-code
-sigma api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}'
+sigma api workbooks get --params '{"workbookId":"YOUR-WORKBOOK-ID"}'
 ```
 
 This returns the details for that workbook:
@@ -267,7 +271,7 @@ Commands return JSON to standard output, which makes them easy to combine with t
 
 ```copy-code
 sigma api workbooks list | jq '.entries[].name'
-sigma api workbooks get --params '{"workbookId":"1f21462e-41a3-4ed6-b07b-c7bf5710bc8c"}' > workbook.json
+sigma api workbooks get --params '{"workbookId":"YOUR-WORKBOOK-ID"}' > workbook.json
 ```
 
 <img src="assets/scli_11.png" width="800"/>
@@ -363,7 +367,7 @@ Duration: 6
 
 Because each step is a single command with a predictable exit code, you can collect them into one script and run it unattended.
 
-We did this in VSCode but it can also be done in plain terminal.
+We did this in VS Code, but it can also be done in a plain terminal.
 
 Create a new file named:
 ```copy-code
@@ -402,12 +406,12 @@ sigma -p "$PROFILE" api workbooks list \
 echo "Inventory written to $OUTDIR"
 ```
 
-`Save` the new file.
+Save the new file.
 
 A few things worth pointing out about this script:
 
 - `set -euo pipefail` stops the script on the first error.
-- The `export PATH=...` line ensures `sigma` and `jq` are found when the script runs unattended. A scheduler like `cron` uses a minimal environment that doesn't include Homebrew's directory or your shell profile, so without this the script would fail with `command not found`. The line covers Homebrew on Apple Silicon (`/opt/homebrew/bin`), Homebrew on Intel (`/usr/local/bin`), and the shell-installer location (`~/.sigma/bin`).
+- The `export PATH=...` line ensures `sigma` and `jq` are found when the script runs unattended. A scheduler like `cron` uses a minimal environment that doesn't include Homebrew's directory or your shell profile, so without this the script would fail with `command not found`. The line covers Homebrew on Apple Silicon (`/opt/homebrew/bin`), Homebrew on Intel (`/usr/local/bin`), and the shell-installer location (`~/.sigma-cli/bin`).
 - The `export SIGMA_CLI_KEYRING_BACKEND=file` line tells `sigma` to read credentials from a file rather than the OS keyring. By default `sigma` stores credentials in your operating system's keyring (the macOS Keychain, for example), which only unlocks for an interactive, logged-in session. A scheduler like `cron` has no such session, so a keyring lookup fails with `User interaction is not allowed`. File-based storage sidesteps that.
 - The `auth status` check up front means it fails clearly if the profile's credentials have expired, rather than producing empty files.
 - `OUTDIR` creates a folder named `sigma_inventory_test`, and the three CSVs are written *inside* that folder, not next to the script. Keeping the output together makes it easy to find and easy to clean up.
@@ -423,7 +427,7 @@ sigma auth login
 
 Recreate the profile exactly as you did before, with the same API key:
 ```copy-code
-sigma_quickstarts 
+sigma_quickstarts
 ```
 
 <aside class="negative">
@@ -535,6 +539,75 @@ crontab -e
 </aside>
 
 The same script works unchanged inside a CI/CD pipeline. Store your API credentials as pipeline secrets, configure the profile non-interactively, and let the exit codes gate the rest of your workflow — for example, halting a deployment if `auth status` returns a non-zero code.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Clean up
+Duration: 3
+
+If you want to remove the Sigma CLI and everything installed during this QuickStart, follow these steps in order.
+
+**Remove the CLI binary and credentials**
+
+If you installed with the shell installer:
+
+```copy-code
+rm -rf ~/.sigma-cli
+```
+
+If you installed with Homebrew:
+
+```copy-code
+brew uninstall sigma-computing-cli
+```
+
+**Remove the PATH line from your shell profile** (if you added it)
+
+If you followed the shell installer path and added the PATH line to your shell profile, open it and delete that line:
+
+```copy-code
+nano ~/.zshrc
+```
+
+Delete the line:
+
+```code
+export PATH="$HOME/.sigma-cli/bin:$PATH"
+```
+
+Save and exit (`Ctrl+O`, then `Ctrl+X`).
+
+**Open a new terminal window**
+
+A new terminal window clears any PATH or environment variables set only in the current session — including the PATH export if you ran it directly rather than saving it to your shell profile.
+
+**Confirm the binary is gone**
+
+```copy-code
+which sigma
+```
+
+This should return nothing.
+
+**Remove test output files** (if you created them)
+
+```copy-code
+rm -f sigma_inventory.sh sigma_inventory.log
+rm -rf sigma_inventory_test
+```
+
+**Remove the cron entry** (if you added one)
+
+```copy-code
+crontab -e
+```
+
+Delete the sigma line, save and exit.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> There is also <code>crontab -r</code>, but it deletes your <em>entire</em> crontab without confirmation. Only use it if the sigma inventory job is the only entry you have scheduled.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
