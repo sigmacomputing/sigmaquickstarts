@@ -95,13 +95,29 @@ The five-step workflow described in the README:
 <strong>NOTE:</strong><br> The README is visible to all users of the app. If you adapt this template for your org, update it to reflect your actual data sources, campaign taxonomy, and any workflow changes.
 </aside>
 
+### Ask AI
+
+An `Ask AI` button appears in the top-right corner of every page in the app. Clicking it opens a conversational interface powered by the same AI provider configured for the Morning Brief:
+
+<img src="assets/ma_25.png" width="800"/>
+
+The assistant can handle requests across the full app without leaving the current page:
+
+- **View & analyze** — query campaign performance, segment details, or A/B test results in plain language
+- **Modify campaigns** — update budget or status on existing campaigns
+- **Create campaigns** — build a new campaign targeting an existing or new customer segment
+- **Manage A/B tests** — update test status, approve tests, declare a winner, or create a new test
+- **Segment Builder** — adjust live cohort filters to preview a customer segment before saving it
+
+This makes the assistant useful for ad-hoc questions ("which channel has the highest ROAS this month?") as well as for taking action without navigating through individual pages.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Morning Brief
 Duration: 10
 
-The **Morning Brief** is the app's starting point for each day. It surfaces the most important signals across campaigns and A/B tests in a single view, without requiring the user to navigate across pages first.
+The **Morning Brief** is the app's starting point for each day. It surfaces the most important signals across campaigns and A/B tests in a single view, without requiring you to navigate across pages first.
 
 The following sections walk through the app as a marketing manager would use it on a typical morning: the Brief raises a budget issue → the Campaigns page pinpoints it → the Segments page builds an audience to act on it → the A/B Testing page picks the creative.
 
@@ -175,7 +191,7 @@ The sidebar shows:
 - A budget variance line showing how far over or under plan the channel is
 - An AI-generated analysis explaining the pacing situation in plain language — ROAS, spend utilization, and how individual campaigns within the channel are tracking
 
-<img src="assets/ma_08.png" width="800"/>
+<img src="assets/ma_09.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The AI channel analysis is generated on demand from the selected channel's live data. Each time you click a different bar, the analysis refreshes for that channel.
@@ -187,7 +203,7 @@ Below the chart, a table lists campaigns with six columns: **Campaign**, **Audie
 
 This is where you identify which specific campaigns to pause, adjust, or scale — the channel bar tells you there's a problem; the table tells you which campaign is causing it.
 
-<img src="assets/ma_09.png" width="800"/>
+<img src="assets/ma_10.png" width="800"/>
 
 With the over-budget channel identified and the specific campaigns noted, navigate to the **Segments** page to build an audience for the follow-on retargeting push.
 
@@ -209,41 +225,33 @@ Adjust any filter in the builder and the preview updates immediately.
 
 ### Set the Segment Criteria
 
-For this walkthrough, lets uild a segment targeting high-value VIP customers who haven't purchased recently — a natural retargeting audience for the over-budget channel identified in the `Campaigns` page.
+For this walkthrough, build a segment targeting high-value VIP customers who haven't purchased recently — a natural retargeting audience for the over-budget channel identified in the `Campaigns` page.
 
 Set the controls in the left panel:
 
-**Customer Type**
+**Customer Type**<br>
 Select:
-```code
+```copy-code
 VIP
 ```
 
-**LTV Percentile**
-The range slider has two handles. Drag the **left (minimum) handle** to `75`, leaving the right (maximum) handle at `100`. The label above the slider should read `75 ≤ LTV % ≤ 100`.
+**LTV Percentile**<br>
+The range slider has two handles. Drag the **left (minimum) handle** to `75`, leaving the right (maximum) handle at `100`. 
+
+The label above the slider should read `75 ≤ LTV % ≤ 100`.
 
 This targets the top quartile of VIP customers by lifetime value.
 
-**Last Purchase**
+**Last Purchase**<br>
 Move the slider to:
 ```code
-30
+60
 ```
-This filters to customers who haven't purchased in the last 30 days. The slider range is 1–180.
+This filters to VIP customers who haven't purchased in the last 60 days. The slider range is 1–180.
 
-**Payment Method**
-From the dropdown, select:
-```code
-Mobile Wallet
-```
+Leave **City** at its default. This filter will narrow the audience further by geography — useful when targeting a specific market or channel preference, but not required for this segment.
 
-**Payment Channel**
-From the dropdown, select:
-```code
-Mobile App
-```
-
-<img src="assets/ma_12.png" width="800"/>
+<img src="assets/ma_12.png" width="350"/>
 
 ### Review the Segment Preview
 
@@ -257,7 +265,7 @@ The middle panel updates in real time as filters change. It shows five metrics f
 
 If the segment size is too small, loosen the LTV range or extend the Last Purchase window before saving.
 
-<!-- <img src="assets/ma_12.png" width="800"/> -->
+<img src="assets/ma_12a.png" width="600"/>
 
 ### Create the Segment
 
@@ -266,11 +274,18 @@ Two buttons sit below the preview metrics:
 - `Generate Campaign Plan` — uses AI to draft a campaign brief for this audience
 - `Create Segment` — saves the segment definition to the Active Segments panel
 
-Click `Create Segment`. The segment appears in the **Active Segments** panel on the right, showing how many campaigns are currently using it:
+When prompted, give the segment a name:
 
-<!-- <img src="assets/ma_13.png" width="500"/> -->
+```copy-code
+VIP High Value Lapsed
+```
+<img src="assets/ma_13.png" width="500"/>
 
-With the audience defined, navigate to the **A/B Testing** page to identify the creative that performed best — that's the one to use for this retargeting push.
+Click `Create`. The saved segment is active in the **Active Segments** panel on the right, showing how many campaigns are currently using it.
+
+With the audience defined, navigate to the **A/B Testing** page to identify the creative that performed best — that's the one to use for this retargeting push:
+
+<img src="assets/ma_14.png" width="800"/>
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Defining the audience in the same environment as the underlying data removes the export step. The five-metric preview confirms the segment is the right size and value before it's saved, so campaign teams aren't handed a list that's too small to be statistically meaningful or too broad to be targeted.
@@ -284,38 +299,44 @@ Duration: 10
 
 The **A/B Testing** page is where you identify which creative performed best — the input you need before launching the retargeting campaign built in the previous step.
 
-### Filter to Completed Tests
+Four KPI cards run across the top of the page: **Active Tests**, **Completed Tests**, **Average Customer Lift**, and **Average Spend** — a portfolio-level read before you drill into any individual test.
 
-The page opens with a list of experiments on the left and a detail panel on the right. By default all statuses are shown. Set the **Test Type** segmented control to `Completed` to filter down to finished experiments that are ready for a decision:
+### Select a Test
 
-<!-- <img src="assets/ma_14.png" width="800"/> -->
+The experiment list on the left shows all tests across statuses. A tab control filters by status: `All`, `Running`, `Paused`, `Completed`, `Won`. Each row shows the test name, its outcome or status, and days remaining in the test window.
 
-Each row in the list shows the test name, its status, and how many days remain (or the final day count for completed tests).
+Set the filter to `Won` to see tests where a winner has been declared.
+
+Click any test in the list to load its detail panel on the right:
+
+<img src="assets/ma_15.png" width="800"/>
 
 ### Review Variant Performance
 
-Click any completed test in the list. The detail panel on the right loads a side-by-side comparison of Variant A and Variant B. Six KPI cards are shown for each variant:
+The detail panel shows a side-by-side comparison of **Variant A** and **Variant B**, each identified by name (for example, "Curiosity Subject Line" vs. "Direct Subject Line"). Six metrics are shown per variant:
 
-- Impressions
-- Click-through rate (CTR)
-- Conversion rate
-- Customer acquisition cost (CAC)
-- Revenue
-- New customers acquired
+- **Impressions**
+- **Spend**
+- **CTR** (click-through rate)
+- **Conv. Rate** (conversion rate)
+- **Revenue**
+- **CAC** (customer acquisition cost)
 
-<!-- <img src="assets/ma_15.png" width="800"/> -->
+<img src="assets/ma_16.png" width="650"/>
 
-Scan the KPIs to get a directional read on which variant performed better. If the differences look meaningful, check the AI recommendation before making a call.
+For tests where a winner is declared, a `Rerun Test` button appears in the top right of the detail panel — use it to run the experiment again with fresh audiences or updated creative.
+
+Scan the metrics to understand *why* a variant won — a higher CTR with a lower conversion rate tells a different story than the reverse.
 
 ### Read the AI Recommendation
 
-Below the variant KPIs, an **AI Recommendation** panel generates a statistical assessment of the test results. The analysis considers the sample sizes alongside the observed metrics and returns one of three recommendations: declare a winner, extend the test, or conclude without a winner:
+Below the variant metrics, an **AI Recommendation** panel generates a statistical assessment of the results. The analysis weighs sample sizes against the observed metrics and returns a recommendation:
 
-<!-- <img src="assets/ma_16.png" width="700"/> -->
+<img src="assets/ma_17.png" width="800"/>
 
-The recommendation identifies the winning variant by name (if one exists) and explains the reasoning — for example, whether the conversion rate lift is significant at the observed impression volumes, or whether the sample size is still too small to be conclusive.
+The recommendation names the winning variant and explains the reasoning — whether the lift is statistically meaningful at the observed impression volumes, or whether the result should be treated as directional only.
 
-Use the winner's creative for the retargeting campaign targeting the `High-Value Mobile Lapsed` segment saved in the previous step.
+Use the winning variant's creative for the retargeting campaign targeting the `VIP High Value Lapsed` segment saved in the previous step.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Calling a test too early based on directional results is one of the most common mistakes in A/B testing. The AI recommendation applies statistical reasoning to the actual sample sizes, giving teams a defensible basis for the decision rather than a gut call on which number looked bigger.
@@ -327,39 +348,79 @@ Use the winner's creative for the retargeting campaign targeting the `High-Value
 ## Under the Hood
 Duration: 10
 
-The **Data** page contains every backend table that powers the app. Each table is labeled with its purpose. Here's how the pieces fit together.
+The **Data** page is the backbone of the app. Switch the workbook to `Edit` mode to access it. The page is organized into six tabs — each covering a distinct layer of the data architecture.
 
-### The Data Sources
+### Warehouse Data — The Source Tables
 
-The app draws from several warehouse tables covering:
+The three warehouse tables on the **Warehouse Data** tab provide the raw data the app is built on:
 
-- **Marketing Campaigns** — campaign-level records with status, channel, budget, actual spend, ROAS, revenue, profit, and confidence score
-- **AB Tests** — experiment records with status (Active, Completed, Winner Declared) and test metadata
-- **AB Variants** — variant-level records for each experiment: impressions, CTR, conversion rate, CAC, revenue, and new customers
-- **Orders / Order Lines** — transactional data used to compute revenue trend KPIs and customer segmentation dimensions
+- **STORES** — 57 rows mapping Store Id to City. Drives the City filter on the Segments page.
+- **CUSTOMERS** — 25,000 records with Customer Id, Customer Type, Last Visit Date, and additional profile columns. Customer Type (`regular` / `VIP`) drives the Customer Type control on the Segments page.
+- **ORDERS** — transactional records with Order Id, Store Id, Order Ts Local, and Order Total Usd. Used to compute revenue trend KPIs on the Morning Brief.
 
-<!-- <img src="assets/ma_17.png" width="800"/> -->
+<img src="assets/ma_18.png" width="800"/>
 
-These are the tables you replace when connecting to your own data. See the **Connect Your Own Data** section for details.
+These are the tables you replace when connecting to your own data.
 
-### AI Prompts as Editable Controls
+### Input Tables — What Users Write Back
 
-All AI-generated content in the app is driven by editable prompts stored on the Data page's **AI** tab — not hardcoded into workbook elements. This includes:
+The four input tables on the **Input Tables** tab are all marked **Editable in published version (all users)** — app users can write to them directly without switching to edit mode:
 
-- **Morning Brief prompt** — drives the daily portfolio summary. The prompt injects live campaign metrics (revenue, spend, ROAS, active vs. paused counts, low-confidence campaigns, A/B test outcomes) into the model context before generating the summary
-- **AB Test analysis prompt** — drives the statistical significance assessment on the A/B Testing page
+- **Marketing Campaigns** — 27 campaigns, 17 columns. The source for the Campaigns page budget pacing chart and the Today's Focus card on the Morning Brief.
+- **Customer Segments** — 7 rows, 3 columns (Segment Id, Segment Name, Description). Every segment created on the Segments page is written here. The `VIP High Value Lapsed` segment from the walkthrough appears as SEG-007.
+- **AB Tests** — experiment records with Test Id, Test Name, and Status. Drives the A/B Testing page test list.
+- **AB Variants** — variant-level records linked to AB Tests by Test Id, with Variant Name and performance metrics per variant.
 
-<!-- <img src="assets/ma_18.png" width="800"/> -->
+<img src="assets/ma_19.png" width="800"/>
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Storing prompts on a dedicated tab separates content from structure. Marketing operations leads can adjust what the AI brief covers — adding channels, changing the focus, or tuning the tone — without touching any formulas or layout. The prompts are visible and auditable in one place.
+<strong>WHY IT MATTERS:</strong><br> Using input tables for campaigns, segments, and tests means the app is fully operational without any ETL or warehouse writes. Users update data directly in Sigma, and the rest of the app reflects those changes immediately.
 </aside>
 
-### The Over-Budget Channel Card
+### Transformations — Computed Values
 
-The alert card on the Morning Brief is driven by a helper table called `Over Budget Channel` that pre-aggregates the channel with the highest spend-to-budget ratio. The `If([Actual Spend] > [Budget], "Over", "Near")` label and the dynamic text are applied at the card level against this pre-computed result, keeping the card logic simple while the filtering happens in the helper:
+The **Transformations** tab contains two derived tables that combine warehouse and input data:
 
-<!-- <img src="assets/ma_19.png" width="800"/> -->
+- **CUSTOMERS and ORDERS Join** — joins CUSTOMERS and ORDERS to compute LTV and LTV Percentile per customer. This is what powers the LTV Percentile slider on the Segments page — the percentile is calculated here, not stored in the warehouse.
+- **Customer Segments and Marketing Campaigns Join** — links each segment to its associated campaigns, producing the campaign count shown in the Active Segments panel.
+
+<img src="assets/ma_20.png" width="800"/>
+
+### Helpers — Pre-Aggregated Views
+
+The **Helpers** tab holds four tables that feed specific UI elements:
+
+- **Over Budget Channel** — filters to the channel with the highest spend-to-budget ratio. Drives the Today's Focus card on the Morning Brief.
+- **Budgeting Campaigns Selection** — filters the full campaign list to the channel selected in the Campaigns page bar chart. Drives the right sidebar and the campaign table below it.
+- **Selected Test Variants** — filters AB Variants to the test selected in the A/B Testing page list. Drives the variant comparison panel.
+- **Modal Campaign** — supplies campaign data to the detail modal opened when tapping a row in the campaign table.
+
+<img src="assets/ma_21.png" width="800"/>
+
+### AI Prompts — Six Editable Prompts
+
+The **AI** tab holds six prompts that drive every AI-generated output in the app. All are plain text and fully editable without touching any formulas:
+
+- **Morning Brief Summary Prompt** — 3 sentences: top ROAS result, biggest risk, one clear action. No headers or markdown.
+- **Campaign Channel AI Prompt** — drives the channel analysis in the Campaigns sidebar: spend vs. budget summary and a recommendation if any campaign is over budget.
+- **Campaign Modal AI Prompt** — drives the per-campaign insight: performance summary, audience fit observation, and a SCALE IT / CONTINUE AS-IS / CUT BACK recommendation.
+- **Campaign Prompt** — generates a campaign launch plan email from the `Generate Campaign Plan` feature on the Segments page.
+- **Segment Description AI Prompt** — generates a plain-English description of a segment from its name and filter criteria, stored in the Customer Segments input table.
+- **AB Test AI Prompt** — drives the A/B test recommendation. Handles both won and inconclusive tests — if no winner is declared, the model is explicitly instructed not to infer one.
+
+<img src="assets/ma_22.png" width="800"/>
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Storing prompts on a dedicated tab separates content from structure. Operations leads can adjust tone, focus, and output format for any AI feature without touching formulas or layout. The prompts are visible, auditable, and improvable by anyone with edit access.
+</aside>
+
+### Controls — App State and Reset
+
+The **Controls** tab exposes all active control values in one place: selected page, LTV min/max, selected channel and campaign, selected AB test, target segment, and more. 
+
+A `Reset` button at the bottom clears all control state back to defaults — useful when demonstrating the app or starting a fresh session:
+
+<img src="assets/ma_23.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -371,41 +432,40 @@ The Marketing Analytics app is designed to work with any campaign management and
 
 ### What the App Needs
 
-**Marketing Campaigns table:**
+The three warehouse tables to replace are on the **Warehouse Data** tab of the Data page:
+
+**STORES table:**
 
 | Column | Description |
 |--------|-------------|
-| Campaign Id | Unique campaign identifier |
-| Status | Active, Paused, or Completed |
-| Channel | Marketing channel (e.g., Email, Paid Social, Search) |
-| Budget Usd | Planned budget for the campaign |
-| Actual Spend Usd | Current spend against the budget |
-| Revenue | Revenue attributable to the campaign |
-| ROAS | Return on ad spend |
-| Profit | Revenue minus spend |
-| Confidence Score | A 0–1 score indicating model or analyst confidence in attribution |
+| Store Id | Unique store identifier |
+| City | Store location — used by the City filter on the Segments page |
 
-**AB Tests and AB Variants tables:**
+**CUSTOMERS table:**
 
 | Column | Description |
 |--------|-------------|
-| Test Id | Unique experiment identifier |
-| Status | Active, Completed, or Winner Declared |
-| Variant metrics | Impressions, CTR, conversion rate, CAC, revenue, new customers per variant |
+| Customer Id | Unique customer identifier |
+| Customer Type | Customer tier (e.g., regular, VIP) — drives the Customer Type filter on the Segments page |
+| Last Visit Date | Most recent visit timestamp |
+| Additional profile columns | Any customer attributes used for segmentation |
 
-**Orders / Order Lines table:**
+**ORDERS table:**
 
 | Column | Description |
 |--------|-------------|
-| Order Ts Local | Transaction timestamp used for revenue trend calculations |
-| Order Total Usd | Order value used for KPI aggregation |
-| Store Id | Dimension used in customer segmentation |
+| Order Id | Unique order identifier |
+| Store Id | Links to the STORES table |
+| Order Ts Local | Transaction timestamp — used for revenue trend KPIs on the Morning Brief |
+| Order Total Usd | Order value — used for revenue aggregation throughout the app |
 
 ### How to Swap the Sources
 
-On the `Data` page, open each source table in edit mode. Use `Change source` to point the table at your own connection and warehouse tables. Map your columns to the existing column references used throughout the workbook.
+On the `Data` page, open each source table in edit mode. 
 
-<!-- <img src="assets/ma_20.png" width="800"/> -->
+Use `Change source` to point the table at your own connection and warehouse tables. Map your columns to the existing column references used throughout the workbook.
+
+<img src="assets/ma_24.png" width="500"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Column names in Sigma formulas and controls reference the source table columns by name. After swapping sources, verify that your column names match — or update the formula references on the Data page if they differ.
@@ -433,9 +493,9 @@ The **AI-generated Morning Brief** demonstrates a practical pattern for surface-
 
 The **budget pacing view** with channel and campaign drill-through shows how to structure a monitoring workflow so the right level of detail is one click away rather than a separate report. The channel-level view answers "where is the problem?" and the campaign view answers "which specific campaign?". That two-level structure is reusable in any operational app where spend, utilization, or capacity needs to be tracked against a plan.
 
-The **segment builder** demonstrates how to bring audience definition into the same environment as the underlying data. Filtering by CLV percentile, recency, payment preference, and location — with a live preview of segment size and value — closes the loop between analysis and activation without an export step.
+The **segment builder** demonstrates how to bring audience definition into the same environment as the underlying data. Filtering by LTV percentile, recency, and location — with a live preview of segment size and value — closes the loop between analysis and activation without an export step.
 
-The **A/B test analysis with AI significance testing** shows how to integrate statistical reasoning into an operational workflow without requiring the user to understand the math. The AI assessment takes the sample sizes and observed metrics as input and returns a recommendation — a pattern directly applicable to any experiment-driven decision process.
+The **A/B test analysis with AI significance testing** shows how to integrate statistical reasoning into an operational workflow without requiring you to understand the math. The AI assessment takes the sample sizes and observed metrics as input and returns a recommendation — a pattern directly applicable to any experiment-driven decision process.
 
 **Additional Resource Links**
 
