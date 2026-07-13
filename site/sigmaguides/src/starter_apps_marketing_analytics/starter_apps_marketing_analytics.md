@@ -54,7 +54,7 @@ Duration: 5
 
 Navigate to `Templates` in the left sidebar. The Marketing Analytics app appears in the `Made by Sigma` collection:
 
-<!-- <img src="assets/ma_01.png" width="800"/> -->
+<img src="assets/ma_01.png" width="800"/>
 
 Click the template card to open a preview. Before clicking `Use template`, confirm the requirement shown on the detail page is met:
 
@@ -62,7 +62,7 @@ Click the template card to open a preview. Before clicking `Use template`, confi
 
 Once that's in place, click `Use template`. Sigma creates a personal copy in your workspace that you can explore, edit, and connect to your own data without affecting the original template:
 
-<!-- <img src="assets/ma_02.png" width="800"/> -->
+<img src="assets/ma_02.png" width="800"/>
 
 Click `Save as` and give the workbook a name:
 ```copy-code
@@ -77,7 +77,7 @@ Marketing Analytics
 
 The app opens on its **README** page, which describes the purpose of each page and the recommended daily workflow at a glance. A short demo video walks through the core features. The README is worth reading before diving in:
 
-<!-- <img src="assets/ma_03.png" width="800"/> -->
+<img src="assets/ma_03.png" width="800"/>
 
 The five-step workflow described in the README:
 
@@ -99,13 +99,15 @@ Duration: 10
 
 The **Morning Brief** is the app's starting point for each day. It surfaces the most important signals across campaigns and A/B tests in a single view, without requiring the user to navigate across pages first.
 
+The following sections walk through the app as a marketing manager would use it on a typical morning: the Brief raises a budget issue → the Campaigns page pinpoints it → the Segments page builds an audience to act on it → the A/B Testing page picks the creative.
+
 ### Personalized Greeting and AI Summary
 
 The page opens with a personalized greeting — `Good Morning, [First Name]` — pulled from the logged-in user's profile using `CurrentUserFirstName()`.
 
 Directly below the greeting, an AI-generated paragraph summarizes the current state of the marketing portfolio. The brief is generated at page load using live data, covering campaign revenue and spend, active vs. paused campaign counts, low-confidence campaigns, and A/B test outcomes:
 
-<!-- <img src="assets/ma_04.png" width="800"/> -->
+<img src="assets/ma_04.png" width="800"/>
 
 The prompt is stored as an editable control on the Data page, so the framing and focus of the summary can be adjusted without touching the underlying formulas. See the **Under the Hood** section for details.
 
@@ -119,7 +121,7 @@ A prominent alert card highlights the channel currently consuming the highest sh
 - Campaign count and active campaign count for that channel
 - Total revenue and profit from that channel
 
-<!-- <img src="assets/ma_05.png" width="800"/> -->
+<img src="assets/ma_05.png" width="600"/>
 
 This card updates dynamically — if no channel is over budget, it reflects the channel nearest to its limit.
 
@@ -130,44 +132,53 @@ Below the alert card, an **Up Next** panel lists the two most time-sensitive act
 - **Create campaigns** — shows the number of campaigns to create before end of month and the target date
 - **Review completed A/B tests** — shows the count of completed tests awaiting a decision
 
-<!-- <img src="assets/ma_06.png" width="500"/> -->
+<img src="assets/ma_06.png" width="400"/>
 
 ### Revenue Trend
 
 A segmented time period control lets you switch the revenue trend chart between **7d**, **1m**, and **3m** views. The KPI card below the control shows last-week revenue with a week-over-week comparison:
 
-<!-- <img src="assets/ma_07.png" width="800"/> -->
+<img src="assets/ma_07.png" width="800"/>
 
 This section is designed to be a 30-second read — the goal is to identify whether the number is trending the right direction before navigating to deeper pages.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Budgeting Campaigns
+## Campaigns
 Duration: 10
 
-The **Budgeting Campaigns** page is where you monitor spend versus planned budgets across all marketing channels and campaigns for the current period.
+The **Campaigns** page is where you investigate the budget issue the Morning Brief flagged. A horizontal bar chart shows spend versus planned budget for every channel. Bars that have crossed the plan line are marked **Over Plan**; bars approaching it are marked with the current pacing percentage.
 
-### Budget Pacing Overview
+### Inspect a Channel
 
-The top of the page shows a summary of budget pacing across all channels. Visual indicators highlight over-spend and under-spend situations so the most critical channels surface immediately:
+Click the bar for the channel the Morning Brief identified as over budget. The right sidebar loads immediately with a detail panel for that channel:
 
-<!-- <img src="assets/ma_08.png" width="800"/> -->
+<img src="assets/ma_08.png" width="800"/>
 
-### Campaign Detail
+The sidebar shows:
 
-Clicking into an individual campaign opens a detail view showing:
+- Channel name, campaign count, and active campaign count
+- Over or Near Plan status with spend vs. budget as a percentage
+- Four KPI cards: total spend, total budget, ROAS, and profit for that channel
+- An AI-generated channel analysis that explains the pacing situation in plain language — spend rate, standout campaigns, and a suggested action
 
-- Performance metrics: impressions, click-through rate, conversion rate
-- Spend vs. budget: actual spend, planned budget, and variance
-- Return on ad spend (ROAS) and profit
-
-<!-- <img src="assets/ma_09.png" width="800"/> -->
-
-Use this page for weekly budget reviews and mid-campaign optimizations. The channel-level view shows which channels are delivering the best return relative to their budget allocation, while the campaign-level view identifies specific campaigns to pause, adjust, or scale.
+<img src="assets/ma_09.png" width="800"/>
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Monitoring budget pacing against plan at the channel and campaign level prevents overspend from going undetected until end-of-period. The visual pacing indicators give campaign managers an immediate signal on where to focus before they need to pull a separate report.
+<strong>NOTE:</strong><br> The AI channel analysis is generated on demand from the selected channel's live data. Each time you click a different bar, the analysis refreshes for that channel.
+</aside>
+
+### Review the Campaign Table
+
+Below the sidebar, a table lists all campaigns in the selected channel with their individual spend, budget, ROAS, and status. This is where you identify which specific campaigns to pause, adjust, or scale — the channel bar tells you there's a problem; the table tells you which campaign is causing it:
+
+<!-- <img src="assets/ma_10.png" width="800"/> -->
+
+With the over-budget channel identified and the specific campaigns noted, navigate to the **Segments** page to build an audience for the follow-on retargeting push.
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> The click-to-inspect pattern keeps the two levels of analysis — channel and campaign — in a single view without navigation. The AI channel summary surfaces the most relevant context immediately, so the next action is clear before you've scrolled to the campaign table.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -176,52 +187,87 @@ Use this page for weekly budget reviews and mid-campaign optimizations. The chan
 ## Segments
 Duration: 10
 
-The **Segments** page lets you define customer audience groups using behavioral and demographic filters, then preview the segment size and total value before saving.
+The **Segments** page is where you define the retargeting audience for the campaign you'll adjust. The builder on the left panel filters your customer base in real time; the preview panel on the right updates with every change.
 
-### Building a Segment
+### Set the Segment Criteria
 
-The segment builder works through a set of filter criteria on the left panel. Available dimensions include:
+For this walkthrough, build a segment targeting high-value mobile customers who haven't purchased recently — a natural retargeting audience for the over-budget channel identified in the Campaigns page.
 
-- **Customer Lifetime Value (CLV) percentile** — target high-value customers by percentile range
-- **Purchase recency** — filter by days since last purchase
-- **Payment preferences** — filter by preferred payment method
-- **Location** — filter by region or market
+Set the controls on the left panel to the following values:
 
-As you adjust the filters, the right panel updates in real time to show:
+**LTV Percentile**
+Move the range slider to:
+- Min: `75`
+- Max: `100`
 
-- **Segment size** — the number of customers matching the current criteria
-- **Total customer value** — the aggregate CLV of matched customers
-- A distribution chart showing how the filtered segment sits within the full customer base
+This targets your top quartile of customers by lifetime value.
 
-<!-- <img src="assets/ma_10.png" width="800"/> -->
+**Last Purchase**
+Move the slider to:
+```copy-code
+30
+```
+This filters to customers who haven't purchased in the last 30 days.
 
-### Saving a Segment
+**Payment Method**
+Select:
+- `Mobile Wallet`
 
-Once the segment criteria are set and the size looks right, give the segment a name and click `Save`. Saved segments are available for use in campaign targeting:
+**Payment Channel**
+Select:
+- `Mobile App`
 
-<!-- <img src="assets/ma_11.png" width="500"/> -->
+<!-- <img src="assets/ma_11.png" width="800"/> -->
+
+### Review the Segment Preview
+
+As each control is adjusted, the preview panel on the right updates to show:
+
+- **Customer count** — the number of customers matching all active criteria
+- **Total LTV** — the aggregate lifetime value of the matched segment
+- A distribution chart showing where this segment sits within your full customer base
+
+Confirm the segment looks right before saving. If the count is too small, loosen the LTV range or extend the Last Purchase window.
+
+<!-- <img src="assets/ma_12.png" width="800"/> -->
+
+### Save the Segment
+
+Once the preview looks right, enter a name for the segment:
+
+```copy-code
+High-Value Mobile Lapsed
+```
+
+Click `Save`. The segment appears in the **Active Segments** list at the bottom of the page, where it's available to reference for campaign targeting:
+
+<!-- <img src="assets/ma_13.png" width="500"/> -->
+
+With the audience defined, navigate to the **A/B Testing** page to identify the creative that performed best — that's the one to use for this retargeting push.
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Building segments directly in the same environment where campaign data lives eliminates the copy-paste loop between analytics tools and campaign platforms. Marketers can define an audience, verify its size, and hand it off to campaign execution without exporting to a spreadsheet.
+<strong>WHY IT MATTERS:</strong><br> Defining the audience in the same environment as the underlying data removes the export step. The segment preview confirms size and value before it's saved, so campaign teams aren't handed a list that's too small to be statistically meaningful or too broad to be targeted.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## AB Testing
+## A/B Testing
 Duration: 10
 
-The **AB Testing** page displays all active and completed experiments with side-by-side performance comparisons across variants.
+The **A/B Testing** page is where you identify which creative performed best — the input you need before launching the retargeting campaign built in the previous step.
 
-### Experiment List
+### Filter to Completed Tests
 
-The page opens with a list of experiments, each showing its current status — Active, Completed, or Winner Declared. Clicking an experiment loads the variant comparison:
+The page opens with a list of experiments on the left and a detail panel on the right. By default all statuses are shown. Set the **Test Type** segmented control to `Completed` to filter down to finished experiments that are ready for a decision:
 
-<!-- <img src="assets/ma_12.png" width="800"/> -->
+<!-- <img src="assets/ma_14.png" width="800"/> -->
 
-### Variant Comparison
+Each row in the list shows the test name, its status, and how many days remain (or the final day count for completed tests).
 
-For each experiment, the detail view shows a side-by-side breakdown of all variants. The metrics shown for each variant include:
+### Review Variant Performance
+
+Click any completed test in the list. The detail panel on the right loads a side-by-side comparison of Variant A and Variant B. Six KPI cards are shown for each variant:
 
 - Impressions
 - Click-through rate (CTR)
@@ -230,16 +276,22 @@ For each experiment, the detail view shows a side-by-side breakdown of all varia
 - Revenue
 - New customers acquired
 
-<!-- <img src="assets/ma_13.png" width="800"/> -->
+<!-- <img src="assets/ma_15.png" width="800"/> -->
 
-### AI-Powered Statistical Analysis
+Scan the KPIs to get a directional read on which variant performed better. If the differences look meaningful, check the AI recommendation before making a call.
 
-For experiments where results look promising but statistical significance isn't clear, use the `Request analysis` button to generate an AI assessment. The analysis evaluates whether the observed differences are significant given the sample sizes, and returns a recommendation on whether to declare a winner, extend the test, or conclude it without a winner:
+### Read the AI Recommendation
 
-<!-- <img src="assets/ma_14.png" width="700"/> -->
+Below the variant KPIs, an **AI Recommendation** panel generates a statistical assessment of the test results. The analysis considers the sample sizes alongside the observed metrics and returns one of three recommendations: declare a winner, extend the test, or conclude without a winner:
+
+<!-- <img src="assets/ma_16.png" width="700"/> -->
+
+The recommendation identifies the winning variant by name (if one exists) and explains the reasoning — for example, whether the conversion rate lift is significant at the observed impression volumes, or whether the sample size is still too small to be conclusive.
+
+Use the winner's creative for the retargeting campaign targeting the `High-Value Mobile Lapsed` segment saved in the previous step.
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Calling a test too early based on directional results is one of the most common mistakes in A/B testing. The AI analysis applies statistical reasoning to the actual sample sizes rather than relying on a marketer's intuition about whether the lift is "big enough."
+<strong>WHY IT MATTERS:</strong><br> Calling a test too early based on directional results is one of the most common mistakes in A/B testing. The AI recommendation applies statistical reasoning to the actual sample sizes, giving teams a defensible basis for the decision rather than a gut call on which number looked bigger.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -259,7 +311,7 @@ The app draws from several warehouse tables covering:
 - **AB Variants** — variant-level records for each experiment: impressions, CTR, conversion rate, CAC, revenue, and new customers
 - **Orders / Order Lines** — transactional data used to compute revenue trend KPIs and customer segmentation dimensions
 
-<!-- <img src="assets/ma_15.png" width="800"/> -->
+<!-- <img src="assets/ma_17.png" width="800"/> -->
 
 These are the tables you replace when connecting to your own data. See the **Connect Your Own Data** section for details.
 
@@ -268,9 +320,9 @@ These are the tables you replace when connecting to your own data. See the **Con
 All AI-generated content in the app is driven by editable prompts stored on the Data page's **AI** tab — not hardcoded into workbook elements. This includes:
 
 - **Morning Brief prompt** — drives the daily portfolio summary. The prompt injects live campaign metrics (revenue, spend, ROAS, active vs. paused counts, low-confidence campaigns, A/B test outcomes) into the model context before generating the summary
-- **AB Test analysis prompt** — drives the statistical significance assessment on the AB Testing page
+- **AB Test analysis prompt** — drives the statistical significance assessment on the A/B Testing page
 
-<!-- <img src="assets/ma_16.png" width="800"/> -->
+<!-- <img src="assets/ma_18.png" width="800"/> -->
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Storing prompts on a dedicated tab separates content from structure. Marketing operations leads can adjust what the AI brief covers — adding channels, changing the focus, or tuning the tone — without touching any formulas or layout. The prompts are visible and auditable in one place.
@@ -280,7 +332,7 @@ All AI-generated content in the app is driven by editable prompts stored on the 
 
 The alert card on the Morning Brief is driven by a helper table called `Over Budget Channel` that pre-aggregates the channel with the highest spend-to-budget ratio. The `If([Actual Spend] > [Budget], "Over", "Near")` label and the dynamic text are applied at the card level against this pre-computed result, keeping the card logic simple while the filtering happens in the helper:
 
-<!-- <img src="assets/ma_17.png" width="800"/> -->
+<!-- <img src="assets/ma_19.png" width="800"/> -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -326,7 +378,7 @@ The Marketing Analytics app is designed to work with any campaign management and
 
 On the `Data` page, open each source table in edit mode. Use `Change source` to point the table at your own connection and warehouse tables. Map your columns to the existing column references used throughout the workbook.
 
-<!-- <img src="assets/ma_18.png" width="800"/> -->
+<!-- <img src="assets/ma_20.png" width="800"/> -->
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Column names in Sigma formulas and controls reference the source table columns by name. After swapping sources, verify that your column names match — or update the formula references on the Data page if they differ.

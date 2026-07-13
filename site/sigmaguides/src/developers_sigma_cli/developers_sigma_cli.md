@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-09
+lastUpdated: 2026-07-14
 
 # Automate Sigma from the Command Line with the Sigma CLI
 
