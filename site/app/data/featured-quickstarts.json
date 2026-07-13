@@ -53,18 +53,6 @@
       "id": "aiapps_natural_language_with_claude",
       "category": "aiapps",
       "date": "April 15, 2026"
-    },
-    {
-      "title": "Building Forms for Data Capture and Analysis",
-      "id": "aiapps_forms",
-      "category": "aiapps",
-      "date": "April 2, 2026"
-    },
-    {
-      "title": "Automate Inventory Alerts with Scheduled Actions",
-      "id": "aiapps_scheduled_actions",
-      "category": "aiapps",
-      "date": "Mar 23, 2026"
     }
   ]
 }
