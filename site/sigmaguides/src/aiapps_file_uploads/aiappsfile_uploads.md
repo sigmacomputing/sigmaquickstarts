@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-02-05
+lastUpdated: 2026-07-15
 
 # Multi-Modal File Analysis with AI
 
@@ -152,7 +152,7 @@ Click `Next`.
 On the permissions page:
 - Search for and select `sigma-file-uploads-quickstart-policy` (the policy you just created)
 
-<img src="assets/fupl_06.png" width="800"/>
+<!-- <img src="assets/fupl_06.png" width="800"/> -->
 
 Click `Next`, then:
 - **Role name**: `sigma-file-uploads-role`
@@ -209,22 +209,23 @@ Log into Sigma as Administrator and navigate to `Administration` > `Account` > `
 Configure the external storage integration:
 
 - **Provider**: Select `AWS S3`
-- **AWS customer IAM role ARN**: Enter the Role ARN from your IAM role (e.g., `arn:aws:iam::123456789012:role/sigma-file-uploads-role`)
+- **AWS IAM role ARN**: Enter the Role ARN from your IAM role (e.g., `arn:aws:iam::123456789012:role/sigma-file-uploads-role`)
 - **Bucket name**: Enter your S3 bucket name (e.g., `file-uploads-quickstart`)
-- **Prefix**: (Optional) Enter a folder path if you want to isolate Sigma uploads (e.g., `sigma-uploads/`)
+- **Path prefix**: Enter a folder path to isolate Sigma uploads (e.g., `sigma-uploads/`)
+- **KMS key name**: (Optional) Enter your KMS key alias if the bucket uses server-side encryption (e.g., `alias/example-key-name`)
 
 <img src="assets/fupl_09.png" width="500"/>
 
 After entering these details, Sigma will display three values:
 - **AWS IAM user ARN**: Sigma's IAM user identity (copy this)
 - **AWS external role ARN**: Sigma's external ID for cross-account access (copy this)
-- **AWS customer IAM role ARN**: Your role ARN echoed back (already have this)
+- **AWS IAM role ARN**: Your role ARN echoed back (already have this)
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Copy the first two values (AWS IAM user ARN and AWS external role ARN) displayed by Sigma - you'll need them in the next step to update your IAM role's trust policy. The third value is just your role ARN being displayed back to you.
 </aside>
 
-<img src="assets/fupl_10.png" width="500"/>
+<img src="assets/fupl_10.png" width="800"/>
 
 ### Update IAM Role Trust Policy
 
@@ -285,7 +286,7 @@ For additional details, see [Configure storage integration for file upload colum
 ## Configure Snowflake Cortex AI
 Duration: 5
 
-Before setting up storage integration, you need to ensure Snowflake Cortex AI is properly configured with a vision-capable model.
+Before building the app in Sigma, ensure Snowflake Cortex AI is properly configured with a vision-capable model.
 
 ### Enable Cross-Region Inference
 
@@ -566,9 +567,9 @@ Delete the pre-populated rows:
 ### Add Row ID Column
 Add a Row ID column to uniquely identify each row in the `My files` table.
 
-Click the `+` next to the last column, choose the Sigma provided `Row ID` column type.
+Click the `+` next to the last column, choose the Sigma-provided `Row ID` column type.
 
-Rename the column to `RowID`
+Rename the column to `RowID`.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The FileID column will be populated automatically when files are uploaded via the action sequence you'll configure in a later section. It stores the actual filename in S3 (with Sigma's prefix and UUID).
@@ -634,9 +635,9 @@ Set the image size to `25 x 48` and enable `Preserve aspect ratio`:
 
 <img src="assets/fupl_24.png" width="350"/>
 
-We can test that the trash icon appears by hitting `Enter` on the `Admin` > `My files` input table.
+Test that the trash icon appears by hitting `Enter` on the `Admin` > `My files` input table.
 
-4. With the `Delete` column selected. click the **Actions** tab in the properties panel
+4. With the `Delete` column selected, click the **Actions** tab in the properties panel
 5. Click `Add action` and select `Delete row(s)`
 6. Configure the action:
    - **In**: `Your files with insight (Main)`
@@ -881,7 +882,7 @@ with mycte as
 listagg( concat('File name: ', "Name", ', Detail Description: ', "AI Detailed Description", ' ; \n' )) all_results
 from sigma_element('Your files with insight'))
 select iff({{CollectiveInquiry}} is not null,
-ai_complete({{LLM}}, concat('Answer the following inquiry', {{CollectiveInquiry}}, ' from the following: ', all_results)), 'Ask optional question above') multimodal_results from mycte
+ai_complete({{Llm}}, concat('Answer the following inquiry', {{CollectiveInquiry}}, ' from the following: ', all_results)), 'Ask optional question above') multimodal_results from mycte
 ```
 
 <aside class="positive">
@@ -889,7 +890,7 @@ ai_complete({{LLM}}, concat('Answer the following inquiry', {{CollectiveInquiry}
 • <code>sigma_element('Your files with insight')</code> - References your child table containing all uploaded files<br>
 • <code>listagg(concat(...))</code> - Concatenates all rows into one long string with file names and descriptions<br>
 • <code>{{CollectiveInquiry}}</code> - Parameter from the text input control (the user's question)<br>
-• <code>{{LLM}}</code> - Parameter from the Llm control (which AI model to use)<br>
+• <code>{{Llm}}</code> - Parameter from the Llm control (which AI model to use)<br>
 • <code>ai_complete()</code> - Snowflake Cortex function that sends the prompt to the AI and returns the answer
 </aside>
 
@@ -937,14 +938,14 @@ The application will:
 2. Automatically generate an AI Detailed Description and AI Summary
 3. Display the file and descriptions in the `Your files with insight` table
 
-<img src="assets/uploadfile.gif">
+<img src="assets/uploadfile.gif" width="800"/>
 
 ### Test Multi-Modal Inquiry
 After uploading multiple files:
 
 1. Type a question in the `CollectiveInquiry` field and press `Enter`.
 
-Examples questions:
+Example questions:
    - "What is the common theme in my files?"
    - "Compare and contrast my files"
    - "Summarize the key information across all documents"
@@ -961,7 +962,7 @@ You should now have a working multi-modal AI application that:
 - Generates intelligent descriptions of file content
 - Answers natural language questions across multiple files
 - Provides a clean, user-friendly interface for unstructured data analysis
-- Ready for final clean-up and other usability enhancements to suit
+- Ready for final clean-up and usability enhancements
 
 
 ![Footer](assets/sigma_footer.png)
@@ -1045,7 +1046,7 @@ GRANT USAGE, READ, WRITE ON STAGE QUICKSTARTS.FILE_UPLOADS.FILE_UPLOADS TO ROLE 
 ```copy-code
 USE ROLE your_sigma_role;
 SELECT SNOWFLAKE.CORTEX.AI_COMPLETE(
-  'claude-3-7-sonnet',
+  'claude-sonnet-4-5',
   'Say hello'
 ) AS result;
 ```
