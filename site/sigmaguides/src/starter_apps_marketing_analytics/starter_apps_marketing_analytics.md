@@ -62,7 +62,7 @@ Click the template card to open a preview. Before clicking `Use template`, confi
 
 Once that's in place, click `Use template`. Sigma creates a personal copy in your workspace that you can explore, edit, and connect to your own data without affecting the original template:
 
-<img src="assets/ma_02.png" width="800"/>
+<img src="assets/ma_08.png" width="800"/>
 
 Click `Save as` and give the workbook a name:
 ```copy-code
@@ -72,6 +72,10 @@ Marketing Analytics
 <aside class="positive">
 <strong>NOTE:</strong><br> The original template remains unchanged in the gallery — your saved copy is the working version.
 </aside>
+
+Click to select the `Published` version of the workbook:
+
+<img src="assets/ma_02a.png" width="450"/>
 
 ### README Page
 
@@ -111,19 +115,21 @@ Directly below the greeting, an AI-generated paragraph summarizes the current st
 
 The prompt is stored as an editable control on the Data page, so the framing and focus of the summary can be adjusted without touching the underlying formulas. See the **Under the Hood** section for details.
 
-### Over-Budget Channel Alert
+### Today's Focus
 
-A prominent alert card highlights the channel currently consuming the highest share of its budget. The card shows:
+A **Today's Focus** card highlights the channel currently consuming the highest share of its budget. The card shows:
 
-- The channel name and current status (Over or Near budget)
-- Spend vs. budget as a percentage
+- The channel name and whether it is Over or Near its budget
+- Spend vs. budget as a percentage, with a gauge showing current pacing
 - Absolute spend and budget figures
 - Campaign count and active campaign count for that channel
 - Total revenue and profit from that channel
 
 <img src="assets/ma_05.png" width="600"/>
 
-This card updates dynamically — if no channel is over budget, it reflects the channel nearest to its limit.
+The card updates dynamically — if no channel is over budget, it reflects the channel nearest to its limit.
+
+A `Manage Channel →` button at the bottom of the card links directly to the **Campaigns** page pre-filtered to that channel — that's the next stop.
 
 ### Up Next
 
@@ -148,22 +154,28 @@ This section is designed to be a 30-second read — the goal is to identify whet
 ## Campaigns
 Duration: 10
 
-The **Campaigns** page is where you investigate the budget issue the Morning Brief flagged. A horizontal bar chart shows spend versus planned budget for every channel. Bars that have crossed the plan line are marked **Over Plan**; bars approaching it are marked with the current pacing percentage.
+The **Campaigns** page is where you investigate the budget issue flagged on the Morning Brief. 
+
+Click `Manage Channel →` on the `Today's Focus` card to navigate directly here, or select **Campaigns** from the left sidebar:
+
+<img src="assets/ma_08a.png" width="800"/>
 
 ### Inspect a Channel
 
-Click the bar for the channel the Morning Brief identified as over budget. The right sidebar loads immediately with a detail panel for that channel:
+The main content area shows a **Budget Pacing vs Plan** bar chart — one horizontal bar per marketing channel, each showing actual spend relative to the planned budget. 
 
-<img src="assets/ma_08.png" width="800"/>
+Click the bar for the channel shown in your `Morning Brief's Today's Focus` card to load its detail panel in the right sidebar.
 
 The sidebar shows:
 
-- Channel name, campaign count, and active campaign count
-- Over or Near Plan status with spend vs. budget as a percentage
-- Four KPI cards: total spend, total budget, ROAS, and profit for that channel
-- An AI-generated channel analysis that explains the pacing situation in plain language — spend rate, standout campaigns, and a suggested action
+- Channel name and campaign count
+- **Spent** and **Planned** — the dollar amounts for that channel
+- **Pacing** — spend as a percentage of the planned budget
+- **Share** — that channel's share of total spend across all channels
+- A budget variance line showing how far over or under plan the channel is
+- An AI-generated analysis explaining the pacing situation in plain language — ROAS, spend utilization, and how individual campaigns within the channel are tracking
 
-<img src="assets/ma_09.png" width="800"/>
+<img src="assets/ma_08.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The AI channel analysis is generated on demand from the selected channel's live data. Each time you click a different bar, the analysis refreshes for that channel.
@@ -171,9 +183,11 @@ The sidebar shows:
 
 ### Review the Campaign Table
 
-Below the sidebar, a table lists all campaigns in the selected channel with their individual spend, budget, ROAS, and status. This is where you identify which specific campaigns to pause, adjust, or scale — the channel bar tells you there's a problem; the table tells you which campaign is causing it:
+Below the chart, a table lists campaigns with six columns: **Campaign**, **Audience**, **Channel**, **Budget**, **Spend**, and **Status**. When a channel bar is selected, the table filters to campaigns in that channel. Click any row to open a budget adjustment panel for that campaign — the table subtitle "Tap a row to adjust that campaign budget" confirms this is interactive, not read-only:
 
-<!-- <img src="assets/ma_10.png" width="800"/> -->
+This is where you identify which specific campaigns to pause, adjust, or scale — the channel bar tells you there's a problem; the table tells you which campaign is causing it.
+
+<img src="assets/ma_09.png" width="800"/>
 
 With the over-budget channel identified and the specific campaigns noted, navigate to the **Segments** page to build an audience for the follow-on retargeting push.
 
@@ -187,66 +201,79 @@ With the over-budget channel identified and the specific campaigns noted, naviga
 ## Segments
 Duration: 10
 
-The **Segments** page is where you define the retargeting audience for the campaign you'll adjust. The builder on the left panel filters your customer base in real time; the preview panel on the right updates with every change.
+The **Segments** page has a three-panel layout: the **Segment Builder** on the left, a **Segment Preview** in the middle, and **Active Segments** on the right:
+
+<img src="assets/ma_11.png" width="800"/>
+
+Adjust any filter in the builder and the preview updates immediately.
 
 ### Set the Segment Criteria
 
-For this walkthrough, build a segment targeting high-value mobile customers who haven't purchased recently — a natural retargeting audience for the over-budget channel identified in the Campaigns page.
+For this walkthrough, lets uild a segment targeting high-value VIP customers who haven't purchased recently — a natural retargeting audience for the over-budget channel identified in the `Campaigns` page.
 
-Set the controls on the left panel to the following values:
+Set the controls in the left panel:
+
+**Customer Type**
+Select:
+```code
+VIP
+```
 
 **LTV Percentile**
-Move the range slider to:
-- Min: `75`
-- Max: `100`
+The range slider has two handles. Drag the **left (minimum) handle** to `75`, leaving the right (maximum) handle at `100`. The label above the slider should read `75 ≤ LTV % ≤ 100`.
 
-This targets your top quartile of customers by lifetime value.
+This targets the top quartile of VIP customers by lifetime value.
 
 **Last Purchase**
 Move the slider to:
-```copy-code
+```code
 30
 ```
-This filters to customers who haven't purchased in the last 30 days.
+This filters to customers who haven't purchased in the last 30 days. The slider range is 1–180.
 
 **Payment Method**
-Select:
-- `Mobile Wallet`
+From the dropdown, select:
+```code
+Mobile Wallet
+```
 
 **Payment Channel**
-Select:
-- `Mobile App`
+From the dropdown, select:
+```code
+Mobile App
+```
 
-<!-- <img src="assets/ma_11.png" width="800"/> -->
+<img src="assets/ma_12.png" width="800"/>
 
 ### Review the Segment Preview
 
-As each control is adjusted, the preview panel on the right updates to show:
+The middle panel updates in real time as filters change. It shows five metrics for the matching customer set:
 
-- **Customer count** — the number of customers matching all active criteria
-- **Total LTV** — the aggregate lifetime value of the matched segment
-- A distribution chart showing where this segment sits within your full customer base
+- **Segment Size** — customer count
+- **Total LTV** — aggregate lifetime value
+- **Avg LTV** — average per customer
+- **Avg Purchase Frequency** — purchases per month
+- **Avg Days Since Last Purchase**
 
-Confirm the segment looks right before saving. If the count is too small, loosen the LTV range or extend the Last Purchase window.
+If the segment size is too small, loosen the LTV range or extend the Last Purchase window before saving.
 
 <!-- <img src="assets/ma_12.png" width="800"/> -->
 
-### Save the Segment
+### Create the Segment
 
-Once the preview looks right, enter a name for the segment:
+Two buttons sit below the preview metrics:
 
-```copy-code
-High-Value Mobile Lapsed
-```
+- `Generate Campaign Plan` — uses AI to draft a campaign brief for this audience
+- `Create Segment` — saves the segment definition to the Active Segments panel
 
-Click `Save`. The segment appears in the **Active Segments** list at the bottom of the page, where it's available to reference for campaign targeting:
+Click `Create Segment`. The segment appears in the **Active Segments** panel on the right, showing how many campaigns are currently using it:
 
 <!-- <img src="assets/ma_13.png" width="500"/> -->
 
 With the audience defined, navigate to the **A/B Testing** page to identify the creative that performed best — that's the one to use for this retargeting push.
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Defining the audience in the same environment as the underlying data removes the export step. The segment preview confirms size and value before it's saved, so campaign teams aren't handed a list that's too small to be statistically meaningful or too broad to be targeted.
+<strong>WHY IT MATTERS:</strong><br> Defining the audience in the same environment as the underlying data removes the export step. The five-metric preview confirms the segment is the right size and value before it's saved, so campaign teams aren't handed a list that's too small to be statistically meaningful or too broad to be targeted.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
