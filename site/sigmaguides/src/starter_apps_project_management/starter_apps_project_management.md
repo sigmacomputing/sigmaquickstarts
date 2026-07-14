@@ -60,8 +60,6 @@ Click the template card to open a preview. Before clicking `Use template`, confi
 
 Once both are in place, click `Use template`. Sigma creates a personal copy in your workspace that you can explore, edit, and populate with your own data without affecting the original template:
 
-<!-- <img src="assets/pm_02.png" width="800"/> -->
-
 Click `Save as` and give the new workbook a name:
 ```copy-code
 Project Management
@@ -75,7 +73,7 @@ Project Management
 
 The app opens on its **README** page — an introduction built directly into the workbook that orients new users without requiring any external documentation:
 
-<!-- <img src="assets/pm_03.png" width="800"/> -->
+<img src="assets/pm_03.png" width="800"/>
 
 The README includes a short demo video walking through the core workflow, a five-step getting-started guide, and a map of the app's pages. Read through it before diving in — it describes what each page does and the sequence to follow:
 
@@ -88,6 +86,10 @@ The README includes a short demo video walking through the core workflow, a five
 <aside class="negative">
 <strong>NOTE:</strong><br> The README page is visible to all users of the app. If you adapt this template for your org, update it to reflect your own project names, team context, and any changes from the sample Throughline data.
 </aside>
+
+Place the workbook into `Published` mode:
+
+<img src="assets/pm_02.png" width="550"/>
 
 ### Home Page
 
