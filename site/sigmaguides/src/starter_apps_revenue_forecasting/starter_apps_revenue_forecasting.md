@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-08
+lastUpdated: 2026-07-15
 
 # Revenue Forecasting Starter App
 
