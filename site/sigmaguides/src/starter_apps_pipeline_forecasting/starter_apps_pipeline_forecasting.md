@@ -89,7 +89,7 @@ The four steps are:
 3. **Add manager calls** — submit your Gut, Commit, and Best Case values for each deal through the deal detail overlay.
 4. **Execute on the board** — keep deal categories current as the quarter progresses. Flag any changes to Commit, Gut, or Best Case as deals move through stages.
 
-**Application Pages** at the bottom of the README summarizes each page in the workbook:
+The **Application Pages** section at the bottom of the README summarizes each page in the workbook:
 
 - **Overview** — your forecast in one screen. Commit number with a quota coverage gauge stacking Closed → Commit → Best Case, pipeline composition chart, stale-deal alert, and week-over-week forecast trend.
 - **All Deals** — every open deal in one list, grouped by forecast category with Uncategorized pinned to the top. Each row is inline-editable — change a category, edit a note, or submit a call without leaving the page.
@@ -106,26 +106,39 @@ Duration: 15
 
 ### Home Page — Your Forecast at a Glance
 
+Open to the `Published` version:
+
+<img src="assets/pf_01a.png" width="500"/>
+
+Before exploring the dashboard, set the two selectors at the top of the page:
+
+- **REP** — the sales rep whose forecast you're viewing
+- **PERIOD** — the fiscal quarter. For the sample data, select `Q2 2026`
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The PERIOD selector controls everything on the page — quota line, deal coverage, AI summary, and pipeline charts all filter to the selected quarter. If the period isn't set correctly, the dashboard will appear empty or show unexpected values.
+</aside>
+
 The **Home** page (labeled **Overview** in the workbook nav) is the starting point for every forecasting session. It shows the full picture for the active quarter and rep in a single view.
 
-At the top left, a **COMMIT FORECAST** card shows the rep's current Commit as a large number with quota percentage below it. Three supporting KPIs sit alongside it — **CLOSED WON**, **BEST CASE**, and **OPEN PIPELINE** — each with a quota coverage line:
+At the top left, a **COMMIT FORECAST** card shows the rep's current Commit as a large number with quota percentage below it.
 
-<!-- <img src="assets/pf_04.png" width="800"/> -->
+Three supporting KPIs sit alongside it — **CLOSED WON**, **BEST CASE**, and **OPEN PIPELINE** — each with a quota coverage line:
 
 Below the KPIs, an AI-generated forecast summary (labeled "Generated using Sigma AI") reads the rep's forecast history and surfaces two sentences: the current trajectory and the deals most likely to affect the outcome. The summary updates as new forecast submissions are added.
 
 A **QUOTA COVERAGE** bar on the right stacks Closed Won, Commit, and Best Case as normalized segments against the quota line, showing path-to-quota at a glance:
 
-<!-- <img src="assets/pf_05.png" width="800"/> -->
+<img src="assets/pf_04.png" width="800"/>
 
 ### The NEXT Alert
 
 A dark **NEXT** banner below the main KPIs counts deals that haven't had a forecast update within the configured cadence (default: 7 days). It shows the count and a short message prompting action. Clicking any deal in the list opens its detail overlay directly:
 
-<!-- <img src="assets/pf_06.png" width="600"/> -->
+<img src="assets/pf_05.png" width="600"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The staleness threshold is configurable — see the <strong>Under the Hood</strong> section for how the <code>forecast-cadence</code> control works.
+<strong>NOTE:</strong><br> The staleness threshold is configurable — see the <strong>Under the Hood</strong> section for how the <code>Forecast Cadence (days)</code> control works.
 </aside>
 
 ### Pipeline Composition and Forecast Trend
@@ -135,17 +148,13 @@ Two panels at the bottom of the Home page give pipeline-level context:
 - **PIPELINE COMPOSITION** — a horizontal stacked bar chart showing how open pipeline splits across forecast categories (Commit, Best Case, Gut, Remaining). Each segment is labeled with its percentage of total open pipeline, making coverage gaps visible at a glance.
 - **HOW YOUR FORECAST HAS MOVED** — a step-line chart plotting Commit, Gut, and Best Case week over week across the quarter. Each data point represents a weekly snapshot of cumulative forecast submissions. Use this to see whether the forecast has been moving up, down, or holding steady.
 
-<!-- <img src="assets/pf_07.png" width="800"/> -->
+At the bottom right, an **ACV BY STAGE** bar chart shows total pipeline value at each opportunity stage — useful for understanding where dollar risk is concentrated in the funnel:
 
-At the bottom right, an **ACV BY STAGE** bar chart shows total pipeline value at each opportunity stage — useful for understanding where dollar risk is concentrated in the funnel.
-
-<!-- <img src="assets/pf_08.png" width="800"/> -->
+<img src="assets/pf_07.png" width="800"/>
 
 ### All Deals Page — Work the Board
 
-The **All Deals** page is where reps categorize deals and submit forecast calls. The header shows the current quarter and two filters — `All` (show every deal) and a toggle that filters to deals that need a call (those outside the cadence threshold):
-
-<!-- <img src="assets/pf_09.png" width="800"/> -->
+The **All Deals** page is where reps categorize deals and submit forecast calls. The header shows the current quarter and two filters — `All` (show every deal) and a toggle that filters to deals that need a call (those outside the cadence threshold).
 
 Two counters in the header update live:
 - **Committed** — count of deals with at least one forecast submission
@@ -153,17 +162,17 @@ Two counters in the header update live:
 
 Deals are displayed in two groups. **Committed** deals appear below the header with deal name, stage, ACV, and the three forecast values (Commit, Gut, Best Case) displayed inline. A `Closes` date appears at the top right of each card:
 
-<!-- <img src="assets/pf_10.png" width="800"/> -->
+<img src="assets/pf_09.png" width="800"/>
 
 Clicking any deal card opens a **deal detail overlay**. The overlay shows the deal name, stage, ACV, and close date, along with editable Commit, Gut, and Best Case fields. Enter your forecast values and click `Save` to record the submission. The submission is timestamped and stored in the Forecasts input table, and the deal's "Days Since Last Forecast" counter resets immediately.
 
-<!-- <img src="assets/pf_11.png" width="600"/> -->
+<img src="assets/pf_11.png" width="550"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Forecast submissions are append-only — each save creates a new timestamped record. The app always resolves to the most recent submission per deal. Editing an existing submission does not overwrite history.
 </aside>
 
-After submitting calls, return to the Home page. The Commit number, quota coverage gauge, and AI summary all reflect the updated submissions immediately.
+After submitting calls, return to the `Home` page. The Commit number, quota coverage gauge, and AI summary all reflect the updated submissions immediately.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -173,81 +182,98 @@ Duration: 10
 
 This section walks through the end-to-end workflow using the sample data that ships with the app. Follow along to see how a rep starts their session, identifies what needs attention, submits forecast calls, and checks the updated dashboard — all without leaving the workbook.
 
-### Step 1: Start on the Home Page
+### Step 1: Select a Rep and Period
 
-Open the app and land on the **Home** page. Before doing anything else, orient to your current position for the quarter:
+The **REP** and **PERIOD** selectors at the top of the Home page control whose forecast you're viewing. Select the following to match this walkthrough:
 
-- **COMMIT FORECAST** — your current committed number and what percentage of quota it represents
-- **CLOSED WON** — deals already in the bank
-- **OPEN PIPELINE** — the total value still at risk or in motion
-- **AI summary** — two sentences on where your forecast stands and what's most likely to move it
+- Rep: `Winslet` (type to search — the full name is truncated in the dropdown)
+- Period: `Q2 2026`
 
-Check the **QUOTA COVERAGE** bar on the right. The stacked segments show how Closed Won, Commit, and Best Case stack up against the quota line. If there's a visible gap between Best Case and the quota line, you have work to do on the board.
-
-<!-- <img src="assets/pf_12.png" width="800"/> -->
-
-Note the **NEXT** banner. It shows how many deals haven't been updated within the past 7 days. That's your action list for this session.
-
-<!-- <img src="assets/pf_13.png" width="800"/> -->
-
-### Step 2: Go to All Deals
-
-Navigate to the **All Deals** page using the workbook page tabs. The header shows the current quarter and two deal counts — **Committed** and **Needs your call**.
-
-Enable the `Needs your call` filter to narrow the list to deals flagged as stale:
-
-<!-- <img src="assets/pf_14.png" width="800"/> -->
-
-You should see a short list of deals that haven't had a forecast update in over 7 days. These are the ones to work through first.
-
-### Step 3: Open a Deal and Submit a Call
-
-Click any deal card to open the forecast overlay. The overlay shows deal context at the top — name, stage, ACV, and close date — so you have what you need to make a call without switching to your CRM.
-
-<!-- <img src="assets/pf_15.png" width="600"/> -->
-
-Enter the following sample values to record a forecast submission:
-
-- Gut:
-```copy-code
-75000
-```
-- Commit:
-```copy-code
-60000
-```
-- Best Case:
-```copy-code
-90000
-```
-- Notes:
-```copy-code
-Champion confirmed budget. Legal review started — targeting close by end of quarter.
-```
-
-Click `Save`. The submission is timestamped and stored immediately. The deal's staleness counter resets — it will no longer appear in the `Needs your call` list until another 7 days have passed without an update.
-
-<aside class="positive">
-<strong>NOTE:</strong><br> The Notes field is where risk context and next steps live. Managers reviewing the board can read what the rep knows without scheduling a call — making the notes field as important as the numbers.
+<aside class="negative">
+<strong>NOTE:</strong><br> The PERIOD selector is the most important setup step in the app. Every metric, chart, deal card, and AI summary on the Home page filters to the selected quarter. The sample data is configured for <code>Q2 2026</code> — using a different period will result in an empty or misleading dashboard.
 </aside>
 
-### Step 4: Work the Rest of the Queue
+Orient to Winslet's current position before doing anything else:
 
-Repeat Step 3 for each remaining deal in the `Needs your call` list. You don't need to navigate away between deals — after saving, close the overlay and click the next card.
+- **YOU COMMIT: $15,500** — 1% of a $2M quota. The gap is significant.
+- **CLOSED WON: $16.2K** — 0.81% of quota already in the bank
+- **BEST CASE: $17,500** — 1% of quota; upside barely moves the needle
+- **OPEN PIPELINE: $0** — of $16.2K total pipe; all remaining deals are currently uncategorized
 
-As you submit each call, the **Committed** counter in the All Deals header increments and **Needs your call** decrements.
+The **AI summary** has already flagged the core risk: Xenox River Upsell is carrying the entire forecast (and growing), while Meganomics Renewal is sitting at zero across every forecast category:
+
+<img src="assets/pf_12.png" width="800"/>
+
+The **QUOTA COVERAGE** panel on the right confirms the picture — the stacked segments barely register against the $2M quota line, with a `Gap to Quota: -$1,983,800` label at the bottom.
+
+### Step 2: Check the NEXT Alert
+
+The dark **NEXT** banner surfaces the deals the AI summary just flagged — the ones with no recent forecast updates. Meganomics Renewal should appear here, sitting at zero across every forecast category.
+
+The NEXT banner surfaces it automatically so Winslet doesn't have to scan the full deal list to find what's stale:
+
+<img src="assets/pf_05.png" width="600"/>
+
+### Step 3: Go to All Deals
+
+Navigate to the **All Deals** page. Enable the `Requires Forecast Update` toggle to filter to just the stale deals:
+
+<img src="assets/pf_14.png" width="800"/>
+
+The board shows committed deals on the left and **Needs your call** deals on the right. The stale deal card aligns with what the AI summary and NEXT banner flagged — Meganomics Renewal with $0 across every forecast category:
+
+<img src="assets/pf_14a.png" width="500"/>
+
+### Step 4: Submit a Forecast Call
+
+Click **Meganomics Renewal** to open the forecast overlay. The overlay shows deal context — name, stage (1 - Suspect), ACV ($0), close date (June 21 2026) — so Winslet has what's needed to make a call without switching to the CRM.
+
+Enter the following values to record a first forecast submission for this renewal:
+
+**Gut:**
+```copy-code
+12000
+```
+**Commit:**
+```copy-code
+8000
+```
+**Best Case:**
+```copy-code
+15000
+```
+**Notes:**
+```copy-code
+Renewal at risk — no activity in 3 weeks. Following up this week to gauge timeline and decision maker availability.
+```
+
+<img src="assets/pf_15.png" width="550"/>
+
+Click `Submit`. The submission is written to the input table (on the `Data` page > `Input tables` tab) immediately.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> After submitting, the deal card values may not update immediately in the sample data environment. The write to the input table succeeds — confirm by navigating to the Data page and inspecting the Forecasts input table. In live use with current CRM data, values update immediately after submitting.
+</aside>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The Notes field is where risk context and next steps live. Managers reviewing the board can read what the rep knows without scheduling a sync — making the notes field as important as the numbers.
+</aside>
+
+Once submitted, the **Needs your call** count drops to zero.
 
 ### Step 5: Return to the Home Page
 
 Navigate back to the **Home** page. Every metric reflects the submissions just made:
 
-- The **COMMIT FORECAST** number updates to include any new or changed Commit values
-- The **QUOTA COVERAGE** bar's segment lengths shift based on the updated totals
-- The **AI summary** regenerates using the new forecast data as context — the two sentences now reflect the updated position
+- **YOU COMMIT: $23,500** — up from $15,500; the Meganomics Renewal $8K commit is now included
+- **BEST CASE: $32,500** — up from $17,500; the $15K best case is now part of the coverage picture
+- **NEXT banner: 0 deals** — the queue is cleared; no stale deals remain
+
+The **AI summary** has regenerated and now reflects the activity. It tracks the trajectory of each deal since the quarter began, calling out which deals have moved and which still carry risk:
 
 <!-- <img src="assets/pf_16.png" width="800"/> -->
 
-The **HOW YOUR FORECAST HAS MOVED** line chart adds a new data point for this week's submissions. Over the course of a quarter, this chart shows whether the forecast has been consistent, improving, or eroding — giving managers a trend they can discuss in the weekly forecast call rather than comparing numbers from memory.
+The **HOW YOUR FORECAST HAS MOVED** line chart adds a new data point for this week's submissions. Over the course of a quarter, this chart shows whether the forecast has been consistent, improving, or eroding — giving managers a trend to discuss on the weekly call rather than comparing numbers from memory.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> The entire cycle — check the dashboard, work the board, submit calls, review the updated metrics — takes under 10 minutes for a rep with a well-maintained pipeline. The app is designed to replace the weekly spreadsheet update and the manager follow-up that comes after it.
@@ -259,18 +285,21 @@ The **HOW YOUR FORECAST HAS MOVED** line chart adds a new data point for this we
 ## Under the Hood
 Duration: 10
 
-The **Data** page contains every backend table that powers the app. Each table includes a description of its purpose. Here's how the pieces fit together.
+The **Data** page contains every backend table that powers the app. Each table includes a description of its purpose. The page is organized into tabs: `Warehouse Sources`, `Input Tables`, `Linked Input Tables`, `Transformations`, and `Helpers`. Here's how the pieces fit together.
+
+Place the workbook into `Edit` mode.
 
 ### The Data Sources
 
-The app draws from two warehouse tables:
+The app draws from three warehouse tables, visible under the `Warehouse Sources` tab:
 
-- **OPPORTUNITIES_ENRICHED** — the core CRM opportunities table with columns for Opportunity Guid, Opportunity Name, Opportunity Type, Opportunity Stage Name, Opportunity ACV Amount, Opportunity Owner Guid, Opportunity Owner User Name, and Opportunity Close Date. This is the single source of truth for all deal data throughout the app.
-- **Fiscal Calendar** — a date-dimension table from the warehouse that maps each calendar date to a fiscal quarter. It's used to resolve which quarter each deal's close date falls into via a `Lookup` formula.
+- **OPPORTUNITIES_ENRICHED** — the core CRM opportunities table (10,337 rows, 10 columns). Contains all deal information from the warehouse including stages, forecast categories, amounts, and close dates. This is the single source of truth for all deal data throughout the app.
+- **Reps** — a sales representatives table (192 rows, 2 columns) with Opportunity Owner Guid and Opportunity Owner User Name. Used as one side of the cross join that generates the complete rep × quarter quota grid.
+- **Fiscal Calendar** — maps each calendar date to fiscal periods (quarters, years). Enables time-based filtering and aggregations aligned with the org's fiscal calendar rather than standard calendar dates.
 
-<!-- <img src="assets/pf_17.png" width="800"/> -->
+<img src="assets/pf_17.png" width="800"/>
 
-These are the two tables to replace when connecting to your own data. See the **Connect Your Own Data** section for details.
+These three tables are the ones to replace when connecting to your own data. See the **Connect Your Own Data** section for details.
 
 ### The Forecasts Input Table
 
@@ -287,14 +316,16 @@ These are the two tables to replace when connecting to your own data. See the **
 
 Three lookup columns are derived automatically: `Opportunity Name`, `Opportunity Owner Guid`, and `Quarter` — all resolved from the Opportunity ID without the rep entering them manually.
 
+<img src="assets/pf_17a.png" width="800"/>
+
 **WHY IT MATTERS:**<br>
 The append-only submission model means every forecast call is preserved. The rep's trajectory across the quarter is a complete audit trail — not just the current state. That history powers the week-over-week trend chart and makes it possible to see whether a rep's Commit has been stable, climbing, or eroding.
 
 ### Latest Forecasts — RowNumber for Current State
 
-The **Latest Forecasts** table is a transformation that extracts just the most recent submission per deal. It uses `RowNumber([Date], "desc")` partitioned by `Opportunity ID` to rank submissions newest-first, then filters to rank = 1:
+The **Latest Forecasts** table is a transformation (visible under the `Transformations` tab) that extracts just the most recent submission per deal. It uses `RowNumber([Date], "desc")` partitioned by `Opportunity ID` to rank submissions newest-first, then filters to `Forecast Rank = 1`:
 
-<!-- <img src="assets/pf_18.png" width="800"/> -->
+<img src="assets/pf_18.png" width="800"/>
 
 The result is one row per deal — the rep's current call — which feeds into the **Rep Summary** aggregation table and the All Deals deal cards.
 
@@ -305,11 +336,11 @@ The `RowNumber` pattern is a lightweight alternative to a max-date subquery. It 
 
 The **Quota** linked input table allows managers to set quota targets per rep per quarter. To ensure every rep has a row for every quarter — even before any deals exist or any quota is entered — a `Reps x Quarter Cross Join` table generates the full grid first.
 
-The cross join is a left outer join between `Reps [WAREHOUSE]` and `Fiscal Calendar [WAREHOUSE]` with the join condition set to `1 = 1` (always true). The result is every combination of rep × fiscal quarter:
+The cross join is a Cartesian product of `Reps [WAREHOUSE]` and `Fiscal Calendar [WAREHOUSE]` — every combination of rep × fiscal quarter. It produces 560,640 rows across 3 columns (Opportunity Owner Guid, Opportunity Owner User Name, Quarter) and lives under the `Transformations` tab.
 
-<!-- <img src="assets/pf_19.png" width="800"/> -->
+<!-- <img src="assets/pf_20.png" width="800"/> -->
 
-The `Quota [LINKED INPUT TABLE]` uses this cross join as its row source. Managers can enter quota values directly in the linked input table — the editable `Quota` column writes back to the warehouse — while the rep and quarter columns are pulled from the cross join and are not editable.
+The `Quota [LINKED INPUT TABLE]` (visible under the `Linked Input Tables` tab) uses this cross join as its row source. The table is marked **Editable in draft** — managers open the workbook in draft mode to set or adjust quota targets per rep per quarter. The `Quota` column writes back to the warehouse; the rep and quarter columns are read-only, pulled from the cross join.
 
 **WHY IT MATTERS:**<br>
 Without the cross join, the quota table would only have rows for rep × quarter combinations that already appear in the opportunities data. New reps or future quarters would be missing, and the coverage gauge would show no quota line. The cross join guarantees completeness: every rep has a quota slot for every quarter, whether or not they have any deals yet.
@@ -324,26 +355,28 @@ The **Rep Summary** table joins quota data with deal metrics to produce the per-
 - Net values (`Commit (net)`, `Gut (net)`, `Best Case (net)`) — each category minus the category below it, used for the stacked quota coverage chart
 - `Remaining Pipe` — total pipeline minus Best Case
 
-<!-- <img src="assets/pf_20.png" width="800"/> -->
+<img src="assets/pf_19.png" width="800"/>
 
 ### AI Summary as an Editable Prompt
 
-The AI-generated forecast summary on the Home page is driven by a prompt stored in the `ai-summary` control on the Data page. The default prompt instructs the model to analyze the rep's forecast history and return a two-sentence plain-text summary in a conversational tone.
+The AI-generated forecast summary on the Home page is driven by a prompt stored in the `Ai Summary` control on the `Helpers` tab of the Data page. The prompt instructs the model to return a two-sentence plain-text summary in a conversational, direct tone. It includes an example output style so the model understands the expected register, and a fallback instruction: if no data is available, return `Cannot generate AI Summary` rather than fabricating output.
 
 The prompt is stored as a workbook control — not hardcoded into the text element formula — so it can be tuned without touching the workbook structure:
 
-<!-- <img src="assets/pf_21.png" width="800"/> -->
+<img src="assets/pf_21.png" width="800"/>
 
-The formula in the Home page text element calls `CallText("ai_complete", "claude-sonnet-4-6", ...)`, passing the prompt control value alongside a `ListAgg` of the rep's recent forecast submissions as context.
+The formula in the Home page text element calls `CallText("ai_complete", "claude-sonnet-4-6", ...)`, passing the `Ai Summary` prompt value alongside a `ListAgg` of the rep's recent forecast submissions as context.
 
 **WHY IT MATTERS:**<br>
 Storing the AI prompt as an editable control separates what the model is asked from how the result is displayed. Sales managers can adjust the summary's focus — emphasizing Commit risk, deal count, or cadence gaps — without modifying the underlying workbook formula. The prompt is visible and auditable in one place, which matters when AI output informs a manager's weekly call.
 
-### The forecast-cadence Control
+### The Forecast Cadence Control
 
-A number control named `forecast-cadence` (default: 7) sets the staleness threshold in days. Any deal where `DateDiff("day", [UPDATED], Now()) > [forecast-cadence]` is flagged as needing an update. The `Requires Forecast Update` column on the Deals table evaluates this condition and feeds both the NEXT banner count and the `Needs your call` filter on All Deals.
+A number control labeled `Forecast Cadence (days)` on the `Helpers` tab (default: 7) sets the staleness threshold in days. Any deal where `DateDiff("day", [UPDATED], Now()) > [forecast-cadence]` is flagged as needing an update. The `Requires Forecast Update` column on the Deals table evaluates this condition and feeds both the NEXT banner count and the `Needs your call` filter on All Deals.
 
-To change the cadence for your team, edit the default value of the `forecast-cadence` control on the Data page.
+To change the cadence for your team, edit the default value of the `Forecast Cadence (days)` control on the `Helpers` tab:
+
+<img src="assets/pf_21a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -351,7 +384,7 @@ To change the cadence for your team, edit the default value of the `forecast-cad
 ## Connect Your Own Data
 Duration: 5
 
-The Pipeline Forecasting app is designed to work with any CRM opportunities dataset that tracks deal stages, amounts, and owners. The two source tables to replace are **OPPORTUNITIES_ENRICHED** and **Fiscal Calendar** on the Data page.
+The Pipeline Forecasting app is designed to work with any CRM opportunities dataset that tracks deal stages, amounts, and owners. The three source tables to replace are **OPPORTUNITIES_ENRICHED**, **Reps**, and **Fiscal Calendar** on the Data page.
 
 ### What the App Needs
 
@@ -379,13 +412,24 @@ The Pipeline Forecasting app is designed to work with any CRM opportunities data
 
 The calendar table is used solely to resolve quarter labels from close dates. If your CRM data already carries a quarter field, you can simplify or bypass this lookup.
 
+**Reps table:**
+
+| Column | Description |
+|--------|-------------|
+| Opportunity Owner Guid | Unique rep identifier — must match the GUID in OPPORTUNITIES_ENRICHED |
+| Opportunity Owner User Name | Rep display name shown in the REP selector and deal cards |
+
+This is typically a deduplicated list of reps pulled from the same CRM connection as the Opportunities table. It's used as one side of the cross join that generates the complete rep × quarter quota grid.
+
 ### How to Swap the Sources
 
 On the `Data` page, open **OPPORTUNITIES_ENRICHED [WAREHOUSE]** in edit mode. Use `Change source` to point the table at your own connection and opportunities table. Map your columns to the column names the app expects — especially `Opportunity Guid`, `Opportunity Owner Guid`, and `Opportunity Stage Name`, which appear as join keys and filter conditions throughout the workbook.
 
+Open **Reps [WAREHOUSE]** and point it at a deduplicated list of rep IDs and display names from your CRM or HR system. The Opportunity Owner Guid must match the values in OPPORTUNITIES_ENRICHED for the cross join and quota grid to function correctly.
+
 Then open **Fiscal Calendar [WAREHOUSE]** in edit mode and point it at your organization's fiscal calendar table, or replace it with a simpler quarter derivation if your opportunities table already carries a quarter column.
 
-<!-- <img src="assets/pf_22.png" width="800"/> -->
+<img src="assets/pf_22.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The Forecasts and Quota input tables write back to the same Snowflake connection as the sample data. If you're connecting to a different warehouse, update those input table sources as well to ensure forecast submissions and quota data are written to the correct location.
