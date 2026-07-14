@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-13
+lastUpdated: 2026-07-16
 
 # Project Management Starter App
 
@@ -51,7 +51,7 @@ Duration: 10
 
 Navigate to `Templates` in the left sidebar. The Project Management app appears in the `Made by Sigma` collection:
 
-<!-- <img src="assets/pm_01.png" width="800"/> -->
+<img src="assets/pm_01.png" width="800"/>
 
 Click the template card to open a preview. Before clicking `Use template`, confirm the two requirements shown on the detail page are met:
 
