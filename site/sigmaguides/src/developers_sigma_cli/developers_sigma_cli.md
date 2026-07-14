@@ -384,7 +384,7 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.sigma-cli/bin:$PATH"
 # Read credentials from the file store so the script works without a logged-in session
 export SIGMA_CLI_KEYRING_BACKEND=file
 
-PROFILE="sigma_quickstarts"
+PROFILE="sigma_inventory"
 OUTDIR="sigma_inventory_test"
 mkdir -p "$OUTDIR"
 
@@ -416,19 +416,23 @@ A few things worth pointing out about this script:
 - The `auth status` check up front means it fails clearly if the profile's credentials have expired, rather than producing empty files.
 - `OUTDIR` creates a folder named `sigma_inventory_test`, and the three CSVs are written *inside* that folder, not next to the script. Keeping the output together makes it easy to find and easy to clean up.
 
-**Store your credentials in the file backend**
+**Create a profile for unattended runs**
 
-Credentials are saved per backend, so the profile you created earlier lives in the OS keyring — not the file store the script now reads from. Authenticate once more with the file backend active so your profile is written where unattended runs can find it:
+The OS keyring (macOS Keychain) only unlocks during an interactive session, so any profile stored there fails when `cron` calls it. File-based storage keeps the credentials in a plain file that unattended runs can read without a session.
+
+Create a dedicated profile for the script now:
 
 ```copy-code
 export SIGMA_CLI_KEYRING_BACKEND=file
 sigma auth login
 ```
 
-Recreate the profile exactly as you did before, with the same API key:
+Name it to signal its purpose:
 ```copy-code
-sigma_quickstarts
+sigma_inventory
 ```
+
+Use the same API credentials as before. A separate profile is intentional — it keeps your interactive profile (`sigma_quickstarts`) isolated from automation, and makes it easy to rotate or revoke one without touching the other.
 
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> File-based storage writes your credentials to a file on disk rather than the OS keyring, which is less protected. Restrict access to it (for example, <code>chmod 600</code>), never commit it to source control, and for CI/CD pipelines prefer injecting credentials as pipeline secrets.
@@ -560,6 +564,12 @@ If you installed with Homebrew:
 
 ```copy-code
 brew uninstall sigma-computing-cli
+```
+
+Either way, remove the credentials and profile data:
+
+```copy-code
+rm -rf ~/.sigcli
 ```
 
 **Remove the PATH line from your shell profile** (if you added it)
