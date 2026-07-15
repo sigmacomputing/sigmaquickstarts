@@ -58,7 +58,7 @@ Click the template card to open a preview. Before clicking `Use template`, confi
 - **Write access enabled on a connection** — required for input tables to store all project data. See [Set up write access](https://help.sigmacomputing.com/docs/set-up-write-access)
 - **AI provider set up in your organization** — required for the AI summaries on Home and Ticket Details. See [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
 
-Once both are in place, click `Use template`. Sigma creates a personal copy in your workspace that you can explore, edit, and populate with your own data without affecting the original template:
+Once both are in place, click `Use template`. Sigma creates a personal copy in your workspace that you can explore, edit, and populate with your own data without affecting the original template.
 
 Click `Save as` and give the new workbook a name:
 ```copy-code
@@ -95,7 +95,7 @@ Place the workbook into `Published` mode:
 
 The **Home** page is the app's front door for an individual project. Select a project from the sidebar to load it. The hero section shows the project name, health status, owner, timeline, and overall plan item completion at a glance:
 
-<!-- <img src="assets/pm_04.png" width="800"/> -->
+<img src="assets/pm_04.png" width="800"/>
 
 Below the hero, the page breaks into four areas:
 
@@ -104,17 +104,17 @@ Below the hero, the page breaks into four areas:
 - **Ticket Workload** — a per-team-member breakdown showing queued, active, and completed tickets for this project.
 - **Open Tickets table** — a sortable list of all non-done tickets, sorted by due date. Click the comment bubble icon on any ticket to navigate to **Ticket Details View**.
 
-<!-- <img src="assets/pm_05.png" width="800"/> -->
+<img src="assets/pm_05.png" width="800"/>
 
 ### Plan Page
 
 The **Plan** page organizes the selected project's work by milestone. A summary bar at the top shows the total milestone count alongside how many are done and in-flight:
 
-<!-- <img src="assets/pm_06.png" width="800"/> -->
+<img src="assets/pm_06.png" width="800"/>
 
 Select any milestone in the left panel to expand it. The detail table shows every plan item under that milestone with its assignee, priority, status, due date, and team. Rows where the status is `TO DO` or `BLOCKER` and the due date falls past the milestone end date are highlighted in red — an automatic signal that something is at risk of missing its window.
 
-<!-- <img src="assets/pm_07.png" width="800"/> -->
+<img src="assets/pm_07.png" width="800"/>
 
 The completion percentage for each milestone is displayed inline and updates as tickets move to `DONE` on the Board.
 
@@ -127,7 +127,7 @@ The **Board** page is the execution surface. It presents a Kanban view of all ti
 - **Blocked** — work that can't proceed
 - **Done** — completed work
 
-<!-- <img src="assets/pm_08.png" width="800"/> -->
+<img src="assets/pm_08.png" width="800"/>
 
 Each card shows the ticket summary, priority icon, description snippet, and abbreviated ticket ID. The Blocked column uses a distinct red header to make impediments visible at a glance.
 
@@ -137,7 +137,7 @@ Move work through statuses by editing the ticket's Status field — either direc
 
 The **All Projects** page provides a portfolio view across every active project in the app:
 
-<!-- <img src="assets/pm_09.png" width="800"/> -->
+<img src="assets/pm_09.png" width="800"/>
 
 Four summary tiles at the top show portfolio counts by health status: **On track**, **At risk**, **Off track**, and **Blocked**. A segmented filter below the tiles lets you scope the project cards to a single health category instantly.
 
@@ -147,6 +147,8 @@ Each project card shows:
 - Health icon (color-coded to status)
 - Days, weeks, or months remaining until the end date
 
+<img src="assets/pm_09a.png" width="800"/>
+
 Use this page for cross-project prioritization, leadership reporting, and identifying which projects need immediate attention.
 
 ![Footer](assets/sigma_footer.png)
@@ -155,76 +157,96 @@ Use this page for cross-project prioritization, leadership reporting, and identi
 ## Managing a Project
 Duration: 10
 
-The app uses a three-tier hierarchy: **Projects → Milestones → Tickets**. Each layer is an input table on the Data page, and changes flow through to every page in real time.
-
-Before creating anything, place the workbook in `Published` mode using the toggle in the header:
-
-<!-- <img src="assets/pm_10.png" width="500"/> -->
+The app uses a three-tier hierarchy: **Projects → Milestones → Tickets**. Changes at any layer flow through to every page in real time.
 
 ### Step 1: Create a Project
 
-Navigate to the **Data** page and open the **Projects Inputs** table. Click `Edit data` and add a new row with:
+Navigate to the **All Projects** page from the sidebar. Click `+ New Project` in the upper right. A modal opens with two fields:
 
-- Project Name
-- Owner (user email)
-- Goal or description
-- Start Date and End Date
+- **Project Name** — the name that appears across Home, Plan, Board, and the portfolio view
+- **Timeline** — the project's start and end date range
 
-The new project appears immediately in the **All Projects** portfolio view and becomes selectable from the sidebar on Home, Plan, and Board.
+Enter the following values:
 
-<!-- <img src="assets/pm_11.png" width="800"/> -->
+Project Name:
+```copy-code
+Website Redesign
+```
+
+Set the Timeline to a two-month window starting today.
+
+<img src="assets/pm_09b.png" width="600"/>
+
+Click `Create`. The new project card appears in the portfolio. 
+
+Click its card to open the project's **Home** page:
+
+<img src="assets/pm_10.png" width="800"/>
+
+The hero shows the project name, ID, owner, and a `+ New Ticket` button. Because no milestones or tickets exist yet, the milestone strip, Plan Items count, and AI Overview all show empty state — that's expected.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> Project health is calculated automatically from the milestone and ticket state — you don't set it manually. A project becomes "At risk" or "Off track" based on blocker counts and due date proximity.
 </aside>
 
-### Step 2: Define Milestones
+### Step 2: Add Plan Items (Tickets)
 
-Open the **Milestones Inputs** table on the Data page. Add a row for each phase of your project with:
+On the project's **Home** page, click `+ New Ticket` in the hero. A three-step modal opens:
 
-- Milestone Name
-- Project ID (linking it to the project you just created)
-- Start Date and End Date
-- Description
+**Step 1 — Explain Ticket:** Describe the ticket in one sentence. The AI uses this description to search for similar existing tickets before creating anything:
 
-Milestones appear in the Plan page sidebar and in the milestone progress strip on Home. The order reflects their date range, not insertion order.
+```copy-code
+Audit the current website and identify all pages that need to be updated or removed
+```
 
-<!-- <img src="assets/pm_12.png" width="800"/> -->
+<img src="assets/pm_12.png" width="600"/>
 
-### Step 3: Add Plan Items (Tickets)
+**Step 2 — Ticket Details:** The modal shows any existing tickets that match your description. If something similar already exists, select it from the dropdown and click `Go to Ticket`. If there's no match — or this is genuinely new work — click `Create New Ticket`. The step then shows the essential details form with Summary pre-filled from your description. Add a description and set the due date:
 
-Open the **Ticket Inputs** table on the Data page. For each piece of work, add a row with:
+Description:
+```copy-code
+Review all existing pages, flag outdated content, broken links, and pages to deprecate
+```
 
-- Summary
-- Status (`TO DO` to start)
-- Priority (`LOW`, `MEDIUM`, or `HIGH`)
-- Assignee (user email — auto-populates Team from the Employees table)
-- Due Date
-- Project ID and Milestone ID
+Set Due Date to one week from today. Click `Submit Essential Details` to advance:
 
-<!-- <img src="assets/pm_13.png" width="800"/> -->
+<img src="assets/pm_13.png" width="600"/>
 
-Tickets appear immediately on the Board and in the Plan page under their assigned milestone.
+**Step 3 — Create Ticket:** Fill in the remaining fields. Status defaults to `TO DO`, Assignee defaults to the logged-in user, and Priority defaults to `MEDIUM` — adjust as needed. Select the `Planning & Research` milestone:
+
+Click `Submit Additional Details` to write the ticket to the input table:
+
+<img src="assets/pm_14.png" width="600"/>
+
+The ticket appears immediately on the `Board` and in the `Plan` page under its assigned milestone:
+
+<img src="assets/pm_14a.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The Team field on each ticket is derived automatically from the Assignee field via a Lookup against the Employees table. If a user isn't in the Employees table, their team will show as blank.
 </aside>
 
-### Step 4: Execute on the Board
+### Step 3: Execute on the Board
 
-Return to the **Board** page. As work progresses, update ticket statuses directly in `Ticket Inputs` — or click the comment bubble on a ticket in the Open Tickets table on Home to open **Ticket Details View**, where you can update status, log comments, and get an AI-generated blocker analysis.
+On the **Board** page, as work progresses, move tickets through statuses — or click the comment bubble on a ticket in the Open Tickets table on Home to open **Ticket Details View**, where you can update status, log comments, and get an AI-generated blocker analysis.
 
-<!-- <img src="assets/pm_14.png" width="800"/> -->
+<img src="assets/pm_15.png" width="800"/>
+
+Click into the one `TO DO` and see the details and change its status to `Done`, add a comment and click `Post`:
+
+<img src="assets/pm_15a.png" width="800"/>
 
 The Board, Home, and Plan pages all reflect status changes in real time. Milestone completion percentages update as tickets move to `DONE`.
 
-### Step 5: Check Project Health on Home
+The change is reflected on the `Board` page:
 
-Return to **Home** and select your project from the sidebar. The AI Project Overview will generate a concise summary of current state, flagging any blockers or urgent items. The Ticket Workload section shows how work is distributed across your team at a glance.
+<img src="assets/pm_16.png" width="800"/>
 
-<!-- <img src="assets/pm_15.png" width="800"/> -->
+### Step 4: Check Project Health on Home
 
-Use the **All Projects** page to view your project alongside others and monitor portfolio health.
+Return to **Home** and see that the project is now `DONE` with `Planning & Research` and is in `Design & Development`:
+
+<img src="assets/pm_17.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -238,7 +260,7 @@ The Project Management app includes two AI features, both powered by `CallText()
 
 On the **Home** page, the AI Project Overview panel generates a one-to-two sentence summary of the selected project's current state:
 
-<!-- <img src="assets/pm_16.png" width="800"/> -->
+<img src="assets/pm_18.png" width="800"/>
 
 The summary includes:
 
@@ -252,7 +274,7 @@ The formula behind it aggregates ticket data — summaries, statuses, priorities
 
 On the **Ticket Details View** page, selecting a blocked ticket triggers an AI-generated analysis of the blocker:
 
-<!-- <img src="assets/pm_17.png" width="800"/> -->
+<img src="assets/pm_19.png" width="800"/>
 
 The analysis draws on the ticket's summary, status, priority, due date, and any comments logged against it. It generates a concise, actionable read on the severity and likely resolution path — marked **High** severity in red when the ticket is in `BLOCKED` status.
 
@@ -267,9 +289,9 @@ These AI features work within Sigma's existing permissions model — they can on
 ## Under the Hood
 Duration: 10
 
-The **Data** page contains every backend table that powers the app. It's accessible to anyone with edit access and is self-documenting — each input table is labeled with a description of what it does:
+Place the workbook in `Edit` mode.
 
-<!-- <img src="assets/pm_18.png" width="800"/> -->
+The **Data** page contains every backend table that powers the app. It's accessible to anyone with edit access and is self-documenting — each input table is labeled with a description of what it does:
 
 Here's how the pieces fit together.
 
@@ -279,13 +301,19 @@ All data in this app lives in input tables — there is no external warehouse da
 
 **Projects Inputs** → stores one row per project with name, owner, goal, and dates.
 
-**Milestones Inputs** → stores one row per milestone, linked to a project via `Project ID`. Milestones define the phases of a project and their date ranges.
+<img src="assets/pm_22.png" width="450"/>
+
+**Milestones Inputs** → stores one row per milestone, linked to a project via `Project ID`. Milestones define the phases of a project and their date ranges. Notice that these are editable in `Draft` mode so that they can be adjusted as needed by the workbook.
+
+<img src="assets/pm_23.png" width="450"/>
 
 **Ticket Inputs** → stores one row per ticket (plan item), linked to both a project and a milestone via `Project ID` and `Milestone ID`. Tickets carry the full execution detail: summary, status, priority, assignee, due date, and description.
 
+<img src="assets/pm_20.png" width="800"/>
+
 **Ticket Comments** → stores comments logged against individual tickets from the Ticket Details View.
 
-<!-- <img src="assets/pm_19.png" width="800"/> -->
+<img src="assets/pm_21.png" width="800"/>
 
 This hierarchy means you can model any project structure — flat task lists, multi-phase programs, or cross-team portfolios — by varying how many milestones you create and how you assign tickets to them.
 
@@ -294,22 +322,29 @@ This hierarchy means you can model any project structure — flat task lists, mu
 Several fields in the app are calculated via `Lookup()` rather than stored directly:
 
 - **Project Name** on Ticket Inputs is `Lookup([Projects Inputs/Project Name], [Project ID], [Projects Inputs/Project ID])` — resolved from the Projects table, never duplicated.
+
+<img src="assets/pm_24.png" width="800"/>
+
 - **Milestone Name** on Ticket Inputs is similarly resolved from the Milestones table.
+
+<img src="assets/pm_25.png" width="800"/>
+
 - **Team** on Ticket Inputs is `Lookup([Employees/Contact Job Department], [Assignee], [Employees/Identity User Email])` — auto-populated from the Employees table when an assignee email is entered.
+
+<img src="assets/pm_26.png" width="800"/>
 
 This keeps the input tables narrow — users enter only the foreign key (an ID or email), and the display value is resolved at query time.
 
 **WHY IT MATTERS:**<br>
 Lookup-derived fields prevent the most common failure mode in multi-table apps: denormalized copies of the same value drifting out of sync. If an employee changes departments or a project is renamed, the update propagates everywhere automatically — no manual corrections required.
 
-### Priority and Status Icons
+### Priority Icons and Status Pills
 
-Ticket priority and status are displayed as SVG icons rather than text labels. Both use `If()` formulas to map a stored text value (e.g., `"HIGH"`, `"BLOCKED"`) to a base64-encoded SVG data URI:
+Priority and the Comment(s) column use SVG icons rendered via `If()` formulas that map a stored text value to a base64-encoded SVG data URI. Priority icons use different Lucide icons and colors per level: blue chevron-down for `LOW`, orange equal for `MEDIUM`, red chevrons-up for `HIGH`. The Comment(s) column swaps between three chat-bubble icons depending on ticket status.
 
-- Priority icons use different Lucide icons and colors per level: blue chevron-down for `LOW`, orange equal for `MEDIUM`, red chevrons-up for `HIGH`.
-- Status is displayed as color-coded pills on the Ticket Inputs table using the `pills: color-by-option` setting — each status value gets a distinct background color automatically.
+Status takes a different approach — it uses the `pills: color-by-option` setting on the Ticket Inputs table, which assigns each defined status value (`TO DO`, `IN PROGRESS`, `DONE`, `BLOCKED`) a distinct background color automatically. No formula required.
 
-<!-- <img src="assets/pm_20.png" width="800"/> -->
+<img src="assets/pm_27.png" width="700"/>
 
 ### Conditional Formatting on the Plan Page
 
@@ -321,9 +356,11 @@ The Plan page applies a conditional row highlight to flag overdue work:
 
 Any ticket that hasn't started (or is blocked) and whose due date falls past the end of its milestone is highlighted in `#FFF1F0` (a light red background). This runs as a built-in conditional format on the Plan table — no formula column or manual filter required.
 
+<img src="assets/pm_28.png" width="800"/>
+
 ### AI Prompts as Inline Formulas
 
-Unlike the Revenue Forecasting app, where AI prompts are stored as editable controls on the Data page, the Project Management app embeds the AI prompts directly in `CallText()` formulas within the canvas text elements.
+The Project Management app embeds the AI prompts directly in `CallText()` formulas within the canvas text elements.
 
 Both prompts follow the same pattern: assemble a structured context string from live ticket data using `ListAgg()`, pass it to the model, and strip any stray quote characters from the output with `Replace()`:
 
@@ -332,10 +369,15 @@ Replace(
   CallText(
     "ai_complete",
     "claude-4-sonnet",
-    "<instruction text>" & 
-    "#PROJECT: " & [Selected Project/Project Name] & 
-    "#TICKETS: " & ListAgg([Selected Project Tickets/Summary]) & 
-    "#STATUS: " & ListAgg([Selected Project Tickets/Status]) & ...
+    "Return your response as exactly 1 or 2 sentences. " &
+    "Be decisive in providing a summary of the selected project. " &
+    "Provide the project name, health, and any tickets that " &
+    "have blockers or are urgent to address. NEVER USE **. " &
+    "#PROJECT: "   & [Selected Project/Project Name] &
+    "#TICKETS: "   & ListAgg([Selected Project Tickets/Summary]) &
+    "#STATUS: "    & ListAgg([Selected Project Tickets/Status]) &
+    "#PRIORITY: "  & ListAgg([Selected Project Tickets/Priority]) &
+    "#DUE DATE "   & ListAgg(Text([Selected Project Tickets/Due Date]))
   ),
   '"', ""
 )
@@ -343,7 +385,9 @@ Replace(
 
 To modify what the AI writes, open the text element in edit mode and update the instruction string directly. The formula is visible and editable for anyone with edit access to the workbook.
 
-<!-- <img src="assets/pm_21.png" width="800"/> -->
+For example, clicking the `AI Project Overview` text box exposes the formula shown above:
+
+<img src="assets/pm_29.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -357,7 +401,9 @@ Because the Project Management app runs entirely on input tables — with no ext
 
 All input tables (Projects, Milestones, Tickets, Comments) write to a Snowflake connection. On the **Data** page, open any input table and confirm the connection points to a warehouse where your org has write access.
 
-If you need to move the tables to a different connection, use `Change source` on each input table to update the target.
+If you need to move the tables to a different connection, use `Change source` on each input table to update the target:
+
+<img src="assets/pm_30.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> All input tables should point to the same connection. Mixing connections across tables in the same app can cause unexpected behavior when Sigma resolves joins and lookups at query time.
@@ -375,7 +421,7 @@ To use real org members, replace the Employees table data with your own employee
 | Org Member Full Name | Display name |
 | Contact Job Department | Team or department label |
 
-<!-- <img src="assets/pm_22.png" width="800"/> -->
+<img src="assets/pm_31.png" width="800"/>
 
 Once updated, any ticket assigned to a real user email will automatically show the correct team in the Team field.
 
@@ -386,7 +432,7 @@ If you're migrating from a spreadsheet or another project tracking tool, you can
 Alternatively, start fresh: add your projects, milestones, and first batch of tickets manually using the workflow in **Managing a Project**. The Throughline sample data can be deleted from the input tables once your own projects are in place.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The sample data ships in a separate Throughline workspace. Your personal copy of the template uses the same input tables but starts with the sample rows loaded. Delete any sample projects from Projects Inputs to start with a clean slate — their tickets and milestones will stop appearing automatically once the project rows are removed.
+<strong>NOTE:</strong><br> Your personal copy of the template starts with sample rows pre-loaded in the input tables. Delete the sample projects from Projects Inputs to start with a clean slate — their tickets and milestones will stop appearing automatically once the project rows are removed.
 </aside>
 
 ### What Carries Over Automatically
@@ -408,7 +454,7 @@ Duration: 5
 
 The Project Management Starter App demonstrates what's possible when Sigma's native input tables are composed into a multi-surface operational workflow. Projects, milestones, and tickets live in three connected input tables — changes on any one propagate to every page in real time. The Kanban board, milestone plan, portfolio view, and ticket detail drill-down all draw from the same source of truth.
 
-The Lookup-derived field pattern — storing only foreign keys and resolving display values at query time — keeps the data model clean and prevents the denormalization drift that plagues spreadsheet-based project tracking. Priority and status icons map stored text values to visual representations without requiring separate columns. The conditional format on the Plan page surfaces overdue work automatically without any user action.
+The Lookup-derived field pattern — storing only foreign keys and resolving display values at query time — keeps the data model clean and prevents the denormalization drift that plagues spreadsheet-based project tracking. The conditional format on the Plan page surfaces overdue work automatically without any user action.
 
 The AI features follow a pattern worth reusing: assemble live context from the workbook's data using `ListAgg()`, pass it to a model via `CallText()`, and surface the result inline as part of the page layout. No separate AI tool or pipeline is needed — the AI operates on the same data the user is already looking at.
 
