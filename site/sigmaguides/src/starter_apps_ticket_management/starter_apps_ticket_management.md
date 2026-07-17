@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-16
+lastUpdated: 2026-07-17
 
 # Ticket Management Starter App
 
@@ -52,7 +52,7 @@ Duration: 10
 
 Navigate to `Templates` in the left sidebar. The Ticket Management app appears in the `Made by Sigma` collection:
 
-<!-- <img src="assets/tkt_01.png" width="600"/> -->
+<img src="assets/tkt_01.png" width="600"/>
 
 Click the template card to open a preview. Before clicking `Use template`, confirm both requirements shown on the detail page are met:
 
@@ -61,7 +61,7 @@ Click the template card to open a preview. Before clicking `Use template`, confi
 
 Once both are in place, click `Use template`. Sigma creates a personal copy in your workspace:
 
-<!-- <img src="assets/tkt_02.png" width="800"/> -->
+<img src="assets/tkt_02.png" width="800"/>
 
 Click `Save as` and give the workbook a name:
 ```copy-code
@@ -76,7 +76,7 @@ Ticket Management
 
 The app opens on its **README** page — an orientation guide built directly into the workbook:
 
-<!-- <img src="assets/tkt_03.png" width="800"/> -->
+<img src="assets/tkt_03.png" width="800"/>
 
 The README includes a demo video, a five-step getting-started guide, and a description of each application page. The recommended sequence is:
 
@@ -92,7 +92,7 @@ The README includes a demo video, a five-step getting-started guide, and a descr
 
 Place the workbook into `Published` mode:
 
-<!-- <img src="assets/tkt_04.png" width="550"/> -->
+<img src="assets/tkt_04.png" width="550"/>
 
 ### App Pages
 
@@ -103,6 +103,8 @@ Nexus has four active pages — three audience-specific workflows and a hidden d
 - **User Tickets** — requester view for submitting new tickets, tracking open requests, and continuing conversations
 - **Data** — hidden backend page containing all data tables, lookup tables, and AI prompt controls
 
+<img src="assets/tkt_04a.png" width="750"/>
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -111,11 +113,13 @@ Duration: 10
 
 The **User Tickets** page is the requester-facing surface. Users submit new requests and follow their existing tickets here, without seeing any of the internal triage or case management operations.
 
+The page has three columns: an open ticket list on the left, a ticket detail view in the center, and a submission form on the right.
+
 ### Select a User
 
-The page opens with a user selector. Choose a user from the list to load their ticket view:
+The left column opens with a user selector. Choose a user from the list to load their open ticket queue:
 
-<!-- <img src="assets/tkt_05.png" width="800"/> -->
+<img src="assets/tkt_05.png" width="350"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> In a production deployment, the user selector is typically replaced by Sigma's row-level security so each viewer sees only their own tickets automatically. The selector in the template makes it easy to explore different user perspectives while evaluating.
@@ -123,23 +127,47 @@ The page opens with a user selector. Choose a user from the list to load their t
 
 ### Submit a New Ticket
 
-Click `New Ticket` to open the ticket submission form. Fill in the required fields:
+The right column always shows the **Submit a new ticket** form. A `+ RAISE A REQUEST` link at the top of the panel makes it easy to find. Fill in the four fields using the values below:
 
-- Title — a short, clear subject line for the request
-- Category — the team or area the request belongs to (e.g., `CRM`, `Data Access`, `Approval`)
-- Priority — the requester's initial priority assessment (`Low`, `Medium`, `High`, `Critical`)
-- Description — full details of the request
+Subject:
+```copy-code
+Quota credit missing from closed deal
+```
 
-<!-- <img src="assets/tkt_06.png" width="800"/> -->
+Category:
+```copy-code
+Commissions
+```
 
-Click `Submit`. The ticket is written to the **Tickets** input table and immediately appears in the triage queue for coordinator review.
+Priority:
+```copy-code
+High
+```
+
+Description:
+```copy-code
+The Q2 deal with Meridian Partners closed on June 28 but quota credit has not been applied to my account. The AE and SDR splits were agreed in Salesforce and the opportunity is marked Closed Won. This affects my Q2 attainment and commission calculation. Needs to be resolved before month-end close.
+```
+
+<img src="assets/tkt_06.png" width="800"/>
+
+Click `Submit ticket`. The ticket is written to the **Tickets** input table and immediately appears in the triage queue for coordinator review:
+
+<img src="assets/tkt_07.png" width="700"/>
 
 **WHY IT MATTERS:**<br>
 The submission form is a standard Sigma UI powered by input table controls — no custom application code required. The same pattern works for any structured data entry workflow, from expense requests to access approvals to change management forms.
 
-### Track Open Tickets
+### Track Open Tickets and the Conversation
 
-After submitting, the ticket appears in the requester's open ticket list with its current status, category, and priority. The status lifecycle is:
+Clicking a ticket in the left column loads the full ticket detail in the center. The detail view shows:
+
+- Ticket title, ID, and status badge
+- A status update from the assigned agent ("We're on it.", for example) displayed prominently above the conversation
+- Category, priority, and urgency score metadata
+- The full conversation thread — messages from both the requester and the assignee in chronological order, with author name, role (`Sales`, `RevOps`), and timestamp
+
+The status lifecycle is:
 
 | Status | Meaning |
 |---|---|
@@ -149,13 +177,9 @@ After submitting, the ticket appears in the requester's open ticket list with it
 | Resolved | Closed by the assignee |
 | Closed | Final state — no further action |
 
-<!-- <img src="assets/tkt_07.png" width="800"/> -->
+<img src="assets/tkt_08.png" width="800"/>
 
-### Continue the Conversation
-
-Clicking a ticket in the list opens the conversation thread for that request. Requesters can read responses from the assignee, add follow-up messages, and view status updates. All messages are stored in the **Messages** input table and displayed in chronological order:
-
-<!-- <img src="assets/tkt_08.png" width="800"/> -->
+All messages are stored in the **Messages** input table. New replies appear in the thread immediately after submission.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -167,43 +191,53 @@ The **Triage Queue** page is the coordinator's workspace for reviewing new ticke
 
 ### The Ticket Queue
 
-The main table shows all tickets with their key attributes: ticket ID, title, category, priority, AI-suggested priority, status, requester, assignee, urgency score, urgency reason, ticket notes, SLA fields, and timestamps.
+The page header shows a live count of open tickets and the queue's purpose: "classify, prioritize, and route inbound cases." The ticket table has three filter controls at the top:
 
-A **Status** segmented control at the top lets you filter the table by ticket state — `All`, `New`, `In Progress`, `Waiting on Sales`, `Resolved`, or `Closed`. An **Assignee** filter narrows the view to tickets for a specific agent:
+- `Select assignee` — narrows the queue to tickets assigned to a specific agent
+- `Search for tickets` — filters the table by ticket title or ID
+- Status dropdown — filters by `All`, `New`, `In Progress`, `Waiting on Sales`, `Resolved`, or `Closed`
 
-<!-- <img src="assets/tkt_09.png" width="800"/> -->
+A `Go to Ticket →` button at the top right opens the Assignee Case workspace for the currently selected ticket.
 
-The **URGENCY** column uses conditional formatting to highlight high-urgency tickets. Scores above 80 are shown in red; scores between 60–80 in lighter red; lower scores fade toward white. The **SUGGESTED PRIORITY** column highlights in red when AI recommends a higher priority than the requester selected, and in green when AI suggests a lower one.
+The table columns are: TICKET ID, TITLE, CATEGORY, PRIORITY, SUGGESTED PRIORITY, and STATUS. Priority values use colored badges — Critical in pink, High in amber, Medium in lavender, Low in light blue. The **SUGGESTED PRIORITY** column highlights in bold red when AI recommends a higher priority than the requester selected:
+
+<img src="assets/tkt_09.png" width="800"/>
+
+The ticket we submitted — "Quota credit missing from closed deal" — appears at the top of the queue with status `New`.
 
 ### Triage Decision Panel
 
-Clicking a ticket in the queue loads the triage panel on the right side. The panel displays the ticket ID, title, and description at the top. Below the divider, the **Triage Decision** section shows the coordinator's controls:
+Clicking a ticket loads the right panel. The top of the panel shows the ticket's read-only metadata: ticket ID, title, description, assigned agent, priority, status, and category. This gives the coordinator a quick read on the ticket before making any changes:
 
-- Category — select the correct category from the lookup list
-- Assignee — assign the ticket to an agent
+<img src="assets/tkt_10.png" width="800"/>
+
+Below the metadata, the **TRIAGE DECISION** section shows the editable controls:
+
+- Category — confirm or change the ticket category
+- Assignee — assign or reassign to an agent
 - Priority — set or confirm the priority level
 - Urgency — view or adjust the AI-generated urgency score
-- Triage Note — add an internal note for unusual routing decisions
+- Triage Note — add an internal note for unusual routing decisions (required when overriding AI suggestions)
 
-<!-- <img src="assets/tkt_10.png" width="800"/> -->
+<img src="assets/tkt_10a.png" width="350"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> The Triage Note field is marked as required for unusual routing decisions — it creates an audit trail when coordinators override the AI-suggested category or assignee.
+<strong>NOTE:</strong><br> The Triage Note field creates an audit trail when coordinators override the AI-suggested category or assignee — useful for explaining non-standard routing to the next owner.
 </aside>
 
 ### Mark Tickets Ready
 
-After confirming the triage decision, update the status to `In Progress`. This signals to the assigned agent that the ticket has been reviewed and is ready to work. The ticket moves out of the triage queue and into the agent's open case list:
+After confirming the triage decision, update the ticket status to `In Progress`. This signals to the assigned agent that the ticket has been reviewed and is ready to work. The ticket moves out of the `New` state and into the agent's open case list on the Assignee Case page:
 
-<!-- <img src="assets/tkt_11.png" width="800"/> -->
+<img src="assets/tkt_11.png" width="350"/>
 
 ### Resolution Summary for Closed Tickets
 
-For tickets in `Resolved` or `Closed` status, the triage panel shows a **Resolution summary** generated by Nexus Assistant. The summary draws from the full ticket record — description, category, priority, urgency, conversation history, SLA performance, and resolution tag — and presents a concise account of how the case was handled:
+For tickets in `Resolved` or `Closed` status, the right panel replaces the triage decision controls with a **Resolution summary** generated by Nexus Assistant. The summary draws from the full ticket record — description, category, priority, urgency, conversation history, SLA performance, and resolution tag — and presents a concise account of how the case was handled:
 
-<!-- <img src="assets/tkt_12.png" width="800"/> -->
+<img src="assets/tkt_12.png" width="800"/>
 
-This gives coordinators a quick way to review closed work without reading the full conversation thread.
+This gives coordinators a way to review closed work without reading the full conversation thread.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -211,64 +245,93 @@ This gives coordinators a quick way to review closed work without reading the fu
 ## Working Active Cases
 Duration: 10
 
-The **Assignee Case** page is the agent's workspace for handling assigned tickets from triage through resolution. The layout has a ticket list on the left and the active case workspace on the right.
+The **Assignee Case** page is the agent's workspace for handling assigned tickets from triage through resolution. The layout has three columns: a ticket list on the left, the active case workspace in the center, and the Nexus Assistant on the right.
 
 ### Open Ticket List
 
-The left sidebar shows the agent's open tickets. An assignee filter at the top scopes the list to a specific agent's queue. Each row in the list shows the ticket ID, title, description snippet, and current status.
+The left sidebar shows the agent's open tickets. An `Open full queue` link at the top opens the full queue view.
 
-Clicking a ticket loads the full case workspace on the right:
+A `Select assignee` dropdown scopes the list to a specific agent. 
 
-<!-- <img src="assets/tkt_13.png" width="800"/> -->
+Each ticket card shows the ticket ID, status badge (`NEW` or `IN PROGRESS`), title, and description snippet.
+
+Clicking a ticket card loads the full case workspace in the center:
+
+<img src="assets/tkt_14.png" width="800"/>
+
+### Case Workspace Header
+
+The center panel header shows the ticket title, ticket ID, and status badge. Below the title, a single metadata line displays category, priority, and urgency score (`Contracts • Critical priority • 100 urgency`). An `Edit fields` button on the right opens an inline edit panel for updating ticket fields directly from this view.
+
+<img src="assets/tkt_13.png" width="800"/>
 
 ### SLA Timers
 
-The case workspace header shows three real-time SLA timers:
+Three timer cards sit below the metadata line:
 
-- **Time to First Message** — minutes elapsed since the ticket was opened; shows actual first response time if a response has been sent
-- **Time Since Last Message** — minutes since the most recent message in the conversation thread
-- **Time to Resolution** — minutes since ticket creation; shows actual resolution time once the ticket is resolved
+- **TIME TO FIRST MESSAGE** — minutes elapsed since the ticket was created; shows actual first response minutes once a response has been sent
+- **TIME SINCE LAST MESSAGE** — minutes since the most recent message in the conversation thread
+- **TIME TO RESOLUTION** — minutes since ticket creation; shows actual resolution time once the ticket is resolved
 
-Each timer shows a status indicator — `Within target` or `Breached` — based on the SLA thresholds defined in the **SLA Input Table** for that ticket's priority and category combination:
+When a timer exceeds its SLA threshold, the card background turns light red and shows a `● Breached` indicator. Thresholds are defined in the **SLA Input Table** by priority and category combination — a `Critical` ticket has tighter targets than a `Low` one:
 
-<!-- <img src="assets/tkt_14.png" width="800"/> -->
+<img src="assets/tkt_14a.png" width="800"/>
 
 **WHY IT MATTERS:**<br>
-SLA targets are stored in an editable input table keyed by priority and category — meaning different ticket types can have different response and resolution expectations without any formula changes. A `Critical / CRM` ticket can have a 30-minute first-response target while a `Low / General` ticket has a 2-day target, all from the same data-driven SLA engine.
+SLA targets are stored in an editable input table keyed by priority and category — meaning different ticket types can carry different response and resolution expectations without any formula changes. A `Critical / Contracts` ticket can have a 30-minute first-response target while a `Low / Other` ticket has a 2-day target, all from the same data-driven SLA engine.
 
 ### Case Workspace Tabs
 
-The lower portion of the workspace is organized into three tabs — **Respond**, **Escalate**, and **Resolve** — selected with a segmented control:
+Three tabs below the SLA cards control the active workflow panel — **Respond**, **Escalate**, and **Resolve**:
 
-**Respond** — displays the full conversation thread between the requester and assignee, with message author, role, timestamp, and body. A text-area at the bottom lets the agent compose and submit a reply. The reply is written to the **Messages** input table and immediately visible in the conversation:
+**Respond** — displays the full conversation thread between the requester and assignee, with message author, role, timestamp, and body. A text-area at the bottom lets the agent compose and submit a reply. The reply is written to the **Messages** input table and immediately visible in the thread:
 
 <!-- <img src="assets/tkt_15.png" width="800"/> -->
 
-**Escalate** — provides a reassignment workflow. The agent selects a new assignee from the list and adds a required escalation note that becomes visible to the next owner. Escalation updates the assignee on the ticket record:
+**Escalate** — provides a reassignment workflow. A `← Back to conversation` link returns to the thread without submitting. The agent selects a new assignee from the `REASSIGN TO` dropdown and writes a required escalation note in the `ESCALATION NOTE` field (marked "visible to next owner"). Click `Submit escalation` to transfer ownership:
 
 <!-- <img src="assets/tkt_16.png" width="800"/> -->
 
-**Resolve** — captures the resolution. The agent provides a customer-visible final response, selects a resolution tag from the lookup list, and adds an internal resolution note. Submitting closes the ticket and sets the `resolved_at` timestamp:
+**Resolve** — captures the resolution. The agent provides a customer-visible final response, selects a resolution tag, and adds an internal resolution note. Submitting closes the ticket and sets the `resolved_at` timestamp.
 
-Resolution tags:
+Use the following values to resolve the "Quota credit missing from closed deal" ticket:
+
+Customer-visible response:
 ```copy-code
-Data corrected
-Record updated
-Approval completed
-Guidance provided
-Escalated
-Duplicate / no action needed
+The quota credit for the Meridian Partners deal has been applied to your Q2 attainment. We confirmed the Closed Won status and the AE/SDR split in Salesforce, then triggered the credit update in the commission system. Your Q2 attainment now reflects the full deal value. Let us know if you see any discrepancy.
 ```
 
-<!-- <img src="assets/tkt_17.png" width="800"/> -->
+Resolution tag:
+```copy-code
+Record updated
+```
+
+Internal resolution note:
+```copy-code
+Confirmed Closed Won in SFDC. Split was configured correctly (AE/SDR) but credit had not propagated to the quota tracking system due to a sync delay. Manually triggered the update and verified attainment reflects the deal value. No further action needed.
+```
+
+<img src="assets/tkt_17.png" width="800"/>
+
+The resolution information is added to the ticket upon submission:
+
+<img src="assets/tkt_17a.png" width="800"/>
+
+The ticket is shown as resolved in `User Tickets` for the user who reported the issue:
+
+<img src="assets/tkt_17b.png" width="800"/>
 
 ### Nexus Assistant
 
-A **Nexus Assistant** panel appears alongside the conversation thread. When a ticket is open, the assistant analyzes the ticket details and conversation history, then provides a summary of the case and a recommended next action.
+The **Nexus Assistant** panel on the right is powered by a Sigma Agent — a governed AI assistant with explicitly configured data access and instructions. It shows `● LIVE` when active. When a ticket is selected, the agent introduces itself and describes what it's analyzing:
 
-The assistant is a live AI session — agents can ask follow-up questions about the ticket, request suggested responses, or get guidance on escalation decisions:
+- **Ticket details** — status, priority, urgency, and SLA state
+- **Message history** — who said what, who's waiting, and whether follow-up is needed
+- **Business-time SLA tracking** — first response, resolution, and reply deadlines using business hours (Mon–Fri, 9 AM – 5 PM)
 
-<!-- <img src="assets/tkt_18.png" width="800"/> -->
+The agent recommends whether to **Respond**, **Escalate**, **Resolve**, or **Wait**, then opens the conversation for follow-up questions. You can ask for a draft response, request a summary of what's been tried, or ask whether escalation is warranted. See the AI Features section for how the agent is configured and governed.
+
+<img src="assets/tkt_18.png" width="350"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -276,46 +339,95 @@ The assistant is a live AI session — agents can ask follow-up questions about 
 ## AI Features
 Duration: 5
 
-Nexus uses four distinct AI-powered surfaces. Three are computed automatically when a ticket is created or updated; one is an interactive session that runs in real time as the agent works.
+Nexus uses AI across four surfaces, each with a different trigger and persistence model. At ticket submission, a Sigma Action sends ticket details to the model and writes routing, urgency, and priority results directly to the Tickets input table — stored once, read everywhere. For resolved tickets, the Triage Queue generates a resolution summary on demand via a live `CallText()` formula each time a coordinator selects the ticket. The Nexus Assistant is an interactive Sigma Agent that responds in real time as the case worker types. And the AI Formula Status Text prompt generates short requester-facing status updates that can be surfaced in the conversation thread.
 
-### Urgency Scoring
+### Routing, Urgency, and Suggested Priority
 
-When a ticket is submitted, an urgency score (0–100) is computed from the ticket's title, description, category, and priority using a `CallText()` formula. The score reflects the ticket's operational urgency — combining factors like customer impact, time sensitivity, and category context. Scores are accompanied by an **urgency reason** that explains the key factors behind the score:
+When a ticket is submitted, a Sigma **Action** on the submit button sends the ticket's subject, category, priority, and description to the AI model, along with a list of candidate assignees and their current open ticket counts. 
 
-<!-- <img src="assets/tkt_19.png" width="800"/> -->
+<img src="assets/tkt_19a.png" width="800"/>
 
-The urgency score drives conditional formatting in the Triage Queue — high-urgency tickets are visually surfaced so coordinators can prioritize review.
+The action uses the **AI Ticketing Routing Prompt** (editable on the Data page) and expects the model to return a single JSON object:
 
-### Suggested Priority
+```copy-code
+{
+  "assignee_user_id": "string",
+  "urgency_score": number,
+  "urgency_reason": "string",
+  "suggested_priority": "Low|Medium|High|Critical"
+}
+```
 
-In addition to urgency, Nexus generates a **suggested priority** for each ticket using the same `CallText()` call. The suggested priority is compared against the requester's submitted priority in the Triage Queue:
+<img src="assets/tkt_19b.png" width="800"/>
 
-- When AI suggests a **higher** priority than submitted — the cell highlights red (potential under-prioritization)
-- When AI suggests a **lower** priority — the cell highlights green
 
-This gives coordinators a fast signal for tickets that may have been mis-classified at submission.
+The action writes all four values back to the Tickets input table in one step:
+
+- `assignee_user_id` — the AI-selected agent; the model prefers assignees who have handled the ticket's category before, and among qualified candidates picks whoever has the fewest open tickets
+- `urgency_score` — a 0–100 score; the prompt instructs the model to use the requester's selected priority as a signal but not as gospel
+- `urgency_reason` — one sentence (max 240 characters) explaining the key factors behind the score
+- `suggested_priority` — must match the urgency bucket (0–24 = Low, 25–49 = Medium, 50–74 = High, 75–100 = Critical)
+
+The urgency scale the model applies:
+
+| Urgency | Score range | Typical signals |
+|---|---|---|
+| Critical | 75–100 | Active revenue risk, executive escalation, blocked deal, incorrect contract blocking signature |
+| High | 50–74 | Time-sensitive approval, commission/payout risk, customer-facing sales issue |
+| Medium | 25–49 | Standard RevOps request, single-record cleanup, non-urgent support |
+| Low | 0–24 | Vague request, how-to question, minor cleanup, no clear deadline |
+
+The urgency score drives conditional formatting in the Triage Queue — high-urgency tickets surface immediately. The suggested priority column highlights red when AI recommends a higher tier than the requester selected, and green when it recommends lower, giving coordinators a fast signal for misclassified submissions.
+
+<img src="assets/tkt_20.png" width="800"/>
 
 ### Nexus Assistant
 
-The **Nexus Assistant** in the Assignee Case workspace is an interactive AI session scoped to the selected ticket. It reads the full ticket record — title, description, category, priority, urgency, conversation history, SLA status, and timestamps — and opens with a case summary and recommended next action.
+The **Nexus Assistant** in the Assignee Case workspace is powered by a **Sigma Agent** — not a chat element or formula, but a fully configured AI agent with explicit data access controls, instructions, and a scoped system prompt. In Edit mode, clicking the agent element (pencil icon) opens the **Configure agent** dialog:
 
-Agents can ask follow-up questions in natural language: request a draft response, ask whether escalation is warranted, or get a summary of what's been tried so far. The session runs in real time and updates as the conversation thread grows:
+<img src="assets/tkt_21.png" width="800"/>
 
-<!-- <img src="assets/tkt_20.png" width="800"/> -->
+The configuration has three parts:
+
+**Data sources** — the agent is explicitly granted access to only the `Tickets` and `Messages` input tables. It cannot see SLA targets, the user directory, or any other table unless added here. This is the primary governance control: what data the AI can reason over is a builder decision, not an inference.
+
+**Instructions** — a rich-text system prompt that defines the agent's role, purpose, and reasoning rules. The Nexus instructions include:
+- **Purpose**: understand the selected ticket, message history, and SLA state; recommend Respond, Escalate, Resolve, or Wait
+- **Scope**: only answer using data related to the selected ticket (`[selected-ticket]` — a formula reference that filters the agent's context to the active case)
+- **Business Time Rules**: use business minutes for all SLA reasoning; business hours are Mon–Fri 9 AM – 5 PM; ignore weekends; do not use raw calendar minutes for SLA analysis unless explicitly asked
+
+**Tools** — optional tools the agent can call; additional capabilities can be added here without changing the instructions.
+
+<img src="assets/tkt_22.png" width="800"/>
+
+You can ask follow-up questions in natural language: request a draft response, ask whether escalation is warranted, or get a summary of what's been tried. The session runs in real time against the live data sources and updates as the conversation thread grows.
+
+**WHY IT MATTERS:**<br>
+A Sigma Agent is governed infrastructure, not a general-purpose chatbot. The data sources it can access, the instructions it follows, and the tools it can call are all builder-controlled and version-managed with the workbook. Agents interact on top of Sigma's existing permission model — a viewer who can't see a column can't get the agent to surface it either. That makes it practical to deploy an AI assistant to a broad audience without a separate security review for every deployment.
 
 ### Resolution Summaries
 
-For tickets in `Resolved` or `Closed` status, the Triage Queue's right panel shows an AI-generated resolution summary. The summary is generated by `CallText("ai_complete", "claude-4-sonnet", ...)` using the full ticket record including conversation history, SLA metrics, and the resolution tag. It provides a compact, human-readable account of how the case was handled — useful for audits, quality reviews, and pattern analysis:
+Before the resolution summary can run, the resolution data has to exist on the ticket. When an agent submits the Resolve form on the Assignee Case page, a Sigma **Action** on the submit button writes the customer-visible response, resolution tag, internal note, and `resolved_at` timestamp back to the **Tickets** input table. 
 
-<!-- <img src="assets/tkt_21.png" width="800"/> -->
+Similarly, replies write new rows to the **Messages** input table and escalations update the `assignee_user_id` on the ticket — all via Actions on their respective buttons. To see these, go to the Assignee Case page in Edit mode and click any of the three action buttons (`Send reply`, `Submit escalation`, `Submit resolution`).
+
+<img src="assets/tkt_24.png" width="800"/>
+
+Once the ticket is in `Resolved` or `Closed` status, the Triage Queue's right panel generates the AI summary. This part is implemented as a `CallText("ai_complete", "claude-4-sonnet", ...)` expression directly in a text element — a live formula that runs on-demand when a coordinator selects the resolved ticket, not a stored value. 
+
+It passes the full ticket record (title, description, category, priority, urgency, conversation history, SLA metrics, resolution tag) to the model and displays the output inline. In Edit mode, click the resolution summary text element in the Triage Queue to see the formula in the element body:
+
+<img src="assets/tkt_25.png" width="800"/>
+
+This approach — live `CallText()` in a text element rather than a stored column — means the summary is generated fresh each time it's viewed, using whatever data exists on the ticket at that moment. That's appropriate for a read-only summary that doesn't need to be queried or aggregated.
 
 ### Editing the AI Prompts
 
 All AI prompts are stored as editable text-area controls on the **Data** page (visible in Edit mode):
 
-- **AI Ticketing Routing Prompt** — drives urgency scoring and suggested priority
+- **AI Ticketing Routing Prompt** — drives assignee selection, urgency scoring, urgency reason, and suggested priority; returns JSON written back to the Tickets input table by the submit Action
 - **Resolved Ticket AI Prompt** — drives resolution summaries in the Triage view
-- **AI Formula Status Text** — controls the status text displayed while AI is computing
+- **AI Formula Status Text** — generates 1–2 requester-facing sentences summarizing ticket status; used for in-thread status updates
 
 Because they're controls rather than hardcoded strings, prompts can be updated without touching the underlying formula — adjusting tone, focus areas, or output format without requiring formula access.
 
@@ -328,53 +440,76 @@ Editable prompt controls decouple the AI instruction layer from the workbook log
 ## Under the Hood
 Duration: 10
 
-Place the workbook in `Edit` mode to explore how the app is built.
+Place the workbook in `Edit` mode to explore how the app is built. The **Data** page contains all data tables and AI controls, organized into five tabs.
 
-### Data Model
+### Warehouse Source
 
-The app's data layer is organized on the hidden **Data** page. There are six input tables (write surfaces) and eight read-only analytics and lookup tables.
+The `Warehouse Source` tab holds a single **Users** table sourced from your connected warehouse. It supplies the full user directory — all requesters and assignees in the ticketing system — with `user_id`, `full_name`, `email`, `User Role Id`, and `Role`:
 
-**Input Tables:**
+<img src="assets/tkt_28.png" width="800"/>
 
-**Tickets** — the primary record for all service requests. Each row is a ticket with fields for `ticket_id`, `title`, `description`, `category`, `priority`, `status`, `requester_user_id`, `assignee_user_id`, `urgency_score`, `urgency_reason`, `suggested_priority`, and timestamps (`created_at`, `first_response_at`, `resolved_at`):
+### Transformations
 
-<!-- <img src="assets/tkt_22.png" width="800"/> -->
+The `Transformations` tab holds four derived tables built on top of the warehouse source and input tables:
 
-**Messages** — the full conversation history for all tickets. Each row is a message with `ticket_id`, `author_user_id`, `author_role` (`requester` or `assignee`), `body`, and `created_at`. All replies — from submission through resolution — are stored here:
+- **Tickets and Assignees Joined** — joins the Tickets input table with assignee user details to resolve display names across the app
+- **Tickets and Requesters Joined** — same pattern for requester display names
+- **Tickets and Messages Join** — joins Tickets with Messages to compute per-ticket message metrics: first and last message timestamps, time-between-messages, and SLA calculations
+- **Priorities and Categories Joined** — a cross join of all priority and category combinations, used to generate the full SLA target matrix from the SLA Input Table
 
-<!-- <img src="assets/tkt_23.png" width="800"/> -->
+<img src="assets/tkt_29.png" width="800"/>
 
-**SLA Input Table** — SLA thresholds by priority and category. Each row defines `first_response_sla` and `time_to_resolution_sla` targets (in minutes) for a specific priority × category combination. This is the configuration surface for adapting SLA targets to your team's agreements:
+### Input Tables
 
-<!-- <img src="assets/tkt_24.png" width="800"/> -->
+The `Input Tables` tab holds the six write surfaces that store all application data:
 
-**Categories**, **Priorities**, **Roles** — lightweight lookup tables containing the valid values for each field. New categories or priority levels are added here and immediately available in the Triage Queue's dropdown controls.
+**Tickets** *(Editable in published version — all users)* — the primary record for every service request. Fields include `ticket_id`, `title`, `description`, `category`, `priority`, `status`, `requester_user_id`, `assignee_user_id`, `urgency_score`, `urgency_reason`, `suggested_priority`, and timestamps.
 
-**Analytics and Join Tables:**
+**Messages** *(Editable in published version — all users)* — the full conversation history. Each row is a message with `ticket_id`, `author_user_id`, `author_role`, `body`, and `created_at`. All replies — from submission through resolution — are stored here.
 
-**Users** — sourced from the connected warehouse; provides the full user directory including display names and roles.
+**SLA Input Table** *(Editable in draft)* — SLA thresholds keyed by priority and category. Each row defines `First response` and `Next response` targets in minutes. Edit this table to match your team's SLA agreements — no formula changes required.
 
-**Requesters / Assignees** — filtered views of the Users table, one per role. Controls on Triage Queue and Assignee Case source their user dropdowns from these filtered tables.
+**Categories**, **Priorities**, **Roles** *(Editable in draft)* — lookup tables for the valid values in each field. New categories or priority levels added here immediately appear in the Triage Queue's dropdown controls.
 
-**Tickets and Assignees Joined / Tickets and Requesters Joined** — joins the Tickets input table with user details for display. These tables add display names (requester name, assignee name) to the ticket record.
+<img src="assets/tkt_30.png" width="800"/>
 
-**Tickets and Messages Join / Tickets and Messages Join child** — join Tickets with Messages to compute per-ticket message metrics: total message count, timestamps for first and last messages, and time-between-messages calculations. The child table is a pre-aggregated version that improves lookup performance by avoiding repeated aggregation at the element level.
+### Helper Tables
 
-**Priorities and Categories Joined** — a cross join of all priority and category combinations, used to generate the full SLA target matrix from the SLA Input Table.
+The `Helper Tables` tab holds three derived tables that support UI performance and filtering:
 
-<!-- <img src="assets/tkt_25.png" width="800"/> -->
+- **Requesters** — Users filtered to the Requester (Sales) role; sources the user selector on the User Tickets page
+- **Assignees** — Users filtered to the Assignee (RevOps) role; sources the assignee dropdowns on Triage Queue and Assignee Case
+- **Tickets and Messages Join child** — a pre-aggregated version of the Tickets and Messages Join table. Pre-aggregating avoids repeated group-by operations at the element level and improves rendering performance as ticket volume grows
+
+<img src="assets/tkt_31.png" width="800"/>
+
+### Controls
+
+The `Controls` tab holds the AI prompts and coordination controls that drive Nexus's AI features:
+
+- **AI Ticketing Routing Prompt** — the system prompt for assignee selection, urgency scoring, and suggested priority; the submit Action passes this to the model and writes the JSON response back to the Tickets input table
+- **Resolved Ticket AI Prompt** — the system prompt for resolution summaries; drives the `CallText()` formula in the Triage Queue right panel
+- **AI Formula Status Text** — a prompt for generating 1–2 requester-facing sentences summarizing ticket status
+- **AI Output** — stores the last routing JSON response; useful for debugging and verifying model output
+- **Selected ticket** (×2) — coordination controls that pass the active ticket context into AI formulas
+- **Reset** — clears AI output and resets coordination state
+
+<img src="assets/tkt_32.png" width="800"/>
+
+Because prompts are stored as editable text-area controls rather than hardcoded strings, they can be updated without touching any formula. Operations teams can adjust routing criteria, escalation signals, or communication style without requiring formula access.
 
 ### SLA Calculation Pattern
 
-SLA monitoring in Nexus is entirely formula-driven. The **SLA Input Table** stores first-response and resolution targets (in minutes) for each priority × category combination. The **Tickets and Messages Join** table computes actual elapsed times using `DateDiff()`:
+SLA monitoring in Nexus is entirely formula-driven. The **SLA Input Table** stores first-response and next-response targets (in minutes) for each priority × category combination. The **Tickets and Messages Join child** computes actual elapsed times using `DateDiff()`:
 
-- **First Response SLA** — compares actual first response time to the SLA target for the ticket's priority + category
-- **Time to Resolution SLA** — compares actual resolution time to the target
-- **Time Between Messages SLA** — compares the time since the last message to the target for ongoing engagement
+- **Actual first response min** — elapsed minutes from ticket creation to first reply
+- **First Response SLA** — the target pulled from the SLA Input Table for that ticket's priority + category
+- **First response breach** — boolean: actual > target
+- **Time to Resolution SLA** and **Actual resolved min** — same pattern for case closure
 
-Business-hours-aware calculations exclude weekends and off-hours from elapsed time, so SLA breach indicators reflect actual working time rather than calendar time.
+Business-hours-aware calculations exclude weekends and off-hours from elapsed time, so breach indicators reflect actual working time rather than calendar minutes.
 
-<!-- <img src="assets/tkt_26.png" width="800"/> -->
+<img src="assets/tkt_32a.png" width="800"/>
 
 ### Status-Driven Visibility
 
@@ -399,7 +534,7 @@ To configure access:
 3. Select the users, teams, or groups that should be able to view the page
 4. Save the visibility settings and publish the workbook
 
-<!-- <img src="assets/tkt_27.png" width="800"/> -->
+<img src="assets/tkt_33.png" width="500"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> Page visibility keeps the requester experience clean — requesters see only the User Tickets page, while SLA data, urgency scores, and triage decisions remain internal.
@@ -422,7 +557,7 @@ All dropdowns in the Triage Queue's triage decision panel pull from these tables
 The **AI Ticketing Routing Prompt** and **Resolved Ticket AI Prompt** on the Data page can be edited to reflect your team's context. For an IT help desk, the routing prompt might emphasize system criticality and outage risk; for an HR team, it might focus on employee impact and compliance deadlines.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Keep the prompt output format consistent with what the formula expects — urgency score as a number, suggested priority as one of the exact priority values, resolution summary as plain text. Changing output structure requires matching formula updates.
+<strong>NOTE:</strong><br> Keep output formats intact when editing prompts. The routing prompt must return valid JSON with the exact field names the Action expects — changing field names or types breaks the write-back to the Tickets input table. The resolution prompt must return plain text; the text element reads it directly. Either way, structural changes to output format require matching formula updates.
 </aside>
 
 ### Connect to Your User Data
@@ -433,6 +568,8 @@ Nexus sources its **Users** table from a warehouse connection. In the template, 
 2. Update the source connection to point to your user or identity table
 3. Confirm that the required columns are present — `user_id`, display name, and role are the minimum needed for the requester/assignee filters to work
 
+<img src="assets/tkt_34.png" width="800"/>
+
 Once the user table is updated, the Requesters and Assignees filtered views update automatically, and the dropdown controls on Triage Queue and Assignee Case reflect your actual team.
 
 ![Footer](assets/sigma_footer.png)
@@ -441,7 +578,7 @@ Once the user table is updated, the Requesters and Assignees filtered views upda
 ## What We've Covered
 Duration: 3
 
-The Ticket Management Starter App demonstrates how Sigma's native features — input tables, formula-driven SLA monitoring, AI via `CallText()`, and multi-role workbook design — can be composed into a full service request system without external tools or custom application code.
+The Ticket Management Starter App demonstrates how Sigma's native features — input tables, formula-driven SLA monitoring, Sigma Actions, Sigma Agents, and multi-role workbook design — can be composed into a full service request system without external tools or custom application code.
 
 The three-audience layout separates concerns cleanly: requesters interact only with the submission form and their own ticket thread; coordinators work through a structured triage queue with AI-assisted classification; and agents handle cases from a focused workspace with full conversation context, live SLA timers, and an AI assistant scoped to the ticket. Each view reads from the same shared data layer but surfaces only what's relevant to that role.
 
