@@ -14,7 +14,7 @@ lastUpdated: 2026-08-07
 June 29-30, 2026 changes: pending (rolled over from June FFF)
 July 3, 2026 changes:
 July 10, 2026 changes: done
-July 17, 2026 changes:
+July 17, 2026 changes: done
 July 24, 2026 changes:
 July 31, 2026 changes:
 
@@ -61,17 +61,56 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
+### AI spend templates (GA)
+Three new workbook templates — Claude, OpenAI, and Snowflake — visualize the costs associated with AI tool usage across your organization. Use them as a starting point for internal AI cost tracking and governance reporting.
+
+### Custom email branding and SMTP configuration relocation (GA)
+Email branding settings and SMTP configuration have moved to the **Email customization** tab under `Administration` > `Scheduled exports & actions`. Functionality is unchanged.
+
+### Deploy folders to tenants (Beta) <img src="assets/heart_icon.png" width="25"/>
+Deploy a folder and all its contents — workbooks, reports, and data models — to tenant organizations in a single operation.
+
+For more information, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
+
+**WHY IT MATTERS:**
+For teams managing content across multiple tenant organizations, folder-level deployment replaces a series of individual document deployments with one governed action — reducing the overhead of keeping tenant environments in sync as content evolves.
+
+### Deploy reports to tenant organizations (Beta)
+Reports can now be included in deployment policies, allowing them to be pushed to tenant organizations alongside workbooks and data models.
+
+For more information, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
+
+### Hide sender information in export emails (GA)
+A new setting lets administrators obscure which user scheduled or sent an export in the email body, giving organizations more control over how automated emails are presented to recipients.
+
 ### Localization settings renamed (GA)
 The **Locale** section in account settings has been renamed to **Localization**, and **Account locale** has been renamed to **Account language**. Functionality is unchanged.
 
+### Redeploy documents to tenants (Beta)
+Documents within an existing deployment policy can now be manually redeployed to tenant organizations without recreating the full policy.
+
 ### Universal result cache (Beta)
 Recent queries can now be cached in external storage, reducing warehouse compute consumption and improving response times for repeated or similar queries.
+
+### Visualize dependencies in deployment policy (GA)
+Deployment policies now display which dependent documents will be deployed alongside the primary content, giving administrators visibility into the full deployment scope before pushing changes.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## AI
 Duration: 20
+
+### AI usage dashboard (GA) <img src="assets/heart_icon.png" width="25"/>
+A new dashboard tracks token consumption, conversations, engagement, and model usage across your organization. Includes an AI analyst agent for querying usage data in natural language.
+
+For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
+
+**WHY IT MATTERS:**
+As AI usage scales across teams, cost visibility becomes a governance requirement. The AI usage dashboard gives administrators a live view of consumption by model, user, and feature — the audit trail enterprises need before expanding AI access broadly.
+
+### Natural language questions about usage data (GA)
+The Users and Document Activity dashboards now support AI agent queries, letting administrators ask questions about usage patterns in plain language. Requires a configured AI provider.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -101,6 +140,10 @@ Duration: 20
 **2:** Fixed inactive version tag timestamps to show correct dates.
 **3:** Preserved element layout positions when copying/pasting multiple elements.
 **4:** Resolved Snowflake Cortex Agent warehouse selection issues.
+**5:** Improved tooltip theme setting compliance.
+**6:** Preserved code representation `id` values in data model creation endpoint.
+**7:** Linked input table creation now validates write-back schema compatibility before proceeding.
+**8:** Improved document deployment with custom page visibility for tenant organizations.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -115,6 +158,17 @@ Duration: 20
 ## AI Apps
 Duration: 20
 
+### Add data model tables as data sources for agents (Beta)
+Data model tables can now be used as sources for Sigma agents, giving builders access to governed, semantic-layer data when configuring agent capabilities.
+
+For more information, see [Build Sigma agents](https://help.sigmacomputing.com/docs/build-agents)
+
+### Assistant in build mode: balance sheet creation (Beta)
+Sigma Assistant in build mode now supports guided balance sheet creation, with adaptive data structure support and snapshot and comparative layouts for financial analysis.
+
+### Assistant in build mode: formula join keys (Beta)
+Sigma Assistant in build mode can now join tables on formulas and expressions, not just raw columns, enabling more flexible data assembly during workbook construction.
+
 ### Customize first agent message (Beta)
 Builders can now set a fixed greeting message for agents rather than relying on an AI-generated response. Configure agents to open every conversation with a specific, controlled message — such as "Welcome to Sigma!"
 
@@ -124,6 +178,15 @@ For more information, see [Build agents](https://help.sigmacomputing.com/docs/bu
 A new action type allows agents and actions to insert one or more rows into an input table. Rows can contain new defined values or data pulled from existing workbook sources.
 
 For more information, see [Create actions that modify input table data](https://help.sigmacomputing.com/docs/create-actions-that-modify-input-table-data)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## App Templates
+Duration: 20
+
+### App templates (Beta)
+A growing library of pre-built app templates is now available, covering common business scenarios including Project Management, Revenue Forecasting, Demand Planning, and seven additional use cases. Use templates as a starting point and customize them to your data and workflows.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -217,8 +280,10 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
-### Button element icons (Beta)
-Button elements now support icons alongside labels, or as a standalone replacement for text, giving buttons a more visual and compact appearance.
+### Button element icons (GA)
+Button and navigation elements now support icons alongside labels, or as a standalone replacement for text, giving interactive controls and navigation a more visual and compact appearance.
+
+For more information, see [Button elements](https://help.sigmacomputing.com/docs/button-elements#customize-button-properties)
 
 ### Convert workbooks to reports (Beta)
 Existing workbooks can now be converted to reports, enabling pixel-level formatting control and more reliable export behavior.
