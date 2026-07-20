@@ -253,69 +253,19 @@ It walks through how to:
 **WHY IT MATTERS:**<br>
 This moves Assistant from analysis to construction — describe what you want in plain language and get a governed, publishable workbook rather than a throwaway mockup. Builders design and iterate faster while the result stays live on real data, with Sigma's permissions and version history intact.
 
-### Revenue Forecasting Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_revenue_forecasting/index.html?index=..%2F..index#0) shows how to use Sigma's Revenue Forecasting Starter App — a fully built finance application for creating named forecast scenarios, entering projected revenue and COGS by product and month, and comparing multiple forecasts side by side against live data.
+### Sigma Starter Apps
+Sigma Starter Apps are fully built, production-ready applications covering common business workflows across finance, sales, operations, and support. Each app is built entirely on Sigma's native capabilities — input tables, AI agents, actions, and live warehouse data — and comes with a QuickStart that walks through the design patterns so you can adapt it to your own data.
 
-It walks through how to:
-* Navigate the app's pages and explore four pre-configured sample scenarios
-* Create a new forecast scenario and enter data using the three-step guided workflow
-* Use the Forecast Agent — a domain-specific AI assistant with scoped data access and permission-enforced editing
-* Understand the key design patterns: forecast scaffold, union display layer, and editable AI prompts
-* Connect the app to your own sales data
-
-**WHY IT MATTERS:**<br>
-The Revenue Forecasting app demonstrates what's possible when Sigma's native capabilities — input tables, joins, unions, and AI — are composed into a single planning workflow. The Forecast Agent pattern — a scoped AI assistant that enforces human-in-the-loop approval before modifying data — is directly applicable to any enterprise finance workflow where auditability and control are non-negotiable.
-
-### Budget Variance Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_budget_variance/index.html?index=..%2F..index#0) shows how to use Sigma's Budget Variance Starter App — a fully built finance application for comparing actual spending against budget targets across departments and cost centers.
-
-**WHY IT MATTERS:**<br>
-Reconciling actuals to budget typically happens in spreadsheets that go stale between refreshes. This app delivers that comparison live on warehouse data, with variance analysis built in and writeback support for tracking adjustments.
-
-### Demand Planning Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_demand_planning/index.html?index=..%2F..index#0) shows how to use Sigma's Demand Planning Starter App — a supply chain application for building and managing demand forecasts against historical order and inventory data.
-
-**WHY IT MATTERS:**<br>
-Demand planning typically lives in siloed tools or manual spreadsheets. Connecting it to live warehouse data means forecasts reflect current reality rather than a stale snapshot.
-
-### Headcount Planning Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_headcount_planning/index.html?index=..%2F..index#0) shows how to use Sigma's Headcount Planning Starter App — a workforce planning application for tracking headcount budgets, actuals, and open roles across departments.
-
-**WHY IT MATTERS:**<br>
-Headcount is typically one of the largest budget line items, yet planning often happens in spreadsheets disconnected from HRIS data. This app connects the plan to live data while keeping HR and finance working from the same source.
-
-### Marketing Analytics Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_marketing_analytics/index.html?index=..%2F..index#0) shows how to use Sigma's Marketing Analytics Starter App — a campaign performance application for tracking spend, pipeline contribution, and ROI across channels and programs.
-
-**WHY IT MATTERS:**<br>
-Marketing teams often struggle to connect spend data to pipeline and revenue outcomes. This app gives marketing and revenue operations a shared view of what's working, without requiring a custom build.
-
-### Pipeline Forecasting Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_pipeline_forecasting/index.html?index=..%2F..index#0) shows how to use Sigma's Pipeline Forecasting Starter App — a sales planning application for modeling revenue pipeline scenarios and tracking forecast coverage against quota.
-
-**WHY IT MATTERS:**<br>
-Sales forecasting is inherently uncertain, but the process of building it shouldn't be. This app brings CRM pipeline data into Sigma with scenario modeling built in, giving sales leaders a repeatable, transparent forecast workflow.
-
-### Project Management Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_project_management/index.html?index=..%2F..index#0) shows how to use Sigma's Project Management Starter App — an operational application for tracking project status, milestones, and resource allocation across teams.
-
-**WHY IT MATTERS:**<br>
-Project status tracking often falls back to spreadsheets or disconnected tools that don't reflect real-time work. This app centralizes that data in a live, interactive view teams can act on.
-
-### Shift Management Starter App
-*Link to be added once the Shift Management QuickStart is complete.*
-
-### Territory Management Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_territory_management/index.html?index=..%2F..index#0) shows how to use Sigma's Territory Management Starter App — a revenue operations application for monitoring sales territory performance, attainment, and coverage.
-
-**WHY IT MATTERS:**<br>
-Territory alignment affects sales productivity, yet the analysis typically happens in static spreadsheets reviewed once a quarter. Live territory data in Sigma lets RevOps teams spot imbalances and act on them in the moment.
-
-### Ticket Management Starter App
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/starter_apps_ticket_management/index.html?index=..%2F..index#0) shows how to use Sigma's Ticket Management Starter App — a support operations application for tracking ticket volume, resolution times, and agent performance against SLAs.
-
-**WHY IT MATTERS:**<br>
-Support teams need real-time visibility into queue health and SLA risk, not a report that's a day old. This app connects live support data to an interactive view that operations and team leads can monitor and act on directly.
+* [Revenue Forecasting Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_revenue_forecasting/index.html?index=..%2F..index#0)
+* [Budget Variance Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_budget_variance/index.html?index=..%2F..index#0)
+* [Demand Planning Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_demand_planning/index.html?index=..%2F..index#0)
+* [Headcount Planning Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_headcount_planning/index.html?index=..%2F..index#0)
+* [Marketing Analytics Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_marketing_analytics/index.html?index=..%2F..index#0)
+* [Pipeline Forecasting Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_pipeline_forecasting/index.html?index=..%2F..index#0)
+* [Project Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_project_management/index.html?index=..%2F..index#0)
+* [Territory Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_territory_management/index.html?index=..%2F..index#0)
+* [Ticket Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_ticket_management/index.html?index=..%2F..index#0)
+* Shift Management Starter App *(link coming soon)*
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
