@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: 
-lastUpdated: 2026-07-18
+lastUpdated: 2026-07-21
 
 # Shift Management Starter App
 
@@ -123,31 +123,45 @@ The header shows a live count of shifts that still need coverage this week and t
 
 A date range control at the top lets you navigate between weeks. The date range title updates dynamically — `{{[dates-input].start | %b %-d}} - {{[dates-input].end | %b %-d %Y}}` — so the header always reflects the selected week.
 
-<!-- <img src="assets/sm_06.png" width="800"/> -->
+<img src="assets/sm_06.png" width="800"/>
 
 ### Needed Coverage by Day
 
-Below the header, a seven-day strip shows open shift counts by day (SUN through SAT). Each day's count comes from `CountIf([New Schedule/Employee label] = "Open Shifts", ...)` filtered to that specific day. Days with open slots stand out at a glance, making it easy to prioritize which days to fill first.
+Below the header, a seven-day strip shows open shift counts by day (SUN through SAT). 
 
-<!-- <img src="assets/sm_07.png" width="800"/> -->
+Each day's count comes from `CountIf([New Schedule/Employee label] = "Open Shifts", ...)` filtered to that specific day. 
+
+Days with open slots stand out at a glance, making it easy to prioritize which days to fill first.
+
+<img src="assets/sm_07.png" width="800"/>
 
 ### Schedule Grid
 
-The main schedule grid is a pivot table organized by shift name (rows) and day (columns). Each cell shows the assigned employee name or `Open Shifts` for unfilled slots. A `Role` segmented filter at the top of the grid lets you narrow the view to a single role — useful when staffing specific positions like Cook or Bartender.
+The main schedule grid is a pivot table organized by employee (rows) and day (columns). Each cell shows the shift time range and role — for example, `11p-7a Shift Lead` or `6p-2a Cashier` — or `Open Shifts` for unfilled slots.
+
+A `Role` segmented filter at the top of the grid lets you narrow the view to a single role — useful when staffing a specific position.
 
 To assign an employee to an open slot, click the cell and select from the employee dropdown. The assignment is written to the **Shift Assignments** input table:
 
-<!-- <img src="assets/sm_08.png" width="800"/> -->
+<img src="assets/sm_08.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The "Open Shifts" label in unfilled cells is not a null — it's a placeholder employee in the Open Shifts Employee input table. This lets the pivot table display coverage gaps as visible rows rather than empty cells. The pattern is explained in the Under the Hood section.
 </aside>
 
-### Employee Hours and Cost Summary
+### Cost Row
 
-Below the schedule grid, a per-employee summary table shows scheduled hours, projected cost, and whether any employee is approaching or over their weekly hour limit. This makes it straightforward to balance hours across the team before publishing:
+A **Cost** row at the bottom of the grid shows the total projected labor cost for each day of the week. This gives managers an immediate read on which days are most expensive before finalizing assignments:
 
-<!-- <img src="assets/sm_09.png" width="800"/> -->
+<img src="assets/sm_09.png" width="800"/>
+
+### Scheduling Agent
+
+A **Scheduling Agent** panel sits alongside the schedule grid. It is a Sigma Agent — a governed AI assistant scoped to the scheduling context — that lets managers ask questions and take actions in natural language:
+
+Type a request in the `Ask anything` field to interact with the agent. For example: "Fill all open Cashier slots on Wednesday" or "Who is working Saturday night?":
+
+<img src="assets/sm_10.png" width="400"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -159,68 +173,89 @@ The **Attendance** page gives managers a real-time view of who has shown up, who
 
 ### Page Header
 
-The header KPI shows **SCHEDULED TODAY** — a count of assigned employees (excluding open slots) for the selected date. A `Today` date control at the top of the page lets you move between days without navigating away:
+Three KPIs across the top of the page summarize the day at a glance:
 
-<!-- <img src="assets/sm_10.png" width="800"/> -->
+- **SCHEDULED TO...** — total employees scheduled for the selected date
+- **CLOCKED IN** — employees who have logged a clock-in time (shown in green)
+- **FLAGGED** — employees with a deviation from their scheduled time — late arrival, early departure, or no-show (shown in red)
 
-### Attendance Table
+Date navigation arrows and a `Today` button let you move between days. A shift filter — `All Shifts`, `Opening`, `Morning`, `Mid`, `Afternoon`, `Evening`, `Closing` — narrows the view to a single shift type:
 
-The main table shows one row per shift assignment for the selected day. Columns include:
+<img src="assets/sm_11.png" width="800"/>
 
-- **EMPLOYEE** and **ROLE** — who is scheduled and in what position
-- **SHIFT** — shift name with color-coded pill (Opening, Morning, Mid, Afternoon, Evening, Closing)
-- **SCHEDULED START / END** — the shift's planned start and end times
-- **CLOCK IN / CLOCK OUT** — actual punch times from the Attendance input table (blank if not yet logged)
-- **STATUS** — `On Time`, `Late`, `No Show`, `Early Out`, `On Shift`, or `Completed`, rendered as color-coded pills
+### Employee Cards
 
-To update an attendance record, click the row to select it, then edit the status or add notes directly in the table. Changes write to the **Attendance** input table:
+Each employee scheduled for the selected day gets their own card. The card shows:
 
-<!-- <img src="assets/sm_11.png" width="800"/> -->
+- Employee name, role, and hourly rate
+- Shift badge (Opening, Mid, Evening, etc.) and scheduled time range
+- **CLOCKED IN** — actual clock-in time with a delta note: `1 min early`, `2 min late`, or similar
+- **CLOCKED OUT** — actual clock-out time with its own delta
+- Notes — any notes added to this shift
+- `Message` and `Add Note` buttons for direct manager actions
 
-<aside class="positive">
-<strong>NOTE:</strong><br> The status values and their color assignments are defined in the Attendance input table's column configuration on the Data page. To add a new status category, update the input table's allowed values there — no formula changes required.
-</aside>
+<img src="assets/sm_12.png" width="500"/>
 
-### Flagging Issues
+The delta values — how early or late each punch is relative to the scheduled time — come from the `Delta` and `Delta Out` computed columns in the **Attendance** input table: `DateDiff("minute", [scheduled_start], [actual_clock_in])`. 
 
-The Attendance page also surfaces a late/over metric in the header. Employees who clock in more than a few minutes past their scheduled start time, or who clock out early, appear with their Delta values visible. The **Delta** column in the underlying Attendance table is a computed formula: `DateDiff("minute", [scheduled_start], [actual_clock_in])` — a positive number means the employee clocked in late; a negative number means they arrived early.
-
-<!-- <img src="assets/sm_12.png" width="800"/> -->
+A positive number means the employee clocked in late; negative means early. The **FLAGGED** KPI in the header counts employees with non-zero deltas or a no-show status.
 
 **WHY IT MATTERS:**<br>
-Attendance records in Clockwork are write-surfaces, not read-only imports. Managers mark status directly in the app rather than in a separate system, and those records immediately power the Labor Performance summary and AI briefing. A single input table connects the scheduling, attendance, and cost layers — no sync required.
+Attendance records in Clockwork are write-surfaces, not read-only imports. Managers log notes and the app captures clock times directly, and those records immediately power the Labor Performance summary and AI briefing. A single input table connects the scheduling, attendance, and cost layers — no sync required.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Monitoring Clock In/Out
-Duration: 5
+## Make it Work
+Duration: 10
 
-The **Clock In/Out** page is a simplified self-service surface designed for hourly employees to log their own punch times. It is intentionally minimal — a live clock, a date display, and a name search — so it works well when embedded in a mobile app.
+The best way to understand Clockwork's scheduling workflow is to run through it end to end. This section walks through assigning an employee to an open shift on the Weekly Schedule page, then completing a clock-in on the Clock In/Out page.
 
-### Employee Self-Selection
+### Assign a Shift on Weekly Schedule
 
-The page opens with a live time display and the current date, then prompts: "Who's clocking in?" Employees type their first or last name to filter the employee list. Selecting their name loads their shifts for the day:
+Navigate to the **Weekly Schedule** page and click `This week` to jump to the current week. The Needed Coverage strip shows which days have open slots — Monday shows several unfilled shifts:
 
-<!-- <img src="assets/sm_13.png" width="800"/> -->
+Scroll down to find **Melissa Jordan** in the schedule grid. Her Monday cell is empty. In the Open Shifts row, Monday lists the unfilled slots for the day.
 
-### Today's Shifts
+Click the empty cell in Melissa Jordan's Monday row.
 
-Once an employee is selected, the page shows all shifts assigned to them for the current day, with scheduled start and end times and the current clock-in and clock-out values (shown as `TBD` until logged). Buttons allow the employee to clock in or clock out for each shift:
+<img src="assets/sm_14.png" width="800"/>
 
-<!-- <img src="assets/sm_14.png" width="800"/> -->
+The available shifts and open slot count are displayed — select the `4p-12a · 05/18 Mon` slot to assign her.
 
-The clock-in and clock-out times are written to the **Attendance** input table's `actual_clock_in` and `actual_clock_out` fields. The `Delta` column computes the difference from scheduled time automatically, so late arrivals are flagged in the Attendance manager view without any manual calculation.
+<img src="assets/sm_13.png" width="500"/>
+
+Click `Submit`.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The assignment writes immediately to the Shift Assignments input table. The open-slot count in the Needed Coverage strip decrements and the SCHEDULED TO... KPI on the Attendance page updates to reflect the new assignment.
+</aside>
+
+The schedule grid now shows Melissa Jordan's slot filled, with the remaining open slot still visible in row three.
+
+<img src="assets/sm_15.png" width="800"/>
+
+### Clock In as Melissa Jordan
+
+Navigate to the **Clock In/Out** page. The page displays a live clock and the current date, driven by the `today-input` control. The prompt reads "Who's clocking in?" with a name field below it.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The Clock In/Out page uses the `today-input` date control shared with other pages. In a production deployment, this control would typically be driven by the current date automatically rather than set manually by a manager. The template uses a fixed date to keep the sample data consistent for evaluation.
+<strong>FIXED SAMPLE DATE:</strong><br> The current day on this page is hardcoded to <strong>May 20, 2026</strong> because the sample data is fixed to that date. Employees listed under TODAY'S SHIFTS are those with shifts on May 20 in the sample. To make this dynamic in your own deployment, replace every reference to <code>[today-input]</code> with <code>Today()</code>.
 </aside>
+
+Selecting `Melissa Jordan` from the select control loads the fixed sample data:
+
+<img src="assets/sm_16a.png" width="800"/>
+
+Once the date is made dynamic as mentioned above, the actual clock-in time is written to the **Attendance** input table's `actual_clock_in` field. The `Delta` column — `DateDiff("minute", [scheduled_start], [actual_clock_in])` — computes the difference from the scheduled start automatically, so the Attendance page immediately reflects whether the clock-in was on time, early, or late.
+
+The card then shows the `Clocked In` time and waits for the `Clocked Out` to be logged later.
+
+<img src="assets/sm_17.png" width="300"/>
 
 ### Mobile Embed
 
-The README notes that this page is designed to be embedded in a mobile app, allowing workers to clock in and out directly from their phones at the store. Sigma's embed capability lets you surface specific workbook pages in an external application without exposing the full workspace:
-
-<!-- <img src="assets/sm_15.png" width="600"/> -->
+The Clock In/Out page is intentionally minimal — a clock, a date, and a name search — so it works well embedded in a mobile app. Workers can clock in from their phones at the store without accessing the full workspace. Sigma's embed capability lets you surface any workbook page inside an external application.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -234,31 +269,36 @@ The **Labor Performance** page gives managers a weekly cost summary — how much
 
 The headline KPI reads: "Labor cost is **X% of budget** this week." The percentage is computed dynamically — actual cost divided by the sum of actual plus remaining budget — and updates as attendance records come in:
 
-<!-- <img src="assets/sm_16.png" width="800"/> -->
+<img src="assets/sm_18.png" width="600"/>
 
-Below the headline, a single line shows the dollar variance: `{{[WEEKLY BUDGET/Weekly Budget] - [ACTUAL SPEND/Sum of Actual Cost]}}` followed by `over budget`, `at budget`, or `under budget` based on the sign.
+Below the headline, a single line shows the dollar variance:
+
+- `{{[WEEKLY BUDGET/Weekly Budget] - [ACTUAL SPEND/Sum of Actual Cost]}}`
+- followed by `over budget`, `at budget`, or `under budget` based on the sign
+
+<img src="assets/sm_18a.png" width="800"/>
 
 ### AI Agent Summary
 
 The page includes a prominent **AGENT SUMMARY** panel that delivers a brief, action-oriented manager briefing. It is implemented as a `CallText("ai_complete", "claude-sonnet-4-6", ...)` formula directly in a text element — a live formula that runs each time the page loads or the date range changes:
 
-<!-- <img src="assets/sm_17.png" width="800"/> -->
+<img src="assets/sm_18b.png" width="600"/>
 
 The formula assembles a structured payload before passing it to the model. It concatenates the prompt control text with `CountIf` metrics computed inline:
 
 - Week date range
 - Total open slots
-- Open slots broken down by role (Cook, Server, Bartender, Host) and day of week
+- Open slots broken down by role (Cashier, Scooper, Shift Lead, Manager) and day of week
 - Employees currently in overtime
 - Employees near overtime (within 4 hours of their weekly limit)
 - Late clock-ins and early outs for the week
 - Remaining unfilled shifts
 
-The model — instructed by the `ai-weekly-ops-prompt` control — returns a briefing in 75 words or fewer: one to two sentences on the most urgent priority, followed by up to three directive bullets. The format is designed for speed: a manager glancing at the page gets the three things that need action today, without reading through raw tables.
+The model — instructed by the `Ai Weekly Ops Prompt` control — returns a briefing in 75 words or fewer: one to two sentences on the most urgent priority, followed by up to three directive bullets. The format is designed for speed: a manager glancing at the page gets the three things that need action today, without reading through raw tables.
 
 To see the formula, place the workbook in `Edit` mode and click the Agent Summary text element. The full `CallText(...)` expression appears in the element body:
 
-<!-- <img src="assets/sm_18.png" width="800"/> -->
+<img src="assets/sm_20.png" width="800"/>
 
 **WHY IT MATTERS:**<br>
 The AI briefing is not a separate service or integration — it is a formula in a text element, governed by Sigma's existing permission model and driven by a prompt stored in an editable control. Operations managers can adjust the briefing's focus (e.g., emphasize overtime risk over coverage gaps) by editing the prompt on the Data page, without touching any formula. The model's inputs are explicit Sigma expressions — the same `CountIf` values a manager could read in the table below — which makes the output auditable and explainable.
@@ -267,13 +307,13 @@ The AI briefing is not a separate service or integration — it is a formula in 
 
 Below the AI summary, a bar chart shows daily labor spend — actual cost, projected cost, and remaining budget — for each day of the selected week. This makes it easy to see which days ran over projection and how much runway remains for the week:
 
-<!-- <img src="assets/sm_19.png" width="800"/> -->
+<img src="assets/sm_21.png" width="600"/>
 
 ### Employee-Level Breakdown
 
 A table at the bottom of the page shows each employee's actual hours, projected cost, actual cost, and weekly totals. Overtime is visible here — employees whose actual hours exceed their weekly maximum appear with cost calculated at the overtime rate:
 
-<!-- <img src="assets/sm_20.png" width="800"/> -->
+<img src="assets/sm_22.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -281,39 +321,69 @@ A table at the bottom of the page shows each employee's actual hours, projected 
 ## Under the Hood
 Duration: 10
 
-Place the workbook in `Edit` mode to explore how the app is built. The **Data** page contains all data tables organized into labeled sections.
+Place the workbook in `Edit` mode.
 
-### Warehouse Source
+<aside class="negative">
+<strong>NOTE:</strong><br> The workbook includes a link to the Data page for convenience only. The Data page would normally be hidden. 
+</aside>
 
-The **Employees** table is sourced from `EXAMPLES.COLD_PROVISIONS.EMPLOYEES` in the connected warehouse. It provides the master employee directory: Employee Number, Employee Name, Role, Max Weekly Hours, Hourly Rate USD, and Overtime Rate USD. This is the only table that comes from the warehouse — all scheduling data lives in input tables:
+Six tabs organize everything that powers the app:
 
-<!-- <img src="assets/sm_21.png" width="800"/> -->
+- **Warehouse Data** — the employee source table pulled from the warehouse
+- **Input Tables** — the five write-surfaces that store all scheduling and attendance data
+- **Transformations** — joined and enriched tables used by page pivots and cost calculations
+- **Helpers** — filtered views scoped to the selected date or week
+- **AI** — editable prompt controls that drive the AI features
+- **Controls** — page coordination controls shared across the workbook
+
+### Warehouse Data
+
+The **Employees** table is sourced from `EXAMPLES.COLD_PROVISIONS.EMPLOYEES` in the connected warehouse. It provides the employee directory: `Employee Number`, `Employee Name`, `Role`, `Max Weekly Hours`, and `Hourly Rate Usd`. This is the only warehouse table in the app — all scheduling data lives in input tables:
+
+<img src="assets/sm_23.png" width="800"/>
 
 ### Input Tables
 
-Five input tables store all application data:
+Five input tables store all application data. Four are editable in the published version by all users; the Open Shifts Employee placeholder is editable in draft only:
 
-**Shifts** *(Editable in draft)* — the shift template library. Each row defines a shift type for a specific day and week: `shift_id`, `store_id`, `date`, `day_of_week`, `shift_name`, `start_time`, `end_time`, `duration_hours`, `min_staff_needed`, and `week_id`. Computed columns on this table aggregate employee names assigned to each shift and look up projected and actual shift costs from Shift Assignments.
+<img src="assets/sm_24.png" width="800"/>
 
-**Shift Assignments** *(Editable in published version)* — the primary scheduling table. Each row links one employee to one shift on one date: `assignment_id`, `shift_id`, `shift_name`, `employee_id`, `date`, `required_role`, `has_open_slot` (checkbox), `scheduled_start`, and `scheduled_end`. Computed columns resolve employee names, look up clock-in and clock-out times from Attendance, and calculate Projected Cost and Actual Cost using the overtime-aware formula described below.
+**Shifts** *(Editable in published version, all users)* — the shift template library. Each row defines a shift type: `shift_id`, `store_id`, `date`, `day_of_week`, `shift_name`, `start_time`, `end_time`, `duration_hours`, `min_staff_needed`, and `week_id`. Computed columns aggregate assigned employee names and look up projected and actual shift costs from Shift Assignments.
 
-**Attendance** *(Editable in published version)* — clock-in and clock-out records. Each row captures `actual_clock_in`, `actual_clock_out`, `status` (On Time / Late / No Show / Early Out / On Shift / Completed), `scheduled_start`, and `scheduled_end`. Two computed columns — `Delta` and `Delta Out` — calculate the difference between scheduled and actual times in minutes using `DateDiff("minute", ...)`.
+**Shift Assignments** *(Editable in published version, all users)* — the primary scheduling table. Each row links one employee to one shift on one date: `assignment_id`, `shift_id`, `shift_name`, `employee_id`, `date`, `required_role`, `has_open_slot` (checkbox), `scheduled_start`, and `scheduled_end`. Computed columns resolve employee names, look up clock-in and clock-out times from Attendance, and calculate Projected Cost and Actual Cost using the overtime-aware formula described below.
 
-**Weekly Budget** *(Editable in draft)* — per-week labor budget targets. Each row stores `week_id`, `week_start`, `week_end`, `labor_budget`, and `store_id`. Budget figures are looked up across the app using `Lookup([Weekly Budget/labor_budget], [week_id], [Weekly Budget/week_id])`.
+**Attendance** *(Editable in published version, all users)* — clock-in and clock-out records. Each row captures `actual_clock_in`, `actual_clock_out`, `status` (On Time / Late / No Show / Early Out / On Shift / Completed), `scheduled_start`, and `scheduled_end`. Two computed columns — `Delta` and `Delta Out` — calculate the difference between scheduled and actual times in minutes using `DateDiff("minute", ...)`.
 
-**Open Shifts Employee** *(Editable in draft)* — a single-row placeholder representing unfilled shift slots. When `has_open_slot` is true in Shift Assignments, this placeholder employee is used to make the coverage gap visible in the schedule grid as "Open Shifts" rather than a null:
+**Weekly Budget** *(Editable in published version, all users)* — per-week labor budget targets. Each row stores `week_id`, `week_start`, `week_end`, `labor_budget`, and `store_id`. Budget figures are looked up across the app using `Lookup([Weekly Budget/labor_budget], [week_id], [Weekly Budget/week_id])`.
 
-<!-- <img src="assets/sm_22.png" width="800"/> -->
+**Open Shifts Employee** *(Editable in draft)* — a single-row placeholder (`EMP-00000 / Open Shifts / Open Role`) representing unfilled shift slots. When `has_open_slot` is true in Shift Assignments, this placeholder makes coverage gaps visible in the schedule grid as "Open Shifts" rather than nulls.
 
-### Employees Table (Union)
+### Transformations
 
-The **Employees** derived table on the Data page is a union of the warehouse `EMPLOYEES` table and the `Open Shifts Employee` input table. This union is what powers the employee dropdown in the schedule grid and all employee lookups across the app. The Open Shifts Employee row participates in the union so that open-slot rows resolve to "Open Shifts" as an employee name — the same lookup path that resolves real employee names:
+The **Transformations** tab holds two joined tables:
 
-<!-- <img src="assets/sm_23.png" width="800"/> -->
+**Employees** — a union of the warehouse `EMPLOYEES` table and the `Open Shifts Employee` input table. This is the master employee list that powers all dropdowns and lookups across the app. The Open Shifts placeholder row (EMP-00000) participates in the union so unfilled slots resolve to "Open Shifts" rather than a null employee name.
+
+**Shift Assignments + 2** — the enriched master assignments table, joining Shift Assignments with employee data, rates, and computed cost columns. This is the table the Weekly Schedule pivot reads for its employee × day grid:
+
+<img src="assets/sm_25.png" width="800"/>
+
+### Helpers
+
+Six filtered views on the **Helpers** tab scope the master tables to the current date, week, or selection. They recalculate each time a date or selection changes:
+
+- **Shift Assignments Selected Day** — Shift Assignments filtered to the currently selected date; used by the Attendance page
+- **Shift Assignments + 2 filtered** — filtered to the selected week and employee; powers the Weekly Schedule pivot's weekly-hours calculations
+- **Shift Assignments Current Week** — weekly schedule with cost calculations and budget comparisons
+- **Shift Assignments This Week** — assignments for the selected week grouped by employee ID; used to determine whether an employee is over their `max_hours_per_week` limit
+- **Attendance Today** — Attendance filtered to the selected date; used by the Clock In/Out page to show today's shifts and enable clock-in
+- **Shift Assignments Current Week by Day** — daily rollup of scheduled hours and labor cost; drives the bar chart on the Labor Performance page
+
+<img src="assets/sm_25a.png" width="800"/>
 
 ### Overtime-Aware Cost Calculation
 
-The `Projected Cost` and `Actual Cost` columns in Shift Assignments use a `Least/Greatest` pattern to split weekly hours at the employee's `max_hours_per_week` limit:
+The `Projected Cost` and `Actual Cost` columns in `Shift Assignments` use a `Least/Greatest` pattern to split weekly hours at the employee's `max_hours_per_week` limit:
 
 ```copy-code
 If([Weekly Total Projected Hours] = 0, 0,
@@ -324,38 +394,59 @@ If([Weekly Total Projected Hours] = 0, 0,
 )
 ```
 
-This formula apportions each shift's cost between the regular rate (for the fraction of hours within the weekly limit) and the overtime rate (for hours above it). The apportionment recalculates automatically whenever hours are added or removed — no manual adjustments needed when the schedule changes mid-week.
+<img src="assets/sm_25b.png" width="800"/>
+
+This formula apportions each shift's cost between the regular rate (for hours within the weekly limit) and the overtime rate (for hours above it). 
+
+The apportionment recalculates automatically whenever hours are added or removed — no manual adjustments needed when the schedule changes mid-week.
+
+### AI Prompts
+
+The **AI** tab holds two editable text controls that drive the app's AI features:
+
+**Ai Weekly Ops Prompt** — the system prompt for the Agent Summary on the Labor Performance page. Instructs the model to return a briefing in 75 words or fewer: 1–2 sentences on the most urgent priority, followed by up to three directive bullets.
+
+**Ai Schedule Briefing Prompt** — an alternate prompt for a shorter schedule-review briefing, focused on coverage gaps and cost highlights for the selected week.
+
+Because these are editable text controls rather than hardcoded strings, you can change what the Agent Summary emphasizes — overtime risk, coverage gaps, attendance patterns — by editing the prompt text directly:
+
+<img src="assets/sm_26.png" width="800"/>
 
 ### CallText for the AI Briefing
 
-The Agent Summary on the Labor Performance page is implemented as a `CallText()` formula in a text element — not a Sigma Agent, but a direct model call via a formula. The formula itself assembles the model's input by concatenating the `[ai-weekly-ops-prompt]` control value with `CountIf` and `CountDistinctIf` expressions:
+The Agent Summary on the `Labor Performance` screen is implemented as a `CallText()` formula in a text element — not a Sigma Agent, but a direct model call via a formula. 
+
+The formula assembles the model's input by concatenating the `[Ai Weekly Ops Prompt]` control value with `CountIf` and `CountDistinctIf` expressions:
 
 ```copy-code
 CallText("ai_complete", "claude-sonnet-4-6",
-  [ai-weekly-ops-prompt]
+  [Ai Weekly Ops Prompt]
   & " WEEK: " & Text(Min([Shift Assignments Current Week/date])) & " to " & Text(Max(...))
   & " OPEN SLOTS: " & Text(CountIf([...Role] = "Open", ...))
-  & " OPEN BY ROLE AND DAY: Cook-Sun=" & Text(CountIf(...))
+  & " OPEN BY ROLE AND DAY: Cashier-Sun=" & Text(CountIf(...))
   ... (additional role/day breakdowns)
   & " EMPLOYEES IN OVERTIME: " & Text(CountDistinctIf(...))
   & " LATE CLOCK-INS: " & Text(CountIf(...))
 )
 ```
 
+<img src="assets/sm_26a.png" width="800"/>
+
 The model receives a structured text payload — not raw table data — and returns a formatted briefing. Because the model's inputs are explicit Sigma expressions, the briefing is grounded in the same numbers visible in the charts and tables on the page.
 
-### Controls on the Data Page
+### Controls
 
-All coordination and AI prompt controls are stored on the Data page:
+The **Controls** tab holds page coordination controls shared across the workbook:
 
-- **ai-weekly-ops-prompt** — the system prompt for the Agent Summary on Labor Performance; instructs the model to return a 75-word briefing with up to three action bullets
-- **ai-schedule-briefing-prompt** — an alternate prompt for a shorter schedule-review briefing; editable without formula changes
-- **Date formatted**, **selected-date-range**, **today-input**, **dates-input** — date coordination controls shared across pages
-- **selected-role**, **Selected employee**, **Selected shift**, **Selected Assignment**, **Selected Day** — element-coordination controls that pass selected context into lookups and conditional visibility
+- **date** — date range control; drives the week view on Weekly Schedule and Attendance
+- **Date formatted** — formatted display string (e.g., `05/05 Tue`) used in page headers
+- **Selected Day** — single-date control used by Helpers to scope Shift Assignments Selected Day and Attendance Today
+- **Role** — role filter; scopes the schedule grid and attendance views
+- **Selected employee**, **Selected shift**, **Selected Assignment**, **assignment_id** — row-context controls that pass the selected employee or shift into lookups and modals
+- **Employee To Email** — stores the selected employee for notification actions
+- **Assignment Id For AI** — passes the selected assignment ID into the AI agent context
 
-<!-- <img src="assets/sm_24.png" width="800"/> -->
-
-Because prompts are stored as editable text-area controls rather than hardcoded strings, operations managers can adjust the briefing's focus — overtime risk, coverage gaps, attendance patterns — without touching any formula.
+<img src="assets/sm_26b.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -374,7 +465,7 @@ The app sources its employee directory from a warehouse table. In the template, 
 3. Confirm the required columns are present — at minimum: Employee ID, Employee Name, Role, Max Weekly Hours, Hourly Rate USD, and Overtime Rate USD
 4. Save and verify that the employee dropdown on the Weekly Schedule page reflects your team
 
-<!-- <img src="assets/sm_25.png" width="800"/> -->
+<img src="assets/sm_27.png" width="600"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> If your organization does not have a warehouse employee table, you can replace the warehouse source with an additional input table to manage employees directly in Sigma.
@@ -386,10 +477,15 @@ The **Shifts** input table defines the shift types available in your schedule. T
 
 1. Open the workbook in `Edit` mode
 2. Navigate to the `Data` page and select the **Shifts** input table
-3. Add, edit, or remove rows to reflect your shift schedule — update `shift_name`, `start_time`, `end_time`, and `duration_hours` for each shift type
-4. Update `min_staff_needed` to match your minimum coverage requirements per shift
+3. Add, edit, or remove rows to reflect your shift schedule — update the key fields for each shift type:
+   - `shift_name` — the display name (e.g., Opening, Closing, Mid)
+   - `start_time` / `end_time` — shift hours
+   - `duration_hours` — shift length in hours
+   - `min_staff_needed` — minimum number of employees required for coverage
 
-Changes to the Shifts table immediately appear in the Weekly Schedule grid. The schedule grid's pivot groups by shift name, so new shift types become new rows automatically.
+<img src="assets/sm_27a.png" width="600"/>
+
+Changes to the `Shifts` table immediately appear in the Weekly Schedule grid. The schedule grid's pivot groups by shift name, so new shift types become new rows automatically.
 
 ### Set Your Weekly Budget
 
@@ -399,12 +495,24 @@ The **Weekly Budget** input table holds the labor budget targets the app tracks 
 2. Add a row for each week you want to track: `week_id`, `week_start`, `week_end`, `labor_budget`, and `store_id`
 3. The Labor Performance page and the Weekly Schedule KPIs update automatically as budget rows are added
 
+<img src="assets/sm_27b.png" width="800"/>
+
+### Make the Clock In/Out Date Dynamic
+
+The Clock In/Out page uses a `today-input` control that is hardcoded to **May 20, 2026** in the template so the sample data works correctly out of the box. In a production deployment, you'll want this to reflect the actual current date.
+
+To make it dynamic, replace every reference to `[today-input]` with `Today()` throughout the workbook. The app's built-in info note (accessible via the ⓘ icon on the Clock In/Out page) documents this change.
+
 ### Update the AI Briefing Prompt
 
-The **ai-weekly-ops-prompt** control on the Data page can be edited to change what the Agent Summary emphasizes. The default prompt focuses on open slots, overtime, and attendance patterns. For a retail context, you might adjust the prompt to reference your role names (e.g., `Floor Associate`, `Shift Lead`) and focus on foot-traffic-driven coverage requirements.
+The **Ai Weekly Ops Prompt** control on the Data page's `AI` tab can be edited to change what the `Agent Summary` emphasizes.
+
+ The default prompt focuses on open slots, overtime, and attendance patterns. For a retail context, you might adjust the prompt to reference your role names (e.g., `Floor Associate`, `Shift Lead`) and focus on foot-traffic-driven coverage requirements.
+
+<img src="assets/sm_27c.png" width="475"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The Agent Summary formula passes structured `CountIf` data to the model in a fixed format. If you add new roles or shift names that need to appear in the briefing, the formula's inline breakdowns (e.g., `Cook-Sun=...`, `Server-Mon=...`) will need to be updated to reflect the new roles. The prompt alone cannot change what data the model receives.
+<strong>NOTE:</strong><br> The prompt controls only define the model's instructions — they do not control what data the model receives. The data payload is assembled inside the <code>CallText()</code> formula in the <strong>Agent Summary</strong> text element on the Labor Performance page (visible in Edit mode). That formula includes inline <code>CountIf</code> breakdowns per role and day. If you add new roles, those breakdowns must be updated in the formula itself — editing the prompt alone will not change what data the model sees.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
