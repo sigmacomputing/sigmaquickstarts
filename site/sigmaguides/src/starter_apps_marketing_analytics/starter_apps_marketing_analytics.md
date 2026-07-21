@@ -3,9 +3,9 @@ id: starter_apps_marketing_analytics
 summary: starter_apps_marketing_analytics
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-14
 
 # Marketing Analytics Starter App

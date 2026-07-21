@@ -3,9 +3,9 @@ id: starter_apps_territory_management
 summary: starter_apps_territory_management
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-17
 
 # Territory Management Starter App

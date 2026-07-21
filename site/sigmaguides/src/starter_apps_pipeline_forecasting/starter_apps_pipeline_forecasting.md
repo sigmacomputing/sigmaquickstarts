@@ -3,9 +3,9 @@ id: starter_apps_pipeline_forecasting
 summary: starter_apps_pipeline_forecasting
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-15
 
 # Pipeline Forecasting Starter App

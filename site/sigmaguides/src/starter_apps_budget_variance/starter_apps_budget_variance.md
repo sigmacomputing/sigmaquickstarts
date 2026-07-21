@@ -3,9 +3,9 @@ id: starter_apps_budget_variance
 summary: Explore Sigma's Budget Variance Analysis Starter App — a ready-to-use finance app for tracking actuals against budget, documenting variance commentary, building AI-assisted reforecast scenarios, and routing them through executive approval.
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-12
 
 # Budget Variance Analysis Starter App

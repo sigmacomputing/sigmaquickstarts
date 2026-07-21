@@ -3,9 +3,9 @@ id: starter_apps_project_management
 summary: Explore Sigma's Project Management Starter App — a ready-to-use ops app for planning milestones, tracking execution, resolving blockers, and communicating project health across your portfolio.
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-16
 
 # Project Management Starter App

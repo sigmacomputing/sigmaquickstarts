@@ -3,10 +3,10 @@ id: starter_apps_shift_management
 summary: starter_apps_shift_management
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-07-21
+tags: default
+lastUpdated: 2026-07-22
 
 # Shift Management Starter App
 
@@ -245,7 +245,7 @@ Navigate to the **Clock In/Out** page. The page displays a live clock and the cu
 
 Selecting `Melissa Jordan` from the select control loads the fixed sample data:
 
-<img src="assets/sm_16a.png" width="800"/>
+<img src="assets/sm_16a.png" width="400"/>
 
 Once the date is made dynamic as mentioned above, the actual clock-in time is written to the **Attendance** input table's `actual_clock_in` field. The `Delta` column — `DateDiff("minute", [scheduled_start], [actual_clock_in])` — computes the difference from the scheduled start automatically, so the Attendance page immediately reflects whether the clock-in was on time, early, or late.
 

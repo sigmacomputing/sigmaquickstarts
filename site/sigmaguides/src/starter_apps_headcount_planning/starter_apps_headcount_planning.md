@@ -3,9 +3,9 @@ id: starter_apps_headcount_planning
 summary: starter_apps_headcount_planning
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-16
 
 # Headcount Planning Starter App

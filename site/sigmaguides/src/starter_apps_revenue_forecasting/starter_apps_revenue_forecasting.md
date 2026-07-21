@@ -3,9 +3,9 @@ id: starter_apps_revenue_forecasting
 summary: Explore Sigma's Revenue Forecasting Starter App — a ready-to-use finance app for building, managing, and comparing AI-assisted revenue forecast scenarios against live data.
 categories: starterapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
+tags: default
 lastUpdated: 2026-07-15
 
 # Revenue Forecasting Starter App
