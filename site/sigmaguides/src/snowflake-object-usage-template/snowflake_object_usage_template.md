@@ -51,7 +51,7 @@ Anyone who is trying to understand which objects in Snowflake are being used, wh
 ## Building the object access history table
 Duration: 5
 
-We need to create the `query_base_object_access_history` table by running the SQL script below in your Snowflake account.
+You will create the `query_base_object_access_history` table by running the SQL script below in your Snowflake account.
 
 This script creates a table called `query_base_object_access_history` with one row per Snowflake object used by a query — so a single query may produce many rows. It is built by taking Snowflake's `access_history` view and laterally flattening the `base_objects` column. The query tag is parsed to extract additional metadata on Sigma-generated queries.
 
@@ -685,19 +685,23 @@ Duration: 5
 
 Once you have created the `query_base_object_access_history` and `query_base_object_column_access_history` tables, go to Sigma.
 
-From the home page, navigate to the `Templates` section, then search for `Snowflake Object Usage`.
+From the home page, navigate to the `Templates` section, and search for `Snowflake`.
 
 Select the `Snowflake Object Usage` template:
 
-Then click `Use Template`
+<img src="assets/template_in_menu.png" width="800"/>
 
-You will see a blue banner at the top of the screen asking you to swap your data in. Click `Change sources`.
+Click `Use Template`.
+
+You will see a blue banner at the top of the screen asking you to swap your data in. 
+
+Click `Change sources`:
 
 <img src="assets/ob_06.png" width="800"/>
 
-Verify that Sigma has found the `query_base_object_access_history` and `query_base_object_column_access_history` tables, then click `Apply Changes`:
+Verify that Sigma has selected the correct connection and found the `query_base_object_access_history` and `query_base_object_column_access_history` tables, then click `Apply Changes`:
 
-<img src="assets/sources_matched.png" width="800"/>
+<img src="assets/ob_07.png" width="800"/>
 
 Click `Save As` and give your workbook a title.
 
