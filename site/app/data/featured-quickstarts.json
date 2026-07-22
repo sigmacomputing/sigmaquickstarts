@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Snowflake Object Usage Template Setup",
+      "id": "snowflake_object_usage_template_setup",
+      "category": "administration",
+      "date": "July 22, 2026"
+    },
+    {
       "title": "Automate Sigma from the Command Line with the Sigma CLI",
       "id": "developers_sigma_cli",
       "category": "developers",
@@ -45,12 +51,6 @@
     {
       "title": "Scheduling Sigma Insights to Slack",
       "id": "aiapps_scheduling_sigma_insights_to_slack",
-      "category": "aiapps",
-      "date": "April 15, 2026"
-    },
-    {
-      "title": "Natural Language Analytics with Claude and Sigma",
-      "id": "aiapps_natural_language_with_claude",
       "category": "aiapps",
       "date": "April 15, 2026"
     }
