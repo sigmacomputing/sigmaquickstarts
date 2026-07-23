@@ -59,7 +59,7 @@ Sigma SEs, technical CSMs, and migration partners running Sisense-to-Sigma conve
 ### Prerequisites
 - `Claude Code` installed (CLI or desktop).
 - Sigma API credentials.
-- A Sisense instance where you can generate an API token (`Admin` > `REST API` > `Add token`). The token owner needs at least: read access to dashboards, widgets, and data models.
+- A Sisense instance with an account (email + password) that has at least read access to dashboards, widgets, and data models.
 - `Python 3.10` or newer. macOS's stock system Python is typically 3.9 — older than the skill needs. If `python3 --version` reports anything below 3.10, install a newer interpreter via [Homebrew](https://brew.sh/) (`brew install python@3.12`) or [python.org](https://www.python.org/downloads/).
 - `Node.js` (any recent LTS) for the converter MCP. The conversion uses a separate MCP server, [`sigma-data-model-mcp`](https://github.com/twells89/sigma-data-model-mcp), cloned + built (`npm install && npm run build`) into `~/Desktop/sigma-data-model-mcp`. The skill prompts you to install it mid-conversion — no upfront work needed — but pre-build it if you'd rather skip the gate.
 - A warehouse reachable from Sigma (Snowflake, BigQuery, Databricks, Redshift, Postgres, and others) that your Sisense data model also queries.
@@ -164,48 +164,92 @@ Steps 5 and 6 should return with no error.
 
 ![divider](assets/horizonalline.png)
 
-**Step 7: Capture your Sigma API credentials.**<br>
-This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings + the neutral `~/.sigma-migration/env` file that the skill family uses to mint Sigma API tokens at runtime.
+**Step 7: Add your Sigma API credentials.**<br>
+The Sisense skill uses `bootstrap.sh`. 
 
-Run once per machine.
-
-```copy-code
-ruby ~/.claude/skills/sisense-to-sigma/scripts/setup.rb
-```
-
-The final prompt asks for a `Connection ID (full warehouse-connection UUID, optional — Enter to skip)`. You can press `Enter` to skip — the kickoff prompt later in this QuickStart supplies the Snowflake connection ID inline. Capturing it here is useful only if you plan to run multiple migrations and want it persisted in `~/.sigma-migration/env`.
-
-![divider](assets/horizonalline.png)
-
-**Step 8: Capture your Sisense REST credentials.**<br>
-The skill calls Sisense via its REST API. Generate an API token in Sisense under `Admin` > `REST API` > `Add token`. The token owner needs at least viewer-level read access to the dashboards and data models you want to migrate.
-
-The skill reads Sisense credentials from `~/.sigma-migration/env` — the same file `setup.rb` populated for Sigma. Append your Sisense credentials to it:
+Because `bootstrap.sh` is non-interactive, write your Sigma API credentials directly to the shared env file it reads:
 
 ```copy-code
 cat >> ~/.sigma-migration/env <<'EOF'
-export SISENSE_BASE='https://{your-sisense-host}'
-export SISENSE_TOKEN='{your-api-token}'
+export SIGMA_BASE_URL='https://aws-api.sigmacomputing.com'
+export SIGMA_CLIENT_ID='{your-client-id}'
+export SIGMA_CLIENT_SECRET='{your-client-secret}'
 EOF
 ```
 
-`SISENSE_BASE` is the Sisense server's base URL with no trailing slash. For a cloud-hosted tenant it looks like `https://{your-tenant}.sisense.com`. For a self-managed instance it's typically `http://localhost:8081` or your server's hostname.
+<aside class="positive">
+<strong>NOTE:</strong><br> The env file lives at <code>~/.sigma-migration/env</code> in your home directory — not inside the project folder. It won't appear in VSCode Explorer, and that's expected. The migration scripts source it from that path automatically.
+</aside>
 
-Verify auth works by running the discovery smoke test — it lists every dashboard your token can read:
+Get `SIGMA_CLIENT_ID` and `SIGMA_CLIENT_SECRET` from Sigma under `Administration` > `Developer Access` > `Create New Client Credentials` (requires Admin role). 
+
+For information, see: [Generate Sigma API client credentials](https://help.sigmacomputing.com/reference/generate-client-credentials)
+
+`SIGMA_BASE_URL` should match your deployment region — `https://aws-api.sigmacomputing.com` covers AWS US East.
+
+For GCP or Azure instances, see: [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
+
+![divider](assets/horizonalline.png)
+
+**Step 8: Add your Sisense credentials.**<br>
+The skill authenticates to Sisense using your account email and password — it POSTs to `/api/v1/authentication/login` at runtime to exchange them for a bearer token. Create the credential file and open it in `nano`:
 
 ```copy-code
-source ~/.sigma-migration/env && curl -s -H "Authorization: Bearer ${SISENSE_TOKEN}" "${SISENSE_BASE}/api/v1/dashboards?fields=oid,title&count=10" | python3 -c 'import sys,json; [print(d["oid"], "-", d["title"]) for d in json.load(sys.stdin)]'
+mkdir -p ~/.sigma-migration && nano ~/.sigma-migration/sisense.env
 ```
 
-You should see one line per dashboard. If the command returns nothing or a `401`: double-check `SISENSE_BASE` (include the protocol, no trailing slash) and that your token hasn't expired.
+Paste these three lines — substituting your actual values:
+
+```copy-code
+export SISENSE_BASE_URL="https://{your-sisense-host}"
+export SISENSE_EMAIL="{your-full-login-email}"
+export SISENSE_PASSWORD='{your-password}'
+```
+
+Save and exit: `Ctrl+O`, `Enter`, `Ctrl+X`. Then lock down the file:
+
+```copy-code
+chmod 600 ~/.sigma-migration/sisense.env
+```
+
+`SISENSE_BASE_URL` is the host with **no trailing slash**. For a cloud-hosted tenant it looks like `https://{your-tenant}.sisense.com`. `SISENSE_EMAIL` must be the full email address you use to log into Sisense — a bare username will be rejected.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Use single quotes around the password value (<code>'your-password'</code>) unless the password itself contains a single quote. Single quotes prevent shell expansion — characters like <code>$</code>, <code>&</code>, and backticks are treated literally. If the password contains a single quote, use double quotes and escape any <code>$</code> with a backslash (e.g., <code>"my\$pass"</code>).
+</aside>
+
+Verify auth works by running the skill's own auth script — it logs in and returns a token:
+
+```copy-code
+source ~/.sigma-migration/sisense.env && eval "$(bash ~/.claude/skills/sisense-to-sigma/scripts/sisense-auth.sh)" && curl -s -H "Authorization: Bearer ${SISENSE_API_TOKEN}" "${SISENSE_BASE_URL}/api/v1/dashboards?fields=oid,title" | python3 -c 'import sys,json; [print(d["oid"], "-", d["title"]) for d in json.load(sys.stdin)]'
+```
+
+You should see one line per dashboard. If the command returns nothing or a `401`: double-check `SISENSE_BASE_URL` (include the protocol, no trailing slash) and your email and password.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Sisense API tokens don't expire by default — but an admin can revoke them. If you see <code>401 Unauthorized</code> on a token that previously worked, generate a new one and update <code>SISENSE_TOKEN</code> in <code>~/.sigma-migration/env</code>.
+<strong>NOTE:</strong><br> The skill mints a fresh Sisense bearer token from your email and password each time it runs. You do not need to generate or manage API tokens manually.
 </aside>
 
 ![divider](assets/horizonalline.png)
 
-**Step 9: Verify Claude Code can invoke the skill.**<br>
+**Step 9: Run the environment bootstrap.**<br>
+This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, confirms that credentials are readable in `~/.sigma-migration/env`, and writes the sentinel file the skill gates on before starting. Run it once per machine:
+
+```copy-code
+bash ~/.claude/skills/sisense-to-sigma/scripts/bootstrap.sh
+```
+
+A successful run ends with:
+
+```
+bootstrap: COMPLETE — doctor green; sentinel written to ~/.sigma-migration/bootstrap.json.
+```
+
+If the output flags missing credentials, check your `~/.sigma-migration/env` entries and run `bootstrap.sh` again. If a runtime dependency fails to install, follow the message's suggestion (usually a Homebrew install) and rerun.
+
+![divider](assets/horizonalline.png)
+
+**Step 10: Verify Claude Code can invoke the skill.**<br>
 Type `claude` in your terminal to start Claude Code, then invoke the skill:
 
 ```copy-code
@@ -216,12 +260,17 @@ claude
 /sisense-to-sigma
 ```
 
+<img src="assets/mfss_04.png" width="800"/>
+
 Claude should start reading the reference files and ask what dashboard you want to convert.
 
-Pause at that prompt — we'll hand it everything in one shot via the kickoff prompt in `Run the Conversion`:
+Pause at this prompt — we'll hand it everything in one shot via the kickoff prompt in the `Run the Conversion` section later:
 
-<!-- mfss_04.png — screenshot of Claude Code after /sisense-to-sigma is invoked (TBD) -->
-<!-- <img src="assets/mfss_04.png" width="800"/> -->
+<img src="assets/mfss_04a.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming. Alternatively, press <code>Shift+Tab</code> once to switch to <code>auto mode on</code> for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -346,6 +395,8 @@ Define the three relationships (all many-to-one from COMMERCE):
 - `COMMERCE."Category ID"` → `CATEGORY."Category ID"`
 - `COMMERCE."Country ID"` → `COUNTRY."Country ID"`
 
+Name the model `Sample ECommerce` and save.
+
 **Step 2: Create the dashboard and add widgets.**
 
 `+ New Dashboard`. Name it `ECommerce Overview (Live)` and add the following six widgets using the `Sample ECommerce` model. All are built in Sisense's GUI widget builder — no custom scripts.
@@ -414,8 +465,7 @@ Sisense Migration Demo
 **Step 2: Grab the folder ID.**<br>
 Open the folder. The ID is the last segment of the URL — a short alphanumeric string, 21 characters. Copy it from the address bar and keep it on the clipboard for the next section.
 
-<!-- mfss_05.png — screenshot of the Sigma folder URL showing the folder ID (TBD) -->
-<!-- <img src="assets/mfss_05.png" width="800"/> -->
+<img src="assets/mfss_05.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> The skill's prompt may refer to the folder "UUID". Paste the value from the URL exactly as it appears; the skill accepts that form directly.
@@ -425,7 +475,7 @@ Open the folder. The ID is the last segment of the URL — a short alphanumeric 
 <!-- END OF SECTION-->
 
 ## Run the Conversion
-Duration: 3
+Duration: 20
 
 The skill can run interactively, asking for the dashboard, warehouse, and Sigma destination one at a time. For a known target — like ours — it's faster to give Claude the entire job in one message. The skill recognizes a structured kickoff prompt and walks the pipeline directly.
 
@@ -439,7 +489,15 @@ claude
 /sisense-to-sigma
 ```
 
-When Claude finishes loading the skill and asks what you want to convert, paste the block below. **Substitute your own values where the placeholders are:**
+Claude is asking how we want to proceed. Select option 2:
+
+`2. Yes, allow reading from sisense-migration/ from this project.`
+
+When Claude finishes asking for various checks and permissions it will stop here (or similar):
+
+<img src="assets/mfss_05a.png" width="800"/>
+
+Paste the block below. **Substitute your own values where the placeholders are:**
 
 - `Dashboard OID` — the Sisense dashboard OID from the URL (the alphanumeric segment after `/app/main#/dashboards/`)
 - `SIGMA_CONNECTION_ID` — your Snowflake connection ID from Sigma's `Administration` > `Connections`
@@ -449,7 +507,7 @@ When Claude finishes loading the skill and asks what you want to convert, paste 
 Run /sisense-to-sigma on the following. Walk every phase in SKILL.md end-to-end and stop only if a hard gate fails.
 
 Sisense
-- Credentials sourced from ~/.sigma-migration/env (SISENSE_BASE, SISENSE_TOKEN)
+- Credentials sourced from ~/.sigma-migration/sisense.env (SISENSE_BASE_URL, SISENSE_EMAIL, SISENSE_PASSWORD)
 - Dashboard OID: {your-dashboard-oid}
 
 Warehouse — same on both sides
@@ -469,17 +527,17 @@ Options
 Don't declare GREEN until the parity gate passes and the visual-QA loop passes.
 ```
 
+For example:
+<img src="assets/mfss_05b.png" width="800"/>
+
 Claude reads the block, mints a fresh Sigma token from `~/.sigma-migration/env`, sources the Sisense credentials, and walks the phases end-to-end. The rest of the run is hands-off until a gate or decision point.
-
-<!-- mfss_06.png — screenshot of Claude Code kickoff prompt result / skill loading (TBD) -->
-<!-- <img src="assets/mfss_06.png" width="800"/> -->
-
-<aside class="positive">
-<strong>NOTE:</strong><br> The skill reuses Sigma credentials captured by <code>setup.rb</code> — they live at <code>~/.sigma-migration/env</code> and the skill mints a fresh <code>SIGMA_API_TOKEN</code> from them at runtime. That's why the kickoff prompt says <code>mint from ~/.sigma-migration/env</code> instead of pasting a token. No manual Sigma-token wrangling per run.
-</aside>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming. Alternatively, press <code>Shift+Tab</code> once to switch to <code>auto mode on</code> for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
+</aside>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The skill reuses the Sigma credentials written to <code>~/.sigma-migration/env</code> during Install and mints a fresh <code>SIGMA_API_TOKEN</code> from them at runtime. That's why the kickoff prompt says <code>mint from ~/.sigma-migration/env</code> instead of pasting a token. No manual Sigma-token wrangling per run.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -490,8 +548,7 @@ Duration: 10
 
 When the migration completes, Claude prints a final summary covering the whole pipeline — every phase's result, the visual-QA outcome, the hard-gate verdict, and the URLs of the new Sigma data model and workbook:
 
-<!-- mfss_07.png — screenshot of the final Claude Code migration summary (TBD) -->
-<!-- <img src="assets/mfss_07.png" width="800"/> -->
+<img src="assets/mfss_07.png" width="800"/>
 
 The summary walks through six phases plus a visual-QA pass:
 
@@ -502,17 +559,23 @@ The summary walks through six phases plus a visual-QA pass:
 - **Phase 4 — Workbook build.** Per Sisense widget (indicator / line / bar / pie / pivot / table / map / etc.), builds a matching Sigma element. Records the per-widget chart-kind decisions and any fallbacks for viz types Sigma doesn't natively support.
 - **Phase 5 — Layout.** Maps Sisense's dashboard grid onto Sigma's 24-col grid. Dashboard filter bindings become Sigma controls wired to the relevant elements.
 - **Phase 5b — Visual QA.** Renders the workbook's pages as PNGs and lints them — no overlapping tiles, no clipped widget titles, no dead zones, no orphan controls.
-- **Phase 6 — Parity + hard gate.** Queries each Sigma element and compares against the Sisense widget's aggregation. Each widget reports `PASS within tolerance` or `FAIL`; the gate is GREEN only when all widgets pass.
+- **Phase 6 — Parity + hard gate.** Queries each Sigma element and compares against the Sisense widget's aggregation. 
+
+Each widget reports `PASS within tolerance` or `FAIL`; the gate is GREEN only when all widgets pass. 
+
+If the gate shows `BLOCKED — snow connection not configured`, the skill couldn't run the warehouse-side SQL comparison because the Snowflake CLI (`snow`) isn't configured on the machine — this is separate from the Sigma connection ID in the kickoff prompt. For a Live Connect demo where Sisense and Sigma both read the same live tables, this gate is confirmatory; the conversion is structurally correct. 
+
+To unblock it fully, install and configure the [Snowflake CLI](https://docs.snowflake.com/en/developer-guide/snowflake-cli/index) (`pip install snowflake-cli-labs`, then `snow connection add`) and re-run `verify_parity.py` directly.
+
+Alternatively, if you have Homebrew installed: `brew install snowflake-cli-labs`.
 
 Open the new workbook in Sigma to see the migrated dashboard:
 
-<!-- mfss_08.png — screenshot of the new Sigma workbook (TBD) -->
-<!-- <img src="assets/mfss_08.png" width="800"/> -->
+<img src="assets/mfss_08.png" width="800"/>
 
 Open the data model to see how the converter wired up the tables and relationships:
 
-<!-- mfss_09.png — screenshot of the new Sigma data model (TBD) -->
-<!-- <img src="assets/mfss_09.png" width="800"/> -->
+<img src="assets/mfss_09.png" width="800"/>
 
 **Hand-polish items the skill flags rather than silently working around:**
 
@@ -568,9 +631,9 @@ The following is a "grab bag" of things that might come up during real conversio
 
 - **`python3 --version` reports 3.9.x and the skill refuses to run:**<br> macOS's stock Python is too old for the skill. Install Python 3.10+ via Homebrew (`brew install python@3.12`) or [python.org](https://www.python.org/downloads/), then use `python3.12 -m pip install` explicitly for any helpers.
 
-- **Sisense REST calls return `401 Unauthorized`:**<br> Your API token is invalid, expired, or the token owner's account was deactivated. Generate a new token under `Admin` > `REST API`, update `SISENSE_TOKEN` in `~/.sigma-migration/env`, then `source ~/.sigma-migration/env` in your current shell before retrying.
+- **Sisense REST calls return `401 Unauthorized`:**<br> The credentials in `~/.sigma-migration/sisense.env` are wrong or the account has been deactivated. Double-check `SISENSE_BASE_URL`, `SISENSE_EMAIL`, and `SISENSE_PASSWORD`, re-run the smoke test from the Install section, then retry the skill.
 
-- **Discovery returns an empty widget list for a dashboard you can see in the UI:**<br> Either the dashboard OID is wrong (re-check the URL) or the token owner doesn't have permission to view that dashboard. Use a token owned by an account with at least viewer access to the dashboard's folder.
+- **Discovery returns an empty widget list for a dashboard you can see in the UI:**<br> Either the dashboard OID is wrong (re-check the URL) or the account in `SISENSE_EMAIL` doesn't have permission to view that dashboard. Confirm the account has at least viewer access to the dashboard's folder.
 
 - **Skill pauses at a "converter MCP gate" mid-run:**<br> The conversion delegates the data-model translation to a separate MCP server (`sigma-data-model-mcp`). If it isn't installed locally, the skill stops at the gate. Pick option `6. Chat about this` and tell Claude:<br>
  <code>Clone twells89/sigma-data-model-mcp into ~/Desktop/sigma-data-model-mcp for me, then run `npm install && npm run build` in that directory. Once the build is done, come back to the gate and pick option 1.</code><br>
@@ -588,6 +651,8 @@ The following is a "grab bag" of things that might come up during real conversio
 
 - **SSL `CERTIFICATE_VERIFY_FAILED` from a corporate proxy:**<br> If your machine sits behind a TLS-inspection proxy (Netskope, Zscaler, Cisco Umbrella, Cloudflare WARP), Python may reject the rewritten cert chain even though `curl` works. Pull the proxy's root certificate out of Keychain and combine it with the macOS roots into a PEM Python can read, then point Python at it via `SSL_CERT_FILE` in `~/.sigma-migration/env`. (Same recipe as the other migration QuickStarts in this family.)
 
+- **Parity gate shows `BLOCKED — snow connection not configured`:**<br> The skill's warehouse-side parity check (`verify_parity.py`) requires the Snowflake CLI (`snow`) — a separate tool from the Sigma connection ID you provided in the kickoff prompt. To unblock it: install the Snowflake CLI (`pip install snowflake-cli-labs`), run `snow connection add` to configure your Snowflake account credentials, then run `python3 scripts/verify_parity.py checks.json` from your skill workdir. For a Live Connect migration where Sisense and Sigma both read the same live warehouse tables, this gate is confirmatory — the conversion output is correct without it.
+
 - **Many `Bash command — Contains shell syntax that cannot be statically analyzed — Do you want to proceed?` prompts during the run:**<br> The skill fires `eval "$(...)"` patterns to inject tokens dynamically. Click `1. Yes` on each — it's expected behavior, not a misconfiguration. After the run, you can use the `/fewer-permission-prompts` skill to scan the transcript and add those patterns to your `.claude/settings.local.json` so subsequent runs are silent.
 
 ![Footer](assets/sigma_footer.png)
@@ -602,7 +667,7 @@ The patterns worth carrying into your next migration:
 
 - **Two skills, one workflow** — `sisense-assessment` scopes and prioritizes the instance; `sisense-to-sigma` converts and verifies. The same shape applies whether you're migrating one dashboard or every dashboard reading from a shared ElastiCube.
 - **Live Connect is the straight path** — when Sisense already runs in Live Connect mode against your warehouse, there's no data to replicate. The skill reads the same warehouse columns from both sides and the parity check tightens to near-zero tolerance. ElastiCube models require one more step (verifying the ElastiCube's custom SQL logic translates cleanly), but the pipeline handles both.
-- **Single-prompt kickoff** — once the warehouse data is in place and `setup.rb` has captured your Sigma credentials, the entire migration is one paste. The kickoff prompt reads the dashboard OID + warehouse coordinates + options in one shot, and the skill walks through every phase end-to-end without further interaction unless a gate genuinely needs your call.
+- **Single-prompt kickoff** — once the warehouse data is in place and credentials are in `~/.sigma-migration/env`, the entire migration is one paste. The kickoff prompt reads the dashboard OID + warehouse coordinates + options in one shot, and the skill walks through every phase end-to-end without further interaction unless a gate genuinely needs your call.
 - **Dashboard filters become Sigma controls** — every Sisense dashboard filter is translated to a Sigma control and wired to the relevant elements automatically. If you've built filter-driven dashboards in Sisense, the Sigma result is already interactive — no manual control wiring needed for standard filter types.
 - **Parity as proof** — the Sisense-vs-Sigma comparison is what makes the result shippable. Without it you're spot-checking; with it you have evidence every measure lines up. When both sides read from the same live warehouse (as in this demo), parity is tight. A real engagement can apply a documented tolerance and still gate honestly.
 
