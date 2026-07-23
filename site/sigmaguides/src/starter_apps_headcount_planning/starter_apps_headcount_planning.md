@@ -1,19 +1,19 @@
 author: pballai
 id: starter_apps_headcount_planning
 summary: starter_apps_headcount_planning
-categories: starterapps
+categories: apptemplates
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-16
+lastUpdated: 2026-07-27
 
-# Headcount Planning Starter App
+# Headcount Planning App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
 
 The **Headcount Planning** app — called **Headway** — gives workforce planning teams a single surface to review their current roster, model headcount scenarios against revenue targets, stage new hires and backfills, and submit a fiscal year plan for leadership approval. Monthly compensation projections update automatically as changes are made, and an AI advisor is available throughout the planning process.
 
@@ -26,14 +26,14 @@ HR business partners, finance teams, and workforce planning managers evaluating 
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Headcount Planning Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Headcount Planning App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables to store roster changes and plan submissions. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for the Plan Advisor chat assistant and AI-generated manager recommendations. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn
@@ -463,7 +463,7 @@ No formula changes are needed — the app reads from the ROSTER table and applie
 ## What We've Covered
 Duration: 5
 
-The Headcount Planning Starter App demonstrates how Sigma's native features — input tables, controls, conditional formatting, and AI — can be composed into a full workforce planning workflow without external tools or custom code.
+The Headcount Planning App Template demonstrates how Sigma's native features — input tables, controls, conditional formatting, and AI — can be composed into a full workforce planning workflow without external tools or custom code.
 
 Three input tables — ROSTER, NEW_HIRES, and TERMINATIONS — feed a computed ROSTER_SOURCE that every visualization reads from, keeping the baseline stable while staged changes accumulate. Controls drive scenario calculations dynamically. Monthly compensation projections are derived from the same data as the planning surface, so they update in real time as changes are staged. The recommendation formula gives planners a quantified starting point tied directly to their revenue target — not a static benchmark.
 

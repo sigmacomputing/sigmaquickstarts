@@ -1,19 +1,19 @@
 author: pballai
 id: starter_apps_shift_management
 summary: starter_apps_shift_management
-categories: starterapps
+categories: apptemplates
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-22
+lastUpdated: 2026-07-27
 
-# Shift Management Starter App
+# Shift Management App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
 
 The **Shift Management** app — called **Clockwork** — gives restaurant and hourly-workforce teams a single surface for building weekly schedules, tracking attendance, logging clock-in and clock-out times, and monitoring labor costs against budget. Managers can spot coverage gaps at a glance, fill open shifts, flag attendance issues in real time, and get an AI-generated briefing on the week's operational priorities. The same structure adapts to any team that manages shift-based scheduling — retail, hospitality, healthcare, or operations.
 
@@ -26,14 +26,14 @@ Restaurant managers and operations leads evaluating Sigma for shift scheduling a
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Shift Management Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Shift Management App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for the input tables that store shift definitions, assignments, attendance records, and budget data. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for the Agent Summary on the Labor Performance page. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn
@@ -521,7 +521,7 @@ The **Ai Weekly Ops Prompt** control on the Data page's `AI` tab can be edited t
 ## What We've Covered
 Duration: 3
 
-The Shift Management Starter App demonstrates how Sigma's native features — input tables, `Lookup` joins, computed cost formulas, and `CallText` for AI-generated summaries — can be composed into a full scheduling and workforce management system without external tools or custom application code.
+The Shift Management App Template demonstrates how Sigma's native features — input tables, `Lookup` joins, computed cost formulas, and `CallText` for AI-generated summaries — can be composed into a full scheduling and workforce management system without external tools or custom application code.
 
 The scheduling layer is worth examining closely. Rather than tracking open shifts with nulls, Clockwork uses a placeholder employee unioned into the employee table — every slot in the schedule grid has a row, either assigned to a real employee or to "Open Shifts." This makes coverage gaps visible in the pivot table without special filtering, and means the same `CountIf` that drives the header KPI also feeds the AI briefing.
 

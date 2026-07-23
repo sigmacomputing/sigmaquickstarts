@@ -1,19 +1,19 @@
 author: pballai
 id: starter_apps_budget_variance
-summary: Explore Sigma's Budget Variance Analysis Starter App — a ready-to-use finance app for tracking actuals against budget, documenting variance commentary, building AI-assisted reforecast scenarios, and routing them through executive approval.
-categories: starterapps
+summary: Explore Sigma's Budget Variance Analysis App Template — a ready-to-use finance app for tracking actuals against budget, documenting variance commentary, building AI-assisted reforecast scenarios, and routing them through executive approval.
+categories: apptemplates
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-12
+lastUpdated: 2026-07-27
 
-# Budget Variance Analysis Starter App
+# Budget Variance Analysis App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
 
 The **Budget Variance Analysis** app gives finance and FP&A teams a structured end-to-end workflow: identify where actuals diverged from budget, document the explanation, build a reforecast scenario with AI-assisted recommendations, and route it through executive sign-off — all within a single connected workbook. Once approved, the new baseline is locked and the cycle resets for the next period.
 
@@ -26,14 +26,14 @@ Finance and FP&A teams evaluating or adopting Sigma for variance and reforecast 
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Budget Variance Analysis Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Budget Variance Analysis App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables that store scenario data, analyst commentary, and budget overrides. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for the inline AI reforecast and approval recommendations. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn

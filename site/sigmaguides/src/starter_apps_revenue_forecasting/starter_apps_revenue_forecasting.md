@@ -1,19 +1,19 @@
 author: pballai
 id: starter_apps_revenue_forecasting
-summary: Explore Sigma's Revenue Forecasting Starter App — a ready-to-use finance app for building, managing, and comparing AI-assisted revenue forecast scenarios against live data.
-categories: starterapps
+summary: Explore Sigma's Revenue Forecasting App Template — a ready-to-use finance app for building, managing, and comparing AI-assisted revenue forecast scenarios against live data.
+categories: apptemplates
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-15
+lastUpdated: 2026-07-27
 
-# Revenue Forecasting Starter App
+# Revenue Forecasting App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
 
 The **Revenue Forecasting** app gives finance and FP&A teams a structured way to build named forecast scenarios, enter projected revenue and cost values by product and time period, and compare multiple forecasts side by side — all against live data. AI-generated summaries surface performance and forecast context automatically, keeping insight alongside the numbers.
 
@@ -26,14 +26,14 @@ Finance and FP&A teams evaluating or adopting Sigma for planning workflows. Solu
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Revenue Forecasting Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Revenue Forecasting App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables to store forecast data. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for AI summaries and the Forecast Agent. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn
@@ -478,11 +478,11 @@ The only manual updates needed are column name references in the input table if 
 ## What We've Covered
 Duration: 5
 
-The Revenue Forecasting Starter App demonstrates what's possible when Sigma's native capabilities — input tables, joins, unions, and AI — are composed into a single, self-contained planning workflow. The app ships ready to use and ready to adapt.
+The Revenue Forecasting App Template demonstrates what's possible when Sigma's native capabilities — input tables, joins, unions, and AI — are composed into a single, self-contained planning workflow. The app ships ready to use and ready to adapt.
 
 The forecast scaffold pattern — cross-joining scenario configuration against a date spine and product dimension — is reusable in any planning context where structured input needs to happen across a defined grid. The union display layer keeps the data model clean by merging actuals and forecast data at the visualization layer, not the source layer. Storing AI prompts as editable controls puts meaningful tuning in the hands of business users without requiring workbook changes.
 
-These patterns aren't specific to revenue forecasting. They apply directly to budgeting, headcount planning, demand forecasting, and any workflow where data entry needs to sit alongside live reporting data — which is exactly what the rest of the Starter Apps series demonstrates.
+These patterns aren't specific to revenue forecasting. They apply directly to budgeting, headcount planning, demand forecasting, and any workflow where data entry needs to sit alongside live reporting data — which is exactly what the rest of the App Templates series demonstrates.
 
 **Additional Resource Links**
 
