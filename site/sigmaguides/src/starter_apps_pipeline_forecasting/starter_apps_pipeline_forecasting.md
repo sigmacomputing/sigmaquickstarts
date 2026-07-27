@@ -1,26 +1,26 @@
 author: pballai
 id: starter_apps_pipeline_forecasting
 summary: starter_apps_pipeline_forecasting
-categories: starterapps
+categories: apptemplates
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-07-15
+tags: default
+lastUpdated: 2026-07-27
 
-# Pipeline Forecasting Starter App
+# Pipeline Forecasting App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
 
 The **Pipeline Forecasting** app gives sales reps and managers a single workspace to categorize open deals, submit forecast calls (Gut, Commit, Best Case), track quota coverage, and monitor how the forecast has moved week over week — all against live CRM data. An AI-generated summary surfaces the rep's current position and any deals that need attention, and a configurable staleness threshold flags deals that haven't been updated within the expected cadence.
 
 This QuickStart walks through how the app works as a user, how it's designed under the hood, and how to connect it to your own data.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Starter Apps are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
+<strong>NOTE:</strong><br> App Templates are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
 </aside>
 
 ### Target Audience
@@ -30,14 +30,14 @@ Sales representatives, frontline managers, and revenue operations teams evaluati
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Pipeline Forecasting Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Pipeline Forecasting App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables to store forecast submissions and quota data. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for the AI forecast summary on the Home page. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn

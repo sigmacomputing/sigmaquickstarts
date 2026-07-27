@@ -1,19 +1,19 @@
 author: pballai
 id: starter_apps_project_management
-summary: Explore Sigma's Project Management Starter App — a ready-to-use ops app for planning milestones, tracking execution, resolving blockers, and communicating project health across your portfolio.
-categories: starterapps
+summary: Explore Sigma's Project Management App Template — a ready-to-use ops app for planning milestones, tracking execution, resolving blockers, and communicating project health across your portfolio.
+categories: apptemplates
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-07-16
+tags: default
+lastUpdated: 2026-07-27
 
-# Project Management Starter App
+# Project Management App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own projects without starting from scratch.
 
 The **Project Management** app — built on the "Throughline" sample — gives project managers a single place to plan milestones, track execution, resolve blockers, and communicate status to stakeholders. Every page is connected: changes you make on one surface are immediately reflected everywhere else. AI-generated project summaries and blocker analysis surface context automatically, alongside the work.
 
@@ -26,14 +26,14 @@ Project managers, operations teams, and program managers evaluating or adopting 
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Project Management Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Project Management App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables to store projects, milestones, and tickets. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for AI project summaries and blocker analysis. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn
@@ -452,7 +452,7 @@ No formula changes are needed — the app is parameterized by the data in the in
 ## What We've Covered
 Duration: 5
 
-The Project Management Starter App demonstrates what's possible when Sigma's native input tables are composed into a multi-surface operational workflow. Projects, milestones, and tickets live in three connected input tables — changes on any one propagate to every page in real time. The Kanban board, milestone plan, portfolio view, and ticket detail drill-down all draw from the same source of truth.
+The Project Management App Template demonstrates what's possible when Sigma's native input tables are composed into a multi-surface operational workflow. Projects, milestones, and tickets live in three connected input tables — changes on any one propagate to every page in real time. The Kanban board, milestone plan, portfolio view, and ticket detail drill-down all draw from the same source of truth.
 
 The Lookup-derived field pattern — storing only foreign keys and resolving display values at query time — keeps the data model clean and prevents the denormalization drift that plagues spreadsheet-based project tracking. The conditional format on the Plan page surfaces overdue work automatically without any user action.
 

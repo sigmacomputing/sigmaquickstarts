@@ -1,26 +1,26 @@
 author: pballai
 id: starter_apps_marketing_analytics
 summary: starter_apps_marketing_analytics
-categories: starterapps
+categories: apptemplates
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-07-14
+tags: default
+lastUpdated: 2026-07-27
 
-# Marketing Analytics Starter App
+# Marketing Analytics App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
 
 The **Marketing Analytics** app gives marketing teams a unified workspace to monitor campaign performance, track budget pacing across channels, build customer segments for targeted outreach, and analyze A/B test results — all against live data. An AI-generated morning brief surfaces the most important signals at the start of each day, and AI-powered statistical analysis helps teams determine when experiment results are ready to act on.
 
 This QuickStart walks through how the app works as a user, how it's designed under the hood, and how to connect it to your own data.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Starter Apps are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
+<strong>NOTE:</strong><br> App Templates are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
 </aside>
 
 ### Target Audience
@@ -30,13 +30,13 @@ Marketing analysts, campaign managers, and growth teams evaluating or adopting S
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Marketing Analytics Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Marketing Analytics App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>AI provider configured for your organization</strong> — required for the Morning Brief AI summary and A/B test analysis. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn

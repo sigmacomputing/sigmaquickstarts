@@ -1,26 +1,26 @@
 author: pballai
 id: starter_apps_demand_planning
-summary: Explore Sigma's Demand Planning Starter App — a ready-to-use operations app for building demand forecasts by product and time period, resolving outliers, and publishing approved plans to downstream stakeholders.
-categories: starterapps
+summary: Explore Sigma's Demand Planning App Template — a ready-to-use operations app for building demand forecasts by product and time period, resolving outliers, and publishing approved plans to downstream stakeholders.
+categories: apptemplates
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: 
-lastUpdated: 2026-07-11
+tags: default
+lastUpdated: 2026-07-27
 
-# Demand Planning Starter App
+# Demand Planning App Template
 
 ## Overview
 Duration: 5
 
-Sigma's **Starter Apps** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
+Sigma's **App Templates** are ready-to-use applications built on Sigma's native features and connected to sample data. Each one ships fully functional — you can explore it immediately, learn how it's built by switching to edit mode, and adapt it to your own data and workflows without starting from scratch.
 
 The **Demand Planning** app gives supply chain and operations teams a single workspace to create demand forecasts, incorporate planner assumptions, resolve statistical outliers, and publish approved plans to stores or downstream systems — all against live data. A moving average baseline is generated automatically, and AI surfaces cycle health, exception rationale, and operational impact at each stage of the workflow.
 
 This QuickStart walks through how the app works as a user, how it's designed under the hood, and how to connect it to your own data.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Starter Apps are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
+<strong>NOTE:</strong><br> App Templates are actively developed and improved by Sigma. The screens, field names, and workflow steps shown in this QuickStart reflect the app at the time of publication and may differ slightly from what you see in your environment.
 </aside>
 
 ### Target Audience
@@ -30,14 +30,14 @@ Supply chain, operations, and planning teams evaluating or adopting Sigma for de
 
 <ul>
   <li>Access to a Sigma environment.</li>
-  <li>The Demand Planning Starter App available in your org — find it under <code>Templates</code> > <code>Starter Apps</code>.</li>
+  <li>The Demand Planning App Template available in your org — find it under <code>Templates</code> > <code>App Templates</code>.</li>
   <li><strong>Write access enabled on a connection</strong> — required for input tables to store planning data. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
   <li><strong>AI provider configured for your organization</strong> — required for AI cycle insights, outlier rationale, and operational impact summaries. See <a href="https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization">Configure AI features for your organization</a></li>
   <li>Some familiarity with Sigma workbooks is helpful but not required.</li>
 </ul>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> If you don't see Starter Apps in your Templates section, contact your Sigma administrator to confirm availability in your org.
+<strong>NOTE:</strong><br> If you don't see App Templates in your Templates section, contact your Sigma administrator to confirm availability in your org.
 </aside>
 
 ### What You'll Learn
