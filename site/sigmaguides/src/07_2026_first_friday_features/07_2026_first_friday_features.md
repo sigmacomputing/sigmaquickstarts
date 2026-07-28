@@ -20,7 +20,7 @@ July 31, 2026 changes:
 
 Publish on August 7
 
- <img src="assets/heart_icon.png" width="25"/>
+<img src="assets/heart_icon.png" width="25"/>
 -->
 
 ## Overview 
@@ -61,8 +61,10 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
-### AI spend templates (GA)
-Three new workbook templates — Claude, OpenAI, and Snowflake — visualize the costs associated with AI tool usage across your organization. Use them as a starting point for internal AI cost tracking and governance reporting.
+### AI spend templates (GA) <img src="assets/heart_icon.png" width="25"/>
+Three new workbook templates — Claude, OpenAI, and Snowflake — visualize the costs associated with AI tool usage across your organization. Use them as a starting point for internal AI cost tracking and governance reporting:
+
+<img src="assets/fff_07_01.png" width="800"/>
 
 ### Custom email branding and SMTP configuration relocation (GA)
 Email branding settings and SMTP configuration have moved to the **Email customization** tab under `Administration` > `Scheduled exports & actions`. Functionality is unchanged.
@@ -70,10 +72,10 @@ Email branding settings and SMTP configuration have moved to the **Email customi
 ### Deploy folders to tenants (Beta) <img src="assets/heart_icon.png" width="25"/>
 Deploy a folder and all its contents — workbooks, reports, and data models — to tenant organizations in a single operation.
 
-For more information, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
-
 **WHY IT MATTERS:**
 For teams managing content across multiple tenant organizations, folder-level deployment replaces a series of individual document deployments with one governed action — reducing the overhead of keeping tenant environments in sync as content evolves.
+
+For more information, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
 
 ### Deploy reports to tenant organizations (Beta)
 Reports can now be included in deployment policies, allowing them to be pushed to tenant organizations alongside workbooks and data models.
@@ -102,15 +104,19 @@ Deployment policies now display which dependent documents will be deployed along
 Duration: 20
 
 ### AI usage dashboard (GA) <img src="assets/heart_icon.png" width="25"/>
-A new dashboard tracks token consumption, conversations, engagement, and model usage across your organization. Includes an AI analyst agent for querying usage data in natural language.
+A new dashboard tracks token consumption, conversations, engagement, and model usage across your organization. Includes an AI analyst agent for querying usage data in natural language:
 
-For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
+<img src="assets/fff_07_02.png" width="800"/>
 
 **WHY IT MATTERS:**
 As AI usage scales across teams, cost visibility becomes a governance requirement. The AI usage dashboard gives administrators a live view of consumption by model, user, and feature — the audit trail enterprises need before expanding AI access broadly.
 
+For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
+
 ### Natural language questions about usage data (GA)
-The Users and Document Activity dashboards now support AI agent queries, letting administrators ask questions about usage patterns in plain language. Requires a configured AI provider.
+The Users and Document Activity dashboards now support AI agent queries, letting administrators ask questions about usage patterns in plain language. Requires a configured AI provider:
+
+<video src="assets/ai_user2.mp4"></video>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -121,14 +127,22 @@ Duration: 20
 ### CSV files in lineage endpoints (GA)
 List lineage endpoints now include uploaded CSV files as data sources. CSV entries display with a `csv-upload` type and include a `csvId` field.
 
+For more information, see [List lineage tree](https://help.sigmacomputing.com/reference/list-lineage-tree) and [List data model lineage tree](https://help.sigmacomputing.com/reference/list-data-model-lineage-tree)
+
 ### Export endpoint enhancements (GA)
 The workbook and report send/schedule endpoints now support Cc and Bcc recipients, adding flexibility to automated report distribution.
+
+For more information, see [Send workbook](https://help.sigmacomputing.com/reference/send-workbook) and [Send report](https://help.sigmacomputing.com/reference/send-report)
 
 ### List connection paths filtering (GA)
 The connection paths endpoint now supports filtering by `connectionId`, making it easier to scope path queries to a specific connection.
 
+For more information, see [List connection paths](https://help.sigmacomputing.com/reference/list-connection-paths)
+
 ### Revoke user OAuth tokens endpoint (GA)
 A new `POST /v2/members/:memberId/revoke` endpoint allows administrators to revoke a member's OIDC and warehouse connection tokens without interrupting active sessions.
+
+For more information, see [Revoke member tokens](https://help.sigmacomputing.com/reference/revoke-member-tokens)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -137,13 +151,21 @@ A new `POST /v2/members/:memberId/revoke` endpoint allows administrators to revo
 Duration: 20
 
 **1:** Restored documentation MCP server functionality.
+
 **2:** Fixed inactive version tag timestamps to show correct dates.
+
 **3:** Preserved element layout positions when copying/pasting multiple elements.
+
 **4:** Resolved Snowflake Cortex Agent warehouse selection issues.
+
 **5:** Improved tooltip theme setting compliance.
+
 **6:** Preserved code representation `id` values in data model creation endpoint.
+
 **7:** Linked input table creation now validates write-back schema compatibility before proceeding.
+
 **8:** Improved document deployment with custom page visibility for tenant organizations.
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -159,7 +181,9 @@ Duration: 20
 Duration: 20
 
 ### Add data model tables as data sources for agents (Beta)
-Data model tables can now be used as sources for Sigma agents, giving builders access to governed, semantic-layer data when configuring agent capabilities.
+Data model tables can now be used as sources for Sigma agents, giving builders access to governed, semantic-layer data when configuring agent capabilities:
+
+<img src="assets/fff_07_03.png" width="800"/>
 
 For more information, see [Build Sigma agents](https://help.sigmacomputing.com/docs/build-agents)
 
@@ -171,6 +195,8 @@ Sigma Assistant in build mode can now join tables on formulas and expressions, n
 
 ### Customize first agent message (Beta)
 Builders can now set a fixed greeting message for agents rather than relying on an AI-generated response. Configure agents to open every conversation with a specific, controlled message — such as "Welcome to Sigma!"
+
+<img src="assets/fff_07_04.png" width="800"/>
 
 For more information, see [Build agents](https://help.sigmacomputing.com/docs/build-agents#customize-the-first-agent-message)
 
@@ -186,7 +212,9 @@ For more information, see [Create actions that modify input table data](https://
 Duration: 20
 
 ### App templates (Beta)
-A growing library of pre-built app templates is now available, covering common business scenarios including Project Management, Revenue Forecasting, Demand Planning, and seven additional use cases. Use templates as a starting point and customize them to your data and workflows.
+A growing library of pre-built app templates is now available, covering common business scenarios including Project Management, Revenue Forecasting, Demand Planning, and seven additional use cases. Use templates as a starting point and customize them to your data and workflows:
+
+<img src="assets/fff_07_05.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -196,6 +224,8 @@ Duration: 20
 
 ### Databricks Unity Catalog metric views (Beta)
 Databricks Unity Catalog metric views are now browsable in Sigma's data catalog. Use metric views as sources for tables, pivots, and charts, and write custom SQL queries against them.
+
+For more information, see [Sigma integration with Databricks Unity Catalog](https://www.sigmacomputing.com/blog/sigma-integration-with-databricks-unity-catalog) and [Unity Catalog metric views](https://docs.databricks.com/aws/en/uc-semantics/metric-views/)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -265,7 +295,7 @@ Sigma Starter Apps are fully built, production-ready applications covering commo
 * [Project Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_project_management/index.html?index=..%2F..index#0)
 * [Territory Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_territory_management/index.html?index=..%2F..index#0)
 * [Ticket Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_ticket_management/index.html?index=..%2F..index#0)
-* Shift Management Starter App *(link coming soon)*
+* [Shift Management Starter App](https://quickstarts.sigmacomputing.com/guide/starter_apps_shift_management/index.html?index=..%2F..index#0)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -282,16 +312,20 @@ Duration: 20
 Duration: 20
 
 ### Button element icons (GA)
-Button and navigation elements now support icons alongside labels, or as a standalone replacement for text, giving interactive controls and navigation a more visual and compact appearance.
+Button and navigation elements now support icons alongside labels, or as a standalone replacement for text, giving interactive controls and navigation a more visual and compact appearance:
+
+<video src="assets/icons.mp4"></video>
 
 For more information, see [Button elements](https://help.sigmacomputing.com/docs/button-elements#customize-button-properties)
 
-### Convert workbooks to reports (Beta)
-Existing workbooks can now be converted to reports, enabling pixel-level formatting control and more reliable export behavior.
+### Convert workbooks to reports (Beta) <img src="assets/heart_icon.png" width="25"/>
+Existing workbooks can now be converted to reports, enabling pixel-level formatting control and more reliable export behavior:
+
+<img src="assets/fff_07_06.png" width="600"/>
 
 For more information, see [Convert workbooks to reports](https://help.sigmacomputing.com/docs/convert-workbooks-to-reports)
 
-### Enhanced export formatting (GA) <img src="assets/heart_icon.png" width="25"/>
+### Enhanced export formatting (GA)
 Excel and Google Sheets exports now preserve cell background color, text color, row banding, and font properties from the source workbook.
 
 **WHY IT MATTERS:**
