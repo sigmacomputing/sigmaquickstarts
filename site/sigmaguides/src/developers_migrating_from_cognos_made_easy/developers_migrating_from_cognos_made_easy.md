@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-07-25
+lastUpdated: 2026-07-29
 
 # Migrating From Cognos Made Easy
 
@@ -39,7 +39,7 @@ A pure lift-and-shift is the floor, not the ceiling. The same skill family suppo
 
 For the demonstration, we'll convert a report called `{REPORT_NAME}` — {N} visualizations built on a {data module / package} that reads from Snowflake. You'll see the discovery artifacts each phase produces, the converter's breakdown of how each Cognos expression mapped to a Sigma formula, the parity report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
 
-<!-- <img src="assets/mfcg_01.png" width="800"/> -->
+<img src="assets/mfcg_01.png" width="800"/>
 
 <aside class="positive">
 <strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills/tree/main/plugins/cognos-to-sigma">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
@@ -85,7 +85,7 @@ Duration: 5
 
 Here's how the two skills connect in a full migration — `cognos-assessment` hands the converter a ranked shortlist, and `cognos-to-sigma` produces the Sigma workbooks with a verified parity report:
 
-<!-- <img src="assets/mfcg_family_diagram.png" width="800"/> -->
+<img src="assets/mfcg_family_diagram.png" width="800"/>
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Each skill does one thing well — scoping and conversion. Pick the smallest set that fits your job, and don't run the conversion until you've confirmed the data is somewhere Sigma can actually read.
@@ -107,64 +107,182 @@ In this QuickStart we're in the first row — one Cognos report whose data modul
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Install the Skill
-Duration: 10
+## Install and Configure the Skill
+Duration: 15
 
-{PLACEHOLDER — mirror the Install section from the Sisense QS once TJ's Cognos plugin path is confirmed in the monorepo.}
+First we need to clone the skill's GitHub repository, configure Cognos REST credentials, and capture your Sigma credentials.
 
-The skill ships from `sigmacomputing/quickstarts-public`. Clone it once and the Claude Code symlink makes both skills available as slash commands.
+The two skills live in `sigmacomputing/quickstarts-public` under [cognos-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/cognos-migration-skills).
 
-### Clone the repo
+From a terminal, run each command below one at a time so you can confirm each step before moving on.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
+</aside>
+
+**Step 1: Create a local folder for the clone**
 
 ```copy-code
-git clone https://github.com/sigmacomputing/quickstarts-public.git ~/Desktop/quickstarts-public
+mkdir -p ~/quickstarts-public
 ```
 
-### Register the skills
+**Step 2: Move into the new folder**
 
 ```copy-code
-{COGNOS_SKILL_SYMLINK_COMMANDS}
+cd ~/quickstarts-public
 ```
 
-Confirm both skills are registered:
+**Step 3: Clone the repo without pulling any files yet**
 
 ```copy-code
-{COGNOS_SKILL_VERIFY_COMMAND}
+git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+```
+
+**Step 4: Fill in only the cognos-migration-skills folder**
+
+```copy-code
+git sparse-checkout set cognos-migration-skills
+```
+
+**Step 5: Symlink cognos-to-sigma into the Claude skills folder**
+
+```copy-code
+ln -s ~/quickstarts-public/cognos-migration-skills/cognos-to-sigma ~/.claude/skills/cognos-to-sigma
+```
+
+**Step 6: Symlink cognos-assessment**
+
+```copy-code
+ln -s ~/quickstarts-public/cognos-migration-skills/cognos-assessment ~/.claude/skills/cognos-assessment
+```
+
+Steps 5 and 6 should return with no error.
+
+![divider](assets/horizonalline.png)
+
+**Step 7: Add your Sigma API credentials.**<br>
+The Cognos skill uses `bootstrap.sh`.
+
+Because `bootstrap.sh` is non-interactive, write your Sigma API credentials directly to the shared env file it reads:
+
+```copy-code
+cat >> ~/.sigma-migration/env <<'EOF'
+export SIGMA_BASE_URL='https://api.us-a.aws.sigmacomputing.com'
+export SIGMA_CLIENT_ID='{your-client-id}'
+export SIGMA_CLIENT_SECRET='{your-client-secret}'
+EOF
+```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The env file lives at <code>~/.sigma-migration/env</code> in your home directory — not inside the project folder. It won't appear in VSCode Explorer, and that's expected. The migration scripts source it from that path automatically.
+</aside>
+
+Get `SIGMA_CLIENT_ID` and `SIGMA_CLIENT_SECRET` from Sigma under `Administration` > `Developer Access` > `Create New Client Credentials` (requires Admin role).
+
+For information, see: [Generate Sigma API client credentials](https://help.sigmacomputing.com/reference/generate-client-credentials)
+
+`SIGMA_BASE_URL` should match your deployment region — `https://aws-api.sigmacomputing.com` covers AWS US East.
+
+For GCP or Azure instances, see: [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
+
+![divider](assets/horizonalline.png)
+
+**Step 8: Capture a live Cognos session.**<br>
+IBM Cognos Analytics on Cloud uses IBMid SSO and Akamai bot protection — headless username/password login isn't available. The skill authenticates by replaying a live browser session you copy from DevTools.
+
+**8a. Copy your session from Chrome DevTools.**
+
+1. Log into Cognos in Chrome and open the `eCommerce Dashboard`.
+2. Open DevTools (`F12` or `Cmd+Option+I`) and click the `Network` tab.
+3. In the DevTools filter box, type `data?type=module` — this narrows the list to Cognos API calls and filters out page-load assets.
+4. Click any XHR request in the filtered list — for example one of the `data?type=module...` entries:
+
+For example, one of these:
+
+<img src="assets/mfcg_01a.png" width="800"/>
+
+5. Right-click the request → `Copy` → `Copy as cURL`:
+
+<img src="assets/mfcg_01b.png" width="500"/>
+
+6. From the copied cURL command, extract two values:
+   - The full `-b '...'` cookie string (the **entire** value — it must include the Akamai cookies `_abck`, `bm_sz`, `bm_sv`, `ak_bmsc`)
+   - The `X-XSRF-TOKEN` header value
+
+**8b. Save the cookie to disk.**
+
+```copy-code
+mkdir -p ~/.cognos && nano ~/.cognos/cookie.txt
+```
+
+Paste the entire cookie string on **one line**, save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
+
+**8c. Set the session env vars.**
+
+```copy-code
+export COG_BASE="https://{your-region}.ca.analytics.ibm.com/bi/v1"
+export COG_XSRF="{your-X-XSRF-TOKEN-value}"
+```
+
+Note the `/bi/v1` suffix on `COG_BASE` — it is required. For the IBM Cloud trial, the region subdomain is visible in your browser URL (e.g., `us3`).
+
+**8d. Smoke-test the session.**
+
+```copy-code
+eval "$(bash ~/.claude/skills/cognos-to-sigma/scripts/get-cognos-session.sh)" && cog_get "/objects/.public_folders/items?fields=defaultName,type,id"
+```
+
+You should see a JSON list of your Cognos content folders. A successful response confirms the skill can reach Cognos.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> CAoC sessions are short-lived — typically minutes. If the smoke test returns <code>HTTP 441</code>, re-login in the browser, perform one action inside Cognos, then immediately re-copy the cURL and repeat Steps 8b–8d with the fresh cookie. The <code>441</code> is Cognos's SSO re-auth signal, not a bug.
+</aside>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> On-premises Cognos deployments and some paid cloud tenants support a durable CA API key path that doesn't expire. If your organization uses a CA API key, use <code>scripts/cognos-apikey-session.sh</code> instead of <code>get-cognos-session.sh</code>. The IBMid SSO / browser-session path described here is the one required for IBM Cloud trials.
+</aside>
+
+![divider](assets/horizonalline.png)
+
+**Step 9: Run the environment bootstrap.**<br>
+This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, confirms that credentials are readable in `~/.sigma-migration/env`, and writes the sentinel file the skill gates on before starting. Run it once per machine:
+
+```copy-code
+bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
+```
+
+A successful run ends with:
+
+```
+bootstrap: COMPLETE — doctor green; sentinel written to ~/.sigma-migration/bootstrap.json.
+```
+
+If the output flags missing credentials, check your `~/.sigma-migration/env` entries and run `bootstrap.sh` again. If a runtime dependency fails to install, follow the message's suggestion (usually a Homebrew install) and rerun.
+
+![divider](assets/horizonalline.png)
+
+**Step 10: Verify Claude Code can invoke the skill.**<br>
+Type `claude` in your terminal to start Claude Code, then invoke the skill:
+
+```copy-code
+claude
+```
+
+```copy-code
+/cognos-to-sigma
 ```
 
 <!-- <img src="assets/mfcg_02.png" width="800"/> -->
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+Claude should start reading the reference files and ask what dashboard you want to convert.
 
-## Configure Credentials
-Duration: 10
-
-{PLACEHOLDER — mirror the credential setup from the Sisense QS, adapted for Cognos auth.}
-
-The skill reads credentials from `~/.sigma-migration/cognos.env`. Create the file:
-
-```copy-code
-COGNOS_BASE_URL={your-cognos-base-url}
-COGNOS_USERNAME={your-cognos-username}
-COGNOS_PASSWORD={your-cognos-password}
-COGNOS_NAMESPACE={your-cognos-namespace}
-```
-
-And Sigma's credentials in the shared env file:
-
-```copy-code
-SIGMA_API_TOKEN={your-sigma-api-token}
-SIGMA_BASE_URL=https://aws-api.sigmacomputing.com
-```
-
-### Smoke-test the Cognos connection
-
-```copy-code
-{COGNOS_AUTH_SMOKE_TEST_COMMAND}
-```
+Pause at this prompt — we'll hand it everything in one shot via the kickoff prompt in the `Run the Conversion` section later.
 
 <!-- <img src="assets/mfcg_03.png" width="800"/> -->
+
+<aside class="negative">
+<strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming. Alternatively, press <code>Shift+Tab</code> once to switch to <code>auto mode on</code> for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
+</aside>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -172,20 +290,84 @@ SIGMA_BASE_URL=https://aws-api.sigmacomputing.com
 ## Prepare Demo Data
 Duration: 10
 
-{PLACEHOLDER — depends on Phil's trial instance and TJ's confirmed demo schema for Cognos.}
+The demo uses four tables loaded into Snowflake — the same ecommerce dataset used across the migration skill family. Both Cognos and Sigma will query these tables directly, which is what makes the parity check meaningful.
 
-The demo uses a sample Cognos data module backed by Snowflake. Before running the skill, load the source tables into Snowflake so both Cognos and Sigma read from the same warehouse.
-
-### Create the schema
+Run the following script in Snowflake. It creates the schema, stages the source files from S3, loads the tables, and grants read access to the Sigma service role.
 
 ```copy-code
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE COMPUTE_WH;
+
 CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
-CREATE SCHEMA IF NOT EXISTS QUICKSTARTS.COGNOS_DEMO;
+CREATE SCHEMA  IF NOT EXISTS QUICKSTARTS.COGNOS_ECOMMERCE;
+USE SCHEMA QUICKSTARTS.COGNOS_ECOMMERCE;
+
+CREATE OR REPLACE FILE FORMAT COGNOS_csv_format
+  TYPE = CSV
+  FIELD_DELIMITER = ','
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  NULL_IF = ('', 'NULL')
+  EMPTY_FIELD_AS_NULL = TRUE
+  PARSE_HEADER = TRUE;
+
+CREATE OR REPLACE STAGE COGNOS_ecommerce_stage
+  URL = 's3://sigma-quickstarts-main/Cognos/'
+  FILE_FORMAT = COGNOS_csv_format;
+
+CREATE OR REPLACE TABLE BRAND (
+  "Brand ID" NUMBER,
+  "Brand"    VARCHAR
+);
+
+CREATE OR REPLACE TABLE CATEGORY (
+  "Category ID" NUMBER,
+  "Category"    VARCHAR
+);
+
+CREATE OR REPLACE TABLE COUNTRY (
+  "Country ID" NUMBER,
+  "Country"    VARCHAR
+);
+
+CREATE OR REPLACE TABLE COMMERCE (
+  "Visit ID"    NUMBER,
+  "Date"        DATE,
+  "Brand ID"    NUMBER,
+  "Category ID" NUMBER,
+  "Country ID"  NUMBER,
+  "Revenue"     FLOAT,
+  "Quantity"    NUMBER,
+  "Cost"        FLOAT,
+  "Age Range"   VARCHAR,
+  "Gender"      VARCHAR,
+  "Condition"   VARCHAR
+);
+
+COPY INTO BRAND    FROM @COGNOS_ecommerce_stage/BRAND.csv    MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE;
+COPY INTO CATEGORY FROM @COGNOS_ecommerce_stage/CATEGORY.csv MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE;
+COPY INTO COUNTRY  FROM @COGNOS_ecommerce_stage/COUNTRY.csv  MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE;
+COPY INTO COMMERCE FROM @COGNOS_ecommerce_stage/COMMERCE.csv MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE;
+
+SELECT 'BRAND'    AS TBL_NAME, COUNT(*) AS ROW_COUNT FROM BRAND
+UNION ALL
+SELECT 'CATEGORY', COUNT(*) FROM CATEGORY
+UNION ALL
+SELECT 'COUNTRY',  COUNT(*) FROM COUNTRY
+UNION ALL
+SELECT 'COMMERCE', COUNT(*) FROM COMMERCE;
+
+SELECT
+  ROUND(SUM("Revenue"), 3) AS TOTAL_REVENUE,
+  SUM("Quantity")          AS TOTAL_QUANTITY
+FROM COMMERCE;
+
+GRANT USAGE  ON DATABASE QUICKSTARTS                                  TO ROLE SIGMA_SERVICE_ROLE;
+GRANT USAGE  ON SCHEMA   QUICKSTARTS.COGNOS_ECOMMERCE                 TO ROLE SIGMA_SERVICE_ROLE;
+GRANT SELECT ON ALL    TABLES IN SCHEMA QUICKSTARTS.COGNOS_ECOMMERCE  TO ROLE SIGMA_SERVICE_ROLE;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA QUICKSTARTS.COGNOS_ECOMMERCE  TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-### Load the tables
-
-{PLACEHOLDER — DDL and COPY INTO statements once TJ confirms the demo dataset.}
+The final two queries confirm the load. Expected results: 613,002 rows in COMMERCE, total revenue `39,759,625.515`, total quantity `91,206`.
 
 <!-- <img src="assets/mfcg_04.png" width="800"/> -->
 
