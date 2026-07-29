@@ -35,9 +35,9 @@ A pure lift-and-shift is the floor, not the ceiling. The same skill family suppo
 
 - **Audit your source as a side effect.** The parity check that closes the run isn't just a confidence test on the migration — it's a fresh pair of eyes on the source platform's math. Sigma customers have caught multi-year calculation errors during their first migration run because the parity gate flagged a Sigma vs source mismatch and the source turned out to be wrong. Plan the migration as your final audit of the legacy system.
 
-### Sample report
+### Sample dashboard
 
-For the demonstration, we'll convert a report called `{REPORT_NAME}` — {N} visualizations built on a {data module / package} that reads from Snowflake. You'll see the discovery artifacts each phase produces, the converter's breakdown of how each Cognos expression mapped to a Sigma formula, the parity report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
+For the demonstration, we'll convert a dashboard called `Commerce Dashboard` — 6 visualizations built on a data module that reads from Snowflake. You'll see the discovery artifacts each phase produces, the converter's breakdown of how each Cognos expression mapped to a Sigma formula, the parity report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
 
 <img src="assets/mfcg_01.png" width="800"/>
 
@@ -95,7 +95,7 @@ Here's how the two skills connect in a full migration — `cognos-assessment` ha
 
 Not every migration needs both skills. Use the table below to map your scenario to the smallest set that fits.
 
-In this QuickStart we're in the first row — one Cognos report whose data module reads directly from the same Snowflake warehouse Sigma will connect to.
+In this QuickStart we're in the first row — one Cognos dashboard whose data module reads directly from the same Snowflake warehouse Sigma will connect to.
 
 | Your situation | Skill(s) to use |
 |----------------|-----------------|
@@ -181,74 +181,57 @@ Get `SIGMA_CLIENT_ID` and `SIGMA_CLIENT_SECRET` from Sigma under `Administration
 
 For information, see: [Generate Sigma API client credentials](https://help.sigmacomputing.com/reference/generate-client-credentials)
 
-`SIGMA_BASE_URL` should match your deployment region — `https://aws-api.sigmacomputing.com` covers AWS US East.
-
-For GCP or Azure instances, see: [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
+`SIGMA_BASE_URL` must match your Sigma deployment region. The value shown (`https://api.us-a.aws.sigmacomputing.com`) covers AWS US. To find the correct URL for your instance, see: [Supported regions, data platforms, and features](https://help.sigmacomputing.com/docs/region-warehouse-and-feature-support)
 
 ![divider](assets/horizonalline.png)
 
-**Step 8: Capture a live Cognos session.**<br>
-IBM Cognos Analytics on Cloud uses IBMid SSO and Akamai bot protection — headless username/password login isn't available. The skill authenticates by replaying a live browser session you copy from DevTools.
+**Step 8: Configure Cognos credentials.**<br>
+The skill authenticates to Cognos using a CA API key — a durable, headless credential that doesn't require a browser session.
 
-**8a. Copy your session from Chrome DevTools.**
+**8a. Generate a CA API key.**
 
-1. Log into Cognos in Chrome and open the `eCommerce Dashboard`.
-2. Open DevTools (`F12` or `Cmd+Option+I`) and click the `Network` tab.
-3. In the DevTools filter box, type `data?type=module` — this narrows the list to Cognos API calls and filters out page-load assets.
-4. Click any XHR request in the filtered list — for example one of the `data?type=module...` entries:
+In your Cognos instance, open the user menu (top-right) and select `Profile`. Under the `API keys` section, select `Create key`, give it a name (e.g., `sigma-migration`), and copy the generated key value — it is only shown once.
 
-For example, one of these:
+<!-- <img src="assets/mfcg_03.png" width="800"/> -->
 
-<img src="assets/mfcg_01a.png" width="800"/>
-
-5. Right-click the request → `Copy` → `Copy as cURL`:
-
-<img src="assets/mfcg_01b.png" width="500"/>
-
-6. From the copied cURL command, extract two values:
-   - The full `-b '...'` cookie string (the **entire** value — it must include the Akamai cookies `_abck`, `bm_sz`, `bm_sv`, `ak_bmsc`)
-   - The `X-XSRF-TOKEN` header value
-
-**8b. Save the cookie to disk.**
+**8b. Set the Cognos env vars.**
 
 ```copy-code
-mkdir -p ~/.cognos && nano ~/.cognos/cookie.txt
+export COG_INSTANCE="https://{your-cognos-host}"
+export COG_APIKEY="{your-ca-api-key}"
 ```
 
-Paste the entire cookie string on **one line**, save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
+`COG_INSTANCE` is the base URL of your Cognos instance — the part before `/api/v1` or `/bi`. It appears in your browser address bar when you're logged in (e.g., `https://us3.ca.analytics.ibm.com`).
 
-**8c. Set the session env vars.**
+**8c. Establish the session.**
 
 ```copy-code
-export COG_BASE="https://{your-region}.ca.analytics.ibm.com/bi/v1"
-export COG_XSRF="{your-X-XSRF-TOKEN-value}"
+eval "$(bash ~/.claude/skills/cognos-to-sigma/scripts/cognos-apikey-session.sh)"
 ```
 
-Note the `/bi/v1` suffix on `COG_BASE` — it is required. For the IBM Cloud trial, the region subdomain is visible in your browser URL (e.g., `us3`).
+No return is expected.
 
-**8d. Smoke-test the session.**
+**8d. Smoke-test the connection.**
 
 ```copy-code
-eval "$(bash ~/.claude/skills/cognos-to-sigma/scripts/get-cognos-session.sh)" && cog_get "/objects/.public_folders/items?fields=defaultName,type,id"
+cog_get "/session"
 ```
 
-You should see a JSON list of your Cognos content folders. A successful response confirms the skill can reach Cognos.
+A successful response returns a JSON object containing `"isAnonymous":false` — confirming the skill can reach Cognos and the API key is valid:
 
-<aside class="negative">
-<strong>NOTE:</strong><br> CAoC sessions are short-lived — typically minutes. If the smoke test returns <code>HTTP 441</code>, re-login in the browser, perform one action inside Cognos, then immediately re-copy the cURL and repeat Steps 8b–8d with the fresh cookie. The <code>441</code> is Cognos's SSO re-auth signal, not a bug.
-</aside>
+<img src="assets/mfcg_01c.png" width="800"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> On-premises Cognos deployments and some paid cloud tenants support a durable CA API key path that doesn't expire. If your organization uses a CA API key, use <code>scripts/cognos-apikey-session.sh</code> instead of <code>get-cognos-session.sh</code>. The IBMid SSO / browser-session path described here is the one required for IBM Cloud trials.
+<strong>NOTE:</strong><br> The API key session is durable — it doesn't expire the way a browser session does. You only need to re-run Steps 8b–8d if your key is rotated or you start a new terminal session.
 </aside>
 
 ![divider](assets/horizonalline.png)
 
 **Step 9: Run the environment bootstrap.**<br>
-This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, confirms that credentials are readable in `~/.sigma-migration/env`, and writes the sentinel file the skill gates on before starting. Run it once per machine:
+This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, and writes the sentinel file the skill gates on before starting. Run it once per machine:
 
 ```copy-code
-bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
+SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
 ```
 
 A successful run ends with:
@@ -257,7 +240,9 @@ A successful run ends with:
 bootstrap: COMPLETE — doctor green; sentinel written to ~/.sigma-migration/bootstrap.json.
 ```
 
-If the output flags missing credentials, check your `~/.sigma-migration/env` entries and run `bootstrap.sh` again. If a runtime dependency fails to install, follow the message's suggestion (usually a Homebrew install) and rerun.
+<img src="assets/mfcg_01d.png" width="800"/>
+
+If a runtime dependency fails to install, follow the message's suggestion (usually a Homebrew install) and rerun.
 
 ![divider](assets/horizonalline.png)
 
@@ -272,17 +257,76 @@ claude
 /cognos-to-sigma
 ```
 
-<!-- <img src="assets/mfcg_02.png" width="800"/> -->
-
 Claude should start reading the reference files and ask what dashboard you want to convert.
 
 Pause at this prompt — we'll hand it everything in one shot via the kickoff prompt in the `Run the Conversion` section later.
 
-<!-- <img src="assets/mfcg_03.png" width="800"/> -->
+<img src="assets/mfcg_02.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> From here on, Claude Code asks for approval on every bash command the skill runs — and a full conversion fires dozens of them. For each prompt, pick option <code>2. Yes, and don't ask again</code> so Claude Code remembers that command pattern. After the first handful of approvals the prompts stop coming. Alternatively, press <code>Shift+Tab</code> once to switch to <code>auto mode on</code> for the rest of the session — fine for a trusted skill like this one, just don't use it for unknown code.
 </aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Common Issues
+Duration: 5
+
+### Cognos tables don't appear in the data module editor
+
+The Snowflake JDBC URL must include the database, warehouse, and schema as query parameters. Without them, Cognos connects but shows no assets. Verify your JDBC URL includes:
+
+```copy-code
+jdbc:snowflake://{account}.snowflakecomputing.com/?db=QUICKSTARTS&warehouse=COMPUTE_WH&schema=COGNOS_ECOMMERCE
+```
+
+Note the `?` separator before the first parameter, `&` between parameters, and `.snowflakecomputing.com` in the account hostname (the hostname alone without that suffix will fail to resolve).
+
+### Snowflake signon fails in Cognos
+
+Personal Snowflake accounts provisioned through SSO (Okta, Google) cannot authenticate via JDBC — only password-based accounts work. Create a dedicated Snowflake user for Cognos:
+
+```copy-code
+CREATE USER COGNOS_USER PASSWORD='{your-password}' DEFAULT_ROLE=SIGMA_SERVICE_ROLE;
+GRANT ROLE SIGMA_SERVICE_ROLE TO USER COGNOS_USER;
+```
+
+Use `COGNOS_USER` and its password in the Cognos `User ID and password` signon dialog.
+
+### Logged into Cognos but can't create content
+
+The Cognos `Subscription administrator` role manages users and billing — it does not grant a product seat. Check `License user` in addition to `Subscription administrator` under your user profile to enable content creation and API access.
+
+### Bootstrap credential smoke test fails
+
+The bootstrap credential check can return a false failure even when the credentials are valid (for example, when the Sigma API endpoint resolves differently in the bootstrap probe than it does for the skill). Bypass it — the credentials are checked again during the actual token mint:
+
+```copy-code
+SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
+```
+
+Validate the credentials directly if you want to confirm them before running the skill:
+
+```copy-code
+curl -s -X POST \
+  -H "Authorization: Basic $(printf '%s:%s' "$SIGMA_CLIENT_ID" "$SIGMA_CLIENT_SECRET" | base64 | tr -d '\n')" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  "${SIGMA_BASE_URL}/v2/auth/token"
+```
+
+A response containing `access_token` confirms the credentials are valid.
+
+### `cog_get` smoke test returns HTTP 400 "Invalid id format"
+
+The `/content/.public_folders/items` path is a `/bi/v1` alias that doesn't exist in the `/api/v1` surface the API key session uses. Use `/session` instead:
+
+```copy-code
+cog_get "/session"
+```
+
+A response containing `"isAnonymous":false` confirms the session is established and ready.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -369,33 +413,82 @@ GRANT SELECT ON FUTURE TABLES IN SCHEMA QUICKSTARTS.COGNOS_ECOMMERCE  TO ROLE SI
 
 The final two queries confirm the load. Expected results: 613,002 rows in COMMERCE, total revenue `39,759,625.515`, total quantity `91,206`.
 
-<!-- <img src="assets/mfcg_04.png" width="800"/> -->
-
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Build the Demo Report
+## Build the Demo Dashboard
 Duration: 15
 
-{PLACEHOLDER — walk through building the source Cognos report Phil will migrate. Steps depend on Phil's trial instance.}
+With the Snowflake data in place, build the source dashboard in Cognos Analytics. This is the content the skill will discover and convert to Sigma.
 
-With the warehouse data in place, build the demo report in Cognos Analytics so there's a live source to convert.
-
-### Connect Cognos to Snowflake
-
-{PLACEHOLDER — data source connection steps for Phil's trial.}
+The dashboard has six panels — two KPI tiles and four charts — built on a star-schema data module that reads from the four tables loaded in the previous section.
 
 ### Create the data module
 
-{PLACEHOLDER — tables, joins, calculated items.}
+1. In Cognos Analytics, select `New` > `Data module`.
+2. Under `Select sources`, choose `Data servers and schemas` and select the Snowflake connection you configured.
+3. Navigate to `QUICKSTARTS` > `COGNOS_ECOMMERCE` and select all four tables: `BRAND`, `CATEGORY`, `COMMERCE`, and `COUNTRY`. Select `OK`.
+4. In the data module editor, create the star-schema relationships — `COMMERCE` is the fact table:
+   - `COMMERCE."Brand ID"` → `BRAND."Brand ID"`
+   - `COMMERCE."Category ID"` → `CATEGORY."Category ID"`
+   - `COMMERCE."Country ID"` → `COUNTRY."Country ID"`
 
-### Build the report visualizations
+<img src="assets/mfcg_05.png" width="800"/>
 
-{PLACEHOLDER — visualization-by-visualization walkthrough.}
+5. Add a calculated column for year. In the module tree, right-click `COMMERCE` and select `Calculation`. Name it `Year` and enter the expression:
 
-<!-- <img src="assets/mfcg_05.png" width="800"/> -->
+```copy-code
+year(Date_)
+```
 
-<!-- <img src="assets/mfcg_06.png" width="800"/> -->
+<aside class="negative">
+<strong>NOTE:</strong><br> Cognos internally renames the <code>Date</code> column to <code>Date_</code> (underscore suffix) to avoid a SQL reserved-word conflict. Use <code>Date_</code> in expressions — <code>Date</code> alone will fail.
+</aside>
+
+6. Save the data module as `eCommerce Data Module`.
+
+### Build the dashboard
+
+1. Select `New` > `Dashboard`.
+2. When prompted for a source, select `eCommerce Data Module`.
+3. Choose a blank template. Rename the default tab to `Commerce`.
+4. Build the six panels below. For each, drag fields from the data panel onto the canvas and set the visualization type and field assignments from the toolbar.
+
+**Panel 1 — Revenue KPI**
+- Visualization type: `Summary`
+- Value: `COMMERCE > Revenue` (Sum)
+
+**Panel 2 — Quantity KPI**
+- Visualization type: `Summary`
+- Value: `COMMERCE > Quantity` (Sum)
+
+**Panel 3 — Revenue by Country**
+- Visualization type: `Bar` (horizontal)
+- Bars: `COUNTRY > Country`
+- Length: `COMMERCE > Revenue` (Sum)
+- Sort: descending by Revenue
+
+**Panel 4 — Quantity by Category**
+- Visualization type: `Pie`
+- Segments: `CATEGORY > Category`
+- Size: `COMMERCE > Quantity` (Sum)
+
+**Panel 5 — Revenue by Category**
+- Visualization type: `Bar` (horizontal)
+- Bars: `CATEGORY > Category`
+- Length: `COMMERCE > Revenue` (Sum)
+- Sort: descending by Revenue
+
+**Panel 6 — Revenue by YEAR**
+- Visualization type: `Bar` (vertical)
+- X axis: `COMMERCE > Year` (the calculated column)
+- Y axis: `COMMERCE > Revenue` (Sum)
+
+5. Save the dashboard as `Commerce Dashboard`.
+
+The completed dashboard should show Revenue `39.8M` and Quantity `91.2K` with country, category, and year breakdowns matching the screenshot in the Overview:
+
+<img src="assets/mfcg_06.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -413,7 +506,7 @@ The folder ID appears in the URL after `/folder/`:
 https://app.sigmacomputing.com/{your-org}/folder/{your-folder-id}
 ```
 
-<!-- <img src="assets/mfcg_07.png" width="800"/> -->
+<img src="assets/mfcg_07.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -421,24 +514,35 @@ https://app.sigmacomputing.com/{your-org}/folder/{your-folder-id}
 ## Run the Conversion
 Duration: 20
 
-With credentials configured and the demo report built, run the converter. Open Claude Code and invoke the skill with the kickoff prompt below — substituting your report ID, connection ID, and folder ID.
+With credentials configured and the demo dashboard built, run the converter. Open Claude Code and invoke the skill with the kickoff prompt below — substituting your dashboard ID, connection ID, and folder ID.
 
-### Find your Cognos report ID
+Select option `4. Something else`:
 
-{PLACEHOLDER — how to locate the report ID from the Cognos Analytics URL or API.}
+<img src="assets/mfcg_07b.png" width="800"/>
+
+### Find your Cognos dashboard ID
+
+Open the `Commerce Dashboard` in Cognos and copy the content ID from the browser URL — it is the long alphanumeric value that begins with `i` (e.g., `i20CF97EDA4FC43498424E42A24835D16`).
+
+<img src="assets/mfcg_07a.png" width="800"/>
 
 ### Kickoff prompt
+
+Replace the placeholder values before running:
+- Dashboard ID: `{your-dashboard-id}`
+- SIGMA_FOLDER_ID: `{your-folder-id}`
+- SIGMA_CONNECTION_ID: `{your-snowflake-connection-id}`
 
 ```copy-code
 Run /cognos-to-sigma on the following. Walk every phase in SKILL.md end-to-end and stop only if a hard gate fails.
 
 Cognos
-- Credentials sourced from ~/.sigma-migration/cognos.env (COGNOS_BASE_URL, COGNOS_USERNAME, COGNOS_PASSWORD, COGNOS_NAMESPACE)
-- Report ID: {your-report-id}
+- COG_INSTANCE and COG_APIKEY are already exported in this shell (run Step 8 first)
+- Dashboard ID: {your-dashboard-id}
 
 Warehouse — same on both sides
-- Cognos reads from Snowflake via data module — database QUICKSTARTS, schema COGNOS_DEMO
-- Sigma reads from Snowflake — same schema QUICKSTARTS.COGNOS_DEMO
+- Cognos reads from Snowflake via data module — database QUICKSTARTS, schema COGNOS_ECOMMERCE
+- Sigma reads from Snowflake — same schema QUICKSTARTS.COGNOS_ECOMMERCE
 
 Sigma
 - SIGMA_API_TOKEN = mint from ~/.sigma-migration/env
@@ -453,11 +557,9 @@ Options
 Don't declare GREEN until the parity gate passes and the visual-QA loop passes.
 ```
 
-<!-- <img src="assets/mfcg_08.png" width="800"/> -->
+<img src="assets/mfcg_07c.png" width="800"/>
 
 The skill runs through five phases: **Discover** → **Translate** → **Build** → **Verify** → **Report**. Each phase emits a progress summary — watch for any `WARN` or `MANUAL` flags, which land on the gap list rather than stopping the run.
-
-<!-- <img src="assets/mfcg_09.png" width="800"/> -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -465,29 +567,27 @@ The skill runs through five phases: **Discover** → **Translate** → **Build**
 ## Review the Output
 Duration: 10
 
-When the skill completes, it prints a migration summary — the count of visualizations converted, any items flagged for manual review, and the parity result.
+When the skill completes, it prints a migration summary — the count of visualizations converted, any items flagged for manual review, and the parity result:
 
-{PLACEHOLDER — actual summary output from Phil's run.}
-
-<!-- <img src="assets/mfcg_10.png" width="800"/> -->
+<img src="assets/mfcg_10.png" width="800"/>
 
 ### The Sigma workbook
 
-Open the workbook in your Sigma folder and compare it against the source Cognos report. The layout mirrors the source, and each visualization is backed by the translated formula.
+Open the workbook in your Sigma folder and compare it against the source Cognos dashboard. The layout mirrors the source, and each visualization is backed by the translated formula.
 
-<!-- <img src="assets/mfcg_11.png" width="800"/> -->
+<img src="assets/mfcg_11.png" width="800"/>
 
 ### The Sigma data model
 
 The skill also creates a data model in the same folder — the tables, joins, and calculated columns derived from the Cognos data module.
 
-<!-- <img src="assets/mfcg_12.png" width="800"/> -->
+<img src="assets/mfcg_12.png" width="800"/>
 
 ### The gap list
 
 Any visualization or expression the skill couldn't auto-translate lands in the gap list — with the source expression, the reason it was flagged, and a suggested Sigma equivalent where one exists. Work through the list to finish the migration.
 
-{PLACEHOLDER — gap list example from Phil's run.}
+<img src="assets/mfcg_13.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -495,7 +595,13 @@ Any visualization or expression the skill couldn't auto-translate lands in the g
 ## What we've covered
 Duration: 5
 
-{PLACEHOLDER — write after all body sections are complete and Phil has run through the full flow.}
+We converted a Cognos dashboard to a verified Sigma workbook without rebuilding the data model by hand. The credential setup and kickoff prompt you used here work for any Cognos dashboard on a paid instance — same pattern, different content ID.
+
+The part of the migration that usually takes days is the data module — mapping query subjects to warehouse tables, carrying over joins, translating Cognos expressions to Sigma formulas. The skill handles that automatically and surfaces anything it couldn't convert on the gap list, so you know exactly what needs a manual pass before calling it done.
+
+The parity gate provides proof. Because Sigma and Cognos both query the same Snowflake tables, any number mismatch is a translation error — not a data difference. GREEN means the migration is done. Short of GREEN, the gap list tells you why.
+
+When you're ready to scale, run `cognos-assessment` across the full estate first. It ranks each artifact by migration complexity against what the converter can actually handle, so you can shortlist the high-value, low-effort content before committing to a full run.
 
 **Additional Resource Links**
 
