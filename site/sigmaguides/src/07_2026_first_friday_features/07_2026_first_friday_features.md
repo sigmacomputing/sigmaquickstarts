@@ -66,13 +66,16 @@ Three new workbook templates — Claude, OpenAI, and Snowflake — visualize the
 
 <img src="assets/fff_07_01.png" width="800"/>
 
+**WHY IT MATTERS:**<br>
+AI spend is increasingly showing up in IT and finance conversations — and right now most teams have no easy way to see where it's going. These templates give you a working cost dashboard on day one, built on live data, without starting from scratch.
+
 ### Custom email branding and SMTP configuration relocation (GA)
 Email branding settings and SMTP configuration have moved to the **Email customization** tab under `Administration` > `Scheduled exports & actions`. Functionality is unchanged.
 
 ### Deploy folders to tenants (Beta) <img src="assets/heart_icon.png" width="25"/>
 Deploy a folder and all its contents — workbooks, reports, and data models — to tenant organizations in a single operation.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 For teams managing content across multiple tenant organizations, folder-level deployment replaces a series of individual document deployments with one governed action — reducing the overhead of keeping tenant environments in sync as content evolves.
 
 For more information, see [Deploy content to tenant organizations](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations)
@@ -94,7 +97,7 @@ Documents within an existing deployment policy can now be manually redeployed to
 ### Sigma Tenants (GA) <img src="assets/heart_icon.png" width="25"/>
 Sigma Tenants is now generally available, allowing organizations to set up a multitenant architecture with multiple Sigma organizations under a single account. Designed for enterprises and ISVs managing separate business units, regions, or customer deployments, Sigma Tenants is a premium feature.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 Multitenancy has historically required separate Sigma instances or complex shared-infrastructure workarounds. Sigma Tenants gives enterprises and ISVs a governed, first-class path to isolate organizations, manage content deployment centrally, and audit activity per tenant — without the overhead of maintaining multiple accounts.
 
 For more information, see [Multitenancy at Sigma](https://help.sigmacomputing.com/docs/multitenancy-at-sigma)
@@ -126,15 +129,15 @@ A new dashboard tracks token consumption, conversations, engagement, and model u
 
 <img src="assets/fff_07_02.png" width="800"/>
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 As AI usage scales across teams, cost visibility becomes a governance requirement. The AI usage dashboard gives administrators a live view of consumption by model, user, and feature — the audit trail enterprises need before expanding AI access broadly.
 
 For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
 
-### Amazon Bedrock AI provider support (GA) <img src="assets/heart_icon.png" width="25"/>
+### Amazon Bedrock AI provider support (GA)
 Amazon Bedrock is now a supported AI provider, allowing Sigma's AI-powered features to run on Anthropic foundation models through your existing Bedrock configuration.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 Enterprises with AWS infrastructure can now route Sigma's AI requests through their own Bedrock account — keeping AI workloads inside their AWS boundary and satisfying data residency or compliance requirements.
 
 For more information, see [Add Amazon Bedrock as an AI provider](https://help.sigmacomputing.com/docs/manage-external-ai-integrations#add-amazon-bedrock-as-an-ai-provider)
@@ -147,10 +150,10 @@ The Users and Document Activity dashboards now support AI agent queries, letting
 ### Sigma Plugin for ChatGPT (GA) <img src="assets/heart_icon.png" width="25"/>
 A one-click installation connects Sigma's MCP server to ChatGPT, letting users query Sigma workbooks, data models, and live data directly from their ChatGPT workflow.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 Analysts who live in ChatGPT can now access live Sigma data without switching context — with access governed by Sigma's existing permissions and audit logging intact.
 
-For more information, see [Use the Sigma MCP server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
+For more information, see [Set up the Sigma MCP server in ChatGPT](https://help.sigmacomputing.com/docs/use-sigma-mcp-server#set-up-the-sigma-mcp-server-in-chatgpt)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -187,41 +190,6 @@ For more information, see [Revoke member tokens](https://help.sigmacomputing.com
 A new `POST /v2/workbooks/:workbookId/restoreVersion` endpoint enables restoring a workbook to a previous version programmatically.
 
 For more information, see [Restore workbook version](https://help.sigmacomputing.com/reference/restore-workbook-version)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Bug Fixes
-Duration: 20
-
-**1:** Restored documentation MCP server functionality.
-
-**2:** Fixed inactive version tag timestamps to show correct dates.
-
-**3:** Preserved element layout positions when copying/pasting multiple elements.
-
-**4:** Resolved Snowflake Cortex Agent warehouse selection issues.
-
-**5:** Improved tooltip theme setting compliance.
-
-**6:** Preserved code representation `id` values in data model creation endpoint.
-
-**7:** Linked input table creation now validates write-back schema compatibility before proceeding.
-
-**8:** Improved document deployment with custom page visibility for tenant organizations.
-**9:** Resolved deployment of tagged documents in policy folders.
-**10:** Assistant now preserves Top-N SQL results in charts.
-**11:** API credentials dropdown is now searchable.
-**12:** Source swap policy lists now display completely.
-**13:** Conditional formatting can now remove bold from totals and subtotals.
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Charts
-Duration: 20
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -274,6 +242,38 @@ A growing library of pre-built app templates is now available, covering common b
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Bug Fixes
+Duration: 20
+
+**1:** Restored documentation MCP server functionality.
+
+**2:** Fixed inactive version tag timestamps to show correct dates.
+
+**3:** Preserved element layout positions when copying/pasting multiple elements.
+
+**4:** Resolved Snowflake Cortex Agent warehouse selection issues.
+
+**5:** Improved tooltip theme setting compliance.
+
+**6:** Preserved code representation `id` values in data model creation endpoint.
+
+**7:** Linked input table creation now validates write-back schema compatibility before proceeding.
+
+**8:** Improved document deployment with custom page visibility for tenant organizations.
+
+**9:** Resolved deployment of tagged documents in policy folders.
+
+**10:** Assistant now preserves Top-N SQL results in charts.
+
+**11:** API credentials dropdown is now searchable.
+
+**12:** Source swap policy lists now display completely.
+
+**13:** Conditional formatting can now remove bold from totals and subtotals.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Data Modeling
 Duration: 20
 
@@ -285,32 +285,16 @@ For more information, see [Sigma integration with Databricks Unity Catalog](http
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Embedding
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Functions / Calculations
 Duration: 20
 
 ### BusinessDays function (GA) <img src="assets/heart_icon.png" width="25"/>
 The new `BusinessDays` function calculates the number of weekdays between two dates, including both the start and end dates and excluding weekends.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 Date calculations in business contexts — SLA tracking, payment terms, project timelines — routinely need to exclude weekends. A dedicated function makes these calculations accurate and readable without workarounds.
 
 For more information, see [BusinessDays](https://help.sigmacomputing.com/docs/businessdays)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Input Tables
-Duration: 20
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -361,14 +345,6 @@ Sigma Starter Apps are fully built, production-ready applications covering commo
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Security
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Workbooks
 Duration: 20
 
@@ -384,23 +360,26 @@ Button and navigation elements now support icons alongside labels, or as a stand
 
 For more information, see [Button elements](https://help.sigmacomputing.com/docs/button-elements#customize-button-properties)
 
-### Convert workbooks to reports (Beta) <img src="assets/heart_icon.png" width="25"/>
+### Convert workbooks to reports (GA) <img src="assets/heart_icon.png" width="25"/>
 Existing workbooks can now be converted to reports, enabling pixel-level formatting control and more reliable export behavior:
 
 <img src="assets/fff_07_06.png" width="600"/>
+
+**WHY IT MATTERS:**<br>
+Builders who already have a workbook no longer need to rebuild it as a separate report asset to get pixel-perfect formatting and reliable exports. Convert in place and keep everything you've already built.
 
 For more information, see [Convert workbooks to reports](https://help.sigmacomputing.com/docs/convert-workbooks-to-reports)
 
 ### Enhanced export formatting (GA)
 Excel and Google Sheets exports now preserve cell background color, text color, row banding, and font properties from the source workbook.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 Export fidelity has long been a gap between what analysts see in Sigma and what stakeholders receive. Preserving formatting in Excel and Sheets exports means reports land polished and ready to share — without manual cleanup.
 
 ### Find in table (GA) <img src="assets/heart_icon.png" width="25"/>
 Find in table is now generally available, letting users search for specific values within tables and input tables directly in the workbook.
 
-**WHY IT MATTERS:**
+**WHY IT MATTERS:**<br>
 For analysts working with large datasets, locating a specific row or value without sorting or filtering reduces friction — especially in input tables where pinpointing a record before editing is a common step.
 
 ### Mailto link support in text elements (GA)
@@ -409,7 +388,9 @@ Text elements now support `mailto:` links, allowing builders to add clickable em
 For more information, see [Text elements](https://help.sigmacomputing.com/docs/text-elements)
 
 ### Manage translations panel (GA)
-The **Manage locales** panel has been renamed to **Manage translations**. Functionality is unchanged.
+The **Manage locales** panel has been renamed to **Manage translations**. Functionality is unchanged:
+
+<img src="assets/fff_07_07.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
