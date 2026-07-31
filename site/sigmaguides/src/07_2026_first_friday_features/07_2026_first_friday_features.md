@@ -16,7 +16,7 @@ July 3, 2026 changes:
 July 10, 2026 changes: done
 July 17, 2026 changes: done
 July 24, 2026 changes:
-July 31, 2026 changes:
+July 31, 2026 changes: done
 
 Publish on August 7
 
@@ -91,6 +91,24 @@ The **Locale** section in account settings has been renamed to **Localization**,
 ### Redeploy documents to tenants (Beta)
 Documents within an existing deployment policy can now be manually redeployed to tenant organizations without recreating the full policy.
 
+### Sigma Tenants (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma Tenants is now generally available, allowing organizations to set up a multitenant architecture with multiple Sigma organizations under a single account. Designed for enterprises and ISVs managing separate business units, regions, or customer deployments, Sigma Tenants is a premium feature.
+
+**WHY IT MATTERS:**
+Multitenancy has historically required separate Sigma instances or complex shared-infrastructure workarounds. Sigma Tenants gives enterprises and ISVs a governed, first-class path to isolate organizations, manage content deployment centrally, and audit activity per tenant — without the overhead of maintaining multiple accounts.
+
+For more information, see [Multitenancy at Sigma](https://help.sigmacomputing.com/docs/multitenancy-at-sigma)
+
+### Tenant Audit Log Storage Integrations (Beta)
+Administrators can now export tenant audit logs to cloud storage, enabling centralized log management across tenant organizations.
+
+For more information, see [Configure tenant audit log storage integrations](https://help.sigmacomputing.com/docs/create-and-manage-tenant-organizations#configure-tenant-audit-log-storage-integrations)
+
+### Tenant Deployment Audit Events (GA)
+A new `TENANTS` event category is now available in the Audit Logs connection, tracking deployment management, policy changes, and capability grants across tenant organizations.
+
+For more information, see [Audit log events and metadata](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
+
 ### Universal result cache (Beta)
 Recent queries can now be cached in external storage, reducing warehouse compute consumption and improving response times for repeated or similar queries.
 
@@ -113,10 +131,26 @@ As AI usage scales across teams, cost visibility becomes a governance requiremen
 
 For more information, see [AI usage dashboard](https://help.sigmacomputing.com/docs/ai-usage)
 
+### Amazon Bedrock AI provider support (GA) <img src="assets/heart_icon.png" width="25"/>
+Amazon Bedrock is now a supported AI provider, allowing Sigma's AI-powered features to run on Anthropic foundation models through your existing Bedrock configuration.
+
+**WHY IT MATTERS:**
+Enterprises with AWS infrastructure can now route Sigma's AI requests through their own Bedrock account — keeping AI workloads inside their AWS boundary and satisfying data residency or compliance requirements.
+
+For more information, see [Add Amazon Bedrock as an AI provider](https://help.sigmacomputing.com/docs/manage-external-ai-integrations#add-amazon-bedrock-as-an-ai-provider)
+
 ### Natural language questions about usage data (GA)
 The Users and Document Activity dashboards now support AI agent queries, letting administrators ask questions about usage patterns in plain language. Requires a configured AI provider:
 
 <video src="assets/ai_user2.mp4"></video>
+
+### Sigma Plugin for ChatGPT (GA) <img src="assets/heart_icon.png" width="25"/>
+A one-click installation connects Sigma's MCP server to ChatGPT, letting users query Sigma workbooks, data models, and live data directly from their ChatGPT workflow.
+
+**WHY IT MATTERS:**
+Analysts who live in ChatGPT can now access live Sigma data without switching context — with access governed by Sigma's existing permissions and audit logging intact.
+
+For more information, see [Use the Sigma MCP server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -128,6 +162,11 @@ Duration: 20
 List lineage endpoints now include uploaded CSV files as data sources. CSV entries display with a `csv-upload` type and include a `csvId` field.
 
 For more information, see [List lineage tree](https://help.sigmacomputing.com/reference/list-lineage-tree) and [List data model lineage tree](https://help.sigmacomputing.com/reference/list-data-model-lineage-tree)
+
+### Dataset to Data Model migration endpoint (Beta)
+A new `POST /v2/datasets/:datasetId/migrate` endpoint supports programmatic migration of datasets to data models, including a dry-run option to validate the migration before committing.
+
+For more information, see [Migrate a dataset to a data model](https://help.sigmacomputing.com/reference/migrate-dataset-to-data-model)
 
 ### Export endpoint enhancements (GA)
 The workbook and report send/schedule endpoints now support Cc and Bcc recipients, adding flexibility to automated report distribution.
@@ -143,6 +182,11 @@ For more information, see [List connection paths](https://help.sigmacomputing.co
 A new `POST /v2/members/:memberId/revoke` endpoint allows administrators to revoke a member's OIDC and warehouse connection tokens without interrupting active sessions.
 
 For more information, see [Revoke member tokens](https://help.sigmacomputing.com/reference/revoke-member-tokens)
+
+### Workbook version restore endpoint (GA)
+A new `POST /v2/workbooks/:workbookId/restoreVersion` endpoint enables restoring a workbook to a previous version programmatically.
+
+For more information, see [Restore workbook version](https://help.sigmacomputing.com/reference/restore-workbook-version)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -165,6 +209,11 @@ Duration: 20
 **7:** Linked input table creation now validates write-back schema compatibility before proceeding.
 
 **8:** Improved document deployment with custom page visibility for tenant organizations.
+**9:** Resolved deployment of tagged documents in policy folders.
+**10:** Assistant now preserves Top-N SQL results in charts.
+**11:** API credentials dropdown is now searchable.
+**12:** Source swap policy lists now display completely.
+**13:** Conditional formatting can now remove bold from totals and subtotals.
 
 
 ![Footer](assets/sigma_footer.png)
@@ -192,6 +241,12 @@ Sigma Assistant in build mode now supports guided balance sheet creation, with a
 
 ### Assistant in build mode: formula join keys (Beta)
 Sigma Assistant in build mode can now join tables on formulas and expressions, not just raw columns, enabling more flexible data assembly during workbook construction.
+
+### Assistant Multiple Choice Prompts (Beta)
+Workbook Assistant in build mode can now offer users predefined response options, guiding them through structured workflows and capturing consistent input.
+
+### Assistant Proposed Feedback (Beta)
+Build mode Assistant now detects when a user may be dissatisfied and proactively suggests sending feedback. Users can review, edit, or dismiss the proposal before it's sent.
 
 ### Customize first agent message (Beta)
 Builders can now set a fixed greeting message for agents rather than relying on an AI-generated response. Configure agents to open every conversation with a specific, controlled message — such as "Welcome to Sigma!"
@@ -241,7 +296,13 @@ Duration: 20
 ## Functions / Calculations
 Duration: 20
 
+### BusinessDays function (GA) <img src="assets/heart_icon.png" width="25"/>
+The new `BusinessDays` function calculates the number of weekdays between two dates, including both the start and end dates and excluding weekends.
 
+**WHY IT MATTERS:**
+Date calculations in business contexts — SLA tracking, payment terms, project timelines — routinely need to exclude weekends. A dedicated function makes these calculations accurate and readable without workarounds.
+
+For more information, see [BusinessDays](https://help.sigmacomputing.com/docs/businessdays)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -311,6 +372,11 @@ Duration: 20
 ## Workbooks
 Duration: 20
 
+### Array unnesting for tables (GA)
+The new Unnest feature creates table rows from array data, expanding nested arrays into a flat, analyzable table structure.
+
+For more information, see [Create a table from an array](https://help.sigmacomputing.com/docs/create-a-table-from-an-array)
+
 ### Button element icons (GA)
 Button and navigation elements now support icons alongside labels, or as a standalone replacement for text, giving interactive controls and navigation a more visual and compact appearance:
 
@@ -336,6 +402,11 @@ Find in table is now generally available, letting users search for specific valu
 
 **WHY IT MATTERS:**
 For analysts working with large datasets, locating a specific row or value without sorting or filtering reduces friction — especially in input tables where pinpointing a record before editing is a common step.
+
+### Mailto link support in text elements (GA)
+Text elements now support `mailto:` links, allowing builders to add clickable email links directly in workbook text.
+
+For more information, see [Text elements](https://help.sigmacomputing.com/docs/text-elements)
 
 ### Manage translations panel (GA)
 The **Manage locales** panel has been renamed to **Manage translations**. Functionality is unchanged.
