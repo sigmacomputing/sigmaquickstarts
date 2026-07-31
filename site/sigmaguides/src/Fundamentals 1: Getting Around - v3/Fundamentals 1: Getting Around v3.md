@@ -6,10 +6,9 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-06-20
+lastUpdated: 2026-07-11
 
 # Fundamentals 01: Overview
-<!-- -->
 
 ## Overview
 Duration: 6
@@ -43,7 +42,7 @@ If something isn’t working as expected, here’s how to [contact Sigma support
 </aside>
 
 ### About Sigma
-Sigma is a front-end for your cloud data warehouse—an analytics platform for spreadsheets, interactive AI-enabled apps, and more. It centralizes your data, eliminates silos, and replaces fragmented tools for various use cases within a governed environment. Additionally, Sigma enables businesses to monetize their data through embedding Sigma in bespoke Saas applications.
+Sigma is a front-end for your cloud data warehouse—an analytics platform for spreadsheets, interactive AI-enabled apps, and more. It centralizes your data, eliminates silos, and replaces fragmented tools for various use cases within a governed environment. Additionally, Sigma enables businesses to monetize their data through embedding Sigma in bespoke SaaS applications.
 
 Many solutions exist, but Sigma stands out. Here's why:
 
@@ -57,7 +56,7 @@ For developers embedding Sigma in a larger platform, every feature is available�
 
 With full feature parity and no coding required, Sigma is a strong choice for teams building embedded analytics.
 
-Many customers are already using Sigma to replace existing, purpose built SaaS applications.
+Many customers are already using Sigma to replace existing, purpose-built SaaS applications.
 
 ### Target Audience
 This QuickStart is designed for new Sigma users across three roles:
@@ -118,7 +117,7 @@ After completing this QuickStart, here are suggested paths based on your role:
 - How to set up a Sigma trial and navigate the user interface
 - Key Sigma terminology and how workbooks, pages, and elements relate to each other
 - How to create, save, and share a workbook
-- How to use Sigma Assistant for AI-powered analysis
+- How to use Sigma Assistant for AI-powered analysis, and how it can plan and build dashboards and apps for you
 - How to organize content with pages, containers, modals, and other layout elements
 - How account types and scheduled exports work
 
@@ -150,7 +149,7 @@ In your email application, open the email from Sigma and click `Verify Email Add
 <strong>NOTE:</strong><br> If you have not received this email within 10 minutes, please check your spam folder, and if not there, ask for assistance from support. The email will be "from" Sigma Computing using the address: info@send.sigmacomputing.com.
 </aside>
 
-When the page loads in your default browsers, enter in your `Company Name` and `Company Login URL` (if you prefer something different)
+When the page loads in your default browser, enter in your `Company Name` and `Company Login URL` (if you prefer something different)
 
 <img src="assets/f1_2.png" width="400"/>
 
@@ -208,7 +207,7 @@ The main areas are numbered and described below:
 
 <img src="_shared_assets/3.png" width="25"/> **Notifications:** The bell icon shows alerts and activity relevant to your account.
 
-<img src="_shared_assets/4.png" width="25"/> **User Profile:** Click your initials in the upper right to access your profile, preferences, and sign-out and other options.
+<img src="_shared_assets/4.png" width="25"/> **User Profile:** Click your initials in the upper right to access your profile, preferences, sign-out, and other options.
 
 **Left sidebar**
 
@@ -226,7 +225,7 @@ The main areas are numbered and described below:
   <li><strong>Home:</strong> Returns to the homepage.</li>
   <li><strong>Documents:</strong> Your personal folder for content you've created.</li>
   <li><strong>Workspaces:</strong> Shared folders for organizing and sharing content with specific teams or members.</li>
-  <li><strong>Templates:</strong> Pre-built workbook structures available for quick reuse.</li>
+  <li><strong>Templates:</strong> Pre-built, ready-to-use content including Starter Apps — fully working apps built on sample data that cover common business workflows you can explore and connect to your own data.</li>
   <li><strong>Shared with you:</strong> Content others have shared with you directly.</li>
   <li><strong>Recent:</strong> Content you've accessed recently.</li>
   <li><strong>Favorites:</strong> Content you've marked as a favorite for quick access.</li>
@@ -247,7 +246,7 @@ The main areas are numbered and described below:
 
 <img src="_shared_assets/10.png" width="30"/> **Top Viewed:** As your team creates and uses content, the most-accessed workbooks will appear here. It will be empty at the start as there has been no activity yet.
 
-<img src="_shared_assets/11.png" width="37"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (e.g., Okta, Auth0, etc.)
+<img src="_shared_assets/11.png" width="37"/> **Invite your colleagues:** Provides a quick method for adding users to your account. This is a configurable convenience; users in Sigma can be managed in the administration section or externally via any SAML 2.0 compatible identity management provider (e.g., Okta, Auth0)
 
 <img src="_shared_assets/12.png" width="37"/> **Help:** The help button in the lower right corner provides access to documentation, release notes, and live chat support.
 
@@ -369,16 +368,17 @@ Once configured, `Assistant` becomes available on the homepage:
 
 ### AI features in Sigma
 
-Once a provider is configured, AI shows up in several places across the product:
+Once a provider is configured, AI appears across the product — and it's designed as a deliberate spectrum, from helping with a single formula to bringing Sigma's data into the AI tools you use elsewhere. This QuickStart walks through them in that order, simplest to most advanced:
 
 <ul>
-  <li><strong>Sigma Assistant:</strong> A conversational AI panel in the workbook. Ask questions in plain language, get AI-generated charts and tables, and explore your data interactively. Results open directly in a workbook for further analysis. <a href="https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant">Learn more</a></li>
-  <li><strong>Sigma agents:</strong> Build workbook-scoped agents that reason over selected data sources and call tools like actions, warehouse agents, warehouse search services, and MCP servers. Users interact through a chat element, or agents can run automatically on a schedule. <a href="https://help.sigmacomputing.com/docs/sigma-agents">Learn more</a></li>
-  <li><strong>Chat element:</strong> The conversational UI placed on a workbook page that connects to a Sigma agent — letting end users ask questions, get answers, and approve agent actions without leaving the app. <a href="https://help.sigmacomputing.com/docs/chat-with-agent">Learn more</a></li>
-  <li><strong>Formula Assistant:</strong> Write new formulas by describing what you want, correct formula errors, or ask AI to explain what an existing formula does — all from the formula bar. <a href="https://help.sigmacomputing.com/docs/use-ai-with-formulas">Learn more</a></li>
-  <li><strong>Explain this Chart:</strong> Generate an AI-powered description of any chart, including key insights and trends. The result can be copied directly into a text element alongside the chart. <a href="https://help.sigmacomputing.com/docs/explain-visualizations-with-ai">Learn more</a></li>
-  <li><strong>AI Queries:</strong> Run AI-powered analysis on text data as part of your workbook calculations — sentiment analysis, classification, summarization, and more. <a href="https://help.sigmacomputing.com/docs/perform-ai-queries">Learn more</a></li>
+  <li><strong>Formula Assistant:</strong> Write, fix, or explain a single formula from the formula bar. Reach for it when you're working in one calculation. <a href="https://help.sigmacomputing.com/docs/use-ai-with-formulas">Learn more</a></li>
+  <li><strong>Sigma Assistant:</strong> Ask questions in plain language and get AI-generated tables and charts you can open in a workbook. Reach for it to explore data or start an analysis. <a href="https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant">Learn more</a></li>
+  <li><strong>Building with Assistant:</strong> Inside a workbook, Assistant plans and builds entire dashboards and apps. Reach for it to go from an idea to a working dashboard. <a href="https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps">Learn more</a></li>
+  <li><strong>Sigma agents and chat elements:</strong> Embed an AI helper with custom instructions and tools into a workbook, and let end users interact with it through a chat element. Reach for it to put AI to work inside an app. <a href="https://help.sigmacomputing.com/docs/sigma-agents">Learn more</a></li>
+  <li><strong>Sigma MCP Server:</strong> Bring your Sigma data into an external AI tool like Claude. Reach for it to work with Sigma data from outside Sigma. <a href="https://help.sigmacomputing.com/docs/getting-started-with-ai">Learn more</a></li>
 </ul>
+
+Two more AI touches show up while you work, though we don't walk through them here: <strong>Explain this Chart</strong> generates an AI description of any chart, and <strong>AI Queries</strong> run AI analysis on text data — sentiment, classification, summarization — as part of a workbook calculation.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> These aren't isolated AI features — they're integrated into the same governed, live-data environment your team already uses. Sigma is the governed runtime around AI: audit logs, permissions, cost controls, collaboration, and version management all come with the platform, regardless of which AI provider you've configured.
@@ -403,6 +403,30 @@ Sigma is designed to support both workflows without forcing a choice. You can le
 All of the AI features covered in the next few sections work with whichever AI provider your administrator has configured — whether that's a warehouse-hosted model like Snowflake Cortex or an external provider like OpenAI or Anthropic. Your organization chooses the provider; the experience in Sigma remains the same.
 
 There is also an additional layer worth knowing about: the **Sigma MCP Server**. Rather than using AI inside Sigma, the MCP Server brings your Sigma data to your AI tool of choice — so you can query and explore Sigma directly from Anthropic Claude ("Claude"). That is covered later in this QuickStart.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Formula Assistant
+Duration: 3
+
+The simplest place AI shows up is the formula bar. The Formula Assistant lives in any workbook or data model and helps with a single calculation three ways:
+
+- **Write a formula** — describe what you want to calculate, and AI suggests the formula
+- **Correct a formula** — when Sigma detects an error, AI interprets your intent and suggests a fix
+- **Explain a formula** — AI describes, in plain language, what an existing formula does
+
+It becomes available when you select a column and open the formula bar. Click the AI wand icon to choose an option:
+
+<img src="assets/fun_2026_12.png" width="800"/>
+
+For example, selecting a calculated column and choosing `Explain this formula` returns a plain-language description — the columns it references, how the calculation works, and what the result represents:
+
+<img src="assets/fun_2026_14.png" width="800"/>
+
+This is the whole idea in miniature: AI does the mechanical work while you stay in control — reading, verifying, and adjusting what it produces.
+
+For more information, see [Use AI with formulas](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -481,10 +505,41 @@ Once in the workbook, we see that two tables and the chart are included (after m
 
 Now we can save it, refine it, or use Sigma's [drill-down](https://help.sigmacomputing.com/docs/view-underlying-data) capabilities for deeper analysis. We'll continue building on this workbook in the next section.
 
-<!-- We can still access `Assistant` in the workbook by clicking the <img src="assets/assistant.png" width="35"/>
+We can still access `Assistant` in the workbook by clicking the <img src="assets/assistant.png" width="35"/>
  icon:
 
-<img src="assets/fun_2026_11.png" width="800"/> -->
+<img src="assets/fun_2026_11.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Building with Assistant
+Duration: 4
+
+The previous section showed Assistant answering a question and returning results you open in a workbook. Inside a workbook draft, Assistant does more than analyze — it can plan and build for you. Using natural language, it designs and constructs dashboards and AI apps: tables, charts, KPIs, controls, filters, input tables, and even the actions that make an app interactive.
+
+When editing a workbook draft, Assistant works in two additional modes:
+
+- **Plan mode** — Assistant gathers context and proposes a structured approach — recommended pages, elements, layout, and the data sources needed — without changing anything yet. Scoping in `Plan` mode first also saves time and AI credits, since you settle the structure before Assistant builds anything.
+- **Build mode** — Assistant creates and modifies workbook content: elements, formatting, layout, navigation, filters, and actions.
+
+You can switch between modes at any time, and Assistant keeps the conversation's context as you move from scoping to building.
+
+Assistant is available from several entry points while editing a workbook draft: the empty-state prompt bar on a new page, the `Assistant panel` in the workbook header, the `⌘ + K` / `Ctrl + K` keyboard shortcut, and the `Ask or edit with prompt` icon on an element's toolbar.
+
+<img src="assets/fun_2026_63.png" width="800"/>
+
+You can also attach context to any prompt — a specific data source, a page or element, or an image — so Assistant builds from exactly the right information. Attach a screenshot of a dashboard from any tool, and Assistant rebuilds it natively in Sigma.
+
+<aside class="negative">
+<strong>PREMIUM FEATURE:</strong><br> When editing a workbook, Assistant is only available to customers who meet certain conditions. For more information, contact your Account Executive.
+</aside>
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Building with Assistant collapses the distance between an idea and a working dashboard or app. Because Assistant inherits your permissions and builds inside Sigma's governed environment, what it creates is live, secure, and ready to publish — not a throwaway mockup.
+</aside>
+
+We take this much further — one-shot dashboard building, editing an existing workbook conversationally, and building from images and plans — in the [Build Dashboards and Apps with Sigma Assistant](https://quickstarts.sigmacomputing.com/guide/aiapps_build_with_assistant/index.html) QuickStart
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -507,7 +562,7 @@ End users chat with the agent through a chat element on a workbook page. An agen
 
 For example, we can let users chat with AI directly from any Sigma page by adding a chat element and setting some rules for it. This brings the power of AI to users in a controlled manner, helping maintain security and governance guidelines:
 
-<video src="assets/chatelement.mp4"></video>
+<img src="assets/chatelement.mp4">
 
 When deciding which AI surface fits a task:
 
@@ -527,38 +582,12 @@ For more information, see [Build Sigma agents](https://help.sigmacomputing.com/d
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Formula Assistant
-Duration: 4
-
-The Formula Assistant is available directly in the formula bar of any workbook or data model. It can:
-
-- **Write a formula** — describe what you want to calculate, and AI suggests the formula
-- **Correct a formula** — if Sigma detects an error, AI interprets your intent and suggests a fix
-- **Explain a formula** — AI describes what an existing formula does in plain language
-
-It becomes available when a table is selected:
-
-<img src="assets/fun_2026_12.png" width="800"/>
-
-Notice that Sigma Assistant generated a column called `performance_metric`. It's not immediately obvious what that column is calculating. This is a perfect use case for the Formula Assistant's `Explain this formula` capability.
-
-Click the `performance_metric` column to select it. In the formula bar, click the AI wand icon and select `Explain this formula`:
-
-<img src="assets/fun_2026_13.png" width="800"/>
-
-The Formula Assistant will return a plain-language explanation of exactly what the formula calculates — what columns it references, how the calculation works, and what the result represents:
-
-<img src="assets/fun_2026_14.png" width="800"/>
-
-While this is a very basic example, this is an important pattern: Sigma Assistant generates analysis quickly, and the Formula Assistant lets you verify what was built. You stay in control of the results, even when AI does the initial work.
-
-For more information, see [Use AI with formulas](https://help.sigmacomputing.com/docs/use-ai-with-formulas)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Sigma MCP Server
 Duration: 5
+
+<aside class="positive">
+<strong>HEADS UP:</strong><br> This is the most advanced feature in the lineup, aimed at analysts and developers who already work in external AI tools. If your focus is analyzing and building inside Sigma, feel free to skim or skip this section — nothing later depends on it.
+</aside>
 
 ### What is an MCP server?
 
@@ -568,7 +597,7 @@ The Sigma MCP Server implements this protocol for Sigma. Once configured, Claude
 
 ### What this means for Sigma users
 
-The AI features covered in the previous section (Sigma Assistant, Formula Assistant, etc.) work inside Sigma — you open a workbook, ask a question, and the answer appears in context.
+The AI features covered so far — Formula Assistant, Sigma Assistant, Building with Assistant, and Sigma agents — work inside Sigma. You open a workbook, ask a question, and the answer appears in context.
 
 The MCP Server flips that around. You stay in your AI tool and bring Sigma to it. The core workflow is:
 
@@ -679,7 +708,7 @@ From the Sigma home page, click `Create New` in the left sidebar, then select `W
 
 Sigma opens a blank workbook in the exploration state. You’ll notice there’s no name yet — the workbook doesn’t exist in your files until you choose to save it.
 
-<aside class=”positive”>
+<aside class="positive">
 <strong>NOTE:</strong><br> In Sigma, all workbooks start as unsaved explorations. If the analysis isn’t worth keeping, you can close it without saving and nothing is created. If it is worth keeping, you save it — and then it enters a draft/publish workflow.
 </aside>
 
@@ -721,7 +750,7 @@ Resizing and arranging elements is really simple as is selecting the source of t
 
 Data can be sourced from suggestions made by Sigma (based on recent activity), other elements in the workbook or from any available connection.
 
-As shown in the gif, search for `Hands` and choose  > the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` schema.
+As shown in the gif, search for `Hands` and choose the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` schema.
 
 Sigma adds the table to the canvas and pulls the data live from the cloud data warehouse. You’re not working with a copy or a snapshot — the data reflects whatever is in the warehouse at query time.
 
@@ -729,7 +758,7 @@ Notice that this table is over **4.5 million rows** and 22 columns:
 
 <img src="assets/fun_2026_19.png" width="800"/>
 
-<aside class=”negative”>
+<aside class="negative">
 <strong>NOTE:</strong><br> Workbooks can connect to data from multiple sources — tables in your cloud data warehouse, data models created in Sigma, or CSV files uploaded directly.
 </aside>
 
@@ -757,7 +786,7 @@ The **formula bar** is super-powerful as it gives you access to [Sigma’s full 
 
 Important to notice that icons for undo and redo are present - <img src="assets/undo-redo.png" width="80"/>. These are really handy, and will be used often.
 
-<aside class=”positive”>
+<aside class="positive">
 <strong>IMPORTANT:</strong><br> Use the `Undo` and `Redo` arrows in the toolbar — not the browser’s back button. The browser back button will navigate away from the workbook.
 </aside>
 
@@ -782,7 +811,7 @@ From here you can:
 <ul>
   <li>Star the workbook to add it to your Favorites section on the home page left sidebar menu.</li>
   <li>Leave a text comment to provide additional context.</li>
-  <li>Details about where the workbook is stored, who owns it which is useful when the workbook is shared to you and so on.</li>
+  <li>Details about where the workbook is stored and who owns it — useful when the workbook is shared with you.</li>
 </ul>
 
 <img src="assets/fun_2026_25.png" width="350"/>
@@ -810,8 +839,8 @@ Opening the `Publish` drop-down before clicking provides additional options:
   <li>Preview with different access rights applied.</li>
 </ul>
 
-<aside class=”positive”>
-<strong>NOTE:</strong><br> Sigma also supports workbook version history and version tagging for more controlled release workflows. For more information, see <a href=”https://help.sigmacomputing.com/docs/workbook-versions-and-version-history”>Workbook version history</a> and <a href=”https://help.sigmacomputing.com/docs/version-tagging”>Version tagging</a>.
+<aside class="positive">
+<strong>NOTE:</strong><br> Sigma also supports workbook version history and version tagging for more controlled release workflows. For more information, see <a href="https://help.sigmacomputing.com/docs/workbook-versions-and-version-history">Workbook version history</a> and <a href="https://help.sigmacomputing.com/docs/version-tagging">Version tagging</a>.
 </aside>
 
 ### The published view
@@ -913,12 +942,9 @@ As an example, this `Financial Services: Portfolio Risk Modeling` workbook has i
 
 <img src="assets/f1_25.png" width="800"/>
 
-Sigma provides many pre-built [templates](https://help.sigmacomputing.com/docs/get-started-with-workbook-templates) that you can explore, see how things are configured, and use for your own projects. 
+The `Templates` section in the left sidebar includes Starter Apps — pre-built, fully working apps built on sample data that cover common business workflows across finance, operations, sales, and more. You can explore them, inspect how they're built in edit mode, and connect them to your own data when you're ready.
 
-You can even create templates from your own workbooks too:
-
-<img src="assets/f1_41.png" width="500"/>
-
+<img src="assets/f1_41a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF PAGES -->
@@ -955,7 +981,7 @@ Tabbed containers let you organize related content into separate tabs within the
 ### Modal
 A modal feels somewhat similar to a page but behaves differently in that it enables a pop-up window that overlays the workbook. Modals are ideal for highlighting important content, collecting input, or guiding users through a focused interaction without navigating away from the main page.
 
-Modals can be used for simple things like confirming a change or complex as shown in the [Approvals QuickStart](https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html?index=..%2F..index#0)
+Modals can be used for simple things like confirming a change, or as complex as the workflow shown in the [Approvals QuickStart](https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html?index=..%2F..index#0)
 
 <img src="assets/modals.gif">
 
@@ -977,7 +1003,7 @@ Here is an example of a form for capturing trade show leads:
 <img src="assets/f1_60.png" width="600"/>
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF PAGES -->
+<!-- END OF LAYOUT ELEMENTS -->
 
 ## Account Types
 Duration: 6
@@ -988,7 +1014,7 @@ Duration: 6
 
 Sigma’s licensing model includes tiers that define the usage terms of your organization members: `View`, `Act`, `Analyze` and `Build`. 
 
-If your organization utilizes older Lite/Essential/Pro license model, [refer to this document.](https://help.sigmacomputing.com/docs/create-and-manage-account-types-2024)
+If your organization utilizes the older Lite/Essential/Pro license model, [refer to this document.](https://help.sigmacomputing.com/docs/create-and-manage-account-types-2024)
 
 Each license tier establishes a different set of available permissions that enable access to Sigma’s features and capabilities. 
 
@@ -1016,7 +1042,7 @@ Custom account types provide the ability to define a granular permission level u
 For more information, see [Account type and License Overview](https://help.sigmacomputing.com/docs/account-type-and-license-overview)
 
 ![Footer](assets/sigma_footer.png)
-<!-- END OF SHARING -->
+<!-- END OF ACCOUNT TYPES -->
 
 ## Sharing
 Duration: 6
@@ -1043,7 +1069,7 @@ The new user can see the workbook by navigating to `Shared with me` on the homep
 
 When we are both editing the same workbook, we can see each other's activity.
 
-First we elevated the `Build` user to `Edit` permission using the workbooks sharing icon again.
+First we elevated the `Build` user to `Edit` permission using the workbook's sharing icon again.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> To use live edit, users need to have `Edit` access.
@@ -1051,7 +1077,7 @@ First we elevated the `Build` user to `Edit` permission using the workbooks shar
 
 Then we logged both users in using Chrome and Safari browsers and placed the workbook into `Edit`.
 
-Each user can see the others presence on the table:
+Each user can see the other's presence on the table:
 
 <img src="assets/fun_2026_40.png" width="800"/>
 

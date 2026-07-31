@@ -18,7 +18,7 @@
 @import "_categories";
 
 $card-width: 300px;
-$card-row-height: 250px; // normal mode
+$card-row-height: 150px; // normal mode
 $card-col-height: 200px; // column mode
 
 #cards {
@@ -34,8 +34,9 @@ $card-col-height: 200px; // column mode
   display: flex;
   flex-direction: column;
   flex: 1 0 $card-width;
-  margin: 0 $keyline * 2 $keyline * 4 $keyline * 2;
+  margin: 0 $keyline * 4 $keyline * 4 0;
   max-width: $card-width;
+  min-height: $card-row-height;
   border-radius: 0;
   border-bottom: 0;
   overflow: hidden;
@@ -43,10 +44,6 @@ $card-col-height: 200px; // column mode
   -webkit-box-shadow: 2px 4px 10px 0 rgba(0,0,0,.1);
   box-shadow: 2px 4px 10px 0 rgba(0,0,0,.1);
   background-color: #E6F3F4;
-
-  &:nth-of-type(3n) {
-    margin-right: 0;
-  }
 
   img {
     margin-right: calc($keyline / 2);

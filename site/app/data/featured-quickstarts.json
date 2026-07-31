@@ -1,6 +1,24 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Snowflake Object Usage Template Setup",
+      "id": "snowflake_object_usage_template_setup",
+      "category": "administration",
+      "date": "July 22, 2026"
+    },
+    {
+      "title": "Automate Sigma from the Command Line with the Sigma CLI",
+      "id": "developers_sigma_cli",
+      "category": "developers",
+      "date": "July 13, 2026"
+    },
+    {
+      "title": "First Friday Features - June 2026",
+      "id": "06_2026_first_friday_features",
+      "category": "first_friday_features",
+      "date": "July 1, 2026"
+    },
+    {
       "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
       "id": "aiapps_gong_call_analysis",
       "category": "aiapps",
@@ -11,12 +29,6 @@
       "id": "aiapps_chat_element",
       "category": "aiapps",
       "date": "June 10, 2026"
-    },
-        {
-      "title": "First Friday Features - May 2026",
-      "id": "05_2026_first_friday_features",
-      "category": "first_friday_features",
-      "date": "May 5, 2026"
     },
     {
       "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
@@ -41,24 +53,6 @@
       "id": "aiapps_scheduling_sigma_insights_to_slack",
       "category": "aiapps",
       "date": "April 15, 2026"
-    },
-    {
-      "title": "Natural Language Analytics with Claude and Sigma",
-      "id": "aiapps_natural_language_with_claude",
-      "category": "aiapps",
-      "date": "April 15, 2026"
-    },
-    {
-      "title": "Building Forms for Data Capture and Analysis",
-      "id": "aiapps_forms",
-      "category": "aiapps",
-      "date": "April 2, 2026"
-    },
-    {
-      "title": "Automate Inventory Alerts with Scheduled Actions",
-      "id": "aiapps_scheduled_actions",
-      "category": "aiapps",
-      "date": "Mar 23, 2026"
     }
   ]
 }

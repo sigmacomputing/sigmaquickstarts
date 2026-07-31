@@ -7,7 +7,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-01-06
+lastUpdated: 2026-07-11
 
 # Fundamentals 11: Pixel Perfect Reporting
 
@@ -620,6 +620,44 @@ There is more information on this feature in the QuickStart and help documentati
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Convert a Workbook to a Report
+Duration: 5
+
+If you already have a workbook in Sigma and want to take advantage of pixel-level formatting and scheduled PDF delivery, you don't have to rebuild it from scratch. The workbook to report converter does the heavy lifting for you.
+
+Open the workbook you want to convert and select `File` > `Convert to report...`.
+
+Sigma displays a modal listing any elements that cannot be carried over — buttons, dividers, page breaks, layout containers, sidebars, action sequences, and existing export schedules are removed during conversion. Review the list and confirm when you're ready to proceed.
+
+<img src="assets/ppf_50.png" width="600"/>
+
+Sigma will warn about elements that will not convert:
+
+<img src="assets/ppf_50a.png" width="600"/>
+
+After confirming, configure three settings:
+
+- Pages: convert the entire workbook or select specific tabs
+- Page size: choose a preset (Letter, A4, etc.) or set custom dimensions
+- Orientation: portrait or landscape
+
+<img src="assets/ppf_50b.png" width="600"/>
+
+Sigma saves the resulting report to `Your documents` as `[Workbook name] (Report)`. The original workbook is untouched:
+
+<img src="assets/ppf_50c.png" width="700"/>
+
+Now all that may be needed is some final fit and finish work and the report is ready for distribution.
+
+<aside class="positive">
+<strong>BEST PRACTICE:</strong><br> The converter works best for workbooks with static, summary-style content — financial statements, invoices, operational summaries. Workbooks built around heavy interactivity (lots of controls and action sequences) will lose those elements in conversion, so plan accordingly.
+</aside>
+
+For full details on what is and isn't supported, see [Convert workbooks to reports](https://help.sigmacomputing.com/docs/convert-workbooks-to-reports)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## What we've covered
 Duration: 5
 
@@ -635,6 +673,7 @@ In this QuickStart, we explored how Sigma makes Pixel Perfect Reporting effortle
 - Apply alignment tools and ruler guides for pixel-perfect positioning
 - Configure email bursting to distribute personalized, region-specific reports to multiple recipients
 - Export reports to PDF and schedule automated delivery
+- Convert existing workbooks to reports using the workbook to report converter
 
 **Additional Resource Links**
 

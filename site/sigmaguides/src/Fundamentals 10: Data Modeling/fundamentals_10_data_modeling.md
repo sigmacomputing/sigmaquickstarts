@@ -5,11 +5,11 @@ categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-03-05
+lastUpdated: 2026-06-23
 
 # Fundamentals 10: Data Modeling
 
-## Overview 
+## Overview
 Duration: 5 
 
 Many Sigma users are used to creating a new workbook and then using warehouse tables as the data source for their content. This often requires the user to do extra data preparation work, like joining tables together, renaming fields or creating aggregations. This modeling logic is bound to a single workbook and is not reusable across your Sigma deployment. This can lead to duplicated effort and inconsistent reporting.
@@ -92,7 +92,7 @@ To create or manage a data model, the following is required:
 
 - Users must be the data model owner or be granted Can edit access to the data model.
 
-By default, Sigma account types provide the following data modeling permissions:
+For example, by default a `Build` user has the following data modeling permissions:
 
 <img src="assets/dm_23.png" width="800"/>
 
@@ -113,17 +113,73 @@ To satisfy marketing's request we will use five tables that are provided to all 
 ### Base table
 To satisfy marketing's main request, we are going to create a "base table" by joining three tables together, culling the column list manually and creating a calculated column.
 
+**Why start with the most-granular table?**<br>
+Sigma's [Define relationships in data models](https://help.sigmacomputing.com/docs/define-relationships-in-data-models) guidance recommends using the most-granular table as the source element, with less-granular tables joined or related to it. 
+
+Picking the wrong base risks "fanout" — joining a less-granular table to a more-granular one inflates row counts unintentionally, which may lead to incorrect aggregations downstream. In our retail dataset, the line-item POS table (`F_POINT_OF_SALE`) is the most granular — each row represents a single line on a single order — so it's the right starting point.
+
 Add a new table from the `Element bar` > `Data` group:
 
 <img src="assets/dm_4.png" width="300"/>
 
-We could navigate to the table but it is easier to just search for `F_SALES` and select the table from the `RETAIL` schema:
+We could navigate to the table but it is easier to just search for:
+```copy-code
+F_POINT_OF_SALE
+```
+
+Select the table from the `RETAIL` schema:
 
 <img src="assets/dm_3.png" width="450"/>
 
 The table is added to the page and we can work with it just as we would in a Sigma workbook. 
 
-Rename the table to `Plugs Sales`.
+Rename the table to `Plugs Sales`. The data model name is for the business audience — "Plugs Sales" describes the use case better than the underlying table name and is how builders will find it.
+
+Save the work as a new data model named:
+```copy-code
+Data Model QuickStart
+```
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Join More Tables
+Duration: 5
+
+Marketing will always need columns from `F_SALES` (for order-header context including the customer key) and `D_CUSTOMER` (for customer attributes), so we can join them to our `F_POINT_OF_SALE` base.
+
+**Order matters.**<br>
+We join `F_SALES` first because `F_POINT_OF_SALE` carries `Order Number` but not `Cust Key` — the customer key lives on the order header, not the line item. Once `F_SALES` is in the model, the `Cust Key` it brings in becomes the join key to `D_CUSTOMER`.
+
+Both joins are many-to-one from the line-item grain — each POS line maps to exactly one `F_SALES` row (via `Order Number`), and each of those maps to exactly one `D_CUSTOMER` row (via `Cust Key`) — so neither join will inflate row counts.
+
+From `Plugs Sales`, select `Element source` > `Join` from the table menu:
+
+<img src="assets/dm_33.png" width="800"/>
+
+Search for `F_SALES` and select the one from the `RETAIL` > `PLUGS_ELECTRONICS` schema.
+
+Click `Select` to accept all columns and set the `Join keys` to `Order Number`:
+
+<img src="assets/dm_34.png" width="800"/>
+
+Click the `+` icon to add another table to the join, this time selecting `D_CUSTOMER` from the `RETAIL` schema and joining on `Cust Key` (which came in via `F_SALES`). There are 105 customers who have never made a purchase:
+
+<img src="assets/dm_35.png" width="800"/>
+
+Click `Preview output`.
+
+Sigma shows us the lineage of the joins and gives us an opportunity to deselect columns as needed. Note how `F_POINT_OF_SALE` sits on the left as the source, with `D_CUSTOMER` and `F_SALES` joined to it — this is the canonical "most-granular-first" shape:
+
+<img src="assets/dm_36.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Deselecting a column while in the lineage view does not prevent the column from being reselected in the data model later. If the column is not needed at all, delete the column prior to publishing the data model.
+</aside>
+
+Click `Done`.
+
+The two joins bring in a lot of new columns — many of which marketing won't need by default but which a builder might want to expose later. This is the right point to demonstrate **hiding** columns, which is reversible, versus **deleting** them outright.
 
 Hide the four columns as shown below:
 
@@ -133,7 +189,7 @@ Notice that in the `Source columns` list the four columns are still selected:
 
 <img src="assets/dm_31.png" width="500"/>
 
-What this means is that downstream (i.e., when the data model is used in a workbook) the four hidden columns do not appear initially, but are available for the user to un-hide:
+What this means is that downstream (i.e., when the data model is used in a workbook) the four hidden columns do not appear initially, but are available for the user to unhide.
 
 For example, if we used the data model we have so far in a workbook, we can see the columns are still available, though not selected by default:
 
@@ -147,49 +203,11 @@ Use the `Undo` icon to unhide these columns:
 
 <img src="assets/dm_30a.png" width="500"/>
 
-Rename the data model as `Data Model QuickStart`. 
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Join More Tables
-Duration: 5
-
-Since we know that marketing will always need columns from the `D_CUSTOMER` and `F_POINT_OF_SALE` tables, we can join them directly. 
-
-Using joins, we’ll connect these two tables. Combined with the base table, this satisfies marketing’s initial request.
-
-From `Plugs Sales`, select `Element source` > `Join` from the table menu:
-
-<img src="assets/dm_33.png" width="800"/>
-
-Search for `D_CUSTOMER` and select the one from the `RETAIL` schema.
-
-Accept all columns and set the `Join keys` to `Cust Key`. There are 105 customers who have never made a purchase:
-
-<img src="assets/dm_34.png" width="800"/>
-
-Click the `+` icon to add another table to the join, this time selecting the `F_POINT_OF_SALE` from the `RETAIL` schema and joining on `Order Number`:
-
-<img src="assets/dm_35.png" width="800"/>
-
-Click `Preview output`.
-
-Sigma shows us the lineage of the joins and gives us an opportunity to deselect columns as needed:
-
-<img src="assets/dm_36.png" width="800"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> Deselecting a column while in the lineage view does not prevent the column from being reselected in the data model later. If the column is not needed at all, delete the column prior to publishing the data model.
-</aside>
-
-Click `Done`.
-
-Since this is our "base table" (renamed to `F_SALES + 2`) it is a good idea to delete columns that users will never need. 
+For columns that will never be needed, deletion is the right call. 
 
 For example, columns with duplicate information or key columns that won’t be used to create relationships later.
 
-For example, we can delete `Cust Key (D_Customer)` since we have no plans to use it.
+For example, we can delete `D_CUSTOMER/Cust Address` since we don't want to expose that.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Which columns you plan to use is use case dependent, but deleted columns can be added back to the data model later by the builder if plans change.
@@ -198,7 +216,7 @@ For example, we can delete `Cust Key (D_Customer)` since we have no plans to use
 ### Calculated columns
 Since our base table does not have columns for `Revenue` or `Profit`, we can add them easily:
 
-<img src="assets/dm_39a.png" width="600"/>
+<img src="assets/dm_39a.png" width="800"/>
 
 Add a new column, and rename it to `Revenue`. Set the formula to:
 ```copy-code
@@ -210,12 +228,16 @@ Add another column, and rename it to `Profit`, and set the formula to:
 [Revenue] - ([Cost Amount] * [Sales Quantity])
 ```
 
-Rename the table back to `Plugs Sales` and set the description to:
+Set the table description to:
 ```copy-code
-From the RETAIL schema in the Sigma Sample Database
+Plugs Electronics POS line items, enriched with customer and order-header details. Grain: one row per POS line. Source: RETAIL schema in the Sigma Sample Database.
 ```
 
 <img src="assets/dm_32a.png" width="800"/>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Descriptions are not just documentation — they feed Sigma's semantic search and the Sigma Assistant. A clear description that states the grain and intent makes it easier for builders (and Sigma Assistant) to pick this model when they have a question about sales data.
+</aside>
 
 Click `Publish`.
 
@@ -227,7 +249,7 @@ Duration: 5
 
 Data models serve as a starting point for builders in Sigma to explore data. Relationships power this experience and make it easy for the builder to quickly get what they need through predefined modeling logic, rather than working directly with raw warehouse content such as tables or views.
 
-Once built, the data model might look like this, allowing the builder to get moving much more quickly than starting a workbook from scratch. 
+Once fully built, the data model might look like this, allowing the builder to get moving much more quickly than starting a workbook from scratch. 
 
 <img src="assets/dm_55.png" width="800"/>
 
@@ -244,9 +266,9 @@ Join pruning offers several benefits:
 
 By keeping `Plugs Sales` as the base data and using relationships for tables less often used, we gain:
 
-- Clear lineage: we always know the grain and logic origin.
+- Clear lineage: we always know the grain and logic origin — every row is one POS line item.
 
-- Separation of concerns: `F_SALES` remains a clean fact table, reusable elsewhere.
+- Separation of concerns: `F_POINT_OF_SALE` remains the clean line-item fact, reusable elsewhere.
 
 - Simpler troubleshooting: if a join breaks or inflates rows, it’s scoped to the child model.
 
@@ -255,7 +277,7 @@ By keeping `Plugs Sales` as the base data and using relationships for tables les
 ### Add Product and Store tables
 Before we can create a relationship, we need to add the two tables we want to expose to the builder.
 
-Add the `D_PRODUCT` and `D_STORE` tables from the `RETAIL` schema directly to the workbook.
+Add the `D_PRODUCT` and `D_STORE` tables from the `RETAIL` > `PLUGS_ELECTRONICS` schema directly to the data model.
 
 We want to prevent the tables from appearing in the published data model, so we can toggle `Visible as source` off for both tables:
 
@@ -277,7 +299,7 @@ We now have two relationships, which can be edited by clicking on the pencil ico
 
 <img src="assets/dm_9.png" width="450"/>
 
-We can access the ERD as shown:
+We can access the Entity Relationship Diagram (ERD) as shown:
 
 <img src="assets/dm_14.png" width="800"/>
 
@@ -329,7 +351,7 @@ At this point, the data model page looks like this, but we’re not done buildin
 
 <img src="assets/dm_19.png" width="550"/>
 
-- 3: The `Cust Name` and `Cust Address` columns are present in our table. **This is against the use case policy described earlier and we’ll need to fix it.** Hiding the columns is not sufficient and we will correct this shortly:
+- 3: The `Cust Name` column is present in our table. **This is against the use case policy described earlier and we’ll need to fix it.** Hiding the column is not sufficient and we will correct this shortly:
 
 <img src="assets/dm_19a.png" width="800"/>
 
@@ -382,12 +404,25 @@ Return to the data model.
 
 Click the `Plugs Sales` table.
 
-For example, if we want to add a metric for `Total Revenue`, we click the `+` for `METRICS` in the `Modeling` section of the data model.
+For example, if we want to add a metric for `Total Revenue`, we click the `+` for `METRICS` in the `Modeling` section of the data model:
+
+<img src="assets/dm_19z.png" width="800"/>
 
 Configure the new metric as shown, using this formula:
 
+Name:
+```copy-code
+Total Revenue
+```
+
+Formula:
 ```copy-code
 Sum([Revenue])
+```
+
+Description:
+```copy-code
+Revenue for current year compared to previous
 ```
 
 <img src="assets/dm_26.png" width="800"/>
@@ -416,8 +451,20 @@ Formulas in Sigma are flexible and powerful. For example, we can use a formula i
 Select the `Plugs Sales` table again.
 
 Add another metric to the data model and configure it using this formula:
+
+Name:
+```copy-code
+East Revenue
+```
+
+Formula:
 ```copy-code
 SumIf([Revenue], [Cust Region] = "East")
+```
+
+Description:
+```copy-code
+Sum of East revenue for the full year
 ```
 
 <img src="assets/dm_43.png" width="800"/>
@@ -426,7 +473,7 @@ Click `Publish`.
 
 The new metric is added to the data model landing page:
 
-<img src="assets/dm_44.png" width="600"/>
+<img src="assets/dm_44.png" width="800"/>
 
 Note that we can click on the new metric (on the landing page) and it presents the option to `Explore in workbook`:
 
@@ -439,13 +486,9 @@ Once open, we can drill down to the row level detail with the `East` region bein
 ### Using the metric
 Return to the data model landing page. 
 
-One way to do that quickly is:
-
-<img src="assets/dm_46a.png" width="500"/>
-
 Builders only need to click the explore button to open a new workbook using the full data model:
 
-<img src="assets/dm_27.png" width="500"/>
+<img src="assets/dm_27.png" width="800"/>
 
 We can now group by `Cust Region` and use the `Total Revenue` **metric** that is supplied for us as a `CALCULATION`:
 
@@ -485,15 +528,15 @@ Select the `+` for column security:
 
 <img src="assets/dm_48.png" width="800"/>
 
-Select the two columns we want to secure, and the method we want to use:
+Select the `Cust Name` column and choose the method we want to use to secure it:
 
 <img src="assets/dm_49.png" width="600"/>
 
-When set to `No one can view`, the columns will not appear—even if the data model is accidentally shared with a non-builder.
+When set to `No one can view`, the column will not appear—even if the data model is accidentally shared with a non-builder.
 
 Click `Publish`.
 
-If we view the data model in the `Published version` and `Explore` it, we see that the restricted columns do not appear in the column list and are not available via `Source columns`:
+If we view the data model in the `Published version` and `Explore` it, we see that the restricted column does not appear in the column list and is not available via `Source columns`:
 
 <img src="assets/dm_50.png" width="500"/>
 
@@ -563,9 +606,9 @@ From here you have two options:
 
 **Manual mapping:** For each broken item, use the dropdown to select a replacement from the available options. Choosing `None` removes the item from affected downstream documents.
 
-Scroll the column list to see that the `Revenue` and `Profit` columns are "broken":
+Scroll the column list to see that the `Revenue` column is "broken":
 
-<img src="assets/dm_59.png" width="800"/>
+<img src="assets/dm_59.png" width="600"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> "Profit" is also broken because it is a calculated column and depended on Revenue to work.
@@ -577,7 +620,7 @@ You can also click `Downstream lineage` to review exactly which documents will b
 <strong>IMPORTANT:</strong><br> Viewing the downstream lineage is really useful to see which documents are affected by broken column(s).
 </aside>
 
-Since we physically deleted the `Revenue` column, autofix or manual mapping will not resolve it but all hope is not lost!
+Since we physically deleted the `Revenue` column, autofix or manual mapping will not resolve it but there is another method.
 
 Close the `Content validation` modal.
 
@@ -585,13 +628,13 @@ Data models and workbooks maintain a detailed version history that allows us to 
 
 <img src="assets/dm_59a.png" width="500"/>
 
-We can see where we deleted the Revenue column so we want to revert to the version that came just before that (yours may be a little different based on the order of operations performed): 
+We can see where we deleted the `Revenue` column so we want to revert to the version that came just before that (yours may be a little different based on the order of operations performed): 
 
-<img src="assets/dm_60.png" width="500"/>
+<img src="assets/dm_60.png" width="300"/>
 
-If we click on the text `Move columns`, the data model reverts and gives us the option to `Restore version as draft`:
+We can simply select to `Restore version as draft` from the version just before we deleted the column:
 
-<img src="assets/dm_61.png" width="800"/>
+<img src="assets/dm_61.png" width="500"/>
 
 Once reverted, the `Revenue` column is back and `Profit` also is working:
 

@@ -336,6 +336,7 @@
             .functions-bar,
             .partners-bar,
             .security-bar,
+            .apptemplates-bar,
             .tables-bar,
             .templates-bar,
             .use-cases-bar {
@@ -1213,10 +1214,12 @@
                         <option value="">All Categories</option>
                         <option value="administration">Administration</option>
                         <option value="aiapps">AI Apps</option>
+                        <option value="apptemplates">App Templates</option>
                         <option value="developers">Developers</option>
                         <option value="embedding">Embedding</option>
                         <option value="functions">Functions</option>
                         <option value="fundamentals">Fundamentals for New Users</option>
+                        <option value="migrations">Migrations</option>
                         <option value="partners">Partners</option>
                         <option value="security">Security</option>
                         <option value="tables">Tables</option>
@@ -1428,7 +1431,8 @@
          document.addEventListener('DOMContentLoaded', function() {
             const categoryMap = {
                'aiapps': 'AI Apps',
-               'dataapps': 'Data Apps'
+               'dataapps': 'Data Apps',
+               'apptemplates': 'App Templates'
             };
 
             // Function to fix category names
