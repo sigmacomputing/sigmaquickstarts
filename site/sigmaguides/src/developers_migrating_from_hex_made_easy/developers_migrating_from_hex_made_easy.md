@@ -1,9 +1,9 @@
 author: pballai
 id: developers_migrating_from_hex_made_easy
 summary: developers_migrating_from_hex_made_easy
-categories: developers
+categories: migrations
 environments: web
-status: Migrations
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
 lastUpdated: 2026-08-15
