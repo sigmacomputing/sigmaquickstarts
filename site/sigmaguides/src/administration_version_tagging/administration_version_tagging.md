@@ -6,14 +6,14 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-01-20
+lastUpdated: 2026-07-31
 
 # Version Tagging with Sigma
 
 ## Overview 
 Duration: 5 
 
-Version tagging allows you to employ a software development lifecycle (SDLC) to control Workbook versions, using tags.
+Version tagging allows you to employ a software development lifecycle (SDLC) to control workbook versions, using tags.
 
 Tags provide control over which workbook versions are available to your users, along with some workflow automation to foster collaboration. 
 
@@ -34,11 +34,11 @@ For example, administrators can create `Production` and `Quality Assurance` tags
 The `Quality Assurance` version is used for testing and approval purposes. Once reviewed, the workbook can be tagged `Production` for users to consume.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Sigma’s version tagging facilitates collaboration and assures control, especially in team environments where multiple users are working on the same workbook.
+<strong>IMPORTANT:</strong><br> Sigma's version tagging facilitates collaboration and assures control, especially in team environments where multiple users are working on the same workbook.
 </aside> 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
+<strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma's intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
 For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
@@ -60,17 +60,18 @@ Semi-technical users who are interested in a more controlled (i.e., SDLC) method
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
   
-### What You’ll Learn
+### What You'll Learn
 How Sigma version tagging can be used (inside Sigma itself) to provide a controlled release experience which should result in less reported issues and happier end-users.
 
 ![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
 
 ## Typical Workflow
 Duration: 20
 
 It is important to understand that the system is flexible enough to allow for different workflows.
 
-For example, in the diagrams below, we see two possible workflows. The first, which assumes QA will only pass/fail content and the second which allows them to make changes in order to get to production without another development cycle. It is up to your organization how you want to structure the workflow / approval process.
+For example, in the diagrams below, we see two possible workflows: the first assumes QA will only pass/fail content, and the second allows them to make changes in order to get to production without another development cycle. It is up to your organization how you want to structure the workflow / approval process.
 
 <img src="assets/vt38.png" width="800"/>
 
@@ -103,7 +104,7 @@ Here is how we will get this done.
 
 For this use case, we will create some teams and a user to help facilitate our demonstration. 
 
-First, we will create two teams; `Quality Assurance Team` and `Sales_Team_All`. 
+First, we will create two teams: `Quality Assurance Team` and `Sales_Team_All`. 
 
 <img src="assets/vt2.png" width="800"/>
 
@@ -119,12 +120,12 @@ For the `Quality Assurance` team, we will assign one user, who will be responsib
 
 All other sales users will be assigned to the `Sales_Team_All` team.
 
-In Sigma > `Administration` > `People` we have added one user for each team:
+In Sigma > `Administration` > `People`, we have added one user for each team:
 
 <img src="assets/vt4.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Users in Sigma must have unique email addresses. We use the `+` sign to create an email alias, as Google mail allows for this. 
+<strong>NOTE:</strong><br> Users in Sigma must have unique email addresses. We use the `+` sign to create an email alias, as Gmail allows for this. 
 </aside>
 
 <aside class="positive">
@@ -155,7 +156,7 @@ Log into Sigma as an administrator and navigate to `Administration` > `Tags` and
 
 <img src="assets/vt1.png" width="800"/>
 
-Our first tag, `Quality_Assurance` is created with the `Public` permission. Recall that in our use case, content is made by users who have the `Creator` permission and therefore, will be able to edit workbooks. The `Protected` option is there for those who want to explicitly control who receive messages for review.
+Our first tag, `Quality_Assurance`, is created with the `Public` permission. Recall that in our use case, content is made by users who have the `Creator` permission and therefore, will be able to edit workbooks. The `Protected` option is there for those who want to explicitly control who receive messages for review.
 
 <img src="assets/vt8.png" width="800"/>
 
@@ -176,7 +177,7 @@ We are now ready to start using version tagging, in an example tagging workflow.
 ## Create Sample Content
 Duration: 20
 
-In Sigma, we will use create a new workbook that contains a single table, based off the `Sigma Sample Database`.
+In Sigma, we will create a new workbook that contains a single table, based off the `Sigma Sample Database`.
 
 If you are unfamiliar how to create this content, please review step 5 of this QuickStart: [Fundamentals 1: Getting Around](https://quickstarts.sigmacomputing.com/guide/fundamentals-1-getting-around/index.html?index=..%2F..index#4)
 
@@ -196,7 +197,7 @@ Duration: 20
 
 Now that we have our workbook created, we can tag the workbook as ready for `Quality Assurance` to review it:
 
-This is done by clicking the carrot (down arrow) next to the workbook's name and selecting `Tag latest published version` from the drop menu:
+This is done by clicking the caret (down arrow) next to the workbook's name and selecting `Tag latest published version` from the drop menu:
 
 <img src="assets/vt13.png" width="600"/>
 
@@ -212,9 +213,7 @@ If we publish our draft instead, notice that the tagging menu item changes to `T
 
 <img src="assets/vt14.png" width="600"/>
 
-We will select to tag this version and move on, next selecting to apply the `Quality_Assurance` tag to our workbook:
-
-<img src="assets/vt14.png" width="600"/>
+We will select to tag this version and move on, next selecting to apply the `Quality_Assurance` tag to our workbook.
 
 On this modal (Set Tag on Version) there are a few other interesting features that enable even more complex functionality:
 
@@ -224,14 +223,14 @@ On this modal (Set Tag on Version) there are a few other interesting features th
 This enables a user with access to a tagged version, to make a copy of the workbook.  When a user does this, the copy will no longer be connected to the original version of the workbook.
 
 **Swap sources of the tagged version:**<br>
-Allows user to swap sources of the tagged version to select a different source (connection, database, schema) for this tagged workbook. They are able to browse and select available sources in the dropdown under `Sources of Tagged Workbook`. If this is left unchecked, the user tagging the workbook will not be prompted to select a different source. This is useful when there different source tables that have the same schema. For example, development has tables dedicated to their work that have the identical schema as the tables used in production.
+Allows user to swap sources of the tagged version to select a different source (connection, database, schema) for this tagged workbook. They are able to browse and select available sources in the dropdown under `Sources of Tagged Workbook`. If this is left unchecked, the user tagging the workbook will not be prompted to select a different source. This is useful when there are different source tables that have the same schema. For example, development has tables dedicated to their work that have the identical schema as the tables used in production.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Tables created through CSV uploads, Input tables, and Custom SQL are not available for data source swapping. These items cannot be migrated across connections (at the time of this QuickStart), but please check with Sigma support to get the most recent information. We are always interested in what features are important to our customers.
 </aside>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Input tables created in one version will be available in other tagged version, but any data entered into that Input Table will not be copied into the new tag.<br>
+<strong>NOTE:</strong><br> Input tables created in one version will be available in other tagged versions, but any data entered into that Input Table will not be copied into the new tag.<br>
 
 CSV files uploaded into the workbook will be available across different tags, but will only be updatable in the "Draft" version.<br>
 
@@ -255,13 +254,11 @@ For example, you may wish to "untag" or remove a tag from a workbook. Workbooks 
 
 <img src="assets/vt36.png" width="800"/>
 
-<li>Some reasons for deletion may be:
-    <ol type="n"> 
-      <li>Content was tagged (migrated) with a material misstatement or error.  Remove the tag and resolve issues in the "Draft" or previous version.</li>
+<ul>
+  <li> Content was tagged (migrated) with a material misstatement or error. Remove the tag and resolve issues in the `Draft` or previous version.</li>
       <li>Any security testing that exposes more data than expected.</li>
       <li>Accidental tagging.</li>
-    </ol>
-  </li>
+</ul>
 
 ### Add a tag description
 Another useful collaboration feature is to add meaningful names and descriptions to changes listed in the workbook's version history. 
@@ -334,7 +331,7 @@ There are some options that allow organizations to decide who has production rel
 
 In our use case, we will simply assume that Quality Assurance can release to production (by tagging the workbook accordingly). 
 
-To stay organized, the team can use a Sigma workspace or simply create a folder to store production workbook in. 
+To stay organized, the team can use a Sigma workspace or simply create a folder to store the production workbook in. 
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> For large multi-user workbooks, best practice is to store in a workspace and tag that workspace, when sharing the workspace with teams or users.
