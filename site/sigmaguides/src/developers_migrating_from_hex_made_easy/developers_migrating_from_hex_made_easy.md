@@ -33,9 +33,9 @@ This QuickStart walks through a `Claude Code` skill called `hex-to-sigma` {TBD �
 
 ### Sample project
 
-For the demonstration, we'll convert a Hex project called `Commerce App` — reusing the same Commerce e-commerce dataset from the [Migrating From Cognos Made Easy](developers_migrating_from_cognos_made_easy.md) QuickStart, so the underlying numbers and warehouse tables are already proven out. You'll see the discovery artifacts each phase produces, the converter's breakdown of how each Hex cell mapped to a Sigma formula or data model step, the parity report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
+For the demonstration, we'll convert a Hex project called `Commerce Dashboard` — reusing the same Commerce e-commerce dataset from the [Migrating From Cognos Made Easy](developers_migrating_from_cognos_made_easy.md) QuickStart, so the underlying numbers and warehouse tables are already proven out. You'll see the discovery artifacts each phase produces, the converter's breakdown of how each Hex cell mapped to a Sigma formula or data model step, the parity report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
 
-<!-- <img src="assets/mfhx_01.png" width="800"/> -->
+<img src="assets/mfhx_01.png" width="800"/>
 
 <aside class="positive">
 <strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. {TBD — confirm upstream repo path once the skill is built and merged into TJ's monorepo.}
@@ -227,18 +227,21 @@ SELECT 'COUNTRY',  COUNT(*) FROM COUNTRY
 UNION ALL
 SELECT 'COMMERCE', COUNT(*) FROM COMMERCE;
 
-SELECT
-  ROUND(SUM("Revenue"), 3) AS TOTAL_REVENUE,
-  SUM("Quantity")          AS TOTAL_QUANTITY
-FROM COMMERCE;
-
 GRANT USAGE  ON DATABASE QUICKSTARTS                               TO ROLE SIGMA_SERVICE_ROLE;
 GRANT USAGE  ON SCHEMA   QUICKSTARTS.HEX_ECOMMERCE                 TO ROLE SIGMA_SERVICE_ROLE;
 GRANT SELECT ON ALL    TABLES IN SCHEMA QUICKSTARTS.HEX_ECOMMERCE  TO ROLE SIGMA_SERVICE_ROLE;
 GRANT SELECT ON FUTURE TABLES IN SCHEMA QUICKSTARTS.HEX_ECOMMERCE  TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-The final two queries confirm the load. Expected results: 613,002 rows in COMMERCE, total revenue `39,759,625.515`, total quantity `91,206`.
+SELECT
+  ROUND(SUM("Revenue"), 3) AS TOTAL_REVENUE,
+  SUM("Quantity")          AS TOTAL_QUANTITY
+FROM COMMERCE;
+
+
+The final query confirms the load. Expected results: 613,002 rows in COMMERCE, total revenue `39,759,625.515`, total quantity `91,206`:
+
+<img src="assets/mfhx_02.png" width="800"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> {TBD — confirm the S3 CSV files exist at <code>s3://sigma-quickstarts-main/Hex/</code> before running this script. The Cognos QS uses the same file names at <code>s3://sigma-quickstarts-main/Cognos/</code> — if a Hex-specific copy hasn't been staged yet, point the stage URL there instead, or ask TJ to mirror the files into a <code>Hex/</code> prefix.}
@@ -247,49 +250,29 @@ The final two queries confirm the load. Expected results: 613,002 rows in COMMER
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Build the Demo Project in Hex
-Duration: 15
+## Import the Sample Project
+Duration: 5
 
-{TBD — structure below assumes Hex's cell-based project model (SQL cell → chart cell) and mirrors the 6-visualization Commerce dashboard used in the rest of the family. Verify every step against the actual Hex trial UI before publishing — cell types, menu labels, and chart configuration options are unconfirmed.}
-
-With the Snowflake data in place, build the source project in Hex. This is the content the skill will discover and convert to Sigma.
-
-The project has six visual elements — two single-value cells and four charts — built on SQL cells that read from the four tables loaded in the previous section.
+With the Snowflake data in place, import the pre-built `Commerce Dashboard` project instead of building it cell-by-cell. Hex's project export/import is fully round-trip compatible, so this reproduces the exact dashboard used throughout this QuickStart — one SQL cell joining the four Commerce tables, two KPI cells, and four charts (including the Top 10 filters) — without a click-by-click UI walkthrough.
 
 ### Connect Hex to Snowflake
 
-1. In Hex, add a new data connection to your `QUICKSTARTS.HEX_ECOMMERCE` schema in Snowflake. {TBD — confirm exact menu path in the trial: `Workspace settings` > `Data connections`, unconfirmed.}
+The imported project's SQL cell needs a data connection in *your* workspace — Hex doesn't carry someone else's connection across an import.
 
-### Build the project
+If your workspace doesn't already have a Snowflake connection pointed at `QUICKSTARTS.HEX_ECOMMERCE`, an Admin needs to add one first: `Workspace settings` > `Data sources` > `+ Connection` > `Snowflake`, then fill in the account, warehouse, database, and schema (`QUICKSTARTS` / `HEX_ECOMMERCE`).
 
-1. Create a new Hex project named `Commerce App`.
-2. Add a SQL cell that queries `COMMERCE` joined to `BRAND`, `CATEGORY`, and `COUNTRY` on their respective ID columns.
-3. Add a calculated column (or a Python cell, depending on how the trial exposes it) for `Year`, extracted from `"Date"`.
-4. Build the six visual elements below, each backed by a SQL or chart cell:
+<!-- <img src="assets/mfhx_03.png" width="800"/> -->
 
-**Element 1 — Revenue total**
-- Single-value cell, `SUM("Revenue")`
+### Import the project
 
-**Element 2 — Quantity total**
-- Single-value cell, `SUM("Quantity")`
-
-**Element 3 — Revenue by Country**
-- Bar chart (horizontal), `"Country"` by `SUM("Revenue")`, sorted descending
-
-**Element 4 — Quantity by Category**
-- Pie chart, `"Category"` sized by `SUM("Quantity")`
-
-**Element 5 — Revenue by Category**
-- Bar chart (horizontal), `"Category"` by `SUM("Revenue")`, sorted descending
-
-**Element 6 — Revenue by Year**
-- Bar chart (vertical), `Year` on the x-axis, `SUM("Revenue")` on the y-axis
-
-5. Publish the project as an app named `Commerce App`.
+1. Download `Commerce Dashboard.yaml`: {TBD — link once `hex-migration-skills` is pushed to `sigmacomputing/quickstarts-public`}.
+2. From the Hex home page, select `Import`, and upload the file.
+3. Hex will prompt you to relink the SQL cell's data connection — point it at the Snowflake connection from the previous step.
+4. Open the imported project, confirm the `commerce_joined` SQL cell runs cleanly, then select `Publish` in the top right. Wait for the preview run to finish, then select `Publish version`.
 
 The completed app should show Revenue `39.8M` and Quantity `91.2K` with country, category, and year breakdowns matching the numbers confirmed in Prepare Demo Data.
 
-<!-- <img src="assets/mfhx_02.png" width="800"/> -->
+<!-- <img src="assets/mfhx_04.png" width="800"/> -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -299,7 +282,7 @@ Duration: 5
 
 The skill lands workbooks in a Sigma folder. Create a dedicated folder now so the output is organized from the start.
 
-In Sigma, navigate to `Home` and create a new folder named `Hex Migration`. Copy the folder's ID from the URL — you'll pass it to the skill in the next section.
+In Sigma, navigate to `Home` and create a new folder named `Hex Migration Demo`. Copy the folder's ID from the URL — you'll pass it to the skill in the next section.
 
 The folder ID appears in the URL after `/folder/`:
 
@@ -307,7 +290,7 @@ The folder ID appears in the URL after `/folder/`:
 https://app.sigmacomputing.com/{your-org}/folder/{your-folder-id}
 ```
 
-<!-- <img src="assets/mfhx_03.png" width="800"/> -->
+<img src="assets/mfhx_05.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -357,25 +340,25 @@ Duration: 10
 
 When the skill completes, it prints a migration summary — the count of cells converted, any items flagged for manual review, and the parity result.
 
-<!-- <img src="assets/mfhx_04.png" width="800"/> -->
+<!-- <img src="assets/mfhx_06.png" width="800"/> -->
 
 ### The Sigma workbook
 
 Open the workbook in your Sigma folder and compare it against the source Hex app. The layout mirrors the source, and each visualization is backed by the translated formula.
 
-<!-- <img src="assets/mfhx_05.png" width="800"/> -->
+<!-- <img src="assets/mfhx_07.png" width="800"/> -->
 
 ### The Sigma data model
 
 The skill also creates a data model in the same folder — the tables, joins, and calculated columns derived from the Hex project's SQL cells.
 
-<!-- <img src="assets/mfhx_06.png" width="800"/> -->
+<!-- <img src="assets/mfhx_08.png" width="800"/> -->
 
 ### The gap list
 
 Any visualization, Python transformation, or input parameter the skill couldn't auto-translate lands in the gap list — with the source cell, the reason it was flagged, and a suggested Sigma equivalent where one exists. Work through the list to finish the migration.
 
-<!-- <img src="assets/mfhx_07.png" width="800"/> -->
+<!-- <img src="assets/mfhx_09.png" width="800"/> -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
