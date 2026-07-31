@@ -3,7 +3,7 @@ id: developers_migrating_from_hex_made_easy
 summary: developers_migrating_from_hex_made_easy
 categories: developers
 environments: web
-status: Developers
+status: Migrations
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
 lastUpdated: 2026-08-15
