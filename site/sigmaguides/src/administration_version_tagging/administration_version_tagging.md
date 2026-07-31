@@ -254,12 +254,12 @@ For example, you may wish to "untag" or remove a tag from a workbook. Workbooks 
 
 <img src="assets/vt36.png" width="800"/>
 
-<li>Some reasons for deletion may be:
-    <ol type="a">
-      <li>Content was tagged (migrated) with a material misstatement or error. Remove the tag and resolve issues in the "Draft" or previous version.</li>
-      <li>Any security testing that exposes more data than expected.</li>
-      <li>Accidental tagging.</li>
-</ul>
+Some reasons for deletion may be:
+<ol>
+  <li>Content was tagged (migrated) with a material misstatement or error. Remove the tag and resolve issues in the "Draft" or previous version.</li>
+  <li>Any security testing that exposes more data than expected.</li>
+  <li>Accidental tagging.</li>
+</ol>
 
 ### Add a tag description
 Another useful collaboration feature is to add meaningful names and descriptions to changes listed in the workbook's version history. 
