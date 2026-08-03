@@ -284,6 +284,10 @@ The folder contains:
 - **.env.example**: Template for your environment variables
 - **specs/**: Sample JSON specifications for creating and updating data models
 
+<aside class="negative">
+<strong>NOTE:</strong><br> On macOS, files beginning with a dot (`.env.example`, `.gitignore`) are hidden by default in Finder and when running a plain `ls` command in Terminal. If the files appear to be missing, run <code>ls -a</code> to list all files including hidden ones. They are present after the pull — the OS is just hiding them.
+</aside>
+
 <aside class="positive">
 <strong>TIP:</strong><br> You can also browse the files directly on GitHub at <a href="https://github.com/sigmacomputing/quickstarts-public/tree/main/data-models-as-code">quickstarts-public/data-models-as-code</a>
 </aside>

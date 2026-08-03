@@ -146,25 +146,32 @@ git sparse-checkout set powerbi-migration-skills
 
 <img src="assets/mpbi_03.png" width="800"/>
 
-**Step 5: Symlink powerbi-to-sigma into the Claude skills folder**<br>
+**Step 5: Create the Claude skills folder**<br>
+Claude Code does not create this directory automatically. The `-p` flag makes this safe to run even if it already exists.
+
+```copy-code
+mkdir -p ~/.claude/skills
+```
+
+**Step 6: Symlink powerbi-to-sigma into the Claude skills folder**<br>
 This lets Claude Code invoke `powerbi-to-sigma` as a skill.
 
 ```copy-code
 ln -s ~/quickstarts-public/powerbi-migration-skills/powerbi-to-sigma ~/.claude/skills/powerbi-to-sigma
 ```
 
-**Step 6: Symlink powerbi-assessment**<br>
+**Step 7: Symlink powerbi-assessment**<br>
 Used to scope a Power BI tenant before conversion.
 
 ```copy-code
 ln -s ~/quickstarts-public/powerbi-migration-skills/powerbi-assessment ~/.claude/skills/powerbi-assessment
 ```
 
-Steps 5 and 6 should return with no error.
+Steps 6 and 7 should return with no error.
 
 ![divider](assets/horizonalline.png)
 
-**Step 7: Install the Python dependencies the skill uses.**<br>
+**Step 8: Install the Python dependencies the skill uses.**<br>
 The skill calls Fabric and Power BI REST APIs from Python, including corporate-TLS handling for restricted networks.
 
 <aside class="negative">
@@ -175,7 +182,7 @@ The skill calls Fabric and Power BI REST APIs from Python, including corporate-T
 python3 -m pip install -r ~/.claude/skills/powerbi-to-sigma/scripts/requirements.txt
 ```
 
-**Step 8: Capture your Sigma API credentials.**<br>
+**Step 9: Capture your Sigma API credentials.**<br>
 This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings.
 
 Run once per machine.
@@ -188,7 +195,7 @@ ruby ~/.claude/skills/powerbi-to-sigma/scripts/setup.rb
 
 <img src="assets/mpbi_02.png" width="800"/>
 
-**Step 9: Authenticate with Power BI.**<br>
+**Step 10: Authenticate with Power BI.**<br>
 This script runs the device-code flow — it prints a Microsoft sign-in URL and a short code. 
 
 ```copy-code
@@ -208,12 +215,12 @@ Once authenticated, terminal will show:
 <img src="assets/mpbi_05.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> Two Microsoft API audiences are involved during conversion — Fabric (<code>api.fabric.microsoft.com</code>) for the model extraction and Power BI REST (<code>analysis.windows.net/powerbi</code>) for the parity check. The one device-code session acquires both. Corporate-network TLS interception is handled automatically by the <code>truststore</code> package installed in Step 7.
+<strong>NOTE:</strong><br> Two Microsoft API audiences are involved during conversion — Fabric (<code>api.fabric.microsoft.com</code>) for the model extraction and Power BI REST (<code>analysis.windows.net/powerbi</code>) for the parity check. The one device-code session acquires both. Corporate-network TLS interception is handled automatically by the <code>truststore</code> package installed in Step 8.
 </aside>
 
 ![divider](assets/horizonalline.png)
 
-**Step 10: Verify the install.**<br>
+**Step 11: Verify the install.**<br>
 This lists every workspace and item visible to your signed-in account — confirms both Power BI authentication and the assessment skill's installation worked. The script writes its inventory to the path you pass in `--out`.
 
 ```copy-code

@@ -149,32 +149,39 @@ git sparse-checkout set tableau-migration-skills
 
 <img src="assets/mftb_01.png" width="800"/>
 
-**Step 5: Symlink tableau-to-sigma into the Claude skills folder**<br>
+**Step 5: Create the Claude skills folder**<br>
+Claude Code does not create this directory automatically. The `-p` flag makes this safe to run even if it already exists.
+
+```copy-code
+mkdir -p ~/.claude/skills
+```
+
+**Step 6: Symlink tableau-to-sigma into the Claude skills folder**<br>
 This lets Claude Code invoke `tableau-to-sigma` as a skill.
 
 ```copy-code
 ln -s ~/quickstarts-public/tableau-migration-skills/tableau-to-sigma ~/.claude/skills/tableau-to-sigma
 ```
 
-**Step 6: Symlink tableau-assessment**<br>
+**Step 7: Symlink tableau-assessment**<br>
 Used to scope a Tableau site before conversion.
 
 ```copy-code
 ln -s ~/quickstarts-public/tableau-migration-skills/tableau-assessment ~/.claude/skills/tableau-assessment
 ```
 
-**Step 7: Symlink tableau-vds-to-snowflake**<br>
+**Step 8: Symlink tableau-vds-to-snowflake**<br>
 Used to land Tableau extracts into Snowflake when the source data isn't already in your warehouse.
 
 ```copy-code
 ln -s ~/quickstarts-public/tableau-migration-skills/tableau-vds-to-snowflake ~/.claude/skills/tableau-vds-to-snowflake
 ```
 
-Steps 5-7 should return with no error.
+Steps 6-8 should return with no error.
 
 ![divider](assets/horizonalline.png)
 
-**Step 8: Capture your Sigma API credentials.**<br>
+**Step 9: Capture your Sigma API credentials.**<br>
 This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings.
 
 Run once per machine.
@@ -187,7 +194,7 @@ ruby ~/.claude/skills/tableau-to-sigma/scripts/setup.rb
 
 <img src="assets/mftb_02.png" width="800"/>
 
-**Step 9: Capture your Tableau credentials.**<br>
+**Step 10: Capture your Tableau credentials.**<br>
 The next script prompts for four values, in order:
 
 | Prompt | What to paste | Example |
