@@ -1,5 +1,11 @@
 {
   "recentQuickStarts": [
+       {
+      "title": "First Friday Features - Jul;y 2026",
+      "id": "07_2026_first_friday_features",
+      "category": "firstfridayfeatures",
+      "date": "Aug 4, 2026"
+    },
     {
       "title": "Snowflake Object Usage Template Setup",
       "id": "snowflake_object_usage_template_setup",
@@ -11,12 +17,6 @@
       "id": "developers_sigma_cli",
       "category": "developers",
       "date": "July 13, 2026"
-    },
-    {
-      "title": "First Friday Features - June 2026",
-      "id": "06_2026_first_friday_features",
-      "category": "first_friday_features",
-      "date": "August 7, 2026"
     },
     {
       "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
