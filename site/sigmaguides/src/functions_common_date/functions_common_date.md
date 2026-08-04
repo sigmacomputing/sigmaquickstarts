@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-05-10
+lastUpdated: 2026-08-05
 
 # Common Date Functions
 
@@ -306,6 +306,46 @@ Go ahead and disable the filter.
 Marketing now has the data they requested:
 
 <img src="assets/CDUC14c.png" width="800"/>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Business Days
+Duration: 10
+
+`DateDiff` counts every calendar day between two dates, but many business processes only care about weekdays. The `BusinessDays` function counts the weekdays between two dates, including both the start and end date, while excluding Saturdays and Sundays.
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> SLAs and fulfillment targets are usually measured in business days, not calendar days. `BusinessDays` gives support and operations teams an accurate count that matches how a target like "ship within 3 business days" is actually measured.
+</aside>
+
+Let's return to the `Time_Between_Dates` table and compare `BusinessDays` against the `DateDiff` columns we already built.
+
+Add a new column next to `Days_1st_to_2nd_Order` and rename it `Business_Days_1st_to_2nd_Order`.
+
+Set the formula to:
+```copy-code
+BusinessDays([First_Order], [Second_Order])
+```
+
+Add another new column next to `Days_Since_Last_Order` and rename it `Business_Days_Since_Last_Order`.
+
+Set the formula to:
+```copy-code
+BusinessDays([Last_Order], Today())
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> BusinessDays always excludes Saturdays and Sundays and has no option to account for holidays.
+</aside>
+
+Comparing the two sets of columns highlights the difference between the two functions. `BusinessDays` counts both the start and end date, while `DateDiff` counts the days elapsed between them, so the values won't line up exactly—`BusinessDays` runs higher over short weekday-only ranges, and lower whenever the range spans a weekend:
+
+<img src="assets/cdf_bd_01.png" width="800"/>
+
+For more information, see [BusinessDays](https://help.sigmacomputing.com/docs/businessdays)
+
+Click `Publish`.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
