@@ -135,6 +135,9 @@ CREATE TABLE IF NOT EXISTS query_base_object_access_history (
     object_surrogate_id         VARCHAR         NOT NULL    COMMENT 'MD5 of Snowflake object ID, object name and object domain',
     snowflake_object_id         VARCHAR                     COMMENT 'Snowflake object ID where present; unique across account and domain',
     object_name                 VARCHAR         NOT NULL    COMMENT 'Fully qualified name of the Snowflake object',
+    database_name               VARCHAR                     COMMENT 'Database name where the Snowflake object exists',
+    schema_name                 VARCHAR                     COMMENT 'Schema name where the Snowflake object exists',
+    object_name_parsed          VARCHAR                     COMMENT 'Name of the Snowflake object, parsed from fully qualified name',
     object_domain               VARCHAR         NOT NULL    COMMENT 'The type of the base object (table, stage, view, function, etc)',
     query_start_time            TIMESTAMP_LTZ               COMMENT '',   
     query_end_time              TIMESTAMP_LTZ               COMMENT '',
@@ -223,6 +226,48 @@ BEGIN
             , o.snowflake_object_id
             , o.object_name
             , o.object_domain
+            , case 
+                when o.object_domain = 'Stage' and (o.object_name ilike '"USER$%' or o.object_name ilike '%@%')
+                    then null
+                when o.object_domain = 'Stage' and array_size(split(o.object_name, '.')) = 1 
+                    then null
+                when array_size(split(o.object_name, '.')) = 3 and o.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(o.object_name, '.', 1)
+                when array_size(split(o.object_name, '.')) = 1 and o.object_domain in ('Function', 'Procedure', 'Table function')
+                    then null
+                when array_size(split(o.object_name, '.')) = 2 and o.object_domain in ('Table function')
+                    then null
+                else null
+            end as database_name
+
+            , case 
+                when o.object_domain = 'Stage' and (o.object_name ilike '"%' or o.object_name ilike '%@%')
+                    then null
+                when o.object_domain = 'Stage' and array_size(split(o.object_name, '.')) = 1 
+                    then null
+                when array_size(split(o.object_name, '.')) = 3 and o.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(o.object_name, '.', 2)
+                when array_size(split(o.object_name, '.')) = 1 and o.object_domain in ('Function', 'Procedure', 'Table function')
+                    then null
+                when array_size(split(o.object_name, '.')) = 2 and o.object_domain in ('Table function')
+                    then split_part(o.object_name, '.', 1)
+                else null
+            end as schema_name
+
+            , case 
+                when o.object_domain = 'Stage' and o.object_name ilike '"%' 
+                    then o.object_name
+                when o.object_domain = 'Stage' and array_size(split(o.object_name, '.')) = 1 
+                    then o.object_name
+                when array_size(split(o.object_name, '.')) = 3 and o.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(o.object_name, '.', 3)
+                when array_size(split(o.object_name, '.')) = 1 and o.object_domain in ('Function', 'Procedure', 'Table function')
+                    then o.object_name
+                when array_size(split(o.object_name, '.')) = 2 and o.object_domain in ('Table function')
+                    then split_part(o.object_name, '.', 2)
+                else o.object_name
+            end as object_name_parsed
+
             , q.query_start_time
             , q.query_end_time
             , q.query_text
@@ -254,6 +299,9 @@ BEGIN
     WHEN MATCHED THEN UPDATE SET
         target.snowflake_object_id         = source.snowflake_object_id
         , target.object_name               = source.object_name
+        , target.database_name             = source.database_name
+        , target.schema_name               = source.schema_name
+        , target.object_name_parsed        = source.object_name_parsed
         , target.object_domain             = source.object_domain
         , target.query_start_time          = source.query_start_time
         , target.query_end_time            = source.query_end_time
@@ -282,6 +330,9 @@ BEGIN
         , object_surrogate_id
         , snowflake_object_id
         , object_name
+        , database_name
+        , schema_name
+        , object_name_parsed
         , object_domain
         , query_start_time
         , query_end_time
@@ -310,6 +361,9 @@ BEGIN
         , source.object_surrogate_id
         , source.snowflake_object_id
         , source.object_name
+        , source.database_name
+        , source.schema_name
+        , source.object_name_parsed
         , source.object_domain
         , source.query_start_time
         , source.query_end_time
@@ -432,6 +486,9 @@ CREATE TABLE IF NOT EXISTS query_base_object_column_access_history (
     column_surrogate_id         VARCHAR         NOT NULL    COMMENT 'MD5 of object surrogate ID, column ID and column name',
     snowflake_object_id         VARCHAR                     COMMENT 'Snowflake object ID where present; unique across account and domain',
     object_name                 VARCHAR         NOT NULL    COMMENT 'Fully qualified name of the Snowflake object',
+    database_name               VARCHAR                     COMMENT 'Database name where the Snowflake object exists',
+    schema_name                 VARCHAR                     COMMENT 'Schema name where the Snowflake object exists',
+    object_name_parsed          VARCHAR                     COMMENT 'Name of the Snowflake object, parsed from fully qualified name',
     object_domain               VARCHAR         NOT NULL    COMMENT 'The type of the base object (table, dynamic table, iceberg table, etc)',
     snowflake_column_id         VARCHAR                     COMMENT 'Snowflake column ID',
     column_name                 VARCHAR                     COMMENT 'Name of the column accessed',
@@ -527,6 +584,47 @@ BEGIN
             , c.column_surrogate_id
             , c.snowflake_object_id
             , c.object_name
+            , case 
+                when c.object_domain = 'Stage' and (c.object_name ilike '"USER$%' or c.object_name ilike '%@%')
+                    then null
+                when c.object_domain = 'Stage' and array_size(split(c.object_name, '.')) = 1 
+                    then null
+                when array_size(split(c.object_name, '.')) = 3 and c.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(c.object_name, '.', 1)
+                when array_size(split(c.object_name, '.')) = 1 and c.object_domain in ('Function', 'Procedure', 'Table function')
+                    then null
+                when array_size(split(c.object_name, '.')) = 2 and c.object_domain in ('Table function')
+                    then null
+                else null
+            end as database_name
+
+            , case 
+                when c.object_domain = 'Stage' and (c.object_name ilike '"%' or c.object_name ilike '%@%')
+                    then null
+                when c.object_domain = 'Stage' and array_size(split(c.object_name, '.')) = 1 
+                    then null
+                when array_size(split(c.object_name, '.')) = 3 and c.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(c.object_name, '.', 2)
+                when array_size(split(c.object_name, '.')) = 1 and c.object_domain in ('Function', 'Procedure', 'Table function')
+                    then null
+                when array_size(split(c.object_name, '.')) = 2 and c.object_domain in ('Table function')
+                    then split_part(c.object_name, '.', 1)
+                else null
+            end as schema_name
+
+            , case 
+                when c.object_domain = 'Stage' and c.object_name ilike '"%' 
+                    then c.object_name
+                when c.object_domain = 'Stage' and array_size(split(c.object_name, '.')) = 1 
+                    then c.object_name
+                when array_size(split(c.object_name, '.')) = 3 and c.object_domain in ('Table', 'View', 'Dynamic table', 'Sequence', 'Event table', 'Materialized View', 'Procedure', 'Function', 'Stage')
+                    then split_part(c.object_name, '.', 3)
+                when array_size(split(c.object_name, '.')) = 1 and c.object_domain in ('Function', 'Procedure', 'Table function')
+                    then c.object_name
+                when array_size(split(c.object_name, '.')) = 2 and c.object_domain in ('Table function')
+                    then split_part(c.object_name, '.', 2)
+                else c.object_name
+            end as object_name_parsed
             , c.object_domain
             , c.snowflake_column_id
             , c.column_name
@@ -561,6 +659,9 @@ BEGIN
     WHEN MATCHED THEN UPDATE SET
         target.snowflake_object_id         = source.snowflake_object_id
         , target.object_name               = source.object_name
+        , target.database_name             = source.database_name
+        , target.schema_name               = source.schema_name
+        , target.object_name_parsed        = source.object_name_parsed
         , target.object_domain             = source.object_domain
         , target.snowflake_column_id       = source.snowflake_column_id
         , target.column_name               = source.column_name
@@ -591,6 +692,9 @@ BEGIN
         , column_surrogate_id
         , snowflake_object_id
         , object_name
+        , database_name
+        , schema_name
+        , object_name_parsed
         , object_domain
         , snowflake_column_id
         , column_name
@@ -621,6 +725,9 @@ BEGIN
         , source.column_surrogate_id
         , source.snowflake_object_id
         , source.object_name
+        , source.database_name
+        , source.schema_name
+        , source.object_name_parsed
         , source.object_domain
         , source.snowflake_column_id
         , source.column_name
