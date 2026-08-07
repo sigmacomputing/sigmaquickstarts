@@ -13,11 +13,18 @@ lastUpdated: 2026-12-31
 ## Overview
 Duration: 5
 
-This QuickStart introduces... (placeholder — title and content pending reference materials)
+Connect Sigma to an external secret manager — [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) or [HashiCorp Vault](https://www.hashicorp.com/en/products/vault) — so database credentials live in your own vault instead of being typed directly into a Sigma connection.
 
-Along the way you'll learn how to:
-- ...
-- ...
+Sigma supports two secret managers, each with its own integration flow. Read the section that matches your environment — `Connect AWS Secrets Manager to Sigma` or `Connect HashiCorp Vault to Sigma` — then continue with the shared steps that apply no matter which one you chose:
+
+- Connect AWS Secrets Manager or HashiCorp Vault to Sigma and complete the trust handshake
+- Add a secret in Sigma and map it to the right key or path
+- Attach a secret to a connection using the secret manager toggle
+- Track where each secret is being used with the `Secret access` tab
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Credentials stay where your security team already manages them. Sigma never stores the underlying password — it only holds a reference to the secret, and every connection that draws on it is visible in one place.
+</aside>
 
 
 <aside class="positive">
@@ -29,13 +36,14 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
+This QuickStart is for Sigma organization admins and security teams responsible for managing connection credentials, particularly those who already store secrets in AWS Secrets Manager or HashiCorp Vault.
 
 ### Prerequisites
 
 <ul>
-  <li>Any modern browser is acceptable.</li>
-  <li>Access to your Sigma environment.</li>
+  <li>Admin account type in your Sigma organization.</li>
+  <li>Access to an AWS Secrets Manager or HashiCorp Vault instance. If you don't already have a secret stored, this QuickStart walks through creating one.</li>
+  <li>Permission to create IAM policies and roles in the AWS account that owns the secret (for the AWS Secrets Manager path).</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
  </ul>
 
@@ -51,20 +59,288 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 
 ![Footer](assets/sigma_footer.png)
 
-## Initial Setup
+## Connect AWS Secrets Manager to Sigma
+Duration: 15
+
+Before Sigma can reference a secret, it needs a trusted integration with the secret manager that stores it. This section covers AWS Secrets Manager, which uses AWS Security Token Service (STS) cross-account role assumption — Sigma assumes a role in your AWS account rather than holding a long-lived AWS key.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Using HashiCorp Vault instead? Skip ahead to `Connect HashiCorp Vault to Sigma`, then rejoin this QuickStart at `Add and Use a Secret`.
+</aside>
+
+### Create an IAM policy in AWS
+
+Log in to the AWS Management Console as an administrator and open the `IAM` console. In the left navigation menu, click `Policies`, then `Create policy`:
+
+<img src="assets/sm_01.png" width="800"/>
+
+Select the `JSON` tab and paste a policy (replacing the sample JSON) that grants read access to your secrets:
+
+```copy-code
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:{region}:{aws-account-id}:secret:*"
+    }
+  ]
+}
+```
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Replace `{region}` and `{aws-account-id}` with your actual AWS region and 12-digit account ID before creating the policy. Leaving the placeholders in place causes AWS to reject the policy with "The policy failed legacy parsing" — the ARN grammar requires real values, not placeholder text. Your region is visible in the browser's URL bar (for example, `us-east-1` in `https://us-east-1.console.aws.amazon.com/...`); your account ID is in the AWS Console's account menu in the top right.
+</aside>
+
+<img src="assets/sm_01a.png" width="800"/>
+
+Scroll down and click `Next`, enter a policy name (for example, `SigmaSecretsManagerPolicy`), and scroll down to click `Create policy`:
+
+<img src="assets/sm_01b.png" width="700"/>
+
+### Create an IAM role in AWS
+
+In the IAM console, click `Roles`, then `Create role`. 
+
+<img src="assets/sm_01c.png" width="800"/>
+
+Select `AWS account` as the trusted entity type, then `Another AWS account`:
+- Account ID: enter your own 12-digit AWS account ID as a temporary placeholder — you'll replace this with Sigma's IAM Principal ARN in a later step
+
+- Select `Require external ID` and enter a temporary placeholder value (for example, `0000`) — you'll replace this with Sigma's generated External ID in a later step
+- Leave `Require MFA` unchecked
+
+<img src="assets/sm_01d.png" width="800"/>
+
+Click `Next`.
+
+- Select the policy you created above (`SigmaSecretsManagerPolicy`), click `Next` again,
+
+<img src="assets/sm_02.png" width="800"/>
+
+- Enter a role name (for example, `SigmaSecretsManagerRole`), and scroll down to click `Create role`.
+
+<img src="assets/sm_02a.png" width="800"/>
+
+- Open the new role
+
+<img src="assets/sm_02b.png" width="800"/>
+
+- Copy its Role ARN — you'll need it in the next step.
+
+<img src="assets/sm_02c.png" width="800"/>
+
+### Register the integration in Sigma
+
+In Sigma, navigate to `Administration` > `Authentication` > `Secret Manager`, then click `Add secret manager`:
+
+<img src="assets/sm_03.png" width="800"/>
+
+Select `AWS Secrets Manager` as the type and `AWS STS` as the authentication method, then fill in:
+
+- Integration Name: a descriptive name for this integration (`Sigma-AWS-Secrets-Integration`)
+- Region: the AWS Region where your secrets reside (for example, `us-east-1`)
+- Role ARN: the Role ARN you copied from AWS
+- Role Session Name (optional): a custom session identifier for tracking requests in AWS CloudTrail
+- Secret Format: the default format for secrets added under this integration — `JSON`, `Plain text`, `Base64`, or `Base64-encoded JSON` (you can override this per secret later). `JSON` is the best fit for most database credentials — AWS Secrets Manager's built-in templates (for example, "Credentials for RDS database") store username and password as JSON key-value pairs by default, and `JSON` lets you reference a specific key with a `Key path`:
+
+<img src="assets/sm_03a.png" width="700"/>
+
+Click `Add`, then open the new integration from the list and record the generated IAM Principal ARN and External ID.
+
+<img src="assets/sm_03b.png" width="600"/>
+
+### Complete the trust handshake in AWS
+
+Return to the AWS IAM console and select the role you created (`SigmaSecretsManagerRole`). Open the `Trust relationships` tab, click `Edit trust policy`:
+
+<img src="assets/sm_03c.png" width="800"/>
+
+Replace the placeholder values with the `IAM Principal ARN` and `External ID` Sigma generated:
+
+```copy-code
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "{iam-principal-arn-from-sigma}"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "{external-id-from-sigma}"
+        }
+      }
+    }
+  ]
+}
+```
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Replace `{iam-principal-arn-from-sigma}` and `{external-id-from-sigma}` with the actual values Sigma generated in the previous step. As with the IAM policy above, leaving placeholder text in place causes AWS to reject the trust policy with a parsing error.
+</aside>
+
+Click `Update policy`. Sigma can now assume the role and read secrets from this AWS account.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The integration is registered, but you haven't confirmed it actually works yet. Skip ahead to `Add and Use a Secret` to add a secret and attach it to a connection — that's where you'll verify the trust handshake succeeds end to end.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Connect HashiCorp Vault to Sigma
+Duration: 15
+
+### ...placeholder — Self-Signed JWT auth: Vault URL, mount path, Vault role, Audience ID, CA certificate; Sigma-generated Subject ID / Issuer ID / Public Key fed back into Vault's JWT auth method + policy. Not yet drafted — gated on Phil's HCP Vault trial.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Add and Use a Secret
+Duration: 10
+
+With the trust handshake complete, create a secret in AWS Secrets Manager (if you don't already have one) and then reference it in Sigma. Sigma only stores a reference to it — **the value itself stays in AWS Secrets Manager.**
+
+### Create a secret in AWS Secrets Manager
+
+In the AWS Secrets Manager console, click `Store a new secret`:
+
+<img src="assets/sm_05.png" width="800"/>
+
+Select `Other type of secret`.
+
+Add the key/value pair you want Sigma to reference — for example, a single key such as `sigma-administration-1` mapped to the value you want to protect. You can add more rows if you have multiple values to store, or switch to `Plaintext` instead if you'd rather store a single raw value with no key.
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Note the key name and its value somewhere safe and temporary (a password manager or scratch note) before continuing. You'll need the key name for `Key path` when adding the secret in Sigma, and the value itself to confirm the connection actually authenticates later in this QuickStart.
+</aside>
+
+Choose the default encryption key (`aws/secretsmanager`) unless your organization requires a customer-managed key.
+
+<img src="assets/sm_05a.png" width="800"/>
+
+Click `Next`, enter a secret name (for example, `sigma-demo-secret`), click `Next` through the remaining screens (automatic rotation is optional, but we will skip it for this walkthrough)
+
+On the final `Review` page, click `Store`.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Whatever key name(s) you choose here (for example, `sigma-administration-1`) are what you'll reference later in `Key path` when adding the secret in Sigma.
+</aside>
+
+### Add the secret in Sigma
+
+In Sigma, navigate to `Administration` > `Authentication` > `Secret Manager`, then open the integration you created.
+
+On the `Secrets` tab, click `Add secret`:
+
+<img src="assets/sm_04.png" width="800"/>
+
+Fill in the secret's details:
+
+- Secret name: a friendly label used to identify the secret within Sigma. For example:
+
+```copy-code
+snowflake-prod-password
+```
+
+- Secret reference: the secret's own name or ARN from AWS Secrets Manager. For example, the name you gave it in the previous step:
+
+```copy-code
+sigma-demo-secret
+```
+
+- Secret format: `JSON` if the AWS secret is stored as key-value pairs, `Plain text` if it's a raw string
+- Key path: required only when Secret format is `JSON` or `Base64-encoded JSON` — not used for `Plain text` or `Base64`. For example:
+
+```copy-code
+sigma-demo-secret.your_password
+```
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> `Secret reference` points at the secret itself, not at the IAM role. Don't paste the Role ARN from the previous section (`SigmaSecretsManagerRole`) here — that ARN identifies the role Sigma assumes, not the secret it's reading. Find the secret's own name or ARN in the AWS Secrets Manager console, under the `Secrets` list — it's a separate value from anything you used to set up the integration.
+</aside>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> `Secret reference` is the ARN or secret name only — stop at the random suffix AWS generates (for example, `arn:aws:secretsmanager:us-east-1:849276620055:secret:sigma-demo-secret-rIUocv`). Never append a key name or value to it, even though both `Secret reference` and `Key path` can look like dot-separated strings. Something like `sigma-demo-secret-rIUocv.sigma-administration-1` or `sigma-demo-secret-rIUocv.6zKMsd!4VxgCGJ3` in `Secret reference` is incorrect — which key to read comes from the separate `Key path` field below, not from anything tacked onto the ARN.
+</aside>
+
+`Key path` tells Sigma which field to pull out of the secret's JSON — it doesn't change where the secret is stored, only which value inside it Sigma reads.
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> `Key path` is built only from JSON key names — it never includes the value itself. Each segment separated by a dot is a key one level deeper into the JSON; the last segment is the key whose value Sigma returns. Entering `sigma-administration-1.6zKMsd!4VxgCGJ3` (key name plus value) instead of just `sigma-administration-1` is a common mistake, and Sigma will reject it as an invalid secret extraction configuration.
+</aside>
+
+The key names come from your own secret, not from Sigma, so check what's actually there before filling in this field. In the AWS Secrets Manager console, open the secret, and under `Secret value` click `Retrieve secret value` to see its JSON structure and confirm the exact key names.
+
+For example, a secret stored as a single, flat key/value pair might look like this:
+
+```copy-code
+{
+  "sigma-administration-1": "6zKMsd!4VxgCGJ3"
+}
+```
+
+has only one key and no nesting, so Key path is just that key name — `sigma-administration-1`. The value (`6zKMsd!4VxgCGJ3`) never appears in Key path; it's what Sigma returns once it finds the key.
+
+Compare that to a secret with nested JSON like this:
+
+```copy-code
+{
+  "db": {
+    "credentials": {
+      "password": "6zKMsd!4VxgCGJ3"
+    }
+  }
+}
+```
+
+Build the path one level at a time, following the nesting inward:
+- `db` — the outer key
+- `db.credentials` — one level inside `db`
+- `db.credentials.password` — one level inside `credentials`, landing on the key whose value you want
+
+Key path is `db.credentials.password` — three key names joined by dots, in the same order you'd nest into the JSON to reach the value. The value (`6zKMsd!4VxgCGJ3`) still never appears in the path itself.
+
+Click `Add`:
+
+<img src="assets/sm_05b.png" width="400"/>
+
+The secret now appears in the `Secrets` list for this integration.
+
+### Confirm Sigma can retrieve the secret
+
+Before attaching this secret to a connection, confirm the trust handshake actually works. Open the secret, click `More` > `Edit`, then click `Test access`.
+
+<!-- <img src="assets/sm_05c.png" width="800"/> -->
+
+<aside class="positive">
+<strong>NOTE:</strong><br> A successful test confirms Sigma can assume the AWS role and read the secret value — the same permissions a connection will use once you attach this secret to one.
+</aside>
+
+If `Test access` fails, double check that the IAM role's trust policy has the exact `IAM Principal ARN` and `External ID` Sigma generated, and that the IAM policy's `Resource` ARN covers the secret you're referencing.
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Attach a Secret to a Connection
 Duration: 5
 
-### ...section 1
+### ...placeholder — "Use secret manager" toggle at connection creation
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-### ...section 2
+## Monitor Secret Usage
+Duration: 5
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-### ...section n
+### ...placeholder — Secret access tab, which connections/API connectors use a secret
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
