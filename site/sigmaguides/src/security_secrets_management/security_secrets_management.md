@@ -260,53 +260,16 @@ sigma-demo-secret
 - Key path: required only when Secret format is `JSON` or `Base64-encoded JSON` — not used for `Plain text` or `Base64`. For example:
 
 ```copy-code
-sigma-demo-secret.your_password
+sigma-administration-1
 ```
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> `Secret reference` points at the secret itself, not at the IAM role. Don't paste the Role ARN from the previous section (`SigmaSecretsManagerRole`) here — that ARN identifies the role Sigma assumes, not the secret it's reading. Find the secret's own name or ARN in the AWS Secrets Manager console, under the `Secrets` list — it's a separate value from anything you used to set up the integration.
+<strong>IMPORTANT:</strong><br> `Secret reference` and `Key path` each point at something different, and it's easy to mix them up. `Secret reference` is the secret's own name or ARN from AWS Secrets Manager — not the Role ARN from the previous section (`SigmaSecretsManagerRole`), and nothing appended to it. `Key path` is the JSON key name only — never the value. For a secret named `sigma-demo-secret` with a single key `sigma-administration-1`, that's `Secret reference` = `sigma-demo-secret` and `Key path` = `sigma-administration-1` — the value stored under that key never belongs in either field.
 </aside>
 
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> `Secret reference` is the ARN or secret name only — stop at the random suffix AWS generates (for example, `arn:aws:secretsmanager:us-east-1:849276620055:secret:sigma-demo-secret-rIUocv`). Never append a key name or value to it, even though both `Secret reference` and `Key path` can look like dot-separated strings. Something like `sigma-demo-secret-rIUocv.sigma-administration-1` or `sigma-demo-secret-rIUocv.6zKMsd!4VxgCGJ3` in `Secret reference` is incorrect — which key to read comes from the separate `Key path` field below, not from anything tacked onto the ARN.
-</aside>
+Not sure what your key names are? In the AWS Secrets Manager console, open the secret and click `Retrieve secret value` under `Secret value` to see its JSON structure.
 
-`Key path` tells Sigma which field to pull out of the secret's JSON — it doesn't change where the secret is stored, only which value inside it Sigma reads.
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> `Key path` is built only from JSON key names — it never includes the value itself. Each segment separated by a dot is a key one level deeper into the JSON; the last segment is the key whose value Sigma returns. Entering `sigma-administration-1.6zKMsd!4VxgCGJ3` (key name plus value) instead of just `sigma-administration-1` is a common mistake, and Sigma will reject it as an invalid secret extraction configuration.
-</aside>
-
-The key names come from your own secret, not from Sigma, so check what's actually there before filling in this field. In the AWS Secrets Manager console, open the secret, and under `Secret value` click `Retrieve secret value` to see its JSON structure and confirm the exact key names.
-
-For example, a secret stored as a single, flat key/value pair might look like this:
-
-```copy-code
-{
-  "sigma-administration-1": "6zKMsd!4VxgCGJ3"
-}
-```
-
-has only one key and no nesting, so Key path is just that key name — `sigma-administration-1`. The value (`6zKMsd!4VxgCGJ3`) never appears in Key path; it's what Sigma returns once it finds the key.
-
-Compare that to a secret with nested JSON like this:
-
-```copy-code
-{
-  "db": {
-    "credentials": {
-      "password": "6zKMsd!4VxgCGJ3"
-    }
-  }
-}
-```
-
-Build the path one level at a time, following the nesting inward:
-- `db` — the outer key
-- `db.credentials` — one level inside `db`
-- `db.credentials.password` — one level inside `credentials`, landing on the key whose value you want
-
-Key path is `db.credentials.password` — three key names joined by dots, in the same order you'd nest into the JSON to reach the value. The value (`6zKMsd!4VxgCGJ3`) still never appears in the path itself.
+If your secret has nested JSON instead of one flat key, join each key name with a dot to walk down to the one you want — for example, `db.credentials.password` for a value nested inside `db` > `credentials` > `password`.
 
 Click `Add`:
 
@@ -316,9 +279,13 @@ The secret now appears in the `Secrets` list for this integration.
 
 ### Confirm Sigma can retrieve the secret
 
-Before attaching this secret to a connection, confirm the trust handshake actually works. Open the secret, click `More` > `Edit`, then click `Test access`.
+Before attaching this secret to a connection, confirm the trust handshake actually works. Open the secret, click the `3-dot` menu > `Edit`:
 
-<!-- <img src="assets/sm_05c.png" width="800"/> -->
+<img src="assets/sm_05d.png" width="800"/>
+
+Click `Test access`:
+
+<img src="assets/sm_05c.png" width="400"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> A successful test confirms Sigma can assume the AWS role and read the secret value — the same permissions a connection will use once you attach this secret to one.
@@ -332,7 +299,32 @@ If `Test access` fails, double check that the IAM role's trust policy has the ex
 ## Attach a Secret to a Connection
 Duration: 5
 
-### ...placeholder — "Use secret manager" toggle at connection creation
+With a secret added and confirmed working, attach it to whichever connection field needs it. Each sensitive credential field on a connection — `Password`, `Private key`, `Private key passphrase`, depending on the connection type — has its own `Use secret manager` toggle, so you can mix secret-manager-backed fields with directly-entered ones on the same connection.
+
+### Enable the secret manager toggle on a connection
+
+In Sigma, navigate to `Administration` > `Connections`, then open the connection you want to update (or create a new one).
+
+<!-- <img src="assets/sm_06.png" width="800"/> -->
+
+On the credential field that should pull from your secret manager, turn on `Use secret manager`, then fill in:
+
+- Secret manager: the integration you created earlier (for example, `Sigma-AWS-Secrets-Integration`)
+- Secret: the secret you added (for example, `snowflake-prod-password`)
+
+<!-- <img src="assets/sm_06a.png" width="800"/> -->
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Each credential field toggles independently, so you can mix secret-manager-backed fields with directly-entered ones on the same connection. On a Snowflake key pair connection, for example, you might leave `Private key` entered directly (via `Add key file`) while `Private key passphrase` uses the secret manager — or attach the secret manager to both. Either is valid; use it wherever it fits your setup.
+</aside>
+
+Click `Save`.
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> The connection never stores the private key or passphrase directly — only a pointer to the secret. Rotate the value in AWS Secrets Manager, and every connection referencing it picks up the change automatically, with nothing to update in Sigma.
+</aside>
+
+Confirm the connection still works — open a workbook that uses it, or run a query against it, to verify the secret-manager-backed credentials authenticate correctly.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
