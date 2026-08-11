@@ -5,7 +5,7 @@ categories: administration
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
+tags: default
 lastUpdated: 2026-08-11
 
 # How to Get Started - A Guide for Sigma Administrators
