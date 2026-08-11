@@ -3,10 +3,10 @@ id: administration_getting_started_guide
 summary: administration_getting_started_guide
 categories: administration
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags:
-lastUpdated: 2026-08-10
+lastUpdated: 2026-08-11
 
 # How to Get Started - A Guide for Sigma Administrators
 
