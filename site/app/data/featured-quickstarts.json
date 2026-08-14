@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
-       {
+    {
+      "title": "How to Get Started - A Guide for Sigma Administrators",
+      "id": "administration_getting_started_guide",
+      "category": "administration",
+      "date": "Aug 11, 2026"
+    },
+    {
       "title": "First Friday Features - July 2026",
       "id": "07_2026_first_friday_features",
       "category": "firstfridayfeatures",
@@ -42,7 +48,7 @@
       "category": "developers",
       "date": "May 22, 2026"
     },
-  {
+    {
       "title": "Reshaping Data with Transpose Tables",
       "id": "tables_transpose_tables",
       "category": "tables",
