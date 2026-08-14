@@ -12,7 +12,7 @@ lastUpdated: 2026-09-04
 <!-- The above name is what appears on the website and is searchable.
 
 August 7, 2026 changes: done
-August 14, 2026 changes:
+August 14, 2026 changes: done
 August 21, 2026 changes:
 August 28, 2026 changes:
 
@@ -61,6 +61,11 @@ Administrators can enable interactions among embed users in organizations, inclu
 
 For more information, see [Manage embed user settings (Beta)](https://help.sigmacomputing.com/docs/manage-embed-user-settings)
 
+### Set formatting region in Administration portal (Beta)
+Organizations can now specify an account formatting region that affects how numbers, dates, and currency display for all users.
+
+For more information, see [Set organization language](https://help.sigmacomputing.com/docs/manage-organization-language)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -72,11 +77,26 @@ The `sigma-cli` skill enables AI assistants to call the Sigma REST API from the 
 
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants#sigma-cli)
 
+### New model used for Gemini and BigQuery AI providers (GA)
+Sigma now uses Gemini 3.6 Flash as the LLM for the Gemini and BigQuery AI providers.
+
+For more information, see [Set up an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#set-up-an-ai-provider)
+
+### Snowflake Cortex AI spend template (GA)
+A new template visualizes the costs associated with Snowflake Cortex AI tool usage.
+
+For more information, see [Snowflake Cortex cost template](https://help.sigmacomputing.com/docs/snowflake-cortex-cost-template)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## API
 Duration: 20
+
+### New options for the Get a workbook endpoint (GA)
+The Get a workbook (`GET /v2/workbooks/{workbookId}`) endpoint includes a new `includeTaggedSourceUrlId` query string parameter, enabling identification of source documents for deployed workbooks from parent or other tenant organizations.
+
+For more information, see [Get a workbook](https://help.sigmacomputing.com/reference/get-workbook)
 
 ### Trigger workbook action sequences with webhooks (Beta)
 Action sequences can now be triggered by an incoming webhook, using a new POST endpoint that supports passing variables into the sequence.
@@ -100,6 +120,8 @@ Duration: 20
 **5:** Child table transposition now respects column-level security rules.
 
 **6:** Simplified materialization cancellation to a single click.
+
+**7:** Data model relationship columns no longer display as errors when swapping to a different tagged version of a data model used as a workbook source.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -176,6 +198,11 @@ Duration: 20
 
 ## Workbooks
 Duration: 20
+
+### Ad hoc email burst exports (Beta)
+Users can now export email bursts on demand, rather than relying on a scheduled export.
+
+For more information, see [Send an ad hoc email burst (Beta)](https://help.sigmacomputing.com/docs/export-as-email-burst#send-an-ad-hoc-email-burst-beta)
 
 ### Drawers (Beta)
 Side panels that slide in to overlay workbook content temporarily, for displaying information at specific points in a workflow.
