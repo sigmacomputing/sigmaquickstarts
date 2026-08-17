@@ -15,6 +15,10 @@ Duration: 5
 
 Connect Sigma to [HashiCorp Vault](https://www.hashicorp.com/en/products/vault) so database credentials live in your own vault instead of being typed directly into a Sigma connection.
 
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> This QuickStart currently supports self-hosted HashiCorp Vault, including Vault Enterprise.
+</aside>
+
 Along the way you'll learn how to:
 - Connect HashiCorp Vault to Sigma and complete the trust handshake
 - Add a secret in Sigma and map it to the right key or path
@@ -40,7 +44,7 @@ This QuickStart is for Sigma organization admins and security teams responsible 
 
 <ul>
   <li>Admin account type in your Sigma organization.</li>
-  <li>Access to a HashiCorp Vault instance. If you don't already have one, this QuickStart walks through two ways to get one.</li>
+  <li>Access to a HashiCorp Vault instance — self-hosted HashiCorp Vault, including Vault Enterprise, is supported at this time. If you don't already have one, this QuickStart walks through spinning up a local Vault dev server for testing.</li>
   <li>A Snowflake connection using key pair authentication — this guide's running example stores the private key and passphrase as secrets. If you don't already have a key pair generated, see <a href="https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index">Snowflake Key-pair Authorization</a> before continuing.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
  </ul>
@@ -67,9 +71,10 @@ Before Sigma can reference a secret, it needs a trusted integration with the sec
 </aside>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Your Vault instance must be reachable over HTTPS from Sigma — a purely local or internal-only Vault won't work on its own. Below are two ways to get there: a managed HCP Vault Dedicated instance (Option A), or a local Vault server exposed through a tunnel (Option B).
+<strong>IMPORTANT:</strong><br> Your Vault instance must be reachable over HTTPS from Sigma — a purely local or internal-only Vault won't work on its own. This QuickStart currently supports self-hosted HashiCorp Vault, including Vault Enterprise. If you don't already have an instance, the steps below spin up a local Vault dev server for testing this integration.
 </aside>
 
+<!--
 ### Option A: Set up an HCP Vault Dedicated instance
 
 If you don't already have a Vault instance, HashiCorp Cloud Platform (HCP) gives you a managed one with a public HTTPS endpoint out of the box — no infrastructure to stand up yourself.
@@ -90,7 +95,7 @@ Create your first Vault cluster from here:
 
 The default settings are fine for this QuickStart but give the cluster a unique `Cluster ID` and also select a `Vault tier` of `Development`.
 
-<!-- <img src="assets/sm_07w.png" width="700"/> -->
+<img src="assets/sm_07w.png" width="700"/>
 
 Click `Create Cluster`:
 
@@ -164,10 +169,11 @@ Success! Enabled the kv-v2 secrets engine at: secret/
 ```
 
 With that, continue to `Enable a JWT auth method in Vault` below.
+-->
 
-### Option B: Run a local Vault dev server
+### Set up a local Vault dev server
 
-For a quick way to get a testable Vault instance without provisioning managed infrastructure, run Vault locally in dev mode and expose it through a tunnel. This is a fast path for testing this integration — it isn't a production setup.
+For a quick way to get a testable Vault instance for this QuickStart, run Vault locally in dev mode and expose it through a tunnel. This is a fast path for testing this integration — it isn't a production setup.
 
 #### ngrok setup
 
@@ -249,15 +255,9 @@ export VAULT_TOKEN='{root-token-from-startup-output}'
 ## Enable a JWT auth method in Vault
 Duration: 10
 
-If you're on Option A, we left off here:
+We left off here, in the third tab with `VAULT_ADDR` and `VAULT_TOKEN` already exported.
 
-```code
-Success! Enabled the kv-v2 secrets engine at: secret/
-```
-
-If you're on Option B, we left off here, in the third tab with `VAULT_ADDR` and `VAULT_TOKEN` already exported.
-
-In terminal, run the following to create a policy granting read-only access to the secret path(s) you want Sigma to reach. Every `{curly-brace}` placeholder needs a real value substituted in — for this guide's running example, that's the default `secret/` KV mount and a `hashicorp-*` glob covering both secrets you'll store below:
+In that tab, run the following to create a policy granting read-only access to the secret path(s) you want Sigma to reach. Every `{curly-brace}` placeholder needs a real value substituted in — for this guide's running example, that's the default `secret/` KV mount and a `hashicorp-*` glob covering both secrets you'll store below:
 
 ```copy-code
 vault policy write sigma-secrets-policy - <<EOF
@@ -320,11 +320,11 @@ In Sigma, navigate to `Administration` > `Authentication` > `Secret Manager`, th
 
 Select `HashiCorp Vault` as the type and `Self-Signed JWT` as the authentication method, then fill in:
 
-- Integration name: a descriptive name for this integration (for example, `Hashicorp-Sigma-Integration-local`)
-- Vault URL: your Vault instance's HTTPS address — the HCP cluster's endpoint (Option A) or your tunnel's `Forwarding` URL (Option B). This must be reachable from Sigma's cloud servers, so a local address like `http://127.0.0.1:8200` won't work, even for Option B — use the actual `https://{...}.ngrok-free.app` URL ngrok gave you.
+- Integration name: a descriptive name for this integration (for example, `HashiCorp-Sigma-Integration-local`)
+- Vault URL: your Vault instance's HTTPS address — if you're using the local dev server above, that's your tunnel's `Forwarding` URL. This must be reachable from Sigma's cloud servers, so a local address like `http://127.0.0.1:8200` won't work — use the actual `https://{...}.ngrok-free.app` URL ngrok gave you.
 - Mount path: `sigma-jwt` (or whatever you named it above)
 - Vault role: `sigma-secrets-policy` — a name for the role you'll create in Vault in the next step; it doesn't need to exist yet
-- CA certificate (optional): only needed if your Vault instance uses a private or self-signed certificate — not applicable for either option above, since HCP and ngrok/Cloudflare Tunnel both terminate with publicly-trusted certificates
+- CA certificate (optional): only needed if your Vault instance uses a private or self-signed certificate. Not applicable if you're following the local dev server + tunnel setup above (ngrok's certificate is already publicly trusted) — but likely needed for a self-hosted Vault Enterprise instance using an internal CA.
 - Audience ID: any value you choose (for example, `sigma-vault-integration`) — you'll use this same value when creating the role next
 
 <img src="assets/sm_09a.png" width="700"/>
