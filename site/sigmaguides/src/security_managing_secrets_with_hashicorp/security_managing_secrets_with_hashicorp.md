@@ -264,7 +264,7 @@ vault policy write sigma-secrets-policy - <<EOF
 path "secret/data/hashicorp-*" {
   capabilities = ["read"]
 }
-path "sys/mounts/secret/tune" {
+path "sys/mounts" {
   capabilities = ["read", "sudo"]
 }
 EOF
@@ -273,7 +273,7 @@ EOF
 <img src="assets/sm_08d.png" width="600"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> `secret/data/hashicorp-*` uses Vault's trailing-glob syntax to match both `secret/data/hashicorp-privatekey` and `secret/data/hashicorp-passphrase` with one path block — the `*` is only valid as the very last character. If your own secrets don't share a common prefix like this, write a separate `path` block per secret instead. The `sudo` capability on the second path is required — Vault treats mount-tuning endpoints under `sys/` as root-protected, so a client can't even determine your KV version without it.
+<strong>NOTE:</strong><br> `secret/data/hashicorp-*` uses Vault's trailing-glob syntax to match both `secret/data/hashicorp-privatekey` and `secret/data/hashicorp-passphrase` with one path block — the `*` is only valid as the very last character. If your own secrets don't share a common prefix like this, write a separate `path` block per secret instead. The `sudo` capability on the second path is required — Vault treats the `sys/mounts` endpoint as root-protected, so a client can't even determine your KV version without it.
 </aside>
 
 <aside class="negative">
@@ -529,9 +529,9 @@ This happens for two reasons stacked together: pasting curly/smart quotes (`“`
 
 Sigma does not auto-detect your KV secrets engine version or build the read path for you — `Secret reference` needs the full Vault API path, not the CLI-shorthand path `vault kv` commands use. For a KV v2 mount (Vault's default), that's `/v1/{mount}/data/{path}`, for example `/v1/secret/data/hashicorp-privatekey` — not `secret/hashicorp-privatekey`. Getting this wrong still lets the JWT trust handshake succeed (you'll see a valid login), but the actual secret read comes back empty.
 
-### "GET /v1/sys/mounts/{mount}/tune" returns 403 Forbidden
+### "GET /v1/sys/mounts" returns 403 Forbidden
 
-Vault treats mount-tuning endpoints under `sys/` as root-protected, requiring the `sudo` capability even for read access — a plain `capabilities = ["read"]` on that path isn't enough. Add `sudo` alongside `read` in your policy's `sys/mounts/{mount}/tune` block.
+Vault treats the `sys/mounts` endpoint as root-protected, requiring the `sudo` capability even for read access — a plain `capabilities = ["read"]` on that path isn't enough. Add `sudo` alongside `read` in your policy's `sys/mounts` block.
 
 ### A connection still fails after fixing a secret's value, even though the secret's own "Test" passes
 
