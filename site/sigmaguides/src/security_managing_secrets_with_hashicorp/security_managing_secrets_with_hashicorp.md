@@ -3,10 +3,10 @@ id: security_managing_secrets_with_hashicorp
 summary: security_managing_secrets_with_hashicorp
 categories: security
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-12-31
+tags: default
+lastUpdated: 2026-08-17
 
 # Managing Secrets in Sigma with HashiCorp
 

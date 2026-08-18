@@ -1,6 +1,18 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Managing Secrets in Sigma with AWS",
+      "id": "security_managing_secrets_with_aws",
+      "category": "security",
+      "date": "Aug 17, 2026"
+    },
+    {
+      "title": "Managing Secrets in Sigma with HashiCorp",
+      "id": "security_managing_secrets_with_hashicorp",
+      "category": "security",
+      "date": "Aug 17, 2026"
+    },
+    {
       "title": "How to Get Started - A Guide for Sigma Administrators",
       "id": "administration_getting_started_guide",
       "category": "administration",
@@ -47,18 +59,6 @@
       "id": "developers_sigma_skill",
       "category": "developers",
       "date": "May 22, 2026"
-    },
-    {
-      "title": "Reshaping Data with Transpose Tables",
-      "id": "tables_transpose_tables",
-      "category": "tables",
-      "date": "April 24, 2026"
-    },
-    {
-      "title": "Scheduling Sigma Insights to Slack",
-      "id": "aiapps_scheduling_sigma_insights_to_slack",
-      "category": "aiapps",
-      "date": "April 15, 2026"
     }
   ]
 }
