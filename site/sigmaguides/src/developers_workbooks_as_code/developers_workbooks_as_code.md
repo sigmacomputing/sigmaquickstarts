@@ -790,11 +790,9 @@ For example, after 6 hours, the schedule fires on its own and opens a PR without
 
 <aside class="positive">
 <strong>TIP:</strong><br> To pause the scheduled check without deleting the workflow file, run:
-
-```copy-code
+<br><br>
 gh workflow disable drift-check.yml
-```
-
+<br><br>
 This turns off both the cron schedule and manual `workflow_dispatch` runs. Re-enable it later with `gh workflow enable drift-check.yml`.
 </aside>
 
