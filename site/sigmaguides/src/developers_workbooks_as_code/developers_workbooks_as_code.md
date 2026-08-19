@@ -788,6 +788,16 @@ For example, after 6 hours, the schedule fires on its own and opens a PR without
 <strong>NOTE:</strong><br> The workflow checks for an already-open drift PR before creating a new one, and skips entirely if the live spec matches git exactly - so running the check repeatedly, or on its normal 6-hour schedule, won't spam you with duplicate or empty PRs.
 </aside>
 
+<aside class="positive">
+<strong>TIP:</strong><br> To pause the scheduled check without deleting the workflow file, run:
+
+```copy-code
+gh workflow disable drift-check.yml
+```
+
+This turns off both the cron schedule and manual `workflow_dispatch` runs. Re-enable it later with `gh workflow enable drift-check.yml`.
+</aside>
+
 Whenever a drift PR shows up for real - whether triggered manually like earlier in this section, or automatically on the schedule - you have two options, and both are legitimate:
 
 - **Keep the change:** merge the PR. The UI edit is now reflected in `workbook.yaml`, reviewed like any other change.
