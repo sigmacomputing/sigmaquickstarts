@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-07-11
+lastUpdated: 2026-08-21
 
 # Fundamentals 01: Overview
 
@@ -440,7 +440,7 @@ Sigma Assistant is the conversational AI panel built into Sigma. From the homepa
 
 Before Sigma Assistant can answer questions, you need to tell it which data sources it can use. This keeps AI grounded in trusted, approved data and prevents accidental exposure of sensitive information to third-party providers.
 
-Navigate to `Administration` > `AI` > `Assistant`.
+Navigate to `Administration` > `AI settings` > `Assistant`.
 
 To enable a data source, click the `Add source` button, search for `Hands`, check the box for `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` in the `Sigma Sample Database` > `RETAIL` schema, and click `Add`:
 
@@ -623,9 +623,9 @@ We need two pieces of information from Sigma so that we can provide them to Clau
 Copy these two values to a text file for use in Claude later.
 
 1. **MCP URL:**<br>
-Log into Sigma and click the profile icon in the upper left corner and select `MCP`. Click the copy icon and save the value off to a text file.
+Log into Sigma and click the profile icon in the upper right corner and select `Profile`. Select `Integrations`, then under `Connect Sigma to AI tools`, click the copy icon next to the `Sigma MCP URL` and save the value off to a text file.
 
-<img src="assets/fun_2026_54e.png" width="800"/>
+<img src="assets/f1_61.png" width="800"/>
 
 2. **Organization name:**<br>
 This is part of the URL Sigma is using in your browser; for example:

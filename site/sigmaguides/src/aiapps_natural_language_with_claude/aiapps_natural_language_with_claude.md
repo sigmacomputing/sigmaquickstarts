@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-05-06
+lastUpdated: 2026-08-21
 
 # Natural Language Analytics with Claude and Sigma
 
@@ -84,9 +84,9 @@ We need two pieces of information from Sigma so that we can provide them to Clau
 Copy these two values to a text file for use in Claude later.
 
 1. **MCP URL:**<br>
-Log into Sigma and click the profile icon in the upper left corner and select `MCP`. Click the copy icon and save the value off to a text file.
+Log into Sigma and click the profile icon in the upper right corner and select `Profile`. Select `Integrations`, then under `Connect Sigma to AI tools`, click the copy icon next to the `Sigma MCP URL` and save the value off to a text file.
 
-<img src="assets/fun_2026_54e.png" width="800"/>
+<img src="assets/nlac-02.png" width="800"/>
 
 2. **Organization name:**<br>
 This is part of the URL Sigma is using in your browser; for example:
@@ -222,11 +222,11 @@ Click `Add source`:
 
 <img src="assets/nlac-08.png" width="800"/>
 
-Under the list of locations on the left, search for `PLUGS`. Sigma will search across all configured connections and return matching tables and schemas.
+Under the list of locations on the left, search for `Hands`. Sigma will search across all configured connections and return matching tables and schemas.
 
-Select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` schema to make it available:
+Select the `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` table from the `RETAIL` schema, then click `Add` to make it available:
 
-<img src="assets/nlac-09.png" width="800"/>
+<img src="assets/nlac-09.png" width="700"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Only data sources that have been synced here are available for the MCP connector to query. If Claude reports that it cannot find or access a table, check that the table has been added and synced in AI settings.
