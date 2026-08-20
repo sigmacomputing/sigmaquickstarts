@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-05-06
+lastUpdated: 2026-08-21
 
 # Scheduling Sigma Insights to Slack
 
@@ -77,9 +77,9 @@ We need two pieces of information from Sigma so that we can provide them to Clau
 Copy these two values to a text file for use in Claude later.
 
 1. **MCP URL:**<br>
-Log into Sigma and click the profile icon in the upper left corner and select `MCP`. Click the copy icon and save the value off to a text file.
+Log into Sigma and click the profile icon in the upper right corner and select `Profile`. Select `Integrations`, then under `Connect Sigma to AI tools`, click the copy icon next to the `Sigma MCP URL` and save the value off to a text file.
 
-<img src="assets/fun_2026_54e.png" width="800"/>
+<img src="assets/ssis-01.png" width="800"/>
 
 2. **Organization name:**<br>
 This is part of the URL Sigma is using in your browser; for example:
@@ -153,7 +153,7 @@ Before Claude can query your data through the MCP, the data source must be enabl
 
 ### Enable PLUGS_ELECTRONICS as a data source
 
-In Sigma, navigate to `Administration` > `AI settings` and select the `Assistant` tab. Click `Add source`, search for `PLUGS`, and select `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` from the `RETAIL` schema:
+In Sigma, navigate to `Administration` > `AI settings` and select the `Assistant` tab. Click `Add source`, search for `Hands`, select `PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA` from the `RETAIL` schema, and click `Add`:
 
 <img src="assets/ssis-09.png" width="800"/>
 
