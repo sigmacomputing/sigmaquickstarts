@@ -1,6 +1,6 @@
 author: pballai
 id: security_oauth_pkce_secure_integration
-summary: security_oauth_pkce_secure_integration
+summary: Explains OAuth 2.0 with PKCE as a secure authentication pattern for embedding Sigma and connecting to data warehouses, covering the authorization flow at a conceptual level.
 categories: Security
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_file_uploads_multimodal_ai
-summary: aiapps_file_uploads_multimodal_ai
+summary: Build an AI app that analyzes uploaded images, audio, video, and documents by pairing Sigma file uploads with Snowflake Cortex AI functions for vision, transcription, and document extraction.
 categories: aiapps
 environments: web
 status: Published

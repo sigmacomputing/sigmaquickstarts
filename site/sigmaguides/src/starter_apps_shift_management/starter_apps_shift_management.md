@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_shift_management
-summary: starter_apps_shift_management
+summary: Explores Sigma's Shift Management starter app (Clockwork), covering weekly schedule building, attendance tracking, clock in/out, and an AI-generated labor performance briefing.
 categories: apptemplates
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_15_embed_sdk
-summary: embedding_15_embed_sdk
+summary: Sets up a local React development environment, runs a sample application built with Sigma's Embed SDK for React, and customizes the embedded workbook's appearance and behavior.
 categories: Embedding
 environments: web
 status: Published

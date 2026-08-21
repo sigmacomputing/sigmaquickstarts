@@ -1,6 +1,6 @@
 author: pballai
 id: administration_version_tagging
-summary: administration_version_tagging
+summary: Configure version tagging in Sigma to freeze workbook versions and control which versions are available to users, without external CI/CD tools.
 categories: Administration
 environments: web
 status: Published

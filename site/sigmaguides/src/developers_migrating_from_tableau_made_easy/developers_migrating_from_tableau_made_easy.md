@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_from_tableau_made_easy
-summary: developers_migrating_from_tableau_made_easy
+summary: Use the tableau-to-sigma Claude Code skill to convert a live Tableau dashboard into a Sigma workbook on the warehouse and verify the numbers match the Tableau source.
 categories: migrations
 environments: web
 status: Published

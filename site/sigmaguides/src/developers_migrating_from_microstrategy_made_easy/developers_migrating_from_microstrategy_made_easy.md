@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_from_microstrategy_made_easy
-summary: developers_migrating_from_microstrategy_made_easy
+summary: Use a Claude Code skill to convert a MicroStrategy dossier's semantic model and dashboard layout into a Sigma data model and workbook, verified with a row-level parity check against the source.
 categories: migrations
 environments: web
 status: Published

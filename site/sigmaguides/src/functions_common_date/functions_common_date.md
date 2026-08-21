@@ -1,6 +1,6 @@
 author: pballai
 id: common_date_functions
-summary: common_date_functions
+summary: Builds date-handling formulas in Sigma, including weekday calculations, business-day counts, week-over-week and year-over-year comparisons, date-range filters, and a retail 4-5-4 calendar.
 categories: functions
 environments: web
 status: Published

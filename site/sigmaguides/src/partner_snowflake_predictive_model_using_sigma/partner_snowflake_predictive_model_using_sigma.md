@@ -1,6 +1,6 @@
 author: Fran Britschgi
 id: partner_snowflake_predictive_model_using_sigma
-summary: partner_snowflake_predictive_model_using_sigma
+summary: Train a Snowflake ML price prediction model in a Snowflake Notebook and surface the results in a Sigma workbook for business analyst review.
 categories: partners
 environments: web
 status: Published

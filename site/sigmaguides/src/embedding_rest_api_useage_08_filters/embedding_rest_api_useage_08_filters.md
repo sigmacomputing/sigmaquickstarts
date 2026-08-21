@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_08_filters
-summary: embedding_rest_api_useage_08_filters
+summary: Uses the Sigma REST API to synchronize Store Region and Date Range filters between a host application and an embedded Sigma workbook in real time.
 categories: embedding
 environments: web
 status: published

@@ -1,6 +1,6 @@
 author: pballai
 id: developers_sigma_cli
-summary: developers_sigma_cli
+summary: Install and authenticate the Sigma CLI, then build a governance inventory script that exports members, connections, and workbooks to CSV and runs on a schedule via the REST API.
 categories: developers
 environments: web
 status: Published

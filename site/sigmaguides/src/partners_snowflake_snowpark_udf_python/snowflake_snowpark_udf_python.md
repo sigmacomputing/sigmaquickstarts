@@ -1,6 +1,6 @@
 author: pballai
 id: snowflake_snowpark_udf_python
-summary: snowflake_snowpark_udf_python
+summary: Create a Python user-defined function with Snowflake Snowpark and call it directly from a Sigma workbook, covering the basic developer workflow for building Snowpark UDFs.
 categories: partners
 environments: web
 status: Published

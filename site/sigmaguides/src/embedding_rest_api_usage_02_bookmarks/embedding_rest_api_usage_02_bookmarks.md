@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_usage_02_bookmarks
-summary: embedding_rest_api_usage_02_bookmarks
+summary: Extend an embedded Sigma workbook with bookmark functionality via the Sigma REST API, letting Build users save exploration states and View users reapply them from a host-app dropdown.
 categories: embedding
 environments: web
 status: published

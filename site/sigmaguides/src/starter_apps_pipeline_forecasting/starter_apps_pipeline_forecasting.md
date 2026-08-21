@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_pipeline_forecasting
-summary: starter_apps_pipeline_forecasting
+summary: Explore and configure the Pipeline Forecasting app template, which uses input tables and an AI-generated summary to track Gut, Commit, and Best Case forecast calls against CRM data.
 categories: apptemplates
 environments: web
 status: Published

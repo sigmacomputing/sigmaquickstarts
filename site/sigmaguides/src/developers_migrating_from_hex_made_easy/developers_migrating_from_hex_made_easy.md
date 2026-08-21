@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_from_hex_made_easy
-summary: developers_migrating_from_hex_made_easy
+summary: Uses the hex-to-sigma Claude Code skill to convert an exported Hex project's SQL cells and charts into a Sigma data model and workbook, then verifies numeric parity against the warehouse.
 categories: migrations
 environments: web
 status: Published

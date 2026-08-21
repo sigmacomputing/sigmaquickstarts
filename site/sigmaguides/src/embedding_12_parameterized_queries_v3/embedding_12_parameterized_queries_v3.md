@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_12_parameterized_queries_v3
-summary: embedding_12_parameterized_queries_v3
+summary: Use parameterized queries with custom user attributes in an embedded Sigma workbook to route each customer's SQL to their own database and schema.
 categories: Embedding
 environments: web
 status: published

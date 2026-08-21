@@ -1,6 +1,6 @@
 author: pballai
 id: 05_2026_first_friday_features
-summary: 05_2026_first_friday_features
+summary: Summarizes May 2026 Sigma product releases, including Sigma Public, the Call API action, and other feature and bug-fix updates across the platform.
 categories: firstfridayfeatures
 environments: web
 status: Published

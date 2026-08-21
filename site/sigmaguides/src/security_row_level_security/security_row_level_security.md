@@ -1,6 +1,6 @@
 author: pballai
 id: security_row_level_security
-summary: security_row_level_security
+summary: Implement row-level security in a Sigma data model using CurrentUserEmail, CurrentUserTeam, user attributes, or a custom SQL WHERE clause to restrict which rows each user can see.
 categories: Security
 environments: web
 status: Published

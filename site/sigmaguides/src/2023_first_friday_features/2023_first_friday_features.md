@@ -1,6 +1,6 @@
 author: pballai
 id: 2023_first_friday_features
-summary: 2023_first_friday_features
+summary: A year-end compilation summarizing every new feature, enhancement, and bug fix Sigma released in 2023, organized by category with links to full documentation.
 categories: Administration
 environments: web
 status: Published

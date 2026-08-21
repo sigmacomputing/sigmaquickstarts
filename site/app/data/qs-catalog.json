@@ -1,0 +1,1156 @@
+{
+  "quickstarts": [
+    {
+      "id": "01_2026_first_friday_features",
+      "title": "(01-2026) January",
+      "category": "firstfridayfeatures",
+      "summary": "A monthly recap of new Sigma platform features, product updates, and bug fixes released in January 2026, with links to the full documentation for each.",
+      "lastUpdated": "2026-02-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/01_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "02_2026_first_friday_features",
+      "title": "(02-2026) February",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes new features, updates, and bug fixes released across Sigma during February 2026, with links to official documentation for each.",
+      "lastUpdated": "2026-02-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/02_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "03_2026_first_friday_features",
+      "title": "(03-2026) March",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes Sigma's March 2026 feature releases and bug fixes across administration, AI apps, API, data modeling, embedding, reports, and workbooks.",
+      "lastUpdated": "2025-04-03",
+      "url": "https://quickstarts.sigmacomputing.com/guide/03_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "04_2026_first_friday_features",
+      "title": "(04-2026) April",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes the new features, enhancements, and bug fixes Sigma released in April 2026, covering areas such as administration, connectivity, and workbook building.",
+      "lastUpdated": "2026-05-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/04_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "05_2026_first_friday_features",
+      "title": "(05-2026) May",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes May 2026 Sigma product releases, including Sigma Public, the Call API action, and other feature and bug-fix updates across the platform.",
+      "lastUpdated": "2026-06-05",
+      "url": "https://quickstarts.sigmacomputing.com/guide/05_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "06_2026_first_friday_features",
+      "title": "(06-2026) June",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes new features, enhancements, and bug fixes released in Sigma during June 2026, with links to detailed documentation for each item.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/06_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "07_2026_first_friday_features",
+      "title": "(07-2026) July",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes new features, updates, and bug fixes released across Sigma in July 2026, with links to the relevant documentation for each.",
+      "lastUpdated": "2026-08-07",
+      "url": "https://quickstarts.sigmacomputing.com/guide/07_2026_first_friday_features/index.html"
+    },
+    {
+      "id": "2023_first_friday_features",
+      "title": "2023 Compilation",
+      "category": "Administration",
+      "summary": "A year-end compilation summarizing every new feature, enhancement, and bug fix Sigma released in 2023, organized by category with links to full documentation.",
+      "lastUpdated": "2024-11-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/2023_first_friday_features/index.html"
+    },
+    {
+      "id": "2024_first_friday_features",
+      "title": "2024 Compilation",
+      "category": "Administration",
+      "summary": "A year-end compilation of Sigma's 2024 feature releases and bug fixes, including actions, action sequences, and single-click control clearing.",
+      "lastUpdated": "2024-11-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/2024_first_friday_features/index.html"
+    },
+    {
+      "id": "2025_first_friday_features",
+      "title": "2025 Compilation",
+      "category": "Administration",
+      "summary": "A year-end compilation of all new Sigma features, product updates, and bug fixes released throughout 2025, with links to the full documentation for each.",
+      "lastUpdated": "2026-02-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/2025_first_friday_features/index.html"
+    },
+    {
+      "id": "administration_ask_sigma_usage_dashboard",
+      "title": "Create a Sigma Assistant Usage Dashboard",
+      "category": "administration",
+      "summary": "Configure Sigma Assistant history logging into an isolated Snowflake schema, then use Sigma's built-in admin dashboard to analyze user questions and usage patterns.",
+      "lastUpdated": "2026-05-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_ask_sigma_usage_dashboard/index.html"
+    },
+    {
+      "id": "administration_audit_logging",
+      "title": "Audit Logging",
+      "category": "administration",
+      "summary": "Access Sigma's audit log connection to explore user activity and build a chart tracking daily login successes and failures for troubleshooting and compliance.",
+      "lastUpdated": "2023-09-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html"
+    },
+    {
+      "id": "administration_azure_private_link",
+      "title": "Azure Private Link",
+      "category": "security",
+      "summary": "Configure Azure Private Link to connect Sigma to a Snowflake, Databricks, or PostgreSQL warehouse over Azure's internal network without traversing the public internet.",
+      "lastUpdated": "2023-04-19",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_azure_private_link/index.html"
+    },
+    {
+      "id": "administration_export_bursting",
+      "title": "Export Bursting",
+      "category": "Administration",
+      "summary": "Configure Sigma's export bursting to automatically split a scheduled report into personalized segments and deliver each one to the right recipient by email.",
+      "lastUpdated": "2024-11-18",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_export_bursting/index.html"
+    },
+    {
+      "id": "administration_getting_started_guide",
+      "title": "How to Get Started - A Guide for Sigma Administrators",
+      "category": "administration",
+      "summary": "Walks new Sigma administrators through a checklist of setup decisions: authentication, warehouse connections, AI configuration, branding, versioning, and training.",
+      "lastUpdated": "2026-08-11",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_getting_started_guide/index.html"
+    },
+    {
+      "id": "administration_materialization",
+      "title": "Materialization with Sigma",
+      "category": "Administration",
+      "summary": "Configure materialization of a Sigma dataset into a Snowflake table to cut query times and reduce warehouse compute costs, then verify results after the first refresh.",
+      "lastUpdated": "2026-02-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_materialization/index.html"
+    },
+    {
+      "id": "administration_metrics",
+      "title": "Working with Metrics in Datasets",
+      "category": "administration",
+      "summary": "Create and apply Sigma Metrics in a dataset to define reusable, governed calculations like revenue and conversion rate that stay consistent across tables, charts, and pivot tables.",
+      "lastUpdated": "2023-03-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_metrics/index.html"
+    },
+    {
+      "id": "administration_multitenancy",
+      "title": "Sigma Tenants: Managing Isolated Organizations",
+      "category": "Administration",
+      "summary": "Configure Sigma Tenants to create isolated child organizations under a parent org, using deployments and connection swap policies to isolate business units and their data sources.",
+      "lastUpdated": "2026-01-29",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_multitenancy/index.html"
+    },
+    {
+      "id": "administration_sso_okta",
+      "title": "Single Sign-On with Sigma and Okta",
+      "category": "security",
+      "summary": "Configure SAML single sign-on between Sigma and Okta, covering user provisioning, deprovisioning, group management, and access policies.",
+      "lastUpdated": "2023-01-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_sso_okta/index.html"
+    },
+    {
+      "id": "administration_version_tagging",
+      "title": "Version Tagging with Sigma",
+      "category": "Administration",
+      "summary": "Configure version tagging in Sigma to freeze workbook versions and control which versions are available to users, without external CI/CD tools.",
+      "lastUpdated": "2026-07-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/administration_version_tagging/index.html"
+    },
+    {
+      "id": "aiapps_build_with_assistant",
+      "title": "Build Dashboards and Apps with Sigma Assistant",
+      "category": "aiapps",
+      "summary": "Use Sigma Assistant's Plan and Build modes to build a revenue forecast workbook from a data model and a design image, then refine it through conversation.",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_build_with_assistant/index.html"
+    },
+    {
+      "id": "aiapps_chat_element",
+      "title": "Build Conversational AI Apps with Chat Elements and Snowflake Cortex",
+      "category": "aiapps",
+      "summary": "Build a conversational AI app in Sigma using a chat element, a Sigma agent, and a Snowflake Cortex Agent — with optional write-back actions to an input table.",
+      "lastUpdated": "2026-06-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html"
+    },
+    {
+      "id": "aiapps_file_uploads_multimodal_ai",
+      "title": "Multi-Modal File Analysis with AI",
+      "category": "aiapps",
+      "summary": "Build an AI app that analyzes uploaded images, audio, video, and documents by pairing Sigma file uploads with Snowflake Cortex AI functions for vision, transcription, and document extraction.",
+      "lastUpdated": "2026-07-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_file_uploads_multimodal_ai/index.html"
+    },
+    {
+      "id": "aiapps_forms",
+      "title": "Building Forms for Data Capture and Analysis",
+      "category": "aiapps",
+      "summary": "Build a customer return request form bound to an input table, with column-level validation and a live analysis view that updates as submissions arrive.",
+      "lastUpdated": "2026-04-02",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_forms/index.html"
+    },
+    {
+      "id": "aiapps_gong_call_analysis",
+      "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
+      "category": "aiapps",
+      "summary": "Learn how to use a Sigma agent to extract actionable insights from unstructured Gong call transcript data stored in Snowflake.",
+      "lastUpdated": "2026-05-26",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_gong_call_analysis/index.html"
+    },
+    {
+      "id": "aiapps_natural_language_with_claude",
+      "title": "Natural Language Analytics with Claude and Sigma",
+      "category": "aiapps",
+      "summary": "Connect Claude to a Sigma organization through the Sigma MCP server to search workbooks, explore data model structure, and query live data using natural language.",
+      "lastUpdated": "2026-08-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html"
+    },
+    {
+      "id": "aiapps_scheduled_actions",
+      "title": "Automate Inventory Alerts with Scheduled Actions",
+      "category": "aiapps",
+      "summary": "Learn how to automate a nightly inventory monitoring workflow using Sigma's Scheduled Actions feature, including formula-based conditions, input table writes, and email notifications.",
+      "lastUpdated": "2026-05-10",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_scheduled_actions/index.html"
+    },
+    {
+      "id": "aiapps_scheduling_sigma_insights_to_slack",
+      "title": "Scheduling Sigma Insights to Slack",
+      "category": "aiapps",
+      "summary": "Connect Claude to Sigma via the Sigma MCP server and to Slack via the claude.ai Slack connector, then use Claude Code to schedule a recurring daily Sigma data digest to Slack.",
+      "lastUpdated": "2026-08-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_scheduling_sigma_insights_to_slack/index.html"
+    },
+    {
+      "id": "aiapps_storefront_repeaters",
+      "title": "Build an Interactive Storefront with Repeaters and Actions",
+      "category": "aiapps",
+      "summary": "Build a retail storefront app using a Repeated container for product cards, popover and date range controls, a boolean-filtered notification center, and role-based storefront/manager views.",
+      "lastUpdated": "2026-03-19",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_storefront_repeaters/index.html"
+    },
+    {
+      "id": "common_date_functions",
+      "title": "Common Date Functions",
+      "category": "functions",
+      "summary": "Builds date-handling formulas in Sigma, including weekday calculations, business-day counts, week-over-week and year-over-year comparisons, date-range filters, and a retail 4-5-4 calendar.",
+      "lastUpdated": "2026-08-05",
+      "url": "https://quickstarts.sigmacomputing.com/guide/common_date_functions/index.html"
+    },
+    {
+      "id": "data_apps_cross_chart_actions",
+      "title": "Cross Chart Actions",
+      "category": "aiapps",
+      "summary": "Build a Sigma workbook with linked charts where clicking a data point in one chart filters other elements on the page using cross-chart actions.",
+      "lastUpdated": "2025-08-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/data_apps_cross_chart_actions/index.html"
+    },
+    {
+      "id": "dataapps_adjustments_change_log",
+      "title": "Adjustments - Change Log",
+      "category": "aiapps",
+      "summary": "Build an app with a Sigma input table that lets users edit values in place while automatically logging every adjustment with user, timestamp, and original value.",
+      "lastUpdated": "2025-02-07",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_adjustments_change_log/index.html"
+    },
+    {
+      "id": "dataapps_approvals_flow",
+      "title": "Approvals",
+      "category": "aiapps",
+      "summary": "Build an approvals workflow app where Adjusters propose retail revenue adjustments in a modal and Approvers review, reject, or approve them via an input table with persona switching.",
+      "lastUpdated": "2026-07-16",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_approvals_flow/index.html"
+    },
+    {
+      "id": "dataapps_calling_external_api_procedure",
+      "title": "Integrate 3rd Party REST API via Stored Procedure",
+      "category": "aiapps",
+      "summary": "Cleans a single business address row using a Snowflake stored procedure that calls the Geocodio API, triggered by a Sigma action, and writes the corrected result back to a table.",
+      "lastUpdated": "2024-02-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_calling_external_api_procedure/index.html"
+    },
+    {
+      "id": "dataapps_crowd_sourcing",
+      "title": "Crowdsource Ideas with a Sigma AI App",
+      "category": "aiapps",
+      "summary": "Build a crowdsourcing app in Sigma using input tables, user-aware controls, and modals so users can submit, view, and upvote ideas without writing code.",
+      "lastUpdated": "2025-09-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_crowd_sourcing/index.html"
+    },
+    {
+      "id": "dataapps_finance_discounted_cash_flow",
+      "title": "Discounted Cash Flow",
+      "category": "aiapps",
+      "summary": "Build a discounted cash flow financial model in Sigma using spreadsheet-style formulas and sample data, replacing a manual Excel-based DCF workflow with a live, warehouse-scale version.",
+      "lastUpdated": "2024-09-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_finance_discounted_cash_flow/index.html"
+    },
+    {
+      "id": "dataapps_pivot_spreading",
+      "title": "Pivot Spreading",
+      "category": "aiapps",
+      "summary": "Use pivot table spreading to edit an aggregate value in a pivot table and automatically redistribute the change across underlying rows, such as budget or forecast line items.",
+      "lastUpdated": "2025-01-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_pivot_spreading/index.html"
+    },
+    {
+      "id": "dataapps_reconciliation",
+      "title": "Reconciliation",
+      "category": "aiapps",
+      "summary": "Trigger a Snowflake stored procedure from a Sigma app to snapshot live data and compare it against historical snapshots for reconciliation and audit tracking.",
+      "lastUpdated": "2024-12-19",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_reconciliation/index.html"
+    },
+    {
+      "id": "dataapps_snapshotting_with_sp",
+      "title": "Snapshotting with Stored Procedures",
+      "category": "aiapps",
+      "summary": "Builds an inventory app where users edit stock quantities and snapshot changes via a Snowflake stored procedure to preserve original and revised values for historical comparison.",
+      "lastUpdated": "2024-01-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_snapshotting_with_sp/index.html"
+    },
+    {
+      "id": "dataapps_snowflake_ask_cortex",
+      "title": "Build an AI prompt box with Cortex in Sigma",
+      "category": "aiapps",
+      "summary": "Build a natural language prompt box in Sigma that sends questions to Snowflake Cortex's COMPLETE function with Claude to return narrative answers over workbook data.",
+      "lastUpdated": "2026-01-28",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataapps_snowflake_ask_cortex/index.html"
+    },
+    {
+      "id": "dataaps_fundamentals",
+      "title": "AI Apps Fundamentals",
+      "category": "aiapps",
+      "summary": "Learn how to build a fully functional project tracking AI app in Sigma using input tables, modals, controls, actions, and approval workflows — without writing code.",
+      "lastUpdated": "2026-06-20",
+      "url": "https://quickstarts.sigmacomputing.com/guide/dataaps_fundamentals/index.html"
+    },
+    {
+      "id": "developers_api_actions_getting_started",
+      "title": "API Actions - Getting Started",
+      "category": "developers",
+      "summary": "Build a Sigma workbook from scratch that uses API Actions to call the Open-Meteo Weather API, binding a city list control to fetch and parse real-time weather data as JSON.",
+      "lastUpdated": "2026-06-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_api_actions_getting_started/index.html"
+    },
+    {
+      "id": "developers_api_actions_jira",
+      "title": "Integrate JIRA using API Actions",
+      "category": "Developers",
+      "summary": "Connect Sigma to JIRA Cloud using Basic Authentication and API Actions, query issues with JQL, parse JSON via a Python element, and update issue status from a workbook.",
+      "lastUpdated": "2026-02-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_api_actions_jira/index.html"
+    },
+    {
+      "id": "developers_api_actions_salesforce",
+      "title": "Integrate Salesforce using API Actions",
+      "category": "developers",
+      "summary": "Build a Sigma workbook that uses API actions with OAuth authentication and dynamic controls to query the Salesforce REST API and display live SOQL query results.",
+      "lastUpdated": "2026-02-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_api_actions_salesforce/index.html"
+    },
+    {
+      "id": "developers_api_actions_servicenow",
+      "title": "Integrate ServiceNow using API Actions",
+      "category": "developers",
+      "summary": "Build a bidirectional Sigma workbook that queries ServiceNow incidents via the Table API, filters them by state, and writes status updates back to ServiceNow using Basic Auth API actions.",
+      "lastUpdated": "2026-03-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_api_actions_servicenow/index.html"
+    },
+    {
+      "id": "developers_api_code_samples",
+      "title": "Sigma REST API Recipes",
+      "category": "Developers",
+      "summary": "Run JavaScript code samples covering Sigma's most-used REST API operations, including member management, workspace permissions, workbook copying, and CSV export.",
+      "lastUpdated": "2024-11-20",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_api_code_samples/index.html"
+    },
+    {
+      "id": "developers_data_models_as_code",
+      "title": "Data Models as Code",
+      "category": "developers",
+      "summary": "Use Sigma's REST API to create and update data models from JSON specifications, enabling version control, code review, and CI/CD for data model deployments.",
+      "lastUpdated": "2026-01-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html"
+    },
+    {
+      "id": "developers_migrating_from_hex_made_easy",
+      "title": "Migrating From Hex Made Easy",
+      "category": "migrations",
+      "summary": "Uses the hex-to-sigma Claude Code skill to convert an exported Hex project's SQL cells and charts into a Sigma data model and workbook, then verifies numeric parity against the warehouse.",
+      "lastUpdated": "2026-08-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_hex_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_from_microstrategy_made_easy",
+      "title": "Migrating From MicroStrategy Made Easy",
+      "category": "migrations",
+      "summary": "Use a Claude Code skill to convert a MicroStrategy dossier's semantic model and dashboard layout into a Sigma data model and workbook, verified with a row-level parity check against the source.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_microstrategy_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_from_quicksight_made_easy",
+      "title": "Migrating From AWS QuickSight Made Easy",
+      "category": "migrations",
+      "summary": "Use the quicksight-to-sigma Claude Code skill to convert an AWS QuickSight analysis into a Sigma data model and workbook, then verify results with a row-level parity check.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_quicksight_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_from_tableau_made_easy",
+      "title": "Migrating From Tableau Made Easy",
+      "category": "migrations",
+      "summary": "Use the tableau-to-sigma Claude Code skill to convert a live Tableau dashboard into a Sigma workbook on the warehouse and verify the numbers match the Tableau source.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_from_thoughtspot_made_easy",
+      "title": "Migrating From ThoughtSpot Made Easy",
+      "category": "migrations",
+      "summary": "Run the thoughtspot-to-sigma Claude Code skill to convert a ThoughtSpot worksheet and Liveboard into a Sigma data model and workbook, verified against the warehouse.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_thoughtspot_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_looker_made_easy",
+      "title": "Migrating From Looker Made Easy",
+      "category": "migrations",
+      "summary": "Use the Claude Code looker-to-sigma skill to convert a Looker dashboard and its LookML model into a Sigma data model and workbook, then verify parity against the live warehouse.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_looker_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_power_bi_made_easy",
+      "title": "Migrating From Power BI Made Easy",
+      "category": "migrations",
+      "summary": "Run the powerbi-to-sigma Claude Code skill to convert a Power BI report's semantic model and layout into a Sigma data model and workbook, verifying data parity against the source warehouse.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_power_bi_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_qlik_made_easy",
+      "title": "Migrating From Qlik Made Easy",
+      "category": "migrations",
+      "summary": "Use the Claude Code qlik-to-sigma skill to convert a Qlik Cloud app's data model, measures, and Set Analysis expressions into a Sigma workbook with a warehouse parity check.",
+      "lastUpdated": "2026-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_qlik_made_easy/index.html"
+    },
+    {
+      "id": "developers_plugins",
+      "title": "Extend Sigma with Plugins",
+      "category": "developers",
+      "summary": "Build and deploy a custom Sigma plugin using an open-source charting library to add a visualization type not natively available in Sigma.",
+      "lastUpdated": "2023-12-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_plugins/index.html"
+    },
+    {
+      "id": "developers_quickstarts_api_tookit",
+      "title": "QuickStarts API Toolkit",
+      "category": "Developers",
+      "summary": "Sets up a local web portal that authenticates to the Sigma REST API, runs prebuilt request recipes, and displays responses to help learn common Sigma API workflows.",
+      "lastUpdated": "2025-09-16",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_quickstarts_api_tookit/index.html"
+    },
+    {
+      "id": "developers_sigma_calculations",
+      "title": "Sigma's Query Engine",
+      "category": "Developers",
+      "summary": "Explains Sigma's multi-tier caching and query evaluation architecture, which reduces Snowflake compute load while keeping the interface responsive as user count grows.",
+      "lastUpdated": "2023-08-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html"
+    },
+    {
+      "id": "developers_sigma_cli",
+      "title": "Automate Sigma from the Command Line with the Sigma CLI",
+      "category": "developers",
+      "summary": "Install and authenticate the Sigma CLI, then build a governance inventory script that exports members, connections, and workbooks to CSV and runs on a schedule via the REST API.",
+      "lastUpdated": "2026-07-14",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_cli/index.html"
+    },
+    {
+      "id": "developers_sigma_skill",
+      "title": "Sigma Skills for AI Assistants",
+      "category": "developers",
+      "summary": "Install Sigma's open-source agent skills in Claude Code to authenticate against the Sigma REST API and create or update data models through natural-language prompts.",
+      "lastUpdated": "2026-06-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_skill/index.html"
+    },
+    {
+      "id": "embedding_01_getting_started_v3",
+      "title": "Embedding 01: Getting Started",
+      "category": "Embedding",
+      "summary": "Build a local Node.js host application used to test Sigma embed URLs, establishing the environment used throughout the embedding QuickStart series.",
+      "lastUpdated": "2024-05-05",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html"
+    },
+    {
+      "id": "embedding_02_federated_access_v3",
+      "title": "Embedding 02: Federated Access",
+      "category": "Embedding",
+      "summary": "Configure federated user access for an embedded Sigma workbook using single sign-on and role assignment so host application users authenticate into Sigma with the correct permissions.",
+      "lastUpdated": "2024-05-07",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_02_federated_access_v3/index.html"
+    },
+    {
+      "id": "embedding_03_using_jwt_claims_and_embed_parameters_v3",
+      "title": "Embedding 03: Using JWT Claims and Embed Parameters",
+      "category": "Embedding",
+      "summary": "Configure signed JWT claims and embed URL parameters to authenticate embedded Sigma content, enforce row-level security, and pass custom user attributes.",
+      "lastUpdated": "2025-05-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html"
+    },
+    {
+      "id": "embedding_04_isolation_solutions",
+      "title": "Embedding 04: Isolation Solutions",
+      "category": "Embedding",
+      "summary": "Explore Sigma's embedding isolation strategies, including workspace and team permissions, row-level and column-level security, and role-based feature controls.",
+      "lastUpdated": "2024-05-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_04_isolation_solutions/index.html"
+    },
+    {
+      "id": "embedding_05_coming_soon_v3",
+      "title": "Embedding 05: Under Construction",
+      "category": "Embedding",
+      "summary": "Placeholder page reserving the Embedding 05 slot in the series; no content yet, to be published in a future update.",
+      "lastUpdated": "2024-06-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_05_coming_soon_v3/index.html"
+    },
+    {
+      "id": "embedding_06_creating_a_premium_service_v3",
+      "title": "Embedding 06: Creating a Premium Service",
+      "category": "Embedding",
+      "summary": "Explains how to design a tiered premium embedded-analytics offering in Sigma using account types like View, Analyze, and Build to gate features by license level.",
+      "lastUpdated": "2025-06-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_06_creating_a_premium_service_v3/index.html"
+    },
+    {
+      "id": "embedding_07_dynamic_role_switching_v3",
+      "title": "Embedding 07: Dynamic Role Switching with Snowflake",
+      "category": "Embedding",
+      "summary": "Configure dynamic connection and role switching in a JWT-embedded Sigma workbook so the Snowflake warehouse and role swap at runtime based on user attributes, restricting data access.",
+      "lastUpdated": "2024-10-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_07_dynamic_role_switching_v3/index.html"
+    },
+    {
+      "id": "embedding_08_ask_sigma_v3",
+      "title": "Embedding 08: Embedding Sigma Assistant",
+      "category": "embedding",
+      "summary": "Embed Sigma Assistant's natural language query interface into an external application so users can ask questions about data and see the underlying analysis steps and sources.",
+      "lastUpdated": "2026-05-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_08_ask_sigma_v3/index.html"
+    },
+    {
+      "id": "embedding_09_events_v3",
+      "title": "Embedding 09: Events",
+      "category": "Embedding",
+      "summary": "Pass inbound and outbound events between a host application and an embedded Sigma iframe, using JavaScript or URL parameters and a listener for Sigma's outbound messages.",
+      "lastUpdated": "2026-05-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_09_events_v3/index.html"
+    },
+    {
+      "id": "embedding_10_version_tagging_v3",
+      "title": "Embedding 10: Version Tagging",
+      "category": "embedding",
+      "summary": "Use Postman to simulate a CI/CD pipeline that promotes tagged Sigma workbook versions between development, staging, and production in an embedded environment.",
+      "lastUpdated": "2025-05-30",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_10_version_tagging_v3/index.html"
+    },
+    {
+      "id": "embedding_11_responsive_embeds_v3",
+      "title": "Embedding 11: Responsive Embeds",
+      "category": "Embedding",
+      "summary": "Configure a Sigma embed and its host page so the iframe resizes responsively with page content, eliminating nested scroll bars across desktop and mobile screens.",
+      "lastUpdated": "2025-05-20",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_11_responsive_embeds_v3/index.html"
+    },
+    {
+      "id": "embedding_12_parameterized_queries_v3",
+      "title": "Embedding 12: Parameterized Queries",
+      "category": "Embedding",
+      "summary": "Use parameterized queries with custom user attributes in an embedded Sigma workbook to route each customer's SQL to their own database and schema.",
+      "lastUpdated": "2026-06-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_12_parameterized_queries_v3/index.html"
+    },
+    {
+      "id": "embedding_13_link_sharing_v3",
+      "title": "Embedding 13: Link Sharing",
+      "category": "Embedding",
+      "summary": "Generate shareable URLs from an embedded Sigma workbook for a full workbook, an exploration, or a bookmark, including links delivered through scheduled exports.",
+      "lastUpdated": "2025-05-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_13_link_sharing_v3/index.html"
+    },
+    {
+      "id": "embedding_14_connection_swapping_v3",
+      "title": "Embedding 14: Connection Swapping",
+      "category": "Embedding",
+      "summary": "Implement Dynamic Connection Swapping in a Sigma embed using the eval_connection_id JWT claim to switch the underlying data connection at runtime without changing the workbook.",
+      "lastUpdated": "2025-06-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_14_connection_swapping_v3/index.html"
+    },
+    {
+      "id": "embedding_15_embed_sdk",
+      "title": "Embedding 15: Embed-SDK for React",
+      "category": "Embedding",
+      "summary": "Sets up a local React development environment, runs a sample application built with Sigma's Embed SDK for React, and customizes the embedded workbook's appearance and behavior.",
+      "lastUpdated": "2026-05-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_15_embed_sdk/index.html"
+    },
+    {
+      "id": "embedding_16_public_access_v3",
+      "title": "Embedding 16: Public Access",
+      "category": "Embedding",
+      "summary": "Embed a Sigma workbook publicly without JWT authentication, using the base embed URL directly in an iframe for non-sensitive, no-login public-facing content.",
+      "lastUpdated": "2024-05-19",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_16_public_access_v3/index.html"
+    },
+    {
+      "id": "embedding_plugin_useage_01_dashboard_builder",
+      "title": "Plugin Use Case 01: Dashboard Builder",
+      "category": "embedding",
+      "summary": "Build a configurable embedded dashboard using Sigma's plugin framework with a hosted Angular plugin and a JavaScript host app that saves KPI and layout selections via Sigma bookmarks.",
+      "lastUpdated": "2026-05-10",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_plugin_useage_01_dashboard_builder/index.html"
+    },
+    {
+      "id": "embedding_rest_api_usage_01_getting started_started",
+      "title": "REST API Usage 01: Getting Started",
+      "category": "embedding",
+      "summary": "embedding_rest_api_usage_01_getting_started",
+      "lastUpdated": "2025-07-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_usage_01_getting started_started/index.html"
+    },
+    {
+      "id": "embedding_rest_api_usage_02_bookmarks",
+      "title": "REST API Usage 02: Bookmarks",
+      "category": "embedding",
+      "summary": "Extend an embedded Sigma workbook with bookmark functionality via the Sigma REST API, letting Build users save exploration states and View users reapply them from a host-app dropdown.",
+      "lastUpdated": "2025-07-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_usage_02_bookmarks/index.html"
+    },
+    {
+      "id": "embedding_rest_api_usage_03_bookmark_sharing_with_a_local_db",
+      "title": "REST API Usage 03: Bookmark Sharing with a Local DB",
+      "category": "embedding",
+      "summary": "Extend an embedded Sigma workbook with bookmark save, delete, and sharing controls backed by a local database and the Sigma REST API.",
+      "lastUpdated": "2025-07-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_usage_03_bookmark_sharing_with_a_local_db/index.html"
+    },
+    {
+      "id": "embedding_rest_api_usage_04_export_modal",
+      "title": "REST API Usage 04: Scheduling Exports",
+      "category": "embedding",
+      "summary": "Extend an embedded Sigma workbook with a REST API-driven modal for scheduling, editing, deleting, and immediately triggering emailed workbook exports.",
+      "lastUpdated": "2025-07-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_usage_04_export_modal/index.html"
+    },
+    {
+      "id": "embedding_rest_api_usage_05_wb_descriptions",
+      "title": "REST API Usage 05: Workbook Descriptions",
+      "category": "embedding",
+      "summary": "Add custom, editable descriptions to embedded Sigma workbooks using a local lowdb database, since the Sigma REST API doesn't natively store workbook description metadata.",
+      "lastUpdated": "2025-07-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_usage_05_wb_descriptions/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_06_copy_or_new_wb",
+      "title": "REST API Usage 06: Copy or Create a New Workbook",
+      "category": "embedding",
+      "summary": "Use Sigma's REST API to create a new workbook or copy an existing one programmatically, handling naming conflicts, team workspace sharing, and UI feedback.",
+      "lastUpdated": "2025-08-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_06_copy_or_new_wb/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_07_custom_loader",
+      "title": "REST API Usage 07: Custom Loading Indicators",
+      "category": "embedding",
+      "summary": "Implement a custom loading indicator for a Sigma embed that listens for the workbook:dataLoaded postMessage event to hide the indicator once data finishes loading.",
+      "lastUpdated": "2025-08-07",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_07_custom_loader/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_08_filters",
+      "title": "REST API Usage 08: Filters",
+      "category": "embedding",
+      "summary": "Uses the Sigma REST API to synchronize Store Region and Date Range filters between a host application and an embedded Sigma workbook in real time.",
+      "lastUpdated": "2025-08-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_08_filters/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_09_hide_menus",
+      "title": "REST API Usage 09: Hide Menus & Page Nav",
+      "category": "embedding",
+      "summary": "Use the Sigma Embedding API to hide a workbook's built-in menus and programmatically navigate between pages from the host application.",
+      "lastUpdated": "2025-08-08",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_09_hide_menus/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_10_set_default_workbook",
+      "title": "REST API Usage 10: Set Default Workbook",
+      "category": "embedding",
+      "summary": "Implement a per-user default workbook selector for embedded Sigma content using the Sigma REST API and browser local storage.",
+      "lastUpdated": "2025-08-11",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_10_set_default_workbook/index.html"
+    },
+    {
+      "id": "embedding_rest_api_useage_11_custom_workbook_list",
+      "title": "REST API Usage 11: Custom Workbook List",
+      "category": "embedding",
+      "summary": "Build a thumbnail carousel for selecting embedded workbooks, using the List member files REST API endpoint to return only the workbooks a given user is permissioned to access.",
+      "lastUpdated": "2025-08-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_11_custom_workbook_list/index.html"
+    },
+    {
+      "id": "embedding_use_case_embed_into_salesforce_v3",
+      "title": "Use Case: Embed into Salesforce",
+      "category": "Embedding",
+      "summary": "Embed a static Sigma table and a dynamically filtered view into Salesforce using Lightning Web Components.",
+      "lastUpdated": "2025-05-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_case_embed_into_salesforce_v3/index.html"
+    },
+    {
+      "id": "embedding_use_case_secure_embedding_into_streamlit",
+      "title": "Use Case: Secure Embedding into Streamlit",
+      "category": "embedding",
+      "summary": "Embed a Sigma workbook inside a Python Streamlit application, combining Streamlit's app framework with Sigma's live, warehouse-connected analytics interface.",
+      "lastUpdated": "2025-05-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_case_secure_embedding_into_streamlit/index.html"
+    },
+    {
+      "id": "embedding_use_case_servicenow",
+      "title": "Use Case: Embed into ServiceNow",
+      "category": "Embedding",
+      "summary": "Embed a Sigma workbook into a ServiceNow page using an iframe secured by a signed JWT that supplies the required authentication claims.",
+      "lastUpdated": "2025-06-07",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_case_servicenow/index.html"
+    },
+    {
+      "id": "embedding_use_case_sharepoint",
+      "title": "Use Case: Embed into Microsoft Sharepoint",
+      "category": "embedding",
+      "summary": "Embed a Sigma workbook into Microsoft SharePoint Online using an Azure Function that mints JWTs and an SPFx web part that passes through the current user's identity.",
+      "lastUpdated": "2025-09-26",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_case_sharepoint/index.html"
+    },
+    {
+      "id": "embedding_use_cases_databricks_oauth",
+      "title": "Use Case: Sigma with Databricks OAuth",
+      "category": "Embedding",
+      "summary": "Build a Node.js app that implements OAuth 2.0 with PKCE for Sigma embedding with Databricks, encrypting tokens and signing JWTs so each embedded user queries with their own permissions.",
+      "lastUpdated": "2026-01-26",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_cases_databricks_oauth/index.html"
+    },
+    {
+      "id": "functions_period_over_period_analysis",
+      "title": "Getting Started with Period Over Period Analysis in Sigma",
+      "category": "Functions",
+      "summary": "Build period-over-period comparison formulas in Sigma, such as year-over-year and month-to-date, to compare a key metric between two selected time periods.",
+      "lastUpdated": "2024-01-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/functions_period_over_period_analysis/index.html"
+    },
+    {
+      "id": "functions_popular_functions",
+      "title": "Popular Functions",
+      "category": "Functions",
+      "summary": "Apply commonly used Sigma functions, including categorization, null handling, text search, lookups, percentages, pattern parsing, hierarchy analysis, and conditional logic, to sample retail data.",
+      "lastUpdated": "2026-05-10",
+      "url": "https://quickstarts.sigmacomputing.com/guide/functions_popular_functions/index.html"
+    },
+    {
+      "id": "fundamentals_1_getting_around_v3",
+      "title": "Fundamentals 01: Overview",
+      "category": "fundamentals",
+      "summary": "Navigate Sigma's interface using sample retail data, learning core terminology, workbook structure, and how to create, save, and share a workbook, plus which QuickStart path fits your role.",
+      "lastUpdated": "2026-08-21",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html"
+    },
+    {
+      "id": "fundamentals_10_data_modeling",
+      "title": "Fundamentals 10: Data Modeling",
+      "category": "Fundamentals",
+      "summary": "Build a Sigma data model with table relationships, custom columns, metrics, column-level security, and materialization for reusable governed analytics.",
+      "lastUpdated": "2026-06-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html"
+    },
+    {
+      "id": "Fundamentals_12_repeater_single_row_containers",
+      "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
+      "category": "Fundamentals",
+      "summary": "Build a card-based product catalog using a Repeater container for the gallery and a Single Row container in a modal for product detail.",
+      "lastUpdated": "2026-05-29",
+      "url": "https://quickstarts.sigmacomputing.com/guide/Fundamentals_12_repeater_single_row_containers/index.html"
+    },
+    {
+      "id": "fundamentals_2_data_v3",
+      "title": "Fundamentals 02: Data",
+      "category": "fundamentals",
+      "summary": "Sort, filter, group, and build formula-based calculations, including cross-table lookups, on live warehouse data in a Sigma workbook without writing SQL.",
+      "lastUpdated": "2026-04-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html"
+    },
+    {
+      "id": "fundamentals_3_data_pivot_tables_v3",
+      "title": "Fundamentals 03: Pivot Tables",
+      "category": "fundamentals",
+      "summary": "Build a pivot table on sample sales data, apply conditional formatting, and drill down into the underlying rows to explore results in more detail.",
+      "lastUpdated": "2025-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_3_data_pivot_tables_v3/index.html"
+    },
+    {
+      "id": "fundamentals_4_input_v3",
+      "title": "Fundamentals 04: Input",
+      "category": "fundamentals",
+      "summary": "Get introduced to Sigma input tables and their key features to build a foundation for using write-back workflows in your own business data.",
+      "lastUpdated": "2025-11-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_4_input_v3/index.html"
+    },
+    {
+      "id": "fundamentals_5_charts_v3",
+      "title": "Fundamentals 05: Charts",
+      "category": "fundamentals",
+      "summary": "Build and configure Sigma chart types, including bar, line, KPI, pie, and map charts, using sample sales data to visualize and analyze business metrics.",
+      "lastUpdated": "2025-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_5_charts_v3/index.html"
+    },
+    {
+      "id": "fundamentals_6_controls_v3",
+      "title": "Fundamentals 06: Controls",
+      "category": "Fundamentals",
+      "summary": "Adds and configures Sigma control elements, including sliders, range sliders, date range, Top N, and switch controls, plus synced copies and referencing controls directly in formulas.",
+      "lastUpdated": "2025-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_6_controls_v3/index.html"
+    },
+    {
+      "id": "fundamentals_7_design_v3",
+      "title": "Fundamentals 07: Design Elements (UI & Layout)",
+      "category": "Fundamentals",
+      "summary": "Arrange elements built in earlier Fundamentals lessons onto a dashboard page and apply Sigma's layout and design tools to produce a polished, visually organized dashboard.",
+      "lastUpdated": "2025-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_7_design_v3/index.html"
+    },
+    {
+      "id": "fundamentals_8_administration_v3",
+      "title": "Fundamentals 08: Administration",
+      "category": "Fundamentals",
+      "summary": "Tour Sigma's administration area, covering instance management, connection setup, data governance rules, and user interaction configuration for admin-level accounts.",
+      "lastUpdated": "2026-05-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html"
+    },
+    {
+      "id": "fundamentals_9_beyond_the_basics_v3",
+      "title": "Fundamentals 09: Beyond the Basics",
+      "category": "Fundamentals",
+      "summary": "Address common post-fundamentals questions in Sigma, including joining multiple tables into one data model and identifying and resolving duplicate rows caused by messy join data.",
+      "lastUpdated": "2025-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_9_beyond_the_basics_v3/index.html"
+    },
+    {
+      "id": "getting_started_with_sigma_and_snowflake",
+      "title": "Getting Started with Sigma and Snowflake",
+      "category": "partners",
+      "summary": "Launch a Snowflake trial and a Sigma trial through Snowflake Partner Connect, then model, explore, and visualize sample data, building a Sigma workbook from a data model.",
+      "lastUpdated": "2025-05-29",
+      "url": "https://quickstarts.sigmacomputing.com/guide/getting_started_with_sigma_and_snowflake/index.html"
+    },
+    {
+      "id": "google_analytics_4_template_setup",
+      "title": "Google Analytics 4 Template Setup",
+      "category": "partners",
+      "summary": "Sets up Sigma's Google Analytics 4 template on Snowflake, using the Google Analytics Raw Data connector and a provided SQL script to build a page- and event-level analytics workbook.",
+      "lastUpdated": "2023-02-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/google_analytics_4_template_setup/index.html"
+    },
+    {
+      "id": "input_tables_use_cases",
+      "title": "Sigma Input Tables: Use Cases",
+      "category": "Tables",
+      "summary": "Examples of using Sigma Use Cases",
+      "lastUpdated": "2024-07-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/input_tables_use_cases/index.html"
+    },
+    {
+      "id": "partner_hightouch_contact_sync",
+      "title": "Sync Leads to Hubspot with Hightouch’s Sigma Integration",
+      "category": "partners",
+      "summary": "Use a Sigma workbook and Hightouch's reverse ETL integration to sync a defined list of loyal US customers from Snowflake into HubSpot as marketing contacts.",
+      "lastUpdated": "2023-04-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partner_hightouch_contact_sync/index.html"
+    },
+    {
+      "id": "partner_seamlessly_connect_sigma_databricks",
+      "title": "Unlock the Power of Your Data: Seamlessly Connect Sigma to Databricks via Partner Connect",
+      "category": "Partners",
+      "summary": "Create a Sigma trial account through Databricks Partner Connect and connect it to an existing Databricks workspace to visualize its data.",
+      "lastUpdated": "2025-06-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partner_seamlessly_connect_sigma_databricks/index.html"
+    },
+    {
+      "id": "partner_snowflake_predictive_model_using_sigma",
+      "title": "Develop a Predictive Model using Snowflake and Sigma",
+      "category": "partners",
+      "summary": "Train a Snowflake ML price prediction model in a Snowflake Notebook and surface the results in a Sigma workbook for business analyst review.",
+      "lastUpdated": "2024-07-09",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html"
+    },
+    {
+      "id": "partners_google_big_query",
+      "title": "Google BigQuery with Sigma",
+      "category": "Partners",
+      "summary": "Connect Sigma to Google BigQuery with a service account, validate the connection, and build a workbook querying live BigQuery data for tables, pivots, and visualizations.",
+      "lastUpdated": "2026-07-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partners_google_big_query/index.html"
+    },
+    {
+      "id": "partners_snowflake_health_check_app",
+      "title": "Getting Started with the Sigma Health Check Native App for Snowflake",
+      "category": "partners",
+      "summary": "Install and connect the Sigma Health Check Native App for Snowflake to review account architecture, user and role grants, and warehouse performance and sizing recommendations.",
+      "lastUpdated": "2024-03-13",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partners_snowflake_health_check_app/index.html"
+    },
+    {
+      "id": "partners_snowflake_summit_2025",
+      "title": "Snowflake Summit 2025 - Hands on Lab",
+      "category": "partners",
+      "summary": "Role-play as a retail category manager, using AI-generated analysis and an app to forecast computer category performance for the coming year.",
+      "lastUpdated": "2025-06-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025/index.html"
+    },
+    {
+      "id": "partners_snowflake_virtual_2026",
+      "title": "From Insight to Action: Agentic Analytics with Sigma and Snowflake",
+      "category": "partners",
+      "summary": "Discover how Sigma and Snowflake work together to take a business question from discovery to a governed, approved decision using Sigma Assistant, Snowflake Cortex AI functions, a Sigma Agent, and a Snowpark forecasting model.",
+      "lastUpdated": "2026-07-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/partners_snowflake_virtual_2026/index.html"
+    },
+    {
+      "id": "retail-cpg-1-retention-analysis",
+      "title": "Retail & CPG 1: Retention Analysis",
+      "category": "use-cases",
+      "summary": "Retail & CPG 1: Retention Analysis",
+      "lastUpdated": "2023-03-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/retail-cpg-1-retention-analysis/index.html"
+    },
+    {
+      "id": "retail-cpg-2-cohort-analysis",
+      "title": "Retail & CPG 2: Cohort Analysis",
+      "category": "use-cases",
+      "summary": "Retail & CPG 2: Cohort Analysis",
+      "lastUpdated": "2023-03-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/retail-cpg-2-cohort-analysis/index.html"
+    },
+    {
+      "id": "secure_your_organization_with_security_analytics_using_snowflake_and_sigma",
+      "title": "Secure Your Organization with Security Analytics Using Snowflake and Sigma",
+      "category": "Partners",
+      "summary": "Learn how to monitor your Snowflake security posture using Sigma",
+      "lastUpdated": "2023-11-15",
+      "url": "https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html"
+    },
+    {
+      "id": "security_column_level_security",
+      "title": "Implementing Column Level Security (CLS)",
+      "category": "security",
+      "summary": "Use a Sigma data model's Column Security setting to restrict specific columns, such as customer name, to selected users or teams.",
+      "lastUpdated": "2025-06-011",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_column_level_security/index.html"
+    },
+    {
+      "id": "security_managing_secrets_with_aws",
+      "title": "Managing Secrets in Sigma with AWS",
+      "category": "security",
+      "summary": "Connect Sigma to AWS Secrets Manager via a cross-account trust handshake, then add a secret and attach it to a Snowflake key pair connection instead of typing credentials directly.",
+      "lastUpdated": "2026-08-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_managing_secrets_with_aws/index.html"
+    },
+    {
+      "id": "security_managing_secrets_with_hashicorp",
+      "title": "Managing Secrets in Sigma with HashiCorp",
+      "category": "security",
+      "summary": "Connect Sigma to a self-hosted HashiCorp Vault instance using the Self-Signed JWT trust handshake, then add secrets and attach them to a Snowflake key pair connection.",
+      "lastUpdated": "2026-08-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_managing_secrets_with_hashicorp/index.html"
+    },
+    {
+      "id": "security_oauth",
+      "title": "Open Authorization (OAuth)",
+      "category": "security",
+      "summary": "Configure OAuth between Sigma, Snowflake, and Okta across four scenarios - basic setup, Snowflake integration, Okta auto-provisioning, and writeback - eliminating shared credentials.",
+      "lastUpdated": "2024-07-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_oauth/index.html"
+    },
+    {
+      "id": "security_oauth_pkce_secure_integration",
+      "title": "OAuth 2.0 & PKCE for Secure Data Integration",
+      "category": "Security",
+      "summary": "Explains OAuth 2.0 with PKCE as a secure authentication pattern for embedding Sigma and connecting to data warehouses, covering the authorization flow at a conceptual level.",
+      "lastUpdated": "2025-12-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_oauth_pkce_secure_integration/index.html"
+    },
+    {
+      "id": "security_row_level_security",
+      "title": "Implementing Row-Level Security (RLS)",
+      "category": "Security",
+      "summary": "Implement row-level security in a Sigma data model using CurrentUserEmail, CurrentUserTeam, user attributes, or a custom SQL WHERE clause to restrict which rows each user can see.",
+      "lastUpdated": "2026-06-11",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_row_level_security/index.html"
+    },
+    {
+      "id": "security_snowflake_keypair_rotation",
+      "title": "Snowflake Key-pair Authorization",
+      "category": "security",
+      "summary": "Configure a Snowflake connection in Sigma to use RSA key pair authentication instead of a password, then rotate the key pair periodically to maintain security.",
+      "lastUpdated": "2023-06-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html"
+    },
+    {
+      "id": "sigma_api_with_postman",
+      "title": "Sigma API with Postman",
+      "category": "Developers",
+      "summary": "How to use the Sigma API with Postman",
+      "lastUpdated": "2026-05-18",
+      "url": "https://quickstarts.sigmacomputing.com/guide/sigma_api_with_postman/index.html"
+    },
+    {
+      "id": "snowflake_build_secure_multitenant_data_applications_snowflake_sigma",
+      "title": "Build and Secure Multi-Tenant Data Applications with Snowflake and Sigma",
+      "category": "Partners",
+      "summary": "Snowflake Summit 2023 HoL with Sigma",
+      "lastUpdated": "2024-09-18",
+      "url": "https://quickstarts.sigmacomputing.com/guide/snowflake_build_secure_multitenant_data_applications_snowflake_sigma/index.html"
+    },
+    {
+      "id": "snowflake_cost_per_query_template_setup",
+      "title": "Snowflake Cost per Query Template Setup",
+      "category": "apptemplates",
+      "summary": "Deploy Sigma's Snowflake Cost per Query template, creating a query_history_enriched table and swapping it in to break down query cost by workbook, user, role, and warehouse.",
+      "lastUpdated": "2023-11-30",
+      "url": "https://quickstarts.sigmacomputing.com/guide/snowflake_cost_per_query_template_setup/index.html"
+    },
+    {
+      "id": "snowflake_object_usage_template_setup",
+      "title": "Snowflake Object Usage Template Setup",
+      "category": "administration",
+      "summary": "Set up Sigma's Snowflake Object Usage template to surface object- and column-level query activity across your Snowflake account.",
+      "lastUpdated": "2026-07-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/snowflake_object_usage_template_setup/index.html"
+    },
+    {
+      "id": "snowflake_snowpark_udf_python",
+      "title": "Snowpark UDF's with Python and Sigma",
+      "category": "partners",
+      "summary": "Create a Python user-defined function with Snowflake Snowpark and call it directly from a Sigma workbook, covering the basic developer workflow for building Snowpark UDFs.",
+      "lastUpdated": "2023-04-25",
+      "url": "https://quickstarts.sigmacomputing.com/guide/snowflake_snowpark_udf_python/index.html"
+    },
+    {
+      "id": "starter_apps_budget_variance",
+      "title": "Budget Variance Analysis App Template",
+      "category": "apptemplates",
+      "summary": "Explore Sigma's Budget Variance Analysis App Template — a ready-to-use finance app for tracking actuals against budget, documenting variance commentary, building AI-assisted reforecast scenarios, and routing them through executive approval.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_budget_variance/index.html"
+    },
+    {
+      "id": "starter_apps_demand_planning",
+      "title": "Demand Planning App Template",
+      "category": "apptemplates",
+      "summary": "Explore Sigma's Demand Planning App Template — a ready-to-use operations app for building demand forecasts by product and time period, resolving outliers, and publishing approved plans to downstream stakeholders.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_demand_planning/index.html"
+    },
+    {
+      "id": "starter_apps_headcount_planning",
+      "title": "Headcount Planning App Template",
+      "category": "apptemplates",
+      "summary": "Explore Sigma's Headcount Planning app template to model headcount scenarios against revenue targets, stage hires and backfills, and submit a plan with input tables and an AI advisor.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_headcount_planning/index.html"
+    },
+    {
+      "id": "starter_apps_marketing_analytics",
+      "title": "Marketing Analytics App Template",
+      "category": "apptemplates",
+      "summary": "Explore the Marketing Analytics app template, covering campaign budget pacing, an AI-generated morning brief, customer segmentation, and AI-assisted A/B test analysis.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_marketing_analytics/index.html"
+    },
+    {
+      "id": "starter_apps_pipeline_forecasting",
+      "title": "Pipeline Forecasting App Template",
+      "category": "apptemplates",
+      "summary": "Explore and configure the Pipeline Forecasting app template, which uses input tables and an AI-generated summary to track Gut, Commit, and Best Case forecast calls against CRM data.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_pipeline_forecasting/index.html"
+    },
+    {
+      "id": "starter_apps_project_management",
+      "title": "Project Management App Template",
+      "category": "apptemplates",
+      "summary": "Explore Sigma's Project Management App Template — a ready-to-use ops app for planning milestones, tracking execution, resolving blockers, and communicating project health across your portfolio.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_project_management/index.html"
+    },
+    {
+      "id": "starter_apps_revenue_forecasting",
+      "title": "Revenue Forecasting App Template",
+      "category": "apptemplates",
+      "summary": "Explore Sigma's Revenue Forecasting App Template — a ready-to-use finance app for building, managing, and comparing AI-assisted revenue forecast scenarios against live data.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_revenue_forecasting/index.html"
+    },
+    {
+      "id": "starter_apps_shift_management",
+      "title": "Shift Management App Template",
+      "category": "apptemplates",
+      "summary": "Explores Sigma's Shift Management starter app (Clockwork), covering weekly schedule building, attendance tracking, clock in/out, and an AI-generated labor performance briefing.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_shift_management/index.html"
+    },
+    {
+      "id": "starter_apps_territory_management",
+      "title": "Territory Management App Template",
+      "category": "apptemplates",
+      "summary": "Explore and customize Sigma's Territory Management app template, using AI-generated diagnostics and an editable input table to reassign sales accounts and rebalance regional workload.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_territory_management/index.html"
+    },
+    {
+      "id": "starter_apps_ticket_management",
+      "title": "Ticket Management App Template",
+      "category": "apptemplates",
+      "summary": "Explore and adapt the Nexus ticket management App Template, covering requester, triage, and assignee views, AI-driven urgency scoring and resolution summaries, and the input-table data model.",
+      "lastUpdated": "2026-07-27",
+      "url": "https://quickstarts.sigmacomputing.com/guide/starter_apps_ticket_management/index.html"
+    },
+    {
+      "id": "tables_fan_traps",
+      "title": "Resolving The Fan Trap with Sigma and Snowflake UDF",
+      "category": "tables",
+      "summary": "Diagnose a fan trap caused by chained one-to-many table relationships and resolve the resulting overcounted values using a Sigma data model paired with a Snowflake user-defined function.",
+      "lastUpdated": "2025-04-01",
+      "url": "https://quickstarts.sigmacomputing.com/guide/tables_fan_traps/index.html"
+    },
+    {
+      "id": "tables_json_parsing",
+      "title": "Parsing JSON Data in Seconds",
+      "category": "Tables",
+      "summary": "Parse JSON-formatted columns directly inside Sigma tables to extract values, iterate arrays, and read key-value pairs without ETL tooling.",
+      "lastUpdated": "2025-08-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/tables_json_parsing/index.html"
+    },
+    {
+      "id": "tables_transpose_tables",
+      "title": "Reshaping Data with Transpose Tables",
+      "category": "tables",
+      "summary": "Learn how to use Sigma's Transpose table to reshape data in two directions — converting rows into columns for side-by-side category comparisons, and converting wide columns into rows for long-format analysis.",
+      "lastUpdated": "2026-04-24",
+      "url": "https://quickstarts.sigmacomputing.com/guide/tables_transpose_tables/index.html"
+    }
+  ]
+}

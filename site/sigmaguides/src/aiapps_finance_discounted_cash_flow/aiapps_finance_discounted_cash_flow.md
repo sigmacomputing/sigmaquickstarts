@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_finance_discounted_cash_flow
-summary: dataapps_finance_discounted_cash_flow
+summary: Build a discounted cash flow financial model in Sigma using spreadsheet-style formulas and sample data, replacing a manual Excel-based DCF workflow with a live, warehouse-scale version.
 categories: aiapps
 environments: web
 status: Published

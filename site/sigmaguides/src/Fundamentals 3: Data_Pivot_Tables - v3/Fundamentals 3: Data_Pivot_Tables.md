@@ -1,5 +1,5 @@
 author: pballai
-summary: fundamentals_3_data_pivot_tables_v3
+summary: Build a pivot table on sample sales data, apply conditional formatting, and drill down into the underlying rows to explore results in more detail.
 id: fundamentals_3_data_pivot_tables_v3
 categories: fundamentals
 status: Published

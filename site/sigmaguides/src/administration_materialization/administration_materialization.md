@@ -1,6 +1,6 @@
 author: pballai
 id: administration_materialization
-summary: administration_materialization
+summary: Configure materialization of a Sigma dataset into a Snowflake table to cut query times and reduce warehouse compute costs, then verify results after the first refresh.
 categories: Administration
 environments: web
 status: Published

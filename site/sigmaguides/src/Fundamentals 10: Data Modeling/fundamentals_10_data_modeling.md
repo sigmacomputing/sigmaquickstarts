@@ -1,6 +1,6 @@
 author: pballai
 id: fundamentals_10_data_modeling
-summary: fundamentals_10_data_modeling
+summary: Build a Sigma data model with table relationships, custom columns, metrics, column-level security, and materialization for reusable governed analytics.
 categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues

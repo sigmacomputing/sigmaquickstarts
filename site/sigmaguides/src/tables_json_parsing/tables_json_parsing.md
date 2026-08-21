@@ -1,6 +1,6 @@
 author: pballai
 id: tables_json_parsing
-summary: tables_json_parsing
+summary: Parse JSON-formatted columns directly inside Sigma tables to extract values, iterate arrays, and read key-value pairs without ETL tooling.
 categories: Tables
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: tables_fan_traps
-summary: tables_fan_traps
+summary: Diagnose a fan trap caused by chained one-to-many table relationships and resolve the resulting overcounted values using a Sigma data model paired with a Snowflake user-defined function.
 categories: tables
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_10_version_tagging_v3
-summary: embedding_10_version_tagging_v3
+summary: Use Postman to simulate a CI/CD pipeline that promotes tagged Sigma workbook versions between development, staging, and production in an embedded environment.
 categories: embedding
 environments: web
 status: Published

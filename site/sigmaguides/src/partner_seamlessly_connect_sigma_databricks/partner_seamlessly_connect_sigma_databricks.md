@@ -1,6 +1,6 @@
 author: pballai
 id: partner_seamlessly_connect_sigma_databricks
-summary: partner_seamlessly_connect_sigma_databricks
+summary: Create a Sigma trial account through Databricks Partner Connect and connect it to an existing Databricks workspace to visualize its data.
 categories: Partners
 environments: web
 status: Published

@@ -1,5 +1,5 @@
 author: pballai
-summary: fundamentals_4_input_v3
+summary: Get introduced to Sigma input tables and their key features to build a foundation for using write-back workflows in your own business data.
 id: fundamentals_4_input_v3
 categories: fundamentals
 status: Published

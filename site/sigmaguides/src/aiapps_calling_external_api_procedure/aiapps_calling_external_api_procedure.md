@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_calling_external_api_procedure
-summary: dataapps_calling_external_api_procedure
+summary: Cleans a single business address row using a Snowflake stored procedure that calls the Geocodio API, triggered by a Sigma action, and writes the corrected result back to a table.
 categories: aiapps
 environments: web
 status: Published

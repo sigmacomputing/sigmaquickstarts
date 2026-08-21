@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_06_copy_or_new_wb
-summary: embedding_rest_api_useage_06_copy_or_new_wb
+summary: Use Sigma's REST API to create a new workbook or copy an existing one programmatically, handling naming conflicts, team workspace sharing, and UI feedback.
 categories: embedding
 environments: web
 status: published
