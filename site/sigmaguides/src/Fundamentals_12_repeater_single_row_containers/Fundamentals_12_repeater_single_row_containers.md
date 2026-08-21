@@ -1,6 +1,6 @@
 author: pballai
 id: Fundamentals_12_repeater_single_row_containers
-summary: Fundamentals_12_repeater_single_row_containers
+summary: Build a card-based product catalog using a Repeater container for the gallery and a Single Row container in a modal for product detail.
 categories: Fundamentals
 environments: web
 status: Published

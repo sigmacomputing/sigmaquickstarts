@@ -1,6 +1,6 @@
 author: pballai
 id: developers_data_models_as_code
-summary: developers_data_models_as_code
+summary: Use Sigma's REST API to create and update data models from JSON specifications, enabling version control, code review, and CI/CD for data model deployments.
 categories: developers
 environments: web
 status: Published

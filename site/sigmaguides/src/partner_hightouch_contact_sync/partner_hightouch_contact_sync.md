@@ -1,6 +1,6 @@
 author: pballai
 id: partner_hightouch_contact_sync
-summary: partner_hightouch_contact_sync
+summary: Use a Sigma workbook and Hightouch's reverse ETL integration to sync a defined list of loyal US customers from Snowflake into HubSpot as marketing contacts.
 categories: partners
 environmendts: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_approvals_flow
-summary: dataapps_approvals_flow
+summary: Build an approvals workflow app where Adjusters propose retail revenue adjustments in a modal and Approvers review, reject, or approve them via an input table with persona switching.
 categories: aiapps
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_usage_03_bookmark_sharing_with_a_local_db
-summary: embedding_rest_api_usage_03_bookmark_sharing_with_a_local_db
+summary: Extend an embedded Sigma workbook with bookmark save, delete, and sharing controls backed by a local database and the Sigma REST API.
 categories: embedding
 environments: web
 status: published

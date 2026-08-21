@@ -1,6 +1,6 @@
 author: pballai
 id: functions_period_over_period_analysis
-summary: functions_period_over_period_analysis
+summary: Build period-over-period comparison formulas in Sigma, such as year-over-year and month-to-date, to compare a key metric between two selected time periods.
 categories: Functions
 environments: web
 status: Published

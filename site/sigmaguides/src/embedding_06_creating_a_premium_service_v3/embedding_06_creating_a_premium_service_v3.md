@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_06_creating_a_premium_service_v3
-summary: embedding_06_creating_a_premium_service_v3
+summary: Explains how to design a tiered premium embedded-analytics offering in Sigma using account types like View, Analyze, and Build to gate features by license level.
 categories: Embedding
 environments: web
 status: published

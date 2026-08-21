@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_14_connection_swapping_v3
-summary: embedding_14_connection_swapping_v3
+summary: Implement Dynamic Connection Swapping in a Sigma embed using the eval_connection_id JWT claim to switch the underlying data connection at runtime without changing the workbook.
 categories: Embedding
 environments: web
 status: published

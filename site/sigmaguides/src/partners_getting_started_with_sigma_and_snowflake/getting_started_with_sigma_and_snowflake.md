@@ -1,6 +1,6 @@
 author: Phil Ballai
 id: getting_started_with_sigma_and_snowflake
-summary: getting_started_with_sigma_and_snowflake
+summary: Launch a Snowflake trial and a Sigma trial through Snowflake Partner Connect, then model, explore, and visualize sample data, building a Sigma workbook from a data model.
 categories: partners
 environments: web
 status: Published 

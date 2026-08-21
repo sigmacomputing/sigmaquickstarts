@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_build_with_assistant
-summary: aiapps_build_with_assistant
+summary: Use Sigma Assistant's Plan and Build modes to build a revenue forecast workbook from a data model and a design image, then refine it through conversation.
 categories: aiapps
 environments: web
 status: Published

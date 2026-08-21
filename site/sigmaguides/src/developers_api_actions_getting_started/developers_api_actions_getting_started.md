@@ -1,6 +1,6 @@
 author: pballai
 id: developers_api_actions_getting_started
-summary: developers_api_actions_getting_started
+summary: Build a Sigma workbook from scratch that uses API Actions to call the Open-Meteo Weather API, binding a city list control to fetch and parse real-time weather data as JSON.
 categories: developers
 environments: web
 status: Published

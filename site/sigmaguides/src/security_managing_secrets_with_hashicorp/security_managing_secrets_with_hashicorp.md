@@ -1,6 +1,6 @@
 author: pballai
 id: security_managing_secrets_with_hashicorp
-summary: security_managing_secrets_with_hashicorp
+summary: Connect Sigma to a self-hosted HashiCorp Vault instance using the Self-Signed JWT trust handshake, then add secrets and attach them to a Snowflake key pair connection.
 categories: security
 environments: web
 status: Published

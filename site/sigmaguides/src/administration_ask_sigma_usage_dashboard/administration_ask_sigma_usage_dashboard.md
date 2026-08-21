@@ -1,6 +1,6 @@
 author: pballai
 id: administration_ask_sigma_usage_dashboard
-summary: administration_ask_sigma_usage_dashboard
+summary: Configure Sigma Assistant history logging into an isolated Snowflake schema, then use Sigma's built-in admin dashboard to analyze user questions and usage patterns.
 categories: administration
 environments: web
 status: published

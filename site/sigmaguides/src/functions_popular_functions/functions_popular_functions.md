@@ -1,6 +1,6 @@
 author: pballai
 id: functions_popular_functions
-summary: functions_popular_functions
+summary: Apply commonly used Sigma functions, including categorization, null handling, text search, lookups, percentages, pattern parsing, hierarchy analysis, and conditional logic, to sample retail data.
 categories: Functions
 environments: web
 status: Published

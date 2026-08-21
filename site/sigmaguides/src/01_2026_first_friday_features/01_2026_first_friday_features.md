@@ -1,6 +1,6 @@
 author: pballai
 id: 01_2026_first_friday_features
-summary: 01_2026_first_friday_features
+summary: A monthly recap of new Sigma platform features, product updates, and bug fixes released in January 2026, with links to the full documentation for each.
 categories: firstfridayfeatures
 environments: web
 status: Published

@@ -1,5 +1,5 @@
 author: pballai
-summary: fundamentals_1_getting_around_v3
+summary: Navigate Sigma's interface using sample retail data, learning core terminology, workbook structure, and how to create, save, and share a workbook, plus which QuickStart path fits your role.
 id: fundamentals_1_getting_around_v3
 categories: fundamentals
 status: Published

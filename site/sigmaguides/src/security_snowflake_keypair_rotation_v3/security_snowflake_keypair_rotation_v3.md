@@ -1,6 +1,6 @@
 author: pballai
 id: security_snowflake_keypair_rotation
-summary: security_snowflake_keypair_rotation
+summary: Configure a Snowflake connection in Sigma to use RSA key pair authentication instead of a password, then rotate the key pair periodically to maintain security.
 categories: security
 environments: web
 status: Published

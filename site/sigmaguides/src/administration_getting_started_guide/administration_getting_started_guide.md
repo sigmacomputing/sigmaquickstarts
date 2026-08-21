@@ -1,6 +1,6 @@
 author: pballai
 id: administration_getting_started_guide
-summary: administration_getting_started_guide
+summary: Walks new Sigma administrators through a checklist of setup decisions: authentication, warehouse connections, AI configuration, branding, versioning, and training.
 categories: administration
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_storefront_repeaters
-summary: aiapps_storefront_repeaters
+summary: Build a retail storefront app using a Repeated container for product cards, popover and date range controls, a boolean-filtered notification center, and role-based storefront/manager views.
 categories: aiapps
 environments: web
 status: Published

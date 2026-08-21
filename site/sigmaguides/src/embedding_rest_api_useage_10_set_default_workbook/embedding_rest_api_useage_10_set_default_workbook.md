@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_10_set_default_workbook
-summary: embedding_rest_api_useage_10_set_default_workbook
+summary: Implement a per-user default workbook selector for embedded Sigma content using the Sigma REST API and browser local storage.
 categories: embedding
 environments: web
 status: published

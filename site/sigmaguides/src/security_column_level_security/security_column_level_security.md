@@ -1,6 +1,6 @@
 author: pballai
 id: security_column_level_security
-summary: security_column_level_security
+summary: Use a Sigma data model's Column Security setting to restrict specific columns, such as customer name, to selected users or teams.
 categories: security
 environments: web
 status: Published

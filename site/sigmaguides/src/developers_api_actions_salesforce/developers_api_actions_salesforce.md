@@ -1,6 +1,6 @@
 author: pballai
 id: developers_api_actions_salesforce
-summary: developers_api_actions_salesforce
+summary: Build a Sigma workbook that uses API actions with OAuth authentication and dynamic controls to query the Salesforce REST API and display live SOQL query results.
 categories: developers
 environments: web
 status: Published

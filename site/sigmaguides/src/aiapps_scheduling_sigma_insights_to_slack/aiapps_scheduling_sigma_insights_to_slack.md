@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_scheduling_sigma_insights_to_slack
-summary: aiapps_scheduling_sigma_insights_to_slack
+summary: Connect Claude to Sigma via the Sigma MCP server and to Slack via the claude.ai Slack connector, then use Claude Code to schedule a recurring daily Sigma data digest to Slack.
 categories: aiapps
 environments: web
 status: Published

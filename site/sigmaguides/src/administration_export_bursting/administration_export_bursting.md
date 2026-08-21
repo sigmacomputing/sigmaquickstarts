@@ -1,6 +1,6 @@
 author: pballai
 id: administration_export_bursting
-summary: administration_export_bursting
+summary: Configure Sigma's export bursting to automatically split a scheduled report into personalized segments and deliver each one to the right recipient by email.
 categories: Administration
 environments: web
 status: Published

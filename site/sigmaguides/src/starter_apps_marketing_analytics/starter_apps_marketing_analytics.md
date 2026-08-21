@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_marketing_analytics
-summary: starter_apps_marketing_analytics
+summary: Explore the Marketing Analytics app template, covering campaign budget pacing, an AI-generated morning brief, customer segmentation, and AI-assisted A/B test analysis.
 categories: apptemplates
 environments: web
 status: Published

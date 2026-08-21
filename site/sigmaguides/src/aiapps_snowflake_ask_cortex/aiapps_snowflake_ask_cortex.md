@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_snowflake_ask_cortex
-summary: dataapps_snowflake_ask_cortex
+summary: Build a natural language prompt box in Sigma that sends questions to Snowflake Cortex's COMPLETE function with Claude to return narrative answers over workbook data.
 categories: aiapps
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_natural_language_with_claude
-summary: aiapps_natural_language_with_claude
+summary: Connect Claude to a Sigma organization through the Sigma MCP server to search workbooks, explore data model structure, and query live data using natural language.
 categories: aiapps
 environments: web
 status: Published

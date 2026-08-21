@@ -1,6 +1,6 @@
 author: pballai
 id: developers_api_actions_servicenow
-summary: developers_api_actions_servicenow
+summary: Build a bidirectional Sigma workbook that queries ServiceNow incidents via the Table API, filters them by state, and writes status updates back to ServiceNow using Basic Auth API actions.
 categories: developers
 environments: web
 status: Published

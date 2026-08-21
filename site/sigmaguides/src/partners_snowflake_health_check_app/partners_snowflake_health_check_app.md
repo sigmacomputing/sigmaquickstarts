@@ -1,6 +1,6 @@
 author: Kelsey Hammock
 id: partners_snowflake_health_check_app
-summary: partners_snowflake_health_check_app
+summary: Install and connect the Sigma Health Check Native App for Snowflake to review account architecture, user and role grants, and warehouse performance and sizing recommendations.
 categories: partners
 environments: web
 status: Published

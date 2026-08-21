@@ -1,6 +1,6 @@
 author: obashaw
 id: snowflake_cost_per_query_template_setup
-summary: snowflake_cost_per_query_template_setup
+summary: Deploy Sigma's Snowflake Cost per Query template, creating a query_history_enriched table and swapping it in to break down query cost by workbook, user, role, and warehouse.
 categories: apptemplates
 environments: web
 status: Published

@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Connect a Sigma Agent to GitHub with MCP Tools",
+      "id": "aiapps_github_mcp_tool",
+      "category": "aiapps",
+      "date": "Aug 22, 2026"
+    },
+    {
       "title": "Managing Secrets in Sigma with AWS",
       "id": "security_managing_secrets_with_aws",
       "category": "security",
@@ -53,12 +59,6 @@
       "id": "Fundamentals_12_repeater_single_row_containers",
       "category": "Fundamentals",
       "date": "May 29, 2026"
-    },
-    {
-      "title": "Sigma Skills for AI Assistants",
-      "id": "developers_sigma_skill",
-      "category": "developers",
-      "date": "May 22, 2026"
     }
   ]
 }

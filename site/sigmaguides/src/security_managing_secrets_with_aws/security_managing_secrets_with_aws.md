@@ -1,6 +1,6 @@
 author: pballai
 id: security_managing_secrets_with_aws
-summary: security_managing_secrets_with_aws
+summary: Connect Sigma to AWS Secrets Manager via a cross-account trust handshake, then add a secret and attach it to a Snowflake key pair connection instead of typing credentials directly.
 categories: security
 environments: web
 status: Published

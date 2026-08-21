@@ -1,6 +1,6 @@
 author: pballai
 id: 03_2026_first_friday_features
-summary: 03_2026_first_friday_features
+summary: Summarizes Sigma's March 2026 feature releases and bug fixes across administration, AI apps, API, data modeling, embedding, reports, and workbooks.
 categories: firstfridayfeatures
 environments: web
 status: Published
