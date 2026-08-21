@@ -193,6 +193,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_forms/index.html"
     },
     {
+      "id": "aiapps_github_mcp_tool",
+      "title": "Connect a Sigma Agent to GitHub with MCP Tools",
+      "category": "aiapps",
+      "summary": "Connect a Sigma agent to GitHub's hosted MCP server and use a chat element to ask natural-language questions about a live GitHub repository's issues, pull requests, and files.",
+      "lastUpdated": "2026-08-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_github_mcp_tool/index.html"
+    },
+    {
       "id": "aiapps_gong_call_analysis",
       "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
       "category": "aiapps",

@@ -3,10 +3,10 @@ id: aiapps_github_mcp_tool
 summary: Connect a Sigma agent to GitHub's hosted MCP server and use a chat element to ask natural-language questions about a live GitHub repository's issues, pull requests, and files.
 categories: aiapps
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-08-20
+tags: default
+lastUpdated: 2026-08-22
 
 # Connect a Sigma Agent to GitHub with MCP Tools
 
@@ -15,7 +15,13 @@ Duration: 5
 
 Give a Sigma agent the ability to answer live questions about a GitHub repository — open issues, recent pull requests, file contents — without writing a single line of custom connector code.
 
-Sigma agents already reason over your workbook data and data models. MCP tools extend that reach outward, letting an agent call any MCP-compliant server through the same tool-calling loop it already uses internally. In this QuickStart, you'll connect the GitHub MCP server to Sigma, attach it to an agent, and build a chat element that answers natural-language questions about a live GitHub repository — using the `sigmacomputing/sigmaquickstarts` repo (the source for the QuickStarts you're reading right now) as the example.
+Sigma agents already reason over your workbook data and data models. MCP tools extend that reach outward, letting an agent call any MCP-compliant server through the same tool-calling loop it already uses internally. 
+
+### The example
+
+In this QuickStart, you'll connect the GitHub MCP server to Sigma, attach it to an agent, and build a chat element that answers natural-language questions about a live GitHub repository — using the `sigmacomputing/sigmaquickstarts` repo (the source for the QuickStarts you're reading right now) as the example.
+
+Your personal access token proves who you are to GitHub — it doesn't grant any special access to this repository. `sigmacomputing/sigmaquickstarts` is a public repository, meaning anyone can read it, and that's what actually makes it readable here, not the token. Point this same setup at any other public repository and it works exactly the same way.
 
 Along the way you'll learn how to:
 - Create a scoped GitHub personal access token for read-only access
