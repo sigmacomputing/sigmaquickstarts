@@ -13,7 +13,7 @@ lastUpdated: 2026-09-04
 
 August 7, 2026 changes: done
 August 14, 2026 changes: done
-August 21, 2026 changes:
+August 21, 2026 changes: done
 August 28, 2026 changes:
 
 Publish on September 4
@@ -93,6 +93,29 @@ For more information, see [Snowflake Cortex cost template](https://help.sigmacom
 ## API
 Duration: 20
 
+### Access Sigma from the command line using the Sigma CLI (GA) <img src="assets/heart_icon.png" width="25"/>
+The Sigma CLI is now generally available, giving administrators and developers programmatic access to the Sigma REST API with authentication management, typed commands, and profile-based configuration.
+
+**WHY IT MATTERS:**<br>
+Anything you can do in the Sigma REST API, you can now do from a script — turning one-off administrative clicks into repeatable, auditable automation, governed by the same permissions and audit logging as the rest of Sigma.
+
+For more information, see [Sigma CLI](https://help.sigmacomputing.com/docs/sigma-cli) and [Automate Sigma from the Command Line with the Sigma CLI](https://quickstarts.sigmacomputing.com/guide/developers_sigma_cli/index.html?index=..%2F..index#0)
+
+### Databricks HTTP path included in connection API responses (GA)
+The Get connection details and List connections endpoints now include `httpPath` in responses for Databricks connections, providing the SQL warehouse HTTP path.
+
+For more information, see [Get connection details](https://help.sigmacomputing.com/reference/get-connection) and [List connections](https://help.sigmacomputing.com/reference/list-connections)
+
+### New API endpoint for creating shortcuts (GA)
+A new endpoint enables surfacing documents and other items in other folders or workspaces without duplicating them.
+
+For more information, see [Create a shortcut](https://help.sigmacomputing.com/reference/create-shortcut) and [Add shortcuts to documents](https://help.sigmacomputing.com/docs/add-shortcuts-to-documents)
+
+### New API endpoints for managing materialization schedules (Beta)
+Six new endpoints support creating, updating, and deleting scheduled materializations of workbook and data model elements.
+
+For more information, see [Schedule materialization for a data model or workbook (Beta)](https://help.sigmacomputing.com/docs/schedule-materialization-for-a-data-model-or-workbook)
+
 ### New options for the Get a workbook endpoint (GA)
 The Get a workbook (`GET /v2/workbooks/{workbookId}`) endpoint includes a new `includeTaggedSourceUrlId` query string parameter, enabling identification of source documents for deployed workbooks from parent or other tenant organizations.
 
@@ -123,6 +146,10 @@ Duration: 20
 
 **7:** Data model relationship columns no longer display as errors when swapping to a different tagged version of a data model used as a workbook source.
 
+**8:** The Sigma MCP connector can now query elements from data models.
+
+**9:** Updated icons to better distinguish data models from their internal elements.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -150,13 +177,26 @@ Warehouse views are now included when migrating datasets to data models, with or
 
 For more information, see [How warehouse views are migrated](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model#how-warehouse-views-are-migrated)
 
+### Restrict access to data model elements (Beta)
+Column-level security now supports restricting access to entire data model elements, by selecting all columns or individual columns.
+
+For more information, see [Restrict access to data model elements using CLS (Beta)](https://help.sigmacomputing.com/docs/column-level-security#restrict-access-to-data-model-elements-using-cls-beta)
+
+### Update selected references when migrating a dataset to a data model (GA)
+After migration, documents can now be selectively updated to use the new data model instead of updating all of them at once.
+
+For more information, see [Update selected references after a migration](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model#update-selected-references-after-a-migration)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## Embedding
 Duration: 20
 
+### Inbound event to refresh workbook data in embeds (GA)
+The new `workbook:refresh` JavaScript event allows refreshing data in one or all workbook elements from the embedding page.
 
+For more information, see [Inbound event reference](https://help.sigmacomputing.com/docs/inbound-event-reference)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -209,10 +249,25 @@ Side panels that slide in to overlay workbook content temporarily, for displayin
 
 For more information, see [Use drawers to manage complex workflows](https://help.sigmacomputing.com/docs/use-drawers-to-manage-complex-workflows)
 
+### Incremental data fetching for plugins (GA)
+Plugin SDK version 1.3.2 and later supports batching data in 25,000-row increments, sending only new rows per batch, using `useIncrementalElementData` or `subscribeToIncrementalElementData`.
+
+For more information, see the [Plugin development API on GitHub](https://github.com/sigmacomputing/plugin/blob/main/packages/plugin-sdk/README.md#useincrementalelementdata)
+
+### Move report elements to a new page (GA)
+Report elements can now be relocated to new pages while maintaining their original positioning.
+
+For more information, see [Move elements to a new page](https://help.sigmacomputing.com/docs/customize-element-size-position-and-layering#move-elements-to-a-new-page)
+
 ### Stack layout for containers (Beta)
 Containers now support a responsive stack layout that automatically arranges elements by direction, distribution, and alignment, without manual grid placement.
 
 For more information, see [Use stacks to make responsive layouts](https://help.sigmacomputing.com/docs/use-stacks-to-make-responsive-layouts)
+
+### Updated region data for maps (GA)
+Region maps include updated boundary data and now support US territories as states, including Puerto Rico.
+
+For more information, see [Maps - Region](https://help.sigmacomputing.com/docs/maps#map---region)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
