@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-22
+lastUpdated: 2026-08-24
 
 # Connect a Sigma Agent to GitHub with MCP Tools
 
