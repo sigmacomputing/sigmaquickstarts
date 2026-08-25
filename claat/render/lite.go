@@ -415,7 +415,6 @@ func (lw *liteWriter) localVideo(n *types.LocalVideoNode) *html.Node {
 			{Key: "class", Val: "local-video"},
 			{Key: "src", Val: n.Src},
 			{Key: "controls", Val: ""},
-			{Key: "width", Val: "720"},
 		},
 	}
 }
