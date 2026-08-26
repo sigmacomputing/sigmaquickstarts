@@ -385,6 +385,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html"
     },
     {
+      "id": "developers_migrating_from_domo_made_easy",
+      "title": "Migrating From Domo Made Easy",
+      "category": "migrations",
+      "summary": "Use the domo-to-sigma Claude Code skill to rebuild a Domo dashboard as a Sigma data model and workbook from a screenshot and its warehouse table, then verify results with a parity check against the warehouse.",
+      "lastUpdated": "2026-08-26",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html"
+    },
+    {
       "id": "developers_migrating_from_hex_made_easy",
       "title": "Migrating From Hex Made Easy",
       "category": "migrations",
