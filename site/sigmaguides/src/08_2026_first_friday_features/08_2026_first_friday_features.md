@@ -14,7 +14,7 @@ lastUpdated: 2026-09-04
 August 7, 2026 changes: done
 August 14, 2026 changes: done
 August 21, 2026 changes: done
-August 28, 2026 changes:
+August 28, 2026 changes: done
 
 Publish on September 4
 
@@ -61,6 +61,9 @@ Administrators can enable interactions among embed users in organizations, inclu
 
 For more information, see [Manage embed user settings (Beta)](https://help.sigmacomputing.com/docs/manage-embed-user-settings)
 
+### Materialization usage dashboard updates (GA)
+The Materializations tab now displays utilization ratio metrics, tracking average queries served per refresh, with the data surfaced in a new Leaderboard chart and two new Documents table columns.
+
 ### Set formatting region in Administration portal (Beta)
 Organizations can now specify an account formatting region that affects how numbers, dates, and currency display for all users.
 
@@ -77,10 +80,23 @@ The `sigma-cli` skill enables AI assistants to call the Sigma REST API from the 
 
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants#sigma-cli)
 
+### Allow Assistant to search all sources (Beta) <img src="assets/heart_icon.png" width="25"/>
+Administrators can configure whether Sigma Assistant can access all available data sources or only specific configured ones. Users retain the ability to manually select sources they have access to, and performance is optimized when using data models.
+
+**WHY IT MATTERS:**<br>
+Locking Assistant to a curated list of sources is safer to start with, but it also means someone has to keep that list current as new data models ship. Opening it up to everything a user already has access to removes that maintenance burden without loosening any actual permissions — Assistant still only sees what the user is allowed to see.
+
+For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
 ### New model used for Gemini and BigQuery AI providers (GA)
 Sigma now uses Gemini 3.6 Flash as the LLM for the Gemini and BigQuery AI providers.
 
 For more information, see [Set up an AI provider](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization#set-up-an-ai-provider)
+
+### New model used for Snowflake (AWS) AI provider (GA)
+Sigma now uses Claude Sonnet 5 as the LLM for Snowflake accounts hosted on AWS, falling back to Claude Sonnet 4.5 when using Assistant in workbooks (Beta) or if Sonnet 5 is unavailable.
+
+For more information, see [Supported AI models](https://help.sigmacomputing.com/docs/supported-ai-models)
 
 ### Snowflake Cortex AI spend template (GA)
 A new template visualizes the costs associated with Snowflake Cortex AI tool usage.
@@ -101,6 +117,11 @@ Anything you can do in the Sigma REST API, you can now do from a script — turn
 
 For more information, see [Sigma CLI](https://help.sigmacomputing.com/docs/sigma-cli) and [Automate Sigma from the Command Line with the Sigma CLI](https://quickstarts.sigmacomputing.com/guide/developers_sigma_cli/index.html?index=..%2F..index#0)
 
+### Allow users with a Build license to generate client credentials (Beta)
+Non-administrators with Build licenses can now generate client credentials through the new `Create API key` account permission.
+
+For more information, see [Generate Sigma API client credentials](https://help.sigmacomputing.com/reference/generate-client-credentials), [Generate embed client credentials](https://help.sigmacomputing.com/docs/generate-embed-client-credentials), and [Account type permission availability matrix](https://help.sigmacomputing.com/docs/account-type-and-license-overview#account-type-permission-availability-matrix)
+
 ### Databricks HTTP path included in connection API responses (GA)
 The Get connection details and List connections endpoints now include `httpPath` in responses for Databricks connections, providing the SQL warehouse HTTP path.
 
@@ -115,6 +136,16 @@ For more information, see [Create a shortcut](https://help.sigmacomputing.com/re
 Six new endpoints support creating, updating, and deleting scheduled materializations of workbook and data model elements.
 
 For more information, see [Schedule materialization for a data model or workbook (Beta)](https://help.sigmacomputing.com/docs/schedule-materialization-for-a-data-model-or-workbook)
+
+### New API endpoints for managing organization settings (GA)
+Six new endpoints enable programmatic management of bulk copy, license upgrade requests, and public embed settings.
+
+For more information, see the [API reference](https://help.sigmacomputing.com/reference)
+
+### New API endpoints for managing plugins (GA)
+Five new endpoints support create, read, update, and delete operations for plugin management.
+
+For more information, see the [API reference](https://help.sigmacomputing.com/reference)
 
 ### New options for the Get a workbook endpoint (GA)
 The Get a workbook (`GET /v2/workbooks/{workbookId}`) endpoint includes a new `includeTaggedSourceUrlId` query string parameter, enabling identification of source documents for deployed workbooks from parent or other tenant organizations.
@@ -149,6 +180,16 @@ Duration: 20
 **8:** The Sigma MCP connector can now query elements from data models.
 
 **9:** Updated icons to better distinguish data models from their internal elements.
+
+**10:** Corrected Azure AU region tenant organization provisioning.
+
+**11:** Duplicate action tools no longer share configuration references with source actions.
+
+**12:** Date-returning formulas now display correctly in columns and list controls.
+
+**13:** Improved Sigma Assistant stability in workbook build mode.
+
+**14:** Fixed waterfall chart hover behavior for numeric x-axis categories.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -244,6 +285,11 @@ Users can now export email bursts on demand, rather than relying on a scheduled 
 
 For more information, see [Send an ad hoc email burst (Beta)](https://help.sigmacomputing.com/docs/export-as-email-burst#send-an-ad-hoc-email-burst-beta)
 
+### Convert deprecated hierarchies to hierarchy columns (GA)
+Hierarchies created in the deprecated Manage hierarchies popover can now be easily converted to hierarchy columns.
+
+For more information, see [Work with hierarchies](https://help.sigmacomputing.com/docs/hierarchies)
+
 ### Drawers (Beta)
 Side panels that slide in to overlay workbook content temporarily, for displaying information at specific points in a workflow.
 
@@ -258,6 +304,11 @@ For more information, see the [Plugin development API on GitHub](https://github.
 Report elements can now be relocated to new pages while maintaining their original positioning.
 
 For more information, see [Move elements to a new page](https://help.sigmacomputing.com/docs/customize-element-size-position-and-layering#move-elements-to-a-new-page)
+
+### Rename report pages (GA)
+Report pages can now be renamed for improved identification.
+
+For more information, see [Rename report pages](https://help.sigmacomputing.com/docs/edit-report-page-setup-headers-and-footers#rename-report-pages)
 
 ### Stack layout for containers (Beta)
 Containers now support a responsive stack layout that automatically arranges elements by direction, distribution, and alignment, without manual grid placement.
