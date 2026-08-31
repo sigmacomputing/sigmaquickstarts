@@ -64,8 +64,12 @@ For more information, see [Manage embed user settings (Beta)](https://help.sigma
 ### Materialization usage dashboard updates (GA)
 The Materializations tab now displays utilization ratio metrics, tracking average queries served per refresh, with the data surfaced in a new Leaderboard chart and two new Documents table columns.
 
+<img src="assets/fff_03.png" width="800"/>
+
 ### Set formatting region in Administration portal (Beta)
 Organizations can now specify an account formatting region that affects how numbers, dates, and currency display for all users.
+
+<img src="assets/fff_04.png" width="800"/>
 
 For more information, see [Set organization language](https://help.sigmacomputing.com/docs/manage-organization-language)
 
@@ -126,6 +130,8 @@ The Sigma CLI is now generally available, giving administrators and developers p
 
 **WHY IT MATTERS:**<br>
 Anything you can do in the Sigma REST API, you can now do from a script — turning one-off administrative clicks into repeatable, auditable automation, governed by the same permissions and audit logging as the rest of Sigma.
+
+<img src="assets/fff_05.png" width="800"/>
 
 For more information, see [Sigma CLI](https://help.sigmacomputing.com/docs/sigma-cli) and [Automate Sigma from the Command Line with the Sigma CLI](https://quickstarts.sigmacomputing.com/guide/developers_sigma_cli/index.html?index=..%2F..index#0)
 
@@ -214,8 +220,13 @@ Warehouse views are now included when migrating datasets to data models, with or
 
 For more information, see [How warehouse views are migrated](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model#how-warehouse-views-are-migrated)
 
-### Restrict access to data model elements (Beta)
+### Restrict access to data model elements (Beta) <img src="assets/heart_icon.png" width="25"/>
 Column-level security now supports restricting access to entire data model elements, by selecting all columns or individual columns.
+
+**WHY IT MATTERS:**<br>
+Column-level security previously had to be applied one column at a time, which gets tedious for a data model with many restricted elements. Selecting an entire element at once lets governance teams lock down access in bulk, without scaling the effort to every column inside it.
+
+<img src="assets/fff_06.png" width="800"/>
 
 For more information, see [Restrict access to data model elements using CLS (Beta)](https://help.sigmacomputing.com/docs/column-level-security#restrict-access-to-data-model-elements-using-cls-beta)
 
@@ -247,13 +258,24 @@ Duration: 20
 
 For more information, see [Get started with templates](https://help.sigmacomputing.com/docs/get-started-with-templates)
 
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
+### Migration QuickStarts
 
-## Security
-Duration: 20
+The Migrations category has grown considerably since it launched — catching up here on the full set of QuickStarts it now covers.
 
+Each one walks through a `Claude Code` skill that automates a BI tool migration into Sigma: rebuilding the source dashboard's visualizations, translating its expressions into Sigma formulas, and verifying the numbers match.
 
+* [Migrating from AWS QuickSight Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_quicksight_made_easy/index.html)
+* [Migrating from Cognos Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_cognos_made_easy/index.html)
+* [Migrating from Domo Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html)
+* [Migrating from Hex Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_hex_made_easy/index.html)
+* [Migrating from Looker Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_looker_made_easy/index.html)
+* [Migrating from Metabase Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_metabase_made_easy/index.html)
+* [Migrating from MicroStrategy Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_microstrategy_made_easy/index.html)
+* [Migrating From Power BI Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_power_bi_made_easy/index.html)
+* [Migrating from Qlik Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_qlik_made_easy/index.html)
+* [Migrating from Sisense Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_sisense_made_easy/index.html)
+* [Migrating from Tableau Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html)
+* [Migrating From ThoughtSpot Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_thoughtspot_made_easy/index.html)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -277,7 +299,7 @@ Side panels that slide in to overlay workbook content temporarily, for displayin
 **WHY IT MATTERS:**<br>
 Builders have long had to choose between cluttering a page with detail or sending readers elsewhere to see it. Drawers give you a place to put that detail — instructions, drill-downs, forms — that slides in on demand and out of the way otherwise, without breaking up the main layout.
 
-<video src="assets/drawers-public-beta.mp4"></video>
+<video src="assets/drawers2.mp4"></video>
 
 For more information, see [Use drawers to manage complex workflows](https://help.sigmacomputing.com/docs/use-drawers-to-manage-complex-workflows)
 
@@ -296,8 +318,13 @@ Report pages can now be renamed for improved identification.
 
 For more information, see [Rename report pages](https://help.sigmacomputing.com/docs/edit-report-page-setup-headers-and-footers#rename-report-pages)
 
-### Stack layout for containers (Beta)
+### Stack layout for containers (Beta) <img src="assets/heart_icon.png" width="25"/>
 Containers now support a responsive stack layout that automatically arranges elements by direction, distribution, and alignment, without manual grid placement.
+
+**WHY IT MATTERS:**<br>
+Manual grid placement breaks the moment content changes size, forcing builders to babysit layout on every edit. A stack that re-flows its own elements means a workbook keeps looking right as data and screen sizes change, without rework.
+
+<video src="assets/stacks.mp4"></video>
 
 For more information, see [Use stacks to make responsive layouts](https://help.sigmacomputing.com/docs/use-stacks-to-make-responsive-layouts)
 
