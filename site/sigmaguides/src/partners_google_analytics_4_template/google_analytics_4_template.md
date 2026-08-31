@@ -1,6 +1,6 @@
 author: obashaw
 id: google_analytics_4_template_setup
-summary: google_analytics_4_template_setup
+summary: Sets up Sigma's Google Analytics 4 template on Snowflake, using the Google Analytics Raw Data connector and a provided SQL script to build a page- and event-level analytics workbook.
 categories: partners
 environments: web
 status: Published

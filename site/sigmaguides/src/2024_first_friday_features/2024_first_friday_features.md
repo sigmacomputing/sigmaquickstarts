@@ -1,6 +1,6 @@
 author: pballai
 id: 2024_first_friday_features
-summary: 2024_first_friday_features
+summary: A year-end compilation of Sigma's 2024 feature releases and bug fixes, including actions, action sequences, and single-click control clearing.
 categories: Administration
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: 04_2026_first_friday_features
-summary: 04_2026_first_friday_features
+summary: Summarizes the new features, enhancements, and bug fixes Sigma released in April 2026, covering areas such as administration, connectivity, and workbook building.
 categories: firstfridayfeatures
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_02_federated_access_v3
-summary: embedding_02_federated_access_v3
+summary: Configure federated user access for an embedded Sigma workbook using single sign-on and role assignment so host application users authenticate into Sigma with the correct permissions.
 categories: Embedding
 environments: web
 status: Published

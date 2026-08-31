@@ -1,6 +1,6 @@
 author: pballai
 id: administration_sso_okta
-summary: administration_sso_okta
+summary: Configure SAML single sign-on between Sigma and Okta, covering user provisioning, deprovisioning, group management, and access policies.
 categories: security
 environments: web
 status: Published

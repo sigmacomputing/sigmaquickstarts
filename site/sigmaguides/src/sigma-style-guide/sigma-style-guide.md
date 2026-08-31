@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: internal
-lastUpdated: 2026-06-15
+lastUpdated: 2026-12-15
 
 # Sigma QuickStart Style Guide
 
@@ -374,17 +374,25 @@ Duration: 5
 
 Use ffmpeg to convert video into MP4. For example, convert `.mov` to MP4:
 ```copy-code
-ffmpeg -i videoname.mov -vcodec libx264 -crf 28 -preset slow -vf "scale=1280:-2" -an -movflags +faststart output.mp4
+ffmpeg -i videoname.mov -vcodec libx264 -crf 20 -preset slow -vf "scale='min(2560,iw)':-2" -an -movflags +faststart output.mp4
 ```
 
 Use ffmpeg to crop the video first. For example, to remove a URL bar from the incoming video:
 
 ```copy-code
-ffmpeg -i sidebar_demo.mov -vcodec libx264 -crf 28 -preset slow -vf "crop=iw:ih-150:0:150,scale=1280:-2" -an -movflags +faststart output.mp4
+ffmpeg -i sidebar_demo.mov -vcodec libx264 -crf 20 -preset slow -vf "crop=iw:ih-150:0:150,scale='min(2560,iw)':-2" -an -movflags +faststart output.mp4
 ```
 
 <aside class="positive">
 <strong>WHY <code>-movflags +faststart</code>?</strong><br> This flag moves the MP4's <code>moov</code> atom (metadata) to the front of the file so browsers can start playback immediately. Without it, the moov atom lives at the end of the file — the video loads fine locally but won't play through Cloudflare/Firebase range-streaming on the deployed site.
+</aside>
+
+<aside class="positive">
+<strong>WHY <code>crf 20</code> AND <code>scale='min(2560,iw)'</code>?</strong><br> The old defaults (<code>crf 28</code>, downscale to 1280px wide) were tuned for file size and left screen recordings — small text, thin icon strokes — visibly grainy. <code>crf 20</code> is close to visually lossless for x264; capping width at 2560 instead of 1280 preserves enough detail to look sharp both inline and in the browser's fullscreen player, without the file-size cost of an uncapped 4K+ export.
+</aside>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> Resolution and framing are separate levers — don't maximize the recording window to "use more of a 4K display." That captures more surrounding chrome/whitespace, shrinking the actual UI content within the frame and making text harder to read even at higher resolution. Keep the capture tightly framed on the content you're demonstrating; let the resolution cap above handle sharpness.
 </aside>
 
 Embed the Video in the QuickStart with:

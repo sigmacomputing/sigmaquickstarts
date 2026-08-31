@@ -1,6 +1,6 @@
 author: pballai
 id: aiapps_forms
-summary: aiapps_forms
+summary: Build a customer return request form bound to an input table, with column-level validation and a live analysis view that updates as submissions arrive.
 categories: aiapps
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_headcount_planning
-summary: starter_apps_headcount_planning
+summary: Explore Sigma's Headcount Planning app template to model headcount scenarios against revenue targets, stage hires and backfills, and submit a plan with input tables and an AI advisor.
 categories: apptemplates
 environments: web
 status: Published

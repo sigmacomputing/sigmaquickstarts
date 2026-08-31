@@ -1,5 +1,5 @@
 author: pballai
-summary: fundamentals_2_data_v3
+summary: Sort, filter, group, and build formula-based calculations, including cross-table lookups, on live warehouse data in a Sigma workbook without writing SQL.
 id: fundamentals_2_data_v3
 categories: fundamentals
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: 06_2026_first_friday_features
-summary: 06_2026_first_friday_features
+summary: Summarizes new features, enhancements, and bug fixes released in Sigma during June 2026, with links to detailed documentation for each item.
 categories: firstfridayfeatures
 environments: web
 status: Published

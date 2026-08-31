@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_07_dynamic_role_switching_v3
-summary: embedding_07_dynamic_role_switching_v3
+summary: Configure dynamic connection and role switching in a JWT-embedded Sigma workbook so the Snowflake warehouse and role swap at runtime based on user attributes, restricting data access.
 categories: Embedding
 environments: web
 status: published

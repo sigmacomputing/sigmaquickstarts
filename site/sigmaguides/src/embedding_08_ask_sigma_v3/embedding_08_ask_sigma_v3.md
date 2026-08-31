@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_08_ask_sigma_v3
-summary: embedding_08_ask_sigma_v3
+summary: Embed Sigma Assistant's natural language query interface into an external application so users can ask questions about data and see the underlying analysis steps and sources.
 categories: embedding
 environments: web
 status: published

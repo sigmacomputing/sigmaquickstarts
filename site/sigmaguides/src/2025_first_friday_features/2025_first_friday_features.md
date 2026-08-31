@@ -1,6 +1,6 @@
 author: pballai
 id: 2025_first_friday_features
-summary: 2025_first_friday_features
+summary: A year-end compilation of all new Sigma features, product updates, and bug fixes released throughout 2025, with links to the full documentation for each.
 categories: Administration
 environments: web
 status: Published

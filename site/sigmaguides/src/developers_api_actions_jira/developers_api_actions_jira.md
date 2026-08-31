@@ -1,6 +1,6 @@
 author: pballai
 id: developers_api_actions_jira
-summary: developers_api_actions_jira
+summary: Connect Sigma to JIRA Cloud using Basic Authentication and API Actions, query issues with JQL, parse JSON via a Python element, and update issue status from a workbook.
 categories: Developers
 environments: web
 status: Published

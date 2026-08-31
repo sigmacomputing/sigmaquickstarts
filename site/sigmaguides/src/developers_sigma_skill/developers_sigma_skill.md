@@ -1,6 +1,6 @@
 author: pballai
 id: developers_sigma_skill
-summary: developers_sigma_skill
+summary: Install Sigma's open-source agent skills in Claude Code to authenticate against the Sigma REST API and create or update data models through natural-language prompts.
 categories: developers
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: developers_quickstarts_api_tookit
-summary: developers_quickstarts_api_tookit
+summary: Sets up a local web portal that authenticates to the Sigma REST API, runs prebuilt request recipes, and displays responses to help learn common Sigma API workflows.
 categories: Developers
 environments: web
 status: published

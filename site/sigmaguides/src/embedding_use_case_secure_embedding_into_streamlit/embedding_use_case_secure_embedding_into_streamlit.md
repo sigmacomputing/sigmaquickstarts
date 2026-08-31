@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_use_case_secure_embedding_into_streamlit
-summary: embedding_use_case_secure_embedding_into_streamlit
+summary: Embed a Sigma workbook inside a Python Streamlit application, combining Streamlit's app framework with Sigma's live, warehouse-connected analytics interface.
 categories: embedding
 environments: web
 status: published

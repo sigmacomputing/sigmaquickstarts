@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_qlik_made_easy
-summary: developers_migrating_qlik_made_easy
+summary: Use the Claude Code qlik-to-sigma skill to convert a Qlik Cloud app's data model, measures, and Set Analysis expressions into a Sigma workbook with a warehouse parity check.
 categories: migrations
 environments: web
 status: Published

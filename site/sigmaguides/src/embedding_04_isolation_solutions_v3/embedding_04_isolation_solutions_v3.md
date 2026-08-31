@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_04_isolation_solutions
-summary: embedding_04_isolation_solutions
+summary: Explore Sigma's embedding isolation strategies, including workspace and team permissions, row-level and column-level security, and role-based feature controls.
 categories: Embedding
 environments: web
 status: Published

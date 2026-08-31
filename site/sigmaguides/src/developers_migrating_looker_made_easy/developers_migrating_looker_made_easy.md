@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_looker_made_easy
-summary: developers_migrating_looker_made_easy
+summary: Use the Claude Code looker-to-sigma skill to convert a Looker dashboard and its LookML model into a Sigma data model and workbook, then verify parity against the live warehouse.
 categories: migrations
 environments: web
 status: Published

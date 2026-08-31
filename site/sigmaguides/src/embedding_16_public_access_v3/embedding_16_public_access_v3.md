@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_16_public_access_v3
-summary: embedding_16_public_access_v3
+summary: Embed a Sigma workbook publicly without JWT authentication, using the base embed URL directly in an iframe for non-sensitive, no-login public-facing content.
 categories: Embedding
 environments: web
 status: published

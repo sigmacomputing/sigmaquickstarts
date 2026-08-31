@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_snapshotting_with_sp
-summary: dataapps_snapshotting_with_sp
+summary: Builds an inventory app where users edit stock quantities and snapshot changes via a Snowflake stored procedure to preserve original and revised values for historical comparison.
 categories: aiapps
 environments: web
 status: Published

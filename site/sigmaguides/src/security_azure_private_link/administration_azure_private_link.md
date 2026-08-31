@@ -1,7 +1,7 @@
 [Follow the instructions here to complete the remaining configuration.]{}
 author: pballai
 id: administration_azure_private_link
-summary: administration_azure_private_link
+summary: Configure Azure Private Link to connect Sigma to a Snowflake, Databricks, or PostgreSQL warehouse over Azure's internal network without traversing the public internet.
 categories: security
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_usage_05_wb_descriptions
-summary: embedding_rest_api_usage_05_wb_descriptions
+summary: Add custom, editable descriptions to embedded Sigma workbooks using a local lowdb database, since the Sigma REST API doesn't natively store workbook description metadata.
 categories: embedding
 environments: web
 status: published

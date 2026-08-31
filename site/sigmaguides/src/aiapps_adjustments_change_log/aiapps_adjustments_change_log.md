@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_adjustments_change_log
-summary: dataapps_adjustments_change_log
+summary: Build an app with a Sigma input table that lets users edit values in place while automatically logging every adjustment with user, timestamp, and original value.
 categories: aiapps
 environments: web
 status: Published

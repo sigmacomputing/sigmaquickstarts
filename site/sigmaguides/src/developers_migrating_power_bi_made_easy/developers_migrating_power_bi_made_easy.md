@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_power_bi_made_easy
-summary: developers_migrating_power_bi_made_easy
+summary: Run the powerbi-to-sigma Claude Code skill to convert a Power BI report's semantic model and layout into a Sigma data model and workbook, verifying data parity against the source warehouse.
 categories: migrations
 environments: web
 status: Published

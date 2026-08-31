@@ -1,6 +1,6 @@
 author: pballai
 id: fundamentals_7_design_v3
-summary: fundamentals_7_design_v3
+summary: Arrange elements built in earlier Fundamentals lessons onto a dashboard page and apply Sigma's layout and design tools to produce a polished, visually organized dashboard.
 categories: Fundamentals
 environments: web
 status: Published

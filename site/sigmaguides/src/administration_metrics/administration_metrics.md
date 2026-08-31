@@ -1,6 +1,6 @@
 author: pballai
 id: administration_metrics
-summary: administration_metrics
+summary: Create and apply Sigma Metrics in a dataset to define reusable, governed calculations like revenue and conversion rate that stay consistent across tables, charts, and pivot tables.
 categories: administration
 environments: web
 status: Published

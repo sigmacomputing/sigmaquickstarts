@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_use_case_embed_into_salesforce_v3
-summary: embedding_use_case_embed_into_salesforce_v3
+summary: Embed a static Sigma table and a dynamically filtered view into Salesforce using Lightning Web Components.
 categories: Embedding
 environments: web
 status: Published

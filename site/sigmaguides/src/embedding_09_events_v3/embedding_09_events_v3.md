@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_09_events_v3
-summary: embedding_09_events_v3
+summary: Pass inbound and outbound events between a host application and an embedded Sigma iframe, using JavaScript or URL parameters and a listener for Sigma's outbound messages.
 categories: Embedding
 environments: web
 status: published

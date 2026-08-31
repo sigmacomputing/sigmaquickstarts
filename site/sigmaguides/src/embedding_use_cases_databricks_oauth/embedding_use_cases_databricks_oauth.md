@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_use_cases_databricks_oauth
-summary: embedding_use_cases_databricks_oauth
+summary: Build a Node.js app that implements OAuth 2.0 with PKCE for Sigma embedding with Databricks, encrypting tokens and signing JWTs so each embedded user queries with their own permissions.
 categories: Embedding
 environments: web
 status: published

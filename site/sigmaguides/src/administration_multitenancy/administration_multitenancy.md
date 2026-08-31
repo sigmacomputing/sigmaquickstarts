@@ -1,6 +1,6 @@
 author: pballai
 id: administration_multitenancy
-summary: administration_multitenancy
+summary: Configure Sigma Tenants to create isolated child organizations under a parent org, using deployments and connection swap policies to isolate business units and their data sources.
 categories: Administration
 environments: web
 status: published

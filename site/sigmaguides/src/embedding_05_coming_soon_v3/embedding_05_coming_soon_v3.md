@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_05_coming_soon_v3
-summary: embedding_05_coming_soon_v3
+summary: Placeholder page reserving the Embedding 05 slot in the series; no content yet, to be published in a future update.
 categories: Embedding
 environments: web
 status: published

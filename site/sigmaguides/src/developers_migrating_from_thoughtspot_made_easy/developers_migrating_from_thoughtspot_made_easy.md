@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_from_thoughtspot_made_easy
-summary: developers_migrating_from_thoughtspot_made_easy
+summary: Run the thoughtspot-to-sigma Claude Code skill to convert a ThoughtSpot worksheet and Liveboard into a Sigma data model and workbook, verified against the warehouse.
 categories: migrations
 environments: web
 status: Published

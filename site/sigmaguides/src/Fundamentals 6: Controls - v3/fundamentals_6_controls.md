@@ -1,6 +1,6 @@
 author: pballai
 id: fundamentals_6_controls_v3
-summary: fundamentals_6_controls_v3
+summary: Adds and configures Sigma control elements, including sliders, range sliders, date range, Top N, and switch controls, plus synced copies and referencing controls directly in formulas.
 categories: Fundamentals
 environments: web
 status: Published

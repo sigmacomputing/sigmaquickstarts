@@ -1,6 +1,6 @@
 author: pballai
 id: fundamentals_9_beyond_the_basics_v3
-summary: fundamentals_9_beyond_the_basics_v3
+summary: Address common post-fundamentals questions in Sigma, including joining multiple tables into one data model and identifying and resolving duplicate rows caused by messy join data.
 categories: Fundamentals
 environments: web
 status: published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_03_using_jwt_claims_and_embed_parameters_v3
-summary: embedding_03_using_jwt_claims_and_embed_parameters_v3
+summary: Configure signed JWT claims and embed URL parameters to authenticate embedded Sigma content, enforce row-level security, and pass custom user attributes.
 categories: Embedding
 environments: web
 status: published

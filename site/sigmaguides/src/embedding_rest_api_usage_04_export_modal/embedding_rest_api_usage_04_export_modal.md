@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_usage_04_export_modal
-summary: embedding_rest_api_usage_04_export_modal
+summary: Extend an embedded Sigma workbook with a REST API-driven modal for scheduling, editing, deleting, and immediately triggering emailed workbook exports.
 categories: embedding
 environments: web
 status: published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_01_getting_started_v3
-summary: embedding_01_getting_started_v3
+summary: Build a local Node.js host application used to test Sigma embed URLs, establishing the environment used throughout the embedding QuickStart series.
 categories: Embedding
 environments: web
 status: Published

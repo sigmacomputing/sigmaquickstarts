@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_07_custom_loader
-summary: embedding_rest_api_useage_07_custom_loader
+summary: Implement a custom loading indicator for a Sigma embed that listens for the workbook:dataLoaded postMessage event to hide the indicator once data finishes loading.
 categories: embedding
 environments: web
 status: published

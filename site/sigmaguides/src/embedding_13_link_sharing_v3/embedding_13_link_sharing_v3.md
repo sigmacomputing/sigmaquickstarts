@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_13_link_sharing_v3
-summary: embedding_13_link_sharing_v3
+summary: Generate shareable URLs from an embedded Sigma workbook for a full workbook, an exploration, or a bookmark, including links delivered through scheduled exports.
 categories: Embedding
 environments: web
 status: published

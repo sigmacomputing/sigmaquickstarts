@@ -1,5 +1,5 @@
 author: pballai
-summary: fundamentals_5_charts_v3
+summary: Build and configure Sigma chart types, including bar, line, KPI, pie, and map charts, using sample sales data to visualize and analyze business metrics.
 id: fundamentals_5_charts_v3
 categories: fundamentals
 status: Published

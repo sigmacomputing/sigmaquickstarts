@@ -1,6 +1,6 @@
 author: pballai
 id: developers_plugins
-summary: developers_plugins
+summary: Build and deploy a custom Sigma plugin using an open-source charting library to add a visualization type not natively available in Sigma.
 categories: developers
 environments: web
 status: Published

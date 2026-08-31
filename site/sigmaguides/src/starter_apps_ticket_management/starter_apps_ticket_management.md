@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_ticket_management
-summary: starter_apps_ticket_management
+summary: Explore and adapt the Nexus ticket management App Template, covering requester, triage, and assignee views, AI-driven urgency scoring and resolution summaries, and the input-table data model.
 categories: apptemplates
 environments: web
 status: Published

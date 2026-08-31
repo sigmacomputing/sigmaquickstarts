@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_plugin_useage_01_dashboard_builder
-summary: embedding_plugin_useage_01_dashboard_builder
+summary: Build a configurable embedded dashboard using Sigma's plugin framework with a hosted Angular plugin and a JavaScript host app that saves KPI and layout selections via Sigma bookmarks.
 categories: embedding
 environments: web
 status: published

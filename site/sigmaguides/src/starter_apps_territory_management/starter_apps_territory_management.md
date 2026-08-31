@@ -1,6 +1,6 @@
 author: pballai
 id: starter_apps_territory_management
-summary: starter_apps_territory_management
+summary: Explore and customize Sigma's Territory Management app template, using AI-generated diagnostics and an editable input table to reassign sales accounts and rebalance regional workload.
 categories: apptemplates
 environments: web
 status: Published

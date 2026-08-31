@@ -1,6 +1,6 @@
 7author: pballai
 id: dataapps_pivot_spreading
-summary: dataapps_pivot_spreading
+summary: Use pivot table spreading to edit an aggregate value in a pivot table and automatically redistribute the change across underlying rows, such as budget or forecast line items.
 categories: aiapps
 environments: web
 status: Published

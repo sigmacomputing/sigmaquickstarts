@@ -1,6 +1,6 @@
 author: pballai
 id: partners_snowflake_summit_2025
-summary: partners_snowflake_summit_2025
+summary: Role-play as a retail category manager, using AI-generated analysis and an app to forecast computer category performance for the coming year.
 categories: partners
 environments: web
 status: Published

@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_11_custom_workbook_list
-summary: embedding_rest_api_useage_11_custom_workbook_list
+summary: Build a thumbnail carousel for selecting embedded workbooks, using the List member files REST API endpoint to return only the workbooks a given user is permissioned to access.
 categories: embedding
 environments: web
 status: published

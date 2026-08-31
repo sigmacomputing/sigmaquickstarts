@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_reconciliation
-summary: dataapps_reconciliation
+summary: Trigger a Snowflake stored procedure from a Sigma app to snapshot live data and compare it against historical snapshots for reconciliation and audit tracking.
 categories: aiapps
 environments: web
 status: Published

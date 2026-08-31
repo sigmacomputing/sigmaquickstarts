@@ -1,6 +1,6 @@
 author: pballai
 id: partners_google_big_query
-summary: partners_google_big_query
+summary: Connect Sigma to Google BigQuery with a service account, validate the connection, and build a workbook querying live BigQuery data for tables, pivots, and visualizations.
 categories: Partners
 environments: web
 status: Published

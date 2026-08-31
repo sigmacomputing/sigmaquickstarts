@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_11_responsive_embeds_v3
-summary: embedding_11_responsive_embeds_v3
+summary: Configure a Sigma embed and its host page so the iframe resizes responsively with page content, eliminating nested scroll bars across desktop and mobile screens.
 categories: Embedding
 environments: web
 status: published

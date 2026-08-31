@@ -1,6 +1,6 @@
 author: pballai
 id: developers_sigma_calculations
-summary: developers_sigma_calculations
+summary: Explains Sigma's multi-tier caching and query evaluation architecture, which reduces Snowflake compute load while keeping the interface responsive as user count grows.
 categories: Developers
 environments: web
 status: Published

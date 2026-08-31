@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_09_hide_menus
-summary: embedding_rest_api_useage_09_hide_menus
+summary: Use the Sigma Embedding API to hide a workbook's built-in menus and programmatically navigate between pages from the host application.
 categories: embedding
 environments: web
 status: published

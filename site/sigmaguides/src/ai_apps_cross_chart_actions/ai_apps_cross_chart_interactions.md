@@ -1,6 +1,6 @@
 author: pballai
 id: data_apps_cross_chart_actions
-summary: data_apps_cross_chart_actions
+summary: Build a Sigma workbook with linked charts where clicking a data point in one chart filters other elements on the page using cross-chart actions.
 categories: aiapps
 environments: web
 status: published

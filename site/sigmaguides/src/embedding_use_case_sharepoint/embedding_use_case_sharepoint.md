@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_use_case_sharepoint
-summary: embedding_use_case_sharepoint
+summary: Embed a Sigma workbook into Microsoft SharePoint Online using an Azure Function that mints JWTs and an SPFx web part that passes through the current user's identity.
 categories: embedding
 environments: web
 status: published

@@ -1,6 +1,6 @@
 author: pballai
 id: dataapps_crowd_sourcing
-summary: dataapps_crowd_sourcing
+summary: Build a crowdsourcing app in Sigma using input tables, user-aware controls, and modals so users can submit, view, and upvote ideas without writing code.
 categories: aiapps
 environments: web
 status: published

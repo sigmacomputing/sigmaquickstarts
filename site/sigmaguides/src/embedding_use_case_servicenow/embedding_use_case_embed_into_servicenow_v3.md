@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_use_case_servicenow
-summary: embedding_use_case_servicenow
+summary: Embed a Sigma workbook into a ServiceNow page using an iframe secured by a signed JWT that supplies the required authentication claims.
 categories: Embedding
 environments: web
 status: published

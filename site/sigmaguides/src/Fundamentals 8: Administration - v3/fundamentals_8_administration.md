@@ -1,6 +1,6 @@
 author: pballai
 id: fundamentals_8_administration_v3
-summary: fundamentals_8_administration_v3
+summary: Tour Sigma's administration area, covering instance management, connection setup, data governance rules, and user interaction configuration for admin-level accounts.
 categories: Fundamentals
 environments: web
 status: Published

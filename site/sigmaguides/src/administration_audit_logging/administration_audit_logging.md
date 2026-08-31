@@ -1,6 +1,6 @@
 author: pballai
 id: administration_audit_logging
-summary: administration_audit_logging
+summary: Access Sigma's audit log connection to explore user activity and build a chart tracking daily login successes and failures for troubleshooting and compliance.
 categories: administration
 environments: web
 status: Published

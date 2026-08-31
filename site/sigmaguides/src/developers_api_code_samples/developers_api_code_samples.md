@@ -1,6 +1,6 @@
 author: pballai
 id: developers_api_code_samples
-summary: developers_api_code_samples
+summary: Run JavaScript code samples covering Sigma's most-used REST API operations, including member management, workspace permissions, workbook copying, and CSV export.
 categories: Developers
 environments: web
 status: published

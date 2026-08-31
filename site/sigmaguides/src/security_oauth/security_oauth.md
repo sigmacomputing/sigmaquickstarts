@@ -1,6 +1,6 @@
 author: pballai
 id: security_oauth
-summary: security_oauth
+summary: Configure OAuth between Sigma, Snowflake, and Okta across four scenarios - basic setup, Snowflake integration, Okta auto-provisioning, and writeback - eliminating shared credentials.
 categories: security
 environments: web
 status: Published

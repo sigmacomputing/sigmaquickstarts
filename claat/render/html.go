@@ -373,5 +373,5 @@ func (hw *htmlWriter) iframe(n *types.IframeNode) {
 }
 
 func (hw *htmlWriter) localVideo(n *types.LocalVideoNode) {
-	hw.writeFmt(`<video class="local-video" src=%q controls width="720"></video>`, n.Src)
+	hw.writeFmt(`<video class="local-video" src=%q controls></video>`, n.Src)
 }

@@ -32,6 +32,7 @@ the License.
   <title>{{.Meta.Title}}</title>
   <link rel="canonical" href="https://quickstarts.sigmacomputing.com/guide/{{.Meta.ID}}/index.html" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="{{.Prefix}}/codelab-elements/codelab-elements.css">
   <style>
@@ -40,6 +41,53 @@ the License.
     }
     .error {
       color: red;
+    }
+    @font-face {
+      font-family: 'Advercase';
+      src: url('/fonts/advercase-regular.woff2') format('woff2'),
+           url('/fonts/advercase-regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Advercase';
+      src: url('/fonts/advercase-bold.woff2') format('woff2'),
+           url('/fonts/advercase-bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif !important;
+    }
+    google-codelab-step .instructions {
+      max-width: 900px !important;
+      font-size: 16px !important;
+    }
+    google-codelab-step h2.step-title,
+    google-codelab #codelab-title h1 {
+      font-family: 'Advercase', serif !important;
+    }
+    .local-video {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      margin: auto !important;
+    }
+    google-codelab #codelab-title .sigma-logo-link {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 78px;
+      height: 24px;
+      background-image: url('/images/logo-sigma-black.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
     }
   </style>
 </head>
@@ -69,5 +117,65 @@ the License.
   <script src="{{.Prefix}}/codelab-elements/codelab-elements.js"></script>
   <script src="{{.Prefix}}/codelab-elements/code-copy.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+  <script>
+    (function() {
+      function addLogoLink() {
+        var titleBar = document.querySelector('#codelab-title');
+        if (!titleBar || titleBar.querySelector('.sigma-logo-link')) return false;
+        var link = document.createElement('a');
+        link.href = 'https://www.sigmacomputing.com/';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'sigma-logo-link';
+        link.setAttribute('aria-label', 'Sigma Computing');
+        titleBar.appendChild(link);
+        return true;
+      }
+      if (!addLogoLink()) {
+        var observer = new MutationObserver(function() {
+          if (addLogoLink()) observer.disconnect();
+        });
+        observer.observe(document.body, {childList: true, subtree: true});
+      }
+    })();
+  </script>
+  <script>
+    // The Material Icons webfont uses ligature text ("close", "menu") that
+    // renders as literal words if the font is slow to load or fails to swap
+    // in. Swap those ligature icons for inline SVGs so the close/menu
+    // buttons never depend on a third-party font loading successfully.
+    (function() {
+      var ICONS = {
+        '#arrow-back': '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>',
+        '#menu': '<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>'
+      };
+      function replaceIcons() {
+        var replacedAll = true;
+        for (var selector in ICONS) {
+          var icon = document.querySelector(selector + ' i.material-icons');
+          if (!icon) {
+            replacedAll = false;
+            continue;
+          }
+          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('class', 'material-icons');
+          svg.setAttribute('viewBox', '0 0 24 24');
+          svg.setAttribute('width', '24');
+          svg.setAttribute('height', '24');
+          svg.setAttribute('fill', 'currentColor');
+          svg.setAttribute('aria-hidden', 'true');
+          svg.innerHTML = ICONS[selector];
+          icon.replaceWith(svg);
+        }
+        return replacedAll;
+      }
+      if (!replaceIcons()) {
+        var observer = new MutationObserver(function() {
+          if (replaceIcons()) observer.disconnect();
+        });
+        observer.observe(document.body, {childList: true, subtree: true});
+      }
+    })();
+  </script>
 </body>
 </html>
