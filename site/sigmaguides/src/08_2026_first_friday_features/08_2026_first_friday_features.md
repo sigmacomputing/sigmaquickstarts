@@ -78,6 +78,8 @@ Duration: 20
 ### Agent skill for the Sigma CLI (GA)
 The `sigma-cli` skill enables AI assistants to call the Sigma REST API from the command line using the Sigma CLI.
 
+There is a QuickStart: [Automate Sigma from the Command Line with the Sigma CLI](https://quickstarts.sigmacomputing.com/guide/developers_sigma_cli/index.html?index=..%2F..index#0)
+
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants#sigma-cli)
 
 ### Allow Assistant to search all sources (Beta) <img src="assets/heart_icon.png" width="25"/>
@@ -86,7 +88,17 @@ Administrators can configure whether Sigma Assistant can access all available da
 **WHY IT MATTERS:**<br>
 Locking Assistant to a curated list of sources is safer to start with, but it also means someone has to keep that list current as new data models ship. Opening it up to everything a user already has access to removes that maintenance burden without loosening any actual permissions — Assistant still only sees what the user is allowed to see.
 
+<img src="assets/fff_02.png" width="800"/>
+
 For more information, see [Configure AI features for your organization](https://help.sigmacomputing.com/docs/configure-ai-features-for-your-organization)
+
+### Assistant in build mode: complex dashboards (Beta) <img src="assets/heart_icon.png" width="25"/>
+Sigma Assistant can now generate multi-page dashboards sourced from related warehouse tables or existing data models, with plan mode for previewing the layout before building.
+
+**WHY IT MATTERS:**<br>
+Multi-page dashboards have traditionally meant building each page by hand. Extending build mode to generate a full multi-page structure — with a preview step before anything is actually built — lets builders describe a complete reporting experience in plain language and get a governed starting point on real data, not just a single chart.
+
+<img src="assets/fff_01.png" width="800"/>
 
 ### New model used for Gemini and BigQuery AI providers (GA)
 Sigma now uses Gemini 3.6 Flash as the LLM for the Gemini and BigQuery AI providers.
@@ -194,22 +206,6 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Charts
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## AI Apps
-Duration: 20
-
-### Assistant in build mode: complex dashboards (Beta)
-Sigma Assistant can now generate multi-page dashboards sourced from related warehouse tables or existing data models, with plan mode for previewing the layout before building.
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Data Modeling
 Duration: 20
 
@@ -242,21 +238,6 @@ For more information, see [Inbound event reference](https://help.sigmacomputing.
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Functions / Calculations
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Input Tables
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
 
 ## New QuickStarts in August
 Duration: 20
@@ -290,8 +271,13 @@ Hierarchies created in the deprecated Manage hierarchies popover can now be easi
 
 For more information, see [Work with hierarchies](https://help.sigmacomputing.com/docs/hierarchies)
 
-### Drawers (Beta)
+### Drawers (Beta) <img src="assets/heart_icon.png" width="25"/>
 Side panels that slide in to overlay workbook content temporarily, for displaying information at specific points in a workflow.
+
+**WHY IT MATTERS:**<br>
+Builders have long had to choose between cluttering a page with detail or sending readers elsewhere to see it. Drawers give you a place to put that detail — instructions, drill-downs, forms — that slides in on demand and out of the way otherwise, without breaking up the main layout.
+
+<video src="assets/drawers-public-beta.mp4"></video>
 
 For more information, see [Use drawers to manage complex workflows](https://help.sigmacomputing.com/docs/use-drawers-to-manage-complex-workflows)
 
