@@ -1,12 +1,12 @@
 author: pballai
 id: developers_migrating_from_metabase_made_easy
 summary: developers_migrating_from_metabase_made_easy
-categories: developers
+categories: migrations
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-06-27
+tags: default
+lastUpdated: 2026-08-31
 
 # Migrating From Metabase Made Easy
 
