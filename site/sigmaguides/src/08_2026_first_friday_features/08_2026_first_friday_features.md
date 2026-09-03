@@ -1,6 +1,6 @@
 author: pballai
 id: 08_2026_first_friday_features
-summary: 08_2026_first_friday_features
+summary: Summarizes new features, updates, and bug fixes released across Sigma in August 2026, with links to the relevant documentation for each.
 categories: firstfridayfeatures
 environments: web
 status: Published
@@ -264,17 +264,17 @@ The Migrations category has grown considerably since it launched — catching up
 
 Each one walks through a `Claude Code` skill that automates a BI tool migration into Sigma: rebuilding the source dashboard's visualizations, translating its expressions into Sigma formulas, and verifying the numbers match.
 
-* [Migrating from AWS QuickSight Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_quicksight_made_easy/index.html)
-* [Migrating from Cognos Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_cognos_made_easy/index.html)
-* [Migrating from Domo Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html)
-* [Migrating from Hex Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_hex_made_easy/index.html)
-* [Migrating from Looker Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_looker_made_easy/index.html)
-* [Migrating from Metabase Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_metabase_made_easy/index.html)
-* [Migrating from MicroStrategy Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_microstrategy_made_easy/index.html)
+* [Migrating From AWS QuickSight Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_quicksight_made_easy/index.html)
+* [Migrating From Cognos Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_cognos_made_easy/index.html)
+* [Migrating From Domo Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html)
+* [Migrating From Hex Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_hex_made_easy/index.html)
+* [Migrating From Looker Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_looker_made_easy/index.html)
+* [Migrating From Metabase Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_metabase_made_easy/index.html)
+* [Migrating From MicroStrategy Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_microstrategy_made_easy/index.html)
 * [Migrating From Power BI Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_power_bi_made_easy/index.html)
-* [Migrating from Qlik Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_qlik_made_easy/index.html)
-* [Migrating from Sisense Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_sisense_made_easy/index.html)
-* [Migrating from Tableau Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html)
+* [Migrating From Qlik Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_qlik_made_easy/index.html)
+* [Migrating From Sisense Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_sisense_made_easy/index.html)
+* [Migrating From Tableau Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html)
 * [Migrating From ThoughtSpot Made Easy](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_thoughtspot_made_easy/index.html)
 
 ![Footer](assets/sigma_footer.png)

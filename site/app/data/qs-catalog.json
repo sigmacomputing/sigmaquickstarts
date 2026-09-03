@@ -57,6 +57,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/07_2026_first_friday_features/index.html"
     },
     {
+      "id": "08_2026_first_friday_features",
+      "title": "(08-2026) August",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes new features, updates, and bug fixes released across Sigma in August 2026, with links to the relevant documentation for each.",
+      "lastUpdated": "2026-09-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/08_2026_first_friday_features/index.html"
+    },
+    {
       "id": "2023_first_friday_features",
       "title": "2023 Compilation",
       "category": "Administration",
