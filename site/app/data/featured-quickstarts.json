@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "First Friday Features - August 2026",
+      "id": "08_2026_first_friday_features",
+      "category": "firstfridayfeatures",
+      "date": "Sep 4, 2026"
+    },
+    {
       "title": "Connect a Sigma Agent to GitHub with MCP Tools",
       "id": "aiapps_github_mcp_tool",
       "category": "aiapps",
@@ -53,12 +59,6 @@
       "id": "aiapps_chat_element",
       "category": "aiapps",
       "date": "June 10, 2026"
-    },
-    {
-      "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
-      "id": "Fundamentals_12_repeater_single_row_containers",
-      "category": "Fundamentals",
-      "date": "May 29, 2026"
     }
   ]
 }
