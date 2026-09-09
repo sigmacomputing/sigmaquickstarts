@@ -249,6 +249,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_storefront_repeaters/index.html"
     },
     {
+      "id": "aiapps_web_search_agent",
+      "title": "Build Web Search for a Sigma Agent",
+      "category": "aiapps",
+      "summary": "Connect a Sigma agent to Tavily's web search API as a custom API connector, then attach it as a callable action so the agent can pull in live results and cite sources alongside governed data.",
+      "lastUpdated": "2026-09-09",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_web_search_agent/index.html"
+    },
+    {
       "id": "common_date_functions",
       "title": "Common Date Functions",
       "category": "functions",
