@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-31
+lastUpdated: 2026-09-11
 
 # Migrating From Cognos Made Easy
 
@@ -41,10 +41,6 @@ For the demonstration, we'll convert a dashboard called `Commerce Dashboard` —
 
 <img src="assets/mfcg_01.png" width="800"/>
 
-<aside class="positive">
-<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills/tree/main/plugins/cognos-to-sigma">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
-</aside>
-
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Cognos is the source, Sigma is the target. Sigma reads the warehouse live, so the conversion's accuracy depends on the warehouse tables behind your Cognos data module or package being reachable from a Sigma connection. For data module sources, the skill discovers the tables and joins from the module definition and reconciles them back to the underlying warehouse columns. Custom-SQL query subjects are surfaced alongside the Sigma equivalent and flagged for review. Parity is checked against the warehouse-resolved numbers, so any Cognos caching or aggregation drift surfaces as an explicit row-level diff rather than getting buried.
 </aside>
@@ -76,7 +72,7 @@ Sigma SEs, technical CSMs, and migration partners running Cognos-to-Sigma conver
 ## The Cognos Migration Skill Family
 Duration: 5
 
-`cognos-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
+`cognos-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -110,53 +106,74 @@ In this QuickStart we're in the first row — one Cognos dashboard whose data mo
 ## Install and Configure the Skill
 Duration: 15
 
-First we need to clone the skill's GitHub repository, configure Cognos REST credentials, and capture your Sigma credentials.
+First we need to install the skill plugins, configure Cognos REST credentials, and capture your Sigma credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [cognos-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/cognos-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Cognos-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the cognos-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mfcg_14.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set cognos-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-**Step 5: Symlink cognos-to-sigma into the Claude skills folder**
+<img src="assets/mfcg_15.png" width="800"/>
+
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/cognos-migration-skills/cognos-to-sigma ~/.claude/skills/cognos-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink cognos-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>cognos-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mfcg_16.png" width="800"/>
+
+**Step 6: Install the Cognos skill pair**<br>
+One plugin install brings in both `cognos-to-sigma` (the converter) and `cognos-assessment` (the scoping skill).
 
 ```copy-code
-ln -s ~/quickstarts-public/cognos-migration-skills/cognos-assessment ~/.claude/skills/cognos-assessment
+/plugin install cognos-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
@@ -206,7 +223,7 @@ export COG_APIKEY="{your-ca-api-key}"
 **8c. Establish the session.**
 
 ```copy-code
-eval "$(bash ~/.claude/skills/cognos-to-sigma/scripts/cognos-apikey-session.sh)"
+eval "$(bash ~/.claude/plugins/cache/sigma-migration-skills/cognos-to-sigma/*/skills/cognos-to-sigma/scripts/cognos-apikey-session.sh)"
 ```
 
 No return is expected.
@@ -231,7 +248,7 @@ A successful response returns a JSON object containing `"isAnonymous":false` —
 This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, and writes the sentinel file the skill gates on before starting. Run it once per machine:
 
 ```copy-code
-SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
+SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/plugins/cache/sigma-migration-skills/cognos-to-sigma/*/skills/cognos-to-sigma/scripts/bootstrap.sh
 ```
 
 A successful run ends with:
@@ -303,7 +320,7 @@ The Cognos `Subscription administrator` role manages users and billing — it do
 The bootstrap credential check can return a false failure even when the credentials are valid (for example, when the Sigma API endpoint resolves differently in the bootstrap probe than it does for the skill). Bypass it — the credentials are checked again during the actual token mint:
 
 ```copy-code
-SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/skills/cognos-to-sigma/scripts/bootstrap.sh
+SIGMA_SKIP_CRED_SMOKE=1 bash ~/.claude/plugins/cache/sigma-migration-skills/cognos-to-sigma/*/skills/cognos-to-sigma/scripts/bootstrap.sh
 ```
 
 Validate the credentials directly if you want to confirm them before running the skill:

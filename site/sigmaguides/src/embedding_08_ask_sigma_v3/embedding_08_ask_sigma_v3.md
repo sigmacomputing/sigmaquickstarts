@@ -3,21 +3,17 @@ id: embedding_08_ask_sigma_v3
 summary: Embed Sigma Assistant's natural language query interface into an external application so users can ask questions about data and see the underlying analysis steps and sources.
 categories: embedding
 environments: web
-status: published
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-05-06
+lastUpdated: 2026-10-11
 
 # Embedding 08: Embedding Sigma Assistant
 
-<!-- NOTE:
-This QS is Hidden until the Assistant works with embedding. I tested and it does not yet.
- -->
+## Overview
+Duration: 5
 
-## Overview 
-Duration: 5 
-
-This QuickStart guides you through the process of embedding Sigma Assistant—Sigma's AI analyst—into your application. 
+This QuickStart guides you through the process of embedding Sigma Assistant — Sigma's AI analyst — into your application.
 
 You'll learn how to integrate natural language querying capabilities, enabling users to interact with data seamlessly within your product environment. By the end, you'll have a functional, embedded Sigma Assistant instance, ready to enhance user engagement and data accessibility.
 
@@ -35,7 +31,7 @@ Uncover new data sources, related workbooks, and insights beyond the initial que
 View each step of the AI's analytical process, including data sources and calculations.
 
 **Control:**<br>
-Modify any part of the analysis—change data sources, adjust formulas, or refine prompts.
+Modify any part of the analysis — change data sources, adjust formulas, or refine prompts.
 
 **A Path Forward:**<br>
 Receive suggestions for further exploration, enabling deeper data understanding.
@@ -121,7 +117,7 @@ Under `Model provider`, select `Data warehouse hosted model` and choose the conn
 <strong>IMPORTANT:</strong><br> Using a warehouse hosted model keeps data within your own infrastructure — no data is sent to a third-party AI provider. This is the recommended approach for organizations with sensitive data.
 </aside>
 
-<img src="./assets/as_1.png" width="800"/>
+<img src="assets/as_1.png" width="800"/>
 
 Save the configuration. Sigma will use this connection to process all Sigma Assistant requests.
 
@@ -133,7 +129,7 @@ With the model provider configured, you now need to specify which data sources S
 
 On the `AI settings` page, select the `Assistant` tab. Locate the `Sigma Assistant data sources` section and add the connections, schemas, or tables you want to make available.
 
-<img src="./assets/as_2.png" width="800"/>
+<img src="assets/as_2.png" width="800"/>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> Embed users must also have permission in Sigma to access any sources enabled here. Grant connection-level access through `Administration` > `Connections`.
@@ -141,7 +137,7 @@ On the `AI settings` page, select the `Assistant` tab. Locate the `Sigma Assista
 
 For example, we need to share the `CUSTOMER` table with the `Sales_People` team:
 
-<img src="./assets/as_2a.png" width="800"/>
+<img src="assets/as_2a.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -149,7 +145,7 @@ For example, we need to share the `CUSTOMER` table with the `Sales_People` team:
 ## Project Configuration
 Duration: 5
 
-We’ll move through this quickly, assuming you’ve done similar configurations before in the `Getting Started QuickStart`.
+We’ll move through this quickly, assuming you’ve done similar configurations before in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 
 In VSCode > Terminal, start the local web server in the `embedding_qs_series_2` project folder:
 ```copy-code
@@ -168,7 +164,7 @@ In VSCode, open the project’s `.env` file and scroll to the `# Embedding 08: E
 
 We configured a few values for you but you will need to provide your `{org-slug}`, which is the part of the URL directly following `https://app.sigmacomputing.com/` in the browser:
 
-<img src="./assets/as_8.png" width="800"/>
+<img src="assets/as_8.png" width="800"/>
 
 For example, in the URL `https://app.sigmacomputing.com/my_company_name/`, the org-slug is `my_company_name`.
 
@@ -176,7 +172,7 @@ Once .env is updated, save your changes.
 
 Refresh the browser page, and Sigma Assistant should appear:
 
-<img src="./assets/as_9.png" width="800"/>
+<img src="assets/as_9.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -195,36 +191,35 @@ Allowing users to ask questions is one thing but how can we tell what the AI is 
 We have addressed all these and more with our unique design, summarized below in three sections:
 
 **1: Discovery**<br>
-Ensure corporate governance by restricting source data used for analysis and preventing exposing data to third-parties.
+Ensure corporate governance by restricting source data used for analysis and preventing data from being exposed to third parties.
 
 **2: Trust**<br>
 Ensure that only verified, trusted data sources are used. Decisions made from bad data are time-consuming and potentially costly too.
 
-**3: Exploration**
-
+**3: Exploration**<br>
 Allow users to launch selected results into a workbook for further analysis or sharing.
 
 ### A quick test
-Let's ask a simple question, since we have one table to work with: `CUSTOMERS`:
+Let's ask a simple question, since we have one table to work with: `CUSTOMER`:
 ```copy-code
 How many customers are there per market segment?
 ```
 
 As the processing starts, we can see the first thing the AI decided was to use the `CUSTOMER` table (obviously!) but Sigma also displays the decision logic in `Analysis breakdown?`, shedding light on the choices the AI is making.
 
-It also lets us peak at the SQL used to obtain the data:
+It also lets us peek at the SQL used to obtain the data:
 
-<img src="./assets/as_12.png" width="800"/>
+<img src="assets/as_12.png" width="800"/>
 
 Then it provides a bar chart and some detail on the findings. We can `Explore` the response in a Sigma workbook:
 
-<img src="./assets/as_12a.png" width="700"/>
+<img src="assets/as_12a.png" width="700"/>
 
-Becuase we are a `Build` user, we have access to all of the other tools Sigma provides.
+Because we are a `Build` user, we have access to all of the other tools Sigma provides.
 
 The functionality available to the user is determined by their `Account type` setting. This enables different user experiences and allows embedded customers to offer premium services:
 
-<img src="./assets/as_12b.png" width="800"/>
+<img src="assets/as_12b.png" width="800"/>
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -246,9 +241,9 @@ Sigma Assistant can deliver conversational analytics in a secure, customizable, 
 Be sure to check out all the latest developments at [Sigma's First Friday Feature page!](https://quickstarts.sigmacomputing.com/firstfridayfeatures/)
 <br>
 
-[<img src="./assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
-[<img src="./assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
-[<img src="./assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
+[<img src="assets/twitter.png" width="75"/>](https://twitter.com/sigmacomputing)&emsp;
+[<img src="assets/linkedin.png" width="75"/>](https://www.linkedin.com/company/sigmacomputing)&emsp;
+[<img src="assets/facebook.png" width="75"/>](https://www.facebook.com/sigmacomputing)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF WHAT WE COVERED -->
