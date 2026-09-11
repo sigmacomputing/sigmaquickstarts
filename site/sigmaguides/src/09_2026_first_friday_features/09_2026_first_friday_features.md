@@ -12,7 +12,7 @@ lastUpdated: 2026-10-02
 <!-- The above name is what appears on the website and is searchable. 
 
 September 4, 2026 changes: done
-September 11, 2026 changes:
+September 11, 2026 changes: done
 September 18, 2026 changes:
 September 25, 2026 changes:
 
@@ -64,6 +64,11 @@ Global rollouts often stall on a single unsupported language for one region's te
 
 For more information, see [Set organization language and formatting region](https://help.sigmacomputing.com/docs/manage-organization-language#supported-languages)
 
+### Connect multiple Sigma organizations to one Slack workspace (GA)
+Multiple Sigma organizations can now connect to the same Slack workspace.
+
+For more information, see [Manage Slack integration](https://help.sigmacomputing.com/docs/manage-slack-integration)
+
 ### Restrict Can contribute access to specific version tags (GA)
 Users granted `Can contribute` access to a folder can now be limited to specific version tags instead of all versions and documents.
 
@@ -80,11 +85,39 @@ For more information, see [Manage Microsoft integration](https://help.sigmacompu
 ## AI
 Duration: 20
 
+### Build workbooks and analyze data in ChatGPT using the Sigma plugin (GA) <img src="assets/heart_icon.png" width="25"/>
+The Sigma plugin for ChatGPT can now create and share Sigma workbooks directly from a natural-language analysis, in addition to searching, exploring, and analyzing data.
+
+**WHY IT MATTERS:**<br>
+July's launch of the ChatGPT plugin let users query Sigma data from a conversation. This extends that same conversation into a governed, shareable workbook — the analysis doesn't have to stay locked in a chat transcript to be useful to the rest of a team.
+
+For more information, see [Use the Sigma plugin for AI assistants](https://help.sigmacomputing.com/docs/use-the-sigma-plugin-for-ai-assistants)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## API
 Duration: 20
+
+### Databricks connection endpoint additions (GA)
+Databricks connection endpoints now include `enableHiveMetastore`, `usePython`, and `pythonComputeClusterId` fields for programmatic configuration.
+
+For more information, see [Get connection details](https://help.sigmacomputing.com/reference/get-connection), [List connections](https://help.sigmacomputing.com/reference/list-connections), [Create a connection](https://help.sigmacomputing.com/reference/create-connection), and [Update a connection](https://help.sigmacomputing.com/reference/update-connection)
+
+### New account type permissions update endpoint (GA)
+Account type permissions can now be updated via a new endpoint to control feature access, with the response including license type.
+
+For more information, see [Update account type permissions](https://help.sigmacomputing.com/reference/update-account-type-permissions)
+
+### New AI provider configuration endpoint (GA)
+A new endpoint configures an organization's AI provider programmatically.
+
+For more information, see [Configure the organization's AI provider](https://help.sigmacomputing.com/reference/create-ai-config)
+
+### New API credentials listing endpoint (GA)
+A new endpoint lists API credentials, returning client ID, owner ID, and scopes, with the client secret excluded from the response.
+
+For more information, see [List API credentials](https://help.sigmacomputing.com/reference/list-credentials)
 
 ### New API endpoints to manage audit logging for an organization (GA)
 Two new endpoints support getting and updating an organization's audit logging setting.
@@ -96,15 +129,50 @@ Two new endpoints support getting and updating an organization's CSV upload sett
 
 For more information, see [Get the CSV upload settings](https://help.sigmacomputing.com/reference/get-csv-upload-settings) and [Update the CSV upload settings](https://help.sigmacomputing.com/reference/update-csv-upload-settings)
 
+### New comment settings management endpoints (GA)
+Two new endpoints get and update an organization's comment settings, controlling commenting and image annotation functionality.
+
+For more information, see [Get comment settings](https://help.sigmacomputing.com/reference/get-comments-settings) and [Update comment settings](https://help.sigmacomputing.com/reference/update-comments-settings)
+
 ### New option for the List datasets endpoint (GA)
 The List datasets endpoint can now filter results to datasets owned by a specific user using `ownerId`.
 
 For more information, see [List datasets](https://help.sigmacomputing.com/reference/list-datasets)
 
+### New sample connection management endpoints (GA)
+Two new endpoints get and update an organization's sample connection settings.
+
+For more information, see [Get sample connection settings](https://help.sigmacomputing.com/reference/get-sample-connection-settings) and [Update sample connection settings](https://help.sigmacomputing.com/reference/update-sample-connection-settings)
+
+### New team admins management endpoint (GA)
+A new endpoint updates the administrators assigned to a team.
+
+For more information, see [Update team admins](https://help.sigmacomputing.com/reference/update-team-admins)
+
+### New timezone management endpoints (GA)
+Two new endpoints get and update an organization's timezone configuration.
+
+For more information, see [Get timezone setting](https://help.sigmacomputing.com/reference/get-timezone-setting) and [Update timezone setting](https://help.sigmacomputing.com/reference/update-timezone-setting)
+
+### New user attribute update endpoints (GA)
+A user attribute's name, description, or default value can now be updated via a new endpoint.
+
+For more information, see [Update a user attribute](https://help.sigmacomputing.com/reference/update-user-attribute)
+
 ### Represent CSV tables in the code representation of a data model (GA)
 CSV source tables can now be represented when reading and updating a data model's code representation.
 
 For more information, see [Manage data models as code](https://help.sigmacomputing.com/docs/manage-data-models-as-code#limitations) and [Example: representing a data model with a CSV table](https://help.sigmacomputing.com/docs/example-representation-data-model-with-a-csv-table)
+
+### Request and grant access to API connectors (GA)
+Users can now view all API connectors in their organization and request access to specific ones, with admins or users with appropriate permissions able to approve or deny requests.
+
+For more information, see [Manage API credential and connection access](https://help.sigmacomputing.com/docs/manage-api-credential-and-connection-access)
+
+### Tag endpoint enhancements (GA)
+The Update a tag endpoint now supports updating version tag descriptions and colors.
+
+For more information, see [Update a tag](https://help.sigmacomputing.com/reference/update-version-tag)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -117,6 +185,10 @@ Duration: 20
 **2:** Users with the `Manage users` permission can now invite guest users.
 
 **3:** Document deployment now respects existing team and user attributes for column-level security enforcement across tenant organizations.
+
+**4:** Failed materializations blocked by in-progress operations now display as skipped rather than failed.
+
+**5:** Improved performance when editing large input tables.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -197,6 +269,9 @@ Duration: 20
 
 ## Workbooks
 Duration: 20
+
+### Databricks support for stored procedure actions (GA)
+Creating actions that call stored procedures is now supported for Databricks connections.
 
 ### Drawers (GA) <img src="assets/heart_icon.png" width="25"/>
 Drawers — side panels that slide in to overlay workbook content temporarily — are now generally available.
