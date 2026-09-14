@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-01
+lastUpdated: 2026-09-11
 
 # Migrating From AWS QuickSight Made Easy
 
@@ -74,7 +74,7 @@ Sigma SEs, technical CSMs, and migration partners running QuickSight-to-Sigma co
 ## The QuickSight Migration Skill Family
 Duration: 5
 
-`quicksight-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
+`quicksight-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -112,53 +112,76 @@ In this QuickStart we're in the first row — one QuickSight analysis whose data
 ## Install and Configure the Skill
 Duration: 15
 
-First we need to clone the skill's GitHub repository, configure AWS CLI access to QuickSight, and capture your Sigma credentials.
+First we need to install the skill plugins, configure AWS CLI access to QuickSight, and capture your Sigma credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [quicksight-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/quicksight-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is QuickSight-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the quicksight-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/qs_09.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set quicksight-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-**Step 5: Symlink quicksight-to-sigma into the Claude skills folder**
+<img src="assets/qs_09a.png" width="800"/>
+
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/quicksight-migration-skills/quicksight-to-sigma ~/.claude/skills/quicksight-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink quicksight-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>quicksight-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/qs_11.png" width="800"/>
+
+**Step 6: Install the QuickSight skill pair**<br>
+One plugin install brings in both `quicksight-to-sigma` (the converter) and `quicksight-assessment` (the scoping skill covered above).
 
 ```copy-code
-ln -s ~/quickstarts-public/quicksight-migration-skills/quicksight-assessment ~/.claude/skills/quicksight-assessment
+/plugin install quicksight-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before Step 12, <code>Verify Claude Code can invoke the skill</code>, below.
+</aside>
+
+<img src="assets/qs_11a.png" width="800"/>
 
 ![divider](assets/horizonalline.png)
 
@@ -178,11 +201,15 @@ python3 -m pip install boto3
 **Step 8: Capture your Sigma API credentials.**<br>
 This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings + the neutral `~/.sigma-migration/env` file that the skill family uses to mint Sigma API tokens at runtime.
 
-Run once per machine.
+Run once per machine, from a regular terminal (not inside Claude Code):
 
 ```copy-code
-ruby ~/.claude/skills/quicksight-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/quicksight-to-sigma/*/skills/quicksight-to-sigma/scripts/setup.rb
 ```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> The <code>*</code> matches whichever version of the plugin is installed, so this command keeps working after the skill updates. If your shell reports no match, confirm Step 6 completed with <code>claude plugin list</code>.
+</aside>
 
 The final prompt asks for a `Connection ID (full warehouse-connection UUID, optional — Enter to skip)`. You can press `Enter` to skip — the kickoff prompt later in this QuickStart supplies the Snowflake connection ID inline. Capturing it here is useful only if you plan to run multiple migrations and want it persisted in `~/.sigma-migration/env`.
 

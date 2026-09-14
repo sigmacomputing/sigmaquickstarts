@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-31
+lastUpdated: 2026-09-11
 
 # Migrating From Sisense Made Easy
 
@@ -41,10 +41,6 @@ For the demonstration, we'll convert a dashboard called `ECommerce Overview (Liv
 
 <img src="assets/mfss_01.png" width="800"/>
 
-<aside class="positive">
-<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills/tree/main/plugins/sisense-to-sigma">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
-</aside>
-
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Sisense is the source, Sigma is the target. Sigma reads the warehouse live, so the conversion's accuracy depends on the warehouse tables behind your Sisense data model being reachable from a Sigma connection. For ElastiCube data models, the skill discovers the tables and joins from the ElastiCube definition and reconciles them back to the underlying warehouse columns. For Live Connect models, the skill reads the warehouse tables directly. Custom-SQL ElastiCube tables are surfaced alongside the Sigma equivalent and flagged for review. Parity is checked against the warehouse-resolved numbers, so any ElastiCube cache drift surfaces as an explicit row-level diff rather than getting buried.
 </aside>
@@ -76,7 +72,7 @@ Sigma SEs, technical CSMs, and migration partners running Sisense-to-Sigma conve
 ## The Sisense Migration Skill Family
 Duration: 5
 
-`sisense-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
+`sisense-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -114,53 +110,74 @@ In this QuickStart we're in the first row — one Sisense dashboard whose Live C
 ## Install and Configure the Skill
 Duration: 15
 
-First we need to clone the skill's GitHub repository, configure Sisense REST credentials, and capture your Sigma credentials.
+First we need to install the skill plugins, configure Sisense REST credentials, and capture your Sigma credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [sisense-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/sisense-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Sisense-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the sisense-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mfss_10.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set sisense-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-**Step 5: Symlink sisense-to-sigma into the Claude skills folder**
+<img src="assets/mfss_11.png" width="800"/>
+
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/sisense-migration-skills/sisense-to-sigma ~/.claude/skills/sisense-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink sisense-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>sisense-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mfss_12.png" width="800"/>
+
+**Step 6: Install the Sisense skill pair**<br>
+One plugin install brings in both `sisense-to-sigma` (the converter) and `sisense-assessment` (the scoping skill).
 
 ```copy-code
-ln -s ~/quickstarts-public/sisense-migration-skills/sisense-assessment ~/.claude/skills/sisense-assessment
+/plugin install sisense-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
@@ -221,7 +238,7 @@ chmod 600 ~/.sigma-migration/sisense.env
 Verify auth works by running the skill's own auth script — it logs in and returns a token:
 
 ```copy-code
-source ~/.sigma-migration/sisense.env && eval "$(bash ~/.claude/skills/sisense-to-sigma/scripts/sisense-auth.sh)" && curl -s -H "Authorization: Bearer ${SISENSE_API_TOKEN}" "${SISENSE_BASE_URL}/api/v1/dashboards?fields=oid,title" | python3 -c 'import sys,json; [print(d["oid"], "-", d["title"]) for d in json.load(sys.stdin)]'
+source ~/.sigma-migration/sisense.env && eval "$(bash ~/.claude/plugins/cache/sigma-migration-skills/sisense-to-sigma/*/skills/sisense-to-sigma/scripts/sisense-auth.sh)" && curl -s -H "Authorization: Bearer ${SISENSE_API_TOKEN}" "${SISENSE_BASE_URL}/api/v1/dashboards?fields=oid,title" | python3 -c 'import sys,json; [print(d["oid"], "-", d["title"]) for d in json.load(sys.stdin)]'
 ```
 
 You should see one line per dashboard. If the command returns nothing or a `401`: double-check `SISENSE_BASE_URL` (include the protocol, no trailing slash) and your email and password.
@@ -236,7 +253,7 @@ You should see one line per dashboard. If the command returns nothing or a `401`
 This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, confirms that credentials are readable in `~/.sigma-migration/env`, and writes the sentinel file the skill gates on before starting. Run it once per machine:
 
 ```copy-code
-bash ~/.claude/skills/sisense-to-sigma/scripts/bootstrap.sh
+bash ~/.claude/plugins/cache/sigma-migration-skills/sisense-to-sigma/*/skills/sisense-to-sigma/scripts/bootstrap.sh
 ```
 
 A successful run ends with:

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-08-26
+lastUpdated: 2026-09-11
 
 # Migrating From Domo Made Easy
 
@@ -39,9 +39,6 @@ For the demonstration, we'll rebuild a dashboard called `Golden Orders Executive
 
 <img src="assets/mfdm_01.png" width="800"/>
 
-<aside class="positive">
-<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/sigma-migration-skills/tree/main/plugins/domo-to-sigma">twells89/sigma-migration-skills</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
-</aside>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Domo is the source, Sigma is the target. This QuickStart runs entirely off a screenshot of the source dashboard; no Domo credentials or API calls are used. Sigma reads live from the same warehouse tables the Domo dashboard was built on, so the layout and chart choices come from the image while the numbers come from the warehouse.
@@ -66,7 +63,7 @@ Sigma SEs, technical CSMs, and migration partners rebuilding a Domo dashboard fr
 ## The Domo Migration Skill Family
 Duration: 5
 
-`domo-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
+`domo-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -104,57 +101,74 @@ In this QuickStart we're in the first row — one dashboard, working from a scre
 ## Install and Configure the Skill
 Duration: 10
 
-First we need to clone the skill's GitHub repository and capture your Sigma credentials. Because this QuickStart runs in screenshot-only mode, there's no Domo credential step.
+First we need to install the skill plugins and capture your Sigma credentials. Because this QuickStart runs in screenshot-only mode, there's no Domo credential step.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [domo-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/domo-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Domo-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the domo-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mfdm_09.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set domo-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-The files will appear after this step:
+<img src="assets/mfdm_10.png" width="800"/>
 
-<img src="assets/mfdm_02b.png" width="800"/>
-
-**Step 5: Symlink domo-to-sigma into the Claude skills folder**
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/domo-migration-skills/domo-to-sigma ~/.claude/skills/domo-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink domo-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>domo-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mfdm_11.png" width="800"/>
+
+**Step 6: Install the Domo skill trio**<br>
+One plugin install brings in `domo-to-sigma` (the converter), `domo-assessment` (the scoping skill), and `domo-import-to-snowflake` (data landing — used later if your source data isn't reachable via the Domo API).
 
 ```copy-code
-ln -s ~/quickstarts-public/domo-migration-skills/domo-assessment ~/.claude/skills/domo-assessment
+/plugin install domo-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
@@ -193,7 +207,7 @@ EOF
 This single command verifies that all runtime dependencies are in place (Ruby, Python 3, Node.js), installs any that are missing without requiring admin access, confirms that credentials are readable in `~/.sigma-migration/env`, and writes the sentinel file the skill gates on before starting. Run it once per machine:
 
 ```copy-code
-bash ~/.claude/skills/domo-to-sigma/scripts/bootstrap.sh
+bash ~/.claude/plugins/cache/sigma-migration-skills/domo-to-sigma/*/skills/domo-to-sigma/scripts/bootstrap.sh
 ```
 
 A successful run ends with:
@@ -368,10 +382,10 @@ Right-click the image above and select `Save Image As`. Save it to your `Downloa
 domo_dashboad.png
 ```
 
-In a terminal, move the screenshot into the domo-migration-skills folder.
+In a terminal, move the screenshot into your migration workspace folder.
 
 ```copy-code
-mv ~/Downloads/domo_dashboad.png ~/quickstarts-public/domo-migration-skills/domo_dashboard.png
+mv ~/Downloads/domo_dashboad.png ~/sigma-migration-workspace/domo_dashboard.png
 ```
 
 <img src="assets/mfdm_04a.png" width="800"/>
@@ -432,7 +446,7 @@ Run /domo-to-sigma on the following. There is no live Domo instance and no Domo 
 
 Domo
 - No credentials, no API calls — screenshot-only.
-- Dashboard screenshot: ~/quickstarts-public/domo-migration-skills/domo_dashboard.png
+- Dashboard screenshot: ~/sigma-migration-workspace/domo_dashboard.png
 - Read the dashboard's cards, chart types, KPIs, and 4-collection layout directly from the image.
 - Every Domo card's "big number above the chart" header is its own companion KPI, per the skill's card-to-element rule (bead 08sf) — keep all 12 as separate KPI tiles alongside the 4 primary KPIs (16 KPI/chart elements total). Don't drop them for a cleaner-looking layout.
 

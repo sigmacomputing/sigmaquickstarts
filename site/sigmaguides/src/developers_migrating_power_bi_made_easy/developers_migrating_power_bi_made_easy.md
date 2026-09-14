@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-01
+lastUpdated: 2026-09-11
 
 # Migrating From Power BI Made Easy
 
@@ -69,7 +69,7 @@ Sigma SEs, technical CSMs, and migration partners running Power BI-to-Sigma conv
 ## The Power BI Migration Skill Family
 Duration: 5
 
-`powerbi-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
+`powerbi-to-sigma` is one of three skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -107,71 +107,78 @@ In this QuickStart we're in the first row (one report, data already in Snowflake
 ## Install and Configure the Skill
 Duration: 10
 
-First we need to clone the skill's GitHub repository, then run the setup scripts that capture your Sigma and Power BI credentials.
+First we need to install the skill plugins, then run the setup scripts that capture your Sigma and Power BI credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [powerbi-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/powerbi-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux. So <code>~/quickstarts-public</code> resolves to a <code>quickstarts-public/</code> folder directly inside your home directory.
+<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**<br>
-We'll clone into this folder in the next step.
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Power BI-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder** so the next command runs in the right working directory.
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**<br>
-The `--sparse` flag tells Git you'll choose which folders to fill in next. The trailing `.` clones into the current folder.
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the powerbi-migration-skills folder**<br>
-Every other QuickStart asset in the repo stays empty on disk.
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mpbi_33.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set powerbi-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-<img src="assets/mpbi_03.png" width="800"/>
+<img src="assets/mpbi_34.png" width="800"/>
 
-**Step 5: Create the Claude skills folder**<br>
-Claude Code does not create this directory automatically. The `-p` flag makes this safe to run even if it already exists.
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-mkdir -p ~/.claude/skills
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink powerbi-to-sigma into the Claude skills folder**<br>
-This lets Claude Code invoke `powerbi-to-sigma` as a skill.
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>powerbi-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mpbi_35.png" width="800"/>
+
+**Step 6: Install the Power BI skill trio**<br>
+One plugin install brings in `powerbi-to-sigma` (the converter), `powerbi-assessment` (the scoping skill), and `powerbi-import-to-snowflake` (data landing — used later for Import-mode models whose data isn't already in the warehouse).
 
 ```copy-code
-ln -s ~/quickstarts-public/powerbi-migration-skills/powerbi-to-sigma ~/.claude/skills/powerbi-to-sigma
+/plugin install powerbi-to-sigma@sigma-migration-skills
 ```
 
-**Step 7: Symlink powerbi-assessment**<br>
-Used to scope a Power BI tenant before conversion.
-
-```copy-code
-ln -s ~/quickstarts-public/powerbi-migration-skills/powerbi-assessment ~/.claude/skills/powerbi-assessment
-```
-
-Steps 6 and 7 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
-**Step 8: Install the Python dependencies the skill uses.**<br>
+**Step 7: Install the Python dependencies the skill uses.**<br>
 The skill calls Fabric and Power BI REST APIs from Python, including corporate-TLS handling for restricted networks.
 
 <aside class="negative">
@@ -179,10 +186,10 @@ The skill calls Fabric and Power BI REST APIs from Python, including corporate-T
 </aside>
 
 ```copy-code
-python3 -m pip install -r ~/.claude/skills/powerbi-to-sigma/scripts/requirements.txt
+python3 -m pip install -r ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-to-sigma/scripts/requirements.txt
 ```
 
-**Step 9: Capture your Sigma API credentials.**<br>
+**Step 8: Capture your Sigma API credentials.**<br>
 This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings.
 
 Run once per machine.
@@ -190,16 +197,16 @@ Run once per machine.
 If you don't already have credentials, see [Configure API credentials in Sigma](https://help.sigmacomputing.com/sigma-computing/docs/configure-api-credentials-and-connectors-in-sigma) — the skill needs `API access` credentials, not embed.
 
 ```copy-code
-ruby ~/.claude/skills/powerbi-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-to-sigma/scripts/setup.rb
 ```
 
 <img src="assets/mpbi_02.png" width="800"/>
 
-**Step 10: Authenticate with Power BI.**<br>
+**Step 9: Authenticate with Power BI.**<br>
 This script runs the device-code flow — it prints a Microsoft sign-in URL and a short code. 
 
 ```copy-code
-python3 ~/.claude/skills/powerbi-to-sigma/scripts/fabric-auth-check.py
+python3 ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-to-sigma/scripts/fabric-auth-check.py
 ```
 
 Open the URL in any browser, paste the code, and sign in with the account that owns the Power BI workspace you'll convert reports from.
@@ -220,11 +227,11 @@ Once authenticated, terminal will show:
 
 ![divider](assets/horizonalline.png)
 
-**Step 11: Verify the install.**<br>
+**Step 10: Verify the install.**<br>
 This lists every workspace and item visible to your signed-in account — confirms both Power BI authentication and the assessment skill's installation worked. The script writes its inventory to the path you pass in `--out`.
 
 ```copy-code
-python3 ~/.claude/skills/powerbi-assessment/scripts/fabric-inventory.py --out /tmp/pbi-inventory.json
+python3 ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-assessment/scripts/fabric-inventory.py --out /tmp/pbi-inventory.json
 ```
 
 <img src="assets/mpbi_06.png" width="800"/>
@@ -585,7 +592,7 @@ With a working Sigma data model and a near-complete workbook in place, the remai
 **Layout fidelity** — the skill embeds layout from the source PBIR, but complex absolute positioning sometimes lands rough. If charts stack vertically instead of mirroring the Power BI grid, run `put-layout.rb` against the workbook to restore positions.
 
 ```copy-code
-ruby ~/.claude/skills/powerbi-to-sigma/scripts/put-layout.rb \
+ruby ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-to-sigma/scripts/put-layout.rb \
   --workbook-id <your-workbook-id> \
   --layout /tmp/pbi-retail-analysis/layout.json
 ```
@@ -679,7 +686,7 @@ Ths following a just a "grab bag" of things that might come up during real conve
 
 - **Scatter chart missing its third measure (Size role):**<br> Sigma scatter on the ungrouped path doesn't support a third measure for point size. The converter drops the Size role and continues. If the third dimension is essential, switch to a grouped scatter or split into two adjacent scatters.
 
-- **Device-code login expired between runs:**<br> Tokens last about an hour. Rerun `python3 ~/.claude/skills/powerbi-to-sigma/scripts/fabric-auth-check.py` to refresh.
+- **Device-code login expired between runs:**<br> Tokens last about an hour. Rerun `python3 ~/.claude/plugins/cache/sigma-migration-skills/powerbi-to-sigma/*/skills/powerbi-to-sigma/scripts/fabric-auth-check.py` to refresh.
 
 - **Corporate TLS interception breaks Microsoft auth:**<br> The `truststore` package the skill uses honors the system trust store, which usually covers corporate CAs automatically. If it still fails, your proxy CA bundle isn't in the system store — install it via `Keychain Access` (macOS) or your OS's certificate manager.
 

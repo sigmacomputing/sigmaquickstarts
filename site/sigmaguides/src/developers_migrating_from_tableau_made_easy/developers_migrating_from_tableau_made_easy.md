@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-01
+lastUpdated: 2026-09-11
 
 # Migrating From Tableau Made Easy
 
@@ -74,9 +74,9 @@ Duration: 5
 |-------|------|----------------------|
 | `tableau-assessment` | Scoping | Auditing a Tableau Cloud site before committing to a conversion plan. Emits a ranked workbook shortlist and a cluster plan that `tableau-to-sigma` can consume in batch mode. |
 | `tableau-to-sigma` | Conversion | The subject of this QuickStart. Converts a single workbook (or a batch via cluster plan) to a Sigma workbook with verified data parity. |
-| `tableau-vds-to-snowflake` | Data landing | When the source data lives inside a Tableau extract and isn't already in the warehouse Sigma reads. Pulls the data via the VizQL Data Service and lands it in Snowflake. |
+| `tableau-vds-to-cdw` | Data landing | When the source data lives inside a Tableau extract and isn't already in the warehouse Sigma reads. Pulls the data via the VizQL Data Service and lands it in Snowflake or Databricks. |
 
-Here's how the three skills connect in a full migration — `tableau-assessment` hands the converter a cluster plan, `tableau-vds-to-snowflake` lands data into the warehouse when the source isn't already there, and `tableau-to-sigma` produces the Sigma workbook with a verified parity report:
+Here's how the three skills connect in a full migration — `tableau-assessment` hands the converter a cluster plan, `tableau-vds-to-cdw` lands data into the warehouse when the source isn't already there, and `tableau-to-sigma` produces the Sigma workbook with a verified parity report:
 
 <img src="assets/tts_family_diagram.png" width="800"/>
 
@@ -93,12 +93,12 @@ In this QuickStart we're in the first row (one workbook, data already in Snowfla
 | Your situation | Skill(s) to use |
 |----------------|-----------------|
 | 1 workbook, data already in your warehouse | `tableau-to-sigma` |
-| 1 workbook, data only in a Tableau extract | `tableau-vds-to-snowflake` first, then `tableau-to-sigma` |
-| 10+ workbooks (any data source) | `tableau-assessment` → `tableau-to-sigma` in batch mode; add `tableau-vds-to-snowflake` per-datasource where needed |
+| 1 workbook, data only in a Tableau extract | `tableau-vds-to-cdw` first, then `tableau-to-sigma` |
+| 10+ workbooks (any data source) | `tableau-assessment` → `tableau-to-sigma` in batch mode; add `tableau-vds-to-cdw` per-datasource where needed |
 | Auditing BI sprawl without converting yet | `tableau-assessment` only |
 | Converting a TDS/TDSX (Tableau data source file) to a Sigma data model, no workbook | `sigma-data-model` converter (separate skill in the `sigma-skills` repo) |
 
-For batch migrations the typical sequence is `tableau-assessment` → `tableau-vds-to-snowflake` (where needed) → `tableau-to-sigma` per workbook. The `Scaling Up` section later walks through that in more detail.
+For batch migrations the typical sequence is `tableau-assessment` → `tableau-vds-to-cdw` (where needed) → `tableau-to-sigma` per workbook. The `Scaling Up` section later walks through that in more detail.
 
 <aside class="negative">
 <strong>NOTE:</strong><br> As the skill runs, you'll see filenames and log lines that reference internal phase numbers (e.g., <code>phase6-parity.rb</code>). Those belong to the skill's own internal numbering — don't worry about matching them to this QuickStart's sections (<code>Run the Conversion</code>, <code>Discovering the Source</code>, <code>Building the Data Model</code>, <code>Building the Sigma Workbook</code>, <code>Verifying Data Parity</code>). The full mapping is documented in the skill's <code>SKILL.md</code>.
@@ -110,78 +110,78 @@ For batch migrations the typical sequence is `tableau-assessment` → `tableau-v
 ## Install and Configure the Skill
 Duration: 10
 
-First we need to clone the skill's GitHub repository, then run the setup scripts that capture your Sigma and Tableau credentials.
+First we need to install the skill plugins, then run the setup scripts that capture your Sigma and Tableau credentials.
 
-The three skills live in `sigmacomputing/quickstarts-public` under [tableau-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/tableau-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux. So <code>~/quickstarts-public</code> resolves to a <code>quickstarts-public/</code> folder directly inside your home directory.
+<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**<br>
-We'll clone into this folder in the next step.
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Tableau-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder** so the next command runs in the right working directory.
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**<br>
-The `--sparse` flag tells Git you'll choose which folders to fill in next. The trailing `.` clones into the current folder.
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the tableau-migration-skills folder**<br>
-Every other QuickStart asset in the repo stays empty on disk.
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mftb_24.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set tableau-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-<img src="assets/mftb_01.png" width="800"/>
+<img src="assets/mftb_25.png" width="800"/>
 
-**Step 5: Create the Claude skills folder**<br>
-Claude Code does not create this directory automatically. The `-p` flag makes this safe to run even if it already exists.
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-mkdir -p ~/.claude/skills
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink tableau-to-sigma into the Claude skills folder**<br>
-This lets Claude Code invoke `tableau-to-sigma` as a skill.
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>tableau-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mftb_26.png" width="800"/>
+
+**Step 6: Install the Tableau skill trio**<br>
+One plugin install brings in `tableau-to-sigma` (the converter), `tableau-assessment` (the scoping skill), and `tableau-vds-to-cdw` (data landing — used later if your source data isn't already in the warehouse).
 
 ```copy-code
-ln -s ~/quickstarts-public/tableau-migration-skills/tableau-to-sigma ~/.claude/skills/tableau-to-sigma
+/plugin install tableau-to-sigma@sigma-migration-skills
 ```
 
-**Step 7: Symlink tableau-assessment**<br>
-Used to scope a Tableau site before conversion.
-
-```copy-code
-ln -s ~/quickstarts-public/tableau-migration-skills/tableau-assessment ~/.claude/skills/tableau-assessment
-```
-
-**Step 8: Symlink tableau-vds-to-snowflake**<br>
-Used to land Tableau extracts into Snowflake when the source data isn't already in your warehouse.
-
-```copy-code
-ln -s ~/quickstarts-public/tableau-migration-skills/tableau-vds-to-snowflake ~/.claude/skills/tableau-vds-to-snowflake
-```
-
-Steps 6-8 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
-**Step 9: Capture your Sigma API credentials.**<br>
+**Step 7: Capture your Sigma API credentials.**<br>
 This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_SECRET` and writes them into Claude's settings.
 
 Run once per machine.
@@ -189,12 +189,12 @@ Run once per machine.
 If you don't already have credentials, see [Configure API credentials in Sigma](https://help.sigmacomputing.com/sigma-computing/docs/configure-api-credentials-and-connectors-in-sigma) — the skill needs `API access` credentials, not embed.
 
 ```copy-code
-ruby ~/.claude/skills/tableau-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/tableau-to-sigma/*/skills/tableau-to-sigma/scripts/setup.rb
 ```
 
 <img src="assets/mftb_02.png" width="800"/>
 
-**Step 10: Capture your Tableau credentials.**<br>
+**Step 8: Capture your Tableau credentials.**<br>
 The next script prompts for four values, in order:
 
 | Prompt | What to paste | Example |
@@ -209,7 +209,7 @@ If your full Tableau URL looks like `https://us-east-1.online.tableau.com/#/site
 Also run once per machine.
 
 ```copy-code
-ruby ~/.claude/skills/tableau-to-sigma/scripts/setup-tableau.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/tableau-to-sigma/*/skills/tableau-to-sigma/scripts/setup-tableau.rb
 ```
 
 The response will be:
@@ -379,7 +379,7 @@ For this demo we'll run the conversion against the `Superstore` dashboard on you
 <aside class="positive">
 <strong>NOTE:</strong><br> If you still have Claude Code open from the install verify step, the skill's preamble is already waiting for your dashboard URL — paste it at that prompt.
 
-If you closed the session, type <code>claude</code> in your <code>~/quickstarts-public</code> folder to start a new one. Either way, the skill writes output to <code>/tmp/&lt;workbook-slug&gt;/</code> regardless of where you started.
+If you closed the session, type <code>claude</code> in your <code>~/sigma-migration-workspace</code> folder to start a new one. Either way, the skill writes output to <code>/tmp/&lt;workbook-slug&gt;/</code> regardless of where you started.
 
 The order of prompts from Claude will be a little different, but either way works.
 </aside>
@@ -417,7 +417,7 @@ Database: QUICKSTARTS
 Schema: TABLEAU_SUPERSTORE
 ```
 
-The prompt is driven by [prompt-data-location.rb](https://github.com/sigmacomputing/quickstarts-public/blob/main/tableau-migration-skills/tableau-to-sigma/scripts/prompt-data-location.rb) in the skill repo — answering this once up front saves the skill from brute-force probing every Sigma connection looking for the source tables later (which gets slow on orgs with many connections).
+The prompt is driven by [prompt-data-location.rb](https://github.com/sigmacomputing/sigma-migration-skills/blob/main/plugins/tableau-to-sigma/skills/tableau-to-sigma/scripts/prompt-data-location.rb) in the skill repo — answering this once up front saves the skill from brute-force probing every Sigma connection looking for the source tables later (which gets slow on orgs with many connections).
 
 We are asked to approve our choices:
 
@@ -1230,7 +1230,7 @@ Duration: 5
 For multi-workbook migrations (10+ workbooks at once), `tableau-to-sigma` is one of three skills you'll use together. The batch flow specifically pairs the converter with the `tableau-assessment` skill:
 
 1. `tableau-assessment` inventories the Tableau Cloud site (workbooks, datasources, refresh history, license posture, per-workbook complexity from a `.twb` gap-scan) and emits two artifacts: a shareable readout HTML, and a `batch-plan.json` with wave-by-wave subagent briefs. Workbooks are clustered by shared warehouse tables so workbooks that should share a DM build a leader DM first and followers reuse it.
-2. For any cluster whose data *isn't* already in the warehouse, run `tableau-vds-to-snowflake` per datasource before kicking off the cluster's conversion wave. Sigma needs warehouse-native data; the converter can't operate on a Tableau-extract-only datasource.
+2. For any cluster whose data *isn't* already in the warehouse, run `tableau-vds-to-cdw` per datasource before kicking off the cluster's conversion wave. Sigma needs warehouse-native data; the converter can't operate on a Tableau-extract-only datasource.
 3. The conversation-layer agent fires each conversion wave as a parallel batch of `Agent()` calls, each carrying a self-contained brief generated by `tableau-to-sigma`'s `scripts/orchestrate-batch.rb` companion in `tableau-assessment`. Cluster leaders build the DM; followers reuse it via `find-or-pick-dm.rb` + `inspect-dm-shape.rb`. Continue-on-failure semantics mean a single broken workbook doesn't block the rest of the batch.
 
 Per-follower real time is typically 6-8 min — saves the 2-3 minutes of DM-build work plus most of discovery by reusing the leader's artifacts.
@@ -1253,7 +1253,7 @@ Duration: 5
 
   The most common culprit for the Phase 0c bypass is `superstore_location.md`. Don't blindly nuke the whole directory — some memories (your role, API base, extract-drift parity-mode) are useful operational guidance.
 
-  The directory name is your launch path with `/` swapped for `-`, so `~/quickstarts-public` becomes `-Users-<you>-quickstarts-public`.
+  The directory name is your launch path with `/` swapped for `-`, so `~/sigma-migration-workspace` becomes `-Users-<you>-sigma-migration-workspace`.
   - **Sigma's `Trash`** — the data model and workbook from a prior run land here on delete. Sigma's UI can't permanently purge them today, but `find-or-pick-dm.rb` filters out `isArchived: true` items so they don't bias the picker. Safe to leave in Trash.
 
 - **Three workbooks in My Documents:**<br> POST is create-only; each retry creates a new workbook. Run `ruby scripts/cleanup-orphan-workbooks.rb --workdir /tmp/<name>` to delete all-but-the-most-recent ID via `DELETE /v2/files/{id}`.
@@ -1269,13 +1269,13 @@ Duration: 5
 - **Sigma MCP query 401s mid-Phase 6:**<br> The MCP session has staled. Re-call `mcp__sigma-mcp-v2__begin_session` and retry the query. Do not abandon Phase 6 over a recoverable auth error.
 
 - **"Table not found" or "Connection has no access" during data-model build:**<br>
- The warehouse table the Tableau workbook reads isn't in any Sigma connection your user can reach. Either (a) ask to grant Sigma access to the existing warehouse table, or (b) land the Tableau datasource into a fresh warehouse table using the sibling `tableau-vds-to-snowflake` skill, then re-run `tableau-to-sigma`. The skill explicitly bails before authoring a broken spec.
+ The warehouse table the Tableau workbook reads isn't in any Sigma connection your user can reach. Either (a) ask to grant Sigma access to the existing warehouse table, or (b) land the Tableau datasource into a fresh warehouse table using the sibling `tableau-vds-to-cdw` skill, then re-run `tableau-to-sigma`. The skill explicitly bails before authoring a broken spec.
 
 - **`POST /v2/workbooks/spec` returns 404:**<br> The `Workbook as Code` feature isn't enabled on your Sigma org. File a request with your internal Sigma support / CSM team to enable it on your org, then re-run. Validate by trying `GET /v2/workbooks/<any-workbook-id>/spec` in Postman — a `200` with a JSON body confirms the flag is on; a `404` means it's still off.
 
 - **Snowsight: "This role cannot create a table in QUICKSTARTS.TABLEAU_SUPERSTORE":**<br> The role active in the Snowsight UI (top-right role badge) isn't the same as the role you set in your worksheet with `USE ROLE`. The load wizard uses the UI's active role, not the worksheet's. Click the role badge in the top-right and switch to `ACCOUNTADMIN` (or the role that owns the schema) before re-running the load.
 
-- **Setup script ran but `ruby ~/.claude/skills/tableau-to-sigma/scripts/setup.rb` reports "No such file or directory":**<br> The symlinks in `~/.claude/skills/` point at `~/quickstarts-public/...`, but `~/quickstarts-public/` doesn't actually exist on disk. You skipped (or didn't complete) Steps 1–4 of the install. Run `ls ~/quickstarts-public/tableau-migration-skills/tableau-to-sigma/` to confirm — if it errors, re-run the clone steps from the install section.
+- **Setup script reports "No such file or directory":**<br> The `*` in the `ruby ~/.claude/plugins/cache/sigma-migration-skills/tableau-to-sigma/*/skills/tableau-to-sigma/scripts/setup.rb` command has nothing to match — the plugin isn't installed yet. Run `claude plugin list` to confirm `tableau-to-sigma@sigma-migration-skills` shows as installed; if it doesn't, re-run Steps 4–6 of the install section.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -1292,7 +1292,7 @@ The techniques worth carrying into your next migration:
 - **Treat the data-location answer as part of the spec.** Answering it once up front skips the skill probing every Sigma connection on your org, and the answer is part of the recoverable state if you need to re-run.
 - **Use the four-gate hard check as the "done" signal**, not a visual look-over. A parity check that passes four gates is a much stronger guarantee than "the dashboard looks right."
 
-When you're ready to scale past a single workbook, `tableau-assessment` produces the cluster plan and `tableau-vds-to-snowflake` lands Tableau-only datasources into the warehouse — the same converter then runs in batch mode against the result. The narrow conversion you just walked through is the building block for migrations of dozens or hundreds of workbooks.
+When you're ready to scale past a single workbook, `tableau-assessment` produces the cluster plan and `tableau-vds-to-cdw` lands Tableau-only datasources into the warehouse — the same converter then runs in batch mode against the result. The narrow conversion you just walked through is the building block for migrations of dozens or hundreds of workbooks.
 
 <!-- tts_layout_grid.png -->
 

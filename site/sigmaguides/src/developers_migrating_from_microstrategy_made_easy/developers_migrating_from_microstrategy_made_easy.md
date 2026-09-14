@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-01
+lastUpdated: 2026-09-11
 
 # Migrating From MicroStrategy Made Easy
 
@@ -110,53 +110,74 @@ In this QuickStart we're in the first row — one MicroStrategy dossier whose cl
 ## Install and Configure the Skill
 Duration: 15
 
-First we need to clone the skill's GitHub repository, configure MicroStrategy REST credentials, and capture your Sigma credentials.
+First we need to install the skill plugins, configure MicroStrategy REST credentials, and capture your Sigma credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [microstrategy-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/microstrategy-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is MicroStrategy-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the microstrategy-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mstr_09.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set microstrategy-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-**Step 5: Symlink microstrategy-to-sigma into the Claude skills folder**
+<img src="assets/mstr_10.png" width="800"/>
+
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/microstrategy-migration-skills/microstrategy-to-sigma ~/.claude/skills/microstrategy-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink microstrategy-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>microstrategy-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mstr_11.png" width="800"/>
+
+**Step 6: Install the MicroStrategy skill pair**<br>
+One plugin install brings in both `microstrategy-to-sigma` (the converter) and `microstrategy-assessment` (the scoping skill).
 
 ```copy-code
-ln -s ~/quickstarts-public/microstrategy-migration-skills/microstrategy-assessment ~/.claude/skills/microstrategy-assessment
+/plugin install microstrategy-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
@@ -179,7 +200,7 @@ This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_S
 Run once per machine.
 
 ```copy-code
-ruby ~/.claude/skills/microstrategy-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/microstrategy-to-sigma/*/skills/microstrategy-to-sigma/scripts/setup.rb
 ```
 
 ![divider](assets/horizonalline.png)
@@ -190,7 +211,7 @@ This script prompts for the Library URL, username, password, and optional projec
 Run once per machine.
 
 ```copy-code
-ruby ~/.claude/skills/microstrategy-to-sigma/scripts/setup-microstrategy.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/microstrategy-to-sigma/*/skills/microstrategy-to-sigma/scripts/setup-microstrategy.rb
 ```
 
 When the script asks for the Library URL, use the form below as a template. **Replace the host with your own tenant's hostname** (visible in your browser's address bar when you're logged into MicroStrategy Cloud). The `/MicroStrategyLibrary` suffix is required for both Cloud and on-prem deployments — the REST API lives under that path, and dropping it returns `404` on every call:
@@ -208,7 +229,7 @@ MicroStrategy uses session-based auth — there's no API key concept; the skill 
 Verify auth works:
 
 ```copy-code
-source ~/.sigma-migration/env && python3 ~/.claude/skills/microstrategy-to-sigma/scripts/mstr.py
+source ~/.sigma-migration/env && python3 ~/.claude/plugins/cache/sigma-migration-skills/microstrategy-to-sigma/*/skills/microstrategy-to-sigma/scripts/mstr.py
 ```
 
 You should see a successful login probe and a list of projects visible to your user.
