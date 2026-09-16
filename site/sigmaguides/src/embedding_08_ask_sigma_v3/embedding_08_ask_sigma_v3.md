@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-10-11
+lastUpdated: 2026-09-11
 
 # Embedding 08: Embedding Sigma Assistant
 

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-11
+lastUpdated: 2026-09-15
 
 # How to Get Started - A Guide for Sigma Administrators
 
@@ -390,6 +390,22 @@ For the full feature spectrum beyond Assistant — Formula Assistant, Building w
 
 For QuickStarts, see [Fundamentals 01: Overview - AI in Sigma](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html#4) and [AI Apps Fundamentals](https://quickstarts.sigmacomputing.com/guide/dataaps_fundamentals/index.html)
 
+### Configure Chat History
+
+Also on the `Assistant` tab, decide whether conversations with Sigma agents are saved and resumable. Under `Chat history`, click `Edit` to turn it on and choose a retention period — 30, 60, or 90 days, measured from when the last message was sent in a conversation. Enabling it requires that your organization has granted Sigma storage rights for both inputs and outputs; chat data is stored by Sigma in the same cloud and region as your Sigma organization, not in your data platform.
+
+While you're on the AI settings page, the `General AI` tab's `Organization AI usage configuration` panel is a related setting worth pointing at now — it's a separate feature from chat history (it powers the AI usage table covered in Set Cost Controls below), but it's configured from the same page. Click `Edit` to set the connection, database, and schema where Sigma should write AI usage data:
+
+<img src="assets/agsg_22.png" width="800"/>
+
+Chat history is scoped narrowly: it's per-user — each person only sees their own past conversations — and applies only to agent conversations inside workbook chat elements, not the homepage Assistant or warehouse agents. Turning it off stops new conversations from being stored and deletes previously stored ones once their retention period expires.
+
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> Chat history saves users from re-explaining context every time they return to a workbook, but it's also a data-retention decision — the 30/60/90-day window and the storage-rights requirement give you deliberate control over how long conversational data persists, rather than leaving it open-ended.
+</aside>
+
+For setup steps, see [Configure chat history for agents](https://help.sigmacomputing.com/docs/configure-chat-history-agents)
+
 ### MCP Integrations
 
 Model Context Protocol (MCP) is the standard that lets AI tools and agents connect to outside systems and data in a consistent way, instead of every integration needing its own custom-built connection. Sigma's MCP support works in both directions, and either one reuses your existing account types and permissions — neither creates a new governance surface to manage.
@@ -629,6 +645,7 @@ Use this checklist to confirm you've addressed each planning area in this guide.
 ### AI Features and Strategy
 ☐ Configured an AI provider<br>
 ☐ Decided which agents users can access<br>
+☐ Decided whether to enable chat history and set a retention period<br>
 ☐ Decided whether to enable MCP integrations (inbound and/or outbound)<br>
 ☐ Considered agent skill configuration for builders<br>
 ☐ Set cost controls (token limits, AI usage table)<br>

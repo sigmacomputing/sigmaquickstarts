@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-23
+lastUpdated: 2026-09-16
 
 # Build Conversational AI Apps with Chat Elements and Snowflake Cortex
 
@@ -89,8 +89,17 @@ A chat element is the user interface component that displays on a workbook page.
 - Connects to a single Sigma agent
 - Displays responses (text, tables, and visualizations)
 - Surfaces approval prompts when the agent wants to run an action
+- Saves conversations automatically, so a user can resume one later
 
 Think of the chat element as the visible UI, while the Sigma agent is the invisible brain behind it.
+
+Conversations with an agent are saved automatically, so a user can leave a workbook and pick up a conversation later instead of starting over. Clicking `View chat history` in the chat element header shows past conversations by title; selecting one resumes it — using whichever agent is currently assigned to that chat element, even if a different agent handled the original conversation. Chat history is only available if an administrator has enabled it for your organization.
+
+This video shows how to navigate the chat history:
+
+<video src="assets/agentschathistory.mp4"></video>
+
+For more on managing previous conversations, see [Review and restart previous conversations](https://help.sigmacomputing.com/docs/chat-with-agent#review-and-restart-previous-conversations) and [Configure chat history for agents](https://help.sigmacomputing.com/docs/configure-chat-history-agents)
 
 ### Key distinction
 The chat element and the Sigma agent are two separate things, not interchangeable:
