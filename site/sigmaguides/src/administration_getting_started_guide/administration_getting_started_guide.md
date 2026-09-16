@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-15
+lastUpdated: 2026-10-16
 
 # How to Get Started - A Guide for Sigma Administrators
 
@@ -392,19 +392,27 @@ For QuickStarts, see [Fundamentals 01: Overview - AI in Sigma](https://quickstar
 
 ### Configure Chat History
 
-Also on the `Assistant` tab, decide whether conversations with Sigma agents are saved and resumable. Under `Chat history`, click `Edit` to turn it on and choose a retention period — 30, 60, or 90 days, measured from when the last message was sent in a conversation. Enabling it requires that your organization has granted Sigma storage rights for both inputs and outputs; chat data is stored by Sigma in the same cloud and region as your Sigma organization, not in your data platform.
+Also on the `Assistant` tab, below `Sigma Assistant data sources`, decide whether conversations with Sigma agents are saved and resumable. Toggle `Chat history` on and choose `Store on Sigma for` — `30`, `60`, or `90` days:
 
-While you're on the AI settings page, the `General AI` tab's `Organization AI usage configuration` panel is a related setting worth pointing at now — it's a separate feature from chat history (it powers the AI usage table covered in Set Cost Controls below), but it's configured from the same page. Click `Edit` to set the connection, database, and schema where Sigma should write AI usage data:
+<img src="assets/agsg_23.png" width="800"/>
 
-<img src="assets/agsg_22.png" width="800"/>
+<aside class="negative">
+<strong>NOTE:</strong><br> AI inputs and outputs stored in chat history may include customer data.
+</aside>
+
+This control is gated by your organization's agreement with Sigma — only organizations with AI terms in their MSA, or a signed AI addendum, can turn it on. If you don't see the `Chat history` panel on your `Assistant` tab, check with your Sigma account team on getting that in place.
 
 Chat history is scoped narrowly: it's per-user — each person only sees their own past conversations — and applies only to agent conversations inside workbook chat elements, not the homepage Assistant or warehouse agents. Turning it off stops new conversations from being stored and deletes previously stored ones once their retention period expires.
 
 <aside class="positive">
-<strong>WHY IT MATTERS:</strong><br> Chat history saves users from re-explaining context every time they return to a workbook, but it's also a data-retention decision — the 30/60/90-day window and the storage-rights requirement give you deliberate control over how long conversational data persists, rather than leaving it open-ended.
+<strong>WHY IT MATTERS:</strong><br> Chat history saves users from re-explaining context every time they return to a workbook, but it's also a data-retention decision — the 30/60/90-day window gives you deliberate control over how long conversational data persists, rather than leaving it open-ended.
 </aside>
 
 For setup steps, see [Configure chat history for agents](https://help.sigmacomputing.com/docs/configure-chat-history-agents)
+
+While you're on the AI settings page, the `General AI` tab's `Organization AI usage configuration` panel is a related setting worth pointing at now — it's a separate feature from chat history (it powers the AI usage table covered in Set Cost Controls below), but it's configured from the same page. Click `Edit` to set the connection, database, and schema where Sigma should write AI usage data:
+
+<img src="assets/agsg_22.png" width="800"/>
 
 ### MCP Integrations
 
