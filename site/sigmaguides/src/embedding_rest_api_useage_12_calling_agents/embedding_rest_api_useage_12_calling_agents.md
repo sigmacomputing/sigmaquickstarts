@@ -71,24 +71,43 @@ Rather than reusing the shared `Embed_API_QuickStart` workbook from earlier in t
 
 In Sigma, click `Create New` > `Workbook`.
 
-Click `Save as` and name it:
+Click `Save as`, name it `Agent API QuickStart`, and save it in the `Embed_Users` workspace created earlier in this series:
 ```copy-code
 Agent API QuickStart
 ```
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Save the workbook inside <code>Embed_Users</code>, not your personal folder. The sample app's workbook picker only lists workbooks whose path matches the <code>WORKSPACE_NAME</code> value in <code>.env</code> — a workbook saved elsewhere won't show up there.
+</aside>
 
 Add a table to the workbook as a data source — any table from a connection you have access to works.
 
 In the right panel, click the `Agents` tab.
 
-<!-- <img src="assets/api_agents_01.png" width="800"/> -->
+<img src="assets/api_agents_01.png" width="800"/>
 
-Click `+` to create a new agent, give it a name, point it at the table you just added as a data source, and add a short instruction such as:
+Click `+` to create a new agent. Double-click the default `Agent 1` name and rename it to something descriptive:
+```copy-code
+Dataset Assistant
+```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Naming the agent matters here — the sample page's agent picker displays this name (via the API's <code>agentName</code> field), so a default <code>Agent 1</code> makes agents hard to tell apart once you have more than one.
+</aside>
+
+Point it at the table you just added as a data source, and add a short instruction such as:
 
 ```copy-code
 You are a helpful data assistant. Answer questions using the data sources configured for this agent.
 ```
 
-Click `Save`.
+<img src="assets/api_agents_01a.png" width="800"/>
+
+Click `Save`, then click `Publish` on the workbook.
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> The Agent API reads from the workbook's <strong>published</strong> version, not the draft. If you rename the agent, change its instructions, or add data sources later, you need to <code>Publish</code> again before those changes show up in an API call.
+</aside>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> A chat element isn't required for this QuickStart. The agent lives at the workbook level independent of any chat element — we're calling it directly, so no chat element needs to be on the page.
@@ -125,7 +144,7 @@ http://localhost:3000
 
 Select the `Calling Sigma Agents` page and click `Go`.
 
-<!-- <img src="assets/api_agents_02.png" width="800"/> -->
+<img src="assets/api_agents_02.png" width="800"/>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Implementation details are covered in the README and are not repeated in this QuickStart. A button is provided on the webpage for quick access.
