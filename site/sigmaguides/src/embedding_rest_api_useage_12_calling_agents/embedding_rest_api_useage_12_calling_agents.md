@@ -167,7 +167,7 @@ Select the `Calling Sigma Agents` page and click `Go`.
 <img src="assets/api_agents_02.png" width="650"/>
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Implementation details are covered in the README and are not repeated in this QuickStart. A button is provided on the webpage for quick access.
+<strong>IMPORTANT:</strong><br> Most implementation details (routing, environment setup, error handling) are covered in the README rather than repeated here. The actual request code that calls Sigma's Agent API is shown inline in the next section, since that's the point of this QuickStart. A button is provided on the webpage for quick access to the full README.
 </aside>
 
 ### Find an agent to call
@@ -192,6 +192,27 @@ The page lists the results in a dropdown. Select the agent you configured in the
 Duration: 8
 
 With a workbook and agent selected, you're ready to call it. We'll start with a single non-streaming call, then switch on streaming to see the difference.
+
+### The actual request
+
+Underneath the UI, the sample app's backend makes a straightforward proxy call to Sigma — this is the part of the code that actually matters for this QuickStart:
+
+```javascript
+// Non-streaming: one request, one JSON response
+const response = await axios.post(url, req.body, { headers });
+res.json(response.data);
+
+// Streaming: same request, but the response is piped straight through
+const upstream = await axios.post(url, req.body, {
+  headers,
+  responseType: "stream",
+});
+upstream.data.pipe(res);
+```
+
+`url` is `{BASE_URL}/workbooks/{workbookId}/agents/{agentId}`, `headers` carries the bearer token from client credentials, and `req.body` is whatever the caller sent — `messages`, `stream`, and `responseFormat` all pass through untouched. Everything else in the route (auth token handling, error responses) is in `routes/api/agents.js`, covered in the README.
+
+### Send a non-streaming message
 
 ### Send a non-streaming message
 
