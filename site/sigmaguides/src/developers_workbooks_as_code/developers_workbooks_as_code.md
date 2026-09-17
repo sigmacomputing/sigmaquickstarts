@@ -3,10 +3,10 @@ id: developers_workbooks_as_code
 summary: developers_workbooks_as_code
 categories: developers
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-08-19
+tags: default
+lastUpdated: 2026-09-16
 
 # Manage Sigma Workbooks with Git and CI/CD
 
@@ -300,13 +300,13 @@ The demo workbook this spec builds is **Plugs Electronics — Sales Overview**, 
 
 ### Basic Structure
 
-At the top level, a workbook spec has a name, an optional folder, and a `document` block containing everything else:
+At the top level, a workbook spec has a name, an optional folder, and a `contents` block containing everything else:
 
 ```code
 name: "Plugs Electronics — Sales Overview"
 folderId: "YOUR-FOLDER-ID-HERE"
 description: "Sales performance dashboard managed via GitHub."
-document:
+contents:
   kind: workbook
   schemaVersion: 1
   pages: [...]
@@ -317,12 +317,12 @@ document:
 
 - `name` / `description`: Display name and description shown in Sigma
 - `folderId`: Where the workbook lives - find this the same way you'd find any folder ID, via the URL or `GET /v2/files`
-- `document.pages`: An array of pages - just page metadata (id, name, visibility), not their contents
-- `document.elements`: A single flat array holding every element in the workbook - which page each one belongs to is determined entirely by the `layout` block, covered below, not by anything on the element itself
-- `document.layout`: An XML block placing every element - on every page, including hidden ones - onto a grid
+- `contents.pages`: An array of pages - just page metadata (id, name, visibility), not their contents
+- `contents.elements`: A single flat array holding every element in the workbook - which page each one belongs to is determined entirely by the `layout` block, covered below, not by anything on the element itself
+- `contents.layout`: An XML block placing every element - on every page, including hidden ones - onto a grid
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> This is one of the areas of the spec that's changed recently: elements used to nest directly under each page (<code>document.pages[].elements</code>). The API now rejects that shape - elements live in one flat <code>document.elements</code> array instead. If something you read elsewhere shows the old nested form, trust what's in your cloned <code>workbook.yaml</code> and what the API actually accepts.
+<strong>IMPORTANT:</strong><br> Elements don't nest directly under each page (<code>contents.pages[].elements</code>) - the API rejects that shape. They live in one flat <code>contents.elements</code> array instead, and <code>contents.layout</code> (covered below) is what actually assigns each one to a page. If something you read elsewhere shows the old nested form, or wraps everything in a <code>document</code> key instead of <code>contents</code>, trust what's in your cloned <code>workbook.yaml</code> and what the API actually accepts.
 </aside>
 
 ### Pages and Hidden Data Pages
@@ -343,7 +343,7 @@ Setting `visibility: hidden` on the `Data` page keeps the raw source table out o
 
 ### The Source Element
 
-`document.elements` holds every element in the workbook. The source element for the hidden `Data` page is a `table` sourced from inline SQL:
+`contents.elements` holds every element in the workbook. The source element for the hidden `Data` page is a `table` sourced from inline SQL:
 
 ```code
 - id: sales-source
@@ -437,7 +437,7 @@ The `layout` block is XML describing a 24-column grid, one `<Page>` per page. Ea
 `gridColumn="1 / 13"` spans the left half of the page, `"13 / 25"` the right half. `Container` groups a set of elements (like the KPI cards) into their own sub-grid, so you can reposition the group without touching each element's coordinates individually.
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> This is the <em>only</em> place an element's page is determined - nesting an <code>&lt;Element&gt;</code> inside a given <code>&lt;Page&gt;</code> is what assigns it there, not any field on the element itself in <code>document.elements</code>. Every element needs a placement here, including elements on the hidden <code>Data</code> page. Skip it and deploy fails with <code>element 'sales-source' is not placed in layout</code>. Its position doesn't matter since the page is hidden, but it still needs its own <code>&lt;Page id="page-data"&gt;</code> block with the source element placed somewhere inside it.
+<strong>IMPORTANT:</strong><br> This is the <em>only</em> place an element's page is determined - nesting an <code>&lt;Element&gt;</code> inside a given <code>&lt;Page&gt;</code> is what assigns it there, not any field on the element itself in <code>contents.elements</code>. Every element needs a placement here, including elements on the hidden <code>Data</code> page. Skip it and deploy fails with <code>element 'sales-source' is not placed in layout</code>. Its position doesn't matter since the page is hidden, but it still needs its own <code>&lt;Page id="page-data"&gt;</code> block with the source element placed somewhere inside it.
 </aside>
 
 <aside class="positive">
@@ -467,7 +467,7 @@ The demo spec's source element runs custom SQL against a connection you choose. 
 The `workbook.yaml` file requires a `folderId` that needs to point at a real folder in your own org - the demo ships with a placeholder ("YOUR-FOLDER-ID-HERE") folder ID, which doesn't exist in your Sigma account. 
 
 <aside class="negative">
-<strong>NOTE:</strong><br> `PUT /v2/workbooks/{id}/spec` (deploy) doesn't check this against an existing workbook, so it's easy to miss, but `POST /v2/workbooks/spec/verify` (the validate step used on every pull request) does look it up - an unchanged `folderId` deploys fine here, then fails validation later with a confusing `404 No matching record`.
+<strong>NOTE:</strong><br> `PUT /v2/workbooks/{id}/contents` (deploy) never even sees this field - it only updates the workbook's contents, not its folder - so it's easy to miss, but the validate step used on every pull request does look it up - an unchanged `folderId` deploys fine here, then fails validation later with a confusing `404 No matching record`.
 </aside>
 
 Use an existing folder, or create a new one to keep this QuickStart's output together. Open it in Sigma and copy its ID from the URL.
@@ -582,11 +582,15 @@ If you're using VS Code, install these two extensions before you start editing:
 <strong>TIP:</strong><br> Using a different editor? Most modern editors have an equivalent YAML-aware linting plugin - the goal is the same either way: catch genuine syntax errors before you commit. Wrong-depth nesting mistakes still require a careful eye (or Indent Rainbow's visual cue) either way.
 </aside>
 
+<aside class="positive">
+<strong>TIP:</strong><br> Editing <code>workbook.yaml</code> with an AI coding assistant instead (Claude Code, Cursor, Codex, Snowflake Cortex)? Sigma publishes an official <a href="https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants">agent skills</a> package, including a <code>sigma-workbooks</code> skill that gives the assistant schema-aware guidance for exactly this kind of edit - on top of, not instead of, the git/CI workflow this QuickStart covers.
+</aside>
+
 ### Add a Gross Margin KPI
 
 Open `workbook.yaml` and search for the last KPI in the workbook (`Total Units Sold`).
 
-Add a new KPI element to `document.elements`, right before the `- id: chart-by-product` line:
+Add a new KPI element to `contents.elements`, right before the `- id: chart-by-product` line:
 
 <img src="assets/wac_14.png" width="800"/>
 
@@ -613,8 +617,8 @@ Add a new KPI element to `document.elements`, right before the `- id: chart-by-p
         text: Gross Margin
         fontSize: 16
       layout:
-        anchor: middle
-        verticalAnchor: start
+        anchor: center
+        verticalAnchor: top
       comparison:
         colorGood: '#16a34a'
         colorBad: '#dc2626'
@@ -770,14 +774,10 @@ There's no reconciliation between a git-driven deploy and an in-progress live ed
 
 Everything up to this point was triggered by hand, for the sake of seeing it work - `drift-check.yml`'s real job is running unattended, on its 6-hour schedule, so nobody has to remember to check. 
 
-When it pulls the live spec into a PR like this, expect a bit of noise beyond whatever change actually happened in the UI. The drift check only compares `document` (elements, layout, pages) to decide whether drift exists at all, so the top-level `name`, `folderId`, and `connectionId` formatting can show as "changed" even when nothing meaningful is different. These fields just come along for the ride once a real `document` difference triggers the pull.
+The drift check only compares `contents` (elements, layout, pages) to decide whether drift exists, and only rewrites that same block when it pulls the live spec into a PR - the top-level `name`, `folderId`, and `description` in `workbook.yaml` stay exactly as you last committed them either way.
 
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> You may see a drift PR even when nobody changed anything meaningful.
-<br><br>
-Drift detection compares the live spec against git as plain text, not as structurally-equal YAML - so a reordered column list, a quoting style change (<code>"abc-123"</code> vs <code>abc-123</code>), or stray trailing whitespace can trigger "drift detected" on their own, purely from how Sigma serializes the spec back out. 
-<br><br>
-Read the diff before deciding anything: if it's genuinely cosmetic, closing the PR without merging is fine - there's nothing to reconcile.
+<aside class="positive">
+<strong>NOTE:</strong><br> Comparison is JSON-structural, not a text diff - a reordered column list or a quoting style change won't trigger a false "drift detected" on its own. Still worth reading the diff before deciding: it tells you whether a change is genuinely meaningful, not just whether one exists.
 </aside>
 
 For example, after 6 hours, the schedule fires on its own and opens a PR without anyone triggering it:

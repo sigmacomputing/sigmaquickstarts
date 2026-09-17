@@ -2,6 +2,6 @@
   "visible": true,
   "title": "",
 
-  "message": "Introducing <strong>App Templates</strong> — 10 pre-built, fully working apps for shift management, revenue forecasting, ticket management, and more. Open a template, connect your data, and go live fast. <a href='https://quickstarts.sigmacomputing.com/?cat=apptemplates' target='_blank' style='color: #000000 !important;'><strong>EXPLORE APP TEMPLATES &#8594;</strong></a>"
+  "message": "Introducing <strong>Workbooks as Code</strong> — manage Sigma workbooks with git, pull requests, and CI/CD, just like the rest of your application stack. <a href='https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html?index=..%2F..index#0' target='_blank' style='color: #000000 !important;'><strong>GET STARTED &#8594;</strong></a>"
 
 }

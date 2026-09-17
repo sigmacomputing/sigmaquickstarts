@@ -1,6 +1,18 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Call Sigma Agents from Your Application",
+      "id": "embedding_rest_api_useage_12_calling_agents",
+      "category": "embedding",
+      "date": "Sep 17, 2026"
+    },
+    {
+      "title": "Manage Sigma Workbooks with Git and CI/CD",
+      "id": "developers_workbooks_as_code",
+      "category": "developers",
+      "date": "Sep 16, 2026"
+    },
+    {
       "title": "Build Web Search for a Sigma Agent",
       "id": "aiapps_web_search_agent",
       "category": "aiapps",
@@ -47,18 +59,6 @@
       "id": "snowflake_object_usage_template_setup",
       "category": "administration",
       "date": "July 22, 2026"
-    },
-    {
-      "title": "Automate Sigma from the Command Line with the Sigma CLI",
-      "id": "developers_sigma_cli",
-      "category": "developers",
-      "date": "July 13, 2026"
-    },
-    {
-      "title": "Unlocking Insights from Unstructured Text with a Sigma Agent",
-      "id": "aiapps_gong_call_analysis",
-      "category": "aiapps",
-      "date": "June 10, 2026"
     }
   ]
 }
