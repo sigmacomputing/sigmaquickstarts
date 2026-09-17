@@ -214,8 +214,6 @@ upstream.data.pipe(res);
 
 ### Send a non-streaming message
 
-### Send a non-streaming message
-
 We can use the default text in the `Message` box:
 ```copy-code
 Summarize this dataset.
