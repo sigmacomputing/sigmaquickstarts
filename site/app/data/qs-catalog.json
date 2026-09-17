@@ -125,7 +125,7 @@
       "title": "How to Get Started - A Guide for Sigma Administrators",
       "category": "administration",
       "summary": "Walks new Sigma administrators through a checklist of setup decisions: authentication, warehouse connections, AI configuration, branding, versioning, and training.",
-      "lastUpdated": "2026-08-11",
+      "lastUpdated": "2026-10-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_getting_started_guide/index.html"
     },
     {
@@ -181,7 +181,7 @@
       "title": "Build Conversational AI Apps with Chat Elements and Snowflake Cortex",
       "category": "aiapps",
       "summary": "Build a conversational AI app in Sigma using a chat element, a Sigma agent, and a Snowflake Cortex Agent — with optional write-back actions to an input table.",
-      "lastUpdated": "2026-06-23",
+      "lastUpdated": "2026-09-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html"
     },
     {
@@ -538,10 +538,10 @@
     },
     {
       "id": "developers_workbooks_as_code",
-      "title": "Manage Sigma Workbooks with Git and CI/CD",
+      "title": "Manage Sigma Workbooks as Code with Git and CI/CD",
       "category": "developers",
       "summary": "developers_workbooks_as_code",
-      "lastUpdated": "2026-09-16",
+      "lastUpdated": "2026-09-17",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html"
     },
     {
@@ -837,7 +837,7 @@
       "title": "Fundamentals 01: Overview",
       "category": "fundamentals",
       "summary": "Navigate Sigma's interface using sample retail data, learning core terminology, workbook structure, and how to create, save, and share a workbook, plus which QuickStart path fits your role.",
-      "lastUpdated": "2026-08-21",
+      "lastUpdated": "2026-09-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html"
     },
     {
@@ -909,7 +909,7 @@
       "title": "Fundamentals 08: Administration",
       "category": "Fundamentals",
       "summary": "Tour Sigma's administration area, covering instance management, connection setup, data governance rules, and user interaction configuration for admin-level accounts.",
-      "lastUpdated": "2026-05-06",
+      "lastUpdated": "2026-09-15",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html"
     },
     {
