@@ -13,7 +13,7 @@ lastUpdated: 2026-10-02
 
 September 4, 2026 changes: done
 September 11, 2026 changes: done
-September 18, 2026 changes:
+September 18, 2026 changes: done
 September 25, 2026 changes:
 
 Publish on October 2
@@ -64,6 +64,16 @@ Global rollouts often stall on a single unsupported language for one region's te
 
 For more information, see [Set organization language and formatting region](https://help.sigmacomputing.com/docs/manage-organization-language#supported-languages)
 
+### Audit log events for AI conversations (GA)
+The Sigma Audit Logs connection now includes an `AI_CONVERSATIONS` event category that records events related to AI interactions when chat history is enabled.
+
+For more information, see [Audit log events and metadata](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
+
+### Audit log events for AI settings (GA)
+The Sigma Audit Logs connection now includes an `AI_SETTINGS` event category that records events related to AI provider and source configuration.
+
+For more information, see [Audit log events and metadata](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
+
 ### Connect multiple Sigma organizations to one Slack workspace (GA)
 Multiple Sigma organizations can now connect to the same Slack workspace.
 
@@ -79,11 +89,21 @@ Administrators can now choose between write-only and read/write access when sett
 
 For more information, see [Manage Microsoft integration](https://help.sigmacomputing.com/docs/manage-microsoft-integration#permission-levels-beta)
 
+### View the code representation of a document (Beta)
+The code representation of a workbook, data model, or report can now be viewed directly in the Sigma UI from the document menu's `File` > `View code...` option.
+
+For more information, see [Manage data models as code](https://help.sigmacomputing.com/docs/manage-data-models-as-code), [Manage workbooks as code (Beta)](https://help.sigmacomputing.com/docs/manage-workbooks-as-code), and [Manage reports as code (Beta)](https://help.sigmacomputing.com/docs/manage-reports-as-code)
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
 ## AI
 Duration: 20
+
+### Assistant in build mode: new code-first architecture (Beta)
+Sigma Assistant in build mode now runs on a code-first architecture, improving build speed, data source search, and native feature support.
+
+For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
 ### Build workbooks and analyze data in ChatGPT using the Sigma plugin (GA) <img src="assets/heart_icon.png" width="25"/>
 The Sigma plugin for ChatGPT can now create and share Sigma workbooks directly from a natural-language analysis, in addition to searching, exploring, and analyzing data.
@@ -92,6 +112,27 @@ The Sigma plugin for ChatGPT can now create and share Sigma workbooks directly f
 July's launch of the ChatGPT plugin let users query Sigma data from a conversation. This extends that same conversation into a governed, shareable workbook — the analysis doesn't have to stay locked in a chat transcript to be useful to the rest of a team.
 
 For more information, see [Use the Sigma plugin for AI assistants](https://help.sigmacomputing.com/docs/use-the-sigma-plugin-for-ai-assistants)
+
+### Chat history for Sigma agents (Beta) <img src="assets/heart_icon.png" width="25"/>
+Conversations with Sigma agents can now retain chat history, with admins able to configure storage and retention for organizations that meet certain conditions.
+
+**WHY IT MATTERS:**<br>
+Without persistence, every agent conversation starts from zero, limiting agents to single-turn interactions. Chat history lets a conversation carry context across sessions, and gives compliance-minded organizations a retention story to point to instead of an open question.
+
+For more information, see [Configure chat history](https://help.sigmacomputing.com/docs/configure-chat-history-agents) and [Chat with Sigma agents](https://help.sigmacomputing.com/docs/chat-with-agent)
+
+### Migrate to Sigma with an AI assistant (Beta) <img src="assets/heart_icon.png" width="25"/>
+Migration skills for Sigma let an AI assistant rebuild source content — the dashboards, reports, and data models in another BI tool — as a Sigma document.
+
+**WHY IT MATTERS:**<br>
+This is the same AI-driven migration pattern behind the Migration QuickStarts family — Sigma now documents and supports it directly instead of leaving it as an unofficial pattern. It gives prospects and partners a sanctioned starting point for moving dashboards, reports, and data models off another BI tool without a full manual rebuild.
+
+For more information, see [Migrate to Sigma with an AI assistant](https://help.sigmacomputing.com/docs/migrate-to-sigma-with-an-ai-assistant)
+
+### New skills for creating workbooks and reports with an AI assistant (GA)
+The `sigma-workbooks` and `sigma-reports` agent skills give AI assistants reference materials and instructions for authoring the code representation of a workbook or report.
+
+For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -103,6 +144,19 @@ Duration: 20
 Databricks connection endpoints now include `enableHiveMetastore`, `usePython`, and `pythonComputeClusterId` fields for programmatic configuration.
 
 For more information, see [Get connection details](https://help.sigmacomputing.com/reference/get-connection), [List connections](https://help.sigmacomputing.com/reference/list-connections), [Create a connection](https://help.sigmacomputing.com/reference/create-connection), and [Update a connection](https://help.sigmacomputing.com/reference/update-connection)
+
+### Impersonate a user in API calls (GA) <img src="assets/heart_icon.png" width="25"/>
+A user assigned the Admin account type can impersonate other users in API calls — for example, to retrieve and display the contents of their Documents folder in embedded content.
+
+**WHY IT MATTERS:**<br>
+Embedded experiences often need to act on behalf of the end user rather than a shared service account. Admin-level impersonation makes that possible without provisioning and managing a credential for every embedded user.
+
+For more information, see [Impersonate users](https://help.sigmacomputing.com/docs/impersonate-users#impersonate-users-for-api-calls)
+
+### Manage workbooks from a code representation (Beta)
+The Sigma API can now retrieve, update, and create workbooks based on a JSON or YAML representation.
+
+For more information, see [Manage workbooks as code (Beta)](https://help.sigmacomputing.com/docs/manage-workbooks-as-code) and [Workbook representation example library](https://help.sigmacomputing.com/docs/workbook-representation-example-library)
 
 ### New account type permissions update endpoint (GA)
 Account type permissions can now be updated via a new endpoint to control feature access, with the response including license type.
@@ -119,6 +173,11 @@ A new endpoint lists API credentials, returning client ID, owner ID, and scopes,
 
 For more information, see [List API credentials](https://help.sigmacomputing.com/reference/list-credentials)
 
+### New API endpoints to list and run Sigma agents (Beta)
+Three new endpoints — List agents, List agents in a workbook, and Run a Sigma agent — let applications call Sigma agents programmatically to build conversational workflows.
+
+For more information, see [Call Sigma agents with the API](https://help.sigmacomputing.com/docs/call-agents-with-the-api)
+
 ### New API endpoints to manage audit logging for an organization (GA)
 Two new endpoints support getting and updating an organization's audit logging setting.
 
@@ -128,6 +187,11 @@ For more information, see [Get the audit logging setting for an organization](ht
 Two new endpoints support getting and updating an organization's CSV upload settings.
 
 For more information, see [Get the CSV upload settings](https://help.sigmacomputing.com/reference/get-csv-upload-settings) and [Update the CSV upload settings](https://help.sigmacomputing.com/reference/update-csv-upload-settings)
+
+### New API endpoints to manage email branding (GA)
+Three new endpoints get, update, and reset an organization's email branding settings.
+
+For more information, see [Get the email branding settings for an organization](https://help.sigmacomputing.com/reference/get-email-branding-setting), [Update the email branding settings for an organization](https://help.sigmacomputing.com/reference/update-email-branding-setting), and [Reset the email branding settings for an organization](https://help.sigmacomputing.com/reference/delete-email-branding-setting)
 
 ### New comment settings management endpoints (GA)
 Two new endpoints get and update an organization's comment settings, controlling commenting and image annotation functionality.
@@ -169,6 +233,11 @@ Users can now view all API connectors in their organization and request access t
 
 For more information, see [Manage API credential and connection access](https://help.sigmacomputing.com/docs/manage-api-credential-and-connection-access)
 
+### Sending and scheduling exports using the API on behalf of another user (Deprecated)
+The `sendAsUser` option on the send-export endpoint and the `ownerId` option for scheduling are deprecated in favor of token-based impersonation.
+
+For more information, see [Impersonate users to send and schedule exports](https://help.sigmacomputing.com/docs/impersonate-users#impersonate-users-to-send-and-schedule-exports)
+
 ### Tag endpoint enhancements (GA)
 The Update a tag endpoint now supports updating version tag descriptions and colors.
 
@@ -189,6 +258,14 @@ Duration: 20
 **4:** Failed materializations blocked by in-progress operations now display as skipped rather than failed.
 
 **5:** Improved performance when editing large input tables.
+
+**6:** MCP tools used by Sigma agents have been renamed MCP connectors.
+
+**7:** Templates shared with an entire organization using `Share with everyone in your organization` now appear in the `Shared with you` template gallery.
+
+**8:** Users can now swap tables, schemas, and databases/catalogs when tagging a document version without `Can use` access to the entire connection.
+
+**9:** Fixed an error that prevented setting up Azure OpenAI as an AI provider with certain temperature values.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -211,7 +288,7 @@ Duration: 20
 ## Data Modeling
 Duration: 20
 
-### Choose related datasets when migrating a dataset to a data model (Beta)
+### Choose related datasets when migrating a dataset to a data model (GA)
 Migrating a dataset to a data model now lets you select which related datasets to combine, rather than automatically pulling in every linked, joined, or referenced dataset.
 
 For more information, see [Migrate a dataset to a data model](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model)
@@ -222,7 +299,10 @@ For more information, see [Migrate a dataset to a data model](https://help.sigma
 ## Embedding
 Duration: 20
 
+### Embed Sigma Assistant (Deprecated)
+Embedding Sigma Assistant as a standalone experience is deprecated and will reach end of support on March 16, 2027. Consider embedding a customized Sigma agent, or Sigma Assistant in the workbook, instead.
 
+For more information, see [Embed Sigma Assistant](https://help.sigmacomputing.com/docs/embed-assistant)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -267,8 +347,24 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Templates
+Duration: 20
+
+### App templates (GA)
+App templates let you start building an app in Sigma from an interactive preview before adding it to your organization as a workbook, with ten templates available including Project Management and Revenue Forecasting.
+
+For more information, see [Get started with templates](https://help.sigmacomputing.com/docs/get-started-with-templates)
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Workbooks
 Duration: 20
+
+### Apply translations in workbook or report export attachments (Beta)
+After adding translations to a workbook or report, one of those translations can now be applied when exporting content.
+
+For more information, see [Apply translations in workbook or report export attachments (Beta)](https://help.sigmacomputing.com/docs/manage-workbook-localization#apply-translations-in-workbook-or-report-export-attachments-beta)
 
 ### Databricks support for stored procedure actions (GA)
 Creating actions that call stored procedures is now supported for Databricks connections.
@@ -292,6 +388,11 @@ For more information, see [Share and export reports](https://help.sigmacomputing
 Users can now select one or more specific report pages to export, instead of exporting the entire report.
 
 For more information, see [Share and export reports](https://help.sigmacomputing.com/docs/share-and-export-reports)
+
+### Manage reports from a code representation (Beta)
+The Sigma API can now retrieve, update, and create reports based on a JSON or YAML representation.
+
+For more information, see [Manage reports as code (Beta)](https://help.sigmacomputing.com/docs/manage-reports-as-code) and [Report representation example library](https://help.sigmacomputing.com/docs/report-representation-example-library)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
