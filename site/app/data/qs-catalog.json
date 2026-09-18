@@ -404,7 +404,7 @@
       "id": "developers_migrating_from_cognos_made_easy",
       "title": "Migrating From Cognos Made Easy",
       "category": "migrations",
-      "summary": "developers_migrating_from_cognos_made_easy",
+      "summary": "Use the cognos-to-sigma Claude Code skill to convert a Cognos Analytics report into a Sigma data model and workbook, then verify results with a parity check against the warehouse.",
       "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_cognos_made_easy/index.html"
     },
@@ -428,7 +428,7 @@
       "id": "developers_migrating_from_metabase_made_easy",
       "title": "Migrating From Metabase Made Easy",
       "category": "migrations",
-      "summary": "developers_migrating_from_metabase_made_easy",
+      "summary": "Use the metabase-to-sigma Claude Code skill to convert a Metabase dashboard into a Sigma data model and workbook, then verify results with a parity check against the warehouse.",
       "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_metabase_made_easy/index.html"
     },
@@ -452,7 +452,7 @@
       "id": "developers_migrating_from_sisense_made_easy",
       "title": "Migrating From Sisense Made Easy",
       "category": "migrations",
-      "summary": "developers_migrating_from_sisense_made_easy",
+      "summary": "Use the sisense-to-sigma Claude Code skill to convert a Sisense dashboard into a Sigma data model and workbook, then verify results with a parity check against the warehouse.",
       "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_sisense_made_easy/index.html"
     },
@@ -540,7 +540,7 @@
       "id": "developers_workbooks_as_code",
       "title": "Manage Sigma Workbooks as Code with Git and CI/CD",
       "category": "developers",
-      "summary": "developers_workbooks_as_code",
+      "summary": "Define a Sigma workbook as a single YAML file and manage it through Sigma's REST API, enabling version control, code review, and CI/CD deployment alongside the rest of your application code.",
       "lastUpdated": "2026-09-17",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html"
     },
@@ -772,7 +772,7 @@
       "id": "embedding_rest_api_useage_12_calling_agents",
       "title": "REST API Usage 12: Call Sigma Agents from Your Application",
       "category": "embedding",
-      "summary": "embedding_rest_api_useage_12_calling_agents",
+      "summary": "Call a Sigma agent directly over the REST API — from a custom chat interface, a scheduled job, or another application — while inheriting the same governance and permissions configured in the workbook.",
       "lastUpdated": "2026-09-17",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_12_calling_agents/index.html"
     },

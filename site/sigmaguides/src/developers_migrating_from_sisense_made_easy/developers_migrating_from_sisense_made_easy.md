@@ -1,6 +1,6 @@
 author: pballai
 id: developers_migrating_from_sisense_made_easy
-summary: developers_migrating_from_sisense_made_easy
+summary: Use the sisense-to-sigma Claude Code skill to convert a Sisense dashboard into a Sigma data model and workbook, then verify results with a parity check against the warehouse.
 categories: migrations
 environments: web
 status: Published

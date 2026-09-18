@@ -1,6 +1,6 @@
 author: pballai
 id: developers_workbooks_as_code
-summary: developers_workbooks_as_code
+summary: Define a Sigma workbook as a single YAML file and manage it through Sigma's REST API, enabling version control, code review, and CI/CD deployment alongside the rest of your application code.
 categories: developers
 environments: web
 status: Published
