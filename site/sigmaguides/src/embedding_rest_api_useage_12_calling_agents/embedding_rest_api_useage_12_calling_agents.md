@@ -1,6 +1,6 @@
 author: pballai
 id: embedding_rest_api_useage_12_calling_agents
-summary: embedding_rest_api_useage_12_calling_agents
+summary: Call a Sigma agent directly over the REST API — from a custom chat interface, a scheduled job, or another application — while inheriting the same governance and permissions configured in the workbook.
 categories: embedding
 environments: web
 status: Published
