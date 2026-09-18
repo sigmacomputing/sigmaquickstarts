@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-08-21
+lastUpdated: 2026-09-18
 
 # Sigma's Query Engine
 
@@ -150,7 +150,7 @@ It is not immediately obvious that Sigma's Alpha Query is different than the cac
 
 Sigma will re-use existing results (by default), regardless of whether the underlying data has changed. 
 
-There is a control in the Sigma UI to [bypass the result cache](https://help.sigmacomputing.com/docs/workbook-refresh-options) when the latest results are needed instead. There is also a control to determine the [acceptable staleness for query results.](https://help.sigmacomputing.com/docs/set-a-query-id-cache-duration) of whether the underlying data has changed.
+There is a control in the Sigma UI to [bypass the result cache](https://help.sigmacomputing.com/docs/workbook-refresh-options) when the latest results are needed instead. There is also a control to determine the [acceptable staleness for query results](https://help.sigmacomputing.com/docs/set-a-query-id-cache-duration)
 
 In this section, we will discuss operations that are part of this portion of our decision tree:
 
@@ -200,10 +200,6 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 
 5: Select the `Sigma Sample Database` > `RETAIL` > `PLUGS ELECTRONICS` > `F_POINT_OF_SALE` table:
 
-<img src="assets/aq5.png" width="350"/>
-
-5: Select the Sigma Sample Database > RETAIL > PLUGS ELECTRONICS > F_POINT_OF_SALE table:
-
 <img src="assets/aq6.png" width="800"/>
 
 6: You will now see a new, unsaved Exploration. Before proceeding, observe how Sigma generated queries to the warehouse.
@@ -223,7 +219,7 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 <img src="assets/aq9.png" width="800"/>
 
 - Next, add a new column with the formula:
-```plaintext
+```copy-code
 [Sales Quantity] * [Sales Amount]
 ```
 
