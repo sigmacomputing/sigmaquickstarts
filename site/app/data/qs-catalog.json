@@ -125,7 +125,7 @@
       "title": "How to Get Started - A Guide for Sigma Administrators",
       "category": "administration",
       "summary": "Walks new Sigma administrators through a checklist of setup decisions: authentication, warehouse connections, AI configuration, branding, versioning, and training.",
-      "lastUpdated": "2026-08-11",
+      "lastUpdated": "2026-10-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_getting_started_guide/index.html"
     },
     {
@@ -181,7 +181,7 @@
       "title": "Build Conversational AI Apps with Chat Elements and Snowflake Cortex",
       "category": "aiapps",
       "summary": "Build a conversational AI app in Sigma using a chat element, a Sigma agent, and a Snowflake Cortex Agent — with optional write-back actions to an input table.",
-      "lastUpdated": "2026-06-23",
+      "lastUpdated": "2026-09-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html"
     },
     {
@@ -247,6 +247,14 @@
       "summary": "Build a retail storefront app using a Repeated container for product cards, popover and date range controls, a boolean-filtered notification center, and role-based storefront/manager views.",
       "lastUpdated": "2026-03-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_storefront_repeaters/index.html"
+    },
+    {
+      "id": "aiapps_web_search_agent",
+      "title": "Build Web Search for a Sigma Agent",
+      "category": "aiapps",
+      "summary": "Connect a Sigma agent to Tavily's web search API as a custom API connector, then attach it as a callable action so the agent can pull in live results and cite sources alongside governed data.",
+      "lastUpdated": "2026-09-09",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_web_search_agent/index.html"
     },
     {
       "id": "common_date_functions",
@@ -397,7 +405,7 @@
       "title": "Migrating From Cognos Made Easy",
       "category": "migrations",
       "summary": "developers_migrating_from_cognos_made_easy",
-      "lastUpdated": "2026-08-31",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_cognos_made_easy/index.html"
     },
     {
@@ -405,7 +413,7 @@
       "title": "Migrating From Domo Made Easy",
       "category": "migrations",
       "summary": "Use the domo-to-sigma Claude Code skill to rebuild a Domo dashboard as a Sigma data model and workbook from a screenshot and its warehouse table, then verify results with a parity check against the warehouse.",
-      "lastUpdated": "2026-08-26",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html"
     },
     {
@@ -413,7 +421,7 @@
       "title": "Migrating From Hex Made Easy",
       "category": "migrations",
       "summary": "Uses the hex-to-sigma Claude Code skill to convert an exported Hex project's SQL cells and charts into a Sigma data model and workbook, then verifies numeric parity against the warehouse.",
-      "lastUpdated": "2026-08-15",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_hex_made_easy/index.html"
     },
     {
@@ -421,7 +429,7 @@
       "title": "Migrating From Metabase Made Easy",
       "category": "migrations",
       "summary": "developers_migrating_from_metabase_made_easy",
-      "lastUpdated": "2026-08-31",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_metabase_made_easy/index.html"
     },
     {
@@ -429,7 +437,7 @@
       "title": "Migrating From MicroStrategy Made Easy",
       "category": "migrations",
       "summary": "Use a Claude Code skill to convert a MicroStrategy dossier's semantic model and dashboard layout into a Sigma data model and workbook, verified with a row-level parity check against the source.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_microstrategy_made_easy/index.html"
     },
     {
@@ -437,7 +445,7 @@
       "title": "Migrating From AWS QuickSight Made Easy",
       "category": "migrations",
       "summary": "Use the quicksight-to-sigma Claude Code skill to convert an AWS QuickSight analysis into a Sigma data model and workbook, then verify results with a row-level parity check.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_quicksight_made_easy/index.html"
     },
     {
@@ -445,7 +453,7 @@
       "title": "Migrating From Sisense Made Easy",
       "category": "migrations",
       "summary": "developers_migrating_from_sisense_made_easy",
-      "lastUpdated": "2026-08-31",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_sisense_made_easy/index.html"
     },
     {
@@ -453,7 +461,7 @@
       "title": "Migrating From Tableau Made Easy",
       "category": "migrations",
       "summary": "Use the tableau-to-sigma Claude Code skill to convert a live Tableau dashboard into a Sigma workbook on the warehouse and verify the numbers match the Tableau source.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html"
     },
     {
@@ -461,7 +469,7 @@
       "title": "Migrating From ThoughtSpot Made Easy",
       "category": "migrations",
       "summary": "Run the thoughtspot-to-sigma Claude Code skill to convert a ThoughtSpot worksheet and Liveboard into a Sigma data model and workbook, verified against the warehouse.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_thoughtspot_made_easy/index.html"
     },
     {
@@ -469,7 +477,7 @@
       "title": "Migrating From Looker Made Easy",
       "category": "migrations",
       "summary": "Use the Claude Code looker-to-sigma skill to convert a Looker dashboard and its LookML model into a Sigma data model and workbook, then verify parity against the live warehouse.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_looker_made_easy/index.html"
     },
     {
@@ -477,7 +485,7 @@
       "title": "Migrating From Power BI Made Easy",
       "category": "migrations",
       "summary": "Run the powerbi-to-sigma Claude Code skill to convert a Power BI report's semantic model and layout into a Sigma data model and workbook, verifying data parity against the source warehouse.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_power_bi_made_easy/index.html"
     },
     {
@@ -485,7 +493,7 @@
       "title": "Migrating From Qlik Made Easy",
       "category": "migrations",
       "summary": "Use the Claude Code qlik-to-sigma skill to convert a Qlik Cloud app's data model, measures, and Set Analysis expressions into a Sigma workbook with a warehouse parity check.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_qlik_made_easy/index.html"
     },
     {
@@ -509,7 +517,7 @@
       "title": "Sigma's Query Engine",
       "category": "Developers",
       "summary": "Explains Sigma's multi-tier caching and query evaluation architecture, which reduces Snowflake compute load while keeping the interface responsive as user count grows.",
-      "lastUpdated": "2023-08-21",
+      "lastUpdated": "2026-09-18",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html"
     },
     {
@@ -527,6 +535,14 @@
       "summary": "Install Sigma's open-source agent skills in Claude Code to authenticate against the Sigma REST API and create or update data models through natural-language prompts.",
       "lastUpdated": "2026-06-22",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_skill/index.html"
+    },
+    {
+      "id": "developers_workbooks_as_code",
+      "title": "Manage Sigma Workbooks as Code with Git and CI/CD",
+      "category": "developers",
+      "summary": "developers_workbooks_as_code",
+      "lastUpdated": "2026-09-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html"
     },
     {
       "id": "embedding_01_getting_started_v3",
@@ -589,7 +605,7 @@
       "title": "Embedding 08: Embedding Sigma Assistant",
       "category": "embedding",
       "summary": "Embed Sigma Assistant's natural language query interface into an external application so users can ask questions about data and see the underlying analysis steps and sources.",
-      "lastUpdated": "2026-05-06",
+      "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_08_ask_sigma_v3/index.html"
     },
     {
@@ -753,6 +769,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_11_custom_workbook_list/index.html"
     },
     {
+      "id": "embedding_rest_api_useage_12_calling_agents",
+      "title": "REST API Usage 12: Call Sigma Agents from Your Application",
+      "category": "embedding",
+      "summary": "embedding_rest_api_useage_12_calling_agents",
+      "lastUpdated": "2026-09-17",
+      "url": "https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_12_calling_agents/index.html"
+    },
+    {
       "id": "embedding_use_case_embed_into_salesforce_v3",
       "title": "Use Case: Embed into Salesforce",
       "category": "Embedding",
@@ -813,7 +837,7 @@
       "title": "Fundamentals 01: Overview",
       "category": "fundamentals",
       "summary": "Navigate Sigma's interface using sample retail data, learning core terminology, workbook structure, and how to create, save, and share a workbook, plus which QuickStart path fits your role.",
-      "lastUpdated": "2026-08-21",
+      "lastUpdated": "2026-09-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html"
     },
     {
@@ -885,7 +909,7 @@
       "title": "Fundamentals 08: Administration",
       "category": "Fundamentals",
       "summary": "Tour Sigma's administration area, covering instance management, connection setup, data governance rules, and user interaction configuration for admin-level accounts.",
-      "lastUpdated": "2026-05-06",
+      "lastUpdated": "2026-09-15",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_8_administration_v3/index.html"
     },
     {

@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-01
+lastUpdated: 2026-09-11
 
 # Migrating From ThoughtSpot Made Easy
 
@@ -71,7 +71,7 @@ Sigma SEs, technical CSMs, and migration partners running ThoughtSpot-to-Sigma c
 ## The ThoughtSpot Migration Skill Family
 Duration: 5
 
-`thoughtspot-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
+`thoughtspot-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits saves dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -109,58 +109,74 @@ In this QuickStart we're in the first row — one Liveboard on an Embrace model 
 ## Install and Configure the Skill
 Duration: 10
 
-First we need to clone the skill's GitHub repository, then run the setup scripts that capture your Sigma and ThoughtSpot credentials.
+First we need to install the skill plugins, then run the setup scripts that capture your Sigma and ThoughtSpot credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [thoughtspot-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/thoughtspot-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
-<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux. So <code>~/quickstarts-public</code> resolves to a <code>quickstarts-public/</code> folder directly inside your home directory.
+<strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**<br>
-We'll clone into this folder in the next step.
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is ThoughtSpot-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder** so the next command runs in the right working directory.
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**<br>
-The `--sparse` flag tells Git you'll choose which folders to fill in next. The trailing `.` clones into the current folder.
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the thoughtspot-migration-skills folder**<br>
-Every other QuickStart asset in the repo stays empty on disk.
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mfts_22.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set thoughtspot-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-<img src="assets/mfts_01.png" width="800"/>
+<img src="assets/mfts_23.png" width="800"/>
 
-**Step 5: Symlink thoughtspot-to-sigma into the Claude skills folder**<br>
-This lets Claude Code invoke `thoughtspot-to-sigma` as a skill.
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/thoughtspot-migration-skills/thoughtspot-to-sigma ~/.claude/skills/thoughtspot-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink thoughtspot-assessment**<br>
-Used to scope a ThoughtSpot org before conversion.
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>thoughtspot-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mfts_24.png" width="800"/>
+
+**Step 6: Install the ThoughtSpot skill pair**<br>
+One plugin install brings in both `thoughtspot-to-sigma` (the converter) and `thoughtspot-assessment` (the scoping skill).
 
 ```copy-code
-ln -s ~/quickstarts-public/thoughtspot-migration-skills/thoughtspot-assessment ~/.claude/skills/thoughtspot-assessment
+/plugin install thoughtspot-to-sigma@sigma-migration-skills
 ```
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 Steps 5 and 6 should return with no error.
 
@@ -185,7 +201,7 @@ Run once per machine.
 If you don't already have credentials, see [Configure API credentials in Sigma](https://help.sigmacomputing.com/sigma-computing/docs/configure-api-credentials-and-connectors-in-sigma) — the skill needs `API access` credentials, not embed.
 
 ```copy-code
-ruby ~/.claude/skills/thoughtspot-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/thoughtspot-to-sigma/*/skills/thoughtspot-to-sigma/scripts/setup.rb
 ```
 
 <img src="assets/mfts_02.png" width="800"/>
@@ -226,7 +242,7 @@ export TS_TOKEN="<paste-the-token-here>"
 This lists every model and Liveboard visible to your token — confirms both ThoughtSpot authentication and the skill's installation worked.
 
 ```copy-code
-python3 ~/.claude/skills/thoughtspot-to-sigma/scripts/ts_discover.py
+python3 ~/.claude/plugins/cache/sigma-migration-skills/thoughtspot-to-sigma/*/skills/thoughtspot-to-sigma/scripts/ts_discover.py
 ```
 
 You should see your tenant's models and Liveboards listed:

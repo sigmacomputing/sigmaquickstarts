@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-31
+lastUpdated: 2026-09-11
 
 # Migrating From Metabase Made Easy
 
@@ -41,9 +41,6 @@ For the demonstration, we'll convert a small Metabase dashboard called `Commerce
 
 <img src="assets/mb_02.png" width="800"/>
 
-<aside class="positive">
-<strong>ABOUT THE SKILL CODE:</strong><br> The skill code used in this QuickStart is vendored into <code>sigmacomputing/quickstarts-public</code> for a stable reader experience — the version you clone matches what's captured in the screenshots and outputs below. The upstream skill at <a href="https://github.com/twells89/metabase-to-sigma">twells89/metabase-to-sigma</a> is actively evolving with new converter capabilities, bug fixes, and additional source-tool support. If you want the latest improvements after completing the QS, point your skill symlink at the upstream repo instead.
-</aside>
 
 <aside class="negative">
 <strong>NOTE:</strong><br> The migration is one-directional — Metabase is the source, Sigma is the target. Sigma reads the warehouse live, so the conversion's accuracy depends on the warehouse tables behind your Metabase models being reachable from a Sigma connection. The skill discovers the dashboard, cards, models, and database metadata via the Metabase REST API and reconciles MBQL field references back to the underlying warehouse columns. Parity is checked against the warehouse-resolved numbers, so any cache drift surfaces as an explicit row-level diff rather than getting buried. Metabase's bundled H2 Sample Database is NOT reachable from Sigma — pick content on a real warehouse, or land the data first.
@@ -76,7 +73,7 @@ Sigma SEs, technical CSMs, and migration partners running Metabase-to-Sigma conv
 ## The Metabase Migration Skill Family
 Duration: 5
 
-`metabase-to-sigma` is one of two skills that ship together as a single repo (cloned in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
+`metabase-to-sigma` is one of two skills that install together as a single plugin (installed in the next section). Most of this QuickStart focuses on the converter — but knowing where the assessment skill fits avoids dead ends later when scoping a batch migration.
 
 | Skill | Role | When to reach for it |
 |-------|------|----------------------|
@@ -114,53 +111,74 @@ In this QuickStart we're in the second row — the demo dashboard reads from Met
 ## Install and Configure the Skill
 Duration: 15
 
-First we need to clone the skill's GitHub repository, configure Metabase REST credentials, and capture your Sigma credentials.
+First we need to install the skill plugins, configure Metabase REST credentials, and capture your Sigma credentials.
 
-The two skills live in `sigmacomputing/quickstarts-public` under [metabase-migration-skills/](https://github.com/sigmacomputing/quickstarts-public/tree/main/metabase-migration-skills).
-
-From a terminal, run each command below one at a time so you can confirm each step before moving on.
+The skills ship from [sigmacomputing/sigma-migration-skills](https://github.com/sigmacomputing/sigma-migration-skills), a Claude Code plugin marketplace maintained by Sigma.
 
 <aside class="positive">
 <strong>NOTE:</strong><br> <code>~</code> in the commands below is shell shorthand for your home folder — <code>/Users/&lt;you&gt;</code> on macOS, <code>/home/&lt;you&gt;</code> on Linux.
 </aside>
 
-**Step 1: Create a local folder for the clone**
+**Step 1: Create a working folder for your migrations.**<br>
+Nothing about this folder is Metabase-specific — reuse the same one for every migration QuickStart you run.
 
 ```copy-code
-mkdir -p ~/quickstarts-public
+mkdir -p ~/sigma-migration-workspace
 ```
 
-**Step 2: Move into the new folder**
+**Step 2: Move into it**
 
 ```copy-code
-cd ~/quickstarts-public
+cd ~/sigma-migration-workspace
 ```
 
-**Step 3: Clone the repo without pulling any files yet**
+**Step 3: Start Claude Code**
 
 ```copy-code
-git clone --filter=blob:none --sparse https://github.com/sigmacomputing/quickstarts-public.git .
+claude
 ```
 
-**Step 4: Fill in only the metabase-migration-skills folder**
+The first time you start Claude Code in a new folder, it asks you to confirm you trust it. Choose `1. Yes, I trust this folder` — you just created it, so this is safe.
+
+<img src="assets/mb_09.png" width="800"/>
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The <code>/plugin</code> commands below are Claude Code slash commands. They only work inside an actual Claude Code terminal session — not the Claude.ai web or desktop app, which don't recognize this syntax.
+</aside>
+
+Directly in that Claude Code session, run each command below one at a time so you can confirm each step before moving on.
+
+**Step 4: Add the migration skills marketplace**
 
 ```copy-code
-git sparse-checkout set metabase-migration-skills
+/plugin marketplace add sigmacomputing/sigma-migration-skills
 ```
 
-**Step 5: Symlink metabase-to-sigma into the Claude skills folder**
+<img src="assets/mb_10.png" width="800"/>
+
+**Step 5: Install the companion authoring skills**<br>
+`sigma-authoring` carries the canonical Sigma workbook and data model spec every converter in the family defers to — install it alongside any converter.
 
 ```copy-code
-ln -s ~/quickstarts-public/metabase-migration-skills/metabase-to-sigma ~/.claude/skills/metabase-to-sigma
+/plugin install sigma-authoring@sigma-migration-skills
 ```
 
-**Step 6: Symlink metabase-assessment**
+<aside class="positive">
+<strong>NOTE:</strong><br> This (and the <code>metabase-to-sigma</code> install in Step 6) prompts you to pick an install scope. Choose <strong>Install for you (user scope)</strong> — it's the highlighted default. <code>~/sigma-migration-workspace</code> isn't a shared git repo, so the project/local-scope options don't apply; user scope makes the plugin available in every Claude Code session going forward, not just one tied to this folder.
+</aside>
+
+<img src="assets/mb_11.png" width="800"/>
+
+**Step 6: Install the Metabase skill pair**<br>
+One plugin install brings in both `metabase-to-sigma` (the converter) and `metabase-assessment` (the scoping skill).
 
 ```copy-code
-ln -s ~/quickstarts-public/metabase-migration-skills/metabase-assessment ~/.claude/skills/metabase-assessment
+/plugin install metabase-to-sigma@sigma-migration-skills
 ```
 
-Steps 5 and 6 should return with no error.
+<aside class="positive">
+<strong>NOTE:</strong><br> Newly installed plugins load on the next Claude Code session. If you installed these in a session you already had open, start a new one (<code>claude</code> in a fresh terminal) before continuing.
+</aside>
 
 ![divider](assets/horizonalline.png)
 
@@ -170,7 +188,7 @@ This script prompts for `SIGMA_BASE_URL`, `SIGMA_CLIENT_ID`, and `SIGMA_CLIENT_S
 Run once per machine.
 
 ```copy-code
-ruby ~/.claude/skills/metabase-to-sigma/scripts/setup.rb
+ruby ~/.claude/plugins/cache/sigma-migration-skills/metabase-to-sigma/*/skills/metabase-to-sigma/scripts/setup.rb
 ```
 
 The final prompt asks for a `Connection ID (full warehouse-connection UUID, optional — Enter to skip)`. You can press `Enter` to skip — the kickoff prompt later in this QuickStart supplies the Snowflake connection ID inline. Capturing it here is useful only if you plan to run multiple migrations and want it persisted in `~/.sigma-migration/env`.
@@ -209,7 +227,7 @@ EOF
 Verify auth works by sourcing the env and running the session-helper script — it emits a shell function `mb_get` you can use to probe the API. The one-liner below lists every database connection Metabase has configured (the same set the skill discovers in `Phase 0`):
 
 ```copy-code
-source ~/.sigma-migration/env && eval "$(bash ~/.claude/skills/metabase-to-sigma/scripts/get-metabase-session.sh)" && mb_get /api/database | python3 -c 'import sys,json; [print(d["id"], "-", d["name"], "-", d["engine"]) for d in json.load(sys.stdin).get("data",[])]'
+source ~/.sigma-migration/env && eval "$(bash ~/.claude/plugins/cache/sigma-migration-skills/metabase-to-sigma/*/skills/metabase-to-sigma/scripts/get-metabase-session.sh)" && mb_get /api/database | python3 -c 'import sys,json; [print(d["id"], "-", d["name"], "-", d["engine"]) for d in json.load(sys.stdin).get("data",[])]'
 ```
 
 You should see at least one line — `1 - Sample Database - h2` on a fresh Metabase install. If your Metabase has additional warehouse connections, they'll appear here too. The numeric `id` is the value the skill cross-references when it discovers your dashboard's source database in `Phase 0`.

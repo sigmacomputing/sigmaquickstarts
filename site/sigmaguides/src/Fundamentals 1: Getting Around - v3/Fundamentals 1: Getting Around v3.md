@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-08-21
+lastUpdated: 2026-09-16
 
 # Fundamentals 01: Overview
 
@@ -560,9 +560,19 @@ You decide which of those tools the agent is allowed to use, and the agent reach
 
 End users chat with the agent through a chat element on a workbook page. An agent can also run on its own as part of an automated action sequence — for example, a nightly run that summarizes what changed in the data and posts the summary to Slack.
 
-For example, we can let users chat with AI directly from any Sigma page by adding a chat element and setting some rules for it. This brings the power of AI to users in a controlled manner, helping maintain security and governance guidelines:
+For example, we can let users chat with AI directly from any Sigma page by adding a chat element and setting some rules for it. This brings the power of AI to users in a controlled manner, helping maintain security and governance guidelines.
 
-<img src="assets/chatelement.mp4">
+In the video example below we add a chat element to the page, set a target data source and have the agent also configure a set of standard instructions to use for all future prompts:
+
+<video src="assets/chatelement.mp4"></video>
+
+Conversations with an agent are saved automatically, so a reader can leave a workbook and pick up a conversation later instead of starting over. Click `View chat history` in the chat element header to see past conversations by title, then select one to resume it — using whichever agent is currently assigned to that chat element, even if a different agent handled the original conversation.
+
+This next video shows how to navigate the chat history (assuming your administrator has enabled the feature):
+
+<video src="assets/agentschathistory.mp4"></video>
+
+For more on managing previous conversations, see [Review and restart previous conversations](https://help.sigmacomputing.com/docs/chat-with-agent#review-and-restart-previous-conversations) and [Configure chat history for agents](https://help.sigmacomputing.com/docs/configure-chat-history-agents)
 
 When deciding which AI surface fits a task:
 

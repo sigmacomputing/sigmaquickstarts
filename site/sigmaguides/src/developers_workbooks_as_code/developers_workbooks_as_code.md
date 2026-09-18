@@ -3,12 +3,12 @@ id: developers_workbooks_as_code
 summary: developers_workbooks_as_code
 categories: developers
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags:
-lastUpdated: 2026-08-19
+tags: default
+lastUpdated: 2026-09-17
 
-# Manage Sigma Workbooks with Git and CI/CD
+# Manage Sigma Workbooks as Code with Git and CI/CD
 
 ## Overview
 Duration: 5
@@ -21,6 +21,7 @@ In this QuickStart, you'll wire up exactly that pipeline. Along the way you'll l
 - Read and edit a workbook spec in YAML
 - Authenticate to Sigma's REST API using client credentials
 - Set up and configure a working GitHub Actions pipeline for a Sigma workbook
+- View and copy any workbook's code directly from the Sigma UI
 - Open a pull request and watch CI validate the spec automatically
 - Merge a change and watch it deploy to the live workbook
 - Detect and resolve drift when someone edits the workbook directly in the Sigma UI
@@ -48,7 +49,7 @@ This QuickStart is designed for developers, data engineers, and technical admins
   <li>A GitHub account and familiarity with git, branches, and pull requests</li>
   <li>Permission to create, edit, and publish workbooks</li>
   <li>Basic understanding of YAML</li>
- </ul>
+</ul>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
@@ -69,7 +70,7 @@ Sigma uses the client ID to identify your application and the client secret to v
 Navigate to `Administration` and select `Developer access`.
 
 <aside class="positive">
-<strong>API Base URL:</strong><br> Take note of the API Base URL shown in the Developer access section. This region-specific endpoint is required for all API calls, and you'll need it again when configuring GitHub in the next section. Failure to use the correct API endpoint will prevent your commands from working.
+<strong>API Base URL:</strong><br> Take note of the API Base URL shown in the Developer access section. This region-specific endpoint is required for all API calls, and you'll need it again when configuring GitHub in "Configure GitHub Secrets and Variables," later in this QuickStart. Failure to use the correct API endpoint will prevent your commands from working.
 </aside>
 
 Click `Create New`:
@@ -78,7 +79,7 @@ Click `Create New`:
 
 In the `Create client credentials` modal, select `REST API`, give it a name, and assign an administrative user as the owner.
 
-<img src="assets/wac_02.png" width="800"/>
+<img src="assets/wac_02.png" width="400"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> You can also enable the "Embedding" checkbox if you plan to use these same credentials for embedding. For this QuickStart, only REST API access is required.
@@ -94,7 +95,7 @@ If you lose the client secret or it becomes compromised, you can revoke it and g
 
 <img src="assets/wac_03.png" width="550"/>
 
-Copy and paste the `Client ID` and `Secret` - you'll add them as GitHub secrets in the next section.
+Copy and paste the `Client ID` and `Secret` - you'll add them as GitHub secrets in "Configure GitHub Secrets and Variables," later in this QuickStart.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -159,7 +160,7 @@ pwd
 
 The output should end in `sigma_quickstarts/sigma-workbooks-as-code-demo-main`. If it just ends in `sigma_quickstarts`, run `cd sigma-workbooks-as-code-demo-main` first.
 
-Now turn this folder into its own repository and push it to the one you just created (be sure to replace YOUR_GITHUB_USERNAME):
+Now turn this folder into its own repository and push it to the one you just created **(be sure to replace YOUR_GITHUB_USERNAME):**
 
 ```copy-code
 git init
@@ -175,7 +176,7 @@ git push -u origin main
 <br><br>
 Since there are a few placeholder values at this point, that run <strong>will fail</strong>.
 <br><br>
-Expect a red X in the <code>Actions</code> tab with an error similar to <code>Expecting UUID at workbookId but instead got: "YOUR-WORKBOOK-ID-HERE"</code>. This is expected, not a problem to fix right now - "Configure and Deploy for the First Time" has you point both files at your own connection and workbook, and that push succeeds.
+Expect a red X in the <code>Actions</code> tab. Since you haven't added your GitHub repository secrets yet either - that's the next section - the run typically fails at the authentication step itself, before it ever gets to check the workbook ID: look for <code>Can't add secret mask for empty string</code> in the annotations, or a bare <code>Process completed with exit code 3</code>. This is expected, not a problem to fix right now - once you've completed "Configure GitHub Secrets and Variables" and then "Configure and Deploy for the First Time" (which points both files at your own connection and workbook), a fresh push deploys successfully.
 </aside>
 
 <img src="assets/wac_04c.png" width="800"/>
@@ -189,12 +190,11 @@ git remote -v
 <img src="assets/wac_05.png" width="800"/>
 
 <aside class="negative">
-<strong>TROUBLESHOOTING "REMOTE ORIGIN ALREADY EXISTS" OR A PUSH THAT TARGETS THE WRONG REPO:</strong><br> This means the block above ran from the sparse-checkout parent directory instead of <code>sigma-workbooks-as-code-demo-main</code>. 
+<strong>TROUBLESHOOTING "REMOTE ORIGIN ALREADY EXISTS" OR A PUSH THAT TARGETS THE WRONG REPO:</strong><br> Telltale symptoms: <code>git init</code> reports "Reinitialized existing Git repository" instead of a fresh init, <code>git commit</code> reports "nothing to commit, working tree clean," <code>git remote add origin</code> fails with "remote origin already exists," and the push targets somewhere other than the repo you just created. This has two distinct causes with the same symptoms - check <code>git remote -v</code> to tell them apart:
 <br><br>
-Telltale symptoms: <code>git init</code> reports "Reinitialized existing Git repository," <code>git commit</code> reports "nothing to commit, working tree clean," <code>git remote add origin</code> fails with "remote origin already exists," and <code>git push</code> targets <code>quickstarts-public</code> instead of your new repo (then gets rejected, since you don't have write access there). 
-No harm done either way - nothing reaches <code>quickstarts-public</code>. 
+<strong>1. Wrong directory</strong> - the block above ran from the sparse-checkout parent directory instead of <code>sigma-workbooks-as-code-demo-main</code>, which already has its own <code>.git</code> pointing at <code>quickstarts-public</code>. <code>git remote -v</code> shows <code>sigmacomputing/quickstarts-public</code>. No harm done - you don't have write access there, so the push is just rejected. Fix: <code>cd sigma-workbooks-as-code-demo-main</code>, confirm with <code>pwd</code>, then re-run the block above.
 <br><br>
-Fix: <code>cd sigma-workbooks-as-code-demo-main</code>, confirm with <code>pwd</code>, then re-run the block above.
+<strong>2. Reused local folder from an earlier attempt</strong> - if you deleted your GitHub repo and are redoing this section, the local folder still has <code>.git</code> history and an <code>origin</code> pointing at whatever URL was set last time (a placeholder that was never replaced, or a repo that no longer exists). <code>git remote -v</code> shows that stale URL. Fix: <code>git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/sigma-workbooks-as-code-demo.git</code>, then push - no need to delete and re-clone the folder.
 </aside>
 
 <aside class="negative">
@@ -207,15 +207,20 @@ Fix: <code>cd sigma-workbooks-as-code-demo-main</code>, confirm with <code>pwd</
 </ol>
 </aside>
 
-You should see the project structure:
+If you have VS Code installed, in terminal, run:
+```copy-code
+code .
+```
 
-<img src="assets/wac_05a.png" width="700"/>
+If you are not using VS Code, open the folder in your editor of choice - you should see the project structure.
 
 The folder contains:
-- **workbook.yaml**: The workbook spec - single source of truth for the entire workbook, covered in the next section
+- **workbook.yaml**: The workbook spec - single source of truth for the entire workbook, covered in detail in "Understanding the Workbook Spec," later in this QuickStart
 - **sigma.config.yaml**: Config pointing at your target workbook ID and API host
 - **scripts/**: The same validate, deploy, and drift-check logic the GitHub Actions workflows call
 - **.github/workflows/**: The three automations this QuickStart walks through
+
+<img src="assets/wac_05a.png" width="700"/>
 
 <aside class="positive">
 <strong>TIP:</strong><br> You can also browse the files directly on GitHub at <a href="https://github.com/sigmacomputing/quickstarts-public/tree/main/sigma-workbooks-as-code-demo-main">quickstarts-public/sigma-workbooks-as-code-demo-main</a>
@@ -253,8 +258,8 @@ Add each of the following:
 
 | Name | Value |
 |------|-------|
-| `SIGMA_CLIENT_ID` | The Client ID from the previous section |
-| `SIGMA_CLIENT_SECRET` | The Client Secret from the previous section |
+| `SIGMA_CLIENT_ID` | The Client ID from "Client Credentials," earlier |
+| `SIGMA_CLIENT_SECRET` | The Client Secret from "Client Credentials," earlier |
 
 <img src="assets/wac_07a.png" width="800"/>
 
@@ -274,15 +279,11 @@ Switch to the `Variables` tab and click `New repository variable`:
 <strong>NOTE:</strong><br> Variables, unlike secrets, are visible in plain text - that's fine here since an API host isn't sensitive on its own.
 </aside>
 
-**Finding your API host:** This depends on your Sigma cloud region.
+**Finding your API host:** Use the exact API Base URL shown on the `Developer access` page you noted earlier - don't guess this from your Sigma cloud region. Sigma's actual per-tenant hosts often include an extra region/shard segment beyond what you might expect - for example, `https://api.us-a.aws.sigmacomputing.com` rather than a flatter `https://aws-api.sigmacomputing.com`.
 
-| Cloud | API Host |
-|-------|----------|
-| AWS US | `https://aws-api.sigmacomputing.com` |
-| AWS Canada | `https://api.ca.sigmacomputing.com` |
-| GCP | `https://api.sigmacomputing.com` |
-
-This matches the API Base URL you noted in the `Developer access` section earlier.
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Getting this value wrong doesn't fail immediately - your client credentials are still valid, so nothing looks broken yet. Every workflow instead fails later with a confusing <code>401 Token missing or malformed</code>, since the auth call itself is hitting the wrong host. If you see that error down the line, this is the first thing to double-check.
+</aside>
 
 <img src="assets/wac_08.png" width="700"/>
 
@@ -291,22 +292,133 @@ With `SIGMA_CLIENT_ID`, `SIGMA_CLIENT_SECRET`, and `SIGMA_API_HOST` in place, ev
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
+## Configure and Deploy for the First Time
+Duration: 10
+
+With credentials and secrets in place, the last thing to do before this pipeline is live is point it at your own Sigma connection, a folder, and a target workbook.
+
+### Find Your Connection ID
+
+The demo spec's source element runs custom SQL against a connection you choose. Go to `Administration` > `Connections`, click your connection, and copy the UUID from the URL.
+
+<img src="assets/wac_10.png" width="800"/>
+
+<aside class="positive">
+<strong>TIP:</strong><br> You can also retrieve this via the API: <code>GET /v2/connections</code>.
+</aside>
+
+### Find or Create a Target Folder
+
+The `workbook.yaml` file requires a `folderId` that needs to point at a real folder in your own org - the demo ships with a placeholder ("YOUR-FOLDER-ID-HERE") folder ID, which doesn't exist in your Sigma account. 
+
+<aside class="negative">
+<strong>NOTE:</strong><br> `PUT /v2/workbooks/{id}/contents` (deploy) never even sees this field - it only updates the workbook's contents, not its folder - so it's easy to miss, but the validate step used on every pull request does look it up - an unchanged `folderId` deploys fine here, then fails validation later with a confusing `404 No matching record`.
+</aside>
+
+Use an existing folder, or create a new one to keep this QuickStart's output together. Open it in Sigma and copy its ID from the URL.
+
+For example:
+
+<img src="assets/wac_10a.png" width="800"/>
+
+<aside class="positive">
+<strong>TIP:</strong><br> You can also retrieve this via the API: <code>GET /v2/files</code>.
+</aside>
+
+### Create a Target Workbook
+
+The deploy workflow updates an *existing* workbook by ID - it doesn't create one. Create a blank workbook to serve as that target, then click `Save as` - **make sure to save it inside the folder you created in the previous step.**
+
+Give it a name:
+```copy-code
+WBC QuickStart
+```
+
+Open the new workbook and copy its ID from the URL.
+
+<img src="assets/wac_11.png" width="800"/>
+
+`Save` the changes.
+
+### Update the Config Files
+
+In the local clone of the repo, open `sigma.config.yaml` and set `workbook_id` to the ID you just copied:
+
+```copy-code
+workbook_id: "YOUR-WORKBOOK-ID-HERE"
+api_host: "https://aws-api.sigmacomputing.com"
+spec_file: "workbook.yaml"
+```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> This <code>api_host</code> field is for local reference only - the validate, deploy, and drift-check workflows don't actually read it. They authenticate using the <code>SIGMA_API_HOST</code> GitHub repository variable you set in the previous section instead. Keep this field in sync with that value so the file stays accurate, but if you ever hit a <code>401 Token missing or malformed</code>, the GitHub variable is what to check, not this file.
+</aside>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> The <strong>Deploy Workbook</strong> workflow only triggers on a push that touches <code>workbook.yaml</code> - a commit that only changes <code>sigma.config.yaml</code> (for example, correcting a typo'd <code>workbook_id</code> after the fact) pushes to <code>main</code> successfully but never shows up in <code>Actions</code>, since the path filter doesn't match. If that happens, either run <code>gh workflow run deploy.yml</code> to trigger it manually, or make a trivial edit to <code>workbook.yaml</code> (like adding a blank line) so the next push includes it.
+</aside>
+
+<img src="assets/wac_11a.png" width="800"/>
+
+Then open `workbook.yaml` and search for and replace the top-level `folderId` with the folder ID from earlier in this section, and the `connectionId` on the `sales-source` element with your own connection UUID:
+
+```copy-code
+folderId: "YOUR-FOLDER-ID-HERE"
+```
+
+```copy-code
+source:
+  kind: sql
+  connectionId: "YOUR-CONNECTION-ID-HERE"
+```
+
+### Deploy for the First Time
+
+This first push is just wiring up configuration, not a reviewable content change, so commit it straight to `main`:
+
+```copy-code
+git add sigma.config.yaml workbook.yaml
+git commit -m "Configure connection and target workbook"
+git push origin main
+```
+
+Since this push modifies `workbook.yaml` on `main`, it triggers the **Deploy Workbook** workflow automatically. Open the `Actions` tab in your repository and watch it run:
+
+<img src="assets/wac_12.png" width="800"/>
+
+<aside class="positive">
+<strong>TIP:</strong><br> This run typically finishes in well under a minute. If the page seems stuck showing it "in progress" longer than that, refresh - the browser doesn't always pick up the completion status live.
+</aside>
+
+Once it finishes, close and reopen your target workbook in Sigma - you should see the full **Plugs Electronics — Sales Overview** dashboard: KPI cards, region and product breakdowns, and the detail table, all generated from a single YAML file.
+
+We left a space for another KPI that will be added in "Make a Change: Validate, Merge, and Deploy," later in this QuickStart:
+
+<img src="assets/wac_13.png" width="800"/>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> From here on, treat <code>main</code> as protected. Every real change to the workbook - the kind of thing worth a second set of eyes - goes through a feature branch and a pull request instead, which is exactly what "Make a Change: Validate, Merge, and Deploy" covers.
+</aside>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
 ## Understanding the Workbook Spec
 Duration: 10
 
-Everything about a workbook - pages, charts, KPIs, filters, layout - lives in one file: `workbook.yaml`. Let's look at how it's put together before you start editing it.
+You just deployed **Plugs Electronics — Sales Overview** from a single file: `workbook.yaml`. Everything about a workbook - pages, charts, KPIs, filters, layout - lives in that one place. Let's look at how it's put together before you start editing it yourself.
 
-The demo workbook this spec builds is **Plugs Electronics — Sales Overview**, a sales dashboard driven entirely by inline SQL sample data - no external data model required:
+The demo workbook this spec builds is a sales dashboard driven entirely by inline SQL sample data - no external data model required.
 
 ### Basic Structure
 
-At the top level, a workbook spec has a name, an optional folder, and a `document` block containing everything else:
+At the top level, a workbook spec has a name, an optional folder, and a `contents` block containing everything else:
 
 ```code
 name: "Plugs Electronics — Sales Overview"
 folderId: "YOUR-FOLDER-ID-HERE"
 description: "Sales performance dashboard managed via GitHub."
-document:
+contents:
   kind: workbook
   schemaVersion: 1
   pages: [...]
@@ -317,12 +429,12 @@ document:
 
 - `name` / `description`: Display name and description shown in Sigma
 - `folderId`: Where the workbook lives - find this the same way you'd find any folder ID, via the URL or `GET /v2/files`
-- `document.pages`: An array of pages - just page metadata (id, name, visibility), not their contents
-- `document.elements`: A single flat array holding every element in the workbook - which page each one belongs to is determined entirely by the `layout` block, covered below, not by anything on the element itself
-- `document.layout`: An XML block placing every element - on every page, including hidden ones - onto a grid
+- `contents.pages`: An array of pages - just page metadata (id, name, visibility), not their contents
+- `contents.elements`: A single flat array holding every element in the workbook - which page each one belongs to is determined entirely by the `layout` block, covered below, not by anything on the element itself
+- `contents.layout`: An XML block placing every element - on every page, including hidden ones - onto a grid
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> This is one of the areas of the spec that's changed recently: elements used to nest directly under each page (<code>document.pages[].elements</code>). The API now rejects that shape - elements live in one flat <code>document.elements</code> array instead. If something you read elsewhere shows the old nested form, trust what's in your cloned <code>workbook.yaml</code> and what the API actually accepts.
+<strong>IMPORTANT:</strong><br> Elements don't nest directly under each page (<code>contents.pages[].elements</code>) - the API rejects that shape. They live in one flat <code>contents.elements</code> array instead, and <code>contents.layout</code> (covered below) is what actually assigns each one to a page. If something you read elsewhere shows the old nested form, or wraps everything in a <code>document</code> key instead of <code>contents</code>, trust what's in your cloned <code>workbook.yaml</code> and what the API actually accepts.
 </aside>
 
 ### Pages and Hidden Data Pages
@@ -343,7 +455,7 @@ Setting `visibility: hidden` on the `Data` page keeps the raw source table out o
 
 ### The Source Element
 
-`document.elements` holds every element in the workbook. The source element for the hidden `Data` page is a `table` sourced from inline SQL:
+`contents.elements` holds every element in the workbook. The source element for the hidden `Data` page is a `table` sourced from inline SQL:
 
 ```code
 - id: sales-source
@@ -362,7 +474,7 @@ Setting `visibility: hidden` on the `Data` page keeps the raw source table out o
 ```
 
 - `source.kind: sql`: Runs custom SQL against any warehouse connection - swap in `kind: data-model` here to reference an existing Sigma data model instead
-- `connectionId`: Your Sigma connection UUID, covered in the next section
+- `connectionId`: Your Sigma connection UUID - the same one you found in "Find Your Connection ID," earlier
 - On the SQL source element itself, columns reference the raw query output with the `[Custom SQL/ColumnName]` prefix
 
 ### Downstream Elements and Cross-Element Formulas
@@ -422,7 +534,7 @@ Controls filter other elements by referencing them explicitly:
 
 ### Layout
 
-The `layout` block is XML describing a 24-column grid, one `<Page>` per page. Each element gets a `gridColumn` and `gridRow` range:
+The `layout` block is XML describing a 24-column grid, one `Page` element per page. Each element gets a `gridColumn` and `gridRow` range:
 
 ```code
 <Page type="grid" gridTemplateColumns="repeat(24, 1fr)" id="page-overview">
@@ -437,7 +549,7 @@ The `layout` block is XML describing a 24-column grid, one `<Page>` per page. Ea
 `gridColumn="1 / 13"` spans the left half of the page, `"13 / 25"` the right half. `Container` groups a set of elements (like the KPI cards) into their own sub-grid, so you can reposition the group without touching each element's coordinates individually.
 
 <aside class="negative">
-<strong>IMPORTANT:</strong><br> This is the <em>only</em> place an element's page is determined - nesting an <code>&lt;Element&gt;</code> inside a given <code>&lt;Page&gt;</code> is what assigns it there, not any field on the element itself in <code>document.elements</code>. Every element needs a placement here, including elements on the hidden <code>Data</code> page. Skip it and deploy fails with <code>element 'sales-source' is not placed in layout</code>. Its position doesn't matter since the page is hidden, but it still needs its own <code>&lt;Page id="page-data"&gt;</code> block with the source element placed somewhere inside it.
+<strong>IMPORTANT:</strong><br> This is the <em>only</em> place an element's page is determined - nesting an <code>Element</code> inside a given <code>Page</code> is what assigns it there, not any field on the element itself in <code>contents.elements</code>. Every element needs a placement here, including elements on the hidden <code>Data</code> page. Skip it and deploy fails with <code>element 'sales-source' is not placed in layout</code>. Its position doesn't matter since the page is hidden, but it still needs its own <code>Page</code> block (<code>id="page-data"</code>) with the source element placed somewhere inside it.
 </aside>
 
 <aside class="positive">
@@ -447,108 +559,23 @@ The `layout` block is XML describing a 24-column grid, one `<Page>` per page. Ea
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Configure and Deploy for the First Time
-Duration: 10
+## View Workbook Code from the Sigma UI
+Duration: 5
 
-With credentials and secrets in place and the spec structure making sense, the last thing to do before this pipeline is live is point it at your own Sigma connection, a folder, and a target workbook.
+Everything so far has gone in one direction: YAML in git, rendered as a live workbook. That relationship also runs in reverse - any workbook in Sigma, whether or not it's managed through this pipeline, can have its code representation viewed and copied directly from the UI.
 
-### Find Your Connection ID
+Open any workbook you have edit access to, then `File` > `View code...`:
 
-The demo spec's source element runs custom SQL against a connection you choose. Go to `Administration` > `Connections`, click your connection, and copy the UUID from the URL.
+<img src="assets/wac_13a.png" width="500"/>
 
-<img src="assets/wac_10.png" width="800"/>
+The panel shows the workbook's elements as YAML, matching `contents.elements`, followed by a labeled `Layout` section with the same grid-placement XML covered above. Both match the live workbook exactly - this isn't a simplified summary, it's the actual code representation.
 
-<aside class="positive">
-<strong>TIP:</strong><br> You can also retrieve this via the API: <code>GET /v2/connections</code>.
-</aside>
+<img src="assets/wac_13b.png" width="800"/>
 
-### Find or Create a Target Folder
-
-The `workbook.yaml` file requires a `folderId` that needs to point at a real folder in your own org - the demo ships with a placeholder ("YOUR-FOLDER-ID-HERE") folder ID, which doesn't exist in your Sigma account. 
-
-<aside class="negative">
-<strong>NOTE:</strong><br> `PUT /v2/workbooks/{id}/spec` (deploy) doesn't check this against an existing workbook, so it's easy to miss, but `POST /v2/workbooks/spec/verify` (the validate step used on every pull request) does look it up - an unchanged `folderId` deploys fine here, then fails validation later with a confusing `404 No matching record`.
-</aside>
-
-Use an existing folder, or create a new one to keep this QuickStart's output together. Open it in Sigma and copy its ID from the URL.
-
-For example:
-
-<img src="assets/wac_10a.png" width="800"/>
+Use the copy icon in the top corner to copy the code to your clipboard.
 
 <aside class="positive">
-<strong>TIP:</strong><br> You can also retrieve this via the API: <code>GET /v2/files</code>.
-</aside>
-
-### Create a Target Workbook
-
-The deploy workflow updates an *existing* workbook by ID - it doesn't create one. Create a blank workbook to serve as that target, then click `Save as` - **make sure to save it inside the folder you created in the previous step.**
-
-Give it a name:
-```copy-code
-WBC QuickStart
-```
-
-Open the new workbook and copy its ID from the URL.
-
-<img src="assets/wac_11.png" width="800"/>
-
-Save the changes.
-
-### Update the Config Files
-
-In the local clone of the repo, open `sigma.config.yaml` and set `workbook_id` to the ID you just copied:
-
-```copy-code
-workbook_id: "YOUR-WORKBOOK-ID-HERE"
-api_host: "https://aws-api.sigmacomputing.com"
-spec_file: "workbook.yaml"
-```
-
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> The repo ships with <code>api_host</code> defaulted to AWS US. Check it against the <code>SIGMA_API_HOST</code> value you set as a GitHub variable earlier and update it if your Sigma instance is on AWS Canada or GCP - otherwise validate and deploy will fail even though the credentials are correct.
-</aside>
-
-<img src="assets/wac_11a.png" width="800"/>
-
-Then open `workbook.yaml` and search for and replace the top-level `folderId` with the folder ID from earlier in this section, and the `connectionId` on the `sales-source` element with your own connection UUID:
-
-```copy-code
-folderId: "YOUR-FOLDER-ID-HERE"
-```
-
-```copy-code
-source:
-  kind: sql
-  connectionId: "YOUR-CONNECTION-ID-HERE"
-```
-
-### Deploy for the First Time
-
-This first push is just wiring up configuration, not a reviewable content change, so commit it straight to `main`:
-
-```copy-code
-git add sigma.config.yaml workbook.yaml
-git commit -m "Configure connection and target workbook"
-git push origin main
-```
-
-Since this push modifies `workbook.yaml` on `main`, it triggers the **Deploy Workbook** workflow automatically. Open the `Actions` tab in your repository and watch it run:
-
-<img src="assets/wac_12.png" width="800"/>
-
-<aside class="positive">
-<strong>TIP:</strong><br> This run typically finishes in well under a minute. If the page seems stuck showing it "in progress" longer than that, refresh - the browser doesn't always pick up the completion status live.
-</aside>
-
-Once it finishes, close and reopen your target workbook in Sigma - you should see the full **Plugs Electronics — Sales Overview** dashboard: KPI cards, region and product breakdowns, and the detail table, all generated from a single YAML file.
-
-We left a space for another KPI that will be added in the next section:
-
-<img src="assets/wac_13.png" width="800"/>
-
-<aside class="positive">
-<strong>NOTE:</strong><br> From here on, treat <code>main</code> as protected. Every real change to the workbook - the kind of thing worth a second set of eyes - goes through a feature branch and a pull request instead, which is exactly what the next section covers.
+<strong>WHY IT MATTERS:</strong><br> This turns any existing workbook - including ones built entirely by hand in the UI, long before this workbook was ever managed as code - into a starting point for a `workbook.yaml`. Instead of hand-authoring a spec from scratch for a complex dashboard, copy its real elements and layout directly, then bring the result under git and CI/CD from there. It's also a fast way to learn the spec format for an element kind or control this QuickStart doesn't cover - build it once in the UI, then read back exactly how Sigma represents it as code.
 </aside>
 
 ![Footer](assets/sigma_footer.png)
@@ -582,11 +609,15 @@ If you're using VS Code, install these two extensions before you start editing:
 <strong>TIP:</strong><br> Using a different editor? Most modern editors have an equivalent YAML-aware linting plugin - the goal is the same either way: catch genuine syntax errors before you commit. Wrong-depth nesting mistakes still require a careful eye (or Indent Rainbow's visual cue) either way.
 </aside>
 
+<aside class="positive">
+<strong>TIP:</strong><br> Editing <code>workbook.yaml</code> with an AI coding assistant instead (Claude Code, Cursor, Codex, Snowflake Cortex)? Sigma publishes an official <a href="https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants">agent skills</a> package, including a <code>sigma-workbooks</code> skill that gives the assistant schema-aware guidance for exactly this kind of edit - on top of, not instead of, the git/CI workflow this QuickStart covers.
+</aside>
+
 ### Add a Gross Margin KPI
 
 Open `workbook.yaml` and search for the last KPI in the workbook (`Total Units Sold`).
 
-Add a new KPI element to `document.elements`, right before the `- id: chart-by-product` line:
+Add a new KPI element to `contents.elements`, right before the `- id: chart-by-product` line:
 
 <img src="assets/wac_14.png" width="800"/>
 
@@ -613,8 +644,8 @@ Add a new KPI element to `document.elements`, right before the `- id: chart-by-p
         text: Gross Margin
         fontSize: 16
       layout:
-        anchor: middle
-        verticalAnchor: start
+        anchor: center
+        verticalAnchor: top
       comparison:
         colorGood: '#16a34a'
         colorBad: '#dc2626'
@@ -640,7 +671,7 @@ Then add its placement inside `kpi-inner-row`, the nested `Container` holding th
 <strong>NOTE:</strong><br> <code>kpi-inner-row</code> already reserves a fifth slot (<code>11 / 13</code> of its own 12-column sub-grid) - Gross Margin drops directly into it, rather than landing in its own row somewhere else on the page.
 </aside>
 
-Save the changes.
+`Save` the changes.
 
 ### Commit and Push the Branch
 
@@ -754,7 +785,7 @@ Open the `Files changed` tab to see exactly what changed - in this case, the ret
 
 `Merge` the pull request.
 
-Return to Sigma, open the workbook and place it in `Edit` mode. Sigma will prompt you to `Update to the latest version`:
+Return to Sigma, refresh the `WBC QuickStart` workbook or if it was left open, place it in `Edit` mode. Sigma will prompt you to `Update to the latest version`:
 
 <img src="assets/wac_22a.png" width="600"/>
 
@@ -770,14 +801,10 @@ There's no reconciliation between a git-driven deploy and an in-progress live ed
 
 Everything up to this point was triggered by hand, for the sake of seeing it work - `drift-check.yml`'s real job is running unattended, on its 6-hour schedule, so nobody has to remember to check. 
 
-When it pulls the live spec into a PR like this, expect a bit of noise beyond whatever change actually happened in the UI. The drift check only compares `document` (elements, layout, pages) to decide whether drift exists at all, so the top-level `name`, `folderId`, and `connectionId` formatting can show as "changed" even when nothing meaningful is different. These fields just come along for the ride once a real `document` difference triggers the pull.
+The drift check only compares `contents` (elements, layout, pages) to decide whether drift exists, and only rewrites that same block when it pulls the live spec into a PR - the top-level `name`, `folderId`, and `description` in `workbook.yaml` stay exactly as you last committed them either way.
 
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> You may see a drift PR even when nobody changed anything meaningful.
-<br><br>
-Drift detection compares the live spec against git as plain text, not as structurally-equal YAML - so a reordered column list, a quoting style change (<code>"abc-123"</code> vs <code>abc-123</code>), or stray trailing whitespace can trigger "drift detected" on their own, purely from how Sigma serializes the spec back out. 
-<br><br>
-Read the diff before deciding anything: if it's genuinely cosmetic, closing the PR without merging is fine - there's nothing to reconcile.
+<aside class="positive">
+<strong>NOTE:</strong><br> Comparison is JSON-structural, not a text diff - a reordered column list or a quoting style change won't trigger a false "drift detected" on its own. Still worth reading the diff before deciding: it tells you whether a change is genuinely meaningful, not just whether one exists.
 </aside>
 
 For example, after 6 hours, the schedule fires on its own and opens a PR without anyone triggering it:
