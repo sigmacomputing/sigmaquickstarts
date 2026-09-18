@@ -334,7 +334,14 @@ Duration: 20
 ## New QuickStarts in September
 Duration: 20
 
+### Build Web Search for a Sigma Agent
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_web_search_agent/index.html) connects a Sigma agent to Tavily's web search API as a custom action, so the agent can pull in live results and cite sources alongside governed warehouse data.
 
+### Manage Sigma Workbooks as Code with Git and CI/CD
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html) shows how to define a Sigma workbook as a single YAML file and move it through the same git-based review, validation, and CI/CD pipeline as the rest of your application code.
+
+### REST API Usage 12: Call Sigma Agents from Your Application
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_12_calling_agents/index.html) shows how to call a Sigma agent directly over the REST API — from your own chat interface, a scheduled job, or another application — while inheriting the same governance and permissions configured in the workbook.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
