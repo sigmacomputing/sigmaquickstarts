@@ -580,7 +580,7 @@ The key benefit is that your data model definition is now stored as code, making
 <strong>EXPLORE MORE:</strong><br> The <a href="https://help.sigmacomputing.com/reference/data-model-representation-example-library">Data Model Representation Example Library</a> provides comprehensive JSON examples for joins, custom SQL, unions, metrics, calculated columns, and interactive controls you can adapt for your use cases.
 </aside>
 
-For more information, see [Create a data model from a JSON specification](https://help.sigmacomputing.com/reference/createdatamodelfromspec)
+For more information, see [Create a data model from a JSON specification](https://help.sigmacomputing.com/reference/create-data-model-spec)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -660,7 +660,7 @@ These geographic columns can be used to create map visualizations in Sigma workb
 <strong>TIP:</strong><br> This update workflow enables code reviews through pull requests. Store your specs in version control so changes to data models can be reviewed and approved by your team before being applied to production.
 </aside>
 
-For more information, see [Update a data model from a JSON specification](https://help.sigmacomputing.com/reference/create-and-manage-data-models-from-code)
+For more information, see [Update a data model from a JSON specification](https://help.sigmacomputing.com/reference/update-data-model-spec)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
