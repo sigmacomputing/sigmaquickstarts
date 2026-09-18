@@ -219,6 +219,7 @@ Let's explore how this works using the Sigma UI. This will allow you to see how 
 <img src="assets/aq9.png" width="800"/>
 
 - Next, add a new column with the formula:
+
 ```copy-code
 [Sales Quantity] * [Sales Amount]
 ```
