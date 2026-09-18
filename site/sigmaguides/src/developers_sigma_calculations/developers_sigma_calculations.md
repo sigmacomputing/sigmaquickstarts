@@ -24,7 +24,7 @@ For example, here is a demonstration of the savings, based on real customer usag
 <img src="assets/aq14_revised.png" width="800"/>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!.
+<strong>NOTE:</strong><br> The customer's name was intentionally removed from the image above. If you are interested in getting more information, please reach out to your Sigma Sales team!
 </aside>
 
 This QuickStart introduces and discusses how Sigma is designed to optimize query performance as data is requested by the user interface. Extensive engineering time has been spent to determine a balanced solution that provides the best user experience, performance, and the least cost impact when used with a data warehouse.
@@ -36,17 +36,17 @@ Using these mechanisms, Sigma helps ensure that customers typically gain far mor
 Over time, we have observed that for a given organization, economies of scale are realized. This means that as more Sigma users are on-boarded, the associated cost per user decreases.
 
 <aside class="negative">
-<strong>NOTE:</strong><br> In this QuickStart, we will refer to Snowflake, but many warehouse providers provide a version of results caching. This is mentioned later in section 5 as well.
+<strong>NOTE:</strong><br> In this QuickStart, we will refer to Snowflake, but many warehouse providers provide a version of results caching. This is mentioned later in section 7 as well.
 </aside>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma is continuously adding and enhancing functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
 </aside>
 
-For more information on Sigma's product release strategy, see [Sigma product releases.](https://help.sigmacomputing.com/docs/sigma-product-releases)
+For more information on Sigma's product release strategy, see [Sigma product releases](https://help.sigmacomputing.com/docs/sigma-product-releases)
 
 ### Target Audience
-Tech executives, architects, developers and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience
+Tech executives, architects, developers and Sigma administrators looking for a deeper understanding of Sigma's unique approach. This approach enables Sigma to perform well against very large datasets without negatively impacting the end-user experience.
 
 ### Prerequisites
 
@@ -98,7 +98,7 @@ Alpha Query leverages the browser's cache to compute new data. It can compute an
 Alpha Query supports the majority of the functions provided by Sigma today (even lookups!). This unique solution provides Sigma customers the best possible performance when working with data in a browser.
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time. so customers benefit now and whenever Sigma adds more advancements.
+<strong>IMPORTANT:</strong><br> A key benefit of Sigma Alpha Query is that it is seamless. There is nothing to configure, it just works, all the time — so customers benefit now and whenever Sigma adds more advancements.
 </aside>
 
 **This substantially decreases the total number of queries issued to Snowflake during data prototyping and exploration.**
@@ -106,7 +106,7 @@ Alpha Query supports the majority of the functions provided by Sigma today (even
 ### Sigma Cloud Lane
 
 <strong>4: Sigma Results Cache:</strong><br>
-Sigma maintains a mapping of Snowflake query ID’s and their Sigma query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the query ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
+Sigma maintains a mapping of Snowflake query IDs and their Sigma query ID. If a Sigma generated SQL query has been previously run, Sigma can request the result from Snowflake using the query ID instead of reissuing a new query. This allows us to leverage the caching mechanisms of your CDW without storing data in our own servers.<br>
 
 <strong>5: Sigma Materialization:</strong><br>
 Any data asset built in Sigma can be materialized as a table within Snowflake. By leveraging materializations on "Manual Triggers" or "Automations" in the Sigma UI, you can establish reusable tables that are less costly and more performant than re-running the queries.<br>
@@ -254,7 +254,6 @@ Sigma also leverages Alpha Query to improve performance when Workbooks have List
 
 In previous implementations, when a user opened a list filter or control, it loads the value to filter, but sometimes an extended time was required to fetch from data warehouse and cause a long wait time on the user side. Users found this slow and annoying in their daily workflow.
 
-
 Sigma now utilizes Alpha Query to give a heuristic list, **before the fetch is finished.** 
 
 This can massively improve List and Filter loading performance.
@@ -265,7 +264,7 @@ This can massively improve List and Filter loading performance.
 
 An example:
 
-<img src="assets/listcontrol.gif">
+<img src="assets/listcontrol.gif" width="500"/>
 
 This use of Alpha Query provides an improved user experience which leads to more usage and satisfaction. 
 
@@ -295,13 +294,13 @@ When a new calculation matches a prior one (using Sigma's matching algorithm), w
 
 If it does, we’ll return those results when they’re recent enough for the requesting client. 
 
-The tradeoff inherent in result caching, which prioritizes retrieval speed over data liveness – the previously calculated results are potentially out-of-date relative to fresh calculations. 
+The tradeoff inherent in result caching is that it prioritizes retrieval speed over data liveness – the previously calculated results are potentially out-of-date relative to fresh calculations. 
 
 In many cases this is desirable, as results may only change on an hourly or daily basis. 
 
 For live data, you can configure a "staleness" threshold. This gives you full control over when Sigma calculates results using up-to-date data in the data warehouse.
 
-For information on how to configure [Workbook Data refresh, click here.](https://help.sigmacomputing.com/docs/workbook-refresh-options)
+For information on how to configure [Workbook Data refresh, click here](https://help.sigmacomputing.com/docs/workbook-refresh-options)
 
 <strong>There are a few preconditions necessary for the Sigma result cache to kick in:</strong>
  <ul>
@@ -328,7 +327,7 @@ At the same time, fingerprinting is resilient to unnecessary information such as
 
 The exact details of how Sigma produces a fingerprint are beyond the scope of this article.
 
-[To learn more about Fingerprinting in general, click here.](https://en.wikipedia.org/wiki/Fingerprint_(computing))
+[To learn more about Fingerprinting in general, click here](https://en.wikipedia.org/wiki/Fingerprint_(computing))
 
 ### A Practical Example
 One key use-case for Sigma’s result cache is to accelerate the initial page load for a Workbook.
@@ -342,6 +341,8 @@ Rather than asking the warehouse to calculate fresh results for every team membe
 This drastically reduces the number of calculations the data warehouse needs to perform, and improves the page load time since there are no additional calculations to perform.
 
 ## Conditions for Using a Warehouse Results Cache
+Duration: 20
+
 Each warehouse provider implements a version of results caching, but we will discuss this using Snowflake's implementation as example.
 
 Here are links that discuss how results caching works, for common warehouse providers:
@@ -426,6 +427,8 @@ By embracing these strategies, organizations can harness Sigma's robust and effi
 <!-- END OF SECTION-->
 
 ## Additional Resource Links
+Duration: 10
+
 This section contains valuable links and resources specifically curated for Sigma administrators and data engineers. These include detailed best practice guides, troubleshooting tips, advanced configurations, and other related information to optimize Sigma operations.
 
 We encourage readers to explore these resources for an in-depth understanding and to take full advantage of Sigma's capabilities within their organizations.
@@ -434,7 +437,7 @@ We encourage readers to explore these resources for an in-depth understanding an
 [Sigma on Snowflake Best Practices Guide](https://www.sigmacomputing.com/sigma-on-snowflake-best-practices)
 
 This workbook walks you through the process of analyzing the Snowflake sample database for clustering needs:
-[Snowflake Clustering)](https://www.sigmacomputing.com/interactive-demos/snowflake-clustering-demo)
+[Snowflake Clustering](https://www.sigmacomputing.com/interactive-demos/snowflake-clustering-demo)
 
 Sigma also provides many templated business solutions "out of the box", that you can review as demonstration or connect to your own data. At the time of this QuickStart, the included templates are:
 
@@ -446,7 +449,7 @@ One of particular interest is the `Snowflake Performance Monitoring` which provi
 
 [Try the Sigma Snowflake Performance Monitoring Template live here:](https://www.sigmacomputing.com/interactive-demos/snowflake-performance-monitoring-template)
 
-[For more information on the Snowflake usage templates, click here.](https://help.sigmacomputing.com/docs/snowflake-usage-templates)
+[For more information on the Snowflake usage templates, click here](https://help.sigmacomputing.com/docs/snowflake-usage-templates)
 
 ### Databricks:
 [Sigma on Databricks: End-to-End Best Practices Guide](https://www.sigmacomputing.com/ebook/sigma-on-databricks-end-to-end-best-practices-guide)
