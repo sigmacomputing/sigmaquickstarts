@@ -517,7 +517,7 @@
       "title": "Sigma's Query Engine",
       "category": "Developers",
       "summary": "Explains Sigma's multi-tier caching and query evaluation architecture, which reduces Snowflake compute load while keeping the interface responsive as user count grows.",
-      "lastUpdated": "2023-08-21",
+      "lastUpdated": "2026-09-18",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_calculations/index.html"
     },
     {
