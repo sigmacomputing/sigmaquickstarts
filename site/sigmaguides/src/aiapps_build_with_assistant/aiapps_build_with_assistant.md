@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-01
 
 # Build Dashboards and Apps with Sigma Assistant
 
