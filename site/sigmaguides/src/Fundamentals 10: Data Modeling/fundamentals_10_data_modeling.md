@@ -5,7 +5,7 @@ categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-23
+lastUpdated: 2026-10-23
 
 # Fundamentals 10: Data Modeling
 
@@ -216,16 +216,22 @@ For example, we can delete `D_CUSTOMER/Cust Address` since we don't want to expo
 ### Calculated columns
 Since our base table does not have columns for `Revenue` or `Profit`, we can add them easily:
 
-<img src="assets/dm_39a.png" width="800"/>
+Add a new column, and rename it to `Revenue`.
 
-Add a new column, and rename it to `Revenue`. Set the formula to:
+<img src="assets/dm_39a.png" width="700"/>
+
+ Set the formula to:
 ```copy-code
-[Sales Amount] * [Sales Quantity]
+[Sales Amount]
 ```
+
+<aside class="negative">
+<strong>NOTE:</strong><br> `Sales Amount` and `Cost Amount` are already line-item totals (unit price/cost multiplied by quantity), not per-unit rates. Sorting the base table by `Product Key` shows `Sales Amount` scales exactly with `Sales Quantity` for the same product, confirming quantity is already factored in. Multiplying either column by `Sales Quantity` again would double-count.
+</aside>
 
 Add another column, and rename it to `Profit`, and set the formula to:
 ```copy-code
-[Revenue] - ([Cost Amount] * [Sales Quantity])
+[Revenue] - [Cost Amount]
 ```
 
 Set the table description to:
@@ -233,7 +239,7 @@ Set the table description to:
 Plugs Electronics POS line items, enriched with customer and order-header details. Grain: one row per POS line. Source: RETAIL schema in the Sigma Sample Database.
 ```
 
-<img src="assets/dm_32a.png" width="800"/>
+<img src="assets/dm_32a.png" width="700"/>
 
 <aside class="positive">
 <strong>NOTE:</strong><br> Descriptions are not just documentation — they feed Sigma's semantic search and the Sigma Assistant. A clear description that states the grain and intent makes it easier for builders (and Sigma Assistant) to pick this model when they have a question about sales data.
@@ -279,7 +285,7 @@ Before we can create a relationship, we need to add the two tables we want to ex
 
 Add the `D_PRODUCT` and `D_STORE` tables from the `RETAIL` > `PLUGS_ELECTRONICS` schema directly to the data model.
 
-We want to prevent the tables from appearing in the published data model, so we can toggle `Visible as source` off for both tables:
+We want to prevent the tables from appearing in the published data model, so we can toggle `Visible as source` off **for both tables:**
 
 <img src="assets/dm_10a.png" width="800"/>
 
@@ -600,7 +606,7 @@ We have the option to `Publish without validation` but let's not do that as we h
 
 From here you have two options:
 
-**Auto fix:** Click `Auto fix` to have Sigma attempt automatic replacement mapping using name matching. This works well when a column has been renamed but is structurally equivalent:
+**Auto fix:** Nice feature to save time if Sigma is able to work out the change for you. This works well when a column has been renamed but is structurally equivalent. In our case, Profit is derived from Revenue so autofix will just set them to "None" which removes them.
 
 <img src="assets/dm_58.png" width="800"/>
 
@@ -609,10 +615,6 @@ From here you have two options:
 Scroll the column list to see that the `Revenue` column is "broken":
 
 <img src="assets/dm_59.png" width="600"/>
-
-<aside class="negative">
-<strong>NOTE:</strong><br> "Profit" is also broken because it is a calculated column and depended on Revenue to work.
-</aside>
 
 You can also click `Downstream lineage` to review exactly which documents will be affected before committing.
 
