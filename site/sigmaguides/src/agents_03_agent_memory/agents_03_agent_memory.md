@@ -51,6 +51,10 @@ Sigma workbook authors and admins building agents that need to remember somethin
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
 </aside>
 
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Sigma agents are a premium feature. During the beta, anyone with workbook access can use agents; after the beta, contact your Sigma Account Executive to maintain access. See <a href="https://help.sigmacomputing.com/docs/sigma-agents">Sigma agents</a> for the latest details.
+</aside>
+
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
 
 <aside class="negative">
