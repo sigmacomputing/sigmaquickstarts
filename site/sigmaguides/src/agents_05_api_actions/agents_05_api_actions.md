@@ -1,12 +1,12 @@
 author: pballai
-id: aiapps_web_search_agent
+id: agents_05_api_actions
 summary: Connect a Sigma agent to Tavily's web search API as a custom API connector, then attach it as a callable action so the agent can pull in live results and cite sources alongside governed data.
-categories: aiapps
+categories: agents
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-09
+lastUpdated: 2026-09-23
 
 # Build Web Search for a Sigma Agent
 
@@ -43,6 +43,8 @@ This QuickStart is designed for:
 - Teams already using Sigma agents who need current, real-world context alongside their data
 - Anyone evaluating how Sigma agents combine governed data with live, external information
 
+For the fundamentals of building and configuring a Sigma agent, see [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
+
 ### Prerequisites
 
 <ul>
@@ -62,6 +64,10 @@ This QuickStart is designed for:
 Once you're through, copy your API key from the `Connect Tavily` screen — you'll paste it into Sigma in the next section:
 
 <img src="assets/wsa_00b.png" width="500"/>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Sigma agents are a premium feature. During the beta, anyone with workbook access can use agents; after the beta, contact your Sigma Account Executive to maintain access. See <a href="https://help.sigmacomputing.com/docs/sigma-agents">Sigma agents</a> for the latest details.
+</aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>     <button>[Tavily Free Trial](https://tavily.com/)</button>
 
@@ -344,6 +350,10 @@ We connected Sigma to Tavily's search API as a custom connector, then gave a Sig
 The pattern generalizes past Tavily: any REST API that accepts a JSON body and returns JSON back can become a Sigma agent action the same way, as long as the instructions are precise enough that the model knows when — and when not — to reach for it.
 
 Extending an agent's reach this way doesn't loosen control over it. The credential stays scoped to one domain, the connector is admin-managed with its own access grants, and every call runs through the same governance as the rest of your data — Sigma stays a governed runtime for AI, not just a place agents run.
+
+### Next steps
+
+Explore the rest of the [Agents series](https://quickstarts.sigmacomputing.com/?cat=agents).
 
 **Additional Resource Links**
 

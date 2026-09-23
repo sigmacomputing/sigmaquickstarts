@@ -125,7 +125,7 @@
       "title": "How to Get Started - A Guide for Sigma Administrators",
       "category": "administration",
       "summary": "Walks new Sigma administrators through a checklist of setup decisions: authentication, warehouse connections, AI configuration, branding, versioning, and training.",
-      "lastUpdated": "2026-10-16",
+      "lastUpdated": "2026-09-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_getting_started_guide/index.html"
     },
     {
@@ -169,11 +169,59 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_version_tagging/index.html"
     },
     {
+      "id": "agents_01_building_your_first_agent",
+      "title": "Building Your First Sigma Agent",
+      "category": "agents",
+      "summary": "agents_01_building_your_first_agent",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html"
+    },
+    {
+      "id": "agents_02_actions_writeback",
+      "title": "Agent-Driven Actions & Writeback",
+      "category": "agents",
+      "summary": "agents_02_actions_writeback",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html"
+    },
+    {
+      "id": "agents_03_agent_memory",
+      "title": "Giving Agents Memory",
+      "category": "agents",
+      "summary": "agents_03_agent_memory",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_03_agent_memory/index.html"
+    },
+    {
+      "id": "agents_04_scheduling_agents",
+      "title": "Scheduling Unattended Agent Runs",
+      "category": "agents",
+      "summary": "agents_04_scheduling_agents",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_04_scheduling_agents/index.html"
+    },
+    {
+      "id": "agents_05_api_actions",
+      "title": "Build Web Search for a Sigma Agent",
+      "category": "agents",
+      "summary": "Connect a Sigma agent to Tavily's web search API as a custom API connector, then attach it as a callable action so the agent can pull in live results and cite sources alongside governed data.",
+      "lastUpdated": "2026-09-23",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_05_api_actions/index.html"
+    },
+    {
+      "id": "agents_08_warehouse_experts",
+      "title": "Give Your Sigma Agent a Snowflake Cortex Specialist",
+      "category": "agents",
+      "summary": "agents_08_warehouse_experts",
+      "lastUpdated": "2026-12-31",
+      "url": "https://quickstarts.sigmacomputing.com/guide/agents_08_warehouse_experts/index.html"
+    },
+    {
       "id": "aiapps_build_with_assistant",
       "title": "Build Dashboards and Apps with Sigma Assistant",
       "category": "aiapps",
       "summary": "Use Sigma Assistant's Plan and Build modes to build a revenue forecast workbook from a data model and a design image, then refine it through conversation.",
-      "lastUpdated": "2026-12-31",
+      "lastUpdated": "2026-09-01",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_build_with_assistant/index.html"
     },
     {
@@ -247,14 +295,6 @@
       "summary": "Build a retail storefront app using a Repeated container for product cards, popover and date range controls, a boolean-filtered notification center, and role-based storefront/manager views.",
       "lastUpdated": "2026-03-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_storefront_repeaters/index.html"
-    },
-    {
-      "id": "aiapps_web_search_agent",
-      "title": "Build Web Search for a Sigma Agent",
-      "category": "aiapps",
-      "summary": "Connect a Sigma agent to Tavily's web search API as a custom API connector, then attach it as a callable action so the agent can pull in live results and cite sources alongside governed data.",
-      "lastUpdated": "2026-09-09",
-      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_web_search_agent/index.html"
     },
     {
       "id": "common_date_functions",
