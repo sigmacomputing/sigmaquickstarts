@@ -845,7 +845,7 @@
       "title": "Fundamentals 10: Data Modeling",
       "category": "Fundamentals",
       "summary": "Build a Sigma data model with table relationships, custom columns, metrics, column-level security, and materialization for reusable governed analytics.",
-      "lastUpdated": "2026-06-23",
+      "lastUpdated": "2026-10-23",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html"
     },
     {
