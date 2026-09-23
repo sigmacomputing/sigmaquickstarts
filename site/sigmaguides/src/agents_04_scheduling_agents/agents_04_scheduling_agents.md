@@ -1,6 +1,6 @@
 author: pballai
-id: agents_02_agent_memory
-summary: agents_02_agent_memory
+id: agents_04_scheduling_agents
+summary: agents_04_scheduling_agents
 categories: agents
 environments: web
 status: Published
@@ -8,17 +8,24 @@ feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2026-12-31
 
-# Giving Agents Memory
+# Scheduling Unattended Agent Runs
 
 ## Overview
 Duration: 5
 
-This QuickStart introduces...
+This QuickStart demonstrates how to run a Sigma agent on a schedule, with nobody watching, and store what it produces as a new row in a table.
+
+Every agent so far in this series has answered inside a conversation, with a person there to approve anything it writes. A scheduled run has no conversation and no one to click approve — so this QuickStart uses a different shape: a separate agent that only produces text, and an action sequence that calls it on a timer and writes the result down automatically.
 
 Along the way you'll learn how to:
-- ...
-- ...
+- Build a text-only agent with no UI-dependent tools, suited to running unattended
+- Configure a page-level action sequence that calls an agent and captures its response
+- Insert that response into a table as part of the same sequence, with no approval step
+- Confirm a scheduled trigger actually fired, not just that a manual run worked
 
+<aside class="positive">
+<strong>WHY IT MATTERS:</strong><br> An agent that only runs when someone opens a chat is still waiting on a person. One that runs on a schedule and writes its own result down is doing the checking so a person doesn't have to remember to ask.
+</aside>
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma's intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -29,13 +36,14 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-The typical audience for this QuickStart includes users of Excel, common Business Intelligence or Reporting tools, and semi-technical users who want to try out or learn Sigma.
+Sigma workbook authors and admins building agents that need to run without anyone present, not just when someone opens a chat. For the writeback mechanic this QuickStart adapts, see [Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
 <ul>
   <li>Any modern browser is acceptable.</li>
-  <li>Access to your Sigma environment.</li>
+  <li>Access to your Sigma environment with permission to create and manage agents, create input tables, and configure scheduled action sequences.</li>
+  <li>Write access enabled on the connection backing your workbook — the scheduled sequence in this QuickStart inserts a row into a table.</li>
   <li>Some familiarity with Sigma is assumed. Not all steps will be shown, as the basics are assumed to be understood.</li>
  </ul>
 
@@ -51,20 +59,20 @@ The typical audience for this QuickStart includes users of Excel, common Busines
 
 ![Footer](assets/sigma_footer.png)
 
-## Initial Setup
-Duration: 5
-
-### ...section 1
+## Create the Workbook and Runner Agent
+Duration: 15
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-### ...section 2
+## Build the Scheduled Action Sequence
+Duration: 15
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-### ...section n
+## Test the Schedule
+Duration: 15
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
