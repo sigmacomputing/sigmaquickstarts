@@ -371,8 +371,17 @@ Duration: 20
 ## New QuickStarts in September
 Duration: 20
 
-### Build Web Search for a Sigma Agent
-[This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_web_search_agent/index.html) connects a Sigma agent to Tavily's web search API as a custom action, so the agent can pull in live results and cite sources alongside governed warehouse data.
+### Agents
+September also introduces a new Agents category — an 8-part series building up a Sigma agent from a single grounded answer through actions, memory, scheduling, custom tools, and warehouse-native AI.
+
+* [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html)
+* [Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html)
+* [Agents 03: Giving Agents Memory](https://quickstarts.sigmacomputing.com/guide/agents_03_agent_memory/index.html)
+* [Agents 04: Scheduling Unattended Agent Runs](https://quickstarts.sigmacomputing.com/guide/agents_04_scheduling_agents/index.html)
+* [Agents 05: Build Web Search for a Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_05_api_actions/index.html)
+* [Agents 06: Connect a Sigma Agent to GitHub with MCP Tools](https://quickstarts.sigmacomputing.com/guide/agents_06_mcp_tools/index.html)
+* [Agents 07: Running Python from an Agent](https://quickstarts.sigmacomputing.com/guide/agents_07_python_from_agent/index.html)
+* [Agents 08: Give Your Sigma Agent a Snowflake Cortex Specialist](https://quickstarts.sigmacomputing.com/guide/agents_08_warehouse_experts/index.html)
 
 ### Manage Sigma Workbooks as Code with Git and CI/CD
 [This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html) shows how to define a Sigma workbook as a single YAML file and move it through the same git-based review, validation, and CI/CD pipeline as the rest of your application code.
