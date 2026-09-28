@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Agents 01: Building Your First Sigma Agent",
+      "id": "agents_01_building_your_first_agent",
+      "category": "agents",
+      "date": "Sep 28, 2026"
+    },
+    {
       "title": "Call Sigma Agents from Your Application",
       "id": "embedding_rest_api_useage_12_calling_agents",
       "category": "embedding",
@@ -13,9 +19,9 @@
       "date": "Sep 16, 2026"
     },
     {
-      "title": "Build Web Search for a Sigma Agent",
-      "id": "aiapps_web_search_agent",
-      "category": "aiapps",
+      "title": "Agents 05: Build Web Search for a Sigma Agent",
+      "id": "agents_05_api_actions",
+      "category": "agents",
       "date": "Sep 9, 2026"
     },
     {
@@ -25,9 +31,9 @@
       "date": "Sep 4, 2026"
     },
     {
-      "title": "Connect a Sigma Agent to GitHub with MCP Tools",
-      "id": "aiapps_github_mcp_tool",
-      "category": "aiapps",
+      "title": "Agents 06: Connect a Sigma Agent to GitHub with MCP Tools",
+      "id": "agents_06_mcp_tools",
+      "category": "agents",
       "date": "Aug 22, 2026"
     },
     {
@@ -53,12 +59,6 @@
       "id": "07_2026_first_friday_features",
       "category": "firstfridayfeatures",
       "date": "Aug 4, 2026"
-    },
-    {
-      "title": "Snowflake Object Usage Template Setup",
-      "id": "snowflake_object_usage_template_setup",
-      "category": "administration",
-      "date": "July 22, 2026"
     }
   ]
 }
