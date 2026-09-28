@@ -14,7 +14,7 @@ lastUpdated: 2026-10-02
 September 4, 2026 changes: done
 September 11, 2026 changes: done
 September 18, 2026 changes: done
-September 25, 2026 changes:
+September 25, 2026 changes: done
 
 Publish on October 2
 
@@ -100,8 +100,18 @@ For more information, see [Manage data models as code](https://help.sigmacomputi
 ## AI
 Duration: 20
 
+### Assistant in build mode: cohort retention tables (GA)
+Sigma Assistant in build mode can now generate styled cohort retention pivot tables, with automatic heatmap styling to help identify retention patterns.
+
+For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
+
 ### Assistant in build mode: new code-first architecture (Beta)
 Sigma Assistant in build mode now runs on a code-first architecture, improving build speed, data source search, and native feature support.
+
+For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
+
+### Assistant in build mode: pivot table styling (GA)
+Sigma Assistant in build mode now applies automatic heatmap and matrix styling to pivot tables based on the type of measure.
 
 For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
@@ -113,13 +123,21 @@ July's launch of the ChatGPT plugin let users query Sigma data from a conversati
 
 For more information, see [Use the Sigma plugin for AI assistants](https://help.sigmacomputing.com/docs/use-the-sigma-plugin-for-ai-assistants)
 
-### Chat history for Sigma agents (Beta) <img src="assets/heart_icon.png" width="25"/>
-Conversations with Sigma agents can now retain chat history, with admins able to configure storage and retention for organizations that meet certain conditions.
+### Chat history for Assistant and agents (GA) <img src="assets/heart_icon.png" width="25"/>
+Chat history is now available for conversations with Sigma Assistant, warehouse agents, and Sigma agents, letting users revisit previous conversations. Admins can configure storage and retention for organizations that meet certain conditions.
 
 **WHY IT MATTERS:**<br>
-Without persistence, every agent conversation starts from zero, limiting agents to single-turn interactions. Chat history lets a conversation carry context across sessions, and gives compliance-minded organizations a retention story to point to instead of an open question.
+Without persistence, every AI conversation starts from zero, limiting it to a single-turn interaction. Chat history now covers Assistant, warehouse agents, and Sigma agents alike, carrying context across sessions and giving compliance-minded organizations one consistent retention story instead of three separate ones.
 
-For more information, see [Configure chat history](https://help.sigmacomputing.com/docs/configure-chat-history-agents) and [Chat with Sigma agents](https://help.sigmacomputing.com/docs/chat-with-agent)
+For more information, see [Configure chat history](https://help.sigmacomputing.com/docs/configure-chat-history) and [Chat with Sigma agents](https://help.sigmacomputing.com/docs/chat-with-agent)
+
+### Improved Sigma Assistant (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma Assistant has improved reasoning, faster performance, and higher-quality responses, including clarifying questions, more flexible data source access, visible reasoning, and the ability to export a conversation.
+
+**WHY IT MATTERS:**<br>
+Conversation export and visible reasoning turn Assistant's output into something a reader can verify and hand off, rather than a black-box answer you either trust or don't. Paired with faster, higher-quality responses, this closes the gap between "an AI answer" and something you'd actually put in front of a stakeholder.
+
+For more information, see [Ask natural language queries with Sigma Assistant](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant)
 
 ### Migrate to Sigma with an AI assistant (Beta) <img src="assets/heart_icon.png" width="25"/>
 Migration skills for Sigma let an AI assistant rebuild source content — the dashboards, reports, and data models in another BI tool — as a Sigma document.
@@ -133,6 +151,14 @@ For more information, see [Migrate to Sigma with an AI assistant](https://help.s
 The `sigma-workbooks` and `sigma-reports` agent skills give AI assistants reference materials and instructions for authoring the code representation of a workbook or report.
 
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
+
+### Use warehouse agents with Assistant and agents (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma Assistant and Sigma agents can now use Snowflake Cortex Agents or Databricks Genie Agents as tools, bringing warehouse-native agent capabilities directly into Sigma.
+
+**WHY IT MATTERS:**<br>
+This isn't Sigma building a competing warehouse agent — it's Sigma's AI layer calling out to whatever agent ecosystem you've already invested in on Snowflake or Databricks, and folding the result back into a governed Sigma conversation. You get one consistent interface over both Sigma-native and warehouse-native AI, instead of switching tools depending on which agent has the answer.
+
+For more information, see [Use warehouse agents with Sigma](https://help.sigmacomputing.com/docs/use-warehouse-agents-sigma)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -172,6 +198,11 @@ For more information, see [Configure the organization's AI provider](https://hel
 A new endpoint lists API credentials, returning client ID, owner ID, and scopes, with the client secret excluded from the response.
 
 For more information, see [List API credentials](https://help.sigmacomputing.com/reference/list-credentials)
+
+### New API endpoints for managing AI chat history settings (Beta)
+Two new endpoints get and update an organization's AI chat history settings.
+
+For more information, see [Get the chat history settings](https://help.sigmacomputing.com/reference/get-ai-chat-history-setting) and [Update the chat history settings](https://help.sigmacomputing.com/reference/update-ai-chat-history-setting)
 
 ### New API endpoints to list and run Sigma agents (Beta)
 Three new endpoints — List agents, List agents in a workbook, and Run a Sigma agent — let applications call Sigma agents programmatically to build conversational workflows.
@@ -266,6 +297,12 @@ Duration: 20
 **8:** Users can now swap tables, schemas, and databases/catalogs when tagging a document version without `Can use` access to the entire connection.
 
 **9:** Fixed an error that prevented setting up Azure OpenAI as an AI provider with certain temperature values.
+
+**10:** Version-tagging or swapping sources on workbooks with broken connections now returns clear error messaging instead of a generic failure.
+
+**11:** Fixed the List workbooks for a tag endpoint returning no results for non-admin users with access only to tagged versions.
+
+**12:** Fixed a 400 error occurring in conversations with Claude Sonnet 5 as the reasoning model after a dozen or more messages.
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -386,7 +423,7 @@ Builders have long had to choose between cluttering a page with detail or sendin
 
 For more information, see [Use drawers to manage complex workflows](https://help.sigmacomputing.com/docs/use-drawers-to-manage-complex-workflows)
 
-### Export reports in PowerPoint format (Beta)
+### Export reports in PowerPoint format (GA)
 Reports can now be exported and downloaded as PowerPoint (.pptx) files.
 
 For more information, see [Share and export reports](https://help.sigmacomputing.com/docs/share-and-export-reports)
@@ -400,6 +437,11 @@ For more information, see [Share and export reports](https://help.sigmacomputing
 The Sigma API can now retrieve, update, and create reports based on a JSON or YAML representation.
 
 For more information, see [Manage reports as code (Beta)](https://help.sigmacomputing.com/docs/manage-reports-as-code) and [Report representation example library](https://help.sigmacomputing.com/docs/report-representation-example-library)
+
+### Manually trigger an AI column or cell run (Beta)
+AI columns can now be configured with a `Don't run automatically` option, so they only run when manually prompted instead of on every change.
+
+For more information, see [Create AI columns (Beta)](https://help.sigmacomputing.com/docs/create-ai-columns)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
