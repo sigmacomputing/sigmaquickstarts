@@ -6,9 +6,9 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-28
 
-# Scheduling Unattended Agent Runs
+# Agents 04: Scheduling Unattended Agent Runs
 
 ## Overview
 Duration: 5
@@ -36,7 +36,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Sigma workbook authors and admins building agents that need to run without anyone present, not just when someone opens a chat. For the approval-gated action pattern this QuickStart contrasts with, see [Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) — but this QuickStart includes everything you need to follow along on its own.
+Sigma workbook authors and admins building agents that need to run without anyone present, not just when someone opens a chat. For the approval-gated action pattern this QuickStart contrasts with, see [Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
@@ -65,7 +65,7 @@ Sigma workbook authors and admins building agents that need to run without anyon
 ## Create the Workbook and Runner Agent
 Duration: 15
 
-This agent never appears in a chat element. It exists to be called by a schedule, so it gets a home and a data source like every other agent in this series, but nothing to talk to it directly.
+This agent never appears in a chat element. It exists to be called by a schedule, so it gets a home and a data source but no UI elements in the workbook are required to use it.
 
 ### Create a new workbook
 
@@ -121,41 +121,15 @@ Duration: 15
 
 There are two steps in this simple example, no chat: the first calls the runner agent, the second emails what it returns.
 
-<!-- TODO: everything in this section is a draft skeleton based on the internal lab doc's pattern, NOT yet verified against the current UI. Confirm the Call agent step, the Send email action's exact fields, and the scheduling navigation live before treating this as final. -->
-
 ### Create the automated action
 
 Click a blank area of the canvas background — not any element — so the panel shows page-level settings. In the element panel, open the `Actions` tab (to the left of `Agents`).
 
-Under `AUTOMATED ACTIONS`, click `+`. 
+There is an automated action already set to trigger `At scheduled time`, with a `Select a schedule` dropdown and, below it, its own `Action sequence` area where the actual steps get added.
 
-This adds a new automated action already set to trigger `At scheduled time`, with a `Select a schedule` dropdown and, below it, its own `Action sequence` area where the actual steps get added.
+Click `+` to the right of `Action sequence`. A `Notify and export` action is added by default.
 
-`Notify via email` is the default we need to configure but we need something else to happen first. 
-
-<img src="assets/sua_04.png" width="700"/>
-
-Use the `Action sequence` area's `...` menu to `Rename` it:
-
-```copy-code
-Weekly Category Report
-```
-
-<!-- <img src="assets/sua_04b.png" width="500"/> -->
-
-<aside class="positive">
-<strong>NOTE:</strong><br> That same `...` menu is also where `Run now` and `Disable sequence` live — both come up again in the last section of this QuickStart.
-</aside>
-
-### Call the runner agent
-
-In the `Action sequence` area, click its `+` to add another step (action). Now there are two actions, both defaulted to `Ntifiy via email`.
-
-We can now configure the first one by clicking it:
-
-<img src="assets/sua_04a.png" width="700"/>
-
-Change its `Action` to `Call agent`.
+Change the `Action` to `Call agent`.
 
 Set `Agent` to `My Report Runner`. 
 
@@ -171,18 +145,20 @@ Under `Output`, rename the default `Agent-Response` variable to:
 summary
 ```
 
-<img src="assets/sua_05.png" width="700"/>
+The `Action variable` `summary` is expected to return `Text`.
 
-<aside class="negative">
-<strong>IMPORTANT:</strong><br> Not yet confirmed against the current product — the step name and fields for calling an agent from an action sequence may differ from what's shown here.
-</aside>
+<img src="assets/sua_04b.png" width="700"/>
 
-### Send the result by email
+### Export to email
 
-Now we can finish the configuration of the `Notify and export` action to send the email.
+In the `Action sequence` area, click its `+` to add another step (action). Now there are two actions, both defaulted to `Call agent`.
+
+Change the `Action` to `Notify and export`, which will change the actions name for us.
+
+<img src="assets/sua_04a.png" width="700"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Email is one destination among several here — the same `Notify and export` action also reaches Slack, Microsoft Teams, SharePoint, a webhook, or cloud storage. This QuickStart uses email because it needs no other setup, but the schedule and the agent call underneath it stay identical if you pointed this at Slack instead.
+<strong>NOTE:</strong><br> Email is one destination among several here — the same "Notify and export" action also reaches Slack, Microsoft Teams, SharePoint, a webhook, or cloud storage. This QuickStart uses email because it needs no other setup, but the schedule and the agent call underneath it stay identical if you pointed this at Slack instead.
 </aside>
 
 Under `Recipient`, leave the mode as `Specific users / teams` and search for yourself in the field below it.
@@ -198,15 +174,13 @@ In `Message`, type `=` to switch to a formula, then insert the `summary` variabl
 <img src="assets/sua_06.png" width="800"/>
 
 <aside class="positive">
-<strong>NOTE:</strong><br> Both `Subject` and `Message` accept dynamic values the same way — press <code>=</code> to insert a variable instead of typing it literally. Leave `Cc`, `Bcc`, `Link to workbook`, and `Attachment` off; none of them are needed for this example.
-</aside>
-
-<aside class="positive">
-<strong>NOTE:</strong><br> The message above sends the summary as one plain paragraph. `Message` also supports HTML — worth trying if you want the report to read as a short formatted list instead of a wall of text.
+<strong>NOTE:</strong><br> The "message" sends the summary as one plain paragraph. "Message" also supports HTML — worth trying if you want the report to read as a short formatted list instead of a wall of text.
+<br><br>
+Both "Subject" and "Message" accept dynamic values the same way — press <code>=</code> to insert a variable instead of typing it literally. Leave "Cc", "Bcc", "Link to workbook", and "Attachment" off; none of them are needed for this example.
 </aside>
 
 <aside class="negative">
-<strong>NOTE:</strong><br> This sequence only calls the agent once, but nothing limits it to that. A second `Call agent` step with different instructions could capture another answer into its own variable — say, `summary2` — and `Message` can reference both in the same email.
+<strong>NOTE:</strong><br> This sequence only calls the agent once, but nothing limits it to that. A second "Call agent" step with different instructions could capture another answer into its own variable — say, "summary2" — and "Message" can reference both in the same email.
 </aside>
 
 Click `Publish`.
@@ -273,7 +247,7 @@ We built an agent that runs on a schedule, with no one watching, and delivered i
 
 Explore the rest of the [Agents series](https://quickstarts.sigmacomputing.com/?cat=agents).
 
-For the approval-gated action pattern this QuickStart contrasts with, see [Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html).
+For the approval-gated action pattern this QuickStart contrasts with, see [Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html).
 
 **Additional Resource Links**
 

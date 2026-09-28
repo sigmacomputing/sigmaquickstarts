@@ -6,16 +6,16 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-28
 
-# Giving Agents Memory
+# Agents 03: Giving Agents Memory
 
 ## Overview
 Duration: 5
 
 This QuickStart demonstrates how to give a Sigma agent a persistent memory — a fact or commitment it saves once and can recall in a completely separate conversation later.
 
-[Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) covered the mechanic: an agent inserting a row into a table, gated by your approval. Here, we'll point that same mechanic at a memory table, then prove it actually persists — save a note in one chat, and retrieve it from a brand new one.
+[Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) covered the mechanic: an agent inserting a row into a table, gated by your approval. Here, we'll point that same mechanic at a memory table, then prove it actually persists — save a note in one chat, and retrieve it from a brand new one.
 
 Along the way you'll learn how to:
 - Create an input table that stores a note tied to a specific scope
@@ -36,7 +36,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Sigma workbook authors and admins building agents that need to remember something across conversations, not just within one. For the writeback mechanic this QuickStart builds on, see [Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) — but this QuickStart includes everything you need to follow along on its own.
+Sigma workbook authors and admins building agents that need to remember something across conversations, not just within one. For the writeback mechanic this QuickStart builds on, see [Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
@@ -160,7 +160,7 @@ With nothing selected on the page, open the `Agents` tab and use the `3-dot` men
 
 Click the `+` to the right of `Tools` and select `Action`. 
 
-Using the pencil icon next, rename it:
+Using the pencil icon, rename it:
 
 ```copy-code
 Remember a Note
@@ -186,7 +186,7 @@ Under `Set column values`:
 
 <img src="assets/gam_06.png" width="700"/>
 
-Closed the modal.
+Close the modal.
 
 ### Update the instructions
 
@@ -226,7 +226,7 @@ On the `Chat` page, add a `UI` > `Chat` element and connect it to `My Memory Age
 
 Click `Publish` and open the published version of the workbook.
 
-Next we will test that we can verify notes are saved by switching to `Edit` mode afterward.
+We can verify notes are saved by switching to `Edit` mode.
 
 <img src="assets/gam_07.png" width="800"/>
 
@@ -328,7 +328,7 @@ We gave an agent a memory — a fact saved once, in a table it reads back, recal
 
 Explore the rest of the [Agents series](https://quickstarts.sigmacomputing.com/?cat=agents).
 
-For the writeback mechanic this QuickStart builds on, see [Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html).
+For the writeback mechanic this QuickStart builds on, see [Agents 02: Agent-Driven Actions & Writeback](https://quickstarts.sigmacomputing.com/guide/agents_02_actions_writeback/index.html).
 
 **Additional Resource Links**
 

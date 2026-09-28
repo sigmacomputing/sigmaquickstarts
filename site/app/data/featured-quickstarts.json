@@ -13,7 +13,7 @@
       "date": "Sep 16, 2026"
     },
     {
-      "title": "Build Web Search for a Sigma Agent",
+      "title": "Agents 05: Build Web Search for a Sigma Agent",
       "id": "agents_05_api_actions",
       "category": "agents",
       "date": "Sep 9, 2026"
@@ -25,9 +25,9 @@
       "date": "Sep 4, 2026"
     },
     {
-      "title": "Connect a Sigma Agent to GitHub with MCP Tools",
-      "id": "aiapps_github_mcp_tool",
-      "category": "aiapps",
+      "title": "Agents 06: Connect a Sigma Agent to GitHub with MCP Tools",
+      "id": "agents_06_mcp_tools",
+      "category": "agents",
       "date": "Aug 22, 2026"
     },
     {

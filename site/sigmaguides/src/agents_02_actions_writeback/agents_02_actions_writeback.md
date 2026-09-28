@@ -6,9 +6,9 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-28
 
-# Agent-Driven Actions & Writeback
+# Agents 02: Agent-Driven Actions & Writeback
 
 ## Overview
 Duration: 5
@@ -36,7 +36,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Sigma workbook authors and admins building agents that need to do something, not just answer questions. For a closer look at the basics of creating an agent, see [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
+Sigma workbook authors and admins building agents that need to do something, not just answer questions. For a closer look at the basics of creating an agent, see [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
@@ -253,10 +253,10 @@ Save the tool.
 
 ### Update the instructions
 
-Open the `Instructions` tab and append:
+Open the `Instructions` tab and append:222
 
 ```copy-code
-Use Flag for Review only when the user explicitly asks to flag a Product Type, and only with both an exact Product Type and a Reason. If either is missing, ask for it — do not invent a reason. This inserts one row for a person to follow up on; it does not resolve anything or change a price.
+Use Flag for Review only when the user explicitly asks to flag a Product Type, and only with both an exact Product Type and a Reason. If either is missing, ask for it — do not invent a reason. This inserts one row for a person to follow up on; it does not resolve anything.
 ```
 
 Click `Save`.
@@ -279,11 +279,11 @@ We want to be able to see the table data change when the chat changes the `Produ
 
 Hide the `Data` page.
 
-Set the `Catagory Flags` input table to `Published version (restricted)`.
+Set the `Category Flags` input table to `Published version (restricted)`.
 
 <img src="assets/adw_11b.png" width="800"/>
 
-Click `Publish` and open the pubished version of the workbook.
+Click `Publish` and open the published version of the workbook.
 
 ### Test all three
 
@@ -337,7 +337,7 @@ It's a slick feature, but it's a different one — reopening an old chat just sh
 
 <img src="assets/adw_15.png" width="800"/>
 
-The row you just approved in `Category Flags` is a permanent database record, not something tied to this conversation. It'll still be there next week, in a chat that never happened yet, read by anyone with access to the table — not just recoverable by scrolling back through what you typed.
+The row you just approved in `Category Flags` is a permanent database record, not something tied to this conversation. It'll still be there next week, in a chat that hasn't happened yet, read by anyone with access to the table — not just recoverable by scrolling back through what you typed.
 
 You've now given an agent two ways to act instead of just answer: one that's always available because nothing gets written, and one that's gated behind your approval because something does.
 
@@ -373,7 +373,7 @@ We gave an agent two ways to act on a workbook instead of just answer — settin
 
 Explore the rest of the [Agents series](https://quickstarts.sigmacomputing.com/?cat=agents).
 
-If you haven't already, [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) covers the basics of creating an agent and giving it a data source, from scratch.
+If you haven't already, [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) covers the basics of creating an agent and giving it a data source, from scratch.
 
 **Additional Resource Links**
 

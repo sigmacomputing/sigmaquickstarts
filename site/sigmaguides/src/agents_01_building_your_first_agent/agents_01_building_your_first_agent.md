@@ -6,9 +6,9 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-28
 
-# Building Your First Sigma Agent
+# Agents 01: Building Your First Sigma Agent
 
 ## Overview
 Duration: 10
@@ -294,7 +294,7 @@ Duration: 5
 We built a Sigma agent from nothing — a data source, a set of instructions, a greeting, and a chat element to put it in front of a user — and then tested that it actually stays inside the boundary we gave it instead of guessing past it.
 
 ### Core concepts
-- **An agent is a configured object, not a chat window** — the chat element you added is just one door to it; the agent itself is a separate, named thing with its own data sources and instructions, reusable behind a schedule, a REST API call, or another agent over MCP, the other doors from the Overview. That's different from Sigma Assistant, which doesn't select a custom agent as a data source the way those doors do.
+- **An agent is a configured object, not a chat window** — the chat element you added is just one door to it; the agent itself is a separate, named thing with its own data sources and instructions, reusable behind a schedule, a REST API call, or another agent over MCP, the other doors from the Overview. That's different from Sigma Assistant, which doesn't require a custom agent as a data source the way agents do.
 - **Data sources are the governance boundary** — an agent can only see what's explicitly added to it, nothing else in the connection and nothing else in the workbook
 - **Instructions are scope, not a suggestion** — a well-written boundary is the difference between an agent that says "I don't have that information" and one that quietly invents an answer
 

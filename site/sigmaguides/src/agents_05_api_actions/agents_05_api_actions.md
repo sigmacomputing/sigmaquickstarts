@@ -6,9 +6,9 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-23
+lastUpdated: 2026-09-28
 
-# Build Web Search for a Sigma Agent
+# Agents 05: Build Web Search for a Sigma Agent
 
 ## Overview
 Duration: 5
@@ -43,7 +43,7 @@ This QuickStart is designed for:
 - Teams already using Sigma agents who need current, real-world context alongside their data
 - Anyone evaluating how Sigma agents combine governed data with live, external information
 
-For the fundamentals of building and configuring a Sigma agent, see [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
+For the fundamentals of building and configuring a Sigma agent, see [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
@@ -107,7 +107,7 @@ api.tavily.com
 
 Scoping the credential to this domain keeps the key from ever being sent to any endpoint other than Tavily's.
 
-**4.** Under Authentication method, select `Bearer token`. Tavily doesn't issue a separate bearer token — your API key doubles as one; Sigma sends it as `Authorization: Bearer <your key>`.
+**4.** Under Authentication method, select `Bearer token`. Tavily doesn't issue a separate bearer token — your API key doubles as one; Sigma sends it as `Authorization: Bearer {your key}`.
 
 **5.** Under Token, paste your Tavily API key:
 
@@ -131,7 +131,7 @@ Tavily Web Search
 
 <img src="assets/wsa_03.png" width="800"/>
 
-**5.** Scroll further down ensure `Custom connector` is selected.
+**5.** Scroll further down and ensure `Custom connector` is selected.
 
 **6.** Under Base URL, set the method dropdown to `POST` (it defaults to `GET`) — the search query travels in the request body, and only `POST` sends one — then enter:
 
@@ -347,9 +347,28 @@ Duration: 5
 
 We connected Sigma to Tavily's search API as a custom connector, then gave a Sigma agent a callable action that uses it — so the agent can pull in live, current information and cite its sources alongside the data it already reasons over.
 
-The pattern generalizes past Tavily: any REST API that accepts a JSON body and returns JSON back can become a Sigma agent action the same way, as long as the instructions are precise enough that the model knows when — and when not — to reach for it.
+### Core concepts
+- **A web search action reaches outside your warehouse without ever becoming a data source** — Tavily never gets added as something the agent reads from directly; it's a callable Tool the agent invokes mid-conversation, the same `Tools` surface a warehouse specialist or an MCP server uses elsewhere in this series
+- **The credential and the connector split the trust boundary from the request shape** — the credential holds the scoped secret, locked to `api.tavily.com` and nowhere else; the connector defines the JSON request and response Tavily actually expects. Neither one does the other's job
+- **A clear action name does more work than a paragraph of instructions** — `Get Account News` alone was specific enough for the model to reach for it at the right moment; `Instructions` are there for when a name alone isn't precise enough
 
-Extending an agent's reach this way doesn't loosen control over it. The credential stays scoped to one domain, the connector is admin-managed with its own access grants, and every call runs through the same governance as the rest of your data — Sigma stays a governed runtime for AI, not just a place agents run.
+### Key takeaways
+
+**"Agent input" is reserved for content only the model should generate:**
+- The `query` parameter was mapped to `Agent input` because the search text is the one thing meant to come from the model, not from you
+- A URL, a recipient, or a table name should never be mapped that way — those belong as a static value or a formula, set once and left alone
+
+**Scoping the credential to one domain is the actual governance boundary:**
+- The Tavily API key can never be sent anywhere but `api.tavily.com`, no matter what the connector or the agent does with it
+- Every call still runs through the same admin-managed access grants as the rest of your data — extending an agent's reach doesn't loosen control over it
+
+**The pattern generalizes past Tavily:**
+- Any REST API that accepts a JSON body and returns JSON back can become a Sigma agent action the same way
+- What changes per API is the request shape and the response mapping, not the mechanism connecting it to an agent
+
+**Two tests proved two separate guarantees, not the same thing twice:**
+- Asking about live news proved the tool actually fires and the agent can cite a real source from `sources`
+- Asking about your own data proved the same agent knows when not to reach for it
 
 ### Next steps
 

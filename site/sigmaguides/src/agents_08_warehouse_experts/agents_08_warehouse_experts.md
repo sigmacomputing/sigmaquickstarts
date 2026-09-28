@@ -6,9 +6,9 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-31
+lastUpdated: 2026-09-28
 
-# Give Your Sigma Agent a Snowflake Cortex Specialist
+# Agents 08: Give Your Sigma Agent a Snowflake Cortex Specialist
 
 ## Overview
 Duration: 5
@@ -22,8 +22,6 @@ Sigma is built to call whichever ones your organization already runs, through th
 Here, we'll build a Cortex Agent backed by its own semantic view in Snowflake, then attach it to a Sigma agent as a tool the agent can call on its own; the same pattern applies to Genie or any other warehouse agent.
 
 See [Use warehouse agents with Sigma](https://help.sigmacomputing.com/docs/use-warehouse-agents-sigma) for the current list. 
-
-
 
 Along the way you'll learn how to:
 - Build a Snowflake semantic view and a Cortex Agent from a sample dataset
@@ -44,7 +42,7 @@ For more information on Sigma's product release strategy, see [Sigma product rel
 If something doesn't work as expected, here's how to [contact Sigma support](https://help.sigmacomputing.com/docs/sigma-support)
 
 ### Target Audience
-Sigma workbook authors and admins building agents that need more than what's in one governed table. For a closer look at the basics of creating an agent, see [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
+Sigma workbook authors and admins building agents that need more than what's in one governed table. For a closer look at the basics of creating an agent, see [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
 
 ### Prerequisites
 
@@ -117,7 +115,7 @@ JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM l
 
 ### Create the semantic view
 
-Beforem starting this step make sure you are using the `ACCOUNTADMIN` role.
+Before starting this step make sure you are using the `ACCOUNTADMIN` role.
 
 Navigate to `AI & ML` > `Cortex AI` > `Analyst`.
 
@@ -127,7 +125,7 @@ On the `Semantic views` tab, select the `QUICKSTARTS.AGENTS_DEMO` database, then
 
 **Wizard step 1: Provide context (optional)** — skip this by clicking `Skip`.
 
-**Wizard step 2: Name your semantic view** — change the permission to `ACCOUNTADMIN` using the drop-select in the upper right, and set the name to:
+**Wizard step 2: Name your semantic view** — change the permission to `ACCOUNTADMIN` using the control in the upper right, and set the name to:
 
 ```copy-code
 SALES_SEMANTIC_VIEW
@@ -271,13 +269,11 @@ GRANT SELECT ON VIEW QUICKSTARTS.AGENTS_DEMO.SALES_DATA_VIEW TO ROLE SIGMA_SERVI
 GRANT SELECT ON VIEW QUICKSTARTS.AGENTS_DEMO.SALES_SEMANTIC_VIEW TO ROLE SIGMA_SERVICE_ROLE;
 ```
 
-The SQL above never grants access to the agent itself — only to what it reads. Return to the `SALES_ANALYST` agent, open its `Access` tab, click `Add role`, and type in your Sigma role with `USAGE`.
+The SQL above never grants access to the agent itself — only to what it reads. Return to the `SALES_ANALYST` agent, open its `Access` tab, click `Add role`, and add your Sigma role with `USAGE`.
 
 <img src="assets/awe_13.png" width="800"/>
 
-Return to the `SALES_ANALYST` page and select the `Access` tab.
-
-Add the role used by your Snowflake connection in Sigam to the role list:
+Confirm the role is now on the list. If it's missing, click `+ Add role` and add it.
 
 <img src="assets/awe_13a.png" width="800"/>
 
@@ -341,7 +337,7 @@ It will say "No one has access to this semantic view." Click `+ Grant access` an
 ## Attach the Cortex Agent as a Tool and Test It
 Duration: 20
 
-Two things need to exist before attaching a tool: a workbook with the agent's own data source, and the agent itself. This is the same pattern from Building Your First Sigma Agent, condensed.
+Two things need to exist before attaching a tool: a workbook with the agent's own data source, and the agent itself. This is the same pattern from Agents 01: Building Your First Sigma Agent, condensed.
 
 ### Create the workbook, data source, and agent
 
@@ -353,7 +349,7 @@ Warehouse Experts - QuickStart
 
 Add `BIG_BUYS_POS` from `Sigma Sample Database` > `RETAIL` > `BIG_BUYS` as a `Table` element.
 
-With the table ** not selected**, open the `Agents` tab in the properties panel and click `+`.
+With the table **not selected**, open the `Agents` tab in the properties panel and click `+`.
 
 <img src="assets/awe_17.png" width="800"/>
 
@@ -472,7 +468,7 @@ We gave a Sigma agent access to a warehouse-native specialist — a Snowflake Co
 
 **The semantic view's underlying data deserves the same scrutiny as the agent's data source:**
 - This QuickStart built the semantic view on a plain SQL view over Snowflake's public sample data, to keep the Cortex setup simple
-- For a Cortex Agent you're putting in front of other people, base the semantic view on curated, governed data instead — the same discipline [Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) recommends for an agent's own data source applies just as much to what a warehouse specialist reads from
+- For a Cortex Agent you're putting in front of other people, base the semantic view on curated, governed data instead — the same discipline [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) recommends for an agent's own data source applies just as much to what a warehouse specialist reads from
 
 **The failure mode changes depending on which grant is missing:**
 - A missing SQL grant on the underlying view surfaces at question time, not setup time — Cortex only touches it when it actually generates SQL for a specific question

@@ -1,14 +1,14 @@
 author: pballai
-id: aiapps_github_mcp_tool
+id: agents_06_mcp_tools
 summary: Connect a Sigma agent to GitHub's hosted MCP server and use a chat element to ask natural-language questions about a live GitHub repository's issues, pull requests, and files.
-categories: aiapps
+categories: agents
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-08-24
+lastUpdated: 2026-09-28
 
-# Connect a Sigma Agent to GitHub with MCP Tools
+# Agents 06: Connect a Sigma Agent to GitHub with MCP Tools
 
 ## Overview
 Duration: 5
@@ -49,11 +49,13 @@ This QuickStart is designed for:
 - Teams already using chat elements who want to extend an agent's toolset
 - Anyone evaluating how Sigma's agents fit into a broader MCP-based tool ecosystem
 
+For the fundamentals of building and configuring a Sigma agent, see [Agents 01: Building Your First Sigma Agent](https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html) — but this QuickStart includes everything you need to follow along on its own.
+
 ### Prerequisites
 
 <ul>
   <li>Any modern browser is acceptable.</li>
-  <li>Access to a Sigma environment with an AI provider configured, and an existing chat element connected to a Sigma agent. If you haven't built one yet, start with <a href="https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html">Build Conversational AI Apps with Chat Elements and Snowflake Cortex</a> — this QuickStart assumes that foundation and focuses specifically on adding an MCP tool.</li>
+  <li>Access to a Sigma environment with an AI provider configured. This QuickStart creates a new agent and chat element as part of the walkthrough — no pre-existing agent required.</li>
   <li>A GitHub account, and the ability to create a personal access token. No GitHub Copilot subscription is required.</li>
   <li>Admin access in Sigma to add MCP tools and API connectors under <code>Administration</code>.</li>
   <li>Some familiarity with Sigma is assumed. Not all basic steps will be shown.</li>
@@ -61,6 +63,10 @@ This QuickStart is designed for:
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
+</aside>
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Sigma agents are a premium feature. During the beta, anyone with workbook access can use agents; after the beta, contact your Sigma Account Executive to maintain access. See <a href="https://help.sigmacomputing.com/docs/sigma-agents">Sigma agents</a> for the latest details.
 </aside>
 
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
@@ -259,7 +265,32 @@ Duration: 5
 
 We connected a hosted, read-only GitHub MCP server to a Sigma agent as an MCP tool, then used a chat element to ask natural-language questions about a live public repository — without writing a custom connector.
 
-The pattern generalizes well beyond GitHub. Any MCP-compliant service can be added to a Sigma agent with the same three pieces: a server URL, a tested credential, and a description precise enough for the agent to know when to reach for it. That's what makes MCP tools useful for real operational work — an agent that already understands your data can also check a ticket status, look up a CRM record, or query an internal API, all while access stays scoped through Sigma's admin controls rather than scattered across ad hoc integrations.
+### Core concepts
+- **An MCP tool is a tool, not a data source, same shape as the rest of this series** — GitHub never gets added as something the agent reads from directly; it's a callable tool the agent reaches for mid-conversation, the same surface an action or a warehouse specialist uses
+- **The credential and the MCP tool are two objects for a reason** — the credential holds the scoped Bearer token, locked to one domain; the MCP tool holds the server URL and the description the agent actually reasons from
+- **The description does the same job instructions do elsewhere** — one specific sentence about what the tool is for is what lets the agent decide, unprompted, whether a question calls for it
+
+### Key takeaways
+
+**Scoping the token to public repositories is the actual boundary, not the repository's privacy:**
+- The fine-grained PAT was scoped to `Public repositories` only, with the credential's `Authorized domains` locked to `api.githubcopilot.com`
+- The token doesn't grant access to `sigmacomputing/sigmaquickstarts` — the repo already being public does; the token just proves who's asking
+
+**The pattern generalizes past GitHub:**
+- Any MCP-compliant service can be added to a Sigma agent the same way — a server URL, a tested credential, and a description precise enough for the agent to know when to reach for it
+- A ticketing system, a CRM, or an internal API attaches the same way, with access scoped through Sigma's admin controls instead of scattered across ad hoc integrations
+
+**A one-line summary isn't just documentation, it's data an agent reads:**
+- The demo agent answered "which QuickStarts cover X" by reading `qs-catalog.json` directly, because its `Instructions` pointed it there
+- That only works because every QuickStart's `summary` is genuinely descriptive — the same file this agent reads gets generated from real content, not placeholders
+
+**Two prompts showed two different capabilities, not the same lookup twice:**
+- The catalog question proved the tool can answer a targeted lookup by reading the one file its instructions pointed it to
+- The recent-PRs question proved the same tool handles a broader, unscoped question over live repository activity
+
+### Next steps
+
+Explore the rest of the [Agents series](https://quickstarts.sigmacomputing.com/?cat=agents).
 
 **Additional Resource Links**
 
