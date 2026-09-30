@@ -6,7 +6,7 @@ status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 authors: phil@sigmacomputing.com
-lastUpdated: 2026-04-15
+lastUpdated: 2026-10-01
 
 # Fundamentals 02: Data
 <!-- ------------------------ -->
@@ -439,13 +439,13 @@ Duration: 6
 
 Sigma workbook tables provide a simple way to get totals and subtotals. 
 
-From the `Store Region` column header dropdown, select `Show Totals`:
+From the `Store Region` column header dropdown, select `Totals of Store Region` > `Show grand total`:
 
 <img src="assets/fdata_39.png" width="400"/>
 
-We now have the total for all `Store Regions`:
+We now have the grand total for all `Store Regions`:
 
-<img src="assets/fdata_40.png" width="600"/>
+<img src="assets/fdata_40.png" width="500"/>
 
 Click `Publish`.
 
