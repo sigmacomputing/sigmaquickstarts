@@ -63,10 +63,14 @@ Sixteen new languages are now available for the organization account language se
 **WHY IT MATTERS:**<br>
 Global rollouts often stall on a single unsupported language for one region's team. Broader language coverage removes that as a blocker for multinational deployments, letting more of an organization work in Sigma in the language they're most comfortable with.
 
+ <img src="assets/fff_09_2026_01.png" width="700"/>
+
 For more information, see [Set organization language and formatting region](https://help.sigmacomputing.com/docs/manage-organization-language#supported-languages)
 
 ### Audit log events for AI conversations (GA)
 The Sigma Audit Logs connection now includes an `AI_CONVERSATIONS` event category that records events related to AI interactions when chat history is enabled.
+
+<img src="assets/fff_09_2026_02.png" width="700"/>
 
 For more information, see [Audit log events and metadata](https://help.sigmacomputing.com/docs/audit-log-events-and-metadata)
 
@@ -97,6 +101,10 @@ For more information, see [Manage Microsoft integration](https://help.sigmacompu
 
 ### View the code representation of a document (Beta)
 The code representation of a workbook, data model, or report can now be viewed directly in the Sigma UI from the document menu's `File` > `View code...` option.
+
+<img src="assets/fff_09_2026_03.png" width="800"/>
+
+There is a QuickStart: [Manage Sigma Workbooks as Code with Git and CI/CD](https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html?index=..%2F..index#0)
 
 For more information, see [Manage data models as code](https://help.sigmacomputing.com/docs/manage-data-models-as-code), [Manage workbooks as code (Beta)](https://help.sigmacomputing.com/docs/manage-workbooks-as-code), and [Manage reports as code (Beta)](https://help.sigmacomputing.com/docs/manage-reports-as-code)
 
@@ -132,6 +140,8 @@ For more information, see [Use the Sigma plugin for AI assistants](https://help.
 ### Call Sigma agents from the Sigma MCP server (GA)
 Two new tools available exclusively in the Sigma MCP server let users list the agents they can access and call an agent from any connected AI tool.
 
+There is a QuickStart: [Agents 06: Connect a Sigma Agent to GitHub with MCP Tools](https://quickstarts.sigmacomputing.com/guide/agents_06_mcp_tools/index.html?index=..%2F..index#0)
+
 For more information, see [Use the Sigma MCP server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
 
 ### Chat history for Assistant and agents (GA) <img src="assets/heart_icon.png" width="25"/>
@@ -139,6 +149,8 @@ Chat history is now available for conversations with Sigma Assistant, warehouse 
 
 **WHY IT MATTERS:**<br>
 Without persistence, every AI conversation starts from zero, limiting it to a single-turn interaction. Chat history now covers Assistant, warehouse agents, and Sigma agents alike, carrying context across sessions and giving compliance-minded organizations one consistent retention story instead of three separate ones — including the option to keep that data in storage they control.
+
+There is a QuickStart: [Agents 03: Giving Agents Memory](https://quickstarts.sigmacomputing.com/guide/agents_03_agent_memory/index.html?index=..%2F..index#0)
 
 For more information, see [Configure chat history](https://help.sigmacomputing.com/docs/configure-chat-history) and [Chat with Sigma agents](https://help.sigmacomputing.com/docs/chat-with-agent)
 
@@ -164,6 +176,8 @@ Migration skills for Sigma let an AI assistant rebuild source content — the da
 **WHY IT MATTERS:**<br>
 This is the same AI-driven migration pattern behind the Migration QuickStarts family — Sigma now documents and supports it directly instead of leaving it as an unofficial pattern. It gives prospects and partners a sanctioned starting point for moving dashboards, reports, and data models off another BI tool without a full manual rebuild.
 
+There are vendor-specific QuickStarts: [Migration category](https://quickstarts.sigmacomputing.com/?cat=migrations)
+
 For more information, see [Migrate to Sigma with an AI assistant](https://help.sigmacomputing.com/docs/migrate-to-sigma-with-an-ai-assistant)
 
 ### New models used for AI providers (GA)
@@ -175,6 +189,16 @@ For more information, see [Supported AI models](https://help.sigmacomputing.com/
 The `sigma-workbooks` and `sigma-reports` agent skills give AI assistants reference materials and instructions for authoring the code representation of a workbook or report.
 
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
+
+### Sigma agents (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma agents are now generally available. Build an agent using instructions, data sources, actions, warehouse agents, search services, and MCP connectors, then chat with it, schedule automated runs, or call it via the REST API or MCP server. Chat history resumption, task approval, and embedding are all supported, and admins can review token usage, owners, data sources, access grants, feedback, and execution logs.
+
+**WHY IT MATTERS:**<br>
+This is the full agent platform landing at once — build, govern, call, and embed, with the same admin oversight (token usage, access grants, execution logs) expected of anything else running in Sigma. Agents aren't a bolted-on chat feature anymore; they're an audited, first-class part of the platform, reachable from a workbook, the REST API, or an MCP server.
+
+There are eight QuickStarts on Agents: [Agent category](https://quickstarts.sigmacomputing.com/?cat=agents)
+
+For more information, see [Build agents](https://help.sigmacomputing.com/docs/build-agents), [Chat with agents](https://help.sigmacomputing.com/docs/chat-with-agent), [Create actions that interact with agents](https://help.sigmacomputing.com/docs/create-actions-that-interact-with-agents), [Call agents with the API](https://help.sigmacomputing.com/docs/call-agents-with-the-api), [Embed an agent chat interface](https://help.sigmacomputing.com/docs/embed-agent), [Example use cases](https://help.sigmacomputing.com/docs/example-agent-implementations), [Manage agents](https://help.sigmacomputing.com/docs/manage-agents-for-your-organization), [Build evaluation suite](https://help.sigmacomputing.com/docs/build-agent-evaluation-suite), and [About Sigma agents](https://help.sigmacomputing.com/docs/sigma-agents)
 
 ### Sigma Assistant in the workbook (GA) <img src="assets/heart_icon.png" width="25"/>
 Sigma Assistant in the workbook is now generally available. Natural-language prompts support data exploration, insight analysis, and dashboard or app creation, running on a code-first architecture with broader element support (maps, combo charts, navigation, drawers, single row containers), in-chat chart formatting, and improved design defaults.
@@ -311,14 +335,6 @@ The `sendAsUser` option on the send-export endpoint and the `ownerId` option for
 
 For more information, see [Impersonate users to send and schedule exports](https://help.sigmacomputing.com/docs/impersonate-users#impersonate-users-to-send-and-schedule-exports)
 
-### Sigma agents (GA) <img src="assets/heart_icon.png" width="25"/>
-Sigma agents are now generally available. Build an agent using instructions, data sources, actions, warehouse agents, search services, and MCP connectors, then chat with it, schedule automated runs, or call it via the REST API or MCP server. Chat history resumption, task approval, and embedding are all supported, and admins can review token usage, owners, data sources, access grants, feedback, and execution logs.
-
-**WHY IT MATTERS:**<br>
-This is the full agent platform landing at once — build, govern, call, and embed, with the same admin oversight (token usage, access grants, execution logs) expected of anything else running in Sigma. Agents aren't a bolted-on chat feature anymore; they're an audited, first-class part of the platform, reachable from a workbook, the REST API, or an MCP server.
-
-For more information, see [Build agents](https://help.sigmacomputing.com/docs/build-agents), [Chat with agents](https://help.sigmacomputing.com/docs/chat-with-agent), [Create actions that interact with agents](https://help.sigmacomputing.com/docs/create-actions-that-interact-with-agents), [Call agents with the API](https://help.sigmacomputing.com/docs/call-agents-with-the-api), [Embed an agent chat interface](https://help.sigmacomputing.com/docs/embed-agent), [Example use cases](https://help.sigmacomputing.com/docs/example-agent-implementations), [Manage agents](https://help.sigmacomputing.com/docs/manage-agents-for-your-organization), [Build evaluation suite](https://help.sigmacomputing.com/docs/build-agent-evaluation-suite), and [About Sigma agents](https://help.sigmacomputing.com/docs/sigma-agents)
-
 ### Tag endpoint enhancements (GA)
 The Update a tag endpoint now supports updating version tag descriptions and colors.
 
@@ -369,21 +385,6 @@ Duration: 20
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Charts
-Duration: 20
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## AI Apps
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Data Modeling
 Duration: 20
 
@@ -406,7 +407,11 @@ Duration: 20
 ### Embed Sigma Assistant (Deprecated)
 Embedding Sigma Assistant as a standalone experience is deprecated and will reach end of support on March 16, 2027. Consider embedding a customized Sigma agent, or Sigma Assistant in the workbook, instead.
 
+There is a QuickStart: [Embedding 08: Embedding Sigma Assistant](https://quickstarts.sigmacomputing.com/guide/embedding_08_ask_sigma_v3/index.html?index=..%2F..index#0)
+
 For more information, see [Embed Sigma Assistant](https://help.sigmacomputing.com/docs/embed-assistant)
+
+Also see: [REST API Usage 12: Call Sigma Agents from Your Application](https://quickstarts.sigmacomputing.com/guide/embedding_rest_api_useage_12_calling_agents/index.html)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -423,14 +428,6 @@ For more information, see [LookupMatchNulls](https://help.sigmacomputing.com/doc
 The `TextJoin` function joins multiple strings of text using a common delimiter.
 
 For more information, see [Textjoin](https://help.sigmacomputing.com/docs/textjoin)
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
-## Input Tables
-Duration: 20
-
-
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -459,19 +456,13 @@ September also introduces a new Agents category — an 8-part series building up
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
-## Security
-Duration: 20
-
-
-
-![Footer](assets/sigma_footer.png)
-<!-- END OF SECTION-->
-
 ## Templates
 Duration: 20
 
 ### App templates (GA)
 App templates let you start building an app in Sigma from an interactive preview before adding it to your organization as a workbook, with ten templates available including Project Management and Revenue Forecasting.
+
+There are QuickStarts for Templates: [Templates category](https://quickstarts.sigmacomputing.com/?cat=apptemplates)
 
 For more information, see [Get started with templates](https://help.sigmacomputing.com/docs/get-started-with-templates)
 
@@ -518,6 +509,8 @@ For more information, see [Share and export reports](https://help.sigmacomputing
 The Sigma API can now retrieve, update, and create reports based on a JSON or YAML representation.
 
 For more information, see [Manage reports as code (Beta)](https://help.sigmacomputing.com/docs/manage-reports-as-code) and [Report representation example library](https://help.sigmacomputing.com/docs/report-representation-example-library)
+
+There is a QuickStart: [Manage Sigma Workbooks as Code with Git and CI/CD](https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html?index=..%2F..index#0)
 
 ### Manually trigger an AI column or cell run (Beta)
 AI columns can now be configured with a `Don't run automatically` option, so they only run when manually prompted instead of on every change.
