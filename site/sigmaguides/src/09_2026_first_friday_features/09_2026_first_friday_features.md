@@ -15,6 +15,7 @@ September 4, 2026 changes: done
 September 11, 2026 changes: done
 September 18, 2026 changes: done
 September 25, 2026 changes: done
+October 2, 2026 changes (final Sept days): done
 
 Publish on October 2
 
@@ -79,6 +80,11 @@ Multiple Sigma organizations can now connect to the same Slack workspace.
 
 For more information, see [Manage Slack integration](https://help.sigmacomputing.com/docs/manage-slack-integration)
 
+### Query variables support for Cortex Agents (Beta)
+Row-level security from row access policies is now enforced when using Snowflake Cortex Agents, via immutable session attributes on configured query variables.
+
+For more information, see [Specify query variables for a Snowflake connection (Beta)](https://help.sigmacomputing.com/docs/specify-query-variables-for-a-snowflake-connection)
+
 ### Restrict Can contribute access to specific version tags (GA)
 Users granted `Can contribute` access to a folder can now be limited to specific version tags instead of all versions and documents.
 
@@ -105,13 +111,13 @@ Sigma Assistant in build mode can now generate styled cohort retention pivot tab
 
 For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
-### Assistant in build mode: new code-first architecture (Beta)
-Sigma Assistant in build mode now runs on a code-first architecture, improving build speed, data source search, and native feature support.
+### Assistant in build mode: pivot table styling (GA)
+Sigma Assistant in build mode now applies automatic heatmap and matrix styling to pivot tables based on the type of measure.
 
 For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
-### Assistant in build mode: pivot table styling (GA)
-Sigma Assistant in build mode now applies automatic heatmap and matrix styling to pivot tables based on the type of measure.
+### Assistant in build mode: reuse data model metrics (GA)
+Sigma Assistant in build mode now preserves data model sources and reuses their governed metrics instead of recreating underlying tables and calculations, so KPIs and charts it builds use existing metric definitions.
 
 For more information, see [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
@@ -123,11 +129,16 @@ July's launch of the ChatGPT plugin let users query Sigma data from a conversati
 
 For more information, see [Use the Sigma plugin for AI assistants](https://help.sigmacomputing.com/docs/use-the-sigma-plugin-for-ai-assistants)
 
+### Call Sigma agents from the Sigma MCP server (GA)
+Two new tools available exclusively in the Sigma MCP server let users list the agents they can access and call an agent from any connected AI tool.
+
+For more information, see [Use the Sigma MCP server](https://help.sigmacomputing.com/docs/use-sigma-mcp-server)
+
 ### Chat history for Assistant and agents (GA) <img src="assets/heart_icon.png" width="25"/>
-Chat history is now available for conversations with Sigma Assistant, warehouse agents, and Sigma agents, letting users revisit previous conversations. Admins can configure storage and retention for organizations that meet certain conditions.
+Chat history is now available for conversations with Sigma Assistant, warehouse agents, and Sigma agents, letting users revisit previous conversations. Admins can configure storage and retention for organizations that meet certain conditions, including a choice between Sigma-owned bucket storage or a customer-owned bucket via external storage integrations.
 
 **WHY IT MATTERS:**<br>
-Without persistence, every AI conversation starts from zero, limiting it to a single-turn interaction. Chat history now covers Assistant, warehouse agents, and Sigma agents alike, carrying context across sessions and giving compliance-minded organizations one consistent retention story instead of three separate ones.
+Without persistence, every AI conversation starts from zero, limiting it to a single-turn interaction. Chat history now covers Assistant, warehouse agents, and Sigma agents alike, carrying context across sessions and giving compliance-minded organizations one consistent retention story instead of three separate ones — including the option to keep that data in storage they control.
 
 For more information, see [Configure chat history](https://help.sigmacomputing.com/docs/configure-chat-history) and [Chat with Sigma agents](https://help.sigmacomputing.com/docs/chat-with-agent)
 
@@ -139,6 +150,14 @@ Conversation export and visible reasoning turn Assistant's output into something
 
 For more information, see [Ask natural language queries with Sigma Assistant](https://help.sigmacomputing.com/docs/ask-natural-language-queries-with-assistant)
 
+### MCP connectors for Sigma agents (GA) <img src="assets/heart_icon.png" width="25"/>
+Admins can add MCP servers as connectors, enabling Sigma agents to retrieve context, fetch data, and perform actions in third-party tools.
+
+**WHY IT MATTERS:**<br>
+An agent is only as useful as what it can reach. MCP connectors let an agent pull in and act on whatever third-party tools an organization already runs, governed the same way as every other connector in Sigma, instead of being limited to data already sitting in the warehouse.
+
+For more information, see [Configure MCP connectors](https://help.sigmacomputing.com/docs/configure-mcp-connectors)
+
 ### Migrate to Sigma with an AI assistant (Beta) <img src="assets/heart_icon.png" width="25"/>
 Migration skills for Sigma let an AI assistant rebuild source content — the dashboards, reports, and data models in another BI tool — as a Sigma document.
 
@@ -147,10 +166,23 @@ This is the same AI-driven migration pattern behind the Migration QuickStarts fa
 
 For more information, see [Migrate to Sigma with an AI assistant](https://help.sigmacomputing.com/docs/migrate-to-sigma-with-an-ai-assistant)
 
+### New models used for AI providers (GA)
+LLM model updates across providers: OpenAI now uses GPT 5.6, Databricks uses Claude Sonnet 5, and Anthropic uses Claude Sonnet 5.
+
+For more information, see [Supported AI models](https://help.sigmacomputing.com/docs/supported-ai-models)
+
 ### New skills for creating workbooks and reports with an AI assistant (GA)
 The `sigma-workbooks` and `sigma-reports` agent skills give AI assistants reference materials and instructions for authoring the code representation of a workbook or report.
 
 For more information, see [Install skills for AI assistants](https://help.sigmacomputing.com/docs/install-skills-for-ai-assistants)
+
+### Sigma Assistant in the workbook (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma Assistant in the workbook is now generally available. Natural-language prompts support data exploration, insight analysis, and dashboard or app creation, running on a code-first architecture with broader element support (maps, combo charts, navigation, drawers, single row containers), in-chat chart formatting, and improved design defaults.
+
+**WHY IT MATTERS:**<br>
+A code-first architecture means Assistant's output in the workbook is something you can read and understand, not just trust blindly. Combined with broader element coverage and in-chat chart formatting, Assistant now builds and edits more of what a workbook actually needs, instead of a narrow slice of chart types.
+
+For more information, see [Use Sigma Assistant to explore and analyze workbook data](https://help.sigmacomputing.com/docs/sigma-assistant-in-the-workbook) and [Use Sigma Assistant to build dashboards and apps](https://help.sigmacomputing.com/docs/use-ai-to-build-dashboards-and-apps)
 
 ### Use warehouse agents with Assistant and agents (GA) <img src="assets/heart_icon.png" width="25"/>
 Sigma Assistant and Sigma agents can now use Snowflake Cortex Agents or Databricks Genie Agents as tools, bringing warehouse-native agent capabilities directly into Sigma.
@@ -204,11 +236,6 @@ Two new endpoints get and update an organization's AI chat history settings.
 
 For more information, see [Get the chat history settings](https://help.sigmacomputing.com/reference/get-ai-chat-history-setting) and [Update the chat history settings](https://help.sigmacomputing.com/reference/update-ai-chat-history-setting)
 
-### New API endpoints to list and run Sigma agents (Beta)
-Three new endpoints — List agents, List agents in a workbook, and Run a Sigma agent — let applications call Sigma agents programmatically to build conversational workflows.
-
-For more information, see [Call Sigma agents with the API](https://help.sigmacomputing.com/docs/call-agents-with-the-api)
-
 ### New API endpoints to manage audit logging for an organization (GA)
 Two new endpoints support getting and updating an organization's audit logging setting.
 
@@ -233,6 +260,21 @@ For more information, see [Get comment settings](https://help.sigmacomputing.com
 The List datasets endpoint can now filter results to datasets owned by a specific user using `ownerId`.
 
 For more information, see [List datasets](https://help.sigmacomputing.com/reference/list-datasets)
+
+### New options for some workbook endpoints (GA)
+The `tags` array returned by workbook endpoints now includes an `isArchived` option to indicate inactive workbook tags.
+
+For more information, see [List workbooks](https://help.sigmacomputing.com/reference/list-workbooks), [Get a workbook](https://help.sigmacomputing.com/reference/get-workbook), and [Get tags for a workbook](https://help.sigmacomputing.com/reference/get-workbook-tags)
+
+### New options for the Create a deployment policy endpoint (GA)
+A new `useDependenciesWorkspace` option specifies a separate workspace for deploying dependent documents.
+
+For more information, see [Create a deployment policy](https://help.sigmacomputing.com/reference/create-deployment) and [How dependencies are deployed](https://help.sigmacomputing.com/docs/deploy-content-to-tenant-organizations#how-dependencies-are-deployed)
+
+### New options for the List workbooks endpoint (GA)
+A new `includeTaggedSourceUrlId` query parameter identifies source documents for deployed version-tagged workbooks.
+
+For more information, see [List workbooks](https://help.sigmacomputing.com/reference/list-workbooks)
 
 ### New sample connection management endpoints (GA)
 Two new endpoints get and update an organization's sample connection settings.
@@ -269,6 +311,14 @@ The `sendAsUser` option on the send-export endpoint and the `ownerId` option for
 
 For more information, see [Impersonate users to send and schedule exports](https://help.sigmacomputing.com/docs/impersonate-users#impersonate-users-to-send-and-schedule-exports)
 
+### Sigma agents (GA) <img src="assets/heart_icon.png" width="25"/>
+Sigma agents are now generally available. Build an agent using instructions, data sources, actions, warehouse agents, search services, and MCP connectors, then chat with it, schedule automated runs, or call it via the REST API or MCP server. Chat history resumption, task approval, and embedding are all supported, and admins can review token usage, owners, data sources, access grants, feedback, and execution logs.
+
+**WHY IT MATTERS:**<br>
+This is the full agent platform landing at once — build, govern, call, and embed, with the same admin oversight (token usage, access grants, execution logs) expected of anything else running in Sigma. Agents aren't a bolted-on chat feature anymore; they're an audited, first-class part of the platform, reachable from a workbook, the REST API, or an MCP server.
+
+For more information, see [Build agents](https://help.sigmacomputing.com/docs/build-agents), [Chat with agents](https://help.sigmacomputing.com/docs/chat-with-agent), [Create actions that interact with agents](https://help.sigmacomputing.com/docs/create-actions-that-interact-with-agents), [Call agents with the API](https://help.sigmacomputing.com/docs/call-agents-with-the-api), [Embed an agent chat interface](https://help.sigmacomputing.com/docs/embed-agent), [Example use cases](https://help.sigmacomputing.com/docs/example-agent-implementations), [Manage agents](https://help.sigmacomputing.com/docs/manage-agents-for-your-organization), [Build evaluation suite](https://help.sigmacomputing.com/docs/build-agent-evaluation-suite), and [About Sigma agents](https://help.sigmacomputing.com/docs/sigma-agents)
+
 ### Tag endpoint enhancements (GA)
 The Update a tag endpoint now supports updating version tag descriptions and colors.
 
@@ -304,6 +354,18 @@ Duration: 20
 
 **12:** Fixed a 400 error occurring in conversations with Claude Sonnet 5 as the reasoning model after a dozen or more messages.
 
+**13:** Fixed agent calls failing during automated actions when using OpenAI GPT-5.4 or GPT-5.1 models.
+
+**14:** Any user with edit access to a dataset can now migrate it to a data model.
+
+**15:** Resolved an error preventing Properties tab selection after switching editor panel tabs.
+
+**16:** Corrected OpenAI external provider configuration to expect GPT 5.4 instead of GPT 4.0.
+
+**17:** Agent automated actions now retry on incomplete or incorrect responses and preserve null value types for downstream action compatibility.
+
+**18:** Fixed Azure OpenAI agent and Assistant chats terminating prematurely with response cutoff errors.
+
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
 
@@ -327,6 +389,11 @@ Duration: 20
 
 ### Choose related datasets when migrating a dataset to a data model (GA)
 Migrating a dataset to a data model now lets you select which related datasets to combine, rather than automatically pulling in every linked, joined, or referenced dataset.
+
+For more information, see [Migrate a dataset to a data model](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model)
+
+### Revert migrated dataset references (GA)
+After migrating datasets to data models, references can now be reverted to use the original datasets again, for troubleshooting or testing an alternative migration approach.
 
 For more information, see [Migrate a dataset to a data model](https://help.sigmacomputing.com/docs/migrate-a-dataset-to-a-data-model)
 
@@ -421,6 +488,11 @@ For more information, see [Apply translations in workbook or report export attac
 
 ### Databricks support for stored procedure actions (GA)
 Creating actions that call stored procedures is now supported for Databricks connections.
+
+### Date support for slider and range slider controls (GA)
+Slider and range slider controls now support both Date and Number value types.
+
+For more information, see [Slider](https://help.sigmacomputing.com/docs/intro-to-control-elements#slider), [Range slider](https://help.sigmacomputing.com/docs/intro-to-control-elements#range-slider), and [Intro to control elements](https://help.sigmacomputing.com/docs/intro-to-control-elements)
 
 ### Drawers (GA) <img src="assets/heart_icon.png" width="25"/>
 Drawers — side panels that slide in to overlay workbook content temporarily — are now generally available.
