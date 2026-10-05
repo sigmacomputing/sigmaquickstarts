@@ -39,6 +39,7 @@ $color-partners: #7a5144;
 $color-apptemplates: #1F91F2;
 $color-templates: #EC407A;
 $color-agents: #37474F;
+$color-eventhols: #C2185B;
 
 $icon-administration: 'administration.svg';
 $icon-aiapps: 'aiapps.svg';
@@ -55,6 +56,7 @@ $icon-partners: 'partners.svg';
 $icon-apptemplates: 'workbook-template.svg';
 $icon-templates: 'workbook-template.svg';
 $icon-agents: 'aiapps.svg';
+$icon-eventhols: 'use-cases.svg';
 
 @include codelab-card(['administration'], $color-administration, $icon-administration);
 @include codelab-card(['aiapps'], $color-aiapps, $icon-aiapps);
@@ -71,6 +73,7 @@ $icon-agents: 'aiapps.svg';
 @include codelab-card(['apptemplates'], $color-apptemplates, $icon-apptemplates);
 @include codelab-card(['templates'], $color-templates, $icon-templates);
 @include codelab-card(['agents'], $color-agents, $icon-agents);
+@include codelab-card(['eventhols'], $color-eventhols, $icon-eventhols);
 
 // Special override for dark category bars - white text
 .administration-bar,
@@ -83,7 +86,8 @@ $icon-agents: 'aiapps.svg';
 .developers-bar,
 .firstfridayfeatures-bar,
 .apptemplates-bar,
-.agents-bar {
+.agents-bar,
+.eventhols-bar {
   color: #fff !important;
 }
 

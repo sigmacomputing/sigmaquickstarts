@@ -1,0 +1,15 @@
+{
+  "title": "Sigma Quickstarts - Event Hands-on Labs",
+  "description": "Hands-on lab guides for Sigma events",
+  "tags": ["eventhols"],
+  "categories": [],
+  "customStyle": "",
+  "exclude": [],
+  "logoUrl": "/images/og-image.png",
+  "toolbarBgColor": "#37474F",
+  "catLevel": 0,
+  "sort": "mainCategory",
+  "pins": [],
+  "ga": "",
+  "hidden": true
+}
