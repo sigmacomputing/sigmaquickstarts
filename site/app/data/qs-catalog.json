@@ -917,7 +917,7 @@
       "title": "Fundamentals 02: Data",
       "category": "fundamentals",
       "summary": "Sort, filter, group, and build formula-based calculations, including cross-table lookups, on live warehouse data in a Sigma workbook without writing SQL.",
-      "lastUpdated": "2026-04-15",
+      "lastUpdated": "2026-10-01",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html"
     },
     {
@@ -1019,7 +1019,7 @@
     {
       "id": "partner_snowflake_predictive_model_using_sigma",
       "title": "Develop a Predictive Model using Snowflake and Sigma",
-      "category": "partners",
+      "category": "eventhols",
       "summary": "Train a Snowflake ML price prediction model in a Snowflake Notebook and surface the results in a Sigma workbook for business analyst review.",
       "lastUpdated": "2024-07-09",
       "url": "https://quickstarts.sigmacomputing.com/guide/partner_snowflake_predictive_model_using_sigma/index.html"
@@ -1043,7 +1043,7 @@
     {
       "id": "partners_snowflake_summit_2025",
       "title": "Snowflake Summit 2025 - Hands on Lab",
-      "category": "partners",
+      "category": "eventhols",
       "summary": "Role-play as a retail category manager, using AI-generated analysis and an app to forecast computer category performance for the coming year.",
       "lastUpdated": "2025-06-01",
       "url": "https://quickstarts.sigmacomputing.com/guide/partners_snowflake_summit_2025/index.html"
@@ -1051,7 +1051,7 @@
     {
       "id": "partners_snowflake_virtual_2026",
       "title": "From Insight to Action: Agentic Analytics with Sigma and Snowflake",
-      "category": "partners",
+      "category": "eventhols",
       "summary": "Discover how Sigma and Snowflake work together to take a business question from discovery to a governed, approved decision using Sigma Assistant, Snowflake Cortex AI functions, a Sigma Agent, and a Snowpark forecasting model.",
       "lastUpdated": "2026-07-12",
       "url": "https://quickstarts.sigmacomputing.com/guide/partners_snowflake_virtual_2026/index.html"
@@ -1075,7 +1075,7 @@
     {
       "id": "secure_your_organization_with_security_analytics_using_snowflake_and_sigma",
       "title": "Secure Your Organization with Security Analytics Using Snowflake and Sigma",
-      "category": "Partners",
+      "category": "eventhols",
       "summary": "Learn how to monitor your Snowflake security posture using Sigma",
       "lastUpdated": "2023-11-15",
       "url": "https://quickstarts.sigmacomputing.com/guide/secure_your_organization_with_security_analytics_using_snowflake_and_sigma/index.html"
@@ -1147,7 +1147,7 @@
     {
       "id": "snowflake_build_secure_multitenant_data_applications_snowflake_sigma",
       "title": "Build and Secure Multi-Tenant Data Applications with Snowflake and Sigma",
-      "category": "Partners",
+      "category": "eventhols",
       "summary": "Snowflake Summit 2023 HoL with Sigma",
       "lastUpdated": "2024-09-18",
       "url": "https://quickstarts.sigmacomputing.com/guide/snowflake_build_secure_multitenant_data_applications_snowflake_sigma/index.html"
