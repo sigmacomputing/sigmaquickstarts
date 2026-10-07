@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: eventhols
-lastUpdated: 2026-10-05
+lastUpdated: 2026-10-07
 
 # Build an AI app with Claude and the Sigma MCP server
 
