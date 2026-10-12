@@ -6,7 +6,7 @@ environments: web
 status: Hidden
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: eventhols
-lastUpdated: 2026-10-05
+lastUpdated: 2026-10-12
 
 # Build an AI app with Claude and the Sigma MCP server
 
@@ -292,6 +292,8 @@ The queue
 The decision flow
 - Picking a store in "Open a store" opens a drawer titled "Decide on this store". It shows the store name, last-12-month revenue, YoY change, Owner, and Action, plus a Note text area and three buttons: Approve, Escalate, and Dismiss.
 - Each button sets that store's Decision, adds a row to the decision log with the store, decision, and note, refreshes the queue, and closes the drawer.
+- The drawer’s fields must come from a one-row-per-store helper table on the Data page so each shows a single value. 
+- Before finishing, put a temporary copy of the drawer card on Store review, screenshot it to confirm it shows one store’s values, then remove it.
 
 The Decisions page
 - An empty input table named "Decision log" with Store, Decision (same three options), and Note, plus created at and created by system columns.
