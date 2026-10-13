@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-12-01
+lastUpdated: 2026-10-13
 
 # Find and Interact with Sigma Workbooks in Claude Desktop
 
