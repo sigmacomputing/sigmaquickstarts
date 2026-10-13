@@ -269,7 +269,7 @@
       "title": "Find and Interact with Sigma Workbooks in Claude Desktop",
       "category": "aiapps",
       "summary": "Run a small local MCP server so Claude Desktop can find a Sigma workbook by name and open it live and interactive in Claude's browser pane.",
-      "lastUpdated": "2026-12-01",
+      "lastUpdated": "2026-10-13",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_find_and_interact_with_sigma_workbooks/index.html"
     },
     {
