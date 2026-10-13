@@ -1,5 +1,11 @@
 {
   "recentQuickStarts": [
+     {
+      "title": "Find and Interact with Sigma Workbooks in Claude Desktop",
+      "id": "aiapps_find_and_interact_with_sigma_workbooks",
+      "category": "aiapps",
+      "date": "Oct 13, 2026"
+    },
     {
       "title": "Agents 01: Building Your First Sigma Agent",
       "id": "agents_01_building_your_first_agent",
@@ -53,12 +59,6 @@
       "id": "administration_getting_started_guide",
       "category": "administration",
       "date": "Aug 11, 2026"
-    },
-    {
-      "title": "First Friday Features - July 2026",
-      "id": "07_2026_first_friday_features",
-      "category": "firstfridayfeatures",
-      "date": "Aug 4, 2026"
     }
   ]
 }
