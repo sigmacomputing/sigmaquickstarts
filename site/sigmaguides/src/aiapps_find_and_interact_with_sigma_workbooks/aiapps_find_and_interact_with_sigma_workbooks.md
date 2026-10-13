@@ -382,9 +382,9 @@ Show me the {workbook name} in Sigma
 
 Claude searches for the workbook, then asks the server to open it. Claude may ask for permission to use the browser on Sigma. Allow it.
 
-Claude opens the workbook in the browser pane, beside the conversation. For example (expand the video and click the play button):
+Claude opens the workbook in the browser pane, beside the conversation:
 
-<video src="assets/final1.mp4"></video>
+<img src="assets/cde_12.png" width="900"/>
 
 The workbook is live, so you can use its controls the way you would in Sigma. Of course, you can also ask Claude to make changes to the workbook.
 
