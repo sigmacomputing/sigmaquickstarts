@@ -1,5 +1,11 @@
 {
   "recentQuickStarts": [
+    {
+      "title": "Layout Composer: Governed Self-Service Layouts with Workbook as Code",
+      "id": "developers_layout_composer",
+      "category": "developers",
+      "date": "Oct 21, 2026"
+    },
      {
       "title": "Find and Interact with Sigma Workbooks in Claude Desktop",
       "id": "aiapps_find_and_interact_with_sigma_workbooks",
@@ -53,12 +59,6 @@
       "id": "security_managing_secrets_with_hashicorp",
       "category": "security",
       "date": "Aug 17, 2026"
-    },
-    {
-      "title": "How to Get Started - A Guide for Sigma Administrators",
-      "id": "administration_getting_started_guide",
-      "category": "administration",
-      "date": "Aug 11, 2026"
     }
   ]
 }
