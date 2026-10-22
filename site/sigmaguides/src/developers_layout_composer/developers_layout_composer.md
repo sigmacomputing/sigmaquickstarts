@@ -723,6 +723,14 @@ Key takeaways:
 - A team-level share and a signed embed URL let you display content to users without per-workbook permissions
 - The same approach extends to more layouts, more elements and per-user saved workbooks
 
+Places to extend the app:
+- **Containers as library cards:** build a library item as a container, such as a KPI with a text element that explains it, so one choice in the picker brings a complete card. The sample lists individual elements today, so this means changing how the picker reads the library page
+- **Widgets in your own dashboard:** embed library elements one at a time inside your application's dashboard, and let your own admin pages decide which element appears in which widget. The library workbook can serve as the catalog
+- **Role-based starting points:** pre-compose layouts for sales, finance or operations users and let them adjust from there
+- **More element types:** maps, pivot tables, controls, and chat or agent elements follow the same pattern
+- **Sharing and scheduling:** share or schedule exports of a saved workbook
+- **Your own identity:** sign the token with each signed-in user's email so saved workbooks are private to each user
+
 
 **Additional Resource Links**
 
