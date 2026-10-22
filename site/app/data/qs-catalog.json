@@ -465,6 +465,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html"
     },
     {
+      "id": "developers_layout_composer",
+      "title": "Layout Composer: Governed Self-Service Layouts with Workbook as Code",
+      "category": "developers",
+      "summary": "developers_layout_composer",
+      "lastUpdated": "2026-10-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_layout_composer/index.html"
+    },
+    {
       "id": "developers_migrating_from_cognos_made_easy",
       "title": "Migrating From Cognos Made Easy",
       "category": "migrations",
@@ -479,6 +487,14 @@
       "summary": "Use the domo-to-sigma Claude Code skill to rebuild a Domo dashboard as a Sigma data model and workbook from a screenshot and its warehouse table, then verify results with a parity check against the warehouse.",
       "lastUpdated": "2026-09-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html"
+    },
+    {
+      "id": "developers_migrating_from_excel_made_easy",
+      "title": "Migrating From Excel Made Easy",
+      "category": "migrations",
+      "summary": "Use the excel-to-sigma Claude Code skill to migrate an Excel rolling forecast to a Sigma data model and workbook, keep the forecast inputs editable with input tables, and verify that Sigma's totals tie to Excel's.",
+      "lastUpdated": "2026-10-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_excel_made_easy/index.html"
     },
     {
       "id": "developers_migrating_from_hex_made_easy",
