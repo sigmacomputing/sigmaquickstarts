@@ -465,6 +465,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html"
     },
     {
+      "id": "developers_layout_composer",
+      "title": "Layout Composer: Governed Self-Service Layouts with Workbook as Code",
+      "category": "developers",
+      "summary": "developers_layout_composer",
+      "lastUpdated": "2026-10-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_layout_composer/index.html"
+    },
+    {
       "id": "developers_migrating_from_cognos_made_easy",
       "title": "Migrating From Cognos Made Easy",
       "category": "migrations",
