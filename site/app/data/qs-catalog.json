@@ -489,6 +489,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_domo_made_easy/index.html"
     },
     {
+      "id": "developers_migrating_from_excel_made_easy",
+      "title": "Migrating From Excel Made Easy",
+      "category": "migrations",
+      "summary": "Use the excel-to-sigma Claude Code skill to migrate an Excel rolling forecast to a Sigma data model and workbook, keep the forecast inputs editable with input tables, and verify that Sigma's totals tie to Excel's.",
+      "lastUpdated": "2026-10-22",
+      "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_excel_made_easy/index.html"
+    },
+    {
       "id": "developers_migrating_from_hex_made_easy",
       "title": "Migrating From Hex Made Easy",
       "category": "migrations",
