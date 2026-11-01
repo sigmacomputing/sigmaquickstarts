@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Migrating From Excel Made Easy",
+      "id": "developers_migrating_from_excel_made_easy",
+      "category": "migrations",
+      "date": "Oct 31, 2026"
+    },
+    {
       "title": "Layout Composer: Governed Self-Service Layouts with Workbook as Code",
       "id": "developers_layout_composer",
       "category": "developers",
