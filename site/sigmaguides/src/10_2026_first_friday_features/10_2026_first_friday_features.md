@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
-lastUpdated: 2026-10-23
+lastUpdated: 2026-11-05
 
 # (10-2026) October
 <!-- The above name is what appears on the website and is searchable. 
@@ -14,7 +14,7 @@ lastUpdated: 2026-10-23
 October 9, 2026 changes: done
 October 16, 2026 changes: done
 October 23, 2026 changes: done
-October 30, 2026 changes:
+October 30, 2026 changes: done
 
 Publish on November 6
 
@@ -56,6 +56,11 @@ If something is not working as you expect, here's how to [contact Sigma support]
 ## Administration
 Duration: 20
 
+### AI usage dashboard enhancements (GA)
+The AI usage dashboard and table now show email addresses as user names instead of `External User`, which helps attribute AI usage to embed users. Search indexing is now available as a filter, so you can identify the tokens used to create document embeddings in Sigma.
+
+<!-- <img src="assets/fff_10_2026_16.png" width="700"/> -->
+
 ### Audit log events for new users (GA)
 The Sigma Audit Logs connection now includes a `USER_CREATED` event type that records when new users are added to the organization.
 
@@ -70,6 +75,21 @@ A Sigma organization can now connect to an Amazon Redshift Serverless workgroup 
 
 For more information, see [Connect to Redshift](https://help.sigmacomputing.com/docs/connect-to-redshift)
 
+### Manage frequency presets for materialization schedules (Beta)
+Admins can create frequency presets that recommend materialization schedules. Presets appear in the `Frequency` dropdown, and users can still choose `Custom`.
+
+<!-- <img src="assets/fff_10_2026_17.png" width="700"/> -->
+
+For more information, see [Manage materialization schedules with frequency presets](https://help.sigmacomputing.com/docs/manage-materializations#manage-materialization-schedules-with-frequency-presets-beta)
+
+### Manage JWT bearer OAuth key sets (GA)
+Admins can create key sets for OAuth connections to rotate JSON Web Token signing keys before the active key expires, without changing the JWKS URL.
+
+For more information, see [Manage JWT bearer OAuth key sets](https://help.sigmacomputing.com/docs/manage-jwt-bearer-oauth-key-sets)
+
+### Provide a reason when denying a protected tag request (GA)
+When you deny a request to tag a document version with a protected tag, you can now include a reason. The reason is added to the email sent to the requesting user.
+
 ### Restrict data in exports (Beta)
 A new admin setting removes users' ability to send document attachments or dynamic text in exports, and limits export destinations to email, Slack, and Microsoft Teams.
 
@@ -81,6 +101,18 @@ For more information, see [Restrict data in exports](https://help.sigmacomputing
 All new SCIM bearer tokens generated through SCIM provisioning are now tied to an automatically created service account.
 
 For more information, see [Manage SCIM bearer tokens with a service account](https://help.sigmacomputing.com/docs/manage-users-and-teams-with-scim#manage-scim-bearer-tokens-with-a-service-account)
+
+### Select Microsoft integration permission levels (GA)
+Administrators can now choose between write-only and read/write permission levels for the Microsoft integration.
+
+<!-- <img src="assets/fff_10_2026_09.png" width="700"/> -->
+
+For more information, see [Manage the Microsoft integration](https://help.sigmacomputing.com/docs/manage-microsoft-integration#permission-levels)
+
+### Set data residency region for OpenAI AI provider (GA)
+If you use OpenAI as your AI provider, you can now set a data residency region to use a region-specific endpoint.
+
+For more information, see [Manage external AI integrations](https://help.sigmacomputing.com/docs/manage-external-ai-integrations)
 
 ### Set your language and formatting region (Beta)
 Users can now set a display language and formatting region on their profile page. The language changes the text shown in the Sigma interface, and the region controls how numbers, dates, and currency appear.
@@ -147,6 +179,15 @@ For more information, see [Use AI to build dashboards and apps](https://help.sig
 ### Assistant in workbooks: governed metric timelines in KPIs (GA)
 When Sigma Assistant builds a KPI from a governed metric, it now automatically applies the metric's configured timeline, precision, and comparison period.
 
+### Assistant in workbooks: new build mode capabilities (GA)
+Sigma Assistant in build mode now supports additional capabilities:
+
+* Treemap charts: create a treemap, or convert an existing chart to one.
+* Dynamic chips: add them to agent instructions, similar to dynamic text.
+* Actions on pivot tables: configure `Move column` and `Swap column` actions that target rows, columns, or values.
+
+<!-- <img src="assets/fff_10_2026_18.png" width="700"/> -->
+
 ### New model for Snowflake AI providers on Azure (GA)
 Snowflake accounts hosted on Azure now use GPT 5.1 as the LLM.
 
@@ -169,6 +210,11 @@ For more information, see [Use the Sigma MCP server](https://help.sigmacomputing
 ## API
 Duration: 20
 
+### API impersonation support for running Sigma agents (GA)
+With API impersonation, you can run Sigma agents as the impersonated user, including agents you run on behalf of your embedded application's users. If an agent uses a `Call API` action as an action tool and the API connector requires per-user OAuth, the action fails when impersonating a user.
+
+For more information, see [Impersonate users](https://help.sigmacomputing.com/docs/impersonate-users#impersonate-users-for-api-calls)
+
 ### Build workbooks with Sigma MCP server (GA)
 AI assistants connected to the Sigma MCP server can now create workbooks from natural language requests.
 
@@ -177,15 +223,35 @@ For more information, see [Use the Sigma MCP server](https://help.sigmacomputing
 ### Custom SMTP server endpoints (GA)
 Three new endpoints, `GET`, `PATCH`, and `DELETE`, let you manage the organization's custom SMTP server settings programmatically.
 
+### New API endpoints for managing JWK sets (GA)
+New endpoints let you create, rotate, and delete the JSON Web Key sets that sign JWT bearer tokens for a connection, so you can monitor and rotate them programmatically.
+
+For more information, see [Create a JWK set](https://help.sigmacomputing.com/reference/create-jwk-set), [List JSON Web Keys](https://help.sigmacomputing.com/reference/list-json-web-keys), [Create a JSON Web Key](https://help.sigmacomputing.com/reference/create-json-web-key), [Activate a JSON Web Key](https://help.sigmacomputing.com/reference/activate-json-web-key), [Delete a JSON Web Key](https://help.sigmacomputing.com/reference/delete-json-web-key), [Delete a JWK set](https://help.sigmacomputing.com/reference/delete-jwk-set), and [List all JSON Web Keys](https://help.sigmacomputing.com/reference/list-all-json-web-keys)
+
+### New API endpoints for swapping sources (Beta)
+Two new endpoints swap the source elements of a workbook (`POST /v2/workbooks/:workbookId/swapSourceElements`) or a data model (`POST /v2/dataModels/:workbookId/swapSourceElements`).
+
+For more information, see [Swap workbook source elements](https://help.sigmacomputing.com/reference/swap-workbook-source-elements) and [Swap data model source elements](https://help.sigmacomputing.com/reference/swap-data-model-source-elements)
+
 ### New bursting options for export endpoints (GA)
 Three endpoints now support the `exportDestination`, `dynamicExportSettings`, and `dynamicRecipientSettings` parameters: the Export workbook endpoint (`POST /v2/workbooks/:workbookId/send`), and the create and update schedule endpoints.
 
 For more information, see [Export workbook](https://help.sigmacomputing.com/reference/send-workbook)
 
+### New field included in response for List sources endpoints (GA)
+The List data model sources, List workbook sources, and List report sources endpoints now include a `customSqlSourceId` field for sources with a type of `custom-sql`.
+
+For more information, see [List data model sources](https://help.sigmacomputing.com/reference/list-data-model-sources), [List workbook sources](https://help.sigmacomputing.com/reference/get-workbook-sources), and [List report sources](https://help.sigmacomputing.com/reference/list-report-sources)
+
 ### New `language` and `languageVariant` options for workbook export endpoints (GA)
 Four endpoints now accept the `language` and `languageVariant` options, which apply a workbook translation to exported content.
 
 For more information, see [Export workbook](https://help.sigmacomputing.com/reference/export-workbook), [Send workbook](https://help.sigmacomputing.com/reference/send-workbook), [Create workbook schedule](https://help.sigmacomputing.com/reference/post-workbook-schedule), and [Update workbook schedule](https://help.sigmacomputing.com/reference/update-workbook-schedule)
+
+### New option available for Swap report data sources endpoint (GA)
+The Swap report data sources endpoint (`POST /v2/reports/{reportId}/swapSources`) now includes a `customSqlSourceId` option to swap from a custom SQL source. The response includes `unswappedSources` for any sources that were not swapped.
+
+For more information, see [Swap report data sources](https://help.sigmacomputing.com/reference/source-swap-report)
 
 ### New options available for member endpoints (GA)
 Four member endpoints now include `language` and `formatRegion` fields for setting or retrieving a member's display language and formatting region.
@@ -247,6 +313,22 @@ Duration: 20
 
 **16:** When you add sources to a document, you can now add multiple data sources without closing the source picker by hovering over a source and selecting `Add source`.
 
+**17:** Archiving a tenant failed with a `Failed to archive tenant(s)` error for some tenants because of inconsistently archived deployment records.
+
+**18:** Badges now use sentence case instead of all caps. For example, `Beta` instead of `BETA`.
+
+**19:** Sigma now enforces the `Manage agents` permission when users create agents through the Sigma MCP server.
+
+**20:** Sparklines now display correctly for data with null y values instead of showing an error.
+
+**21:** Tagging a data model version no longer fails with a writeback schema error when the draft has an input table on a non-OAuth connection.
+
+**22:** Tagging a version and swapping the source of a workbook that contains a Databricks Genie Agent tool for a Sigma agent no longer fails with a `Path not found` error.
+
+**23:** When selecting a source, users now see only the tagged data model versions they have access to.
+
+**24:** Selecting `Stop` in Sigma Assistant now cancels any running query, and Assistant queries time out after 120 seconds.
+
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -264,7 +346,16 @@ Embedding Sigma documentation now requires the `embedded=true` query parameter, 
 ## New QuickStarts in October
 Duration: 20
 
-<!-- Add new QuickStarts published in October 2026 -->
+### Find and Interact with Sigma Workbooks in Claude Desktop
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/aiapps_find_and_interact_with_sigma_workbooks/index.html) shows how to run a small local MCP server so Claude Desktop can find a Sigma workbook by name and open it, live and interactive, in Claude's browser pane.
+
+### Layout Composer: Governed Self-Service Layouts with Workbook as Code
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_layout_composer/index.html) shows how to build an application where users choose Sigma elements, place them in zones on a canvas, and generate a real Sigma workbook from their selections, using workbook as code and the REST API while Sigma continues to supply the governed data.
+
+<video src="assets/layout_composer_save1.mp4"></video>
+
+### Migrating From Excel Made Easy
+[This QuickStart](https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_excel_made_easy/index.html) shows how to use the excel-to-sigma Claude Code skill to migrate an Excel rolling forecast to a Sigma data model and workbook, keep the forecast inputs editable with input tables, and verify that Sigma's totals tie to Excel's.
 
 
 ![Footer](assets/sigma_footer.png)
@@ -308,12 +399,12 @@ Organizations can now create reusable success, failure, and suspension messages 
 
 For more information, see [Create custom email export templates](https://help.sigmacomputing.com/docs/create-custom-email-export-templates)
 
-### Select Microsoft integration permission levels (GA)
-Administrators can now choose between write-only and read/write permission levels for the Microsoft integration.
+### Progress bars and progress rings (GA)
+Build a progress bar or ring to show a value as a percentage or proportion of a target value.
 
-<!-- <img src="assets/fff_10_2026_09.png" width="700"/> -->
+<!-- <img src="assets/fff_10_2026_19.png" width="700"/> -->
 
-For more information, see [Manage the Microsoft integration](https://help.sigmacomputing.com/docs/manage-microsoft-integration#permission-levels)
+For more information, see [Build a progress bar](https://help.sigmacomputing.com/docs/build-a-progress-bar) and [Build a progress ring](https://help.sigmacomputing.com/docs/build-a-progress-ring)
 
 ### Split workbook download by control values (GA)
 Workbook downloads can now be split by the values of a list control. Sigma returns a zipped file containing a separate download, with data customized for each selected value.
@@ -328,9 +419,15 @@ Containers can now use a stack layout, which arranges elements automatically usi
 **WHY IT MATTERS:**<br>
 Dashboards are viewed on many screen sizes, and manual positioning rarely holds up across them. Stack layouts adapt automatically, so builders maintain one layout instead of several and viewers get a consistent experience.
 
-<!-- <img src="assets/fff_10_2026_05.png" width="700"/> -->
+<video src="assets/stack_layout_intro.mp4"></video>
 
 For more information, see [Use stacks to make responsive layouts](https://help.sigmacomputing.com/docs/use-stacks-to-make-responsive-layouts)
+
+### Updated appearance for segmented controls (GA)
+Segmented controls now use a `Surface` color, rather than a `Highlight` color, to show the selected segment.
+
+### Updated UI icons (GA)
+Icons across Sigma now have a thinner stroke, some match the surrounding text color, and several have new designs. The change is visual only.
 
 
 ![Footer](assets/sigma_footer.png)
