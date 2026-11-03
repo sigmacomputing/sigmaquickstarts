@@ -3,10 +3,10 @@ id: events-hol_getting_started_with_sigma_and_motherduck
 summary: events-hol_getting_started_with_sigma_and_motherduck
 categories: eventhols
 environments: web
-status: Hidden
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
-tags: Default
-lastUpdated: 2026-11-01
+tags: default
+lastUpdated: 2026-11-04
 
 # Getting Started with Sigma and MotherDuck
 
