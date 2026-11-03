@@ -1,7 +1,7 @@
 author: pballai
-id: events-hol_getting_started_with_sigma_and_motherduck
-summary: events-hol_getting_started_with_sigma_and_motherduck
-categories: eventhols
+id: partners_getting_started_with_sigma_and_motherduck
+summary: Set up Sigma and MotherDuck, then connect, model, and explore sample data, and use Sigma Assistant, agents, and the Claude connector on top of it.
+categories: partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
