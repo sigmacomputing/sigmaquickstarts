@@ -1289,6 +1289,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/tables_fan_traps/index.html"
     },
     {
+      "id": "tables_getting_started_with_sigma_tables",
+      "title": "Getting Started with Sigma Tables",
+      "category": "Tables",
+      "summary": "tables_getting_started_with_sigma_tables",
+      "lastUpdated": "2026-11-03",
+      "url": "https://quickstarts.sigmacomputing.com/guide/tables_getting_started_with_sigma_tables/index.html"
+    },
+    {
       "id": "tables_json_parsing",
       "title": "Parsing JSON Data in Seconds",
       "category": "Tables",
