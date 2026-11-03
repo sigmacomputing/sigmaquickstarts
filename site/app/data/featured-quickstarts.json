@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Getting Started with Sigma Tables",
+      "id": "tables_getting_started_with_sigma_tables",
+      "category": "tables",
+      "date": "Nov 3, 2026"
+    },
+    {
       "title": "Migrating From Excel Made Easy",
       "id": "developers_migrating_from_excel_made_easy",
       "category": "migrations",
@@ -12,7 +18,7 @@
       "category": "developers",
       "date": "Oct 21, 2026"
     },
-     {
+    {
       "title": "Find and Interact with Sigma Workbooks in Claude Desktop",
       "id": "aiapps_find_and_interact_with_sigma_workbooks",
       "category": "aiapps",
@@ -53,18 +59,6 @@
       "id": "agents_06_mcp_tools",
       "category": "agents",
       "date": "Aug 22, 2026"
-    },
-    {
-      "title": "Managing Secrets in Sigma with AWS",
-      "id": "security_managing_secrets_with_aws",
-      "category": "security",
-      "date": "Aug 17, 2026"
-    },
-    {
-      "title": "Managing Secrets in Sigma with HashiCorp",
-      "id": "security_managing_secrets_with_hashicorp",
-      "category": "security",
-      "date": "Aug 17, 2026"
     }
   ]
 }
