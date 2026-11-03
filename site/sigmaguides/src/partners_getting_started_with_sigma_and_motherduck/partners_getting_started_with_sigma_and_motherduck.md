@@ -1,7 +1,7 @@
 author: pballai
 id: events-hol_getting_started_with_sigma_and_motherduck
 summary: events-hol_getting_started_with_sigma_and_motherduck
-categories: eventhols
+categories: Partners
 environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
