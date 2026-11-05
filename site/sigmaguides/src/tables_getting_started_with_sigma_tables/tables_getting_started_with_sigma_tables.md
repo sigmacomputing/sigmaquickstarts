@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-11-03
+lastUpdated: 2026-11-05
 
 # Getting Started with Sigma Tables
 
@@ -24,6 +24,8 @@ The two aren't the same thing today, and this QuickStart doesn't assume one repl
 This QuickStart demonstrates how to use Sigma tables to turn an existing table into a shared, editable data source entirely within the Sigma UI. The data used will come from, and be stored in, Snowflake. 
 
 During this demonstration, we will enable admin-controlled write access on a table, edit it directly inside a workbook, add rows a few different ways, build actions that update and delete rows from a right-click menu, and track every change with an audit log along the way.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/h1i0i7s5g6gf6cq) to see what Sigma tables are, how to enable write access, and how to edit a table.
 
 Along the way you'll learn how to:
 - Enable write access on a database table in Snowflake to turn it into a Sigma table
