@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="790" viewBox="0 0 1320 790" preserveAspectRatio="xMidYMid meet" font-family="'DM Sans', Arial, sans-serif">
+<title>Layout Composer</title>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5F66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1320" height="790" fill="#FFFFFF"/>
+<text x="30" y="44" font-size="24" font-weight="600" fill="#111114" dominant-baseline="central">Layout Composer</text>
+
+<rect x="30" y="80" width="300" height="640" rx="14" fill="#FFFFFF" stroke="#C9C9D0" stroke-width="1.5"/>
+<text x="50" y="104" font-size="15" font-weight="600" fill="#111114" dominant-baseline="central">Sigma</text>
+
+<rect x="50" y="124" width="260" height="70" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="180" y="146" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Embed_Users team</text>
+<text x="180" y="165" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">View access to the</text>
+<text x="180" y="181" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Layout-Composer folder</text>
+
+<rect x="50" y="408" width="260" height="64" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="180" y="431" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Element library workbook</text>
+<text x="180" y="452" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">KPI, bar, line, table</text>
+
+<rect x="50" y="520" width="260" height="64" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="180" y="543" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Data model</text>
+<text x="180" y="564" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Sales, COGs, Profit defined once</text>
+
+<rect x="50" y="632" width="260" height="64" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="180" y="655" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Warehouse data</text>
+<text x="180" y="676" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Plugs sample data</text>
+
+<line x1="180" y1="632" x2="180" y2="588" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="180" y1="520" x2="180" y2="476" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+
+<rect x="460" y="130" width="320" height="605" rx="14" fill="#FFFFFF" stroke="#C9C9D0" stroke-width="1.5"/>
+<text x="620" y="152" text-anchor="middle" font-size="15" font-weight="600" fill="#111114" dominant-baseline="central">Layout Composer application</text>
+<text x="620" y="170" text-anchor="middle" font-size="13" fill="#111114" dominant-baseline="central">(Node.js)</text>
+
+<rect x="480" y="190" width="280" height="70" rx="10" fill="#F7F7F8" stroke="#5F5F66" stroke-width="1.2"/>
+<text x="620" y="212" text-anchor="middle" font-size="14" font-weight="600" fill="#111114" dominant-baseline="central">Canvas</text>
+<text x="620" y="236" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Presets 4x1, 2x2, 3x2; drag and drop</text>
+
+<rect x="480" y="300" width="280" height="70" rx="10" fill="#F7F7F8" stroke="#5F5F66" stroke-width="1.2"/>
+<text x="620" y="322" text-anchor="middle" font-size="14" font-weight="600" fill="#111114" dominant-baseline="central">Spec builder</text>
+<text x="620" y="342" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Keeps selected elements,</text>
+<text x="620" y="358" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">writes new layout</text>
+
+<rect x="480" y="410" width="280" height="60" rx="10" fill="#F7F7F8" stroke="#5F5F66" stroke-width="1.2"/>
+<text x="620" y="440" text-anchor="middle" font-size="14" font-weight="600" fill="#111114" dominant-baseline="central">Sigma API client</text>
+
+<rect x="480" y="645" width="280" height="70" rx="10" fill="#F7F7F8" stroke="#5F5F66" stroke-width="1.2"/>
+<text x="620" y="668" text-anchor="middle" font-size="14" font-weight="600" fill="#111114" dominant-baseline="central">Embed URL signer</text>
+<text x="620" y="690" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">JWT</text>
+
+<line x1="620" y1="260" x2="620" y2="298" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="630" y="279" font-size="12.5" fill="#111114" dominant-baseline="central">2 Generate</text>
+<line x1="620" y1="370" x2="620" y2="408" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="630" y="389" font-size="12.5" fill="#111114" dominant-baseline="central">3 New spec</text>
+
+<line x1="310" y1="440" x2="478" y2="440" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="414" y="424" text-anchor="middle" font-size="12.5" fill="#111114" dominant-baseline="central">1 Library spec</text>
+
+<rect x="980" y="400" width="220" height="80" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="1090" y="429" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Generated workbook</text>
+<text x="1090" y="451" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Layout Composer Result</text>
+
+<rect x="980" y="528" width="220" height="80" rx="10" fill="#EEF3FF" stroke="#1A70F1" stroke-width="1.2"/>
+<text x="1090" y="557" text-anchor="middle" font-size="14" font-weight="600" fill="#08377E" dominant-baseline="central">Embed user My Documents</text>
+<text x="1090" y="579" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">Saved workbooks</text>
+
+<rect x="980" y="650" width="220" height="60" rx="10" fill="#E5E5E9" stroke="#5F5F66" stroke-width="1.2"/>
+<text x="1090" y="672" text-anchor="middle" font-size="14" font-weight="600" fill="#111114" dominant-baseline="central">Embedded view</text>
+<text x="1090" y="691" text-anchor="middle" font-size="12" fill="#5F5F66" dominant-baseline="central">(single iframe)</text>
+
+<line x1="762" y1="425" x2="978" y2="425" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="870" y="409" text-anchor="middle" font-size="12.5" fill="#111114" dominant-baseline="central">4 Create or update</text>
+
+<line x1="762" y1="680" x2="978" y2="680" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="870" y="664" text-anchor="middle" font-size="12.5" fill="#111114" dominant-baseline="central">5 Signed embed URL</text>
+
+<line x1="1090" y1="480" x2="1090" y2="526" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="1100" y="496" font-size="12.5" fill="#111114" dominant-baseline="central">6 Save as my</text>
+<text x="1100" y="511" font-size="12.5" fill="#111114" dominant-baseline="central">workbook</text>
+
+<path d="M980 568 L830 568 L830 455 L762 455" fill="none" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="840" y="520" font-size="12.5" fill="#111114" dominant-baseline="central">7 List saved</text>
+<text x="840" y="535" font-size="12.5" fill="#111114" dominant-baseline="central">workbooks</text>
+
+<path d="M1200 440 L1230 440 L1230 680 L1202 680" fill="none" stroke="#5F5F66" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="1240" y="560" font-size="12.5" fill="#111114" dominant-baseline="central">Displays</text>
+
+<line x1="1090" y1="608" x2="1090" y2="648" stroke="#5F5F66" stroke-width="0.8" marker-end="url(#ar)"/>
+<text x="1082" y="629" text-anchor="end" font-size="12.5" fill="#111114" dominant-baseline="central">Displays saved workbook</text>
+
+<path d="M250 124 L250 104 L1090 104 L1090 398" fill="none" stroke="#5F5F66" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#ar)"/>
+<text x="670" y="90" text-anchor="middle" font-size="12.5" fill="#111114" dominant-baseline="central">view access</text>
+
+<path d="M480 680 L345 680 L345 159 L312 159" fill="none" stroke="#5F5F66" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#ar)"/>
+<text x="412" y="664" text-anchor="middle" font-size="12.5" fill="#111114" dominant-baseline="central">teams claim in token</text>
+</svg>
