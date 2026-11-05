@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: first_friday_features
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-06
 
 # (10-2026) October
 <!-- The above name is what appears on the website and is searchable. 
@@ -89,6 +89,8 @@ For more information, see [Manage JWT bearer OAuth key sets](https://help.sigmac
 
 ### Provide a reason when denying a protected tag request (GA)
 When you deny a request to tag a document version with a protected tag, you can now include a reason. The reason is added to the email sent to the requesting user.
+
+For more information, see [Create and manage version tags](https://help.sigmacomputing.com/docs/create-and-manage-version-tags)
 
 ### Restrict data in exports (Beta)
 A new admin setting removes users' ability to send document attachments or dynamic text in exports, and limits export destinations to email, Slack, and Microsoft Teams.
@@ -223,6 +225,8 @@ For more information, see [Use the Sigma MCP server](https://help.sigmacomputing
 ### Custom SMTP server endpoints (GA)
 Three new endpoints, `GET`, `PATCH`, and `DELETE`, let you manage the organization's custom SMTP server settings programmatically.
 
+For more information, see [Get the SMTP settings for an organization](https://help.sigmacomputing.com/reference/get-smtp-settings), [Update the SMTP settings for an organization](https://help.sigmacomputing.com/reference/update-smtp-settings), and [Delete the SMTP settings for an organization](https://help.sigmacomputing.com/reference/delete-smtp-settings)
+
 ### New API endpoints for managing JWK sets (GA)
 New endpoints let you create, rotate, and delete the JSON Web Key sets that sign JWT bearer tokens for a connection, so you can monitor and rotate them programmatically.
 
@@ -261,6 +265,8 @@ For more information, see [Get member](https://help.sigmacomputing.com/reference
 ### New request body shape for the Export workbook endpoint (GA)
 The Export workbook endpoint (`POST /v2/workbooks/:workbookId/send`) now accepts a new request body shape, `configV2`.
 
+For more information, see [Export a workbook](https://help.sigmacomputing.com/reference/send-workbook)
+
 ### Represent buttons with icons in the code representation of a workbook (Beta)
 The code representation of a workbook can now include buttons with icons.
 
@@ -273,6 +279,8 @@ For more information, see [Manage workbooks as code (Beta)](https://help.sigmaco
 
 ### Storage integrations endpoints (GA)
 Eight new endpoints cover general storage integration management, as well as storage integrations used for audit logs.
+
+For more information, see [List storage integrations for an organization](https://help.sigmacomputing.com/reference/list-storage-integrations), [Create a storage integration](https://help.sigmacomputing.com/reference/create-storage-integration), [Update a storage integration](https://help.sigmacomputing.com/reference/update-storage-integration), [Delete a storage integration](https://help.sigmacomputing.com/reference/delete-storage-integration), [Get the audit logging storage integration](https://help.sigmacomputing.com/reference/get-audit-logging-storage-integration), [Create the audit logging storage integration](https://help.sigmacomputing.com/reference/create-audit-logging-storage-integration), [Update the audit logging storage integration](https://help.sigmacomputing.com/reference/update-audit-logging-storage-integration), and [Delete the audit logging storage integration](https://help.sigmacomputing.com/reference/delete-audit-logging-storage-integration)
 
 
 ![Footer](assets/sigma_footer.png)
@@ -390,7 +398,7 @@ Translations added to a workbook or report can now be applied to exports of that
 
 <!-- <img src="assets/fff_10_2026_14.png" width="700"/> -->
 
-For more information, see [Apply translations in workbook or report export attachments](https://help.sigmacomputing.com/docs/manage-workbook-localization#apply-translations-in-workbook-or-report-export-attachments-beta)
+For more information, see [Apply translations in workbook or report export attachments](https://help.sigmacomputing.com/docs/manage-workbook-localization#apply-translations-in-workbook-or-report-export-attachments)
 
 ### Create custom email export templates (GA)
 Organizations can now create reusable success, failure, and suspension messages for email exports.
