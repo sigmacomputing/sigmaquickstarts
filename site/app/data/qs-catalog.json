@@ -905,6 +905,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_cases_databricks_oauth/index.html"
     },
     {
+      "id": "events-hol_getting_started_with_sigma_and_motherduck",
+      "title": "Getting Started with Sigma and MotherDuck",
+      "category": "Partners",
+      "summary": "events-hol_getting_started_with_sigma_and_motherduck",
+      "lastUpdated": "2026-11-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/events-hol_getting_started_with_sigma_and_motherduck/index.html"
+    },
+    {
       "id": "functions_period_over_period_analysis",
       "title": "Getting Started with Period Over Period Analysis in Sigma",
       "category": "Functions",
