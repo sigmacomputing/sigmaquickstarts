@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "First Friday Features - October 2026",
+      "id": "10_2026_first_friday_features",
+      "category": "firstfridayfeatures",
+      "date": "Nov 6, 2026"
+    },
+    {
       "title": "Getting Started with Sigma Tables",
       "id": "tables_getting_started_with_sigma_tables",
       "category": "tables",
@@ -53,12 +59,6 @@
       "id": "08_2026_first_friday_features",
       "category": "firstfridayfeatures",
       "date": "Sep 4, 2026"
-    },
-    {
-      "title": "Agents 06: Connect a Sigma Agent to GitHub with MCP Tools",
-      "id": "agents_06_mcp_tools",
-      "category": "agents",
-      "date": "Aug 22, 2026"
     }
   ]
 }

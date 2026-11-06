@@ -73,6 +73,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/09_2026_first_friday_features/index.html"
     },
     {
+      "id": "10_2026_first_friday_features",
+      "title": "(10-2026) October",
+      "category": "firstfridayfeatures",
+      "summary": "Summarizes new features, updates, and bug fixes released across Sigma in October 2026, with links to the relevant documentation for each.",
+      "lastUpdated": "2026-11-06",
+      "url": "https://quickstarts.sigmacomputing.com/guide/10_2026_first_friday_features/index.html"
+    },
+    {
       "id": "2023_first_friday_features",
       "title": "2023 Compilation",
       "category": "Administration",
@@ -895,6 +903,14 @@
       "summary": "Build a Node.js app that implements OAuth 2.0 with PKCE for Sigma embedding with Databricks, encrypting tokens and signing JWTs so each embedded user queries with their own permissions.",
       "lastUpdated": "2026-01-26",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_use_cases_databricks_oauth/index.html"
+    },
+    {
+      "id": "events-hol_getting_started_with_sigma_and_motherduck",
+      "title": "Getting Started with Sigma and MotherDuck",
+      "category": "Partners",
+      "summary": "events-hol_getting_started_with_sigma_and_motherduck",
+      "lastUpdated": "2026-11-04",
+      "url": "https://quickstarts.sigmacomputing.com/guide/events-hol_getting_started_with_sigma_and_motherduck/index.html"
     },
     {
       "id": "functions_period_over_period_analysis",
