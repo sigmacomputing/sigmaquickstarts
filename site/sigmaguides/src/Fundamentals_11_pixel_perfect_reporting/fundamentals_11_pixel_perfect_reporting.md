@@ -4,7 +4,7 @@ id: fundamentals_11_pixel_perfect_reporting
 summary: fundamentals_11_pixel_perfect_reporting
 categories: fundamentals
 environments: web
-status: published
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2026-07-11
