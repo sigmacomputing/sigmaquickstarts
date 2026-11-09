@@ -11,6 +11,11 @@
   var $$ = function $$(s, r) {
     return Array.prototype.slice.call((r || document).querySelectorAll(s));
   };
+  // Markup is parsed in an inert document (no script or image loading) and then moved in
+  var setHTML = function setHTML(el, html) {
+    var doc = new DOMParser().parseFromString('<!doctype html><body>' + (html || ''), 'text/html');
+    el.replaceChildren.apply(el, Array.prototype.slice.call(doc.body.childNodes));
+  };
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var LABELS = {
@@ -200,7 +205,7 @@
       var l = document.createElement('div');l.className = 'l';l.style.opacity = 0;l.style.transitionDuration = fade + 'ms';
       var g = document.createElement('div');
       g.style.cssText = 'position:absolute;inset:0;' + lines('rgba(26,112,241,' + (strong ? 0.16 : spot ? 0.14 : 0.16) + ')') + 'background-color:rgba(26,112,241,' + (strong ? 0.025 : spot ? 0.015 : 0.025) + ')';
-      var s = document.createElement('div');s.className = 'sel';s.style.display = 'none';s.innerHTML = '<i></i>';
+      var s = document.createElement('div');s.className = 'sel';s.style.display = 'none';s.appendChild(document.createElement('i'));
       l.appendChild(g);l.appendChild(s);wrap.appendChild(l);
       nodes.push({ l: l, g: g, s: s });
     }
@@ -307,7 +312,7 @@
         m = n % 60;return h ? h + ' hr' + (m ? ' ' + m + ' min' : '') : m + ' min';
   }
   function tile(cat) {
-    return '<span class="tile"><i class="ci" data-cat="' + cat + '"></i></span>';
+    return '<span class="tile"><i class="ci" data-cat="' + esc(cat) + '"></i></span>';
   }
 
   var grid = $('#cards');
@@ -327,12 +332,12 @@
         if (ok) shown.push(c);
         // highlight matches in the title
         if (terms.length && ok) {
-          var t = esc(c._title);
-          terms.forEach(function (term) {
-            var re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
-            t = t.replace(re, '<mark class="hl">$1</mark>');
-          });
-          c._ttl.innerHTML = t;
+          var re = new RegExp('(' + terms.map(function (term) {
+            return term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          }).join('|') + ')', 'ig');
+          setHTML(c._ttl, c._title.split(re).map(function (part, i) {
+            return i % 2 ? '<mark class="hl">' + esc(part) + '</mark>' : esc(part);
+          }).join(''));
         } else if (c._ttl.firstElementChild) {
           c._ttl.textContent = c._title;
         }
@@ -460,9 +465,9 @@
         return k !== FEAT;
       }));
       menuOrder.forEach(function (k) {
-        opts += '<button type="button" class="opt" role="option" data-chip="' + k + '" data-fam="' + famOf(k) + '" aria-pressed="false"><i class="ci" data-cat="' + k + '"></i>' + topicName(k) + '</button>';
+        opts += '<button type="button" class="opt" role="option" data-chip="' + esc(k) + '" data-fam="' + famOf(k) + '" aria-pressed="false"><i class="ci" data-cat="' + esc(k) + '"></i>' + topicName(k) + '</button>';
       });
-      chipsEl.hidden = true;chipsEl.innerHTML = '';
+      chipsEl.hidden = true;chipsEl.textContent = '';
       var searchAt = $('.lib-bar .search');
       if (searchAt) searchAt.insertAdjacentHTML('afterend', '<div class="tdd"><button type="button" class="tdd-btn" aria-haspopup="listbox" aria-expanded="false"><span class="lbl">Topics</span><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="tdd-menu" role="listbox" aria-label="Topics" hidden>' + opts + '</div></div>');
       var tddBtn = $('.tdd-btn'),
@@ -502,7 +507,7 @@
         var k = b.getAttribute('data-chip');
         if (browse && !browse.hidden && k && !state.q) {
           // browsing: jump to the topic's shelf and open it
-          var sh = $('.shelf[data-cat="' + k + '"]', browse);
+          var sh = $('.shelf[data-cat="' + esc(k) + '"]', browse);
           if (sh) {
             closeOtherShelves(sh);sh.open = true;
             var top = sh.getBoundingClientRect().top + window.scrollY - (($('.lib-bar') || {}).offsetHeight || 0) - 76;
@@ -550,16 +555,16 @@
         });
         if (!mem.length) return;
         var f = famOf(k);
-        out += '<details class="shelf" data-cat="' + k + '" data-fam="' + f + '"><summary><i class="ci sico" data-cat="' + k + '"></i><span class="st"><span class="sl"><h4>' + esc(topicName(k)) + '</h4><span class="n">' + mem.length + ' guides</span></span>' + (CAT_DESC[k] ? '<span class="sd">' + esc(CAT_DESC[k]) + '</span>' : '') + '</span><svg class="chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="sbody"><div class="minis">';
+        out += '<details class="shelf" data-cat="' + esc(k) + '" data-fam="' + f + '"><summary><i class="ci sico" data-cat="' + esc(k) + '"></i><span class="st"><span class="sl"><h4>' + esc(topicName(k)) + '</h4><span class="n">' + mem.length + ' guides</span></span>' + (CAT_DESC[k] ? '<span class="sd">' + esc(CAT_DESC[k]) + '</span>' : '') + '</span><svg class="chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="sbody"><div class="minis">';
         mem.forEach(function (c) {
           out += '<a class="mini" data-ci="' + c._i + '" href="' + esc(c.getAttribute('href')) + '" data-fam="' + f + '">' + tile(c._cat) + '<span class="mt"><span class="ttl">' + esc(c._title) + '</span><span class="mm">' + mins(c.getAttribute('data-duration')) + '</span></span></a>';
         });
-        out += '</div><button type="button" class="all" data-go="' + k + '">Open as a list<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></details>';
+        out += '</div><button type="button" class="all" data-go="' + esc(k) + '">Open as a list<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div></details>';
       });
       var browseTop = $('#browse-top');
       if (browseTop) {
-        browseTop.innerHTML = topHtml;browse.innerHTML = out;
-      } else browse.innerHTML = topHtml + out;
+        setHTML(browseTop, topHtml);setHTML(browse, out);
+      } else setHTML(browse, topHtml + out);
       var onBrowseClick = function onBrowseClick(e) {
         var go = e.target.closest('[data-go]');
         if (go) {
@@ -581,7 +586,7 @@
       // a way back from a filtered list to the topic shelves
       backEl = document.createElement('div');
       backEl.className = 'back';backEl.hidden = true;
-      backEl.innerHTML = '<button type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All topics</button>';
+      setHTML(backEl, '<button type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All topics</button>');
       grid.parentNode.insertBefore(backEl, grid);
       backEl.firstChild.addEventListener('click', function () {
         var was = state.cat;
@@ -625,7 +630,7 @@
             d = c && $('.desc', c);
         if (!d || !d.textContent.trim()) return;
         tipEl.setAttribute('data-fam', c._fam);
-        tipEl.innerHTML = '<span class="tc">' + tile(c._cat) + esc(LABELS[c._cat] || c._cat) + '</span><b>' + esc(c._title) + '</b><p>' + esc(d.textContent.trim()) + '</p><span class="tm">' + mins(c.getAttribute('data-duration')) + (c.getAttribute('data-updated') ? ' · Updated ' + fmtDate(c.getAttribute('data-updated')) : '') + '</span>';
+        setHTML(tipEl, '<span class="tc">' + tile(c._cat) + esc(LABELS[c._cat] || c._cat) + '</span><b>' + esc(c._title) + '</b><p>' + esc(d.textContent.trim()) + '</p><span class="tm">' + mins(c.getAttribute('data-duration')) + (c.getAttribute('data-updated') ? ' · Updated ' + fmtDate(c.getAttribute('data-updated')) : '') + '</span>');
         tipEl.hidden = false;
         var w = tipEl.offsetWidth,
             h = tipEl.offsetHeight,
@@ -668,7 +673,7 @@
       grid.classList.add('tiles');
       var singleTopic = chipsEl && chipsEl.hidden;
       cards.forEach(function (c) {
-        c.insertAdjacentHTML('afterbegin', '<div class="img"><div class="art" aria-hidden="true"><span class="cv"><i class="ci" data-cat="' + c._cat + '"></i></span></div>' + (singleTopic ? '' : '<span class="badge">' + esc(LABELS[c._cat] || c._cat) + '</span>') + '</div>');
+        c.insertAdjacentHTML('afterbegin', '<div class="img"><div class="art" aria-hidden="true"><span class="cv"><i class="ci" data-cat="' + esc(c._cat) + '"></i></span></div>' + (singleTopic ? '' : '<span class="badge">' + esc(LABELS[c._cat] || c._cat) + '</span>') + '</div>');
       });
     }
 
@@ -774,10 +779,10 @@
       return r.json();
     }).then(function (d) {
       if (!d || !d.visible || !d.message) return;
-      var tmp = document.createElement('div');
-      tmp.innerHTML = d.message;
+      var tmp = new DOMParser().parseFromString('<!doctype html><body>' + d.message, 'text/html').body;
       var a = tmp.querySelector('a');
       var href = a ? a.getAttribute('href') : '#library';
+      if (!/^(https?:\/\/|\/|#)/i.test(href || '')) href = '#library';
       if (a) a.parentNode.removeChild(a);
       try {
         var u = new URL(href, location.href);if (/quickstarts\.sigmacomputing\.com$/.test(u.hostname)) href = u.pathname + u.search + (u.search.indexOf('cat=') > -1 ? '#library' : u.hash);
@@ -790,7 +795,7 @@
       });
       if (d.title) parts = '<b>' + esc2(d.title) + '</b> ' + parts;
       parts = parts.replace(/\s+[—–]\s+/g, ': ');
-      $('.txt', news).innerHTML = parts.replace(/[\s—–-]+$/, '').replace(/\s+(<b>)/g, ' $1').trim();
+      setHTML($('.txt', news), parts.replace(/[\s—–-]+$/, '').replace(/\s+(<b>)/g, ' $1').trim());
       news.href = href;
       news.hidden = false;
     }).catch(function () {});
@@ -825,7 +830,7 @@
         var t = document.createElement('a');
         t.className = 'rtile';t.href = src ? src.getAttribute('href') : '/guide/' + qs.id + '/index.html?index=..%2F..index';
         t.setAttribute('data-fam', famOf(cat));if (src) t.setAttribute('data-ci', src.getAttribute('data-ci'));
-        t.innerHTML = '<div class="img"><div class="art" aria-hidden="true"><span class="cv"><i class="ci" data-cat="' + cat + '"></i></span></div>' + '<span class="badge">' + esc2(LABELS[cat] || cat) + '</span></div>' + '<div class="b"><h3 class="ttl">' + esc2(src ? src._title || src.getAttribute('data-title') : qs.title) + '</h3>' + (d ? '<p class="desc">' + esc2(d.textContent.trim()) + '</p>' : '') + '<span class="dt">' + (qs.date ? 'Added ' + esc2(qs.date.replace(/,\s*\d{4}$/, '')) : '') + (src ? (qs.date ? ' · ' : '') + mins(src.getAttribute('data-duration')) : '') + '</span></div>';
+        setHTML(t, '<div class="img"><div class="art" aria-hidden="true"><span class="cv"><i class="ci" data-cat="' + esc(cat) + '"></i></span></div>' + '<span class="badge">' + esc2(LABELS[cat] || cat) + '</span></div>' + '<div class="b"><h3 class="ttl">' + esc2(src ? src._title || src.getAttribute('data-title') : qs.title) + '</h3>' + (d ? '<p class="desc">' + esc2(d.textContent.trim()) + '</p>' : '') + '<span class="dt">' + (qs.date ? 'Added ' + esc2(qs.date.replace(/,\s*\d{4}$/, '')) : '') + (src ? (qs.date ? ' · ' : '') + mins(src.getAttribute('data-duration')) : '') + '</span></div>');
         out.appendChild(t);n++;
       });
       var sn = $('[data-stat="new"]');if (sn) sn.textContent = fresh;
@@ -845,7 +850,7 @@
     var show = function show(i, instant) {
       cur = i;
       var swap = function swap() {
-        pane.innerHTML = steps[i].html;pane.classList.remove('out');
+        setHTML(pane, steps[i].html);pane.classList.remove('out');
       };
       if (instant || reduce) {
         swap();
