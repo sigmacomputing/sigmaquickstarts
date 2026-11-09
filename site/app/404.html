@@ -1,59 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
-    <title>Error 404 (Not Found)</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-
-      html,
-      code {
-        font: 15px/22px arial, sans-serif;
-      }
-
-      html {
-        background: #fff;
-        color: #222;
-        padding: 15px;
-      }
-
-      p {
-        margin: 11px 0 22px;
-        overflow: hidden;
-      }
-
-      ins {
-        color: #777;
-        text-decoration: none;
-      }
-
-      a img {
-        border: 0;
-      }
-
-      #wrapper {
-        margin: 170px auto 0;
-        padding: 0 70px;
-      }
-
-      #logo {
-      
-        display: inline-block;
-        height: 25px;
-        width: 100%;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="wrapper">
-      <a href="/"><span id="logo" aria-label="Google Codelabs"></span></a>
-      <p><b>404.</b> <ins>That’s an error.</ins></p>
-      <p>The requested URL was not found. <ins>That’s all we know.</ins></p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Sigma QuickStarts</title>
+  <link rel="icon" href="/images/favicons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/advercase-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/genesis.css">
+</head>
+<body class="g">
+<header class="g-nav">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="Sigma QuickStarts home">
+      <img src="/images/genesis/sigma-logo.svg" alt="Sigma" width="104" height="32">
+      <span class="div" aria-hidden="true"></span>
+      <span class="prod">QuickStarts</span>
+    </a>
+    <ul class="items">
+      <li class="dd-item small"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-quickstarts">Library<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd" id="dd-quickstarts" hidden><div class="dd-cols"><div class="dd-col"><a href="/#library" aria-current="page"><b>All guides</b></a><a href="/eventhols/"><b>Hands-on labs</b></a><a href="/firstfridayfeatures/"><b>First Friday Features</b></a></div></div></div></li>
+      <li class="dd-item"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-platform">Platform<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd" id="dd-platform" hidden><div class="dd-cols"><div class="dd-col"><h3>Product</h3><a href="https://www.sigmacomputing.com/product/ai-applications"><b>Applications</b><span>Apps that act on live data</span></a><a href="https://www.sigmacomputing.com/product/agents"><b>Agents</b><span>Automate repetitive work</span></a><a href="https://www.sigmacomputing.com/product/business-intelligence"><b>BI &amp; Analytics</b><span>Discover and act on insights</span></a><a href="https://www.sigmacomputing.com/product/reporting"><b>Pixel-Perfect Reports</b><span>Beautiful reports on live data</span></a><a href="https://www.sigmacomputing.com/product/embedded-analytics"><b>Embedded Analytics</b><span>White-label analytics and AI applications</span></a></div><div class="dd-col"><h3>Features</h3><a href="https://www.sigmacomputing.com/product/ai"><b>MCP &amp; AI Tools</b></a><a href="https://www.sigmacomputing.com/product/agentic-analytics"><b>Agentic Tools</b></a><a href="https://www.sigmacomputing.com/product/data-modeling"><b>Data Models</b></a><a href="https://www.sigmacomputing.com/product/spreadsheets"><b>Connected Spreadsheet</b></a><a href="https://www.sigmacomputing.com/product/python-sql"><b>Python / SQL</b></a><a href="https://www.sigmacomputing.com/product/workbooks"><b>Workbooks</b></a></div><div class="dd-col"><h3>More</h3><a href="https://www.sigmacomputing.com/product/why-sigma"><b>Why Sigma</b><span>Next-gen BI meets AI applications</span></a><a href="https://www.sigmacomputing.com/product/architecture"><b>Warehouse-first Architecture</b><span>Live queries with governance at the source</span></a><a href="https://www.sigmacomputing.com/product/self-service"><b>Self-Service</b><span>The layers to discover and act</span></a><a href="https://www.sigmacomputing.com/product/migrations"><b>Migrations</b><span>Move from Tableau, Power BI, and Looker</span></a><a href="https://www.sigmacomputing.com/go/free-trial"><b>Free Trial</b><span>Get started building analytics and business applications</span></a></div></div></div></li>
+      <li class="dd-item"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-solutions">Solutions<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd" id="dd-solutions" hidden><div class="dd-cols"><div class="dd-col"><h3>Teams</h3><a href="https://www.sigmacomputing.com/use-cases/finance"><b>Finance</b></a><a href="https://www.sigmacomputing.com/use-cases/sales"><b>Sales &amp; Operations</b></a><a href="https://www.sigmacomputing.com/use-cases/supply-chain"><b>Supply Chain</b></a></div><div class="dd-col"><h3>Industries</h3><a href="https://www.sigmacomputing.com/use-cases/financial-services"><b>Financial Services</b></a><a href="https://www.sigmacomputing.com/use-cases/healthcare"><b>Healthcare</b></a><a href="https://www.sigmacomputing.com/use-cases/retail-and-consumer-goods"><b>Retail &amp; CPG</b></a><a href="https://www.sigmacomputing.com/use-cases/manufacturing"><b>Manufacturing</b></a><a href="https://www.sigmacomputing.com/use-cases/technology"><b>Technology</b></a><a href="https://www.sigmacomputing.com/use-cases/energy-and-utilities"><b>Energy &amp; Utilities</b></a><a href="https://www.sigmacomputing.com/use-cases/hospitality"><b>Hospitality</b></a><a href="https://www.sigmacomputing.com/use-cases/transportation-and-logistics"><b>Transportation &amp; Logistics</b></a><a href="https://www.sigmacomputing.com/use-cases/real-estate-and-construction"><b>Real Estate &amp; Construction</b></a></div><div class="dd-col"><h3>Connections</h3><a href="https://www.sigmacomputing.com/partners/snowflake"><b>Snowflake</b></a><a href="https://www.sigmacomputing.com/partners/databricks"><b>Databricks</b></a><a href="https://help.sigmacomputing.com/docs/connect-to-clickhouse" target="_blank" rel="noopener"><b>ClickHouse</b></a><a href="https://help.sigmacomputing.com/docs/aws-privatelink-connections" target="_blank" rel="noopener"><b>AWS</b></a><a href="https://help.sigmacomputing.com/docs/azure-private-link-connections" target="_blank" rel="noopener"><b>Azure</b></a><a href="https://help.sigmacomputing.com/docs/connect-to-bigquery" target="_blank" rel="noopener"><b>Google Cloud</b></a></div></div></div></li>
+      <li><a href="https://www.sigmacomputing.com/resources/library">App Library</a></li>
+      <li><a href="https://www.sigmacomputing.com/customers">Customers</a></li>
+      <li class="dd-item"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-resources">Resources<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd" id="dd-resources" hidden><div class="dd-cols"><div class="dd-col"><h3>Explore</h3><a href="https://www.sigmacomputing.com/blog"><b>Blog</b></a><a href="https://www.sigmacomputing.com/resources/ebooks"><b>eBooks and Reports</b></a><a href="https://www.sigmacomputing.com/product-launch"><b>Product Launches</b><span>Major releases</span></a><a href="https://help.sigmacomputing.com/changelog" target="_blank" rel="noopener"><b>What’s New in Sigma</b><span>Every release</span></a></div><div class="dd-col"><h3>Learn</h3><a href="https://help.sigmacomputing.com" target="_blank" rel="noopener"><b>Documentation</b></a><a href="https://www.sigmacomputing.com/resources/training-videos"><b>Training Shorts</b></a><a href="/#library"><b>QuickStart Guides</b></a><a href="https://www.sigmacomputing.com/go/jumpstart-training"><b>JumpStart Trainings</b></a></div><div class="dd-col"><h3>Engage</h3><a href="https://public.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Public</b><span>Try it</span></a><a href="https://www.sigmacomputing.com/resources/live-events"><b>Events &amp; Livestreams</b></a><a href="https://www.sigmacomputing.com/company/newsroom"><b>Newsroom</b></a><a href="https://community.sigmacomputing.com" target="_blank" rel="noopener"><b>Community</b></a></div></div></div></li>
+      <li class="dd-item"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-more">More<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd" id="dd-more" hidden><div class="dd-cols"><div class="dd-col"><h3>Company</h3><a href="https://www.sigmacomputing.com/company"><b>About us</b></a><a href="https://www.sigmacomputing.com/company/careers"><b>Careers</b></a><a href="https://www.sigmacomputing.com/comparison"><b>Compare Sigma</b></a></div><div class="dd-col"><h3>Partner</h3><a href="https://www.sigmacomputing.com/partners"><b>Program Overview</b></a><a href="https://www.sigmacomputing.com/partners/technology"><b>Technology Partners</b></a><a href="https://www.sigmacomputing.com/partners/consulting"><b>Consulting Partners</b></a><a href="https://www.sigmacomputing.com/partners/integrations"><b>Partner Integrations</b></a></div><div class="dd-col"><h3>Getting started</h3><a href="https://www.sigmacomputing.com/go/free-trial"><b>Free Trial</b></a><a href="https://www.sigmacomputing.com/go/request-a-demo"><b>Request a Demo</b></a><a href="https://www.sigmacomputing.com/company/contact-us"><b>Contact Us</b></a><a href="https://public.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Public</b></a></div><div class="dd-col"><h3>Support</h3><a href="https://security.sigmacomputing.com/" target="_blank" rel="noopener"><b>Sigma Trust Center</b></a><a href="https://www.sigmacomputing.com/product/vdp"><b>Bug Bounty</b></a><a href="https://status.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Status</b></a></div></div></div></li>
+    </ul>
+    <div class="right">
+      <a class="login" href="https://app.sigmacomputing.com/login" target="_blank" rel="noopener noreferrer"><span>Log in</span></a>
+      <div class="gcta">
+        <div class="ring">
+          <div class="pill">
+            <a class="go" href="https://www.sigmacomputing.com/go/request-a-demo"><svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="-1.143 -1.143 18.286 18.286" aria-hidden="true"> <defs> <clipPath id="sigma-assistant-clip"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.99 5.486a3.634 3.634 0 0 1 0 5.029l-2.191 2.284-2.284 2.19a3.634 3.634 0 0 1-5.03 0L3.201 12.8l-2.19-2.284a3.634 3.634 0 0 1 0-5.03L3.2 3.203l2.284-2.19a3.634 3.634 0 0 1 5.03 0l2.284 2.19zm-1.922 2.958a.5.5 0 0 0 0-.888l-2.907-1.503a.5.5 0 0 1-.215-.215L8.443 2.931a.5.5 0 0 0-.887 0L6.052 5.838a.5.5 0 0 1-.214.215L2.93 7.556a.5.5 0 0 0 0 .888l2.907 1.504a.5.5 0 0 1 .214.213l1.504 2.908a.5.5 0 0 0 .887 0l1.503-2.908a.5.5 0 0 1 .215-.213z"/> </clipPath> </defs> <g clip-path="url(#sigma-assistant-clip)"> <foreignObject width="2047.79" height="2047.79" x="-1023.89" y="-1023.89" transform="rotate(90 0 8)scale(.008)"> <div xmlns="http://www.w3.org/1999/xhtml" style="background: conic-gradient(from 90deg, rgb(255, 154, 116) 0deg, rgb(206, 224, 0) 90deg, rgb(76, 236, 140) 180deg, rgb(168, 232, 243) 270deg, rgb(255, 154, 116) 360deg); height: 100%; width: 100%;"></div> </foreignObject> </g> <path style="mix-blend-mode: overlay" d="M6.723 2.37c.58-.95 1.974-.95 2.554 0l.056.098 1.43 2.767 2.765 1.43c1.082.559 1.082 2.105 0 2.665l-2.765 1.43-1.43 2.765c-.56 1.081-2.106 1.081-2.665 0l-1.43-2.766-2.766-1.43c-1.082-.559-1.081-2.105 0-2.664l2.765-1.431 1.43-2.766zm1.721.558a.5.5 0 0 0-.888 0L6.053 5.835l-.04.066a.5.5 0 0 1-.174.148L2.932 7.552a.5.5 0 0 0 0 .889l2.907 1.503a.5.5 0 0 1 .214.215l1.503 2.907a.5.5 0 0 0 .85.063l.038-.063 1.503-2.907a.5.5 0 0 1 .215-.215L13.07 8.44a.5.5 0 0 0 .064-.85l-.064-.039-2.907-1.503a.5.5 0 0 1-.174-.148l-.04-.066z"/> <path opacity="0.15" d="M6.722 2.37c.58-.95 1.975-.95 2.555 0l.056.098 1.43 2.767 2.765 1.43c1.081.559 1.081 2.105 0 2.665l-2.766 1.43-1.43 2.765c-.559 1.081-2.105 1.081-2.664 0l-1.43-2.766L2.47 9.33c-1.081-.559-1.08-2.105 0-2.664l2.766-1.431 1.43-2.766zm1.722.558a.5.5 0 0 0-.889 0L6.052 5.835l-.04.066a.5.5 0 0 1-.174.148L2.931 7.552a.5.5 0 0 0 0 .889l2.907 1.503a.5.5 0 0 1 .214.215l1.503 2.907a.5.5 0 0 0 .85.063l.039-.063 1.503-2.907a.5.5 0 0 1 .215-.215l2.907-1.503a.5.5 0 0 0 .063-.85l-.063-.039-2.907-1.503a.5.5 0 0 1-.174-.148l-.041-.066z"/> </svg><span class="lbl">Get started</span></a>
+            <button class="chev" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="gcta-menu" aria-label="Choose how to get started"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="menu" id="gcta-menu" role="menu" hidden><ul><li><a role="menuitem" data-path="demo" href="https://www.sigmacomputing.com/go/request-a-demo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z"/><path d="M12 17v4"/><path d="M8 21h8"/><rect x="2" y="3" width="20" height="14" rx="2"/></svg></span><span class="tx"><span class="t">Request a demo</span><span class="h">See Sigma on your use case with our team</span></span></a></li><li><a role="menuitem" data-path="trial" href="https://www.sigmacomputing.com/go/free-trial"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></span><span class="tx"><span class="t">Start a free trial</span><span class="h">Connect your warehouse and build today</span></span></a></li><li><a role="menuitem" data-path="sales" href="https://www.sigmacomputing.com/company/contact-us"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="tx"><span class="t">Contact sales</span><span class="h">Pricing, security reviews, and rollout</span></span></a></li></ul></div>
+      </div>
     </div>
-  </body>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="sheet" id="sheet" hidden aria-label="Mobile">
+    <a href="/#library">Library</a>
+    <a href="/eventhols/">Hands-on labs</a>
+    <a href="/firstfridayfeatures/">First Friday Features</a>
+    <details class="sd"><summary>Platform<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a href="https://www.sigmacomputing.com/product/ai-applications"><b>Applications</b></a><a href="https://www.sigmacomputing.com/product/agents"><b>Agents</b></a><a href="https://www.sigmacomputing.com/product/business-intelligence"><b>BI &amp; Analytics</b></a><a href="https://www.sigmacomputing.com/product/reporting"><b>Pixel-Perfect Reports</b></a><a href="https://www.sigmacomputing.com/product/embedded-analytics"><b>Embedded Analytics</b></a><a href="https://www.sigmacomputing.com/product/ai"><b>MCP &amp; AI Tools</b></a><a href="https://www.sigmacomputing.com/product/agentic-analytics"><b>Agentic Tools</b></a><a href="https://www.sigmacomputing.com/product/data-modeling"><b>Data Models</b></a><a href="https://www.sigmacomputing.com/product/spreadsheets"><b>Connected Spreadsheet</b></a><a href="https://www.sigmacomputing.com/product/python-sql"><b>Python / SQL</b></a><a href="https://www.sigmacomputing.com/product/workbooks"><b>Workbooks</b></a><a href="https://www.sigmacomputing.com/product/why-sigma"><b>Why Sigma</b></a><a href="https://www.sigmacomputing.com/product/architecture"><b>Warehouse-first Architecture</b></a><a href="https://www.sigmacomputing.com/product/self-service"><b>Self-Service</b></a><a href="https://www.sigmacomputing.com/product/migrations"><b>Migrations</b></a><a href="https://www.sigmacomputing.com/go/free-trial"><b>Free Trial</b></a></details>
+    <details class="sd"><summary>Solutions<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a href="https://www.sigmacomputing.com/use-cases/finance"><b>Finance</b></a><a href="https://www.sigmacomputing.com/use-cases/sales"><b>Sales &amp; Operations</b></a><a href="https://www.sigmacomputing.com/use-cases/supply-chain"><b>Supply Chain</b></a><a href="https://www.sigmacomputing.com/use-cases/financial-services"><b>Financial Services</b></a><a href="https://www.sigmacomputing.com/use-cases/healthcare"><b>Healthcare</b></a><a href="https://www.sigmacomputing.com/use-cases/retail-and-consumer-goods"><b>Retail &amp; CPG</b></a><a href="https://www.sigmacomputing.com/use-cases/manufacturing"><b>Manufacturing</b></a><a href="https://www.sigmacomputing.com/use-cases/technology"><b>Technology</b></a><a href="https://www.sigmacomputing.com/use-cases/energy-and-utilities"><b>Energy &amp; Utilities</b></a><a href="https://www.sigmacomputing.com/use-cases/hospitality"><b>Hospitality</b></a><a href="https://www.sigmacomputing.com/use-cases/transportation-and-logistics"><b>Transportation &amp; Logistics</b></a><a href="https://www.sigmacomputing.com/use-cases/real-estate-and-construction"><b>Real Estate &amp; Construction</b></a><a href="https://www.sigmacomputing.com/partners/snowflake"><b>Snowflake</b></a><a href="https://www.sigmacomputing.com/partners/databricks"><b>Databricks</b></a><a href="https://help.sigmacomputing.com/docs/connect-to-clickhouse" target="_blank" rel="noopener"><b>ClickHouse</b></a><a href="https://help.sigmacomputing.com/docs/aws-privatelink-connections" target="_blank" rel="noopener"><b>AWS</b></a><a href="https://help.sigmacomputing.com/docs/azure-private-link-connections" target="_blank" rel="noopener"><b>Azure</b></a><a href="https://help.sigmacomputing.com/docs/connect-to-bigquery" target="_blank" rel="noopener"><b>Google Cloud</b></a></details>
+    <details class="sd"><summary>Resources<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a href="https://www.sigmacomputing.com/blog"><b>Blog</b></a><a href="https://www.sigmacomputing.com/resources/ebooks"><b>eBooks and Reports</b></a><a href="https://www.sigmacomputing.com/product-launch"><b>Product Launches</b></a><a href="https://help.sigmacomputing.com/changelog" target="_blank" rel="noopener"><b>What’s New in Sigma</b></a><a href="https://help.sigmacomputing.com" target="_blank" rel="noopener"><b>Documentation</b></a><a href="https://www.sigmacomputing.com/resources/training-videos"><b>Training Shorts</b></a><a href="/#library"><b>QuickStart Guides</b></a><a href="https://www.sigmacomputing.com/go/jumpstart-training"><b>JumpStart Trainings</b></a><a href="https://public.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Public</b></a><a href="https://www.sigmacomputing.com/resources/live-events"><b>Events &amp; Livestreams</b></a><a href="https://www.sigmacomputing.com/company/newsroom"><b>Newsroom</b></a><a href="https://community.sigmacomputing.com" target="_blank" rel="noopener"><b>Community</b></a></details>
+    <details class="sd"><summary>More<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><a href="https://www.sigmacomputing.com/company"><b>About us</b></a><a href="https://www.sigmacomputing.com/company/careers"><b>Careers</b></a><a href="https://www.sigmacomputing.com/comparison"><b>Compare Sigma</b></a><a href="https://www.sigmacomputing.com/partners"><b>Program Overview</b></a><a href="https://www.sigmacomputing.com/partners/technology"><b>Technology Partners</b></a><a href="https://www.sigmacomputing.com/partners/consulting"><b>Consulting Partners</b></a><a href="https://www.sigmacomputing.com/partners/integrations"><b>Partner Integrations</b></a><a href="https://www.sigmacomputing.com/go/free-trial"><b>Free Trial</b></a><a href="https://www.sigmacomputing.com/go/request-a-demo"><b>Request a Demo</b></a><a href="https://www.sigmacomputing.com/company/contact-us"><b>Contact Us</b></a><a href="https://public.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Public</b></a><a href="https://security.sigmacomputing.com/" target="_blank" rel="noopener"><b>Sigma Trust Center</b></a><a href="https://www.sigmacomputing.com/product/vdp"><b>Bug Bounty</b></a><a href="https://status.sigmacomputing.com" target="_blank" rel="noopener"><b>Sigma Status</b></a></details>
+    <a href="https://www.sigmacomputing.com/resources/library">App Library</a>
+    <a href="https://www.sigmacomputing.com/customers">Customers</a>
+    <a href="https://app.sigmacomputing.com/login">Log in</a>
+    <a class="btn primary" href="https://www.sigmacomputing.com/go/free-trial">Start a free trial</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero compact" style="border-bottom:0;padding:120px 0 160px">
+    <div class="gbg" data-grid="strong" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="copy" data-keepout>
+        <p class="eyebrow" style="margin-bottom:14px">404</p>
+        <h1 class="t-h1">This page isn't here</h1>
+        <p class="lead" style="margin-top:16px">The guide may have moved or been renamed. Search the library to find it.</p>
+        <div class="actions" style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+          <a class="btn primary" href="/#library">Search the library</a>
+          <a class="btn outline" href="mailto:quickstarts@sigmacomputing.com">Report a broken link</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="g-foot">
+  <div class="wrap">
+    <div class="top">
+      <p class="line">Analytics. Apps. Agents.</p>
+      <a class="btn primary" href="https://www.sigmacomputing.com/go/free-trial">Start free trial</a>
+    </div>
+    <div class="grid">
+      <div class="col"><h3>QuickStarts</h3><ul>
+        <li><a href="/#library">All guides</a></li>
+        <li><a href="/eventhols/">Hands-on labs</a></li>
+        <li><a href="/firstfridayfeatures/">First Friday Features</a></li>
+        <li><a href="https://github.com/sigmacomputing/sigmaquickstarts" target="_blank" rel="noopener">Contribute a QuickStart</a></li>
+        <li><a href="mailto:quickstarts@sigmacomputing.com">Suggest a topic</a></li>
+      </ul></div>
+      <div class="col"><h3>Learn</h3><ul>
+        <li><a href="https://help.sigmacomputing.com" target="_blank" rel="noopener">Help Center</a></li>
+        <li><a href="https://help.sigmacomputing.com/changelog" target="_blank" rel="noopener">Release notes</a></li>
+        <li><a href="https://community.sigmacomputing.com" target="_blank" rel="noopener">Community</a></li>
+        <li><a href="https://www.sigmacomputing.com/blog">Blog</a></li>
+        <li><a href="https://www.sigmacomputing.com/resources">Resources</a></li>
+      </ul></div>
+      <div class="col"><h3>Product</h3><ul>
+        <li><a href="https://www.sigmacomputing.com/product">Product &amp; features</a></li>
+        <li><a href="https://www.sigmacomputing.com/product/security">Security</a></li>
+        <li><a href="https://www.sigmacomputing.com/go/free-trial">Free trial</a></li>
+        <li><a href="https://www.sigmacomputing.com/live-product-demo">Live product demo</a></li>
+        <li><a href="https://status.sigmacomputing.com/" target="_blank" rel="noopener">Service status</a></li>
+      </ul></div>
+      <div class="col"><h3>Company</h3><ul>
+        <li><a href="https://www.sigmacomputing.com/company">About Sigma</a></li>
+        <li><a href="https://www.sigmacomputing.com/sigma-customer-stories">Customer stories</a></li>
+        <li><a href="https://www.sigmacomputing.com/careers">Careers</a></li>
+        <li><a href="https://www.sigmacomputing.com/contact-us">Contact us</a></li>
+      </ul></div>
+    </div>
+    <div class="bottom">
+      <img src="/images/genesis/logo-black.svg" alt="Sigma" width="72" height="22">
+      <span class="copy">&copy; 2026 Sigma Computing. All rights reserved.</span>
+      <nav aria-label="Legal">
+        <a href="https://www.sigmacomputing.com/legal/privacy-policy">Privacy Policy</a>
+        <a href="https://www.sigmacomputing.com/legal/cookie-policy">Cookie Policy</a>
+        <a href="https://www.sigmacomputing.com/legal/terms-of-service">Terms of Service</a>
+        <a class="pc" href="https://privacy.sigmacomputing.com/form/opt_out"><span>Your Privacy Choices</span><img src="/images/genesis/ccpa-opt-out.svg" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon" width="30" height="14"></a>
+        <a href="https://privacy.sigmacomputing.com/form/opt_out">Do Not Sell/Share My Data</a>
+      </nav>
+      <div class="social">
+        <a href="https://www.linkedin.com/company/sigmacomputing" target="_blank" rel="noopener" aria-label="Sigma on LinkedIn"><svg viewBox="0 0 24 24" fill="#1A70F1" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://www.youtube.com/@sigmacomputing" target="_blank" rel="noopener" aria-label="Sigma on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A70F1" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path fill="#fff" d="m9.6 15.6 6.2-3.6-6.2-3.6z"/></svg></a>
+        <a href="https://x.com/sigmacomputing" target="_blank" rel="noopener" aria-label="Sigma on X"><svg viewBox="0 0 24 24" fill="#1A70F1" aria-hidden="true"><path d="M18.9 1.2h3.7l-8 9.2 9.4 12.4h-7.4l-5.8-7.6-6.6 7.6H.5l8.6-9.8L.1 1.2h7.6l5.2 6.9 6-6.9zm-1.3 19.4h2L6.5 3.3H4.3l13.3 17.3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/scripts/genesis.js"></script>
+</body>
 </html>

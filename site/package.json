@@ -7,7 +7,8 @@
     "deploy": "gulp clean && gulp dist",
     "export": "gulp build:codelabs",
     "template": "./init.sh",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "sitemap": "node tasks/generate-sitemap.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
