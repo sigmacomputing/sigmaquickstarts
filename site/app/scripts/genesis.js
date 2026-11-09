@@ -505,6 +505,14 @@
         if (!b) return;
         if (b.classList.contains('opt')) closeTdd();
         var k = b.getAttribute('data-chip');
+        if (!k) {
+          // All topics: collapse every shelf and go back to the top
+          state.cat = '';state.fam = '';state.q = '';state.list = false;if (q) q.value = '';
+          closeOtherShelves(null);
+          apply(false);
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+          return;
+        }
         if (browse && !browse.hidden && k && !state.q) {
           // browsing: jump to the topic's shelf and open it
           var sh = $('.shelf[data-cat="' + esc(k) + '"]', browse);
