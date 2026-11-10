@@ -637,7 +637,7 @@
       "title": "Embedding 01: Getting Started",
       "category": "Embedding",
       "summary": "Build a local Node.js host application used to test Sigma embed URLs, establishing the environment used throughout the embedding QuickStart series.",
-      "lastUpdated": "2024-05-05",
+      "lastUpdated": "2026-11-10",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html"
     },
     {
