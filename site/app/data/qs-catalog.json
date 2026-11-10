@@ -629,7 +629,7 @@
       "title": "Manage Sigma Workbooks as Code with Git and CI/CD",
       "category": "developers",
       "summary": "Define a Sigma workbook as a single YAML file and manage it through Sigma's REST API, enabling version control, code review, and CI/CD deployment alongside the rest of your application code.",
-      "lastUpdated": "2026-09-17",
+      "lastUpdated": "2026-11-10",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_workbooks_as_code/index.html"
     },
     {

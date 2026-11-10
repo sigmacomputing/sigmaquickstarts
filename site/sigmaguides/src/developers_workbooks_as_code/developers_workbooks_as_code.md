@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-17
+lastUpdated: 2026-11-10
 
 # Manage Sigma Workbooks as Code with Git and CI/CD
 
@@ -16,6 +16,8 @@ Duration: 5
 If your team already reviews every code change through pull requests, runs CI on every commit, and deploys through automated pipelines, a Sigma workbook shouldn't be the one piece of the stack that still changes by clicking around in a UI. 
 
 Workbooks as Code lets you define an entire workbook — pages, charts, KPIs, filters, layout — as a single YAML file, so it moves through the same git-based process as the rest of your application code: version control, peer review, automated validation, and CI/CD deployment.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/5c3tp3b8j47d2pz) to see how a workbook is defined in YAML, validated in CI, and deployed from git.
 
 In this QuickStart, you'll wire up exactly that pipeline. Along the way you'll learn how to:
 - Read and edit a workbook spec in YAML
