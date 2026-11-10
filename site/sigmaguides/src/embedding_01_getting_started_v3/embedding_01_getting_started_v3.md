@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-05-05
+lastUpdated: 2026-11-10
 
 # Embedding 01: Getting Started
 
@@ -18,6 +18,8 @@ Build a local web application to test Sigma embedding — the prerequisite envir
 We have broken the different types of embeds into separate documents based on use cases, allowing users to focus on those areas of interest and improve overall readability and supportability of each document.
  
 **This QuickStart is foundational to all the other embedding QuickStarts.** 
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/q94m7fnoxygu0jk) to see how secure embedding works with JSON Web Tokens and how the local host application is built.
  
 
 Sigma also provides an embed sandbox that is built into the product. For more information, see [Test an embed URL in the embed sandbox](https://help.sigmacomputing.com/docs/test-an-embed-url-in-the-embed-sandbox)
