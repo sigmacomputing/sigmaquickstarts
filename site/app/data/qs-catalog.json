@@ -957,7 +957,7 @@
       "title": "Fundamentals 02: Data",
       "category": "fundamentals",
       "summary": "Sort, filter, group, and build formula-based calculations, including cross-table lookups, on live warehouse data in a Sigma workbook without writing SQL.",
-      "lastUpdated": "2026-10-01",
+      "lastUpdated": "2026-11-11",
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_2_data_v3/index.html"
     },
     {
