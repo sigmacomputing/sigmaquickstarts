@@ -621,7 +621,7 @@
       "title": "Sigma Skills for AI Assistants",
       "category": "developers",
       "summary": "Install Sigma's open-source agent skills in Claude Code to authenticate against the Sigma REST API and create or update data models through natural-language prompts.",
-      "lastUpdated": "2026-06-22",
+      "lastUpdated": "2026-11-10",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_sigma_skill/index.html"
     },
     {

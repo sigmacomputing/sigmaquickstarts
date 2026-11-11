@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-06-22
+lastUpdated: 2026-11-10
 
 # Sigma Skills for AI Assistants
 
@@ -16,6 +16,8 @@ Duration: 5
 Use Sigma's open-source agent skills to give AI coding assistants direct knowledge of Sigma's REST API and data modeling workflows — then put them to work building against Sigma without writing boilerplate from scratch.
 
 Sigma publishes agent skills through the [sigma-agent-skills](https://github.com/sigmacomputing/sigma-agent-skills) GitHub repository. These skills are reference files that tell a coding agent how to authenticate with Sigma, call the API, and create or update data models — the same patterns you'd write by hand, now available to any supported AI assistant automatically.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/2c3nt50vgwgtrug) to see how agent skills let an AI assistant call Sigma's REST API and build data models.
 
 In this QuickStart, you'll learn how to:
 - Understand what Sigma agent skills are and what each skill provides
