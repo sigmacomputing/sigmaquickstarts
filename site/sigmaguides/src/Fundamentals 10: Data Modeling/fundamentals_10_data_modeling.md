@@ -5,7 +5,7 @@ categories: Fundamentals
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-10-23
+lastUpdated: 2026-11-11
 
 # Fundamentals 10: Data Modeling
 
@@ -15,6 +15,8 @@ Duration: 5
 Many Sigma users are used to creating a new workbook and then using warehouse tables as the data source for their content. This often requires the user to do extra data preparation work, like joining tables together, renaming fields or creating aggregations. This modeling logic is bound to a single workbook and is not reusable across your Sigma deployment. This can lead to duplicated effort and inconsistent reporting.
 
 With Data Models, you can define your data transformation and semantics in one place, and use them anywhere in Sigma. This avoids duplicating effort, and provides a single source of truth for your Analytics Engineering team to collaborate on key business logic and metric definitions.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/w8ageez0c27xo09) to see how a data model defines joins, metrics, and security once, for every workbook.
 
 In this QuickStart, you'll learn how to:
 
