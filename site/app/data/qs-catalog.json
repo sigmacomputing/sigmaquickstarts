@@ -953,6 +953,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_10_data_modeling/index.html"
     },
     {
+      "id": "fundamentals_11_pixel_perfect_reporting",
+      "title": "Fundamentals 11: Pixel Perfect Reporting",
+      "category": "fundamentals",
+      "summary": "fundamentals_11_pixel_perfect_reporting",
+      "lastUpdated": "2026-07-11",
+      "url": "https://quickstarts.sigmacomputing.com/guide/fundamentals_11_pixel_perfect_reporting/index.html"
+    },
+    {
       "id": "Fundamentals_12_repeater_single_row_containers",
       "title": "Fundamentals 12: Build App-Style Layouts in Sigma",
       "category": "Fundamentals",
