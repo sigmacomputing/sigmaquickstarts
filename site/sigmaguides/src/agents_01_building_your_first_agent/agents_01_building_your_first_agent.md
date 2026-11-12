@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-28
+lastUpdated: 2026-11-12
 
 # Agents 01: Building Your First Sigma Agent
 
@@ -30,6 +30,8 @@ This QuickStart demonstrates the door most people start with: chat — but not t
 <img src="assets/bfa_05.png" width="800"/>
 
 We will build a Sigma agent from the ground up — attach it to a data source, write the instructions that scope what it's allowed to do, and have a conversation with it to see how it decides what to do with a request before it answers.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/36o4reshkp3d24z) to see how to build a Sigma agent, ground it in a governed data source, and test its boundary.
 
 Along the way you'll learn how to:
 - Create a Sigma agent and attach a governed data source to it

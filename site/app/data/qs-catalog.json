@@ -189,7 +189,7 @@
       "title": "Agents 01: Building Your First Sigma Agent",
       "category": "agents",
       "summary": "agents_01_building_your_first_agent",
-      "lastUpdated": "2026-09-28",
+      "lastUpdated": "2026-11-12",
       "url": "https://quickstarts.sigmacomputing.com/guide/agents_01_building_your_first_agent/index.html"
     },
     {
@@ -549,7 +549,7 @@
       "title": "Migrating From Tableau Made Easy",
       "category": "migrations",
       "summary": "Use the tableau-to-sigma Claude Code skill to convert a live Tableau dashboard into a Sigma workbook on the warehouse and verify the numbers match the Tableau source.",
-      "lastUpdated": "2026-09-11",
+      "lastUpdated": "2026-11-12",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_from_tableau_made_easy/index.html"
     },
     {

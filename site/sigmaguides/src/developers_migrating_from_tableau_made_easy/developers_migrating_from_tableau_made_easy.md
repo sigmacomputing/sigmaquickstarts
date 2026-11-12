@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-11
+lastUpdated: 2026-11-12
 
 # Migrating From Tableau Made Easy
 
@@ -22,6 +22,8 @@ This QuickStart walks through a `Claude Code` skill called `tableau-to-sigma` th
 Provide it a Tableau dashboard URL; it discovers the workbook structure, builds (or reuses) a Sigma data model from the warehouse tables behind the dashboard, mirrors the layout, and verifies every chart's numbers against the Tableau source before exiting. If any check fails, the conversion is flagged for review instead of quietly passing.
 
 For the demonstration, we'll run the skill end-to-end against the built-in `Superstore` sample dashboard on a Tableau Cloud dev site. You'll see the artifacts each phase produces, the gap report Claude hands back, the parity comparison against the source CSVs, and the final Sigma workbook side-by-side with its Tableau original.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/61o47ile3qtuy4l) to see how the skill converts a Tableau dashboard into a Sigma workbook and verifies the numbers match.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> The skill runs the whole conversion — discover, model, build, verify — and finishes with a documented parity check. The result is a working Sigma workbook on the warehouse plus the report that proves it matches the Tableau source, instead of a rebuilt-by-hand dashboard you have to spot-check yourself.
