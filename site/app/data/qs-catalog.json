@@ -249,6 +249,14 @@
       "url": "https://quickstarts.sigmacomputing.com/guide/agents_08_warehouse_experts/index.html"
     },
     {
+      "id": "aiapps_build_app_with_claude_and_mcp",
+      "title": "Build an AI app with Claude and the Sigma MCP server",
+      "category": "aiapps",
+      "summary": "Build a four-page store performance app on live warehouse data by describing it to Claude through the Sigma MCP server, from dashboards to a review queue with writeback and a Sigma agent.",
+      "lastUpdated": "2026-11-12",
+      "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_build_app_with_claude_and_mcp/index.html"
+    },
+    {
       "id": "aiapps_build_with_assistant",
       "title": "Build Dashboards and Apps with Sigma Assistant",
       "category": "aiapps",
