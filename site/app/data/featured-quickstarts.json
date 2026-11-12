@@ -1,6 +1,12 @@
 {
   "recentQuickStarts": [
     {
+      "title": "Build an AI app with Claude and the Sigma MCP server",
+      "id": "aiapps_build_app_with_claude_and_mcp",
+      "category": "aiapps",
+      "date": "Nov 12, 2026"
+    },
+    {
       "title": "First Friday Features - October 2026",
       "id": "10_2026_first_friday_features",
       "category": "firstfridayfeatures",
@@ -53,12 +59,6 @@
       "id": "agents_05_api_actions",
       "category": "agents",
       "date": "Sep 9, 2026"
-    },
-    {
-      "title": "First Friday Features - August 2026",
-      "id": "08_2026_first_friday_features",
-      "category": "firstfridayfeatures",
-      "date": "Sep 4, 2026"
     }
   ]
 }
