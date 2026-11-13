@@ -26,13 +26,14 @@ Duration: 5
 
 Sigma tables let teams edit data directly in a table, with every change written back to the data platform. The Getting Started with Sigma Tables QuickStart shows how to turn an existing warehouse table into a Sigma table.
 
-This QuickStart picks up from there and shows the other ways in. We will create a Sigma table from a CSV file, control who can view and edit it, promote it so other workbooks can use it, and add editable columns to data that already lives in the warehouse.
+This QuickStart picks up from there and shows the other ways in. We will create a Sigma table from a CSV file, control who can view and edit it, promote it so other workbooks can use it, and add editable columns to data that already lives in the warehouse. The data will be stored in Snowflake, through a Sigma connection with write access enabled.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> Teams that capture edits, comments, or overrides usually end up with several linked input tables joined back to a warehouse view. A Sigma table can hold those edits in one governed table, shared by every workbook that needs it.
 </aside>
 
 Along the way you'll learn how to:
+- Prepare Snowflake schemas for Sigma tables and their audit logs
 - Create a Sigma table from a CSV file
 - Control who can view and edit a Sigma table
 - Promote a workbook Sigma table so it can be shared across workbooks
@@ -54,12 +55,71 @@ If something doesn't work as expected, here's how to [contact Sigma support](htt
 
 <ul>
   <li>Any modern browser is acceptable.</li>
-  <li>Access to your Sigma environment.</li>
+  <li>Access to your Sigma environment, with an Admin account type.</li>
+  <li>Sigma tables enabled for your organization.</li>
+  <li>A Snowflake connection in Sigma with write access enabled. See <a href="https://help.sigmacomputing.com/docs/set-up-write-access">Set up write access</a></li>
+  <li>Ability to create a schema and grant privileges in Snowflake. This QuickStart provides the script.</li>
   <li>Completion of <a href="https://quickstarts.sigmacomputing.com/guide/tables_getting_started_with_sigma_tables/index">Getting Started with Sigma Tables</a>, or equivalent familiarity.</li>
-  <!-- VERIFY: account type needed, Snowflake connection with a writable schema, a CSV file to upload (and where readers get it), sample data for the input column section. -->
+  <!-- VERIFY: sample data for the input column section. -->
  </ul>
 
+<aside class="positive">
+<strong>IMPORTANT:</strong><br> Sigma recommends using non-production resources when completing QuickStarts.
+</aside>
+
 <button>[Sigma Free Trial](https://www.sigmacomputing.com/free-trial/)</button>
+
+![Footer](assets/sigma_footer.png)
+<!-- END OF SECTION-->
+
+## Prepare Snowflake
+Duration: 8
+
+A Sigma table is a real table in your data platform, so it needs a place in Snowflake to live. We will create two schemas: `SIGMA_TABLES_WRITE`, where Sigma writes the tables it creates and promotes, and `SIGMA_TABLES_AUDIT`, where it records every edit made to them.
+
+<aside class="negative">
+<strong>NOTE:</strong><br> The script below grants access to <code>SIGMA_SERVICE_ROLE</code>. Substitute the role your Sigma connection actually uses if it differs. You can confirm it in Sigma under <code>Administration</code> > <code>Connections</code> by clicking your Snowflake connection.
+</aside>
+
+**1.** In a Snowflake worksheet, run the following script:
+
+```copy-code
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE COMPUTE_WH;
+
+CREATE DATABASE IF NOT EXISTS QUICKSTARTS;
+CREATE SCHEMA   IF NOT EXISTS QUICKSTARTS.SIGMA_TABLES_WRITE;
+CREATE SCHEMA   IF NOT EXISTS QUICKSTARTS.SIGMA_TABLES_AUDIT;
+
+GRANT USAGE ON DATABASE QUICKSTARTS TO ROLE SIGMA_SERVICE_ROLE;
+
+GRANT USAGE, CREATE TABLE, CREATE VIEW, CREATE STAGE ON SCHEMA QUICKSTARTS.SIGMA_TABLES_WRITE TO ROLE SIGMA_SERVICE_ROLE;
+
+GRANT USAGE        ON SCHEMA QUICKSTARTS.SIGMA_TABLES_AUDIT TO ROLE SIGMA_SERVICE_ROLE;
+GRANT CREATE TABLE ON SCHEMA QUICKSTARTS.SIGMA_TABLES_AUDIT TO ROLE SIGMA_SERVICE_ROLE;
+GRANT SELECT ON ALL    TABLES IN SCHEMA QUICKSTARTS.SIGMA_TABLES_AUDIT TO ROLE SIGMA_SERVICE_ROLE;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA QUICKSTARTS.SIGMA_TABLES_AUDIT TO ROLE SIGMA_SERVICE_ROLE;
+```
+
+<!-- VERIFY: confirm CSV upload and promotion work with these grants only. -->
+
+Click `Run all` (1). The results show `Statement executed successfully` (2).
+
+<img src="assets/ctp_00.png" width="900"/>
+
+<aside class="positive">
+<strong>NOTE:</strong><br> No <code>SELECT</code>, <code>UPDATE</code>, or ownership grants are needed on <code>SIGMA_TABLES_WRITE</code>. Sigma creates its tables there with the connection's role, so that role owns them and already has full access.
+</aside>
+
+**2.** In Sigma, go to `Administration` > `Connections` and select your Snowflake connection. Confirm `Role` (1) matches the role used in the script.
+
+**3.** Edit the connection and, under `Write access`, set `Write schema` to `QUICKSTARTS.SIGMA_TABLES_WRITE` (2). <!-- VERIFY: label of the button that opens the connection for editing -->
+
+**4.** Turn on `Sigma table audit logs` (3) and set `Audit log schema for Sigma tables` to `QUICKSTARTS.SIGMA_TABLES_AUDIT` (4). Leave `Auto-create Sigma table audit logs` off, then save the connection.
+
+<img src="assets/ctp_00a.png" width="900"/>
+
+For more information, see [Set up write access](https://help.sigmacomputing.com/docs/set-up-write-access)
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -77,15 +137,23 @@ A Sigma table can start from scratch, much like an input table, inside a workboo
 
 <img src="assets/ctp_01.png" width="900"/>
 
-In the `Create Sigma table` dialog, select the `Upload CSV` tab (1), confirm the connection (2), then click `Upload CSV` (3). The connection needs write access, because Sigma saves the table there.
+In the `Create Sigma table` dialog, select the `Upload CSV` tab (1), select your Snowflake connection (2), then click `Upload CSV` (3). The connection needs write access, because Sigma saves the table there.
+
+<aside class="negative">
+<strong>IMPORTANT:</strong><br> Choose your own Snowflake connection here, not <code>Sigma Sample Database</code>. A table is promoted on the connection it was created on, so this choice decides where it can be promoted later.
+</aside>
+
+
 
 <img src="assets/ctp_02.png" width="500"/>
 
 **3.** Select "sigma-tables-sample-data.csv" when prompted. <!-- VERIFY: confirm the file picker appears when you click Upload CSV in the Create Sigma table dialog -->
 
-**4.** In the `Upload CSV` dialog, confirm the `Connection` (1) and leave `Contains headers` selected (2). Check that `Results` shows `20 rows - 7 columns` (3), then click `Save` (4).
+**4.** In the `Upload CSV` dialog, confirm the `Connection` is your Snowflake connection (1) and leave `Contains headers` selected (2). Check that `Results` shows `20 rows - 7 columns` (3), then click `Save` (4).
 
 <img src="assets/ctp_03.png" width="900"/>
+
+<!-- RECAPTURE ctp_03 if the Connection field shows Sigma Sample Database. -->
 
 Sigma loads the file and shows a new, fully editable Sigma table. It assigned a primary key based on the data.
 
@@ -105,13 +173,13 @@ Open the data source menu (1). It offers `Manage grants` (2) to control who can 
 <strong>IMPORTANT:</strong><br> Change the primary key before you promote the table. It cannot be changed afterwards.
 </aside>
 
-**6.** Hide the `Id` column that Sigma added as the primary key, so the table shows only the ticket data. Open the menu for the `Id` column and select `Hide column`. <!-- VERIFY: the Hide column menu label (the capture shows Unhide column on the hidden column) -->
+**6.** Save the workbook by clicking `Save as` and naming it:
 
-<aside class="negative"><strong>SCREENSHOT REQUIRED: ctp_05a</strong><br> Sigma table with the Id column menu open and Hide column selected</aside>
+```copy-code
+Sigma Tables Lab
+```
 
-<!-- <img src="assets/ctp_05a.png" width="700"/> -->
-
-**7.** Save the workbook by clicking `Save as` and naming it `Sigma Tables Lab`. The table is local to this workbook, so saving keeps it available for the sections that follow. <!-- VERIFY: button label for a new workbook (Save vs Save as) and the name used later in the QS -->
+The table is local to this workbook, so saving keeps it available for the sections that follow. <!-- VERIFY: button label for a new workbook (Save vs Save as) and the name used later in the QS -->
 
 ![Footer](assets/sigma_footer.png)
 <!-- END OF SECTION-->
@@ -121,11 +189,17 @@ Duration: 5
 
 Sigma controls who can use a table through teams. We will create two test teams first, so you can restrict the table in the next section and see the result without affecting anyone else.
 
-**1.** In the left menu of `Administration`, select `Teams` (1), then select `Create team` (2). <!-- VERIFY: account type needed to create teams; add it to Prerequisites -->
+**1.** In the left menu of `Administration`, select `Teams` (1), then select `Create team` (2).
 
 <img src="assets/ctp_06.png" width="900"/>
 
-**2.** On the `New team` page, enter `Tables Viewers` for `Team name` (1). Leave the other fields as they are and select `Create` (2).
+**2.** On the `New team` page, enter the following for `Team name` (1):
+
+```copy-code
+Tables Viewers
+```
+
+Leave the other fields as they are and select `Create` (2).
 
 <img src="assets/ctp_07.png" width="900"/>
 
@@ -133,7 +207,13 @@ Sigma controls who can use a table through teams. We will create two test teams 
 
 <img src="assets/ctp_08.png" width="900"/>
 
-**4.** Create a second team named `Tables Editors` the same way. On its team page (1), select `Add members` (2) and add yourself. Your name shows under `Team members` (3).
+**4.** Create a second team the same way, named:
+
+```copy-code
+Tables Editors
+```
+
+On its team page (1), select `Add members` (2) and add yourself. Your name shows under `Team members` (3).
 
 <img src="assets/ctp_09.png" width="900"/>
 
@@ -149,33 +229,47 @@ Duration: 8
 
 A Sigma table keeps access control next to the data, so you decide who can use it without leaving the workbook. We will start by opening the grant controls for the table.
 
-**1.** Return to the `Sigma Tables Lab` workbook and select the Sigma table.
+**1.** Return to the `Sigma Tables Lab` workbook, click the `Edit` link and select the Sigma table.
 
 **2.** In the element panel, open the data source menu (1) and select `Manage grants` (2).
 
 <img src="assets/ctp_11.png" width="400"/>
 
-<!-- VERIFY: the Manage grants dialog changed in the new UI. The paragraph that described the old `Local table management` dialog (Table grants list, `Can own`, `Grant access`) was removed 2026-11-11. Capture the new dialog, then write what it shows and how to add others. -->
+The `Manage data sources` dialog opens on the `Security` tab. `Table grants` lists who can manage the table, and `Row and column level rules` controls what everyone else can view or edit.
 
-<!-- VERIFY: row and column rules are not visible in this dialog (it scrolls right). The draft said: Under `Row and column level rules`, the default rule gives other people `View and edit` on all rows and all columns. Capture it, or remove it, and re-check the `Add rule` steps below. -->
+We will add rules that stack on top of each other:
 
-<!-- VERIFY (2026-11-07): the video's staging build showed a `Manage data sources` dialog with a `Security` tab, `Table grants`, and a separate `Row and column level rules` section (`Add rule`; columns Who, Permission, Row, Column; default rule Others / View and edit / All rows / All columns). Phil's trial shows `Local table management` with `Table grants` only (grant types `Write` and `Own`), and nothing further when scrolled right. So the rules section does not exist in the trial. The narrator also introduces row and column security as a roadmap item. The `Add rule` steps, the `View` / `View and edit` wording and the "No data" step cannot stay as written. Decision pending (Phil): drop the rules, the "No data" step and possibly the test teams; keep `Table grants` and `Grant access`. -->
-
-To restrict this, add rules that stack on top of each other:
-
-**1.** Click `Add rule` (1), select the `Tables Viewers` team under `Who can access` (2), and set `Permit to` as `View only` (3). Leave `Row` set to `All rows`, make sure `Column` is turned on, and clear `Id` in the column list so the team sees every other column. <!-- VERIFY: column picker behavior and label; ctp_12 shows `7 columns` because the Column list was already changed -->
-
-**2.** Add a second rule for the `Tables Editors` team with `View and edit`. With `View and edit`, `Column` is always on, so select `All columns`. Editors can then see the `Id` column, which the viewers cannot.
-
-**3.** Click `Save` (4).
+**1.** Click `Add rule` (1), select the `Tables Viewers` team under `Who can access` (2), and set `Permit to` as `View only` (3).
 
 <img src="assets/ctp_12.png" width="900"/>
 
-Under `Scope`, `Row` is on by default and limits a rule to specific rows. `Column` limits it to specific columns. With `View only`, turn `Column` on to choose the columns. With `View and edit`, `Column` cannot be turned off, the primary key column is included by default, and you can add more columns or select `All columns`.
+Leave `Row` set to `All rows` and make sure `Column` is turned on. In the column list, clear `Ticket Id` (1) so the team sees every other column. Leave `Id` selected (2), because the primary key must stay in the rule. The list now shows `7 columns` (3).
+
+<img src="assets/ctp_12c.png" width="900"/>
+
+**2.** Click `Add rule` again to add a second rule. Set `Permit to` as `View and edit` (1).
+
+With `View and edit`, `Column` is always on, so select `All columns` (2). Select the `Tables Editors` team under `Who can access` (3), then click `Save` (4). 
+
+Editors can then see the `Ticket Id` column, which the viewers cannot.
+
+<img src="assets/ctp_12a.png" width="900"/>
+
+**3.** Click `Add rule` once more and add a rule for yourself: set `Permit to` as `View and edit`, select `All columns`, select your own user under `Who can access`, and click `Save`. Once a table has rules, they apply to everyone who opens it, including you, so this rule keeps the data visible in your own workbook.
+
+<!-- VERIFY: does the editor also need a Table grant (Phil Editor showed Can own in one run, not in the 6f580f19 run)? Teams vs users: latest run used users Phil Viewer / Phil Editor. -->
+
+Both rules are now listed under `Row and column level rules`. The editors rule covers `All columns` (1), while the viewers rule lists the columns it allows, without `Ticket Id` (2).
+
+<img src="assets/ctp_12b.png" width="900"/>
+
+<aside class="positive">
+<strong>SCOPE:</strong><br> Under <code>Scope</code>, <code>Row</code> is on by default and limits a rule to specific rows. <code>Column</code> limits it to specific columns. With <code>View only</code>, turn <code>Column</code> on to choose the columns. With <code>View and edit</code>, <code>Column</code> cannot be turned off, the primary key column is included by default, and you can add more columns or select <code>All columns</code>.
+</aside>
 
 ### User Impersonation
 
-Back in the workbook, the table still shows all of its data. Your account was granted access to the table, so the rules do not apply to you. To see them in effect, impersonate a user who is assigned to one of the teams. If your account has no additional users to try this with, such as in a trial, follow along with the screenshots.
+Back in the workbook, the table still shows all of its data, because your own rule covers `All columns`. To see the other rules in effect, impersonate a user who is assigned to one of the teams. If your account has no additional users to try this with, such as in a trial, follow along with the screenshots.
 
 Impersonated users need access to the workbook, so share it with both teams first. In the `Share Workbook` dialog, give `Tables Viewers` the `Can view` permission (1) and `Tables Editors` the `Can edit` permission (2), then click `Share` (3). <!-- VERIFY: how the Share Workbook dialog is opened (button label and location) -->
 
@@ -187,15 +281,16 @@ In `Administration` > `Users`, open the menu for a user on the `Tables Viewers` 
 
 <img src="assets/ctp_13b.png" width="900"/>
 
-After you select `Impersonate user`, open the `Sigma Tables Lab` workbook. The banner (1) shows who you are logged in as. The viewer does not see the `Id` column we hid earlier, and cannot edit the workbook to add it back. When you are done, select `Stop impersonation` (2).
+After you select `Impersonate user`, open the `Sigma Tables Lab` workbook. The banner (1) shows who you are logged in as. The viewer does not see the `Ticket Id` column, and cannot edit the workbook to add it back. <!-- RECAPTURE ctp_13: viewer view without Ticket Id, Id showing data --> When you are done, select `Stop impersonation` (2).
 
 <img src="assets/ctp_13.png" width="900"/>
 
 <!-- VERIFY: how the workbook is opened after impersonation starts. The capture shows the viewer in a custom view of the workbook. -->
 
-Impersonate the editor the same way. The editor can edit the workbook and the rule gives them `All columns`, so they can unhide `Id` if they want to: in the element panel, open the menu for `Id` (2) and select `Unhide column` (3). The banner (1) confirms who you are logged in as. <!-- VERIFY: where the Id menu is opened from in the element panel, and what the table shows after Unhide column -->
+Impersonate the editor the same way. The banner confirms who you are logged in as, and the editor sees every column, including `Ticket Id`, because their rule covers `All columns`.
 
-<img src="assets/ctp_13c.png" width="900"/>
+<!-- RECAPTURE ctp_13c: editor impersonation showing all columns (no Unhide column step) -->
+<!-- <img src="assets/ctp_13c.png" width="900"/> -->
 
 <aside class="positive">
 <strong>NOTE:</strong><br> This is a good way to confirm a rule works before you rely on it: view the table as a user the rule applies to.
@@ -207,33 +302,41 @@ Impersonate the editor the same way. The editor can edit the workbook and the ru
 ## Promote a Table to a Connection Table
 Duration: 8
 
-A local Sigma table lives in one workbook. Promoting it creates a shared table in your data platform that any workbook can use.
-
-<aside class="positive">
-<strong>NOTE:</strong><br> Promote the table to a connection you own, not `Sigma Sample Database`. We created this table on `Sigma Sample Database`, so if you do not have a connection with write access of your own, follow along with the steps and screenshots.
-</aside>
+A local Sigma table lives in one workbook. Promoting it creates a shared table in Snowflake that any workbook can use. We will place it in the `SIGMA_TABLES_WRITE` schema created in "Prepare Snowflake."
 
 **1.** From the table's data source menu (1), select `Promote table` (2).
 
 <img src="assets/ctp_13d.png" width="450"/>
 
-**2.** In `Table name`, enter a name, for example `ST_DEMO_101` (1).
+**2.** In `Table name`, enter `SUPPORT_TICKETS` (1).
 
-**3.** In `Schema`, choose a destination on your own connection (2). If you have access to more than one schema, you can place tables in different business-unit buckets.
+**3.** In `Schema`, select `QUICKSTARTS.SIGMA_TABLES_WRITE` (2). If the connection's role has access to more than one schema, you can place tables in different business-unit buckets.
 
 **4.** Review `Columns included` (3). The dialog shows the columns that will be included and how their names will map.
+
+<aside class="positive">
+<strong>NOTE:</strong><br> Promotion includes every column in the Sigma table, so <code>Id</code> carries over to <code>SUPPORT_TICKETS</code> as its primary key.
+</aside>
+
+<!-- VERIFY: can Id be hidden or dropped on the promoted table afterward (it is the primary key)? If yes, add a step after promotion; if no, leave the NOTE as is. -->
 
 **5.** Click `Promote` (4).
 
 <img src="assets/ctp_14.png" width="900"/>
 
+<!-- RECAPTURE ctp_14: Table name SUPPORT_TICKETS, Schema QUICKSTARTS.SIGMA_TABLES_WRITE, Columns included 8/8. -->
+
 <aside class="negative">
 <strong>IMPORTANT:</strong><br> Edits made during promotion may be lost, so make sure there are no pending edits before you click `Promote`.
 </aside>
 
-The result is a shared Sigma table. The name changes, and in the data source it now looks like a warehouse table, although it is editable. Select `View` to open it in the connection explorer, where it appears in the write-back schema with standard column names.
+The result is a Sigma table called `Support_Tickets` in the current workbook. The data source now shows `SUPPORT_TICKETS` (1). `Id` is still in the column list, marked as the primary key (2).
 
-On the table's `Access` tab you can turn write access on or off, and open the audit log. <!-- VERIFY: do not mention any beta label -->
+<img src="assets/ctp_14a.png" width="900"/>
+
+To open it in the connection explorer, open the element menu (1), select `Element source` (2), then `View table` (3). It appears in `QUICKSTARTS.SIGMA_TABLES_WRITE` with standard column names.
+
+<img src="assets/ctp_14b.png" width="900"/>
 
 <aside class="negative"><strong>SCREENSHOT REQUIRED: ctp_15</strong><br> Access tab: write access and audit log (no real names or emails)</aside>
 <!-- <img src="assets/ctp_15.png" width="900"/> -->
@@ -279,7 +382,11 @@ An input column adds editable columns next to warehouse data, like a linked inpu
 
 **1.** In the element panel, open `Columns` and select `Add column`, then the input column option. <!-- VERIFY: path and label -->
 
-**2.** Set `Type` to `Number` and `Column name` to `Quantity Adj`.
+**2.** Set `Type` to `Number` and `Column name` to:
+
+```copy-code
+Quantity Adj
+```
 
 **3.** For `Primary key column(s)`, select `Order Number`, and click `Submit`.
 
