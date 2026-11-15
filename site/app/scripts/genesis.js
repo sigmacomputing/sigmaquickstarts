@@ -77,6 +77,22 @@
 
   /* ---------- header menus ---------- */
   var ddBtns = $$('.g-nav .dd-btn');
+  // a wide panel anchored to a button near the edge can run off the page: slide it back inside
+  var fitDd = function fitDd(p) {
+    p.style.transform = '';
+    var r = p.getBoundingClientRect(),
+        m = 16,
+        w = document.documentElement.clientWidth,
+        dx = 0;
+    if (r.left < m) dx = m - r.left;else if (r.right > w - m) dx = w - m - r.right;
+    if (dx) p.style.transform = 'translateX(' + Math.round(dx) + 'px)';
+  };
+  window.addEventListener('resize', function () {
+    ddBtns.forEach(function (b) {
+      var p = b.getAttribute('aria-expanded') === 'true' && document.getElementById(b.getAttribute('aria-controls'));
+      if (p) fitDd(p);
+    });
+  });
   var closeDd = function closeDd(except) {
     ddBtns.forEach(function (b) {
       if (b === except) return;
@@ -90,6 +106,7 @@
       closeDd(b);
       b.setAttribute('aria-expanded', String(open));
       var p = document.getElementById(b.getAttribute('aria-controls'));if (p) p.hidden = !open;
+      if (p && open) fitDd(p);
       var cm = $('#gcta-menu');if (open && cm && !cm.hidden) $('.g-nav .chev').click();
     });
   });
@@ -431,7 +448,9 @@
       c._fam = famOf(c._cat);
       var desc = $('.desc', c);
       c._hay = (c._title + ' ' + (LABELS[c._cat] || '') + ' ' + (desc ? desc.textContent : '')).toLowerCase();
-      c._date = ff ? ff[2] + '-' + ff[1] + '-01' : c.getAttribute('data-updated') || '';
+      // the yearly compilations share update dates, so order them by the year in the title
+      var yr = /^(\d{4}) Compilation\b/.exec(c._title);
+      c._date = ff ? ff[2] + '-' + ff[1] + '-01' : yr ? yr[1] + '-12-31' : c.getAttribute('data-updated') || '';
     });
 
     var q = $('#q'),
@@ -676,8 +695,13 @@
       });
     }
 
-    // sub-pages (Hands-on labs, First Friday Features, ...): the sigmacomputing.com tile instead of the boxed card
-    if (!browse) {
+    // sub-pages: the main page's list rows when the view asks for them (First Friday Features, Past years),
+    // otherwise the sigmacomputing.com tile instead of the boxed card
+    if (!browse && grid.getAttribute('data-layout') === 'list') {
+      grid.classList.add('list');
+      // one topic here, so the topic column is empty: let the title start at the left edge
+      if (chipsEl && chipsEl.hidden) grid.classList.add('single');
+    } else if (!browse) {
       grid.classList.add('tiles');
       var singleTopic = chipsEl && chipsEl.hidden;
       cards.forEach(function (c) {
