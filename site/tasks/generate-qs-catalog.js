@@ -16,7 +16,10 @@ const OUT_FILE = path.join(__dirname, '..', 'app', 'data', 'qs-catalog.json');
 function parseFrontMatter(content) {
   const meta = {};
   for (const line of content.split(/\r?\n/)) {
-    if (line.trim() === '') break;
+    if (line.trim() === '') {
+      if (Object.keys(meta).length) break; // end of front matter
+      continue; // some guides start with a blank line
+    }
     const idx = line.indexOf(':');
     if (idx === -1) continue;
     const key = line.slice(0, idx).trim().toLowerCase();

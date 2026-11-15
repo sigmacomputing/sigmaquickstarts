@@ -1,0 +1,198 @@
+/* Sigma QuickStarts guide pages — Genesis restyle of the codelab elements.
+   Loaded after codelab-elements.css. Neutral ground, ink/gray type, hairlines,
+   blue only for selection, progress, focus and the primary button. */
+
+@font-face{font-family:"Advercase";src:url("/fonts/advercase-regular.woff2") format("woff2"),url("/fonts/advercase-regular.woff") format("woff");font-weight:400;font-display:swap}
+:root{
+  --ink:#111114; --text-body:#5F5F66; --text-meta:#8A8A93; --text-meta-aa:#6E6E78;
+  --surface:#F7F7F8; --border:#E5E5E9; --border-subtle:#EEEEF1; --border-strong:#C9C9CF;
+  --blue:#1A70F1; --blue-hover:#1660D6; --blue-tint:#EEF3FF; --warm:#FFFBF5;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+html,body{background:#fff}
+body{font-family:"DM Sans",system-ui,-apple-system,sans-serif!important;color:var(--ink);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+google-codelab{padding-top:60px}
+
+/* ---------- toolbar ---------- */
+google-codelab #codelab-title{height:60px;padding:0 24px 0 12px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:none;color:var(--ink);gap:8px}
+google-codelab #codelab-title::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:hsl(222 19% 86% / .5)}
+google-codelab #codelab-nav-buttons #arrow-back,google-codelab #codelab-nav-buttons #menu{width:36px;height:36px;border-radius:8px;color:var(--ink);transition:background-color .2s}
+google-codelab #codelab-nav-buttons #arrow-back:hover,google-codelab #codelab-nav-buttons #menu:hover{background:var(--surface)}
+google-codelab #codelab-nav-buttons svg{width:20px;height:20px}
+google-codelab #codelab-title h1,google-codelab #codelab-title h1.title{font-family:"DM Sans",sans-serif!important;font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin:0 8px}
+google-codelab #codelab-title #time-remaining{display:flex!important;align-items:center;gap:6px;font-size:13px;color:var(--text-meta-aa);font-variant-numeric:tabular-nums;margin-right:16px}
+google-codelab #codelab-title #time-remaining i,google-codelab #codelab-title #time-remaining .material-icons{font-size:0!important;width:14px;height:14px;margin:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") center/contain no-repeat}
+google-codelab #codelab-title .sigma-logo-link{position:static!important;transform:none!important;flex:none;width:72px!important;height:22px!important;background-image:url("/images/genesis/logo-black.svg")!important;background-size:contain;background-repeat:no-repeat;background-position:center;padding-left:16px;border-left:1px solid var(--border);box-sizing:content-box;background-origin:content-box}
+.g-progress{position:fixed;top:59px;left:0;right:0;height:2px;background:transparent;z-index:1002;pointer-events:none}
+.g-progress i{display:block;height:100%;width:0;background:var(--blue);transition:width .35s ease}
+
+/* ---------- step rail ---------- */
+google-codelab #drawer{width:288px;background:#fff;border-right:1px solid var(--border-subtle)}
+google-codelab #drawer .steps{max-height:calc(100% - 56px)}
+google-codelab #drawer ol{padding:20px 12px 24px}
+google-codelab #drawer ol::before{content:"Steps";display:block;padding:0 12px 10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-meta-aa)}
+google-codelab #drawer ol li a{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.35;color:var(--text-body);background:transparent;border:0!important;border-radius:8px;min-height:0;padding:9px 12px;margin:1px 0;box-shadow:none!important;font-weight:400;transition:background-color .2s,color .2s}
+google-codelab #drawer ol li a:hover{background:var(--surface);color:var(--ink)}
+google-codelab #drawer ol li a:active,google-codelab #drawer ol li a:focus{background:var(--surface);outline:0}
+google-codelab #drawer ol li a:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+google-codelab #drawer ol li .step:before{width:22px;min-width:22px;height:22px;line-height:20px;margin-right:12px;font-size:11.5px;font-weight:600;color:var(--text-meta-aa);background:#fff;border:1px solid var(--border);box-sizing:border-box;font-variant-numeric:tabular-nums}
+google-codelab #drawer ol li[completed] a{color:var(--text-body)}
+google-codelab #drawer ol li[completed] .step:before{background:var(--ink);border-color:var(--ink);color:#fff}
+google-codelab #drawer ol li[selected] a{background:var(--blue-tint);color:var(--ink);font-weight:500;position:relative}
+google-codelab #drawer ol li[selected] a::before{content:none}
+google-codelab #drawer ol li[selected] .step:before{background:#fff;border-color:var(--blue);color:var(--ink);font-weight:600}
+google-codelab #drawer .metadata{padding:14px 24px;border-top:1px solid var(--border-subtle);font-size:13px;color:var(--text-body)}
+google-codelab #drawer .metadata a{display:inline-flex;align-items:center;gap:6px;margin:0;color:var(--text-body);text-decoration:none}
+google-codelab #drawer .metadata a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+google-codelab #drawer .metadata .material-icons{font-size:0!important;width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7'/%3E%3C/svg%3E") center/contain no-repeat}
+google-codelab #drawer ol::-webkit-scrollbar{width:6px}
+google-codelab #drawer ol::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;box-shadow:none}
+
+/* ---------- reading column ---------- */
+google-codelab #main{background:#fff}
+google-codelab google-codelab-step{padding-top:48px}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions{box-shadow:none;background:transparent;max-width:980px!important;margin:0 auto 140px;border-radius:0;font-size:16px!important;line-height:1.65;color:var(--text-body)}
+google-codelab-step .instructions .inner{padding:0 40px}
+google-codelab-step .g-stepno{display:block;margin:0 0 10px;font-size:12px;font-weight:600;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+google-codelab-step h2.step-title{font-family:"DM Sans",sans-serif!important;font-size:26px!important;font-weight:600!important;line-height:1.15!important;letter-spacing:-.02em;color:var(--ink);margin:0 0 24px!important}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions h2:not(.step-title),
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions h3{font-family:"DM Sans",sans-serif;font-size:18px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin:40px 0 10px}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions h4{font-size:15px;font-weight:600;line-height:1.3;color:var(--ink);margin:28px 0 8px}
+google-codelab-step .instructions p{margin:0 0 16px}
+google-codelab-step .instructions ul,google-codelab-step .instructions ol{padding-left:22px;margin:0 0 18px}
+google-codelab-step .instructions li{margin:0 0 6px;padding-left:4px}
+google-codelab-step .instructions li::marker{color:var(--text-meta)}
+google-codelab-step .instructions ol li::marker{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+google-codelab-step .instructions strong,google-codelab-step .instructions b{font-weight:600;color:var(--ink)}
+google-codelab-step .instructions em{font-style:normal;color:var(--ink)}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions a,
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions a:visited{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(17,17,20,.35);transition:text-decoration-color .2s}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions a:hover{text-decoration-color:var(--ink)}
+google-codelab-step .instructions hr{border:0;border-top:1px solid var(--border-subtle);margin:32px 0}
+
+/* images: frame screenshots, leave icons and logos alone */
+google-codelab-step .instructions img{border-radius:0}
+google-codelab-step .instructions img.g-shot{display:block;border:0;border-radius:0;margin:8px 0 8px;background:none;height:auto}
+google-codelab-step .instructions p.image-container{margin:20px 0 24px}
+google-codelab-step .instructions iframe,google-codelab-step .instructions video,google-codelab-step .instructions .local-video{border:1px solid var(--border)!important;border-radius:12px!important;max-width:100%}
+
+/* inline code + code blocks */
+google-codelab-step code{font-family:var(--mono);font-size:.84em;background:var(--surface);border:1px solid var(--border-subtle);border-radius:6px;padding:.1em .38em;color:var(--ink)}
+google-codelab-step pre{position:relative;margin:4px 0 22px;padding:16px 18px;background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:12px;font-family:var(--mono);font-size:13px;line-height:1.65}
+google-codelab-step pre>code{font-size:inherit;border:0;padding:0;background:transparent;border-radius:0}
+google-codelab-step pre .pln,google-codelab-step code .pln,google-codelab-step pre .pun,google-codelab-step code .pun{color:var(--ink)}
+google-codelab-step pre .str,google-codelab-step code .str,google-codelab-step pre .atv,google-codelab-step code .atv{color:#0F7B5F}
+google-codelab-step pre .kwd,google-codelab-step code .kwd{color:#7C3AED}
+google-codelab-step pre .com,google-codelab-step code .com{color:var(--text-meta-aa);font-style:normal}
+google-codelab-step pre .typ,google-codelab-step code .typ{color:#9A3412}
+google-codelab-step pre .tag,google-codelab-step code .tag{color:#9A3412}
+/* copy-code blocks are literal text to paste: no syntax colour */
+google-codelab-step pre code.language-copy-code,google-codelab-step pre code.language-copy-code *{color:var(--ink)!important}
+google-codelab-step pre .lit,google-codelab-step code .lit,google-codelab-step pre .dec,google-codelab-step code .dec{color:#B45309}
+google-codelab-step pre .atn,google-codelab-step code .atn{color:#9A3412}
+google-codelab-step code em{color:var(--text-meta-aa)}
+google-codelab-step pre.has-copy-button{padding:16px 84px 16px 18px!important}
+google-codelab-step .copy-button{position:absolute;top:10px;right:10px;left:auto!important;width:auto;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#fff!important;border:1px solid var(--border)!important;color:var(--ink)!important;font:500 12px/1 "DM Sans",sans-serif!important;letter-spacing:0;cursor:pointer;opacity:1;box-shadow:none!important;transition:border-color .2s,background-color .2s}
+google-codelab-step .copy-button:hover{background:var(--surface)!important;border-color:var(--border-strong)!important}
+google-codelab-step .copy-button.copied{background:var(--blue-tint)!important;border-color:var(--blue-tint)!important;color:var(--ink)!important}
+
+/* callouts: a quiet bordered note, icon on the left; no fills or colored bars */
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.special,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.tip,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.positive,google-codelab-step .instructions aside.callout{position:relative;margin:24px 0;padding:16px 20px 16px 52px;border:1px solid var(--border)!important;border-left-width:1px!important;border-radius:12px!important;background:#fff!important;color:var(--text-body)!important;font-size:15px;line-height:1.6}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside::before{content:"";position:absolute;left:20px;top:19px;width:18px;height:18px;background:var(--text-meta);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 16v-4M12 8h.01'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 16v-4M12 8h.01'/%3E%3C/svg%3E") center/contain no-repeat}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.warning,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.note,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.notice{border-color:#EADFCB!important;background:#fff!important}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.warning::before,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.note::before,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.notice::before{background:#B45309;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4M12 17h.01'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4M12 17h.01'/%3E%3C/svg%3E")}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside p{margin:0 0 8px}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside p:last-child{margin:0}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside strong{color:var(--ink)}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside code{background:#fff}
+
+/* tables: presentation style */
+google-codelab-step .instructions table{width:100%;border-collapse:separate;border-spacing:0;margin:8px 0 24px;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px}
+google-codelab-step .instructions tr:first-child td,google-codelab-step .instructions th{background:var(--surface);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-meta-aa)}
+google-codelab-step .instructions td,google-codelab-step .instructions th{border-bottom:1px solid var(--border-subtle);padding:10px 14px;color:var(--text-body);vertical-align:top;text-align:left}
+google-codelab-step .instructions tr:last-child td{border-bottom:0}
+google-codelab-step .instructions table code{background:#fff}
+
+/* download / action buttons inside content */
+google-codelab-step .instructions paper-button,google-codelab-step paper-button{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid var(--border);color:var(--ink);font:500 14px/1 "DM Sans",sans-serif;text-transform:none;box-shadow:none;transition:background-color .2s,border-color .2s}
+google-codelab-step .instructions paper-button:hover{background:var(--surface);border-color:var(--border-strong)}
+google-codelab-step .instructions paper-button.colored{background:var(--blue);border-color:var(--blue);color:#fff}
+google-codelab-step .instructions paper-button.colored:hover{background:var(--blue-hover)}
+google-codelab-step .instructions :link paper-button,google-codelab-step .instructions a:has(> paper-button){text-decoration:none!important}
+google-codelab-step .instructions iron-icon{width:16px;height:16px}
+
+/* ---------- back / next ---------- */
+google-codelab #controls{bottom:0;padding:0;pointer-events:none}
+google-codelab #fabs{max-width:none;margin:0;padding:20px 40px 24px;background:linear-gradient(to top,#fff 55%,rgba(255,255,255,0));pointer-events:none;align-items:center}
+#previous-step,#next-step,#done{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:999px;font:500 15px/1 "DM Sans",sans-serif!important;letter-spacing:-.01em;text-transform:none;box-shadow:none;pointer-events:auto;transition:transform .3s ease,background-color .2s,border-color .2s}
+#previous-step{background:#fff;color:var(--ink);border:1px solid var(--border)}
+#previous-step:hover{background:var(--surface);border-color:var(--border-strong)}
+#previous-step::before{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/svg%3E") center/contain no-repeat}
+#next-step,#done{background:var(--blue);color:#fff;border:1px solid var(--blue)}
+#next-step:hover,#done:hover{background:var(--blue-hover);border-color:var(--blue-hover)}
+#next-step::after{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E") center/contain no-repeat}
+#previous-step:focus-visible,#next-step:focus-visible,#done:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(26,112,241,.3)}
+google-codelab #fabs .g-of{pointer-events:none;margin:0 16px;font-size:13px;color:var(--text-meta-aa);font-variant-numeric:tabular-nums}
+
+/* ---------- small screens ---------- */
+@media (max-width:768px){
+  google-codelab #codelab-title{padding:0 12px 0 8px}
+  google-codelab #codelab-title #time-remaining{display:none!important}
+  google-codelab #codelab-title .sigma-logo-link{display:none!important}
+  google-codelab #drawer{box-shadow:none}
+  google-codelab[drawer--open] #drawer{box-shadow:0 12px 32px rgba(17,17,20,.18)}
+  google-codelab google-codelab-step{padding-top:28px}
+  google-codelab-step .instructions .inner{padding:0 16px}
+  google-codelab-step h2.step-title{font-size:24px!important}
+  google-codelab #fabs{padding:16px}
+  google-codelab #fabs .g-of{display:none}
+}
+@media (prefers-reduced-motion:reduce){.g-progress i,#previous-step,#next-step{transition:none}}
+
+/* follow-us row: small neutral icons instead of the 75px brand tiles */
+.g-social{display:flex;gap:8px;margin:12px 0 0}
+.g-social a{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;color:var(--ink)!important;text-decoration:none!important;transition:background-color .2s,border-color .2s}
+.g-social a:hover{background:var(--surface);border-color:var(--border-strong)}
+.g-social svg{width:16px;height:16px;fill:currentColor}
+
+/* image zoom: port of PortableTextImageLightbox on sigmacomputing.com blog posts */
+.g-zoom{position:relative;display:block;width:fit-content;max-width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px}
+.g-zoom:focus-visible{outline:2px solid #1A70F1;outline-offset:4px}
+.g-zoom .badge{pointer-events:none;position:absolute;right:12px;top:12px;display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:rgba(0,0,0,.7);color:#fff;font:500 12px/16px "DM Sans",sans-serif;opacity:0;transition:opacity .15s}
+.g-zoom:hover .badge,.g-zoom:focus-visible .badge{opacity:1}
+.g-zoom .badge svg{width:14px;height:14px}
+.g-lb{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px}
+.g-lb .bd{position:absolute;inset:0;border:0;background:rgba(0,0,0,.85);cursor:default}
+.g-lb .dlg{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;max-width:1280px}
+.g-lb .x{position:fixed;right:16px;top:16px;z-index:2;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;transition:background-color .15s}
+.g-lb .x:hover{background:rgba(255,255,255,.25)}
+.g-lb .x svg{width:20px;height:20px}
+.g-lb .vp{display:flex;flex:1;width:100%;align-items:center;justify-content:center;overflow:hidden;border-radius:16px}
+.g-lb .vp.z{display:block;overflow:auto;scrollbar-width:none}
+.g-lb .im{display:block;margin:0 auto;padding:0;border:0;background:none;border-radius:8px;cursor:zoom-in}
+.g-lb .vp.z .im{cursor:zoom-out}
+.g-lb img{display:block;margin:0 auto;max-height:88vh;width:auto;max-width:100%;object-fit:contain;border-radius:8px;transition:transform .2s}
+.g-lb button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* callouts in color: the homepage hero's element treatment (tinted outline + soft fill), text stays ink */
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.special,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.tip,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.positive,google-codelab-step .instructions aside.callout{border-color:#C7D7F7!important;background:#F5F8FF!important;border-radius:8px!important}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside::before{background:#1A70F1}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.warning,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.note,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.notice{border-color:#F2D3A6!important;background:#FFF8EE!important}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.warning::before,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.note::before,google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.notice::before{background:#C2620A}
+google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside code{background:#fff;border-color:rgba(0,0,0,.06)}
+
+/* zoom affordance: compact icon button in the bottom-right corner, clear of titles and the image's own frame */
+.g-zoom .badge{top:auto;right:16px;bottom:16px;width:32px;height:32px;padding:0;gap:0;justify-content:center;font-size:0;background:rgba(17,17,20,.72)}
+.g-zoom .badge svg{width:16px;height:16px}
+
+/* step rail: circles pinned to the first line, joined by a connector like the home page learning paths */
+google-codelab #drawer ol li{position:relative}
+google-codelab #drawer ol li .step{align-items:flex-start}
+google-codelab #drawer ol li .step:before{position:relative;z-index:1;margin-top:-2px}
+google-codelab #drawer ol li:not(:last-child)::after{content:"";position:absolute;z-index:1;left:22px;width:2px;top:var(--g-rail-top,30px);bottom:var(--g-rail-bottom,-8px);background:rgba(26,112,241,.3);pointer-events:none}
+
+/* social icons at the end of a guide: blue on white tiles, as in the sigmacomputing.com footer */
+.g-social{gap:12px}
+.g-social a{width:44px;height:44px;border-radius:12px;background:#fff;color:var(--blue)!important}
+.g-social a:hover{background:#fff;border-color:var(--border-strong)}
+.g-social svg{width:20px;height:20px}

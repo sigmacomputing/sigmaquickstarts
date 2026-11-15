@@ -170,7 +170,9 @@ gulp.task('build:css', () => {
     'app/elements/codelab-elements/*.css',
     'app/css/components.css',
     'app/css/normalize.css',
-    'app/css/sigma-dev-8020.css'
+    'app/css/sigma-dev-8020.css',
+    'app/css/genesis.css',
+    'app/css/genesis-guide.css'
   ];
 
   return gulp.src(srcs, { base: 'app/' })
@@ -199,6 +201,7 @@ gulp.task('build:html', () => {
     'app/404.html',
     'app/browserconfig.xml',
     'app/robots.txt',
+    'app/sitemap.xml',
     'app/site.webmanifest',
   ]
   streams.push(gulp.src(otherSrcs, { base: 'app/' })
@@ -271,6 +274,7 @@ gulp.task('build:js', (callback) => {
   );
   const sigmaSrcs = [
     'app/scripts/sigma-dev-8020.js',  'app/scripts/defaultviewscript.js',
+    'app/scripts/genesis.js',
   ];
   streams.push(gulp.src(sigmaSrcs, { base: 'app/' })
     .pipe(gulpif('*.js', babel(opts.babel())))

@@ -27,7 +27,7 @@ the License.
   </script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#4F7DC9">
+  <meta name="theme-color" content="#ffffff">
   <meta charset="UTF-8">
   <title>{{.Meta.Title}}</title>
   <link rel="canonical" href="https://quickstarts.sigmacomputing.com/guide/{{.Meta.ID}}/index.html" />
@@ -46,64 +46,12 @@ the License.
   <meta name="twitter:description" property="twitter:description" content="{{.Meta.Summary}}">
   <meta name="twitter:image" property="twitter:image" content="https://quickstarts.sigmacomputing.com/images/quickstarts-og-image.png">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&display=swap">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="{{.Prefix}}/codelab-elements/codelab-elements.css">
-  <style>
-    .success {
-      color: #1e8e3e;
-    }
-    .error {
-      color: red;
-    }
-    @font-face {
-      font-family: 'Advercase';
-      src: url('/fonts/advercase-regular.woff2') format('woff2'),
-           url('/fonts/advercase-regular.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Advercase';
-      src: url('/fonts/advercase-bold.woff2') format('woff2'),
-           url('/fonts/advercase-bold.woff') format('woff');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-    body {
-      font-family: 'DM Sans', sans-serif !important;
-    }
-    google-codelab-step .instructions {
-      max-width: 900px !important;
-      font-size: 16px !important;
-    }
-    google-codelab-step h2.step-title,
-    google-codelab #codelab-title h1 {
-      font-family: 'Advercase', serif !important;
-    }
-    .local-video {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      height: auto !important;
-      margin: auto !important;
-    }
-    google-codelab #codelab-title .sigma-logo-link {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 78px;
-      height: 24px;
-      background-image: url('/images/logo-sigma-black.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/genesis-guide.css">
+  <link rel="icon" href="/images/favicons/favicon.png">
+  <style>.success{color:#1e8e3e}.error{color:#D14343}.local-video{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;margin:auto!important}</style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -188,6 +136,109 @@ the License.
           if (replaceIcons()) observer.disconnect();
         });
         observer.observe(document.body, {childList: true, subtree: true});
+      }
+    })();
+  </script>
+  <script>
+    
+    (function() {
+      function enhance() {
+        var gc = document.querySelector('google-codelab');
+        if (!gc || !gc.hasAttribute('google-codelab-ready')) return false;
+        var steps = gc.querySelectorAll('google-codelab-step');
+        var total = steps.length;
+        Array.prototype.forEach.call(steps, function(st, i) {
+          var h = st.querySelector('h2.step-title');
+          if (h && !st.querySelector('.g-stepno')) {
+            h.textContent = h.textContent.replace(/^\s*\d+\.\s*/, '');
+            var e = document.createElement('span');
+            e.className = 'g-stepno';
+            e.textContent = 'Step ' + (i + 1) + ' of ' + total;
+            h.parentNode.insertBefore(e, h);
+          }
+        });
+        var fabs = gc.querySelector('#fabs .spacer');
+        var of = gc.querySelector('#fabs .g-of');
+        if (fabs && !of) { of = document.createElement('span'); of.className = 'g-of'; fabs.parentNode.insertBefore(of, fabs.nextSibling); }
+        function sync() {
+          var sel = parseInt(gc.getAttribute('selected') || '0', 10);
+          var bar = document.querySelector('.g-progress i');
+          if (bar) bar.style.width = (total ? ((sel + 1) / total) * 100 : 0) + '%';
+          if (of) of.textContent = (sel + 1) + ' / ' + total;
+        }
+        sync();
+        new MutationObserver(sync).observe(gc, {attributes: true, attributeFilter: ['selected']});
+        function frame(img) {
+          var w = img.naturalWidth || 0, sw = parseFloat((img.getAttribute('style') || '').replace(/[^0-9.]/g, '')) || 0;
+          if ((sw >= 300) || (!sw && w >= 400)) { img.classList.add('g-shot'); zoomable(img); }
+        }
+        
+        var ZI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>';
+        var XI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+        var wide = window.matchMedia ? window.matchMedia('(min-width: 640px)') : { matches: true };
+        function zoomable(img) {
+          if (img.closest('a, .g-zoom')) return;
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'g-zoom'; b.setAttribute('aria-label', 'Zoom image'); b.setAttribute('aria-haspopup', 'dialog');
+          img.parentNode.insertBefore(b, img); b.appendChild(img);
+          b.insertAdjacentHTML('beforeend', '<span class="badge">' + ZI + 'Zoom</span>');
+          b.addEventListener('click', function() { if (wide.matches) openLb(img); });
+        }
+        function openLb(img) {
+          var lb = document.createElement('div'), prev = document.body.style.overflow, back = document.activeElement;
+          lb.className = 'g-lb';
+          lb.innerHTML = '<button type="button" class="bd" aria-label="Close image"></button><div class="dlg" role="dialog" aria-modal="true" aria-label="' +
+            (img.alt ? 'Expanded image: ' + img.alt.replace(/"/g, '&quot;') : 'Expanded image') + '"><button type="button" class="x" aria-label="Close image">' + XI +
+            '</button><div class="vp"><button type="button" class="im" aria-label="Zoom in image more"><img alt=""></button></div></div>';
+          var big = lb.querySelector('img'), vp = lb.querySelector('.vp'), im = lb.querySelector('.im'), z = false;
+          big.src = img.currentSrc || img.src; big.alt = img.alt || '';
+          function close() { document.removeEventListener('keydown', key); document.body.style.overflow = prev; lb.remove(); if (back) back.focus(); }
+          function key(e) { if (e.key === 'Escape') close(); }
+          im.addEventListener('click', function(e) {
+            if (!z) { var r = big.getBoundingClientRect(); big.style.transformOrigin = Math.min(Math.max((e.clientX - r.left) / r.width * 100, 0), 100) + '% ' + Math.min(Math.max((e.clientY - r.top) / r.height * 100, 0), 100) + '%'; }
+            z = !z; big.style.transform = 'scale(' + (z ? 1.8 : 1) + ')'; vp.classList.toggle('z', z);
+            im.setAttribute('aria-label', z ? 'Zoom out image' : 'Zoom in image more');
+            if (!z) big.style.transformOrigin = 'center center';
+          });
+          lb.querySelector('.bd').addEventListener('click', close);
+          lb.querySelector('.x').addEventListener('click', close);
+          document.addEventListener('keydown', key);
+          document.body.style.overflow = 'hidden';
+          document.body.appendChild(lb);
+          lb.querySelector('.x').focus();
+        }
+        
+        Array.prototype.forEach.call(gc.querySelectorAll('.instructions img[alt="Footer"]'), function(img) {
+          var p = img.parentNode; img.remove();
+          if (p && p.tagName === 'P' && !p.textContent.trim() && !p.querySelector('img,a')) p.remove();
+        });
+        
+        var SOC = {
+          x: ['X', 'M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.48 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77zm-1.08 16.17h1.7L7.4 4.73H5.58z'],
+          li: ['LinkedIn', 'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13M7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0'],
+          fb: ['Facebook', 'M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.62 23.1 24 18.1 24 12.07']
+        };
+        var socKey = function(h) { return /twitter\.com|\/\/(www\.)?x\.com/.test(h) ? 'x' : /linkedin\.com/.test(h) ? 'li' : /facebook\.com/.test(h) ? 'fb' : ''; };
+        Array.prototype.forEach.call(gc.querySelectorAll('.instructions p'), function(p) {
+          var links = p.querySelectorAll('a'), ok = links.length > 0;
+          Array.prototype.forEach.call(links, function(a) { if (!socKey(a.href) || !a.querySelector('img')) ok = false; });
+          if (!ok || p.textContent.trim()) return;
+          p.className = 'g-social';
+          Array.prototype.forEach.call(links, function(a) {
+            var s = SOC[socKey(a.href)];
+            a.setAttribute('aria-label', 'Sigma on ' + s[0]); a.rel = 'noopener';
+            a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + s[1] + '"/></svg>';
+          });
+          Array.prototype.forEach.call(p.childNodes, function(n) { if (n.nodeType === 3) n.remove(); });
+        });
+        Array.prototype.forEach.call(gc.querySelectorAll('.instructions img'), function(img) {
+          if (img.complete) frame(img); else img.addEventListener('load', function() { frame(img); });
+        });
+        return true;
+      }
+      if (!enhance()) {
+        var o = new MutationObserver(function() { if (enhance()) o.disconnect(); });
+        o.observe(document.body, {attributes: true, childList: true, subtree: true});
       }
     })();
   </script>
