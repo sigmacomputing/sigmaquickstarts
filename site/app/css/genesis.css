@@ -643,7 +643,8 @@ mark.hl{background:var(--blue-tint);color:inherit;border-radius:3px;padding:0 1p
 .hero .wrap{position:relative}
 .hero-link{display:none}
 .lay-compact .hero:not(.compact) .hero-link{display:inline-flex;position:absolute;right:40px;bottom:12px;height:44px;z-index:2}
-@media (max-width:767px){.lay-compact .hero:not(.compact) .hero-link{position:static;margin-top:16px}}
+/* phones: the button goes under the intro text instead of crowding the title */
+@media (max-width:767px){.lay-compact .hero:not(.compact) .wrap{display:flex;flex-direction:column}.lay-compact .hero:not(.compact) .hero-link{position:static;order:2;align-self:flex-start;margin:20px 0 24px}}
 
 /* topic icons replace the colored dots on chips and shelf headers */
 .chip .ci{width:14px;height:14px;color:var(--text-body)}
