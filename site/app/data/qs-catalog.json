@@ -181,7 +181,7 @@
       "title": "Version Tagging with Sigma",
       "category": "Administration",
       "summary": "Configure version tagging in Sigma to freeze workbook versions and control which versions are available to users, without external CI/CD tools.",
-      "lastUpdated": "2026-07-31",
+      "lastUpdated": "2026-11-16",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_version_tagging/index.html"
     },
     {

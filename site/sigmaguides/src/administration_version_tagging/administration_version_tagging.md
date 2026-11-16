@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-31
+lastUpdated: 2026-11-16
 
 # Version Tagging with Sigma
 
@@ -20,6 +20,8 @@ Tags provide control over which workbook versions are available to your users, a
 In this QuickStart, we will confine the use and management of version tagging inside Sigma itself. 
 
 For those interested in integrating with external tools, [please check out the QuickStart: Embedding 10: Version Tagging](https://quickstarts.sigmacomputing.com/guide/embedding_10_version_tagging_v3/index.html?index=..%2F..index#0) 
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/9e1q562j7r2dxiq) to see how version tagging takes a workbook from quality assurance to production.
 
 ### Tagging concept
 
