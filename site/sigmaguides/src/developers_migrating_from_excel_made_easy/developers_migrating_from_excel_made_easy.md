@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-10-22
+lastUpdated: 2026-11-17
 
 # Migrating From Excel Made Easy
 
@@ -16,6 +16,8 @@ Duration: 5
 Sigma brings the flexibility of a spreadsheet to live warehouse data, with the governance, collaboration, and scale that a file on one person's laptop can't offer. That makes the Excel planning models finance teams rebuild every cycle, the budget and forecast workbooks, a natural fit for Sigma. The conversion itself is often what stalls the project.
 
 This QuickStart demonstrates how to migrate an Excel rolling forecast to Sigma with a `Claude Code` skill called `excel-to-sigma`. We will build a Sigma data model and workbook from the Excel file, keep the forecast inputs editable as input tables, and verify that Sigma's totals tie to Excel's.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/niufbgcpix2kxj5) to see how an Excel rolling forecast becomes a Sigma data model and workbook, with the inputs still editable and the totals tied to Excel.
 
 ### About the sample Excel file
 A planning workbook is a data-entry tool as much as a report. Actuals are pulled in by formula, the forecast runs on growth rates and typed overrides, and summary tabs and charts sit on top. Rebuilding one by hand means tracing every formula back to its source, deciding which cells people actually edit, and then checking the totals and hoping nothing drifted.
