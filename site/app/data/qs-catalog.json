@@ -1189,7 +1189,7 @@
       "title": "Snowflake Key-pair Authorization",
       "category": "security",
       "summary": "Configure a Snowflake connection in Sigma to use RSA key pair authentication instead of a password, then rotate the key pair periodically to maintain security.",
-      "lastUpdated": "2023-06-04",
+      "lastUpdated": "2026-11-17",
       "url": "https://quickstarts.sigmacomputing.com/guide/security_snowflake_keypair_rotation/index.html"
     },
     {
