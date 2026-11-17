@@ -581,7 +581,7 @@
       "title": "Migrating From Power BI Made Easy",
       "category": "migrations",
       "summary": "Run the powerbi-to-sigma Claude Code skill to convert a Power BI report's semantic model and layout into a Sigma data model and workbook, verifying data parity against the source warehouse.",
-      "lastUpdated": "2026-09-11",
+      "lastUpdated": "2026-11-17",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_migrating_power_bi_made_easy/index.html"
     },
     {
