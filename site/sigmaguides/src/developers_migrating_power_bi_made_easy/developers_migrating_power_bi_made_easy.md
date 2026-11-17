@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-11
+lastUpdated: 2026-11-17
 
 # Migrating From Power BI Made Easy
 
@@ -22,6 +22,8 @@ This QuickStart walks through a `Claude Code` skill called `powerbi-to-sigma` th
 Point it at a Power BI report; it extracts the semantic model and report layout from Fabric (PBIR or the older single-file format), translates the DAX measures into Sigma formulas, builds (or reuses) a Sigma data model from the warehouse tables behind the model, and lays the workbook out to mirror the source. It then runs a verification pass to confirm every column reference in the Sigma model resolves cleanly against the live warehouse, and surfaces a punch list of anything it couldn't auto-translate — instead of silently producing a broken workbook.
 
 For the demonstration, we'll run the skill end-to-end against a sample Power BI report on a Fabric workspace. You'll see the artifacts each phase produces, the DAX-translation breakdown the converter hands back, the verification report against the live warehouse, and the resulting Sigma data model and workbook landed in your org — along with the gap list of items to hand-polish.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/brhj896ed3xc1uq) to see how a Power BI report becomes a Sigma data model and workbook, with the numbers checked against the warehouse.
 
 <aside class="positive">
 <strong>WHY IT MATTERS:</strong><br> The skill runs the whole conversion — extract, translate, build, verify — and finishes with a documented parity check. The result is a working Sigma workbook on the warehouse plus the report that proves it matches the Power BI source, instead of a rebuilt-by-hand report you have to spot-check yourself.
