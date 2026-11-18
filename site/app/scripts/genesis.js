@@ -804,32 +804,36 @@
     window.addEventListener('resize', syncStuck);
   }
 
-  /* ---------- announcement ---------- */
-  var news = $('#news');
-  if (news) {
+  /* ---------- announcement bar (copy and link come from /data/announcement.json) ---------- */
+  var ann = $('#ann');
+  if (ann) {
     fetch('/data/announcement.json').then(function (r) {
       return r.json();
     }).then(function (d) {
       if (!d || !d.visible || !d.message) return;
-      var tmp = new DOMParser().parseFromString('<!doctype html><body>' + d.message, 'text/html').body;
-      var a = tmp.querySelector('a');
-      var href = a ? a.getAttribute('href') : '#library';
-      if (!/^(https?:\/\/|\/|#)/i.test(href || '')) href = '#library';
-      if (a) a.parentNode.removeChild(a);
-      try {
-        var u = new URL(href, location.href);if (/quickstarts\.sigmacomputing\.com$/.test(u.hostname)) href = u.pathname + u.search + (u.search.indexOf('cat=') > -1 ? '#library' : u.hash);
-      } catch (e) {/* keep */}
-      var parts = '';
-      Array.prototype.forEach.call(tmp.childNodes, function (n) {
-        var t = (n.textContent || '').replace(/\s+/g, ' ');
-        if (!t.trim() && n.nodeType !== 3) return;
-        parts += n.nodeType === 1 && /^(STRONG|B)$/.test(n.tagName) ? '<b>' + esc2(t.trim()) + '</b>' : esc2(t);
-      });
-      if (d.title) parts = '<b>' + esc2(d.title) + '</b> ' + parts;
-      parts = parts.replace(/\s+[—–]\s+/g, ': ');
-      setHTML($('.txt', news), parts.replace(/[\s—–-]+$/, '').replace(/\s+(<b>)/g, ' $1').trim());
-      news.href = href;
-      news.hidden = false;
+      var href = d.linkUrl || '';
+      // Only same-site paths, anchors and web links; anything else is dropped
+      if (!/^(https?:\/\/|\/|#)/i.test(href)) href = '';
+      $('.tag', ann).textContent = d.tag || '';
+      $('.tag', ann).hidden = !d.tag;
+      $('.txt', ann).textContent = d.message;
+      var lnk = $('.lnk', ann);
+      if (href && d.linkText) {
+        $('span', lnk).textContent = d.linkText;
+        lnk.href = href;
+        var external = false;
+        try {
+          external = new URL(href, location.href).origin !== location.origin;
+        } catch (e) {/* treat as same-site */}
+        if (external) {
+          lnk.target = '_blank';
+          lnk.rel = 'noopener noreferrer';
+        }
+        lnk.hidden = false;
+      } else {
+        lnk.hidden = true;
+      }
+      ann.hidden = false;
     }).catch(function () {});
   }
   function esc2(s) {

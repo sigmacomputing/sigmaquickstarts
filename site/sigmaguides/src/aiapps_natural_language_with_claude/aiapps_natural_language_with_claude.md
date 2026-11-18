@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: Default
-lastUpdated: 2026-08-21
+lastUpdated: 2026-11-18
 
 # Natural Language Analytics with Claude and Sigma
 
@@ -16,6 +16,8 @@ Duration: 5
 This QuickStart shows how to connect Claude AI to your Sigma organization using the Sigma MCP (Model Context Protocol) server and use that connection to do real analytical work — finding content, understanding data structure, and getting answers from live data through natural language.
 
 This is not a demo of Sigma's built-in AI features. It is a guide for using Claude as an external analyst that can read and query your Sigma data on your behalf.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/mj2vaquwzfmokdn) to see how Claude connects to Sigma through the Sigma MCP server, and finds, understands, and queries your data in plain language.
 
 Along the way you'll learn how to:
 - Connect Claude to Sigma using the Sigma MCP server

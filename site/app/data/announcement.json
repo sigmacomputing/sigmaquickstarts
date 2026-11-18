@@ -1,7 +1,7 @@
 {
   "visible": true,
-  "title": "",
-
-  "message": "The QuickStarts site is getting a new look <strong>this weekend</strong>, to align with sigma.com. No downtime is expected."
-
+  "tag": "On demand",
+  "message": "Everyone builds. IT approved.",
+  "linkText": "Watch the replay",
+  "linkUrl": "https://www.sigmacomputing.com/resources/webinars-and-events/the-future-of-building"
 }
