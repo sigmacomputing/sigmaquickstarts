@@ -309,7 +309,7 @@
       "title": "Natural Language Analytics with Claude and Sigma",
       "category": "aiapps",
       "summary": "Connect Claude to a Sigma organization through the Sigma MCP server to search workbooks, explore data model structure, and query live data using natural language.",
-      "lastUpdated": "2026-08-21",
+      "lastUpdated": "2026-11-18",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_natural_language_with_claude/index.html"
     },
     {
