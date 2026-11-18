@@ -757,7 +757,7 @@
       "title": "Embedding 15: Embed-SDK for React",
       "category": "Embedding",
       "summary": "Sets up a local React development environment, runs a sample application built with Sigma's Embed SDK for React, and customizes the embedded workbook's appearance and behavior.",
-      "lastUpdated": "2026-05-06",
+      "lastUpdated": "2026-11-18",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_15_embed_sdk/index.html"
     },
     {
