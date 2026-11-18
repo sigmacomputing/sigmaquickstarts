@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-05-06
+lastUpdated: 2026-11-18
 
 # Embedding 15: Embed-SDK for React
 
@@ -16,6 +16,8 @@ Duration: 5
 Sigma provides many methods to allow users and developers to interact with its systems including web-ui, [REST API,](https://help.sigmacomputing.com/reference/get-started-sigma-api) [Javascript Embed API](https://help.sigmacomputing.com/docs/example-embed-api-and-url) and an SDK for the [React](https://react.dev/) framework. 
 
 The Embed-SDK for React offers a higher-level, developer-friendly interface that simplifies integration into applications, in contrast to Sigma’s lower-level JavaScript Embed-API, which provides more granular control but may require additional coding
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/4kkpfrx9gf9sz78) to see how the Embed SDK for React embeds a Sigma workbook in a sample application, from setup to a customized embed.
 
 There are some reasons why developers might choose one over the other. Each method offers distinct advantages depending on the project requirements, developer expertise, and desired level of control or simplicity.2
 
