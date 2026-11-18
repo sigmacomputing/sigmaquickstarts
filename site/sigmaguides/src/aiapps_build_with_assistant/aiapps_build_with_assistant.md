@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-18
 
 # Build Dashboards and Apps with Sigma Assistant
 
@@ -16,6 +16,8 @@ Duration: 5
 Describe what you want in plain language and watch Sigma build it — a sales dashboard, a survey app, a formatted input table — all live on your data and ready to publish, not a throwaway mockup.
 
 The [Fundamentals 01](https://quickstarts.sigmacomputing.com/guide/fundamentals_1_getting_around_v3/index.html) QuickStart introduces Assistant for analysis — asking a question and opening the answer in a workbook. Here we go further: using Assistant's `Plan` and `Build` modes to design and construct dashboards and AI apps from scratch, then refine them conversationally.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/gx8m09szxilcjgm) to see how Sigma Assistant plans and builds a revenue forecast from a data model and a design image, and how you refine it in conversation.
 
 Along the way you'll learn how to:
 - Use Assistant's `Plan` and `Build` modes, and switch between them
