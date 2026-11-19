@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-03-13
+lastUpdated: 2026-11-19
 
 # Fundamentals 07: Design Elements (UI & Layout)
 
@@ -16,6 +16,8 @@ Duration: 5
 This QuickStart is part of a series designed to help new users understand a few of the design elements in Sigma and a few design concepts to consider as well.
 
 In this QuickStart, we will use elements built in previous Fundamentals lessons to create a visually appealing dashboard.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/rxpl43d19v7pex7) to see how to arrange elements on a dashboard, apply a custom theme, and add a button that navigates between pages.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This QuickStart assumes you have already taken the other QuickStart Fundamentals, and are now generally familiar with Sigma. Given this, some steps are assumed to be known and may not be shown in detail.
