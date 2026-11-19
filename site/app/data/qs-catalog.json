@@ -269,7 +269,7 @@
       "title": "Build Conversational AI Apps with Chat Elements and Snowflake Cortex",
       "category": "aiapps",
       "summary": "Build a conversational AI app in Sigma using a chat element, a Sigma agent, and a Snowflake Cortex Agent — with optional write-back actions to an input table.",
-      "lastUpdated": "2026-09-16",
+      "lastUpdated": "2026-11-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/aiapps_chat_element/index.html"
     },
     {
