@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-01-27
+lastUpdated: 2026-11-19
 
 # Data Models as Code
 
@@ -26,6 +26,8 @@ In this QuickStart, you'll learn how to:
 - Update an existing data model programmatically
 
 This workflow allows data teams to treat their analytics infrastructure as code, applying software engineering best practices to data modeling.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/ux4peum8xop04cg) to see how to create and update a Sigma data model from a JSON specification through the REST API.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma's intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
