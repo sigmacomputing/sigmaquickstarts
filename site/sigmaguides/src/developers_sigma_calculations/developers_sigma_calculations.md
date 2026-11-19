@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-18
+lastUpdated: 2026-11-19
 
 # Sigma's Query Engine
 
@@ -18,6 +18,8 @@ Many new Sigma customers initially expect to use more warehouse compute due to t
 To offset Snowflake compute costs, Sigma applies multiple tiers of caching and evaluation that effectively reduce warehouse load, while delivering a faster user experience. 
 
 As a result, customers typically see their cost-per-user decrease, as they increase their number of users in Sigma.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/iqwrsluva51y97e) to see how Sigma's browser cache, Alpha Query, and result cache work together to reduce warehouse load.
 
 For example, here is a demonstration of the savings, based on real customer usage:
 
