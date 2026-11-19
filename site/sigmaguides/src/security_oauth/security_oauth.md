@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2024-07-25
+lastUpdated: 2026-11-19
 
 # Open Authorization (OAuth)
 
@@ -14,6 +14,8 @@ lastUpdated: 2024-07-25
 Duration: 5 
 
 Eliminate shared credentials between Sigma and Snowflake by configuring OAuth — four scenarios: basic setup, Snowflake integration, Okta auto-provisioning, and writeback.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/8cczdes778hrxt5) to see how OAuth connects Sigma, Okta, and Snowflake so each user queries with their own credentials.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> This will provide a basic demonstration of the various processes, although not all are always required. Exactly how to configure this for your organization is highly dependant on your use case and governance needs.
