@@ -477,7 +477,7 @@
       "title": "Data Models as Code",
       "category": "developers",
       "summary": "Use Sigma's REST API to create and update data models from JSON specifications, enabling version control, code review, and CI/CD for data model deployments.",
-      "lastUpdated": "2026-01-27",
+      "lastUpdated": "2026-11-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/developers_data_models_as_code/index.html"
     },
     {
