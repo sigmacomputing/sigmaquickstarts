@@ -3,7 +3,7 @@ id: use_cases_fpna_report_based_on_template
 summary: use_cases_fpna_report_based_on_template
 categories: use-cases
 environments: web
-status: Use Cases
+status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
 lastUpdated: 2026-05-10
