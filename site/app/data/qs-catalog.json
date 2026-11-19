@@ -149,7 +149,7 @@
       "title": "Materialization with Sigma",
       "category": "Administration",
       "summary": "Configure materialization of a Sigma dataset into a Snowflake table to cut query times and reduce warehouse compute costs, then verify results after the first refresh.",
-      "lastUpdated": "2026-02-13",
+      "lastUpdated": "2026-11-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_materialization/index.html"
     },
     {

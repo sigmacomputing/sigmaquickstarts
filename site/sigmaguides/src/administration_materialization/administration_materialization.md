@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-02-13
+lastUpdated: 2026-11-19
 
 # Materialization with Sigma
 
@@ -14,6 +14,8 @@ lastUpdated: 2026-02-13
 Duration: 5 
 
 Cut query times and reduce warehouse spend by materializing Sigma datasets directly into Snowflake — when to use it, how to configure it, and what to expect from the first run. 
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/wfykf8sjzx24z52) to see when to materialize, how to schedule it in Sigma, and how grouping levels speed up large tables.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> Some screens in Sigma may appear slightly different from those shown in QuickStarts. This is because Sigma continuously adds and enhances functionality. Rest assured, Sigma’s intuitive interface ensures that any differences will not prevent you from successfully completing any QuickStart.
@@ -50,8 +52,6 @@ The concept of storing pre-calculated data for performance optimization (similar
 Materialization is a form of caching where query results are written into a table in a data warehouse and refreshed at regular intervals (often daily).
 
 This pre-calculated or pre-aggregated data can be accessed more quickly and efficiently than recomputing results every time a query is executed.
-
-**This pre-calculated or pre-aggregated data can be accessed more efficiently and quickly than recomputing the results every time the query is executed.**
 
 ### Advantages of Materialization
 - **Improved query performance:** Eliminates repetitive computations, resulting in faster response times.
