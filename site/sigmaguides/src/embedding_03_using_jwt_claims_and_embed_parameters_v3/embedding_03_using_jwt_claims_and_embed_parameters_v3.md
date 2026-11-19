@@ -6,7 +6,7 @@ environments: web
 status: published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2025-05-13
+lastUpdated: 2026-11-19
 
 # Embedding 03: Using JWT Claims and Embed Parameters
 
@@ -22,6 +22,8 @@ Beyond authentication, the API controls embedded functionality through optional 
 For a full reference, see Sigma’s [Embed URL Parameters](https://help.sigmacomputing.com/docs/embed-url-parameters) documentation.
 
 This QuickStart provides examples and screenshots of required and optional parameters to help developers understand their use.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/035r9lvipnt3swj) to see how JWT claims, user attributes, and URL parameters control a secure Sigma embed.
 
 In this QuickStart, we will use the local host application we created in [Embedding 01: Getting Started](https://quickstarts.sigmacomputing.com/guide/embedding_01_getting_started_v3/index.html?index=..%2F..embedding#0)
 

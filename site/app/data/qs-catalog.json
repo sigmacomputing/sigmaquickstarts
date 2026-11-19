@@ -661,7 +661,7 @@
       "title": "Embedding 03: Using JWT Claims and Embed Parameters",
       "category": "Embedding",
       "summary": "Configure signed JWT claims and embed URL parameters to authenticate embedded Sigma content, enforce row-level security, and pass custom user attributes.",
-      "lastUpdated": "2025-05-13",
+      "lastUpdated": "2026-11-19",
       "url": "https://quickstarts.sigmacomputing.com/guide/embedding_03_using_jwt_claims_and_embed_parameters_v3/index.html"
     },
     {
