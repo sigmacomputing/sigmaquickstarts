@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-28
+lastUpdated: 2026-11-19
 
 # Agents 08: Give Your Sigma Agent a Snowflake Cortex Specialist
 
@@ -20,6 +20,8 @@ A Sigma agent that only reasons over a single data source you gave it directly c
 Sigma is built to call whichever ones your organization already runs, through the same `Tools` > `Warehouse agent` picker. 
 
 Here, we'll build a Cortex Agent backed by its own semantic view in Snowflake, then attach it to a Sigma agent as a tool the agent can call on its own; the same pattern applies to Genie or any other warehouse agent.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/n0a997yaen8b3c1) to see how a Sigma agent decides between its own data and a Snowflake Cortex specialist.
 
 See [Use warehouse agents with Sigma](https://help.sigmacomputing.com/docs/use-warehouse-agents-sigma) for the current list. 
 
