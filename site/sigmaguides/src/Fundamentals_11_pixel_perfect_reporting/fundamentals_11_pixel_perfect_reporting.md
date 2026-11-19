@@ -7,7 +7,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-07-11
+lastUpdated: 2026-11-19
 
 # Fundamentals 11: Pixel Perfect Reporting
 
@@ -17,6 +17,8 @@ Duration: 5
 Pixel Perfect Reporting (PPR) has been a cornerstone of business intelligence for decades, enabling organizations to create precisely formatted, print-ready reports. While PPR is well-established across BI platforms, Sigma revolutionizes the experience with **extreme ease of use** and the power of cloud-scale data.
 
 In this QuickStart, you'll explore how Sigma makes creating professional, branded reports effortless—without sacrificing the precision and control that pixel-perfect formatting demands. Using a real-world example of an annual report for Plugs Electronics (a fictional retailer), you'll see how Sigma combines intuitive design with enterprise-grade capabilities.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/wy2r5vd5iivahsq) to see how to build, brand, and schedule a pixel-perfect report with region-specific delivery.
 
 ### Common use cases for Pixel Perfect Reports
 
