@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2026-09-16
+lastUpdated: 2026-11-19
 
 # Build Conversational AI Apps with Chat Elements and Snowflake Cortex
 
@@ -16,6 +16,8 @@ Duration: 5
 This QuickStart demonstrates how to build conversational AI applications using Sigma's chat element and Sigma agents, powered by Snowflake Cortex for advanced analytics.
 
 You'll learn how to create an intelligent retail data assistant that can answer natural language questions, perform complex analysis, and take actions based on user interactions.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/lpfp2ylve15c7i4) to see how a chat element, a Sigma agent, and a Snowflake Cortex Agent work together as a conversational retail data assistant.
 
 **A key aspect of AI applications is controlling data access.** Semantic views act as a governance layer, ensuring your AI agents only access approved, curated data—not your entire data warehouse.
 
