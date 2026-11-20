@@ -6,7 +6,7 @@ environments: web
 status: Published
 feedback link: https://github.com/sigmacomputing/sigmaquickstarts/issues
 tags: default
-lastUpdated: 2023-09-12
+lastUpdated: 2026-11-20
 
 # Audit Logging
 
@@ -18,6 +18,8 @@ Enable Sigma's audit logs to track user activity, troubleshoot access issues, an
 For example, a user may report they never received the invitation email that the administrator sent to allow access to Sigma. The Audit Log will show that the message was sent to the user and is likely "trapped" elsewhere (is: spam folder)
 
 Since the data is available as a Sigma connection, we can explore it in a Sigma workbook to analyze how users across your organization utilize Sigma.
+
+Prefer to watch first? [Watch the short summary video](https://sigmacomputing.wistia.com/s/8dlwmzzmrff7jzg) to see how to browse the audit log, chart daily logins, and export the data for longer retention.
 
 <aside class="positive">
 <strong>IMPORTANT:</strong><br> No customer data is stored in the Audit Log. Only events/actions and context is logged. 
@@ -91,7 +93,7 @@ Your table will have different row information as Sigma is logging events for yo
 Sliding right on the table to see more columns we see some columns have data and some do not (nulls). This is normal and expected as each event will have different characteristics and therefore record different details. 
 
 <aside class="positive">
-<strong>IMPORTANT:</strong><br> Audit Logs are 30 days in duration. In order to retain entries for an extended period of time, we recommend enabling a storage integration to export audit log data
+<strong>IMPORTANT:</strong><br> Audit Logs are kept for 30 days by default (Sigma can adjust the retention period). In order to retain entries for an extended period of time, we recommend enabling a storage integration to export audit log data
 </aside>
 
 [How to Export audit log data to cloud storage.](https://help.sigmacomputing.com/docs/export-audit-log-data-to-cloud-storage)
@@ -199,12 +201,12 @@ Duration: 20
 There may be reasons to store Audit Log data outside of Sigma. A few examples are:
 
  <ul>
-      <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 30 days.</li>
+      <li><strong>Extended retention period:</strong> Sigma stores Audit Logs for 30 days by default.</li>
       <li><strong>Provide access to third party tool:</strong> Many organizations have central anomaly detection tools they prefer to use.</li>
       <li><strong>To meet governance requirements:</strong> Any requirement that enforces direct control over logging activities.</li>
 </ul>
 
-Let's assume that we are required to retain a rolling history of daily logins (success and failure) for 5 years. Sigma retains 90 days worth of information so we will need to export log data to meet this requirement.
+Let's assume that we are required to retain a rolling history of daily logins (success and failure) for 5 years. Sigma retains 30 days worth of information by default, so we will need to export log data to meet this requirement.
 
 Building on the last exercise, we have what we need in the `Daily Login Activity` Workbook we built and just need to configure an export schedule to handle the rest.
 

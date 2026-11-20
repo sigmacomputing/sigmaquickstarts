@@ -117,7 +117,7 @@
       "title": "Audit Logging",
       "category": "administration",
       "summary": "Access Sigma's audit log connection to explore user activity and build a chart tracking daily login successes and failures for troubleshooting and compliance.",
-      "lastUpdated": "2023-09-12",
+      "lastUpdated": "2026-11-20",
       "url": "https://quickstarts.sigmacomputing.com/guide/administration_audit_logging/index.html"
     },
     {

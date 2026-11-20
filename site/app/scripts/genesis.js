@@ -569,6 +569,8 @@
       out += '<details class="brecent" id="brecent" hidden><summary><h3>Recently added</h3><p>The newest guides from the QuickStarts team.</p><svg class="chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="rcards"></div></details>';
       var topHtml = out;out = '';
       // one collapsed shelf per topic, A-Z, with Fundamentals leading as the entry point for new users
+      // guide id that leads a topic's shelf, as its starting point
+      var START = { aiapps: 'dataaps_fundamentals' };
       var shelfOrder = catsOrdered.filter(function (k) {
         return k === 'fundamentals';
       }).concat(catsOrdered.filter(function (k) {
@@ -578,7 +580,17 @@
         var mem = cards.filter(function (c) {
           return c._cat === k;
         }).sort(function (a, b) {
-          return (b._date || '').localeCompare(a._date || '') || a._i - b._i;
+          // Pinned starting point for a topic (AI Apps Fundamentals leads AI Apps)
+          var pin = START[k];
+          if (pin) {
+            var pa = a.getAttribute('data-id') === pin,
+              pb = b.getAttribute('data-id') === pin;
+            if (pa !== pb) return pa ? -1 : 1;
+          }
+          // Dated series (monthly First Friday Features) stay newest first
+          if (k === 'firstfridayfeatures') return (b._date || '').localeCompare(a._date || '') || a._i - b._i;
+          // Everything else: A-Z, with numbered titles (Fundamentals 01, 02 ... 12) in numeric order
+          return a._title.localeCompare(b._title, undefined, { numeric: true, sensitivity: 'base' }) || a._i - b._i;
         });
         if (!mem.length) return;
         var f = famOf(k);
